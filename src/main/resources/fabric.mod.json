@@ -1,0 +1,45 @@
+{
+	"schemaVersion": 1,
+	"id": "at_mite",
+	"version": "${version}",
+	"name": "at_mite",
+	"description": "This is an example description! Tell everyone what your mod is about!",
+	"authors": [
+		"Me!"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/at_mite/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.acuteterror233.mite.At_mite"
+		],
+		"client": [
+			"com.acuteterror233.mite.At_miteClient"
+		],
+		"fabric-datagen": [
+			"com.acuteterror233.mite.At_miteDataGenerator"
+		]
+	},
+	"mixins": [
+		"at_mite.mixins.json",
+		{
+			"config": "at_mite.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.16.13",
+		"minecraft": "~1.21.5",
+		"java": ">=21",
+		"fabric-api": "*"
+	},
+	"accessWidener": "at.accesswidener",
+	"suggests": {
+		"another-mod": "*"
+	}
+}
