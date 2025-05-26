@@ -3,7 +3,8 @@
 	"package": "com.acuteterror233.mite.mixin.client",
 	"compatibilityLevel": "JAVA_21",
 	"client": [
-		"ExampleClientMixin"
+		"ExampleClientMixin",
+		"gui.hud.InGameHudMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

@@ -3,7 +3,6 @@
   "package": "com.acuteterror233.mite.mixin",
   "compatibilityLevel": "JAVA_21",
   "client": [
-    "ClientPlayerEntityMixin"
   ],
   "mixins": [
     "FoodComponentMixin",
