@@ -1,12 +1,12 @@
 {
-	"required": true,
-	"package": "com.acuteterror233.mite.mixin.client",
-	"compatibilityLevel": "JAVA_21",
-	"client": [
-		"ExampleClientMixin",
-		"gui.hud.InGameHudMixin"
-	],
-	"injectors": {
-		"defaultRequire": 1
+  "required": true,
+  "package": "com.acuteterror233.mite.mixin.client",
+  "compatibilityLevel": "JAVA_21",
+  "client": [
+    "ExampleClientMixin",
+    "gui.hud.InGameHudMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
 	}
 }

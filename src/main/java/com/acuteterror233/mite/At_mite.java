@@ -2,10 +2,6 @@ package com.acuteterror233.mite;
 
 import net.fabricmc.api.ModInitializer;
 
-import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
-import net.minecraft.entity.attribute.EntityAttributes;
-import net.minecraft.entity.player.HungerManager;
-import net.minecraft.server.network.ServerPlayerEntity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -23,9 +19,5 @@ public class At_mite implements ModInitializer {
 		// However, some things (like resources) may still be uninitialized.
 		// Proceed with mild caution.
 		LOGGER.info("Hello Fabric world!");
-		ServerPlayConnectionEvents.JOIN.register((handler, server, player) -> {
-			ServerPlayerEntity player1 = handler.getPlayer(); // 获取当前加入的玩家
-			player1.getAttributeInstance(EntityAttributes.MAX_HEALTH).setBaseValue(6);
-		});
 	}
 }

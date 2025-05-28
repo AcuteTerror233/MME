@@ -1,8 +1,10 @@
-package com.acuteterror233.mite.mixin.playerentity;
+package com.acuteterror233.mite.mixin.entity.player;
 
-import com.acuteterror233.mite.newinterface.HungerManagerExtension;
+import com.acuteterror233.mite.atinterface.HungerManagerExtension;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.attribute.DefaultAttributeContainer;
+import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.player.HungerManager;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.world.World;
@@ -37,8 +39,8 @@ public abstract class PlayerEntityMixin extends LivingEntity {
         return ret * 2;
     }
 
-    @Inject(method = "addExperienceLevels", at = @At("HEAD"))
-    public void addExperienceLevels(int levels, CallbackInfo ci) {
+    @Inject(method = "tick", at = @At("HEAD"))
+    public void tick(CallbackInfo ci) {
         if (this.experienceLevel > 35) {
             setMax(20);
         } else if (this.experienceLevel > 30) {
@@ -59,7 +61,23 @@ public abstract class PlayerEntityMixin extends LivingEntity {
     }
     @Unique
     public void setMax(int max) {
-
+        getAttributes().getCustomInstance(EntityAttributes.MAX_HEALTH).setBaseValue(max);
         ((HungerManagerExtension) hungerManager).setMaxFoodLevel(max);
+    }
+    @Overwrite
+    public static DefaultAttributeContainer.Builder createPlayerAttributes() {
+        return LivingEntity.createLivingAttributes()
+                .add(EntityAttributes.ATTACK_DAMAGE, 1.0)
+                .add(EntityAttributes.MOVEMENT_SPEED, 0.1F)
+                .add(EntityAttributes.ATTACK_SPEED)
+                .add(EntityAttributes.LUCK)
+                .add(EntityAttributes.BLOCK_INTERACTION_RANGE, 2.5)
+                .add(EntityAttributes.ENTITY_INTERACTION_RANGE, 2.0)
+                .add(EntityAttributes.BLOCK_BREAK_SPEED)
+                .add(EntityAttributes.SUBMERGED_MINING_SPEED)
+                .add(EntityAttributes.SNEAKING_SPEED)
+                .add(EntityAttributes.MINING_EFFICIENCY)
+                .add(EntityAttributes.SWEEPING_DAMAGE_RATIO)
+                .add(EntityAttributes.MAX_HEALTH, 6);
     }
 }

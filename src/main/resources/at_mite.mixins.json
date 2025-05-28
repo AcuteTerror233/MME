@@ -5,9 +5,9 @@
   "client": [
   ],
   "mixins": [
-    "FoodComponentMixin",
-    "HungerManagerMixin",
-    "playerentity.PlayerEntityMixin"
+    "block.AbstractBlockMixin",
+    "entity.player.HungerManagerMixin",
+    "entity.player.PlayerEntityMixin"
   ],
   "injectors": {
     "defaultRequire": 1
