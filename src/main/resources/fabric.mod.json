@@ -16,13 +16,13 @@
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"com.acuteterror233.mite.At_mite"
+			"com.acuteterror233.mite.at_mite"
 		],
 		"client": [
-			"com.acuteterror233.mite.At_miteClient"
+			"com.acuteterror233.mite.at_miteClient"
 		],
 		"fabric-datagen": [
-			"com.acuteterror233.mite.At_miteDataGenerator"
+			"com.acuteterror233.mite.at_miteDataGenerator"
 		]
 	},
 	"mixins": [
