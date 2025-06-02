@@ -12,17 +12,17 @@
 		"sources": "https://github.com/FabricMC/fabric-example-mod"
 	},
 	"license": "CC0-1.0",
-	"icon": "assets/at_mite/icon.png",
+	"icon": "assets/at_mite/pack.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"com.acuteterror233.mite.at_mite"
+			"com.acuteterror233.mite.At_mite"
 		],
 		"client": [
-			"com.acuteterror233.mite.at_miteClient"
+			"com.acuteterror233.mite.At_miteClient"
 		],
 		"fabric-datagen": [
-			"com.acuteterror233.mite.at_miteDataGenerator"
+			"com.acuteterror233.mite.At_miteDataGenerator"
 		]
 	},
 	"mixins": [
