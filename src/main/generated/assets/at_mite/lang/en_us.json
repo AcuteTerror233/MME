@@ -1,0 +1,19 @@
+{
+  "item.at_mite.adamantium_boots": "Adamantium Boots",
+  "item.at_mite.adamantium_chainmail_boots": "Adamantium Chainmail Boots",
+  "item.at_mite.adamantium_chainmail_chestplate": "Adamantium Chainmail Chestplate",
+  "item.at_mite.adamantium_chainmail_helmet": "Adamantium Chainmail Helmet",
+  "item.at_mite.adamantium_chainmail_leggings": "Adamantium Chainmail Leggings",
+  "item.at_mite.adamantium_chestplate": "Adamantium Chestplate",
+  "item.at_mite.adamantium_helmet": "Adamantium Helmet",
+  "item.at_mite.adamantium_leggings": "Adamantium Leggings",
+  "item.at_mite.ancient_metal_boots": "Ancient Metal Boots",
+  "item.at_mite.ancient_metal_chainmail_boots": "Ancient Metal Chainmail Boots",
+  "item.at_mite.ancient_metal_chainmail_chestplate": "Ancient Metal Chainmail Chestplate",
+  "item.at_mite.ancient_metal_chainmail_helmet": "Ancient Metal Chainmail Helmet",
+  "item.at_mite.ancient_metal_chainmail_leggings": "Ancient Metal Chainmail Leggings",
+  "item.at_mite.ancient_metal_chestplate": "Ancient Metal Chestplate",
+  "item.at_mite.ancient_metal_helmet": "Ancient Metal Helmet",
+  "item.at_mite.ancient_metal_leggings": "Ancient Metal Leggings",
+  "itemGroup.at_mite.item_group": "at_mite"
+}

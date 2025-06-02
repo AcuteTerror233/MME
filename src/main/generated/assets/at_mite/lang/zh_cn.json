@@ -1,0 +1,19 @@
+{
+  "item.at_mite.adamantium_boots": "艾德曼靴子",
+  "item.at_mite.adamantium_chainmail_boots": "艾德曼链甲靴子",
+  "item.at_mite.adamantium_chainmail_chestplate": "艾德曼链甲胸甲",
+  "item.at_mite.adamantium_chainmail_helmet": "艾德曼链甲头盔",
+  "item.at_mite.adamantium_chainmail_leggings": "艾德曼链甲护腿",
+  "item.at_mite.adamantium_chestplate": "艾德曼胸甲",
+  "item.at_mite.adamantium_helmet": "艾德曼头盔",
+  "item.at_mite.adamantium_leggings": "艾德曼护腿",
+  "item.at_mite.ancient_metal_boots": "远古金属靴子",
+  "item.at_mite.ancient_metal_chainmail_boots": "锁链远古金属靴子",
+  "item.at_mite.ancient_metal_chainmail_chestplate": "锁链远古金属链甲胸甲",
+  "item.at_mite.ancient_metal_chainmail_helmet": "锁链远古金属链甲头盔",
+  "item.at_mite.ancient_metal_chainmail_leggings": "锁链远古金属链甲护腿",
+  "item.at_mite.ancient_metal_chestplate": "远古金属胸甲",
+  "item.at_mite.ancient_metal_helmet": "远古金属头盔",
+  "item.at_mite.ancient_metal_leggings": "远古金属护腿",
+  "itemGroup.at_mite.item_group": "at_mite"
+}
