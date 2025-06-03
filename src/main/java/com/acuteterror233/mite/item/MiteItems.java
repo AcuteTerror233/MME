@@ -302,6 +302,37 @@ public class MiteItems {
             Item::new,
             new Item.Settings().food(new FoodComponent(1, 1.0F, false)));
 
+    public static final Item ADAMANTIUM_ARROW = register(
+            "ADAMANTIUM_ARROW",
+            Item::new);
+    public static final Item ANCIENT_METAL_ARROW = register(
+            "ANCIENT_METAL_ARROW",
+            Item::new);
+    public static final Item COPPER_ARROW = register(
+            "COPPER_ARROW",
+            Item::new);
+    public static final Item FLINT_ARROW = register(
+            "FLINT_ARROW",
+            Item::new);
+    public static final Item GOLD_ARROW = register(
+            "GOLD_ARROW",
+            Item::new);
+    public static final Item IRON_ARROW = register(
+            "IRON_ARROW",
+            Item::new);
+    public static final Item MITHRIL_ARROW = register(
+            "MITHRIL_ARROW",
+            Item::new);
+    public static final Item OBSIDIAN_ARROW = register(
+            "OBSIDIAN_ARROW",
+            Item::new);
+    public static final Item SILVER_ARROW = register(
+            "SILVER_ARROW",
+            Item::new);
+    public static final Item RUSTED_IRON_ARROW = register(
+            "RUSTED_IRON_ARROW",
+            Item::new);
+
     public static final ItemGroup AT_MINT_GROUP = FabricItemGroup.builder()
             .icon(() -> new ItemStack(ADAMANTIUM_HELMET))
             .displayName(Text.translatable("itemGroup.at_mite.item_group"))
@@ -364,6 +395,16 @@ public class MiteItems {
                     entries.add(ORANGE);
                     entries.add(WORM_COOKED);
                     entries.add(WORM_RAW);
+                    entries.add(ADAMANTIUM_ARROW);
+                    entries.add(ANCIENT_METAL_ARROW);
+                    entries.add(COPPER_ARROW);
+                    entries.add(FLINT_ARROW);
+                    entries.add(GOLD_ARROW);
+                    entries.add(IRON_ARROW);
+                    entries.add(MITHRIL_ARROW);
+                    entries.add(OBSIDIAN_ARROW);
+                    entries.add(SILVER_ARROW);
+                    entries.add(RUSTED_IRON_ARROW);
             })
             .build();
 

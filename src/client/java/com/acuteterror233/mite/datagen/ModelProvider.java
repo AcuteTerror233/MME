@@ -78,5 +78,15 @@ public class ModelProvider extends FabricModelProvider {
         itemModelGenerator.register(MiteItems.ORANGE, Models.GENERATED);
         itemModelGenerator.register(MiteItems.WORM_COOKED, Models.GENERATED);
         itemModelGenerator.register(MiteItems.WORM_RAW, Models.GENERATED);
+        itemModelGenerator.register(MiteItems.ADAMANTIUM_ARROW, Models.GENERATED);
+        itemModelGenerator.register(MiteItems.ANCIENT_METAL_ARROW, Models.GENERATED);
+        itemModelGenerator.register(MiteItems.COPPER_ARROW, Models.GENERATED);
+        itemModelGenerator.register(MiteItems.MITHRIL_ARROW, Models.GENERATED);
+        itemModelGenerator.register(MiteItems.RUSTED_IRON_ARROW, Models.GENERATED);
+        itemModelGenerator.register(MiteItems.SILVER_ARROW, Models.GENERATED);
+        itemModelGenerator.register(MiteItems.FLINT_ARROW, Models.GENERATED);
+        itemModelGenerator.register(MiteItems.GOLD_ARROW, Models.GENERATED);
+        itemModelGenerator.register(MiteItems.IRON_ARROW, Models.GENERATED);
+        itemModelGenerator.register(MiteItems.OBSIDIAN_ARROW, Models.GENERATED);
     }
 }

@@ -74,6 +74,16 @@ public class Zh_cnLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(MiteItems.ORANGE, "橘子");
         translationBuilder.add(MiteItems.WORM_COOKED, "烤熟的虫子");
         translationBuilder.add(MiteItems.WORM_RAW, "生的虫子");
+        translationBuilder.add(MiteItems.ADAMANTIUM_ARROW, "艾德曼箭");
+        translationBuilder.add(MiteItems.ANCIENT_METAL_ARROW, "远古金属箭");
+        translationBuilder.add(MiteItems.COPPER_ARROW, "铜箭");
+        translationBuilder.add(MiteItems.MITHRIL_ARROW, "秘银箭");
+        translationBuilder.add(MiteItems.RUSTED_IRON_ARROW, "锈铁箭");
+        translationBuilder.add(MiteItems.SILVER_ARROW, "银箭");
+        translationBuilder.add(MiteItems.FLINT_ARROW, "燧石箭");
+        translationBuilder.add(MiteItems.GOLD_ARROW, "金箭");
+        translationBuilder.add(MiteItems.IRON_ARROW, "铁箭");
+        translationBuilder.add(MiteItems.OBSIDIAN_ARROW, "黑曜石箭");
     }
 
 }

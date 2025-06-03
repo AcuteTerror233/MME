@@ -15,6 +15,6 @@ public abstract class ClientPlayerEntityMixin extends AbstractClientPlayerEntity
 
     @Overwrite
     private boolean canSprint() {
-        return this.getVehicle() != null || this.getHungerManager().getFoodLevel() > 0.0F || this.getAbilities().allowFlying;
+        return this.getVehicle() != null || this.getHungerManager().getFoodLevel() != 0 || this.getAbilities().allowFlying;
     }
 }

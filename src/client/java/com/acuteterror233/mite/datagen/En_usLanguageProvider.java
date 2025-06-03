@@ -72,5 +72,15 @@ public class En_usLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(MiteItems.ORANGE, "Orange");
         translationBuilder.add(MiteItems.WORM_COOKED, "Worm Cooked");
         translationBuilder.add(MiteItems.WORM_RAW, "Worm Raw");
+        translationBuilder.add(MiteItems.ADAMANTIUM_ARROW, "Adamantium Arrow");
+        translationBuilder.add(MiteItems.ANCIENT_METAL_ARROW, "Ancient Metal Arrow");
+        translationBuilder.add(MiteItems.COPPER_ARROW, "Copper Arrow");
+        translationBuilder.add(MiteItems.MITHRIL_ARROW, "Mithril Arrow");
+        translationBuilder.add(MiteItems.RUSTED_IRON_ARROW, "Rusted Iron Arrow");
+        translationBuilder.add(MiteItems.SILVER_ARROW, "Silver Arrow");
+        translationBuilder.add(MiteItems.FLINT_ARROW, "Flint Arrow");
+        translationBuilder.add(MiteItems.GOLD_ARROW, "Gold Arrow");
+        translationBuilder.add(MiteItems.IRON_ARROW, "Iron Arrow");
+        translationBuilder.add(MiteItems.OBSIDIAN_ARROW, "Obsidian Arrow");
     }
 }

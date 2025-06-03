@@ -4,7 +4,8 @@
   "compatibilityLevel": "JAVA_21",
   "client": [
     "ExampleClientMixin",
-    "gui.hud.InGameHudMixin"
+    "gui.hud.InGameHudMixin",
+    "network.ClientPlayerEntityMixin"
   ],
   "injectors": {
     "defaultRequire": 1
