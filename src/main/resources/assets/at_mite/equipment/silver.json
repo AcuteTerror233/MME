@@ -1,0 +1,14 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "at_mite:silver_layer_1"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "at_mite:silver_layer_2"
+      }
+    ]
+  }
+}
