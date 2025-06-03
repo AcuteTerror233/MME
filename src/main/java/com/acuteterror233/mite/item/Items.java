@@ -98,6 +98,48 @@ public class Items {
         Item::new,
         new Item.Settings().armor(adamantium.ANCIENT_METAL_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.LEGGINGS)
     );
+    public static final Item COPPER_HELMET =  register(
+        "copper_helmet",
+        Item::new,
+        new Item.Settings().armor(adamantium.COPPER_ARMOR_MATERIAL,EquipmentType.HELMET)
+    );
+    public static final Item COPPER_CHESTPLATE = register(
+        "copper_chestplate",
+        Item::new,
+        new Item.Settings().armor(adamantium.COPPER_ARMOR_MATERIAL,EquipmentType.CHESTPLATE)
+    );
+    public static final Item COPPER_LEGGINGS = register(
+        "copper_leggings",
+        Item::new,
+        new Item.Settings().armor(adamantium.COPPER_ARMOR_MATERIAL,EquipmentType.LEGGINGS)
+    );
+    public static final Item COPPER_BOOTS = register(
+        "copper_boots",
+        Item::new,
+        new Item.Settings().armor(adamantium.COPPER_ARMOR_MATERIAL,EquipmentType.BOOTS)
+    );
+    public static final Item COPPER_CHAINMAIL_BOOTS = register(
+        "copper_chainmail_boots",
+        Item::new,
+        new Item.Settings().armor(adamantium.COPPER_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.BOOTS)
+    );
+    public static final Item COPPER_CHAINMAIL_CHESTPLATE = register(
+        "copper_chainmail_chestplate",
+        Item::new,
+        new Item.Settings().armor(adamantium.COPPER_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.CHESTPLATE)
+    );
+     public static final Item COPPER_CHAINMAIL_HELMET = register(
+        "copper_chainmail_helmet",
+        Item::new,
+        new Item.Settings().armor(adamantium.COPPER_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.HELMET)
+    );
+      public static final Item COPPER_CHAINMAIL_LEGGINGS = register(
+        "copper_chainmail_leggings",
+        Item::new,
+        new Item.Settings().armor(adamantium.COPPER_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.LEGGINGS)
+    );
+
+
     public static final ItemGroup AT_MINT_GROUP = FabricItemGroup.builder()
             .icon(() -> new ItemStack(ADAMANTIUM_HELMET))
             .displayName(Text.translatable("itemGroup.at_mite.item_group"))
@@ -106,18 +148,26 @@ public class Items {
                     entries.add(ADAMANTIUM_CHESTPLATE);
                     entries.add(ADAMANTIUM_LEGGINGS);
                     entries.add(ADAMANTIUM_BOOTS);
-                    entries.add(ADAMANTIUM_CHAINMAIL_BOOTS);
-                    entries.add(ADAMANTIUM_CHAINMAIL_CHESTPLATE);
                     entries.add(ADAMANTIUM_CHAINMAIL_HELMET);
+                    entries.add(ADAMANTIUM_CHAINMAIL_CHESTPLATE);
                     entries.add(ADAMANTIUM_CHAINMAIL_LEGGINGS);
+                    entries.add(ADAMANTIUM_CHAINMAIL_BOOTS);
                     entries.add(ANCIENT_METAL_HELMET);
                     entries.add(ANCIENT_METAL_CHESTPLATE);
                     entries.add(ANCIENT_METAL_LEGGINGS);
                     entries.add(ANCIENT_METAL_BOOTS);
-                    entries.add(ANCIENT_METAL_CHAINMAIL_BOOTS);
-                    entries.add(ANCIENT_METAL_CHAINMAIL_CHESTPLATE);
                     entries.add(ANCIENT_METAL_CHAINMAIL_HELMET);
+                    entries.add(ANCIENT_METAL_CHAINMAIL_CHESTPLATE);
                     entries.add(ANCIENT_METAL_CHAINMAIL_LEGGINGS);
+                    entries.add(ANCIENT_METAL_CHAINMAIL_BOOTS);
+                    entries.add(COPPER_HELMET);
+                    entries.add(COPPER_CHESTPLATE);
+                    entries.add(COPPER_LEGGINGS);
+                    entries.add(COPPER_BOOTS);
+                    entries.add(COPPER_CHAINMAIL_HELMET);
+                    entries.add(COPPER_CHAINMAIL_CHESTPLATE);
+                    entries.add(COPPER_CHAINMAIL_LEGGINGS);
+                    entries.add(COPPER_CHAINMAIL_BOOTS);
             })
             .build();
 

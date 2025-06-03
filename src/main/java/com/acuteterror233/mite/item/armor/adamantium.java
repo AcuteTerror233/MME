@@ -15,8 +15,11 @@ import java.util.HashMap;
 public class adamantium {
     public static final RegistryKey<EquipmentAsset> ADAMANTIUM_ARMOR_MATERIAL_KEY = RegistryKey.of(EquipmentAssetKeys.REGISTRY_KEY, Identifier.of(At_mite.MOD_ID, "adamantium"));
     public static final RegistryKey<EquipmentAsset> ADAMANTIUM_CHAINMAIL_ARMOR_MATERIAL_KEY = RegistryKey.of(EquipmentAssetKeys.REGISTRY_KEY, Identifier.of(At_mite.MOD_ID, "adamantium_chainmail"));
-    public static final RegistryKey<EquipmentAsset> ANCIENT_METAL_MATERIAL_KEY = RegistryKey.of(EquipmentAssetKeys.REGISTRY_KEY, Identifier.of(At_mite.MOD_ID, "ancient_metal_material"));
-    public static final RegistryKey<EquipmentAsset> ANCIENT_METAL_CHAINMAIL_ARMOR_MATERIAL_KEY = RegistryKey.of(EquipmentAssetKeys.REGISTRY_KEY, Identifier.of(At_mite.MOD_ID, "ancient_metal_chainmail_armor_material"));
+    public static final RegistryKey<EquipmentAsset> ANCIENT_METAL_MATERIAL_KEY = RegistryKey.of(EquipmentAssetKeys.REGISTRY_KEY, Identifier.of(At_mite.MOD_ID, "ancient_metal"));
+    public static final RegistryKey<EquipmentAsset> ANCIENT_METAL_CHAINMAIL_ARMOR_MATERIAL_KEY = RegistryKey.of(EquipmentAssetKeys.REGISTRY_KEY, Identifier.of(At_mite.MOD_ID, "ancient_metal_chainmail"));
+    public static final RegistryKey<EquipmentAsset> COPPER_ARMOR_MATERIAL_KEY =  RegistryKey.of(EquipmentAssetKeys.REGISTRY_KEY, Identifier.of(At_mite.MOD_ID, "copper"));
+    public static final RegistryKey<EquipmentAsset> COPPER_CHAINMAIL_ARMOR_MATERIAL_KEY = RegistryKey.of(EquipmentAssetKeys.REGISTRY_KEY, Identifier.of(At_mite.MOD_ID, "copper_chainmail"));
+
 
     public static final ArmorMaterial ADAMANTIUM_ARMOR_MATERIAL = new ArmorMaterial(
             30,
@@ -34,7 +37,6 @@ public class adamantium {
             null,
             ADAMANTIUM_ARMOR_MATERIAL_KEY
         );
-
     public static final ArmorMaterial ADAMANTIUM_CHAINMAIL_ARMOR_MATERIAL = new ArmorMaterial(
             15,
             new HashMap<EquipmentType, Integer>() {
@@ -83,6 +85,38 @@ public class adamantium {
                 null,
                 ANCIENT_METAL_CHAINMAIL_ARMOR_MATERIAL_KEY
         );
+         public static final ArmorMaterial COPPER_ARMOR_MATERIAL = new ArmorMaterial(
+            15,
+            new HashMap<EquipmentType, Integer>() {
+                {
+                        put(EquipmentType.HELMET, 2);
+                        put(EquipmentType.CHESTPLATE, 3);
+                        put(EquipmentType.LEGGINGS, 2);
+                        put(EquipmentType.BOOTS, 3);
+                }},
+                5,
+                SoundEvents.ITEM_ARMOR_EQUIP_IRON,
+                 0.0F,
+                 0.0F,
+                 null,
+                 COPPER_ARMOR_MATERIAL_KEY
+         );
+          public static final ArmorMaterial COPPER_CHAINMAIL_ARMOR_MATERIAL = new ArmorMaterial(
+            15,
+            new HashMap<EquipmentType, Integer>() {
+                {
+                        put(EquipmentType.HELMET, 2);
+                        put(EquipmentType.CHESTPLATE, 3);
+                        put(EquipmentType.LEGGINGS, 2);
+                        put(EquipmentType.BOOTS, 3);
+                }},
+                5,
+                SoundEvents.ITEM_ARMOR_EQUIP_IRON,
+                0.0F,
+                0.0F,
+                null,
+                COPPER_CHAINMAIL_ARMOR_MATERIAL_KEY
+          );
     }
 
 
