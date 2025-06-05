@@ -86,14 +86,15 @@ publishing {
 
 	// See https://docs.gradle.org/current/userguide/publishing_maven.html for information on how to set up publishing.
 	repositories {
+		// 在此感谢猫猫库 寒冰是喵喵主页:https://blog.hanbings.io/
+		maven {
+			url 'https://repository.hanbings.io/proxy'
+		}
 		// 阿里云的maven仓库
 		maven {
 			url 'https://maven.aliyun.com/repository/public'
 		}
-		// 在此感谢猫猫库
-		maven {
-			url 'https://repository.hanbings.io/proxy'
-		}
+
 		mavenLocal()
 		mavenCentral()
 	}

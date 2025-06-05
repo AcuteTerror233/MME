@@ -1,6 +1,6 @@
 package com.acuteterror233.mite;
 
-import com.acuteterror233.mite.item.MiteItems;
+import com.acuteterror233.mite.item.At_Items;
 import net.fabricmc.api.ModInitializer;
 
 import org.slf4j.Logger;
@@ -20,6 +20,6 @@ public class At_mite implements ModInitializer {
 		// However, some things (like resources) may still be uninitialized.
 		// Proceed with mild caution.
 		LOGGER.info("Hello Fabric world!");
-		MiteItems.init();
+		At_Items.init();
 	}
 }
