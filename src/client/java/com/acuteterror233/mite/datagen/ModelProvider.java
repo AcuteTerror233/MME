@@ -105,6 +105,21 @@ public class ModelProvider extends FabricModelProvider {
         itemModelGenerator.register(At_Items.GOLD_ARROW, Models.GENERATED);
         itemModelGenerator.register(At_Items.IRON_ARROW, Models.GENERATED);
         itemModelGenerator.register(At_Items.OBSIDIAN_ARROW, Models.GENERATED);
+        itemModelGenerator.register(At_Items.ADAMANTIUM_CHAINS, Models.GENERATED);
+        itemModelGenerator.register(At_Items.ANCIENT_METAL_CHAINS, Models.GENERATED);
+        itemModelGenerator.register(At_Items.COPPER_CHAINS, Models.GENERATED);
+        itemModelGenerator.register(At_Items.MITHRIL_CHAINS, Models.GENERATED);
+        itemModelGenerator.register(At_Items.RUSTED_IRON_CHAINS, Models.GENERATED);
+        itemModelGenerator.register(At_Items.SILVER_CHAINS, Models.GENERATED);
+        itemModelGenerator.register(At_Items.GOLD_CHAINS, Models.GENERATED);
+        itemModelGenerator.register(At_Items.IRON_CHAINS, Models.GENERATED);
+        itemModelGenerator.register(At_Items.ADAMANTIUM_COINS, Models.GENERATED);
+        itemModelGenerator.register(At_Items.ANCIENT_METAL_COINS, Models.GENERATED);
+        itemModelGenerator.register(At_Items.COPPER_COINS, Models.GENERATED);
+        itemModelGenerator.register(At_Items.MITHRIL_COINS, Models.GENERATED);
+        itemModelGenerator.register(At_Items.GOLD_COINS, Models.GENERATED);
+        itemModelGenerator.register(At_Items.SILVER_COINS, Models.GENERATED);
+        itemModelGenerator.register(At_Items.IRON_COINS, Models.GENERATED);
 
         itemModelGenerator.register(At_Items.ADAMANTIUM_AXE, Models.GENERATED);
         itemModelGenerator.register(At_Items.ADAMANTIUM_BATTLE_AXE, Models.GENERATED);
@@ -134,7 +149,7 @@ public class ModelProvider extends FabricModelProvider {
         itemModelGenerator.register(At_Items.ANCIENT_METAL_WAR_HAMMER, Models.GENERATED);
         itemModelGenerator.register(At_Items.COPPER_AXE, Models.GENERATED);
         itemModelGenerator.register(At_Items.COPPER_BATTLE_AXE, Models.GENERATED);
-        itemModelGenerator.register(At_Items.COPPER_DAGER, Models.GENERATED);
+        itemModelGenerator.register(At_Items.COPPER_DAGGER, Models.GENERATED);
         itemModelGenerator.register(At_Items.COPPER_HATCHET, Models.GENERATED);
         itemModelGenerator.register(At_Items.COPPER_HOE, Models.GENERATED);
         itemModelGenerator.register(At_Items.COPPER_KNIFE, Models.GENERATED);
@@ -151,7 +166,7 @@ public class ModelProvider extends FabricModelProvider {
         itemModelGenerator.register(At_Items.FLINT_SHOVEL, Models.GENERATED);
         itemModelGenerator.register(At_Items.GOLD_AXE, Models.GENERATED);
         itemModelGenerator.register(At_Items.GOLD_BATTLE_AXE, Models.GENERATED);
-        itemModelGenerator.register(At_Items.GOLD_DAGER, Models.GENERATED);
+        itemModelGenerator.register(At_Items.GOLD_DAGGER, Models.GENERATED);
         itemModelGenerator.register(At_Items.GOLD_HATCHET, Models.GENERATED);
         itemModelGenerator.register(At_Items.GOLD_HOE, Models.GENERATED);
         itemModelGenerator.register(At_Items.GOLD_KNIFE, Models.GENERATED);
@@ -163,7 +178,7 @@ public class ModelProvider extends FabricModelProvider {
         itemModelGenerator.register(At_Items.GOLD_SWORD, Models.GENERATED);
         itemModelGenerator.register(At_Items.GOLD_WAR_HAMMER, Models.GENERATED);
         itemModelGenerator.register(At_Items.IRON_BATTLE_AXE, Models.GENERATED);
-        itemModelGenerator.register(At_Items.IRON_DAGER, Models.GENERATED);
+        itemModelGenerator.register(At_Items.IRON_DAGGER, Models.GENERATED);
         itemModelGenerator.register(At_Items.IRON_HATCHET, Models.GENERATED);
         itemModelGenerator.register(At_Items.IRON_KNIFE, Models.GENERATED);
         itemModelGenerator.register(At_Items.IRON_MATTOCK, Models.GENERATED);
@@ -171,7 +186,7 @@ public class ModelProvider extends FabricModelProvider {
         itemModelGenerator.register(At_Items.IRON_WAR_HAMMER, Models.GENERATED);
         itemModelGenerator.register(At_Items.MITHRIL_AXE, Models.GENERATED);
         itemModelGenerator.register(At_Items.MITHRIL_BATTLE_AXE, Models.GENERATED);
-        itemModelGenerator.register(At_Items.MITHRIL_DAGER, Models.GENERATED);
+        itemModelGenerator.register(At_Items.MITHRIL_DAGGER, Models.GENERATED);
         itemModelGenerator.register(At_Items.MITHRIL_HATCHET, Models.GENERATED);
         itemModelGenerator.register(At_Items.MITHRIL_HOE, Models.GENERATED);
         itemModelGenerator.register(At_Items.MITHRIL_KNIFE, Models.GENERATED);
@@ -188,7 +203,7 @@ public class ModelProvider extends FabricModelProvider {
         itemModelGenerator.register(At_Items.OBSIDIAN_SHOVEL, Models.GENERATED);
         itemModelGenerator.register(At_Items.RUSTED_IRON_AXE, Models.GENERATED);
         itemModelGenerator.register(At_Items.RUSTED_IRON_BATTLE_AXE, Models.GENERATED);
-        itemModelGenerator.register(At_Items.RUSTED_IRON_DAGER, Models.GENERATED);
+        itemModelGenerator.register(At_Items.RUSTED_IRON_DAGGER, Models.GENERATED);
         itemModelGenerator.register(At_Items.RUSTED_IRON_HATCHET, Models.GENERATED);
         itemModelGenerator.register(At_Items.RUSTED_IRON_HOE, Models.GENERATED);
         itemModelGenerator.register(At_Items.RUSTED_IRON_KNIFE, Models.GENERATED);
@@ -201,7 +216,7 @@ public class ModelProvider extends FabricModelProvider {
         itemModelGenerator.register(At_Items.RUSTED_IRON_WAR_HAMMER, Models.GENERATED);
         itemModelGenerator.register(At_Items.SILVER_AXE, Models.GENERATED);
         itemModelGenerator.register(At_Items.SILVER_BATTLE_AXE, Models.GENERATED);
-        itemModelGenerator.register(At_Items.SILVER_DAGER, Models.GENERATED);
+        itemModelGenerator.register(At_Items.SILVER_DAGGER, Models.GENERATED);
         itemModelGenerator.register(At_Items.SILVER_HATCHET, Models.GENERATED);
         itemModelGenerator.register(At_Items.SILVER_HOE, Models.GENERATED);
         itemModelGenerator.register(At_Items.SILVER_KNIFE, Models.GENERATED);
@@ -212,7 +227,7 @@ public class ModelProvider extends FabricModelProvider {
         itemModelGenerator.register(At_Items.SILVER_SHOVEL, Models.GENERATED);
         itemModelGenerator.register(At_Items.SILVER_SWORD, Models.GENERATED);
         itemModelGenerator.register(At_Items.SILVER_WAR_HAMMER, Models.GENERATED);
-        itemModelGenerator.register(At_Items.STONE_DAGER, Models.GENERATED);
+        itemModelGenerator.register(At_Items.STONE_DAGGER, Models.GENERATED);
         itemModelGenerator.register(At_Items.WOOD_CLUB, Models.GENERATED);
         itemModelGenerator.register(At_Items.WOOD_CUDGEL, Models.GENERATED);
     }

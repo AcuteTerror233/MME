@@ -3,7 +3,6 @@ package com.acuteterror233.mite.datagen;
 import com.acuteterror233.mite.item.At_Items;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
-import net.minecraft.client.data.Models;
 import net.minecraft.registry.RegistryWrapper;
 
 import java.util.concurrent.CompletableFuture;
@@ -101,6 +100,21 @@ public class En_usLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(At_Items.GOLD_ARROW, "Gold Arrow");
         translationBuilder.add(At_Items.IRON_ARROW, "Iron Arrow");
         translationBuilder.add(At_Items.OBSIDIAN_ARROW, "Obsidian Arrow");
+        translationBuilder.add(At_Items.ADAMANTIUM_CHAINS, "Adamantium Chains");
+        translationBuilder.add(At_Items.ANCIENT_METAL_CHAINS, "Ancient Metal Chains");
+        translationBuilder.add(At_Items.COPPER_CHAINS, "Copper Chains");
+        translationBuilder.add(At_Items.MITHRIL_CHAINS, "Mithril Chains");
+        translationBuilder.add(At_Items.RUSTED_IRON_CHAINS, "Rusted Iron Chains");
+        translationBuilder.add(At_Items.SILVER_CHAINS, "Silver Chains");
+        translationBuilder.add(At_Items.GOLD_CHAINS, "Steel Chains");
+        translationBuilder.add(At_Items.IRON_CHAINS, "Tin Chains");
+        translationBuilder.add(At_Items.ADAMANTIUM_COINS, "Adamantium Coins");
+        translationBuilder.add(At_Items.ANCIENT_METAL_COINS, "Ancient Metal Coins");
+        translationBuilder.add(At_Items.COPPER_COINS, "Copper Coins");
+        translationBuilder.add(At_Items.MITHRIL_COINS, "Mithril Coins");
+        translationBuilder.add(At_Items.GOLD_COINS, "Rusted Iron Coins");
+        translationBuilder.add(At_Items.SILVER_COINS, "Silver Coins");
+        translationBuilder.add(At_Items.IRON_COINS, "Iron Coins");
 
         translationBuilder.add(At_Items.ADAMANTIUM_AXE, "Adamantium Axe");
         translationBuilder.add(At_Items.ADAMANTIUM_BATTLE_AXE, "Adamantium Battle Axe");
@@ -130,7 +144,7 @@ public class En_usLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(At_Items.ANCIENT_METAL_WAR_HAMMER, "Ancient Metal War Hammer");
         translationBuilder.add(At_Items.COPPER_AXE, "Copper Axe");
         translationBuilder.add(At_Items.COPPER_BATTLE_AXE, "Copper Battle Axe");
-        translationBuilder.add(At_Items.COPPER_DAGER, "Copper Dagger");
+        translationBuilder.add(At_Items.COPPER_DAGGER, "Copper Dagger");
         translationBuilder.add(At_Items.COPPER_HATCHET, "Copper Hatchet");
         translationBuilder.add(At_Items.COPPER_HOE, "Copper Hoe");
         translationBuilder.add(At_Items.COPPER_KNIFE, "Copper Knife");
@@ -147,7 +161,7 @@ public class En_usLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(At_Items.FLINT_SHOVEL, "Flint Shovel");
         translationBuilder.add(At_Items.GOLD_AXE, "Gold Axe");
         translationBuilder.add(At_Items.GOLD_BATTLE_AXE, "Gold Battle Axe");
-        translationBuilder.add(At_Items.GOLD_DAGER, "Gold Dagger");
+        translationBuilder.add(At_Items.GOLD_DAGGER, "Gold Dagger");
         translationBuilder.add(At_Items.GOLD_HATCHET, "Gold Hatchet");
         translationBuilder.add(At_Items.GOLD_HOE, "Gold Hoe");
         translationBuilder.add(At_Items.GOLD_KNIFE, "Gold Knife");
@@ -159,7 +173,7 @@ public class En_usLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(At_Items.GOLD_SWORD, "Gold Sword");
         translationBuilder.add(At_Items.GOLD_WAR_HAMMER, "Gold War Hammer");
         translationBuilder.add(At_Items.IRON_BATTLE_AXE, "Iron Battle Axe");
-        translationBuilder.add(At_Items.IRON_DAGER, "Iron Dagger");
+        translationBuilder.add(At_Items.IRON_DAGGER, "Iron Dagger");
         translationBuilder.add(At_Items.IRON_HATCHET, "Iron Hatchet");
         translationBuilder.add(At_Items.IRON_KNIFE, "Iron Knife");
         translationBuilder.add(At_Items.IRON_MATTOCK, "Iron Mattock");
@@ -167,7 +181,7 @@ public class En_usLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(At_Items.IRON_WAR_HAMMER, "Iron War Hammer");
         translationBuilder.add(At_Items.MITHRIL_AXE, "Mithril Axe");
         translationBuilder.add(At_Items.MITHRIL_BATTLE_AXE, "Mithril Battle Axe");
-        translationBuilder.add(At_Items.MITHRIL_DAGER, "Mithril Dagger");
+        translationBuilder.add(At_Items.MITHRIL_DAGGER, "Mithril Dagger");
         translationBuilder.add(At_Items.MITHRIL_HATCHET, "Mithril Hatchet");
         translationBuilder.add(At_Items.MITHRIL_HOE, "Mithril Hoe");
         translationBuilder.add(At_Items.MITHRIL_KNIFE, "Mithril Knife");
@@ -184,7 +198,7 @@ public class En_usLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(At_Items.OBSIDIAN_SHOVEL, "Obsidian Shovel");
         translationBuilder.add(At_Items.RUSTED_IRON_AXE, "Rusted Iron Axe");
         translationBuilder.add(At_Items.RUSTED_IRON_BATTLE_AXE, "Rusted Iron Battle Axe");
-        translationBuilder.add(At_Items.RUSTED_IRON_DAGER, "Rusted Iron Dagger");
+        translationBuilder.add(At_Items.RUSTED_IRON_DAGGER, "Rusted Iron Dagger");
         translationBuilder.add(At_Items.RUSTED_IRON_HATCHET, "Rusted Iron Hatchet");
         translationBuilder.add(At_Items.RUSTED_IRON_HOE, "Rusted Iron Hoe");
         translationBuilder.add(At_Items.RUSTED_IRON_KNIFE, "Rusted Iron Knife");
@@ -197,7 +211,7 @@ public class En_usLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(At_Items.RUSTED_IRON_WAR_HAMMER, "Rusted Iron War Hammer");
         translationBuilder.add(At_Items.SILVER_AXE, "Silver Axe");
         translationBuilder.add(At_Items.SILVER_BATTLE_AXE, "Silver Battle Axe");
-        translationBuilder.add(At_Items.SILVER_DAGER, "Silver Dagger");
+        translationBuilder.add(At_Items.SILVER_DAGGER, "Silver Dagger");
         translationBuilder.add(At_Items.SILVER_HATCHET, "Silver Hatchet");
         translationBuilder.add(At_Items.SILVER_HOE, "Silver Hoe");
         translationBuilder.add(At_Items.SILVER_KNIFE, "Silver Knife");
@@ -208,7 +222,7 @@ public class En_usLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(At_Items.SILVER_SHOVEL, "Silver Shovel");
         translationBuilder.add(At_Items.SILVER_SWORD, "Silver Sword");
         translationBuilder.add(At_Items.SILVER_WAR_HAMMER, "Silver War Hammer");
-        translationBuilder.add(At_Items.STONE_DAGER, "Stone Dagger");
+        translationBuilder.add(At_Items.STONE_DAGGER, "Stone Dagger");
         translationBuilder.add(At_Items.WOOD_CLUB, "Wood Club");
         translationBuilder.add(At_Items.WOOD_CUDGEL, "Wood Cudgel ");
     }

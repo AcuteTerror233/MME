@@ -390,7 +390,7 @@ public class At_Items {
     public static final Item ANCIENT_METAL_WAR_HAMMER = register("ancient_metal_war_hammer", Item::new);
     public static final Item COPPER_AXE = register("copper_axe", Item::new);
     public static final Item COPPER_BATTLE_AXE = register("copper_battle_axe", Item::new);
-    public static final Item COPPER_DAGER = register("copper_dagger", Item::new);
+    public static final Item COPPER_DAGGER = register("copper_dagger", Item::new);
     public static final Item COPPER_HATCHET = register("copper_hatchet", Item::new);
     public static final Item COPPER_HOE = register("copper_hoe", Item::new);
     public static final Item COPPER_KNIFE = register("copper_knife", Item::new);
@@ -407,7 +407,7 @@ public class At_Items {
     public static final Item FLINT_SHOVEL = register("flint_shovel", Item::new);
     public static final Item GOLD_AXE = register("gold_axe", Item::new);
     public static final Item GOLD_BATTLE_AXE = register("gold_battle_axe", Item::new);
-    public static final Item GOLD_DAGER = register("gold_dagger", Item::new);
+    public static final Item GOLD_DAGGER = register("gold_dagger", Item::new);
     public static final Item GOLD_HATCHET = register("gold_hatchet", Item::new);
     public static final Item GOLD_HOE = register("gold_hoe", Item::new);
     public static final Item GOLD_KNIFE = register("gold_knife", Item::new);
@@ -419,7 +419,7 @@ public class At_Items {
     public static final Item GOLD_SWORD = register("gold_sword", Item::new);
     public static final Item GOLD_WAR_HAMMER = register("gold_war_hammer", Item::new);
     public static final Item IRON_BATTLE_AXE = register("iron_battle_axe", Item::new);
-    public static final Item IRON_DAGER = register("iron_dagger", Item::new);
+    public static final Item IRON_DAGGER = register("iron_dagger", Item::new);
     public static final Item IRON_HATCHET = register("iron_hatchet", Item::new);
     public static final Item IRON_KNIFE = register("iron_knife", Item::new);
     public static final Item IRON_MATTOCK = register("iron_mattock", Item::new);
@@ -427,7 +427,7 @@ public class At_Items {
     public static final Item IRON_WAR_HAMMER = register("iron_war_hammer", Item::new);
     public static final Item MITHRIL_AXE = register("mithril_axe", Item::new);
     public static final Item MITHRIL_BATTLE_AXE = register("mithril_battle_axe", Item::new);
-    public static final Item MITHRIL_DAGER = register("mithril_dagger", Item::new);
+    public static final Item MITHRIL_DAGGER = register("mithril_dagger", Item::new);
     public static final Item MITHRIL_HATCHET = register("mithril_hatchet", Item::new);
     public static final Item MITHRIL_HOE = register("mithril_hoe", Item::new);
     public static final Item MITHRIL_KNIFE = register("mithril_knife", Item::new);
@@ -444,7 +444,7 @@ public class At_Items {
     public static final Item OBSIDIAN_SHOVEL = register("obsidian_shovel", Item::new);
     public static final Item RUSTED_IRON_AXE = register("rusted_iron_axe", Item::new);
     public static final Item RUSTED_IRON_BATTLE_AXE = register("rusted_iron_battle_axe", Item::new);
-    public static final Item RUSTED_IRON_DAGER = register("rusted_iron_dagger", Item::new);
+    public static final Item RUSTED_IRON_DAGGER = register("rusted_iron_dagger", Item::new);
     public static final Item RUSTED_IRON_HATCHET = register("rusted_iron_hatchet", Item::new);
     public static final Item RUSTED_IRON_HOE = register("rusted_iron_hoe", Item::new);
     public static final Item RUSTED_IRON_KNIFE = register("rusted_iron_knife", Item::new);
@@ -457,7 +457,7 @@ public class At_Items {
     public static final Item RUSTED_IRON_WAR_HAMMER = register("rusted_iron_war_hammer", Item::new);
     public static final Item SILVER_AXE = register("silver_axe", Item::new);
     public static final Item SILVER_BATTLE_AXE = register("silver_battle_axe", Item::new);
-    public static final Item SILVER_DAGER = register("silver_dagger", Item::new);
+    public static final Item SILVER_DAGGER = register("silver_dagger", Item::new);
     public static final Item SILVER_HATCHET = register("silver_hatchet", Item::new);
     public static final Item SILVER_HOE = register("silver_hoe", Item::new);
     public static final Item SILVER_KNIFE = register("silver_knife", Item::new);
@@ -468,7 +468,7 @@ public class At_Items {
     public static final Item SILVER_SHOVEL = register("silver_shovel", Item::new);
     public static final Item SILVER_SWORD = register("silver_sword", Item::new);
     public static final Item SILVER_WAR_HAMMER = register("silver_war_hammer", Item::new);
-    public static final Item STONE_DAGER = register("stone_dagger", Item::new);
+    public static final Item STONE_DAGGER = register("stone_dagger", Item::new);
     public static final Item WOOD_CLUB = register("wood_club", Item::new);
     public static final Item WOOD_CUDGEL = register("wood_cudgel", Item::new);
 
@@ -582,7 +582,7 @@ public class At_Items {
                     entries.add(ANCIENT_METAL_WAR_HAMMER);
                     entries.add(COPPER_AXE);
                     entries.add(COPPER_BATTLE_AXE);
-                    entries.add(COPPER_DAGER);
+                    entries.add(COPPER_DAGGER);
                     entries.add(COPPER_HATCHET);
                     entries.add(COPPER_HOE);
                     entries.add(COPPER_KNIFE);
@@ -599,7 +599,7 @@ public class At_Items {
                     entries.add(FLINT_SHOVEL);
                     entries.add(GOLD_AXE);
                     entries.add(GOLD_BATTLE_AXE);
-                    entries.add(GOLD_DAGER);
+                    entries.add(GOLD_DAGGER);
                     entries.add(GOLD_HATCHET);
                     entries.add(GOLD_HOE);
                     entries.add(GOLD_KNIFE);
@@ -611,7 +611,7 @@ public class At_Items {
                     entries.add(GOLD_SWORD);
                     entries.add(GOLD_WAR_HAMMER);
                     entries.add(IRON_BATTLE_AXE);
-                    entries.add(IRON_DAGER);
+                    entries.add(IRON_DAGGER);
                     entries.add(IRON_HATCHET);
                     entries.add(IRON_KNIFE);
                     entries.add(IRON_MATTOCK);
@@ -619,7 +619,7 @@ public class At_Items {
                     entries.add(IRON_WAR_HAMMER);
                     entries.add(MITHRIL_AXE);
                     entries.add(MITHRIL_BATTLE_AXE);
-                    entries.add(MITHRIL_DAGER);
+                    entries.add(MITHRIL_DAGGER);
                     entries.add(MITHRIL_HATCHET);
                     entries.add(MITHRIL_HOE);
                     entries.add(MITHRIL_KNIFE);
@@ -636,7 +636,7 @@ public class At_Items {
                     entries.add(OBSIDIAN_SHOVEL);
                     entries.add(RUSTED_IRON_AXE);
                     entries.add(RUSTED_IRON_BATTLE_AXE);
-                    entries.add(RUSTED_IRON_DAGER);
+                    entries.add(RUSTED_IRON_DAGGER);
                     entries.add(RUSTED_IRON_HATCHET);
                     entries.add(RUSTED_IRON_HOE);
                     entries.add(RUSTED_IRON_KNIFE);
@@ -649,7 +649,7 @@ public class At_Items {
                     entries.add(RUSTED_IRON_WAR_HAMMER);
                     entries.add(SILVER_AXE);
                     entries.add(SILVER_BATTLE_AXE);
-                    entries.add(SILVER_DAGER);
+                    entries.add(SILVER_DAGGER);
                     entries.add(SILVER_HATCHET);
                     entries.add(SILVER_HOE);
                     entries.add(SILVER_KNIFE);
@@ -660,7 +660,7 @@ public class At_Items {
                     entries.add(SILVER_SHOVEL);
                     entries.add(SILVER_SWORD);
                     entries.add(SILVER_WAR_HAMMER);
-                    entries.add(STONE_DAGER);
+                    entries.add(STONE_DAGGER);
                     entries.add(WOOD_CLUB);
                     entries.add(WOOD_CUDGEL);
 
