@@ -2,6 +2,7 @@ package com.acuteterror233.mite.item;
 
 import com.acuteterror233.mite.At_mite;
 import com.acuteterror233.mite.item.armor.MiteArmorMaterial;
+import com.acuteterror233.mite.registry.tag.At_Tags;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.minecraft.component.type.FoodComponent;
 import net.minecraft.item.Item;
@@ -13,490 +14,421 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
+import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
 import java.util.function.Function;
 
 public class At_Items {
+    Function<Item.Settings, Item> factory ;
 
     public static final Item ADAMANTIUM_HELMET = register(
         "adamantium_helmet",
-        Item::new,
         new Item.Settings().armor(MiteArmorMaterial.ARMOR_MATERIAL_ARMOR_MATERIAL, EquipmentType.HELMET)
     );
     public static final Item ADAMANTIUM_CHESTPLATE = register(
         "adamantium_chestplate",
-        Item::new,
         new Item.Settings().armor(MiteArmorMaterial.ARMOR_MATERIAL_ARMOR_MATERIAL,EquipmentType.CHESTPLATE)
     );
     public static final Item ADAMANTIUM_LEGGINGS = register(
         "adamantium_leggings",
-        Item::new,
         new Item.Settings().armor(MiteArmorMaterial.ARMOR_MATERIAL_ARMOR_MATERIAL,EquipmentType.LEGGINGS)
     );
     public static final Item ADAMANTIUM_BOOTS = register(
         "adamantium_boots",
-        Item::new,
         new Item.Settings().armor(MiteArmorMaterial.ARMOR_MATERIAL_ARMOR_MATERIAL,EquipmentType.BOOTS)
     );
     public static final Item ADAMANTIUM_CHAINMAIL_BOOTS = register(
         "adamantium_chainmail_boots",
-        Item::new,
         new Item.Settings().armor(MiteArmorMaterial.ARMOR_MATERIAL_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.BOOTS)
     );
     public static final Item ADAMANTIUM_CHAINMAIL_CHESTPLATE = register(
         "adamantium_chainmail_chestplate",
-        Item::new,
         new Item.Settings().armor(MiteArmorMaterial.ARMOR_MATERIAL_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.CHESTPLATE)
     );
     public static final Item ADAMANTIUM_CHAINMAIL_HELMET = register(
         "adamantium_chainmail_helmet",
-        Item::new,
         new Item.Settings().armor(MiteArmorMaterial.ARMOR_MATERIAL_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.HELMET)
     );
     public static final Item ADAMANTIUM_CHAINMAIL_LEGGINGS = register(
         "adamantium_chainmail_leggings",
-        Item::new,
         new Item.Settings().armor(MiteArmorMaterial.ARMOR_MATERIAL_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.LEGGINGS)
     );
     public static final Item ANCIENT_METAL_HELMET = register(
         "ancient_metal_helmet",
-        Item::new,
         new Item.Settings().armor(MiteArmorMaterial.ANCIENT_METAL_ARMOR_MATERIAL,EquipmentType.HELMET)
     );
     public static final Item ANCIENT_METAL_CHESTPLATE = register(
         "ancient_metal_chestplate",
-        Item::new,
         new Item.Settings().armor(MiteArmorMaterial.ANCIENT_METAL_ARMOR_MATERIAL,EquipmentType.CHESTPLATE)
     );
     public static final Item ANCIENT_METAL_LEGGINGS = register(
         "ancient_metal_leggings",
-        Item::new,
         new Item.Settings().armor(MiteArmorMaterial.ANCIENT_METAL_ARMOR_MATERIAL,EquipmentType.LEGGINGS)
     );
     public static final Item ANCIENT_METAL_BOOTS = register(
         "ancient_metal_boots",
-        Item::new,
         new Item.Settings().armor(MiteArmorMaterial.ANCIENT_METAL_ARMOR_MATERIAL,EquipmentType.BOOTS)
     );
     public static final Item ANCIENT_METAL_CHAINMAIL_BOOTS = register(
         "ancient_metal_chainmail_boots",
-        Item::new,
         new Item.Settings().armor(MiteArmorMaterial.ANCIENT_METAL_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.BOOTS)
     );
     public static final Item ANCIENT_METAL_CHAINMAIL_CHESTPLATE = register(
         "ancient_metal_chainmail_chestplate",
-        Item::new,
         new Item.Settings().armor(MiteArmorMaterial.ANCIENT_METAL_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.CHESTPLATE)
     );
     public static final Item ANCIENT_METAL_CHAINMAIL_HELMET = register(
         "ancient_metal_chainmail_helmet",
-        Item::new,
         new Item.Settings().armor(MiteArmorMaterial.ANCIENT_METAL_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.HELMET)
     );
     public static final Item ANCIENT_METAL_CHAINMAIL_LEGGINGS = register(
         "ancient_metal_chainmail_leggings",
-        Item::new,
         new Item.Settings().armor(MiteArmorMaterial.ANCIENT_METAL_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.LEGGINGS)
     );
     public static final Item COPPER_HELMET =  register(
         "copper_helmet",
-        Item::new,
         new Item.Settings().armor(MiteArmorMaterial.COPPER_ARMOR_MATERIAL,EquipmentType.HELMET)
     );
     public static final Item COPPER_CHESTPLATE = register(
         "copper_chestplate",
-        Item::new,
         new Item.Settings().armor(MiteArmorMaterial.COPPER_ARMOR_MATERIAL,EquipmentType.CHESTPLATE)
     );
     public static final Item COPPER_LEGGINGS = register(
         "copper_leggings",
-        Item::new,
         new Item.Settings().armor(MiteArmorMaterial.COPPER_ARMOR_MATERIAL,EquipmentType.LEGGINGS)
     );
     public static final Item COPPER_BOOTS = register(
         "copper_boots",
-        Item::new,
         new Item.Settings().armor(MiteArmorMaterial.COPPER_ARMOR_MATERIAL,EquipmentType.BOOTS)
     );
     public static final Item COPPER_CHAINMAIL_BOOTS = register(
         "copper_chainmail_boots",
-        Item::new,
         new Item.Settings().armor(MiteArmorMaterial.COPPER_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.BOOTS)
     );
     public static final Item COPPER_CHAINMAIL_CHESTPLATE = register(
         "copper_chainmail_chestplate",
-        Item::new,
         new Item.Settings().armor(MiteArmorMaterial.COPPER_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.CHESTPLATE)
     );
     public static final Item COPPER_CHAINMAIL_HELMET = register(
         "copper_chainmail_helmet",
-        Item::new,
         new Item.Settings().armor(MiteArmorMaterial.COPPER_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.HELMET)
     );
     public static final Item COPPER_CHAINMAIL_LEGGINGS = register(
         "copper_chainmail_leggings",
-        Item::new,
         new Item.Settings().armor(MiteArmorMaterial.COPPER_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.LEGGINGS)
     );
     public static final Item MITHRIL_HELMET = register(
         "mithril_helmet",
-        Item::new,
         new Item.Settings().armor(MiteArmorMaterial.MITHRIL_ARMOR_MATERIAL,EquipmentType.HELMET)
     );
     public static final Item MITHRIL_CHESTPLATE = register(
         "mithril_chestplate",
-        Item::new,
         new Item.Settings().armor(MiteArmorMaterial.MITHRIL_ARMOR_MATERIAL,EquipmentType.CHESTPLATE)
     );
     public static final Item MITHRIL_LEGGINGS = register(
         "mithril_leggings",
-        Item::new,
         new Item.Settings().armor(MiteArmorMaterial.MITHRIL_ARMOR_MATERIAL,EquipmentType.LEGGINGS)
     );
     public static final Item MITHRIL_BOOTS = register(
         "mithril_boots",
-        Item::new,
         new Item.Settings().armor(MiteArmorMaterial.MITHRIL_ARMOR_MATERIAL,EquipmentType.BOOTS)
     );
     public static final Item MITHRIL_CHAINMAIL_HELMET  = register(
         "mithril_chainmail_helmet",
-        Item::new,
         new Item.Settings().armor(MiteArmorMaterial.MITHRIL_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.BOOTS)
     );
     public static final Item MITHRIL_CHAINMAIL_CHESTPLATE  = register(
         "mithril_chainmail_chestplate",
-        Item::new,
         new Item.Settings().armor(MiteArmorMaterial.MITHRIL_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.CHESTPLATE)
     );
     public static final Item MITHRIL_CHAINMAIL_LEGGINGS  = register(
         "mithril_chainmail_leggings",
-        Item::new,
         new Item.Settings().armor(MiteArmorMaterial.MITHRIL_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.LEGGINGS)
     );
     public static final Item MITHRIL_CHAINMAIL_BOOTS  = register(
         "mithril_chainmail_boots",
-        Item::new,
         new Item.Settings().armor(MiteArmorMaterial.MITHRIL_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.BOOTS)
     );
     public static final Item RUSTED_IRON_HELMET = register(
         "rusted_iron_helmet",
-        Item::new,
         new Item.Settings().armor(MiteArmorMaterial.RUSTED_IRON_ARMOR_MATERIAL,EquipmentType.HELMET)
     );
     public static final Item RUSTED_IRON_CHESTPLATE = register(
         "rusted_iron_chestplate",
-        Item::new,
         new Item.Settings().armor(MiteArmorMaterial.RUSTED_IRON_ARMOR_MATERIAL,EquipmentType.CHESTPLATE)
     );
     public static final Item RUSTED_IRON_LEGGINGS = register(
         "rusted_iron_leggings",
-        Item::new,
         new Item.Settings().armor(MiteArmorMaterial.RUSTED_IRON_ARMOR_MATERIAL,EquipmentType.LEGGINGS)
     );
     public static final Item RUSTED_IRON_BOOTS = register(
         "rusted_iron_boots",
-        Item::new,
         new Item.Settings().armor(MiteArmorMaterial.RUSTED_IRON_ARMOR_MATERIAL,EquipmentType.BOOTS)
     );
     public static final Item RUSTED_IRON_CHAINMAIL_HELMET = register(
         "rusted_iron_chainmail_helmet",
-        Item::new,
         new Item.Settings().armor(MiteArmorMaterial.RUSTED_IRON_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.HELMET)
     );
     public static final Item RUSTED_IRON_CHAINMAIL_CHESTPLATE = register(
         "rusted_iron_chainmail_chestplate",
-        Item::new,
         new Item.Settings().armor(MiteArmorMaterial.RUSTED_IRON_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.CHESTPLATE)
     );
     public static final Item RUSTED_IRON_CHAINMAIL_LEGGINGS = register(
         "rusted_iron_chainmail_leggings",
-        Item::new,
         new Item.Settings().armor(MiteArmorMaterial.RUSTED_IRON_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.LEGGINGS)
     );
     public static final Item RUSTED_IRON_CHAINMAIL_BOOTS = register(
         "rusted_iron_chainmail_boots",
-        Item::new,
         new Item.Settings().armor(MiteArmorMaterial.RUSTED_IRON_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.BOOTS)
     );
     public static final Item SILVER_HELMET = register(
         "silver_helmet",
-        Item::new,
         new Item.Settings().armor(MiteArmorMaterial.SILVER_ARMOR_MATERIAL,EquipmentType.HELMET)
     );
      public static final Item SILVER_CHESTPLATE = register(
         "silver_chestplate",
-        Item::new,
         new Item.Settings().armor(MiteArmorMaterial.SILVER_ARMOR_MATERIAL,EquipmentType.CHESTPLATE)
     );
     public static final Item SILVER_LEGGINGS = register(
         "silver_leggings",
-        Item::new,
         new Item.Settings().armor(MiteArmorMaterial.SILVER_ARMOR_MATERIAL,EquipmentType.LEGGINGS)
     );
     public static final Item SILVER_BOOTS = register(
         "silver_boots",
-        Item::new,
         new Item.Settings().armor(MiteArmorMaterial.SILVER_ARMOR_MATERIAL,EquipmentType.BOOTS)
     );
     public static final Item SILVER_CHAINMAIL_HELMET = register(
         "silver_chainmail_helmet",
-        Item::new,
         new Item.Settings().armor(MiteArmorMaterial.SILVER_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.HELMET)
     );
     public static final Item SILVER_CHAINMAIL_CHESTPLATE = register(
         "silver_chainmail_chestplate",
-        Item::new,
         new Item.Settings().armor(MiteArmorMaterial.SILVER_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.CHESTPLATE)
     );
     public static final Item SILVER_CHAINMAIL_LEGGINGS = register(
         "silver_chainmail_leggings",
-        Item::new,
         new Item.Settings().armor(MiteArmorMaterial.SILVER_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.LEGGINGS)
     );
     public static final Item SILVER_CHAINMAIL_BOOTS = register(
         "silver_chainmail_boots",
-        Item::new,
         new Item.Settings().armor(MiteArmorMaterial.SILVER_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.BOOTS)
     );
 
     public static final Item BANANA = register(
             "banana",
-            Item::new,
             new Item.Settings().food(new FoodComponent(2, 1.0F, false)));
     public static final Item BLUEBERRIE = register(
             "blueberry",
-            Item::new,
             new Item.Settings().food(new FoodComponent(1, 1.0F, false)));
     public static final Item CHEESE = register(
             "cheese",
-            Item::new,
             new Item.Settings().food(new FoodComponent(3, 3.0F, false)));
     public static final Item CHOCOLATE = register(
             "chocolate",
-            Item::new,
             new Item.Settings().food(new FoodComponent(3, 3.0F, false)));
     public static final Item DOUGH = register(
             "dough",
-            Item::new,
             new Item.Settings().food(new FoodComponent(1, 1.0F, false)));
     public static final Item LEMON = register(
             "lemon",
-            Item::new,
             new Item.Settings().food(new FoodComponent(1, 1.0F, false)));
     public static final Item ONION = register(
             "onion",
-            Item::new,
             new Item.Settings().food(new FoodComponent(1, 1.0F, false)));
     public static final Item ORANGE = register(
             "orange",
-            Item::new,
             new Item.Settings().food(new FoodComponent(2, 1.0F, false)));
     public static final Item WORM_COOKED = register(
             "worm_cooked",
-            Item::new,
             new Item.Settings().food(new FoodComponent(1, 1.0F, false)));
     public static final Item WORM_RAW = register(
             "worm_raw",
-            Item::new,
             new Item.Settings().food(new FoodComponent(1, 1.0F, false)));
     public static final Item BEEF_STEW = register(
             "beef_stew",
-            Item::new,
             new Item.Settings().food(new FoodComponent(5, 5.0F, false)).useRemainder(Items.BOWL));
     public static final Item BOWL_MILK = register(
             "bowl_milk",
-            Item::new,
             new Item.Settings().food(new FoodComponent(5, 5.0F, false)).useRemainder(Items.BOWL));
     public static final Item BOWL_SALAD = register(
             "bowl_salad",
-            Item::new,
             new Item.Settings().food(new FoodComponent(5, 5.0F, false)).useRemainder(Items.BOWL));
     public static final Item BOWL_WATER = register(
             "bowl_water",
-            Item::new,
             new Item.Settings().food(new FoodComponent(5, 5.0F, false)).useRemainder(Items.BOWL));
     public static final Item CEREAL = register(
             "cereal",
-            Item::new,
             new Item.Settings().food(new FoodComponent(5, 5.0F, false)).useRemainder(Items.BOWL));
     public static final Item CHICKEN_SOUP = register(
             "chicken_soup",
-            Item::new,
             new Item.Settings().food(new FoodComponent(5, 5.0F, false)).useRemainder(Items.BOWL));
     public static final Item CREAM_OF_MUSHROOM_SOUP = register(
             "cream_of_mushroom_soup",
-            Item::new,
             new Item.Settings().food(new FoodComponent(5, 5.0F, false)).useRemainder(Items.BOWL));
     public static final Item CREAM_OF_VEGETABLE_SOUP = register(
             "cream_of_vegetable_soup",
-            Item::new,
             new Item.Settings().food(new FoodComponent(5, 5.0F, false)).useRemainder(Items.BOWL));
     public static final Item ICE_CREAM = register(
             "ice_cream",
-            Item::new,
             new Item.Settings().food(new FoodComponent(5, 5.0F, false)).useRemainder(Items.BOWL));
     public static final Item MASHED_POTATO = register(
             "mashed_potato",
-            Item::new,
             new Item.Settings().food(new FoodComponent(5, 5.0F, false)).useRemainder(Items.BOWL));
     public static final Item MUSHROOM_STEW = register(
             "mushroom_stew",
-            Item::new,
             new Item.Settings().food(new FoodComponent(5, 5.0F, false)).useRemainder(Items.BOWL));
     public static final Item PORRIDGE = register(
             "porridge",
-            Item::new,
             new Item.Settings().food(new FoodComponent(5, 5.0F, false)).useRemainder(Items.BOWL));
     public static final Item PUMPKIN_SOUP = register(
             "pumpkin_soup",
-            Item::new,
             new Item.Settings().food(new FoodComponent(5, 5.0F, false)).useRemainder(Items.BOWL));
     public static final Item SORBET = register(
             "sorbet",
-            Item::new,
             new Item.Settings().food(new FoodComponent(5, 5.0F, false)).useRemainder(Items.BOWL));
     public static final Item VEGETABLE_SOUP = register(
             "vegetable_soup",
-            Item::new,
             new Item.Settings().food(new FoodComponent(5, 5.0F, false)).useRemainder(Items.BOWL));
 
-    public static final Item ADAMANTIUM_AXE = register("adamantium_axe", Item::new);
-    public static final Item ADAMANTIUM_BATTLE_AXE = register("adamantium_battle_axe", Item::new);
-    public static final Item ADAMANTIUM_DAGGER = register("adamantium_dagger", Item::new);
-    public static final Item ADAMANTIUM_HATCHET = register("adamantium_hatchet", Item::new);
-    public static final Item ADAMANTIUM_HOE = register("adamantium_hoe", Item::new);
-    public static final Item ADAMANTIUM_KNIFE = register("adamantium_knife", Item::new);
-    public static final Item ADAMANTIUM_MATTOCK = register("adamantium_mattock", Item::new);
-    public static final Item ADAMANTIUM_PICKAXE = register("adamantium_pickaxe", Item::new);
-    public static final Item ADAMANTIUM_SCYTHE = register("adamantium_scythe", Item::new);
-    public static final Item ADAMANTIUM_SHEARS = register("adamantium_shears", Item::new);
-    public static final Item ADAMANTIUM_SHOVEL = register("adamantium_shovel", Item::new);
-    public static final Item ADAMANTIUM_SWORD = register("adamantium_sword", Item::new);
-    public static final Item ADAMANTIUM_WAR_HAMMER = register("adamantium_war_hammer", Item::new);
-    public static final Item ANCIENT_METAL_AXE = register("ancient_metal_axe", Item::new);
-    public static final Item ANCIENT_METAL_BATTLE_AXE = register("ancient_metal_battle_axe", Item::new);
-    public static final Item ANCIENT_METAL_DAGGER = register("ancient_metal_dagger", Item::new);
-    public static final Item ANCIENT_METAL_HATCHET = register("ancient_metal_hatchet", Item::new);
-    public static final Item ANCIENT_METAL_HOE = register("ancient_metal_hoe", Item::new);
-    public static final Item ANCIENT_METAL_KNIFE = register("ancient_metal_knife", Item::new);
-    public static final Item ANCIENT_METAL_MATTOCK = register("ancient_metal_mattock", Item::new);
-    public static final Item ANCIENT_METAL_PICKAXE = register("ancient_metal_pickaxe", Item::new);
-    public static final Item ANCIENT_METAL_SCYTHE = register("ancient_metal_scythe", Item::new);
-    public static final Item ANCIENT_METAL_SHEARS = register("ancient_metal_shears", Item::new);
-    public static final Item ANCIENT_METAL_SHOVEL = register("ancient_metal_shovel", Item::new);
-    public static final Item ANCIENT_METAL_SWORD = register("ancient_metal_sword", Item::new);
-    public static final Item ANCIENT_METAL_WAR_HAMMER = register("ancient_metal_war_hammer", Item::new);
-    public static final Item COPPER_AXE = register("copper_axe", Item::new);
-    public static final Item COPPER_BATTLE_AXE = register("copper_battle_axe", Item::new);
-    public static final Item COPPER_DAGGER = register("copper_dagger", Item::new);
-    public static final Item COPPER_HATCHET = register("copper_hatchet", Item::new);
-    public static final Item COPPER_HOE = register("copper_hoe", Item::new);
-    public static final Item COPPER_KNIFE = register("copper_knife", Item::new);
-    public static final Item COPPER_MATTOCK = register("copper_mattock", Item::new);
-    public static final Item COPPER_PICKAXE = register("copper_pickaxe", Item::new);
-    public static final Item COPPER_SCYTHE = register("copper_scythe", Item::new);
-    public static final Item COPPER_SHEARS = register("copper_shears", Item::new);
-    public static final Item COPPER_SHOVEL = register("copper_shovel", Item::new);
-    public static final Item COPPER_SWORD = register("copper_sword", Item::new);
-    public static final Item COPPER_WAR_HAMMER = register("copper_war_hammer", Item::new);
-    public static final Item FLINT_AXE = register("flint_axe", Item::new);
-    public static final Item FLINT_HATCHET = register("flint_hatchet", Item::new);
-    public static final Item FLINT_KNIFE = register("flint_knife", Item::new);
-    public static final Item FLINT_SHOVEL = register("flint_shovel", Item::new);
-    public static final Item GOLD_AXE = register("gold_axe", Item::new);
-    public static final Item GOLD_BATTLE_AXE = register("gold_battle_axe", Item::new);
-    public static final Item GOLD_DAGGER = register("gold_dagger", Item::new);
-    public static final Item GOLD_HATCHET = register("gold_hatchet", Item::new);
-    public static final Item GOLD_HOE = register("gold_hoe", Item::new);
-    public static final Item GOLD_KNIFE = register("gold_knife", Item::new);
-    public static final Item GOLD_MATTOCK = register("gold_mattock", Item::new);
-    public static final Item GOLD_PICKAXE = register("gold_pickaxe", Item::new);
-    public static final Item GOLD_SCYTHE = register("gold_scythe", Item::new);
-    public static final Item GOLD_SHEARS = register("gold_shears", Item::new);
-    public static final Item GOLD_SHOVEL = register("gold_shovel", Item::new);
-    public static final Item GOLD_SWORD = register("gold_sword", Item::new);
-    public static final Item GOLD_WAR_HAMMER = register("gold_war_hammer", Item::new);
-    public static final Item IRON_BATTLE_AXE = register("iron_battle_axe", Item::new);
-    public static final Item IRON_DAGGER = register("iron_dagger", Item::new);
-    public static final Item IRON_HATCHET = register("iron_hatchet", Item::new);
-    public static final Item IRON_KNIFE = register("iron_knife", Item::new);
-    public static final Item IRON_MATTOCK = register("iron_mattock", Item::new);
-    public static final Item IRON_SCYTHE = register("iron_scythe", Item::new);
-    public static final Item IRON_WAR_HAMMER = register("iron_war_hammer", Item::new);
-    public static final Item MITHRIL_AXE = register("mithril_axe", Item::new);
-    public static final Item MITHRIL_BATTLE_AXE = register("mithril_battle_axe", Item::new);
-    public static final Item MITHRIL_DAGGER = register("mithril_dagger", Item::new);
-    public static final Item MITHRIL_HATCHET = register("mithril_hatchet", Item::new);
-    public static final Item MITHRIL_HOE = register("mithril_hoe", Item::new);
-    public static final Item MITHRIL_KNIFE = register("mithril_knife", Item::new);
-    public static final Item MITHRIL_MATTOCK = register("mithril_mattock", Item::new);
-    public static final Item MITHRIL_PICKAXE = register("mithril_pickaxe", Item::new);
-    public static final Item MITHRIL_SCYTHE = register("mithril_scythe", Item::new);
-    public static final Item MITHRIL_SHEARS = register("mithril_shears", Item::new);
-    public static final Item MITHRIL_SHOVEL = register("mithril_shovel", Item::new);
-    public static final Item MITHRIL_SWORD = register("mithril_sword", Item::new);
-    public static final Item MITHRIL_WAR_HAMMER = register("mithril_war_hammer", Item::new);
-    public static final Item OBSIDIAN_AXE = register("obsidian_axe", Item::new);
-    public static final Item OBSIDIAN_HATCHET = register("obsidian_hatchet", Item::new);
-    public static final Item OBSIDIAN_KNIFE = register("obsidian_knife", Item::new);
-    public static final Item OBSIDIAN_SHOVEL = register("obsidian_shovel", Item::new);
-    public static final Item RUSTED_IRON_AXE = register("rusted_iron_axe", Item::new);
-    public static final Item RUSTED_IRON_BATTLE_AXE = register("rusted_iron_battle_axe", Item::new);
-    public static final Item RUSTED_IRON_DAGGER = register("rusted_iron_dagger", Item::new);
-    public static final Item RUSTED_IRON_HATCHET = register("rusted_iron_hatchet", Item::new);
-    public static final Item RUSTED_IRON_HOE = register("rusted_iron_hoe", Item::new);
-    public static final Item RUSTED_IRON_KNIFE = register("rusted_iron_knife", Item::new);
-    public static final Item RUSTED_IRON_MATTOCK = register("rusted_iron_mattock", Item::new);
-    public static final Item RUSTED_IRON_PICKAXE = register("rusted_iron_pickaxe", Item::new);
-    public static final Item RUSTED_IRON_SCYTHE = register("rusted_iron_scythe", Item::new);
-    public static final Item RUSTED_IRON_SHEARS = register("rusted_iron_shears", Item::new);
-    public static final Item RUSTED_IRON_SHOVEL = register("rusted_iron_shovel", Item::new);
-    public static final Item RUSTED_IRON_SWORD = register("rusted_iron_sword", Item::new);
-    public static final Item RUSTED_IRON_WAR_HAMMER = register("rusted_iron_war_hammer", Item::new);
-    public static final Item SILVER_AXE = register("silver_axe", Item::new);
-    public static final Item SILVER_BATTLE_AXE = register("silver_battle_axe", Item::new);
-    public static final Item SILVER_DAGGER = register("silver_dagger", Item::new);
-    public static final Item SILVER_HATCHET = register("silver_hatchet", Item::new);
-    public static final Item SILVER_HOE = register("silver_hoe", Item::new);
-    public static final Item SILVER_KNIFE = register("silver_knife", Item::new);
-    public static final Item SILVER_MATTOCK = register("silver_mattock", Item::new);
-    public static final Item SILVER_PICKAXE = register("silver_pickaxe", Item::new);
-    public static final Item SILVER_SCYTHE = register("silver_scythe", Item::new);
-    public static final Item SILVER_SHEARS = register("silver_shears", Item::new);
-    public static final Item SILVER_SHOVEL = register("silver_shovel", Item::new);
-    public static final Item SILVER_SWORD = register("silver_sword", Item::new);
-    public static final Item SILVER_WAR_HAMMER = register("silver_war_hammer", Item::new);
-    public static final Item STONE_DAGGER = register("stone_dagger", Item::new);
-    public static final Item WOOD_CLUB = register("wood_club", Item::new);
-    public static final Item WOOD_CUDGEL = register("wood_cudgel", Item::new);
+    public static final Item ADAMANTIUM_AXE = register("adamantium_axe",
+            new Item.Settings().tool(At_ToolMaterial.ADAMANTIUM, At_Tags.INCORRECT_FOR_ADAMANTIUM_TOOL, 6.0F, 1.0F, 0.0F));
 
-    public static final Item ADAMANTIUM_ARROW = register("adamantium_arrow", Item::new);
-    public static final Item ANCIENT_METAL_ARROW = register("ancient_metal_arrow", Item::new);
-    public static final Item COPPER_ARROW = register("copper_arrow", Item::new);
-    public static final Item FLINT_ARROW = register("flint_arrow", Item::new);
-    public static final Item GOLD_ARROW = register("gold_arrow", Item::new);
-    public static final Item IRON_ARROW = register("iron_arrow", Item::new);
-    public static final Item MITHRIL_ARROW = register("mithril_arrow", Item::new);
-    public static final Item OBSIDIAN_ARROW = register("obsidian_arrow", Item::new);
-    public static final Item SILVER_ARROW = register("silver_arrow", Item::new);
-    public static final Item RUSTED_IRON_ARROW = register("rusted_iron_arrow", Item::new);
-    public static final Item ADAMANTIUM_CHAINS = register("adamantium_chains", Item::new);
-    public static final Item ANCIENT_METAL_CHAINS = register("ancient_metal_chains", Item::new);
-    public static final Item RUSTED_IRON_CHAINS = register("rusted_iron_chains", Item::new);
-    public static final Item COPPER_CHAINS = register("copper_chains", Item::new);
-    public static final Item GOLD_CHAINS = register("gold_chains", Item::new);
-    public static final Item IRON_CHAINS = register("iron_chains", Item::new);
-    public static final Item MITHRIL_CHAINS = register("mithril_chains", Item::new);
-    public static final Item SILVER_CHAINS = register("silver_chains", Item::new);
-    public static final Item ADAMANTIUM_COINS = register("adamantium_coins", Item::new);
-    public static final Item ANCIENT_METAL_COINS = register("ancient_metal_coins", Item::new);
-    public static final Item COPPER_COINS = register("copper_coins", Item::new);
-    public static final Item GOLD_COINS = register("gold_coins", Item::new);
-    public static final Item IRON_COINS = register("iron_coins", Item::new);
-    public static final Item MITHRIL_COINS = register("mithril_coins", Item::new);
-    public static final Item SILVER_COINS = register("silver_coins", Item::new);
+    public static final Item ADAMANTIUM_BATTLE_AXE = register("adamantium_battle_axe");
+    public static final Item ADAMANTIUM_DAGGER = register("adamantium_dagger");
+    public static final Item ADAMANTIUM_HATCHET = register("adamantium_hatchet");
+    public static final Item ADAMANTIUM_HOE = register("adamantium_hoe");
+    public static final Item ADAMANTIUM_KNIFE = register("adamantium_knife");
+    public static final Item ADAMANTIUM_MATTOCK = register("adamantium_mattock");
+    public static final Item ADAMANTIUM_PICKAXE = register("adamantium_pickaxe");
+    public static final Item ADAMANTIUM_SCYTHE = register("adamantium_scythe");
+    public static final Item ADAMANTIUM_SHEARS = register("adamantium_shears");
+    public static final Item ADAMANTIUM_SHOVEL = register("adamantium_shovel");
+    public static final Item ADAMANTIUM_SWORD = register("adamantium_sword");
+    public static final Item ADAMANTIUM_WAR_HAMMER = register("adamantium_war_hammer");
+    public static final Item ANCIENT_METAL_AXE = register("ancient_metal_axe");
+    public static final Item ANCIENT_METAL_BATTLE_AXE = register("ancient_metal_battle_axe");
+    public static final Item ANCIENT_METAL_DAGGER = register("ancient_metal_dagger");
+    public static final Item ANCIENT_METAL_HATCHET = register("ancient_metal_hatchet");
+    public static final Item ANCIENT_METAL_HOE = register("ancient_metal_hoe");
+    public static final Item ANCIENT_METAL_KNIFE = register("ancient_metal_knife");
+    public static final Item ANCIENT_METAL_MATTOCK = register("ancient_metal_mattock");
+    public static final Item ANCIENT_METAL_PICKAXE = register("ancient_metal_pickaxe");
+    public static final Item ANCIENT_METAL_SCYTHE = register("ancient_metal_scythe");
+    public static final Item ANCIENT_METAL_SHEARS = register("ancient_metal_shears");
+    public static final Item ANCIENT_METAL_SHOVEL = register("ancient_metal_shovel");
+    public static final Item ANCIENT_METAL_SWORD = register("ancient_metal_sword");
+    public static final Item ANCIENT_METAL_WAR_HAMMER = register("ancient_metal_war_hammer");
+    public static final Item COPPER_AXE = register("copper_axe");
+    public static final Item COPPER_BATTLE_AXE = register("copper_battle_axe");
+    public static final Item COPPER_DAGGER = register("copper_dagger");
+    public static final Item COPPER_HATCHET = register("copper_hatchet");
+    public static final Item COPPER_HOE = register("copper_hoe");
+    public static final Item COPPER_KNIFE = register("copper_knife");
+    public static final Item COPPER_MATTOCK = register("copper_mattock");
+    public static final Item COPPER_PICKAXE = register("copper_pickaxe");
+    public static final Item COPPER_SCYTHE = register("copper_scythe");
+    public static final Item COPPER_SHEARS = register("copper_shears");
+    public static final Item COPPER_SHOVEL = register("copper_shovel");
+    public static final Item COPPER_SWORD = register("copper_sword");
+    public static final Item COPPER_WAR_HAMMER = register("copper_war_hammer");
+    public static final Item FLINT_AXE = register("flint_axe");
+    public static final Item FLINT_HATCHET = register("flint_hatchet");
+    public static final Item FLINT_KNIFE = register("flint_knife");
+    public static final Item FLINT_SHOVEL = register("flint_shovel");
+    public static final Item GOLD_AXE = register("gold_axe");
+    public static final Item GOLD_BATTLE_AXE = register("gold_battle_axe");
+    public static final Item GOLD_DAGGER = register("gold_dagger");
+    public static final Item GOLD_HATCHET = register("gold_hatchet");
+    public static final Item GOLD_HOE = register("gold_hoe");
+    public static final Item GOLD_KNIFE = register("gold_knife");
+    public static final Item GOLD_MATTOCK = register("gold_mattock");
+    public static final Item GOLD_PICKAXE = register("gold_pickaxe");
+    public static final Item GOLD_SCYTHE = register("gold_scythe");
+    public static final Item GOLD_SHEARS = register("gold_shears");
+    public static final Item GOLD_SHOVEL = register("gold_shovel");
+    public static final Item GOLD_SWORD = register("gold_sword");
+    public static final Item GOLD_WAR_HAMMER = register("gold_war_hammer");
+    public static final Item IRON_BATTLE_AXE = register("iron_battle_axe");
+    public static final Item IRON_DAGGER = register("iron_dagger");
+    public static final Item IRON_HATCHET = register("iron_hatchet");
+    public static final Item IRON_KNIFE = register("iron_knife");
+    public static final Item IRON_MATTOCK = register("iron_mattock");
+    public static final Item IRON_SCYTHE = register("iron_scythe");
+    public static final Item IRON_WAR_HAMMER = register("iron_war_hammer");
+    public static final Item MITHRIL_AXE = register("mithril_axe");
+    public static final Item MITHRIL_BATTLE_AXE = register("mithril_battle_axe");
+    public static final Item MITHRIL_DAGGER = register("mithril_dagger");
+    public static final Item MITHRIL_HATCHET = register("mithril_hatchet");
+    public static final Item MITHRIL_HOE = register("mithril_hoe");
+    public static final Item MITHRIL_KNIFE = register("mithril_knife");
+    public static final Item MITHRIL_MATTOCK = register("mithril_mattock");
+    public static final Item MITHRIL_PICKAXE = register("mithril_pickaxe");
+    public static final Item MITHRIL_SCYTHE = register("mithril_scythe");
+    public static final Item MITHRIL_SHEARS = register("mithril_shears");
+    public static final Item MITHRIL_SHOVEL = register("mithril_shovel");
+    public static final Item MITHRIL_SWORD = register("mithril_sword");
+    public static final Item MITHRIL_WAR_HAMMER = register("mithril_war_hammer");
+    public static final Item OBSIDIAN_AXE = register("obsidian_axe");
+    public static final Item OBSIDIAN_HATCHET = register("obsidian_hatchet");
+    public static final Item OBSIDIAN_KNIFE = register("obsidian_knife");
+    public static final Item OBSIDIAN_SHOVEL = register("obsidian_shovel");
+    public static final Item RUSTED_IRON_AXE = register("rusted_iron_axe");
+    public static final Item RUSTED_IRON_BATTLE_AXE = register("rusted_iron_battle_axe");
+    public static final Item RUSTED_IRON_DAGGER = register("rusted_iron_dagger");
+    public static final Item RUSTED_IRON_HATCHET = register("rusted_iron_hatchet");
+    public static final Item RUSTED_IRON_HOE = register("rusted_iron_hoe");
+    public static final Item RUSTED_IRON_KNIFE = register("rusted_iron_knife");
+    public static final Item RUSTED_IRON_MATTOCK = register("rusted_iron_mattock");
+    public static final Item RUSTED_IRON_PICKAXE = register("rusted_iron_pickaxe");
+    public static final Item RUSTED_IRON_SCYTHE = register("rusted_iron_scythe");
+    public static final Item RUSTED_IRON_SHEARS = register("rusted_iron_shears");
+    public static final Item RUSTED_IRON_SHOVEL = register("rusted_iron_shovel");
+    public static final Item RUSTED_IRON_SWORD = register("rusted_iron_sword");
+    public static final Item RUSTED_IRON_WAR_HAMMER = register("rusted_iron_war_hammer");
+    public static final Item SILVER_AXE = register("silver_axe");
+    public static final Item SILVER_BATTLE_AXE = register("silver_battle_axe");
+    public static final Item SILVER_DAGGER = register("silver_dagger");
+    public static final Item SILVER_HATCHET = register("silver_hatchet");
+    public static final Item SILVER_HOE = register("silver_hoe");
+    public static final Item SILVER_KNIFE = register("silver_knife");
+    public static final Item SILVER_MATTOCK = register("silver_mattock");
+    public static final Item SILVER_PICKAXE = register("silver_pickaxe");
+    public static final Item SILVER_SCYTHE = register("silver_scythe");
+    public static final Item SILVER_SHEARS = register("silver_shears");
+    public static final Item SILVER_SHOVEL = register("silver_shovel");
+    public static final Item SILVER_SWORD = register("silver_sword");
+    public static final Item SILVER_WAR_HAMMER = register("silver_war_hammer");
+    public static final Item STONE_DAGGER = register("stone_dagger");
+    public static final Item WOOD_CLUB = register("wood_club");
+    public static final Item WOOD_CUDGEL = register("wood_cudgel");
+
+    public static final Item ADAMANTIUM_ARROW = register("adamantium_arrow");
+    public static final Item ANCIENT_METAL_ARROW = register("ancient_metal_arrow");
+    public static final Item COPPER_ARROW = register("copper_arrow");
+    public static final Item FLINT_ARROW = register("flint_arrow");
+    public static final Item GOLD_ARROW = register("gold_arrow");
+    public static final Item IRON_ARROW = register("iron_arrow");
+    public static final Item MITHRIL_ARROW = register("mithril_arrow");
+    public static final Item OBSIDIAN_ARROW = register("obsidian_arrow");
+    public static final Item SILVER_ARROW = register("silver_arrow");
+    public static final Item RUSTED_IRON_ARROW = register("rusted_iron_arrow");
+    public static final Item ADAMANTIUM_CHAINS = register("adamantium_chains");
+    public static final Item ANCIENT_METAL_CHAINS = register("ancient_metal_chains");
+    public static final Item RUSTED_IRON_CHAINS = register("rusted_iron_chains");
+    public static final Item COPPER_CHAINS = register("copper_chains");
+    public static final Item GOLD_CHAINS = register("gold_chains");
+    public static final Item IRON_CHAINS = register("iron_chains");
+    public static final Item MITHRIL_CHAINS = register("mithril_chains");
+    public static final Item SILVER_CHAINS = register("silver_chains");
+    public static final Item ADAMANTIUM_COINS = register("adamantium_coins");
+    public static final Item ANCIENT_METAL_COINS = register("ancient_metal_coins");
+    public static final Item COPPER_COINS = register("copper_coins");
+    public static final Item GOLD_COINS = register("gold_coins");
+    public static final Item IRON_COINS = register("iron_coins");
+    public static final Item MITHRIL_COINS = register("mithril_coins");
+    public static final Item SILVER_COINS = register("silver_coins");
 
 
 
@@ -718,14 +650,14 @@ public class At_Items {
             })
             .build();
 
-    private static Item register(String path, Function<Item.Settings, Item> factory) {
+    private static Item register(String path) {
         final RegistryKey<Item> registryKey = RegistryKey.of(RegistryKeys.ITEM, Identifier.of(At_mite.MOD_ID, path));
-        return Items.register(registryKey, factory, new Item.Settings());
+        return Items.register(registryKey, Item::new, new Item.Settings());
     }
 
-    private static Item register(String path, Function<Item.Settings, Item> factory, Item.Settings settings) {
+    private static Item register(String path, Item.Settings settings) {
         final RegistryKey<Item> registryKey = RegistryKey.of(RegistryKeys.ITEM, Identifier.of(At_mite.MOD_ID, path));
-        return Items.register(registryKey, factory, settings);
+        return Items.register(registryKey, Item::new, settings);
     }
     public static void init(){
         Registry.register(Registries.ITEM_GROUP, Identifier.of("tutorial", "test_group"), AT_MINT_GROUP);
