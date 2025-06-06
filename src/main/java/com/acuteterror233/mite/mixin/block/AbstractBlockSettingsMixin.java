@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(targets = "net.minecraft.block.AbstractBlock$Settings")
-public abstract class MixinAbstractBlockSettings {
+public abstract class AbstractBlockSettingsMixin {
     @Shadow boolean toolRequired;
     @Inject(method = "sounds", at = @At("HEAD"))
     public void sounds(BlockSoundGroup soundGroup, CallbackInfoReturnable<AbstractBlock.Settings> cir) {

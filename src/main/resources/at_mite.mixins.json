@@ -6,11 +6,11 @@
   ],
   "mixins": [
     "block.AbstractBlockMixin",
-    "block.MixinAbstractBlockSettings",
+    "block.AbstractBlockSettingsMixin",
     "entity.player.HungerManagerMixin",
     "entity.player.PlayerEntityMixin",
-    "item.MixinItemSettings",
-    "item.MixinToolMaterial"
+    "item.ItemSettingsMixin",
+    "item.ToolMaterialMixin"
   ],
   "injectors": {
     "defaultRequire": 1

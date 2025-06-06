@@ -1,13 +1,12 @@
 package com.acuteterror233.mite.mixin.item;
 
-import com.acuteterror233.mite.atinterface.ToolMaterialExtension;
 import net.minecraft.item.Item;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.registry.tag.TagKey;
 import org.spongepowered.asm.mixin.*;
 
 @Mixin(ToolMaterial.class)
-public abstract class MixinToolMaterial {
+public abstract class ToolMaterialMixin {
 
     @Shadow TagKey<Item> repairItems;
     @Shadow int enchantmentValue;

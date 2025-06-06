@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 
 @Mixin(targets = "net.minecraft.item.Item$Settings")
-public abstract class MixinItemSettings implements net.fabricmc.fabric.api.item.v1.FabricItem.Settings,ItemSettingsExtension{
+public abstract class ItemSettingsMixin implements net.fabricmc.fabric.api.item.v1.FabricItem.Settings,ItemSettingsExtension{
 
     @Shadow public abstract Item.Settings maxDamage(int maxDamage);
     @Shadow public abstract Item.Settings sword(ToolMaterial material, float attackDamage, float attackSpeed);
