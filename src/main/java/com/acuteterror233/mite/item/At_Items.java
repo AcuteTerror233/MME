@@ -1,14 +1,13 @@
 package com.acuteterror233.mite.item;
 
 import com.acuteterror233.mite.At_mite;
+import com.acuteterror233.mite.atinterface.ItemSettingsExtension;
 import com.acuteterror233.mite.item.armor.MiteArmorMaterial;
 import com.acuteterror233.mite.registry.tag.At_Tags;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
+import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.FoodComponent;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
+import net.minecraft.item.*;
 import net.minecraft.item.equipment.EquipmentType;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -293,20 +292,40 @@ public class At_Items {
             new Item.Settings().food(new FoodComponent(5, 5.0F, false)).useRemainder(Items.BOWL));
 
     public static final Item ADAMANTIUM_AXE = register("adamantium_axe",
-            new Item.Settings().tool(At_ToolMaterial.ADAMANTIUM, At_Tags.INCORRECT_FOR_ADAMANTIUM_TOOL, 6.0F, 1.0F, 0.0F));
+            Settings -> new AxeItem(At_ToolMaterial.ADAMANTIUM, 5.0F, -3.0F, Settings),
+            new Item.Settings());
+    public static final Item ADAMANTIUM_BATTLE_AXE = register("adamantium_battle_axe",
+            Settings -> new AxeItem(At_ToolMaterial.ADAMANTIUM, 5.0F, -3.0F, Settings),
+            new Item.Settings());
+    public static final Item ADAMANTIUM_DAGGER = register("adamantium_dagger",
+            ((ItemSettingsExtension)new Item.Settings()).dagger(At_ToolMaterial.ADAMANTIUM, 5.0F, -3.0F));
+    public static final Item ADAMANTIUM_HATCHET = register("adamantium_hatchet",
+            Settings -> new HandAxeItem(At_ToolMaterial.ADAMANTIUM, 5.0F, -3.0F, Settings),
+            new Item.Settings());
+    public static final Item ADAMANTIUM_HOE = register("adamantium_hoe",
+            Settings -> new HoeItem(At_ToolMaterial.ADAMANTIUM, 5.0F, -3.0F, Settings),
+            new Item.Settings());
+    public static final Item ADAMANTIUM_KNIFE = register("adamantium_knife",
+            ((ItemSettingsExtension)new Item.Settings()).dagger(At_ToolMaterial.ADAMANTIUM, 5.0F, -3.0F));
+    public static final Item ADAMANTIUM_MATTOCK = register("adamantium_mattock",
+            Settings -> new MattockItem(At_ToolMaterial.ADAMANTIUM, 5.0F, -3.0F,Settings),
+            new Item.Settings());
+    public static final Item ADAMANTIUM_PICKAXE = register("adamantium_pickaxe",
+            new Item.Settings().pickaxe(At_ToolMaterial.ADAMANTIUM,  5.0F, -3.0F));
+    public static final Item ADAMANTIUM_SCYTHE = register("adamantium_scythe",
+            Settings -> new HoeItem(At_ToolMaterial.ADAMANTIUM, 0.0F, -3.0F, Settings),
+            new Item.Settings());
+    public static final Item ADAMANTIUM_SHEARS = register("adamantium_shears",
+            ShearsItem::new,
+            new Item.Settings().maxDamage(At_ToolMaterial.ADAMANTIUM.durability() * 2).component(DataComponentTypes.TOOL, ShearsItem.createToolComponent()));
+    public static final Item ADAMANTIUM_SHOVEL = register("adamantium_shovel",
+            Settings -> new ShovelItem(ToolMaterial.WOOD, 1.5F, -3.0F, Settings),
+            new Item.Settings());
+    public static final Item ADAMANTIUM_SWORD = register("adamantium_sword",
+            new Item.Settings().sword(At_ToolMaterial.ADAMANTIUM, 5.0F, -3.0F));
+    public static final Item ADAMANTIUM_WAR_HAMMER = register("adamantium_war_hammer",
+            ((ItemSettingsExtension)new Item.Settings()).war_hammer(At_ToolMaterial.ADAMANTIUM, 5.0F, -3.0F));
 
-    public static final Item ADAMANTIUM_BATTLE_AXE = register("adamantium_battle_axe");
-    public static final Item ADAMANTIUM_DAGGER = register("adamantium_dagger");
-    public static final Item ADAMANTIUM_HATCHET = register("adamantium_hatchet");
-    public static final Item ADAMANTIUM_HOE = register("adamantium_hoe");
-    public static final Item ADAMANTIUM_KNIFE = register("adamantium_knife");
-    public static final Item ADAMANTIUM_MATTOCK = register("adamantium_mattock");
-    public static final Item ADAMANTIUM_PICKAXE = register("adamantium_pickaxe");
-    public static final Item ADAMANTIUM_SCYTHE = register("adamantium_scythe");
-    public static final Item ADAMANTIUM_SHEARS = register("adamantium_shears");
-    public static final Item ADAMANTIUM_SHOVEL = register("adamantium_shovel");
-    public static final Item ADAMANTIUM_SWORD = register("adamantium_sword");
-    public static final Item ADAMANTIUM_WAR_HAMMER = register("adamantium_war_hammer");
     public static final Item ANCIENT_METAL_AXE = register("ancient_metal_axe");
     public static final Item ANCIENT_METAL_BATTLE_AXE = register("ancient_metal_battle_axe");
     public static final Item ANCIENT_METAL_DAGGER = register("ancient_metal_dagger");
@@ -654,10 +673,13 @@ public class At_Items {
         final RegistryKey<Item> registryKey = RegistryKey.of(RegistryKeys.ITEM, Identifier.of(At_mite.MOD_ID, path));
         return Items.register(registryKey, Item::new, new Item.Settings());
     }
-
     private static Item register(String path, Item.Settings settings) {
         final RegistryKey<Item> registryKey = RegistryKey.of(RegistryKeys.ITEM, Identifier.of(At_mite.MOD_ID, path));
         return Items.register(registryKey, Item::new, settings);
+    }
+    private static Item register(String path, Function<Item.Settings, Item> factory,Item.Settings settings) {
+        final RegistryKey<Item> registryKey = RegistryKey.of(RegistryKeys.ITEM, Identifier.of(At_mite.MOD_ID, path));
+        return Items.register(registryKey, factory, settings);
     }
     public static void init(){
         Registry.register(Registries.ITEM_GROUP, Identifier.of("tutorial", "test_group"), AT_MINT_GROUP);

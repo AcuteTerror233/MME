@@ -42,25 +42,25 @@ public abstract class PlayerEntityMixin extends LivingEntity {
     @Inject(method = "tick", at = @At("HEAD"))
     public void tick(CallbackInfo ci) {
         if (this.experienceLevel > 35) {
-            setMax(20);
+            setMaxHealth_FoodLevel(20);
         } else if (this.experienceLevel > 30) {
-            setMax(18);
+            setMaxHealth_FoodLevel(18);
         } else if (this.experienceLevel > 25) {
-            setMax(16);
+            setMaxHealth_FoodLevel(16);
         } else if (this.experienceLevel > 20) {
-            setMax(14);
+            setMaxHealth_FoodLevel(14);
         } else if (this.experienceLevel > 15) {
-            setMax(12);
+            setMaxHealth_FoodLevel(12);
         } else if (this.experienceLevel > 10) {
-            setMax(10);
+            setMaxHealth_FoodLevel(10);
         } else if (this.experienceLevel > 5) {
-            setMax(8);
+            setMaxHealth_FoodLevel(8);
         } else {
-            setMax(6);
+            setMaxHealth_FoodLevel(6);
         }
     }
     @Unique
-    public void setMax(int max) {
+    public void setMaxHealth_FoodLevel(int max) {
         getAttributes().getCustomInstance(EntityAttributes.MAX_HEALTH).setBaseValue(max);
         ((HungerManagerExtension) hungerManager).setMaxFoodLevel(max);
     }

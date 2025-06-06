@@ -8,7 +8,9 @@
     "block.AbstractBlockMixin",
     "block.MixinAbstractBlockSettings",
     "entity.player.HungerManagerMixin",
-    "entity.player.PlayerEntityMixin"
+    "entity.player.PlayerEntityMixin",
+    "item.MixinItemSettings",
+    "item.MixinToolMaterial"
   ],
   "injectors": {
     "defaultRequire": 1
