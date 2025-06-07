@@ -1,5 +1,6 @@
 package com.acuteterror233.mite.datagen;
 
+import com.acuteterror233.mite.block.At_Blocks;
 import com.acuteterror233.mite.item.At_Items;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
@@ -226,6 +227,7 @@ public class Zh_cnLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(At_Items.STONE_DAGGER, "石匕首");
         translationBuilder.add(At_Items.WOOD_CLUB, "木棒");
         translationBuilder.add(At_Items.WOOD_CUDGEL,"小木棒");
+        translationBuilder.add(At_Blocks.ADAMANTIUM_ORE, "艾德曼矿");
     }
 
 }

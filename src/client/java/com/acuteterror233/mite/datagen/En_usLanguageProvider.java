@@ -1,5 +1,6 @@
 package com.acuteterror233.mite.datagen;
 
+import com.acuteterror233.mite.block.At_Blocks;
 import com.acuteterror233.mite.item.At_Items;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
@@ -225,5 +226,6 @@ public class En_usLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(At_Items.STONE_DAGGER, "Stone Dagger");
         translationBuilder.add(At_Items.WOOD_CLUB, "Wood Club");
         translationBuilder.add(At_Items.WOOD_CUDGEL, "Wood Cudgel ");
+        translationBuilder.add(At_Blocks.ADAMANTIUM_ORE, "Adamantium Ore");
     }
 }

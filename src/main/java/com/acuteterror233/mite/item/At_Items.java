@@ -2,8 +2,8 @@ package com.acuteterror233.mite.item;
 
 import com.acuteterror233.mite.At_mite;
 import com.acuteterror233.mite.atinterface.ItemSettingsExtension;
+import com.acuteterror233.mite.block.At_Blocks;
 import com.acuteterror233.mite.item.armor.MiteArmorMaterial;
-import com.acuteterror233.mite.registry.tag.At_Tags;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.FoodComponent;
@@ -13,15 +13,12 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
-import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
 import java.util.function.Function;
 
 public class At_Items {
-    Function<Item.Settings, Item> factory ;
-
     public static final Item ADAMANTIUM_HELMET = register(
         "adamantium_helmet",
         new Item.Settings().armor(MiteArmorMaterial.ARMOR_MATERIAL_ARMOR_MATERIAL, EquipmentType.HELMET)
@@ -291,11 +288,12 @@ public class At_Items {
             "vegetable_soup",
             new Item.Settings().food(new FoodComponent(5, 5.0F, false)).useRemainder(Items.BOWL));
 
+
     public static final Item ADAMANTIUM_AXE = register("adamantium_axe",
             Settings -> new AxeItem(At_ToolMaterial.ADAMANTIUM, 5.0F, -3.0F, Settings),
             new Item.Settings());
     public static final Item ADAMANTIUM_BATTLE_AXE = register("adamantium_battle_axe",
-            Settings -> new AxeItem(At_ToolMaterial.ADAMANTIUM, 5.0F, -3.0F, Settings),
+            Settings -> new BattleAxeItem(At_ToolMaterial.ADAMANTIUM, 5.0F, -3.0F, Settings),
             new Item.Settings());
     public static final Item ADAMANTIUM_DAGGER = register("adamantium_dagger",
             ((ItemSettingsExtension)new Item.Settings()).dagger(At_ToolMaterial.ADAMANTIUM, 5.0F, -3.0F));
@@ -325,6 +323,9 @@ public class At_Items {
             new Item.Settings().sword(At_ToolMaterial.ADAMANTIUM, 5.0F, -3.0F));
     public static final Item ADAMANTIUM_WAR_HAMMER = register("adamantium_war_hammer",
             ((ItemSettingsExtension)new Item.Settings()).war_hammer(At_ToolMaterial.ADAMANTIUM, 5.0F, -3.0F));
+
+
+
 
     public static final Item ANCIENT_METAL_AXE = register("ancient_metal_axe");
     public static final Item ANCIENT_METAL_BATTLE_AXE = register("ancient_metal_battle_axe");
@@ -456,6 +457,7 @@ public class At_Items {
             .icon(() -> new ItemStack(ADAMANTIUM_HELMET))
             .displayName(Text.translatable("itemGroup.at_mite.item_group"))
             .entries((context, entries) -> {
+                    entries.add(At_Blocks.ADAMANTIUM_ORE);
                     entries.add(ADAMANTIUM_HELMET);
                     entries.add(ADAMANTIUM_CHESTPLATE);
                     entries.add(ADAMANTIUM_LEGGINGS);

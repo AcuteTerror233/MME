@@ -11,4 +11,5 @@ public class At_ToolMaterial {
     public static final ToolMaterial MITHRIL = new ToolMaterial(At_Tags.INCORRECT_FOR_MITHRIL_TOOL, 256, 8.0F, 3.0F, 10, ItemTags.DIAMOND_TOOL_MATERIALS);
     public static final ToolMaterial RUSTED_IRON = new ToolMaterial(At_Tags.INCORRECT_FOR_RUSTED_IRON_TOOL, 12, 8.0F, 3.0F, 10, ItemTags.DIAMOND_TOOL_MATERIALS);
     public static final ToolMaterial SILVER = new ToolMaterial(At_Tags.INCORRECT_FOR_SILVER_TOOL, 16, 8.0F, 3.0F, 10, ItemTags.DIAMOND_TOOL_MATERIALS);
+    public static final ToolMaterial FLINT = new ToolMaterial(At_Tags.INCORRECT_FOR_FLINT_TOOL, 16, 8.0F, 3.0F, 10, ItemTags.DIAMOND_TOOL_MATERIALS);
 }
