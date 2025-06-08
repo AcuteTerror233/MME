@@ -19,4 +19,7 @@ public interface ItemSettingsExtension {
     default Item.Settings battle_axe(ToolMaterial material, float attackDamage, float attackSpeed) {
         return null;
     }
+    default Item.Settings shears(ToolMaterial material, float attackDamage, float attackSpeed){
+        return null;
+    }
 }

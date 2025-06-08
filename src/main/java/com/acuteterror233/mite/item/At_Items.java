@@ -315,7 +315,7 @@ public class At_Items {
             new Item.Settings());
     public static final Item ADAMANTIUM_SHEARS = register("adamantium_shears",
             ShearsItem::new,
-            new Item.Settings().maxDamage(At_ToolMaterial.ADAMANTIUM.durability() * 2).component(DataComponentTypes.TOOL, ShearsItem.createToolComponent()));
+            ((ItemSettingsExtension)new Item.Settings()).shears(At_ToolMaterial.ADAMANTIUM,  5.0F, -3.0F));
     public static final Item ADAMANTIUM_SHOVEL = register("adamantium_shovel",
             Settings -> new ShovelItem(ToolMaterial.WOOD, 1.5F, -3.0F, Settings),
             new Item.Settings());
@@ -323,9 +323,6 @@ public class At_Items {
             new Item.Settings().sword(At_ToolMaterial.ADAMANTIUM, 5.0F, -3.0F));
     public static final Item ADAMANTIUM_WAR_HAMMER = register("adamantium_war_hammer",
             ((ItemSettingsExtension)new Item.Settings()).war_hammer(At_ToolMaterial.ADAMANTIUM, 5.0F, -3.0F));
-
-
-
 
     public static final Item ANCIENT_METAL_AXE = register("ancient_metal_axe");
     public static final Item ANCIENT_METAL_BATTLE_AXE = register("ancient_metal_battle_axe");

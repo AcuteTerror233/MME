@@ -16,6 +16,8 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+import java.util.Objects;
+
 @Mixin(PlayerEntity.class)
 public abstract class PlayerEntityMixin extends LivingEntity {
     protected PlayerEntityMixin(EntityType<? extends LivingEntity> entityType, World world) {
@@ -61,7 +63,7 @@ public abstract class PlayerEntityMixin extends LivingEntity {
     }
     @Unique
     public void setMaxHealth_FoodLevel(int max) {
-        getAttributes().getCustomInstance(EntityAttributes.MAX_HEALTH).setBaseValue(max);
+        Objects.requireNonNull(getAttributes().getCustomInstance(EntityAttributes.MAX_HEALTH)).setBaseValue(max);
         ((HungerManagerExtension) hungerManager).setMaxFoodLevel(max);
     }
     @Overwrite
@@ -71,8 +73,8 @@ public abstract class PlayerEntityMixin extends LivingEntity {
                 .add(EntityAttributes.MOVEMENT_SPEED, 0.1F)
                 .add(EntityAttributes.ATTACK_SPEED)
                 .add(EntityAttributes.LUCK)
-                .add(EntityAttributes.BLOCK_INTERACTION_RANGE, 2.5)
-                .add(EntityAttributes.ENTITY_INTERACTION_RANGE, 2.0)
+                .add(EntityAttributes.BLOCK_INTERACTION_RANGE, 1.5)
+                .add(EntityAttributes.ENTITY_INTERACTION_RANGE, 1.5)
                 .add(EntityAttributes.BLOCK_BREAK_SPEED)
                 .add(EntityAttributes.SUBMERGED_MINING_SPEED)
                 .add(EntityAttributes.SNEAKING_SPEED)
