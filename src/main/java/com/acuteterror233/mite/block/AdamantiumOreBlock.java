@@ -3,7 +3,6 @@ package com.acuteterror233.mite.block;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.CraftingTableBlock;
-import net.minecraft.screen.CraftingScreenHandler;
 import net.minecraft.screen.NamedScreenHandlerFactory;
 import net.minecraft.screen.ScreenHandlerContext;
 import net.minecraft.screen.SimpleNamedScreenHandlerFactory;
@@ -21,7 +20,7 @@ public class AdamantiumOreBlock extends CraftingTableBlock {
     @Override
     protected NamedScreenHandlerFactory createScreenHandlerFactory(BlockState state, World world, BlockPos pos) {
         return new SimpleNamedScreenHandlerFactory(
-                (syncId, inventory, player) -> new CraftingScreenHandler(syncId, inventory, ScreenHandlerContext.create(world, pos)), TITLE
+                (syncId, inventory, player) -> new csAbstractCraftingScreenHandler(syncId, inventory, ScreenHandlerContext.create(world, pos)), TITLE
         );
     }
 }
