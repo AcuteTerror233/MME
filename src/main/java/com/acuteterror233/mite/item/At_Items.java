@@ -5,7 +5,6 @@ import com.acuteterror233.mite.atinterface.ItemSettingsExtension;
 import com.acuteterror233.mite.block.At_Blocks;
 import com.acuteterror233.mite.item.armor.MiteArmorMaterial;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
-import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.FoodComponent;
 import net.minecraft.item.*;
 import net.minecraft.item.equipment.EquipmentType;

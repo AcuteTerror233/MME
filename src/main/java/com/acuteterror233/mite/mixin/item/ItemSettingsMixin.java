@@ -21,7 +21,7 @@ import org.spongepowered.asm.mixin.Unique;
 import static net.minecraft.item.Item.BASE_ATTACK_DAMAGE_MODIFIER_ID;
 import static net.minecraft.item.Item.BASE_ATTACK_SPEED_MODIFIER_ID;
 
-@Mixin(targets = "net.minecraft.item.Item$Settings")
+@Mixin(Item.Settings.class)
 public abstract class ItemSettingsMixin implements net.fabricmc.fabric.api.item.v1.FabricItem.Settings,ItemSettingsExtension{
 
     @Shadow public abstract Item.Settings maxDamage(int maxDamage);
