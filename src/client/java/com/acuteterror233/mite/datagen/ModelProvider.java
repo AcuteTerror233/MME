@@ -1,12 +1,17 @@
 package com.acuteterror233.mite.datagen;
 
+import com.acuteterror233.mite.At_mite;
+import com.acuteterror233.mite.atinterface.BlockStateModelGeneratorExtension;
+import com.acuteterror233.mite.atinterface.ItemModelGeneratorExtension;
 import com.acuteterror233.mite.block.At_Blocks;
 import com.acuteterror233.mite.item.At_Items;
+import com.acuteterror233.mite.item.armor.At_ArmorMaterials;
 import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.minecraft.client.data.BlockStateModelGenerator;
 import net.minecraft.client.data.ItemModelGenerator;
 import net.minecraft.client.data.Models;
+import net.minecraft.util.Identifier;
 
 
 public class ModelProvider extends FabricModelProvider {
@@ -17,59 +22,74 @@ public class ModelProvider extends FabricModelProvider {
     @Override
     public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
         blockStateModelGenerator.registerSimpleCubeAll(At_Blocks.ADAMANTIUM_ORE);
+        ((BlockStateModelGeneratorExtension)blockStateModelGenerator).registerBars(At_Blocks.ADAMANTIUM_BARS);
+        blockStateModelGenerator.registerSimpleCubeAll(At_Blocks.ADAMANTIUM_BLOCK);
+        ((BlockStateModelGeneratorExtension)blockStateModelGenerator).registerBars(At_Blocks.MITHRIL_BARS);
+        blockStateModelGenerator.registerSimpleCubeAll(At_Blocks.MITHRIL_BLOCK);
+        ((BlockStateModelGeneratorExtension)blockStateModelGenerator).registerBars(At_Blocks.SILVER_BARS);
+        blockStateModelGenerator.registerSimpleCubeAll(At_Blocks.SILVER_BLOCK);
+        ((BlockStateModelGeneratorExtension)blockStateModelGenerator).registerBars(At_Blocks.ANCIENT_METAL_BARS);
+        blockStateModelGenerator.registerSimpleCubeAll(At_Blocks.ANCIENT_METAL_BLOCK);
+        ((BlockStateModelGeneratorExtension)blockStateModelGenerator).registerBars(At_Blocks.GOLD_BARS);
+        blockStateModelGenerator.registerSimpleCubeAll(At_Blocks.MANTLE);
+        blockStateModelGenerator.registerSimpleCubeAll(At_Blocks.MITHRIL_ORE);
+        blockStateModelGenerator.registerSimpleCubeAll(At_Blocks.SILVER_ORE);
+        ((BlockStateModelGeneratorExtension) blockStateModelGenerator).registerBars(At_Blocks.COPPER_BARS);
     }
 
     @Override
     public void generateItemModels(ItemModelGenerator itemModelGenerator) {
-        itemModelGenerator.register(At_Items.ADAMANTIUM_HELMET, Models.GENERATED);
-        itemModelGenerator.register(At_Items.ADAMANTIUM_CHESTPLATE, Models.GENERATED);
-        itemModelGenerator.register(At_Items.ADAMANTIUM_LEGGINGS, Models.GENERATED);
-        itemModelGenerator.register(At_Items.ADAMANTIUM_BOOTS, Models.GENERATED);
-        itemModelGenerator.register(At_Items.ADAMANTIUM_CHAINMAIL_HELMET, Models.GENERATED);
-        itemModelGenerator.register(At_Items.ADAMANTIUM_CHAINMAIL_CHESTPLATE, Models.GENERATED);
-        itemModelGenerator.register(At_Items.ADAMANTIUM_CHAINMAIL_LEGGINGS, Models.GENERATED);
-        itemModelGenerator.register(At_Items.ADAMANTIUM_CHAINMAIL_BOOTS, Models.GENERATED);
-        itemModelGenerator.register(At_Items.ANCIENT_METAL_HELMET, Models.GENERATED);
-        itemModelGenerator.register(At_Items.ANCIENT_METAL_CHESTPLATE, Models.GENERATED);
-        itemModelGenerator.register(At_Items.ANCIENT_METAL_LEGGINGS, Models.GENERATED);
-        itemModelGenerator.register(At_Items.ANCIENT_METAL_BOOTS, Models.GENERATED);
-        itemModelGenerator.register(At_Items.ANCIENT_METAL_CHAINMAIL_HELMET, Models.GENERATED);
-        itemModelGenerator.register(At_Items.ANCIENT_METAL_CHAINMAIL_CHESTPLATE, Models.GENERATED);
-        itemModelGenerator.register(At_Items.ANCIENT_METAL_CHAINMAIL_LEGGINGS, Models.GENERATED);
-        itemModelGenerator.register(At_Items.ANCIENT_METAL_CHAINMAIL_BOOTS, Models.GENERATED);
-        itemModelGenerator.register(At_Items.COPPER_HELMET, Models.GENERATED);
-        itemModelGenerator.register(At_Items.COPPER_CHESTPLATE, Models.GENERATED);
-        itemModelGenerator.register(At_Items.COPPER_LEGGINGS, Models.GENERATED);
-        itemModelGenerator.register(At_Items.COPPER_BOOTS, Models.GENERATED);
-        itemModelGenerator.register(At_Items.COPPER_CHAINMAIL_HELMET, Models.GENERATED);
-        itemModelGenerator.register(At_Items.COPPER_CHAINMAIL_CHESTPLATE, Models.GENERATED);
-        itemModelGenerator.register(At_Items.COPPER_CHAINMAIL_LEGGINGS, Models.GENERATED);
-        itemModelGenerator.register(At_Items.COPPER_CHAINMAIL_BOOTS, Models.GENERATED);
-        itemModelGenerator.register(At_Items.MITHRIL_HELMET, Models.GENERATED);
-        itemModelGenerator.register(At_Items.MITHRIL_CHESTPLATE, Models.GENERATED);
-        itemModelGenerator.register(At_Items.MITHRIL_LEGGINGS, Models.GENERATED);
-        itemModelGenerator.register(At_Items.MITHRIL_BOOTS, Models.GENERATED);
-        itemModelGenerator.register(At_Items.MITHRIL_CHAINMAIL_HELMET, Models.GENERATED);
-        itemModelGenerator.register(At_Items.MITHRIL_CHAINMAIL_CHESTPLATE, Models.GENERATED);
-        itemModelGenerator.register(At_Items.MITHRIL_CHAINMAIL_LEGGINGS, Models.GENERATED);
-        itemModelGenerator.register(At_Items.MITHRIL_CHAINMAIL_BOOTS, Models.GENERATED);
-        itemModelGenerator.register(At_Items.RUSTED_IRON_HELMET,  Models.GENERATED);
-        itemModelGenerator.register(At_Items.RUSTED_IRON_CHESTPLATE, Models.GENERATED);
-        itemModelGenerator.register(At_Items.RUSTED_IRON_LEGGINGS, Models.GENERATED);
-        itemModelGenerator.register(At_Items.RUSTED_IRON_BOOTS, Models.GENERATED);
-        itemModelGenerator.register(At_Items.RUSTED_IRON_CHAINMAIL_HELMET, Models.GENERATED);
-        itemModelGenerator.register(At_Items.RUSTED_IRON_CHAINMAIL_CHESTPLATE, Models.GENERATED);
-        itemModelGenerator.register(At_Items.RUSTED_IRON_CHAINMAIL_LEGGINGS, Models.GENERATED);
-        itemModelGenerator.register(At_Items.RUSTED_IRON_CHAINMAIL_BOOTS, Models.GENERATED);
-        itemModelGenerator.register(At_Items.SILVER_HELMET, Models.GENERATED);
-        itemModelGenerator.register(At_Items.SILVER_CHESTPLATE, Models.GENERATED);
-        itemModelGenerator.register(At_Items.SILVER_LEGGINGS, Models.GENERATED);
-        itemModelGenerator.register(At_Items.SILVER_BOOTS, Models.GENERATED);
-        itemModelGenerator.register(At_Items.SILVER_CHAINMAIL_HELMET, Models.GENERATED);
-        itemModelGenerator.register(At_Items.SILVER_CHAINMAIL_CHESTPLATE, Models.GENERATED);
-        itemModelGenerator.register(At_Items.SILVER_CHAINMAIL_LEGGINGS, Models.GENERATED);
-        itemModelGenerator.register(At_Items.SILVER_CHAINMAIL_BOOTS, Models.GENERATED);
+        //装备部分
+        itemModelGenerator.registerArmor(At_Items.ADAMANTIUM_HELMET, At_ArmorMaterials.ADAMANTIUM_ARMOR_MATERIAL_KEY, ItemModelGenerator.HELMET_TRIM_ID_PREFIX,false);
+        itemModelGenerator.registerArmor(At_Items.ADAMANTIUM_CHESTPLATE, At_ArmorMaterials.ADAMANTIUM_ARMOR_MATERIAL_KEY, ItemModelGenerator.CHESTPLATE_TRIM_ID_PREFIX,false);
+        itemModelGenerator.registerArmor(At_Items.ADAMANTIUM_LEGGINGS, At_ArmorMaterials.ADAMANTIUM_ARMOR_MATERIAL_KEY, ItemModelGenerator.LEGGINGS_TRIM_ID_PREFIX,false);
+        itemModelGenerator.registerArmor(At_Items.ADAMANTIUM_BOOTS, At_ArmorMaterials.ADAMANTIUM_ARMOR_MATERIAL_KEY, ItemModelGenerator.BOOTS_TRIM_ID_PREFIX,false);
+        itemModelGenerator.registerArmor(At_Items.ADAMANTIUM_CHAINMAIL_HELMET, At_ArmorMaterials.ADAMANTIUM_CHAINMAIL_ARMOR_MATERIAL_KEY, ItemModelGenerator.HELMET_TRIM_ID_PREFIX,false);
+        itemModelGenerator.registerArmor(At_Items.ADAMANTIUM_CHAINMAIL_CHESTPLATE, At_ArmorMaterials.ADAMANTIUM_CHAINMAIL_ARMOR_MATERIAL_KEY, ItemModelGenerator.CHESTPLATE_TRIM_ID_PREFIX,false);
+        itemModelGenerator.registerArmor(At_Items.ADAMANTIUM_CHAINMAIL_LEGGINGS, At_ArmorMaterials.ADAMANTIUM_CHAINMAIL_ARMOR_MATERIAL_KEY, ItemModelGenerator.LEGGINGS_TRIM_ID_PREFIX,false);
+        itemModelGenerator.registerArmor(At_Items.ADAMANTIUM_CHAINMAIL_BOOTS, At_ArmorMaterials.ADAMANTIUM_CHAINMAIL_ARMOR_MATERIAL_KEY, ItemModelGenerator.BOOTS_TRIM_ID_PREFIX,false);
+        itemModelGenerator.registerArmor(At_Items.ANCIENT_METAL_HELMET, At_ArmorMaterials.ANCIENT_METAL_ARMOR_MATERIAL_KEY, ItemModelGenerator.HELMET_TRIM_ID_PREFIX,false);
+        itemModelGenerator.registerArmor(At_Items.ANCIENT_METAL_CHESTPLATE, At_ArmorMaterials.ANCIENT_METAL_ARMOR_MATERIAL_KEY, ItemModelGenerator.CHESTPLATE_TRIM_ID_PREFIX,false);
+        itemModelGenerator.registerArmor(At_Items.ANCIENT_METAL_LEGGINGS, At_ArmorMaterials.ANCIENT_METAL_ARMOR_MATERIAL_KEY, ItemModelGenerator.LEGGINGS_TRIM_ID_PREFIX,false);
+        itemModelGenerator.registerArmor(At_Items.ANCIENT_METAL_BOOTS, At_ArmorMaterials.ANCIENT_METAL_ARMOR_MATERIAL_KEY, ItemModelGenerator.BOOTS_TRIM_ID_PREFIX,false);
+        itemModelGenerator.registerArmor(At_Items.ANCIENT_METAL_CHAINMAIL_HELMET, At_ArmorMaterials.ANCIENT_METAL_CHAINMAIL_ARMOR_MATERIAL_KEY, ItemModelGenerator.HELMET_TRIM_ID_PREFIX,false);
+        itemModelGenerator.registerArmor(At_Items.ANCIENT_METAL_CHAINMAIL_CHESTPLATE, At_ArmorMaterials.ANCIENT_METAL_CHAINMAIL_ARMOR_MATERIAL_KEY, ItemModelGenerator.CHESTPLATE_TRIM_ID_PREFIX,false);
+        itemModelGenerator.registerArmor(At_Items.ANCIENT_METAL_CHAINMAIL_LEGGINGS, At_ArmorMaterials.ANCIENT_METAL_CHAINMAIL_ARMOR_MATERIAL_KEY, ItemModelGenerator.LEGGINGS_TRIM_ID_PREFIX,false);
+        itemModelGenerator.registerArmor(At_Items.ANCIENT_METAL_CHAINMAIL_BOOTS, At_ArmorMaterials.ANCIENT_METAL_CHAINMAIL_ARMOR_MATERIAL_KEY, ItemModelGenerator.BOOTS_TRIM_ID_PREFIX,false);
+        itemModelGenerator.registerArmor(At_Items.COPPER_HELMET, At_ArmorMaterials.COPPER_ARMOR_MATERIAL_KEY, ItemModelGenerator.HELMET_TRIM_ID_PREFIX,false);
+        itemModelGenerator.registerArmor(At_Items.COPPER_CHESTPLATE, At_ArmorMaterials.COPPER_ARMOR_MATERIAL_KEY, ItemModelGenerator.CHESTPLATE_TRIM_ID_PREFIX,false);
+        itemModelGenerator.registerArmor(At_Items.COPPER_LEGGINGS, At_ArmorMaterials.COPPER_ARMOR_MATERIAL_KEY, ItemModelGenerator.LEGGINGS_TRIM_ID_PREFIX,false);
+        itemModelGenerator.registerArmor(At_Items.COPPER_BOOTS, At_ArmorMaterials.COPPER_ARMOR_MATERIAL_KEY, ItemModelGenerator.BOOTS_TRIM_ID_PREFIX,false);
+        itemModelGenerator.registerArmor(At_Items.COPPER_CHAINMAIL_HELMET, At_ArmorMaterials.COPPER_CHAINMAIL_ARMOR_MATERIAL_KEY, ItemModelGenerator.HELMET_TRIM_ID_PREFIX,false);
+        itemModelGenerator.registerArmor(At_Items.COPPER_CHAINMAIL_CHESTPLATE, At_ArmorMaterials.COPPER_CHAINMAIL_ARMOR_MATERIAL_KEY, ItemModelGenerator.CHESTPLATE_TRIM_ID_PREFIX,false);
+        itemModelGenerator.registerArmor(At_Items.COPPER_CHAINMAIL_LEGGINGS, At_ArmorMaterials.COPPER_CHAINMAIL_ARMOR_MATERIAL_KEY, ItemModelGenerator.LEGGINGS_TRIM_ID_PREFIX,false);
+        itemModelGenerator.registerArmor(At_Items.COPPER_CHAINMAIL_BOOTS, At_ArmorMaterials.COPPER_CHAINMAIL_ARMOR_MATERIAL_KEY, ItemModelGenerator.BOOTS_TRIM_ID_PREFIX,false);
+        itemModelGenerator.registerArmor(At_Items.MITHRIL_HELMET, At_ArmorMaterials.MITHRIL_ARMOR_MATERIAL_KEY, ItemModelGenerator.HELMET_TRIM_ID_PREFIX,false);
+        itemModelGenerator.registerArmor(At_Items.MITHRIL_CHESTPLATE, At_ArmorMaterials.MITHRIL_ARMOR_MATERIAL_KEY, ItemModelGenerator.CHESTPLATE_TRIM_ID_PREFIX,false);
+        itemModelGenerator.registerArmor(At_Items.MITHRIL_LEGGINGS, At_ArmorMaterials.MITHRIL_ARMOR_MATERIAL_KEY, ItemModelGenerator.LEGGINGS_TRIM_ID_PREFIX,false);
+        itemModelGenerator.registerArmor(At_Items.MITHRIL_BOOTS, At_ArmorMaterials.MITHRIL_ARMOR_MATERIAL_KEY, ItemModelGenerator.BOOTS_TRIM_ID_PREFIX,false);
+        itemModelGenerator.registerArmor(At_Items.MITHRIL_CHAINMAIL_HELMET, At_ArmorMaterials.MITHRIL_CHAINMAIL_ARMOR_MATERIAL_KEY, ItemModelGenerator.HELMET_TRIM_ID_PREFIX,false);
+        itemModelGenerator.registerArmor(At_Items.MITHRIL_CHAINMAIL_CHESTPLATE, At_ArmorMaterials.MITHRIL_CHAINMAIL_ARMOR_MATERIAL_KEY, ItemModelGenerator.CHESTPLATE_TRIM_ID_PREFIX,false);
+        itemModelGenerator.registerArmor(At_Items.MITHRIL_CHAINMAIL_LEGGINGS, At_ArmorMaterials.MITHRIL_CHAINMAIL_ARMOR_MATERIAL_KEY, ItemModelGenerator.LEGGINGS_TRIM_ID_PREFIX,false);
+        itemModelGenerator.registerArmor(At_Items.MITHRIL_CHAINMAIL_BOOTS, At_ArmorMaterials.MITHRIL_CHAINMAIL_ARMOR_MATERIAL_KEY, ItemModelGenerator.BOOTS_TRIM_ID_PREFIX,false);
+        itemModelGenerator.registerArmor(At_Items.RUSTED_IRON_HELMET,  At_ArmorMaterials.RUSTED_IRON_ARMOR_MATERIAL_KEY, ItemModelGenerator.HELMET_TRIM_ID_PREFIX,false);
+        itemModelGenerator.registerArmor(At_Items.RUSTED_IRON_CHESTPLATE, At_ArmorMaterials.RUSTED_IRON_ARMOR_MATERIAL_KEY, ItemModelGenerator.CHESTPLATE_TRIM_ID_PREFIX,false);
+        itemModelGenerator.registerArmor(At_Items.RUSTED_IRON_LEGGINGS, At_ArmorMaterials.RUSTED_IRON_ARMOR_MATERIAL_KEY, ItemModelGenerator.LEGGINGS_TRIM_ID_PREFIX,false);
+        itemModelGenerator.registerArmor(At_Items.RUSTED_IRON_BOOTS, At_ArmorMaterials.RUSTED_IRON_ARMOR_MATERIAL_KEY, ItemModelGenerator.BOOTS_TRIM_ID_PREFIX,false);
+        itemModelGenerator.registerArmor(At_Items.RUSTED_IRON_CHAINMAIL_HELMET, At_ArmorMaterials.RUSTED_IRON_CHAINMAIL_ARMOR_MATERIAL_KEY, ItemModelGenerator.HELMET_TRIM_ID_PREFIX,false);
+        itemModelGenerator.registerArmor(At_Items.RUSTED_IRON_CHAINMAIL_CHESTPLATE, At_ArmorMaterials.RUSTED_IRON_CHAINMAIL_ARMOR_MATERIAL_KEY, ItemModelGenerator.CHESTPLATE_TRIM_ID_PREFIX,false);
+        itemModelGenerator.registerArmor(At_Items.RUSTED_IRON_CHAINMAIL_LEGGINGS, At_ArmorMaterials.RUSTED_IRON_CHAINMAIL_ARMOR_MATERIAL_KEY, ItemModelGenerator.LEGGINGS_TRIM_ID_PREFIX,false);
+        itemModelGenerator.registerArmor(At_Items.RUSTED_IRON_CHAINMAIL_BOOTS, At_ArmorMaterials.RUSTED_IRON_CHAINMAIL_ARMOR_MATERIAL_KEY, ItemModelGenerator.BOOTS_TRIM_ID_PREFIX,false);
+        itemModelGenerator.registerArmor(At_Items.SILVER_HELMET, At_ArmorMaterials.SILVER_ARMOR_MATERIAL_KEY, ItemModelGenerator.HELMET_TRIM_ID_PREFIX,false);
+        itemModelGenerator.registerArmor(At_Items.SILVER_CHESTPLATE, At_ArmorMaterials.SILVER_ARMOR_MATERIAL_KEY, ItemModelGenerator.CHESTPLATE_TRIM_ID_PREFIX,false);
+        itemModelGenerator.registerArmor(At_Items.SILVER_LEGGINGS, At_ArmorMaterials.SILVER_ARMOR_MATERIAL_KEY, ItemModelGenerator.LEGGINGS_TRIM_ID_PREFIX,false);
+        itemModelGenerator.registerArmor(At_Items.SILVER_BOOTS, At_ArmorMaterials.SILVER_ARMOR_MATERIAL_KEY, ItemModelGenerator.BOOTS_TRIM_ID_PREFIX,false);
+        itemModelGenerator.registerArmor(At_Items.SILVER_CHAINMAIL_HELMET, At_ArmorMaterials.SILVER_CHAINMAIL_ARMOR_MATERIAL_KEY, ItemModelGenerator.HELMET_TRIM_ID_PREFIX,false);
+        itemModelGenerator.registerArmor(At_Items.SILVER_CHAINMAIL_CHESTPLATE, At_ArmorMaterials.SILVER_CHAINMAIL_ARMOR_MATERIAL_KEY, ItemModelGenerator.CHESTPLATE_TRIM_ID_PREFIX,false);
+        itemModelGenerator.registerArmor(At_Items.SILVER_CHAINMAIL_LEGGINGS, At_ArmorMaterials.SILVER_CHAINMAIL_ARMOR_MATERIAL_KEY, ItemModelGenerator.LEGGINGS_TRIM_ID_PREFIX,false);
+        itemModelGenerator.registerArmor(At_Items.SILVER_CHAINMAIL_BOOTS, At_ArmorMaterials.SILVER_CHAINMAIL_ARMOR_MATERIAL_KEY, ItemModelGenerator.BOOTS_TRIM_ID_PREFIX,false);
 
+        //食物部分
         itemModelGenerator.register(At_Items.BANANA, Models.GENERATED);
         itemModelGenerator.register(At_Items.BLUEBERRIE, Models.GENERATED);
         itemModelGenerator.register(At_Items.CHEESE, Models.GENERATED);
@@ -96,6 +116,7 @@ public class ModelProvider extends FabricModelProvider {
         itemModelGenerator.register(At_Items.SORBET, Models.GENERATED);
         itemModelGenerator.register(At_Items.VEGETABLE_SOUP, Models.GENERATED);
 
+        //币,锁链和箭
         itemModelGenerator.register(At_Items.ADAMANTIUM_ARROW, Models.GENERATED);
         itemModelGenerator.register(At_Items.ANCIENT_METAL_ARROW, Models.GENERATED);
         itemModelGenerator.register(At_Items.COPPER_ARROW, Models.GENERATED);
@@ -122,6 +143,7 @@ public class ModelProvider extends FabricModelProvider {
         itemModelGenerator.register(At_Items.SILVER_COINS, Models.GENERATED);
         itemModelGenerator.register(At_Items.IRON_COINS, Models.GENERATED);
 
+        //工具,武器
         itemModelGenerator.register(At_Items.ADAMANTIUM_AXE, Models.HANDHELD);
         itemModelGenerator.register(At_Items.ADAMANTIUM_BATTLE_AXE, Models.HANDHELD);
         itemModelGenerator.register(At_Items.ADAMANTIUM_DAGGER, Models.HANDHELD);
@@ -231,5 +253,28 @@ public class ModelProvider extends FabricModelProvider {
         itemModelGenerator.register(At_Items.STONE_DAGGER, Models.HANDHELD);
         itemModelGenerator.register(At_Items.WOOD_CLUB, Models.HANDHELD);
         itemModelGenerator.register(At_Items.WOOD_CUDGEL, Models.HANDHELD);
+
+        Identifier axolotl = Identifier.of(At_mite.MOD_ID, "item/nobuckets/axolotl");
+        Identifier cod = Identifier.of(At_mite.MOD_ID, "item/nobuckets/cod");
+        Identifier lava = Identifier.of(At_mite.MOD_ID, "item/nobuckets/lava");
+        Identifier milk = Identifier.of(At_mite.MOD_ID, "item/nobuckets/milk");
+        Identifier powder_snow = Identifier.of(At_mite.MOD_ID, "item/nobuckets/powder_snow");
+        Identifier pufferfish = Identifier.of(At_mite.MOD_ID, "item/nobuckets/pufferfish");
+        Identifier salmon = Identifier.of(At_mite.MOD_ID, "item/nobuckets/salmon");
+        Identifier tadpole = Identifier.of(At_mite.MOD_ID, "item/nobuckets/tadpole");
+        Identifier tropical_fish = Identifier.of(At_mite.MOD_ID, "item/nobuckets/tropical_fish");
+        Identifier water = Identifier.of(At_mite.MOD_ID, "item/nobuckets/water");
+
+        ((ItemModelGeneratorExtension)itemModelGenerator).registerbucket(At_Items.ADAMANTIUM_BUCKET,null,At_Items.ADAMANTIUM_BUCKET);
+        ((ItemModelGeneratorExtension)itemModelGenerator).registerbucket(At_Items.WATER_ADAMANTIUM_BUCKET,water,At_Items.ADAMANTIUM_BUCKET);
+        ((ItemModelGeneratorExtension)itemModelGenerator).registerbucket(At_Items.LAVA_ADAMANTIUM_BUCKET,lava,At_Items.ADAMANTIUM_BUCKET);
+        ((ItemModelGeneratorExtension)itemModelGenerator).registerbucket(At_Items.POWDER_SNOW_ADAMANTIUM_BUCKET,powder_snow,At_Items.ADAMANTIUM_BUCKET);
+        ((ItemModelGeneratorExtension)itemModelGenerator).registerbucket(At_Items.MILK_ADAMANTIUM_BUCKET,milk,At_Items.ADAMANTIUM_BUCKET);
+        ((ItemModelGeneratorExtension)itemModelGenerator).registerbucket(At_Items.PUFFERFISH_ADAMANTIUM_BUCKET,pufferfish,At_Items.ADAMANTIUM_BUCKET);
+        ((ItemModelGeneratorExtension)itemModelGenerator).registerbucket(At_Items.SALMON_ADAMANTIUM_BUCKET,salmon,At_Items.ADAMANTIUM_BUCKET);
+        ((ItemModelGeneratorExtension)itemModelGenerator).registerbucket(At_Items.COD_ADAMANTIUM_BUCKET,cod,At_Items.ADAMANTIUM_BUCKET);
+        ((ItemModelGeneratorExtension)itemModelGenerator).registerbucket(At_Items.TROPICAL_FISH_ADAMANTIUM_BUCKET,tropical_fish,At_Items.ADAMANTIUM_BUCKET);
+        ((ItemModelGeneratorExtension)itemModelGenerator).registerbucket(At_Items.AXOLOTL_ADAMANTIUM_BUCKET,axolotl,At_Items.ADAMANTIUM_BUCKET);
+        ((ItemModelGeneratorExtension)itemModelGenerator).registerbucket(At_Items.TADPOLE_ADAMANTIUM_BUCKET,tadpole,At_Items.ADAMANTIUM_BUCKET);
     }
 }

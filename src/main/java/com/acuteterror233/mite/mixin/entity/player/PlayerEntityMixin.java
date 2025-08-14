@@ -26,10 +26,6 @@ public abstract class PlayerEntityMixin extends LivingEntity {
     @Shadow public int experienceLevel;
     @Shadow protected HungerManager hungerManager;
 
-    /**
-     * @author
-     * @reason
-     */
     @Overwrite
     public int getNextLevelExperience() {
         int ret;

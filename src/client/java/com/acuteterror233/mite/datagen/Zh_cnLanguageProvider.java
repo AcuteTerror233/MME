@@ -227,7 +227,33 @@ public class Zh_cnLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(At_Items.STONE_DAGGER, "石匕首");
         translationBuilder.add(At_Items.WOOD_CLUB, "木棒");
         translationBuilder.add(At_Items.WOOD_CUDGEL,"小木棒");
+
         translationBuilder.add(At_Blocks.ADAMANTIUM_ORE, "艾德曼矿");
+        translationBuilder.add(At_Blocks.ADAMANTIUM_BARS, "艾德曼栏杆");
+        translationBuilder.add(At_Blocks.ADAMANTIUM_BLOCK, "艾德曼块");
+        translationBuilder.add(At_Blocks.ANCIENT_METAL_BARS, "古代金属栏杆");
+        translationBuilder.add(At_Blocks.ANCIENT_METAL_BLOCK, "古代金属块");
+        translationBuilder.add(At_Blocks.GOLD_BARS, "金栏杆");
+        translationBuilder.add(At_Blocks.MITHRIL_BARS, "秘银栏杆");
+        translationBuilder.add(At_Blocks.MITHRIL_BLOCK, "秘银块");
+        translationBuilder.add(At_Blocks.MITHRIL_ORE, "秘银矿");
+        translationBuilder.add(At_Blocks.SILVER_BARS, "银栏杆");
+        translationBuilder.add(At_Blocks.SILVER_BLOCK, "银块");
+        translationBuilder.add(At_Blocks.SILVER_ORE, "银矿");
+        translationBuilder.add(At_Blocks.MANTLE, "地幔");
+        translationBuilder.add(At_Blocks.COPPER_BARS, "铜栏杆");
+
+        translationBuilder.add(At_Items.ADAMANTIUM_BUCKET,"艾德曼桶");
+        translationBuilder.add(At_Items.LAVA_ADAMANTIUM_BUCKET, "装满熔岩的艾德曼桶");
+        translationBuilder.add(At_Items.WATER_ADAMANTIUM_BUCKET, "装满水的艾德曼桶");
+        translationBuilder.add(At_Items.POWDER_SNOW_ADAMANTIUM_BUCKET, "装满细雪的艾德曼桶");
+        translationBuilder.add(At_Items.MILK_ADAMANTIUM_BUCKET, "装满牛奶的艾德曼桶");
+        translationBuilder.add(At_Items.PUFFERFISH_ADAMANTIUM_BUCKET, "装有河豚的艾德曼桶");
+        translationBuilder.add(At_Items.SALMON_ADAMANTIUM_BUCKET, "装有鲑鱼桶的艾德曼桶");
+        translationBuilder.add(At_Items.COD_ADAMANTIUM_BUCKET, "装有鳕鱼的艾德曼桶");
+        translationBuilder.add(At_Items.TROPICAL_FISH_ADAMANTIUM_BUCKET, "装有热带鱼桶的艾德曼桶");
+        translationBuilder.add(At_Items.AXOLOTL_ADAMANTIUM_BUCKET, "装有美西螈的艾德曼桶");
+        translationBuilder.add(At_Items.TADPOLE_ADAMANTIUM_BUCKET, "装有蝌蚪的艾德曼桶");
     }
 
 }

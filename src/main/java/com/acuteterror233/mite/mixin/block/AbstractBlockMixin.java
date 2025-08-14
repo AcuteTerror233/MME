@@ -11,10 +11,7 @@ import org.spongepowered.asm.mixin.Overwrite;
 
 @Mixin(AbstractBlock.class)
 public abstract class AbstractBlockMixin implements ToggleableFeature {
-    /**
-     * @author 
-     * @reason 
-     */
+
     @Overwrite
     public float calcBlockBreakingDelta(BlockState state, PlayerEntity player, BlockView world, BlockPos pos) {
         float f = state.getHardness(world, pos);

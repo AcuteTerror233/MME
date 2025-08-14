@@ -7,10 +7,15 @@
   "mixins": [
     "block.AbstractBlockMixin",
     "block.AbstractBlockSettingsMixin",
+    "block.BubbleColumnBlockMixin",
+    "block.FluidBlockMixin",
+    "block.PowderSnowBlockMixin",
+    "block.WaterloggableMixin",
+    "entity.BucketableMixin",
     "entity.player.HungerManagerMixin",
     "entity.player.PlayerEntityMixin",
-    "inventory.CraftingResultInventoryMixin",
     "item.ItemSettingsMixin",
+    "item.ItemStackMixin",
     "item.ToolMaterialMixin"
   ],
   "injectors": {

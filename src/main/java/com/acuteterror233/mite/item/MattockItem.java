@@ -27,16 +27,16 @@ public class MattockItem extends Item {
     public MattockItem(ToolMaterial material, float attackDamage, float attackSpeed, Settings settings) {
         super(((ItemSettingsExtension)settings).mattock(material, attackDamage, attackSpeed));
     }
-protected static final Map<Block, BlockState> PATH_STATES = Maps.newHashMap(
-        new ImmutableMap.Builder<Block, BlockState>()
-                .put(Blocks.GRASS_BLOCK, Blocks.DIRT_PATH.getDefaultState())
-                .put(Blocks.DIRT, Blocks.DIRT_PATH.getDefaultState())
-                .put(Blocks.PODZOL, Blocks.DIRT_PATH.getDefaultState())
-                .put(Blocks.COARSE_DIRT, Blocks.DIRT_PATH.getDefaultState())
-                .put(Blocks.MYCELIUM, Blocks.DIRT_PATH.getDefaultState())
-                .put(Blocks.ROOTED_DIRT, Blocks.DIRT_PATH.getDefaultState())
-                .build()
-);
+    protected static final Map<Block, BlockState> PATH_STATES = Maps.newHashMap(
+            new ImmutableMap.Builder<Block, BlockState>()
+                    .put(Blocks.GRASS_BLOCK, Blocks.DIRT_PATH.getDefaultState())
+                    .put(Blocks.DIRT, Blocks.DIRT_PATH.getDefaultState())
+                    .put(Blocks.PODZOL, Blocks.DIRT_PATH.getDefaultState())
+                    .put(Blocks.COARSE_DIRT, Blocks.DIRT_PATH.getDefaultState())
+                    .put(Blocks.MYCELIUM, Blocks.DIRT_PATH.getDefaultState())
+                    .put(Blocks.ROOTED_DIRT, Blocks.DIRT_PATH.getDefaultState())
+                    .build()
+    );
 
 
     @Override

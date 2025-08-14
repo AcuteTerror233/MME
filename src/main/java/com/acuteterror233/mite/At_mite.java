@@ -4,12 +4,19 @@ import com.acuteterror233.mite.block.At_Blocks;
 import com.acuteterror233.mite.item.At_Items;
 import net.fabricmc.api.ModInitializer;
 
+import net.minecraft.item.Item;
+import net.minecraft.registry.RegistryKeys;
+import net.minecraft.registry.tag.TagKey;
+import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class At_mite implements ModInitializer {
 	public static final String MOD_ID = "at_mite";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
+	public static final Identifier BASE_BLOCK_INTERACTION_RANGE = Identifier.ofVanilla("block_interaction_range");
+	public static final Identifier BASE_ENTITY_INTERACTION_RANGE = Identifier.ofVanilla("entity_interaction_range");
+	public static final TagKey<Item> WATER_BUCKET = TagKey.of(RegistryKeys.ITEM, Identifier.of(At_mite.MOD_ID, "water_bucket"));
 
 	@Override
 	public void onInitialize() {

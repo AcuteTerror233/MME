@@ -18,10 +18,10 @@ public abstract class HungerManagerMixin implements HungerManagerExtension {
     @Unique private int MaxFoodLevel = 6;
     @Unique private int healTickTimer = 0;
     @Unique @Override public void setMaxFoodLevel(int maxFoodLevel) {
-        MaxFoodLevel = maxFoodLevel;
+        this.MaxFoodLevel = maxFoodLevel;
     }
     @Unique @Override public int getMaxFoodLevel() {
-        return MaxFoodLevel;
+        return this.MaxFoodLevel;
     }
 
     @Shadow private int foodLevel;

@@ -226,6 +226,32 @@ public class En_usLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(At_Items.STONE_DAGGER, "Stone Dagger");
         translationBuilder.add(At_Items.WOOD_CLUB, "Wood Club");
         translationBuilder.add(At_Items.WOOD_CUDGEL, "Wood Cudgel ");
+
         translationBuilder.add(At_Blocks.ADAMANTIUM_ORE, "Adamantium Ore");
+        translationBuilder.add(At_Blocks.ADAMANTIUM_BARS, "Adamantium Bars");
+        translationBuilder.add(At_Blocks.ADAMANTIUM_BLOCK, "Adamantium Block");
+        translationBuilder.add(At_Blocks.ANCIENT_METAL_BARS, "Ancient Metal Bars");
+        translationBuilder.add(At_Blocks.ANCIENT_METAL_BLOCK, "Ancient Metal Block");
+        translationBuilder.add(At_Blocks.GOLD_BARS, "Gold Bars");
+        translationBuilder.add(At_Blocks.MITHRIL_BARS, "Mithril Bars");
+        translationBuilder.add(At_Blocks.MITHRIL_BLOCK, "Mithril Block");
+        translationBuilder.add(At_Blocks.MITHRIL_ORE, "Mithril Ore");
+        translationBuilder.add(At_Blocks.SILVER_BARS, "Silver BARS");
+        translationBuilder.add(At_Blocks.SILVER_BLOCK, "Silver Block");
+        translationBuilder.add(At_Blocks.SILVER_ORE, "Silver Ore");
+        translationBuilder.add(At_Blocks.MANTLE, "Mantle");
+        translationBuilder.add(At_Blocks.COPPER_BARS, "Copper BARS");
+
+        translationBuilder.add(At_Items.ADAMANTIUM_BUCKET,"adamantium bucket");
+        translationBuilder.add(At_Items.LAVA_ADAMANTIUM_BUCKET, "Adamantium Bucket of Lava");
+        translationBuilder.add(At_Items.WATER_ADAMANTIUM_BUCKET, "Water Bucket of Adamantium");
+        translationBuilder.add(At_Items.POWDER_SNOW_ADAMANTIUM_BUCKET, "Adamantium Bucket of Powder Snow");
+        translationBuilder.add(At_Items.MILK_ADAMANTIUM_BUCKET, "Adamantium Bucket of Milk");
+        translationBuilder.add(At_Items.PUFFERFISH_ADAMANTIUM_BUCKET, "Adamantium Bucket of Pufferfish");
+        translationBuilder.add(At_Items.SALMON_ADAMANTIUM_BUCKET, "Adamantium Bucket of Salmon");
+        translationBuilder.add(At_Items.COD_ADAMANTIUM_BUCKET, "Adamantium Bucket of Cod");
+        translationBuilder.add(At_Items.TROPICAL_FISH_ADAMANTIUM_BUCKET, "Adamantium Bucket of Tropical Fish");
+        translationBuilder.add(At_Items.AXOLOTL_ADAMANTIUM_BUCKET, "Adamantium Bucket of Axolotl");
+        translationBuilder.add(At_Items.TADPOLE_ADAMANTIUM_BUCKET, "Adamantium Bucket of Tadpole");
     }
 }
