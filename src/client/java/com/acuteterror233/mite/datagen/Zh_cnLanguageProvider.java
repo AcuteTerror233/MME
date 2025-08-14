@@ -249,11 +249,70 @@ public class Zh_cnLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(At_Items.POWDER_SNOW_ADAMANTIUM_BUCKET, "装满细雪的艾德曼桶");
         translationBuilder.add(At_Items.MILK_ADAMANTIUM_BUCKET, "装满牛奶的艾德曼桶");
         translationBuilder.add(At_Items.PUFFERFISH_ADAMANTIUM_BUCKET, "装有河豚的艾德曼桶");
-        translationBuilder.add(At_Items.SALMON_ADAMANTIUM_BUCKET, "装有鲑鱼桶的艾德曼桶");
+        translationBuilder.add(At_Items.SALMON_ADAMANTIUM_BUCKET, "装有鲑鱼的艾德曼桶");
         translationBuilder.add(At_Items.COD_ADAMANTIUM_BUCKET, "装有鳕鱼的艾德曼桶");
-        translationBuilder.add(At_Items.TROPICAL_FISH_ADAMANTIUM_BUCKET, "装有热带鱼桶的艾德曼桶");
+        translationBuilder.add(At_Items.TROPICAL_FISH_ADAMANTIUM_BUCKET, "装有热带鱼的艾德曼桶");
         translationBuilder.add(At_Items.AXOLOTL_ADAMANTIUM_BUCKET, "装有美西螈的艾德曼桶");
         translationBuilder.add(At_Items.TADPOLE_ADAMANTIUM_BUCKET, "装有蝌蚪的艾德曼桶");
-    }
 
+        translationBuilder.add(At_Items.ANCIENT_METAL_BUCKET,"远古金属桶");
+        translationBuilder.add(At_Items.LAVA_ANCIENT_METAL_BUCKET, "装满熔岩的远古金属桶");
+        translationBuilder.add(At_Items.WATER_ANCIENT_METAL_BUCKET, "装满水的远古金属桶");
+        translationBuilder.add(At_Items.POWDER_SNOW_ANCIENT_METAL_BUCKET, "装满细雪的远古金属桶");
+        translationBuilder.add(At_Items.MILK_ANCIENT_METAL_BUCKET, "装满牛奶的远古金属桶");
+        translationBuilder.add(At_Items.PUFFERFISH_ANCIENT_METAL_BUCKET, "装有河豚的远古金属桶");
+        translationBuilder.add(At_Items.SALMON_ANCIENT_METAL_BUCKET, "装有鲑鱼的远古金属桶");
+        translationBuilder.add(At_Items.COD_ANCIENT_METAL_BUCKET, "装有鳕鱼的远古金属桶");
+        translationBuilder.add(At_Items.TROPICAL_FISH_ANCIENT_METAL_BUCKET, "装有热带鱼的远古金属桶");
+        translationBuilder.add(At_Items.AXOLOTL_ANCIENT_METAL_BUCKET, "装有美西螈的远古金属桶");
+        translationBuilder.add(At_Items.TADPOLE_ANCIENT_METAL_BUCKET, "装有蝌蚪的远古金属桶");
+
+        translationBuilder.add(At_Items.COPPER_BUCKET,"铜桶");
+        translationBuilder.add(At_Items.LAVA_COPPER_BUCKET, "装满熔岩的铜桶");
+        translationBuilder.add(At_Items.WATER_COPPER_BUCKET, "装满水的铜桶");
+        translationBuilder.add(At_Items.POWDER_SNOW_COPPER_BUCKET, "装满细雪的铜桶");
+        translationBuilder.add(At_Items.MILK_COPPER_BUCKET, "装满牛奶的铜桶");
+        translationBuilder.add(At_Items.PUFFERFISH_COPPER_BUCKET, "装有河豚的铜桶");
+        translationBuilder.add(At_Items.SALMON_COPPER_BUCKET, "装有鲑鱼的铜桶");
+        translationBuilder.add(At_Items.COD_COPPER_BUCKET, "装有鳕鱼的铜桶");
+        translationBuilder.add(At_Items.TROPICAL_FISH_COPPER_BUCKET, "装有热带鱼的铜桶");
+        translationBuilder.add(At_Items.AXOLOTL_COPPER_BUCKET, "装有美西螈的铜桶");
+        translationBuilder.add(At_Items.TADPOLE_COPPER_BUCKET, "装有蝌蚪的铜桶");
+
+        translationBuilder.add(At_Items.GOLD_BUCKET,"金桶");
+        translationBuilder.add(At_Items.LAVA_GOLD_BUCKET, "装满熔岩的金桶");
+        translationBuilder.add(At_Items.WATER_GOLD_BUCKET, "装满水的金桶");
+        translationBuilder.add(At_Items.POWDER_SNOW_GOLD_BUCKET, "装满细雪的金桶");
+        translationBuilder.add(At_Items.MILK_GOLD_BUCKET, "装满牛奶的金桶");
+        translationBuilder.add(At_Items.PUFFERFISH_GOLD_BUCKET, "装有河豚的金桶");
+        translationBuilder.add(At_Items.SALMON_GOLD_BUCKET, "装有鲑鱼的金桶");
+        translationBuilder.add(At_Items.COD_GOLD_BUCKET, "装有鳕鱼的金桶");
+        translationBuilder.add(At_Items.TROPICAL_FISH_GOLD_BUCKET, "装有热带鱼的金桶");
+        translationBuilder.add(At_Items.AXOLOTL_GOLD_BUCKET, "装有美西螈的金桶");
+        translationBuilder.add(At_Items.TADPOLE_GOLD_BUCKET, "装有蝌蚪的金桶");
+
+        translationBuilder.add(At_Items.MITHRIL_BUCKET,"秘银桶");
+        translationBuilder.add(At_Items.LAVA_MITHRIL_BUCKET, "装满熔岩的秘银桶");
+        translationBuilder.add(At_Items.WATER_MITHRIL_BUCKET, "装满水的秘银桶");
+        translationBuilder.add(At_Items.POWDER_SNOW_MITHRIL_BUCKET, "装满细雪的秘银桶");
+        translationBuilder.add(At_Items.MILK_MITHRIL_BUCKET, "装满牛奶的秘银桶");
+        translationBuilder.add(At_Items.PUFFERFISH_MITHRIL_BUCKET, "装有河豚的秘银桶");
+        translationBuilder.add(At_Items.SALMON_MITHRIL_BUCKET, "装有鲑鱼的秘银桶");
+        translationBuilder.add(At_Items.COD_MITHRIL_BUCKET, "装有鳕鱼的秘银桶");
+        translationBuilder.add(At_Items.TROPICAL_FISH_MITHRIL_BUCKET, "装有热带鱼的秘银桶");
+        translationBuilder.add(At_Items.AXOLOTL_MITHRIL_BUCKET, "装有美西螈的秘银桶");
+        translationBuilder.add(At_Items.TADPOLE_MITHRIL_BUCKET, "装有蝌蚪的秘银桶");
+
+        translationBuilder.add(At_Items.SILVER_BUCKET,"银桶");
+        translationBuilder.add(At_Items.LAVA_SILVER_BUCKET, "装满熔岩的银桶");
+        translationBuilder.add(At_Items.WATER_SILVER_BUCKET, "装满水的银桶");
+        translationBuilder.add(At_Items.POWDER_SNOW_SILVER_BUCKET, "装满细雪的银桶");
+        translationBuilder.add(At_Items.MILK_SILVER_BUCKET, "装满牛奶的银桶");
+        translationBuilder.add(At_Items.PUFFERFISH_SILVER_BUCKET, "装有河豚的银桶");
+        translationBuilder.add(At_Items.SALMON_SILVER_BUCKET, "装有鲑鱼的银桶");
+        translationBuilder.add(At_Items.COD_SILVER_BUCKET, "装有鳕鱼的银桶");
+        translationBuilder.add(At_Items.TROPICAL_FISH_SILVER_BUCKET, "装有热带鱼的银桶");
+        translationBuilder.add(At_Items.AXOLOTL_SILVER_BUCKET, "装有美西螈的银桶");
+        translationBuilder.add(At_Items.TADPOLE_SILVER_BUCKET, "装有蝌蚪的银桶");
+    }
 }

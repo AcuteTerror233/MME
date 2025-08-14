@@ -21,12 +21,13 @@ import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
 
 public class At_BucketItem extends BucketItem {
-    final Item item;
-    final Fluid fluid;
-    public At_BucketItem(Fluid fluid, Settings settings, Item item) {
+    private final  Item item;
+    private final  Fluid fluid;
+    //注册名格式必须是"生物/液体_材质"
+    public At_BucketItem(Fluid fluid, Settings settings, Item empty_barrel) {
         super(fluid, settings);
         this.fluid = fluid;
-        this.item = item;
+        this.item = empty_barrel;
     }
 
     @Override

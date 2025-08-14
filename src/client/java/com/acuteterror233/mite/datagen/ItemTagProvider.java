@@ -71,6 +71,11 @@ public class ItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(At_Items.SILVER_CHAINMAIL_BOOTS);
         getOrCreateTagBuilder(At_mite.WATER_BUCKET)
                 .add(At_Items.WATER_ADAMANTIUM_BUCKET)
+                .add(At_Items.WATER_ANCIENT_METAL_BUCKET)
+                .add(At_Items.WATER_COPPER_BUCKET)
+                .add(At_Items.WATER_GOLD_BUCKET)
+                .add(At_Items.WATER_MITHRIL_BUCKET)
+                .add(At_Items.WATER_SILVER_BUCKET)
                 .add(Items.WATER_BUCKET);
     }
 }

@@ -24,8 +24,8 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Map;
 import java.util.Optional;
 
-public class BattleAxeItem extends Item {
-    public BattleAxeItem(ToolMaterial material, float attackDamage, float attackSpeed, Settings settings) {
+public class At_BattleAxeItem extends Item {
+    public At_BattleAxeItem(ToolMaterial material, float attackDamage, float attackSpeed, Settings settings) {
         super(((ItemSettingsExtension)settings).battle_axe(material, attackDamage, attackSpeed));
     }
 

@@ -1,5 +1,6 @@
 package com.acuteterror233.mite.datagen;
 
+import com.acuteterror233.mite.At_mite;
 import com.acuteterror233.mite.block.At_Blocks;
 import com.acuteterror233.mite.item.At_Items;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
@@ -242,9 +243,9 @@ public class En_usLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(At_Blocks.MANTLE, "Mantle");
         translationBuilder.add(At_Blocks.COPPER_BARS, "Copper BARS");
 
-        translationBuilder.add(At_Items.ADAMANTIUM_BUCKET,"adamantium bucket");
+        translationBuilder.add(At_Items.ADAMANTIUM_BUCKET,"Adamantium Bucket");
         translationBuilder.add(At_Items.LAVA_ADAMANTIUM_BUCKET, "Adamantium Bucket of Lava");
-        translationBuilder.add(At_Items.WATER_ADAMANTIUM_BUCKET, "Water Bucket of Adamantium");
+        translationBuilder.add(At_Items.WATER_ADAMANTIUM_BUCKET, "Adamantium of Water Bucket");
         translationBuilder.add(At_Items.POWDER_SNOW_ADAMANTIUM_BUCKET, "Adamantium Bucket of Powder Snow");
         translationBuilder.add(At_Items.MILK_ADAMANTIUM_BUCKET, "Adamantium Bucket of Milk");
         translationBuilder.add(At_Items.PUFFERFISH_ADAMANTIUM_BUCKET, "Adamantium Bucket of Pufferfish");
@@ -253,5 +254,66 @@ public class En_usLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(At_Items.TROPICAL_FISH_ADAMANTIUM_BUCKET, "Adamantium Bucket of Tropical Fish");
         translationBuilder.add(At_Items.AXOLOTL_ADAMANTIUM_BUCKET, "Adamantium Bucket of Axolotl");
         translationBuilder.add(At_Items.TADPOLE_ADAMANTIUM_BUCKET, "Adamantium Bucket of Tadpole");
+
+        translationBuilder.add(At_Items.ANCIENT_METAL_BUCKET,"Ancient Metal bucket");
+        translationBuilder.add(At_Items.LAVA_ANCIENT_METAL_BUCKET, "Ancient Metal Bucket of Lava");
+        translationBuilder.add(At_Items.WATER_ANCIENT_METAL_BUCKET, "Ancient Metal of Water Bucket");
+        translationBuilder.add(At_Items.POWDER_SNOW_ANCIENT_METAL_BUCKET, "Ancient Metal Bucket of Powder Snow");
+        translationBuilder.add(At_Items.MILK_ANCIENT_METAL_BUCKET, "Ancient Metal Bucket of Milk");
+        translationBuilder.add(At_Items.PUFFERFISH_ANCIENT_METAL_BUCKET, "Ancient Metal Bucket of Pufferfish");
+        translationBuilder.add(At_Items.SALMON_ANCIENT_METAL_BUCKET, "Ancient Metal Bucket of Salmon");
+        translationBuilder.add(At_Items.COD_ANCIENT_METAL_BUCKET, "Ancient Metal Bucket of Cod");
+        translationBuilder.add(At_Items.TROPICAL_FISH_ANCIENT_METAL_BUCKET, "Ancient Metal Bucket of Tropical Fish");
+        translationBuilder.add(At_Items.AXOLOTL_ANCIENT_METAL_BUCKET, "Ancient Metal Bucket of Axolotl");
+        translationBuilder.add(At_Items.TADPOLE_ANCIENT_METAL_BUCKET, "Ancient Metal Bucket of Tadpole");
+
+        translationBuilder.add(At_Items.COPPER_BUCKET,"Copper bucket");
+        translationBuilder.add(At_Items.LAVA_COPPER_BUCKET, "Copper Bucket of Lava");
+        translationBuilder.add(At_Items.WATER_COPPER_BUCKET, "Copper of Water Bucket");
+        translationBuilder.add(At_Items.POWDER_SNOW_COPPER_BUCKET, "Copper Bucket of Powder Snow");
+        translationBuilder.add(At_Items.MILK_COPPER_BUCKET, "Copper Bucket of Milk");
+        translationBuilder.add(At_Items.PUFFERFISH_COPPER_BUCKET, "Copper Bucket of Pufferfish");
+        translationBuilder.add(At_Items.SALMON_COPPER_BUCKET, "Copper Bucket of Salmon");
+        translationBuilder.add(At_Items.COD_COPPER_BUCKET, "Copper Bucket of Cod");
+        translationBuilder.add(At_Items.TROPICAL_FISH_COPPER_BUCKET, "Copper Bucket of Tropical Fish");
+        translationBuilder.add(At_Items.AXOLOTL_COPPER_BUCKET, "Copper Bucket of Axolotl");
+        translationBuilder.add(At_Items.TADPOLE_COPPER_BUCKET, "Copper Bucket of Tadpole");
+
+        translationBuilder.add(At_Items.GOLD_BUCKET,"Gold bucket");
+        translationBuilder.add(At_Items.LAVA_GOLD_BUCKET, "Gold Bucket of Lava");
+        translationBuilder.add(At_Items.WATER_GOLD_BUCKET, "Gold of Water Bucket");
+        translationBuilder.add(At_Items.POWDER_SNOW_GOLD_BUCKET, "Gold Bucket of Powder Snow");
+        translationBuilder.add(At_Items.MILK_GOLD_BUCKET, "Gold Bucket of Milk");
+        translationBuilder.add(At_Items.PUFFERFISH_GOLD_BUCKET, "Gold Bucket of Pufferfish");
+        translationBuilder.add(At_Items.SALMON_GOLD_BUCKET, "Gold Bucket of Salmon");
+        translationBuilder.add(At_Items.COD_GOLD_BUCKET, "Gold Bucket of Cod");
+        translationBuilder.add(At_Items.TROPICAL_FISH_GOLD_BUCKET, "Gold Bucket of Tropical Fish");
+        translationBuilder.add(At_Items.AXOLOTL_GOLD_BUCKET, "Gold Bucket of Axolotl");
+        translationBuilder.add(At_Items.TADPOLE_GOLD_BUCKET, "Gold Bucket of Tadpole");
+
+        translationBuilder.add(At_Items.MITHRIL_BUCKET,"Mithril bucket");
+        translationBuilder.add(At_Items.LAVA_MITHRIL_BUCKET, "Mithril Bucket of Lava");
+        translationBuilder.add(At_Items.WATER_MITHRIL_BUCKET, "Mithril of Water Bucket");
+        translationBuilder.add(At_Items.POWDER_SNOW_MITHRIL_BUCKET, "Mithril Bucket of Powder Snow");
+        translationBuilder.add(At_Items.MILK_MITHRIL_BUCKET, "Mithril Bucket of Milk");
+        translationBuilder.add(At_Items.PUFFERFISH_MITHRIL_BUCKET, "Mithril Bucket of Pufferfish");
+        translationBuilder.add(At_Items.SALMON_MITHRIL_BUCKET, "Mithril Bucket of Salmon");
+        translationBuilder.add(At_Items.COD_MITHRIL_BUCKET, "Mithril Bucket of Cod");
+        translationBuilder.add(At_Items.TROPICAL_FISH_MITHRIL_BUCKET, "Mithril Bucket of Tropical Fish");
+        translationBuilder.add(At_Items.AXOLOTL_MITHRIL_BUCKET, "Mithril Bucket of Axolotl");
+        translationBuilder.add(At_Items.TADPOLE_MITHRIL_BUCKET, "Mithril Bucket of Tadpole");
+
+        translationBuilder.add(At_Items.SILVER_BUCKET,"Silver bucket");
+        translationBuilder.add(At_Items.LAVA_SILVER_BUCKET, "Silver Bucket of Lava");
+        translationBuilder.add(At_Items.WATER_SILVER_BUCKET, "Silver of Water Bucket");
+        translationBuilder.add(At_Items.POWDER_SNOW_SILVER_BUCKET, "Silver Bucket of Powder Snow");
+        translationBuilder.add(At_Items.MILK_SILVER_BUCKET, "Silver Bucket of Milk");
+        translationBuilder.add(At_Items.PUFFERFISH_SILVER_BUCKET, "Silver Bucket of Pufferfish");
+        translationBuilder.add(At_Items.SALMON_SILVER_BUCKET, "Silver Bucket of Salmon");
+        translationBuilder.add(At_Items.COD_SILVER_BUCKET, "Silver Bucket of Cod");
+        translationBuilder.add(At_Items.TROPICAL_FISH_SILVER_BUCKET, "Silver Bucket of Tropical Fish");
+        translationBuilder.add(At_Items.AXOLOTL_SILVER_BUCKET, "Silver Bucket of Axolotl");
+        translationBuilder.add(At_Items.TADPOLE_SILVER_BUCKET, "Silver Bucket of Tadpole");
+
     }
 }

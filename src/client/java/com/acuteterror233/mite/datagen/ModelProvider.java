@@ -276,5 +276,65 @@ public class ModelProvider extends FabricModelProvider {
         ((ItemModelGeneratorExtension)itemModelGenerator).registerbucket(At_Items.TROPICAL_FISH_ADAMANTIUM_BUCKET,tropical_fish,At_Items.ADAMANTIUM_BUCKET);
         ((ItemModelGeneratorExtension)itemModelGenerator).registerbucket(At_Items.AXOLOTL_ADAMANTIUM_BUCKET,axolotl,At_Items.ADAMANTIUM_BUCKET);
         ((ItemModelGeneratorExtension)itemModelGenerator).registerbucket(At_Items.TADPOLE_ADAMANTIUM_BUCKET,tadpole,At_Items.ADAMANTIUM_BUCKET);
+
+        ((ItemModelGeneratorExtension)itemModelGenerator).registerbucket(At_Items.ANCIENT_METAL_BUCKET,null,At_Items.ANCIENT_METAL_BUCKET);
+        ((ItemModelGeneratorExtension)itemModelGenerator).registerbucket(At_Items.WATER_ANCIENT_METAL_BUCKET,water,At_Items.ANCIENT_METAL_BUCKET);
+        ((ItemModelGeneratorExtension)itemModelGenerator).registerbucket(At_Items.LAVA_ANCIENT_METAL_BUCKET,lava,At_Items.ANCIENT_METAL_BUCKET);
+        ((ItemModelGeneratorExtension)itemModelGenerator).registerbucket(At_Items.POWDER_SNOW_ANCIENT_METAL_BUCKET,powder_snow,At_Items.ANCIENT_METAL_BUCKET);
+        ((ItemModelGeneratorExtension)itemModelGenerator).registerbucket(At_Items.MILK_ANCIENT_METAL_BUCKET,milk,At_Items.ANCIENT_METAL_BUCKET);
+        ((ItemModelGeneratorExtension)itemModelGenerator).registerbucket(At_Items.PUFFERFISH_ANCIENT_METAL_BUCKET,pufferfish,At_Items.ANCIENT_METAL_BUCKET);
+        ((ItemModelGeneratorExtension)itemModelGenerator).registerbucket(At_Items.SALMON_ANCIENT_METAL_BUCKET,salmon,At_Items.ANCIENT_METAL_BUCKET);
+        ((ItemModelGeneratorExtension)itemModelGenerator).registerbucket(At_Items.COD_ANCIENT_METAL_BUCKET,cod,At_Items.ANCIENT_METAL_BUCKET);
+        ((ItemModelGeneratorExtension)itemModelGenerator).registerbucket(At_Items.TROPICAL_FISH_ANCIENT_METAL_BUCKET,tropical_fish,At_Items.ANCIENT_METAL_BUCKET);
+        ((ItemModelGeneratorExtension)itemModelGenerator).registerbucket(At_Items.AXOLOTL_ANCIENT_METAL_BUCKET,axolotl,At_Items.ANCIENT_METAL_BUCKET);
+        ((ItemModelGeneratorExtension)itemModelGenerator).registerbucket(At_Items.TADPOLE_ANCIENT_METAL_BUCKET,tadpole,At_Items.ANCIENT_METAL_BUCKET);
+
+        ((ItemModelGeneratorExtension)itemModelGenerator).registerbucket(At_Items.COPPER_BUCKET,null,At_Items.COPPER_BUCKET);
+        ((ItemModelGeneratorExtension)itemModelGenerator).registerbucket(At_Items.WATER_COPPER_BUCKET,water,At_Items.COPPER_BUCKET);
+        ((ItemModelGeneratorExtension)itemModelGenerator).registerbucket(At_Items.LAVA_COPPER_BUCKET,lava,At_Items.COPPER_BUCKET);
+        ((ItemModelGeneratorExtension)itemModelGenerator).registerbucket(At_Items.POWDER_SNOW_COPPER_BUCKET,powder_snow,At_Items.COPPER_BUCKET);
+        ((ItemModelGeneratorExtension)itemModelGenerator).registerbucket(At_Items.MILK_COPPER_BUCKET,milk,At_Items.COPPER_BUCKET);
+        ((ItemModelGeneratorExtension)itemModelGenerator).registerbucket(At_Items.PUFFERFISH_COPPER_BUCKET,pufferfish,At_Items.COPPER_BUCKET);
+        ((ItemModelGeneratorExtension)itemModelGenerator).registerbucket(At_Items.SALMON_COPPER_BUCKET,salmon,At_Items.COPPER_BUCKET);
+        ((ItemModelGeneratorExtension)itemModelGenerator).registerbucket(At_Items.COD_COPPER_BUCKET,cod,At_Items.COPPER_BUCKET);
+        ((ItemModelGeneratorExtension)itemModelGenerator).registerbucket(At_Items.TROPICAL_FISH_COPPER_BUCKET,tropical_fish,At_Items.COPPER_BUCKET);
+        ((ItemModelGeneratorExtension)itemModelGenerator).registerbucket(At_Items.AXOLOTL_COPPER_BUCKET,axolotl,At_Items.COPPER_BUCKET);
+        ((ItemModelGeneratorExtension)itemModelGenerator).registerbucket(At_Items.TADPOLE_COPPER_BUCKET,tadpole,At_Items.COPPER_BUCKET);
+
+        ((ItemModelGeneratorExtension)itemModelGenerator).registerbucket(At_Items.GOLD_BUCKET,null,At_Items.GOLD_BUCKET);
+        ((ItemModelGeneratorExtension)itemModelGenerator).registerbucket(At_Items.WATER_GOLD_BUCKET,water,At_Items.GOLD_BUCKET);
+        ((ItemModelGeneratorExtension)itemModelGenerator).registerbucket(At_Items.LAVA_GOLD_BUCKET,lava,At_Items.GOLD_BUCKET);
+        ((ItemModelGeneratorExtension)itemModelGenerator).registerbucket(At_Items.POWDER_SNOW_GOLD_BUCKET,powder_snow,At_Items.GOLD_BUCKET);
+        ((ItemModelGeneratorExtension)itemModelGenerator).registerbucket(At_Items.MILK_GOLD_BUCKET,milk,At_Items.GOLD_BUCKET);
+        ((ItemModelGeneratorExtension)itemModelGenerator).registerbucket(At_Items.PUFFERFISH_GOLD_BUCKET,pufferfish,At_Items.GOLD_BUCKET);
+        ((ItemModelGeneratorExtension)itemModelGenerator).registerbucket(At_Items.SALMON_GOLD_BUCKET,salmon,At_Items.GOLD_BUCKET);
+        ((ItemModelGeneratorExtension)itemModelGenerator).registerbucket(At_Items.COD_GOLD_BUCKET,cod,At_Items.GOLD_BUCKET);
+        ((ItemModelGeneratorExtension)itemModelGenerator).registerbucket(At_Items.TROPICAL_FISH_GOLD_BUCKET,tropical_fish,At_Items.GOLD_BUCKET);
+        ((ItemModelGeneratorExtension)itemModelGenerator).registerbucket(At_Items.AXOLOTL_GOLD_BUCKET,axolotl,At_Items.GOLD_BUCKET);
+        ((ItemModelGeneratorExtension)itemModelGenerator).registerbucket(At_Items.TADPOLE_GOLD_BUCKET,tadpole,At_Items.GOLD_BUCKET);
+
+        ((ItemModelGeneratorExtension)itemModelGenerator).registerbucket(At_Items.MITHRIL_BUCKET,null,At_Items.MITHRIL_BUCKET);
+        ((ItemModelGeneratorExtension)itemModelGenerator).registerbucket(At_Items.WATER_MITHRIL_BUCKET,water,At_Items.MITHRIL_BUCKET);
+        ((ItemModelGeneratorExtension)itemModelGenerator).registerbucket(At_Items.LAVA_MITHRIL_BUCKET,lava,At_Items.MITHRIL_BUCKET);
+        ((ItemModelGeneratorExtension)itemModelGenerator).registerbucket(At_Items.POWDER_SNOW_MITHRIL_BUCKET,powder_snow,At_Items.MITHRIL_BUCKET);
+        ((ItemModelGeneratorExtension)itemModelGenerator).registerbucket(At_Items.MILK_MITHRIL_BUCKET,milk,At_Items.MITHRIL_BUCKET);
+        ((ItemModelGeneratorExtension)itemModelGenerator).registerbucket(At_Items.PUFFERFISH_MITHRIL_BUCKET,pufferfish,At_Items.MITHRIL_BUCKET);
+        ((ItemModelGeneratorExtension)itemModelGenerator).registerbucket(At_Items.SALMON_MITHRIL_BUCKET,salmon,At_Items.MITHRIL_BUCKET);
+        ((ItemModelGeneratorExtension)itemModelGenerator).registerbucket(At_Items.COD_MITHRIL_BUCKET,cod,At_Items.MITHRIL_BUCKET);
+        ((ItemModelGeneratorExtension)itemModelGenerator).registerbucket(At_Items.TROPICAL_FISH_MITHRIL_BUCKET,tropical_fish,At_Items.MITHRIL_BUCKET);
+        ((ItemModelGeneratorExtension)itemModelGenerator).registerbucket(At_Items.AXOLOTL_MITHRIL_BUCKET,axolotl,At_Items.MITHRIL_BUCKET);
+        ((ItemModelGeneratorExtension)itemModelGenerator).registerbucket(At_Items.TADPOLE_MITHRIL_BUCKET,tadpole,At_Items.MITHRIL_BUCKET);
+
+        ((ItemModelGeneratorExtension)itemModelGenerator).registerbucket(At_Items.SILVER_BUCKET,null,At_Items.SILVER_BUCKET);
+        ((ItemModelGeneratorExtension)itemModelGenerator).registerbucket(At_Items.WATER_SILVER_BUCKET,water,At_Items.SILVER_BUCKET);
+        ((ItemModelGeneratorExtension)itemModelGenerator).registerbucket(At_Items.LAVA_SILVER_BUCKET,lava,At_Items.SILVER_BUCKET);
+        ((ItemModelGeneratorExtension)itemModelGenerator).registerbucket(At_Items.POWDER_SNOW_SILVER_BUCKET,powder_snow,At_Items.SILVER_BUCKET);
+        ((ItemModelGeneratorExtension)itemModelGenerator).registerbucket(At_Items.MILK_SILVER_BUCKET,milk,At_Items.SILVER_BUCKET);
+        ((ItemModelGeneratorExtension)itemModelGenerator).registerbucket(At_Items.PUFFERFISH_SILVER_BUCKET,pufferfish,At_Items.SILVER_BUCKET);
+        ((ItemModelGeneratorExtension)itemModelGenerator).registerbucket(At_Items.SALMON_SILVER_BUCKET,salmon,At_Items.SILVER_BUCKET);
+        ((ItemModelGeneratorExtension)itemModelGenerator).registerbucket(At_Items.COD_SILVER_BUCKET,cod,At_Items.SILVER_BUCKET);
+        ((ItemModelGeneratorExtension)itemModelGenerator).registerbucket(At_Items.TROPICAL_FISH_SILVER_BUCKET,tropical_fish,At_Items.SILVER_BUCKET);
+        ((ItemModelGeneratorExtension)itemModelGenerator).registerbucket(At_Items.AXOLOTL_SILVER_BUCKET,axolotl,At_Items.SILVER_BUCKET);
+        ((ItemModelGeneratorExtension)itemModelGenerator).registerbucket(At_Items.TADPOLE_SILVER_BUCKET,tadpole,At_Items.SILVER_BUCKET);
     }
 }

@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "at_mite:item/buckets/silver_bucket",
+    "layer1": "at_mite:item/nobuckets/tadpole"
+  }
+}

@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
 	"id": "at_mite",
-	"version": "${version}",
+	"version": "1.21.5",
 	"name": "at_mite",
 	"description": "This is an example description! Tell everyone what your mod is about!",
 	"authors": [
@@ -11,7 +11,7 @@
 		"homepage": "https://fabricmc.net/",
 		"sources": "https://github.com/FabricMC/fabric-example-mod"
 	},
-	"license": "CC0-1.0",
+	"license": "GPL",
 	"icon": "assets/at_mite/pack.png",
 	"environment": "*",
 	"entrypoints": {

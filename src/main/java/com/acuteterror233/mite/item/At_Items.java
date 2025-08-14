@@ -299,12 +299,12 @@ public class At_Items {
             Settings -> new AxeItem(At_ToolMaterial.ADAMANTIUM, 8.0F, -3.0F, Settings),
             new Item.Settings());
     public static final Item ADAMANTIUM_BATTLE_AXE = register("adamantium_battle_axe",
-            Settings -> new BattleAxeItem(At_ToolMaterial.ADAMANTIUM, 5.0F, -3.0F, Settings),
+            Settings -> new At_BattleAxeItem(At_ToolMaterial.ADAMANTIUM, 5.0F, -3.0F, Settings),
             new Item.Settings());
     public static final Item ADAMANTIUM_DAGGER = register("adamantium_dagger",
             ((ItemSettingsExtension)new Item.Settings()).dagger(At_ToolMaterial.ADAMANTIUM, 5.0F, -3.0F));
     public static final Item ADAMANTIUM_HATCHET = register("adamantium_hatchet",
-            Settings -> new HandAxeItem(At_ToolMaterial.ADAMANTIUM, 5.0F, -3.0F, Settings),
+            Settings -> new At_HandAxeItem(At_ToolMaterial.ADAMANTIUM, 5.0F, -3.0F, Settings),
             new Item.Settings());
     public static final Item ADAMANTIUM_HOE = register("adamantium_hoe",
             Settings -> new HoeItem(At_ToolMaterial.ADAMANTIUM, 5.0F, -3.0F, Settings),
@@ -312,7 +312,7 @@ public class At_Items {
     public static final Item ADAMANTIUM_KNIFE = register("adamantium_knife",
             ((ItemSettingsExtension)new Item.Settings()).dagger(At_ToolMaterial.ADAMANTIUM, 5.0F, -3.0F));
     public static final Item ADAMANTIUM_MATTOCK = register("adamantium_mattock",
-            Settings -> new MattockItem(At_ToolMaterial.ADAMANTIUM, 5.0F, -3.0F,Settings),
+            Settings -> new At_MattockItem(At_ToolMaterial.ADAMANTIUM, 5.0F, -3.0F,Settings),
             new Item.Settings());
     public static final Item ADAMANTIUM_PICKAXE = register("adamantium_pickaxe",
             new Item.Settings().pickaxe(At_ToolMaterial.ADAMANTIUM,  5.0F, -3.0F));
@@ -471,35 +471,264 @@ public class At_Items {
     );
     public static final Item PUFFERFISH_ADAMANTIUM_BUCKET = register(
             "pufferfish_adamantium_bucket",
-            settings -> new EntityBucketItem(EntityType.PUFFERFISH, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, settings),
+            settings -> new At_EntityBucketItem(EntityType.PUFFERFISH, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, settings, ADAMANTIUM_BUCKET),
             new Item.Settings().maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)
     );
     public static final Item SALMON_ADAMANTIUM_BUCKET = register(
             "salmon_adamantium_bucket",
-            settings -> new EntityBucketItem(EntityType.SALMON, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, settings),
+            settings -> new At_EntityBucketItem(EntityType.SALMON, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, settings, ADAMANTIUM_BUCKET),
             new Item.Settings().maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)
     );
     public static final Item COD_ADAMANTIUM_BUCKET = register(
             "cod_adamantium_bucket",
-            settings -> new EntityBucketItem(EntityType.COD, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, settings),
+            settings -> new At_EntityBucketItem(EntityType.COD, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, settings, ADAMANTIUM_BUCKET),
             new Item.Settings().maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)
     );
     public static final Item TROPICAL_FISH_ADAMANTIUM_BUCKET = register(
             "tropical_fish_adamantium_bucket",
-            settings -> new EntityBucketItem(EntityType.TROPICAL_FISH, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, settings),
+            settings -> new At_EntityBucketItem(EntityType.TROPICAL_FISH, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, settings, ADAMANTIUM_BUCKET),
             new Item.Settings().maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)
     );
     public static final Item AXOLOTL_ADAMANTIUM_BUCKET = register(
             "axolotl_adamantium_bucket",
-            settings -> new EntityBucketItem(EntityType.AXOLOTL, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_AXOLOTL, settings),
+            settings -> new At_EntityBucketItem(EntityType.AXOLOTL, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_AXOLOTL, settings, ADAMANTIUM_BUCKET),
             new Item.Settings().maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)
     );
     public static final Item TADPOLE_ADAMANTIUM_BUCKET = register(
             "tadpole_adamantium_bucket",
-            settings -> new EntityBucketItem(EntityType.TADPOLE, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_TADPOLE, settings),
+            settings -> new At_EntityBucketItem(EntityType.TADPOLE, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_TADPOLE, settings, ADAMANTIUM_BUCKET),
             new Item.Settings().maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)
     );
-
+    public static final Item ANCIENT_METAL_BUCKET = register("ancient_metal_bucket", settings -> new At_BucketItem(Fluids.EMPTY, settings, null), new Item.Settings().maxCount(16));
+    public static final Item WATER_ANCIENT_METAL_BUCKET = register(
+            "water_ancient_metal_bucket", settings -> new At_BucketItem(Fluids.WATER, settings, ANCIENT_METAL_BUCKET), new Item.Settings().recipeRemainder(ANCIENT_METAL_BUCKET).maxCount(1)
+    );
+    public static final Item LAVA_ANCIENT_METAL_BUCKET = register(
+            "lava_ancient_metal_bucket", settings -> new At_BucketItem(Fluids.LAVA, settings, ANCIENT_METAL_BUCKET), new Item.Settings().recipeRemainder(ANCIENT_METAL_BUCKET).maxCount(1)
+    );
+    public static final Item POWDER_SNOW_ANCIENT_METAL_BUCKET = register(
+            "powder_snow_ancient_metal_bucket",
+            settings -> new At_PowderSnowBucketItem(Blocks.POWDER_SNOW, SoundEvents.ITEM_BUCKET_EMPTY_POWDER_SNOW, settings, ANCIENT_METAL_BUCKET),
+            new Item.Settings().maxCount(1).useItemPrefixedTranslationKey()
+    );
+    public static final Item MILK_ANCIENT_METAL_BUCKET = register(
+            "milk_ancient_metal_bucket",
+            new Item.Settings().recipeRemainder(ANCIENT_METAL_BUCKET).component(DataComponentTypes.CONSUMABLE, ConsumableComponents.MILK_BUCKET).useRemainder(ANCIENT_METAL_BUCKET).maxCount(1)
+    );
+    public static final Item PUFFERFISH_ANCIENT_METAL_BUCKET = register(
+            "pufferfish_ancient_metal_bucket",
+            settings -> new At_EntityBucketItem(EntityType.PUFFERFISH, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, settings, ANCIENT_METAL_BUCKET),
+            new Item.Settings().maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)
+    );
+    public static final Item SALMON_ANCIENT_METAL_BUCKET = register(
+            "salmon_ancient_metal_bucket",
+            settings -> new At_EntityBucketItem(EntityType.SALMON, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, settings, ANCIENT_METAL_BUCKET),
+            new Item.Settings().maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)
+    );
+    public static final Item COD_ANCIENT_METAL_BUCKET = register(
+            "cod_ancient_metal_bucket",
+            settings -> new At_EntityBucketItem(EntityType.COD, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, settings, ANCIENT_METAL_BUCKET),
+            new Item.Settings().maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)
+    );
+    public static final Item TROPICAL_FISH_ANCIENT_METAL_BUCKET = register(
+            "tropical_fish_ancient_metal_bucket",
+            settings -> new At_EntityBucketItem(EntityType.TROPICAL_FISH, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, settings, ANCIENT_METAL_BUCKET),
+            new Item.Settings().maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)
+    );
+    public static final Item AXOLOTL_ANCIENT_METAL_BUCKET = register(
+            "axolotl_ancient_metal_bucket",
+            settings -> new At_EntityBucketItem(EntityType.AXOLOTL, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_AXOLOTL, settings, ANCIENT_METAL_BUCKET),
+            new Item.Settings().maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)
+    );
+    public static final Item TADPOLE_ANCIENT_METAL_BUCKET = register(
+            "tadpole_ancient_metal_bucket",
+            settings -> new At_EntityBucketItem(EntityType.TADPOLE, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_TADPOLE, settings, ANCIENT_METAL_BUCKET),
+            new Item.Settings().maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)
+    );
+    public static final Item COPPER_BUCKET = register("copper_bucket", settings -> new At_BucketItem(Fluids.EMPTY, settings, null), new Item.Settings().maxCount(16));
+    public static final Item WATER_COPPER_BUCKET = register(
+            "water_copper_bucket", settings -> new At_BucketItem(Fluids.WATER, settings, COPPER_BUCKET), new Item.Settings().recipeRemainder(COPPER_BUCKET).maxCount(1)
+    );
+    public static final Item LAVA_COPPER_BUCKET = register(
+            "lava_copper_bucket", settings -> new At_BucketItem(Fluids.LAVA, settings, COPPER_BUCKET), new Item.Settings().recipeRemainder(COPPER_BUCKET).maxCount(1)
+    );
+    public static final Item POWDER_SNOW_COPPER_BUCKET = register(
+            "powder_snow_copper_bucket",
+            settings -> new At_PowderSnowBucketItem(Blocks.POWDER_SNOW, SoundEvents.ITEM_BUCKET_EMPTY_POWDER_SNOW, settings, COPPER_BUCKET),
+            new Item.Settings().maxCount(1).useItemPrefixedTranslationKey()
+    );
+    public static final Item MILK_COPPER_BUCKET = register(
+            "milk_copper_bucket",
+            new Item.Settings().recipeRemainder(COPPER_BUCKET).component(DataComponentTypes.CONSUMABLE, ConsumableComponents.MILK_BUCKET).useRemainder(COPPER_BUCKET).maxCount(1)
+    );
+    public static final Item PUFFERFISH_COPPER_BUCKET = register(
+            "pufferfish_copper_bucket",
+            settings -> new At_EntityBucketItem(EntityType.PUFFERFISH, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, settings, COPPER_BUCKET),
+            new Item.Settings().maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)
+    );
+    public static final Item SALMON_COPPER_BUCKET = register(
+            "salmon_copper_bucket",
+            settings -> new At_EntityBucketItem(EntityType.SALMON, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, settings, COPPER_BUCKET),
+            new Item.Settings().maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)
+    );
+    public static final Item COD_COPPER_BUCKET = register(
+            "cod_copper_bucket",
+            settings -> new At_EntityBucketItem(EntityType.COD, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, settings, COPPER_BUCKET),
+            new Item.Settings().maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)
+    );
+    public static final Item TROPICAL_FISH_COPPER_BUCKET = register(
+            "tropical_fish_copper_bucket",
+            settings -> new At_EntityBucketItem(EntityType.TROPICAL_FISH, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, settings, COPPER_BUCKET),
+            new Item.Settings().maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)
+    );
+    public static final Item AXOLOTL_COPPER_BUCKET = register(
+            "axolotl_copper_bucket",
+            settings -> new At_EntityBucketItem(EntityType.AXOLOTL, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_AXOLOTL, settings, COPPER_BUCKET),
+            new Item.Settings().maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)
+    );
+    public static final Item TADPOLE_COPPER_BUCKET = register(
+            "tadpole_copper_bucket",
+            settings -> new At_EntityBucketItem(EntityType.TADPOLE, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_TADPOLE, settings, COPPER_BUCKET),
+            new Item.Settings().maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)
+    );
+    public static final Item GOLD_BUCKET = register("gold_bucket", settings -> new At_BucketItem(Fluids.EMPTY, settings, null), new Item.Settings().maxCount(16));
+    public static final Item WATER_GOLD_BUCKET = register(
+            "water_gold_bucket", settings -> new At_BucketItem(Fluids.WATER, settings, GOLD_BUCKET), new Item.Settings().recipeRemainder(GOLD_BUCKET).maxCount(1)
+    );
+    public static final Item LAVA_GOLD_BUCKET = register(
+            "lava_gold_bucket", settings -> new At_BucketItem(Fluids.LAVA, settings, GOLD_BUCKET), new Item.Settings().recipeRemainder(GOLD_BUCKET).maxCount(1)
+    );
+    public static final Item POWDER_SNOW_GOLD_BUCKET = register(
+            "powder_snow_gold_bucket",
+            settings -> new At_PowderSnowBucketItem(Blocks.POWDER_SNOW, SoundEvents.ITEM_BUCKET_EMPTY_POWDER_SNOW, settings, GOLD_BUCKET),
+            new Item.Settings().maxCount(1).useItemPrefixedTranslationKey()
+    );
+    public static final Item MILK_GOLD_BUCKET = register(
+            "milk_gold_bucket",
+            new Item.Settings().recipeRemainder(GOLD_BUCKET).component(DataComponentTypes.CONSUMABLE, ConsumableComponents.MILK_BUCKET).useRemainder(GOLD_BUCKET).maxCount(1)
+    );
+    public static final Item PUFFERFISH_GOLD_BUCKET = register(
+            "pufferfish_gold_bucket",
+            settings -> new At_EntityBucketItem(EntityType.PUFFERFISH, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, settings, GOLD_BUCKET),
+            new Item.Settings().maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)
+    );
+    public static final Item SALMON_GOLD_BUCKET = register(
+            "salmon_gold_bucket",
+            settings -> new At_EntityBucketItem(EntityType.SALMON, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, settings, GOLD_BUCKET),
+            new Item.Settings().maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)
+    );
+    public static final Item COD_GOLD_BUCKET = register(
+            "cod_gold_bucket",
+            settings -> new At_EntityBucketItem(EntityType.COD, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, settings, GOLD_BUCKET),
+            new Item.Settings().maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)
+    );
+    public static final Item TROPICAL_FISH_GOLD_BUCKET = register(
+            "tropical_fish_gold_bucket",
+            settings -> new At_EntityBucketItem(EntityType.TROPICAL_FISH, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, settings, GOLD_BUCKET),
+            new Item.Settings().maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)
+    );
+    public static final Item AXOLOTL_GOLD_BUCKET = register(
+            "axolotl_gold_bucket",
+            settings -> new At_EntityBucketItem(EntityType.AXOLOTL, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_AXOLOTL, settings, GOLD_BUCKET),
+            new Item.Settings().maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)
+    );
+    public static final Item TADPOLE_GOLD_BUCKET = register(
+            "tadpole_gold_bucket",
+            settings -> new At_EntityBucketItem(EntityType.TADPOLE, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_TADPOLE, settings, GOLD_BUCKET),
+            new Item.Settings().maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)
+    );
+    public static final Item MITHRIL_BUCKET = register("mithril_bucket", settings -> new At_BucketItem(Fluids.EMPTY, settings, null), new Item.Settings().maxCount(16));
+    public static final Item WATER_MITHRIL_BUCKET = register(
+            "water_mithril_bucket", settings -> new At_BucketItem(Fluids.WATER, settings, MITHRIL_BUCKET), new Item.Settings().recipeRemainder(MITHRIL_BUCKET).maxCount(1)
+    );
+    public static final Item LAVA_MITHRIL_BUCKET = register(
+            "lava_mithril_bucket", settings -> new At_BucketItem(Fluids.LAVA, settings, MITHRIL_BUCKET), new Item.Settings().recipeRemainder(MITHRIL_BUCKET).maxCount(1)
+    );
+    public static final Item POWDER_SNOW_MITHRIL_BUCKET = register(
+            "powder_snow_mithril_bucket",
+            settings -> new At_PowderSnowBucketItem(Blocks.POWDER_SNOW, SoundEvents.ITEM_BUCKET_EMPTY_POWDER_SNOW, settings, MITHRIL_BUCKET),
+            new Item.Settings().maxCount(1).useItemPrefixedTranslationKey()
+    );
+    public static final Item MILK_MITHRIL_BUCKET = register(
+            "milk_mithril_bucket",
+            new Item.Settings().recipeRemainder(MITHRIL_BUCKET).component(DataComponentTypes.CONSUMABLE, ConsumableComponents.MILK_BUCKET).useRemainder(MITHRIL_BUCKET).maxCount(1)
+    );
+    public static final Item PUFFERFISH_MITHRIL_BUCKET = register(
+            "pufferfish_mithril_bucket",
+            settings -> new At_EntityBucketItem(EntityType.PUFFERFISH, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, settings, MITHRIL_BUCKET),
+            new Item.Settings().maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)
+    );
+    public static final Item SALMON_MITHRIL_BUCKET = register(
+            "salmon_mithril_bucket",
+            settings -> new At_EntityBucketItem(EntityType.SALMON, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, settings, MITHRIL_BUCKET),
+            new Item.Settings().maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)
+    );
+    public static final Item COD_MITHRIL_BUCKET = register(
+            "cod_mithril_bucket",
+            settings -> new At_EntityBucketItem(EntityType.COD, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, settings, MITHRIL_BUCKET),
+            new Item.Settings().maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)
+    );
+    public static final Item TROPICAL_FISH_MITHRIL_BUCKET = register(
+            "tropical_fish_mithril_bucket",
+            settings -> new At_EntityBucketItem(EntityType.TROPICAL_FISH, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, settings, MITHRIL_BUCKET),
+            new Item.Settings().maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)
+    );
+    public static final Item AXOLOTL_MITHRIL_BUCKET = register(
+            "axolotl_mithril_bucket",
+            settings -> new At_EntityBucketItem(EntityType.AXOLOTL, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_AXOLOTL, settings, MITHRIL_BUCKET),
+            new Item.Settings().maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)
+    );
+    public static final Item TADPOLE_MITHRIL_BUCKET = register(
+            "tadpole_mithril_bucket",
+            settings -> new At_EntityBucketItem(EntityType.TADPOLE, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_TADPOLE, settings, MITHRIL_BUCKET),
+            new Item.Settings().maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)
+    );
+    public static final Item SILVER_BUCKET = register("silver_bucket", settings -> new At_BucketItem(Fluids.EMPTY, settings, null), new Item.Settings().maxCount(16));
+    public static final Item WATER_SILVER_BUCKET = register(
+            "water_silver_bucket", settings -> new At_BucketItem(Fluids.WATER, settings, SILVER_BUCKET), new Item.Settings().recipeRemainder(SILVER_BUCKET).maxCount(1)
+    );
+    public static final Item LAVA_SILVER_BUCKET = register(
+            "lava_silver_bucket", settings -> new At_BucketItem(Fluids.LAVA, settings, SILVER_BUCKET), new Item.Settings().recipeRemainder(SILVER_BUCKET).maxCount(1)
+    );
+    public static final Item POWDER_SNOW_SILVER_BUCKET = register(
+            "powder_snow_silver_bucket",
+            settings -> new At_PowderSnowBucketItem(Blocks.POWDER_SNOW, SoundEvents.ITEM_BUCKET_EMPTY_POWDER_SNOW, settings, SILVER_BUCKET),
+            new Item.Settings().maxCount(1).useItemPrefixedTranslationKey()
+    );
+    public static final Item MILK_SILVER_BUCKET = register(
+            "milk_silver_bucket",
+            new Item.Settings().recipeRemainder(SILVER_BUCKET).component(DataComponentTypes.CONSUMABLE, ConsumableComponents.MILK_BUCKET).useRemainder(SILVER_BUCKET).maxCount(1)
+    );
+    public static final Item PUFFERFISH_SILVER_BUCKET = register(
+            "pufferfish_silver_bucket",
+            settings -> new At_EntityBucketItem(EntityType.PUFFERFISH, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, settings, SILVER_BUCKET),
+            new Item.Settings().maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)
+    );
+    public static final Item SALMON_SILVER_BUCKET = register(
+            "salmon_silver_bucket",
+            settings -> new At_EntityBucketItem(EntityType.SALMON, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, settings, SILVER_BUCKET),
+            new Item.Settings().maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)
+    );
+    public static final Item COD_SILVER_BUCKET = register(
+            "cod_silver_bucket",
+            settings -> new At_EntityBucketItem(EntityType.COD, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, settings, SILVER_BUCKET),
+            new Item.Settings().maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)
+    );
+    public static final Item TROPICAL_FISH_SILVER_BUCKET = register(
+            "tropical_fish_silver_bucket",
+            settings -> new At_EntityBucketItem(EntityType.TROPICAL_FISH, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, settings, SILVER_BUCKET),
+            new Item.Settings().maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)
+    );
+    public static final Item AXOLOTL_SILVER_BUCKET = register(
+            "axolotl_silver_bucket",
+            settings -> new At_EntityBucketItem(EntityType.AXOLOTL, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_AXOLOTL, settings, SILVER_BUCKET),
+            new Item.Settings().maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)
+    );
+    public static final Item TADPOLE_SILVER_BUCKET = register(
+            "tadpole_silver_bucket",
+            settings -> new At_EntityBucketItem(EntityType.TADPOLE, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_TADPOLE, settings, SILVER_BUCKET),
+            new Item.Settings().maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)
+    );
     public static final ItemGroup AT_MINT_GROUP = FabricItemGroup.builder()
             .icon(() -> new ItemStack(ADAMANTIUM_HELMET))
             .displayName(Text.translatable("itemGroup.at_mite.item_group"))
@@ -740,6 +969,66 @@ public class At_Items {
                     entries.add(TROPICAL_FISH_ADAMANTIUM_BUCKET);
                     entries.add(AXOLOTL_ADAMANTIUM_BUCKET);
                     entries.add(TADPOLE_ADAMANTIUM_BUCKET);
+
+                    entries.add(ANCIENT_METAL_BUCKET);
+                    entries.add(WATER_ANCIENT_METAL_BUCKET);
+                    entries.add(LAVA_ANCIENT_METAL_BUCKET);
+                    entries.add(MILK_ANCIENT_METAL_BUCKET);
+                    entries.add(POWDER_SNOW_ANCIENT_METAL_BUCKET);
+                    entries.add(PUFFERFISH_ANCIENT_METAL_BUCKET);
+                    entries.add(SALMON_ANCIENT_METAL_BUCKET);
+                    entries.add(COD_ANCIENT_METAL_BUCKET);
+                    entries.add(TROPICAL_FISH_ANCIENT_METAL_BUCKET);
+                    entries.add(AXOLOTL_ANCIENT_METAL_BUCKET);
+                    entries.add(TADPOLE_ANCIENT_METAL_BUCKET);
+
+                    entries.add(COPPER_BUCKET);
+                    entries.add(WATER_COPPER_BUCKET);
+                    entries.add(LAVA_COPPER_BUCKET);
+                    entries.add(MILK_COPPER_BUCKET);
+                    entries.add(POWDER_SNOW_COPPER_BUCKET);
+                    entries.add(PUFFERFISH_COPPER_BUCKET);
+                    entries.add(SALMON_COPPER_BUCKET);
+                    entries.add(COD_COPPER_BUCKET);
+                    entries.add(TROPICAL_FISH_COPPER_BUCKET);
+                    entries.add(AXOLOTL_COPPER_BUCKET);
+                    entries.add(TADPOLE_COPPER_BUCKET);
+
+                    entries.add(GOLD_BUCKET);
+                    entries.add(WATER_GOLD_BUCKET);
+                    entries.add(LAVA_GOLD_BUCKET);
+                    entries.add(MILK_GOLD_BUCKET);
+                    entries.add(POWDER_SNOW_GOLD_BUCKET);
+                    entries.add(PUFFERFISH_GOLD_BUCKET);
+                    entries.add(SALMON_GOLD_BUCKET);
+                    entries.add(COD_GOLD_BUCKET);
+                    entries.add(TROPICAL_FISH_GOLD_BUCKET);
+                    entries.add(AXOLOTL_GOLD_BUCKET);
+                    entries.add(TADPOLE_GOLD_BUCKET);
+
+                    entries.add(MITHRIL_BUCKET);
+                    entries.add(WATER_MITHRIL_BUCKET);
+                    entries.add(LAVA_MITHRIL_BUCKET);
+                    entries.add(MILK_MITHRIL_BUCKET);
+                    entries.add(POWDER_SNOW_MITHRIL_BUCKET);
+                    entries.add(PUFFERFISH_MITHRIL_BUCKET);
+                    entries.add(SALMON_MITHRIL_BUCKET);
+                    entries.add(COD_MITHRIL_BUCKET);
+                    entries.add(TROPICAL_FISH_MITHRIL_BUCKET);
+                    entries.add(AXOLOTL_MITHRIL_BUCKET);
+                    entries.add(TADPOLE_MITHRIL_BUCKET);
+
+                    entries.add(SILVER_BUCKET);
+                    entries.add(WATER_SILVER_BUCKET);
+                    entries.add(LAVA_SILVER_BUCKET);
+                    entries.add(MILK_SILVER_BUCKET);
+                    entries.add(POWDER_SNOW_SILVER_BUCKET);
+                    entries.add(PUFFERFISH_SILVER_BUCKET);
+                    entries.add(SALMON_SILVER_BUCKET);
+                    entries.add(COD_SILVER_BUCKET);
+                    entries.add(TROPICAL_FISH_SILVER_BUCKET);
+                    entries.add(AXOLOTL_SILVER_BUCKET);
+                    entries.add(TADPOLE_SILVER_BUCKET);
             })
             .build();
 
