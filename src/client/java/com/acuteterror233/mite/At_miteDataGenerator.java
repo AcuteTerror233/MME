@@ -13,5 +13,6 @@ public class At_miteDataGenerator implements DataGeneratorEntrypoint {
 		pack.addProvider(En_usLanguageProvider::new);
 		pack.addProvider(At_RecipeGenerator::new);
 		pack.addProvider(ItemTagProvider::new);
+        pack.addProvider(BlockTagProvider::new);
 	}
 }

@@ -16,7 +16,6 @@ public class At_mite implements ModInitializer {
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 	public static final Identifier BASE_BLOCK_INTERACTION_RANGE = Identifier.ofVanilla("block_interaction_range");
 	public static final Identifier BASE_ENTITY_INTERACTION_RANGE = Identifier.ofVanilla("entity_interaction_range");
-	public static final TagKey<Item> WATER_BUCKET = TagKey.of(RegistryKeys.ITEM, Identifier.of(At_mite.MOD_ID, "water_bucket"));
 
 	@Override
 	public void onInitialize() {

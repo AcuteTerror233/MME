@@ -2,6 +2,7 @@ package com.acuteterror233.mite.datagen;
 
 import com.acuteterror233.mite.At_mite;
 import com.acuteterror233.mite.item.At_Items;
+import com.acuteterror233.mite.registry.tag.At_Tags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.item.Items;
@@ -69,13 +70,14 @@ public class ItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(At_Items.RUSTED_IRON_CHAINMAIL_BOOTS)
                 .add(At_Items.SILVER_BOOTS)
                 .add(At_Items.SILVER_CHAINMAIL_BOOTS);
-        getOrCreateTagBuilder(At_mite.WATER_BUCKET)
+        getOrCreateTagBuilder(At_Tags.WATER_BUCKET)
                 .add(At_Items.WATER_ADAMANTIUM_BUCKET)
                 .add(At_Items.WATER_ANCIENT_METAL_BUCKET)
                 .add(At_Items.WATER_COPPER_BUCKET)
                 .add(At_Items.WATER_GOLD_BUCKET)
                 .add(At_Items.WATER_MITHRIL_BUCKET)
                 .add(At_Items.WATER_SILVER_BUCKET)
+                .add(At_Items.WATER_NETHERITE_BUCKET)
                 .add(Items.WATER_BUCKET);
     }
 }

@@ -315,5 +315,25 @@ public class En_usLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(At_Items.AXOLOTL_SILVER_BUCKET, "Silver Bucket of Axolotl");
         translationBuilder.add(At_Items.TADPOLE_SILVER_BUCKET, "Silver Bucket of Tadpole");
 
+        translationBuilder.add(At_Items.NETHERITE_BUCKET,"Netherite bucket");
+        translationBuilder.add(At_Items.LAVA_NETHERITE_BUCKET, "Netherite Bucket of Lava");
+        translationBuilder.add(At_Items.WATER_NETHERITE_BUCKET, "Netherite of Water Bucket");
+        translationBuilder.add(At_Items.POWDER_SNOW_NETHERITE_BUCKET, "Netherite Bucket of Powder Snow");
+        translationBuilder.add(At_Items.MILK_NETHERITE_BUCKET, "Netherite Bucket of Milk");
+        translationBuilder.add(At_Items.PUFFERFISH_NETHERITE_BUCKET, "Netherite Bucket of Pufferfish");
+        translationBuilder.add(At_Items.SALMON_NETHERITE_BUCKET, "Netherite Bucket of Salmon");
+        translationBuilder.add(At_Items.COD_NETHERITE_BUCKET, "Netherite Bucket of Cod");
+        translationBuilder.add(At_Items.TROPICAL_FISH_NETHERITE_BUCKET, "Netherite Bucket of Tropical Fish");
+        translationBuilder.add(At_Items.AXOLOTL_NETHERITE_BUCKET, "Netherite Bucket of Axolotl");
+        translationBuilder.add(At_Items.TADPOLE_NETHERITE_BUCKET, "Netherite Bucket of Tadpole");
+
+        translationBuilder.add(At_Items.MITHRIL_BOW,"Mithril Bow");
+        translationBuilder.add(At_Items.ANCIENT_METAL_BOW,"Ancient Metal Bow");
+
+        translationBuilder.add(At_Blocks.ADAMANTIUM_DOOR, "Adamantium Door");
+        translationBuilder.add(At_Blocks.ANCIENT_METAL_DOOR, "Ancient Metal Door");
+        translationBuilder.add(At_Blocks.MITHRIL_DOOR, "Mithril Door");
+        translationBuilder.add(At_Blocks.SILVER_DOOR, "Silver Door");
+        translationBuilder.add(At_Blocks.GOLD_DOOR, "Gold Door");
     }
 }

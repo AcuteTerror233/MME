@@ -35,6 +35,12 @@ public class ModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerSimpleCubeAll(At_Blocks.MITHRIL_ORE);
         blockStateModelGenerator.registerSimpleCubeAll(At_Blocks.SILVER_ORE);
         ((BlockStateModelGeneratorExtension) blockStateModelGenerator).registerBars(At_Blocks.COPPER_BARS);
+
+        blockStateModelGenerator.registerDoor(At_Blocks.ADAMANTIUM_DOOR);
+        blockStateModelGenerator.registerDoor(At_Blocks.GOLD_DOOR);
+        blockStateModelGenerator.registerDoor(At_Blocks.SILVER_DOOR);
+        blockStateModelGenerator.registerDoor(At_Blocks.ANCIENT_METAL_DOOR);
+        blockStateModelGenerator.registerDoor(At_Blocks.MITHRIL_DOOR);
     }
 
     @Override
@@ -336,5 +342,20 @@ public class ModelProvider extends FabricModelProvider {
         ((ItemModelGeneratorExtension)itemModelGenerator).registerbucket(At_Items.TROPICAL_FISH_SILVER_BUCKET,tropical_fish,At_Items.SILVER_BUCKET);
         ((ItemModelGeneratorExtension)itemModelGenerator).registerbucket(At_Items.AXOLOTL_SILVER_BUCKET,axolotl,At_Items.SILVER_BUCKET);
         ((ItemModelGeneratorExtension)itemModelGenerator).registerbucket(At_Items.TADPOLE_SILVER_BUCKET,tadpole,At_Items.SILVER_BUCKET);
+
+        ((ItemModelGeneratorExtension)itemModelGenerator).registerbucket(At_Items.NETHERITE_BUCKET,null,At_Items.NETHERITE_BUCKET);
+        ((ItemModelGeneratorExtension)itemModelGenerator).registerbucket(At_Items.WATER_NETHERITE_BUCKET,water,At_Items.NETHERITE_BUCKET);
+        ((ItemModelGeneratorExtension)itemModelGenerator).registerbucket(At_Items.LAVA_NETHERITE_BUCKET,lava,At_Items.NETHERITE_BUCKET);
+        ((ItemModelGeneratorExtension)itemModelGenerator).registerbucket(At_Items.POWDER_SNOW_NETHERITE_BUCKET,powder_snow,At_Items.NETHERITE_BUCKET);
+        ((ItemModelGeneratorExtension)itemModelGenerator).registerbucket(At_Items.MILK_NETHERITE_BUCKET,milk,At_Items.NETHERITE_BUCKET);
+        ((ItemModelGeneratorExtension)itemModelGenerator).registerbucket(At_Items.PUFFERFISH_NETHERITE_BUCKET,pufferfish,At_Items.NETHERITE_BUCKET);
+        ((ItemModelGeneratorExtension)itemModelGenerator).registerbucket(At_Items.SALMON_NETHERITE_BUCKET,salmon,At_Items.NETHERITE_BUCKET);
+        ((ItemModelGeneratorExtension)itemModelGenerator).registerbucket(At_Items.COD_NETHERITE_BUCKET,cod,At_Items.NETHERITE_BUCKET);
+        ((ItemModelGeneratorExtension)itemModelGenerator).registerbucket(At_Items.TROPICAL_FISH_NETHERITE_BUCKET,tropical_fish,At_Items.NETHERITE_BUCKET);
+        ((ItemModelGeneratorExtension)itemModelGenerator).registerbucket(At_Items.AXOLOTL_NETHERITE_BUCKET,axolotl,At_Items.NETHERITE_BUCKET);
+        ((ItemModelGeneratorExtension)itemModelGenerator).registerbucket(At_Items.TADPOLE_NETHERITE_BUCKET,tadpole,At_Items.NETHERITE_BUCKET);
+
+        itemModelGenerator.registerBow(At_Items.MITHRIL_BOW);
+        itemModelGenerator.registerBow(At_Items.ANCIENT_METAL_BOW);
     }
 }

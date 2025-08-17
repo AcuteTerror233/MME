@@ -314,5 +314,26 @@ public class Zh_cnLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(At_Items.TROPICAL_FISH_SILVER_BUCKET, "装有热带鱼的银桶");
         translationBuilder.add(At_Items.AXOLOTL_SILVER_BUCKET, "装有美西螈的银桶");
         translationBuilder.add(At_Items.TADPOLE_SILVER_BUCKET, "装有蝌蚪的银桶");
+
+        translationBuilder.add(At_Items.NETHERITE_BUCKET,"下界合金桶");
+        translationBuilder.add(At_Items.LAVA_NETHERITE_BUCKET, "装满熔岩的下界合金桶");
+        translationBuilder.add(At_Items.WATER_NETHERITE_BUCKET, "装满水的下界合金桶");
+        translationBuilder.add(At_Items.POWDER_SNOW_NETHERITE_BUCKET, "装满细雪的下界合金桶");
+        translationBuilder.add(At_Items.MILK_NETHERITE_BUCKET, "装满牛奶的下界合金桶");
+        translationBuilder.add(At_Items.PUFFERFISH_NETHERITE_BUCKET, "装有河豚的下界合金桶");
+        translationBuilder.add(At_Items.SALMON_NETHERITE_BUCKET, "装有鲑鱼的下界合金桶");
+        translationBuilder.add(At_Items.COD_NETHERITE_BUCKET, "装有鳕鱼的下界合金桶");
+        translationBuilder.add(At_Items.TROPICAL_FISH_NETHERITE_BUCKET, "装有热带鱼的下界合金桶");
+        translationBuilder.add(At_Items.AXOLOTL_NETHERITE_BUCKET, "装有美西螈的下界合金桶");
+        translationBuilder.add(At_Items.TADPOLE_NETHERITE_BUCKET, "装有蝌蚪的下界合金桶");
+
+        translationBuilder.add(At_Items.MITHRIL_BOW,"秘银弓");
+        translationBuilder.add(At_Items.ANCIENT_METAL_BOW,"远古金属弓");
+
+        translationBuilder.add(At_Blocks.ADAMANTIUM_DOOR, "艾德曼门");
+        translationBuilder.add(At_Blocks.ANCIENT_METAL_DOOR, "远古金属门");
+        translationBuilder.add(At_Blocks.MITHRIL_DOOR, "秘银门");
+        translationBuilder.add(At_Blocks.SILVER_DOOR, "银门");
+        translationBuilder.add(At_Blocks.GOLD_DOOR, "金门");
     }
 }

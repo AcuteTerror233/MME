@@ -6,6 +6,7 @@
     "at_mite:water_gold_bucket",
     "at_mite:water_mithril_bucket",
     "at_mite:water_silver_bucket",
+    "at_mite:water_netherite_bucket",
     "minecraft:water_bucket"
   ]
 }

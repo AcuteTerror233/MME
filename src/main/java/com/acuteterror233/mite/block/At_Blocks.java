@@ -2,11 +2,15 @@ package com.acuteterror233.mite.block;
 
 import com.acuteterror233.mite.At_mite;
 import net.minecraft.block.*;
+import net.minecraft.block.piston.PistonBehavior;
+import net.minecraft.item.Item;
 import net.minecraft.item.Items;
+import net.minecraft.item.TallBlockItem;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.util.Identifier;
 
+import java.util.function.BiFunction;
 import java.util.function.Function;
 
 public class At_Blocks {
@@ -52,6 +56,42 @@ public class At_Blocks {
     public static final Block COPPER_BARS = register(           //铜栏杆
             "copper_bars", PaneBlock::new, AbstractBlock.Settings.copy(ADAMANTIUM_BARS).strength(4f,4f).nonOpaque()
     );
+    public static final Block ADAMANTIUM_DOOR = register(
+            "adamantium_door",
+            settings -> new DoorBlock(BlockSetType.IRON, settings),
+            AbstractBlock.Settings.create().mapColor(MapColor.IRON_GRAY).strength(5.0F).nonOpaque().pistonBehavior(PistonBehavior.DESTROY),
+            TallBlockItem::new
+    );
+    public static final Block ANCIENT_METAL_DOOR = register(
+            "ancient_metal_door",
+            settings -> new DoorBlock(BlockSetType.IRON, settings),
+            AbstractBlock.Settings.create().mapColor(MapColor.IRON_GRAY).strength(5.0F).nonOpaque().pistonBehavior(PistonBehavior.DESTROY),
+            TallBlockItem::new
+    );
+    public static final Block MITHRIL_DOOR = register(
+            "mithril_door",
+            settings -> new DoorBlock(BlockSetType.IRON, settings),
+            AbstractBlock.Settings.create().mapColor(MapColor.IRON_GRAY).strength(5.0F).nonOpaque().pistonBehavior(PistonBehavior.DESTROY),
+            TallBlockItem::new
+    );
+    public static final Block SILVER_DOOR = register(
+            "silver_door",
+            settings -> new DoorBlock(BlockSetType.IRON, settings),
+            AbstractBlock.Settings.create().mapColor(MapColor.IRON_GRAY).strength(5.0F).nonOpaque().pistonBehavior(PistonBehavior.DESTROY),
+            TallBlockItem::new
+    );
+    public static final Block GOLD_DOOR = register(
+             "gold_door",
+            settings -> new DoorBlock(BlockSetType.IRON, settings),
+            AbstractBlock.Settings.create().mapColor(MapColor.IRON_GRAY).strength(5.0F).nonOpaque().pistonBehavior(PistonBehavior.DESTROY),
+            TallBlockItem::new
+    );
+
+    private static Block register(String name, Function<AbstractBlock.Settings, Block> factory, AbstractBlock.Settings settings, BiFunction<Block, Item.Settings, Item> factory1) {
+        Block block = Blocks.register(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(At_mite.MOD_ID, name)), factory, settings);
+        Items.register(block,factory1);
+        return block;
+    }
 
     private static Block register(String name, Function<AbstractBlock.Settings, Block> factory, AbstractBlock.Settings settings) {
         Block block = Blocks.register(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(At_mite.MOD_ID, name)), factory, settings);

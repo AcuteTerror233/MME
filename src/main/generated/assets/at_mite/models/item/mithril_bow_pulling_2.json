@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/bow",
+  "textures": {
+    "layer0": "at_mite:item/mithril_bow_pulling_2"
+  }
+}

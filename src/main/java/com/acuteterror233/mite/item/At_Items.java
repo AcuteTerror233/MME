@@ -729,6 +729,55 @@ public class At_Items {
             settings -> new At_EntityBucketItem(EntityType.TADPOLE, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_TADPOLE, settings, SILVER_BUCKET),
             new Item.Settings().maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)
     );
+    public static final Item NETHERITE_BUCKET = register("netherite_bucket", settings -> new At_BucketItem(Fluids.EMPTY, settings, null), new Item.Settings().maxCount(16));
+    public static final Item WATER_NETHERITE_BUCKET = register(
+            "water_netherite_bucket", settings -> new At_BucketItem(Fluids.WATER, settings, NETHERITE_BUCKET), new Item.Settings().recipeRemainder(NETHERITE_BUCKET).maxCount(1)
+    );
+    public static final Item LAVA_NETHERITE_BUCKET = register(
+            "lava_netherite_bucket", settings -> new At_BucketItem(Fluids.LAVA, settings, NETHERITE_BUCKET), new Item.Settings().recipeRemainder(NETHERITE_BUCKET).maxCount(1)
+    );
+    public static final Item POWDER_SNOW_NETHERITE_BUCKET = register(
+            "powder_snow_netherite_bucket",
+            settings -> new At_PowderSnowBucketItem(Blocks.POWDER_SNOW, SoundEvents.ITEM_BUCKET_EMPTY_POWDER_SNOW, settings, NETHERITE_BUCKET),
+            new Item.Settings().maxCount(1).useItemPrefixedTranslationKey()
+    );
+    public static final Item MILK_NETHERITE_BUCKET = register(
+            "milk_netherite_bucket",
+            new Item.Settings().recipeRemainder(NETHERITE_BUCKET).component(DataComponentTypes.CONSUMABLE, ConsumableComponents.MILK_BUCKET).useRemainder(NETHERITE_BUCKET).maxCount(1)
+    );
+    public static final Item PUFFERFISH_NETHERITE_BUCKET = register(
+            "pufferfish_netherite_bucket",
+            settings -> new At_EntityBucketItem(EntityType.PUFFERFISH, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, settings, NETHERITE_BUCKET),
+            new Item.Settings().maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)
+    );
+    public static final Item SALMON_NETHERITE_BUCKET = register(
+            "salmon_netherite_bucket",
+            settings -> new At_EntityBucketItem(EntityType.SALMON, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, settings, NETHERITE_BUCKET),
+            new Item.Settings().maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)
+    );
+    public static final Item COD_NETHERITE_BUCKET = register(
+            "cod_netherite_bucket",
+            settings -> new At_EntityBucketItem(EntityType.COD, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, settings, NETHERITE_BUCKET),
+            new Item.Settings().maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)
+    );
+    public static final Item TROPICAL_FISH_NETHERITE_BUCKET = register(
+            "tropical_fish_netherite_bucket",
+            settings -> new At_EntityBucketItem(EntityType.TROPICAL_FISH, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, settings, NETHERITE_BUCKET),
+            new Item.Settings().maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)
+    );
+    public static final Item AXOLOTL_NETHERITE_BUCKET = register(
+            "axolotl_netherite_bucket",
+            settings -> new At_EntityBucketItem(EntityType.AXOLOTL, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_AXOLOTL, settings, NETHERITE_BUCKET),
+            new Item.Settings().maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)
+    );
+    public static final Item TADPOLE_NETHERITE_BUCKET = register(
+            "tadpole_netherite_bucket",
+            settings -> new At_EntityBucketItem(EntityType.TADPOLE, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_TADPOLE, settings, NETHERITE_BUCKET),
+            new Item.Settings().maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)
+    );
+    public static final Item MITHRIL_BOW = register("mithril_bow", BowItem::new, new Item.Settings().maxDamage(128).enchantable(1));
+    public static final Item ANCIENT_METAL_BOW = register("ancient_metal_bow", BowItem::new, new Item.Settings().maxDamage(64).enchantable(1));
+
     public static final ItemGroup AT_MINT_GROUP = FabricItemGroup.builder()
             .icon(() -> new ItemStack(ADAMANTIUM_HELMET))
             .displayName(Text.translatable("itemGroup.at_mite.item_group"))
@@ -747,6 +796,11 @@ public class At_Items {
                     entries.add(At_Blocks.SILVER_BLOCK);
                     entries.add(At_Blocks.SILVER_ORE);
                     entries.add(At_Blocks.COPPER_BARS);
+                    entries.add(At_Blocks.ADAMANTIUM_DOOR);
+                    entries.add(At_Blocks.ANCIENT_METAL_DOOR);
+                    entries.add(At_Blocks.MITHRIL_DOOR);
+                    entries.add(At_Blocks.SILVER_DOOR);
+                    entries.add(At_Blocks.GOLD_DOOR);
                     entries.add(ADAMANTIUM_HELMET);
                     entries.add(ADAMANTIUM_CHESTPLATE);
                     entries.add(ADAMANTIUM_LEGGINGS);
@@ -1029,6 +1083,21 @@ public class At_Items {
                     entries.add(TROPICAL_FISH_SILVER_BUCKET);
                     entries.add(AXOLOTL_SILVER_BUCKET);
                     entries.add(TADPOLE_SILVER_BUCKET);
+
+                    entries.add(NETHERITE_BUCKET);
+                    entries.add(WATER_NETHERITE_BUCKET);
+                    entries.add(LAVA_NETHERITE_BUCKET);
+                    entries.add(MILK_NETHERITE_BUCKET);
+                    entries.add(POWDER_SNOW_NETHERITE_BUCKET);
+                    entries.add(PUFFERFISH_NETHERITE_BUCKET);
+                    entries.add(SALMON_NETHERITE_BUCKET);
+                    entries.add(COD_NETHERITE_BUCKET);
+                    entries.add(TROPICAL_FISH_NETHERITE_BUCKET);
+                    entries.add(AXOLOTL_NETHERITE_BUCKET);
+                    entries.add(TADPOLE_NETHERITE_BUCKET);
+
+                    entries.add(MITHRIL_BOW);
+                    entries.add(ANCIENT_METAL_BOW);
             })
             .build();
 

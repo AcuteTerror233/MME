@@ -14,5 +14,10 @@ public class At_miteClient implements ClientModInitializer {
 		BlockRenderLayerMap.INSTANCE.putBlock(At_Blocks.MITHRIL_BARS, RenderLayer.getCutout());
 		BlockRenderLayerMap.INSTANCE.putBlock(At_Blocks.SILVER_BARS, RenderLayer.getCutout());
 		BlockRenderLayerMap.INSTANCE.putBlock(At_Blocks.COPPER_BARS, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(At_Blocks.ADAMANTIUM_DOOR, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(At_Blocks.ANCIENT_METAL_DOOR, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(At_Blocks.MITHRIL_DOOR, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(At_Blocks.SILVER_DOOR, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(At_Blocks.GOLD_DOOR, RenderLayer.getCutout());
 	}
 }
