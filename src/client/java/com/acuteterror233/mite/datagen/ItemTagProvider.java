@@ -79,5 +79,16 @@ public class ItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(At_Items.WATER_SILVER_BUCKET)
                 .add(At_Items.WATER_NETHERITE_BUCKET)
                 .add(Items.WATER_BUCKET);
+        getOrCreateTagBuilder(At_Tags.FISHING_RODS)
+                .add(At_Items.ADAMANTIUM_FISHING_ROD)
+                .add(At_Items.ANCIENT_METAL_FISHING_ROD)
+                .add(At_Items.COPPER_FISHING_ROD)
+                .add(At_Items.MITHRIL_FISHING_ROD)
+                .add(At_Items.GOLD_FISHING_ROD)
+                .add(At_Items.IRON_FISHING_ROD)
+                .add(At_Items.SILVER_FISHING_ROD)
+                .add(At_Items.FLINT_FISHING_ROD)
+                .add(At_Items.OBSIDIAN_FISHING_ROD)
+                .add(Items.FISHING_ROD);
     }
 }

@@ -17,6 +17,7 @@ public class At_Tags {
     public static final TagKey<Block> INCORRECT_FOR_SILVER_TOOL = ofBlock("incorrect_for_silver_tool");
     public static final TagKey<Block> INCORRECT_FOR_FLINT_TOOL = ofBlock("incorrect_for_flint_tool");
     public static final TagKey<Item> WATER_BUCKET = ofItem("water_bucket");
+    public static final TagKey<Item> FISHING_RODS = ofItem("fishing_rods");
 
     private static TagKey<Block> ofBlock(String id) {
         return TagKey.of(RegistryKeys.BLOCK, Identifier.of(At_mite.MOD_ID, id));

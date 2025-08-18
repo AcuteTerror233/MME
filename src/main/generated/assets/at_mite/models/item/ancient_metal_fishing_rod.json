@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld_rod",
+  "textures": {
+    "layer0": "at_mite:item/ancient_metal_fishing_rod"
+  }
+}

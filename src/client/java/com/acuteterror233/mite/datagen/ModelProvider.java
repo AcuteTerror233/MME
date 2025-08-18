@@ -11,6 +11,7 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.minecraft.client.data.BlockStateModelGenerator;
 import net.minecraft.client.data.ItemModelGenerator;
 import net.minecraft.client.data.Models;
+import net.minecraft.item.Items;
 import net.minecraft.util.Identifier;
 
 
@@ -357,5 +358,33 @@ public class ModelProvider extends FabricModelProvider {
 
         itemModelGenerator.registerBow(At_Items.MITHRIL_BOW);
         itemModelGenerator.registerBow(At_Items.ANCIENT_METAL_BOW);
+
+        Identifier cast = itemModelGenerator.registerSubModel(Items.FISHING_ROD, "_cast", Models.HANDHELD_ROD);
+        ((ItemModelGeneratorExtension)itemModelGenerator).registernewFishingRod(At_Items.ADAMANTIUM_FISHING_ROD, cast);
+        ((ItemModelGeneratorExtension)itemModelGenerator).registernewFishingRod(At_Items.MITHRIL_FISHING_ROD, cast);
+        ((ItemModelGeneratorExtension)itemModelGenerator).registernewFishingRod(At_Items.ANCIENT_METAL_FISHING_ROD, cast);
+        ((ItemModelGeneratorExtension)itemModelGenerator).registernewFishingRod(At_Items.SILVER_FISHING_ROD, cast);
+        ((ItemModelGeneratorExtension)itemModelGenerator).registernewFishingRod(At_Items.COPPER_FISHING_ROD, cast);
+        ((ItemModelGeneratorExtension)itemModelGenerator).registernewFishingRod(At_Items.GOLD_FISHING_ROD, cast);
+        ((ItemModelGeneratorExtension)itemModelGenerator).registernewFishingRod(At_Items.IRON_FISHING_ROD, cast);
+        ((ItemModelGeneratorExtension)itemModelGenerator).registernewFishingRod(At_Items.FLINT_FISHING_ROD, cast);
+        ((ItemModelGeneratorExtension)itemModelGenerator).registernewFishingRod(At_Items.OBSIDIAN_FISHING_ROD, cast);
+
+        itemModelGenerator.register(At_Items.ADAMANTIUM_INGOT,Models.GENERATED);
+        itemModelGenerator.register(At_Items.MITHRIL_INGOT,Models.GENERATED);
+        itemModelGenerator.register(At_Items.ANCIENT_METAL_INGOT,Models.GENERATED);
+        itemModelGenerator.register(At_Items.SILVER_INGOT,Models.GENERATED);
+
+        itemModelGenerator.register(At_Items.ADAMANTIUM_NUGGET,Models.GENERATED);
+        itemModelGenerator.register(At_Items.MITHRIL_NUGGET,Models.GENERATED);
+        itemModelGenerator.register(At_Items.ANCIENT_METAL_NUGGET,Models.GENERATED);
+        itemModelGenerator.register(At_Items.SILVER_NUGGET,Models.GENERATED);
+
+        itemModelGenerator.register(At_Items.DIAMOND_SHARD,Models.GENERATED);
+        itemModelGenerator.register(At_Items.EMERALD_SHARD,Models.GENERATED);
+        itemModelGenerator.register(At_Items.FLINT_SHARD,Models.GENERATED);
+        itemModelGenerator.register(At_Items.GLASS_SHARD,Models.GENERATED);
+        itemModelGenerator.register(At_Items.OBSIDIAN_SHARD,Models.GENERATED);
+        itemModelGenerator.register(At_Items.QUARTZ_SHARD,Models.GENERATED);
     }
 }

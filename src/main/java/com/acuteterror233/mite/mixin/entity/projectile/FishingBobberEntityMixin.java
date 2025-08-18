@@ -1,0 +1,31 @@
+package com.acuteterror233.mite.mixin.entity.projectile;
+
+import com.acuteterror233.mite.registry.tag.At_Tags;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.projectile.FishingBobberEntity;
+import net.minecraft.entity.projectile.ProjectileEntity;
+import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Overwrite;
+
+@Mixin(FishingBobberEntity.class)
+public abstract class FishingBobberEntityMixin extends ProjectileEntity {
+    public FishingBobberEntityMixin(EntityType<? extends ProjectileEntity> entityType, World world) {
+        super(entityType, world);
+    }
+    @Overwrite
+    private boolean removeIfInvalid(PlayerEntity player) {
+        ItemStack itemStack = player.getMainHandStack();
+        ItemStack itemStack2 = player.getOffHandStack();
+        boolean bl = itemStack.isIn(At_Tags.FISHING_RODS);
+        boolean bl2 = itemStack2.isIn(At_Tags.FISHING_RODS);
+        if (!player.isRemoved() && player.isAlive() && (bl || bl2) && !(this.squaredDistanceTo(player) > 1024.0)) {
+            return false;
+        } else {
+            this.discard();
+            return true;
+        }
+    }
+}

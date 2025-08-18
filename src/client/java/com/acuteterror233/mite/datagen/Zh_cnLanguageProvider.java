@@ -335,5 +335,32 @@ public class Zh_cnLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(At_Blocks.MITHRIL_DOOR, "秘银门");
         translationBuilder.add(At_Blocks.SILVER_DOOR, "银门");
         translationBuilder.add(At_Blocks.GOLD_DOOR, "金门");
+
+        translationBuilder.add(At_Items.ADAMANTIUM_FISHING_ROD, "艾德曼鱼竿");
+        translationBuilder.add(At_Items.ANCIENT_METAL_FISHING_ROD, "远古金属鱼竿");
+        translationBuilder.add(At_Items.MITHRIL_FISHING_ROD, "秘银鱼竿");
+        translationBuilder.add(At_Items.SILVER_FISHING_ROD, "银鱼竿");
+        translationBuilder.add(At_Items.GOLD_FISHING_ROD, "金鱼竿");
+        translationBuilder.add(At_Items.COPPER_FISHING_ROD, "铜鱼竿");
+        translationBuilder.add(At_Items.IRON_FISHING_ROD, "铁鱼竿");
+        translationBuilder.add(At_Items.FLINT_FISHING_ROD, "燧石鱼竿");
+        translationBuilder.add(At_Items.OBSIDIAN_FISHING_ROD, "黑曜石鱼竿");
+
+        translationBuilder.add(At_Items.ADAMANTIUM_INGOT, "艾德曼锭");
+        translationBuilder.add(At_Items.ANCIENT_METAL_INGOT, "远古金属锭");
+        translationBuilder.add(At_Items.MITHRIL_INGOT, "秘银锭");
+        translationBuilder.add(At_Items.SILVER_INGOT, "银锭");
+
+        translationBuilder.add(At_Items.ADAMANTIUM_NUGGET, "艾德曼粒");
+        translationBuilder.add(At_Items.ANCIENT_METAL_NUGGET, "远古金属粒");
+        translationBuilder.add(At_Items.MITHRIL_NUGGET, "秘银粒");
+        translationBuilder.add(At_Items.SILVER_NUGGET, "银粒");
+
+        translationBuilder.add(At_Items.DIAMOND_SHARD, "钻石碎片");
+        translationBuilder.add(At_Items.EMERALD_SHARD, "绿宝石碎片");
+        translationBuilder.add(At_Items.FLINT_SHARD, "燧石碎片");
+        translationBuilder.add(At_Items.GLASS_SHARD, "玻璃碎片");
+        translationBuilder.add(At_Items.OBSIDIAN_SHARD, "黑曜石碎片");
+        translationBuilder.add(At_Items.QUARTZ_SHARD, "石英碎片");
     }
 }

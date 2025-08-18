@@ -335,5 +335,32 @@ public class En_usLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(At_Blocks.MITHRIL_DOOR, "Mithril Door");
         translationBuilder.add(At_Blocks.SILVER_DOOR, "Silver Door");
         translationBuilder.add(At_Blocks.GOLD_DOOR, "Gold Door");
+
+        translationBuilder.add(At_Items.ADAMANTIUM_FISHING_ROD, "Adamantium Fishing Rod");
+        translationBuilder.add(At_Items.ANCIENT_METAL_FISHING_ROD, "Ancient Metal Fishing Rod");
+        translationBuilder.add(At_Items.MITHRIL_FISHING_ROD, "Mithril Fishing Rod");
+        translationBuilder.add(At_Items.SILVER_FISHING_ROD, "Silver Fishing Rod");
+        translationBuilder.add(At_Items.GOLD_FISHING_ROD, "Gold Fishing Rod");
+        translationBuilder.add(At_Items.COPPER_FISHING_ROD, "Copper Fishing Rod");
+        translationBuilder.add(At_Items.IRON_FISHING_ROD, "Iron Fishing Rod");
+        translationBuilder.add(At_Items.FLINT_FISHING_ROD, "Flint Fishing Rod");
+        translationBuilder.add(At_Items.OBSIDIAN_FISHING_ROD, "Obsidian Fishing Rod");
+
+        translationBuilder.add(At_Items.ADAMANTIUM_INGOT, "Adamantium Ingot");
+        translationBuilder.add(At_Items.ANCIENT_METAL_INGOT, "Ancient Metal Ingot");
+        translationBuilder.add(At_Items.MITHRIL_INGOT, "Mithril Ingot");
+        translationBuilder.add(At_Items.SILVER_INGOT, "Silver Ingot");
+
+        translationBuilder.add(At_Items.ADAMANTIUM_NUGGET, "Adamantium Nugget");
+        translationBuilder.add(At_Items.ANCIENT_METAL_NUGGET, "Ancient Metal Nugget");
+        translationBuilder.add(At_Items.MITHRIL_NUGGET, "Mithril Nugget");
+        translationBuilder.add(At_Items.SILVER_NUGGET, "Silver Nugget");
+
+        translationBuilder.add(At_Items.DIAMOND_SHARD, "Diamond Shard");
+        translationBuilder.add(At_Items.EMERALD_SHARD, "Emerald Shard");
+        translationBuilder.add(At_Items.FLINT_SHARD, "Flint Shard");
+        translationBuilder.add(At_Items.GLASS_SHARD, "Glass Shard");
+        translationBuilder.add(At_Items.OBSIDIAN_SHARD, "Obsidian Shard");
+        translationBuilder.add(At_Items.QUARTZ_SHARD, "Quartz Shard");
     }
 }

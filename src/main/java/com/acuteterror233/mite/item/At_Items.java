@@ -778,6 +778,33 @@ public class At_Items {
     public static final Item MITHRIL_BOW = register("mithril_bow", BowItem::new, new Item.Settings().maxDamage(128).enchantable(1));
     public static final Item ANCIENT_METAL_BOW = register("ancient_metal_bow", BowItem::new, new Item.Settings().maxDamage(64).enchantable(1));
 
+    public static final Item ADAMANTIUM_FISHING_ROD = register("adamantium_fishing_rod", FishingRodItem::new, new Item.Settings().maxDamage(128).enchantable(1));
+    public static final Item ANCIENT_METAL_FISHING_ROD = register("ancient_metal_fishing_rod", FishingRodItem::new, new Item.Settings().maxDamage(96).enchantable(1));
+    public static final Item COPPER_FISHING_ROD = register("copper_fishing_rod", FishingRodItem::new, new Item.Settings().maxDamage(8).enchantable(1));
+    public static final Item FLINT_FISHING_ROD = register("flint_fishing_rod", FishingRodItem::new, new Item.Settings().maxDamage(4).enchantable(1));
+    public static final Item GOLD_FISHING_ROD = register("gold_fishing_rod", FishingRodItem::new, new Item.Settings().maxDamage(4).enchantable(1));
+    public static final Item IRON_FISHING_ROD = register("iron_fishing_rod", FishingRodItem::new, new Item.Settings().maxDamage(32).enchantable(1));
+    public static final Item MITHRIL_FISHING_ROD = register("mithril_fishing_rod", FishingRodItem::new, new Item.Settings().maxDamage(64).enchantable(1));
+    public static final Item OBSIDIAN_FISHING_ROD = register("obsidian_fishing_rod", FishingRodItem::new, new Item.Settings().maxDamage(32).enchantable(1));
+    public static final Item SILVER_FISHING_ROD = register("silver_fishing_rod", FishingRodItem::new, new Item.Settings().maxDamage(8).enchantable(1));
+
+    public static final Item ADAMANTIUM_INGOT = register("adamantium_ingot");
+    public static final Item ANCIENT_METAL_INGOT = register("ancient_metal_ingot");
+    public static final Item MITHRIL_INGOT = register("mithril_ingot");
+    public static final Item SILVER_INGOT = register("silver_ingot");
+
+    public static final Item ADAMANTIUM_NUGGET = register("adamantium_nugget");
+    public static final Item ANCIENT_METAL_NUGGET = register("ancient_metal_nugget");
+    public static final Item MITHRIL_NUGGET = register("mithril_nugget");
+    public static final Item SILVER_NUGGET = register("silver_nugget");
+
+    public static final Item DIAMOND_SHARD = register("diamond_shard");
+    public static final Item EMERALD_SHARD = register("emerald_shard");
+    public static final Item FLINT_SHARD = register("flint_shard");
+    public static final Item GLASS_SHARD = register("glass_shard");
+    public static final Item OBSIDIAN_SHARD = register("obsidian_shard");
+    public static final Item QUARTZ_SHARD = register("quartz_shard");
+
     public static final ItemGroup AT_MINT_GROUP = FabricItemGroup.builder()
             .icon(() -> new ItemStack(ADAMANTIUM_HELMET))
             .displayName(Text.translatable("itemGroup.at_mite.item_group"))
@@ -801,6 +828,29 @@ public class At_Items {
                     entries.add(At_Blocks.MITHRIL_DOOR);
                     entries.add(At_Blocks.SILVER_DOOR);
                     entries.add(At_Blocks.GOLD_DOOR);
+                    entries.add(DIAMOND_SHARD);
+                    entries.add(EMERALD_SHARD);
+                    entries.add(FLINT_SHARD);
+                    entries.add(GLASS_SHARD);
+                    entries.add(OBSIDIAN_SHARD);
+                    entries.add(QUARTZ_SHARD);
+                    entries.add(ADAMANTIUM_INGOT);
+                    entries.add(ANCIENT_METAL_INGOT);
+                    entries.add(MITHRIL_INGOT);
+                    entries.add(SILVER_INGOT);
+                    entries.add(ADAMANTIUM_NUGGET);
+                    entries.add(ANCIENT_METAL_NUGGET);
+                    entries.add(MITHRIL_NUGGET);
+                    entries.add(SILVER_NUGGET);
+                    entries.add(ADAMANTIUM_FISHING_ROD);
+                    entries.add(ANCIENT_METAL_FISHING_ROD);
+                    entries.add(COPPER_FISHING_ROD);
+                    entries.add(FLINT_FISHING_ROD);
+                    entries.add(GOLD_FISHING_ROD);
+                    entries.add(IRON_FISHING_ROD);
+                    entries.add(MITHRIL_FISHING_ROD);
+                    entries.add(OBSIDIAN_FISHING_ROD);
+                    entries.add(SILVER_FISHING_ROD);
                     entries.add(ADAMANTIUM_HELMET);
                     entries.add(ADAMANTIUM_CHESTPLATE);
                     entries.add(ADAMANTIUM_LEGGINGS);

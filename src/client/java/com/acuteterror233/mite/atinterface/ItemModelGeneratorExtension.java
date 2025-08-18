@@ -5,4 +5,5 @@ import net.minecraft.util.Identifier;
 
 public interface ItemModelGeneratorExtension {
     void registerbucket(Item item, Identifier identifier,Item item1);
+    void registernewFishingRod(Item item, Identifier cast);
 }

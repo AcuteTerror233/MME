@@ -14,6 +14,7 @@
     "entity.BucketableMixin",
     "entity.player.HungerManagerMixin",
     "entity.player.PlayerEntityMixin",
+    "entity.projectile.FishingBobberEntityMixin",
     "item.ItemSettingsMixin",
     "item.ItemStackMixin",
     "item.ToolMaterialMixin"
