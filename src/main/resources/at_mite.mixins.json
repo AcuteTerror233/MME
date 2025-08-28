@@ -12,12 +12,14 @@
     "block.PowderSnowBlockMixin",
     "block.WaterloggableMixin",
     "entity.BucketableMixin",
+    "entity.FallingBlockEntityMixin",
     "entity.player.HungerManagerMixin",
     "entity.player.PlayerEntityMixin",
     "entity.projectile.FishingBobberEntityMixin",
     "item.ItemSettingsMixin",
     "item.ItemStackMixin",
-    "item.ToolMaterialMixin"
+    "item.ToolMaterialMixin",
+    "screen.AnvilScreenHandlerMixin"
   ],
   "injectors": {
     "defaultRequire": 1

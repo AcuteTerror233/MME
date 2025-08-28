@@ -6,9 +6,9 @@ import net.minecraft.item.*;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.ActionResult;
 
-public class At_PowderSnowBucketItem extends PowderSnowBucketItem {
+public class AtPowderSnowBucketItem extends PowderSnowBucketItem {
     Item item;
-    public At_PowderSnowBucketItem(Block block, SoundEvent placeSound, Settings settings, Item item) {
+    public AtPowderSnowBucketItem(Block block, SoundEvent placeSound, Settings settings, Item item) {
         super(block, placeSound, settings);
         this.item = item;
     }

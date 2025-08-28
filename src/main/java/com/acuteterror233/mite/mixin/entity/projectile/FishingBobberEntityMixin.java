@@ -1,6 +1,6 @@
 package com.acuteterror233.mite.mixin.entity.projectile;
 
-import com.acuteterror233.mite.registry.tag.At_Tags;
+import com.acuteterror233.mite.registry.tag.AtTags;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.FishingBobberEntity;
@@ -19,8 +19,8 @@ public abstract class FishingBobberEntityMixin extends ProjectileEntity {
     private boolean removeIfInvalid(PlayerEntity player) {
         ItemStack itemStack = player.getMainHandStack();
         ItemStack itemStack2 = player.getOffHandStack();
-        boolean bl = itemStack.isIn(At_Tags.FISHING_RODS);
-        boolean bl2 = itemStack2.isIn(At_Tags.FISHING_RODS);
+        boolean bl = itemStack.isIn(AtTags.FISHING_RODS);
+        boolean bl2 = itemStack2.isIn(AtTags.FISHING_RODS);
         if (!player.isRemoved() && player.isAlive() && (bl || bl2) && !(this.squaredDistanceTo(player) > 1024.0)) {
             return false;
         } else {

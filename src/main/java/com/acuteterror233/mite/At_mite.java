@@ -1,12 +1,9 @@
 package com.acuteterror233.mite;
 
-import com.acuteterror233.mite.block.At_Blocks;
-import com.acuteterror233.mite.item.At_Items;
+import com.acuteterror233.mite.block.AtBlocks;
+import com.acuteterror233.mite.item.AtItems;
 import net.fabricmc.api.ModInitializer;
 
-import net.minecraft.item.Item;
-import net.minecraft.registry.RegistryKeys;
-import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,7 +20,7 @@ public class At_mite implements ModInitializer {
 		// However, some things (like resources) may still be uninitialized.
 		// Proceed with mild caution.
 		LOGGER.info("Hello Fabric world!");
-		At_Items.init();
-		At_Blocks.init();
+		AtItems.init();
+		AtBlocks.init();
 	}
 }

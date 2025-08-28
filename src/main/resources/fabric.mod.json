@@ -39,7 +39,7 @@
 		"java": ">=21",
 		"fabric-api": "*"
 	},
-	"accessWidener": "at.accesswidener",
+	"accessWidener": "named.accesswidener",
 	"suggests": {
 		"another-mod": "*"
 	}

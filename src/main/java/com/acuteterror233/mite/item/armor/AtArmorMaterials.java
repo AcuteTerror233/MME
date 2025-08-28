@@ -3,7 +3,7 @@ package com.acuteterror233.mite.item.armor;
 import com.acuteterror233.mite.At_mite;
 
 
-import com.acuteterror233.mite.item.equipment.At_ArmorMaterial;
+import com.acuteterror233.mite.item.equipment.AtArmorMaterial;
 import net.minecraft.item.equipment.EquipmentAsset;
 import net.minecraft.item.equipment.EquipmentAssetKeys;
 import net.minecraft.item.equipment.EquipmentType;
@@ -13,7 +13,7 @@ import net.minecraft.util.Identifier;
 
 import java.util.HashMap;
 
-public class At_ArmorMaterials {
+public class AtArmorMaterials {
     public static final RegistryKey<EquipmentAsset> ADAMANTIUM_ARMOR_MATERIAL_KEY = RegistryKey.of(EquipmentAssetKeys.REGISTRY_KEY, Identifier.of(At_mite.MOD_ID, "adamantium"));
     public static final RegistryKey<EquipmentAsset> ADAMANTIUM_CHAINMAIL_ARMOR_MATERIAL_KEY = RegistryKey.of(EquipmentAssetKeys.REGISTRY_KEY, Identifier.of(At_mite.MOD_ID, "adamantium_chainmail"));
     public static final RegistryKey<EquipmentAsset> ANCIENT_METAL_ARMOR_MATERIAL_KEY = RegistryKey.of(EquipmentAssetKeys.REGISTRY_KEY, Identifier.of(At_mite.MOD_ID, "ancient_metal"));
@@ -27,7 +27,7 @@ public class At_ArmorMaterials {
     public static final RegistryKey<EquipmentAsset> SILVER_ARMOR_MATERIAL_KEY = RegistryKey.of(EquipmentAssetKeys.REGISTRY_KEY, Identifier.of(At_mite.MOD_ID, "silver"));
     public static final RegistryKey<EquipmentAsset> SILVER_CHAINMAIL_ARMOR_MATERIAL_KEY = RegistryKey.of(EquipmentAssetKeys.REGISTRY_KEY, Identifier.of(At_mite.MOD_ID, "silver_chainmail"));
 
-    public static final At_ArmorMaterial ARMOR_MATERIAL_ARMOR_MATERIAL = new At_ArmorMaterial(
+    public static final AtArmorMaterial ARMOR_MATERIAL_ARMOR_MATERIAL = new AtArmorMaterial(
             30,
             new HashMap<>() {{
                 put(EquipmentType.HELMET, 2.1);
@@ -41,7 +41,7 @@ public class At_ArmorMaterials {
             0.0F,
             null,
             ADAMANTIUM_ARMOR_MATERIAL_KEY);
-    public static final At_ArmorMaterial ARMOR_MATERIAL_CHAINMAIL_ARMOR_MATERIAL = new At_ArmorMaterial(
+    public static final AtArmorMaterial ARMOR_MATERIAL_CHAINMAIL_ARMOR_MATERIAL = new AtArmorMaterial(
             15,
             new HashMap<>() {{
                 put(EquipmentType.HELMET, 1.7);
@@ -55,7 +55,7 @@ public class At_ArmorMaterials {
             0.0F,
             null,
             ADAMANTIUM_CHAINMAIL_ARMOR_MATERIAL_KEY);
-    public static final At_ArmorMaterial ANCIENT_METAL_ARMOR_MATERIAL = new At_ArmorMaterial(
+    public static final AtArmorMaterial ANCIENT_METAL_ARMOR_MATERIAL = new AtArmorMaterial(
             30,
             new HashMap<>() {{
                 put(EquipmentType.HELMET, 1.7);
@@ -69,7 +69,7 @@ public class At_ArmorMaterials {
                 0.0F,
                 null,
             ANCIENT_METAL_ARMOR_MATERIAL_KEY);
-    public static final At_ArmorMaterial ANCIENT_METAL_CHAINMAIL_ARMOR_MATERIAL = new At_ArmorMaterial(
+    public static final AtArmorMaterial ANCIENT_METAL_CHAINMAIL_ARMOR_MATERIAL = new AtArmorMaterial(
             15,
             new HashMap<>() {{
                 put(EquipmentType.HELMET, 1.3);
@@ -83,7 +83,7 @@ public class At_ArmorMaterials {
                 0.0F,
                 null,
                 ANCIENT_METAL_CHAINMAIL_ARMOR_MATERIAL_KEY);
-    public static final At_ArmorMaterial COPPER_ARMOR_MATERIAL = new At_ArmorMaterial(
+    public static final AtArmorMaterial COPPER_ARMOR_MATERIAL = new AtArmorMaterial(
             15,
             new HashMap<>() {{
                 put(EquipmentType.HELMET, 1.5);
@@ -97,7 +97,7 @@ public class At_ArmorMaterials {
                  0.0F,
                  null,
                  COPPER_ARMOR_MATERIAL_KEY);
-    public static final At_ArmorMaterial COPPER_CHAINMAIL_ARMOR_MATERIAL = new At_ArmorMaterial(
+    public static final AtArmorMaterial COPPER_CHAINMAIL_ARMOR_MATERIAL = new AtArmorMaterial(
             15,
             new HashMap<>() {{
                 put(EquipmentType.HELMET, 1.0);
@@ -111,7 +111,7 @@ public class At_ArmorMaterials {
                 0.0F,
                 null,
                 COPPER_CHAINMAIL_ARMOR_MATERIAL_KEY);
-    public static final At_ArmorMaterial MITHRIL_ARMOR_MATERIAL = new At_ArmorMaterial(
+    public static final AtArmorMaterial MITHRIL_ARMOR_MATERIAL = new AtArmorMaterial(
             15,
             new HashMap<>() {{
                 put(EquipmentType.HELMET, 1.9);
@@ -125,7 +125,7 @@ public class At_ArmorMaterials {
                 0.0F,
                 null,
             MITHRIL_ARMOR_MATERIAL_KEY);
-    public static final At_ArmorMaterial MITHRIL_CHAINMAIL_ARMOR_MATERIAL = new At_ArmorMaterial(
+    public static final AtArmorMaterial MITHRIL_CHAINMAIL_ARMOR_MATERIAL = new AtArmorMaterial(
             15,
             new HashMap<>() {{
                 put(EquipmentType.HELMET, 1.5);
@@ -139,7 +139,7 @@ public class At_ArmorMaterials {
             0.0F,
             null,
             MITHRIL_CHAINMAIL_ARMOR_MATERIAL_KEY);
-    public static final At_ArmorMaterial RUSTED_IRON_ARMOR_MATERIAL = new At_ArmorMaterial(
+    public static final AtArmorMaterial RUSTED_IRON_ARMOR_MATERIAL = new AtArmorMaterial(
             15,
             new HashMap<>() {{
                 put(EquipmentType.HELMET, 1.3);
@@ -153,7 +153,7 @@ public class At_ArmorMaterials {
                 0.0F,
                 null,
                 RUSTED_IRON_ARMOR_MATERIAL_KEY);
-    public static final At_ArmorMaterial RUSTED_IRON_CHAINMAIL_ARMOR_MATERIAL = new At_ArmorMaterial(
+    public static final AtArmorMaterial RUSTED_IRON_CHAINMAIL_ARMOR_MATERIAL = new AtArmorMaterial(
             15,
             new HashMap<>() {{
                 put(EquipmentType.HELMET, 0.83);
@@ -167,7 +167,7 @@ public class At_ArmorMaterials {
                 0.0F,
                 null,
                 RUSTED_IRON_CHAINMAIL_ARMOR_MATERIAL_KEY);
-    public static final At_ArmorMaterial SILVER_ARMOR_MATERIAL = new At_ArmorMaterial(
+    public static final AtArmorMaterial SILVER_ARMOR_MATERIAL = new AtArmorMaterial(
             15,
             new HashMap<>() {{
                 put(EquipmentType.HELMET, 1.5);
@@ -181,7 +181,7 @@ public class At_ArmorMaterials {
                 0.0F,
                 null,
                 SILVER_ARMOR_MATERIAL_KEY);
-    public static final At_ArmorMaterial SILVER_CHAINMAIL_ARMOR_MATERIAL = new At_ArmorMaterial(
+    public static final AtArmorMaterial SILVER_CHAINMAIL_ARMOR_MATERIAL = new AtArmorMaterial(
             15,
             new HashMap<>() {{
                 put(EquipmentType.HELMET, 1.0);

@@ -1,6 +1,6 @@
 package com.acuteterror233.mite.atinterface;
 
-import com.acuteterror233.mite.item.equipment.At_ArmorMaterial;
+import com.acuteterror233.mite.item.equipment.AtArmorMaterial;
 import net.minecraft.item.Item;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.item.equipment.EquipmentType;
@@ -24,7 +24,7 @@ public interface ItemSettingsExtension {
     default Item.Settings shears(ToolMaterial material, float attackDamage, float attackSpeed){
         return null;
     }
-    default Item.Settings At_armor(At_ArmorMaterial material, EquipmentType type) {
+    default Item.Settings At_armor(AtArmorMaterial material, EquipmentType type) {
         return null;
     }
 }

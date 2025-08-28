@@ -26,11 +26,11 @@ import net.minecraft.world.RaycastContext;
 import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
 
-public class At_EntityBucketItem extends EntityBucketItem {
+public class AtEntityBucketItem extends EntityBucketItem {
     private final Item item;
     private final Fluid fluid;
     //注册名格式必须是"生物/液体_材质"
-    public At_EntityBucketItem(EntityType<? extends MobEntity> type, Fluid fluid, SoundEvent emptyingSound, Settings settings, Item empty_barrel) {
+    public AtEntityBucketItem(EntityType<? extends MobEntity> type, Fluid fluid, SoundEvent emptyingSound, Settings settings, Item empty_barrel) {
         super(type, fluid, emptyingSound, settings);
         this.item = empty_barrel;
         this.fluid = fluid;

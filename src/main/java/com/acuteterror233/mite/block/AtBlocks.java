@@ -1,19 +1,25 @@
 package com.acuteterror233.mite.block;
 
 import com.acuteterror233.mite.At_mite;
+import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.block.*;
+import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.item.TallBlockItem;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
+import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
-public class At_Blocks {
+public class AtBlocks {
     public static final Block ADAMANTIUM_ORE = register(        //艾德曼矿
             "adamantium_ore", AbstractBlock.Settings.create().strength(4.0f, 4.0f)
     );
@@ -86,6 +92,36 @@ public class At_Blocks {
             AbstractBlock.Settings.create().mapColor(MapColor.IRON_GRAY).strength(5.0F).nonOpaque().pistonBehavior(PistonBehavior.DESTROY),
             TallBlockItem::new
     );
+    public static final Block ADAMANTIUM_ANVIL = register(
+            "adamantium_anvil",
+            AtAnvilBlock::new,
+            AbstractBlock.Settings.create()
+                    .mapColor(MapColor.IRON_GRAY)
+                    .strength(0.5F, 1200.0F)
+                    .sounds(BlockSoundGroup.ANVIL)
+                    .pistonBehavior(PistonBehavior.BLOCK),
+            new Item.Settings().maxDamage(2048)
+    );
+    public static final Block CHIPPED_ADAMANTIUM_ANVIL = register(
+            "chipped_adamantium_anvil",
+            AtAnvilBlock::new,
+            AbstractBlock.Settings.create()
+                    .mapColor(MapColor.IRON_GRAY)
+                    .strength(0.5F, 1200.0F)
+                    .sounds(BlockSoundGroup.ANVIL)
+                    .pistonBehavior(PistonBehavior.BLOCK),
+            new Item.Settings().maxDamage(2048)
+    );
+    public static final Block DAMAGED_ADAMANTIUM_ANVIL = register(
+            "damaged_adamantium_anvil",
+            AtAnvilBlock::new,
+            AbstractBlock.Settings.create()
+                    .mapColor(MapColor.IRON_GRAY)
+                    .strength(0.5F, 1200.0F)
+                    .sounds(BlockSoundGroup.ANVIL)
+                    .pistonBehavior(PistonBehavior.BLOCK),
+            new Item.Settings().maxDamage(2048)
+    );
 
     private static Block register(String name, Function<AbstractBlock.Settings, Block> factory, AbstractBlock.Settings settings, BiFunction<Block, Item.Settings, Item> factory1) {
         Block block = Blocks.register(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(At_mite.MOD_ID, name)), factory, settings);
@@ -102,6 +138,22 @@ public class At_Blocks {
         Block block = Blocks.register(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(At_mite.MOD_ID, name)), settings);
         Items.register(block);
         return block;
+    }
+    private static Block register(String name, Function<AbstractBlock.Settings, Block> factory, AbstractBlock.Settings settings,Item.Settings itemsettings) {
+        Block block = Blocks.register(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(At_mite.MOD_ID, name)), factory, settings);
+        Items.register(block,itemsettings);
+        return block;
+    }
+    public static final BlockEntityType<AnvilBlockEntity> ANVIL_BLOCK_ENTITY =
+            register("anvil", AnvilBlockEntity::new, ADAMANTIUM_ANVIL);
+
+    private static <T extends BlockEntity> BlockEntityType<T> register(
+            String name,
+            FabricBlockEntityTypeBuilder.Factory<? extends T> entityFactory,
+            Block... blocks
+    ) {
+        Identifier id = Identifier.of(At_mite.MOD_ID, name);
+        return Registry.register(Registries.BLOCK_ENTITY_TYPE, id, FabricBlockEntityTypeBuilder.<T>create(entityFactory, blocks).build());
     }
 
     public static void init() {

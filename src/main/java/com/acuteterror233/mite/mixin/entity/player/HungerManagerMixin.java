@@ -53,7 +53,6 @@ public abstract class HungerManagerMixin implements HungerManagerExtension {
                 this.foodLevel = Math.max(this.foodLevel - 1, 0);
             }
         }
-
         this.foodTickTimer++;
         if (foodLevel > 0) {
             this.healTickTimer++;

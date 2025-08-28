@@ -20,11 +20,11 @@ import net.minecraft.world.RaycastContext;
 import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
 
-public class At_BucketItem extends BucketItem {
+public class AtBucketItem extends BucketItem {
     private final  Item item;
     private final  Fluid fluid;
     //注册名格式必须是"生物/液体_材质"
-    public At_BucketItem(Fluid fluid, Settings settings, Item empty_barrel) {
+    public AtBucketItem(Fluid fluid, Settings settings, Item empty_barrel) {
         super(fluid, settings);
         this.fluid = fluid;
         this.item = empty_barrel;
@@ -36,7 +36,6 @@ public class At_BucketItem extends BucketItem {
         BlockHitResult blockHitResult = raycast(
                 world, user, this.fluid == Fluids.EMPTY ? RaycastContext.FluidHandling.SOURCE_ONLY : RaycastContext.FluidHandling.NONE
         );
-        // 检查是否点击到方块
         if (blockHitResult.getType() == HitResult.Type.MISS) {
             return ActionResult.PASS;
         } else if (blockHitResult.getType() != HitResult.Type.BLOCK) {
@@ -45,10 +44,8 @@ public class At_BucketItem extends BucketItem {
             BlockPos blockPos = blockHitResult.getBlockPos();
             Direction direction = blockHitResult.getSide();
             BlockPos blockPos2 = blockPos.offset(direction);
-            // 检查玩家是否可以修改目标位置
             if (!world.canEntityModifyAt(user, blockPos) || !user.canPlaceOn(blockPos2, direction, itemStack)) {
                 return ActionResult.FAIL;
-            // 处理空桶情况 - 从世界中收集液体
             } else if (this.fluid == Fluids.EMPTY) {
                 BlockState blockState = world.getBlockState(blockPos);
                 if (blockState.getBlock() instanceof FluidDrainableExtension fluidDrainable) {
@@ -67,7 +64,6 @@ public class At_BucketItem extends BucketItem {
                 }
 
                 return ActionResult.FAIL;
-            // 处理装有液体的桶 - 将液体放置到世界中
             } else {
                 BlockState blockState = world.getBlockState(blockPos);
                 BlockPos blockPos3 = blockState.getBlock() instanceof FluidFillable && this.fluid == Fluids.WATER ? blockPos : blockPos2;

@@ -2,9 +2,10 @@ package com.acuteterror233.mite.item;
 
 import com.acuteterror233.mite.At_mite;
 import com.acuteterror233.mite.atinterface.ItemSettingsExtension;
-import com.acuteterror233.mite.block.At_Blocks;
-import com.acuteterror233.mite.item.armor.At_ArmorMaterials;
+import com.acuteterror233.mite.block.AtBlocks;
+import com.acuteterror233.mite.item.armor.AtArmorMaterials;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
+import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.ConsumableComponents;
@@ -24,198 +25,198 @@ import net.minecraft.util.Identifier;
 
 import java.util.function.Function;
 
-public class At_Items {
+public class AtItems {
     public static final Item ADAMANTIUM_HELMET = register(
         "adamantium_helmet",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(At_ArmorMaterials.ARMOR_MATERIAL_ARMOR_MATERIAL,EquipmentType.HELMET)
+        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.ARMOR_MATERIAL_ARMOR_MATERIAL,EquipmentType.HELMET)
     );
     public static final Item ADAMANTIUM_CHESTPLATE = register(
         "adamantium_chestplate",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(At_ArmorMaterials.ARMOR_MATERIAL_ARMOR_MATERIAL,EquipmentType.CHESTPLATE)
+        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.ARMOR_MATERIAL_ARMOR_MATERIAL,EquipmentType.CHESTPLATE)
     );
     public static final Item ADAMANTIUM_LEGGINGS = register(
         "adamantium_leggings",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(At_ArmorMaterials.ARMOR_MATERIAL_ARMOR_MATERIAL,EquipmentType.LEGGINGS)
+        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.ARMOR_MATERIAL_ARMOR_MATERIAL,EquipmentType.LEGGINGS)
     );
     public static final Item ADAMANTIUM_BOOTS = register(
         "adamantium_boots",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(At_ArmorMaterials.ARMOR_MATERIAL_ARMOR_MATERIAL,EquipmentType.BOOTS)
+        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.ARMOR_MATERIAL_ARMOR_MATERIAL,EquipmentType.BOOTS)
     );
     public static final Item ADAMANTIUM_CHAINMAIL_BOOTS = register(
         "adamantium_chainmail_boots",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(At_ArmorMaterials.ARMOR_MATERIAL_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.BOOTS)
+        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.ARMOR_MATERIAL_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.BOOTS)
     );
     public static final Item ADAMANTIUM_CHAINMAIL_CHESTPLATE = register(
         "adamantium_chainmail_chestplate",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(At_ArmorMaterials.ARMOR_MATERIAL_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.CHESTPLATE)
+        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.ARMOR_MATERIAL_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.CHESTPLATE)
     );
     public static final Item ADAMANTIUM_CHAINMAIL_HELMET = register(
         "adamantium_chainmail_helmet",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(At_ArmorMaterials.ARMOR_MATERIAL_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.HELMET)
+        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.ARMOR_MATERIAL_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.HELMET)
     );
     public static final Item ADAMANTIUM_CHAINMAIL_LEGGINGS = register(
         "adamantium_chainmail_leggings",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(At_ArmorMaterials.ARMOR_MATERIAL_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.LEGGINGS)
+        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.ARMOR_MATERIAL_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.LEGGINGS)
     );
     public static final Item ANCIENT_METAL_HELMET = register(
         "ancient_metal_helmet",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(At_ArmorMaterials.ANCIENT_METAL_ARMOR_MATERIAL,EquipmentType.HELMET)
+        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.ANCIENT_METAL_ARMOR_MATERIAL,EquipmentType.HELMET)
     );
     public static final Item ANCIENT_METAL_CHESTPLATE = register(
         "ancient_metal_chestplate",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(At_ArmorMaterials.ANCIENT_METAL_ARMOR_MATERIAL,EquipmentType.CHESTPLATE)
+        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.ANCIENT_METAL_ARMOR_MATERIAL,EquipmentType.CHESTPLATE)
     );
     public static final Item ANCIENT_METAL_LEGGINGS = register(
         "ancient_metal_leggings",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(At_ArmorMaterials.ANCIENT_METAL_ARMOR_MATERIAL,EquipmentType.LEGGINGS)
+        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.ANCIENT_METAL_ARMOR_MATERIAL,EquipmentType.LEGGINGS)
     );
     public static final Item ANCIENT_METAL_BOOTS = register(
         "ancient_metal_boots",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(At_ArmorMaterials.ANCIENT_METAL_ARMOR_MATERIAL,EquipmentType.BOOTS)
+        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.ANCIENT_METAL_ARMOR_MATERIAL,EquipmentType.BOOTS)
     );
     public static final Item ANCIENT_METAL_CHAINMAIL_BOOTS = register(
         "ancient_metal_chainmail_boots",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(At_ArmorMaterials.ANCIENT_METAL_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.BOOTS)
+        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.ANCIENT_METAL_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.BOOTS)
     );
     public static final Item ANCIENT_METAL_CHAINMAIL_CHESTPLATE = register(
         "ancient_metal_chainmail_chestplate",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(At_ArmorMaterials.ANCIENT_METAL_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.CHESTPLATE)
+        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.ANCIENT_METAL_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.CHESTPLATE)
     );
     public static final Item ANCIENT_METAL_CHAINMAIL_HELMET = register(
         "ancient_metal_chainmail_helmet",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(At_ArmorMaterials.ANCIENT_METAL_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.HELMET)
+        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.ANCIENT_METAL_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.HELMET)
     );
     public static final Item ANCIENT_METAL_CHAINMAIL_LEGGINGS = register(
         "ancient_metal_chainmail_leggings",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(At_ArmorMaterials.ANCIENT_METAL_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.LEGGINGS)
+        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.ANCIENT_METAL_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.LEGGINGS)
     );
     public static final Item COPPER_HELMET =  register(
         "copper_helmet",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(At_ArmorMaterials.COPPER_ARMOR_MATERIAL,EquipmentType.HELMET)
+        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.COPPER_ARMOR_MATERIAL,EquipmentType.HELMET)
     );
     public static final Item COPPER_CHESTPLATE = register(
         "copper_chestplate",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(At_ArmorMaterials.COPPER_ARMOR_MATERIAL,EquipmentType.CHESTPLATE)
+        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.COPPER_ARMOR_MATERIAL,EquipmentType.CHESTPLATE)
     );
     public static final Item COPPER_LEGGINGS = register(
         "copper_leggings",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(At_ArmorMaterials.COPPER_ARMOR_MATERIAL,EquipmentType.LEGGINGS)
+        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.COPPER_ARMOR_MATERIAL,EquipmentType.LEGGINGS)
     );
     public static final Item COPPER_BOOTS = register(
         "copper_boots",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(At_ArmorMaterials.COPPER_ARMOR_MATERIAL,EquipmentType.BOOTS)
+        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.COPPER_ARMOR_MATERIAL,EquipmentType.BOOTS)
     );
     public static final Item COPPER_CHAINMAIL_BOOTS = register(
         "copper_chainmail_boots",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(At_ArmorMaterials.COPPER_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.BOOTS)
+        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.COPPER_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.BOOTS)
     );
     public static final Item COPPER_CHAINMAIL_CHESTPLATE = register(
         "copper_chainmail_chestplate",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(At_ArmorMaterials.COPPER_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.CHESTPLATE)
+        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.COPPER_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.CHESTPLATE)
     );
     public static final Item COPPER_CHAINMAIL_HELMET = register(
         "copper_chainmail_helmet",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(At_ArmorMaterials.COPPER_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.HELMET)
+        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.COPPER_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.HELMET)
     );
     public static final Item COPPER_CHAINMAIL_LEGGINGS = register(
         "copper_chainmail_leggings",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(At_ArmorMaterials.COPPER_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.LEGGINGS)
+        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.COPPER_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.LEGGINGS)
     );
     public static final Item MITHRIL_HELMET = register(
         "mithril_helmet",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(At_ArmorMaterials.MITHRIL_ARMOR_MATERIAL,EquipmentType.HELMET)
+        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.MITHRIL_ARMOR_MATERIAL,EquipmentType.HELMET)
     );
     public static final Item MITHRIL_CHESTPLATE = register(
         "mithril_chestplate",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(At_ArmorMaterials.MITHRIL_ARMOR_MATERIAL,EquipmentType.CHESTPLATE)
+        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.MITHRIL_ARMOR_MATERIAL,EquipmentType.CHESTPLATE)
     );
     public static final Item MITHRIL_LEGGINGS = register(
         "mithril_leggings",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(At_ArmorMaterials.MITHRIL_ARMOR_MATERIAL,EquipmentType.LEGGINGS)
+        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.MITHRIL_ARMOR_MATERIAL,EquipmentType.LEGGINGS)
     );
     public static final Item MITHRIL_BOOTS = register(
         "mithril_boots",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(At_ArmorMaterials.MITHRIL_ARMOR_MATERIAL,EquipmentType.BOOTS)
+        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.MITHRIL_ARMOR_MATERIAL,EquipmentType.BOOTS)
     );
     public static final Item MITHRIL_CHAINMAIL_HELMET  = register(
         "mithril_chainmail_helmet",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(At_ArmorMaterials.MITHRIL_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.BOOTS)
+        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.MITHRIL_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.BOOTS)
     );
     public static final Item MITHRIL_CHAINMAIL_CHESTPLATE  = register(
         "mithril_chainmail_chestplate",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(At_ArmorMaterials.MITHRIL_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.CHESTPLATE)
+        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.MITHRIL_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.CHESTPLATE)
     );
     public static final Item MITHRIL_CHAINMAIL_LEGGINGS  = register(
         "mithril_chainmail_leggings",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(At_ArmorMaterials.MITHRIL_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.LEGGINGS)
+        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.MITHRIL_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.LEGGINGS)
     );
     public static final Item MITHRIL_CHAINMAIL_BOOTS  = register(
         "mithril_chainmail_boots",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(At_ArmorMaterials.MITHRIL_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.BOOTS)
+        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.MITHRIL_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.BOOTS)
     );
     public static final Item RUSTED_IRON_HELMET = register(
         "rusted_iron_helmet",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(At_ArmorMaterials.RUSTED_IRON_ARMOR_MATERIAL,EquipmentType.HELMET)
+        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.RUSTED_IRON_ARMOR_MATERIAL,EquipmentType.HELMET)
     );
     public static final Item RUSTED_IRON_CHESTPLATE = register(
         "rusted_iron_chestplate",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(At_ArmorMaterials.RUSTED_IRON_ARMOR_MATERIAL,EquipmentType.CHESTPLATE)
+        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.RUSTED_IRON_ARMOR_MATERIAL,EquipmentType.CHESTPLATE)
     );
     public static final Item RUSTED_IRON_LEGGINGS = register(
         "rusted_iron_leggings",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(At_ArmorMaterials.RUSTED_IRON_ARMOR_MATERIAL,EquipmentType.LEGGINGS)
+        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.RUSTED_IRON_ARMOR_MATERIAL,EquipmentType.LEGGINGS)
     );
     public static final Item RUSTED_IRON_BOOTS = register(
         "rusted_iron_boots",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(At_ArmorMaterials.RUSTED_IRON_ARMOR_MATERIAL,EquipmentType.BOOTS)
+        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.RUSTED_IRON_ARMOR_MATERIAL,EquipmentType.BOOTS)
     );
     public static final Item RUSTED_IRON_CHAINMAIL_HELMET = register(
         "rusted_iron_chainmail_helmet",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(At_ArmorMaterials.RUSTED_IRON_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.HELMET)
+        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.RUSTED_IRON_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.HELMET)
     );
     public static final Item RUSTED_IRON_CHAINMAIL_CHESTPLATE = register(
         "rusted_iron_chainmail_chestplate",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(At_ArmorMaterials.RUSTED_IRON_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.CHESTPLATE)
+        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.RUSTED_IRON_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.CHESTPLATE)
     );
     public static final Item RUSTED_IRON_CHAINMAIL_LEGGINGS = register(
         "rusted_iron_chainmail_leggings",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(At_ArmorMaterials.RUSTED_IRON_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.LEGGINGS)
+        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.RUSTED_IRON_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.LEGGINGS)
     );
     public static final Item RUSTED_IRON_CHAINMAIL_BOOTS = register(
         "rusted_iron_chainmail_boots",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(At_ArmorMaterials.RUSTED_IRON_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.BOOTS)
+        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.RUSTED_IRON_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.BOOTS)
     );
     public static final Item SILVER_HELMET = register(
         "silver_helmet",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(At_ArmorMaterials.SILVER_ARMOR_MATERIAL,EquipmentType.HELMET)
+        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.SILVER_ARMOR_MATERIAL,EquipmentType.HELMET)
     );
      public static final Item SILVER_CHESTPLATE = register(
         "silver_chestplate",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(At_ArmorMaterials.SILVER_ARMOR_MATERIAL,EquipmentType.CHESTPLATE)
+        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.SILVER_ARMOR_MATERIAL,EquipmentType.CHESTPLATE)
     );
     public static final Item SILVER_LEGGINGS = register(
         "silver_leggings",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(At_ArmorMaterials.SILVER_ARMOR_MATERIAL,EquipmentType.LEGGINGS)
+        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.SILVER_ARMOR_MATERIAL,EquipmentType.LEGGINGS)
     );
     public static final Item SILVER_BOOTS = register(
         "silver_boots",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(At_ArmorMaterials.SILVER_ARMOR_MATERIAL,EquipmentType.BOOTS)
+        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.SILVER_ARMOR_MATERIAL,EquipmentType.BOOTS)
     );
     public static final Item SILVER_CHAINMAIL_HELMET = register(
         "silver_chainmail_helmet",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(At_ArmorMaterials.SILVER_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.HELMET)
+        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.SILVER_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.HELMET)
     );
     public static final Item SILVER_CHAINMAIL_CHESTPLATE = register(
         "silver_chainmail_chestplate",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(At_ArmorMaterials.SILVER_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.CHESTPLATE)
+        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.SILVER_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.CHESTPLATE)
     );
     public static final Item SILVER_CHAINMAIL_LEGGINGS = register(
         "silver_chainmail_leggings",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(At_ArmorMaterials.SILVER_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.LEGGINGS)
+        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.SILVER_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.LEGGINGS)
     );
     public static final Item SILVER_CHAINMAIL_BOOTS = register(
         "silver_chainmail_boots",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(At_ArmorMaterials.SILVER_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.BOOTS)
+        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.SILVER_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.BOOTS)
     );
 
     public static final Item BANANA = register(
@@ -296,39 +297,39 @@ public class At_Items {
 
 
     public static final Item ADAMANTIUM_AXE = register("adamantium_axe",
-            Settings -> new AxeItem(At_ToolMaterial.ADAMANTIUM, 8.0F, -3.0F, Settings),
+            Settings -> new AxeItem(AtToolMaterial.ADAMANTIUM, 8.0F, -3.0F, Settings),
             new Item.Settings());
     public static final Item ADAMANTIUM_BATTLE_AXE = register("adamantium_battle_axe",
-            Settings -> new At_BattleAxeItem(At_ToolMaterial.ADAMANTIUM, 5.0F, -3.0F, Settings),
+            Settings -> new AtBattleAxeItem(AtToolMaterial.ADAMANTIUM, 5.0F, -3.0F, Settings),
             new Item.Settings());
     public static final Item ADAMANTIUM_DAGGER = register("adamantium_dagger",
-            ((ItemSettingsExtension)new Item.Settings()).dagger(At_ToolMaterial.ADAMANTIUM, 5.0F, -3.0F));
+            ((ItemSettingsExtension)new Item.Settings()).dagger(AtToolMaterial.ADAMANTIUM, 5.0F, -3.0F));
     public static final Item ADAMANTIUM_HATCHET = register("adamantium_hatchet",
-            Settings -> new At_HandAxeItem(At_ToolMaterial.ADAMANTIUM, 5.0F, -3.0F, Settings),
+            Settings -> new AtHandAxeItem(AtToolMaterial.ADAMANTIUM, 5.0F, -3.0F, Settings),
             new Item.Settings());
     public static final Item ADAMANTIUM_HOE = register("adamantium_hoe",
-            Settings -> new HoeItem(At_ToolMaterial.ADAMANTIUM, 5.0F, -3.0F, Settings),
+            Settings -> new HoeItem(AtToolMaterial.ADAMANTIUM, 5.0F, -3.0F, Settings),
             new Item.Settings());
     public static final Item ADAMANTIUM_KNIFE = register("adamantium_knife",
-            ((ItemSettingsExtension)new Item.Settings()).dagger(At_ToolMaterial.ADAMANTIUM, 5.0F, -3.0F));
+            ((ItemSettingsExtension)new Item.Settings()).dagger(AtToolMaterial.ADAMANTIUM, 5.0F, -3.0F));
     public static final Item ADAMANTIUM_MATTOCK = register("adamantium_mattock",
-            Settings -> new At_MattockItem(At_ToolMaterial.ADAMANTIUM, 5.0F, -3.0F,Settings),
+            Settings -> new AtMattockItem(AtToolMaterial.ADAMANTIUM, 5.0F, -3.0F,Settings),
             new Item.Settings());
     public static final Item ADAMANTIUM_PICKAXE = register("adamantium_pickaxe",
-            new Item.Settings().pickaxe(At_ToolMaterial.ADAMANTIUM,  5.0F, -3.0F));
+            new Item.Settings().pickaxe(AtToolMaterial.ADAMANTIUM,  5.0F, -3.0F));
     public static final Item ADAMANTIUM_SCYTHE = register("adamantium_scythe",
-            Settings -> new HoeItem(At_ToolMaterial.ADAMANTIUM, 0.0F, -3.0F, Settings),
+            Settings -> new HoeItem(AtToolMaterial.ADAMANTIUM, 0.0F, -3.0F, Settings),
             new Item.Settings());
     public static final Item ADAMANTIUM_SHEARS = register("adamantium_shears",
             ShearsItem::new,
-            ((ItemSettingsExtension)new Item.Settings()).shears(At_ToolMaterial.ADAMANTIUM,  5.0F, -3.0F));
+            ((ItemSettingsExtension)new Item.Settings()).shears(AtToolMaterial.ADAMANTIUM,  5.0F, -3.0F));
     public static final Item ADAMANTIUM_SHOVEL = register("adamantium_shovel",
             Settings -> new ShovelItem(ToolMaterial.WOOD, 1.5F, -3.0F, Settings),
             new Item.Settings());
     public static final Item ADAMANTIUM_SWORD = register("adamantium_sword",
-            new Item.Settings().sword(At_ToolMaterial.ADAMANTIUM, 5.0F, -3.0F));
+            new Item.Settings().sword(AtToolMaterial.ADAMANTIUM, 5.0F, -3.0F));
     public static final Item ADAMANTIUM_WAR_HAMMER = register("adamantium_war_hammer",
-            ((ItemSettingsExtension)new Item.Settings()).war_hammer(At_ToolMaterial.ADAMANTIUM, 5.0F, -3.0F));
+            ((ItemSettingsExtension)new Item.Settings()).war_hammer(AtToolMaterial.ADAMANTIUM, 5.0F, -3.0F));
 
     public static final Item ANCIENT_METAL_AXE = register("ancient_metal_axe");
     public static final Item ANCIENT_METAL_BATTLE_AXE = register("ancient_metal_battle_axe");
@@ -453,16 +454,16 @@ public class At_Items {
     public static final Item MITHRIL_COINS = register("mithril_coins");
     public static final Item SILVER_COINS = register("silver_coins");
 
-    public static final Item ADAMANTIUM_BUCKET = register("adamantium_bucket", settings -> new At_BucketItem(Fluids.EMPTY, settings, null), new Item.Settings().maxCount(16));
+    public static final Item ADAMANTIUM_BUCKET = register("adamantium_bucket", settings -> new AtBucketItem(Fluids.EMPTY, settings, null), new Item.Settings().maxCount(16));
     public static final Item WATER_ADAMANTIUM_BUCKET = register(
-            "water_adamantium_bucket", settings -> new At_BucketItem(Fluids.WATER, settings, ADAMANTIUM_BUCKET), new Item.Settings().recipeRemainder(ADAMANTIUM_BUCKET).maxCount(1)
+            "water_adamantium_bucket", settings -> new AtBucketItem(Fluids.WATER, settings, ADAMANTIUM_BUCKET), new Item.Settings().recipeRemainder(ADAMANTIUM_BUCKET).maxCount(1)
     );
     public static final Item LAVA_ADAMANTIUM_BUCKET = register(
-            "lava_adamantium_bucket", settings -> new At_BucketItem(Fluids.LAVA, settings, ADAMANTIUM_BUCKET), new Item.Settings().recipeRemainder(ADAMANTIUM_BUCKET).maxCount(1)
+            "lava_adamantium_bucket", settings -> new AtBucketItem(Fluids.LAVA, settings, ADAMANTIUM_BUCKET), new Item.Settings().recipeRemainder(ADAMANTIUM_BUCKET).maxCount(1)
     );
     public static final Item POWDER_SNOW_ADAMANTIUM_BUCKET = register(
             "powder_snow_adamantium_bucket",
-            settings -> new At_PowderSnowBucketItem(Blocks.POWDER_SNOW, SoundEvents.ITEM_BUCKET_EMPTY_POWDER_SNOW, settings, ADAMANTIUM_BUCKET),
+            settings -> new AtPowderSnowBucketItem(Blocks.POWDER_SNOW, SoundEvents.ITEM_BUCKET_EMPTY_POWDER_SNOW, settings, ADAMANTIUM_BUCKET),
             new Item.Settings().maxCount(1).useItemPrefixedTranslationKey()
     );
     public static final Item MILK_ADAMANTIUM_BUCKET = register(
@@ -471,44 +472,44 @@ public class At_Items {
     );
     public static final Item PUFFERFISH_ADAMANTIUM_BUCKET = register(
             "pufferfish_adamantium_bucket",
-            settings -> new At_EntityBucketItem(EntityType.PUFFERFISH, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, settings, ADAMANTIUM_BUCKET),
+            settings -> new AtEntityBucketItem(EntityType.PUFFERFISH, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, settings, ADAMANTIUM_BUCKET),
             new Item.Settings().maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)
     );
     public static final Item SALMON_ADAMANTIUM_BUCKET = register(
             "salmon_adamantium_bucket",
-            settings -> new At_EntityBucketItem(EntityType.SALMON, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, settings, ADAMANTIUM_BUCKET),
+            settings -> new AtEntityBucketItem(EntityType.SALMON, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, settings, ADAMANTIUM_BUCKET),
             new Item.Settings().maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)
     );
     public static final Item COD_ADAMANTIUM_BUCKET = register(
             "cod_adamantium_bucket",
-            settings -> new At_EntityBucketItem(EntityType.COD, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, settings, ADAMANTIUM_BUCKET),
+            settings -> new AtEntityBucketItem(EntityType.COD, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, settings, ADAMANTIUM_BUCKET),
             new Item.Settings().maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)
     );
     public static final Item TROPICAL_FISH_ADAMANTIUM_BUCKET = register(
             "tropical_fish_adamantium_bucket",
-            settings -> new At_EntityBucketItem(EntityType.TROPICAL_FISH, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, settings, ADAMANTIUM_BUCKET),
+            settings -> new AtEntityBucketItem(EntityType.TROPICAL_FISH, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, settings, ADAMANTIUM_BUCKET),
             new Item.Settings().maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)
     );
     public static final Item AXOLOTL_ADAMANTIUM_BUCKET = register(
             "axolotl_adamantium_bucket",
-            settings -> new At_EntityBucketItem(EntityType.AXOLOTL, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_AXOLOTL, settings, ADAMANTIUM_BUCKET),
+            settings -> new AtEntityBucketItem(EntityType.AXOLOTL, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_AXOLOTL, settings, ADAMANTIUM_BUCKET),
             new Item.Settings().maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)
     );
     public static final Item TADPOLE_ADAMANTIUM_BUCKET = register(
             "tadpole_adamantium_bucket",
-            settings -> new At_EntityBucketItem(EntityType.TADPOLE, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_TADPOLE, settings, ADAMANTIUM_BUCKET),
+            settings -> new AtEntityBucketItem(EntityType.TADPOLE, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_TADPOLE, settings, ADAMANTIUM_BUCKET),
             new Item.Settings().maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)
     );
-    public static final Item ANCIENT_METAL_BUCKET = register("ancient_metal_bucket", settings -> new At_BucketItem(Fluids.EMPTY, settings, null), new Item.Settings().maxCount(16));
+    public static final Item ANCIENT_METAL_BUCKET = register("ancient_metal_bucket", settings -> new AtBucketItem(Fluids.EMPTY, settings, null), new Item.Settings().maxCount(16));
     public static final Item WATER_ANCIENT_METAL_BUCKET = register(
-            "water_ancient_metal_bucket", settings -> new At_BucketItem(Fluids.WATER, settings, ANCIENT_METAL_BUCKET), new Item.Settings().recipeRemainder(ANCIENT_METAL_BUCKET).maxCount(1)
+            "water_ancient_metal_bucket", settings -> new AtBucketItem(Fluids.WATER, settings, ANCIENT_METAL_BUCKET), new Item.Settings().recipeRemainder(ANCIENT_METAL_BUCKET).maxCount(1)
     );
     public static final Item LAVA_ANCIENT_METAL_BUCKET = register(
-            "lava_ancient_metal_bucket", settings -> new At_BucketItem(Fluids.LAVA, settings, ANCIENT_METAL_BUCKET), new Item.Settings().recipeRemainder(ANCIENT_METAL_BUCKET).maxCount(1)
+            "lava_ancient_metal_bucket", settings -> new AtBucketItem(Fluids.LAVA, settings, ANCIENT_METAL_BUCKET), new Item.Settings().recipeRemainder(ANCIENT_METAL_BUCKET).maxCount(1)
     );
     public static final Item POWDER_SNOW_ANCIENT_METAL_BUCKET = register(
             "powder_snow_ancient_metal_bucket",
-            settings -> new At_PowderSnowBucketItem(Blocks.POWDER_SNOW, SoundEvents.ITEM_BUCKET_EMPTY_POWDER_SNOW, settings, ANCIENT_METAL_BUCKET),
+            settings -> new AtPowderSnowBucketItem(Blocks.POWDER_SNOW, SoundEvents.ITEM_BUCKET_EMPTY_POWDER_SNOW, settings, ANCIENT_METAL_BUCKET),
             new Item.Settings().maxCount(1).useItemPrefixedTranslationKey()
     );
     public static final Item MILK_ANCIENT_METAL_BUCKET = register(
@@ -517,44 +518,44 @@ public class At_Items {
     );
     public static final Item PUFFERFISH_ANCIENT_METAL_BUCKET = register(
             "pufferfish_ancient_metal_bucket",
-            settings -> new At_EntityBucketItem(EntityType.PUFFERFISH, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, settings, ANCIENT_METAL_BUCKET),
+            settings -> new AtEntityBucketItem(EntityType.PUFFERFISH, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, settings, ANCIENT_METAL_BUCKET),
             new Item.Settings().maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)
     );
     public static final Item SALMON_ANCIENT_METAL_BUCKET = register(
             "salmon_ancient_metal_bucket",
-            settings -> new At_EntityBucketItem(EntityType.SALMON, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, settings, ANCIENT_METAL_BUCKET),
+            settings -> new AtEntityBucketItem(EntityType.SALMON, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, settings, ANCIENT_METAL_BUCKET),
             new Item.Settings().maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)
     );
     public static final Item COD_ANCIENT_METAL_BUCKET = register(
             "cod_ancient_metal_bucket",
-            settings -> new At_EntityBucketItem(EntityType.COD, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, settings, ANCIENT_METAL_BUCKET),
+            settings -> new AtEntityBucketItem(EntityType.COD, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, settings, ANCIENT_METAL_BUCKET),
             new Item.Settings().maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)
     );
     public static final Item TROPICAL_FISH_ANCIENT_METAL_BUCKET = register(
             "tropical_fish_ancient_metal_bucket",
-            settings -> new At_EntityBucketItem(EntityType.TROPICAL_FISH, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, settings, ANCIENT_METAL_BUCKET),
+            settings -> new AtEntityBucketItem(EntityType.TROPICAL_FISH, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, settings, ANCIENT_METAL_BUCKET),
             new Item.Settings().maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)
     );
     public static final Item AXOLOTL_ANCIENT_METAL_BUCKET = register(
             "axolotl_ancient_metal_bucket",
-            settings -> new At_EntityBucketItem(EntityType.AXOLOTL, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_AXOLOTL, settings, ANCIENT_METAL_BUCKET),
+            settings -> new AtEntityBucketItem(EntityType.AXOLOTL, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_AXOLOTL, settings, ANCIENT_METAL_BUCKET),
             new Item.Settings().maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)
     );
     public static final Item TADPOLE_ANCIENT_METAL_BUCKET = register(
             "tadpole_ancient_metal_bucket",
-            settings -> new At_EntityBucketItem(EntityType.TADPOLE, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_TADPOLE, settings, ANCIENT_METAL_BUCKET),
+            settings -> new AtEntityBucketItem(EntityType.TADPOLE, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_TADPOLE, settings, ANCIENT_METAL_BUCKET),
             new Item.Settings().maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)
     );
-    public static final Item COPPER_BUCKET = register("copper_bucket", settings -> new At_BucketItem(Fluids.EMPTY, settings, null), new Item.Settings().maxCount(16));
+    public static final Item COPPER_BUCKET = register("copper_bucket", settings -> new AtBucketItem(Fluids.EMPTY, settings, null), new Item.Settings().maxCount(16));
     public static final Item WATER_COPPER_BUCKET = register(
-            "water_copper_bucket", settings -> new At_BucketItem(Fluids.WATER, settings, COPPER_BUCKET), new Item.Settings().recipeRemainder(COPPER_BUCKET).maxCount(1)
+            "water_copper_bucket", settings -> new AtBucketItem(Fluids.WATER, settings, COPPER_BUCKET), new Item.Settings().recipeRemainder(COPPER_BUCKET).maxCount(1)
     );
     public static final Item LAVA_COPPER_BUCKET = register(
-            "lava_copper_bucket", settings -> new At_BucketItem(Fluids.LAVA, settings, COPPER_BUCKET), new Item.Settings().recipeRemainder(COPPER_BUCKET).maxCount(1)
+            "lava_copper_bucket", settings -> new AtBucketItem(Fluids.LAVA, settings, COPPER_BUCKET), new Item.Settings().recipeRemainder(COPPER_BUCKET).maxCount(1)
     );
     public static final Item POWDER_SNOW_COPPER_BUCKET = register(
             "powder_snow_copper_bucket",
-            settings -> new At_PowderSnowBucketItem(Blocks.POWDER_SNOW, SoundEvents.ITEM_BUCKET_EMPTY_POWDER_SNOW, settings, COPPER_BUCKET),
+            settings -> new AtPowderSnowBucketItem(Blocks.POWDER_SNOW, SoundEvents.ITEM_BUCKET_EMPTY_POWDER_SNOW, settings, COPPER_BUCKET),
             new Item.Settings().maxCount(1).useItemPrefixedTranslationKey()
     );
     public static final Item MILK_COPPER_BUCKET = register(
@@ -563,44 +564,44 @@ public class At_Items {
     );
     public static final Item PUFFERFISH_COPPER_BUCKET = register(
             "pufferfish_copper_bucket",
-            settings -> new At_EntityBucketItem(EntityType.PUFFERFISH, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, settings, COPPER_BUCKET),
+            settings -> new AtEntityBucketItem(EntityType.PUFFERFISH, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, settings, COPPER_BUCKET),
             new Item.Settings().maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)
     );
     public static final Item SALMON_COPPER_BUCKET = register(
             "salmon_copper_bucket",
-            settings -> new At_EntityBucketItem(EntityType.SALMON, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, settings, COPPER_BUCKET),
+            settings -> new AtEntityBucketItem(EntityType.SALMON, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, settings, COPPER_BUCKET),
             new Item.Settings().maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)
     );
     public static final Item COD_COPPER_BUCKET = register(
             "cod_copper_bucket",
-            settings -> new At_EntityBucketItem(EntityType.COD, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, settings, COPPER_BUCKET),
+            settings -> new AtEntityBucketItem(EntityType.COD, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, settings, COPPER_BUCKET),
             new Item.Settings().maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)
     );
     public static final Item TROPICAL_FISH_COPPER_BUCKET = register(
             "tropical_fish_copper_bucket",
-            settings -> new At_EntityBucketItem(EntityType.TROPICAL_FISH, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, settings, COPPER_BUCKET),
+            settings -> new AtEntityBucketItem(EntityType.TROPICAL_FISH, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, settings, COPPER_BUCKET),
             new Item.Settings().maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)
     );
     public static final Item AXOLOTL_COPPER_BUCKET = register(
             "axolotl_copper_bucket",
-            settings -> new At_EntityBucketItem(EntityType.AXOLOTL, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_AXOLOTL, settings, COPPER_BUCKET),
+            settings -> new AtEntityBucketItem(EntityType.AXOLOTL, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_AXOLOTL, settings, COPPER_BUCKET),
             new Item.Settings().maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)
     );
     public static final Item TADPOLE_COPPER_BUCKET = register(
             "tadpole_copper_bucket",
-            settings -> new At_EntityBucketItem(EntityType.TADPOLE, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_TADPOLE, settings, COPPER_BUCKET),
+            settings -> new AtEntityBucketItem(EntityType.TADPOLE, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_TADPOLE, settings, COPPER_BUCKET),
             new Item.Settings().maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)
     );
-    public static final Item GOLD_BUCKET = register("gold_bucket", settings -> new At_BucketItem(Fluids.EMPTY, settings, null), new Item.Settings().maxCount(16));
+    public static final Item GOLD_BUCKET = register("gold_bucket", settings -> new AtBucketItem(Fluids.EMPTY, settings, null), new Item.Settings().maxCount(16));
     public static final Item WATER_GOLD_BUCKET = register(
-            "water_gold_bucket", settings -> new At_BucketItem(Fluids.WATER, settings, GOLD_BUCKET), new Item.Settings().recipeRemainder(GOLD_BUCKET).maxCount(1)
+            "water_gold_bucket", settings -> new AtBucketItem(Fluids.WATER, settings, GOLD_BUCKET), new Item.Settings().recipeRemainder(GOLD_BUCKET).maxCount(1)
     );
     public static final Item LAVA_GOLD_BUCKET = register(
-            "lava_gold_bucket", settings -> new At_BucketItem(Fluids.LAVA, settings, GOLD_BUCKET), new Item.Settings().recipeRemainder(GOLD_BUCKET).maxCount(1)
+            "lava_gold_bucket", settings -> new AtBucketItem(Fluids.LAVA, settings, GOLD_BUCKET), new Item.Settings().recipeRemainder(GOLD_BUCKET).maxCount(1)
     );
     public static final Item POWDER_SNOW_GOLD_BUCKET = register(
             "powder_snow_gold_bucket",
-            settings -> new At_PowderSnowBucketItem(Blocks.POWDER_SNOW, SoundEvents.ITEM_BUCKET_EMPTY_POWDER_SNOW, settings, GOLD_BUCKET),
+            settings -> new AtPowderSnowBucketItem(Blocks.POWDER_SNOW, SoundEvents.ITEM_BUCKET_EMPTY_POWDER_SNOW, settings, GOLD_BUCKET),
             new Item.Settings().maxCount(1).useItemPrefixedTranslationKey()
     );
     public static final Item MILK_GOLD_BUCKET = register(
@@ -609,44 +610,44 @@ public class At_Items {
     );
     public static final Item PUFFERFISH_GOLD_BUCKET = register(
             "pufferfish_gold_bucket",
-            settings -> new At_EntityBucketItem(EntityType.PUFFERFISH, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, settings, GOLD_BUCKET),
+            settings -> new AtEntityBucketItem(EntityType.PUFFERFISH, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, settings, GOLD_BUCKET),
             new Item.Settings().maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)
     );
     public static final Item SALMON_GOLD_BUCKET = register(
             "salmon_gold_bucket",
-            settings -> new At_EntityBucketItem(EntityType.SALMON, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, settings, GOLD_BUCKET),
+            settings -> new AtEntityBucketItem(EntityType.SALMON, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, settings, GOLD_BUCKET),
             new Item.Settings().maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)
     );
     public static final Item COD_GOLD_BUCKET = register(
             "cod_gold_bucket",
-            settings -> new At_EntityBucketItem(EntityType.COD, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, settings, GOLD_BUCKET),
+            settings -> new AtEntityBucketItem(EntityType.COD, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, settings, GOLD_BUCKET),
             new Item.Settings().maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)
     );
     public static final Item TROPICAL_FISH_GOLD_BUCKET = register(
             "tropical_fish_gold_bucket",
-            settings -> new At_EntityBucketItem(EntityType.TROPICAL_FISH, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, settings, GOLD_BUCKET),
+            settings -> new AtEntityBucketItem(EntityType.TROPICAL_FISH, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, settings, GOLD_BUCKET),
             new Item.Settings().maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)
     );
     public static final Item AXOLOTL_GOLD_BUCKET = register(
             "axolotl_gold_bucket",
-            settings -> new At_EntityBucketItem(EntityType.AXOLOTL, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_AXOLOTL, settings, GOLD_BUCKET),
+            settings -> new AtEntityBucketItem(EntityType.AXOLOTL, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_AXOLOTL, settings, GOLD_BUCKET),
             new Item.Settings().maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)
     );
     public static final Item TADPOLE_GOLD_BUCKET = register(
             "tadpole_gold_bucket",
-            settings -> new At_EntityBucketItem(EntityType.TADPOLE, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_TADPOLE, settings, GOLD_BUCKET),
+            settings -> new AtEntityBucketItem(EntityType.TADPOLE, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_TADPOLE, settings, GOLD_BUCKET),
             new Item.Settings().maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)
     );
-    public static final Item MITHRIL_BUCKET = register("mithril_bucket", settings -> new At_BucketItem(Fluids.EMPTY, settings, null), new Item.Settings().maxCount(16));
+    public static final Item MITHRIL_BUCKET = register("mithril_bucket", settings -> new AtBucketItem(Fluids.EMPTY, settings, null), new Item.Settings().maxCount(16));
     public static final Item WATER_MITHRIL_BUCKET = register(
-            "water_mithril_bucket", settings -> new At_BucketItem(Fluids.WATER, settings, MITHRIL_BUCKET), new Item.Settings().recipeRemainder(MITHRIL_BUCKET).maxCount(1)
+            "water_mithril_bucket", settings -> new AtBucketItem(Fluids.WATER, settings, MITHRIL_BUCKET), new Item.Settings().recipeRemainder(MITHRIL_BUCKET).maxCount(1)
     );
     public static final Item LAVA_MITHRIL_BUCKET = register(
-            "lava_mithril_bucket", settings -> new At_BucketItem(Fluids.LAVA, settings, MITHRIL_BUCKET), new Item.Settings().recipeRemainder(MITHRIL_BUCKET).maxCount(1)
+            "lava_mithril_bucket", settings -> new AtBucketItem(Fluids.LAVA, settings, MITHRIL_BUCKET), new Item.Settings().recipeRemainder(MITHRIL_BUCKET).maxCount(1)
     );
     public static final Item POWDER_SNOW_MITHRIL_BUCKET = register(
             "powder_snow_mithril_bucket",
-            settings -> new At_PowderSnowBucketItem(Blocks.POWDER_SNOW, SoundEvents.ITEM_BUCKET_EMPTY_POWDER_SNOW, settings, MITHRIL_BUCKET),
+            settings -> new AtPowderSnowBucketItem(Blocks.POWDER_SNOW, SoundEvents.ITEM_BUCKET_EMPTY_POWDER_SNOW, settings, MITHRIL_BUCKET),
             new Item.Settings().maxCount(1).useItemPrefixedTranslationKey()
     );
     public static final Item MILK_MITHRIL_BUCKET = register(
@@ -655,44 +656,44 @@ public class At_Items {
     );
     public static final Item PUFFERFISH_MITHRIL_BUCKET = register(
             "pufferfish_mithril_bucket",
-            settings -> new At_EntityBucketItem(EntityType.PUFFERFISH, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, settings, MITHRIL_BUCKET),
+            settings -> new AtEntityBucketItem(EntityType.PUFFERFISH, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, settings, MITHRIL_BUCKET),
             new Item.Settings().maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)
     );
     public static final Item SALMON_MITHRIL_BUCKET = register(
             "salmon_mithril_bucket",
-            settings -> new At_EntityBucketItem(EntityType.SALMON, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, settings, MITHRIL_BUCKET),
+            settings -> new AtEntityBucketItem(EntityType.SALMON, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, settings, MITHRIL_BUCKET),
             new Item.Settings().maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)
     );
     public static final Item COD_MITHRIL_BUCKET = register(
             "cod_mithril_bucket",
-            settings -> new At_EntityBucketItem(EntityType.COD, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, settings, MITHRIL_BUCKET),
+            settings -> new AtEntityBucketItem(EntityType.COD, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, settings, MITHRIL_BUCKET),
             new Item.Settings().maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)
     );
     public static final Item TROPICAL_FISH_MITHRIL_BUCKET = register(
             "tropical_fish_mithril_bucket",
-            settings -> new At_EntityBucketItem(EntityType.TROPICAL_FISH, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, settings, MITHRIL_BUCKET),
+            settings -> new AtEntityBucketItem(EntityType.TROPICAL_FISH, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, settings, MITHRIL_BUCKET),
             new Item.Settings().maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)
     );
     public static final Item AXOLOTL_MITHRIL_BUCKET = register(
             "axolotl_mithril_bucket",
-            settings -> new At_EntityBucketItem(EntityType.AXOLOTL, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_AXOLOTL, settings, MITHRIL_BUCKET),
+            settings -> new AtEntityBucketItem(EntityType.AXOLOTL, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_AXOLOTL, settings, MITHRIL_BUCKET),
             new Item.Settings().maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)
     );
     public static final Item TADPOLE_MITHRIL_BUCKET = register(
             "tadpole_mithril_bucket",
-            settings -> new At_EntityBucketItem(EntityType.TADPOLE, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_TADPOLE, settings, MITHRIL_BUCKET),
+            settings -> new AtEntityBucketItem(EntityType.TADPOLE, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_TADPOLE, settings, MITHRIL_BUCKET),
             new Item.Settings().maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)
     );
-    public static final Item SILVER_BUCKET = register("silver_bucket", settings -> new At_BucketItem(Fluids.EMPTY, settings, null), new Item.Settings().maxCount(16));
+    public static final Item SILVER_BUCKET = register("silver_bucket", settings -> new AtBucketItem(Fluids.EMPTY, settings, null), new Item.Settings().maxCount(16));
     public static final Item WATER_SILVER_BUCKET = register(
-            "water_silver_bucket", settings -> new At_BucketItem(Fluids.WATER, settings, SILVER_BUCKET), new Item.Settings().recipeRemainder(SILVER_BUCKET).maxCount(1)
+            "water_silver_bucket", settings -> new AtBucketItem(Fluids.WATER, settings, SILVER_BUCKET), new Item.Settings().recipeRemainder(SILVER_BUCKET).maxCount(1)
     );
     public static final Item LAVA_SILVER_BUCKET = register(
-            "lava_silver_bucket", settings -> new At_BucketItem(Fluids.LAVA, settings, SILVER_BUCKET), new Item.Settings().recipeRemainder(SILVER_BUCKET).maxCount(1)
+            "lava_silver_bucket", settings -> new AtBucketItem(Fluids.LAVA, settings, SILVER_BUCKET), new Item.Settings().recipeRemainder(SILVER_BUCKET).maxCount(1)
     );
     public static final Item POWDER_SNOW_SILVER_BUCKET = register(
             "powder_snow_silver_bucket",
-            settings -> new At_PowderSnowBucketItem(Blocks.POWDER_SNOW, SoundEvents.ITEM_BUCKET_EMPTY_POWDER_SNOW, settings, SILVER_BUCKET),
+            settings -> new AtPowderSnowBucketItem(Blocks.POWDER_SNOW, SoundEvents.ITEM_BUCKET_EMPTY_POWDER_SNOW, settings, SILVER_BUCKET),
             new Item.Settings().maxCount(1).useItemPrefixedTranslationKey()
     );
     public static final Item MILK_SILVER_BUCKET = register(
@@ -701,44 +702,44 @@ public class At_Items {
     );
     public static final Item PUFFERFISH_SILVER_BUCKET = register(
             "pufferfish_silver_bucket",
-            settings -> new At_EntityBucketItem(EntityType.PUFFERFISH, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, settings, SILVER_BUCKET),
+            settings -> new AtEntityBucketItem(EntityType.PUFFERFISH, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, settings, SILVER_BUCKET),
             new Item.Settings().maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)
     );
     public static final Item SALMON_SILVER_BUCKET = register(
             "salmon_silver_bucket",
-            settings -> new At_EntityBucketItem(EntityType.SALMON, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, settings, SILVER_BUCKET),
+            settings -> new AtEntityBucketItem(EntityType.SALMON, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, settings, SILVER_BUCKET),
             new Item.Settings().maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)
     );
     public static final Item COD_SILVER_BUCKET = register(
             "cod_silver_bucket",
-            settings -> new At_EntityBucketItem(EntityType.COD, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, settings, SILVER_BUCKET),
+            settings -> new AtEntityBucketItem(EntityType.COD, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, settings, SILVER_BUCKET),
             new Item.Settings().maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)
     );
     public static final Item TROPICAL_FISH_SILVER_BUCKET = register(
             "tropical_fish_silver_bucket",
-            settings -> new At_EntityBucketItem(EntityType.TROPICAL_FISH, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, settings, SILVER_BUCKET),
+            settings -> new AtEntityBucketItem(EntityType.TROPICAL_FISH, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, settings, SILVER_BUCKET),
             new Item.Settings().maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)
     );
     public static final Item AXOLOTL_SILVER_BUCKET = register(
             "axolotl_silver_bucket",
-            settings -> new At_EntityBucketItem(EntityType.AXOLOTL, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_AXOLOTL, settings, SILVER_BUCKET),
+            settings -> new AtEntityBucketItem(EntityType.AXOLOTL, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_AXOLOTL, settings, SILVER_BUCKET),
             new Item.Settings().maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)
     );
     public static final Item TADPOLE_SILVER_BUCKET = register(
             "tadpole_silver_bucket",
-            settings -> new At_EntityBucketItem(EntityType.TADPOLE, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_TADPOLE, settings, SILVER_BUCKET),
+            settings -> new AtEntityBucketItem(EntityType.TADPOLE, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_TADPOLE, settings, SILVER_BUCKET),
             new Item.Settings().maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)
     );
-    public static final Item NETHERITE_BUCKET = register("netherite_bucket", settings -> new At_BucketItem(Fluids.EMPTY, settings, null), new Item.Settings().maxCount(16));
+    public static final Item NETHERITE_BUCKET = register("netherite_bucket", settings -> new AtBucketItem(Fluids.EMPTY, settings, null), new Item.Settings().maxCount(16));
     public static final Item WATER_NETHERITE_BUCKET = register(
-            "water_netherite_bucket", settings -> new At_BucketItem(Fluids.WATER, settings, NETHERITE_BUCKET), new Item.Settings().recipeRemainder(NETHERITE_BUCKET).maxCount(1)
+            "water_netherite_bucket", settings -> new AtBucketItem(Fluids.WATER, settings, NETHERITE_BUCKET), new Item.Settings().recipeRemainder(NETHERITE_BUCKET).maxCount(1)
     );
     public static final Item LAVA_NETHERITE_BUCKET = register(
-            "lava_netherite_bucket", settings -> new At_BucketItem(Fluids.LAVA, settings, NETHERITE_BUCKET), new Item.Settings().recipeRemainder(NETHERITE_BUCKET).maxCount(1)
+            "lava_netherite_bucket", settings -> new AtBucketItem(Fluids.LAVA, settings, NETHERITE_BUCKET), new Item.Settings().recipeRemainder(NETHERITE_BUCKET).maxCount(1)
     );
     public static final Item POWDER_SNOW_NETHERITE_BUCKET = register(
             "powder_snow_netherite_bucket",
-            settings -> new At_PowderSnowBucketItem(Blocks.POWDER_SNOW, SoundEvents.ITEM_BUCKET_EMPTY_POWDER_SNOW, settings, NETHERITE_BUCKET),
+            settings -> new AtPowderSnowBucketItem(Blocks.POWDER_SNOW, SoundEvents.ITEM_BUCKET_EMPTY_POWDER_SNOW, settings, NETHERITE_BUCKET),
             new Item.Settings().maxCount(1).useItemPrefixedTranslationKey()
     );
     public static final Item MILK_NETHERITE_BUCKET = register(
@@ -747,32 +748,32 @@ public class At_Items {
     );
     public static final Item PUFFERFISH_NETHERITE_BUCKET = register(
             "pufferfish_netherite_bucket",
-            settings -> new At_EntityBucketItem(EntityType.PUFFERFISH, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, settings, NETHERITE_BUCKET),
+            settings -> new AtEntityBucketItem(EntityType.PUFFERFISH, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, settings, NETHERITE_BUCKET),
             new Item.Settings().maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)
     );
     public static final Item SALMON_NETHERITE_BUCKET = register(
             "salmon_netherite_bucket",
-            settings -> new At_EntityBucketItem(EntityType.SALMON, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, settings, NETHERITE_BUCKET),
+            settings -> new AtEntityBucketItem(EntityType.SALMON, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, settings, NETHERITE_BUCKET),
             new Item.Settings().maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)
     );
     public static final Item COD_NETHERITE_BUCKET = register(
             "cod_netherite_bucket",
-            settings -> new At_EntityBucketItem(EntityType.COD, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, settings, NETHERITE_BUCKET),
+            settings -> new AtEntityBucketItem(EntityType.COD, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, settings, NETHERITE_BUCKET),
             new Item.Settings().maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)
     );
     public static final Item TROPICAL_FISH_NETHERITE_BUCKET = register(
             "tropical_fish_netherite_bucket",
-            settings -> new At_EntityBucketItem(EntityType.TROPICAL_FISH, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, settings, NETHERITE_BUCKET),
+            settings -> new AtEntityBucketItem(EntityType.TROPICAL_FISH, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, settings, NETHERITE_BUCKET),
             new Item.Settings().maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)
     );
     public static final Item AXOLOTL_NETHERITE_BUCKET = register(
             "axolotl_netherite_bucket",
-            settings -> new At_EntityBucketItem(EntityType.AXOLOTL, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_AXOLOTL, settings, NETHERITE_BUCKET),
+            settings -> new AtEntityBucketItem(EntityType.AXOLOTL, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_AXOLOTL, settings, NETHERITE_BUCKET),
             new Item.Settings().maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)
     );
     public static final Item TADPOLE_NETHERITE_BUCKET = register(
             "tadpole_netherite_bucket",
-            settings -> new At_EntityBucketItem(EntityType.TADPOLE, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_TADPOLE, settings, NETHERITE_BUCKET),
+            settings -> new AtEntityBucketItem(EntityType.TADPOLE, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_TADPOLE, settings, NETHERITE_BUCKET),
             new Item.Settings().maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)
     );
     public static final Item MITHRIL_BOW = register("mithril_bow", BowItem::new, new Item.Settings().maxDamage(128).enchantable(1));
@@ -809,25 +810,26 @@ public class At_Items {
             .icon(() -> new ItemStack(ADAMANTIUM_HELMET))
             .displayName(Text.translatable("itemGroup.at_mite.item_group"))
             .entries((context, entries) -> {
-                    entries.add(At_Blocks.ADAMANTIUM_ORE);
-                    entries.add(At_Blocks.ADAMANTIUM_BLOCK);
-                    entries.add(At_Blocks.ADAMANTIUM_BARS);
-                    entries.add(At_Blocks.ANCIENT_METAL_BARS);
-                    entries.add(At_Blocks.ANCIENT_METAL_BLOCK);
-                    entries.add(At_Blocks.GOLD_BARS);
-                    entries.add(At_Blocks.MANTLE);
-                    entries.add(At_Blocks.MITHRIL_BARS);
-                    entries.add(At_Blocks.MITHRIL_BLOCK);
-                    entries.add(At_Blocks.MITHRIL_ORE);
-                    entries.add(At_Blocks.SILVER_BARS);
-                    entries.add(At_Blocks.SILVER_BLOCK);
-                    entries.add(At_Blocks.SILVER_ORE);
-                    entries.add(At_Blocks.COPPER_BARS);
-                    entries.add(At_Blocks.ADAMANTIUM_DOOR);
-                    entries.add(At_Blocks.ANCIENT_METAL_DOOR);
-                    entries.add(At_Blocks.MITHRIL_DOOR);
-                    entries.add(At_Blocks.SILVER_DOOR);
-                    entries.add(At_Blocks.GOLD_DOOR);
+                    entries.add(AtBlocks.ADAMANTIUM_ANVIL);
+                    entries.add(AtBlocks.ADAMANTIUM_ORE);
+                    entries.add(AtBlocks.ADAMANTIUM_BLOCK);
+                    entries.add(AtBlocks.ADAMANTIUM_BARS);
+                    entries.add(AtBlocks.ANCIENT_METAL_BARS);
+                    entries.add(AtBlocks.ANCIENT_METAL_BLOCK);
+                    entries.add(AtBlocks.GOLD_BARS);
+                    entries.add(AtBlocks.MANTLE);
+                    entries.add(AtBlocks.MITHRIL_BARS);
+                    entries.add(AtBlocks.MITHRIL_BLOCK);
+                    entries.add(AtBlocks.MITHRIL_ORE);
+                    entries.add(AtBlocks.SILVER_BARS);
+                    entries.add(AtBlocks.SILVER_BLOCK);
+                    entries.add(AtBlocks.SILVER_ORE);
+                    entries.add(AtBlocks.COPPER_BARS);
+                    entries.add(AtBlocks.ADAMANTIUM_DOOR);
+                    entries.add(AtBlocks.ANCIENT_METAL_DOOR);
+                    entries.add(AtBlocks.MITHRIL_DOOR);
+                    entries.add(AtBlocks.SILVER_DOOR);
+                    entries.add(AtBlocks.GOLD_DOOR);
                     entries.add(DIAMOND_SHARD);
                     entries.add(EMERALD_SHARD);
                     entries.add(FLINT_SHARD);
@@ -1163,7 +1165,10 @@ public class At_Items {
         final RegistryKey<Item> registryKey = RegistryKey.of(RegistryKeys.ITEM, Identifier.of(At_mite.MOD_ID, path));
         return Items.register(registryKey, factory, settings);
     }
+    public static Item register(Block block, Item.Settings settings){
+        return Items.register(block, settings);
+    }
     public static void init(){
-        Registry.register(Registries.ITEM_GROUP, Identifier.of("tutorial", "test_group"), AT_MINT_GROUP);
+        Registry.register(Registries.ITEM_GROUP, Identifier.of(At_mite.MOD_ID, "itemgroup"), AT_MINT_GROUP);
     }
 }

@@ -1,4 +1,5 @@
 {
+  "block.at_mite.adamantium_anvil": "艾德曼砧",
   "block.at_mite.adamantium_bars": "艾德曼栏杆",
   "block.at_mite.adamantium_block": "艾德曼块",
   "block.at_mite.adamantium_door": "艾德曼门",
@@ -6,7 +7,9 @@
   "block.at_mite.ancient_metal_bars": "古代金属栏杆",
   "block.at_mite.ancient_metal_block": "古代金属块",
   "block.at_mite.ancient_metal_door": "远古金属门",
+  "block.at_mite.chipped_adamantium_anvil": "开裂的艾德曼砧",
   "block.at_mite.copper_bars": "铜栏杆",
+  "block.at_mite.damaged_adamantium_anvil": "损坏的艾德曼砧",
   "block.at_mite.gold_bars": "金栏杆",
   "block.at_mite.gold_door": "金门",
   "block.at_mite.mantle": "地幔",

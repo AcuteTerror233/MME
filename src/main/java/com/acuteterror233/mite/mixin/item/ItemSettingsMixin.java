@@ -2,7 +2,7 @@ package com.acuteterror233.mite.mixin.item;
 
 import com.acuteterror233.mite.At_mite;
 import com.acuteterror233.mite.atinterface.ItemSettingsExtension;
-import com.acuteterror233.mite.item.equipment.At_ArmorMaterial;
+import com.acuteterror233.mite.item.equipment.AtArmorMaterial;
 import net.minecraft.block.Block;
 import net.minecraft.component.ComponentType;
 import net.minecraft.component.DataComponentTypes;
@@ -122,7 +122,7 @@ public abstract class ItemSettingsMixin implements net.fabricmc.fabric.api.item.
     }
     @Override
     @Unique
-    public Item.Settings At_armor(At_ArmorMaterial material, EquipmentType type) {
+    public Item.Settings At_armor(AtArmorMaterial material, EquipmentType type) {
         return this.maxDamage(type.getMaxDamage(material.durability()))
                 .attributeModifiers(material.createAttributeModifiers(type))
                 .enchantable(material.enchantmentValue())

@@ -1,6 +1,6 @@
 package com.acuteterror233.mite.datagen;
 
-import com.acuteterror233.mite.block.At_Blocks;
+import com.acuteterror233.mite.block.AtBlocks;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.registry.RegistryWrapper;
@@ -16,10 +16,10 @@ public class BlockTagProvider extends FabricTagProvider.BlockTagProvider {
     @Override
     protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
         getOrCreateTagBuilder(BlockTags.DOORS)
-                .add(At_Blocks.GOLD_DOOR)
-                .add(At_Blocks.SILVER_DOOR)
-                .add(At_Blocks.MITHRIL_DOOR)
-                .add(At_Blocks.ANCIENT_METAL_DOOR)
-                .add(At_Blocks.ADAMANTIUM_DOOR);
+                .add(AtBlocks.GOLD_DOOR)
+                .add(AtBlocks.SILVER_DOOR)
+                .add(AtBlocks.MITHRIL_DOOR)
+                .add(AtBlocks.ANCIENT_METAL_DOOR)
+                .add(AtBlocks.ADAMANTIUM_DOOR);
     }
 }

@@ -24,8 +24,8 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Map;
 import java.util.Optional;
 
-public class At_HandAxeItem extends Item {
-    public At_HandAxeItem(ToolMaterial material, float attackDamage, float attackSpeed, Settings settings) {
+public class AtHandAxeItem extends Item {
+    public AtHandAxeItem(ToolMaterial material, float attackDamage, float attackSpeed, Settings settings) {
         super(((ItemSettingsExtension)settings).hand_axe(material, attackDamage, attackSpeed));;
     }
     protected static final Map<Block, Block> STRIPPED_BLOCKS = new ImmutableMap.Builder<Block, Block>()

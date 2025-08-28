@@ -1,0 +1,37 @@
+package com.acuteterror233.mite.mixin.screen;
+
+import net.minecraft.block.BlockState;
+import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.screen.AnvilScreenHandler;
+import net.minecraft.screen.ForgingScreenHandler;
+import net.minecraft.screen.ScreenHandlerContext;
+import net.minecraft.screen.ScreenHandlerType;
+import net.minecraft.screen.slot.ForgingSlotsManager;
+import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+
+import java.util.Optional;
+
+@Mixin(AnvilScreenHandler.class)
+public abstract class AnvilScreenHandlerMixin extends ForgingScreenHandler {
+    public AnvilScreenHandlerMixin(@Nullable ScreenHandlerType<?> type, int syncId, PlayerInventory playerInventory, ScreenHandlerContext context, ForgingSlotsManager forgingSlotsManager) {
+        super(type, syncId, playerInventory, context, forgingSlotsManager);
+    }
+    @Unique ScreenHandlerContext context;
+    @Inject(method = "<init>(ILnet/minecraft/entity/player/PlayerInventory;Lnet/minecraft/screen/ScreenHandlerContext;)V",at = @At("TAIL"))
+    private void init(int syncId, PlayerInventory playerInventory, ScreenHandlerContext context, CallbackInfo ci){
+        this.context = context;
+    }
+    @Inject(method = "updateResult",at = @At(value = "INVOKE", target = "Ljava/lang/Math;min(II)I"))
+    private void updateResult(CallbackInfo ci){
+        Optional<BlockState> blockState = this.context.get(World::getBlockState);
+        if (blockState.isPresent()) {
+
+        }
+    }
+}

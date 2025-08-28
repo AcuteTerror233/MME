@@ -1,7 +1,6 @@
 package com.acuteterror233.mite.mixin.entity;
 
-import com.acuteterror233.mite.At_mite;
-import com.acuteterror233.mite.registry.tag.At_Tags;
+import com.acuteterror233.mite.registry.tag.AtTags;
 import net.minecraft.advancement.criterion.Criteria;
 import net.minecraft.entity.Bucketable;
 import net.minecraft.entity.LivingEntity;
@@ -25,7 +24,7 @@ public interface BucketableMixin {
     @Overwrite
     static <T extends LivingEntity & Bucketable> Optional<ActionResult> tryBucket(PlayerEntity player, Hand hand, T entity) {
         ItemStack itemStack = player.getStackInHand(hand);
-        if (itemStack.isIn(At_Tags.WATER_BUCKET) && entity.isAlive()) {
+        if (itemStack.isIn(AtTags.WATER_BUCKET) && entity.isAlive()) {
             entity.playSound(entity.getBucketFillSound(), 1.0F, 1.0F);
             System.out.println(Identifier.of(Registries.ITEM.getId(itemStack.getItem()).toString().replace("water","")).withPrefixedPath(Registries.ENTITY_TYPE.getId(entity.getType()).toString().replace("minecraft:", "")));
             ItemStack itemStack2 = new ItemStack(Registries.ITEM.get(Identifier.of(Registries.ITEM.getId(itemStack.getItem()).toString().replace("water","")).withPrefixedPath(Registries.ENTITY_TYPE.getId(entity.getType()).toString().replace("minecraft:", ""))));

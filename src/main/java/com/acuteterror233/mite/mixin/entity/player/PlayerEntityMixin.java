@@ -9,12 +9,12 @@ import net.minecraft.entity.player.HungerManager;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.Objects;
 
@@ -26,56 +26,40 @@ public abstract class PlayerEntityMixin extends LivingEntity {
     @Shadow public int experienceLevel;
     @Shadow protected HungerManager hungerManager;
 
-    @Overwrite
-    public int getNextLevelExperience() {
-        int ret;
-        if (this.experienceLevel >= 30) {
-            ret = 112 + (this.experienceLevel - 30) * 9;
-        } else {
-            ret = this.experienceLevel >= 15 ? 37 + (this.experienceLevel - 15) * 5 : 7 + this.experienceLevel * 2;
-        }
-        return ret * 2;
+    @Inject(method = "getNextLevelExperience", at = @At("RETURN"), cancellable = true)
+    public void getNextLevelExperience(CallbackInfoReturnable<Integer> cir) {
+        cir.setReturnValue(cir.getReturnValue()*2);
     }
 
     @Inject(method = "tick", at = @At("HEAD"))
     public void tick(CallbackInfo ci) {
-        if (this.experienceLevel > 35) {
-            setMaxHealth_FoodLevel(20);
-        } else if (this.experienceLevel > 30) {
-            setMaxHealth_FoodLevel(18);
-        } else if (this.experienceLevel > 25) {
-            setMaxHealth_FoodLevel(16);
-        } else if (this.experienceLevel > 20) {
-            setMaxHealth_FoodLevel(14);
-        } else if (this.experienceLevel > 15) {
-            setMaxHealth_FoodLevel(12);
-        } else if (this.experienceLevel > 10) {
-            setMaxHealth_FoodLevel(10);
-        } else if (this.experienceLevel > 5) {
-            setMaxHealth_FoodLevel(8);
-        } else {
-            setMaxHealth_FoodLevel(6);
-        }
+        int maxHealth = Math.max(6, Math.min(20, 6 + (this.experienceLevel / 5) * 2));
+        setMaxHealth(maxHealth);
     }
     @Unique
-    public void setMaxHealth_FoodLevel(int max) {
+    public void setMaxHealth(int max) {
         Objects.requireNonNull(getAttributes().getCustomInstance(EntityAttributes.MAX_HEALTH)).setBaseValue(max);
         ((HungerManagerExtension) hungerManager).setMaxFoodLevel(max);
     }
-    @Overwrite
-    public static DefaultAttributeContainer.Builder createPlayerAttributes() {
-        return LivingEntity.createLivingAttributes()
-                .add(EntityAttributes.ATTACK_DAMAGE, 1.0)
-                .add(EntityAttributes.MOVEMENT_SPEED, 0.1F)
-                .add(EntityAttributes.ATTACK_SPEED)
-                .add(EntityAttributes.LUCK)
-                .add(EntityAttributes.BLOCK_INTERACTION_RANGE, 1.5)
+    @Inject(method = "createPlayerAttributes", at = @At("RETURN"), cancellable = true)
+    private static void createPlayerAttributes(CallbackInfoReturnable<DefaultAttributeContainer.Builder> cir) {
+        cir.setReturnValue(cir.getReturnValue()
+                .add(EntityAttributes.MAX_HEALTH, 6)
+                .add(EntityAttributes.BLOCK_INTERACTION_RANGE, 1.75)
                 .add(EntityAttributes.ENTITY_INTERACTION_RANGE, 1.5)
-                .add(EntityAttributes.BLOCK_BREAK_SPEED)
-                .add(EntityAttributes.SUBMERGED_MINING_SPEED)
-                .add(EntityAttributes.SNEAKING_SPEED)
-                .add(EntityAttributes.MINING_EFFICIENCY)
-                .add(EntityAttributes.SWEEPING_DAMAGE_RATIO)
-                .add(EntityAttributes.MAX_HEALTH, 6);
+        );
+//        return LivingEntity.createLivingAttributes()
+//                .add(EntityAttributes.ATTACK_DAMAGE, 1.0)
+//                .add(EntityAttributes.MOVEMENT_SPEED, 0.1F)
+//                .add(EntityAttributes.ATTACK_SPEED)
+//                .add(EntityAttributes.LUCK)
+//                .add(EntityAttributes.BLOCK_INTERACTION_RANGE, 1.5)
+//                .add(EntityAttributes.ENTITY_INTERACTION_RANGE, 1.5)
+//                .add(EntityAttributes.BLOCK_BREAK_SPEED)
+//                .add(EntityAttributes.SUBMERGED_MINING_SPEED)
+//                .add(EntityAttributes.SNEAKING_SPEED)
+//                .add(EntityAttributes.MINING_EFFICIENCY)
+//                .add(EntityAttributes.SWEEPING_DAMAGE_RATIO)
+//                .add(EntityAttributes.MAX_HEALTH, 6);
     }
 }

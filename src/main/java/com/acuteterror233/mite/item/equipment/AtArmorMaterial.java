@@ -15,7 +15,7 @@ import net.minecraft.util.Identifier;
 
 import java.util.Map;
 
-public record At_ArmorMaterial(
+public record AtArmorMaterial(
         int durability,
         Map<EquipmentType, Double> defense,
         int enchantmentValue,

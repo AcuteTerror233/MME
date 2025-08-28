@@ -23,8 +23,8 @@ import net.minecraft.world.event.GameEvent;
 
 import java.util.Map;
 
-public class At_MattockItem extends Item {
-    public At_MattockItem(ToolMaterial material, float attackDamage, float attackSpeed, Settings settings) {
+public class AtMattockItem extends Item {
+    public AtMattockItem(ToolMaterial material, float attackDamage, float attackSpeed, Settings settings) {
         super(((ItemSettingsExtension)settings).mattock(material, attackDamage, attackSpeed));
     }
     protected static final Map<Block, BlockState> PATH_STATES = Maps.newHashMap(
