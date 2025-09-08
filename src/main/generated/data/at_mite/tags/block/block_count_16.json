@@ -1,0 +1,21 @@
+{
+  "values": [
+    "#at_mite:glass_pane",
+    "#at_mite:bars",
+    "#minecraft:rails",
+    "#minecraft:buttons",
+    "#minecraft:pressure_plates",
+    "#minecraft:saplings",
+    "#minecraft:wool_carpets",
+    "minecraft:kelp",
+    "minecraft:nether_wart",
+    "minecraft:sweet_berry_bush",
+    "minecraft:pointed_dripstone",
+    "minecraft:sculk_vein",
+    "minecraft:moss_carpet",
+    "minecraft:pale_moss_carpet",
+    "minecraft:ladder",
+    "minecraft:scaffolding",
+    "minecraft:snow"
+  ]
+}

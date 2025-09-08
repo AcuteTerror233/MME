@@ -1,0 +1,11 @@
+{
+  "values": [
+    "#minecraft:planks",
+    "#minecraft:slabs",
+    "#minecraft:walls",
+    "#minecraft:concrete_powder",
+    "#minecraft:terracotta",
+    "#minecraft:leaves",
+    "#at_mite:glass"
+  ]
+}

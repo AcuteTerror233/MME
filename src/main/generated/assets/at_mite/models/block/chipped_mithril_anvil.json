@@ -1,0 +1,8 @@
+{
+  "parent": "at_mite:block/template_anvil",
+  "textures": {
+    "body": "at_mite:block/mithril_anvil",
+    "particle": "at_mite:block/mithril_anvil",
+    "top": "at_mite:block/chipped_mithril_anvil_top"
+  }
+}

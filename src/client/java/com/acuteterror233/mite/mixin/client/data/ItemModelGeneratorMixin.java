@@ -6,7 +6,6 @@ import net.minecraft.client.render.item.model.ItemModel;
 import net.minecraft.client.render.item.property.bool.BooleanProperty;
 import net.minecraft.client.render.item.property.bool.FishingRodCastProperty;
 import net.minecraft.item.Item;
-import net.minecraft.item.Items;
 import net.minecraft.registry.Registries;
 import net.minecraft.util.Identifier;
 import org.spongepowered.asm.mixin.Final;
