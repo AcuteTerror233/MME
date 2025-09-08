@@ -7,6 +7,7 @@ import net.minecraft.data.recipe.RecipeGenerator;
 import net.minecraft.item.Item;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.RegistryWrapper;
+import net.minidev.json.JSONArray;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -21,6 +22,7 @@ public class AtRecipeGenerator extends FabricRecipeProvider {
             @Override
             public void generate() {
                 RegistryWrapper.Impl<Item> itemLookup = registries.getOrThrow(RegistryKeys.ITEM);
+                JSONArray jsonArray = new JSONArray();
             }
         };
     }

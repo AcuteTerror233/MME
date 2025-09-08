@@ -1,8 +1,6 @@
 package com.acuteterror233.mite.item.armor;
 
 import com.acuteterror233.mite.At_mite;
-
-
 import com.acuteterror233.mite.item.equipment.AtArmorMaterial;
 import net.minecraft.item.equipment.EquipmentAsset;
 import net.minecraft.item.equipment.EquipmentAssetKeys;
@@ -26,8 +24,23 @@ public class AtArmorMaterials {
     public static final RegistryKey<EquipmentAsset> RUSTED_IRON_CHAINMAIL_ARMOR_MATERIAL_KEY = RegistryKey.of(EquipmentAssetKeys.REGISTRY_KEY, Identifier.of(At_mite.MOD_ID, "rusted_iron_chainmail"));
     public static final RegistryKey<EquipmentAsset> SILVER_ARMOR_MATERIAL_KEY = RegistryKey.of(EquipmentAssetKeys.REGISTRY_KEY, Identifier.of(At_mite.MOD_ID, "silver"));
     public static final RegistryKey<EquipmentAsset> SILVER_CHAINMAIL_ARMOR_MATERIAL_KEY = RegistryKey.of(EquipmentAssetKeys.REGISTRY_KEY, Identifier.of(At_mite.MOD_ID, "silver_chainmail"));
+    public static final RegistryKey<EquipmentAsset> GOLD_CHAINMAIL_ARMOR_MATERIAL_KEY = RegistryKey.of(EquipmentAssetKeys.REGISTRY_KEY, Identifier.of(At_mite.MOD_ID, "gold_chainmail"));
 
-    public static final AtArmorMaterial ARMOR_MATERIAL_ARMOR_MATERIAL = new AtArmorMaterial(
+    public static final AtArmorMaterial GOLD_CHAINMAIL_ARMOR_MATERIAL = new AtArmorMaterial(
+            15,
+            new HashMap<>() {{
+                put(EquipmentType.HELMET, 1.7);
+                put(EquipmentType.CHESTPLATE, 2.7);
+                put(EquipmentType.LEGGINGS, 2.3);
+                put(EquipmentType.BOOTS, 1.3);
+            }},
+            5,
+            SoundEvents.ITEM_ARMOR_EQUIP_IRON,
+            0.0F,
+            0.0F,
+            null,
+            GOLD_CHAINMAIL_ARMOR_MATERIAL_KEY);
+    public static final AtArmorMaterial ADAMANTIUM_ARMOR_MATERIAL = new AtArmorMaterial(
             30,
             new HashMap<>() {{
                 put(EquipmentType.HELMET, 2.1);
@@ -41,7 +54,7 @@ public class AtArmorMaterials {
             0.0F,
             null,
             ADAMANTIUM_ARMOR_MATERIAL_KEY);
-    public static final AtArmorMaterial ARMOR_MATERIAL_CHAINMAIL_ARMOR_MATERIAL = new AtArmorMaterial(
+    public static final AtArmorMaterial ADAMANTIUM_CHAINMAIL_ARMOR_MATERIAL = new AtArmorMaterial(
             15,
             new HashMap<>() {{
                 put(EquipmentType.HELMET, 1.7);

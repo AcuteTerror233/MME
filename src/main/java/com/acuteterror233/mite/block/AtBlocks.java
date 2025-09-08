@@ -1,14 +1,13 @@
 package com.acuteterror233.mite.block;
 
 import com.acuteterror233.mite.At_mite;
+import com.acuteterror233.mite.item.AtToolMaterial;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.block.piston.PistonBehavior;
-import net.minecraft.item.Item;
-import net.minecraft.item.Items;
-import net.minecraft.item.TallBlockItem;
+import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
@@ -100,7 +99,7 @@ public class AtBlocks {
                     .strength(0.5F, 1200.0F)
                     .sounds(BlockSoundGroup.ANVIL)
                     .pistonBehavior(PistonBehavior.BLOCK),
-            new Item.Settings().maxDamage(2048)
+            new Item.Settings().maxDamage(maxDamageAnvil(AtToolMaterial.ADAMANTIUM.durability()))
     );
     public static final Block CHIPPED_ADAMANTIUM_ANVIL = register(
             "chipped_adamantium_anvil",
@@ -110,7 +109,7 @@ public class AtBlocks {
                     .strength(0.5F, 1200.0F)
                     .sounds(BlockSoundGroup.ANVIL)
                     .pistonBehavior(PistonBehavior.BLOCK),
-            new Item.Settings().maxDamage(2048)
+            new Item.Settings().maxDamage(maxDamageAnvil(AtToolMaterial.ADAMANTIUM.durability()))
     );
     public static final Block DAMAGED_ADAMANTIUM_ANVIL = register(
             "damaged_adamantium_anvil",
@@ -120,9 +119,161 @@ public class AtBlocks {
                     .strength(0.5F, 1200.0F)
                     .sounds(BlockSoundGroup.ANVIL)
                     .pistonBehavior(PistonBehavior.BLOCK),
-            new Item.Settings().maxDamage(2048)
+            new Item.Settings().maxDamage(maxDamageAnvil(AtToolMaterial.ADAMANTIUM.durability()))
     );
-
+    public static final Block MITHRIL_ANVIL = register(
+            "mithril_anvil",
+            AtAnvilBlock::new,
+            AbstractBlock.Settings.create()
+                    .mapColor(MapColor.IRON_GRAY)
+                    .strength(0.5F, 1200.0F)
+                    .sounds(BlockSoundGroup.ANVIL)
+                    .pistonBehavior(PistonBehavior.BLOCK),
+            new Item.Settings().maxDamage(maxDamageAnvil(AtToolMaterial.MITHRIL.durability()))
+    );
+    public static final Block CHIPPED_MITHRIL_ANVIL = register(
+            "chipped_mithril_anvil",
+            AtAnvilBlock::new,
+            AbstractBlock.Settings.create()
+                    .mapColor(MapColor.IRON_GRAY)
+                    .strength(0.5F, 1200.0F)
+                    .sounds(BlockSoundGroup.ANVIL)
+                    .pistonBehavior(PistonBehavior.BLOCK),
+            new Item.Settings().maxDamage(maxDamageAnvil(AtToolMaterial.MITHRIL.durability()))
+    );
+    public static final Block DAMAGED_MITHRIL_ANVIL = register(
+            "damaged_mithril_anvil",
+            AtAnvilBlock::new,
+            AbstractBlock.Settings.create()
+                    .mapColor(MapColor.IRON_GRAY)
+                    .strength(0.5F, 1200.0F)
+                    .sounds(BlockSoundGroup.ANVIL)
+                    .pistonBehavior(PistonBehavior.BLOCK),
+            new Item.Settings().maxDamage(maxDamageAnvil(AtToolMaterial.MITHRIL.durability()))
+    );
+    public static final Block ANCIENT_METAL_ANVIL = register(
+            "ancient_metal_anvil",
+            AtAnvilBlock::new,
+            AbstractBlock.Settings.create()
+                    .mapColor(MapColor.IRON_GRAY)
+                    .strength(0.5F, 1200.0F)
+                    .sounds(BlockSoundGroup.ANVIL)
+                    .pistonBehavior(PistonBehavior.BLOCK),
+            new Item.Settings().maxDamage(maxDamageAnvil(AtToolMaterial.ANCIENT_METAL.durability()))
+    );
+    public static final Block CHIPPED_ANCIENT_METAL_ANVIL = register(
+            "chipped_ancient_metal_anvil",
+            AtAnvilBlock::new,
+            AbstractBlock.Settings.create()
+                    .mapColor(MapColor.IRON_GRAY)
+                    .strength(0.5F, 1200.0F)
+                    .sounds(BlockSoundGroup.ANVIL)
+                    .pistonBehavior(PistonBehavior.BLOCK),
+            new Item.Settings().maxDamage(maxDamageAnvil(AtToolMaterial.ANCIENT_METAL.durability()))
+    );
+    public static final Block DAMAGED_ANCIENT_METAL_ANVIL = register(
+            "damaged_ancient_metal_anvil",
+            AtAnvilBlock::new,
+            AbstractBlock.Settings.create()
+                    .mapColor(MapColor.IRON_GRAY)
+                    .strength(0.5F, 1200.0F)
+                    .sounds(BlockSoundGroup.ANVIL)
+                    .pistonBehavior(PistonBehavior.BLOCK),
+            new Item.Settings().maxDamage(maxDamageAnvil(AtToolMaterial.ANCIENT_METAL.durability()))
+    );
+    public static final Block GOLD_ANVIL = register(
+            "gold_anvil",
+            AtAnvilBlock::new,
+            AbstractBlock.Settings.create()
+                    .mapColor(MapColor.IRON_GRAY)
+                    .strength(0.5F, 1200.0F)
+                    .sounds(BlockSoundGroup.ANVIL)
+                    .pistonBehavior(PistonBehavior.BLOCK),
+            new Item.Settings().maxDamage(maxDamageAnvil(ToolMaterial.GOLD.durability()))
+    );
+    public static final Block CHIPPED_GOLD_ANVIL = register(
+            "chipped_gold_anvil",
+            AtAnvilBlock::new,
+            AbstractBlock.Settings.create()
+                    .mapColor(MapColor.IRON_GRAY)
+                    .strength(0.5F, 1200.0F)
+                    .sounds(BlockSoundGroup.ANVIL)
+                    .pistonBehavior(PistonBehavior.BLOCK),
+            new Item.Settings().maxDamage(maxDamageAnvil(ToolMaterial.GOLD.durability()))
+    );
+    public static final Block DAMAGED_GOLD_ANVIL = register(
+            "damaged_gold_anvil",
+            AtAnvilBlock::new,
+            AbstractBlock.Settings.create()
+                    .mapColor(MapColor.IRON_GRAY)
+                    .strength(0.5F, 1200.0F)
+                    .sounds(BlockSoundGroup.ANVIL)
+                    .pistonBehavior(PistonBehavior.BLOCK),
+            new Item.Settings().maxDamage(maxDamageAnvil(ToolMaterial.GOLD.durability()))
+    );
+    public static final Block SILVER_ANVIL = register(
+            "silver_anvil",
+            AtAnvilBlock::new,
+            AbstractBlock.Settings.create()
+                    .mapColor(MapColor.IRON_GRAY)
+                    .strength(0.5F, 1200.0F)
+                    .sounds(BlockSoundGroup.ANVIL)
+                    .pistonBehavior(PistonBehavior.BLOCK),
+            new Item.Settings().maxDamage(maxDamageAnvil(AtToolMaterial.SILVER.durability()))
+    );
+    public static final Block CHIPPED_SILVER_ANVIL = register(
+            "chipped_silver_anvil",
+            AtAnvilBlock::new,
+            AbstractBlock.Settings.create()
+                    .mapColor(MapColor.IRON_GRAY)
+                    .strength(0.5F, 1200.0F)
+                    .sounds(BlockSoundGroup.ANVIL)
+                    .pistonBehavior(PistonBehavior.BLOCK),
+            new Item.Settings().maxDamage(maxDamageAnvil(AtToolMaterial.SILVER.durability()))
+    );
+    public static final Block DAMAGED_SILVER_ANVIL = register(
+            "damaged_silver_anvil",
+            AtAnvilBlock::new,
+            AbstractBlock.Settings.create()
+                    .mapColor(MapColor.IRON_GRAY)
+                    .strength(0.5F, 1200.0F)
+                    .sounds(BlockSoundGroup.ANVIL)
+                    .pistonBehavior(PistonBehavior.BLOCK),
+            new Item.Settings().maxDamage(maxDamageAnvil(AtToolMaterial.SILVER.durability()))
+    );
+    public static final Block COPPER_ANVIL = register(
+            "copper_anvil",
+            AtAnvilBlock::new,
+            AbstractBlock.Settings.create()
+                    .mapColor(MapColor.IRON_GRAY)
+                    .strength(0.5F, 1200.0F)
+                    .sounds(BlockSoundGroup.ANVIL)
+                    .pistonBehavior(PistonBehavior.BLOCK),
+            new Item.Settings().maxDamage(maxDamageAnvil(AtToolMaterial.COPPER.durability()))
+    );
+    public static final Block CHIPPED_COPPER_ANVIL = register(
+            "chipped_copper_anvil",
+            AtAnvilBlock::new,
+            AbstractBlock.Settings.create()
+                    .mapColor(MapColor.IRON_GRAY)
+                    .strength(0.5F, 1200.0F)
+                    .sounds(BlockSoundGroup.ANVIL)
+                    .pistonBehavior(PistonBehavior.BLOCK),
+            new Item.Settings().maxDamage(maxDamageAnvil(AtToolMaterial.COPPER.durability()))
+    );
+    public static final Block DAMAGED_COPPER_ANVIL = register(
+            "damaged_copper_anvil",
+            AtAnvilBlock::new,
+            AbstractBlock.Settings.create()
+                    .mapColor(MapColor.IRON_GRAY)
+                    .strength(0.5F, 1200.0F)
+                    .sounds(BlockSoundGroup.ANVIL)
+                    .pistonBehavior(PistonBehavior.BLOCK),
+            new Item.Settings().maxDamage(maxDamageAnvil(AtToolMaterial.COPPER.durability()))
+    );
+    public static int maxDamageAnvil(int damage){
+        return damage*31;
+    }
     private static Block register(String name, Function<AbstractBlock.Settings, Block> factory, AbstractBlock.Settings settings, BiFunction<Block, Item.Settings, Item> factory1) {
         Block block = Blocks.register(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(At_mite.MOD_ID, name)), factory, settings);
         Items.register(block,factory1);
@@ -139,13 +290,15 @@ public class AtBlocks {
         Items.register(block);
         return block;
     }
-    private static Block register(String name, Function<AbstractBlock.Settings, Block> factory, AbstractBlock.Settings settings,Item.Settings itemsettings) {
+    private static Block register(String name, Function<AbstractBlock.Settings, Block> factory, AbstractBlock.Settings settings, Item.Settings itemSettings1) {
         Block block = Blocks.register(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(At_mite.MOD_ID, name)), factory, settings);
-        Items.register(block,itemsettings);
+        RegistryKey<Item> key = RegistryKey.of(RegistryKeys.ITEM, Identifier.of(At_mite.MOD_ID, name));
+        BiFunction<Block, Item.Settings, Item> biFunction = (BlockItem::new);
+        Items.register(key, itemSettings -> (Item)biFunction.apply(block, itemSettings), itemSettings1.useBlockPrefixedTranslationKey());
         return block;
     }
     public static final BlockEntityType<AnvilBlockEntity> ANVIL_BLOCK_ENTITY =
-            register("anvil", AnvilBlockEntity::new, ADAMANTIUM_ANVIL);
+            register("anvil", AnvilBlockEntity::new, ADAMANTIUM_ANVIL, CHIPPED_ADAMANTIUM_ANVIL, DAMAGED_ADAMANTIUM_ANVIL);
 
     private static <T extends BlockEntity> BlockEntityType<T> register(
             String name,

@@ -43,6 +43,11 @@ public class ModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerDoor(AtBlocks.ANCIENT_METAL_DOOR);
         blockStateModelGenerator.registerDoor(AtBlocks.MITHRIL_DOOR);
         ((BlockStateModelGeneratorExtension) blockStateModelGenerator).registerAnvil(AtBlocks.ADAMANTIUM_ANVIL, AtBlocks.CHIPPED_ADAMANTIUM_ANVIL, AtBlocks.DAMAGED_ADAMANTIUM_ANVIL);
+        ((BlockStateModelGeneratorExtension) blockStateModelGenerator).registerAnvil(AtBlocks.MITHRIL_ANVIL, AtBlocks.CHIPPED_MITHRIL_ANVIL, AtBlocks.DAMAGED_MITHRIL_ANVIL);
+        ((BlockStateModelGeneratorExtension) blockStateModelGenerator).registerAnvil(AtBlocks.ANCIENT_METAL_ANVIL, AtBlocks.CHIPPED_ANCIENT_METAL_ANVIL, AtBlocks.DAMAGED_ANCIENT_METAL_ANVIL);
+        ((BlockStateModelGeneratorExtension) blockStateModelGenerator).registerAnvil(AtBlocks.GOLD_ANVIL, AtBlocks.CHIPPED_GOLD_ANVIL, AtBlocks.DAMAGED_GOLD_ANVIL);
+        ((BlockStateModelGeneratorExtension) blockStateModelGenerator).registerAnvil(AtBlocks.SILVER_ANVIL, AtBlocks.CHIPPED_SILVER_ANVIL, AtBlocks.DAMAGED_SILVER_ANVIL);
+        ((BlockStateModelGeneratorExtension) blockStateModelGenerator).registerAnvil(AtBlocks.COPPER_ANVIL, AtBlocks.CHIPPED_COPPER_ANVIL, AtBlocks.DAMAGED_COPPER_ANVIL);
     }
 
     @Override
@@ -96,6 +101,10 @@ public class ModelProvider extends FabricModelProvider {
         itemModelGenerator.registerArmor(AtItems.SILVER_CHAINMAIL_CHESTPLATE, AtArmorMaterials.SILVER_CHAINMAIL_ARMOR_MATERIAL_KEY, ItemModelGenerator.CHESTPLATE_TRIM_ID_PREFIX,false);
         itemModelGenerator.registerArmor(AtItems.SILVER_CHAINMAIL_LEGGINGS, AtArmorMaterials.SILVER_CHAINMAIL_ARMOR_MATERIAL_KEY, ItemModelGenerator.LEGGINGS_TRIM_ID_PREFIX,false);
         itemModelGenerator.registerArmor(AtItems.SILVER_CHAINMAIL_BOOTS, AtArmorMaterials.SILVER_CHAINMAIL_ARMOR_MATERIAL_KEY, ItemModelGenerator.BOOTS_TRIM_ID_PREFIX,false);
+        itemModelGenerator.registerArmor(AtItems.GOLD_CHAINMAIL_HELMET, AtArmorMaterials.GOLD_CHAINMAIL_ARMOR_MATERIAL_KEY, ItemModelGenerator.HELMET_TRIM_ID_PREFIX,false);
+        itemModelGenerator.registerArmor(AtItems.GOLD_CHAINMAIL_CHESTPLATE, AtArmorMaterials.GOLD_CHAINMAIL_ARMOR_MATERIAL_KEY, ItemModelGenerator.CHESTPLATE_TRIM_ID_PREFIX,false);
+        itemModelGenerator.registerArmor(AtItems.GOLD_CHAINMAIL_LEGGINGS, AtArmorMaterials.GOLD_CHAINMAIL_ARMOR_MATERIAL_KEY, ItemModelGenerator.LEGGINGS_TRIM_ID_PREFIX,false);
+        itemModelGenerator.registerArmor(AtItems.GOLD_CHAINMAIL_BOOTS, AtArmorMaterials.GOLD_CHAINMAIL_ARMOR_MATERIAL_KEY, ItemModelGenerator.BOOTS_TRIM_ID_PREFIX,false);
 
         //食物部分
         itemModelGenerator.register(AtItems.BANANA, Models.GENERATED);

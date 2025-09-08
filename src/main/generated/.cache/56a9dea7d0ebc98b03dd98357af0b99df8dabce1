@@ -1,2 +1,9 @@
 // 1.21.5	-999999999-01-01T00:00:00	at_mite/Tags for minecraft:block
+295de2c2c3f5a87f023e5f97cacb94ed23269b5c data/at_mite/tags/block/bars.json
+0df7b5e9cf66dbbd88117591f15be9100a2cade6 data/at_mite/tags/block/block_count_1.json
+0e2d702123ac8a3f6cfad42aa90cdfe0108d0e17 data/at_mite/tags/block/block_count_16.json
+4ca82c61ce827004f6334dfd83ee618595c41840 data/at_mite/tags/block/block_count_32.json
+028fc083e2ac47c164ae0a6d46e034db3371d397 data/at_mite/tags/block/block_count_8.json
+55d021ee37fe4ddcf34b5e733280ae51aa90d6be data/at_mite/tags/block/glass.json
+0a20218273c87ee1535047a6594e5e7e7faaa512 data/at_mite/tags/block/glass_pane.json
 04bee0ad89d90bb4054d9f192bbe5d77eb5c6aa3 data/minecraft/tags/block/doors.json

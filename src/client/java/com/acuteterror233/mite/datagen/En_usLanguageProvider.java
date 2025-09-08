@@ -361,5 +361,9 @@ public class En_usLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(AtItems.GLASS_SHARD, "Glass Shard");
         translationBuilder.add(AtItems.OBSIDIAN_SHARD, "Obsidian Shard");
         translationBuilder.add(AtItems.QUARTZ_SHARD, "Quartz Shard");
+
+        translationBuilder.add(AtBlocks.ADAMANTIUM_ANVIL,"adamantium anvil");
+        translationBuilder.add(AtBlocks.CHIPPED_ADAMANTIUM_ANVIL,"chipped adamantium anvil");
+        translationBuilder.add(AtBlocks.DAMAGED_ADAMANTIUM_ANVIL,"damaged adamantium anvil");
     }
 }

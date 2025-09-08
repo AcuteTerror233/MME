@@ -1,7 +1,20 @@
 // 1.21.5	-999999999-01-01T00:00:00	at_mite/Tags for minecraft:item
+183074755b2e6100fdf32b93cc71798643dcb78c data/at_mite/tags/item/adamantium_series_repairable.json
+2f7d8de85baea7f480a8b2cc008fd3f4963020df data/at_mite/tags/item/ancient_metal_series_repairable.json
+66e74185333c87bebe0729c14ccf3ea030189119 data/at_mite/tags/item/chains.json
+4f10adf420c4a77b000b3730556991ebbcb52848 data/at_mite/tags/item/coins.json
 8cbf2ada86f7bb0257168822ebfce9d11cb3c01c data/at_mite/tags/item/fishing_rods.json
+5b391a13f8f92f602b7d18e3b50a9cfc9590c8fd data/at_mite/tags/item/ingot.json
+8eec1453f46259dc764807c962320cd49d7afc91 data/at_mite/tags/item/item_count_1.json
+92b8f481d2ddb09425876f8a5fbe952a1cf7d169 data/at_mite/tags/item/item_count_16.json
+56cd912f2cd9baed070da49b5920a3e42c28aef3 data/at_mite/tags/item/item_count_32.json
+9282fa55c6275af061500d288b6ad2e9b67e88c6 data/at_mite/tags/item/item_count_8.json
+2120c686cf694e86e31f26074d4df714b5d2c234 data/at_mite/tags/item/mithril_series_repairable.json
+434b23ad12997087244b7942016d1b7cfd4acf6a data/at_mite/tags/item/nugget.json
+cf997ac293e2a24a1090459477410e91f9bf2023 data/at_mite/tags/item/shard.json
 f4a465597aa2a37d1a718ab3c0893739b32a712a data/at_mite/tags/item/water_bucket.json
-06ca3a91114cb41be2ee4c77e5ca16a405bbc1e9 data/minecraft/tags/item/chest_armor.json
-09e17878c256587ae1f395c4ad10474408a3653f data/minecraft/tags/item/foot_armor.json
-d54788f8c0db705a0ab8a928b7508ecbece22152 data/minecraft/tags/item/head_armor.json
-4dd836deb32450a9415288a766baf8880d777ff2 data/minecraft/tags/item/leg_armor.json
+8889ce980d97fcd7a563d248106ffd25d0529c5f data/minecraft/tags/item/arrows.json
+8f5a93342696da34cb60f7e6d5af85b0cd7b2f92 data/minecraft/tags/item/chest_armor.json
+f54f24b8f0383c9f7872532799645bd2564d4e09 data/minecraft/tags/item/foot_armor.json
+df3232984b7cf2813c04e7d2bf7bba97481afec4 data/minecraft/tags/item/head_armor.json
+256993a9f5eada0b37245ea125a1266cfcb49270 data/minecraft/tags/item/leg_armor.json

@@ -1,5 +1,7 @@
 package com.acuteterror233.mite.mixin.screen;
 
+import com.acuteterror233.mite.block.AtBlocks;
+import com.acuteterror233.mite.registry.tag.AtTags;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.screen.AnvilScreenHandler;
@@ -31,7 +33,9 @@ public abstract class AnvilScreenHandlerMixin extends ForgingScreenHandler {
     private void updateResult(CallbackInfo ci){
         Optional<BlockState> blockState = this.context.get(World::getBlockState);
         if (blockState.isPresent()) {
-
+            if (blockState.get().getBlock() == AtBlocks.MITHRIL_ANVIL) {
+                this.input.getStack(0).isIn(AtTags.MITHRIL_NONREPAIRABLE);
+            }
         }
     }
 }

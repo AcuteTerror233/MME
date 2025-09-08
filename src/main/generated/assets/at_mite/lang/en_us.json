@@ -1,4 +1,5 @@
 {
+  "block.at_mite.adamantium_anvil": "adamantium anvil",
   "block.at_mite.adamantium_bars": "Adamantium Bars",
   "block.at_mite.adamantium_block": "Adamantium Block",
   "block.at_mite.adamantium_door": "Adamantium Door",
@@ -6,7 +7,9 @@
   "block.at_mite.ancient_metal_bars": "Ancient Metal Bars",
   "block.at_mite.ancient_metal_block": "Ancient Metal Block",
   "block.at_mite.ancient_metal_door": "Ancient Metal Door",
+  "block.at_mite.chipped_adamantium_anvil": "chipped adamantium anvil",
   "block.at_mite.copper_bars": "Copper BARS",
+  "block.at_mite.damaged_adamantium_anvil": "damaged adamantium anvil",
   "block.at_mite.gold_bars": "Gold Bars",
   "block.at_mite.gold_door": "Gold Door",
   "block.at_mite.mantle": "Mantle",

@@ -1,7 +1,9 @@
 package com.acuteterror233.mite.block;
 
 import com.acuteterror233.mite.atinterface.FallingBlockEntityExtension;
-import net.minecraft.block.*;
+import net.minecraft.block.AnvilBlock;
+import net.minecraft.block.BlockEntityProvider;
+import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.FallingBlockEntity;
 import net.minecraft.entity.LivingEntity;
@@ -65,16 +67,18 @@ public class AtAnvilBlock extends AnvilBlock implements BlockEntityProvider {
                 (syncId, inventory, player) -> new AnvilScreenHandler(syncId, inventory, ScreenHandlerContext.create(world, pos)), Text.of("qwe")
         );
     }
-
-    @Override
-    public void onLanding(World world, BlockPos pos, BlockState fallingBlockState, BlockState currentStateInPos, FallingBlockEntity fallingBlockEntity) {
-        super.onLanding(world, pos, fallingBlockState, currentStateInPos, fallingBlockEntity);
-    }
     @Override
     protected void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         if (canFallThrough(world.getBlockState(pos.down())) && pos.getY() >= world.getBottomY()) {
-            FallingBlockEntity fallingBlockEntity = FallingBlockEntityExtension.spawnFromBlock(world, pos, state,world.getBlockEntity(pos));
+            FallingBlockEntity fallingBlockEntity = spawnFromBlock(world, pos, state,world.getBlockEntity(pos));
             this.configureFallingBlockEntity(fallingBlockEntity);
         }
+    }
+    public static FallingBlockEntity spawnFromBlock(World world, BlockPos pos, BlockState state, BlockEntity blockEntity) {
+        FallingBlockEntity fallingBlockEntity = FallingBlockEntity.spawnFromBlock(world, pos, state);
+        if (blockEntity instanceof AnvilBlockEntity AnvilBlockEntity) {
+            ((FallingBlockEntityExtension)fallingBlockEntity).setDamage(AnvilBlockEntity.getDamage(), AnvilBlockEntity.getMaxDamage());
+        }
+        return fallingBlockEntity;
     }
 }

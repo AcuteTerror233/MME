@@ -28,195 +28,211 @@ import java.util.function.Function;
 public class AtItems {
     public static final Item ADAMANTIUM_HELMET = register(
         "adamantium_helmet",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.ARMOR_MATERIAL_ARMOR_MATERIAL,EquipmentType.HELMET)
+        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.ADAMANTIUM_ARMOR_MATERIAL,EquipmentType.HELMET)
     );
     public static final Item ADAMANTIUM_CHESTPLATE = register(
         "adamantium_chestplate",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.ARMOR_MATERIAL_ARMOR_MATERIAL,EquipmentType.CHESTPLATE)
+        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.ADAMANTIUM_ARMOR_MATERIAL,EquipmentType.CHESTPLATE)
     );
     public static final Item ADAMANTIUM_LEGGINGS = register(
         "adamantium_leggings",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.ARMOR_MATERIAL_ARMOR_MATERIAL,EquipmentType.LEGGINGS)
+        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.ADAMANTIUM_ARMOR_MATERIAL,EquipmentType.LEGGINGS)
     );
     public static final Item ADAMANTIUM_BOOTS = register(
         "adamantium_boots",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.ARMOR_MATERIAL_ARMOR_MATERIAL,EquipmentType.BOOTS)
+        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.ADAMANTIUM_ARMOR_MATERIAL,EquipmentType.BOOTS)
     );
     public static final Item ADAMANTIUM_CHAINMAIL_BOOTS = register(
         "adamantium_chainmail_boots",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.ARMOR_MATERIAL_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.BOOTS)
+        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.ADAMANTIUM_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.BOOTS)
     );
     public static final Item ADAMANTIUM_CHAINMAIL_CHESTPLATE = register(
         "adamantium_chainmail_chestplate",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.ARMOR_MATERIAL_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.CHESTPLATE)
+        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.ADAMANTIUM_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.CHESTPLATE)
     );
     public static final Item ADAMANTIUM_CHAINMAIL_HELMET = register(
         "adamantium_chainmail_helmet",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.ARMOR_MATERIAL_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.HELMET)
+        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.ADAMANTIUM_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.HELMET)
     );
     public static final Item ADAMANTIUM_CHAINMAIL_LEGGINGS = register(
         "adamantium_chainmail_leggings",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.ARMOR_MATERIAL_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.LEGGINGS)
+        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.ADAMANTIUM_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.LEGGINGS)
     );
     public static final Item ANCIENT_METAL_HELMET = register(
         "ancient_metal_helmet",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.ANCIENT_METAL_ARMOR_MATERIAL,EquipmentType.HELMET)
+        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.ANCIENT_METAL_ARMOR_MATERIAL,EquipmentType.HELMET)
     );
     public static final Item ANCIENT_METAL_CHESTPLATE = register(
         "ancient_metal_chestplate",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.ANCIENT_METAL_ARMOR_MATERIAL,EquipmentType.CHESTPLATE)
+        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.ANCIENT_METAL_ARMOR_MATERIAL,EquipmentType.CHESTPLATE)
     );
     public static final Item ANCIENT_METAL_LEGGINGS = register(
         "ancient_metal_leggings",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.ANCIENT_METAL_ARMOR_MATERIAL,EquipmentType.LEGGINGS)
+        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.ANCIENT_METAL_ARMOR_MATERIAL,EquipmentType.LEGGINGS)
     );
     public static final Item ANCIENT_METAL_BOOTS = register(
         "ancient_metal_boots",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.ANCIENT_METAL_ARMOR_MATERIAL,EquipmentType.BOOTS)
+        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.ANCIENT_METAL_ARMOR_MATERIAL,EquipmentType.BOOTS)
     );
     public static final Item ANCIENT_METAL_CHAINMAIL_BOOTS = register(
         "ancient_metal_chainmail_boots",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.ANCIENT_METAL_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.BOOTS)
+        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.ANCIENT_METAL_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.BOOTS)
     );
     public static final Item ANCIENT_METAL_CHAINMAIL_CHESTPLATE = register(
         "ancient_metal_chainmail_chestplate",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.ANCIENT_METAL_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.CHESTPLATE)
+        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.ANCIENT_METAL_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.CHESTPLATE)
     );
     public static final Item ANCIENT_METAL_CHAINMAIL_HELMET = register(
         "ancient_metal_chainmail_helmet",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.ANCIENT_METAL_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.HELMET)
+        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.ANCIENT_METAL_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.HELMET)
     );
     public static final Item ANCIENT_METAL_CHAINMAIL_LEGGINGS = register(
         "ancient_metal_chainmail_leggings",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.ANCIENT_METAL_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.LEGGINGS)
+        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.ANCIENT_METAL_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.LEGGINGS)
     );
     public static final Item COPPER_HELMET =  register(
         "copper_helmet",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.COPPER_ARMOR_MATERIAL,EquipmentType.HELMET)
+        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.COPPER_ARMOR_MATERIAL,EquipmentType.HELMET)
     );
     public static final Item COPPER_CHESTPLATE = register(
         "copper_chestplate",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.COPPER_ARMOR_MATERIAL,EquipmentType.CHESTPLATE)
+        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.COPPER_ARMOR_MATERIAL,EquipmentType.CHESTPLATE)
     );
     public static final Item COPPER_LEGGINGS = register(
         "copper_leggings",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.COPPER_ARMOR_MATERIAL,EquipmentType.LEGGINGS)
+        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.COPPER_ARMOR_MATERIAL,EquipmentType.LEGGINGS)
     );
     public static final Item COPPER_BOOTS = register(
         "copper_boots",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.COPPER_ARMOR_MATERIAL,EquipmentType.BOOTS)
+        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.COPPER_ARMOR_MATERIAL,EquipmentType.BOOTS)
     );
     public static final Item COPPER_CHAINMAIL_BOOTS = register(
         "copper_chainmail_boots",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.COPPER_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.BOOTS)
+        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.COPPER_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.BOOTS)
     );
     public static final Item COPPER_CHAINMAIL_CHESTPLATE = register(
         "copper_chainmail_chestplate",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.COPPER_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.CHESTPLATE)
+        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.COPPER_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.CHESTPLATE)
     );
     public static final Item COPPER_CHAINMAIL_HELMET = register(
         "copper_chainmail_helmet",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.COPPER_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.HELMET)
+        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.COPPER_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.HELMET)
     );
     public static final Item COPPER_CHAINMAIL_LEGGINGS = register(
         "copper_chainmail_leggings",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.COPPER_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.LEGGINGS)
+        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.COPPER_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.LEGGINGS)
     );
     public static final Item MITHRIL_HELMET = register(
         "mithril_helmet",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.MITHRIL_ARMOR_MATERIAL,EquipmentType.HELMET)
+        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.MITHRIL_ARMOR_MATERIAL,EquipmentType.HELMET)
     );
     public static final Item MITHRIL_CHESTPLATE = register(
         "mithril_chestplate",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.MITHRIL_ARMOR_MATERIAL,EquipmentType.CHESTPLATE)
+        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.MITHRIL_ARMOR_MATERIAL,EquipmentType.CHESTPLATE)
     );
     public static final Item MITHRIL_LEGGINGS = register(
         "mithril_leggings",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.MITHRIL_ARMOR_MATERIAL,EquipmentType.LEGGINGS)
+        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.MITHRIL_ARMOR_MATERIAL,EquipmentType.LEGGINGS)
     );
     public static final Item MITHRIL_BOOTS = register(
         "mithril_boots",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.MITHRIL_ARMOR_MATERIAL,EquipmentType.BOOTS)
+        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.MITHRIL_ARMOR_MATERIAL,EquipmentType.BOOTS)
     );
     public static final Item MITHRIL_CHAINMAIL_HELMET  = register(
         "mithril_chainmail_helmet",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.MITHRIL_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.BOOTS)
+        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.MITHRIL_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.BOOTS)
     );
     public static final Item MITHRIL_CHAINMAIL_CHESTPLATE  = register(
         "mithril_chainmail_chestplate",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.MITHRIL_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.CHESTPLATE)
+        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.MITHRIL_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.CHESTPLATE)
     );
     public static final Item MITHRIL_CHAINMAIL_LEGGINGS  = register(
         "mithril_chainmail_leggings",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.MITHRIL_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.LEGGINGS)
+        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.MITHRIL_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.LEGGINGS)
     );
     public static final Item MITHRIL_CHAINMAIL_BOOTS  = register(
         "mithril_chainmail_boots",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.MITHRIL_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.BOOTS)
+        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.MITHRIL_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.BOOTS)
     );
     public static final Item RUSTED_IRON_HELMET = register(
         "rusted_iron_helmet",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.RUSTED_IRON_ARMOR_MATERIAL,EquipmentType.HELMET)
+        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.RUSTED_IRON_ARMOR_MATERIAL,EquipmentType.HELMET)
     );
     public static final Item RUSTED_IRON_CHESTPLATE = register(
         "rusted_iron_chestplate",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.RUSTED_IRON_ARMOR_MATERIAL,EquipmentType.CHESTPLATE)
+        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.RUSTED_IRON_ARMOR_MATERIAL,EquipmentType.CHESTPLATE)
     );
     public static final Item RUSTED_IRON_LEGGINGS = register(
         "rusted_iron_leggings",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.RUSTED_IRON_ARMOR_MATERIAL,EquipmentType.LEGGINGS)
+        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.RUSTED_IRON_ARMOR_MATERIAL,EquipmentType.LEGGINGS)
     );
     public static final Item RUSTED_IRON_BOOTS = register(
         "rusted_iron_boots",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.RUSTED_IRON_ARMOR_MATERIAL,EquipmentType.BOOTS)
+        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.RUSTED_IRON_ARMOR_MATERIAL,EquipmentType.BOOTS)
     );
     public static final Item RUSTED_IRON_CHAINMAIL_HELMET = register(
         "rusted_iron_chainmail_helmet",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.RUSTED_IRON_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.HELMET)
+        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.RUSTED_IRON_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.HELMET)
     );
     public static final Item RUSTED_IRON_CHAINMAIL_CHESTPLATE = register(
         "rusted_iron_chainmail_chestplate",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.RUSTED_IRON_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.CHESTPLATE)
+        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.RUSTED_IRON_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.CHESTPLATE)
     );
     public static final Item RUSTED_IRON_CHAINMAIL_LEGGINGS = register(
         "rusted_iron_chainmail_leggings",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.RUSTED_IRON_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.LEGGINGS)
+        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.RUSTED_IRON_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.LEGGINGS)
     );
     public static final Item RUSTED_IRON_CHAINMAIL_BOOTS = register(
         "rusted_iron_chainmail_boots",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.RUSTED_IRON_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.BOOTS)
+        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.RUSTED_IRON_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.BOOTS)
     );
     public static final Item SILVER_HELMET = register(
         "silver_helmet",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.SILVER_ARMOR_MATERIAL,EquipmentType.HELMET)
+        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.SILVER_ARMOR_MATERIAL,EquipmentType.HELMET)
     );
      public static final Item SILVER_CHESTPLATE = register(
         "silver_chestplate",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.SILVER_ARMOR_MATERIAL,EquipmentType.CHESTPLATE)
+        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.SILVER_ARMOR_MATERIAL,EquipmentType.CHESTPLATE)
     );
     public static final Item SILVER_LEGGINGS = register(
         "silver_leggings",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.SILVER_ARMOR_MATERIAL,EquipmentType.LEGGINGS)
+        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.SILVER_ARMOR_MATERIAL,EquipmentType.LEGGINGS)
     );
     public static final Item SILVER_BOOTS = register(
         "silver_boots",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.SILVER_ARMOR_MATERIAL,EquipmentType.BOOTS)
+        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.SILVER_ARMOR_MATERIAL,EquipmentType.BOOTS)
     );
     public static final Item SILVER_CHAINMAIL_HELMET = register(
         "silver_chainmail_helmet",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.SILVER_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.HELMET)
+        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.SILVER_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.HELMET)
     );
     public static final Item SILVER_CHAINMAIL_CHESTPLATE = register(
         "silver_chainmail_chestplate",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.SILVER_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.CHESTPLATE)
+        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.SILVER_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.CHESTPLATE)
     );
     public static final Item SILVER_CHAINMAIL_LEGGINGS = register(
         "silver_chainmail_leggings",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.SILVER_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.LEGGINGS)
+        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.SILVER_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.LEGGINGS)
     );
     public static final Item SILVER_CHAINMAIL_BOOTS = register(
         "silver_chainmail_boots",
-        ((ItemSettingsExtension)new Item.Settings()).At_armor(AtArmorMaterials.SILVER_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.BOOTS)
+        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.SILVER_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.BOOTS)
+    );
+    public static final Item GOLD_CHAINMAIL_HELMET = register(
+            "gold_chainmail_helmet",
+            ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.GOLD_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.HELMET)
+    );
+    public static final Item GOLD_CHAINMAIL_CHESTPLATE = register(
+            "gold_chainmail_chestplate",
+            ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.GOLD_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.CHESTPLATE)
+    );
+    public static final Item GOLD_CHAINMAIL_LEGGINGS = register(
+            "gold_chainmail_leggings",
+            ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.GOLD_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.LEGGINGS)
+    );
+    public static final Item GOLD_CHAINMAIL_BOOTS = register(
+            "gold_chainmail_boots",
+            ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.GOLD_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.BOOTS)
     );
 
     public static final Item BANANA = register(
@@ -811,7 +827,23 @@ public class AtItems {
             .displayName(Text.translatable("itemGroup.at_mite.item_group"))
             .entries((context, entries) -> {
                     entries.add(AtBlocks.ADAMANTIUM_ANVIL);
-                    entries.add(AtBlocks.ADAMANTIUM_ORE);
+                    entries.add(chipped(AtBlocks.CHIPPED_ADAMANTIUM_ANVIL));
+                    entries.add(damaged(AtBlocks.DAMAGED_ADAMANTIUM_ANVIL));
+                    entries.add(AtBlocks.MITHRIL_ANVIL);
+                    entries.add(chipped(AtBlocks.CHIPPED_MITHRIL_ANVIL));
+                    entries.add(damaged(AtBlocks.DAMAGED_MITHRIL_ANVIL));
+                    entries.add(AtBlocks.ANCIENT_METAL_ANVIL);
+                    entries.add(chipped(AtBlocks.CHIPPED_ANCIENT_METAL_ANVIL));
+                    entries.add(damaged(AtBlocks.DAMAGED_ANCIENT_METAL_ANVIL));
+                    entries.add(AtBlocks.GOLD_ANVIL);
+                    entries.add(chipped(AtBlocks.CHIPPED_GOLD_ANVIL));
+                    entries.add(damaged(AtBlocks.DAMAGED_GOLD_ANVIL));
+                    entries.add(AtBlocks.COPPER_ANVIL);
+                    entries.add(chipped(AtBlocks.CHIPPED_COPPER_ANVIL));
+                    entries.add(damaged(AtBlocks.DAMAGED_COPPER_ANVIL));
+                    entries.add(AtBlocks.SILVER_ANVIL);
+                    entries.add(chipped(AtBlocks.CHIPPED_SILVER_ANVIL));
+                    entries.add(damaged(AtBlocks.DAMAGED_SILVER_ANVIL));
                     entries.add(AtBlocks.ADAMANTIUM_BLOCK);
                     entries.add(AtBlocks.ADAMANTIUM_BARS);
                     entries.add(AtBlocks.ANCIENT_METAL_BARS);
@@ -1152,6 +1184,18 @@ public class AtItems {
                     entries.add(ANCIENT_METAL_BOW);
             })
             .build();
+
+    private static ItemStack damaged(Block anvil) {
+        ItemStack stack = anvil.asItem().getDefaultStack();
+        stack.setDamage((stack.getMaxDamage() / 3) * 2);
+        return stack;
+    }
+
+    private static ItemStack chipped(Block anvil) {
+        ItemStack stack = anvil.asItem().getDefaultStack();
+        stack.setDamage(stack.getMaxDamage() / 3);
+        return stack;
+    }
 
     private static Item register(String path) {
         final RegistryKey<Item> registryKey = RegistryKey.of(RegistryKeys.ITEM, Identifier.of(At_mite.MOD_ID, path));

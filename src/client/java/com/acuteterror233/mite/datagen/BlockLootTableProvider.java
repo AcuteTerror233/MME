@@ -15,6 +15,33 @@ public class BlockLootTableProvider extends FabricBlockLootTableProvider {
     @Override
     public void generate() {
         addDrop(AtBlocks.ADAMANTIUM_DOOR);
+        addDrop(AtBlocks.ANCIENT_METAL_BLOCK);
+        addDrop(AtBlocks.MITHRIL_BLOCK);
+        addDrop(AtBlocks.SILVER_BLOCK);
+        addDrop(AtBlocks.ADAMANTIUM_BARS);
+        addDrop(AtBlocks.MITHRIL_BARS);
+        addDrop(AtBlocks.COPPER_BARS);
+        addDrop(AtBlocks.SILVER_BARS);
+        addDrop(AtBlocks.ANCIENT_METAL_BARS);
+        addDrop(AtBlocks.GOLD_BARS);
+
         addDrop(AtBlocks.ADAMANTIUM_ANVIL);
+        addDrop(AtBlocks.CHIPPED_ADAMANTIUM_ANVIL);
+        addDrop(AtBlocks.DAMAGED_ADAMANTIUM_ANVIL);
+        addDrop(AtBlocks.MITHRIL_ANVIL);
+        addDrop(AtBlocks.CHIPPED_MITHRIL_ANVIL);
+        addDrop(AtBlocks.DAMAGED_MITHRIL_ANVIL);
+        addDrop(AtBlocks.ANCIENT_METAL_ANVIL);
+        addDrop(AtBlocks.CHIPPED_ANCIENT_METAL_ANVIL);
+        addDrop(AtBlocks.DAMAGED_ANCIENT_METAL_ANVIL);
+        addDrop(AtBlocks.GOLD_ANVIL);
+        addDrop(AtBlocks.CHIPPED_GOLD_ANVIL);
+        addDrop(AtBlocks.DAMAGED_GOLD_ANVIL);
+        addDrop(AtBlocks.COPPER_ANVIL);
+        addDrop(AtBlocks.CHIPPED_COPPER_ANVIL);
+        addDrop(AtBlocks.DAMAGED_COPPER_ANVIL);
+        addDrop(AtBlocks.SILVER_ANVIL);
+        addDrop(AtBlocks.CHIPPED_SILVER_ANVIL);
+        addDrop(AtBlocks.DAMAGED_SILVER_ANVIL);
     }
 }

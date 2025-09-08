@@ -7,12 +7,12 @@ import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.util.math.BlockPos;
 
 public class AnvilBlockEntity extends BlockEntity {
-    private Integer damage;
     private Integer maxDamage;
+    private Integer damage;
     public AnvilBlockEntity(BlockPos pos, BlockState state) {
         super(AtBlocks.ANVIL_BLOCK_ENTITY, pos, state);
-        this.damage = 0;
         this.maxDamage = 0;
+        this.damage = 0;
     }
     
     @Override
@@ -25,8 +25,8 @@ public class AnvilBlockEntity extends BlockEntity {
     @Override
     protected void readNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
         super.readNbt(nbt, registryLookup);
-        this.damage = nbt.contains("damage") ? nbt.getInt("damage").orElse(0) : 0;
-        this.maxDamage = nbt.contains("maxDamage") ? nbt.getInt("maxDamage").orElse(0) : 0;
+        this.maxDamage = nbt.getInt("maxDamage").orElse(0);
+        this.damage = nbt.getInt("damage").orElse(0);
     }
     public Integer getMaxDamage() {
         return this.maxDamage;
