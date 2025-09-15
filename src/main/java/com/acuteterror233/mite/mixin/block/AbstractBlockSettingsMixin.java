@@ -13,22 +13,12 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(value = AbstractBlock.Settings.class)
-public abstract class AbstractBlockSettingsMixin implements AbstractBlockSettingsExtension {
+public abstract class AbstractBlockSettingsMixin {
     @Shadow boolean toolRequired;
-    @Nullable @Unique Block anvil;
     @Inject(method = "sounds", at = @At("HEAD"))
     public void sounds(BlockSoundGroup soundGroup, CallbackInfoReturnable<AbstractBlock.Settings> cir) {
         if (soundGroup == BlockSoundGroup.WOOD){
             this.toolRequired = true;
         }
-    }
-    @Override
-    public Block getAnvil() {
-        return this.anvil;
-    }
-    @Override
-    public AbstractBlock.Settings setAnvil(Block anvil) {
-        this.anvil = anvil;
-        return (AbstractBlock.Settings) (Object) this;
     }
 }
