@@ -23,7 +23,7 @@ public class BlockLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(AtBlocks.COPPER_BARS);
         addDrop(AtBlocks.SILVER_BARS);
         addDrop(AtBlocks.ANCIENT_METAL_BARS);
-        addDrop(AtBlocks.GOLD_BARS);
+        addDrop(AtBlocks.GOLDEN_BARS);
 
         addDrop(AtBlocks.ADAMANTIUM_ANVIL);
         addDrop(AtBlocks.CHIPPED_ADAMANTIUM_ANVIL);
@@ -34,9 +34,9 @@ public class BlockLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(AtBlocks.ANCIENT_METAL_ANVIL);
         addDrop(AtBlocks.CHIPPED_ANCIENT_METAL_ANVIL);
         addDrop(AtBlocks.DAMAGED_ANCIENT_METAL_ANVIL);
-        addDrop(AtBlocks.GOLD_ANVIL);
-        addDrop(AtBlocks.CHIPPED_GOLD_ANVIL);
-        addDrop(AtBlocks.DAMAGED_GOLD_ANVIL);
+        addDrop(AtBlocks.GOLDEN_ANVIL);
+        addDrop(AtBlocks.CHIPPED_GOLDEN_ANVIL);
+        addDrop(AtBlocks.DAMAGED_GOLDEN_ANVIL);
         addDrop(AtBlocks.COPPER_ANVIL);
         addDrop(AtBlocks.CHIPPED_COPPER_ANVIL);
         addDrop(AtBlocks.DAMAGED_COPPER_ANVIL);

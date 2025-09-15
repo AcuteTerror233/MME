@@ -1,0 +1,16 @@
+{
+  "values": [
+    {
+      "id": "#at_mite:iron_nonrepairable",
+      "required": false
+    },
+    {
+      "id": "#at_mite:iron_series_repairable",
+      "required": false
+    },
+    {
+      "id": "#at_mite:rusted_iron_series_repairable",
+      "required": false
+    }
+  ]
+}

@@ -98,7 +98,7 @@ public class En_usLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(AtItems.RUSTED_IRON_ARROW, "Rusted Iron Arrow");
         translationBuilder.add(AtItems.SILVER_ARROW, "Silver Arrow");
         translationBuilder.add(AtItems.FLINT_ARROW, "Flint Arrow");
-        translationBuilder.add(AtItems.GOLD_ARROW, "Gold Arrow");
+        translationBuilder.add(AtItems.GOLDEN_ARROW, "Gold Arrow");
         translationBuilder.add(AtItems.IRON_ARROW, "Iron Arrow");
         translationBuilder.add(AtItems.OBSIDIAN_ARROW, "Obsidian Arrow");
         translationBuilder.add(AtItems.ADAMANTIUM_CHAINS, "Adamantium Chains");
@@ -107,13 +107,13 @@ public class En_usLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(AtItems.MITHRIL_CHAINS, "Mithril Chains");
         translationBuilder.add(AtItems.RUSTED_IRON_CHAINS, "Rusted Iron Chains");
         translationBuilder.add(AtItems.SILVER_CHAINS, "Silver Chains");
-        translationBuilder.add(AtItems.GOLD_CHAINS, "Steel Chains");
+        translationBuilder.add(AtItems.GOLDEN_CHAINS, "Steel Chains");
         translationBuilder.add(AtItems.IRON_CHAINS, "Tin Chains");
         translationBuilder.add(AtItems.ADAMANTIUM_COINS, "Adamantium Coins");
         translationBuilder.add(AtItems.ANCIENT_METAL_COINS, "Ancient Metal Coins");
         translationBuilder.add(AtItems.COPPER_COINS, "Copper Coins");
         translationBuilder.add(AtItems.MITHRIL_COINS, "Mithril Coins");
-        translationBuilder.add(AtItems.GOLD_COINS, "Rusted Iron Coins");
+        translationBuilder.add(AtItems.GOLDEN_COINS, "Rusted Iron Coins");
         translationBuilder.add(AtItems.SILVER_COINS, "Silver Coins");
         translationBuilder.add(AtItems.IRON_COINS, "Iron Coins");
 
@@ -160,19 +160,14 @@ public class En_usLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(AtItems.FLINT_HATCHET, "Flint Hatchet");
         translationBuilder.add(AtItems.FLINT_KNIFE, "Flint Knife");
         translationBuilder.add(AtItems.FLINT_SHOVEL, "Flint Shovel");
-        translationBuilder.add(AtItems.GOLD_AXE, "Gold Axe");
-        translationBuilder.add(AtItems.GOLD_BATTLE_AXE, "Gold Battle Axe");
-        translationBuilder.add(AtItems.GOLD_DAGGER, "Gold Dagger");
-        translationBuilder.add(AtItems.GOLD_HATCHET, "Gold Hatchet");
-        translationBuilder.add(AtItems.GOLD_HOE, "Gold Hoe");
-        translationBuilder.add(AtItems.GOLD_KNIFE, "Gold Knife");
-        translationBuilder.add(AtItems.GOLD_MATTOCK, "Gold Mattock");
-        translationBuilder.add(AtItems.GOLD_PICKAXE, "Gold Pickaxe");
-        translationBuilder.add(AtItems.GOLD_SCYTHE, "Gold Scythe");
-        translationBuilder.add(AtItems.GOLD_SHEARS, "Gold Shears");
-        translationBuilder.add(AtItems.GOLD_SHOVEL, "Gold Shovel");
-        translationBuilder.add(AtItems.GOLD_SWORD, "Gold Sword");
-        translationBuilder.add(AtItems.GOLD_WAR_HAMMER, "Gold War Hammer");
+        translationBuilder.add(AtItems.GOLDEN_BATTLE_AXE, "Gold Battle Axe");
+        translationBuilder.add(AtItems.GOLDEN_DAGGER, "Gold Dagger");
+        translationBuilder.add(AtItems.GOLDEN_HATCHET, "Gold Hatchet");
+        translationBuilder.add(AtItems.GOLDEN_KNIFE, "Gold Knife");
+        translationBuilder.add(AtItems.GOLDEN_MATTOCK, "Gold Mattock");
+        translationBuilder.add(AtItems.GOLDEN_SCYTHE, "Gold Scythe");
+        translationBuilder.add(AtItems.GOLDEN_SHEARS, "Gold Shears");
+        translationBuilder.add(AtItems.GOLDEN_WAR_HAMMER, "Gold War Hammer");
         translationBuilder.add(AtItems.IRON_BATTLE_AXE, "Iron Battle Axe");
         translationBuilder.add(AtItems.IRON_DAGGER, "Iron Dagger");
         translationBuilder.add(AtItems.IRON_HATCHET, "Iron Hatchet");
@@ -232,7 +227,7 @@ public class En_usLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(AtBlocks.ADAMANTIUM_BLOCK, "Adamantium Block");
         translationBuilder.add(AtBlocks.ANCIENT_METAL_BARS, "Ancient Metal Bars");
         translationBuilder.add(AtBlocks.ANCIENT_METAL_BLOCK, "Ancient Metal Block");
-        translationBuilder.add(AtBlocks.GOLD_BARS, "Gold Bars");
+        translationBuilder.add(AtBlocks.GOLDEN_BARS, "Gold Bars");
         translationBuilder.add(AtBlocks.MITHRIL_BARS, "Mithril Bars");
         translationBuilder.add(AtBlocks.MITHRIL_BLOCK, "Mithril Block");
         translationBuilder.add(AtBlocks.MITHRIL_ORE, "Mithril Ore");
@@ -333,13 +328,13 @@ public class En_usLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(AtBlocks.ANCIENT_METAL_DOOR, "Ancient Metal Door");
         translationBuilder.add(AtBlocks.MITHRIL_DOOR, "Mithril Door");
         translationBuilder.add(AtBlocks.SILVER_DOOR, "Silver Door");
-        translationBuilder.add(AtBlocks.GOLD_DOOR, "Gold Door");
+        translationBuilder.add(AtBlocks.GOLDEN_DOOR, "Gold Door");
 
         translationBuilder.add(AtItems.ADAMANTIUM_FISHING_ROD, "Adamantium Fishing Rod");
         translationBuilder.add(AtItems.ANCIENT_METAL_FISHING_ROD, "Ancient Metal Fishing Rod");
         translationBuilder.add(AtItems.MITHRIL_FISHING_ROD, "Mithril Fishing Rod");
         translationBuilder.add(AtItems.SILVER_FISHING_ROD, "Silver Fishing Rod");
-        translationBuilder.add(AtItems.GOLD_FISHING_ROD, "Gold Fishing Rod");
+        translationBuilder.add(AtItems.GOLDEN_FISHING_ROD, "Gold Fishing Rod");
         translationBuilder.add(AtItems.COPPER_FISHING_ROD, "Copper Fishing Rod");
         translationBuilder.add(AtItems.IRON_FISHING_ROD, "Iron Fishing Rod");
         translationBuilder.add(AtItems.FLINT_FISHING_ROD, "Flint Fishing Rod");
@@ -365,5 +360,20 @@ public class En_usLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(AtBlocks.ADAMANTIUM_ANVIL,"adamantium anvil");
         translationBuilder.add(AtBlocks.CHIPPED_ADAMANTIUM_ANVIL,"chipped adamantium anvil");
         translationBuilder.add(AtBlocks.DAMAGED_ADAMANTIUM_ANVIL,"damaged adamantium anvil");
+        translationBuilder.add(AtBlocks.MITHRIL_ANVIL,"mithril anvil");
+        translationBuilder.add(AtBlocks.CHIPPED_MITHRIL_ANVIL,"chipped mithril anvil");
+        translationBuilder.add(AtBlocks.DAMAGED_MITHRIL_ANVIL,"damaged mithril anvil");
+        translationBuilder.add(AtBlocks.ANCIENT_METAL_ANVIL,"ancient metal anvil");
+        translationBuilder.add(AtBlocks.CHIPPED_ANCIENT_METAL_ANVIL,"chipped ancient metal anvil");
+        translationBuilder.add(AtBlocks.DAMAGED_ANCIENT_METAL_ANVIL,"damaged ancient metal anvil");
+        translationBuilder.add(AtBlocks.SILVER_ANVIL,"silver anvil");
+        translationBuilder.add(AtBlocks.CHIPPED_SILVER_ANVIL,"chipped silver anvil");
+        translationBuilder.add(AtBlocks.DAMAGED_SILVER_ANVIL,"damaged silver anvil");
+        translationBuilder.add(AtBlocks.GOLDEN_ANVIL,"gold anvil");
+        translationBuilder.add(AtBlocks.CHIPPED_GOLDEN_ANVIL,"chipped gold anvil");
+        translationBuilder.add(AtBlocks.DAMAGED_GOLDEN_ANVIL,"damaged gold anvil");
+        translationBuilder.add(AtBlocks.COPPER_ANVIL,"copper anvil");
+        translationBuilder.add(AtBlocks.CHIPPED_COPPER_ANVIL,"chipped copper anvil");
+        translationBuilder.add(AtBlocks.DAMAGED_COPPER_ANVIL,"damaged copper anvil");
     }
 }

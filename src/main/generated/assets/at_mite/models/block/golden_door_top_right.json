@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_top_right",
+  "textures": {
+    "bottom": "at_mite:block/golden_door_bottom",
+    "top": "at_mite:block/golden_door_top"
+  }
+}

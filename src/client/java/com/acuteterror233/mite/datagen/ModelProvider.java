@@ -31,21 +31,21 @@ public class ModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerSimpleCubeAll(AtBlocks.SILVER_BLOCK);
         ((BlockStateModelGeneratorExtension)blockStateModelGenerator).registerBars(AtBlocks.ANCIENT_METAL_BARS);
         blockStateModelGenerator.registerSimpleCubeAll(AtBlocks.ANCIENT_METAL_BLOCK);
-        ((BlockStateModelGeneratorExtension)blockStateModelGenerator).registerBars(AtBlocks.GOLD_BARS);
+        ((BlockStateModelGeneratorExtension)blockStateModelGenerator).registerBars(AtBlocks.GOLDEN_BARS);
         blockStateModelGenerator.registerSimpleCubeAll(AtBlocks.MANTLE);
         blockStateModelGenerator.registerSimpleCubeAll(AtBlocks.MITHRIL_ORE);
         blockStateModelGenerator.registerSimpleCubeAll(AtBlocks.SILVER_ORE);
         ((BlockStateModelGeneratorExtension) blockStateModelGenerator).registerBars(AtBlocks.COPPER_BARS);
 
         blockStateModelGenerator.registerDoor(AtBlocks.ADAMANTIUM_DOOR);
-        blockStateModelGenerator.registerDoor(AtBlocks.GOLD_DOOR);
+        blockStateModelGenerator.registerDoor(AtBlocks.GOLDEN_DOOR);
         blockStateModelGenerator.registerDoor(AtBlocks.SILVER_DOOR);
         blockStateModelGenerator.registerDoor(AtBlocks.ANCIENT_METAL_DOOR);
         blockStateModelGenerator.registerDoor(AtBlocks.MITHRIL_DOOR);
         ((BlockStateModelGeneratorExtension) blockStateModelGenerator).registerAnvil(AtBlocks.ADAMANTIUM_ANVIL, AtBlocks.CHIPPED_ADAMANTIUM_ANVIL, AtBlocks.DAMAGED_ADAMANTIUM_ANVIL);
         ((BlockStateModelGeneratorExtension) blockStateModelGenerator).registerAnvil(AtBlocks.MITHRIL_ANVIL, AtBlocks.CHIPPED_MITHRIL_ANVIL, AtBlocks.DAMAGED_MITHRIL_ANVIL);
         ((BlockStateModelGeneratorExtension) blockStateModelGenerator).registerAnvil(AtBlocks.ANCIENT_METAL_ANVIL, AtBlocks.CHIPPED_ANCIENT_METAL_ANVIL, AtBlocks.DAMAGED_ANCIENT_METAL_ANVIL);
-        ((BlockStateModelGeneratorExtension) blockStateModelGenerator).registerAnvil(AtBlocks.GOLD_ANVIL, AtBlocks.CHIPPED_GOLD_ANVIL, AtBlocks.DAMAGED_GOLD_ANVIL);
+        ((BlockStateModelGeneratorExtension) blockStateModelGenerator).registerAnvil(AtBlocks.GOLDEN_ANVIL, AtBlocks.CHIPPED_GOLDEN_ANVIL, AtBlocks.DAMAGED_GOLDEN_ANVIL);
         ((BlockStateModelGeneratorExtension) blockStateModelGenerator).registerAnvil(AtBlocks.SILVER_ANVIL, AtBlocks.CHIPPED_SILVER_ANVIL, AtBlocks.DAMAGED_SILVER_ANVIL);
         ((BlockStateModelGeneratorExtension) blockStateModelGenerator).registerAnvil(AtBlocks.COPPER_ANVIL, AtBlocks.CHIPPED_COPPER_ANVIL, AtBlocks.DAMAGED_COPPER_ANVIL);
     }
@@ -101,10 +101,10 @@ public class ModelProvider extends FabricModelProvider {
         itemModelGenerator.registerArmor(AtItems.SILVER_CHAINMAIL_CHESTPLATE, AtArmorMaterials.SILVER_CHAINMAIL_ARMOR_MATERIAL_KEY, ItemModelGenerator.CHESTPLATE_TRIM_ID_PREFIX,false);
         itemModelGenerator.registerArmor(AtItems.SILVER_CHAINMAIL_LEGGINGS, AtArmorMaterials.SILVER_CHAINMAIL_ARMOR_MATERIAL_KEY, ItemModelGenerator.LEGGINGS_TRIM_ID_PREFIX,false);
         itemModelGenerator.registerArmor(AtItems.SILVER_CHAINMAIL_BOOTS, AtArmorMaterials.SILVER_CHAINMAIL_ARMOR_MATERIAL_KEY, ItemModelGenerator.BOOTS_TRIM_ID_PREFIX,false);
-        itemModelGenerator.registerArmor(AtItems.GOLD_CHAINMAIL_HELMET, AtArmorMaterials.GOLD_CHAINMAIL_ARMOR_MATERIAL_KEY, ItemModelGenerator.HELMET_TRIM_ID_PREFIX,false);
-        itemModelGenerator.registerArmor(AtItems.GOLD_CHAINMAIL_CHESTPLATE, AtArmorMaterials.GOLD_CHAINMAIL_ARMOR_MATERIAL_KEY, ItemModelGenerator.CHESTPLATE_TRIM_ID_PREFIX,false);
-        itemModelGenerator.registerArmor(AtItems.GOLD_CHAINMAIL_LEGGINGS, AtArmorMaterials.GOLD_CHAINMAIL_ARMOR_MATERIAL_KEY, ItemModelGenerator.LEGGINGS_TRIM_ID_PREFIX,false);
-        itemModelGenerator.registerArmor(AtItems.GOLD_CHAINMAIL_BOOTS, AtArmorMaterials.GOLD_CHAINMAIL_ARMOR_MATERIAL_KEY, ItemModelGenerator.BOOTS_TRIM_ID_PREFIX,false);
+        itemModelGenerator.registerArmor(AtItems.GOLDEN_CHAINMAIL_HELMET, AtArmorMaterials.GOLD_CHAINMAIL_ARMOR_MATERIAL_KEY, ItemModelGenerator.HELMET_TRIM_ID_PREFIX,false);
+        itemModelGenerator.registerArmor(AtItems.GOLDEN_CHAINMAIL_CHESTPLATE, AtArmorMaterials.GOLD_CHAINMAIL_ARMOR_MATERIAL_KEY, ItemModelGenerator.CHESTPLATE_TRIM_ID_PREFIX,false);
+        itemModelGenerator.registerArmor(AtItems.GOLDEN_CHAINMAIL_LEGGINGS, AtArmorMaterials.GOLD_CHAINMAIL_ARMOR_MATERIAL_KEY, ItemModelGenerator.LEGGINGS_TRIM_ID_PREFIX,false);
+        itemModelGenerator.registerArmor(AtItems.GOLDEN_CHAINMAIL_BOOTS, AtArmorMaterials.GOLD_CHAINMAIL_ARMOR_MATERIAL_KEY, ItemModelGenerator.BOOTS_TRIM_ID_PREFIX,false);
 
         //食物部分
         itemModelGenerator.register(AtItems.BANANA, Models.GENERATED);
@@ -141,7 +141,7 @@ public class ModelProvider extends FabricModelProvider {
         itemModelGenerator.register(AtItems.RUSTED_IRON_ARROW, Models.GENERATED);
         itemModelGenerator.register(AtItems.SILVER_ARROW, Models.GENERATED);
         itemModelGenerator.register(AtItems.FLINT_ARROW, Models.GENERATED);
-        itemModelGenerator.register(AtItems.GOLD_ARROW, Models.GENERATED);
+        itemModelGenerator.register(AtItems.GOLDEN_ARROW, Models.GENERATED);
         itemModelGenerator.register(AtItems.IRON_ARROW, Models.GENERATED);
         itemModelGenerator.register(AtItems.OBSIDIAN_ARROW, Models.GENERATED);
         itemModelGenerator.register(AtItems.ADAMANTIUM_CHAINS, Models.GENERATED);
@@ -150,13 +150,13 @@ public class ModelProvider extends FabricModelProvider {
         itemModelGenerator.register(AtItems.MITHRIL_CHAINS, Models.GENERATED);
         itemModelGenerator.register(AtItems.RUSTED_IRON_CHAINS, Models.GENERATED);
         itemModelGenerator.register(AtItems.SILVER_CHAINS, Models.GENERATED);
-        itemModelGenerator.register(AtItems.GOLD_CHAINS, Models.GENERATED);
+        itemModelGenerator.register(AtItems.GOLDEN_CHAINS, Models.GENERATED);
         itemModelGenerator.register(AtItems.IRON_CHAINS, Models.GENERATED);
         itemModelGenerator.register(AtItems.ADAMANTIUM_COINS, Models.GENERATED);
         itemModelGenerator.register(AtItems.ANCIENT_METAL_COINS, Models.GENERATED);
         itemModelGenerator.register(AtItems.COPPER_COINS, Models.GENERATED);
         itemModelGenerator.register(AtItems.MITHRIL_COINS, Models.GENERATED);
-        itemModelGenerator.register(AtItems.GOLD_COINS, Models.GENERATED);
+        itemModelGenerator.register(AtItems.GOLDEN_COINS, Models.GENERATED);
         itemModelGenerator.register(AtItems.SILVER_COINS, Models.GENERATED);
         itemModelGenerator.register(AtItems.IRON_COINS, Models.GENERATED);
 
@@ -204,19 +204,14 @@ public class ModelProvider extends FabricModelProvider {
         itemModelGenerator.register(AtItems.FLINT_HATCHET, Models.HANDHELD);
         itemModelGenerator.register(AtItems.FLINT_KNIFE, Models.HANDHELD);
         itemModelGenerator.register(AtItems.FLINT_SHOVEL, Models.HANDHELD);
-        itemModelGenerator.register(AtItems.GOLD_AXE, Models.HANDHELD);
-        itemModelGenerator.register(AtItems.GOLD_BATTLE_AXE, Models.HANDHELD);
-        itemModelGenerator.register(AtItems.GOLD_DAGGER, Models.HANDHELD);
-        itemModelGenerator.register(AtItems.GOLD_HATCHET, Models.HANDHELD);
-        itemModelGenerator.register(AtItems.GOLD_HOE, Models.HANDHELD);
-        itemModelGenerator.register(AtItems.GOLD_KNIFE, Models.HANDHELD);
-        itemModelGenerator.register(AtItems.GOLD_MATTOCK, Models.HANDHELD);
-        itemModelGenerator.register(AtItems.GOLD_PICKAXE, Models.HANDHELD);
-        itemModelGenerator.register(AtItems.GOLD_SCYTHE, Models.HANDHELD);
-        itemModelGenerator.register(AtItems.GOLD_SHEARS, Models.HANDHELD);
-        itemModelGenerator.register(AtItems.GOLD_SHOVEL, Models.HANDHELD);
-        itemModelGenerator.register(AtItems.GOLD_SWORD, Models.HANDHELD);
-        itemModelGenerator.register(AtItems.GOLD_WAR_HAMMER, Models.HANDHELD);
+        itemModelGenerator.register(AtItems.GOLDEN_BATTLE_AXE, Models.HANDHELD);
+        itemModelGenerator.register(AtItems.GOLDEN_DAGGER, Models.HANDHELD);
+        itemModelGenerator.register(AtItems.GOLDEN_HATCHET, Models.HANDHELD);
+        itemModelGenerator.register(AtItems.GOLDEN_KNIFE, Models.HANDHELD);
+        itemModelGenerator.register(AtItems.GOLDEN_MATTOCK, Models.HANDHELD);
+        itemModelGenerator.register(AtItems.GOLDEN_SCYTHE, Models.HANDHELD);
+        itemModelGenerator.register(AtItems.GOLDEN_SHEARS, Models.HANDHELD);
+        itemModelGenerator.register(AtItems.GOLDEN_WAR_HAMMER, Models.HANDHELD);
         itemModelGenerator.register(AtItems.IRON_BATTLE_AXE, Models.HANDHELD);
         itemModelGenerator.register(AtItems.IRON_DAGGER, Models.HANDHELD);
         itemModelGenerator.register(AtItems.IRON_HATCHET, Models.HANDHELD);
@@ -375,7 +370,7 @@ public class ModelProvider extends FabricModelProvider {
         ((ItemModelGeneratorExtension)itemModelGenerator).registernewFishingRod(AtItems.ANCIENT_METAL_FISHING_ROD, cast);
         ((ItemModelGeneratorExtension)itemModelGenerator).registernewFishingRod(AtItems.SILVER_FISHING_ROD, cast);
         ((ItemModelGeneratorExtension)itemModelGenerator).registernewFishingRod(AtItems.COPPER_FISHING_ROD, cast);
-        ((ItemModelGeneratorExtension)itemModelGenerator).registernewFishingRod(AtItems.GOLD_FISHING_ROD, cast);
+        ((ItemModelGeneratorExtension)itemModelGenerator).registernewFishingRod(AtItems.GOLDEN_FISHING_ROD, cast);
         ((ItemModelGeneratorExtension)itemModelGenerator).registernewFishingRod(AtItems.IRON_FISHING_ROD, cast);
         ((ItemModelGeneratorExtension)itemModelGenerator).registernewFishingRod(AtItems.FLINT_FISHING_ROD, cast);
         ((ItemModelGeneratorExtension)itemModelGenerator).registernewFishingRod(AtItems.OBSIDIAN_FISHING_ROD, cast);

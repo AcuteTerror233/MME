@@ -77,15 +77,10 @@ public class At_mite implements ModInitializer {
             "nether_star"
     ));
     public static final Set<String> COUNT8_ITEM = new HashSet<>(Arrays.asList(
-            "iron_ingot",
-            "copper_ingot",
-            "gold_ingot",
-            "netherite_ingot",
             "flint",
             "leather",
             "rabbit_hide",
             "honeycomb",
-            "resin_clump",
             "turtle_scute",
             "armadillo_scute",
             "blaze_rod",
@@ -97,6 +92,10 @@ public class At_mite implements ModInitializer {
             "glistering_melon_slice"
     ));
     public static final Set<String> COUNT16_ITEM = new HashSet<>(Arrays.asList(
+            "iron_ingot",
+            "copper_ingot",
+            "gold_ingot",
+            "netherite_ingot",
             "coal",
             "charcoal",
             "emerald",
@@ -117,7 +116,13 @@ public class At_mite implements ModInitializer {
             "experience_bottle",
             "wind_charge",
             "lead",
-            "firework_rocket"
+            "firework_rocket",
+            "slime_ball",
+            "raw_copper",
+            "raw_gold",
+            "raw_iron",
+            "resin_clump"
+
     ));
     public static final Set<String> COUNT32_ITEM = new HashSet<>(Arrays.asList(
             "lapis_lazuli",

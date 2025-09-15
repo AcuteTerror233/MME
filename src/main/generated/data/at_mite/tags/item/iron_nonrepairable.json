@@ -1,0 +1,12 @@
+{
+  "values": [
+    {
+      "id": "#at_mite:ancient_metal_nonrepairable",
+      "required": false
+    },
+    {
+      "id": "#at_mite:ancient_metal_series_repairable",
+      "required": false
+    }
+  ]
+}

@@ -26,7 +26,7 @@ public interface BucketableMixin {
         ItemStack itemStack = player.getStackInHand(hand);
         if (itemStack.isIn(AtTags.WATER_BUCKET) && entity.isAlive()) {
             entity.playSound(entity.getBucketFillSound(), 1.0F, 1.0F);
-            System.out.println(Identifier.of(Registries.ITEM.getId(itemStack.getItem()).toString().replace("water","")).withPrefixedPath(Registries.ENTITY_TYPE.getId(entity.getType()).toString().replace("minecraft:", "")));
+//            System.out.println(Identifier.of(Registries.ITEM.getId(itemStack.getItem()).toString().replace("water","")).withPrefixedPath(Registries.ENTITY_TYPE.getId(entity.getType()).toString().replace("minecraft:", "")));
             ItemStack itemStack2 = new ItemStack(Registries.ITEM.get(Identifier.of(Registries.ITEM.getId(itemStack.getItem()).toString().replace("water","")).withPrefixedPath(Registries.ENTITY_TYPE.getId(entity.getType()).toString().replace("minecraft:", ""))));
             entity.copyDataToStack(itemStack2);
             ItemStack itemStack3 = ItemUsage.exchangeStack(itemStack, player, itemStack2, false);

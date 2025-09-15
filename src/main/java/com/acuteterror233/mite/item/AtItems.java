@@ -218,20 +218,20 @@ public class AtItems {
         "silver_chainmail_boots",
         ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.SILVER_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.BOOTS)
     );
-    public static final Item GOLD_CHAINMAIL_HELMET = register(
-            "gold_chainmail_helmet",
+    public static final Item GOLDEN_CHAINMAIL_HELMET = register(
+            "golden_chainmail_helmet",
             ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.GOLD_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.HELMET)
     );
-    public static final Item GOLD_CHAINMAIL_CHESTPLATE = register(
-            "gold_chainmail_chestplate",
+    public static final Item GOLDEN_CHAINMAIL_CHESTPLATE = register(
+            "golden_chainmail_chestplate",
             ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.GOLD_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.CHESTPLATE)
     );
-    public static final Item GOLD_CHAINMAIL_LEGGINGS = register(
-            "gold_chainmail_leggings",
+    public static final Item GOLDEN_CHAINMAIL_LEGGINGS = register(
+            "golden_chainmail_leggings",
             ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.GOLD_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.LEGGINGS)
     );
-    public static final Item GOLD_CHAINMAIL_BOOTS = register(
-            "gold_chainmail_boots",
+    public static final Item GOLDEN_CHAINMAIL_BOOTS = register(
+            "golden_chainmail_boots",
             ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.GOLD_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.BOOTS)
     );
 
@@ -377,19 +377,14 @@ public class AtItems {
     public static final Item FLINT_HATCHET = register("flint_hatchet");
     public static final Item FLINT_KNIFE = register("flint_knife");
     public static final Item FLINT_SHOVEL = register("flint_shovel");
-    public static final Item GOLD_AXE = register("gold_axe");
-    public static final Item GOLD_BATTLE_AXE = register("gold_battle_axe");
-    public static final Item GOLD_DAGGER = register("gold_dagger");
-    public static final Item GOLD_HATCHET = register("gold_hatchet");
-    public static final Item GOLD_HOE = register("gold_hoe");
-    public static final Item GOLD_KNIFE = register("gold_knife");
-    public static final Item GOLD_MATTOCK = register("gold_mattock");
-    public static final Item GOLD_PICKAXE = register("gold_pickaxe");
-    public static final Item GOLD_SCYTHE = register("gold_scythe");
-    public static final Item GOLD_SHEARS = register("gold_shears");
-    public static final Item GOLD_SHOVEL = register("gold_shovel");
-    public static final Item GOLD_SWORD = register("gold_sword");
-    public static final Item GOLD_WAR_HAMMER = register("gold_war_hammer");
+    public static final Item GOLDEN_BATTLE_AXE = register("golden_battle_axe");
+    public static final Item GOLDEN_DAGGER = register("golden_dagger");
+    public static final Item GOLDEN_HATCHET = register("golden_hatchet");
+    public static final Item GOLDEN_KNIFE = register("golden_knife");
+    public static final Item GOLDEN_MATTOCK = register("golden_mattock");
+    public static final Item GOLDEN_SCYTHE = register("golden_scythe");
+    public static final Item GOLDEN_SHEARS = register("golden_shears");
+    public static final Item GOLDEN_WAR_HAMMER = register("golden_war_hammer");
     public static final Item IRON_BATTLE_AXE = register("iron_battle_axe");
     public static final Item IRON_DAGGER = register("iron_dagger");
     public static final Item IRON_HATCHET = register("iron_hatchet");
@@ -448,24 +443,25 @@ public class AtItems {
     public static final Item ANCIENT_METAL_ARROW = register("ancient_metal_arrow");
     public static final Item COPPER_ARROW = register("copper_arrow");
     public static final Item FLINT_ARROW = register("flint_arrow");
-    public static final Item GOLD_ARROW = register("gold_arrow");
+    public static final Item GOLDEN_ARROW = register("golden_arrow");
     public static final Item IRON_ARROW = register("iron_arrow");
     public static final Item MITHRIL_ARROW = register("mithril_arrow");
     public static final Item OBSIDIAN_ARROW = register("obsidian_arrow");
     public static final Item SILVER_ARROW = register("silver_arrow");
     public static final Item RUSTED_IRON_ARROW = register("rusted_iron_arrow");
+
     public static final Item ADAMANTIUM_CHAINS = register("adamantium_chains");
     public static final Item ANCIENT_METAL_CHAINS = register("ancient_metal_chains");
     public static final Item RUSTED_IRON_CHAINS = register("rusted_iron_chains");
     public static final Item COPPER_CHAINS = register("copper_chains");
-    public static final Item GOLD_CHAINS = register("gold_chains");
+    public static final Item GOLDEN_CHAINS = register("golden_chains");
     public static final Item IRON_CHAINS = register("iron_chains");
     public static final Item MITHRIL_CHAINS = register("mithril_chains");
     public static final Item SILVER_CHAINS = register("silver_chains");
     public static final Item ADAMANTIUM_COINS = register("adamantium_coins");
     public static final Item ANCIENT_METAL_COINS = register("ancient_metal_coins");
     public static final Item COPPER_COINS = register("copper_coins");
-    public static final Item GOLD_COINS = register("gold_coins");
+    public static final Item GOLDEN_COINS = register("golden_coins");
     public static final Item IRON_COINS = register("iron_coins");
     public static final Item MITHRIL_COINS = register("mithril_coins");
     public static final Item SILVER_COINS = register("silver_coins");
@@ -799,7 +795,7 @@ public class AtItems {
     public static final Item ANCIENT_METAL_FISHING_ROD = register("ancient_metal_fishing_rod", FishingRodItem::new, new Item.Settings().maxDamage(96).enchantable(1));
     public static final Item COPPER_FISHING_ROD = register("copper_fishing_rod", FishingRodItem::new, new Item.Settings().maxDamage(8).enchantable(1));
     public static final Item FLINT_FISHING_ROD = register("flint_fishing_rod", FishingRodItem::new, new Item.Settings().maxDamage(4).enchantable(1));
-    public static final Item GOLD_FISHING_ROD = register("gold_fishing_rod", FishingRodItem::new, new Item.Settings().maxDamage(4).enchantable(1));
+    public static final Item GOLDEN_FISHING_ROD = register("golden_fishing_rod", FishingRodItem::new, new Item.Settings().maxDamage(4).enchantable(1));
     public static final Item IRON_FISHING_ROD = register("iron_fishing_rod", FishingRodItem::new, new Item.Settings().maxDamage(32).enchantable(1));
     public static final Item MITHRIL_FISHING_ROD = register("mithril_fishing_rod", FishingRodItem::new, new Item.Settings().maxDamage(64).enchantable(1));
     public static final Item OBSIDIAN_FISHING_ROD = register("obsidian_fishing_rod", FishingRodItem::new, new Item.Settings().maxDamage(32).enchantable(1));
@@ -835,9 +831,9 @@ public class AtItems {
                     entries.add(AtBlocks.ANCIENT_METAL_ANVIL);
                     entries.add(chipped(AtBlocks.CHIPPED_ANCIENT_METAL_ANVIL));
                     entries.add(damaged(AtBlocks.DAMAGED_ANCIENT_METAL_ANVIL));
-                    entries.add(AtBlocks.GOLD_ANVIL);
-                    entries.add(chipped(AtBlocks.CHIPPED_GOLD_ANVIL));
-                    entries.add(damaged(AtBlocks.DAMAGED_GOLD_ANVIL));
+                    entries.add(AtBlocks.GOLDEN_ANVIL);
+                    entries.add(chipped(AtBlocks.CHIPPED_GOLDEN_ANVIL));
+                    entries.add(damaged(AtBlocks.DAMAGED_GOLDEN_ANVIL));
                     entries.add(AtBlocks.COPPER_ANVIL);
                     entries.add(chipped(AtBlocks.CHIPPED_COPPER_ANVIL));
                     entries.add(damaged(AtBlocks.DAMAGED_COPPER_ANVIL));
@@ -848,7 +844,7 @@ public class AtItems {
                     entries.add(AtBlocks.ADAMANTIUM_BARS);
                     entries.add(AtBlocks.ANCIENT_METAL_BARS);
                     entries.add(AtBlocks.ANCIENT_METAL_BLOCK);
-                    entries.add(AtBlocks.GOLD_BARS);
+                    entries.add(AtBlocks.GOLDEN_BARS);
                     entries.add(AtBlocks.MANTLE);
                     entries.add(AtBlocks.MITHRIL_BARS);
                     entries.add(AtBlocks.MITHRIL_BLOCK);
@@ -861,7 +857,7 @@ public class AtItems {
                     entries.add(AtBlocks.ANCIENT_METAL_DOOR);
                     entries.add(AtBlocks.MITHRIL_DOOR);
                     entries.add(AtBlocks.SILVER_DOOR);
-                    entries.add(AtBlocks.GOLD_DOOR);
+                    entries.add(AtBlocks.GOLDEN_DOOR);
                     entries.add(DIAMOND_SHARD);
                     entries.add(EMERALD_SHARD);
                     entries.add(FLINT_SHARD);
@@ -880,7 +876,7 @@ public class AtItems {
                     entries.add(ANCIENT_METAL_FISHING_ROD);
                     entries.add(COPPER_FISHING_ROD);
                     entries.add(FLINT_FISHING_ROD);
-                    entries.add(GOLD_FISHING_ROD);
+                    entries.add(GOLDEN_FISHING_ROD);
                     entries.add(IRON_FISHING_ROD);
                     entries.add(MITHRIL_FISHING_ROD);
                     entries.add(OBSIDIAN_FISHING_ROD);
@@ -977,19 +973,14 @@ public class AtItems {
                     entries.add(FLINT_HATCHET);
                     entries.add(FLINT_KNIFE);
                     entries.add(FLINT_SHOVEL);
-                    entries.add(GOLD_AXE);
-                    entries.add(GOLD_BATTLE_AXE);
-                    entries.add(GOLD_DAGGER);
-                    entries.add(GOLD_HATCHET);
-                    entries.add(GOLD_HOE);
-                    entries.add(GOLD_KNIFE);
-                    entries.add(GOLD_MATTOCK);
-                    entries.add(GOLD_PICKAXE);
-                    entries.add(GOLD_SCYTHE);
-                    entries.add(GOLD_SHEARS);
-                    entries.add(GOLD_SHOVEL);
-                    entries.add(GOLD_SWORD);
-                    entries.add(GOLD_WAR_HAMMER);
+                    entries.add(GOLDEN_BATTLE_AXE);
+                    entries.add(GOLDEN_DAGGER);
+                    entries.add(GOLDEN_HATCHET);
+                    entries.add(GOLDEN_KNIFE);
+                    entries.add(GOLDEN_MATTOCK);
+                    entries.add(GOLDEN_SCYTHE);
+                    entries.add(GOLDEN_SHEARS);
+                    entries.add(GOLDEN_WAR_HAMMER);
                     entries.add(IRON_BATTLE_AXE);
                     entries.add(IRON_DAGGER);
                     entries.add(IRON_HATCHET);
@@ -1074,14 +1065,14 @@ public class AtItems {
                     entries.add(ANCIENT_METAL_ARROW);
                     entries.add(COPPER_ARROW);
                     entries.add(FLINT_ARROW);
-                    entries.add(GOLD_ARROW);
+                    entries.add(GOLDEN_ARROW);
                     entries.add(IRON_ARROW);
                     entries.add(MITHRIL_ARROW);
                     entries.add(OBSIDIAN_ARROW);
                     entries.add(SILVER_ARROW);
                     entries.add(RUSTED_IRON_ARROW);
                     entries.add(ADAMANTIUM_CHAINS);
-                    entries.add(GOLD_CHAINS);
+                    entries.add(GOLDEN_CHAINS);
                     entries.add(IRON_CHAINS);
                     entries.add(MITHRIL_CHAINS);
                     entries.add(SILVER_CHAINS);
@@ -1091,7 +1082,7 @@ public class AtItems {
                     entries.add(ADAMANTIUM_COINS);
                     entries.add(ANCIENT_METAL_COINS);
                     entries.add(COPPER_COINS);
-                    entries.add(GOLD_COINS);
+                    entries.add(GOLDEN_COINS);
                     entries.add(IRON_COINS);
                     entries.add(MITHRIL_COINS);
                     entries.add(SILVER_COINS);
@@ -1213,6 +1204,6 @@ public class AtItems {
         return Items.register(block, settings);
     }
     public static void init(){
-        Registry.register(Registries.ITEM_GROUP, Identifier.of(At_mite.MOD_ID, "itemgroup"), AT_MINT_GROUP);
+        Registry.register(Registries.ITEM_GROUP, Identifier.of(At_mite.MOD_ID, "item_group"), AT_MINT_GROUP);
     }
 }

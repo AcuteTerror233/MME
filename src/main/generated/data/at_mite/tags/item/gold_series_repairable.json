@@ -1,0 +1,25 @@
+{
+  "values": [
+    "minecraft:golden_axe",
+    "at_mite:golden_hatchet",
+    "minecraft:golden_pickaxe",
+    "minecraft:golden_shovel",
+    "minecraft:golden_hoe",
+    "at_mite:golden_mattock",
+    "at_mite:golden_scythe",
+    "at_mite:golden_shears",
+    "at_mite:golden_fishing_rod",
+    "at_mite:golden_dagger",
+    "minecraft:golden_sword",
+    "at_mite:golden_war_hammer",
+    "at_mite:golden_battle_axe",
+    "minecraft:golden_helmet",
+    "at_mite:golden_chainmail_helmet",
+    "minecraft:golden_chestplate",
+    "at_mite:golden_chainmail_chestplate",
+    "minecraft:golden_leggings",
+    "at_mite:golden_chainmail_leggings",
+    "minecraft:golden_boots",
+    "at_mite:golden_chainmail_boots"
+  ]
+}

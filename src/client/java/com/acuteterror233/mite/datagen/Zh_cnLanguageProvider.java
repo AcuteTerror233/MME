@@ -99,7 +99,7 @@ public class Zh_cnLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(AtItems.RUSTED_IRON_ARROW, "锈铁箭");
         translationBuilder.add(AtItems.SILVER_ARROW, "银箭");
         translationBuilder.add(AtItems.FLINT_ARROW, "燧石箭");
-        translationBuilder.add(AtItems.GOLD_ARROW, "金箭");
+        translationBuilder.add(AtItems.GOLDEN_ARROW, "金箭");
         translationBuilder.add(AtItems.IRON_ARROW, "铁箭");
         translationBuilder.add(AtItems.OBSIDIAN_ARROW, "黑曜石箭");
         translationBuilder.add(AtItems.ADAMANTIUM_CHAINS, "艾德曼锁链");
@@ -108,13 +108,13 @@ public class Zh_cnLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(AtItems.MITHRIL_CHAINS, "秘银链");
         translationBuilder.add(AtItems.RUSTED_IRON_CHAINS, "锈铁链");
         translationBuilder.add(AtItems.SILVER_CHAINS, "银链");
-        translationBuilder.add(AtItems.GOLD_CHAINS, "钢链");
+        translationBuilder.add(AtItems.GOLDEN_CHAINS, "钢链");
         translationBuilder.add(AtItems.IRON_CHAINS, "铁链");
         translationBuilder.add(AtItems.ADAMANTIUM_COINS, "艾德曼币");
         translationBuilder.add(AtItems.ANCIENT_METAL_COINS, "远古金属币");
         translationBuilder.add(AtItems.COPPER_COINS, "铜币");
         translationBuilder.add(AtItems.MITHRIL_COINS, "秘银币");
-        translationBuilder.add(AtItems.GOLD_COINS, "锈铁币");
+        translationBuilder.add(AtItems.GOLDEN_COINS, "锈铁币");
         translationBuilder.add(AtItems.SILVER_COINS, "银币");
         translationBuilder.add(AtItems.IRON_COINS, "铁币");
 
@@ -161,19 +161,14 @@ public class Zh_cnLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(AtItems.FLINT_HATCHET, "燧石短斧");
         translationBuilder.add(AtItems.FLINT_KNIFE, "燧石小刀");
         translationBuilder.add(AtItems.FLINT_SHOVEL, "燧石铲子");
-        translationBuilder.add(AtItems.GOLD_AXE, "金斧");
-        translationBuilder.add(AtItems.GOLD_BATTLE_AXE, "金战斧");
-        translationBuilder.add(AtItems.GOLD_DAGGER, "金匕首");
-        translationBuilder.add(AtItems.GOLD_HATCHET, "金短斧");
-        translationBuilder.add(AtItems.GOLD_HOE, "金锄头");
-        translationBuilder.add(AtItems.GOLD_KNIFE, "金小刀");
-        translationBuilder.add(AtItems.GOLD_MATTOCK, "金鹤嘴锄");
-        translationBuilder.add(AtItems.GOLD_PICKAXE, "金镐");
-        translationBuilder.add(AtItems.GOLD_SCYTHE, "金镰刀");
-        translationBuilder.add(AtItems.GOLD_SHEARS, "金剪刀");
-        translationBuilder.add(AtItems.GOLD_SHOVEL, "金铲子");
-        translationBuilder.add(AtItems.GOLD_SWORD, "金剑");
-        translationBuilder.add(AtItems.GOLD_WAR_HAMMER, "金战锤");
+        translationBuilder.add(AtItems.GOLDEN_BATTLE_AXE, "金战斧");
+        translationBuilder.add(AtItems.GOLDEN_DAGGER, "金匕首");
+        translationBuilder.add(AtItems.GOLDEN_HATCHET, "金短斧");
+        translationBuilder.add(AtItems.GOLDEN_KNIFE, "金小刀");
+        translationBuilder.add(AtItems.GOLDEN_MATTOCK, "金鹤嘴锄");
+        translationBuilder.add(AtItems.GOLDEN_SCYTHE, "金镰刀");
+        translationBuilder.add(AtItems.GOLDEN_SHEARS, "金剪刀");
+        translationBuilder.add(AtItems.GOLDEN_WAR_HAMMER, "金战锤");
         translationBuilder.add(AtItems.IRON_BATTLE_AXE, "铁战斧");
         translationBuilder.add(AtItems.IRON_DAGGER, "铁匕首");
         translationBuilder.add(AtItems.IRON_HATCHET, "铁短斧");
@@ -233,7 +228,7 @@ public class Zh_cnLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(AtBlocks.ADAMANTIUM_BLOCK, "艾德曼块");
         translationBuilder.add(AtBlocks.ANCIENT_METAL_BARS, "古代金属栏杆");
         translationBuilder.add(AtBlocks.ANCIENT_METAL_BLOCK, "古代金属块");
-        translationBuilder.add(AtBlocks.GOLD_BARS, "金栏杆");
+        translationBuilder.add(AtBlocks.GOLDEN_BARS, "金栏杆");
         translationBuilder.add(AtBlocks.MITHRIL_BARS, "秘银栏杆");
         translationBuilder.add(AtBlocks.MITHRIL_BLOCK, "秘银块");
         translationBuilder.add(AtBlocks.MITHRIL_ORE, "秘银矿");
@@ -334,13 +329,13 @@ public class Zh_cnLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(AtBlocks.ANCIENT_METAL_DOOR, "远古金属门");
         translationBuilder.add(AtBlocks.MITHRIL_DOOR, "秘银门");
         translationBuilder.add(AtBlocks.SILVER_DOOR, "银门");
-        translationBuilder.add(AtBlocks.GOLD_DOOR, "金门");
+        translationBuilder.add(AtBlocks.GOLDEN_DOOR, "金门");
 
         translationBuilder.add(AtItems.ADAMANTIUM_FISHING_ROD, "艾德曼鱼竿");
         translationBuilder.add(AtItems.ANCIENT_METAL_FISHING_ROD, "远古金属鱼竿");
         translationBuilder.add(AtItems.MITHRIL_FISHING_ROD, "秘银鱼竿");
         translationBuilder.add(AtItems.SILVER_FISHING_ROD, "银鱼竿");
-        translationBuilder.add(AtItems.GOLD_FISHING_ROD, "金鱼竿");
+        translationBuilder.add(AtItems.GOLDEN_FISHING_ROD, "金鱼竿");
         translationBuilder.add(AtItems.COPPER_FISHING_ROD, "铜鱼竿");
         translationBuilder.add(AtItems.IRON_FISHING_ROD, "铁鱼竿");
         translationBuilder.add(AtItems.FLINT_FISHING_ROD, "燧石鱼竿");
@@ -366,5 +361,20 @@ public class Zh_cnLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(AtBlocks.ADAMANTIUM_ANVIL,"艾德曼砧");
         translationBuilder.add(AtBlocks.CHIPPED_ADAMANTIUM_ANVIL,"开裂的艾德曼砧");
         translationBuilder.add(AtBlocks.DAMAGED_ADAMANTIUM_ANVIL,"损坏的艾德曼砧");
+        translationBuilder.add(AtBlocks.MITHRIL_ANVIL,"秘银砧");
+        translationBuilder.add(AtBlocks.CHIPPED_MITHRIL_ANVIL,"开裂的秘银砧");
+        translationBuilder.add(AtBlocks.DAMAGED_MITHRIL_ANVIL,"损坏的秘银砧");
+        translationBuilder.add(AtBlocks.ANCIENT_METAL_ANVIL,"远古金属砧");
+        translationBuilder.add(AtBlocks.CHIPPED_ANCIENT_METAL_ANVIL,"开裂的远古金属砧");
+        translationBuilder.add(AtBlocks.DAMAGED_ANCIENT_METAL_ANVIL,"损坏的远古金属砧");
+        translationBuilder.add(AtBlocks.SILVER_ANVIL,"银砧");
+        translationBuilder.add(AtBlocks.CHIPPED_SILVER_ANVIL,"开裂的银砧");
+        translationBuilder.add(AtBlocks.DAMAGED_SILVER_ANVIL,"损坏的银砧");
+        translationBuilder.add(AtBlocks.GOLDEN_ANVIL,"金砧");
+        translationBuilder.add(AtBlocks.CHIPPED_GOLDEN_ANVIL,"开裂的金砧");
+        translationBuilder.add(AtBlocks.DAMAGED_GOLDEN_ANVIL,"损坏的金砧");
+        translationBuilder.add(AtBlocks.COPPER_ANVIL,"铜砧");
+        translationBuilder.add(AtBlocks.CHIPPED_COPPER_ANVIL,"开裂的铜砧");
+        translationBuilder.add(AtBlocks.DAMAGED_COPPER_ANVIL,"损坏的铜砧");
     }
 }

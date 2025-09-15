@@ -18,24 +18,26 @@ public class AtTags {
     public static final TagKey<Block> INCORRECT_FOR_SILVER_TOOL = ofBlock("incorrect_for_silver_tool");
     public static final TagKey<Block> INCORRECT_FOR_FLINT_TOOL = ofBlock("incorrect_for_flint_tool");
 
-    public static final TagKey<Block> BLOCK_COUNT_1 = ofBlock("block_count_1");
-    public static final TagKey<Block> BLOCK_COUNT_8 = ofBlock("block_count_8");
-    public static final TagKey<Block> BLOCK_COUNT_16 = ofBlock("block_count_16");
-    public static final TagKey<Block> BLOCK_COUNT_32 = ofBlock("block_count_32");
     public static final TagKey<Block> GLASS = ofBlock("glass");
     public static final TagKey<Block> GLASS_PANE = ofBlock("glass_pane");
     public static final TagKey<Block> BARS = ofBlock("bars");
+    public static final TagKey<Block> INTACT_ANVIL = ofBlock("intact_anvil");
+    public static final TagKey<Block> CHIPPED_ANVIL = ofBlock("chipped_anvil");
+    public static final TagKey<Block> DAMAGED_ANVIL = ofBlock("damaged_anvil");
 
-    public static final TagKey<Item> ITEM_COUNT_1 = ofItem("item_count_1");
-    public static final TagKey<Item> ITEM_COUNT_8 = ofItem("item_count_8");
-    public static final TagKey<Item> ITEM_COUNT_16 = ofItem("item_count_16");
-    public static final TagKey<Item> ITEM_COUNT_32 = ofItem("item_count_32");
+    public static final TagKey<Block> ADAMANTIUM_ANVIL = ofBlock("adamantium_anvil");
+    public static final TagKey<Block> MITHRIL_ANVIL = ofBlock("mithril_anvil");
+    public static final TagKey<Block> ANCIENT_METAL_ANVIL = ofBlock("damaged_anvil");
+    public static final TagKey<Block> COPPER_ANVIL = ofBlock("copper_anvil");
+    public static final TagKey<Block> GOLDEN_ANVIL = ofBlock("golden_anvil");
+    public static final TagKey<Block> SILVER_ANVIL = ofBlock("silver_anvil");
+    public static final TagKey<Block> IRON_ANVIL = ofBlock("iron_anvil");
+
     public static final TagKey<Item> NUGGET = ofItem("nugget");
     public static final TagKey<Item> SHARD = ofItem("shard");
     public static final TagKey<Item> INGOT = ofItem("ingot");
     public static final TagKey<Item> CHAINS = ofItem("chains");
     public static final TagKey<Item> COINS = ofItem("coins");
-
 
     public static final TagKey<Item> WATER_BUCKET = ofItem("water_bucket");
     public static final TagKey<Item> FISHING_RODS = ofItem("fishing_rods");
@@ -44,17 +46,20 @@ public class AtTags {
     public static final TagKey<Item> ADAMANTIUM_NONREPAIRABLE = ofItem("adamantium_nonrepairable");
     public static final TagKey<Item> MITHRIL_NONREPAIRABLE = ofItem("mithril_nonrepairable");
     public static final TagKey<Item> ANCIENT_METAL_NONREPAIRABLE = ofItem("ancient_metal_nonrepairable");
-    public static final TagKey<Item> RUSTED_IRON_NONREPAIRABLE = ofItem("rusted_iron_nonrepairable");
+    public static final TagKey<Item> IRON_NONREPAIRABLE = ofItem("iron_nonrepairable");
     public static final TagKey<Item> SILVER_NONREPAIRABLE = ofItem("silver_nonrepairable");
     public static final TagKey<Item> COPPER_NONREPAIRABLE = ofItem("copper_nonrepairable");
+    public static final TagKey<Item> GOLDEN_NONREPAIRABLE = ofItem("golden_nonrepairable");
 
     //可维修系列工具含护甲
     public static final TagKey<Item> ADAMANTIUM_SERIES_REPAIRABLE = ofItem("adamantium_series_repairable");
     public static final TagKey<Item> MITHRIL_SERIES_REPAIRABLE = ofItem("mithril_series_repairable");
     public static final TagKey<Item> ANCIENT_METAL_SERIES_REPAIRABLE = ofItem("ancient_metal_series_repairable");
     public static final TagKey<Item> RUSTED_IRON_SERIES_REPAIRABLE = ofItem("rusted_iron_series_repairable");
+    public static final TagKey<Item> IRON_SERIES_REPAIRABLE = ofItem("iron_series_repairable");
     public static final TagKey<Item> SILVER_SERIES_REPAIRABLE = ofItem("silver_series_repairable");
     public static final TagKey<Item> COPPER_SERIES_REPAIRABLE = ofItem("copper_series_repairable");
+    public static final TagKey<Item> GOLD_SERIES_REPAIRABLE = ofItem("gold_series_repairable");
 
     public static final TagKey<Item> ADAMANTIUM_TOOL_MATERIALS = ofItem("adamantium_tool_materials");
     public static final TagKey<Item> MITHRIL_TOOL_MATERIALS = ofItem("mithril_tool_materials");

@@ -22,7 +22,6 @@ public class AtRecipeGenerator extends FabricRecipeProvider {
             @Override
             public void generate() {
                 RegistryWrapper.Impl<Item> itemLookup = registries.getOrThrow(RegistryKeys.ITEM);
-                JSONArray jsonArray = new JSONArray();
             }
         };
     }
