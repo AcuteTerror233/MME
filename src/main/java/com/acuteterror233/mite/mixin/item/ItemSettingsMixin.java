@@ -144,6 +144,13 @@ public abstract class ItemSettingsMixin implements FabricItem.Settings, ItemSett
                 .repairable(material.repairIngredient());
     }
     @Unique
+    public Item.Settings scythe(ToolMaterial material, float attackDamage, float attackSpeed) {
+        this.maxDamage(material.durability() * 2);
+        this.tool(material, BlockTags.HOE_MINEABLE, attackDamage, attackSpeed, 0.0F);
+        material.applySwordSettings((Item.Settings)(Object)this, attackDamage, attackSpeed);
+        return this.attributeModifiers(CreateInteractionAttributeModifiers(0.75f, material.attackDamageBonus(), attackDamage, attackSpeed));
+    }
+    @Unique
     public boolean getUseMaxDamage() {
         return this.useMaxDamage;
     }

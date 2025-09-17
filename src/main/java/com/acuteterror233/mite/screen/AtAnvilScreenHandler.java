@@ -27,7 +27,6 @@ import net.minecraft.text.Text;
 import net.minecraft.util.StringHelper;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
-import net.minecraft.world.WorldEvents;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;
@@ -89,7 +88,6 @@ public class AtAnvilScreenHandler extends ForgingScreenHandler {
             if (entity instanceof AnvilBlockEntity blockEntity){
                 blockEntity.addDamage(i);
             }
-            world.syncWorldEvent(WorldEvents.ANVIL_USED, pos, 0);
         });
         this.levelCost.set(0);
         this.input.setStack(0, ItemStack.EMPTY);
@@ -135,8 +133,12 @@ public class AtAnvilScreenHandler extends ForgingScreenHandler {
                 }
                 // 判断堆栈是否可损坏,堆栈一可以被堆栈二修复
                 if (itemStack2.isDamageable() && itemStack.canRepairWith(itemStack3) && !itemStack.isIn(key)) {
+                    int i1 = 1;
+                    if (itemStack3.isIn(AtTags.NUGGET)) {
+                        i1 = 4;
+                    }
                     //维修耐久
-                    int Damage = Math.min(itemStack2.getDamage(), itemStack2.getMaxDamage() / 4);
+                    int Damage = Math.min(itemStack2.getDamage(), itemStack2.getMaxDamage() / i1);
                     if (Damage <= 0) {
                         this.output.setStack(0, ItemStack.EMPTY);
                         this.levelCost.set(0);

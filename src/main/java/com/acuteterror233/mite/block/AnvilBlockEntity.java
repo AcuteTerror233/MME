@@ -8,6 +8,7 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.WorldEvents;
 
 public class AnvilBlockEntity extends BlockEntity {
     private Integer maxDamage;
@@ -54,23 +55,25 @@ public class AnvilBlockEntity extends BlockEntity {
         Block anvil = this.world.getBlockState(this.pos).getBlock();
         if (i >= this.maxDamage){
             this.world.removeBlock(this.pos,false);
+            this.world.syncWorldEvent(WorldEvents.ANVIL_USED, pos, 0);
         } else if (i >= i1 * 2) {
             Block block = Registries.BLOCK.get(Identifier.of(Registries.BLOCK.getId(anvil).toString().replace("chipped","damaged")));
             generate(block);
         } else if (i >= i1) {
-            Block block = Registries.BLOCK.get(Identifier.of(Registries.BLOCK.getId(anvil).toString().replace(":",":chipped")));
+            Block block = Registries.BLOCK.get(Identifier.of(Registries.BLOCK.getId(anvil).toString().replace(".",":chipped")));
             generate(block);
         }
     }
 
     private void generate(Block block) {
         if (this.world != null) {
-            this.world.setBlockState(this.pos, block.getDefaultState(), Block.NOTIFY_ALL_AND_REDRAW);
+            this.world.setBlockState(this.pos, block.getDefaultState(), Block.NOTIFY_ALL);
             BlockEntity entity = this.world.getBlockEntity(this.pos);
             if (entity instanceof AnvilBlockEntity anvilBlockEntity) {
                 anvilBlockEntity.setMaxDamage(this.maxDamage);
                 anvilBlockEntity.setDamage(this.damage);
             }
+            this.world.syncWorldEvent(WorldEvents.ANVIL_DESTROYED, pos, 0);
         }
     }
 }

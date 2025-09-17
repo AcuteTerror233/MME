@@ -12,6 +12,7 @@ public interface ItemSettingsExtension {
     Item.Settings dagger(ToolMaterial material, float attackDamage, float attackSpeed);
     Item.Settings battle_axe(ToolMaterial material, float attackDamage, float attackSpeed);
     Item.Settings shears(ToolMaterial material, float attackDamage, float attackSpeed);
+    Item.Settings scythe(ToolMaterial material, float attackDamage, float attackSpeed);
     Item.Settings at_armor(AtArmorMaterial material, EquipmentType type);
     boolean getUseMaxDamage();
 }

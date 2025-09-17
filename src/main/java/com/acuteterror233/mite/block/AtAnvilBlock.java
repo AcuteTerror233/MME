@@ -43,7 +43,7 @@ public class AtAnvilBlock extends AnvilBlock implements BlockEntityProvider {
         BlockEntity blockEntity = world.getBlockEntity(pos);
         if (blockEntity instanceof AnvilBlockEntity anvilBlockEntity) {
             anvilBlockEntity.setMaxDamage(itemStack.getMaxDamage());
-            anvilBlockEntity.setDamage(itemStack.getDamage()+1);
+            anvilBlockEntity.addDamage(itemStack.getDamage()+1);
         }
     }
 

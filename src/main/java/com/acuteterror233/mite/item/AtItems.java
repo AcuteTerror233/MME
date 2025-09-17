@@ -316,26 +316,25 @@ public class AtItems {
             Settings -> new AxeItem(AtToolMaterial.ADAMANTIUM, 8.0F, -3.0F, Settings),
             new Item.Settings());
     public static final Item ADAMANTIUM_BATTLE_AXE = register("adamantium_battle_axe",
-            Settings -> new AtBattleAxeItem(AtToolMaterial.ADAMANTIUM, 5.0F, -3.0F, Settings),
-            new Item.Settings());
+            Settings -> new AxeItem(AtToolMaterial.ADAMANTIUM, 5.0F, -3.0F, Settings),
+            ((ItemSettingsExtension)new Item.Settings()).battle_axe(AtToolMaterial.ADAMANTIUM, 5.0F, -3.0F));
     public static final Item ADAMANTIUM_DAGGER = register("adamantium_dagger",
             ((ItemSettingsExtension)new Item.Settings()).dagger(AtToolMaterial.ADAMANTIUM, 5.0F, -3.0F));
     public static final Item ADAMANTIUM_HATCHET = register("adamantium_hatchet",
-            Settings -> new AtHandAxeItem(AtToolMaterial.ADAMANTIUM, 5.0F, -3.0F, Settings),
-            new Item.Settings());
+            Settings -> new AxeItem(AtToolMaterial.ADAMANTIUM, 5.0F, -3.0F, Settings),
+            ((ItemSettingsExtension)new Item.Settings()).hand_axe(AtToolMaterial.ADAMANTIUM, 5.0F, -3.0F));
     public static final Item ADAMANTIUM_HOE = register("adamantium_hoe",
             Settings -> new HoeItem(AtToolMaterial.ADAMANTIUM, 5.0F, -3.0F, Settings),
-            new Item.Settings());
+            new Item.Settings().hoe(AtToolMaterial.ADAMANTIUM, 5.0F, -3.0F));
     public static final Item ADAMANTIUM_KNIFE = register("adamantium_knife",
             ((ItemSettingsExtension)new Item.Settings()).dagger(AtToolMaterial.ADAMANTIUM, 5.0F, -3.0F));
     public static final Item ADAMANTIUM_MATTOCK = register("adamantium_mattock",
-            Settings -> new AtMattockItem(AtToolMaterial.ADAMANTIUM, 5.0F, -3.0F,Settings),
-            new Item.Settings());
+            Settings -> new HoeItem(AtToolMaterial.ADAMANTIUM, 5.0F, -3.0F,Settings),
+            new Item.Settings().hoe(AtToolMaterial.ADAMANTIUM, 5.0F, -3.0F));
     public static final Item ADAMANTIUM_PICKAXE = register("adamantium_pickaxe",
             new Item.Settings().pickaxe(AtToolMaterial.ADAMANTIUM,  5.0F, -3.0F));
     public static final Item ADAMANTIUM_SCYTHE = register("adamantium_scythe",
-            Settings -> new HoeItem(AtToolMaterial.ADAMANTIUM, 0.0F, -3.0F, Settings),
-            new Item.Settings());
+            ((ItemSettingsExtension)new Item.Settings()).scythe(AtToolMaterial.ADAMANTIUM,  5.0F, -3.0F));
     public static final Item ADAMANTIUM_SHEARS = register("adamantium_shears",
             ShearsItem::new,
             ((ItemSettingsExtension)new Item.Settings()).shears(AtToolMaterial.ADAMANTIUM,  5.0F, -3.0F));
@@ -864,10 +863,14 @@ public class AtItems {
                     entries.add(GLASS_SHARD);
                     entries.add(OBSIDIAN_SHARD);
                     entries.add(QUARTZ_SHARD);
+                    entries.add(Items.NETHERITE_INGOT);
                     entries.add(ADAMANTIUM_INGOT);
-                    entries.add(ANCIENT_METAL_INGOT);
                     entries.add(MITHRIL_INGOT);
+                    entries.add(ANCIENT_METAL_INGOT);
+                    entries.add(Items.IRON_INGOT);
+                    entries.add(Items.GOLD_INGOT);
                     entries.add(SILVER_INGOT);
+                    entries.add(Items.COPPER_INGOT);
                     entries.add(ADAMANTIUM_NUGGET);
                     entries.add(ANCIENT_METAL_NUGGET);
                     entries.add(MITHRIL_NUGGET);

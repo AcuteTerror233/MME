@@ -18,6 +18,8 @@
     "entity.player.HungerManagerMixin",
     "entity.player.PlayerEntityMixin",
     "entity.projectile.FishingBobberEntityMixin",
+    "item.AxeItemMixin",
+    "item.HoeItemMixin",
     "item.ItemSettingsMixin",
     "item.ItemsMixin",
     "item.ItemStackMixin",
