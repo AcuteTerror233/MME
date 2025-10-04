@@ -4,7 +4,6 @@ import com.acuteterror233.mite.At_mite;
 import com.acuteterror233.mite.atinterface.ItemSettingsExtension;
 import com.acuteterror233.mite.block.AtBlocks;
 import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
 import net.minecraft.block.FenceBlock;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;

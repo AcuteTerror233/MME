@@ -1,0 +1,60 @@
+{
+  "type": "at_mite:underground_type",
+  "generator": {
+  "type": "minecraft:noise",
+  "biome_source": {
+    "type": "minecraft:multi_noise",
+    "biomes": [
+      {
+        "biome": "minecraft:windswept_hills",
+        "parameters": {
+          "temperature": 0,
+          "humidity": 0,
+          "continentalness": 0,
+          "erosion": 0,
+          "weirdness": 0,
+          "depth": 0,
+          "offset": 0
+        }
+      },
+      {
+        "biome": "minecraft:deep_dark",
+        "parameters": {
+          "temperature": 0,
+          "humidity": 0,
+          "continentalness": 0,
+          "erosion": 0.5,
+          "weirdness": 0,
+          "depth": 0,
+          "offset": 0
+        }
+      },
+      {
+        "biome": "minecraft:lush_caves",
+        "parameters": {
+          "temperature": 0.9,
+          "humidity": 0,
+          "continentalness": 0.5,
+          "erosion": 0,
+          "weirdness": 0,
+          "depth": 0,
+          "offset": 0
+        }
+      },
+      {
+        "biome": "minecraft:dripstone_caves",
+        "parameters": {
+          "temperature": -0.9,
+          "humidity": 0,
+          "continentalness": -0.5,
+          "erosion": 0,
+          "weirdness": 0,
+          "depth": 0,
+          "offset": 0
+        }
+      }
+    ]
+  },
+    "settings": "at_mite:underground"
+  }
+}

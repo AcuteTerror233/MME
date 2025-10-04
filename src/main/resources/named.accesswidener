@@ -3,3 +3,4 @@ accessible method net/minecraft/client/data/Models block (Ljava/lang/String;[Lne
 accessible field net/minecraft/screen/AnvilScreenHandler repairItemUsage I
 accessible field net/minecraft/screen/AnvilScreenHandler keepSecondSlot Z
 accessible method net/minecraft/item/Items keyOf (Lnet/minecraft/registry/RegistryKey;)Lnet/minecraft/registry/RegistryKey;
+accessible method net/minecraft/world/gen/densityfunction/DensityFunctions createNetherNoiseRouter (Lnet/minecraft/registry/RegistryEntryLookup;Lnet/minecraft/registry/RegistryEntryLookup;)Lnet/minecraft/world/gen/noise/NoiseRouter;

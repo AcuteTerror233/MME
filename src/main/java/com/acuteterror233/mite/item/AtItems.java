@@ -314,7 +314,7 @@ public class AtItems {
 
     public static final Item ADAMANTIUM_AXE = register("adamantium_axe",
             Settings -> new AxeItem(AtToolMaterial.ADAMANTIUM, 8.0F, -3.0F, Settings),
-            new Item.Settings());
+            new Item.Settings().axe(AtToolMaterial.ADAMANTIUM, 5.0F, -3.0F));
     public static final Item ADAMANTIUM_BATTLE_AXE = register("adamantium_battle_axe",
             Settings -> new AxeItem(AtToolMaterial.ADAMANTIUM, 5.0F, -3.0F, Settings),
             ((ItemSettingsExtension)new Item.Settings()).battle_axe(AtToolMaterial.ADAMANTIUM, 5.0F, -3.0F));

@@ -24,8 +24,8 @@ import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
 
 public class AtBucketItem extends BucketItem {
-    private final  Item item;
-    private final  Fluid fluid;
+    private final Item item;
+    private final Fluid fluid;
     //注册名格式必须是"生物/液体_材质"
     public AtBucketItem(Fluid fluid, Settings settings, Item empty_barrel) {
         super(fluid, settings);

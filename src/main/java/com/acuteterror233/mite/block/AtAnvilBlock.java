@@ -1,11 +1,8 @@
 package com.acuteterror233.mite.block;
 
-import com.acuteterror233.mite.atinterface.AbstractBlockSettingsExtension;
 import com.acuteterror233.mite.atinterface.FallingBlockEntityExtension;
-import com.acuteterror233.mite.registry.tag.AtTags;
 import com.acuteterror233.mite.screen.AtAnvilScreenHandler;
 import net.minecraft.block.AnvilBlock;
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockEntityProvider;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
@@ -38,11 +35,18 @@ public class AtAnvilBlock extends AnvilBlock implements BlockEntityProvider {
     }
     
     @Override
+    //放置时候调用,world 放置所在世界,pos 放置位置(坐标等信息),state 块状态,placer 放置的玩家,itemStack 方块的物品堆栈
     public void onPlaced(World world, BlockPos pos, BlockState state, LivingEntity placer, ItemStack itemStack) {
+        //调用父类的放置方法
         super.onPlaced(world, pos, state, placer, itemStack);
+        //通过世界拿到放置方块的方块实体
         BlockEntity blockEntity = world.getBlockEntity(pos);
+        //判断方块实体是不是继承AnvilBlockEntity
         if (blockEntity instanceof AnvilBlockEntity anvilBlockEntity) {
+            //设置方块实体的损伤,最大损伤
+            //用itemStack物品的损伤
             anvilBlockEntity.setMaxDamage(itemStack.getMaxDamage());
+            //放置时候损伤一点耐久
             anvilBlockEntity.addDamage(itemStack.getDamage()+1);
         }
     }
@@ -66,7 +70,7 @@ public class AtAnvilBlock extends AnvilBlock implements BlockEntityProvider {
     @Override
     protected NamedScreenHandlerFactory createScreenHandlerFactory(BlockState state, World world, BlockPos pos) {
         return new SimpleNamedScreenHandlerFactory(
-                (syncId, inventory, player) -> new AtAnvilScreenHandler(syncId, inventory, ScreenHandlerContext.create(world, pos)), getDefaultState().getBlock().getName()
+                (syncId, inventory, player) -> new AtAnvilScreenHandler(syncId, inventory, ScreenHandlerContext.create(world, pos)), getName()
         );
     }
     @Override

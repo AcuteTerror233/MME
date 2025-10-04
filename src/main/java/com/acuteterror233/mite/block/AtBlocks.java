@@ -1,7 +1,6 @@
 package com.acuteterror233.mite.block;
 
 import com.acuteterror233.mite.At_mite;
-import com.acuteterror233.mite.atinterface.AbstractBlockSettingsExtension;
 import com.acuteterror233.mite.item.AtToolMaterial;
 import com.acuteterror233.mite.screen.AtAnvilScreenHandler;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
