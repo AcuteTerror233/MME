@@ -3,6 +3,7 @@ package com.acuteterror233.mite;
 import com.acuteterror233.mite.block.AtBlocks;
 import com.acuteterror233.mite.item.AtItems;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.object.builder.v1.world.poi.PointOfInterestHelper;
 import net.minecraft.block.*;
 import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
@@ -14,10 +15,10 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class At_mite implements ModInitializer {
-	public static final String MOD_ID = "at_mite";
-	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
-	public static final Identifier BASE_BLOCK_INTERACTION_RANGE = Identifier.ofVanilla("block_interaction_range");
-	public static final Identifier BASE_ENTITY_INTERACTION_RANGE = Identifier.ofVanilla("entity_interaction_range");
+    public static final String MOD_ID = "at_mite";
+    public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
+    public static final Identifier BASE_BLOCK_INTERACTION_RANGE = Identifier.ofVanilla("block_interaction_range");
+    public static final Identifier BASE_ENTITY_INTERACTION_RANGE = Identifier.ofVanilla("entity_interaction_range");
     //block是按照方块继承分类最大堆叠的
     public static final Set<Class<?>> COUNT1_BLOCK = new HashSet<>(Arrays.asList(
             FenceGateBlock.class,
@@ -139,10 +140,12 @@ public class At_mite implements ModInitializer {
             "redstone",
             "glowstone_dust"
     ));
-	@Override
-	public void onInitialize() {
-		LOGGER.info("mext");
-		AtItems.init();
-		AtBlocks.init();
-	}
+
+    @Override
+    public void onInitialize() {
+        LOGGER.info("mext");
+        AtItems.init();
+        AtBlocks.init();
+        PointOfInterestHelper.register(Identifier.of(At_mite.MOD_ID, "underground_portal"), 0, 1, AtBlocks.UNDERGROUND_PORTAL);
+    }
 }

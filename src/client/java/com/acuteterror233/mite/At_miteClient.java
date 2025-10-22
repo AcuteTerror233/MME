@@ -21,6 +21,9 @@ public class At_miteClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(AtBlocks.MITHRIL_DOOR, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(AtBlocks.SILVER_DOOR, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(AtBlocks.GOLDEN_DOOR, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(AtBlocks.UNDERGROUND_PORTAL, RenderLayer.getTranslucent());
+        BlockRenderLayerMap.INSTANCE.putBlock(AtBlocks.HOME_PORTAL, RenderLayer.getTranslucent());
+        BlockRenderLayerMap.INSTANCE.putBlock(AtBlocks.RUNE_PORTAL, RenderLayer.getTranslucent());
         HandledScreens.register(AtBlocks.ATANVILSCREENHANDLER, AtAnvilScreen::new);
 	}
 }

@@ -19,29 +19,45 @@ import java.util.function.Function;
 
 @Mixin(Items.class)
 public class ItemsMixin {
-    @Shadow @Final public static Item DEEPSLATE_TILE_WALL;
-    @Shadow public static Item register(RegistryKey<Item> key, Function<Item.Settings, Item> factory, Item.Settings settings){return null;}
-    @Shadow public static Item register(Block block, Item.Settings settings){return null;}
-    @Shadow private static RegistryKey<Item> keyOf(RegistryKey<Block> blockKey){return null;}
-    @Shadow private static RegistryKey<Item> keyOf(String id){return null;}
+
+    @Shadow
+    public static Item register(RegistryKey<Item> key, Function<Item.Settings, Item> factory, Item.Settings settings) {
+        return null;
+    }
+
+
+    @Shadow
+    private static RegistryKey<Item> keyOf(RegistryKey<Block> blockKey) {
+        return null;
+    }
+
+    @Shadow
+    private static RegistryKey<Item> keyOf(String id) {
+        return null;
+    }
+
     @Overwrite
     public static Item register(Block block, BiFunction<Block, Item.Settings, Item> factory, Item.Settings settings) {
         return register(
-                keyOf(block.getRegistryEntry().registryKey()), itemSettings -> (Item)factory.apply(block, itemSettings), settings.useBlockPrefixedTranslationKey().maxCount(getCountForBlock(block))
+                keyOf(block.getRegistryEntry().registryKey()), itemSettings -> (Item) factory.apply(block, itemSettings), settings.useBlockPrefixedTranslationKey().maxCount(getCountForBlock(block))
         );
     }
-    @Redirect(method = "<clinit>",at = @At(value = "INVOKE", target = "Lnet/minecraft/item/Items;register(Lnet/minecraft/block/Block;)Lnet/minecraft/item/Item;",ordinal = 431))
+
+    @Redirect(method = "<clinit>", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/Items;register(Lnet/minecraft/block/Block;)Lnet/minecraft/item/Item;", ordinal = 431))
     private static Item ANVIL(Block block) {
-        return register(keyOf(block.getRegistryEntry().registryKey()), (settings -> new BlockItem(block, settings.useBlockPrefixedTranslationKey())),new Item.Settings().maxDamage(AtBlocks.maxDamageAnvil(ToolMaterial.IRON.durability())));
+        return register(keyOf(block.getRegistryEntry().registryKey()), (settings -> new BlockItem(block, settings.useBlockPrefixedTranslationKey())), new Item.Settings().maxDamage(AtBlocks.maxDamageAnvil(ToolMaterial.IRON.durability())));
     }
-    @Redirect(method = "<clinit>",at = @At(value = "INVOKE", target = "Lnet/minecraft/item/Items;register(Lnet/minecraft/block/Block;)Lnet/minecraft/item/Item;",ordinal = 432))
+
+    @Redirect(method = "<clinit>", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/Items;register(Lnet/minecraft/block/Block;)Lnet/minecraft/item/Item;", ordinal = 432))
     private static Item CHIPPED_ANVIL(Block block) {
-        return register(keyOf(block.getRegistryEntry().registryKey()), (settings -> new BlockItem(block, settings.useBlockPrefixedTranslationKey())),new Item.Settings().maxDamage(AtBlocks.maxDamageAnvil(ToolMaterial.IRON.durability())));
+        return register(keyOf(block.getRegistryEntry().registryKey()), (settings -> new BlockItem(block, settings.useBlockPrefixedTranslationKey())), new Item.Settings().maxDamage(AtBlocks.maxDamageAnvil(ToolMaterial.IRON.durability())));
     }
-    @Redirect(method = "<clinit>",at = @At(value = "INVOKE", target = "Lnet/minecraft/item/Items;register(Lnet/minecraft/block/Block;)Lnet/minecraft/item/Item;",ordinal = 433))
+
+    @Redirect(method = "<clinit>", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/Items;register(Lnet/minecraft/block/Block;)Lnet/minecraft/item/Item;", ordinal = 433))
     private static Item DAMAGED_ANVIL(Block block) {
-        return register(keyOf(block.getRegistryEntry().registryKey()), (settings -> new BlockItem(block, settings.useBlockPrefixedTranslationKey())),new Item.Settings().maxDamage(AtBlocks.maxDamageAnvil(ToolMaterial.IRON.durability())));
+        return register(keyOf(block.getRegistryEntry().registryKey()), (settings -> new BlockItem(block, settings.useBlockPrefixedTranslationKey())), new Item.Settings().maxDamage(AtBlocks.maxDamageAnvil(ToolMaterial.IRON.durability())));
     }
+
     @Unique
     private static int getCountForBlock(Block block) {
         Class<?> blockClass = block.getClass();
@@ -57,11 +73,12 @@ public class ItemsMixin {
         if (At_mite.COUNT32_BLOCK.contains(blockClass)) {
             return 32;
         }
-        if (block instanceof FenceBlock){
+        if (block instanceof FenceBlock) {
             return 6;
         }
         return 4;
     }
+
     @Overwrite
     public static Item register(String id, Function<Item.Settings, Item> factory) {
         return newRegister(id, factory, new Item.Settings());
@@ -83,11 +100,11 @@ public class ItemsMixin {
     }
 
     @Unique
-    private static Item newRegister(String id, Function<Item.Settings, Item> factory, Item.Settings settings){
-        if (!((ItemSettingsExtension)settings).getUseMaxDamage()){
+    private static Item newRegister(String id, Function<Item.Settings, Item> factory, Item.Settings settings) {
+        if (!((ItemSettingsExtension) settings).getUseMaxDamage()) {
             if (At_mite.COUNT1_ITEM.contains(id)) {
                 settings.maxCount(1);
-            }else if (At_mite.COUNT8_ITEM.contains(id)){
+            } else if (At_mite.COUNT8_ITEM.contains(id)) {
                 settings.maxCount(8);
             } else if (At_mite.COUNT16_ITEM.contains(id)) {
                 settings.maxCount(16);
@@ -95,6 +112,6 @@ public class ItemsMixin {
                 settings.maxCount(32);
             }
         }
-        return register(keyOf(id),factory,settings);
+        return register(keyOf(id), factory, settings);
     }
 }

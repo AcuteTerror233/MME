@@ -22,8 +22,13 @@ import java.util.Optional;
 
 @Mixin(FluidBlock.class)
 public class FluidBlockMixin implements FluidDrainableExtension {
-    @Shadow @Final public static IntProperty LEVEL;
-    @Shadow @Final protected FlowableFluid fluid;
+    @Shadow
+    @Final
+    public static IntProperty LEVEL;
+    @Shadow
+    @Final
+    protected FlowableFluid fluid;
+
     @Override
     public ItemStack newtryDrainFluid(@Nullable LivingEntity drainer, WorldAccess world, BlockPos pos, BlockState state, Item item) {
         if (state.get(LEVEL) == 0) {

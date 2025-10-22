@@ -1,6 +1,7 @@
 package com.acuteterror233.mite.mixin.entity.player;
 
 import com.acuteterror233.mite.atinterface.HungerManagerExtension;
+import net.fabricmc.fabric.api.attachment.v1.AttachmentType;
 import net.minecraft.entity.player.HungerManager;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.network.ServerPlayerEntity;
@@ -15,22 +16,39 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(HungerManager.class)
 public abstract class HungerManagerMixin implements HungerManagerExtension {
-    @Unique private int MaxFoodLevel = 6;
-    @Unique private int healTickTimer = 0;
-    @Unique @Override public void setMaxFoodLevel(int maxFoodLevel) {
-        this.MaxFoodLevel = maxFoodLevel;
-    }
-    @Unique @Override public int getMaxFoodLevel() {
+    @Shadow
+    @Final
+    private static int DEFAULT_FOOD_TICK_TIMER;
+    @Shadow
+    @Final
+    private static float DEFAULT_EXHAUSTION;
+    @Unique
+    private int MaxFoodLevel = 6;
+    @Unique
+    private int healTickTimer = 0;
+    @Shadow
+    private int foodLevel;
+    @Shadow
+    private float saturationLevel;
+    @Shadow
+    private float exhaustion;
+    @Shadow
+    private int foodTickTimer;
+
+    @Unique
+    @Override
+    public int getMaxFoodLevel() {
         return this.MaxFoodLevel;
     }
 
-    @Shadow private int foodLevel;
-    @Shadow private float saturationLevel;
-    @Shadow @Final private static int DEFAULT_FOOD_TICK_TIMER;
-    @Shadow @Final private static float DEFAULT_EXHAUSTION;
-    @Shadow private float exhaustion;
-    @Shadow private int foodTickTimer;
-    @Shadow public abstract void addExhaustion(float exhaustion);
+    @Unique
+    @Override
+    public void setMaxFoodLevel(int maxFoodLevel) {
+        this.MaxFoodLevel = maxFoodLevel;
+    }
+
+    @Shadow
+    public abstract void addExhaustion(float exhaustion);
 
     @Overwrite
     private void addInternal(int nutrition, float saturation) {
@@ -42,7 +60,7 @@ public abstract class HungerManagerMixin implements HungerManagerExtension {
     public void update(ServerPlayerEntity player) {
         ServerWorld serverWorld = player.getServerWorld();
         Difficulty difficulty = serverWorld.getDifficulty();
-        if (this.foodLevel > MaxFoodLevel){
+        if (this.foodLevel > MaxFoodLevel) {
             this.foodLevel = MaxFoodLevel;
         }
         if (this.exhaustion > 4.0F) {
@@ -56,7 +74,7 @@ public abstract class HungerManagerMixin implements HungerManagerExtension {
         this.foodTickTimer++;
         if (foodLevel > 0) {
             this.healTickTimer++;
-            if (foodTickTimer >= 1200){
+            if (foodTickTimer >= 1200) {
                 this.addExhaustion(1.0f);
                 this.foodTickTimer = 0;
             }
@@ -65,7 +83,7 @@ public abstract class HungerManagerMixin implements HungerManagerExtension {
                 player.heal(1.0F);
                 this.healTickTimer = 0;
             }
-        }else {
+        } else {
             this.healTickTimer = 0;
             if (this.foodTickTimer >= 640) {
                 player.damage(serverWorld, player.getDamageSources().starve(), 1.0F);
@@ -74,12 +92,13 @@ public abstract class HungerManagerMixin implements HungerManagerExtension {
         }
     }
 
-        @Inject(method = "readNbt", at = @At("HEAD"))
-        public void readNbt (NbtCompound nbt, CallbackInfo ci){
-            this.foodLevel = nbt.getInt("maxfoodlevel", 6);
-        }
-        @Inject(method = "writeNbt", at = @At("HEAD"))
-        public void writeNbt (NbtCompound nbt, CallbackInfo ci){
-            nbt.putInt("maxfoodlevel", this.MaxFoodLevel);
-        }
+    @Inject(method = "readNbt", at = @At("HEAD"))
+    public void readNbt(NbtCompound nbt, CallbackInfo ci) {
+        this.foodLevel = nbt.getInt("maxfoodlevel", 6);
     }
+
+    @Inject(method = "writeNbt", at = @At("HEAD"))
+    public void writeNbt(NbtCompound nbt, CallbackInfo ci) {
+        nbt.putInt("maxfoodlevel", this.MaxFoodLevel);
+    }
+}

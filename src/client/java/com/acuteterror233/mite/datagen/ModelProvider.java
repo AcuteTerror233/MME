@@ -48,6 +48,40 @@ public class ModelProvider extends FabricModelProvider {
         ((BlockStateModelGeneratorExtension) blockStateModelGenerator).registerAnvil(AtBlocks.GOLDEN_ANVIL, AtBlocks.CHIPPED_GOLDEN_ANVIL, AtBlocks.DAMAGED_GOLDEN_ANVIL);
         ((BlockStateModelGeneratorExtension) blockStateModelGenerator).registerAnvil(AtBlocks.SILVER_ANVIL, AtBlocks.CHIPPED_SILVER_ANVIL, AtBlocks.DAMAGED_SILVER_ANVIL);
         ((BlockStateModelGeneratorExtension) blockStateModelGenerator).registerAnvil(AtBlocks.COPPER_ANVIL, AtBlocks.CHIPPED_COPPER_ANVIL, AtBlocks.DAMAGED_COPPER_ANVIL);
+
+//        blockStateModelGenerator.registerSimpleCubeAll(AtBlocks.MITHRIL_NUL_RUNESTORE);
+//        blockStateModelGenerator.registerSimpleCubeAll(AtBlocks.MITHRIL_QUAS_RUNESTORE);
+//        blockStateModelGenerator.registerSimpleCubeAll(AtBlocks.MITHRIL_POR_RUNESTORE);
+//        blockStateModelGenerator.registerSimpleCubeAll(AtBlocks.MITHRIL_AN_RUNESTORE);
+//        blockStateModelGenerator.registerSimpleCubeAll(AtBlocks.MITHRIL_NOX_RUNESTORE);
+//        blockStateModelGenerator.registerSimpleCubeAll(AtBlocks.MITHRIL_FLAM_RUNESTORE);
+//        blockStateModelGenerator.registerSimpleCubeAll(AtBlocks.MITHRIL_VAS_RUNESTORE);
+//        blockStateModelGenerator.registerSimpleCubeAll(AtBlocks.MITHRIL_DES_RUNESTORE);
+//        blockStateModelGenerator.registerSimpleCubeAll(AtBlocks.MITHRIL_ORT_RUNESTORE);
+//        blockStateModelGenerator.registerSimpleCubeAll(AtBlocks.MITHRIL_TYM_RUNESTORE);
+//        blockStateModelGenerator.registerSimpleCubeAll(AtBlocks.MITHRIL_CORP_RUNESTORE);
+//        blockStateModelGenerator.registerSimpleCubeAll(AtBlocks.MITHRIL_LOR_RUNESTORE);
+//        blockStateModelGenerator.registerSimpleCubeAll(AtBlocks.MITHRIL_MANI_RUNESTORE);
+//        blockStateModelGenerator.registerSimpleCubeAll(AtBlocks.MITHRIL_JUX_RUNESTORE);
+//        blockStateModelGenerator.registerSimpleCubeAll(AtBlocks.MITHRIL_YLEM_RUNESTORE);
+//        blockStateModelGenerator.registerSimpleCubeAll(AtBlocks.MITHRIL_SANCT_RUNESTORE);
+//
+//        blockStateModelGenerator.registerSimpleCubeAll(AtBlocks.ADAMANTIUM_NUL_RUNESTORE);
+//        blockStateModelGenerator.registerSimpleCubeAll(AtBlocks.ADAMANTIUM_QUAS_RUNESTORE);
+//        blockStateModelGenerator.registerSimpleCubeAll(AtBlocks.ADAMANTIUM_POR_RUNESTORE);
+//        blockStateModelGenerator.registerSimpleCubeAll(AtBlocks.ADAMANTIUM_AN_RUNESTORE);
+//        blockStateModelGenerator.registerSimpleCubeAll(AtBlocks.ADAMANTIUM_NOX_RUNESTORE);
+//        blockStateModelGenerator.registerSimpleCubeAll(AtBlocks.ADAMANTIUM_FLAM_RUNESTORE);
+//        blockStateModelGenerator.registerSimpleCubeAll(AtBlocks.ADAMANTIUM_VAS_RUNESTORE);
+//        blockStateModelGenerator.registerSimpleCubeAll(AtBlocks.ADAMANTIUM_DES_RUNESTORE);
+//        blockStateModelGenerator.registerSimpleCubeAll(AtBlocks.ADAMANTIUM_ORT_RUNESTORE);
+//        blockStateModelGenerator.registerSimpleCubeAll(AtBlocks.ADAMANTIUM_TYM_RUNESTORE);
+//        blockStateModelGenerator.registerSimpleCubeAll(AtBlocks.ADAMANTIUM_CORP_RUNESTORE);
+//        blockStateModelGenerator.registerSimpleCubeAll(AtBlocks.ADAMANTIUM_LOR_RUNESTORE);
+//        blockStateModelGenerator.registerSimpleCubeAll(AtBlocks.ADAMANTIUM_MANI_RUNESTORE);
+//        blockStateModelGenerator.registerSimpleCubeAll(AtBlocks.ADAMANTIUM_JUX_RUNESTORE);
+//        blockStateModelGenerator.registerSimpleCubeAll(AtBlocks.ADAMANTIUM_YLEM_RUNESTORE);
+//        blockStateModelGenerator.registerSimpleCubeAll(AtBlocks.ADAMANTIUM_SANCT_RUNESTORE);
     }
 
     @Override

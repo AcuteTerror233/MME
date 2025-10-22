@@ -33,6 +33,11 @@ public class AtTags {
     public static final TagKey<Block> SILVER_ANVIL = ofBlock("silver_anvil");
     public static final TagKey<Block> IRON_ANVIL = ofBlock("iron_anvil");
 
+    public static final TagKey<Block> PORTAL = ofBlock("portal");
+    public static final TagKey<Block> MITHRIL_RUNESTORE = ofBlock("mithril_runestore");
+    public static final TagKey<Block> ADAMANTIUM_RUNESTORE = ofBlock("adamantium_runestore");
+    public static final TagKey<Block> RUNESTORE = ofBlock("runestore");
+
     public static final TagKey<Item> NUGGET = ofItem("nugget");
     public static final TagKey<Item> SHARD = ofItem("shard");
     public static final TagKey<Item> INGOT = ofItem("ingot");
@@ -72,6 +77,7 @@ public class AtTags {
     private static TagKey<Block> ofBlock(String id) {
         return TagKey.of(RegistryKeys.BLOCK, Identifier.of(At_mite.MOD_ID, id));
     }
+
     private static TagKey<Item> ofItem(String id) {
         return TagKey.of(RegistryKeys.ITEM, Identifier.of(At_mite.MOD_ID, id));
     }

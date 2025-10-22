@@ -21,16 +21,20 @@ import java.util.Optional;
 
 @Mixin(AnvilScreenHandler.class)
 public abstract class AnvilScreenHandlerMixin extends ForgingScreenHandler {
+    @Unique
+    ScreenHandlerContext context;
+
     public AnvilScreenHandlerMixin(@Nullable ScreenHandlerType<?> type, int syncId, PlayerInventory playerInventory, ScreenHandlerContext context, ForgingSlotsManager forgingSlotsManager) {
         super(type, syncId, playerInventory, context, forgingSlotsManager);
     }
-    @Unique ScreenHandlerContext context;
-    @Inject(method = "<init>(ILnet/minecraft/entity/player/PlayerInventory;Lnet/minecraft/screen/ScreenHandlerContext;)V",at = @At("TAIL"))
-    private void init(int syncId, PlayerInventory playerInventory, ScreenHandlerContext context, CallbackInfo ci){
+
+    @Inject(method = "<init>(ILnet/minecraft/entity/player/PlayerInventory;Lnet/minecraft/screen/ScreenHandlerContext;)V", at = @At("TAIL"))
+    private void init(int syncId, PlayerInventory playerInventory, ScreenHandlerContext context, CallbackInfo ci) {
         this.context = context;
     }
-    @Inject(method = "updateResult",at = @At(value = "INVOKE", target = "Ljava/lang/Math;min(II)I"))
-    private void updateResult(CallbackInfo ci){
+
+    @Inject(method = "updateResult", at = @At(value = "INVOKE", target = "Ljava/lang/Math;min(II)I"))
+    private void updateResult(CallbackInfo ci) {
         Optional<BlockState> blockState = this.context.get(World::getBlockState);
         if (blockState.isPresent()) {
             if (blockState.get().getBlock() == AtBlocks.MITHRIL_ANVIL) {

@@ -27,13 +27,21 @@ public class AtAnvilBlock extends AnvilBlock implements BlockEntityProvider {
     public AtAnvilBlock(Settings settings) {
         super(settings);
     }
-    
+
+    public static FallingBlockEntity spawnFromBlock(World world, BlockPos pos, BlockState state, BlockEntity blockEntity) {
+        FallingBlockEntity fallingBlockEntity = FallingBlockEntity.spawnFromBlock(world, pos, state);
+        if (blockEntity instanceof AnvilBlockEntity AnvilBlockEntity) {
+            ((FallingBlockEntityExtension) fallingBlockEntity).setDamage(AnvilBlockEntity.getDamage(), AnvilBlockEntity.getMaxDamage());
+        }
+        return fallingBlockEntity;
+    }
+
     @Nullable
     @Override
     public BlockState getPlacementState(ItemPlacementContext ctx) {
         return this.getDefaultState().with(FACING, ctx.getHorizontalPlayerFacing().rotateYClockwise());
     }
-    
+
     @Override
     //放置时候调用,world 放置所在世界,pos 放置位置(坐标等信息),state 块状态,placer 放置的玩家,itemStack 方块的物品堆栈
     public void onPlaced(World world, BlockPos pos, BlockState state, LivingEntity placer, ItemStack itemStack) {
@@ -47,7 +55,7 @@ public class AtAnvilBlock extends AnvilBlock implements BlockEntityProvider {
             //用itemStack物品的损伤
             anvilBlockEntity.setMaxDamage(itemStack.getMaxDamage());
             //放置时候损伤一点耐久
-            anvilBlockEntity.addDamage(itemStack.getDamage()+1);
+            anvilBlockEntity.addDamage(itemStack.getDamage() + 1);
         }
     }
 
@@ -65,7 +73,7 @@ public class AtAnvilBlock extends AnvilBlock implements BlockEntityProvider {
     public @Nullable BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
         return new AnvilBlockEntity(pos, state);
     }
-    
+
     @Nullable
     @Override
     protected NamedScreenHandlerFactory createScreenHandlerFactory(BlockState state, World world, BlockPos pos) {
@@ -73,18 +81,12 @@ public class AtAnvilBlock extends AnvilBlock implements BlockEntityProvider {
                 (syncId, inventory, player) -> new AtAnvilScreenHandler(syncId, inventory, ScreenHandlerContext.create(world, pos)), getName()
         );
     }
+
     @Override
     protected void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         if (canFallThrough(world.getBlockState(pos.down())) && pos.getY() >= world.getBottomY()) {
-            FallingBlockEntity fallingBlockEntity = spawnFromBlock(world, pos, state,world.getBlockEntity(pos));
+            FallingBlockEntity fallingBlockEntity = spawnFromBlock(world, pos, state, world.getBlockEntity(pos));
             this.configureFallingBlockEntity(fallingBlockEntity);
         }
-    }
-    public static FallingBlockEntity spawnFromBlock(World world, BlockPos pos, BlockState state, BlockEntity blockEntity) {
-        FallingBlockEntity fallingBlockEntity = FallingBlockEntity.spawnFromBlock(world, pos, state);
-        if (blockEntity instanceof AnvilBlockEntity AnvilBlockEntity) {
-            ((FallingBlockEntityExtension)fallingBlockEntity).setDamage(AnvilBlockEntity.getDamage(), AnvilBlockEntity.getMaxDamage());
-        }
-        return fallingBlockEntity;
     }
 }

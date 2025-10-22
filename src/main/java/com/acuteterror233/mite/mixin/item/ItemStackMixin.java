@@ -18,7 +18,7 @@ import java.util.function.Consumer;
 @Mixin(ItemStack.class)
 public abstract class ItemStackMixin {
 
-    @Inject(method = "appendAttributeModifierTooltip",at = @At("HEAD"), cancellable = true)
+    @Inject(method = "appendAttributeModifierTooltip", at = @At("HEAD"), cancellable = true)
     private void appendAttributeModifierTooltip(
             Consumer<Text> textConsumer, @Nullable PlayerEntity player, RegistryEntry<EntityAttribute> attribute, EntityAttributeModifier modifier, CallbackInfo ci
     ) {

@@ -10,10 +10,12 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(value = AbstractBlock.Settings.class)
 public abstract class AbstractBlockSettingsMixin {
-    @Shadow boolean toolRequired;
+    @Shadow
+    boolean toolRequired;
+
     @Inject(method = "sounds", at = @At("HEAD"))
     public void sounds(BlockSoundGroup soundGroup, CallbackInfoReturnable<AbstractBlock.Settings> cir) {
-        if (soundGroup == BlockSoundGroup.WOOD){
+        if (soundGroup == BlockSoundGroup.WOOD) {
             this.toolRequired = true;
         }
     }

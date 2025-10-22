@@ -26,6 +26,7 @@ import net.minecraft.world.event.GameEvent;
 public class AtBucketItem extends BucketItem {
     private final Item item;
     private final Fluid fluid;
+
     //注册名格式必须是"生物/液体_材质"
     public AtBucketItem(Fluid fluid, Settings settings, Item empty_barrel) {
         super(fluid, settings);
@@ -59,7 +60,7 @@ public class AtBucketItem extends BucketItem {
                         world.emitGameEvent(user, GameEvent.FLUID_PICKUP, blockPos);
                         ItemStack itemStack3 = ItemUsage.exchangeStack(itemStack, user, itemStack2);
                         if (!world.isClient) {
-                            Criteria.FILLED_BUCKET.trigger((ServerPlayerEntity)user, itemStack2);
+                            Criteria.FILLED_BUCKET.trigger((ServerPlayerEntity) user, itemStack2);
                         }
 
                         return ActionResult.SUCCESS.withNewHandStack(itemStack3);
@@ -73,7 +74,7 @@ public class AtBucketItem extends BucketItem {
                 if (this.placeFluid(user, world, blockPos3, blockHitResult)) {
                     this.onEmptied(user, world, itemStack, blockPos3);
                     if (user instanceof ServerPlayerEntity) {
-                        Criteria.PLACED_BLOCK.trigger((ServerPlayerEntity)user, blockPos3, itemStack);
+                        Criteria.PLACED_BLOCK.trigger((ServerPlayerEntity) user, blockPos3, itemStack);
                     }
                     user.incrementStat(Stats.USED.getOrCreateStat(this));
                     ItemStack itemStack2 = ItemUsage.exchangeStack(itemStack, user, !user.isInCreativeMode() ? new ItemStack(item) : itemStack);

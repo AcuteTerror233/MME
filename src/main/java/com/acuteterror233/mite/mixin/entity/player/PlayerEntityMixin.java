@@ -20,27 +20,14 @@ import java.util.Objects;
 
 @Mixin(PlayerEntity.class)
 public abstract class PlayerEntityMixin extends LivingEntity {
+    @Shadow
+    public int experienceLevel;
+    @Shadow
+    protected HungerManager hungerManager;
     protected PlayerEntityMixin(EntityType<? extends LivingEntity> entityType, World world) {
         super(entityType, world);
     }
-    @Shadow public int experienceLevel;
-    @Shadow protected HungerManager hungerManager;
 
-    @Inject(method = "getNextLevelExperience", at = @At("RETURN"), cancellable = true)
-    public void getNextLevelExperience(CallbackInfoReturnable<Integer> cir) {
-        cir.setReturnValue(cir.getReturnValue()*2);
-    }
-
-    @Inject(method = "tick", at = @At("HEAD"))
-    public void tick(CallbackInfo ci) {
-        int maxHealth = Math.max(6, Math.min(20, 6 + (this.experienceLevel / 5) * 2));
-        setMaxHealth(maxHealth);
-    }
-    @Unique
-    public void setMaxHealth(int max) {
-        Objects.requireNonNull(getAttributes().getCustomInstance(EntityAttributes.MAX_HEALTH)).setBaseValue(max);
-        ((HungerManagerExtension) hungerManager).setMaxFoodLevel(max);
-    }
     @Inject(method = "createPlayerAttributes", at = @At("RETURN"), cancellable = true)
     private static void createPlayerAttributes(CallbackInfoReturnable<DefaultAttributeContainer.Builder> cir) {
         cir.setReturnValue(cir.getReturnValue()
@@ -61,5 +48,22 @@ public abstract class PlayerEntityMixin extends LivingEntity {
 //                .add(EntityAttributes.MINING_EFFICIENCY)
 //                .add(EntityAttributes.SWEEPING_DAMAGE_RATIO)
 //                .add(EntityAttributes.MAX_HEALTH, 6);
+    }
+
+    @Inject(method = "getNextLevelExperience", at = @At("RETURN"), cancellable = true)
+    public void getNextLevelExperience(CallbackInfoReturnable<Integer> cir) {
+        cir.setReturnValue(cir.getReturnValue() * 2);
+    }
+
+    @Inject(method = "tick", at = @At("HEAD"))
+    public void tick(CallbackInfo ci) {
+        int maxHealth = Math.max(6, Math.min(20, 6 + (this.experienceLevel / 5) * 2));
+        setMaxHealth(maxHealth);
+    }
+
+    @Unique
+    public void setMaxHealth(int max) {
+        Objects.requireNonNull(getAttributes().getCustomInstance(EntityAttributes.MAX_HEALTH)).setBaseValue(max);
+        ((HungerManagerExtension) hungerManager).setMaxFoodLevel(max);
     }
 }

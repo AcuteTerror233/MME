@@ -27,212 +27,212 @@ import java.util.function.Function;
 
 public class AtItems {
     public static final Item ADAMANTIUM_HELMET = register(
-        "adamantium_helmet",
-        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.ADAMANTIUM_ARMOR_MATERIAL,EquipmentType.HELMET)
+            "adamantium_helmet",
+            ((ItemSettingsExtension) new Item.Settings()).at_armor(AtArmorMaterials.ADAMANTIUM_ARMOR_MATERIAL, EquipmentType.HELMET)
     );
     public static final Item ADAMANTIUM_CHESTPLATE = register(
-        "adamantium_chestplate",
-        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.ADAMANTIUM_ARMOR_MATERIAL,EquipmentType.CHESTPLATE)
+            "adamantium_chestplate",
+            ((ItemSettingsExtension) new Item.Settings()).at_armor(AtArmorMaterials.ADAMANTIUM_ARMOR_MATERIAL, EquipmentType.CHESTPLATE)
     );
     public static final Item ADAMANTIUM_LEGGINGS = register(
-        "adamantium_leggings",
-        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.ADAMANTIUM_ARMOR_MATERIAL,EquipmentType.LEGGINGS)
+            "adamantium_leggings",
+            ((ItemSettingsExtension) new Item.Settings()).at_armor(AtArmorMaterials.ADAMANTIUM_ARMOR_MATERIAL, EquipmentType.LEGGINGS)
     );
     public static final Item ADAMANTIUM_BOOTS = register(
-        "adamantium_boots",
-        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.ADAMANTIUM_ARMOR_MATERIAL,EquipmentType.BOOTS)
+            "adamantium_boots",
+            ((ItemSettingsExtension) new Item.Settings()).at_armor(AtArmorMaterials.ADAMANTIUM_ARMOR_MATERIAL, EquipmentType.BOOTS)
     );
     public static final Item ADAMANTIUM_CHAINMAIL_BOOTS = register(
-        "adamantium_chainmail_boots",
-        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.ADAMANTIUM_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.BOOTS)
+            "adamantium_chainmail_boots",
+            ((ItemSettingsExtension) new Item.Settings()).at_armor(AtArmorMaterials.ADAMANTIUM_CHAINMAIL_ARMOR_MATERIAL, EquipmentType.BOOTS)
     );
     public static final Item ADAMANTIUM_CHAINMAIL_CHESTPLATE = register(
-        "adamantium_chainmail_chestplate",
-        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.ADAMANTIUM_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.CHESTPLATE)
+            "adamantium_chainmail_chestplate",
+            ((ItemSettingsExtension) new Item.Settings()).at_armor(AtArmorMaterials.ADAMANTIUM_CHAINMAIL_ARMOR_MATERIAL, EquipmentType.CHESTPLATE)
     );
     public static final Item ADAMANTIUM_CHAINMAIL_HELMET = register(
-        "adamantium_chainmail_helmet",
-        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.ADAMANTIUM_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.HELMET)
+            "adamantium_chainmail_helmet",
+            ((ItemSettingsExtension) new Item.Settings()).at_armor(AtArmorMaterials.ADAMANTIUM_CHAINMAIL_ARMOR_MATERIAL, EquipmentType.HELMET)
     );
     public static final Item ADAMANTIUM_CHAINMAIL_LEGGINGS = register(
-        "adamantium_chainmail_leggings",
-        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.ADAMANTIUM_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.LEGGINGS)
+            "adamantium_chainmail_leggings",
+            ((ItemSettingsExtension) new Item.Settings()).at_armor(AtArmorMaterials.ADAMANTIUM_CHAINMAIL_ARMOR_MATERIAL, EquipmentType.LEGGINGS)
     );
     public static final Item ANCIENT_METAL_HELMET = register(
-        "ancient_metal_helmet",
-        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.ANCIENT_METAL_ARMOR_MATERIAL,EquipmentType.HELMET)
+            "ancient_metal_helmet",
+            ((ItemSettingsExtension) new Item.Settings()).at_armor(AtArmorMaterials.ANCIENT_METAL_ARMOR_MATERIAL, EquipmentType.HELMET)
     );
     public static final Item ANCIENT_METAL_CHESTPLATE = register(
-        "ancient_metal_chestplate",
-        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.ANCIENT_METAL_ARMOR_MATERIAL,EquipmentType.CHESTPLATE)
+            "ancient_metal_chestplate",
+            ((ItemSettingsExtension) new Item.Settings()).at_armor(AtArmorMaterials.ANCIENT_METAL_ARMOR_MATERIAL, EquipmentType.CHESTPLATE)
     );
     public static final Item ANCIENT_METAL_LEGGINGS = register(
-        "ancient_metal_leggings",
-        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.ANCIENT_METAL_ARMOR_MATERIAL,EquipmentType.LEGGINGS)
+            "ancient_metal_leggings",
+            ((ItemSettingsExtension) new Item.Settings()).at_armor(AtArmorMaterials.ANCIENT_METAL_ARMOR_MATERIAL, EquipmentType.LEGGINGS)
     );
     public static final Item ANCIENT_METAL_BOOTS = register(
-        "ancient_metal_boots",
-        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.ANCIENT_METAL_ARMOR_MATERIAL,EquipmentType.BOOTS)
+            "ancient_metal_boots",
+            ((ItemSettingsExtension) new Item.Settings()).at_armor(AtArmorMaterials.ANCIENT_METAL_ARMOR_MATERIAL, EquipmentType.BOOTS)
     );
     public static final Item ANCIENT_METAL_CHAINMAIL_BOOTS = register(
-        "ancient_metal_chainmail_boots",
-        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.ANCIENT_METAL_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.BOOTS)
+            "ancient_metal_chainmail_boots",
+            ((ItemSettingsExtension) new Item.Settings()).at_armor(AtArmorMaterials.ANCIENT_METAL_CHAINMAIL_ARMOR_MATERIAL, EquipmentType.BOOTS)
     );
     public static final Item ANCIENT_METAL_CHAINMAIL_CHESTPLATE = register(
-        "ancient_metal_chainmail_chestplate",
-        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.ANCIENT_METAL_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.CHESTPLATE)
+            "ancient_metal_chainmail_chestplate",
+            ((ItemSettingsExtension) new Item.Settings()).at_armor(AtArmorMaterials.ANCIENT_METAL_CHAINMAIL_ARMOR_MATERIAL, EquipmentType.CHESTPLATE)
     );
     public static final Item ANCIENT_METAL_CHAINMAIL_HELMET = register(
-        "ancient_metal_chainmail_helmet",
-        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.ANCIENT_METAL_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.HELMET)
+            "ancient_metal_chainmail_helmet",
+            ((ItemSettingsExtension) new Item.Settings()).at_armor(AtArmorMaterials.ANCIENT_METAL_CHAINMAIL_ARMOR_MATERIAL, EquipmentType.HELMET)
     );
     public static final Item ANCIENT_METAL_CHAINMAIL_LEGGINGS = register(
-        "ancient_metal_chainmail_leggings",
-        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.ANCIENT_METAL_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.LEGGINGS)
+            "ancient_metal_chainmail_leggings",
+            ((ItemSettingsExtension) new Item.Settings()).at_armor(AtArmorMaterials.ANCIENT_METAL_CHAINMAIL_ARMOR_MATERIAL, EquipmentType.LEGGINGS)
     );
-    public static final Item COPPER_HELMET =  register(
-        "copper_helmet",
-        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.COPPER_ARMOR_MATERIAL,EquipmentType.HELMET)
+    public static final Item COPPER_HELMET = register(
+            "copper_helmet",
+            ((ItemSettingsExtension) new Item.Settings()).at_armor(AtArmorMaterials.COPPER_ARMOR_MATERIAL, EquipmentType.HELMET)
     );
     public static final Item COPPER_CHESTPLATE = register(
-        "copper_chestplate",
-        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.COPPER_ARMOR_MATERIAL,EquipmentType.CHESTPLATE)
+            "copper_chestplate",
+            ((ItemSettingsExtension) new Item.Settings()).at_armor(AtArmorMaterials.COPPER_ARMOR_MATERIAL, EquipmentType.CHESTPLATE)
     );
     public static final Item COPPER_LEGGINGS = register(
-        "copper_leggings",
-        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.COPPER_ARMOR_MATERIAL,EquipmentType.LEGGINGS)
+            "copper_leggings",
+            ((ItemSettingsExtension) new Item.Settings()).at_armor(AtArmorMaterials.COPPER_ARMOR_MATERIAL, EquipmentType.LEGGINGS)
     );
     public static final Item COPPER_BOOTS = register(
-        "copper_boots",
-        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.COPPER_ARMOR_MATERIAL,EquipmentType.BOOTS)
+            "copper_boots",
+            ((ItemSettingsExtension) new Item.Settings()).at_armor(AtArmorMaterials.COPPER_ARMOR_MATERIAL, EquipmentType.BOOTS)
     );
     public static final Item COPPER_CHAINMAIL_BOOTS = register(
-        "copper_chainmail_boots",
-        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.COPPER_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.BOOTS)
+            "copper_chainmail_boots",
+            ((ItemSettingsExtension) new Item.Settings()).at_armor(AtArmorMaterials.COPPER_CHAINMAIL_ARMOR_MATERIAL, EquipmentType.BOOTS)
     );
     public static final Item COPPER_CHAINMAIL_CHESTPLATE = register(
-        "copper_chainmail_chestplate",
-        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.COPPER_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.CHESTPLATE)
+            "copper_chainmail_chestplate",
+            ((ItemSettingsExtension) new Item.Settings()).at_armor(AtArmorMaterials.COPPER_CHAINMAIL_ARMOR_MATERIAL, EquipmentType.CHESTPLATE)
     );
     public static final Item COPPER_CHAINMAIL_HELMET = register(
-        "copper_chainmail_helmet",
-        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.COPPER_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.HELMET)
+            "copper_chainmail_helmet",
+            ((ItemSettingsExtension) new Item.Settings()).at_armor(AtArmorMaterials.COPPER_CHAINMAIL_ARMOR_MATERIAL, EquipmentType.HELMET)
     );
     public static final Item COPPER_CHAINMAIL_LEGGINGS = register(
-        "copper_chainmail_leggings",
-        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.COPPER_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.LEGGINGS)
+            "copper_chainmail_leggings",
+            ((ItemSettingsExtension) new Item.Settings()).at_armor(AtArmorMaterials.COPPER_CHAINMAIL_ARMOR_MATERIAL, EquipmentType.LEGGINGS)
     );
     public static final Item MITHRIL_HELMET = register(
-        "mithril_helmet",
-        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.MITHRIL_ARMOR_MATERIAL,EquipmentType.HELMET)
+            "mithril_helmet",
+            ((ItemSettingsExtension) new Item.Settings()).at_armor(AtArmorMaterials.MITHRIL_ARMOR_MATERIAL, EquipmentType.HELMET)
     );
     public static final Item MITHRIL_CHESTPLATE = register(
-        "mithril_chestplate",
-        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.MITHRIL_ARMOR_MATERIAL,EquipmentType.CHESTPLATE)
+            "mithril_chestplate",
+            ((ItemSettingsExtension) new Item.Settings()).at_armor(AtArmorMaterials.MITHRIL_ARMOR_MATERIAL, EquipmentType.CHESTPLATE)
     );
     public static final Item MITHRIL_LEGGINGS = register(
-        "mithril_leggings",
-        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.MITHRIL_ARMOR_MATERIAL,EquipmentType.LEGGINGS)
+            "mithril_leggings",
+            ((ItemSettingsExtension) new Item.Settings()).at_armor(AtArmorMaterials.MITHRIL_ARMOR_MATERIAL, EquipmentType.LEGGINGS)
     );
     public static final Item MITHRIL_BOOTS = register(
-        "mithril_boots",
-        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.MITHRIL_ARMOR_MATERIAL,EquipmentType.BOOTS)
+            "mithril_boots",
+            ((ItemSettingsExtension) new Item.Settings()).at_armor(AtArmorMaterials.MITHRIL_ARMOR_MATERIAL, EquipmentType.BOOTS)
     );
-    public static final Item MITHRIL_CHAINMAIL_HELMET  = register(
-        "mithril_chainmail_helmet",
-        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.MITHRIL_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.BOOTS)
+    public static final Item MITHRIL_CHAINMAIL_HELMET = register(
+            "mithril_chainmail_helmet",
+            ((ItemSettingsExtension) new Item.Settings()).at_armor(AtArmorMaterials.MITHRIL_CHAINMAIL_ARMOR_MATERIAL, EquipmentType.BOOTS)
     );
-    public static final Item MITHRIL_CHAINMAIL_CHESTPLATE  = register(
-        "mithril_chainmail_chestplate",
-        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.MITHRIL_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.CHESTPLATE)
+    public static final Item MITHRIL_CHAINMAIL_CHESTPLATE = register(
+            "mithril_chainmail_chestplate",
+            ((ItemSettingsExtension) new Item.Settings()).at_armor(AtArmorMaterials.MITHRIL_CHAINMAIL_ARMOR_MATERIAL, EquipmentType.CHESTPLATE)
     );
-    public static final Item MITHRIL_CHAINMAIL_LEGGINGS  = register(
-        "mithril_chainmail_leggings",
-        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.MITHRIL_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.LEGGINGS)
+    public static final Item MITHRIL_CHAINMAIL_LEGGINGS = register(
+            "mithril_chainmail_leggings",
+            ((ItemSettingsExtension) new Item.Settings()).at_armor(AtArmorMaterials.MITHRIL_CHAINMAIL_ARMOR_MATERIAL, EquipmentType.LEGGINGS)
     );
-    public static final Item MITHRIL_CHAINMAIL_BOOTS  = register(
-        "mithril_chainmail_boots",
-        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.MITHRIL_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.BOOTS)
+    public static final Item MITHRIL_CHAINMAIL_BOOTS = register(
+            "mithril_chainmail_boots",
+            ((ItemSettingsExtension) new Item.Settings()).at_armor(AtArmorMaterials.MITHRIL_CHAINMAIL_ARMOR_MATERIAL, EquipmentType.BOOTS)
     );
     public static final Item RUSTED_IRON_HELMET = register(
-        "rusted_iron_helmet",
-        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.RUSTED_IRON_ARMOR_MATERIAL,EquipmentType.HELMET)
+            "rusted_iron_helmet",
+            ((ItemSettingsExtension) new Item.Settings()).at_armor(AtArmorMaterials.RUSTED_IRON_ARMOR_MATERIAL, EquipmentType.HELMET)
     );
     public static final Item RUSTED_IRON_CHESTPLATE = register(
-        "rusted_iron_chestplate",
-        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.RUSTED_IRON_ARMOR_MATERIAL,EquipmentType.CHESTPLATE)
+            "rusted_iron_chestplate",
+            ((ItemSettingsExtension) new Item.Settings()).at_armor(AtArmorMaterials.RUSTED_IRON_ARMOR_MATERIAL, EquipmentType.CHESTPLATE)
     );
     public static final Item RUSTED_IRON_LEGGINGS = register(
-        "rusted_iron_leggings",
-        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.RUSTED_IRON_ARMOR_MATERIAL,EquipmentType.LEGGINGS)
+            "rusted_iron_leggings",
+            ((ItemSettingsExtension) new Item.Settings()).at_armor(AtArmorMaterials.RUSTED_IRON_ARMOR_MATERIAL, EquipmentType.LEGGINGS)
     );
     public static final Item RUSTED_IRON_BOOTS = register(
-        "rusted_iron_boots",
-        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.RUSTED_IRON_ARMOR_MATERIAL,EquipmentType.BOOTS)
+            "rusted_iron_boots",
+            ((ItemSettingsExtension) new Item.Settings()).at_armor(AtArmorMaterials.RUSTED_IRON_ARMOR_MATERIAL, EquipmentType.BOOTS)
     );
     public static final Item RUSTED_IRON_CHAINMAIL_HELMET = register(
-        "rusted_iron_chainmail_helmet",
-        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.RUSTED_IRON_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.HELMET)
+            "rusted_iron_chainmail_helmet",
+            ((ItemSettingsExtension) new Item.Settings()).at_armor(AtArmorMaterials.RUSTED_IRON_CHAINMAIL_ARMOR_MATERIAL, EquipmentType.HELMET)
     );
     public static final Item RUSTED_IRON_CHAINMAIL_CHESTPLATE = register(
-        "rusted_iron_chainmail_chestplate",
-        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.RUSTED_IRON_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.CHESTPLATE)
+            "rusted_iron_chainmail_chestplate",
+            ((ItemSettingsExtension) new Item.Settings()).at_armor(AtArmorMaterials.RUSTED_IRON_CHAINMAIL_ARMOR_MATERIAL, EquipmentType.CHESTPLATE)
     );
     public static final Item RUSTED_IRON_CHAINMAIL_LEGGINGS = register(
-        "rusted_iron_chainmail_leggings",
-        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.RUSTED_IRON_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.LEGGINGS)
+            "rusted_iron_chainmail_leggings",
+            ((ItemSettingsExtension) new Item.Settings()).at_armor(AtArmorMaterials.RUSTED_IRON_CHAINMAIL_ARMOR_MATERIAL, EquipmentType.LEGGINGS)
     );
     public static final Item RUSTED_IRON_CHAINMAIL_BOOTS = register(
-        "rusted_iron_chainmail_boots",
-        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.RUSTED_IRON_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.BOOTS)
+            "rusted_iron_chainmail_boots",
+            ((ItemSettingsExtension) new Item.Settings()).at_armor(AtArmorMaterials.RUSTED_IRON_CHAINMAIL_ARMOR_MATERIAL, EquipmentType.BOOTS)
     );
     public static final Item SILVER_HELMET = register(
-        "silver_helmet",
-        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.SILVER_ARMOR_MATERIAL,EquipmentType.HELMET)
+            "silver_helmet",
+            ((ItemSettingsExtension) new Item.Settings()).at_armor(AtArmorMaterials.SILVER_ARMOR_MATERIAL, EquipmentType.HELMET)
     );
-     public static final Item SILVER_CHESTPLATE = register(
-        "silver_chestplate",
-        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.SILVER_ARMOR_MATERIAL,EquipmentType.CHESTPLATE)
+    public static final Item SILVER_CHESTPLATE = register(
+            "silver_chestplate",
+            ((ItemSettingsExtension) new Item.Settings()).at_armor(AtArmorMaterials.SILVER_ARMOR_MATERIAL, EquipmentType.CHESTPLATE)
     );
     public static final Item SILVER_LEGGINGS = register(
-        "silver_leggings",
-        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.SILVER_ARMOR_MATERIAL,EquipmentType.LEGGINGS)
+            "silver_leggings",
+            ((ItemSettingsExtension) new Item.Settings()).at_armor(AtArmorMaterials.SILVER_ARMOR_MATERIAL, EquipmentType.LEGGINGS)
     );
     public static final Item SILVER_BOOTS = register(
-        "silver_boots",
-        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.SILVER_ARMOR_MATERIAL,EquipmentType.BOOTS)
+            "silver_boots",
+            ((ItemSettingsExtension) new Item.Settings()).at_armor(AtArmorMaterials.SILVER_ARMOR_MATERIAL, EquipmentType.BOOTS)
     );
     public static final Item SILVER_CHAINMAIL_HELMET = register(
-        "silver_chainmail_helmet",
-        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.SILVER_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.HELMET)
+            "silver_chainmail_helmet",
+            ((ItemSettingsExtension) new Item.Settings()).at_armor(AtArmorMaterials.SILVER_CHAINMAIL_ARMOR_MATERIAL, EquipmentType.HELMET)
     );
     public static final Item SILVER_CHAINMAIL_CHESTPLATE = register(
-        "silver_chainmail_chestplate",
-        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.SILVER_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.CHESTPLATE)
+            "silver_chainmail_chestplate",
+            ((ItemSettingsExtension) new Item.Settings()).at_armor(AtArmorMaterials.SILVER_CHAINMAIL_ARMOR_MATERIAL, EquipmentType.CHESTPLATE)
     );
     public static final Item SILVER_CHAINMAIL_LEGGINGS = register(
-        "silver_chainmail_leggings",
-        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.SILVER_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.LEGGINGS)
+            "silver_chainmail_leggings",
+            ((ItemSettingsExtension) new Item.Settings()).at_armor(AtArmorMaterials.SILVER_CHAINMAIL_ARMOR_MATERIAL, EquipmentType.LEGGINGS)
     );
     public static final Item SILVER_CHAINMAIL_BOOTS = register(
-        "silver_chainmail_boots",
-        ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.SILVER_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.BOOTS)
+            "silver_chainmail_boots",
+            ((ItemSettingsExtension) new Item.Settings()).at_armor(AtArmorMaterials.SILVER_CHAINMAIL_ARMOR_MATERIAL, EquipmentType.BOOTS)
     );
     public static final Item GOLDEN_CHAINMAIL_HELMET = register(
             "golden_chainmail_helmet",
-            ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.GOLD_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.HELMET)
+            ((ItemSettingsExtension) new Item.Settings()).at_armor(AtArmorMaterials.GOLD_CHAINMAIL_ARMOR_MATERIAL, EquipmentType.HELMET)
     );
     public static final Item GOLDEN_CHAINMAIL_CHESTPLATE = register(
             "golden_chainmail_chestplate",
-            ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.GOLD_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.CHESTPLATE)
+            ((ItemSettingsExtension) new Item.Settings()).at_armor(AtArmorMaterials.GOLD_CHAINMAIL_ARMOR_MATERIAL, EquipmentType.CHESTPLATE)
     );
     public static final Item GOLDEN_CHAINMAIL_LEGGINGS = register(
             "golden_chainmail_leggings",
-            ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.GOLD_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.LEGGINGS)
+            ((ItemSettingsExtension) new Item.Settings()).at_armor(AtArmorMaterials.GOLD_CHAINMAIL_ARMOR_MATERIAL, EquipmentType.LEGGINGS)
     );
     public static final Item GOLDEN_CHAINMAIL_BOOTS = register(
             "golden_chainmail_boots",
-            ((ItemSettingsExtension)new Item.Settings()).at_armor(AtArmorMaterials.GOLD_CHAINMAIL_ARMOR_MATERIAL,EquipmentType.BOOTS)
+            ((ItemSettingsExtension) new Item.Settings()).at_armor(AtArmorMaterials.GOLD_CHAINMAIL_ARMOR_MATERIAL, EquipmentType.BOOTS)
     );
 
     public static final Item BANANA = register(
@@ -317,34 +317,34 @@ public class AtItems {
             new Item.Settings().axe(AtToolMaterial.ADAMANTIUM, 5.0F, -3.0F));
     public static final Item ADAMANTIUM_BATTLE_AXE = register("adamantium_battle_axe",
             Settings -> new AxeItem(AtToolMaterial.ADAMANTIUM, 5.0F, -3.0F, Settings),
-            ((ItemSettingsExtension)new Item.Settings()).battle_axe(AtToolMaterial.ADAMANTIUM, 5.0F, -3.0F));
+            ((ItemSettingsExtension) new Item.Settings()).battle_axe(AtToolMaterial.ADAMANTIUM, 5.0F, -3.0F));
     public static final Item ADAMANTIUM_DAGGER = register("adamantium_dagger",
-            ((ItemSettingsExtension)new Item.Settings()).dagger(AtToolMaterial.ADAMANTIUM, 5.0F, -3.0F));
+            ((ItemSettingsExtension) new Item.Settings()).dagger(AtToolMaterial.ADAMANTIUM, 5.0F, -3.0F));
     public static final Item ADAMANTIUM_HATCHET = register("adamantium_hatchet",
             Settings -> new AxeItem(AtToolMaterial.ADAMANTIUM, 5.0F, -3.0F, Settings),
-            ((ItemSettingsExtension)new Item.Settings()).hand_axe(AtToolMaterial.ADAMANTIUM, 5.0F, -3.0F));
+            ((ItemSettingsExtension) new Item.Settings()).hand_axe(AtToolMaterial.ADAMANTIUM, 5.0F, -3.0F));
     public static final Item ADAMANTIUM_HOE = register("adamantium_hoe",
             Settings -> new HoeItem(AtToolMaterial.ADAMANTIUM, 5.0F, -3.0F, Settings),
             new Item.Settings().hoe(AtToolMaterial.ADAMANTIUM, 5.0F, -3.0F));
     public static final Item ADAMANTIUM_KNIFE = register("adamantium_knife",
-            ((ItemSettingsExtension)new Item.Settings()).dagger(AtToolMaterial.ADAMANTIUM, 5.0F, -3.0F));
+            ((ItemSettingsExtension) new Item.Settings()).dagger(AtToolMaterial.ADAMANTIUM, 5.0F, -3.0F));
     public static final Item ADAMANTIUM_MATTOCK = register("adamantium_mattock",
-            Settings -> new HoeItem(AtToolMaterial.ADAMANTIUM, 5.0F, -3.0F,Settings),
-            new Item.Settings().hoe(AtToolMaterial.ADAMANTIUM, 5.0F, -3.0F));
+            Settings -> new HoeItem(AtToolMaterial.ADAMANTIUM, 5.0F, -3.0F, Settings),
+            ((ItemSettingsExtension)new Item.Settings()).mattock(AtToolMaterial.ADAMANTIUM, 5.0F, -3.0F));
     public static final Item ADAMANTIUM_PICKAXE = register("adamantium_pickaxe",
-            new Item.Settings().pickaxe(AtToolMaterial.ADAMANTIUM,  5.0F, -3.0F));
+            new Item.Settings().pickaxe(AtToolMaterial.ADAMANTIUM, 5.0F, -3.0F));
     public static final Item ADAMANTIUM_SCYTHE = register("adamantium_scythe",
-            ((ItemSettingsExtension)new Item.Settings()).scythe(AtToolMaterial.ADAMANTIUM,  5.0F, -3.0F));
+            ((ItemSettingsExtension) new Item.Settings()).scythe(AtToolMaterial.ADAMANTIUM, 5.0F, -3.0F));
     public static final Item ADAMANTIUM_SHEARS = register("adamantium_shears",
             ShearsItem::new,
-            ((ItemSettingsExtension)new Item.Settings()).shears(AtToolMaterial.ADAMANTIUM,  5.0F, -3.0F));
+            ((ItemSettingsExtension) new Item.Settings()).shears(AtToolMaterial.ADAMANTIUM, 5.0F, -3.0F));
     public static final Item ADAMANTIUM_SHOVEL = register("adamantium_shovel",
             Settings -> new ShovelItem(ToolMaterial.WOOD, 1.5F, -3.0F, Settings),
             new Item.Settings());
     public static final Item ADAMANTIUM_SWORD = register("adamantium_sword",
             new Item.Settings().sword(AtToolMaterial.ADAMANTIUM, 5.0F, -3.0F));
     public static final Item ADAMANTIUM_WAR_HAMMER = register("adamantium_war_hammer",
-            ((ItemSettingsExtension)new Item.Settings()).war_hammer(AtToolMaterial.ADAMANTIUM, 5.0F, -3.0F));
+            ((ItemSettingsExtension) new Item.Settings()).war_hammer(AtToolMaterial.ADAMANTIUM, 5.0F, -3.0F));
 
     public static final Item ANCIENT_METAL_AXE = register("ancient_metal_axe");
     public static final Item ANCIENT_METAL_BATTLE_AXE = register("ancient_metal_battle_axe");
@@ -789,7 +789,6 @@ public class AtItems {
     );
     public static final Item MITHRIL_BOW = register("mithril_bow", BowItem::new, new Item.Settings().maxDamage(128).enchantable(1));
     public static final Item ANCIENT_METAL_BOW = register("ancient_metal_bow", BowItem::new, new Item.Settings().maxDamage(64).enchantable(1));
-
     public static final Item ADAMANTIUM_FISHING_ROD = register("adamantium_fishing_rod", FishingRodItem::new, new Item.Settings().maxDamage(128).enchantable(1));
     public static final Item ANCIENT_METAL_FISHING_ROD = register("ancient_metal_fishing_rod", FishingRodItem::new, new Item.Settings().maxDamage(96).enchantable(1));
     public static final Item COPPER_FISHING_ROD = register("copper_fishing_rod", FishingRodItem::new, new Item.Settings().maxDamage(8).enchantable(1));
@@ -799,383 +798,423 @@ public class AtItems {
     public static final Item MITHRIL_FISHING_ROD = register("mithril_fishing_rod", FishingRodItem::new, new Item.Settings().maxDamage(64).enchantable(1));
     public static final Item OBSIDIAN_FISHING_ROD = register("obsidian_fishing_rod", FishingRodItem::new, new Item.Settings().maxDamage(32).enchantable(1));
     public static final Item SILVER_FISHING_ROD = register("silver_fishing_rod", FishingRodItem::new, new Item.Settings().maxDamage(8).enchantable(1));
-
     public static final Item ADAMANTIUM_INGOT = register("adamantium_ingot");
     public static final Item ANCIENT_METAL_INGOT = register("ancient_metal_ingot");
     public static final Item MITHRIL_INGOT = register("mithril_ingot");
     public static final Item SILVER_INGOT = register("silver_ingot");
-
     public static final Item ADAMANTIUM_NUGGET = register("adamantium_nugget");
     public static final Item ANCIENT_METAL_NUGGET = register("ancient_metal_nugget");
     public static final Item MITHRIL_NUGGET = register("mithril_nugget");
     public static final Item SILVER_NUGGET = register("silver_nugget");
-
     public static final Item DIAMOND_SHARD = register("diamond_shard");
     public static final Item EMERALD_SHARD = register("emerald_shard");
     public static final Item FLINT_SHARD = register("flint_shard");
     public static final Item GLASS_SHARD = register("glass_shard");
     public static final Item OBSIDIAN_SHARD = register("obsidian_shard");
     public static final Item QUARTZ_SHARD = register("quartz_shard");
-
     public static final ItemGroup AT_MINT_GROUP = FabricItemGroup.builder()
             .icon(() -> new ItemStack(ADAMANTIUM_HELMET))
             .displayName(Text.translatable("itemGroup.at_mite.item_group"))
             .entries((context, entries) -> {
-                    entries.add(AtBlocks.ADAMANTIUM_ANVIL);
-                    entries.add(chipped(AtBlocks.CHIPPED_ADAMANTIUM_ANVIL));
-                    entries.add(damaged(AtBlocks.DAMAGED_ADAMANTIUM_ANVIL));
-                    entries.add(AtBlocks.MITHRIL_ANVIL);
-                    entries.add(chipped(AtBlocks.CHIPPED_MITHRIL_ANVIL));
-                    entries.add(damaged(AtBlocks.DAMAGED_MITHRIL_ANVIL));
-                    entries.add(AtBlocks.ANCIENT_METAL_ANVIL);
-                    entries.add(chipped(AtBlocks.CHIPPED_ANCIENT_METAL_ANVIL));
-                    entries.add(damaged(AtBlocks.DAMAGED_ANCIENT_METAL_ANVIL));
-                    entries.add(AtBlocks.GOLDEN_ANVIL);
-                    entries.add(chipped(AtBlocks.CHIPPED_GOLDEN_ANVIL));
-                    entries.add(damaged(AtBlocks.DAMAGED_GOLDEN_ANVIL));
-                    entries.add(AtBlocks.COPPER_ANVIL);
-                    entries.add(chipped(AtBlocks.CHIPPED_COPPER_ANVIL));
-                    entries.add(damaged(AtBlocks.DAMAGED_COPPER_ANVIL));
-                    entries.add(AtBlocks.SILVER_ANVIL);
-                    entries.add(chipped(AtBlocks.CHIPPED_SILVER_ANVIL));
-                    entries.add(damaged(AtBlocks.DAMAGED_SILVER_ANVIL));
-                    entries.add(AtBlocks.ADAMANTIUM_BLOCK);
-                    entries.add(AtBlocks.ADAMANTIUM_BARS);
-                    entries.add(AtBlocks.ANCIENT_METAL_BARS);
-                    entries.add(AtBlocks.ANCIENT_METAL_BLOCK);
-                    entries.add(AtBlocks.GOLDEN_BARS);
-                    entries.add(AtBlocks.MANTLE);
-                    entries.add(AtBlocks.MITHRIL_BARS);
-                    entries.add(AtBlocks.MITHRIL_BLOCK);
-                    entries.add(AtBlocks.MITHRIL_ORE);
-                    entries.add(AtBlocks.SILVER_BARS);
-                    entries.add(AtBlocks.SILVER_BLOCK);
-                    entries.add(AtBlocks.SILVER_ORE);
-                    entries.add(AtBlocks.COPPER_BARS);
-                    entries.add(AtBlocks.ADAMANTIUM_DOOR);
-                    entries.add(AtBlocks.ANCIENT_METAL_DOOR);
-                    entries.add(AtBlocks.MITHRIL_DOOR);
-                    entries.add(AtBlocks.SILVER_DOOR);
-                    entries.add(AtBlocks.GOLDEN_DOOR);
-                    entries.add(DIAMOND_SHARD);
-                    entries.add(EMERALD_SHARD);
-                    entries.add(FLINT_SHARD);
-                    entries.add(GLASS_SHARD);
-                    entries.add(OBSIDIAN_SHARD);
-                    entries.add(QUARTZ_SHARD);
-                    entries.add(Items.NETHERITE_INGOT);
-                    entries.add(ADAMANTIUM_INGOT);
-                    entries.add(MITHRIL_INGOT);
-                    entries.add(ANCIENT_METAL_INGOT);
-                    entries.add(Items.IRON_INGOT);
-                    entries.add(Items.GOLD_INGOT);
-                    entries.add(SILVER_INGOT);
-                    entries.add(Items.COPPER_INGOT);
-                    entries.add(ADAMANTIUM_NUGGET);
-                    entries.add(ANCIENT_METAL_NUGGET);
-                    entries.add(MITHRIL_NUGGET);
-                    entries.add(SILVER_NUGGET);
-                    entries.add(ADAMANTIUM_FISHING_ROD);
-                    entries.add(ANCIENT_METAL_FISHING_ROD);
-                    entries.add(COPPER_FISHING_ROD);
-                    entries.add(FLINT_FISHING_ROD);
-                    entries.add(GOLDEN_FISHING_ROD);
-                    entries.add(IRON_FISHING_ROD);
-                    entries.add(MITHRIL_FISHING_ROD);
-                    entries.add(OBSIDIAN_FISHING_ROD);
-                    entries.add(SILVER_FISHING_ROD);
-                    entries.add(ADAMANTIUM_HELMET);
-                    entries.add(ADAMANTIUM_CHESTPLATE);
-                    entries.add(ADAMANTIUM_LEGGINGS);
-                    entries.add(ADAMANTIUM_BOOTS);
-                    entries.add(ADAMANTIUM_CHAINMAIL_HELMET);
-                    entries.add(ADAMANTIUM_CHAINMAIL_CHESTPLATE);
-                    entries.add(ADAMANTIUM_CHAINMAIL_LEGGINGS);
-                    entries.add(ADAMANTIUM_CHAINMAIL_BOOTS);
-                    entries.add(ANCIENT_METAL_HELMET);
-                    entries.add(ANCIENT_METAL_CHESTPLATE);
-                    entries.add(ANCIENT_METAL_LEGGINGS);
-                    entries.add(ANCIENT_METAL_BOOTS);
-                    entries.add(ANCIENT_METAL_CHAINMAIL_HELMET);
-                    entries.add(ANCIENT_METAL_CHAINMAIL_CHESTPLATE);
-                    entries.add(ANCIENT_METAL_CHAINMAIL_LEGGINGS);
-                    entries.add(ANCIENT_METAL_CHAINMAIL_BOOTS);
-                    entries.add(COPPER_HELMET);
-                    entries.add(COPPER_CHESTPLATE);
-                    entries.add(COPPER_LEGGINGS);
-                    entries.add(COPPER_BOOTS);
-                    entries.add(COPPER_CHAINMAIL_HELMET);
-                    entries.add(COPPER_CHAINMAIL_CHESTPLATE);
-                    entries.add(COPPER_CHAINMAIL_LEGGINGS);
-                    entries.add(COPPER_CHAINMAIL_BOOTS);
-                    entries.add(MITHRIL_HELMET);
-                    entries.add(MITHRIL_CHESTPLATE);
-                    entries.add(MITHRIL_LEGGINGS);
-                    entries.add(MITHRIL_BOOTS);
-                    entries.add(MITHRIL_CHAINMAIL_HELMET);
-                    entries.add(MITHRIL_CHAINMAIL_CHESTPLATE);
-                    entries.add(MITHRIL_CHAINMAIL_LEGGINGS);
-                    entries.add(MITHRIL_CHAINMAIL_BOOTS);
-                    entries.add(RUSTED_IRON_HELMET);
-                    entries.add(RUSTED_IRON_CHESTPLATE);
-                    entries.add(RUSTED_IRON_LEGGINGS);
-                    entries.add(RUSTED_IRON_BOOTS);
-                    entries.add(RUSTED_IRON_CHAINMAIL_HELMET);
-                    entries.add(RUSTED_IRON_CHAINMAIL_CHESTPLATE);
-                    entries.add(RUSTED_IRON_CHAINMAIL_LEGGINGS);
-                    entries.add(RUSTED_IRON_CHAINMAIL_BOOTS);
-                    entries.add(SILVER_HELMET);
-                    entries.add(SILVER_CHESTPLATE);
-                    entries.add(SILVER_LEGGINGS);
-                    entries.add(SILVER_BOOTS);
-                    entries.add(SILVER_CHAINMAIL_HELMET);
-                    entries.add(SILVER_CHAINMAIL_CHESTPLATE);
-                    entries.add(SILVER_CHAINMAIL_LEGGINGS);
-                    entries.add(SILVER_CHAINMAIL_BOOTS);
+                entries.add(AtBlocks.ADAMANTIUM_CRAFTING_TABLE);
+                entries.add(AtBlocks.ANCIENT_METAL_CRAFTING_TABLE);
+                entries.add(AtBlocks.COPPER_CRAFTING_TABLE);
+                entries.add(AtBlocks.GOLD_CRAFTING_TABLE);
+                entries.add(AtBlocks.IRON_CRAFTING_TABLE);
+                entries.add(AtBlocks.MITHRIL_CRAFTING_TABLE);
+                entries.add(AtBlocks.SILVER_CRAFTING_TABLE);
+                entries.add(AtBlocks.FLINT_CRAFTING_TABLE);
+                entries.add(AtBlocks.OBSIDIAN_CRAFTING_TABLE);
+                
+                entries.add(AtBlocks.MITHRIL_NUL_RUNESTORE);
+                entries.add(AtBlocks.MITHRIL_QUAS_RUNESTORE);
+                entries.add(AtBlocks.MITHRIL_POR_RUNESTORE);
+                entries.add(AtBlocks.MITHRIL_AN_RUNESTORE);
+                entries.add(AtBlocks.MITHRIL_NOX_RUNESTORE);
+                entries.add(AtBlocks.MITHRIL_FLAM_RUNESTORE);
+                entries.add(AtBlocks.MITHRIL_VAS_RUNESTORE);
+                entries.add(AtBlocks.MITHRIL_DES_RUNESTORE);
+                entries.add(AtBlocks.MITHRIL_ORT_RUNESTORE);
+                entries.add(AtBlocks.MITHRIL_TYM_RUNESTORE);
+                entries.add(AtBlocks.MITHRIL_CORP_RUNESTORE);
+                entries.add(AtBlocks.MITHRIL_LOR_RUNESTORE);
+                entries.add(AtBlocks.MITHRIL_MANI_RUNESTORE);
+                entries.add(AtBlocks.MITHRIL_JUX_RUNESTORE);
+                entries.add(AtBlocks.MITHRIL_YLEM_RUNESTORE);
+                entries.add(AtBlocks.MITHRIL_SANCT_RUNESTORE);
+                
+                entries.add(AtBlocks.ADAMANTIUM_NUL_RUNESTORE);
+                entries.add(AtBlocks.ADAMANTIUM_QUAS_RUNESTORE);
+                entries.add(AtBlocks.ADAMANTIUM_POR_RUNESTORE);
+                entries.add(AtBlocks.ADAMANTIUM_AN_RUNESTORE);
+                entries.add(AtBlocks.ADAMANTIUM_NOX_RUNESTORE);
+                entries.add(AtBlocks.ADAMANTIUM_FLAM_RUNESTORE);
+                entries.add(AtBlocks.ADAMANTIUM_VAS_RUNESTORE);
+                entries.add(AtBlocks.ADAMANTIUM_DES_RUNESTORE);
+                entries.add(AtBlocks.ADAMANTIUM_ORT_RUNESTORE);
+                entries.add(AtBlocks.ADAMANTIUM_TYM_RUNESTORE);
+                entries.add(AtBlocks.ADAMANTIUM_CORP_RUNESTORE);
+                entries.add(AtBlocks.ADAMANTIUM_LOR_RUNESTORE);
+                entries.add(AtBlocks.ADAMANTIUM_MANI_RUNESTORE);
+                entries.add(AtBlocks.ADAMANTIUM_JUX_RUNESTORE);
+                entries.add(AtBlocks.ADAMANTIUM_YLEM_RUNESTORE);
+                entries.add(AtBlocks.ADAMANTIUM_SANCT_RUNESTORE);
+                                
+                entries.add(AtBlocks.ADAMANTIUM_ANVIL);
+                entries.add(chipped(AtBlocks.CHIPPED_ADAMANTIUM_ANVIL));
+                entries.add(damaged(AtBlocks.DAMAGED_ADAMANTIUM_ANVIL));
+                entries.add(AtBlocks.MITHRIL_ANVIL);
+                entries.add(chipped(AtBlocks.CHIPPED_MITHRIL_ANVIL));
+                entries.add(damaged(AtBlocks.DAMAGED_MITHRIL_ANVIL));
+                entries.add(AtBlocks.ANCIENT_METAL_ANVIL);
+                entries.add(chipped(AtBlocks.CHIPPED_ANCIENT_METAL_ANVIL));
+                entries.add(damaged(AtBlocks.DAMAGED_ANCIENT_METAL_ANVIL));
+                entries.add(AtBlocks.GOLDEN_ANVIL);
+                entries.add(chipped(AtBlocks.CHIPPED_GOLDEN_ANVIL));
+                entries.add(damaged(AtBlocks.DAMAGED_GOLDEN_ANVIL));
+                entries.add(AtBlocks.COPPER_ANVIL);
+                entries.add(chipped(AtBlocks.CHIPPED_COPPER_ANVIL));
+                entries.add(damaged(AtBlocks.DAMAGED_COPPER_ANVIL));
+                entries.add(AtBlocks.SILVER_ANVIL);
+                entries.add(chipped(AtBlocks.CHIPPED_SILVER_ANVIL));
+                entries.add(damaged(AtBlocks.DAMAGED_SILVER_ANVIL));
+                entries.add(AtBlocks.ADAMANTIUM_BLOCK);
+                entries.add(AtBlocks.ADAMANTIUM_BARS);
+                entries.add(AtBlocks.ANCIENT_METAL_BARS);
+                entries.add(AtBlocks.ANCIENT_METAL_BLOCK);
+                entries.add(AtBlocks.GOLDEN_BARS);
+                entries.add(AtBlocks.MANTLE);
+                entries.add(AtBlocks.MITHRIL_BARS);
+                entries.add(AtBlocks.MITHRIL_BLOCK);
+                entries.add(AtBlocks.MITHRIL_ORE);
+                entries.add(AtBlocks.SILVER_BARS);
+                entries.add(AtBlocks.SILVER_BLOCK);
+                entries.add(AtBlocks.SILVER_ORE);
+                entries.add(AtBlocks.COPPER_BARS);
+                entries.add(AtBlocks.ADAMANTIUM_DOOR);
+                entries.add(AtBlocks.ANCIENT_METAL_DOOR);
+                entries.add(AtBlocks.MITHRIL_DOOR);
+                entries.add(AtBlocks.SILVER_DOOR);
+                entries.add(AtBlocks.GOLDEN_DOOR);
+                entries.add(DIAMOND_SHARD);
+                entries.add(EMERALD_SHARD);
+                entries.add(FLINT_SHARD);
+                entries.add(GLASS_SHARD);
+                entries.add(OBSIDIAN_SHARD);
+                entries.add(QUARTZ_SHARD);
+                entries.add(Items.NETHERITE_INGOT);
+                entries.add(ADAMANTIUM_INGOT);
+                entries.add(MITHRIL_INGOT);
+                entries.add(ANCIENT_METAL_INGOT);
+                entries.add(Items.IRON_INGOT);
+                entries.add(Items.GOLD_INGOT);
+                entries.add(SILVER_INGOT);
+                entries.add(Items.COPPER_INGOT);
+                entries.add(ADAMANTIUM_NUGGET);
+                entries.add(ANCIENT_METAL_NUGGET);
+                entries.add(MITHRIL_NUGGET);
+                entries.add(SILVER_NUGGET);
+                entries.add(ADAMANTIUM_FISHING_ROD);
+                entries.add(ANCIENT_METAL_FISHING_ROD);
+                entries.add(COPPER_FISHING_ROD);
+                entries.add(FLINT_FISHING_ROD);
+                entries.add(GOLDEN_FISHING_ROD);
+                entries.add(IRON_FISHING_ROD);
+                entries.add(MITHRIL_FISHING_ROD);
+                entries.add(OBSIDIAN_FISHING_ROD);
+                entries.add(SILVER_FISHING_ROD);
+                entries.add(ADAMANTIUM_HELMET);
+                entries.add(ADAMANTIUM_CHESTPLATE);
+                entries.add(ADAMANTIUM_LEGGINGS);
+                entries.add(ADAMANTIUM_BOOTS);
+                entries.add(ADAMANTIUM_CHAINMAIL_HELMET);
+                entries.add(ADAMANTIUM_CHAINMAIL_CHESTPLATE);
+                entries.add(ADAMANTIUM_CHAINMAIL_LEGGINGS);
+                entries.add(ADAMANTIUM_CHAINMAIL_BOOTS);
+                entries.add(ANCIENT_METAL_HELMET);
+                entries.add(ANCIENT_METAL_CHESTPLATE);
+                entries.add(ANCIENT_METAL_LEGGINGS);
+                entries.add(ANCIENT_METAL_BOOTS);
+                entries.add(ANCIENT_METAL_CHAINMAIL_HELMET);
+                entries.add(ANCIENT_METAL_CHAINMAIL_CHESTPLATE);
+                entries.add(ANCIENT_METAL_CHAINMAIL_LEGGINGS);
+                entries.add(ANCIENT_METAL_CHAINMAIL_BOOTS);
+                entries.add(COPPER_HELMET);
+                entries.add(COPPER_CHESTPLATE);
+                entries.add(COPPER_LEGGINGS);
+                entries.add(COPPER_BOOTS);
+                entries.add(COPPER_CHAINMAIL_HELMET);
+                entries.add(COPPER_CHAINMAIL_CHESTPLATE);
+                entries.add(COPPER_CHAINMAIL_LEGGINGS);
+                entries.add(COPPER_CHAINMAIL_BOOTS);
+                entries.add(MITHRIL_HELMET);
+                entries.add(MITHRIL_CHESTPLATE);
+                entries.add(MITHRIL_LEGGINGS);
+                entries.add(MITHRIL_BOOTS);
+                entries.add(MITHRIL_CHAINMAIL_HELMET);
+                entries.add(MITHRIL_CHAINMAIL_CHESTPLATE);
+                entries.add(MITHRIL_CHAINMAIL_LEGGINGS);
+                entries.add(MITHRIL_CHAINMAIL_BOOTS);
+                entries.add(RUSTED_IRON_HELMET);
+                entries.add(RUSTED_IRON_CHESTPLATE);
+                entries.add(RUSTED_IRON_LEGGINGS);
+                entries.add(RUSTED_IRON_BOOTS);
+                entries.add(RUSTED_IRON_CHAINMAIL_HELMET);
+                entries.add(RUSTED_IRON_CHAINMAIL_CHESTPLATE);
+                entries.add(RUSTED_IRON_CHAINMAIL_LEGGINGS);
+                entries.add(RUSTED_IRON_CHAINMAIL_BOOTS);
+                entries.add(SILVER_HELMET);
+                entries.add(SILVER_CHESTPLATE);
+                entries.add(SILVER_LEGGINGS);
+                entries.add(SILVER_BOOTS);
+                entries.add(SILVER_CHAINMAIL_HELMET);
+                entries.add(SILVER_CHAINMAIL_CHESTPLATE);
+                entries.add(SILVER_CHAINMAIL_LEGGINGS);
+                entries.add(SILVER_CHAINMAIL_BOOTS);
 
-                    entries.add(ADAMANTIUM_AXE);
-                    entries.add(ADAMANTIUM_BATTLE_AXE);
-                    entries.add(ADAMANTIUM_DAGGER);
-                    entries.add(ADAMANTIUM_HATCHET);
-                    entries.add(ADAMANTIUM_HOE);
-                    entries.add(ADAMANTIUM_KNIFE);
-                    entries.add(ADAMANTIUM_MATTOCK);
-                    entries.add(ADAMANTIUM_PICKAXE);
-                    entries.add(ADAMANTIUM_SCYTHE);
-                    entries.add(ADAMANTIUM_SHEARS);
-                    entries.add(ADAMANTIUM_SHOVEL);
-                    entries.add(ADAMANTIUM_SWORD);
-                    entries.add(ADAMANTIUM_WAR_HAMMER);
-                    entries.add(ANCIENT_METAL_AXE);
-                    entries.add(ANCIENT_METAL_BATTLE_AXE);
-                    entries.add(ANCIENT_METAL_DAGGER);
-                    entries.add(ANCIENT_METAL_HATCHET);
-                    entries.add(ANCIENT_METAL_HOE);
-                    entries.add(ANCIENT_METAL_KNIFE);
-                    entries.add(ANCIENT_METAL_MATTOCK);
-                    entries.add(ANCIENT_METAL_PICKAXE);
-                    entries.add(ANCIENT_METAL_SCYTHE);
-                    entries.add(ANCIENT_METAL_SHEARS);
-                    entries.add(ANCIENT_METAL_SHOVEL);
-                    entries.add(ANCIENT_METAL_SWORD);
-                    entries.add(ANCIENT_METAL_WAR_HAMMER);
-                    entries.add(COPPER_AXE);
-                    entries.add(COPPER_BATTLE_AXE);
-                    entries.add(COPPER_DAGGER);
-                    entries.add(COPPER_HATCHET);
-                    entries.add(COPPER_HOE);
-                    entries.add(COPPER_KNIFE);
-                    entries.add(COPPER_MATTOCK);
-                    entries.add(COPPER_PICKAXE);
-                    entries.add(COPPER_SCYTHE);
-                    entries.add(COPPER_SHEARS);
-                    entries.add(COPPER_SHOVEL);
-                    entries.add(COPPER_SWORD);
-                    entries.add(COPPER_WAR_HAMMER);
-                    entries.add(FLINT_AXE);
-                    entries.add(FLINT_HATCHET);
-                    entries.add(FLINT_KNIFE);
-                    entries.add(FLINT_SHOVEL);
-                    entries.add(GOLDEN_BATTLE_AXE);
-                    entries.add(GOLDEN_DAGGER);
-                    entries.add(GOLDEN_HATCHET);
-                    entries.add(GOLDEN_KNIFE);
-                    entries.add(GOLDEN_MATTOCK);
-                    entries.add(GOLDEN_SCYTHE);
-                    entries.add(GOLDEN_SHEARS);
-                    entries.add(GOLDEN_WAR_HAMMER);
-                    entries.add(IRON_BATTLE_AXE);
-                    entries.add(IRON_DAGGER);
-                    entries.add(IRON_HATCHET);
-                    entries.add(IRON_KNIFE);
-                    entries.add(IRON_MATTOCK);
-                    entries.add(IRON_SCYTHE);
-                    entries.add(IRON_WAR_HAMMER);
-                    entries.add(MITHRIL_AXE);
-                    entries.add(MITHRIL_BATTLE_AXE);
-                    entries.add(MITHRIL_DAGGER);
-                    entries.add(MITHRIL_HATCHET);
-                    entries.add(MITHRIL_HOE);
-                    entries.add(MITHRIL_KNIFE);
-                    entries.add(MITHRIL_MATTOCK);
-                    entries.add(MITHRIL_PICKAXE);
-                    entries.add(MITHRIL_SCYTHE);
-                    entries.add(MITHRIL_SHEARS);
-                    entries.add(MITHRIL_SHOVEL);
-                    entries.add(MITHRIL_SWORD);
-                    entries.add(MITHRIL_WAR_HAMMER);
-                    entries.add(OBSIDIAN_AXE);
-                    entries.add(OBSIDIAN_HATCHET);
-                    entries.add(OBSIDIAN_KNIFE);
-                    entries.add(OBSIDIAN_SHOVEL);
-                    entries.add(RUSTED_IRON_AXE);
-                    entries.add(RUSTED_IRON_BATTLE_AXE);
-                    entries.add(RUSTED_IRON_DAGGER);
-                    entries.add(RUSTED_IRON_HATCHET);
-                    entries.add(RUSTED_IRON_HOE);
-                    entries.add(RUSTED_IRON_KNIFE);
-                    entries.add(RUSTED_IRON_MATTOCK);
-                    entries.add(RUSTED_IRON_PICKAXE);
-                    entries.add(RUSTED_IRON_SCYTHE);
-                    entries.add(RUSTED_IRON_SHEARS);
-                    entries.add(RUSTED_IRON_SHOVEL);
-                    entries.add(RUSTED_IRON_SWORD);
-                    entries.add(RUSTED_IRON_WAR_HAMMER);
-                    entries.add(SILVER_AXE);
-                    entries.add(SILVER_BATTLE_AXE);
-                    entries.add(SILVER_DAGGER);
-                    entries.add(SILVER_HATCHET);
-                    entries.add(SILVER_HOE);
-                    entries.add(SILVER_KNIFE);
-                    entries.add(SILVER_MATTOCK);
-                    entries.add(SILVER_PICKAXE);
-                    entries.add(SILVER_SCYTHE);
-                    entries.add(SILVER_SHEARS);
-                    entries.add(SILVER_SHOVEL);
-                    entries.add(SILVER_SWORD);
-                    entries.add(SILVER_WAR_HAMMER);
-                    entries.add(STONE_DAGGER);
-                    entries.add(WOOD_CLUB);
-                    entries.add(WOOD_CUDGEL);
+                entries.add(ADAMANTIUM_AXE);
+                entries.add(ADAMANTIUM_BATTLE_AXE);
+                entries.add(ADAMANTIUM_DAGGER);
+                entries.add(ADAMANTIUM_HATCHET);
+                entries.add(ADAMANTIUM_HOE);
+                entries.add(ADAMANTIUM_KNIFE);
+                entries.add(ADAMANTIUM_MATTOCK);
+                entries.add(ADAMANTIUM_PICKAXE);
+                entries.add(ADAMANTIUM_SCYTHE);
+                entries.add(ADAMANTIUM_SHEARS);
+                entries.add(ADAMANTIUM_SHOVEL);
+                entries.add(ADAMANTIUM_SWORD);
+                entries.add(ADAMANTIUM_WAR_HAMMER);
+                entries.add(ANCIENT_METAL_AXE);
+                entries.add(ANCIENT_METAL_BATTLE_AXE);
+                entries.add(ANCIENT_METAL_DAGGER);
+                entries.add(ANCIENT_METAL_HATCHET);
+                entries.add(ANCIENT_METAL_HOE);
+                entries.add(ANCIENT_METAL_KNIFE);
+                entries.add(ANCIENT_METAL_MATTOCK);
+                entries.add(ANCIENT_METAL_PICKAXE);
+                entries.add(ANCIENT_METAL_SCYTHE);
+                entries.add(ANCIENT_METAL_SHEARS);
+                entries.add(ANCIENT_METAL_SHOVEL);
+                entries.add(ANCIENT_METAL_SWORD);
+                entries.add(ANCIENT_METAL_WAR_HAMMER);
+                entries.add(COPPER_AXE);
+                entries.add(COPPER_BATTLE_AXE);
+                entries.add(COPPER_DAGGER);
+                entries.add(COPPER_HATCHET);
+                entries.add(COPPER_HOE);
+                entries.add(COPPER_KNIFE);
+                entries.add(COPPER_MATTOCK);
+                entries.add(COPPER_PICKAXE);
+                entries.add(COPPER_SCYTHE);
+                entries.add(COPPER_SHEARS);
+                entries.add(COPPER_SHOVEL);
+                entries.add(COPPER_SWORD);
+                entries.add(COPPER_WAR_HAMMER);
+                entries.add(FLINT_AXE);
+                entries.add(FLINT_HATCHET);
+                entries.add(FLINT_KNIFE);
+                entries.add(FLINT_SHOVEL);
+                entries.add(GOLDEN_BATTLE_AXE);
+                entries.add(GOLDEN_DAGGER);
+                entries.add(GOLDEN_HATCHET);
+                entries.add(GOLDEN_KNIFE);
+                entries.add(GOLDEN_MATTOCK);
+                entries.add(GOLDEN_SCYTHE);
+                entries.add(GOLDEN_SHEARS);
+                entries.add(GOLDEN_WAR_HAMMER);
+                entries.add(IRON_BATTLE_AXE);
+                entries.add(IRON_DAGGER);
+                entries.add(IRON_HATCHET);
+                entries.add(IRON_KNIFE);
+                entries.add(IRON_MATTOCK);
+                entries.add(IRON_SCYTHE);
+                entries.add(IRON_WAR_HAMMER);
+                entries.add(MITHRIL_AXE);
+                entries.add(MITHRIL_BATTLE_AXE);
+                entries.add(MITHRIL_DAGGER);
+                entries.add(MITHRIL_HATCHET);
+                entries.add(MITHRIL_HOE);
+                entries.add(MITHRIL_KNIFE);
+                entries.add(MITHRIL_MATTOCK);
+                entries.add(MITHRIL_PICKAXE);
+                entries.add(MITHRIL_SCYTHE);
+                entries.add(MITHRIL_SHEARS);
+                entries.add(MITHRIL_SHOVEL);
+                entries.add(MITHRIL_SWORD);
+                entries.add(MITHRIL_WAR_HAMMER);
+                entries.add(OBSIDIAN_AXE);
+                entries.add(OBSIDIAN_HATCHET);
+                entries.add(OBSIDIAN_KNIFE);
+                entries.add(OBSIDIAN_SHOVEL);
+                entries.add(RUSTED_IRON_AXE);
+                entries.add(RUSTED_IRON_BATTLE_AXE);
+                entries.add(RUSTED_IRON_DAGGER);
+                entries.add(RUSTED_IRON_HATCHET);
+                entries.add(RUSTED_IRON_HOE);
+                entries.add(RUSTED_IRON_KNIFE);
+                entries.add(RUSTED_IRON_MATTOCK);
+                entries.add(RUSTED_IRON_PICKAXE);
+                entries.add(RUSTED_IRON_SCYTHE);
+                entries.add(RUSTED_IRON_SHEARS);
+                entries.add(RUSTED_IRON_SHOVEL);
+                entries.add(RUSTED_IRON_SWORD);
+                entries.add(RUSTED_IRON_WAR_HAMMER);
+                entries.add(SILVER_AXE);
+                entries.add(SILVER_BATTLE_AXE);
+                entries.add(SILVER_DAGGER);
+                entries.add(SILVER_HATCHET);
+                entries.add(SILVER_HOE);
+                entries.add(SILVER_KNIFE);
+                entries.add(SILVER_MATTOCK);
+                entries.add(SILVER_PICKAXE);
+                entries.add(SILVER_SCYTHE);
+                entries.add(SILVER_SHEARS);
+                entries.add(SILVER_SHOVEL);
+                entries.add(SILVER_SWORD);
+                entries.add(SILVER_WAR_HAMMER);
+                entries.add(STONE_DAGGER);
+                entries.add(WOOD_CLUB);
+                entries.add(WOOD_CUDGEL);
 
-                    entries.add(BANANA);
-                    entries.add(BLUEBERRIE);
-                    entries.add(CHEESE);
-                    entries.add(CHOCOLATE);
-                    entries.add(DOUGH);
-                    entries.add(LEMON);
-                    entries.add(ONION);
-                    entries.add(ORANGE);
-                    entries.add(WORM_COOKED);
-                    entries.add(WORM_RAW);
-                    entries.add(PUMPKIN_SOUP);
-                    entries.add(SORBET);
-                    entries.add(VEGETABLE_SOUP);
-                    entries.add(BEEF_STEW);
-                    entries.add(BOWL_MILK);
-                    entries.add(BOWL_SALAD);
-                    entries.add(BOWL_WATER);
-                    entries.add(CEREAL);
-                    entries.add(CHICKEN_SOUP);
-                    entries.add(CREAM_OF_MUSHROOM_SOUP);
-                    entries.add(CREAM_OF_VEGETABLE_SOUP);
-                    entries.add(ICE_CREAM);
-                    entries.add(MASHED_POTATO);
-                    entries.add(MUSHROOM_STEW);
-                    entries.add(PORRIDGE);
+                entries.add(BANANA);
+                entries.add(BLUEBERRIE);
+                entries.add(CHEESE);
+                entries.add(CHOCOLATE);
+                entries.add(DOUGH);
+                entries.add(LEMON);
+                entries.add(ONION);
+                entries.add(ORANGE);
+                entries.add(WORM_COOKED);
+                entries.add(WORM_RAW);
+                entries.add(PUMPKIN_SOUP);
+                entries.add(SORBET);
+                entries.add(VEGETABLE_SOUP);
+                entries.add(BEEF_STEW);
+                entries.add(BOWL_MILK);
+                entries.add(BOWL_SALAD);
+                entries.add(BOWL_WATER);
+                entries.add(CEREAL);
+                entries.add(CHICKEN_SOUP);
+                entries.add(CREAM_OF_MUSHROOM_SOUP);
+                entries.add(CREAM_OF_VEGETABLE_SOUP);
+                entries.add(ICE_CREAM);
+                entries.add(MASHED_POTATO);
+                entries.add(MUSHROOM_STEW);
+                entries.add(PORRIDGE);
 
-                    entries.add(ADAMANTIUM_ARROW);
-                    entries.add(ANCIENT_METAL_ARROW);
-                    entries.add(COPPER_ARROW);
-                    entries.add(FLINT_ARROW);
-                    entries.add(GOLDEN_ARROW);
-                    entries.add(IRON_ARROW);
-                    entries.add(MITHRIL_ARROW);
-                    entries.add(OBSIDIAN_ARROW);
-                    entries.add(SILVER_ARROW);
-                    entries.add(RUSTED_IRON_ARROW);
-                    entries.add(ADAMANTIUM_CHAINS);
-                    entries.add(GOLDEN_CHAINS);
-                    entries.add(IRON_CHAINS);
-                    entries.add(MITHRIL_CHAINS);
-                    entries.add(SILVER_CHAINS);
-                    entries.add(ANCIENT_METAL_CHAINS);
-                    entries.add(COPPER_CHAINS);
-                    entries.add(RUSTED_IRON_CHAINS);
-                    entries.add(ADAMANTIUM_COINS);
-                    entries.add(ANCIENT_METAL_COINS);
-                    entries.add(COPPER_COINS);
-                    entries.add(GOLDEN_COINS);
-                    entries.add(IRON_COINS);
-                    entries.add(MITHRIL_COINS);
-                    entries.add(SILVER_COINS);
+                entries.add(ADAMANTIUM_ARROW);
+                entries.add(ANCIENT_METAL_ARROW);
+                entries.add(COPPER_ARROW);
+                entries.add(FLINT_ARROW);
+                entries.add(GOLDEN_ARROW);
+                entries.add(IRON_ARROW);
+                entries.add(MITHRIL_ARROW);
+                entries.add(OBSIDIAN_ARROW);
+                entries.add(SILVER_ARROW);
+                entries.add(RUSTED_IRON_ARROW);
+                entries.add(ADAMANTIUM_CHAINS);
+                entries.add(GOLDEN_CHAINS);
+                entries.add(IRON_CHAINS);
+                entries.add(MITHRIL_CHAINS);
+                entries.add(SILVER_CHAINS);
+                entries.add(ANCIENT_METAL_CHAINS);
+                entries.add(COPPER_CHAINS);
+                entries.add(RUSTED_IRON_CHAINS);
+                entries.add(ADAMANTIUM_COINS);
+                entries.add(ANCIENT_METAL_COINS);
+                entries.add(COPPER_COINS);
+                entries.add(GOLDEN_COINS);
+                entries.add(IRON_COINS);
+                entries.add(MITHRIL_COINS);
+                entries.add(SILVER_COINS);
 
-                    entries.add(ADAMANTIUM_BUCKET);
-                    entries.add(WATER_ADAMANTIUM_BUCKET);
-                    entries.add(LAVA_ADAMANTIUM_BUCKET);
-                    entries.add(MILK_ADAMANTIUM_BUCKET);
-                    entries.add(POWDER_SNOW_ADAMANTIUM_BUCKET);
-                    entries.add(PUFFERFISH_ADAMANTIUM_BUCKET);
-                    entries.add(SALMON_ADAMANTIUM_BUCKET);
-                    entries.add(COD_ADAMANTIUM_BUCKET);
-                    entries.add(TROPICAL_FISH_ADAMANTIUM_BUCKET);
-                    entries.add(AXOLOTL_ADAMANTIUM_BUCKET);
-                    entries.add(TADPOLE_ADAMANTIUM_BUCKET);
+                entries.add(ADAMANTIUM_BUCKET);
+                entries.add(WATER_ADAMANTIUM_BUCKET);
+                entries.add(LAVA_ADAMANTIUM_BUCKET);
+                entries.add(MILK_ADAMANTIUM_BUCKET);
+                entries.add(POWDER_SNOW_ADAMANTIUM_BUCKET);
+                entries.add(PUFFERFISH_ADAMANTIUM_BUCKET);
+                entries.add(SALMON_ADAMANTIUM_BUCKET);
+                entries.add(COD_ADAMANTIUM_BUCKET);
+                entries.add(TROPICAL_FISH_ADAMANTIUM_BUCKET);
+                entries.add(AXOLOTL_ADAMANTIUM_BUCKET);
+                entries.add(TADPOLE_ADAMANTIUM_BUCKET);
 
-                    entries.add(ANCIENT_METAL_BUCKET);
-                    entries.add(WATER_ANCIENT_METAL_BUCKET);
-                    entries.add(LAVA_ANCIENT_METAL_BUCKET);
-                    entries.add(MILK_ANCIENT_METAL_BUCKET);
-                    entries.add(POWDER_SNOW_ANCIENT_METAL_BUCKET);
-                    entries.add(PUFFERFISH_ANCIENT_METAL_BUCKET);
-                    entries.add(SALMON_ANCIENT_METAL_BUCKET);
-                    entries.add(COD_ANCIENT_METAL_BUCKET);
-                    entries.add(TROPICAL_FISH_ANCIENT_METAL_BUCKET);
-                    entries.add(AXOLOTL_ANCIENT_METAL_BUCKET);
-                    entries.add(TADPOLE_ANCIENT_METAL_BUCKET);
+                entries.add(ANCIENT_METAL_BUCKET);
+                entries.add(WATER_ANCIENT_METAL_BUCKET);
+                entries.add(LAVA_ANCIENT_METAL_BUCKET);
+                entries.add(MILK_ANCIENT_METAL_BUCKET);
+                entries.add(POWDER_SNOW_ANCIENT_METAL_BUCKET);
+                entries.add(PUFFERFISH_ANCIENT_METAL_BUCKET);
+                entries.add(SALMON_ANCIENT_METAL_BUCKET);
+                entries.add(COD_ANCIENT_METAL_BUCKET);
+                entries.add(TROPICAL_FISH_ANCIENT_METAL_BUCKET);
+                entries.add(AXOLOTL_ANCIENT_METAL_BUCKET);
+                entries.add(TADPOLE_ANCIENT_METAL_BUCKET);
 
-                    entries.add(COPPER_BUCKET);
-                    entries.add(WATER_COPPER_BUCKET);
-                    entries.add(LAVA_COPPER_BUCKET);
-                    entries.add(MILK_COPPER_BUCKET);
-                    entries.add(POWDER_SNOW_COPPER_BUCKET);
-                    entries.add(PUFFERFISH_COPPER_BUCKET);
-                    entries.add(SALMON_COPPER_BUCKET);
-                    entries.add(COD_COPPER_BUCKET);
-                    entries.add(TROPICAL_FISH_COPPER_BUCKET);
-                    entries.add(AXOLOTL_COPPER_BUCKET);
-                    entries.add(TADPOLE_COPPER_BUCKET);
+                entries.add(COPPER_BUCKET);
+                entries.add(WATER_COPPER_BUCKET);
+                entries.add(LAVA_COPPER_BUCKET);
+                entries.add(MILK_COPPER_BUCKET);
+                entries.add(POWDER_SNOW_COPPER_BUCKET);
+                entries.add(PUFFERFISH_COPPER_BUCKET);
+                entries.add(SALMON_COPPER_BUCKET);
+                entries.add(COD_COPPER_BUCKET);
+                entries.add(TROPICAL_FISH_COPPER_BUCKET);
+                entries.add(AXOLOTL_COPPER_BUCKET);
+                entries.add(TADPOLE_COPPER_BUCKET);
 
-                    entries.add(GOLD_BUCKET);
-                    entries.add(WATER_GOLD_BUCKET);
-                    entries.add(LAVA_GOLD_BUCKET);
-                    entries.add(MILK_GOLD_BUCKET);
-                    entries.add(POWDER_SNOW_GOLD_BUCKET);
-                    entries.add(PUFFERFISH_GOLD_BUCKET);
-                    entries.add(SALMON_GOLD_BUCKET);
-                    entries.add(COD_GOLD_BUCKET);
-                    entries.add(TROPICAL_FISH_GOLD_BUCKET);
-                    entries.add(AXOLOTL_GOLD_BUCKET);
-                    entries.add(TADPOLE_GOLD_BUCKET);
+                entries.add(GOLD_BUCKET);
+                entries.add(WATER_GOLD_BUCKET);
+                entries.add(LAVA_GOLD_BUCKET);
+                entries.add(MILK_GOLD_BUCKET);
+                entries.add(POWDER_SNOW_GOLD_BUCKET);
+                entries.add(PUFFERFISH_GOLD_BUCKET);
+                entries.add(SALMON_GOLD_BUCKET);
+                entries.add(COD_GOLD_BUCKET);
+                entries.add(TROPICAL_FISH_GOLD_BUCKET);
+                entries.add(AXOLOTL_GOLD_BUCKET);
+                entries.add(TADPOLE_GOLD_BUCKET);
 
-                    entries.add(MITHRIL_BUCKET);
-                    entries.add(WATER_MITHRIL_BUCKET);
-                    entries.add(LAVA_MITHRIL_BUCKET);
-                    entries.add(MILK_MITHRIL_BUCKET);
-                    entries.add(POWDER_SNOW_MITHRIL_BUCKET);
-                    entries.add(PUFFERFISH_MITHRIL_BUCKET);
-                    entries.add(SALMON_MITHRIL_BUCKET);
-                    entries.add(COD_MITHRIL_BUCKET);
-                    entries.add(TROPICAL_FISH_MITHRIL_BUCKET);
-                    entries.add(AXOLOTL_MITHRIL_BUCKET);
-                    entries.add(TADPOLE_MITHRIL_BUCKET);
+                entries.add(MITHRIL_BUCKET);
+                entries.add(WATER_MITHRIL_BUCKET);
+                entries.add(LAVA_MITHRIL_BUCKET);
+                entries.add(MILK_MITHRIL_BUCKET);
+                entries.add(POWDER_SNOW_MITHRIL_BUCKET);
+                entries.add(PUFFERFISH_MITHRIL_BUCKET);
+                entries.add(SALMON_MITHRIL_BUCKET);
+                entries.add(COD_MITHRIL_BUCKET);
+                entries.add(TROPICAL_FISH_MITHRIL_BUCKET);
+                entries.add(AXOLOTL_MITHRIL_BUCKET);
+                entries.add(TADPOLE_MITHRIL_BUCKET);
 
-                    entries.add(SILVER_BUCKET);
-                    entries.add(WATER_SILVER_BUCKET);
-                    entries.add(LAVA_SILVER_BUCKET);
-                    entries.add(MILK_SILVER_BUCKET);
-                    entries.add(POWDER_SNOW_SILVER_BUCKET);
-                    entries.add(PUFFERFISH_SILVER_BUCKET);
-                    entries.add(SALMON_SILVER_BUCKET);
-                    entries.add(COD_SILVER_BUCKET);
-                    entries.add(TROPICAL_FISH_SILVER_BUCKET);
-                    entries.add(AXOLOTL_SILVER_BUCKET);
-                    entries.add(TADPOLE_SILVER_BUCKET);
+                entries.add(SILVER_BUCKET);
+                entries.add(WATER_SILVER_BUCKET);
+                entries.add(LAVA_SILVER_BUCKET);
+                entries.add(MILK_SILVER_BUCKET);
+                entries.add(POWDER_SNOW_SILVER_BUCKET);
+                entries.add(PUFFERFISH_SILVER_BUCKET);
+                entries.add(SALMON_SILVER_BUCKET);
+                entries.add(COD_SILVER_BUCKET);
+                entries.add(TROPICAL_FISH_SILVER_BUCKET);
+                entries.add(AXOLOTL_SILVER_BUCKET);
+                entries.add(TADPOLE_SILVER_BUCKET);
 
-                    entries.add(NETHERITE_BUCKET);
-                    entries.add(WATER_NETHERITE_BUCKET);
-                    entries.add(LAVA_NETHERITE_BUCKET);
-                    entries.add(MILK_NETHERITE_BUCKET);
-                    entries.add(POWDER_SNOW_NETHERITE_BUCKET);
-                    entries.add(PUFFERFISH_NETHERITE_BUCKET);
-                    entries.add(SALMON_NETHERITE_BUCKET);
-                    entries.add(COD_NETHERITE_BUCKET);
-                    entries.add(TROPICAL_FISH_NETHERITE_BUCKET);
-                    entries.add(AXOLOTL_NETHERITE_BUCKET);
-                    entries.add(TADPOLE_NETHERITE_BUCKET);
+                entries.add(NETHERITE_BUCKET);
+                entries.add(WATER_NETHERITE_BUCKET);
+                entries.add(LAVA_NETHERITE_BUCKET);
+                entries.add(MILK_NETHERITE_BUCKET);
+                entries.add(POWDER_SNOW_NETHERITE_BUCKET);
+                entries.add(PUFFERFISH_NETHERITE_BUCKET);
+                entries.add(SALMON_NETHERITE_BUCKET);
+                entries.add(COD_NETHERITE_BUCKET);
+                entries.add(TROPICAL_FISH_NETHERITE_BUCKET);
+                entries.add(AXOLOTL_NETHERITE_BUCKET);
+                entries.add(TADPOLE_NETHERITE_BUCKET);
 
-                    entries.add(MITHRIL_BOW);
-                    entries.add(ANCIENT_METAL_BOW);
+                entries.add(MITHRIL_BOW);
+                entries.add(ANCIENT_METAL_BOW);
             })
             .build();
 
@@ -1195,18 +1234,22 @@ public class AtItems {
         final RegistryKey<Item> registryKey = RegistryKey.of(RegistryKeys.ITEM, Identifier.of(At_mite.MOD_ID, path));
         return Items.register(registryKey, Item::new, new Item.Settings());
     }
+
     private static Item register(String path, Item.Settings settings) {
         final RegistryKey<Item> registryKey = RegistryKey.of(RegistryKeys.ITEM, Identifier.of(At_mite.MOD_ID, path));
         return Items.register(registryKey, Item::new, settings);
     }
-    private static Item register(String path, Function<Item.Settings, Item> factory,Item.Settings settings) {
+
+    private static Item register(String path, Function<Item.Settings, Item> factory, Item.Settings settings) {
         final RegistryKey<Item> registryKey = RegistryKey.of(RegistryKeys.ITEM, Identifier.of(At_mite.MOD_ID, path));
         return Items.register(registryKey, factory, settings);
     }
-    public static Item register(Block block, Item.Settings settings){
+
+    public static Item register(Block block, Item.Settings settings) {
         return Items.register(block, settings);
     }
-    public static void init(){
+
+    public static void init() {
         Registry.register(Registries.ITEM_GROUP, Identifier.of(At_mite.MOD_ID, "item_group"), AT_MINT_GROUP);
     }
 }

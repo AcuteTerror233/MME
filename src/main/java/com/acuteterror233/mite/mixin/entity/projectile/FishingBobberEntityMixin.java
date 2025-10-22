@@ -15,6 +15,7 @@ public abstract class FishingBobberEntityMixin extends ProjectileEntity {
     public FishingBobberEntityMixin(EntityType<? extends ProjectileEntity> entityType, World world) {
         super(entityType, world);
     }
+
     @Overwrite
     private boolean removeIfInvalid(PlayerEntity player) {
         ItemStack itemStack = player.getMainHandStack();

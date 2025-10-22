@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "at_mite:block/underground_portal_ns"
+    },
+    "axis=z": {
+      "model": "at_mite:block/underground_portal_ew"
+    }
+  }
+}

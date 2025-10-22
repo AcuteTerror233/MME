@@ -30,40 +30,40 @@ public class AtBlocks {
             "adamantium_bars", PaneBlock::new, AbstractBlock.Settings.copy(Blocks.IRON_BARS).strength(10f, 10f).nonOpaque()
     );
     public static final Block ADAMANTIUM_BLOCK = register(      //艾德曼块
-            "adamantium_block",AbstractBlock.Settings.copy(Blocks.BEDROCK)
+            "adamantium_block", AbstractBlock.Settings.copy(Blocks.BEDROCK)
     );
     public static final Block ANCIENT_METAL_BARS = register(    //远古金属栏杆
-            "ancient_metal_bars", PaneBlock::new, AbstractBlock.Settings.copy(ADAMANTIUM_BARS).strength(8f,8f).nonOpaque()
+            "ancient_metal_bars", PaneBlock::new, AbstractBlock.Settings.copy(ADAMANTIUM_BARS).strength(8f, 8f).nonOpaque()
     );
     public static final Block ANCIENT_METAL_BLOCK = register(   //远古金属块
-            "ancient_metal_block", AbstractBlock.Settings.create().strength(35f,35f)
+            "ancient_metal_block", AbstractBlock.Settings.create().strength(35f, 35f)
     );
     public static final Block GOLDEN_BARS = register(             //金栏杆
-            "golden_bars", PaneBlock::new, AbstractBlock.Settings.copy(ADAMANTIUM_BARS).strength(2f,2f).nonOpaque()
+            "golden_bars", PaneBlock::new, AbstractBlock.Settings.copy(ADAMANTIUM_BARS).strength(2f, 2f).nonOpaque()
     );
     public static final Block MANTLE = register(                //地幔
             "mantle", AbstractBlock.Settings.copy(Blocks.BEDROCK)
     );
     public static final Block MITHRIL_BARS = register(          //秘银栏杆
-            "mithril_bars", PaneBlock::new, AbstractBlock.Settings.copy(ADAMANTIUM_BARS).strength(8f,8f).nonOpaque()
+            "mithril_bars", PaneBlock::new, AbstractBlock.Settings.copy(ADAMANTIUM_BARS).strength(8f, 8f).nonOpaque()
     );
     public static final Block MITHRIL_BLOCK = register(         //秘银块
-            "mithril_block", AbstractBlock.Settings.create().strength(40f,40f)
+            "mithril_block", AbstractBlock.Settings.create().strength(40f, 40f)
     );
     public static final Block MITHRIL_ORE = register(           //秘银矿
             "mithril_ore", AbstractBlock.Settings.create().strength(4.0f, 4.0f)
     );
     public static final Block SILVER_BARS = register(           //银栏杆
-            "silver_bars", PaneBlock::new, AbstractBlock.Settings.copy(ADAMANTIUM_BARS).strength(4f,4f).nonOpaque()
+            "silver_bars", PaneBlock::new, AbstractBlock.Settings.copy(ADAMANTIUM_BARS).strength(4f, 4f).nonOpaque()
     );
     public static final Block SILVER_BLOCK = register(          //银块
-            "silver_block", AbstractBlock.Settings.create().strength(10f,10f)
+            "silver_block", AbstractBlock.Settings.create().strength(10f, 10f)
     );
     public static final Block SILVER_ORE = register(            //银矿
             "silver_ore", AbstractBlock.Settings.create().strength(4.0f, 4.0f)
     );
     public static final Block COPPER_BARS = register(           //铜栏杆
-            "copper_bars", PaneBlock::new, AbstractBlock.Settings.copy(ADAMANTIUM_BARS).strength(4f,4f).nonOpaque()
+            "copper_bars", PaneBlock::new, AbstractBlock.Settings.copy(ADAMANTIUM_BARS).strength(4f, 4f).nonOpaque()
     );
     public static final Block ADAMANTIUM_DOOR = register(
             "adamantium_door",
@@ -90,7 +90,7 @@ public class AtBlocks {
             TallBlockItem::new
     );
     public static final Block GOLDEN_DOOR = register(
-             "golden_door",
+            "golden_door",
             settings -> new DoorBlock(BlockSetType.IRON, settings),
             AbstractBlock.Settings.create().mapColor(MapColor.IRON_GRAY).strength(5.0F).nonOpaque().pistonBehavior(PistonBehavior.DESTROY),
             TallBlockItem::new
@@ -134,7 +134,8 @@ public class AtBlocks {
                     .sounds(BlockSoundGroup.ANVIL)
                     .pistonBehavior(PistonBehavior.BLOCK),
             new Item.Settings().maxDamage(maxDamageAnvil(AtToolMaterial.MITHRIL.durability()))
-    );    public static final Block CHIPPED_MITHRIL_ANVIL = register(
+    );
+    public static final Block CHIPPED_MITHRIL_ANVIL = register(
             "chipped_mithril_anvil",
             AtAnvilBlock::new,
             AbstractBlock.Settings.create()
@@ -274,12 +275,195 @@ public class AtBlocks {
                     .pistonBehavior(PistonBehavior.BLOCK),
             new Item.Settings().maxDamage(maxDamageAnvil(AtToolMaterial.COPPER.durability()))
     );
-    public static int maxDamageAnvil(int damage){
-        return damage*31;
+    public static final Block UNDERGROUND_PORTAL = register(
+            "underground_portal",
+            UndergroundPortalBlock::new,
+            AbstractBlock.Settings.copy(Blocks.NETHER_PORTAL)
+    );
+    public static final Block HOME_PORTAL = register(
+            "home_portal",
+            HomePortalBlock::new,
+            AbstractBlock.Settings.copy(Blocks.NETHER_PORTAL)
+    );
+    public static final Block RUNE_PORTAL = register(
+            "rune_portal",
+            RunePortalBlock::new,
+            AbstractBlock.Settings.copy(Blocks.NETHER_PORTAL)
+    );
+    public static final Block MITHRIL_NUL_RUNESTORE = register(
+            "mithril_nul_runestore",
+            AbstractBlock.Settings.copy(Blocks.OBSIDIAN)
+    );
+    public static final Block MITHRIL_QUAS_RUNESTORE = register(
+            "mithril_quas_runestore",
+            AbstractBlock.Settings.copy(Blocks.OBSIDIAN)
+    );
+    public static final Block MITHRIL_POR_RUNESTORE = register(
+            "mithril_por_runestore",
+            AbstractBlock.Settings.copy(Blocks.OBSIDIAN)
+    );
+    public static final Block MITHRIL_AN_RUNESTORE = register(
+            "mithril_an_runestore",
+            AbstractBlock.Settings.copy(Blocks.OBSIDIAN)
+    );
+    public static final Block MITHRIL_NOX_RUNESTORE = register(
+            "mithril_nox_runestore",
+            AbstractBlock.Settings.copy(Blocks.OBSIDIAN)
+    );
+    public static final Block MITHRIL_FLAM_RUNESTORE = register(
+            "mithril_flam_runestore",
+            AbstractBlock.Settings.copy(Blocks.OBSIDIAN)
+    );
+    public static final Block MITHRIL_VAS_RUNESTORE = register(
+            "mithril_vas_runestore",
+            AbstractBlock.Settings.copy(Blocks.OBSIDIAN)
+    );
+    public static final Block MITHRIL_DES_RUNESTORE = register(
+            "mithril_des_runestore",
+            AbstractBlock.Settings.copy(Blocks.OBSIDIAN)
+    );
+    public static final Block MITHRIL_ORT_RUNESTORE = register(
+            "mithril_ort_runestore",
+            AbstractBlock.Settings.copy(Blocks.OBSIDIAN)
+    );
+    public static final Block MITHRIL_TYM_RUNESTORE = register(
+            "mithril_tym_runestore",
+            AbstractBlock.Settings.copy(Blocks.OBSIDIAN)
+    );
+    public static final Block MITHRIL_CORP_RUNESTORE = register(
+            "mithril_corp_runestore",
+            AbstractBlock.Settings.copy(Blocks.OBSIDIAN)
+    );
+    public static final Block MITHRIL_LOR_RUNESTORE = register(
+            "mithril_lor_runestore",
+            AbstractBlock.Settings.copy(Blocks.OBSIDIAN)
+    );
+    public static final Block MITHRIL_MANI_RUNESTORE = register(
+            "mithril_mani_runestore",
+            AbstractBlock.Settings.copy(Blocks.OBSIDIAN)
+    );
+    public static final Block MITHRIL_JUX_RUNESTORE = register(
+            "mithril_jux_runestore",
+            AbstractBlock.Settings.copy(Blocks.OBSIDIAN)
+    );
+    public static final Block MITHRIL_YLEM_RUNESTORE = register(
+            "mithril_ylem_runestore",
+            AbstractBlock.Settings.copy(Blocks.OBSIDIAN)
+    );
+    public static final Block MITHRIL_SANCT_RUNESTORE = register(
+            "mithril_sanct_runestore",
+            AbstractBlock.Settings.copy(Blocks.OBSIDIAN)
+    );
+
+    public static final Block ADAMANTIUM_NUL_RUNESTORE = register(
+            "adamantium_nul_runestore",
+            AbstractBlock.Settings.copy(Blocks.OBSIDIAN)
+    );
+    public static final Block ADAMANTIUM_QUAS_RUNESTORE = register(
+            "adamantium_quas_runestore",
+            AbstractBlock.Settings.copy(Blocks.OBSIDIAN)
+    );
+    public static final Block ADAMANTIUM_POR_RUNESTORE = register(
+            "adamantium_por_runestore",
+            AbstractBlock.Settings.copy(Blocks.OBSIDIAN)
+    );
+    public static final Block ADAMANTIUM_AN_RUNESTORE = register(
+            "adamantium_an_runestore",
+            AbstractBlock.Settings.copy(Blocks.OBSIDIAN)
+    );
+    public static final Block ADAMANTIUM_NOX_RUNESTORE = register(
+            "adamantium_nox_runestore",
+            AbstractBlock.Settings.copy(Blocks.OBSIDIAN)
+    );
+    public static final Block ADAMANTIUM_FLAM_RUNESTORE = register(
+            "adamantium_flam_runestore",
+            AbstractBlock.Settings.copy(Blocks.OBSIDIAN)
+    );
+    public static final Block ADAMANTIUM_VAS_RUNESTORE = register(
+            "adamantium_vas_runestore",
+            AbstractBlock.Settings.copy(Blocks.OBSIDIAN)
+    );
+    public static final Block ADAMANTIUM_DES_RUNESTORE = register(
+            "adamantium_des_runestore",
+            AbstractBlock.Settings.copy(Blocks.OBSIDIAN)
+    );
+    public static final Block ADAMANTIUM_ORT_RUNESTORE = register(
+            "adamantium_ort_runestore",
+            AbstractBlock.Settings.copy(Blocks.OBSIDIAN)
+    );
+    public static final Block ADAMANTIUM_TYM_RUNESTORE = register(
+            "adamantium_tym_runestore",
+            AbstractBlock.Settings.copy(Blocks.OBSIDIAN)
+    );
+    public static final Block ADAMANTIUM_CORP_RUNESTORE = register(
+            "adamantium_corp_runestore",
+            AbstractBlock.Settings.copy(Blocks.OBSIDIAN)
+    );
+    public static final Block ADAMANTIUM_LOR_RUNESTORE = register(
+            "adamantium_lor_runestore",
+            AbstractBlock.Settings.copy(Blocks.OBSIDIAN)
+    );
+    public static final Block ADAMANTIUM_MANI_RUNESTORE = register(
+            "adamantium_mani_runestore",
+            AbstractBlock.Settings.copy(Blocks.OBSIDIAN)
+    );
+    public static final Block ADAMANTIUM_JUX_RUNESTORE = register(
+            "adamantium_jux_runestore",
+            AbstractBlock.Settings.copy(Blocks.OBSIDIAN)
+    );
+    public static final Block ADAMANTIUM_YLEM_RUNESTORE = register(
+            "adamantium_ylem_runestore",
+            AbstractBlock.Settings.copy(Blocks.OBSIDIAN)
+    );
+    public static final Block ADAMANTIUM_SANCT_RUNESTORE = register(
+            "adamantium_sanct_runestore",
+            AbstractBlock.Settings.copy(Blocks.OBSIDIAN)
+    );
+
+    public static final Block ADAMANTIUM_CRAFTING_TABLE = register(
+            "adamantium_crafting_table",
+            AbstractBlock.Settings.copy(Blocks.CRAFTING_TABLE)
+    );
+    public static final Block ANCIENT_METAL_CRAFTING_TABLE = register(
+            "ancient_metal_crafting_table",
+            AbstractBlock.Settings.copy(Blocks.CRAFTING_TABLE)
+    );
+    public static final Block COPPER_CRAFTING_TABLE = register(
+            "copper_crafting_table",
+            AbstractBlock.Settings.copy(Blocks.CRAFTING_TABLE)
+    );
+    public static final Block GOLD_CRAFTING_TABLE = register(
+            "gold_crafting_table",
+            AbstractBlock.Settings.copy(Blocks.CRAFTING_TABLE)
+    );
+    public static final Block IRON_CRAFTING_TABLE = register(
+            "iron_crafting_table",
+            AbstractBlock.Settings.copy(Blocks.CRAFTING_TABLE)
+    );
+    public static final Block MITHRIL_CRAFTING_TABLE = register(
+            "mithril_crafting_table",
+            AbstractBlock.Settings.copy(Blocks.CRAFTING_TABLE)
+    );
+    public static final Block SILVER_CRAFTING_TABLE = register(
+            "silver_crafting_table",
+            AbstractBlock.Settings.copy(Blocks.CRAFTING_TABLE)
+    );
+    public static final Block FLINT_CRAFTING_TABLE = register(
+            "flint_crafting_table",
+            AbstractBlock.Settings.copy(Blocks.CRAFTING_TABLE)
+    );
+    public static final Block OBSIDIAN_CRAFTING_TABLE = register(
+            "obsidian_crafting_table",
+            AbstractBlock.Settings.copy(Blocks.CRAFTING_TABLE)
+    );
+
+    public static int maxDamageAnvil(int damage) {
+        return damage * 31;
     }
+
     private static Block register(String name, Function<AbstractBlock.Settings, Block> factory, AbstractBlock.Settings settings, BiFunction<Block, Item.Settings, Item> factory1) {
         Block block = Blocks.register(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(At_mite.MOD_ID, name)), factory, settings);
-        Items.register(block,factory1);
+        Items.register(block, factory1);
         return block;
     }
 
@@ -288,43 +472,20 @@ public class AtBlocks {
         Items.register(block);
         return block;
     }
+
     private static Block register(String name, AbstractBlock.Settings settings) {
         Block block = Blocks.register(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(At_mite.MOD_ID, name)), settings);
         Items.register(block);
         return block;
     }
+
     public static Block register(String name, Function<AbstractBlock.Settings, Block> factory, AbstractBlock.Settings settings, Item.Settings itemSettings1) {
         Block block = Blocks.register(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(At_mite.MOD_ID, name)), factory, settings);
         RegistryKey<Item> key = RegistryKey.of(RegistryKeys.ITEM, Identifier.of(At_mite.MOD_ID, name));
         BiFunction<Block, Item.Settings, Item> biFunction = (BlockItem::new);
-        Items.register(key, itemSettings -> (Item)biFunction.apply(block, itemSettings), itemSettings1.useBlockPrefixedTranslationKey());
+        Items.register(key, itemSettings -> (Item) biFunction.apply(block, itemSettings), itemSettings1.useBlockPrefixedTranslationKey());
         return block;
     }
-    public static final BlockEntityType<AnvilBlockEntity> ANVIL_BLOCK_ENTITY =
-            register(
-            "anvil"
-            , AnvilBlockEntity::new
-            , ADAMANTIUM_ANVIL
-            , CHIPPED_ADAMANTIUM_ANVIL
-            , DAMAGED_ADAMANTIUM_ANVIL
-            , SILVER_ANVIL
-            , CHIPPED_SILVER_ANVIL
-            , DAMAGED_SILVER_ANVIL
-            , COPPER_ANVIL
-            , CHIPPED_COPPER_ANVIL
-            , DAMAGED_COPPER_ANVIL
-            , Blocks.ANVIL
-            , Blocks.CHIPPED_ANVIL
-            , Blocks.DAMAGED_ANVIL
-            , GOLDEN_ANVIL
-            , CHIPPED_GOLDEN_ANVIL
-            , DAMAGED_GOLDEN_ANVIL
-            , MITHRIL_ANVIL
-            , CHIPPED_MITHRIL_ANVIL
-            , DAMAGED_MITHRIL_ANVIL
-            , ANCIENT_METAL_ANVIL
-            , CHIPPED_ANCIENT_METAL_ANVIL
-            , DAMAGED_ANCIENT_METAL_ANVIL);
 
     private static <T extends BlockEntity> BlockEntityType<T> register(
             String name,
@@ -334,12 +495,47 @@ public class AtBlocks {
         Identifier id = Identifier.of(At_mite.MOD_ID, name);
         return Registry.register(Registries.BLOCK_ENTITY_TYPE, id, FabricBlockEntityTypeBuilder.<T>create(entityFactory, blocks).build());
     }
-    public static final ScreenHandlerType<AtAnvilScreenHandler> ATANVILSCREENHANDLER = register("at_anvil_screen_handler",AtAnvilScreenHandler::new);
+    public static final BlockEntityType<AnvilBlockEntity> ANVIL_BLOCK_ENTITY =
+            register(
+                    "anvil"
+                    , AnvilBlockEntity::new
+                    , ADAMANTIUM_ANVIL
+                    , CHIPPED_ADAMANTIUM_ANVIL
+                    , DAMAGED_ADAMANTIUM_ANVIL
+                    , SILVER_ANVIL
+                    , CHIPPED_SILVER_ANVIL
+                    , DAMAGED_SILVER_ANVIL
+                    , COPPER_ANVIL
+                    , CHIPPED_COPPER_ANVIL
+                    , DAMAGED_COPPER_ANVIL
+                    , Blocks.ANVIL
+                    , Blocks.CHIPPED_ANVIL
+                    , Blocks.DAMAGED_ANVIL
+                    , GOLDEN_ANVIL
+                    , CHIPPED_GOLDEN_ANVIL
+                    , DAMAGED_GOLDEN_ANVIL
+                    , MITHRIL_ANVIL
+                    , CHIPPED_MITHRIL_ANVIL
+                    , DAMAGED_MITHRIL_ANVIL
+                    , ANCIENT_METAL_ANVIL
+                    , CHIPPED_ANCIENT_METAL_ANVIL
+                    , DAMAGED_ANCIENT_METAL_ANVIL
+            );
+    public static final BlockEntityType<RunePortalBlockEntity> RUNE_PORTAL_BLOCK_ENTITY =
+            register(
+                    "rune_portal"
+                    , RunePortalBlockEntity::new
+                    , RUNE_PORTAL
+            );
     private static <T extends ScreenHandler> ScreenHandlerType<T> register(String id, ScreenHandlerType.Factory<T> factory) {
         return Registry.register(Registries.SCREEN_HANDLER, id, new ScreenHandlerType<>(factory, FeatureFlags.VANILLA_FEATURES));
     }
 
     public static void init() {
 
-    }
+    }    public static final ScreenHandlerType<AtAnvilScreenHandler> ATANVILSCREENHANDLER = register("at_anvil_screen_handler", AtAnvilScreenHandler::new);
+
+
+
+
 }
