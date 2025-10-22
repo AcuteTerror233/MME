@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(HoeItem.class)
 public class HoeItemMixin {
-    @Redirect(method = "<init>",at = @At(value = "INVOKE", target = "Lnet/minecraft/item/Item$Settings;hoe(Lnet/minecraft/item/ToolMaterial;FF)Lnet/minecraft/item/Item$Settings;"))
+    @Redirect(method = "<init>", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/Item$Settings;hoe(Lnet/minecraft/item/ToolMaterial;FF)Lnet/minecraft/item/Item$Settings;"))
     private static Item.Settings redirectHoe(Item.Settings settings, ToolMaterial material, float attackDamage, float attackSpeed) {
         return settings;
     }

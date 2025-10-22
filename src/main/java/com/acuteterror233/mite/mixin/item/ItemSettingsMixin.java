@@ -23,14 +23,25 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(Item.Settings.class)
-public abstract class ItemSettingsMixin implements FabricItem.Settings, ItemSettingsExtension{
+public abstract class ItemSettingsMixin implements FabricItem.Settings, ItemSettingsExtension {
 
-    @Shadow public abstract Item.Settings maxDamage(int maxDamage);
-    @Shadow public abstract Item.Settings attributeModifiers(AttributeModifiersComponent attributeModifiersComponent);
-    @Shadow public abstract <T> Item.Settings component(ComponentType<T> type, T value);
-    @Shadow @Final private  ComponentMap.Builder components;
-    @Shadow public abstract Item.Settings maxCount(int maxCount);
-    @Unique private boolean useMaxDamage = false;
+    @Shadow
+    @Final
+    private ComponentMap.Builder components;
+    @Unique
+    private boolean useMaxDamage = false;
+
+    @Shadow
+    public abstract Item.Settings maxDamage(int maxDamage);
+
+    @Shadow
+    public abstract Item.Settings attributeModifiers(AttributeModifiersComponent attributeModifiersComponent);
+
+    @Shadow
+    public abstract <T> Item.Settings component(ComponentType<T> type, T value);
+
+    @Shadow
+    public abstract Item.Settings maxCount(int maxCount);
 
     @Overwrite
     public Item.Settings tool(ToolMaterial material, TagKey<Block> effectiveBlocks, float attackDamage, float attackSpeed, float disableBlockingForSeconds) {
@@ -65,20 +76,24 @@ public abstract class ItemSettingsMixin implements FabricItem.Settings, ItemSett
         this.tool(material, BlockTags.SHOVEL_MINEABLE, attackDamage, attackSpeed, 0.0F);
         return this.attributeModifiers(CreateInteractionAttributeModifiers(0.75f, material.attackDamageBonus(), attackDamage, attackSpeed));
     }
+
     @Overwrite
-    public Item.Settings sword(ToolMaterial material, float attackDamage, float attackSpeed){
+    public Item.Settings sword(ToolMaterial material, float attackDamage, float attackSpeed) {
         this.maxDamage(material.durability() * 2);
-        material.applySwordSettings((Item.Settings)(Object)this, attackDamage, attackSpeed);
-        return ((Item.Settings)(Object)this).attributeModifiers(CreateInteractionAttributeModifiers(0.5f, material.attackDamageBonus(), attackDamage, attackSpeed));
+        material.applySwordSettings((Item.Settings) (Object) this, attackDamage, attackSpeed);
+        return ((Item.Settings) (Object) this).attributeModifiers(CreateInteractionAttributeModifiers(0.5f, material.attackDamageBonus(), attackDamage, attackSpeed));
     }
-    @Inject(method = "maxDamage",at = @At("HEAD"))
+
+    @Inject(method = "maxDamage", at = @At("HEAD"))
     public void maxDamage(int maxDamage, CallbackInfoReturnable<Item.Settings> cir) {
         this.useMaxDamage = true;
     }
-    @Inject(method = "food(Lnet/minecraft/component/type/FoodComponent;Lnet/minecraft/component/type/ConsumableComponent;)Lnet/minecraft/item/Item$Settings;",at = @At("HEAD"))
+
+    @Inject(method = "food(Lnet/minecraft/component/type/FoodComponent;Lnet/minecraft/component/type/ConsumableComponent;)Lnet/minecraft/item/Item$Settings;", at = @At("HEAD"))
     public void food(FoodComponent foodComponent, ConsumableComponent consumableComponent, CallbackInfoReturnable<Item.Settings> cir) {
         this.maxCount(16);
     }
+
     @Inject(method = "useRemainder", at = @At("HEAD"))
     public void useRemainder(Item remainder, CallbackInfoReturnable<Item.Settings> cir) {
         this.maxCount(1);
@@ -115,8 +130,8 @@ public abstract class ItemSettingsMixin implements FabricItem.Settings, ItemSett
     @Unique
     public Item.Settings dagger(ToolMaterial material, float attackDamage, float attackSpeed) {
         this.maxDamage(material.durability());
-        material.applySwordSettings((Item.Settings)(Object)this, attackDamage, attackSpeed);
-        return ((Item.Settings)(Object)this).attributeModifiers(CreateInteractionAttributeModifiers(0.25f, material.attackDamageBonus(), attackDamage, attackSpeed));
+        material.applySwordSettings((Item.Settings) (Object) this, attackDamage, attackSpeed);
+        return ((Item.Settings) (Object) this).attributeModifiers(CreateInteractionAttributeModifiers(0.25f, material.attackDamageBonus(), attackDamage, attackSpeed));
     }
 
     @Unique
@@ -129,10 +144,10 @@ public abstract class ItemSettingsMixin implements FabricItem.Settings, ItemSett
     }
 
     @Unique
-    public Item.Settings shears(ToolMaterial material, float attackDamage, float attackSpeed){
+    public Item.Settings shears(ToolMaterial material, float attackDamage, float attackSpeed) {
         this.maxDamage(material.durability() * 2);
         this.attributeModifiers(CreateInteractionAttributeModifiers(0.5f, material.attackDamageBonus(), attackDamage, attackSpeed));
-        return ((Item.Settings)(Object)this).component(DataComponentTypes.TOOL, ShearsItem.createToolComponent());
+        return ((Item.Settings) (Object) this).component(DataComponentTypes.TOOL, ShearsItem.createToolComponent());
     }
 
     @Unique
@@ -143,20 +158,22 @@ public abstract class ItemSettingsMixin implements FabricItem.Settings, ItemSett
                 .component(DataComponentTypes.EQUIPPABLE, EquippableComponent.builder(type.getEquipmentSlot()).equipSound(material.equipSound()).model(material.assetId()).build())
                 .repairable(material.repairIngredient());
     }
+
     @Unique
     public Item.Settings scythe(ToolMaterial material, float attackDamage, float attackSpeed) {
         this.maxDamage(material.durability() * 2);
         this.tool(material, BlockTags.HOE_MINEABLE, attackDamage, attackSpeed, 0.0F);
-        material.applySwordSettings((Item.Settings)(Object)this, attackDamage, attackSpeed);
+        material.applySwordSettings((Item.Settings) (Object) this, attackDamage, attackSpeed);
         return this.attributeModifiers(CreateInteractionAttributeModifiers(0.75f, material.attackDamageBonus(), attackDamage, attackSpeed));
     }
+
     @Unique
     public boolean getUseMaxDamage() {
         return this.useMaxDamage;
     }
 
     @Unique
-    public AttributeModifiersComponent CreateInteractionAttributeModifiers(float InteractionDistance, float attackDamageBonus, float attackDamage, float attackSpeed){
+    public AttributeModifiersComponent CreateInteractionAttributeModifiers(float InteractionDistance, float attackDamageBonus, float attackDamage, float attackSpeed) {
         return AttributeModifiersComponent.builder()
                 .add(
                         EntityAttributes.ATTACK_DAMAGE,

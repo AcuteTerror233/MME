@@ -37,6 +37,7 @@ public class En_usLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(AtItems.COPPER_CHESTPLATE,"Copper Chestplate");
         translationBuilder.add(AtItems.COPPER_LEGGINGS,"Copper Leggings");
         translationBuilder.add(AtItems.COPPER_BOOTS,"Copper Boots");
+        translationBuilder.add(AtItems.COPPER_CHAINMAIL_BOOTS,"Copper Chainmail boots");
         translationBuilder.add(AtItems.COPPER_CHAINMAIL_HELMET,"Copper Chainmail Helmet");
         translationBuilder.add(AtItems.COPPER_CHAINMAIL_CHESTPLATE,"Copper Chainmail Chestplate");
         translationBuilder.add(AtItems.COPPER_CHAINMAIL_LEGGINGS,"Copper Chainmail Leggings");
@@ -375,5 +376,49 @@ public class En_usLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(AtBlocks.COPPER_ANVIL,"copper anvil");
         translationBuilder.add(AtBlocks.CHIPPED_COPPER_ANVIL,"chipped copper anvil");
         translationBuilder.add(AtBlocks.DAMAGED_COPPER_ANVIL,"damaged copper anvil");
+        
+        translationBuilder.add(AtBlocks.MITHRIL_NUL_RUNESTORE, "Mithril Nul Runestone");
+        translationBuilder.add(AtBlocks.MITHRIL_QUAS_RUNESTORE, "Mithril Quas Runestone");
+        translationBuilder.add(AtBlocks.MITHRIL_POR_RUNESTORE, "Mithril Por Runestone");
+        translationBuilder.add(AtBlocks.MITHRIL_AN_RUNESTORE, "Mithril An Runestone");
+        translationBuilder.add(AtBlocks.MITHRIL_NOX_RUNESTORE, "Mithril Nox Runestone");
+        translationBuilder.add(AtBlocks.MITHRIL_FLAM_RUNESTORE, "Mithril Flam Runestone");
+        translationBuilder.add(AtBlocks.MITHRIL_VAS_RUNESTORE, "Mithril Vas Runestone");
+        translationBuilder.add(AtBlocks.MITHRIL_DES_RUNESTORE, "Mithril Des Runestone");
+        translationBuilder.add(AtBlocks.MITHRIL_ORT_RUNESTORE, "Mithril Ort Runestone");
+        translationBuilder.add(AtBlocks.MITHRIL_TYM_RUNESTORE, "Mithril Typ Runestone");
+        translationBuilder.add(AtBlocks.MITHRIL_CORP_RUNESTORE, "Mithril Corp Runestone");
+        translationBuilder.add(AtBlocks.MITHRIL_LOR_RUNESTORE, "Mithril Lor Runestone");
+        translationBuilder.add(AtBlocks.MITHRIL_MANI_RUNESTORE, "Mithril Mani Runestone");
+        translationBuilder.add(AtBlocks.MITHRIL_JUX_RUNESTORE, "Mithril Jux Runestone");
+        translationBuilder.add(AtBlocks.MITHRIL_YLEM_RUNESTORE, "Mithril Ylem Runestone");
+        translationBuilder.add(AtBlocks.MITHRIL_SANCT_RUNESTORE, "Mithril Sanct Runestone");
+        
+        translationBuilder.add(AtBlocks.ADAMANTIUM_NUL_RUNESTORE, "Adamantium Nul Runestone");
+        translationBuilder.add(AtBlocks.ADAMANTIUM_QUAS_RUNESTORE, "Adamantium Quas Runestone");
+        translationBuilder.add(AtBlocks.ADAMANTIUM_POR_RUNESTORE, "Adamantium Por Runestone");
+        translationBuilder.add(AtBlocks.ADAMANTIUM_AN_RUNESTORE, "Adamantium An Runestone");
+        translationBuilder.add(AtBlocks.ADAMANTIUM_NOX_RUNESTORE, "Adamantium Nox Runestone");
+        translationBuilder.add(AtBlocks.ADAMANTIUM_FLAM_RUNESTORE, "Adamantium Flam Runestone");
+        translationBuilder.add(AtBlocks.ADAMANTIUM_VAS_RUNESTORE, "Adamantium Vas Runestone");
+        translationBuilder.add(AtBlocks.ADAMANTIUM_DES_RUNESTORE, "Adamantium Des Runestone");
+        translationBuilder.add(AtBlocks.ADAMANTIUM_ORT_RUNESTORE, "Adamantium Ort Runestone");
+        translationBuilder.add(AtBlocks.ADAMANTIUM_TYM_RUNESTORE, "Adamantium Typ Runestone");
+        translationBuilder.add(AtBlocks.ADAMANTIUM_CORP_RUNESTORE, "Adamantium Corp Runestone");
+        translationBuilder.add(AtBlocks.ADAMANTIUM_LOR_RUNESTORE, "Adamantium Lor Runestone");
+        translationBuilder.add(AtBlocks.ADAMANTIUM_MANI_RUNESTORE, "Adamantium Mani Runestone");
+        translationBuilder.add(AtBlocks.ADAMANTIUM_JUX_RUNESTORE, "Adamantium Jux Runestone");
+        translationBuilder.add(AtBlocks.ADAMANTIUM_YLEM_RUNESTORE, "Adamantium Ylem Runestone");
+        translationBuilder.add(AtBlocks.ADAMANTIUM_SANCT_RUNESTORE, "Adamantium Sanct Runestone");
+
+        translationBuilder.add(AtBlocks.ADAMANTIUM_CRAFTING_TABLE, "Adamantium Crafting Table");
+        translationBuilder.add(AtBlocks.ANCIENT_METAL_CRAFTING_TABLE, "Ancient Metal Crafting Table");
+        translationBuilder.add(AtBlocks.COPPER_CRAFTING_TABLE, "copper crafting table");
+        translationBuilder.add(AtBlocks.GOLD_CRAFTING_TABLE, "gold crafting table");
+        translationBuilder.add(AtBlocks.IRON_CRAFTING_TABLE, "iron crafting table");
+        translationBuilder.add(AtBlocks.MITHRIL_CRAFTING_TABLE, "mithril crafting table");
+        translationBuilder.add(AtBlocks.SILVER_CRAFTING_TABLE, "silver crafting table");
+        translationBuilder.add(AtBlocks.FLINT_CRAFTING_TABLE, "flint crafting table");
+        translationBuilder.add(AtBlocks.OBSIDIAN_CRAFTING_TABLE, "obsidian crafting table");
     }
 }

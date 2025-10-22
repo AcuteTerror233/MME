@@ -16,7 +16,7 @@ public class AtArmorMaterials {
     public static final RegistryKey<EquipmentAsset> ADAMANTIUM_CHAINMAIL_ARMOR_MATERIAL_KEY = RegistryKey.of(EquipmentAssetKeys.REGISTRY_KEY, Identifier.of(At_mite.MOD_ID, "adamantium_chainmail"));
     public static final RegistryKey<EquipmentAsset> ANCIENT_METAL_ARMOR_MATERIAL_KEY = RegistryKey.of(EquipmentAssetKeys.REGISTRY_KEY, Identifier.of(At_mite.MOD_ID, "ancient_metal"));
     public static final RegistryKey<EquipmentAsset> ANCIENT_METAL_CHAINMAIL_ARMOR_MATERIAL_KEY = RegistryKey.of(EquipmentAssetKeys.REGISTRY_KEY, Identifier.of(At_mite.MOD_ID, "ancient_metal_chainmail"));
-    public static final RegistryKey<EquipmentAsset> COPPER_ARMOR_MATERIAL_KEY =  RegistryKey.of(EquipmentAssetKeys.REGISTRY_KEY, Identifier.of(At_mite.MOD_ID, "copper"));
+    public static final RegistryKey<EquipmentAsset> COPPER_ARMOR_MATERIAL_KEY = RegistryKey.of(EquipmentAssetKeys.REGISTRY_KEY, Identifier.of(At_mite.MOD_ID, "copper"));
     public static final RegistryKey<EquipmentAsset> COPPER_CHAINMAIL_ARMOR_MATERIAL_KEY = RegistryKey.of(EquipmentAssetKeys.REGISTRY_KEY, Identifier.of(At_mite.MOD_ID, "copper_chainmail"));
     public static final RegistryKey<EquipmentAsset> MITHRIL_ARMOR_MATERIAL_KEY = RegistryKey.of(EquipmentAssetKeys.REGISTRY_KEY, Identifier.of(At_mite.MOD_ID, "mithril"));
     public static final RegistryKey<EquipmentAsset> MITHRIL_CHAINMAIL_ARMOR_MATERIAL_KEY = RegistryKey.of(EquipmentAssetKeys.REGISTRY_KEY, Identifier.of(At_mite.MOD_ID, "mithril_chainmail"));
@@ -76,11 +76,11 @@ public class AtArmorMaterials {
                 put(EquipmentType.LEGGINGS, 2.3);
                 put(EquipmentType.BOOTS, 1.3);
             }},
-                5,
-                SoundEvents.ITEM_ARMOR_EQUIP_IRON,
-                0.0F,
-                0.0F,
-                null,
+            5,
+            SoundEvents.ITEM_ARMOR_EQUIP_IRON,
+            0.0F,
+            0.0F,
+            null,
             ANCIENT_METAL_ARMOR_MATERIAL_KEY);
     public static final AtArmorMaterial ANCIENT_METAL_CHAINMAIL_ARMOR_MATERIAL = new AtArmorMaterial(
             15,
@@ -90,12 +90,12 @@ public class AtArmorMaterials {
                 put(EquipmentType.LEGGINGS, 1.8);
                 put(EquipmentType.BOOTS, 1.0);
             }},
-                5,
-                SoundEvents.ITEM_ARMOR_EQUIP_IRON,
-                0.0F,
-                0.0F,
-                null,
-                ANCIENT_METAL_CHAINMAIL_ARMOR_MATERIAL_KEY);
+            5,
+            SoundEvents.ITEM_ARMOR_EQUIP_IRON,
+            0.0F,
+            0.0F,
+            null,
+            ANCIENT_METAL_CHAINMAIL_ARMOR_MATERIAL_KEY);
     public static final AtArmorMaterial COPPER_ARMOR_MATERIAL = new AtArmorMaterial(
             15,
             new HashMap<>() {{
@@ -104,12 +104,12 @@ public class AtArmorMaterials {
                 put(EquipmentType.LEGGINGS, 2.0);
                 put(EquipmentType.BOOTS, 1.2);
             }},
-                5,
-                SoundEvents.ITEM_ARMOR_EQUIP_IRON,
-                 0.0F,
-                 0.0F,
-                 null,
-                 COPPER_ARMOR_MATERIAL_KEY);
+            5,
+            SoundEvents.ITEM_ARMOR_EQUIP_IRON,
+            0.0F,
+            0.0F,
+            null,
+            COPPER_ARMOR_MATERIAL_KEY);
     public static final AtArmorMaterial COPPER_CHAINMAIL_ARMOR_MATERIAL = new AtArmorMaterial(
             15,
             new HashMap<>() {{
@@ -118,12 +118,12 @@ public class AtArmorMaterials {
                 put(EquipmentType.LEGGINGS, 1.5);
                 put(EquipmentType.BOOTS, 0.83);
             }},
-                5,
-                SoundEvents.ITEM_ARMOR_EQUIP_IRON,
-                0.0F,
-                0.0F,
-                null,
-                COPPER_CHAINMAIL_ARMOR_MATERIAL_KEY);
+            5,
+            SoundEvents.ITEM_ARMOR_EQUIP_IRON,
+            0.0F,
+            0.0F,
+            null,
+            COPPER_CHAINMAIL_ARMOR_MATERIAL_KEY);
     public static final AtArmorMaterial MITHRIL_ARMOR_MATERIAL = new AtArmorMaterial(
             15,
             new HashMap<>() {{
@@ -132,11 +132,11 @@ public class AtArmorMaterials {
                 put(EquipmentType.LEGGINGS, 2.6);
                 put(EquipmentType.BOOTS, 1.5);
             }},
-                5,
-                SoundEvents.ITEM_ARMOR_EQUIP_IRON,
-                0.0F,
-                0.0F,
-                null,
+            5,
+            SoundEvents.ITEM_ARMOR_EQUIP_IRON,
+            0.0F,
+            0.0F,
+            null,
             MITHRIL_ARMOR_MATERIAL_KEY);
     public static final AtArmorMaterial MITHRIL_CHAINMAIL_ARMOR_MATERIAL = new AtArmorMaterial(
             15,
@@ -160,12 +160,12 @@ public class AtArmorMaterials {
                 put(EquipmentType.LEGGINGS, 1.8);
                 put(EquipmentType.BOOTS, 1.0);
             }},
-                5,
-                SoundEvents.ITEM_ARMOR_EQUIP_IRON,
-                0.0F,
-                0.0F,
-                null,
-                RUSTED_IRON_ARMOR_MATERIAL_KEY);
+            5,
+            SoundEvents.ITEM_ARMOR_EQUIP_IRON,
+            0.0F,
+            0.0F,
+            null,
+            RUSTED_IRON_ARMOR_MATERIAL_KEY);
     public static final AtArmorMaterial RUSTED_IRON_CHAINMAIL_ARMOR_MATERIAL = new AtArmorMaterial(
             15,
             new HashMap<>() {{
@@ -174,12 +174,12 @@ public class AtArmorMaterials {
                 put(EquipmentType.LEGGINGS, 1.2);
                 put(EquipmentType.BOOTS, 0.67);
             }},
-                5,
-                SoundEvents.ITEM_ARMOR_EQUIP_IRON,
-                0.0F,
-                0.0F,
-                null,
-                RUSTED_IRON_CHAINMAIL_ARMOR_MATERIAL_KEY);
+            5,
+            SoundEvents.ITEM_ARMOR_EQUIP_IRON,
+            0.0F,
+            0.0F,
+            null,
+            RUSTED_IRON_CHAINMAIL_ARMOR_MATERIAL_KEY);
     public static final AtArmorMaterial SILVER_ARMOR_MATERIAL = new AtArmorMaterial(
             15,
             new HashMap<>() {{
@@ -188,12 +188,12 @@ public class AtArmorMaterials {
                 put(EquipmentType.LEGGINGS, 2.0);
                 put(EquipmentType.BOOTS, 1.2);
             }},
-                5,
-                SoundEvents.ITEM_ARMOR_EQUIP_IRON,
-                0.0F,
-                0.0F,
-                null,
-                SILVER_ARMOR_MATERIAL_KEY);
+            5,
+            SoundEvents.ITEM_ARMOR_EQUIP_IRON,
+            0.0F,
+            0.0F,
+            null,
+            SILVER_ARMOR_MATERIAL_KEY);
     public static final AtArmorMaterial SILVER_CHAINMAIL_ARMOR_MATERIAL = new AtArmorMaterial(
             15,
             new HashMap<>() {{
@@ -202,12 +202,12 @@ public class AtArmorMaterials {
                 put(EquipmentType.LEGGINGS, 1.5);
                 put(EquipmentType.BOOTS, 0.83);
             }},
-                5,
-                SoundEvents.ITEM_ARMOR_EQUIP_IRON,
-                0.0F,
-                0.0F,
-                null,
-                SILVER_CHAINMAIL_ARMOR_MATERIAL_KEY);
+            5,
+            SoundEvents.ITEM_ARMOR_EQUIP_IRON,
+            0.0F,
+            0.0F,
+            null,
+            SILVER_CHAINMAIL_ARMOR_MATERIAL_KEY);
 }
 
 

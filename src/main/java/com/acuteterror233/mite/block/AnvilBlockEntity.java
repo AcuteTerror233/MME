@@ -13,6 +13,7 @@ import net.minecraft.world.WorldEvents;
 public class AnvilBlockEntity extends BlockEntity {
     private Integer maxDamage;
     private Integer damage;
+
     public AnvilBlockEntity(BlockPos pos, BlockState state) {
         super(AtBlocks.ANVIL_BLOCK_ENTITY, pos, state);
         this.maxDamage = 0;
@@ -25,13 +26,14 @@ public class AnvilBlockEntity extends BlockEntity {
         nbt.putInt("damage", this.damage);
         super.writeNbt(nbt, registryLookup);
     }
-    
+
     @Override
     protected void readNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
         super.readNbt(nbt, registryLookup);
         this.maxDamage = nbt.getInt("maxDamage").orElse(0);
         this.damage = nbt.getInt("damage").orElse(0);
     }
+
     public Integer getMaxDamage() {
         return this.maxDamage;
     }
@@ -43,6 +45,7 @@ public class AnvilBlockEntity extends BlockEntity {
     public Integer getDamage() {
         return this.damage;
     }
+
     public void setDamage(Integer damage) {
         this.damage = damage;
     }
@@ -53,14 +56,14 @@ public class AnvilBlockEntity extends BlockEntity {
         int i1 = this.maxDamage / 3;
         assert this.world != null;
         Block anvil = this.world.getBlockState(this.pos).getBlock();
-        if (i >= this.maxDamage){
-            this.world.removeBlock(this.pos,false);
+        if (i >= this.maxDamage) {
+            this.world.removeBlock(this.pos, false);
             this.world.syncWorldEvent(WorldEvents.ANVIL_USED, pos, 0);
         } else if (i >= i1 * 2) {
-            Block block = Registries.BLOCK.get(Identifier.of(Registries.BLOCK.getId(anvil).toString().replace("chipped","damaged")));
+            Block block = Registries.BLOCK.get(Identifier.of(Registries.BLOCK.getId(anvil).toString().replace("chipped", "damaged")));
             generate(block);
         } else if (i >= i1) {
-            Block block = Registries.BLOCK.get(Identifier.of(Registries.BLOCK.getId(anvil).toString().replace(".",":chipped")));
+            Block block = Registries.BLOCK.get(Identifier.of(Registries.BLOCK.getId(anvil).toString().replace(".", ":chipped")));
             generate(block);
         }
     }

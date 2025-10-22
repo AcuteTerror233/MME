@@ -376,5 +376,49 @@ public class Zh_cnLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(AtBlocks.COPPER_ANVIL,"铜砧");
         translationBuilder.add(AtBlocks.CHIPPED_COPPER_ANVIL,"开裂的铜砧");
         translationBuilder.add(AtBlocks.DAMAGED_COPPER_ANVIL,"损坏的铜砧");
+
+        translationBuilder.add(AtBlocks.MITHRIL_NUL_RUNESTORE, "秘银符文石");
+        translationBuilder.add(AtBlocks.MITHRIL_QUAS_RUNESTORE, "秘银符文石");
+        translationBuilder.add(AtBlocks.MITHRIL_POR_RUNESTORE, "秘银符文石");
+        translationBuilder.add(AtBlocks.MITHRIL_AN_RUNESTORE, "秘银符文石");
+        translationBuilder.add(AtBlocks.MITHRIL_NOX_RUNESTORE, "秘银符文石");
+        translationBuilder.add(AtBlocks.MITHRIL_FLAM_RUNESTORE, "秘银符文石");
+        translationBuilder.add(AtBlocks.MITHRIL_VAS_RUNESTORE, "秘银符文石");
+        translationBuilder.add(AtBlocks.MITHRIL_DES_RUNESTORE, "秘银符文石");
+        translationBuilder.add(AtBlocks.MITHRIL_ORT_RUNESTORE, "秘银符文石");
+        translationBuilder.add(AtBlocks.MITHRIL_TYM_RUNESTORE, "秘银符文石");
+        translationBuilder.add(AtBlocks.MITHRIL_CORP_RUNESTORE, "秘银符文石");
+        translationBuilder.add(AtBlocks.MITHRIL_LOR_RUNESTORE, "秘银符文石");
+        translationBuilder.add(AtBlocks.MITHRIL_MANI_RUNESTORE, "秘银符文石");
+        translationBuilder.add(AtBlocks.MITHRIL_JUX_RUNESTORE, "秘银符文石");
+        translationBuilder.add(AtBlocks.MITHRIL_YLEM_RUNESTORE, "秘银符文石");
+        translationBuilder.add(AtBlocks.MITHRIL_SANCT_RUNESTORE, "秘银符文石");
+
+        translationBuilder.add(AtBlocks.ADAMANTIUM_NUL_RUNESTORE, "艾德曼符文石");
+        translationBuilder.add(AtBlocks.ADAMANTIUM_QUAS_RUNESTORE, "艾德曼符文石");
+        translationBuilder.add(AtBlocks.ADAMANTIUM_POR_RUNESTORE, "艾德曼符文石");
+        translationBuilder.add(AtBlocks.ADAMANTIUM_AN_RUNESTORE, "艾德曼符文石");
+        translationBuilder.add(AtBlocks.ADAMANTIUM_NOX_RUNESTORE, "艾德曼符文石");
+        translationBuilder.add(AtBlocks.ADAMANTIUM_FLAM_RUNESTORE, "艾德曼符文石");
+        translationBuilder.add(AtBlocks.ADAMANTIUM_VAS_RUNESTORE, "艾德曼符文石");
+        translationBuilder.add(AtBlocks.ADAMANTIUM_DES_RUNESTORE, "艾德曼符文石");
+        translationBuilder.add(AtBlocks.ADAMANTIUM_ORT_RUNESTORE, "艾德曼符文石");
+        translationBuilder.add(AtBlocks.ADAMANTIUM_TYM_RUNESTORE, "艾德曼符文石");
+        translationBuilder.add(AtBlocks.ADAMANTIUM_CORP_RUNESTORE, "艾德曼符文石");
+        translationBuilder.add(AtBlocks.ADAMANTIUM_LOR_RUNESTORE, "艾德曼符文石");
+        translationBuilder.add(AtBlocks.ADAMANTIUM_MANI_RUNESTORE, "艾德曼符文石");
+        translationBuilder.add(AtBlocks.ADAMANTIUM_JUX_RUNESTORE, "艾德曼符文石");
+        translationBuilder.add(AtBlocks.ADAMANTIUM_YLEM_RUNESTORE, "艾德曼符文石");
+        translationBuilder.add(AtBlocks.ADAMANTIUM_SANCT_RUNESTORE, "艾德曼符文石");
+
+        translationBuilder.add(AtBlocks.ADAMANTIUM_CRAFTING_TABLE, "艾德曼工作台");
+        translationBuilder.add(AtBlocks.ANCIENT_METAL_CRAFTING_TABLE, "远古金属工作台");
+        translationBuilder.add(AtBlocks.COPPER_CRAFTING_TABLE, "铜工作台");
+        translationBuilder.add(AtBlocks.GOLD_CRAFTING_TABLE, "金工作台");
+        translationBuilder.add(AtBlocks.IRON_CRAFTING_TABLE, "铁工作台");
+        translationBuilder.add(AtBlocks.MITHRIL_CRAFTING_TABLE, "秘银工作台");
+        translationBuilder.add(AtBlocks.SILVER_CRAFTING_TABLE, "银工作台");
+        translationBuilder.add(AtBlocks.FLINT_CRAFTING_TABLE, "燧石工作台");
+        translationBuilder.add(AtBlocks.OBSIDIAN_CRAFTING_TABLE, "黑曜石工作台");
     }
 }

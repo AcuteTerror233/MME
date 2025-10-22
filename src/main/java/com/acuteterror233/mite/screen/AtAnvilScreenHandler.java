@@ -38,15 +38,24 @@ public class AtAnvilScreenHandler extends ForgingScreenHandler {
     private int repairItemUsage;
     @Nullable
     private String newItemName;
+
     public AtAnvilScreenHandler(int syncId, PlayerInventory playerInventory) {
-        this(syncId, playerInventory,ScreenHandlerContext.EMPTY);
+        this(syncId, playerInventory, ScreenHandlerContext.EMPTY);
     }
+
     public AtAnvilScreenHandler(int syncId, PlayerInventory playerInventory, ScreenHandlerContext context) {
         super(AtBlocks.ATANVILSCREENHANDLER, syncId, playerInventory, context, getForgingSlotsManager());
         this.addProperty(this.levelCost);
     }
+
     public static ForgingSlotsManager getForgingSlotsManager() {
         return ForgingSlotsManager.builder().input(0, 27, 47, stack -> true).input(1, 76, 47, stack -> true).output(2, 134, 47).build();
+    }
+
+    @Nullable
+    private static String sanitize(String name) {
+        String string = StringHelper.stripInvalidChars(name);
+        return string.length() <= 50 ? string : null;
     }
 
     //输出被拿走的时候执行,player拿走的玩家,stack拿走的堆栈
@@ -85,7 +94,7 @@ public class AtAnvilScreenHandler extends ForgingScreenHandler {
         //触发世界事件
         this.context.run((world, pos) -> {
             BlockEntity entity = world.getBlockEntity(pos);
-            if (entity instanceof AnvilBlockEntity blockEntity){
+            if (entity instanceof AnvilBlockEntity blockEntity) {
                 blockEntity.addDamage(i);
             }
         });
@@ -152,7 +161,7 @@ public class AtAnvilScreenHandler extends ForgingScreenHandler {
                         i++;
                         Damage = Math.min(itemStack2.getDamage(), itemStack2.getMaxDamage() / 4);
                     }
-    
+
                     this.repairItemUsage = m;
                 } else {
                     // 检查是否可以合并两个相同类型的物品（如附魔书）
@@ -161,7 +170,7 @@ public class AtAnvilScreenHandler extends ForgingScreenHandler {
                         this.levelCost.set(0);
                         return;
                     }
-    
+
                     // 合并两个损坏物品以恢复耐久度
                     if (itemStack2.isDamageable() && !bl) {
                         int kx = itemStack.getMaxDamage() - itemStack.getDamage();
@@ -172,17 +181,17 @@ public class AtAnvilScreenHandler extends ForgingScreenHandler {
                         if (p < 0) {
                             p = 0;
                         }
-    
+
                         if (p < itemStack2.getDamage()) {
                             itemStack2.setDamage(p);
                             i += 2;
                         }
                     }
-    
+
                     ItemEnchantmentsComponent itemEnchantmentsComponent = EnchantmentHelper.getEnchantments(itemStack3);
                     boolean bl2 = false;
                     boolean bl3 = false;
-    
+
                     // 遍历第二个物品上的附魔，并尝试将其应用到第一个物品上
                     for (Object2IntMap.Entry<RegistryEntry<Enchantment>> entry : itemEnchantmentsComponent.getEnchantmentEntries()) {
                         RegistryEntry<Enchantment> registryEntry = entry.getKey();
@@ -194,14 +203,14 @@ public class AtAnvilScreenHandler extends ForgingScreenHandler {
                         if (this.player.isInCreativeMode() || itemStack.isOf(Items.ENCHANTED_BOOK)) {
                             bl4 = true;
                         }
-    
+
                         for (RegistryEntry<Enchantment> registryEntry2 : builder.getEnchantments()) {
                             if (!registryEntry2.equals(registryEntry) && !Enchantment.canBeCombined(registryEntry, registryEntry2)) {
                                 bl4 = false;
                                 i++;
                             }
                         }
-    
+
                         if (!bl4) {
                             bl3 = true;
                         } else {
@@ -209,20 +218,20 @@ public class AtAnvilScreenHandler extends ForgingScreenHandler {
                             if (r > enchantment.getMaxLevel()) {
                                 r = enchantment.getMaxLevel();
                             }
-    
+
                             builder.set(registryEntry, r);
                             int s = enchantment.getAnvilCost();
                             if (bl) {
                                 s = Math.max(1, s / 2);
                             }
-    
+
                             i += s * r;
                             if (itemStack.getCount() > 1) {
                                 i = 40;
                             }
                         }
                     }
-    
+
                     // 如果存在冲突且没有成功附魔，则清空输出
                     if (bl3 && !bl2) {
                         this.output.setStack(0, ItemStack.EMPTY);
@@ -231,7 +240,7 @@ public class AtAnvilScreenHandler extends ForgingScreenHandler {
                     }
                 }
             }
-    
+
             // 处理自定义名称的设置或移除
             if (this.newItemName != null && !StringHelper.isBlank(this.newItemName)) {
                 if (!this.newItemName.equals(itemStack.getName().getString())) {
@@ -244,43 +253,43 @@ public class AtAnvilScreenHandler extends ForgingScreenHandler {
                 i += j;
                 itemStack2.remove(DataComponentTypes.CUSTOM_NAME);
             }
-    
+
             // 计算总等级消耗
             int t = i <= 0 ? 0 : (int) MathHelper.clamp(repair_cost + i, 0L, 2147483647L);
             this.levelCost.set(t);
             if (i <= 0) {
                 itemStack2 = ItemStack.EMPTY;
             }
-    
+
             // 设置是否保留副槽位
             if (j == i && j > 0) {
                 if (this.levelCost.get() >= 40) {
                     this.levelCost.set(39);
                 }
-    
+
                 this.keepSecondSlot = true;
             }
-    
+
             // 如果等级消耗过高且玩家不是创造模式，则清空输出
             if (this.levelCost.get() >= 40 && !this.player.isInCreativeMode()) {
                 itemStack2 = ItemStack.EMPTY;
             }
-    
+
             // 更新修复成本和附魔信息
             if (!itemStack2.isEmpty()) {
                 int kxx = itemStack2.getOrDefault(DataComponentTypes.REPAIR_COST, 0);
                 if (kxx < itemStack3.getOrDefault(DataComponentTypes.REPAIR_COST, 0)) {
                     kxx = itemStack3.getOrDefault(DataComponentTypes.REPAIR_COST, 0);
                 }
-    
+
                 if (j != i || j == 0) {
                     kxx = AnvilScreenHandler.getNextCost(kxx);
                 }
-    
+
                 itemStack2.set(DataComponentTypes.REPAIR_COST, kxx);
                 EnchantmentHelper.set(itemStack2, builder.build());
             }
-    
+
             this.output.setStack(0, itemStack2);
             this.sendContentUpdates();
         } else {
@@ -319,14 +328,11 @@ public class AtAnvilScreenHandler extends ForgingScreenHandler {
             return false;
         }
     }
-    @Nullable
-    private static String sanitize(String name) {
-        String string = StringHelper.stripInvalidChars(name);
-        return string.length() <= 50 ? string : null;
-    }
+
     public int getLevelCost() {
         return this.levelCost.get();
     }
+
     @Override
     protected boolean canTakeOutput(PlayerEntity player, boolean present) {
         return (player.isInCreativeMode() || player.experienceLevel >= this.levelCost.get()) && this.levelCost.get() > 0;

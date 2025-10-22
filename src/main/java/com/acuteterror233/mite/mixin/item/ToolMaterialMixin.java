@@ -11,11 +11,18 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyArg;
 
 @Mixin(ToolMaterial.class)
-public abstract class ToolMaterialMixin{
+public abstract class ToolMaterialMixin {
 
-    @Final @Shadow private TagKey<Item> repairItems;
-    @Final @Shadow private int enchantmentValue;
-    @Final @Shadow private float attackDamageBonus;
+    @Final
+    @Shadow
+    private TagKey<Item> repairItems;
+    @Final
+    @Shadow
+    private int enchantmentValue;
+    @Final
+    @Shadow
+    private float attackDamageBonus;
+
     @ModifyArg(method = "<clinit>", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/ToolMaterial;<init>(Lnet/minecraft/registry/tag/TagKey;IFFILnet/minecraft/registry/tag/TagKey;)V"), index = 1)
     private static int ModificationMaterials(int par2) {
         return switch (par2) {
@@ -26,6 +33,7 @@ public abstract class ToolMaterialMixin{
             default -> par2;
         };
     }
+
     @Overwrite
     private Item.Settings applyBaseSettings(Item.Settings settings) {
         return settings.repairable(this.repairItems).enchantable(this.enchantmentValue);

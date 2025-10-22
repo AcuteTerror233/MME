@@ -7,9 +7,11 @@
   "mixins": [
     "block.AbstractBlockMixin",
     "block.AbstractBlockSettingsMixin",
+    "block.AbstractFireBlockMixin",
     "block.BlocksMixin",
     "block.BubbleColumnBlockMixin",
     "block.FluidBlockMixin",
+    "block.NetherPortalBlockMixin",
     "block.PowderSnowBlockMixin",
     "block.WaterloggableMixin",
     "component.DataComponentTypesMixin",
@@ -24,7 +26,8 @@
     "item.ItemsMixin",
     "item.ItemStackMixin",
     "item.ToolMaterialMixin",
-    "screen.AnvilScreenHandlerMixin"
+    "screen.AnvilScreenHandlerMixin",
+    "world.dimension.NetherPortalMixin"
   ],
   "injectors": {
     "defaultRequire": 1

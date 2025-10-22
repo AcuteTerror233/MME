@@ -11,6 +11,7 @@ import net.minecraft.util.ActionResult;
 
 public class AtPowderSnowBucketItem extends PowderSnowBucketItem {
     Item item;
+
     public AtPowderSnowBucketItem(Block block, SoundEvent placeSound, Settings settings, Item item) {
         super(block, placeSound, settings);
         this.item = item;

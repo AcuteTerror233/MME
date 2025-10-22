@@ -8,16 +8,10 @@ import net.minecraft.util.collection.DefaultedList;
 
 /**
  * 一个简单的 {@code Inventory} 实现，仅有默认的方法和物品列表的 getter。
- *
+ * <p>
  * Originally by Juuz
  */
 public interface ImplementedInventory extends Inventory {
-
-    /**
-     * 从此物品栏中检索物品。
-     * 每次被调用时必须返回相同实例。
-     */
-    DefaultedList<ItemStack> getItems();
 
     /**
      * 从物品列表创建物品栏。
@@ -34,6 +28,12 @@ public interface ImplementedInventory extends Inventory {
     }
 
     /**
+     * 从此物品栏中检索物品。
+     * 每次被调用时必须返回相同实例。
+     */
+    DefaultedList<ItemStack> getItems();
+
+    /**
      * 返回物品栏的大小。
      */
     @Override
@@ -43,6 +43,7 @@ public interface ImplementedInventory extends Inventory {
 
     /**
      * 检查物品栏是否为空。
+     *
      * @return true，如果物品栏仅有一个空堆，否则为true。
      */
     @Override
@@ -66,6 +67,7 @@ public interface ImplementedInventory extends Inventory {
 
     /**
      * 从物品栏槽位移除物品。
+     *
      * @param slot  从该槽位移除。
      * @param count 需要移除的物品个数。如果槽位中的物品少于需要的，则将其全部取出。
      */
@@ -80,6 +82,7 @@ public interface ImplementedInventory extends Inventory {
 
     /**
      * 从物品栏槽位移除所有物品。
+     *
      * @param slot 从该槽位移除。
      */
     @Override
@@ -89,6 +92,7 @@ public interface ImplementedInventory extends Inventory {
 
     /**
      * 将物品栏槽位中的当前物品堆替换为提供的物品堆。
+     *
      * @param slot  替换该槽位的物品堆。
      * @param stack 替换后新的物品堆。如果堆对于此物品栏过大（{@link Inventory#getMaxCountPerStack()}），则压缩为物品栏的最大数量。
      */

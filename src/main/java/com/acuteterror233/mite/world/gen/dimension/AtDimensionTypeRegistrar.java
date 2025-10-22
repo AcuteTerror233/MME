@@ -20,8 +20,9 @@ public class AtDimensionTypeRegistrar {
             Identifier.of(At_mite.MOD_ID, "underground"));
     public static final RegistryKey<DimensionType> UNDERGROUND_DIMENSION_TYPE_KEY = RegistryKey.of(RegistryKeys.DIMENSION_TYPE,
             Identifier.of(At_mite.MOD_ID, "underground_type"));
-    public static void bootstrap(Registerable<DimensionType> context){
-        context.register(UNDERGROUND_DIMENSION_TYPE_KEY,new DimensionType(
+
+    public static void bootstrap(Registerable<DimensionType> context) {
+        context.register(UNDERGROUND_DIMENSION_TYPE_KEY, new DimensionType(
                 OptionalLong.of(30000L),
                 true,
                 true,
@@ -34,8 +35,8 @@ public class AtDimensionTypeRegistrar {
                 384,
                 384,
                 BlockTags.INFINIBURN_OVERWORLD,
-                Identifier.of(At_mite.MOD_ID,"underground"),
+                Identifier.of(At_mite.MOD_ID, "underground"),
                 0.0f,
-                new DimensionType.MonsterSettings(false, false, UniformIntProvider.create(0,7),0)));
+                new DimensionType.MonsterSettings(false, false, UniformIntProvider.create(0, 7), 0)));
     }
 }

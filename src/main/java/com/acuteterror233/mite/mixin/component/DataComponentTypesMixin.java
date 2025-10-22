@@ -19,21 +19,29 @@ import org.spongepowered.asm.mixin.Shadow;
 @Mixin(DataComponentTypes.class)
 public class DataComponentTypesMixin {
     @Final
-    @Shadow public static ComponentType<Integer> MAX_STACK_SIZE;
+    @Shadow
+    public static ComponentType<Integer> MAX_STACK_SIZE;
     @Final
-    @Shadow public static ComponentType<LoreComponent> LORE;
+    @Shadow
+    public static ComponentType<LoreComponent> LORE;
     @Final
-    @Shadow public static ComponentType<ItemEnchantmentsComponent> ENCHANTMENTS;
+    @Shadow
+    public static ComponentType<ItemEnchantmentsComponent> ENCHANTMENTS;
     @Final
-    @Shadow public static ComponentType<Integer> REPAIR_COST;
+    @Shadow
+    public static ComponentType<Integer> REPAIR_COST;
     @Final
-    @Shadow public static ComponentType<AttributeModifiersComponent> ATTRIBUTE_MODIFIERS;
+    @Shadow
+    public static ComponentType<AttributeModifiersComponent> ATTRIBUTE_MODIFIERS;
     @Final
-    @Shadow public static ComponentType<Rarity> RARITY;
+    @Shadow
+    public static ComponentType<Rarity> RARITY;
     @Final
-    @Shadow public static ComponentType<RegistryEntry<SoundEvent>> BREAK_SOUND;
+    @Shadow
+    public static ComponentType<RegistryEntry<SoundEvent>> BREAK_SOUND;
     @Final
-    @Shadow public static ComponentType<TooltipDisplayComponent> TOOLTIP_DISPLAY;
+    @Shadow
+    public static ComponentType<TooltipDisplayComponent> TOOLTIP_DISPLAY;
 
     @Final
     @Shadow

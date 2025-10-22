@@ -1,46 +1,46 @@
 {
-	"schemaVersion": 1,
-	"id": "at_mite",
-	"version": "1.21.5",
-	"name": "at_mite",
-	"description": "This is an example description! Tell everyone what your mod is about!",
-	"authors": [
-		"AcuteTerror233"
-        ,"HappySama"
-	],
-	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
-	},
-	"license": "GPL",
-	"icon": "assets/at_mite/pack.png",
-	"environment": "*",
-	"entrypoints": {
-		"main": [
-			"com.acuteterror233.mite.At_mite"
-		],
-		"client": [
-			"com.acuteterror233.mite.At_miteClient"
-		],
-		"fabric-datagen": [
-			"com.acuteterror233.mite.At_miteDataGenerator"
-		]
-	},
-	"mixins": [
-		"at_mite.mixins.json",
-		{
-			"config": "at_mite.client.mixins.json",
-			"environment": "client"
-		}
-	],
-	"depends": {
-		"fabricloader": ">=0.16.13",
-		"minecraft": "~1.21.5",
-		"java": ">=21",
-		"fabric-api": "*"
-	},
-	"accessWidener": "named.accesswidener",
-	"suggests": {
-		"another-mod": "*"
-	}
+  "schemaVersion": 1,
+  "id": "at_mite",
+  "version": "1.21.5",
+  "name": "at_mite",
+  "description": "This is an example description! Tell everyone what your mod is about!",
+  "authors": [
+    "AcuteTerror233",
+    "HappySama"
+  ],
+  "contact": {
+    "homepage": "https://fabricmc.net/",
+    "sources": "https://github.com/FabricMC/fabric-example-mod"
+  },
+  "license": "GPL",
+  "icon": "assets/at_mite/pack.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.acuteterror233.mite.At_mite"
+    ],
+    "client": [
+      "com.acuteterror233.mite.At_miteClient"
+    ],
+    "fabric-datagen": [
+      "com.acuteterror233.mite.At_miteDataGenerator"
+    ]
+  },
+  "mixins": [
+    "at_mite.mixins.json",
+    {
+      "config": "at_mite.client.mixins.json",
+      "environment": "client"
+    }
+  ],
+  "depends": {
+    "fabricloader": ">=0.16.13",
+    "minecraft": "~1.21.5",
+    "java": ">=21",
+    "fabric-api": "*"
+  },
+  "accessWidener": "named.accesswidener",
+  "suggests": {
+    "another-mod": "*"
+  }
 }

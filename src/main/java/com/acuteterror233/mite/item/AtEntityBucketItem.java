@@ -29,6 +29,7 @@ import net.minecraft.world.event.GameEvent;
 public class AtEntityBucketItem extends EntityBucketItem {
     private final Item item;
     private final Fluid fluid;
+
     //注册名格式必须是"生物/液体_材质"
     public AtEntityBucketItem(EntityType<? extends MobEntity> type, Fluid fluid, SoundEvent emptyingSound, Settings settings, Item empty_barrel) {
         super(type, fluid, emptyingSound, settings);
@@ -65,7 +66,7 @@ public class AtEntityBucketItem extends EntityBucketItem {
                         world.emitGameEvent(user, GameEvent.FLUID_PICKUP, blockPos);
                         ItemStack itemStack3 = ItemUsage.exchangeStack(itemStack, user, itemStack2);
                         if (!world.isClient) {
-                            Criteria.FILLED_BUCKET.trigger((ServerPlayerEntity)user, itemStack2);
+                            Criteria.FILLED_BUCKET.trigger((ServerPlayerEntity) user, itemStack2);
                         }
 
                         return ActionResult.SUCCESS.withNewHandStack(itemStack3);
@@ -80,7 +81,7 @@ public class AtEntityBucketItem extends EntityBucketItem {
                 if (this.placeFluid(user, world, blockPos3, blockHitResult)) {
                     this.onEmptied(user, world, itemStack, blockPos3);
                     if (user instanceof ServerPlayerEntity) {
-                        Criteria.PLACED_BLOCK.trigger((ServerPlayerEntity)user, blockPos3, itemStack);
+                        Criteria.PLACED_BLOCK.trigger((ServerPlayerEntity) user, blockPos3, itemStack);
                     }
                     user.incrementStat(Stats.USED.getOrCreateStat(this));
                     ItemStack itemStack2 = ItemUsage.exchangeStack(itemStack, user, !user.isInCreativeMode() ? new ItemStack(item) : itemStack);
