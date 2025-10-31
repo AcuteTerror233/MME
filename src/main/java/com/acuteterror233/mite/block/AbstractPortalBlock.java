@@ -27,6 +27,12 @@ import net.minecraft.world.tick.ScheduledTickView;
 
 import java.util.Map;
 
+/**
+ * 自定义传送门方块抽象基类：
+ *
+ * <p>提供与下界门一致的碰撞体积、轴向属性与粒子/环境音效，
+ * 并封装了实体碰撞触发传送的基本逻辑与相邻方块更新时的自检行为。</p>
+ */
 public abstract class AbstractPortalBlock extends Block implements Portal {
     public static final EnumProperty<Direction.Axis> AXIS = Properties.HORIZONTAL_AXIS;
     private static final Map<Direction.Axis, VoxelShape> SHAPES_BY_AXIS = VoxelShapes.createHorizontalAxisShapeMap(Block.createColumnShape(4.0, 16.0, 0.0, 16.0));
@@ -47,6 +53,9 @@ public abstract class AbstractPortalBlock extends Block implements Portal {
     }
 
     @Override
+    /**
+     * 相邻方块变化时校验传送门结构，失效则替换为空气。
+     */
     protected BlockState getStateForNeighborUpdate(
             BlockState state,
             WorldView world,
@@ -66,6 +75,9 @@ public abstract class AbstractPortalBlock extends Block implements Portal {
     }
 
     @Override
+    /**
+     * 实体碰撞回调：允许可使用传送门的实体尝试传送。
+     */
     protected void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity, EntityCollisionHandler handler) {
         if (entity.canUsePortals(false)) {
             entity.tryUsePortal(this, pos);
@@ -89,6 +101,9 @@ public abstract class AbstractPortalBlock extends Block implements Portal {
     }
 
     @Override
+    /**
+     * 客户端随机显示：播放环境音并生成传送门粒子。
+     */
     public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
         if (random.nextInt(100) == 0) {
             world.playSoundClient(

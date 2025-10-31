@@ -9,6 +9,9 @@ import net.minecraft.item.PowderSnowBucketItem;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.ActionResult;
 
+/**
+ * 自定义粉雪桶：放置成功后在非创造模式下返还自定义材质的空桶。
+ */
 public class AtPowderSnowBucketItem extends PowderSnowBucketItem {
     Item item;
 
@@ -18,6 +21,9 @@ public class AtPowderSnowBucketItem extends PowderSnowBucketItem {
     }
 
     @Override
+    /**
+     * 放置粉雪并替换玩家手中物品为空桶（若非创造）。
+     */
     public ActionResult useOnBlock(ItemUsageContext context) {
         ActionResult actionResult = super.useOnBlock(context);
         PlayerEntity playerEntity = context.getPlayer();

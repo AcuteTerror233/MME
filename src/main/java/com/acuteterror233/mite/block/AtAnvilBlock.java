@@ -23,11 +23,18 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
+/**
+ * 自定义铁砧方块：支持保留与传递方块实体中的耐久数据，
+ * 在掉落为实体或破坏掉落时同步当前损伤；放置时依据物品耐久初始化。
+ */
 public class AtAnvilBlock extends AnvilBlock implements BlockEntityProvider {
     public AtAnvilBlock(Settings settings) {
         super(settings);
     }
 
+    /**
+     * 生成可下落的铁砧并注入当前耐久数据到实体扩展。
+     */
     public static FallingBlockEntity spawnFromBlock(World world, BlockPos pos, BlockState state, BlockEntity blockEntity) {
         FallingBlockEntity fallingBlockEntity = FallingBlockEntity.spawnFromBlock(world, pos, state);
         if (blockEntity instanceof AnvilBlockEntity AnvilBlockEntity) {
@@ -43,7 +50,7 @@ public class AtAnvilBlock extends AnvilBlock implements BlockEntityProvider {
     }
 
     @Override
-    //放置时候调用,world 放置所在世界,pos 放置位置(坐标等信息),state 块状态,placer 放置的玩家,itemStack 方块的物品堆栈
+    // 放置时：用物品耐久初始化方块实体，并额外+1 点损伤避免满新放置
     public void onPlaced(World world, BlockPos pos, BlockState state, LivingEntity placer, ItemStack itemStack) {
         //调用父类的放置方法
         super.onPlaced(world, pos, state, placer, itemStack);

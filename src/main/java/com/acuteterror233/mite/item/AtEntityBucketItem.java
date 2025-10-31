@@ -26,11 +26,15 @@ import net.minecraft.world.RaycastContext;
 import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
 
+/**
+ * 自定义生物桶：在空桶状态可从实现了 {@link com.acuteterror233.mite.atinterface.FluidDrainableExtension}
+ * 的方块中收集流体；在满桶状态可放置流体，并在非创造模式下返还空桶。
+ */
 public class AtEntityBucketItem extends EntityBucketItem {
     private final Item item;
     private final Fluid fluid;
 
-    //注册名格式必须是"生物/液体_材质"
+    // 注册名格式必须是"生物/液体_材质"
     public AtEntityBucketItem(EntityType<? extends MobEntity> type, Fluid fluid, SoundEvent emptyingSound, Settings settings, Item empty_barrel) {
         super(type, fluid, emptyingSound, settings);
         this.item = empty_barrel;
@@ -38,6 +42,9 @@ public class AtEntityBucketItem extends EntityBucketItem {
     }
 
     @Override
+    /**
+     * 使用逻辑：与普通桶一致，兼容实体桶的放置/拾取行为。
+     */
     public ActionResult use(World world, PlayerEntity user, Hand hand) {
         ItemStack itemStack = user.getStackInHand(hand);
         BlockHitResult blockHitResult = raycast(

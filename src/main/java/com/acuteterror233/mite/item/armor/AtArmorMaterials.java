@@ -11,6 +11,10 @@ import net.minecraft.util.Identifier;
 
 import java.util.HashMap;
 
+/**
+ * 装甲材料表：定义不同材质的耐久、各部位护甲值、附魔性、装备音效、韧性与击退抗性，
+ * 并绑定其资源外观键。
+ */
 public class AtArmorMaterials {
     public static final RegistryKey<EquipmentAsset> ADAMANTIUM_ARMOR_MATERIAL_KEY = RegistryKey.of(EquipmentAssetKeys.REGISTRY_KEY, Identifier.of(At_mite.MOD_ID, "adamantium"));
     public static final RegistryKey<EquipmentAsset> ADAMANTIUM_CHAINMAIL_ARMOR_MATERIAL_KEY = RegistryKey.of(EquipmentAssetKeys.REGISTRY_KEY, Identifier.of(At_mite.MOD_ID, "adamantium_chainmail"));

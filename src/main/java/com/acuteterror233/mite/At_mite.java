@@ -14,18 +14,29 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * 模组主入口，负责完成物品、方块等注册与基础初始化。
+ *
+ * <p>同时定义了若干方块与物品的最大堆叠数分类集合，
+ * 用于在运行时根据类型或标识符调整堆叠规则。</p>
+ */
 public class At_mite implements ModInitializer {
     public static final String MOD_ID = "at_mite";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
     public static final Identifier BASE_BLOCK_INTERACTION_RANGE = Identifier.ofVanilla("block_interaction_range");
     public static final Identifier BASE_ENTITY_INTERACTION_RANGE = Identifier.ofVanilla("entity_interaction_range");
-    //block是按照方块继承分类最大堆叠的
+    /**
+     * 按照方块类型划分的最大堆叠：最大堆叠为 1 的方块类型集合。
+     */
     public static final Set<Class<?>> COUNT1_BLOCK = new HashSet<>(Arrays.asList(
             FenceGateBlock.class,
             BedBlock.class,
             HeavyCoreBlock.class,
             ShulkerBoxBlock.class
     ));
+    /**
+     * 按照方块类型划分的最大堆叠：最大堆叠为 8 的方块类型集合。
+     */
     public static final Set<Class<?>> COUNT8_BLOCK = new HashSet<>(Arrays.asList(
             SlabBlock.class,
             WallBlock.class,
@@ -48,6 +59,9 @@ public class At_mite implements ModInitializer {
             FenceBlock.class,
             OxidizableSlabBlock.class
     ));
+    /**
+     * 按照方块类型划分的最大堆叠：最大堆叠为 16 的方块类型集合。
+     */
     public static final Set<Class<?>> COUNT16_BLOCK = new HashSet<>(Arrays.asList(
             PaneBlock.class,
             RailBlock.class,
@@ -69,14 +83,22 @@ public class At_mite implements ModInitializer {
             BambooBlock.class,
             StainedGlassPaneBlock.class
     ));
+    /**
+     * 按照方块类型划分的最大堆叠：最大堆叠为 32 的方块类型集合。
+     */
     public static final Set<Class<?>> COUNT32_BLOCK = new HashSet<>(Collections.singletonList(
             FungusBlock.class
     ));
-    //item的依赖名字分类最大堆叠
+    /**
+     * 按照物品注册名划分的最大堆叠：最大堆叠为 1 的物品标识集合。
+     */
     public static final Set<String> COUNT1_ITEM = new HashSet<>(Arrays.asList(
             "heart_of_the_sea",
             "nether_star"
     ));
+    /**
+     * 按照物品注册名划分的最大堆叠：最大堆叠为 8 的物品标识集合。
+     */
     public static final Set<String> COUNT8_ITEM = new HashSet<>(Arrays.asList(
             "flint",
             "leather",
@@ -92,6 +114,9 @@ public class At_mite implements ModInitializer {
             "rabbit_foot",
             "glistering_melon_slice"
     ));
+    /**
+     * 按照物品注册名划分的最大堆叠：最大堆叠为 16 的物品标识集合。
+     */
     public static final Set<String> COUNT16_ITEM = new HashSet<>(Arrays.asList(
             "iron_ingot",
             "copper_ingot",
@@ -125,6 +150,9 @@ public class At_mite implements ModInitializer {
             "resin_clump"
 
     ));
+    /**
+     * 按照物品注册名划分的最大堆叠：最大堆叠为 32 的物品标识集合。
+     */
     public static final Set<String> COUNT32_ITEM = new HashSet<>(Arrays.asList(
             "lapis_lazuli",
             "quartz",
@@ -141,11 +169,16 @@ public class At_mite implements ModInitializer {
             "glowstone_dust"
     ));
 
+    /**
+     * Fabric 模组初始化回调：注册物品分组、方块、以及地下传送门的兴趣点（POI）。
+     */
     @Override
     public void onInitialize() {
         LOGGER.info("mext");
+        // 物品与方块注册
         AtItems.init();
         AtBlocks.init();
+        // 为地下传送门注册 POI，供村民/AI 等逻辑识别
         PointOfInterestHelper.register(Identifier.of(At_mite.MOD_ID, "underground_portal"), 0, 1, AtBlocks.UNDERGROUND_PORTAL);
     }
 }

@@ -31,6 +31,13 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;
 
+/**
+ * 自定义铁砧界面处理器：
+ *
+ * <p>兼容原版铁砧的重命名、修复与附魔合并逻辑，
+ * 并根据不同材质铁砧的标签限制某些材料的修复行为；
+ * 同时控制经验等级消耗与副槽物品的保留策略。</p>
+ */
 public class AtAnvilScreenHandler extends ForgingScreenHandler {
     private final Property levelCost = Property.create();
     private boolean keepSecondSlot = false;
@@ -60,6 +67,9 @@ public class AtAnvilScreenHandler extends ForgingScreenHandler {
 
     //输出被拿走的时候执行,player拿走的玩家,stack拿走的堆栈
     @Override
+    /**
+     * 当玩家拿走输出物品时：扣除等级、消耗副槽材料，并累积铁砧耐久损耗。
+     */
     protected void onTakeOutput(PlayerEntity player, ItemStack stack) {
         //判断是否在创造
         if (!player.isInCreativeMode()) {
@@ -108,6 +118,9 @@ public class AtAnvilScreenHandler extends ForgingScreenHandler {
     }
 
     @Override
+    /**
+     * 计算输出与等级消耗：负责修复、结合附魔、校验冲突、设置自定义名称与 REPAIR_COST。
+     */
     public void updateResult() {
         //获取第一个堆栈
         ItemStack itemStack = this.input.getStack(0);
@@ -298,6 +311,9 @@ public class AtAnvilScreenHandler extends ForgingScreenHandler {
         }
     }
 
+    /**
+     * 根据当前铁砧方块类型返回对应的“不可修复材料”标签。
+     */
     private TagKey<Item> GetNonrepairableTag(BlockState state) {
         if (state.isIn(AtTags.ADAMANTIUM_ANVIL)) return AtTags.ADAMANTIUM_NONREPAIRABLE;
         else if (state.isIn(AtTags.MITHRIL_ANVIL)) return AtTags.MITHRIL_NONREPAIRABLE;

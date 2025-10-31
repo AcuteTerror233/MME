@@ -22,6 +22,12 @@ import net.minecraft.util.Identifier;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
+/**
+ * 方块注册中心：定义并注册模组中的全部方块、方块实体与界面处理器。
+ *
+ * <p>统一封装多种 register 重载，
+ * 以便在创建方块时同步完成物品注册与自定义 {@link Item.Settings} 配置。</p>
+ */
 public class AtBlocks {
     public static final Block ADAMANTIUM_ORE = register(        //艾德曼矿
             "adamantium_ore", AbstractBlock.Settings.create().strength(4.0f, 4.0f)
@@ -457,28 +463,51 @@ public class AtBlocks {
             AbstractBlock.Settings.copy(Blocks.CRAFTING_TABLE)
     );
 
+    /**
+     * 计算铁砧物品的最大耐久。
+     *
+     * @param damage 基础耐久（通常来自工具材料）
+     * @return 最大耐久值
+     */
     public static int maxDamageAnvil(int damage) {
         return damage * 31;
     }
 
+    /**
+     * 注册方块并使用传入的 {@code factory1} 注册对应物品。
+     */
     private static Block register(String name, Function<AbstractBlock.Settings, Block> factory, AbstractBlock.Settings settings, BiFunction<Block, Item.Settings, Item> factory1) {
         Block block = Blocks.register(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(At_mite.MOD_ID, name)), factory, settings);
         Items.register(block, factory1);
         return block;
     }
 
+    /**
+     * 注册方块并注册默认方块物品。
+     */
     private static Block register(String name, Function<AbstractBlock.Settings, Block> factory, AbstractBlock.Settings settings) {
         Block block = Blocks.register(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(At_mite.MOD_ID, name)), factory, settings);
         Items.register(block);
         return block;
     }
 
+    /**
+     * 注册简单方块（使用默认工厂）并注册默认方块物品。
+     */
     private static Block register(String name, AbstractBlock.Settings settings) {
         Block block = Blocks.register(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(At_mite.MOD_ID, name)), settings);
         Items.register(block);
         return block;
     }
 
+    /**
+     * 注册方块并以指定 {@link Item.Settings} 注册其方块物品。
+     *
+     * @param name 注册名
+     * @param factory 方块构造工厂
+     * @param settings 方块属性
+     * @param itemSettings1 物品属性（会启用方块前缀翻译键）
+     */
     public static Block register(String name, Function<AbstractBlock.Settings, Block> factory, AbstractBlock.Settings settings, Item.Settings itemSettings1) {
         Block block = Blocks.register(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(At_mite.MOD_ID, name)), factory, settings);
         RegistryKey<Item> key = RegistryKey.of(RegistryKeys.ITEM, Identifier.of(At_mite.MOD_ID, name));
@@ -487,6 +516,9 @@ public class AtBlocks {
         return block;
     }
 
+    /**
+     * 注册方块实体类型。
+     */
     private static <T extends BlockEntity> BlockEntityType<T> register(
             String name,
             FabricBlockEntityTypeBuilder.Factory<? extends T> entityFactory,
@@ -527,13 +559,20 @@ public class AtBlocks {
                     , RunePortalBlockEntity::new
                     , RUNE_PORTAL
             );
+    /**
+     * 注册界面处理器（ScreenHandler）。
+     */
     private static <T extends ScreenHandler> ScreenHandlerType<T> register(String id, ScreenHandlerType.Factory<T> factory) {
         return Registry.register(Registries.SCREEN_HANDLER, id, new ScreenHandlerType<>(factory, FeatureFlags.VANILLA_FEATURES));
     }
 
+    /**
+     * 预留初始化入口：当前无运行期逻辑，仅用于保持与其它注册流程一致。
+     */
     public static void init() {
 
-    }    public static final ScreenHandlerType<AtAnvilScreenHandler> ATANVILSCREENHANDLER = register("at_anvil_screen_handler", AtAnvilScreenHandler::new);
+    }
+    public static final ScreenHandlerType<AtAnvilScreenHandler> ATANVILSCREENHANDLER = register("at_anvil_screen_handler", AtAnvilScreenHandler::new);
 
 
 

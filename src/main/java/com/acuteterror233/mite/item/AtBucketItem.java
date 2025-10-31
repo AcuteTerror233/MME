@@ -23,11 +23,15 @@ import net.minecraft.world.RaycastContext;
 import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
 
+/**
+ * 自定义液体桶：支持与 {@link com.acuteterror233.mite.atinterface.FluidDrainableExtension}
+ * 交互以拾取自定义流体，同时在放置后根据是否为创造模式决定是否返还空桶。
+ */
 public class AtBucketItem extends BucketItem {
     private final Item item;
     private final Fluid fluid;
 
-    //注册名格式必须是"生物/液体_材质"
+    // 注册名格式必须是"生物/液体_材质"
     public AtBucketItem(Fluid fluid, Settings settings, Item empty_barrel) {
         super(fluid, settings);
         this.fluid = fluid;
@@ -35,6 +39,9 @@ public class AtBucketItem extends BucketItem {
     }
 
     @Override
+    /**
+     * 使用逻辑：空桶尝试从可抽干方块取液；满桶尝试放置液体并返还空桶。
+     */
     public ActionResult use(World world, PlayerEntity user, Hand hand) {
         ItemStack itemStack = user.getStackInHand(hand);
         BlockHitResult blockHitResult = raycast(

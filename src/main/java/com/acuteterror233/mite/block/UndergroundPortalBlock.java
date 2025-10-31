@@ -32,6 +32,10 @@ import org.slf4j.Logger;
 
 import java.util.Optional;
 
+/**
+ * 地下维度传送门：在主世界与地下维度间进行双向传送，
+ * 自动寻找或创建对应的目标传送门，并计算实体在门内的相对位置与朝向。
+ */
 public class UndergroundPortalBlock extends AbstractPortalBlock {
     public static final MapCodec<UndergroundPortalBlock> CODEC = createCodec(UndergroundPortalBlock::new);
     public static final EnumProperty<Direction.Axis> AXIS = Properties.HORIZONTAL_AXIS;
@@ -41,6 +45,9 @@ public class UndergroundPortalBlock extends AbstractPortalBlock {
         super(settings);
     }
 
+    /**
+     * 计算出口传送目标（包含在门内的相对位置与朝向）。
+     */
     public static TeleportTarget getExitPortalTarget(
             Entity entity, BlockPos pos, BlockLocating.Rectangle exitPortalRectangle, ServerWorld world, TeleportTarget.PostDimensionTransition postDimensionTransition
     ) {
@@ -60,6 +67,9 @@ public class UndergroundPortalBlock extends AbstractPortalBlock {
         return getExitPortalTarget(world, exitPortalRectangle, axis, vec3d, entity, postDimensionTransition);
     }
 
+    /**
+     * 根据门框矩形与实体尺寸推导实际落点与旋转。
+     */
     public static TeleportTarget getExitPortalTarget(
             ServerWorld world,
             BlockLocating.Rectangle exitPortalRectangle,
@@ -91,6 +101,9 @@ public class UndergroundPortalBlock extends AbstractPortalBlock {
 
     @Nullable
     @Override
+    /**
+     * 入口回调：根据当前所处维度选择目标维度，并寻找/创建目标传送门。
+     */
     public TeleportTarget createTeleportTarget(ServerWorld world, Entity entity, BlockPos pos) {
         RegistryKey<World> registryKey = world.getRegistryKey() == AtDimensionTypeRegistrar.UNDERGROUND_LEVEL_KEY ? World.OVERWORLD : AtDimensionTypeRegistrar.UNDERGROUND_LEVEL_KEY;
         ServerWorld serverWorld = world.getServer().getWorld(registryKey);
@@ -106,6 +119,9 @@ public class UndergroundPortalBlock extends AbstractPortalBlock {
     }
 
     @Nullable
+    /**
+     * 在目标维度寻找既有传送门，否则尝试在边界内创建新门。
+     */
     private TeleportTarget getOrCreateExitPortalTarget(
             ServerWorld world, Entity entity, BlockPos sourcePos, BlockPos scaledPos, WorldBorder worldBorder
     ) {

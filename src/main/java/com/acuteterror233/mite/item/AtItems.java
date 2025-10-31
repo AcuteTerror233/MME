@@ -24,7 +24,13 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
 import java.util.function.Function;
-
+/**
+ * 物品注册中心：集中定义并注册模组中的全部物品与物品组（创造模式标签）。
+ *
+ * <p>本类提供多种重载的 register 辅助方法，
+ * 以统一方式完成 {@link Item} 的构造与注册，同时在需要时绑定方块或自定义 {@link Item.Settings}。
+ * 另外通过 {@link #AT_MINT_GROUP} 将常用物品收纳到同一物品组便于测试与查找。</p>
+ */
 public class AtItems {
     public static final Item ADAMANTIUM_HELMET = register(
             "adamantium_helmet",
@@ -330,7 +336,7 @@ public class AtItems {
             ((ItemSettingsExtension) new Item.Settings()).dagger(AtToolMaterial.ADAMANTIUM, 5.0F, -3.0F));
     public static final Item ADAMANTIUM_MATTOCK = register("adamantium_mattock",
             Settings -> new HoeItem(AtToolMaterial.ADAMANTIUM, 5.0F, -3.0F, Settings),
-            ((ItemSettingsExtension)new Item.Settings()).mattock(AtToolMaterial.ADAMANTIUM, 5.0F, -3.0F));
+            ((ItemSettingsExtension) new Item.Settings()).mattock(AtToolMaterial.ADAMANTIUM, 5.0F, -3.0F));
     public static final Item ADAMANTIUM_PICKAXE = register("adamantium_pickaxe",
             new Item.Settings().pickaxe(AtToolMaterial.ADAMANTIUM, 5.0F, -3.0F));
     public static final Item ADAMANTIUM_SCYTHE = register("adamantium_scythe",
@@ -825,7 +831,7 @@ public class AtItems {
                 entries.add(AtBlocks.SILVER_CRAFTING_TABLE);
                 entries.add(AtBlocks.FLINT_CRAFTING_TABLE);
                 entries.add(AtBlocks.OBSIDIAN_CRAFTING_TABLE);
-                
+
                 entries.add(AtBlocks.MITHRIL_NUL_RUNESTORE);
                 entries.add(AtBlocks.MITHRIL_QUAS_RUNESTORE);
                 entries.add(AtBlocks.MITHRIL_POR_RUNESTORE);
@@ -842,7 +848,7 @@ public class AtItems {
                 entries.add(AtBlocks.MITHRIL_JUX_RUNESTORE);
                 entries.add(AtBlocks.MITHRIL_YLEM_RUNESTORE);
                 entries.add(AtBlocks.MITHRIL_SANCT_RUNESTORE);
-                
+
                 entries.add(AtBlocks.ADAMANTIUM_NUL_RUNESTORE);
                 entries.add(AtBlocks.ADAMANTIUM_QUAS_RUNESTORE);
                 entries.add(AtBlocks.ADAMANTIUM_POR_RUNESTORE);
@@ -859,7 +865,7 @@ public class AtItems {
                 entries.add(AtBlocks.ADAMANTIUM_JUX_RUNESTORE);
                 entries.add(AtBlocks.ADAMANTIUM_YLEM_RUNESTORE);
                 entries.add(AtBlocks.ADAMANTIUM_SANCT_RUNESTORE);
-                                
+
                 entries.add(AtBlocks.ADAMANTIUM_ANVIL);
                 entries.add(chipped(AtBlocks.CHIPPED_ADAMANTIUM_ANVIL));
                 entries.add(damaged(AtBlocks.DAMAGED_ADAMANTIUM_ANVIL));
@@ -1218,37 +1224,61 @@ public class AtItems {
             })
             .build();
 
+    /**
+     * 根据传入的铁砧方块生成“严重损坏”外观的展示物品（伤害值设置为最大值的 2/3）。
+     */
     private static ItemStack damaged(Block anvil) {
         ItemStack stack = anvil.asItem().getDefaultStack();
         stack.setDamage((stack.getMaxDamage() / 3) * 2);
         return stack;
     }
 
+    /**
+     * 根据传入的铁砧方块生成“轻微损坏”外观的展示物品（伤害值设置为最大值的 1/3）。
+     */
     private static ItemStack chipped(Block anvil) {
         ItemStack stack = anvil.asItem().getDefaultStack();
         stack.setDamage(stack.getMaxDamage() / 3);
         return stack;
     }
 
+    /**
+     * 使用默认 {@link Item} 工厂与默认 {@link Item.Settings} 注册一个简单物品。
+     *
+     * @param path 物品注册名（不含命名空间）
+     * @return 注册完成的物品实例
+     */
     private static Item register(String path) {
         final RegistryKey<Item> registryKey = RegistryKey.of(RegistryKeys.ITEM, Identifier.of(At_mite.MOD_ID, path));
         return Items.register(registryKey, Item::new, new Item.Settings());
     }
 
+    /**
+     * 使用默认 {@link Item} 工厂并传入自定义 {@link Item.Settings} 注册物品。
+     */
     private static Item register(String path, Item.Settings settings) {
         final RegistryKey<Item> registryKey = RegistryKey.of(RegistryKeys.ITEM, Identifier.of(At_mite.MOD_ID, path));
         return Items.register(registryKey, Item::new, settings);
     }
 
+    /**
+     * 使用自定义工厂与自定义 {@link Item.Settings} 注册物品。
+     */
     private static Item register(String path, Function<Item.Settings, Item> factory, Item.Settings settings) {
         final RegistryKey<Item> registryKey = RegistryKey.of(RegistryKeys.ITEM, Identifier.of(At_mite.MOD_ID, path));
         return Items.register(registryKey, factory, settings);
     }
 
+    /**
+     * 为方块注册与之对应的方块物品，并可传入自定义 {@link Item.Settings}。
+     */
     public static Item register(Block block, Item.Settings settings) {
         return Items.register(block, settings);
     }
 
+    /**
+     * 初始化入口：将模组物品组 {@link #AT_MINT_GROUP} 注册到游戏。
+     */
     public static void init() {
         Registry.register(Registries.ITEM_GROUP, Identifier.of(At_mite.MOD_ID, "item_group"), AT_MINT_GROUP);
     }

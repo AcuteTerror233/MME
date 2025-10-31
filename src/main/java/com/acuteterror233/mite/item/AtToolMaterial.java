@@ -3,6 +3,9 @@ package com.acuteterror233.mite.item;
 import com.acuteterror233.mite.registry.tag.AtTags;
 import net.minecraft.item.ToolMaterial;
 
+/**
+ * 工具材料表：定义各材料的开采标签、耐久、效率、攻击伤害、附魔性与修复材料标签。
+ */
 public class AtToolMaterial {
     public static final ToolMaterial ADAMANTIUM = new ToolMaterial(AtTags.INCORRECT_FOR_ADAMANTIUM_TOOL, 512, 12.0F, 0.0F, 22, AtTags.ADAMANTIUM_TOOL_MATERIALS);
     public static final ToolMaterial ANCIENT_METAL = new ToolMaterial(AtTags.INCORRECT_FOR_ANCIENT_METAL_TOOL, 64, 9.0F, 4.0F, 15, AtTags.ANCIENT_METAL_TOOL_MATERIALS);
