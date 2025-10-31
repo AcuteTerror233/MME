@@ -1,0 +1,56 @@
+{
+  "carvers": [
+    "minecraft:cave",
+    "minecraft:cave_extra_underground",
+    "minecraft:canyon"
+  ],
+  "downfall": 0.8,
+  "effects": {
+    "fog_color": 12638463,
+    "mood_sound": {
+      "block_search_extent": 8,
+      "offset": 2.0,
+      "sound": "minecraft:ambient.cave",
+      "tick_delay": 6000
+    },
+    "music_volume": 1.0,
+    "sky_color": 8168703,
+    "water_color": 4159204,
+    "water_fog_color": 329011
+  },
+  "features": [
+    [],
+    [],
+    [],
+    [
+      "at_mite:underground_monster_room"
+    ],
+    [],
+    [],
+    [
+      "at_mite:ore_adamantium_buried",
+      "at_mite:ore_adamantium_buried_small",
+      "at_mite:ore_mithril",
+      "at_mite:ore_mithril_small",
+      "at_mite:ore_silver",
+      "at_mite:ore_silver_small",
+      "at_mite:ore_emerald",
+      "at_mite:ore_lapis",
+      "at_mite:ore_lapis_buried",
+      "minecraft:ore_diamond"
+    ]
+  ],
+  "has_precipitation": false,
+  "spawn_costs": {},
+  "spawners": {
+    "ambient": [],
+    "axolotls": [],
+    "creature": [],
+    "misc": [],
+    "monster": [],
+    "underground_water_creature": [],
+    "water_ambient": [],
+    "water_creature": []
+  },
+  "temperature": 0.4
+}

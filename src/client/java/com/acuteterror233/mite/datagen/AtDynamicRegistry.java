@@ -7,18 +7,21 @@ import net.minecraft.registry.RegistryWrapper;
 
 import java.util.concurrent.CompletableFuture;
 
-public class AtWorldGen extends FabricDynamicRegistryProvider {
-    public AtWorldGen(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
+public class AtDynamicRegistry extends FabricDynamicRegistryProvider {
+    public AtDynamicRegistry(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
         super(output, registriesFuture);
     }
 
     @Override
     protected void configure(RegistryWrapper.WrapperLookup registries, Entries entries) {
         entries.addAll(registries.getOrThrow(RegistryKeys.DIMENSION_TYPE));
+        entries.addAll(registries.getOrThrow(RegistryKeys.BIOME));
+        entries.addAll(registries.getOrThrow(RegistryKeys.PLACED_FEATURE));
+        entries.addAll(registries.getOrThrow(RegistryKeys.CONFIGURED_FEATURE));
     }
 
     @Override
     public String getName() {
-        return "World Gen Data Provider";
+        return "World";
     }
 }

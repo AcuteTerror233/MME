@@ -6,7 +6,7 @@
       "type": "minecraft:multi_noise",
       "biomes": [
         {
-          "biome": "minecraft:windswept_hills",
+          "biome": "at_mite:underground",
           "parameters": {
             "temperature": 0,
             "humidity": 0,

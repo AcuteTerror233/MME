@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "at_mite:block/mithril/nul"
+    "all": "at_mite:block/mithril/0"
   }
 }

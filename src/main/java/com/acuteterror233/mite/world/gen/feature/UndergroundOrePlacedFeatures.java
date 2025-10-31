@@ -1,0 +1,81 @@
+package com.acuteterror233.mite.world.gen.feature;
+
+import com.acuteterror233.mite.At_mite;
+import net.minecraft.registry.Registerable;
+import net.minecraft.registry.RegistryEntryLookup;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
+import net.minecraft.registry.entry.RegistryEntry;
+import net.minecraft.util.Identifier;
+import net.minecraft.world.gen.YOffset;
+import net.minecraft.world.gen.feature.*;
+import net.minecraft.world.gen.placementmodifier.*;
+
+import java.util.List;
+
+//矿石放置位置
+public class UndergroundOrePlacedFeatures {
+    public static final RegistryKey<PlacedFeature> ORE_ADAMANTIUM_BURIED = of("ore_adamantium_buried");
+    public static final RegistryKey<PlacedFeature> ORE_ADAMANTIUM_BURIED_SMALL = of("ore_adamantium_buried_small");
+    public static final RegistryKey<PlacedFeature> ORE_MITHRIL = of("ore_mithril");
+    public static final RegistryKey<PlacedFeature> ORE_MITHRIL_SMALL = of("ore_mithril_small");
+    public static final RegistryKey<PlacedFeature> ORE_SILVER = of("ore_silver");
+    public static final RegistryKey<PlacedFeature> ORE_SILVER_SMALL = of("ore_silver_small");
+    public static final RegistryKey<PlacedFeature> ORE_EMERALD = of("ore_emerald");
+    public static final RegistryKey<PlacedFeature> ORE_LAPIS = of("ore_lapis");
+    public static final RegistryKey<PlacedFeature> ORE_LAPIS_BURIED = of("ore_lapis_buried");
+    public static void bootstrap(Registerable<PlacedFeature> featureRegisterable){
+        RegistryEntryLookup<ConfiguredFeature<?, ?>> registryEntryLookup = featureRegisterable.getRegistryLookup(RegistryKeys.CONFIGURED_FEATURE);
+        RegistryEntry<ConfiguredFeature<?, ?>> ore_adamantium_buried = registryEntryLookup.getOrThrow(UndergroundOreConfiguredFeatures.ORE_ADAMANTIUM_BURIED);
+        RegistryEntry<ConfiguredFeature<?, ?>> ore_adamantium_buried_small = registryEntryLookup.getOrThrow(UndergroundOreConfiguredFeatures.ORE_ADAMANTIUM_BURIED_SMALL);
+        RegistryEntry<ConfiguredFeature<?, ?>> ore_mithril = registryEntryLookup.getOrThrow(UndergroundOreConfiguredFeatures.ORE_MITHRIL);
+        RegistryEntry<ConfiguredFeature<?, ?>> ore_mithril_small = registryEntryLookup.getOrThrow(UndergroundOreConfiguredFeatures.ORE_MITHRIL_SMALL);
+        RegistryEntry<ConfiguredFeature<?, ?>> ore_silver = registryEntryLookup.getOrThrow(UndergroundOreConfiguredFeatures.ORE_SILVER);
+        RegistryEntry<ConfiguredFeature<?, ?>> ore_silver_small = registryEntryLookup.getOrThrow(UndergroundOreConfiguredFeatures.ORE_SILVER_SMALL);
+        RegistryEntry<ConfiguredFeature<?, ?>> ore_emerald = registryEntryLookup.getOrThrow(OreConfiguredFeatures.ORE_EMERALD);
+        RegistryEntry<ConfiguredFeature<?, ?>> ore_lapis = registryEntryLookup.getOrThrow(OreConfiguredFeatures.ORE_LAPIS);
+        RegistryEntry<ConfiguredFeature<?, ?>> ore_lapis_buried = registryEntryLookup.getOrThrow(OreConfiguredFeatures.ORE_LAPIS_BURIED);
+        PlacedFeatures.register(featureRegisterable, ORE_ADAMANTIUM_BURIED, ore_adamantium_buried, modifiers(
+                CountPlacementModifier.of(3),
+                HeightRangePlacementModifier.trapezoid(YOffset.fixed(-70), YOffset.fixed(10))
+        ));
+        PlacedFeatures.register(featureRegisterable, ORE_ADAMANTIUM_BURIED_SMALL, ore_adamantium_buried_small, modifiers(
+                CountPlacementModifier.of(5),
+                HeightRangePlacementModifier.uniform(YOffset.getBottom(), YOffset.fixed(10))
+        ));
+        PlacedFeatures.register(featureRegisterable, ORE_MITHRIL, ore_mithril, modifiers(
+                CountPlacementModifier.of(7),
+                HeightRangePlacementModifier.trapezoid(YOffset.fixed(40), YOffset.fixed(180))
+        ));
+        PlacedFeatures.register(featureRegisterable, ORE_MITHRIL_SMALL, ore_mithril_small, modifiers(
+                CountPlacementModifier.of(14),
+                HeightRangePlacementModifier.uniform(YOffset.getBottom(), YOffset.fixed(70))
+        ));
+        PlacedFeatures.register(featureRegisterable, ORE_SILVER, ore_silver, modifiers(
+                CountPlacementModifier.of(10),
+                HeightRangePlacementModifier.uniform(YOffset.fixed(128), YOffset.getTop())
+        ));
+        PlacedFeatures.register(featureRegisterable, ORE_SILVER_SMALL, ore_silver_small, modifiers(
+                CountPlacementModifier.of(15),
+                HeightRangePlacementModifier.uniform(YOffset.getBottom(), YOffset.fixed(128))
+        ));
+        PlacedFeatures.register(featureRegisterable, ORE_EMERALD, ore_emerald, modifiers(
+                CountPlacementModifier.of(7),
+                HeightRangePlacementModifier.trapezoid(YOffset.fixed(-114), YOffset.fixed(6))
+        ));
+        PlacedFeatures.register(featureRegisterable, ORE_LAPIS, ore_lapis, modifiers(
+                CountPlacementModifier.of(8),
+                HeightRangePlacementModifier.uniform(YOffset.fixed(70), YOffset.fixed(320)))
+        );
+        PlacedFeatures.register(featureRegisterable, ORE_LAPIS_BURIED, ore_lapis_buried, modifiers(
+                CountPlacementModifier.of(12),
+                HeightRangePlacementModifier.uniform(YOffset.getBottom(), YOffset.fixed(70)))
+        );
+    }
+    public static List<PlacementModifier> modifiers(PlacementModifier countModifier, PlacementModifier heightModifier) {
+        return List.of(countModifier, SquarePlacementModifier.of(), heightModifier, BiomePlacementModifier.of());
+    }
+    public static RegistryKey<PlacedFeature> of(String id) {
+        return RegistryKey.of(RegistryKeys.PLACED_FEATURE, Identifier.of(At_mite.MOD_ID, id));
+    }
+}
