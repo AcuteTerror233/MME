@@ -14,5 +14,6 @@ public class AtPlacedFeatures {
     public static void bootstrap(Registerable<PlacedFeature> featureRegisterable) {
         UndergroundOrePlacedFeatures.bootstrap(featureRegisterable);
         UndergroundPlacedFeatures.bootstrap(featureRegisterable);
+        OverworldOrePlacedFeatures.bootstrap(featureRegisterable);
     }
 }

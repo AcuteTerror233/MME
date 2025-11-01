@@ -18,23 +18,23 @@
           }
         },
         {
-          "biome": "minecraft:deep_dark",
+          "biome": "at_mite:deep_dark",
           "parameters": {
             "temperature": 0,
             "humidity": 0,
             "continentalness": 0,
-            "erosion": 0.5,
+            "erosion": 1,
             "weirdness": 0,
-            "depth": 0,
+            "depth": 0.5,
             "offset": 0
           }
         },
         {
-          "biome": "minecraft:lush_caves",
+          "biome": "at_mite:lush_caves",
           "parameters": {
-            "temperature": 0.9,
+            "temperature": -1,
             "humidity": 0,
-            "continentalness": 0.5,
+            "continentalness": -0.5,
             "erosion": 0,
             "weirdness": 0,
             "depth": 0,
@@ -42,11 +42,11 @@
           }
         },
         {
-          "biome": "minecraft:dripstone_caves",
+          "biome": "at_mite:dripstone_caves",
           "parameters": {
-            "temperature": -0.9,
+            "temperature": 1,
             "humidity": 0,
-            "continentalness": -0.5,
+            "continentalness": 0.5,
             "erosion": 0,
             "weirdness": 0,
             "depth": 0,

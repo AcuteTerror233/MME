@@ -2,10 +2,14 @@ package com.acuteterror233.mite;
 
 import com.acuteterror233.mite.block.AtBlocks;
 import com.acuteterror233.mite.item.AtItems;
+import com.acuteterror233.mite.world.gen.feature.OverworldOrePlacedFeatures;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
+import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fabricmc.fabric.api.object.builder.v1.world.poi.PointOfInterestHelper;
 import net.minecraft.block.*;
 import net.minecraft.util.Identifier;
+import net.minecraft.world.gen.GenerationStep;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -180,5 +184,15 @@ public class At_mite implements ModInitializer {
         AtBlocks.init();
         // 为地下传送门注册 POI，供村民/AI 等逻辑识别
         PointOfInterestHelper.register(Identifier.of(At_mite.MOD_ID, "underground_portal"), 0, 1, AtBlocks.UNDERGROUND_PORTAL);
+        BiomeModifications.addFeature(
+                BiomeSelectors.foundInOverworld(),
+                GenerationStep.Feature.UNDERGROUND_ORES,
+                OverworldOrePlacedFeatures.OVERWORLD_ORE_SILVER
+        );
+        BiomeModifications.addFeature(
+                BiomeSelectors.foundInOverworld(),
+                GenerationStep.Feature.UNDERGROUND_ORES,
+                OverworldOrePlacedFeatures.OVERWORLD_ORE_SILVER_SMALL
+        );
     }
 }

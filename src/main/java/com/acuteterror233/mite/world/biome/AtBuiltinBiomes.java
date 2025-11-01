@@ -12,5 +12,8 @@ public abstract class AtBuiltinBiomes {
         RegistryEntryLookup<PlacedFeature> registryEntryLookup = biomeRegisterable.getRegistryLookup(RegistryKeys.PLACED_FEATURE);
         RegistryEntryLookup<ConfiguredCarver<?>> registryEntryLookup2 = biomeRegisterable.getRegistryLookup(RegistryKeys.CONFIGURED_CARVER);
         biomeRegisterable.register(AtBiomeKeys.UNDERGROUND,UndergroundBiomeCreator.createUnderground(registryEntryLookup,registryEntryLookup2));
+        biomeRegisterable.register(AtBiomeKeys.DRIPSTONE_CAVES,UndergroundBiomeCreator.createDripstoneCaves(registryEntryLookup,registryEntryLookup2));
+        biomeRegisterable.register(AtBiomeKeys.LUSH_CAVES,UndergroundBiomeCreator.createLushCaves(registryEntryLookup,registryEntryLookup2));
+        biomeRegisterable.register(AtBiomeKeys.DEEP_DARK,UndergroundBiomeCreator.createDeepDark(registryEntryLookup,registryEntryLookup2));
     }
 }
