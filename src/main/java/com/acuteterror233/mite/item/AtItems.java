@@ -823,12 +823,12 @@ public class AtItems {
             .displayName(Text.translatable("itemGroup.at_mite.item_group"))
             .entries((context, entries) -> {
                 entries.add(AtBlocks.ADAMANTIUM_CRAFTING_TABLE);
-                entries.add(AtBlocks.ANCIENT_METAL_CRAFTING_TABLE);
-                entries.add(AtBlocks.COPPER_CRAFTING_TABLE);
-                entries.add(AtBlocks.GOLD_CRAFTING_TABLE);
-                entries.add(AtBlocks.IRON_CRAFTING_TABLE);
                 entries.add(AtBlocks.MITHRIL_CRAFTING_TABLE);
+                entries.add(AtBlocks.ANCIENT_METAL_CRAFTING_TABLE);
+                entries.add(AtBlocks.IRON_CRAFTING_TABLE);
+                entries.add(AtBlocks.GOLD_CRAFTING_TABLE);
                 entries.add(AtBlocks.SILVER_CRAFTING_TABLE);
+                entries.add(AtBlocks.COPPER_CRAFTING_TABLE);
                 entries.add(AtBlocks.FLINT_CRAFTING_TABLE);
                 entries.add(AtBlocks.OBSIDIAN_CRAFTING_TABLE);
 
@@ -884,24 +884,38 @@ public class AtItems {
                 entries.add(AtBlocks.SILVER_ANVIL);
                 entries.add(chipped(AtBlocks.CHIPPED_SILVER_ANVIL));
                 entries.add(damaged(AtBlocks.DAMAGED_SILVER_ANVIL));
+
+                entries.add(Blocks.NETHERITE_BLOCK);
                 entries.add(AtBlocks.ADAMANTIUM_BLOCK);
-                entries.add(AtBlocks.ADAMANTIUM_BARS);
-                entries.add(AtBlocks.ANCIENT_METAL_BARS);
-                entries.add(AtBlocks.ANCIENT_METAL_BLOCK);
-                entries.add(AtBlocks.GOLDEN_BARS);
-                entries.add(AtBlocks.MANTLE);
-                entries.add(AtBlocks.MITHRIL_BARS);
                 entries.add(AtBlocks.MITHRIL_BLOCK);
-                entries.add(AtBlocks.MITHRIL_ORE);
-                entries.add(AtBlocks.SILVER_BARS);
+                entries.add(AtBlocks.ANCIENT_METAL_BLOCK);
+                entries.add(Blocks.IRON_BLOCK);
+                entries.add(Blocks.GOLD_BLOCK);
                 entries.add(AtBlocks.SILVER_BLOCK);
+                entries.add(Blocks.COPPER_BLOCK);
+
+                entries.add(AtBlocks.ADAMANTIUM_ORE);
+                entries.add(AtBlocks.MITHRIL_ORE);
+                entries.add(Blocks.IRON_ORE);
+                entries.add(Blocks.GOLD_ORE);
                 entries.add(AtBlocks.SILVER_ORE);
+                entries.add(Blocks.COPPER_ORE);
+
+                entries.add(AtBlocks.ADAMANTIUM_BARS);
+                entries.add(AtBlocks.MITHRIL_BARS);
+                entries.add(AtBlocks.ANCIENT_METAL_BARS);
+                entries.add(Blocks.IRON_BARS);
+                entries.add(AtBlocks.GOLDEN_BARS);
+                entries.add(AtBlocks.SILVER_BARS);
                 entries.add(AtBlocks.COPPER_BARS);
+                entries.add(AtBlocks.MANTLE);
+
                 entries.add(AtBlocks.ADAMANTIUM_DOOR);
                 entries.add(AtBlocks.ANCIENT_METAL_DOOR);
                 entries.add(AtBlocks.MITHRIL_DOOR);
                 entries.add(AtBlocks.SILVER_DOOR);
                 entries.add(AtBlocks.GOLDEN_DOOR);
+
                 entries.add(DIAMOND_SHARD);
                 entries.add(EMERALD_SHARD);
                 entries.add(FLINT_SHARD);

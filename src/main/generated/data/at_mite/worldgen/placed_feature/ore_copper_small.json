@@ -1,5 +1,5 @@
 {
-  "feature": "at_mite:ore_silver_small",
+  "feature": "minecraft:ore_copper_small",
   "placement": [
     {
       "type": "minecraft:count",
