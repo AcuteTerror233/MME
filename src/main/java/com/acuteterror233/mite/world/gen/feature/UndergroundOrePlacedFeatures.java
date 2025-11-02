@@ -29,6 +29,13 @@ public class UndergroundOrePlacedFeatures {
     public static final RegistryKey<PlacedFeature> ORE_LAPIS = of("ore_lapis");
     public static final RegistryKey<PlacedFeature> ORE_LAPIS_BURIED = of("ore_lapis_buried");
     public static final RegistryKey<PlacedFeature> ORE_REDSTONE = of("ore_redstone");
+    public static final RegistryKey<PlacedFeature> ORE_DIRT = of("ore_dirt");
+    public static final RegistryKey<PlacedFeature> ORE_GRAVEL = of("ore_gravel");
+    public static final RegistryKey<PlacedFeature> ORE_TUFF = of("ore_tuff");
+    public static final RegistryKey<PlacedFeature> ORE_DIAMOND_FIRST_LAYER = of("ore_diamond_first_layer");
+    public static final RegistryKey<PlacedFeature> ORE_DIAMOND_FIRST_LAYER_BURIED = of("ore_diamond_first_layer_buried");
+    public static final RegistryKey<PlacedFeature> ORE_DIAMOND_SECOND_LAYER = of("ore_diamond_second_layer");
+    public static final RegistryKey<PlacedFeature> ORE_DIAMOND_SECOND_LAYER_BURIED = of("ore_diamond_second_layer_buried");
     public static void bootstrap(Registerable<PlacedFeature> featureRegisterable){
         RegistryEntryLookup<ConfiguredFeature<?, ?>> registryEntryLookup = featureRegisterable.getRegistryLookup(RegistryKeys.CONFIGURED_FEATURE);
         RegistryEntry<ConfiguredFeature<?, ?>> ore_adamantium_buried = registryEntryLookup.getOrThrow(UndergroundOreConfiguredFeatures.ORE_ADAMANTIUM_BURIED);
@@ -45,13 +52,20 @@ public class UndergroundOrePlacedFeatures {
         RegistryEntry<ConfiguredFeature<?, ?>> ore_iron = registryEntryLookup.getOrThrow(OreConfiguredFeatures.ORE_IRON);
         RegistryEntry<ConfiguredFeature<?, ?>> ore_iron_small = registryEntryLookup.getOrThrow(OreConfiguredFeatures.ORE_IRON_SMALL);
         RegistryEntry<ConfiguredFeature<?, ?>> ore_redstone = registryEntryLookup.getOrThrow(OreConfiguredFeatures.ORE_REDSTONE);
+        RegistryEntry<ConfiguredFeature<?, ?>> ore_dirt = registryEntryLookup.getOrThrow(OreConfiguredFeatures.ORE_DIRT);
+        RegistryEntry<ConfiguredFeature<?, ?>> ore_gravel = registryEntryLookup.getOrThrow(OreConfiguredFeatures.ORE_GRAVEL);
+        RegistryEntry<ConfiguredFeature<?, ?>> ore_tuff = registryEntryLookup.getOrThrow(OreConfiguredFeatures.ORE_TUFF);
+        RegistryEntry<ConfiguredFeature<?, ?>> ore_diamond_small = registryEntryLookup.getOrThrow(OreConfiguredFeatures.ORE_DIAMOND_SMALL);
+        RegistryEntry<ConfiguredFeature<?, ?>> ore_diamond_medium = registryEntryLookup.getOrThrow(OreConfiguredFeatures.ORE_DIAMOND_MEDIUM);
+        RegistryEntry<ConfiguredFeature<?, ?>> ore_diamond_large = registryEntryLookup.getOrThrow(OreConfiguredFeatures.ORE_DIAMOND_LARGE);
+        RegistryEntry<ConfiguredFeature<?, ?>> ore_diamond_buried = registryEntryLookup.getOrThrow(OreConfiguredFeatures.ORE_DIAMOND_BURIED);
         PlacedFeatures.register(featureRegisterable, ORE_ADAMANTIUM_BURIED, ore_adamantium_buried, modifiers(
                 CountPlacementModifier.of(3),
-                HeightRangePlacementModifier.trapezoid(YOffset.fixed(-70), YOffset.fixed(10))
+                HeightRangePlacementModifier.trapezoid(YOffset.fixed(-88), YOffset.fixed(-8))
         ));
         PlacedFeatures.register(featureRegisterable, ORE_ADAMANTIUM_BURIED_SMALL, ore_adamantium_buried_small, modifiers(
                 CountPlacementModifier.of(5),
-                HeightRangePlacementModifier.uniform(YOffset.getBottom(), YOffset.fixed(10))
+                HeightRangePlacementModifier.uniform(YOffset.getBottom(), YOffset.fixed(-8))
         ));
         PlacedFeatures.register(featureRegisterable, ORE_MITHRIL, ore_mithril, modifiers(
                 CountPlacementModifier.of(3),
@@ -78,8 +92,8 @@ public class UndergroundOrePlacedFeatures {
                 HeightRangePlacementModifier.uniform(YOffset.getBottom(), YOffset.fixed(127))
         ));
         PlacedFeatures.register(featureRegisterable, ORE_EMERALD, ore_emerald, modifiers(
-                CountPlacementModifier.of(7),
-                HeightRangePlacementModifier.trapezoid(YOffset.fixed(-114), YOffset.fixed(6))
+                CountPlacementModifier.of(20),
+                HeightRangePlacementModifier.uniform(YOffset.getBottom(), YOffset.getTop())
         ));
         PlacedFeatures.register(featureRegisterable, ORE_LAPIS, ore_lapis, modifiers(
                 CountPlacementModifier.of(8),
@@ -100,6 +114,34 @@ public class UndergroundOrePlacedFeatures {
         PlacedFeatures.register(featureRegisterable, ORE_REDSTONE, ore_redstone, modifiers(
                 CountPlacementModifier.of(20),
                 HeightRangePlacementModifier.uniform(YOffset.getBottom(), YOffset.getTop())
+        ));
+        PlacedFeatures.register(featureRegisterable, ORE_DIRT, ore_dirt, modifiers(
+                CountPlacementModifier.of(25),
+                HeightRangePlacementModifier.uniform(YOffset.getBottom(), YOffset.getTop())
+        ));
+        PlacedFeatures.register(featureRegisterable, ORE_GRAVEL, ore_gravel, modifiers(
+                CountPlacementModifier.of(25),
+                HeightRangePlacementModifier.uniform(YOffset.getBottom(), YOffset.getTop())
+        ));
+        PlacedFeatures.register(featureRegisterable, ORE_TUFF, ore_tuff, modifiers(
+                CountPlacementModifier.of(25),
+                HeightRangePlacementModifier.uniform(YOffset.getBottom(), YOffset.getTop())
+        ));
+        PlacedFeatures.register(featureRegisterable, ORE_DIAMOND_FIRST_LAYER, ore_diamond_small, modifiers(
+                CountPlacementModifier.of(5),
+                HeightRangePlacementModifier.uniform(YOffset.fixed(128), YOffset.getTop())
+        ));
+        PlacedFeatures.register(featureRegisterable, ORE_DIAMOND_FIRST_LAYER_BURIED, ore_diamond_medium, modifiers(
+                CountPlacementModifier.of(5),
+                HeightRangePlacementModifier.uniform(YOffset.fixed(128), YOffset.getTop())
+        ));
+        PlacedFeatures.register(featureRegisterable, ORE_DIAMOND_SECOND_LAYER, ore_diamond_large, modifiers(
+                CountPlacementModifier.of(5),
+                HeightRangePlacementModifier.uniform(YOffset.getBottom(), YOffset.fixed(127))
+        ));
+        PlacedFeatures.register(featureRegisterable, ORE_DIAMOND_SECOND_LAYER_BURIED, ore_diamond_buried, modifiers(
+                CountPlacementModifier.of(5),
+                HeightRangePlacementModifier.uniform(YOffset.getBottom(), YOffset.fixed(127))
         ));
     }
     public static List<PlacementModifier> modifiers(PlacementModifier countModifier, PlacementModifier heightModifier) {

@@ -4,12 +4,17 @@ import com.acuteterror233.mite.block.AtBlocks;
 import com.acuteterror233.mite.item.AtItems;
 import com.acuteterror233.mite.world.gen.feature.OverworldOrePlacedFeatures;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.biome.v1.BiomeModification;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
+import net.fabricmc.fabric.api.biome.v1.ModificationPhase;
 import net.fabricmc.fabric.api.object.builder.v1.world.poi.PointOfInterestHelper;
 import net.minecraft.block.*;
+import net.minecraft.registry.RegistryKey;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.gen.GenerationStep;
+import net.minecraft.world.gen.feature.OrePlacedFeatures;
+import net.minecraft.world.gen.feature.PlacedFeature;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -193,6 +198,17 @@ public class At_mite implements ModInitializer {
                 BiomeSelectors.foundInOverworld(),
                 GenerationStep.Feature.UNDERGROUND_ORES,
                 OverworldOrePlacedFeatures.OVERWORLD_ORE_SILVER_SMALL
+        );
+        extracted(OrePlacedFeatures.ORE_DIAMOND_BURIED);
+        extracted(OrePlacedFeatures.ORE_DIAMOND_LARGE);
+        extracted(OrePlacedFeatures.ORE_DIAMOND_MEDIUM);
+    }
+
+    private static void extracted(RegistryKey<PlacedFeature> oreDiamond) {
+        BiomeModifications.create(oreDiamond.getValue()).add(
+                ModificationPhase.REMOVALS,
+                BiomeSelectors.foundInOverworld(),
+                context -> context.getGenerationSettings().removeFeature(oreDiamond)
         );
     }
 }

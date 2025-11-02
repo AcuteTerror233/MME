@@ -1,6 +1,6 @@
 {
   "ambient_light": 0.0,
-  "bed_works": false,
+  "bed_works": true,
   "coordinate_scale": 1.0,
   "effects": "at_mite:underground",
   "fixed_time": 30000,
@@ -20,5 +20,5 @@
   "natural": false,
   "piglin_safe": false,
   "respawn_anchor_works": false,
-  "ultrawarm": true
+  "ultrawarm": false
 }

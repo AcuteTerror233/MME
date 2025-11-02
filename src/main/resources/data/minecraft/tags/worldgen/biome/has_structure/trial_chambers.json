@@ -1,0 +1,9 @@
+{
+  "replace": true,
+  "values": [
+    "at_mite:underground",
+    "at_mite:dripstone_caves",
+    "at_mite:lush_caves",
+    "at_mite:deep_dark"
+  ]
+}
