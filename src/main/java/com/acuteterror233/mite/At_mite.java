@@ -203,7 +203,7 @@ public class At_mite implements ModInitializer {
         extracted(OrePlacedFeatures.ORE_DIAMOND_MEDIUM);
     }
 
-    public static void extracted(RegistryKey<PlacedFeature> oreDiamond) {
+    private static void extracted(RegistryKey<PlacedFeature> oreDiamond) {
         BiomeModifications.create(oreDiamond.getValue()).add(
                 ModificationPhase.REMOVALS,
                 BiomeSelectors.foundInOverworld(),
