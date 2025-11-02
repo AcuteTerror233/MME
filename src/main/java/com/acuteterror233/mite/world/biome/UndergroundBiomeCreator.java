@@ -11,7 +11,6 @@ import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.carver.ConfiguredCarver;
 import net.minecraft.world.gen.carver.ConfiguredCarvers;
 import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
-import net.minecraft.world.gen.feature.OrePlacedFeatures;
 import net.minecraft.world.gen.feature.PlacedFeature;
 
 public class UndergroundBiomeCreator {
@@ -23,6 +22,7 @@ public class UndergroundBiomeCreator {
         DefaultBiomeFeatures.addAmethystGeodes(lookupBackedBuilder);
         DefaultBiomeFeatures.addDefaultMushrooms(lookupBackedBuilder);
         DefaultBiomeFeatures.addDefaultDisks(lookupBackedBuilder);
+        DefaultBiomeFeatures.addSprings(lookupBackedBuilder);
         DefaultBiomeFeatures.addDripstoneCaveMobs(builder);
         return new Biome.Builder()
                 .precipitation(false)
@@ -51,6 +51,7 @@ public class UndergroundBiomeCreator {
         DefaultBiomeFeatures.addAmethystGeodes(lookupBackedBuilder);
         DefaultBiomeFeatures.addDefaultMushrooms(lookupBackedBuilder);
         DefaultBiomeFeatures.addDefaultDisks(lookupBackedBuilder);
+        DefaultBiomeFeatures.addSprings(lookupBackedBuilder);
         DefaultBiomeFeatures.addDripstoneCaveMobs(builder);
         DefaultBiomeFeatures.addDripstone(lookupBackedBuilder);
         return new Biome.Builder()
@@ -81,6 +82,7 @@ public class UndergroundBiomeCreator {
         DefaultBiomeFeatures.addDefaultMushrooms(lookupBackedBuilder);
         DefaultBiomeFeatures.addDefaultDisks(lookupBackedBuilder);
         DefaultBiomeFeatures.addDripstoneCaveMobs(builder);
+        DefaultBiomeFeatures.addSprings(lookupBackedBuilder);
         DefaultBiomeFeatures.addClayOre(lookupBackedBuilder);
         DefaultBiomeFeatures.addLushCavesDecoration(lookupBackedBuilder);
         return new Biome.Builder()
@@ -146,6 +148,13 @@ public class UndergroundBiomeCreator {
         builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, UndergroundOrePlacedFeatures.ORE_IRON);
         builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, UndergroundOrePlacedFeatures.ORE_IRON_SMALL);
         builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, UndergroundOrePlacedFeatures.ORE_REDSTONE);
-        builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, OrePlacedFeatures.ORE_DIAMOND);
+        builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, UndergroundOrePlacedFeatures.ORE_TUFF);
+        builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, UndergroundOrePlacedFeatures.ORE_DIRT);
+        builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, UndergroundOrePlacedFeatures.ORE_GRAVEL);
+        builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, UndergroundOrePlacedFeatures.ORE_DIAMOND_FIRST_LAYER);
+        builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, UndergroundOrePlacedFeatures.ORE_DIAMOND_FIRST_LAYER_BURIED);
+        builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, UndergroundOrePlacedFeatures.ORE_DIAMOND_SECOND_LAYER);
+        builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, UndergroundOrePlacedFeatures.ORE_DIAMOND_SECOND_LAYER_BURIED);
+        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, net.minecraft.world.gen.feature.UndergroundPlacedFeatures.GLOW_LICHEN);
     }
 }

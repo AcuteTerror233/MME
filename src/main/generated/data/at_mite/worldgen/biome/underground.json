@@ -55,14 +55,24 @@
       "at_mite:ore_iron",
       "at_mite:ore_iron_small",
       "at_mite:ore_redstone",
-      "minecraft:ore_diamond",
+      "at_mite:ore_tuff",
+      "at_mite:ore_dirt",
+      "at_mite:ore_gravel",
+      "at_mite:ore_diamond_first_layer",
+      "at_mite:ore_diamond_first_layer_buried",
+      "at_mite:ore_diamond_second_layer",
+      "at_mite:ore_diamond_second_layer_buried",
       "minecraft:disk_sand",
       "minecraft:disk_clay",
       "minecraft:disk_gravel"
     ],
     [],
-    [],
     [
+      "minecraft:spring_water",
+      "minecraft:spring_lava"
+    ],
+    [
+      "minecraft:glow_lichen",
       "minecraft:brown_mushroom_normal",
       "minecraft:red_mushroom_normal"
     ]

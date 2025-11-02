@@ -22,6 +22,7 @@ public class At_miteDataGenerator implements DataGeneratorEntrypoint {
         pack.addProvider(BlockTagProvider::new);
         pack.addProvider(BlockLootTableProvider::new);
         pack.addProvider(AtDynamicRegistry::new);
+        pack.addProvider(BiomeTagProvider::new);
 	}
     @Override
     public void buildRegistry(RegistryBuilder registryBuilder){

@@ -1,7 +1,6 @@
 package com.acuteterror233.mite.mixin.entity.player;
 
 import com.acuteterror233.mite.atinterface.HungerManagerExtension;
-import net.fabricmc.fabric.api.attachment.v1.AttachmentType;
 import net.minecraft.entity.player.HungerManager;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.network.ServerPlayerEntity;
