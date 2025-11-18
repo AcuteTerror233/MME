@@ -113,6 +113,7 @@ public class UndergroundBiomeCreator {
         DefaultBiomeFeatures.addDefaultMushrooms(lookupBackedBuilder);
         DefaultBiomeFeatures.addDefaultDisks(lookupBackedBuilder);
         DefaultBiomeFeatures.addDripstoneCaveMobs(builder);
+        DefaultBiomeFeatures.addSprings(lookupBackedBuilder);
         DefaultBiomeFeatures.addSculk(lookupBackedBuilder);
         return new Biome.Builder()
                 .precipitation(false)

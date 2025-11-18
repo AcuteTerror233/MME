@@ -3,6 +3,7 @@ package com.acuteterror233.mite.item;
 import com.acuteterror233.mite.At_mite;
 import com.acuteterror233.mite.atinterface.ItemSettingsExtension;
 import com.acuteterror233.mite.block.AtBlocks;
+import com.acuteterror233.mite.component.AtDataComponentTypes;
 import com.acuteterror233.mite.item.armor.AtArmorMaterials;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.minecraft.block.Block;
@@ -804,14 +805,21 @@ public class AtItems {
     public static final Item MITHRIL_FISHING_ROD = register("mithril_fishing_rod", FishingRodItem::new, new Item.Settings().maxDamage(64).enchantable(1));
     public static final Item OBSIDIAN_FISHING_ROD = register("obsidian_fishing_rod", FishingRodItem::new, new Item.Settings().maxDamage(32).enchantable(1));
     public static final Item SILVER_FISHING_ROD = register("silver_fishing_rod", FishingRodItem::new, new Item.Settings().maxDamage(8).enchantable(1));
-    public static final Item ADAMANTIUM_INGOT = register("adamantium_ingot");
-    public static final Item ANCIENT_METAL_INGOT = register("ancient_metal_ingot");
-    public static final Item MITHRIL_INGOT = register("mithril_ingot");
-    public static final Item SILVER_INGOT = register("silver_ingot");
+
+    public static final Item ADAMANTIUM_INGOT = register("adamantium_ingot",
+            new Item.Settings().component(AtDataComponentTypes.CRAFTINGTIME, 150));
+    public static final Item ANCIENT_METAL_INGOT = register("ancient_metal_ingot",
+            new Item.Settings().component(AtDataComponentTypes.CRAFTINGTIME, 90));
+    public static final Item MITHRIL_INGOT = register("mithril_ingot",
+            new Item.Settings().component(AtDataComponentTypes.CRAFTINGTIME, 60));
+    public static final Item SILVER_INGOT = register("silver_ingot",
+            new Item.Settings().component(AtDataComponentTypes.CRAFTINGTIME, 5));
+
     public static final Item ADAMANTIUM_NUGGET = register("adamantium_nugget");
     public static final Item ANCIENT_METAL_NUGGET = register("ancient_metal_nugget");
     public static final Item MITHRIL_NUGGET = register("mithril_nugget");
     public static final Item SILVER_NUGGET = register("silver_nugget");
+
     public static final Item DIAMOND_SHARD = register("diamond_shard");
     public static final Item EMERALD_SHARD = register("emerald_shard");
     public static final Item FLINT_SHARD = register("flint_shard");
@@ -922,6 +930,7 @@ public class AtItems {
                 entries.add(GLASS_SHARD);
                 entries.add(OBSIDIAN_SHARD);
                 entries.add(QUARTZ_SHARD);
+
                 entries.add(Items.NETHERITE_INGOT);
                 entries.add(ADAMANTIUM_INGOT);
                 entries.add(MITHRIL_INGOT);
@@ -930,6 +939,7 @@ public class AtItems {
                 entries.add(Items.GOLD_INGOT);
                 entries.add(SILVER_INGOT);
                 entries.add(Items.COPPER_INGOT);
+
                 entries.add(ADAMANTIUM_NUGGET);
                 entries.add(ANCIENT_METAL_NUGGET);
                 entries.add(MITHRIL_NUGGET);

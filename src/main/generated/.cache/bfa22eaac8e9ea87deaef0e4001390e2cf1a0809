@@ -1,9 +1,9 @@
 // 1.21.5	-999999999-01-01T00:00:00	at_mite/World
 f90e524fa61c53d276fc054c7d62afac24559db9 data/at_mite/dimension_type/underground_type.json
-1ad8b9596e8418a0c46d262585ec9ca297deb8de data/at_mite/worldgen/biome/deep_dark.json
-49f7cdb8e2c14dd509663ae41f9106713677cfd1 data/at_mite/worldgen/biome/dripstone_caves.json
-c84653133dcdfaaf93f0ec7e7155b1fef39887d6 data/at_mite/worldgen/biome/lush_caves.json
-b4b40743ede26dcb8a0dbe91e6824a4a9046b9e5 data/at_mite/worldgen/biome/underground.json
+3751c0fce8ca53f97f80fb85d2321d9028f9006c data/at_mite/worldgen/biome/deep_dark.json
+3ce0bc97306d77bcc95227a8ab753c77cb5743a9 data/at_mite/worldgen/biome/dripstone_caves.json
+d6447183cc9210e5e5a9eb93f3c8a1229c9aea44 data/at_mite/worldgen/biome/lush_caves.json
+5c43fc6abad626cd28cb06e2eb70983539c12428 data/at_mite/worldgen/biome/underground.json
 c5d27cae026d02678bcf0de63cccd4907f4f5730 data/at_mite/worldgen/configured_feature/ore_adamantium.json
 9f4c4b4db81b44c49fc70a8548a60114373b106c data/at_mite/worldgen/configured_feature/ore_adamantium_small.json
 0632668ac6360e35b2a540f42e7aa50d26d7fe31 data/at_mite/worldgen/configured_feature/ore_mithril.json

@@ -2,6 +2,7 @@ package com.acuteterror233.mite;
 
 import com.acuteterror233.mite.block.AtBlocks;
 import com.acuteterror233.mite.gui.screen.ingame.AtAnvilScreen;
+import com.acuteterror233.mite.gui.screen.ingame.CraftingTableScreen;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.minecraft.client.gui.screen.ingame.HandledScreens;
@@ -25,5 +26,6 @@ public class At_miteClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(AtBlocks.HOME_PORTAL, RenderLayer.getTranslucent());
         BlockRenderLayerMap.INSTANCE.putBlock(AtBlocks.RUNE_PORTAL, RenderLayer.getTranslucent());
         HandledScreens.register(AtBlocks.ATANVILSCREENHANDLER, AtAnvilScreen::new);
+        HandledScreens.register(AtBlocks.CRAFTINGTABLESCREENHANDLER, CraftingTableScreen::new);
 	}
 }

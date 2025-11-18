@@ -3,6 +3,7 @@ package com.acuteterror233.mite.block;
 import com.acuteterror233.mite.At_mite;
 import com.acuteterror233.mite.item.AtToolMaterial;
 import com.acuteterror233.mite.screen.AtAnvilScreenHandler;
+import com.acuteterror233.mite.screen.CraftingTableScreenHandler;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
@@ -281,6 +282,10 @@ public class AtBlocks {
                     .pistonBehavior(PistonBehavior.BLOCK),
             new Item.Settings().maxDamage(maxDamageAnvil(AtToolMaterial.COPPER.durability()))
     );
+    public static final Block ACS = register(
+            "cs",
+            CsBlock::new,
+            AbstractBlock.Settings.create());
     public static final Block UNDERGROUND_PORTAL = register(
             "underground_portal",
             UndergroundPortalBlock::new,
@@ -573,7 +578,7 @@ public class AtBlocks {
 
     }
     public static final ScreenHandlerType<AtAnvilScreenHandler> ATANVILSCREENHANDLER = register("at_anvil_screen_handler", AtAnvilScreenHandler::new);
-
+    public static final ScreenHandlerType<CraftingTableScreenHandler> CRAFTINGTABLESCREENHANDLER = register("cs", CraftingTableScreenHandler::new);
 
 
 

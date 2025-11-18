@@ -64,27 +64,20 @@
       "at_mite:ore_diamond_second_layer_buried",
       "minecraft:disk_sand",
       "minecraft:disk_clay",
-      "minecraft:disk_gravel",
-      "minecraft:ore_dirt",
-      "minecraft:ore_gravel",
-      "minecraft:ore_granite_upper",
-      "minecraft:ore_granite_lower",
-      "minecraft:ore_diorite_upper",
-      "minecraft:ore_diorite_lower",
-      "minecraft:ore_andesite_upper",
-      "minecraft:ore_andesite_lower",
-      "minecraft:ore_tuff"
+      "minecraft:disk_gravel"
     ],
     [
       "minecraft:sculk_vein",
       "minecraft:sculk_patch_deep_dark"
     ],
-    [],
+    [
+      "minecraft:spring_water",
+      "minecraft:spring_lava"
+    ],
     [
       "minecraft:glow_lichen",
       "minecraft:brown_mushroom_normal",
-      "minecraft:red_mushroom_normal",
-      "minecraft:glow_lichen"
+      "minecraft:red_mushroom_normal"
     ]
   ],
   "has_precipitation": false,
