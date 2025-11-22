@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "at_mite:ancient_metal_block"
+  ],
+  "result": {
+    "count": 9,
+    "id": "at_mite:ancient_metal_ingot"
+  }
+}

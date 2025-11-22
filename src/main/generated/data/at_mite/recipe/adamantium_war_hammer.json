@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "a": "at_mite:adamantium_ingot",
+    "b": "minecraft:stick"
+  },
+  "pattern": [
+    "aaa",
+    "aba",
+    " b "
+  ],
+  "result": {
+    "count": 1,
+    "id": "at_mite:adamantium_war_hammer"
+  }
+}

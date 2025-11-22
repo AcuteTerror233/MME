@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "minecraft:baked_potato",
+    "at_mite:cheese",
+    "at_mite:bowl_milk"
+  ],
+  "result": {
+    "count": 1,
+    "id": "at_mite:mashed_potato"
+  }
+}

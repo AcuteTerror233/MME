@@ -132,6 +132,10 @@ public class BlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(AtBlocks.COPPER_ANVIL)
                 .add(AtBlocks.CHIPPED_COPPER_ANVIL)
                 .add(AtBlocks.DAMAGED_COPPER_ANVIL);
+        getOrCreateTagBuilder(AtTags.IRON_ANVIL)
+                .add(Blocks.ANVIL)
+                .add(Blocks.CHIPPED_ANVIL)
+                .add(Blocks.DAMAGED_ANVIL);
         getOrCreateTagBuilder(AtTags.PORTAL)
                 .add(AtBlocks.UNDERGROUND_PORTAL)
                 .add(AtBlocks.HOME_PORTAL)

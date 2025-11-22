@@ -17,6 +17,7 @@ public class Zh_cnLanguageProvider extends FabricLanguageProvider {
     @Override
     public void generateTranslations(RegistryWrapper.WrapperLookup wrapperLookup, TranslationBuilder translationBuilder) {
         translationBuilder.add("itemGroup.at_mite.item_group","Minecraft实在是太简单了!");
+        translationBuilder.add("at_mite.craftingTable.noAllowedCrafting","\u00A7c这个工作台无法制作此物品\u00A7r");
         translationBuilder.add(AtItems.ADAMANTIUM_HELMET,"艾德曼头盔");
         translationBuilder.add(AtItems.ADAMANTIUM_CHESTPLATE,"艾德曼胸甲");
         translationBuilder.add(AtItems.ADAMANTIUM_LEGGINGS,"艾德曼护腿");
@@ -77,6 +78,7 @@ public class Zh_cnLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(AtItems.WORM_COOKED, "烤熟的虫子");
         translationBuilder.add(AtItems.WORM_RAW, "生的虫子");
         translationBuilder.add(AtItems.BEEF_STEW, "炖牛肉");
+        translationBuilder.add(AtItems.FLOUR, "面粉");
         translationBuilder.add(AtItems.BOWL_MILK, "一碗牛奶");
         translationBuilder.add(AtItems.BOWL_SALAD, "一碗沙拉");
         translationBuilder.add(AtItems.BOWL_WATER, "一碗水");
@@ -87,7 +89,7 @@ public class Zh_cnLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(AtItems.ICE_CREAM, "冰淇淋");
         translationBuilder.add(AtItems.MASHED_POTATO, "土豆泥");
         translationBuilder.add(AtItems.MUSHROOM_STEW, "蘑菇炖汤");
-        translationBuilder.add(AtItems.PORRIDGE, "粥");
+        translationBuilder.add(AtItems.PORRIDGE, "蓝莓粥");
         translationBuilder.add(AtItems.PUMPKIN_SOUP, "南瓜汤");
         translationBuilder.add(AtItems.SORBET, "雪糕");
         translationBuilder.add(AtItems.VEGETABLE_SOUP, "蔬菜汤");

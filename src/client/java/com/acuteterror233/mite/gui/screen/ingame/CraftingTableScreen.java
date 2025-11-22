@@ -1,14 +1,19 @@
 package com.acuteterror233.mite.gui.screen.ingame;
 
 import com.acuteterror233.mite.screen.CraftingTableScreenHandler;
+import com.acuteterror233.mite.screen.slot.NewCraftingResultSlot;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.ScreenPos;
 import net.minecraft.client.gui.screen.ingame.RecipeBookScreen;
 import net.minecraft.client.gui.screen.recipebook.AbstractCraftingRecipeBookWidget;
 import net.minecraft.client.render.RenderLayer;
+import net.minecraft.component.DataComponentTypes;
 import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
+
+import java.util.List;
 
 public class CraftingTableScreen extends RecipeBookScreen<CraftingTableScreenHandler> {
     private static final Identifier TEXTURE = Identifier.ofVanilla("textures/gui/container/crafting_table.png");
@@ -36,5 +41,22 @@ public class CraftingTableScreen extends RecipeBookScreen<CraftingTableScreenHan
         int j = (this.height - this.backgroundHeight) / 2;
         context.drawTexture(RenderLayer::getGuiTextured, TEXTURE, x, j, 0.0F, 0.0F, this.backgroundWidth, this.backgroundHeight, 256, 256);
         context.drawGuiTexture(RenderLayer::getGuiTextured, CRAFTING_PROGRESS_TEXTURE, 24, 16, 0, 0, x + 90, y + 34, l, 16);
+    }
+    @Override
+    protected void drawMouseoverTooltip(DrawContext drawContext, int x, int y) {
+        if (this.focusedSlot instanceof NewCraftingResultSlot && !this.handler.isAllowCrafting()){
+            if (this.focusedSlot.hasStack()) {
+                ItemStack itemStack = this.focusedSlot.getStack();
+                if (this.handler.getCursorStack().isEmpty()) {
+                    List<Text> texts = this.getTooltipFromItem(itemStack);
+                    texts.add(Text.translatable("at_mite.craftingTable.noAllowedCrafting"));
+                    drawContext.drawTooltip(
+                            this.textRenderer, texts, itemStack.getTooltipData(), x, y, itemStack.get(DataComponentTypes.TOOLTIP_STYLE)
+                    );
+                }
+            }
+        }else {
+            super.drawMouseoverTooltip(drawContext, x, y);
+        }
     }
 }

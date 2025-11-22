@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_bowl_milk": {
+      "conditions": {
+        "items": [
+          {
+            "items": "at_mite:bowl_milk"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "at_mite:cream_of_vegetable_soup"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_bowl_milk"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "at_mite:cream_of_vegetable_soup"
+    ]
+  }
+}

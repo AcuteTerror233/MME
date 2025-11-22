@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "minecraft:cooked_chicken",
+    "at_mite:bowl_water",
+    "at_mite:onion",
+    "minecraft:carrot"
+  ],
+  "result": {
+    "count": 1,
+    "id": "at_mite:chicken_soup"
+  }
+}

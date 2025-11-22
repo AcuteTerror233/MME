@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "#at_mite:water_bucket",
+    "minecraft:bowl",
+    "minecraft:bowl",
+    "minecraft:bowl"
+  ],
+  "result": {
+    "count": 3,
+    "id": "at_mite:bowl_water"
+  }
+}

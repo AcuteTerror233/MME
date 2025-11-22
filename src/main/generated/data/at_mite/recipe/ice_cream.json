@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "at_mite:bowl_milk",
+    "minecraft:sugar",
+    "minecraft:cocoa_beans",
+    "minecraft:snowball"
+  ],
+  "result": {
+    "count": 1,
+    "id": "at_mite:ice_cream"
+  }
+}

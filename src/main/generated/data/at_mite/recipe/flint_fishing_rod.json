@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "a": "minecraft:flint",
+    "b": "minecraft:string",
+    "c": "minecraft:stick"
+  },
+  "pattern": [
+    "  c",
+    " cb",
+    "cab"
+  ],
+  "result": {
+    "count": 1,
+    "id": "at_mite:flint_fishing_rod"
+  }
+}

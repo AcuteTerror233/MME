@@ -43,19 +43,11 @@ public class BlocksMixin {
 
     @Redirect(method = "<clinit>", at = @At(value = "INVOKE", target = "Lnet/minecraft/block/Blocks;register(Ljava/lang/String;Ljava/util/function/Function;Lnet/minecraft/block/AbstractBlock$Settings;)Lnet/minecraft/block/Block;", ordinal = 322))
     private static Block CHIPPED_ANVIL(String string, Function<AbstractBlock.Settings, Block> function, AbstractBlock.Settings settings) {
-        return register(string, AtAnvilBlock::new, AbstractBlock.Settings.create()
-                .mapColor(MapColor.IRON_GRAY)
-                .strength(0.5F, 1200.0F)
-                .sounds(BlockSoundGroup.ANVIL)
-                .pistonBehavior(PistonBehavior.BLOCK));
+        return register(string, AtAnvilBlock::new, AbstractBlock.Settings.copy(ANVIL));
     }
 
     @Redirect(method = "<clinit>", at = @At(value = "INVOKE", target = "Lnet/minecraft/block/Blocks;register(Ljava/lang/String;Ljava/util/function/Function;Lnet/minecraft/block/AbstractBlock$Settings;)Lnet/minecraft/block/Block;", ordinal = 323))
     private static Block DAMAGED_ANVIL(String string, Function<AbstractBlock.Settings, Block> function, AbstractBlock.Settings settings) {
-        return register(string, AtAnvilBlock::new, AbstractBlock.Settings.create()
-                .mapColor(MapColor.IRON_GRAY)
-                .strength(0.5F, 1200.0F)
-                .sounds(BlockSoundGroup.ANVIL)
-                .pistonBehavior(PistonBehavior.BLOCK));
+        return register(string, AtAnvilBlock::new, AbstractBlock.Settings.copy(ANVIL));
     }
 }

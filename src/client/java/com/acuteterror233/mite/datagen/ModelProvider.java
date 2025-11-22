@@ -155,6 +155,7 @@ public class ModelProvider extends FabricModelProvider {
         itemModelGenerator.register(AtItems.BOWL_MILK, Models.GENERATED);
         itemModelGenerator.register(AtItems.BOWL_SALAD, Models.GENERATED);
         itemModelGenerator.register(AtItems.BOWL_WATER, Models.GENERATED);
+        itemModelGenerator.register(AtItems.FLOUR, Models.GENERATED);
         itemModelGenerator.register(AtItems.CEREAL, Models.GENERATED);
         itemModelGenerator.register(AtItems.CHICKEN_SOUP, Models.GENERATED);
         itemModelGenerator.register(AtItems.CREAM_OF_MUSHROOM_SOUP, Models.GENERATED);

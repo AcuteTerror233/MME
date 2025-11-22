@@ -178,6 +178,7 @@ d6d2a376d94485f6a8dae999f06d882a915aee55 assets/at_mite/items/flint_hatchet.json
 6bdd69fdec7bdfd6b1cbc46abe54279133ce2ba5 assets/at_mite/items/flint_knife.json
 5847c317257d41218bd9278a6d8311563ef1fb98 assets/at_mite/items/flint_shard.json
 8f8707f89b2f561c21e37a5ff99848257e768aa4 assets/at_mite/items/flint_shovel.json
+61d1609ec8338d84c8b567df2dd0fe28af274e22 assets/at_mite/items/flour.json
 3d90354cd520c780d8df3cddf9b4b4f7c6fb90b6 assets/at_mite/items/glass_shard.json
 f452e4b44bac1841a290fa3e045a72ede458c339 assets/at_mite/items/gold_bucket.json
 6d7c57f4b6dbae7d31dfb37709e4318c42569e4d assets/at_mite/items/golden_anvil.json
@@ -837,6 +838,7 @@ ebe964a1d28693e85f7b16a1d86bad46b74b6239 assets/at_mite/models/item/flint_fishin
 fd7afc620de9cf5d90fbf60d004d9d708b8f414b assets/at_mite/models/item/flint_knife.json
 88c144983c0885310f148808f5c6cfd16a6e566b assets/at_mite/models/item/flint_shard.json
 6d791315b50e6106563aafe7a887715b30a819ab assets/at_mite/models/item/flint_shovel.json
+b1bf6b8e4b2f312f852522c7af80cf831de454ba assets/at_mite/models/item/flour.json
 2da7096969165594dd3375c0547fef15d438dea1 assets/at_mite/models/item/glass_shard.json
 68fa186d4a74d5ec89c1bdcef187d0367d433056 assets/at_mite/models/item/gold_bucket.json
 ebf2712135fae43146469f44e677f48e8f8a1939 assets/at_mite/models/item/golden_arrow.json

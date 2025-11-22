@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "a": "at_mite:ancient_metal_ingot",
+    "b": "at_mite:ancient_metal_block"
+  },
+  "pattern": [
+    "bbb",
+    " a ",
+    "aaa"
+  ],
+  "result": {
+    "count": 1,
+    "id": "at_mite:ancient_metal_anvil"
+  }
+}

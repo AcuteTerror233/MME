@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "at_mite:flour",
+    "at_mite:bowl_water"
+  ],
+  "result": {
+    "count": 1,
+    "id": "at_mite:dough"
+  }
+}

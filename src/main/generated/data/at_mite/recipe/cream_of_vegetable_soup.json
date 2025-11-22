@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "at_mite:bowl_milk",
+    "minecraft:carrot",
+    "minecraft:potato",
+    "at_mite:onion"
+  ],
+  "result": {
+    "count": 1,
+    "id": "at_mite:cream_of_vegetable_soup"
+  }
+}

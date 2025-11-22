@@ -1,4 +1,5 @@
 {
+  "at_mite.craftingTable.noAllowedCrafting": "§c这个工作台无法制作此物品§r",
   "block.at_mite.adamantium_an_runestore": "艾德曼符文石",
   "block.at_mite.adamantium_anvil": "艾德曼砧",
   "block.at_mite.adamantium_bars": "艾德曼栏杆",
@@ -196,6 +197,7 @@
   "item.at_mite.flint_knife": "燧石小刀",
   "item.at_mite.flint_shard": "燧石碎片",
   "item.at_mite.flint_shovel": "燧石铲子",
+  "item.at_mite.flour": "面粉",
   "item.at_mite.glass_shard": "玻璃碎片",
   "item.at_mite.gold_bucket": "金桶",
   "item.at_mite.golden_arrow": "金箭",
@@ -278,7 +280,7 @@
   "item.at_mite.obsidian_shovel": "黑曜石铲子",
   "item.at_mite.onion": "洋葱",
   "item.at_mite.orange": "橘子",
-  "item.at_mite.porridge": "粥",
+  "item.at_mite.porridge": "蓝莓粥",
   "item.at_mite.powder_snow_adamantium_bucket": "装满细雪的艾德曼桶",
   "item.at_mite.powder_snow_ancient_metal_bucket": "装满细雪的远古金属桶",
   "item.at_mite.powder_snow_copper_bucket": "装满细雪的铜桶",

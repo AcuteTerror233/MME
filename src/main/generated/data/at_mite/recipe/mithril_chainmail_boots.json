@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "a": "at_mite:mithril_chains"
+  },
+  "pattern": [
+    "a a",
+    "a a"
+  ],
+  "result": {
+    "count": 1,
+    "id": "at_mite:mithril_chainmail_boots"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "at_mite:silver_nugget"
+  ],
+  "result": {
+    "count": 1,
+    "id": "at_mite:silver_coins"
+  }
+}

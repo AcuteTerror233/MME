@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "minecraft:cooked_beef",
+    "minecraft:potato",
+    "minecraft:bowl",
+    "minecraft:brown_mushroom"
+  ],
+  "result": {
+    "count": 1,
+    "id": "at_mite:beef_stew"
+  }
+}

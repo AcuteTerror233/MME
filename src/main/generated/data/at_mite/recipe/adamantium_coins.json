@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "at_mite:adamantium_nugget"
+  ],
+  "result": {
+    "count": 1,
+    "id": "at_mite:adamantium_coins"
+  }
+}

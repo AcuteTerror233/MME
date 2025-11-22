@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "a": "at_mite:mithril_ingot",
+    "b": "minecraft:leather",
+    "c": "minecraft:stick",
+    "d": "#minecraft:planks"
+  },
+  "pattern": [
+    "ab",
+    "cd"
+  ],
+  "result": {
+    "count": 1,
+    "id": "at_mite:mithril_crafting_table"
+  }
+}

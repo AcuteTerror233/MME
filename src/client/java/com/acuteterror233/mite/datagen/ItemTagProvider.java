@@ -1,12 +1,15 @@
 package com.acuteterror233.mite.datagen;
 
+import com.acuteterror233.mite.block.AtBlocks;
 import com.acuteterror233.mite.item.AtItems;
 import com.acuteterror233.mite.registry.tag.AtTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
+import net.minecraft.block.Blocks;
 import net.minecraft.item.Items;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.ItemTags;
+import net.minecraft.registry.tag.TagKey;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -82,6 +85,15 @@ public class ItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(AtItems.WATER_SILVER_BUCKET)
                 .add(AtItems.WATER_NETHERITE_BUCKET)
                 .add(Items.WATER_BUCKET);
+        getOrCreateTagBuilder(AtTags.MILK_BUCKET)
+                .add(AtItems.MILK_ADAMANTIUM_BUCKET)
+                .add(AtItems.MILK_ANCIENT_METAL_BUCKET)
+                .add(AtItems.MILK_COPPER_BUCKET)
+                .add(AtItems.MILK_GOLD_BUCKET)
+                .add(AtItems.MILK_MITHRIL_BUCKET)
+                .add(AtItems.MILK_SILVER_BUCKET)
+                .add(AtItems.MILK_NETHERITE_BUCKET)
+                .add(Items.MILK_BUCKET);
         getOrCreateTagBuilder(AtTags.FISHING_RODS)
                 .add(AtItems.ADAMANTIUM_FISHING_ROD)
                 .add(AtItems.ANCIENT_METAL_FISHING_ROD)
@@ -337,7 +349,46 @@ public class ItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .addOptionalTag(AtTags.IRON_NONREPAIRABLE)
                 .addOptionalTag(AtTags.IRON_SERIES_REPAIRABLE)
                 .addOptionalTag(AtTags.RUSTED_IRON_SERIES_REPAIRABLE);
+
         getOrCreateTagBuilder(AtTags.ADAMANTIUM_TOOL_MATERIALS)
-                .add(AtItems.ADAMANTIUM_INGOT);
+                .add(AtItems.ADAMANTIUM_INGOT)
+                .add(AtItems.ADAMANTIUM_NUGGET);
+        getOrCreateTagBuilder(AtTags.MITHRIL_TOOL_MATERIALS)
+                .add(AtItems.MITHRIL_INGOT)
+                .add(AtItems.MITHRIL_NUGGET);
+        getOrCreateTagBuilder(AtTags.ANCIENT_METAL_TOOL_MATERIALS)
+                .add(AtItems.ANCIENT_METAL_INGOT)
+                .add(AtItems.ANCIENT_METAL_NUGGET);
+        getOrCreateTagBuilder(AtTags.SILVER_TOOL_MATERIALS)
+                .add(AtItems.SILVER_INGOT)
+                .add(AtItems.SILVER_NUGGET);
+        getOrCreateTagBuilder(AtTags.COPPER_TOOL_MATERIALS)
+                .add(Items.COPPER_INGOT);
+//                .add(Items.COPPER_NUGGET);
+
+        getOrCreateTagBuilder(AtTags.ADAMANTIUM_NOT_ALLOWED_MATERIAL);
+        getOrCreateTagBuilder(AtTags.MITHRIL_NOT_ALLOWED_MATERIAL)
+                .addOptionalTag(AtTags.ADAMANTIUM_TOOL_MATERIALS)
+                .add(AtBlocks.ADAMANTIUM_BLOCK.asItem());
+        getOrCreateTagBuilder(AtTags.ANCIENT_METAL_NOT_ALLOWED_MATERIAL)
+                .addOptionalTag(AtTags.MITHRIL_TOOL_MATERIALS)
+                .addOptionalTag(AtTags.MITHRIL_NOT_ALLOWED_MATERIAL)
+                .add(AtBlocks.MITHRIL_BLOCK.asItem());
+        getOrCreateTagBuilder(AtTags.IRON_NOT_ALLOWED_MATERIAL)
+                .addOptionalTag(AtTags.ANCIENT_METAL_TOOL_MATERIALS)
+                .addOptionalTag(AtTags.ANCIENT_METAL_NOT_ALLOWED_MATERIAL)
+                .add(AtBlocks.ANCIENT_METAL_BLOCK.asItem());
+        getOrCreateTagBuilder(AtTags.SILVER_NOT_ALLOWED_MATERIAL)
+                .addOptionalTag(ItemTags.IRON_TOOL_MATERIALS)
+                .addOptionalTag(AtTags.IRON_NOT_ALLOWED_MATERIAL)
+                .add(Items.IRON_BLOCK);
+        getOrCreateTagBuilder(AtTags.COPPER_NOT_ALLOWED_MATERIAL)
+                .addOptionalTag(ItemTags.IRON_TOOL_MATERIALS)
+                .addOptionalTag(AtTags.IRON_NOT_ALLOWED_MATERIAL)
+                .add(Items.IRON_BLOCK);
+        getOrCreateTagBuilder(AtTags.GOLD_NOT_ALLOWED_MATERIAL)
+                .addOptionalTag(ItemTags.IRON_TOOL_MATERIALS)
+                .addOptionalTag(AtTags.IRON_NOT_ALLOWED_MATERIAL)
+                .add(Items.IRON_BLOCK);
     }
 }

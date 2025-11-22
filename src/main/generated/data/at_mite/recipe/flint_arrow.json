@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "a": "at_mite:flint_shard",
+    "b": "minecraft:stick",
+    "c": "minecraft:feather"
+  },
+  "pattern": [
+    "a",
+    "b",
+    "c"
+  ],
+  "result": {
+    "count": 1,
+    "id": "at_mite:flint_arrow"
+  }
+}

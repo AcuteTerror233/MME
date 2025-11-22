@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "a": "minecraft:copper_ingot",
+    "b": "minecraft:copper_block"
+  },
+  "pattern": [
+    "bbb",
+    " a ",
+    "aaa"
+  ],
+  "result": {
+    "count": 1,
+    "id": "at_mite:copper_anvil"
+  }
+}

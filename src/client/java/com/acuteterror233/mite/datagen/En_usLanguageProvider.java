@@ -16,6 +16,7 @@ public class En_usLanguageProvider extends FabricLanguageProvider {
 
     @Override
     public void generateTranslations(RegistryWrapper.WrapperLookup registryLookup, TranslationBuilder translationBuilder) {
+        translationBuilder.add("at_mite.craftingTable.noAllowedCrafting","\u00A7cThis item cannot be crafted at this workbench\u00A7r");
         translationBuilder.add("itemGroup.at_mite.item_group","Minecraft is too easy!");
         translationBuilder.add(AtItems.ADAMANTIUM_HELMET,"Adamantium Helmet");
         translationBuilder.add(AtItems.ADAMANTIUM_CHESTPLATE,"Adamantium Chestplate");
@@ -76,6 +77,7 @@ public class En_usLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(AtItems.ORANGE, "Orange");
         translationBuilder.add(AtItems.WORM_COOKED, "Worm Cooked");
         translationBuilder.add(AtItems.WORM_RAW, "Worm Raw");
+        translationBuilder.add(AtItems.FLOUR, "Flour");
         translationBuilder.add(AtItems.BEEF_STEW, "Beef Stew");
         translationBuilder.add(AtItems.BOWL_MILK, "Bowl of Milk");
         translationBuilder.add(AtItems.BOWL_SALAD, "Bowl of Salad");
@@ -87,7 +89,7 @@ public class En_usLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(AtItems.ICE_CREAM, "Ice Cream");
         translationBuilder.add(AtItems.MASHED_POTATO, "Mashed Potato");
         translationBuilder.add(AtItems.MUSHROOM_STEW, "Mushroom Stew");
-        translationBuilder.add(AtItems.PORRIDGE, "Porridge");
+        translationBuilder.add(AtItems.PORRIDGE, "Blueberry Porridge");
         translationBuilder.add(AtItems.PUMPKIN_SOUP, "Pumpkin Soup");
         translationBuilder.add(AtItems.SORBET, "Sorbet");
         translationBuilder.add(AtItems.VEGETABLE_SOUP, "Vegetable Soup");

@@ -45,6 +45,7 @@ public class AtTags {
     public static final TagKey<Item> COINS = ofItem("coins");
 
     public static final TagKey<Item> WATER_BUCKET = ofItem("water_bucket");
+    public static final TagKey<Item> MILK_BUCKET = ofItem("milk_bucket");
     public static final TagKey<Item> FISHING_RODS = ofItem("fishing_rods");
 
     //用于砧判断是否不可维修
@@ -73,6 +74,14 @@ public class AtTags {
     public static final TagKey<Item> SILVER_TOOL_MATERIALS = ofItem("silver_tool_materials");
     public static final TagKey<Item> COPPER_TOOL_MATERIALS = ofItem("copper_tool_materials");
     public static final TagKey<Item> FLINT_TOOL_MATERIALS = ofItem("flint_tool_materials");
+
+    public static final TagKey<Item> ADAMANTIUM_NOT_ALLOWED_MATERIAL = ofItem("adamantium_not_allowed_material");
+    public static final TagKey<Item> MITHRIL_NOT_ALLOWED_MATERIAL = ofItem("mithril_not_allowed_material");
+    public static final TagKey<Item> ANCIENT_METAL_NOT_ALLOWED_MATERIAL = ofItem("ancient_metal_not_allowed_material");
+    public static final TagKey<Item> IRON_NOT_ALLOWED_MATERIAL = ofItem("iron_not_allowed_material");
+    public static final TagKey<Item> SILVER_NOT_ALLOWED_MATERIAL = ofItem("silver_not_allowed_material");
+    public static final TagKey<Item> COPPER_NOT_ALLOWED_MATERIAL = ofItem("copper_not_allowed_material");
+    public static final TagKey<Item> GOLD_NOT_ALLOWED_MATERIAL = ofItem("gold_not_allowed_material");
 
     private static TagKey<Block> ofBlock(String id) {
         return TagKey.of(RegistryKeys.BLOCK, Identifier.of(At_mite.MOD_ID, id));

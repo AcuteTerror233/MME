@@ -1,4 +1,5 @@
 {
+  "at_mite.craftingTable.noAllowedCrafting": "§cThis item cannot be crafted at this workbench§r",
   "block.at_mite.adamantium_an_runestore": "Adamantium An Runestone",
   "block.at_mite.adamantium_anvil": "adamantium anvil",
   "block.at_mite.adamantium_bars": "Adamantium Bars",
@@ -196,6 +197,7 @@
   "item.at_mite.flint_knife": "Flint Knife",
   "item.at_mite.flint_shard": "Flint Shard",
   "item.at_mite.flint_shovel": "Flint Shovel",
+  "item.at_mite.flour": "Flour",
   "item.at_mite.glass_shard": "Glass Shard",
   "item.at_mite.gold_bucket": "Gold bucket",
   "item.at_mite.golden_arrow": "Gold Arrow",
@@ -278,7 +280,7 @@
   "item.at_mite.obsidian_shovel": "Obsidian Shovel",
   "item.at_mite.onion": "Onion",
   "item.at_mite.orange": "Orange",
-  "item.at_mite.porridge": "Porridge",
+  "item.at_mite.porridge": "Blueberry Porridge",
   "item.at_mite.powder_snow_adamantium_bucket": "Adamantium Bucket of Powder Snow",
   "item.at_mite.powder_snow_ancient_metal_bucket": "Ancient Metal Bucket of Powder Snow",
   "item.at_mite.powder_snow_copper_bucket": "Copper Bucket of Powder Snow",

@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "at_mite:bowl_milk",
+    "at_mite:bowl_milk",
+    "at_mite:bowl_milk",
+    "at_mite:bowl_milk"
+  ],
+  "result": {
+    "count": 1,
+    "id": "at_mite:cheese"
+  }
+}

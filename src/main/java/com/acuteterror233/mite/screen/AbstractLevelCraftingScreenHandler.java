@@ -19,6 +19,7 @@ import net.minecraft.util.math.MathHelper;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;
+import java.util.function.Function;
 
 public abstract class AbstractLevelCraftingScreenHandler extends AbstractCraftingScreenHandler {
     private final int DefaultCraftingTime = 100;
@@ -28,6 +29,7 @@ public abstract class AbstractLevelCraftingScreenHandler extends AbstractCraftin
             return switch (index) {
                 case 0 -> CraftingTime[0];
                 case 1 -> CraftingTime[1];
+                case 2 -> CraftingTime[2];
                 default -> 0;
             };
         }
@@ -37,22 +39,25 @@ public abstract class AbstractLevelCraftingScreenHandler extends AbstractCraftin
             switch (index) {
                 case 0 -> CraftingTime[0] = value;
                 case 1 -> CraftingTime[1] = value;
+                case 2 -> CraftingTime[2] = MathHelper.clamp(value, 0, 1);
             }
         }
 
         @Override
         public int size() {
-            return 2;
+            return 3;
         }
     };
-    public final int[] CraftingTime = new int[]{0, DefaultCraftingTime};
-    public AbstractLevelCraftingScreenHandler(ScreenHandlerType<?> type, int syncId, int width, int height) {
+    private final Function<RecipeInputInventory, Boolean> testRules;
+    public final int[] CraftingTime = new int[]{0, DefaultCraftingTime, 0};
+    public AbstractLevelCraftingScreenHandler(ScreenHandlerType<?> type, int syncId, Function<RecipeInputInventory, Boolean> testRules, int width, int height) {
         super(type, syncId, width, height);
+        this.testRules = testRules;
         addProperties(property);
     }
     @Override
     protected Slot addResultSlot(PlayerEntity player, int x, int y) {
-        return this.addSlot(new NewCraftingResultSlot(player, this.craftingInventory, this.craftingResultInventory, 0, x, y));
+        return this.addSlot(new NewCraftingResultSlot(player, this.craftingInventory, this.craftingResultInventory, this, 0, x, y));
     }
     protected void updateResult(
             ScreenHandler handler,
@@ -72,13 +77,17 @@ public abstract class AbstractLevelCraftingScreenHandler extends AbstractCraftin
             CraftingRecipe craftingRecipe = recipeEntry.value();
             if (resultInventory.shouldCraftRecipe(serverPlayerEntity, recipeEntry)) {
                 ItemStack itemStack2 = craftingRecipe.craft(craftingRecipeInput, world.getRegistryManager());
-                if (itemStack2.isItemEnabled(world.getEnabledFeatures()) && CraftingCheck(craftingInventory)) {
+                if (itemStack2.isItemEnabled(world.getEnabledFeatures())) {
+                    if (testRules.apply(craftingInventory)) {
+                        this.property.set(2,1);
+                    }
                     CraftingTime = AdditionalCraftingTime(craftingInventory);
                     itemStack = itemStack2;
                 }
             }
         }else {
             if (getOutputSlot() instanceof NewCraftingResultSlot slot) {
+                this.property.set(2,0);
                 slot.ClearCraftingState();
                 this.property.set(0,0);
             }
@@ -118,7 +127,6 @@ public abstract class AbstractLevelCraftingScreenHandler extends AbstractCraftin
                 CraftingTime += i * 20;
             }
         }
-        this.CraftingTime[1] += CraftingTime;
         return (int) (CraftingTime / (1 + ((double) (getPlayer().experienceLevel * 2) / 100)) );
     }
 
@@ -126,5 +134,8 @@ public abstract class AbstractLevelCraftingScreenHandler extends AbstractCraftin
         return MathHelper.clamp((double) this.property.get(0) / this.property.get(1), 0, 1);
     }
 
-    public abstract boolean CraftingCheck(RecipeInputInventory inventory);
+    public boolean isAllowCrafting() {
+        return this.property.get(2) == 1;
+    }
+
 }

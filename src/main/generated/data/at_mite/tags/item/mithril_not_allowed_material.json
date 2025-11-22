@@ -1,0 +1,9 @@
+{
+  "values": [
+    {
+      "id": "#at_mite:adamantium_tool_materials",
+      "required": false
+    },
+    "at_mite:adamantium_block"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "at_mite:mithril_ingot"
+  ],
+  "result": {
+    "count": 9,
+    "id": "at_mite:mithril_nugget"
+  }
+}
