@@ -1,6 +1,5 @@
 package com.acuteterror233.mite.block;
 
-import com.acuteterror233.mite.item.AtItems;
 import com.acuteterror233.mite.registry.tag.AtTags;
 import com.acuteterror233.mite.screen.CraftingTableScreenHandler;
 import net.minecraft.block.BlockState;

@@ -1,9 +1,9 @@
 package com.acuteterror233.mite.block;
 
 import com.acuteterror233.mite.At_mite;
-import com.acuteterror233.mite.item.AtToolMaterial;
-import com.acuteterror233.mite.screen.CraftingTableScreenHandler;
+import com.acuteterror233.mite.item.AtToolMaterials;
 import com.acuteterror233.mite.screen.AtAnvilScreenHandler;
+import com.acuteterror233.mite.screen.CraftingTableScreenHandler;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
@@ -105,55 +105,55 @@ public class AtBlocks {
             "damaged_adamantium_anvil",
             AtAnvilBlock::new,
             AbstractBlock.Settings.copy(Blocks.ANVIL),
-            new Item.Settings().maxDamage(maxDamageAnvil(AtToolMaterial.ADAMANTIUM.durability()))
+            new Item.Settings().maxDamage(maxDamageAnvil(AtToolMaterials.ADAMANTIUM.durability()))
     );
     public static final Block CHIPPED_ADAMANTIUM_ANVIL = register(
             "chipped_adamantium_anvil",
             AtAnvilBlock::new,
             AbstractBlock.Settings.copy(Blocks.ANVIL),
-            new Item.Settings().maxDamage(maxDamageAnvil(AtToolMaterial.ADAMANTIUM.durability()))
+            new Item.Settings().maxDamage(maxDamageAnvil(AtToolMaterials.ADAMANTIUM.durability()))
     );
     public static final Block ADAMANTIUM_ANVIL = register(
             "adamantium_anvil",
             AtAnvilBlock::new,
             AbstractBlock.Settings.copy(Blocks.ANVIL),
-            new Item.Settings().maxDamage(maxDamageAnvil(AtToolMaterial.ADAMANTIUM.durability()))
+            new Item.Settings().maxDamage(maxDamageAnvil(AtToolMaterials.ADAMANTIUM.durability()))
     );
     public static final Block DAMAGED_MITHRIL_ANVIL = register(
             "damaged_mithril_anvil",
             AtAnvilBlock::new,
             AbstractBlock.Settings.copy(Blocks.ANVIL),
-            new Item.Settings().maxDamage(maxDamageAnvil(AtToolMaterial.MITHRIL.durability()))
+            new Item.Settings().maxDamage(maxDamageAnvil(AtToolMaterials.MITHRIL.durability()))
     );
     public static final Block CHIPPED_MITHRIL_ANVIL = register(
             "chipped_mithril_anvil",
             AtAnvilBlock::new,
             AbstractBlock.Settings.copy(Blocks.ANVIL),
-            new Item.Settings().maxDamage(maxDamageAnvil(AtToolMaterial.MITHRIL.durability()))
+            new Item.Settings().maxDamage(maxDamageAnvil(AtToolMaterials.MITHRIL.durability()))
     );
     public static final Block MITHRIL_ANVIL = register(
             "mithril_anvil",
             AtAnvilBlock::new,
             AbstractBlock.Settings.copy(Blocks.ANVIL),
-            new Item.Settings().maxDamage(maxDamageAnvil(AtToolMaterial.MITHRIL.durability()))
+            new Item.Settings().maxDamage(maxDamageAnvil(AtToolMaterials.MITHRIL.durability()))
     );
     public static final Block DAMAGED_ANCIENT_METAL_ANVIL = register(
             "damaged_ancient_metal_anvil",
             AtAnvilBlock::new,
             AbstractBlock.Settings.copy(Blocks.ANVIL),
-            new Item.Settings().maxDamage(maxDamageAnvil(AtToolMaterial.ANCIENT_METAL.durability()))
+            new Item.Settings().maxDamage(maxDamageAnvil(AtToolMaterials.ANCIENT_METAL.durability()))
     );
     public static final Block CHIPPED_ANCIENT_METAL_ANVIL = register(
             "chipped_ancient_metal_anvil",
             AtAnvilBlock::new,
             AbstractBlock.Settings.copy(Blocks.ANVIL),
-            new Item.Settings().maxDamage(maxDamageAnvil(AtToolMaterial.ANCIENT_METAL.durability()))
+            new Item.Settings().maxDamage(maxDamageAnvil(AtToolMaterials.ANCIENT_METAL.durability()))
     );
     public static final Block ANCIENT_METAL_ANVIL = register(
             "ancient_metal_anvil",
             AtAnvilBlock::new,
             AbstractBlock.Settings.copy(Blocks.ANVIL),
-            new Item.Settings().maxDamage(maxDamageAnvil(AtToolMaterial.ANCIENT_METAL.durability()))
+            new Item.Settings().maxDamage(maxDamageAnvil(AtToolMaterials.ANCIENT_METAL.durability()))
     );
     public static final Block DAMAGED_GOLDEN_ANVIL = register(
             "damaged_golden_anvil",
@@ -177,37 +177,37 @@ public class AtBlocks {
             "damaged_silver_anvil",
             AtAnvilBlock::new,
             AbstractBlock.Settings.copy(Blocks.ANVIL),
-            new Item.Settings().maxDamage(maxDamageAnvil(AtToolMaterial.SILVER.durability()))
+            new Item.Settings().maxDamage(maxDamageAnvil(AtToolMaterials.SILVER.durability()))
     );
     public static final Block CHIPPED_SILVER_ANVIL = register(
             "chipped_silver_anvil",
             AtAnvilBlock::new,
             AbstractBlock.Settings.copy(Blocks.ANVIL),
-            new Item.Settings().maxDamage(maxDamageAnvil(AtToolMaterial.SILVER.durability()))
+            new Item.Settings().maxDamage(maxDamageAnvil(AtToolMaterials.SILVER.durability()))
     );
     public static final Block SILVER_ANVIL = register(
             "silver_anvil",
             AtAnvilBlock::new,
             AbstractBlock.Settings.copy(Blocks.ANVIL),
-            new Item.Settings().maxDamage(maxDamageAnvil(AtToolMaterial.SILVER.durability()))
+            new Item.Settings().maxDamage(maxDamageAnvil(AtToolMaterials.SILVER.durability()))
     );
     public static final Block DAMAGED_COPPER_ANVIL = register(
             "damaged_copper_anvil",
             AtAnvilBlock::new,
             AbstractBlock.Settings.copy(Blocks.ANVIL),
-            new Item.Settings().maxDamage(maxDamageAnvil(AtToolMaterial.COPPER.durability()))
+            new Item.Settings().maxDamage(maxDamageAnvil(AtToolMaterials.COPPER.durability()))
     );
     public static final Block CHIPPED_COPPER_ANVIL = register(
             "chipped_copper_anvil",
             AtAnvilBlock::new,
             AbstractBlock.Settings.copy(Blocks.ANVIL),
-            new Item.Settings().maxDamage(maxDamageAnvil(AtToolMaterial.COPPER.durability()))
+            new Item.Settings().maxDamage(maxDamageAnvil(AtToolMaterials.COPPER.durability()))
     );
     public static final Block COPPER_ANVIL = register(
             "copper_anvil",
             AtAnvilBlock::new,
             AbstractBlock.Settings.copy(Blocks.ANVIL),
-            new Item.Settings().maxDamage(maxDamageAnvil(AtToolMaterial.COPPER.durability()))
+            new Item.Settings().maxDamage(maxDamageAnvil(AtToolMaterials.COPPER.durability()))
     );
     public static final Block UNDERGROUND_PORTAL = register(
             "underground_portal",

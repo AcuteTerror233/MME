@@ -5,25 +5,27 @@ import com.acuteterror233.mite.atinterface.ItemSettingsExtension;
 import com.acuteterror233.mite.block.AtBlocks;
 import com.acuteterror233.mite.component.AtDataComponentTypes;
 import com.acuteterror233.mite.item.armor.AtArmorMaterials;
+import com.acuteterror233.mite.item.equipment.AtArmorMaterial;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.component.DataComponentTypes;
-import net.minecraft.component.type.ConsumableComponents;
-import net.minecraft.component.type.FoodComponent;
-import net.minecraft.component.type.NbtComponent;
+import net.minecraft.component.type.*;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.attribute.EntityAttributeModifier;
+import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.*;
 import net.minecraft.item.equipment.EquipmentType;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
-import net.minecraft.registry.RegistryKey;
-import net.minecraft.registry.RegistryKeys;
+import net.minecraft.registry.*;
+import net.minecraft.registry.entry.RegistryEntryList;
+import net.minecraft.registry.tag.BlockTags;
+import net.minecraft.registry.tag.TagKey;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
+import java.util.List;
 import java.util.function.Function;
 /**
  * 物品注册中心：集中定义并注册模组中的全部物品与物品组（创造模式标签）。
@@ -35,211 +37,211 @@ import java.util.function.Function;
 public class AtItems {
     public static final Item ADAMANTIUM_HELMET = register(
             "adamantium_helmet",
-            getItemSettings().at_armor(AtArmorMaterials.ADAMANTIUM_ARMOR_MATERIAL, EquipmentType.HELMET)
+            getArmorSettings(AtArmorMaterials.ADAMANTIUM_ARMOR_MATERIAL, EquipmentType.HELMET)
     );
     public static final Item ADAMANTIUM_CHESTPLATE = register(
             "adamantium_chestplate",
-            getItemSettings().at_armor(AtArmorMaterials.ADAMANTIUM_ARMOR_MATERIAL, EquipmentType.CHESTPLATE)
+            getArmorSettings(AtArmorMaterials.ADAMANTIUM_ARMOR_MATERIAL, EquipmentType.CHESTPLATE)
     );
     public static final Item ADAMANTIUM_LEGGINGS = register(
             "adamantium_leggings",
-            getItemSettings().at_armor(AtArmorMaterials.ADAMANTIUM_ARMOR_MATERIAL, EquipmentType.LEGGINGS)
+            getArmorSettings(AtArmorMaterials.ADAMANTIUM_ARMOR_MATERIAL, EquipmentType.LEGGINGS)
     );
     public static final Item ADAMANTIUM_BOOTS = register(
             "adamantium_boots",
-            getItemSettings().at_armor(AtArmorMaterials.ADAMANTIUM_ARMOR_MATERIAL, EquipmentType.BOOTS)
+            getArmorSettings(AtArmorMaterials.ADAMANTIUM_ARMOR_MATERIAL, EquipmentType.BOOTS)
     );
     public static final Item ADAMANTIUM_CHAINMAIL_BOOTS = register(
             "adamantium_chainmail_boots",
-            getItemSettings().at_armor(AtArmorMaterials.ADAMANTIUM_CHAINMAIL_ARMOR_MATERIAL, EquipmentType.BOOTS)
+            getArmorSettings(AtArmorMaterials.ADAMANTIUM_CHAINMAIL_ARMOR_MATERIAL, EquipmentType.BOOTS)
     );
     public static final Item ADAMANTIUM_CHAINMAIL_CHESTPLATE = register(
             "adamantium_chainmail_chestplate",
-            getItemSettings().at_armor(AtArmorMaterials.ADAMANTIUM_CHAINMAIL_ARMOR_MATERIAL, EquipmentType.CHESTPLATE)
+            getArmorSettings(AtArmorMaterials.ADAMANTIUM_CHAINMAIL_ARMOR_MATERIAL, EquipmentType.CHESTPLATE)
     );
     public static final Item ADAMANTIUM_CHAINMAIL_HELMET = register(
             "adamantium_chainmail_helmet",
-            getItemSettings().at_armor(AtArmorMaterials.ADAMANTIUM_CHAINMAIL_ARMOR_MATERIAL, EquipmentType.HELMET)
+            getArmorSettings(AtArmorMaterials.ADAMANTIUM_CHAINMAIL_ARMOR_MATERIAL, EquipmentType.HELMET)
     );
     public static final Item ADAMANTIUM_CHAINMAIL_LEGGINGS = register(
             "adamantium_chainmail_leggings",
-            getItemSettings().at_armor(AtArmorMaterials.ADAMANTIUM_CHAINMAIL_ARMOR_MATERIAL, EquipmentType.LEGGINGS)
+            getArmorSettings(AtArmorMaterials.ADAMANTIUM_CHAINMAIL_ARMOR_MATERIAL, EquipmentType.LEGGINGS)
     );
     public static final Item ANCIENT_METAL_HELMET = register(
             "ancient_metal_helmet",
-            getItemSettings().at_armor(AtArmorMaterials.ANCIENT_METAL_ARMOR_MATERIAL, EquipmentType.HELMET)
+            getArmorSettings(AtArmorMaterials.ANCIENT_METAL_ARMOR_MATERIAL, EquipmentType.HELMET)
     );
     public static final Item ANCIENT_METAL_CHESTPLATE = register(
             "ancient_metal_chestplate",
-            getItemSettings().at_armor(AtArmorMaterials.ANCIENT_METAL_ARMOR_MATERIAL, EquipmentType.CHESTPLATE)
+            getArmorSettings(AtArmorMaterials.ANCIENT_METAL_ARMOR_MATERIAL, EquipmentType.CHESTPLATE)
     );
     public static final Item ANCIENT_METAL_LEGGINGS = register(
             "ancient_metal_leggings",
-            getItemSettings().at_armor(AtArmorMaterials.ANCIENT_METAL_ARMOR_MATERIAL, EquipmentType.LEGGINGS)
+            getArmorSettings(AtArmorMaterials.ANCIENT_METAL_ARMOR_MATERIAL, EquipmentType.LEGGINGS)
     );
     public static final Item ANCIENT_METAL_BOOTS = register(
             "ancient_metal_boots",
-            getItemSettings().at_armor(AtArmorMaterials.ANCIENT_METAL_ARMOR_MATERIAL, EquipmentType.BOOTS)
+            getArmorSettings(AtArmorMaterials.ANCIENT_METAL_ARMOR_MATERIAL, EquipmentType.BOOTS)
     );
     public static final Item ANCIENT_METAL_CHAINMAIL_BOOTS = register(
             "ancient_metal_chainmail_boots",
-            getItemSettings().at_armor(AtArmorMaterials.ANCIENT_METAL_CHAINMAIL_ARMOR_MATERIAL, EquipmentType.BOOTS)
+            getArmorSettings(AtArmorMaterials.ANCIENT_METAL_CHAINMAIL_ARMOR_MATERIAL, EquipmentType.BOOTS)
     );
     public static final Item ANCIENT_METAL_CHAINMAIL_CHESTPLATE = register(
             "ancient_metal_chainmail_chestplate",
-            getItemSettings().at_armor(AtArmorMaterials.ANCIENT_METAL_CHAINMAIL_ARMOR_MATERIAL, EquipmentType.CHESTPLATE)
+            getArmorSettings(AtArmorMaterials.ANCIENT_METAL_CHAINMAIL_ARMOR_MATERIAL, EquipmentType.CHESTPLATE)
     );
     public static final Item ANCIENT_METAL_CHAINMAIL_HELMET = register(
             "ancient_metal_chainmail_helmet",
-            getItemSettings().at_armor(AtArmorMaterials.ANCIENT_METAL_CHAINMAIL_ARMOR_MATERIAL, EquipmentType.HELMET)
+            getArmorSettings(AtArmorMaterials.ANCIENT_METAL_CHAINMAIL_ARMOR_MATERIAL, EquipmentType.HELMET)
     );
     public static final Item ANCIENT_METAL_CHAINMAIL_LEGGINGS = register(
             "ancient_metal_chainmail_leggings",
-            getItemSettings().at_armor(AtArmorMaterials.ANCIENT_METAL_CHAINMAIL_ARMOR_MATERIAL, EquipmentType.LEGGINGS)
+            getArmorSettings(AtArmorMaterials.ANCIENT_METAL_CHAINMAIL_ARMOR_MATERIAL, EquipmentType.LEGGINGS)
     );
     public static final Item COPPER_HELMET = register(
             "copper_helmet",
-            getItemSettings().at_armor(AtArmorMaterials.COPPER_ARMOR_MATERIAL, EquipmentType.HELMET)
+            getArmorSettings(AtArmorMaterials.COPPER_ARMOR_MATERIAL, EquipmentType.HELMET)
     );
     public static final Item COPPER_CHESTPLATE = register(
             "copper_chestplate",
-            getItemSettings().at_armor(AtArmorMaterials.COPPER_ARMOR_MATERIAL, EquipmentType.CHESTPLATE)
+            getArmorSettings(AtArmorMaterials.COPPER_ARMOR_MATERIAL, EquipmentType.CHESTPLATE)
     );
     public static final Item COPPER_LEGGINGS = register(
             "copper_leggings",
-            getItemSettings().at_armor(AtArmorMaterials.COPPER_ARMOR_MATERIAL, EquipmentType.LEGGINGS)
+            getArmorSettings(AtArmorMaterials.COPPER_ARMOR_MATERIAL, EquipmentType.LEGGINGS)
     );
     public static final Item COPPER_BOOTS = register(
             "copper_boots",
-            getItemSettings().at_armor(AtArmorMaterials.COPPER_ARMOR_MATERIAL, EquipmentType.BOOTS)
+            getArmorSettings(AtArmorMaterials.COPPER_ARMOR_MATERIAL, EquipmentType.BOOTS)
     );
     public static final Item COPPER_CHAINMAIL_BOOTS = register(
             "copper_chainmail_boots",
-            getItemSettings().at_armor(AtArmorMaterials.COPPER_CHAINMAIL_ARMOR_MATERIAL, EquipmentType.BOOTS)
+            getArmorSettings(AtArmorMaterials.COPPER_CHAINMAIL_ARMOR_MATERIAL, EquipmentType.BOOTS)
     );
     public static final Item COPPER_CHAINMAIL_CHESTPLATE = register(
             "copper_chainmail_chestplate",
-            getItemSettings().at_armor(AtArmorMaterials.COPPER_CHAINMAIL_ARMOR_MATERIAL, EquipmentType.CHESTPLATE)
+            getArmorSettings(AtArmorMaterials.COPPER_CHAINMAIL_ARMOR_MATERIAL, EquipmentType.CHESTPLATE)
     );
     public static final Item COPPER_CHAINMAIL_HELMET = register(
             "copper_chainmail_helmet",
-            getItemSettings().at_armor(AtArmorMaterials.COPPER_CHAINMAIL_ARMOR_MATERIAL, EquipmentType.HELMET)
+            getArmorSettings(AtArmorMaterials.COPPER_CHAINMAIL_ARMOR_MATERIAL, EquipmentType.HELMET)
     );
     public static final Item COPPER_CHAINMAIL_LEGGINGS = register(
             "copper_chainmail_leggings",
-            getItemSettings().at_armor(AtArmorMaterials.COPPER_CHAINMAIL_ARMOR_MATERIAL, EquipmentType.LEGGINGS)
+            getArmorSettings(AtArmorMaterials.COPPER_CHAINMAIL_ARMOR_MATERIAL, EquipmentType.LEGGINGS)
     );
     public static final Item MITHRIL_HELMET = register(
             "mithril_helmet",
-            getItemSettings().at_armor(AtArmorMaterials.MITHRIL_ARMOR_MATERIAL, EquipmentType.HELMET)
+            getArmorSettings(AtArmorMaterials.MITHRIL_ARMOR_MATERIAL, EquipmentType.HELMET)
     );
     public static final Item MITHRIL_CHESTPLATE = register(
             "mithril_chestplate",
-            getItemSettings().at_armor(AtArmorMaterials.MITHRIL_ARMOR_MATERIAL, EquipmentType.CHESTPLATE)
+            getArmorSettings(AtArmorMaterials.MITHRIL_ARMOR_MATERIAL, EquipmentType.CHESTPLATE)
     );
     public static final Item MITHRIL_LEGGINGS = register(
             "mithril_leggings",
-            getItemSettings().at_armor(AtArmorMaterials.MITHRIL_ARMOR_MATERIAL, EquipmentType.LEGGINGS)
+            getArmorSettings(AtArmorMaterials.MITHRIL_ARMOR_MATERIAL, EquipmentType.LEGGINGS)
     );
     public static final Item MITHRIL_BOOTS = register(
             "mithril_boots",
-            getItemSettings().at_armor(AtArmorMaterials.MITHRIL_ARMOR_MATERIAL, EquipmentType.BOOTS)
+            getArmorSettings(AtArmorMaterials.MITHRIL_ARMOR_MATERIAL, EquipmentType.BOOTS)
     );
     public static final Item MITHRIL_CHAINMAIL_HELMET = register(
             "mithril_chainmail_helmet",
-            getItemSettings().at_armor(AtArmorMaterials.MITHRIL_CHAINMAIL_ARMOR_MATERIAL, EquipmentType.BOOTS)
+            getArmorSettings(AtArmorMaterials.MITHRIL_CHAINMAIL_ARMOR_MATERIAL, EquipmentType.BOOTS)
     );
     public static final Item MITHRIL_CHAINMAIL_CHESTPLATE = register(
             "mithril_chainmail_chestplate",
-            getItemSettings().at_armor(AtArmorMaterials.MITHRIL_CHAINMAIL_ARMOR_MATERIAL, EquipmentType.CHESTPLATE)
+            getArmorSettings(AtArmorMaterials.MITHRIL_CHAINMAIL_ARMOR_MATERIAL, EquipmentType.CHESTPLATE)
     );
     public static final Item MITHRIL_CHAINMAIL_LEGGINGS = register(
             "mithril_chainmail_leggings",
-            getItemSettings().at_armor(AtArmorMaterials.MITHRIL_CHAINMAIL_ARMOR_MATERIAL, EquipmentType.LEGGINGS)
+            getArmorSettings(AtArmorMaterials.MITHRIL_CHAINMAIL_ARMOR_MATERIAL, EquipmentType.LEGGINGS)
     );
     public static final Item MITHRIL_CHAINMAIL_BOOTS = register(
             "mithril_chainmail_boots",
-            getItemSettings().at_armor(AtArmorMaterials.MITHRIL_CHAINMAIL_ARMOR_MATERIAL, EquipmentType.BOOTS)
+            getArmorSettings(AtArmorMaterials.MITHRIL_CHAINMAIL_ARMOR_MATERIAL, EquipmentType.BOOTS)
     );
     public static final Item RUSTED_IRON_HELMET = register(
             "rusted_iron_helmet",
-            getItemSettings().at_armor(AtArmorMaterials.RUSTED_IRON_ARMOR_MATERIAL, EquipmentType.HELMET)
+            getArmorSettings(AtArmorMaterials.RUSTED_IRON_ARMOR_MATERIAL, EquipmentType.HELMET)
     );
     public static final Item RUSTED_IRON_CHESTPLATE = register(
             "rusted_iron_chestplate",
-            getItemSettings().at_armor(AtArmorMaterials.RUSTED_IRON_ARMOR_MATERIAL, EquipmentType.CHESTPLATE)
+            getArmorSettings(AtArmorMaterials.RUSTED_IRON_ARMOR_MATERIAL, EquipmentType.CHESTPLATE)
     );
     public static final Item RUSTED_IRON_LEGGINGS = register(
             "rusted_iron_leggings",
-            getItemSettings().at_armor(AtArmorMaterials.RUSTED_IRON_ARMOR_MATERIAL, EquipmentType.LEGGINGS)
+            getArmorSettings(AtArmorMaterials.RUSTED_IRON_ARMOR_MATERIAL, EquipmentType.LEGGINGS)
     );
     public static final Item RUSTED_IRON_BOOTS = register(
             "rusted_iron_boots",
-            getItemSettings().at_armor(AtArmorMaterials.RUSTED_IRON_ARMOR_MATERIAL, EquipmentType.BOOTS)
+            getArmorSettings(AtArmorMaterials.RUSTED_IRON_ARMOR_MATERIAL, EquipmentType.BOOTS)
     );
     public static final Item RUSTED_IRON_CHAINMAIL_HELMET = register(
             "rusted_iron_chainmail_helmet",
-            getItemSettings().at_armor(AtArmorMaterials.RUSTED_IRON_CHAINMAIL_ARMOR_MATERIAL, EquipmentType.HELMET)
+            getArmorSettings(AtArmorMaterials.RUSTED_IRON_CHAINMAIL_ARMOR_MATERIAL, EquipmentType.HELMET)
     );
     public static final Item RUSTED_IRON_CHAINMAIL_CHESTPLATE = register(
             "rusted_iron_chainmail_chestplate",
-            getItemSettings().at_armor(AtArmorMaterials.RUSTED_IRON_CHAINMAIL_ARMOR_MATERIAL, EquipmentType.CHESTPLATE)
+            getArmorSettings(AtArmorMaterials.RUSTED_IRON_CHAINMAIL_ARMOR_MATERIAL, EquipmentType.CHESTPLATE)
     );
     public static final Item RUSTED_IRON_CHAINMAIL_LEGGINGS = register(
             "rusted_iron_chainmail_leggings",
-            getItemSettings().at_armor(AtArmorMaterials.RUSTED_IRON_CHAINMAIL_ARMOR_MATERIAL, EquipmentType.LEGGINGS)
+            getArmorSettings(AtArmorMaterials.RUSTED_IRON_CHAINMAIL_ARMOR_MATERIAL, EquipmentType.LEGGINGS)
     );
     public static final Item RUSTED_IRON_CHAINMAIL_BOOTS = register(
             "rusted_iron_chainmail_boots",
-            getItemSettings().at_armor(AtArmorMaterials.RUSTED_IRON_CHAINMAIL_ARMOR_MATERIAL, EquipmentType.BOOTS)
+            getArmorSettings(AtArmorMaterials.RUSTED_IRON_CHAINMAIL_ARMOR_MATERIAL, EquipmentType.BOOTS)
     );
     public static final Item SILVER_HELMET = register(
             "silver_helmet",
-            getItemSettings().at_armor(AtArmorMaterials.SILVER_ARMOR_MATERIAL, EquipmentType.HELMET)
+            getArmorSettings(AtArmorMaterials.SILVER_ARMOR_MATERIAL, EquipmentType.HELMET)
     );
     public static final Item SILVER_CHESTPLATE = register(
             "silver_chestplate",
-            getItemSettings().at_armor(AtArmorMaterials.SILVER_ARMOR_MATERIAL, EquipmentType.CHESTPLATE)
+            getArmorSettings(AtArmorMaterials.SILVER_ARMOR_MATERIAL, EquipmentType.CHESTPLATE)
     );
     public static final Item SILVER_LEGGINGS = register(
             "silver_leggings",
-            getItemSettings().at_armor(AtArmorMaterials.SILVER_ARMOR_MATERIAL, EquipmentType.LEGGINGS)
+            getArmorSettings(AtArmorMaterials.SILVER_ARMOR_MATERIAL, EquipmentType.LEGGINGS)
     );
     public static final Item SILVER_BOOTS = register(
             "silver_boots",
-            getItemSettings().at_armor(AtArmorMaterials.SILVER_ARMOR_MATERIAL, EquipmentType.BOOTS)
+            getArmorSettings(AtArmorMaterials.SILVER_ARMOR_MATERIAL, EquipmentType.BOOTS)
     );
     public static final Item SILVER_CHAINMAIL_HELMET = register(
             "silver_chainmail_helmet",
-            getItemSettings().at_armor(AtArmorMaterials.SILVER_CHAINMAIL_ARMOR_MATERIAL, EquipmentType.HELMET)
+            getArmorSettings(AtArmorMaterials.SILVER_CHAINMAIL_ARMOR_MATERIAL, EquipmentType.HELMET)
     );
     public static final Item SILVER_CHAINMAIL_CHESTPLATE = register(
             "silver_chainmail_chestplate",
-            getItemSettings().at_armor(AtArmorMaterials.SILVER_CHAINMAIL_ARMOR_MATERIAL, EquipmentType.CHESTPLATE)
+            getArmorSettings(AtArmorMaterials.SILVER_CHAINMAIL_ARMOR_MATERIAL, EquipmentType.CHESTPLATE)
     );
     public static final Item SILVER_CHAINMAIL_LEGGINGS = register(
             "silver_chainmail_leggings",
-            getItemSettings().at_armor(AtArmorMaterials.SILVER_CHAINMAIL_ARMOR_MATERIAL, EquipmentType.LEGGINGS)
+            getArmorSettings(AtArmorMaterials.SILVER_CHAINMAIL_ARMOR_MATERIAL, EquipmentType.LEGGINGS)
     );
     public static final Item SILVER_CHAINMAIL_BOOTS = register(
             "silver_chainmail_boots",
-            getItemSettings().at_armor(AtArmorMaterials.SILVER_CHAINMAIL_ARMOR_MATERIAL, EquipmentType.BOOTS)
+            getArmorSettings(AtArmorMaterials.SILVER_CHAINMAIL_ARMOR_MATERIAL, EquipmentType.BOOTS)
     );
     public static final Item GOLDEN_CHAINMAIL_HELMET = register(
             "golden_chainmail_helmet",
-            getItemSettings().at_armor(AtArmorMaterials.GOLD_CHAINMAIL_ARMOR_MATERIAL, EquipmentType.HELMET)
+            getArmorSettings(AtArmorMaterials.GOLD_CHAINMAIL_ARMOR_MATERIAL, EquipmentType.HELMET)
     );
     public static final Item GOLDEN_CHAINMAIL_CHESTPLATE = register(
             "golden_chainmail_chestplate",
-            getItemSettings().at_armor(AtArmorMaterials.GOLD_CHAINMAIL_ARMOR_MATERIAL, EquipmentType.CHESTPLATE)
+            getArmorSettings(AtArmorMaterials.GOLD_CHAINMAIL_ARMOR_MATERIAL, EquipmentType.CHESTPLATE)
     );
     public static final Item GOLDEN_CHAINMAIL_LEGGINGS = register(
             "golden_chainmail_leggings",
-            getItemSettings().at_armor(AtArmorMaterials.GOLD_CHAINMAIL_ARMOR_MATERIAL, EquipmentType.LEGGINGS)
+            getArmorSettings(AtArmorMaterials.GOLD_CHAINMAIL_ARMOR_MATERIAL, EquipmentType.LEGGINGS)
     );
     public static final Item GOLDEN_CHAINMAIL_BOOTS = register(
             "golden_chainmail_boots",
-            getItemSettings().at_armor(AtArmorMaterials.GOLD_CHAINMAIL_ARMOR_MATERIAL, EquipmentType.BOOTS)
+            getArmorSettings(AtArmorMaterials.GOLD_CHAINMAIL_ARMOR_MATERIAL, EquipmentType.BOOTS)
     );
 
     public static final Item BANANA = register(
@@ -322,39 +324,19 @@ public class AtItems {
             new Item.Settings().food(new FoodComponent(5, 5.0F, false)).useRemainder(Items.BOWL).recipeRemainder(Items.BOWL).maxCount(4));
 
 
-    public static final Item ADAMANTIUM_AXE = register("adamantium_axe",
-            Settings -> new AxeItem(AtToolMaterial.ADAMANTIUM, 8.0F, -3.0F, Settings),
-            new Item.Settings().axe(AtToolMaterial.ADAMANTIUM, 5.0F, -3.0F));
-    public static final Item ADAMANTIUM_BATTLE_AXE = register("adamantium_battle_axe",
-            Settings -> new AxeItem(AtToolMaterial.ADAMANTIUM, 5.0F, -3.0F, Settings),
-            getItemSettings().battle_axe(AtToolMaterial.ADAMANTIUM, 5.0F, -3.0F));
-    public static final Item ADAMANTIUM_DAGGER = register("adamantium_dagger",
-            getItemSettings().dagger(AtToolMaterial.ADAMANTIUM, 5.0F, -3.0F));
-    public static final Item ADAMANTIUM_HATCHET = register("adamantium_hatchet",
-            Settings -> new AxeItem(AtToolMaterial.ADAMANTIUM, 5.0F, -3.0F, Settings),
-            getItemSettings().hand_axe(AtToolMaterial.ADAMANTIUM, 5.0F, -3.0F));
-    public static final Item ADAMANTIUM_HOE = register("adamantium_hoe",
-            Settings -> new HoeItem(AtToolMaterial.ADAMANTIUM, 5.0F, -3.0F, Settings),
-            new Item.Settings().hoe(AtToolMaterial.ADAMANTIUM, 5.0F, -3.0F));
-    public static final Item ADAMANTIUM_KNIFE = register("adamantium_knife",
-            getItemSettings().dagger(AtToolMaterial.ADAMANTIUM, 5.0F, -3.0F));
-    public static final Item ADAMANTIUM_MATTOCK = register("adamantium_mattock",
-            Settings -> new HoeItem(AtToolMaterial.ADAMANTIUM, 5.0F, -3.0F, Settings),
-            getItemSettings().mattock(AtToolMaterial.ADAMANTIUM, 5.0F, -3.0F));
-    public static final Item ADAMANTIUM_PICKAXE = register("adamantium_pickaxe",
-            new Item.Settings().pickaxe(AtToolMaterial.ADAMANTIUM, 5.0F, -3.0F));
-    public static final Item ADAMANTIUM_SCYTHE = register("adamantium_scythe",
-            getItemSettings().scythe(AtToolMaterial.ADAMANTIUM, 5.0F, -3.0F));
-    public static final Item ADAMANTIUM_SHEARS = register("adamantium_shears",
-            ShearsItem::new,
-            getItemSettings().shears(AtToolMaterial.ADAMANTIUM, 5.0F, -3.0F));
-    public static final Item ADAMANTIUM_SHOVEL = register("adamantium_shovel",
-            Settings -> new ShovelItem(ToolMaterial.WOOD, 1.5F, -3.0F, Settings),
-            new Item.Settings());
-    public static final Item ADAMANTIUM_SWORD = register("adamantium_sword",
-            new Item.Settings().sword(AtToolMaterial.ADAMANTIUM, 5.0F, -3.0F));
-    public static final Item ADAMANTIUM_WAR_HAMMER = register("adamantium_war_hammer",
-            getItemSettings().war_hammer(AtToolMaterial.ADAMANTIUM, 5.0F, -3.0F));
+    public static final Item ADAMANTIUM_AXE = register("adamantium_axe", (settings) -> new AxeItem(AtToolMaterials.ADAMANTIUM, 0, 0, getAxeSettings(AtToolMaterials.ADAMANTIUM)));
+    public static final Item ADAMANTIUM_BATTLE_AXE = register("adamantium_battle_axe", getBattleAxeSettings(AtToolMaterials.ADAMANTIUM));
+    public static final Item ADAMANTIUM_HATCHET = register("adamantium_hatchet", getHandAxeSettings(AtToolMaterials.ADAMANTIUM));
+    public static final Item ADAMANTIUM_DAGGER = register("adamantium_dagger", getDaggerSettings(AtToolMaterials.ADAMANTIUM));
+    public static final Item ADAMANTIUM_HOE = register("adamantium_hoe", getHoeSettings(AtToolMaterials.ADAMANTIUM));
+    public static final Item ADAMANTIUM_KNIFE = register("adamantium_knife", getDaggerSettings(AtToolMaterials.ADAMANTIUM));
+    public static final Item ADAMANTIUM_MATTOCK = register("adamantium_mattock", getMattockSettings(AtToolMaterials.ADAMANTIUM));
+    public static final Item ADAMANTIUM_PICKAXE = register("adamantium_pickaxe", getPickaxeSettings(AtToolMaterials.ADAMANTIUM));
+    public static final Item ADAMANTIUM_SCYTHE = register("adamantium_scythe", getScytheSettings(AtToolMaterials.ADAMANTIUM));
+    public static final Item ADAMANTIUM_SHEARS = register("adamantium_shears", getShearsSettings(AtToolMaterials.ADAMANTIUM));
+    public static final Item ADAMANTIUM_SHOVEL = register("adamantium_shovel", getShovelSettings(AtToolMaterials.ADAMANTIUM));
+    public static final Item ADAMANTIUM_SWORD = register("adamantium_sword", getSwordSettings(AtToolMaterials.ADAMANTIUM));
+    public static final Item ADAMANTIUM_WAR_HAMMER = register("adamantium_war_hammer", getWarHammerSettings(AtToolMaterials.ADAMANTIUM));
 
     public static final Item ANCIENT_METAL_AXE = register("ancient_metal_axe");
     public static final Item ANCIENT_METAL_BATTLE_AXE = register("ancient_metal_battle_axe");
@@ -1305,6 +1287,145 @@ public class AtItems {
         return stack;
     }
 
+    public static Item.Settings getArmorSettings(AtArmorMaterial material, EquipmentType type) {
+            return new Item.Settings().maxDamage(type.getMaxDamage(material.durability()))
+                    .attributeModifiers(material.createAttributeModifiers(type))
+                    .enchantable(material.enchantmentValue())
+                    .component(
+                            DataComponentTypes.EQUIPPABLE,
+                            EquippableComponent.builder(type.getEquipmentSlot()).equipSound(material.equipSound()).model(material.assetId()).build()
+                    )
+                    .repairable(material.repairIngredient());
+    }
+
+    public static Item.Settings getDaggerSettings(ToolMaterial material) {
+        return applySwordSettings(new Item.Settings(), material, 1, 1, 2, -2.0F, 0.25F, 0.25F);
+    }
+    public static Item.Settings getSwordSettings(ToolMaterial material) {
+        return applySwordSettings(new Item.Settings(), material, 2, 1, 3, -2.4F, 0.5F, 0.5F);
+    }
+
+    public static Item.Settings getScytheSettings(ToolMaterial material) {
+        return applySwordSettings(new Item.Settings(), material, 5, 1, 3, -3.0f , 0.75f, 0.75f);
+    }
+
+    public static Item.Settings getAxeSettings(ToolMaterial material) {
+        return applyToolSettings(new Item.Settings(), material, BlockTags.AXE_MINEABLE, 3, 2, 4, -2.7F, 0.5F, 0.5F, 5);
+    }
+    public static Item.Settings getBattleAxeSettings(ToolMaterial material) {
+        return applyToolSettings(new Item.Settings(), material, BlockTags.AXE_MINEABLE, 5, 1, 5, -3F, 0.5F, 0.75F, 5);
+    }
+    public static Item.Settings getHandAxeSettings(ToolMaterial material) {
+        return applyToolSettings(new Item.Settings(), material, BlockTags.AXE_MINEABLE, 1, 2, 3, -2.7F, 0.25F, 0.25F, 5);
+    }
+
+    public static Item.Settings getHoeSettings(ToolMaterial material) {
+        return applyToolSettings(new Item.Settings(), material, BlockTags.HOE_MINEABLE, 2, 2, 1, -1.0F, 0.5F, 0.5F, 0);
+    }
+    public static Item.Settings getMattockSettings(ToolMaterial material) {
+        return applyToolSettings(new Item.Settings(), material, BlockTags.HOE_MINEABLE, 4, 2, 2, -1.5F, 0.5F, 0.5F, 0);
+    }
+
+    public static Item.Settings getShovelSettings(ToolMaterial material) {
+        return applyToolSettings(new Item.Settings(), material, BlockTags.SHOVEL_MINEABLE, 1, 2, 1, -2.8F, 0.75F, 0.75F, 0);
+    }
+
+    public static Item.Settings getPickaxeSettings(ToolMaterial material) {
+        return applyToolSettings(new Item.Settings(), material, BlockTags.PICKAXE_MINEABLE, 3, 2, 2, -2.8f , 0.75f, 0.75f, 0);
+    }
+    public static Item.Settings getWarHammerSettings(ToolMaterial material) {
+        return applyToolSettings(new Item.Settings(), material, BlockTags.PICKAXE_MINEABLE, 5, 1, 3, -3.0f , 0.75f, 0.75f, 0);
+    }
+
+    public static Item.Settings getShearsSettings(ToolMaterial material) {
+        return applyBaseSettings(new Item.Settings(), material, 2)
+                .component(DataComponentTypes.TOOL, ShearsItem.createToolComponent())
+                .attributeModifiers(CreateAttributeModifiers(0.5f, 0.5f, material.attackDamageBonus(), 0));
+    }
+
+    public static Item.Settings applyToolSettings(
+            Item.Settings settings,
+            ToolMaterial material,
+            TagKey<Block> effectiveBlocks,
+            int durabilityMultiplier,
+            int itemDamagePerAttack,
+            float attackDamage,
+            float attackSpeed,
+            float blockInteractionRange,
+            float entityInteractionRange,
+            float disableBlockingForSeconds
+    ) {
+        RegistryEntryLookup<Block> registryEntryLookup = Registries.createEntryLookup(Registries.BLOCK);
+        return applyBaseSettings(settings, material, durabilityMultiplier)
+                .component(
+                        DataComponentTypes.TOOL,
+                        new ToolComponent(
+                                List.of(
+                                        ToolComponent.Rule.ofNeverDropping(registryEntryLookup.getOrThrow(material.incorrectBlocksForDrops())),
+                                        ToolComponent.Rule.ofAlwaysDropping(registryEntryLookup.getOrThrow(effectiveBlocks), material.speed())
+                                ),
+                                1.0F,
+                                1,
+                                true
+                        )
+                )
+                .attributeModifiers(CreateAttributeModifiers(blockInteractionRange, entityInteractionRange, attackDamage + material.attackDamageBonus(), attackSpeed))
+                .component(DataComponentTypes.WEAPON, new WeaponComponent(itemDamagePerAttack, disableBlockingForSeconds));
+    }
+
+    public static Item.Settings applySwordSettings(
+            Item.Settings settings,
+            ToolMaterial material,
+            int durabilityMultiplier,
+            int itemDamagePerAttack,
+            float attackDamage,
+            float attackSpeed,
+            float blockInteractionRange,
+            float entityInteractionRange
+    ) {
+        RegistryEntryLookup<Block> registryEntryLookup = Registries.createEntryLookup(Registries.BLOCK);
+        return applyBaseSettings(settings, material, durabilityMultiplier)
+                .component(
+                        DataComponentTypes.TOOL,
+                        new ToolComponent(
+                                List.of(
+                                        ToolComponent.Rule.ofAlwaysDropping(RegistryEntryList.of(Blocks.COBWEB.getRegistryEntry()), 15.0F),
+                                        ToolComponent.Rule.of(registryEntryLookup.getOrThrow(BlockTags.SWORD_INSTANTLY_MINES), Float.MAX_VALUE),
+                                        ToolComponent.Rule.of(registryEntryLookup.getOrThrow(BlockTags.SWORD_EFFICIENT), 1.5F)
+                                ),
+                                1.0F,
+                                2,
+                                false
+                        )
+                )
+                .attributeModifiers(CreateAttributeModifiers(blockInteractionRange, entityInteractionRange, attackDamage + material.attackDamageBonus(), attackSpeed))
+                .component(DataComponentTypes.WEAPON, new WeaponComponent(itemDamagePerAttack));
+    }
+
+    public static AttributeModifiersComponent CreateAttributeModifiers(float blockInteractionRange,float entityInteractionRange, float attackDamage, float attackSpeed) {
+        return AttributeModifiersComponent.builder()
+                .add(
+                        EntityAttributes.BLOCK_INTERACTION_RANGE,
+                        new EntityAttributeModifier(At_mite.BASE_BLOCK_INTERACTION_RANGE, blockInteractionRange, EntityAttributeModifier.Operation.ADD_VALUE),
+                        AttributeModifierSlot.MAINHAND)
+                .add(
+                        EntityAttributes.ENTITY_INTERACTION_RANGE,
+                        new EntityAttributeModifier(At_mite.BASE_ENTITY_INTERACTION_RANGE, entityInteractionRange, EntityAttributeModifier.Operation.ADD_VALUE),
+                        AttributeModifierSlot.MAINHAND)
+                .add(
+                        EntityAttributes.ATTACK_DAMAGE,
+                        new EntityAttributeModifier(Item.BASE_ATTACK_DAMAGE_MODIFIER_ID, attackDamage, EntityAttributeModifier.Operation.ADD_VALUE),
+                        AttributeModifierSlot.MAINHAND)
+                .add(
+                        EntityAttributes.ATTACK_SPEED,
+                        new EntityAttributeModifier(Item.BASE_ATTACK_SPEED_MODIFIER_ID, attackSpeed, EntityAttributeModifier.Operation.ADD_VALUE),
+                        AttributeModifierSlot.MAINHAND)
+                .build();
+    }
+    public static Item.Settings applyBaseSettings(Item.Settings settings, ToolMaterial material, int durabilityMultiplier) {
+        return settings.maxDamage(material.durability() * durabilityMultiplier).repairable(material.repairItems()).enchantable(material.enchantmentValue());
+    }
+    
     /**
      * 使用默认 {@link Item} 工厂与默认 {@link Item.Settings} 注册一个简单物品。
      *
@@ -1331,7 +1452,10 @@ public class AtItems {
         final RegistryKey<Item> registryKey = RegistryKey.of(RegistryKeys.ITEM, Identifier.of(At_mite.MOD_ID, path));
         return Items.register(registryKey, factory, settings);
     }
-
+    private static Item register(String path, Function<Item.Settings, Item> factory) {
+        final RegistryKey<Item> registryKey = RegistryKey.of(RegistryKeys.ITEM, Identifier.of(At_mite.MOD_ID, path));
+        return Items.register(registryKey, factory, new Item.Settings());
+    }
     /**
      * 为方块注册与之对应的方块物品，并可传入自定义 {@link Item.Settings}。
      */
@@ -1341,7 +1465,6 @@ public class AtItems {
     public static ItemSettingsExtension getItemSettings() {
         return (ItemSettingsExtension) new Item.Settings();
     }
-
     /**
      * 初始化入口：将模组物品组 {@link #AT_MINT_GROUP} 注册到游戏。
      */

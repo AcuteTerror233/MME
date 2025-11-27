@@ -1,6 +1,8 @@
 package com.acuteterror233.mite;
 
 import com.acuteterror233.mite.block.AtBlocks;
+import com.acuteterror233.mite.event.BlockRegisterCallback;
+import com.acuteterror233.mite.event.ItemRegisterCallback;
 import com.acuteterror233.mite.item.AtItems;
 import com.acuteterror233.mite.world.gen.feature.OverworldOrePlacedFeatures;
 import net.fabricmc.api.ModInitializer;
@@ -10,6 +12,7 @@ import net.fabricmc.fabric.api.biome.v1.ModificationPhase;
 import net.fabricmc.fabric.api.object.builder.v1.world.poi.PointOfInterestHelper;
 import net.minecraft.block.*;
 import net.minecraft.registry.RegistryKey;
+import net.minecraft.util.ActionResult;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.feature.OrePlacedFeatures;
@@ -33,6 +36,78 @@ public class At_mite implements ModInitializer {
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
     public static final Identifier BASE_BLOCK_INTERACTION_RANGE = Identifier.ofVanilla("block_interaction_range");
     public static final Identifier BASE_ENTITY_INTERACTION_RANGE = Identifier.ofVanilla("entity_interaction_range");
+
+    /**
+     * Fabric 模组初始化回调：注册物品分组、方块、以及地下传送门的兴趣点（POI）。
+     */
+    @Override
+    public void onInitialize() {
+        LOGGER.info("mext");
+        // 物品与方块注册
+        AtItems.init();
+        AtBlocks.init();
+
+        // 为地下传送门注册 POI，供村民/AI 等逻辑识别
+        PointOfInterestHelper.register(Identifier.of(At_mite.MOD_ID, "underground_portal"), 0, 1, AtBlocks.UNDERGROUND_PORTAL);
+
+        BiomeModifications.addFeature(
+                BiomeSelectors.foundInOverworld(),
+                GenerationStep.Feature.UNDERGROUND_ORES,
+                OverworldOrePlacedFeatures.OVERWORLD_ORE_SILVER
+        );
+        BiomeModifications.addFeature(
+                BiomeSelectors.foundInOverworld(),
+                GenerationStep.Feature.UNDERGROUND_ORES,
+                OverworldOrePlacedFeatures.OVERWORLD_ORE_SILVER_SMALL
+        );
+        extracted(OrePlacedFeatures.ORE_DIAMOND_BURIED);
+        extracted(OrePlacedFeatures.ORE_DIAMOND_LARGE);
+        extracted(OrePlacedFeatures.ORE_DIAMOND_MEDIUM);
+
+//        ItemRegisterCallback.EVENT.register((registryKey, settings)->{
+//            Identifier value = registryKey.getValue();
+//            if (COUNT1_ITEM.contains(value)) {
+//                settings.maxCount(1);
+//                return ActionResult.SUCCESS;
+//            }else if (COUNT8_ITEM.contains(value)) {
+//                settings.maxCount(8);
+//                return ActionResult.SUCCESS;
+//            }else if (COUNT16_ITEM.contains(value)) {
+//                settings.maxCount(16);
+//                return ActionResult.SUCCESS;
+//            }else if (COUNT32_ITEM.contains(value)) {
+//                settings.maxCount(32);
+//                return ActionResult.SUCCESS;
+//            }else {
+//                return ActionResult.PASS;
+//            }
+//        });
+//        BlockRegisterCallback.EVENT.register((registryKey, settings) ->{
+//            if (COUNT1_BLOCK.contains(registryKey)) {
+//                settings.maxCount(1);
+//                return ActionResult.SUCCESS;
+//            }else if (COUNT8_BLOCK.contains(registryKey)) {
+//                settings.maxCount(8);
+//                return ActionResult.SUCCESS;
+//            }else if (COUNT16_BLOCK.contains(registryKey)) {
+//                settings.maxCount(16);
+//                return ActionResult.SUCCESS;
+//            } else if (COUNT32_BLOCK.contains(registryKey)) {
+//                settings.maxCount(32);
+//                return ActionResult.SUCCESS;
+//            } else {
+//                return ActionResult.PASS;
+//            }
+//        });
+    }
+    private static void extracted(RegistryKey<PlacedFeature> oreDiamond) {
+        BiomeModifications.create(oreDiamond.getValue()).add(
+                ModificationPhase.REMOVALS,
+                BiomeSelectors.foundInOverworld(),
+                context -> context.getGenerationSettings().removeFeature(oreDiamond)
+        );
+    }
+
     /**
      * 按照方块类型划分的最大堆叠：最大堆叠为 1 的方块类型集合。
      */
@@ -97,117 +172,84 @@ public class At_mite implements ModInitializer {
     public static final Set<Class<?>> COUNT32_BLOCK = new HashSet<>(Collections.singletonList(
             FungusBlock.class
     ));
+
     /**
      * 按照物品注册名划分的最大堆叠：最大堆叠为 1 的物品标识集合。
      */
-    public static final Set<String> COUNT1_ITEM = new HashSet<>(Arrays.asList(
-            "heart_of_the_sea",
-            "nether_star"
+    public static final Set<Identifier> COUNT1_ITEM = new HashSet<>(Arrays.asList(
+            Identifier.ofVanilla("heart_of_the_sea"),
+            Identifier.ofVanilla("nether_star")
     ));
     /**
      * 按照物品注册名划分的最大堆叠：最大堆叠为 8 的物品标识集合。
      */
-    public static final Set<String> COUNT8_ITEM = new HashSet<>(Arrays.asList(
-            "flint",
-            "leather",
-            "rabbit_hide",
-            "honeycomb",
-            "turtle_scute",
-            "armadillo_scute",
-            "blaze_rod",
-            "breeze_rod",
-            "shulker_shell",
-            "blaze_powder",
-            "sugar",
-            "rabbit_foot",
-            "glistering_melon_slice"
+    public static final Set<Identifier> COUNT8_ITEM = new HashSet<>(Arrays.asList(
+            Identifier.ofVanilla("flint"),
+            Identifier.ofVanilla("leather"),
+            Identifier.ofVanilla("rabbit_hide"),
+            Identifier.ofVanilla("honeycomb"),
+            Identifier.ofVanilla("turtle_scute"),
+            Identifier.ofVanilla("armadillo_scute"),
+            Identifier.ofVanilla("blaze_rod"),
+            Identifier.ofVanilla("breeze_rod"),
+            Identifier.ofVanilla("shulker_shell"),
+            Identifier.ofVanilla("blaze_powder"),
+            Identifier.ofVanilla("sugar"),
+            Identifier.ofVanilla("rabbit_foot"),
+            Identifier.ofVanilla("glistering_melon_slice")
     ));
     /**
      * 按照物品注册名划分的最大堆叠：最大堆叠为 16 的物品标识集合。
      */
-    public static final Set<String> COUNT16_ITEM = new HashSet<>(Arrays.asList(
-            "iron_ingot",
-            "copper_ingot",
-            "gold_ingot",
-            "netherite_ingot",
-            "coal",
-            "charcoal",
-            "emerald",
-            "diamond",
-            "amethyst_shard",
-            "netherite_scrap",
-            "wheat",
-            "clay_ball",
-            "ender_eye",
-            "bowl",
-            "brick",
-            "nether_brick",
-            "resin_brick",
-            "book",
-            "glass_bottle",
-            "nether_wart",
-            "gunpowder",
-            "experience_bottle",
-            "wind_charge",
-            "lead",
-            "firework_rocket",
-            "slime_ball",
-            "raw_copper",
-            "raw_gold",
-            "raw_iron",
-            "resin_clump"
+    public static final Set<Identifier> COUNT16_ITEM = new HashSet<>(Arrays.asList(
+            Identifier.ofVanilla("iron_ingot"),
+            Identifier.ofVanilla("copper_ingot"),
+            Identifier.ofVanilla("gold_ingot"),
+            Identifier.ofVanilla("netherite_ingot"),
+            Identifier.ofVanilla("coal"),
+            Identifier.ofVanilla("charcoal"),
+            Identifier.ofVanilla("emerald"),
+            Identifier.ofVanilla("diamond"),
+            Identifier.ofVanilla("amethyst_shard"),
+            Identifier.ofVanilla("netherite_scrap"),
+            Identifier.ofVanilla("wheat"),
+            Identifier.ofVanilla("clay_ball"),
+            Identifier.ofVanilla("ender_eye"),
+            Identifier.ofVanilla("bowl"),
+            Identifier.ofVanilla("brick"),
+            Identifier.ofVanilla("nether_brick"),
+            Identifier.ofVanilla("resin_brick"),
+            Identifier.ofVanilla("book"),
+            Identifier.ofVanilla("glass_bottle"),
+            Identifier.ofVanilla("nether_wart"),
+            Identifier.ofVanilla("gunpowder"),
+            Identifier.ofVanilla("experience_bottle"),
+            Identifier.ofVanilla("wind_charge"),
+            Identifier.ofVanilla("lead"),
+            Identifier.ofVanilla("firework_rocket"),
+            Identifier.ofVanilla("slime_ball"),
+            Identifier.ofVanilla("raw_copper"),
+            Identifier.ofVanilla("raw_gold"),
+            Identifier.ofVanilla("raw_iron"),
+            Identifier.ofVanilla("resin_clump")
 
     ));
     /**
      * 按照物品注册名划分的最大堆叠：最大堆叠为 32 的物品标识集合。
      */
-    public static final Set<String> COUNT32_ITEM = new HashSet<>(Arrays.asList(
-            "lapis_lazuli",
-            "quartz",
-            "iron_nugget",
-            "gold_nugget",
-            "stick",
-            "bone",
-            "bone_meal",
-            "string",
-            "feather",
-            "cnowball",
-            "paper",
-            "redstone",
-            "glowstone_dust"
+    public static final Set<Identifier> COUNT32_ITEM = new HashSet<>(Arrays.asList(
+            Identifier.ofVanilla("lapis_lazuli"),
+            Identifier.ofVanilla("quartz"),
+            Identifier.ofVanilla("iron_nugget"),
+            Identifier.ofVanilla("gold_nugget"),
+            Identifier.ofVanilla("stick"),
+            Identifier.ofVanilla("bone"),
+            Identifier.ofVanilla("bone_meal"),
+            Identifier.ofVanilla("string"),
+            Identifier.ofVanilla("feather"),
+            Identifier.ofVanilla("cnowball"),
+            Identifier.ofVanilla("paper"),
+            Identifier.ofVanilla("redstone"),
+            Identifier.ofVanilla("glowstone_dust")
     ));
-
-    /**
-     * Fabric 模组初始化回调：注册物品分组、方块、以及地下传送门的兴趣点（POI）。
-     */
-    @Override
-    public void onInitialize() {
-        LOGGER.info("mext");
-        // 物品与方块注册
-        AtItems.init();
-        AtBlocks.init();
-        // 为地下传送门注册 POI，供村民/AI 等逻辑识别
-        PointOfInterestHelper.register(Identifier.of(At_mite.MOD_ID, "underground_portal"), 0, 1, AtBlocks.UNDERGROUND_PORTAL);
-        BiomeModifications.addFeature(
-                BiomeSelectors.foundInOverworld(),
-                GenerationStep.Feature.UNDERGROUND_ORES,
-                OverworldOrePlacedFeatures.OVERWORLD_ORE_SILVER
-        );
-        BiomeModifications.addFeature(
-                BiomeSelectors.foundInOverworld(),
-                GenerationStep.Feature.UNDERGROUND_ORES,
-                OverworldOrePlacedFeatures.OVERWORLD_ORE_SILVER_SMALL
-        );
-        extracted(OrePlacedFeatures.ORE_DIAMOND_BURIED);
-        extracted(OrePlacedFeatures.ORE_DIAMOND_LARGE);
-        extracted(OrePlacedFeatures.ORE_DIAMOND_MEDIUM);
-    }
-
-    private static void extracted(RegistryKey<PlacedFeature> oreDiamond) {
-        BiomeModifications.create(oreDiamond.getValue()).add(
-                ModificationPhase.REMOVALS,
-                BiomeSelectors.foundInOverworld(),
-                context -> context.getGenerationSettings().removeFeature(oreDiamond)
-        );
-    }
 }

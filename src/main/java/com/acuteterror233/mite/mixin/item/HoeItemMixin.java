@@ -1,5 +1,6 @@
 package com.acuteterror233.mite.mixin.item;
 
+import com.acuteterror233.mite.item.AtItems;
 import net.minecraft.item.HoeItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ToolMaterial;

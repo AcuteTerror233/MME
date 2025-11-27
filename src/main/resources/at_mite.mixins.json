@@ -5,6 +5,7 @@
   "client": [
   ],
   "mixins": [
+    "BootstrapMixin",
     "block.AbstractBlockMixin",
     "block.AbstractBlockSettingsMixin",
     "block.AbstractFireBlockMixin",

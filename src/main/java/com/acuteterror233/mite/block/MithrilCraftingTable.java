@@ -4,8 +4,6 @@ import com.acuteterror233.mite.item.AtItems;
 import com.acuteterror233.mite.registry.tag.AtTags;
 import com.acuteterror233.mite.screen.CraftingTableScreenHandler;
 import net.minecraft.block.BlockState;
-import net.minecraft.item.ItemStack;
-import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.screen.NamedScreenHandlerFactory;
 import net.minecraft.screen.ScreenHandlerContext;
 import net.minecraft.screen.SimpleNamedScreenHandlerFactory;

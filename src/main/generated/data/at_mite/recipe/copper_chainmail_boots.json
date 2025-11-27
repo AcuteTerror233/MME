@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "key": {
-    "a": "minecraft:copper_ingot"
+    "a": "at_mite:copper_chains"
   },
   "pattern": [
     "a a",

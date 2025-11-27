@@ -16,14 +16,14 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.util.function.Consumer;
 
 @Mixin(ItemStack.class)
-/**
- * Mixin: 过滤展示在物品提示中的“基础交互范围”属性修饰条目，避免干扰。
+/*
+  Mixin: 过滤展示在物品提示中的“基础交互范围”属性修饰条目，避免干扰。
  */
 public abstract class ItemStackMixin {
 
     @Inject(method = "appendAttributeModifierTooltip", at = @At("HEAD"), cancellable = true)
-    /**
-     * 在附加属性修饰器提示前拦截，隐藏与交互距离相关的两项条目。
+    /*
+      在附加属性修饰器提示前拦截，隐藏与交互距离相关的两项条目。
      */
     private void appendAttributeModifierTooltip(
             Consumer<Text> textConsumer, @Nullable PlayerEntity player, RegistryEntry<EntityAttribute> attribute, EntityAttributeModifier modifier, CallbackInfo ci
