@@ -3,6 +3,7 @@ package com.acuteterror233.mite.mixin;
 import com.acuteterror233.mite.At_mite;
 import com.acuteterror233.mite.event.BlockRegisterCallback;
 import com.acuteterror233.mite.event.ItemRegisterCallback;
+import com.acuteterror233.mite.event.ServerRecipeManagerPrepareCallback;
 import net.minecraft.Bootstrap;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Identifier;
@@ -17,38 +18,24 @@ public class BootstrapMixin {
     private static void initialize(CallbackInfo ci) {
         ItemRegisterCallback.EVENT.register((registryKey, settings)->{
             Identifier value = registryKey.getValue();
-            if (At_mite.COUNT1_ITEM.contains(value)) {
-                settings.maxCount(1);
+            Integer stackLimit = At_mite.ITEM_STACK_LIMITS.get(value);
+            if (stackLimit != null) {
+                settings.maxCount(stackLimit);
                 return ActionResult.SUCCESS;
-            }else if (At_mite.COUNT8_ITEM.contains(value)) {
-                settings.maxCount(8);
-                return ActionResult.SUCCESS;
-            }else if (At_mite.COUNT16_ITEM.contains(value)) {
-                settings.maxCount(16);
-                return ActionResult.SUCCESS;
-            }else if (At_mite.COUNT32_ITEM.contains(value)) {
-                settings.maxCount(32);
-                return ActionResult.SUCCESS;
-            }else {
-                return ActionResult.PASS;
             }
+            return ActionResult.PASS;
         });
         BlockRegisterCallback.EVENT.register((registryKey, settings) ->{
-            if (At_mite.COUNT1_BLOCK.contains(registryKey)) {
-                settings.maxCount(1);
+            Integer stackLimit = At_mite.BLOCK_STACK_LIMITS.get(registryKey);
+            if (stackLimit != null) {
+                settings.maxCount(stackLimit);
                 return ActionResult.SUCCESS;
-            }else if (At_mite.COUNT8_BLOCK.contains(registryKey)) {
-                settings.maxCount(8);
-                return ActionResult.SUCCESS;
-            }else if (At_mite.COUNT16_BLOCK.contains(registryKey)) {
-                settings.maxCount(16);
-                return ActionResult.SUCCESS;
-            } else if (At_mite.COUNT32_BLOCK.contains(registryKey)) {
-                settings.maxCount(32);
-                return ActionResult.SUCCESS;
-            } else {
-                return ActionResult.PASS;
             }
+            return ActionResult.PASS;
+        });
+        ServerRecipeManagerPrepareCallback.EVENT.register((list) -> {
+            list.removeIf(recipeEntry -> At_mite.FILTER_RECIPE_SET.contains(recipeEntry.id().getValue()));
+            return ActionResult.SUCCESS;
         });
     }
 }

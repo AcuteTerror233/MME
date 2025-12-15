@@ -343,6 +343,10 @@ public class Zh_cnLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(AtItems.FLINT_FISHING_ROD, "燧石鱼竿");
         translationBuilder.add(AtItems.OBSIDIAN_FISHING_ROD, "黑曜石鱼竿");
 
+        translationBuilder.add(AtItems.RAW_ADAMANTIUM, "粗艾德曼");
+        translationBuilder.add(AtItems.RAW_MITHRIL, "粗秘银");
+        translationBuilder.add(AtItems.RAW_SILVER, "粗银");
+
         translationBuilder.add(AtItems.ADAMANTIUM_INGOT, "艾德曼锭");
         translationBuilder.add(AtItems.ANCIENT_METAL_INGOT, "远古金属锭");
         translationBuilder.add(AtItems.MITHRIL_INGOT, "秘银锭");

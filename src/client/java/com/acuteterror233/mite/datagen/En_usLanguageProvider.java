@@ -343,6 +343,10 @@ public class En_usLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(AtItems.FLINT_FISHING_ROD, "Flint Fishing Rod");
         translationBuilder.add(AtItems.OBSIDIAN_FISHING_ROD, "Obsidian Fishing Rod");
 
+        translationBuilder.add(AtItems.RAW_ADAMANTIUM, "Raw Adamantium");
+        translationBuilder.add(AtItems.RAW_MITHRIL, "Raw Mithril");
+        translationBuilder.add(AtItems.RAW_SILVER, "Raw Silver");
+
         translationBuilder.add(AtItems.ADAMANTIUM_INGOT, "Adamantium Ingot");
         translationBuilder.add(AtItems.ANCIENT_METAL_INGOT, "Ancient Metal Ingot");
         translationBuilder.add(AtItems.MITHRIL_INGOT, "Mithril Ingot");

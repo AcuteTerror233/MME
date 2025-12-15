@@ -19,7 +19,7 @@ public class RunePortalBlockEntity extends BlockEntity{
      * 写入目标坐标。
      */
     protected void writeNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
-        nbt.put("destinationpos", BlockPos.CODEC, destinationPos);
+        nbt.put("destinations", BlockPos.CODEC, destinationPos);
         super.writeNbt(nbt, registryLookup);
     }
 
@@ -28,7 +28,7 @@ public class RunePortalBlockEntity extends BlockEntity{
      * 读取目标坐标。
      */
     protected void readNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
-        nbt.get("destinationpos", BlockPos.CODEC).ifPresent(blockPos -> this.destinationPos = blockPos);
+        nbt.get("destinations", BlockPos.CODEC).ifPresent(blockPos -> this.destinationPos = blockPos);
         super.readNbt(nbt, registryLookup);
     }
 

@@ -35,19 +35,6 @@ public abstract class PlayerEntityMixin extends LivingEntity {
                 .add(EntityAttributes.BLOCK_INTERACTION_RANGE, 1.75)
                 .add(EntityAttributes.ENTITY_INTERACTION_RANGE, 1.5)
         );
-//        return LivingEntity.createLivingAttributes()
-//                .add(EntityAttributes.ATTACK_DAMAGE, 1.0)
-//                .add(EntityAttributes.MOVEMENT_SPEED, 0.1F)
-//                .add(EntityAttributes.ATTACK_SPEED)
-//                .add(EntityAttributes.LUCK)
-//                .add(EntityAttributes.BLOCK_INTERACTION_RANGE, 1.5)
-//                .add(EntityAttributes.ENTITY_INTERACTION_RANGE, 1.5)
-//                .add(EntityAttributes.BLOCK_BREAK_SPEED)
-//                .add(EntityAttributes.SUBMERGED_MINING_SPEED)
-//                .add(EntityAttributes.SNEAKING_SPEED)
-//                .add(EntityAttributes.MINING_EFFICIENCY)
-//                .add(EntityAttributes.SWEEPING_DAMAGE_RATIO)
-//                .add(EntityAttributes.MAX_HEALTH, 6);
     }
 
     @Inject(method = "getNextLevelExperience", at = @At("RETURN"), cancellable = true)

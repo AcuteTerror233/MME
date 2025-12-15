@@ -8,7 +8,7 @@ import net.minecraft.util.ActionResult;
 
 public interface ItemRegisterCallback {
     Event<ItemRegisterCallback> EVENT = EventFactory.createArrayBacked(ItemRegisterCallback.class,
-            (listeners) -> (RegistryKey<Item> registryKey, Item.Settings settings) ->{
+            (listeners) -> (RegistryKey<Item> registryKey, Item.Settings settings) -> {
                 for (ItemRegisterCallback listener : listeners) {
                     ActionResult result = listener.interact(registryKey, settings);
                     if (result != ActionResult.PASS) return result;

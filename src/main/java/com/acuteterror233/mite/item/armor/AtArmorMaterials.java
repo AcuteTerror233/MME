@@ -12,7 +12,7 @@ import net.minecraft.util.Identifier;
 import java.util.HashMap;
 
 /**
- * 装甲材料表：定义不同材质的耐久、各部位护甲值、附魔性、装备音效、韧性与击退抗性，
+ * 护甲材料表：定义不同材质的耐久、各部位护甲值、附魔性、装备音效、韧性与击退抗性，
  * 并绑定其资源外观键。
  */
 public class AtArmorMaterials {

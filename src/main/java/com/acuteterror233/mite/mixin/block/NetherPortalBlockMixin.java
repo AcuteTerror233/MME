@@ -28,6 +28,10 @@ public class NetherPortalBlockMixin {
     @Final
     private static Logger LOGGER;
 
+    /**
+     * @author  AcuteTerror233
+     * @reason  更改的地狱传送门的传送逻辑
+     */
     @Overwrite
     @Nullable
     public TeleportTarget createTeleportTarget(ServerWorld world, Entity entity, BlockPos pos) {

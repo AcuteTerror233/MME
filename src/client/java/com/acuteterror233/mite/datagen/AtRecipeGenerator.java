@@ -29,7 +29,6 @@ public class AtRecipeGenerator extends FabricRecipeProvider {
         return new RecipeGenerator(registryLookup, exporter) {
             @Override
             public void generate() {
-                RegistryWrapper.Impl<Item> itemLookup = registries.getOrThrow(RegistryKeys.ITEM);
                 offerReversibleCompactingRecipes(RecipeCategory.MISC, AtItems.ADAMANTIUM_INGOT, RecipeCategory.BUILDING_BLOCKS, AtBlocks.ADAMANTIUM_BLOCK, "adamantium_block_from_adamantium_ingot", null , "adamantium_ingot_from_adamantium_block",null);
                 offerReversibleCompactingRecipes(RecipeCategory.MISC, AtItems.ANCIENT_METAL_INGOT, RecipeCategory.BUILDING_BLOCKS, AtBlocks.ANCIENT_METAL_BLOCK, "ancient_metal_block_from_ancient_metal_ingot", null , "ancient_metal_ingot_from_ancient_metal_block", null);
                 offerReversibleCompactingRecipes(RecipeCategory.MISC, AtItems.MITHRIL_INGOT, RecipeCategory.BUILDING_BLOCKS, AtBlocks.MITHRIL_BLOCK, "mithril_block_from_mithril_ingot", null , "mithril_ingot_from_mithril_block", null);
@@ -44,7 +43,7 @@ public class AtRecipeGenerator extends FabricRecipeProvider {
                 offerReversibleCompactingRecipes(RecipeCategory.MISC, AtItems.EMERALD_SHARD, RecipeCategory.MISC, Items.EMERALD, "emerald_from_emerald_shard", null,  "emerald_shard_from_emerald", null);
                 offerReversibleCompactingRecipes(RecipeCategory.MISC, AtItems.OBSIDIAN_SHARD, RecipeCategory.MISC, Blocks.OBSIDIAN, "obsidian_from_obsidian_shard", null,  "obsidian_shard_from_obsidian", null);
                 offer2x2CompactingRecipe(RecipeCategory.MISC, Items.FLINT, AtItems.FLINT_SHARD);
-                offer2x2CompactingRecipe(RecipeCategory.MISC, AtItems.QUARTZ_SHARD, Items.QUARTZ);
+                offer2x2CompactingRecipe(RecipeCategory.MISC, Items.QUARTZ, AtItems.QUARTZ_SHARD);
 
                 offerCraftingTableRecipes(AtBlocks.ADAMANTIUM_CRAFTING_TABLE, AtItems.ADAMANTIUM_INGOT);
                 offerCraftingTableRecipes(AtBlocks.ANCIENT_METAL_CRAFTING_TABLE, AtItems.ANCIENT_METAL_INGOT);

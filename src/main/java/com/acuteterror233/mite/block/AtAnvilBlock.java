@@ -61,8 +61,9 @@ public class AtAnvilBlock extends AnvilBlock implements BlockEntityProvider {
             //设置方块实体的损伤,最大损伤
             //用itemStack物品的损伤
             anvilBlockEntity.setMaxDamage(itemStack.getMaxDamage());
+            anvilBlockEntity.setDamage(itemStack.getDamage());
             //放置时候损伤一点耐久
-            anvilBlockEntity.addDamage(itemStack.getDamage() + 1);
+            anvilBlockEntity.addDamage(1);
         }
     }
 

@@ -13,6 +13,10 @@ public abstract class ClientPlayerEntityMixin extends AbstractClientPlayerEntity
         super(world, profile);
     }
 
+    /**
+     * @author Acuteterror233
+     * @reason 将原版6点FoodLevel以下就禁用疾跑改成0点才禁用疾跑
+     */
     @Overwrite
     private boolean canSprint() {
         return this.getVehicle() != null || this.getHungerManager().getFoodLevel() != 0 || this.getAbilities().allowFlying;

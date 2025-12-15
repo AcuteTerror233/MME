@@ -410,6 +410,10 @@ public class ModelProvider extends FabricModelProvider {
         ((ItemModelGeneratorExtension)itemModelGenerator).registernewFishingRod(AtItems.FLINT_FISHING_ROD, cast);
         ((ItemModelGeneratorExtension)itemModelGenerator).registernewFishingRod(AtItems.OBSIDIAN_FISHING_ROD, cast);
 
+        itemModelGenerator.register(AtItems.RAW_ADAMANTIUM,Models.GENERATED);
+        itemModelGenerator.register(AtItems.RAW_MITHRIL,Models.GENERATED);
+        itemModelGenerator.register(AtItems.RAW_SILVER,Models.GENERATED);
+
         itemModelGenerator.register(AtItems.ADAMANTIUM_INGOT,Models.GENERATED);
         itemModelGenerator.register(AtItems.MITHRIL_INGOT,Models.GENERATED);
         itemModelGenerator.register(AtItems.ANCIENT_METAL_INGOT,Models.GENERATED);

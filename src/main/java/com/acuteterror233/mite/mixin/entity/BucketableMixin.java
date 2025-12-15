@@ -21,6 +21,10 @@ import java.util.Optional;
 @Mixin(Bucketable.class)
 public interface BucketableMixin {
 
+    /**
+     * @author AcuteTerror233
+     * @reason 修改了生物桶的放置逻辑
+     */
     @Overwrite
     static <T extends LivingEntity & Bucketable> Optional<ActionResult> tryBucket(PlayerEntity player, Hand hand, T entity) {
         ItemStack itemStack = player.getStackInHand(hand);

@@ -28,7 +28,7 @@ import net.minecraft.util.Identifier;
 import java.util.List;
 import java.util.function.Function;
 /**
- * 物品注册中心：集中定义并注册模组中的全部物品与物品组（创造模式标签）。
+ * 集中定义并注册模组中的全部物品与物品组（创造模式标签）。
  *
  * <p>本类提供多种重载的 register 辅助方法，
  * 以统一方式完成 {@link Item} 的构造与注册，同时在需要时绑定方块或自定义 {@link Item.Settings}。
@@ -324,111 +324,120 @@ public class AtItems {
             new Item.Settings().food(new FoodComponent(5, 5.0F, false)).useRemainder(Items.BOWL).recipeRemainder(Items.BOWL).maxCount(4));
 
 
-    public static final Item ADAMANTIUM_AXE = register("adamantium_axe", (settings) -> new AxeItem(AtToolMaterials.ADAMANTIUM, 0, 0, getAxeSettings(AtToolMaterials.ADAMANTIUM)));
-    public static final Item ADAMANTIUM_BATTLE_AXE = register("adamantium_battle_axe", getBattleAxeSettings(AtToolMaterials.ADAMANTIUM));
-    public static final Item ADAMANTIUM_HATCHET = register("adamantium_hatchet", getHandAxeSettings(AtToolMaterials.ADAMANTIUM));
+    public static final Item ADAMANTIUM_AXE = registerAxeItem("adamantium_axe", getAxeSettings(AtToolMaterials.ADAMANTIUM));
+    public static final Item ADAMANTIUM_BATTLE_AXE = registerAxeItem("adamantium_battle_axe", getBattleAxeSettings(AtToolMaterials.ADAMANTIUM));
+    public static final Item ADAMANTIUM_HATCHET = registerAxeItem("adamantium_hatchet", getHandAxeSettings(AtToolMaterials.ADAMANTIUM));
+    public static final Item ADAMANTIUM_SWORD = register("adamantium_sword", getSwordSettings(AtToolMaterials.ADAMANTIUM));
     public static final Item ADAMANTIUM_DAGGER = register("adamantium_dagger", getDaggerSettings(AtToolMaterials.ADAMANTIUM));
-    public static final Item ADAMANTIUM_HOE = register("adamantium_hoe", getHoeSettings(AtToolMaterials.ADAMANTIUM));
-    public static final Item ADAMANTIUM_KNIFE = register("adamantium_knife", getDaggerSettings(AtToolMaterials.ADAMANTIUM));
-    public static final Item ADAMANTIUM_MATTOCK = register("adamantium_mattock", getMattockSettings(AtToolMaterials.ADAMANTIUM));
+    public static final Item ADAMANTIUM_KNIFE = register("adamantium_knife");
     public static final Item ADAMANTIUM_PICKAXE = register("adamantium_pickaxe", getPickaxeSettings(AtToolMaterials.ADAMANTIUM));
+    public static final Item ADAMANTIUM_WAR_HAMMER = register("adamantium_war_hammer", getWarHammerSettings(AtToolMaterials.ADAMANTIUM));
+    public static final Item ADAMANTIUM_SHOVEL = registerShovelItem("adamantium_shovel", getShovelSettings(AtToolMaterials.ADAMANTIUM));
+    public static final Item ADAMANTIUM_HOE = registerHoeItem("adamantium_hoe", getHoeSettings(AtToolMaterials.ADAMANTIUM));
+    public static final Item ADAMANTIUM_MATTOCK = registerHoeItem("adamantium_mattock", getMattockSettings(AtToolMaterials.ADAMANTIUM));
     public static final Item ADAMANTIUM_SCYTHE = register("adamantium_scythe", getScytheSettings(AtToolMaterials.ADAMANTIUM));
     public static final Item ADAMANTIUM_SHEARS = register("adamantium_shears", getShearsSettings(AtToolMaterials.ADAMANTIUM));
-    public static final Item ADAMANTIUM_SHOVEL = register("adamantium_shovel", getShovelSettings(AtToolMaterials.ADAMANTIUM));
-    public static final Item ADAMANTIUM_SWORD = register("adamantium_sword", getSwordSettings(AtToolMaterials.ADAMANTIUM));
-    public static final Item ADAMANTIUM_WAR_HAMMER = register("adamantium_war_hammer", getWarHammerSettings(AtToolMaterials.ADAMANTIUM));
 
-    public static final Item ANCIENT_METAL_AXE = register("ancient_metal_axe");
-    public static final Item ANCIENT_METAL_BATTLE_AXE = register("ancient_metal_battle_axe");
-    public static final Item ANCIENT_METAL_DAGGER = register("ancient_metal_dagger");
-    public static final Item ANCIENT_METAL_HATCHET = register("ancient_metal_hatchet");
-    public static final Item ANCIENT_METAL_HOE = register("ancient_metal_hoe");
+    public static final Item ANCIENT_METAL_AXE = registerAxeItem("ancient_metal_axe", getAxeSettings(AtToolMaterials.ANCIENT_METAL));
+    public static final Item ANCIENT_METAL_BATTLE_AXE = registerAxeItem("ancient_metal_battle_axe", getBattleAxeSettings(AtToolMaterials.ANCIENT_METAL));
+    public static final Item ANCIENT_METAL_HATCHET = registerAxeItem("ancient_metal_hatchet", getHandAxeSettings(AtToolMaterials.ANCIENT_METAL));
+    public static final Item ANCIENT_METAL_SWORD = register("ancient_metal_sword", getSwordSettings(AtToolMaterials.ANCIENT_METAL));
+    public static final Item ANCIENT_METAL_DAGGER = register("ancient_metal_dagger", getDaggerSettings(AtToolMaterials.ANCIENT_METAL));
     public static final Item ANCIENT_METAL_KNIFE = register("ancient_metal_knife");
-    public static final Item ANCIENT_METAL_MATTOCK = register("ancient_metal_mattock");
-    public static final Item ANCIENT_METAL_PICKAXE = register("ancient_metal_pickaxe");
-    public static final Item ANCIENT_METAL_SCYTHE = register("ancient_metal_scythe");
-    public static final Item ANCIENT_METAL_SHEARS = register("ancient_metal_shears");
-    public static final Item ANCIENT_METAL_SHOVEL = register("ancient_metal_shovel");
-    public static final Item ANCIENT_METAL_SWORD = register("ancient_metal_sword");
-    public static final Item ANCIENT_METAL_WAR_HAMMER = register("ancient_metal_war_hammer");
-    public static final Item COPPER_AXE = register("copper_axe");
-    public static final Item COPPER_BATTLE_AXE = register("copper_battle_axe");
-    public static final Item COPPER_DAGGER = register("copper_dagger");
-    public static final Item COPPER_HATCHET = register("copper_hatchet");
-    public static final Item COPPER_HOE = register("copper_hoe");
+    public static final Item ANCIENT_METAL_PICKAXE = register("ancient_metal_pickaxe", getPickaxeSettings(AtToolMaterials.ANCIENT_METAL));
+    public static final Item ANCIENT_METAL_WAR_HAMMER = register("ancient_metal_war_hammer", getWarHammerSettings(AtToolMaterials.ANCIENT_METAL));
+    public static final Item ANCIENT_METAL_SHOVEL = registerShovelItem("ancient_metal_shovel", getShovelSettings(AtToolMaterials.ANCIENT_METAL));
+    public static final Item ANCIENT_METAL_HOE = registerHoeItem("ancient_metal_hoe", getHoeSettings(AtToolMaterials.ANCIENT_METAL));
+    public static final Item ANCIENT_METAL_MATTOCK = registerHoeItem("ancient_metal_mattock", getMattockSettings(AtToolMaterials.ANCIENT_METAL));
+    public static final Item ANCIENT_METAL_SCYTHE = registerAxeItem("ancient_metal_scythe", getScytheSettings(AtToolMaterials.ANCIENT_METAL));
+    public static final Item ANCIENT_METAL_SHEARS = registerAxeItem("ancient_metal_shears", getShearsSettings(AtToolMaterials.ANCIENT_METAL));
+
+    public static final Item COPPER_AXE = registerAxeItem("copper_axe", getAxeSettings(AtToolMaterials.COPPER));
+    public static final Item COPPER_BATTLE_AXE = registerAxeItem("copper_battle_axe", getBattleAxeSettings(AtToolMaterials.COPPER));
+    public static final Item COPPER_HATCHET = registerAxeItem("copper_hatchet", getHandAxeSettings(AtToolMaterials.COPPER));
+    public static final Item COPPER_SWORD = register("copper_sword", getSwordSettings(AtToolMaterials.COPPER));
+    public static final Item COPPER_DAGGER = register("copper_dagger", getDaggerSettings(AtToolMaterials.COPPER));
     public static final Item COPPER_KNIFE = register("copper_knife");
-    public static final Item COPPER_MATTOCK = register("copper_mattock");
-    public static final Item COPPER_PICKAXE = register("copper_pickaxe");
-    public static final Item COPPER_SCYTHE = register("copper_scythe");
-    public static final Item COPPER_SHEARS = register("copper_shears");
-    public static final Item COPPER_SHOVEL = register("copper_shovel");
-    public static final Item COPPER_SWORD = register("copper_sword");
-    public static final Item COPPER_WAR_HAMMER = register("copper_war_hammer");
-    public static final Item FLINT_AXE = register("flint_axe");
-    public static final Item FLINT_HATCHET = register("flint_hatchet");
-    public static final Item FLINT_KNIFE = register("flint_knife");
-    public static final Item FLINT_SHOVEL = register("flint_shovel");
-    public static final Item GOLDEN_BATTLE_AXE = register("golden_battle_axe");
-    public static final Item GOLDEN_DAGGER = register("golden_dagger");
-    public static final Item GOLDEN_HATCHET = register("golden_hatchet");
+    public static final Item COPPER_PICKAXE = register("copper_pickaxe", getPickaxeSettings(AtToolMaterials.COPPER));
+    public static final Item COPPER_WAR_HAMMER = register("copper_war_hammer", getWarHammerSettings(AtToolMaterials.COPPER));
+    public static final Item COPPER_SHOVEL = register("copper_shovel", getShovelSettings(AtToolMaterials.COPPER));
+    public static final Item COPPER_HOE = register("copper_hoe", getHoeSettings(AtToolMaterials.COPPER));
+    public static final Item COPPER_MATTOCK = register("copper_mattock", getMattockSettings(AtToolMaterials.COPPER));
+    public static final Item COPPER_SCYTHE = register("copper_scythe", getScytheSettings(AtToolMaterials.COPPER));
+    public static final Item COPPER_SHEARS = register("copper_shears", getShearsSettings(AtToolMaterials.COPPER));
+
+    public static final Item GOLDEN_BATTLE_AXE = registerAxeItem("golden_battle_axe", getBattleAxeSettings(ToolMaterial.GOLD));
+    public static final Item GOLDEN_HATCHET = registerAxeItem("golden_hatchet", getHandAxeSettings(ToolMaterial.GOLD));
+    public static final Item GOLDEN_DAGGER = register("golden_dagger", getDaggerSettings(ToolMaterial.GOLD));
     public static final Item GOLDEN_KNIFE = register("golden_knife");
-    public static final Item GOLDEN_MATTOCK = register("golden_mattock");
-    public static final Item GOLDEN_SCYTHE = register("golden_scythe");
-    public static final Item GOLDEN_SHEARS = register("golden_shears");
-    public static final Item GOLDEN_WAR_HAMMER = register("golden_war_hammer");
-    public static final Item IRON_BATTLE_AXE = register("iron_battle_axe");
-    public static final Item IRON_DAGGER = register("iron_dagger");
-    public static final Item IRON_HATCHET = register("iron_hatchet");
+    public static final Item GOLDEN_WAR_HAMMER = register("golden_war_hammer", getWarHammerSettings(ToolMaterial.GOLD));
+    public static final Item GOLDEN_MATTOCK = register("golden_mattock", getMattockSettings(ToolMaterial.GOLD));
+    public static final Item GOLDEN_SCYTHE = register("golden_scythe", getScytheSettings(ToolMaterial.GOLD));
+    public static final Item GOLDEN_SHEARS = register("golden_shears", getShearsSettings(ToolMaterial.GOLD));
+
+    public static final Item IRON_BATTLE_AXE = registerAxeItem("iron_battle_axe", getBattleAxeSettings(ToolMaterial.IRON));
+    public static final Item IRON_DAGGER = register("iron_dagger", getDaggerSettings(ToolMaterial.IRON));
+    public static final Item IRON_HATCHET = registerAxeItem("iron_hatchet", getHandAxeSettings(ToolMaterial.IRON));
+    public static final Item IRON_WAR_HAMMER = register("iron_war_hammer", getWarHammerSettings(ToolMaterial.IRON));
     public static final Item IRON_KNIFE = register("iron_knife");
-    public static final Item IRON_MATTOCK = register("iron_mattock");
-    public static final Item IRON_SCYTHE = register("iron_scythe");
-    public static final Item IRON_WAR_HAMMER = register("iron_war_hammer");
-    public static final Item MITHRIL_AXE = register("mithril_axe");
-    public static final Item MITHRIL_BATTLE_AXE = register("mithril_battle_axe");
-    public static final Item MITHRIL_DAGGER = register("mithril_dagger");
-    public static final Item MITHRIL_HATCHET = register("mithril_hatchet");
-    public static final Item MITHRIL_HOE = register("mithril_hoe");
+    public static final Item IRON_MATTOCK = register("iron_mattock", getMattockSettings(ToolMaterial.IRON));
+    public static final Item IRON_SCYTHE = register("iron_scythe", getScytheSettings(ToolMaterial.IRON));
+
+    public static final Item MITHRIL_AXE = registerAxeItem("mithril_axe", getAxeSettings(AtToolMaterials.MITHRIL));
+    public static final Item MITHRIL_BATTLE_AXE = registerAxeItem("mithril_battle_axe", getBattleAxeSettings(AtToolMaterials.MITHRIL));
+    public static final Item MITHRIL_HATCHET = registerAxeItem("mithril_hatchet", getHandAxeSettings(AtToolMaterials.MITHRIL));
+    public static final Item MITHRIL_SWORD = register("mithril_sword", getSwordSettings(AtToolMaterials.MITHRIL));
+    public static final Item MITHRIL_DAGGER = register("mithril_dagger", getDaggerSettings(AtToolMaterials.MITHRIL));
     public static final Item MITHRIL_KNIFE = register("mithril_knife");
-    public static final Item MITHRIL_MATTOCK = register("mithril_mattock");
-    public static final Item MITHRIL_PICKAXE = register("mithril_pickaxe");
-    public static final Item MITHRIL_SCYTHE = register("mithril_scythe");
-    public static final Item MITHRIL_SHEARS = register("mithril_shears");
-    public static final Item MITHRIL_SHOVEL = register("mithril_shovel");
-    public static final Item MITHRIL_SWORD = register("mithril_sword");
-    public static final Item MITHRIL_WAR_HAMMER = register("mithril_war_hammer");
-    public static final Item OBSIDIAN_AXE = register("obsidian_axe");
-    public static final Item OBSIDIAN_HATCHET = register("obsidian_hatchet");
-    public static final Item OBSIDIAN_KNIFE = register("obsidian_knife");
-    public static final Item OBSIDIAN_SHOVEL = register("obsidian_shovel");
-    public static final Item RUSTED_IRON_AXE = register("rusted_iron_axe");
-    public static final Item RUSTED_IRON_BATTLE_AXE = register("rusted_iron_battle_axe");
-    public static final Item RUSTED_IRON_DAGGER = register("rusted_iron_dagger");
-    public static final Item RUSTED_IRON_HATCHET = register("rusted_iron_hatchet");
-    public static final Item RUSTED_IRON_HOE = register("rusted_iron_hoe");
+    public static final Item MITHRIL_PICKAXE = register("mithril_pickaxe", getPickaxeSettings(AtToolMaterials.MITHRIL));
+    public static final Item MITHRIL_WAR_HAMMER = register("mithril_war_hammer", getWarHammerSettings(AtToolMaterials.MITHRIL));
+    public static final Item MITHRIL_SHOVEL = register("mithril_shovel", getShovelSettings(AtToolMaterials.MITHRIL));
+    public static final Item MITHRIL_HOE = register("mithril_hoe", getHoeSettings(AtToolMaterials.MITHRIL));
+    public static final Item MITHRIL_MATTOCK = register("mithril_mattock", getMattockSettings(AtToolMaterials.MITHRIL));
+    public static final Item MITHRIL_SCYTHE = register("mithril_scythe", getScytheSettings(AtToolMaterials.MITHRIL));
+    public static final Item MITHRIL_SHEARS = register("mithril_shears", getShearsSettings(AtToolMaterials.MITHRIL));
+
+    public static final Item RUSTED_IRON_AXE = registerAxeItem("rusted_iron_axe", getAxeSettings(AtToolMaterials.RUSTED_IRON));
+    public static final Item RUSTED_IRON_BATTLE_AXE = registerAxeItem("rusted_iron_battle_axe", getBattleAxeSettings(AtToolMaterials.RUSTED_IRON));
+    public static final Item RUSTED_IRON_HATCHET = registerAxeItem("rusted_iron_hatchet", getHandAxeSettings(AtToolMaterials.RUSTED_IRON));
+    public static final Item RUSTED_IRON_SWORD = register("rusted_iron_sword", getSwordSettings(AtToolMaterials.RUSTED_IRON));
+    public static final Item RUSTED_IRON_DAGGER = register("rusted_iron_dagger", getDaggerSettings(AtToolMaterials.RUSTED_IRON));
     public static final Item RUSTED_IRON_KNIFE = register("rusted_iron_knife");
-    public static final Item RUSTED_IRON_MATTOCK = register("rusted_iron_mattock");
-    public static final Item RUSTED_IRON_PICKAXE = register("rusted_iron_pickaxe");
-    public static final Item RUSTED_IRON_SCYTHE = register("rusted_iron_scythe");
-    public static final Item RUSTED_IRON_SHEARS = register("rusted_iron_shears");
-    public static final Item RUSTED_IRON_SHOVEL = register("rusted_iron_shovel");
-    public static final Item RUSTED_IRON_SWORD = register("rusted_iron_sword");
-    public static final Item RUSTED_IRON_WAR_HAMMER = register("rusted_iron_war_hammer");
-    public static final Item SILVER_AXE = register("silver_axe");
-    public static final Item SILVER_BATTLE_AXE = register("silver_battle_axe");
-    public static final Item SILVER_DAGGER = register("silver_dagger");
-    public static final Item SILVER_HATCHET = register("silver_hatchet");
-    public static final Item SILVER_HOE = register("silver_hoe");
+    public static final Item RUSTED_IRON_PICKAXE = register("rusted_iron_pickaxe", getPickaxeSettings(AtToolMaterials.RUSTED_IRON));
+    public static final Item RUSTED_IRON_WAR_HAMMER = register("rusted_iron_war_hammer", getWarHammerSettings(AtToolMaterials.RUSTED_IRON));
+    public static final Item RUSTED_IRON_SHOVEL = register("rusted_iron_shovel", getShovelSettings(AtToolMaterials.RUSTED_IRON));
+    public static final Item RUSTED_IRON_HOE = register("rusted_iron_hoe", getHoeSettings(AtToolMaterials.RUSTED_IRON));
+    public static final Item RUSTED_IRON_MATTOCK = register("rusted_iron_mattock", getMattockSettings(AtToolMaterials.RUSTED_IRON));
+    public static final Item RUSTED_IRON_SCYTHE = register("rusted_iron_scythe", getScytheSettings(AtToolMaterials.RUSTED_IRON));
+    public static final Item RUSTED_IRON_SHEARS = register("rusted_iron_shears", getShearsSettings(AtToolMaterials.RUSTED_IRON));
+
+    public static final Item SILVER_AXE = registerAxeItem("silver_axe", getAxeSettings(AtToolMaterials.SILVER));
+    public static final Item SILVER_BATTLE_AXE = registerAxeItem("silver_battle_axe", getBattleAxeSettings(AtToolMaterials.SILVER));
+    public static final Item SILVER_HATCHET = registerAxeItem("silver_hatchet", getHandAxeSettings(AtToolMaterials.SILVER));
+    public static final Item SILVER_DAGGER = register("silver_dagger", getDaggerSettings(AtToolMaterials.SILVER));
     public static final Item SILVER_KNIFE = register("silver_knife");
-    public static final Item SILVER_MATTOCK = register("silver_mattock");
-    public static final Item SILVER_PICKAXE = register("silver_pickaxe");
-    public static final Item SILVER_SCYTHE = register("silver_scythe");
-    public static final Item SILVER_SHEARS = register("silver_shears");
-    public static final Item SILVER_SHOVEL = register("silver_shovel");
-    public static final Item SILVER_SWORD = register("silver_sword");
-    public static final Item SILVER_WAR_HAMMER = register("silver_war_hammer");
+    public static final Item SILVER_SWORD = register("silver_sword", getSwordSettings(AtToolMaterials.SILVER));
+    public static final Item SILVER_PICKAXE = register("silver_pickaxe", getPickaxeSettings(AtToolMaterials.SILVER));
+    public static final Item SILVER_WAR_HAMMER = register("silver_war_hammer", getWarHammerSettings(AtToolMaterials.SILVER));
+    public static final Item SILVER_SHOVEL = register("silver_shovel", getShovelSettings(AtToolMaterials.SILVER));
+    public static final Item SILVER_HOE = register("silver_hoe", getHoeSettings(AtToolMaterials.SILVER));
+    public static final Item SILVER_MATTOCK = register("silver_mattock", getMattockSettings(AtToolMaterials.SILVER));
+    public static final Item SILVER_SCYTHE = register("silver_scythe", getScytheSettings(AtToolMaterials.SILVER));
+    public static final Item SILVER_SHEARS = register("silver_shears", getShearsSettings(AtToolMaterials.SILVER));
+
+    public static final Item OBSIDIAN_AXE = registerAxeItem("obsidian_axe", getAxeSettings(AtToolMaterials.FLINT));
+    public static final Item OBSIDIAN_HATCHET = registerAxeItem("obsidian_hatchet", getHandAxeSettings(AtToolMaterials.FLINT));
+    public static final Item OBSIDIAN_KNIFE = register("obsidian_knife", getDaggerSettings(AtToolMaterials.FLINT));
+    public static final Item OBSIDIAN_SHOVEL = register("obsidian_shovel", getShovelSettings(AtToolMaterials.FLINT));
+
+    public static final Item FLINT_AXE = registerAxeItem("flint_axe", getAxeSettings(AtToolMaterials.FLINT));
+    public static final Item FLINT_HATCHET = registerAxeItem("flint_hatchet", getHandAxeSettings(AtToolMaterials.FLINT));
+    public static final Item FLINT_KNIFE = register("flint_knife", getDaggerSettings(AtToolMaterials.FLINT));
+    public static final Item FLINT_SHOVEL = register("flint_shovel", getShovelSettings(AtToolMaterials.FLINT));
+
     public static final Item STONE_DAGGER = register("stone_dagger");
-    public static final Item WOOD_CLUB = register("wood_club");
-    public static final Item WOOD_CUDGEL = register("wood_cudgel");
+    public static final Item WOOD_CLUB = register("wood_club", getDaggerSettings(ToolMaterial.WOOD));
+    public static final Item WOOD_CUDGEL = register("wood_cudgel", getSwordSettings(ToolMaterial.WOOD));
 
     public static final Item ADAMANTIUM_ARROW = register("adamantium_arrow",
             new Item.Settings().maxCount(16));
@@ -816,6 +825,13 @@ public class AtItems {
     public static final Item OBSIDIAN_FISHING_ROD = register("obsidian_fishing_rod", FishingRodItem::new, new Item.Settings().maxDamage(32).enchantable(1));
     public static final Item SILVER_FISHING_ROD = register("silver_fishing_rod", FishingRodItem::new, new Item.Settings().maxDamage(8).enchantable(1));
 
+    public static final Item RAW_ADAMANTIUM = register("raw_adamantium",
+            new Item.Settings().maxCount(16));
+    public static final Item RAW_MITHRIL = register("raw_mithril",
+            new Item.Settings().maxCount(16));
+    public static final Item RAW_SILVER = register("raw_silver",
+            new Item.Settings().maxCount(16));
+
     public static final Item ADAMANTIUM_INGOT = register("adamantium_ingot",
             new Item.Settings().component(AtDataComponentTypes.CRAFTINGTIME, 150).maxCount(16));
     public static final Item ANCIENT_METAL_INGOT = register("ancient_metal_ingot",
@@ -951,6 +967,10 @@ public class AtItems {
                 entries.add(OBSIDIAN_SHARD);
                 entries.add(QUARTZ_SHARD);
 
+                entries.add(RAW_ADAMANTIUM);
+                entries.add(RAW_MITHRIL);
+                entries.add(RAW_SILVER);
+
                 entries.add(Items.NETHERITE_INGOT);
                 entries.add(ADAMANTIUM_INGOT);
                 entries.add(MITHRIL_INGOT);
@@ -964,6 +984,7 @@ public class AtItems {
                 entries.add(ANCIENT_METAL_NUGGET);
                 entries.add(MITHRIL_NUGGET);
                 entries.add(SILVER_NUGGET);
+
                 entries.add(ADAMANTIUM_FISHING_ROD);
                 entries.add(ANCIENT_METAL_FISHING_ROD);
                 entries.add(COPPER_FISHING_ROD);
@@ -1452,9 +1473,14 @@ public class AtItems {
         final RegistryKey<Item> registryKey = RegistryKey.of(RegistryKeys.ITEM, Identifier.of(At_mite.MOD_ID, path));
         return Items.register(registryKey, factory, settings);
     }
-    private static Item register(String path, Function<Item.Settings, Item> factory) {
-        final RegistryKey<Item> registryKey = RegistryKey.of(RegistryKeys.ITEM, Identifier.of(At_mite.MOD_ID, path));
-        return Items.register(registryKey, factory, new Item.Settings());
+    private static Item registerAxeItem(String path, Item.Settings settings) {
+        return register(path, AtAxeItem::new, settings);
+    }
+    private static Item registerShovelItem(String path, Item.Settings settings) {
+        return register(path, AtShovelItem::new, settings);
+    }
+    private static Item registerHoeItem(String path, Item.Settings settings) {
+        return register(path, AtHoeItem::new, settings);
     }
     /**
      * 为方块注册与之对应的方块物品，并可传入自定义 {@link Item.Settings}。

@@ -470,7 +470,7 @@ public class AtBlocks {
                     , AnvilBlockEntity::new
                     , ADAMANTIUM_ANVIL
                     , CHIPPED_ADAMANTIUM_ANVIL
-                    , Blocks.ANVIL
+                    , DAMAGED_ADAMANTIUM_ANVIL
                     , SILVER_ANVIL
                     , CHIPPED_SILVER_ANVIL
                     , DAMAGED_SILVER_ANVIL

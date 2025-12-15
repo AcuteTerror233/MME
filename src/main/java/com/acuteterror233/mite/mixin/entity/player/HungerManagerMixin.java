@@ -49,12 +49,20 @@ public abstract class HungerManagerMixin implements HungerManagerExtension {
     @Shadow
     public abstract void addExhaustion(float exhaustion);
 
+    /**
+     * @author AcuteTerror233
+     * @reason 添加最大食物等级判断
+     */
     @Overwrite
     private void addInternal(int nutrition, float saturation) {
         this.foodLevel = MathHelper.clamp(nutrition + this.foodLevel, 0, MaxFoodLevel);
         this.saturationLevel = MathHelper.clamp(saturation + this.saturationLevel, 0.0F, (float) this.foodLevel);
     }
 
+    /**
+     * @author AcuteTerror233
+     * @reason 添加最大食物等级判断
+     */
     @Overwrite
     public void update(ServerPlayerEntity player) {
         ServerWorld serverWorld = player.getServerWorld();

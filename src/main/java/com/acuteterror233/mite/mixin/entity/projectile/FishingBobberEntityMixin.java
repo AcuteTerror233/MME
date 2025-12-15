@@ -16,6 +16,10 @@ public abstract class FishingBobberEntityMixin extends ProjectileEntity {
         super(entityType, world);
     }
 
+    /**
+     * @author AcuteTerror233
+     * @reason 修改钓鱼竿浮标判断
+     */
     @Overwrite
     private boolean removeIfInvalid(PlayerEntity player) {
         ItemStack itemStack = player.getMainHandStack();

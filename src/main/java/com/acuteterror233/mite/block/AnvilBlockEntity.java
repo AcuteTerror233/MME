@@ -68,25 +68,32 @@ public class AnvilBlockEntity extends BlockEntity {
         this.damage = Math.clamp(i, 0, this.maxDamage);
         int i1 = this.maxDamage / 3;
         assert this.world != null;
-        Block anvil = this.world.getBlockState(this.pos).getBlock();
+        BlockState state = this.world.getBlockState(this.pos);
+        Block anvil = state.getBlock();
         if (i >= this.maxDamage) {
             this.world.removeBlock(this.pos, false);
             this.world.syncWorldEvent(WorldEvents.ANVIL_USED, pos, 0);
         } else if (i >= i1 * 2) {
             Block block = Registries.BLOCK.get(Identifier.of(Registries.BLOCK.getId(anvil).toString().replace("chipped", "damaged")));
-            generate(block);
+            if (block == anvil){
+                return;
+            }
+            generate(block, state);
         } else if (i >= i1) {
             Block block = Registries.BLOCK.get(Identifier.of(Registries.BLOCK.getId(anvil).toString().replace(".", ":chipped")));
-            generate(block);
+            if (block == anvil){
+                return;
+            }
+            generate(block, state);
         }
     }
 
     /**
      * 切换当前坐标处的铁砧方块并回填方块实体耐久数据。
      */
-    private void generate(Block block) {
+    private void generate(Block block, BlockState state) {
         if (this.world != null) {
-            this.world.setBlockState(this.pos, block.getDefaultState(), Block.NOTIFY_ALL);
+            this.world.setBlockState(this.pos, block.getDefaultState().with(AtAnvilBlock.FACING, state.get(AtAnvilBlock.FACING)), Block.NOTIFY_ALL);
             BlockEntity entity = this.world.getBlockEntity(this.pos);
             if (entity instanceof AnvilBlockEntity anvilBlockEntity) {
                 anvilBlockEntity.setMaxDamage(this.maxDamage);
