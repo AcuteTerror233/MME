@@ -1,6 +1,10 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
+<<<<<<<< HEAD:src/main/generated/assets/mme/models/block/silver_ore.json
     "all": "mme:block/silver_ore"
+========
+    "all": "mme:block/adamantium/des"
+>>>>>>>> origin/master:src/main/resources/assets/mme/models/block/adamantium_des_runestore.json
   }
 }

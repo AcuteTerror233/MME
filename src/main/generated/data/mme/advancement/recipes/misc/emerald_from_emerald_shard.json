@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_emerald_shard": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mme:emerald_shard"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "mme:emerald_from_emerald_shard"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_emerald_shard"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "mme:emerald_from_emerald_shard"
+    ]
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "values": [
+    {
+      "id": "#mme:adamantium_tool_materials",
+      "required": false
+    },
+    "mme:adamantium_block"
+  ]
+}

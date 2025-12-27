@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "minecraft:sugar",
+    "minecraft:bowl",
+    "minecraft:snowball",
+    "mme:orange"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mme:sorbet"
+  }
+}

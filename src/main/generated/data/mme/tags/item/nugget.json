@@ -1,0 +1,11 @@
+{
+  "values": [
+    "minecraft:iron_nugget",
+    "minecraft:gold_nugget",
+    "mme:adamantium_nugget",
+    "mme:ancient_metal_nugget",
+    "mme:mithril_nugget",
+    "mme:silver_nugget",
+    "mme:copper_nugget"
+  ]
+}

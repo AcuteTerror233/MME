@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "mme:item/buckets/ancient_metal_bucket",
+    "layer1": "mme:item/nobuckets/tadpole"
+  }
+}

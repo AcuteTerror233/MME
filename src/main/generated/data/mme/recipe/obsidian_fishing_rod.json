@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "a": "mme:obsidian_shard",
+    "b": "minecraft:string",
+    "c": "minecraft:stick"
+  },
+  "pattern": [
+    "  c",
+    " cb",
+    "cab"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mme:obsidian_fishing_rod"
+  }
+}

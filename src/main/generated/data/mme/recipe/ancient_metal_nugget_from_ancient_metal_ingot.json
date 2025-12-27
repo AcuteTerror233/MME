@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "mme:ancient_metal_ingot"
+  ],
+  "result": {
+    "count": 9,
+    "id": "mme:ancient_metal_nugget"
+  }
+}

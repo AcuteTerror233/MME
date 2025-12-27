@@ -1,0 +1,11 @@
+{
+  "values": [
+    "minecraft:iron_bars",
+    "mme:adamantium_bars",
+    "mme:ancient_metal_bars",
+    "mme:golden_bars",
+    "mme:mithril_bars",
+    "mme:silver_bars",
+    "mme:copper_bars"
+  ]
+}

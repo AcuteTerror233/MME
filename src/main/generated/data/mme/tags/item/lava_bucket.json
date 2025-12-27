@@ -1,0 +1,12 @@
+{
+  "values": [
+    "mme:lava_netherite_bucket",
+    "mme:lava_adamantium_bucket",
+    "mme:lava_mithril_bucket",
+    "mme:lava_ancient_metal_bucket",
+    "mme:lava_copper_bucket",
+    "mme:lava_silver_bucket",
+    "mme:lava_gold_bucket",
+    "minecraft:lava_bucket"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "values": [
+    "mme:adamantium_bucket",
+    "mme:ancient_metal_bucket",
+    "mme:copper_bucket",
+    "mme:gold_bucket",
+    "mme:mithril_bucket",
+    "mme:silver_bucket",
+    "mme:netherite_bucket",
+    "minecraft:bucket"
+  ]
+}

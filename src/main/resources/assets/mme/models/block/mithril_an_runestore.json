@@ -1,6 +1,10 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
+<<<<<<<< HEAD:src/main/resources/assets/mme/models/block/mithril_an_runestore.json
     "all": "mme:block/mithril/an"
+========
+    "all": "mme:block/adamantium/an"
+>>>>>>>> origin/master:src/main/resources/assets/mme/models/block/adamantium_an_runestore.json
   }
 }

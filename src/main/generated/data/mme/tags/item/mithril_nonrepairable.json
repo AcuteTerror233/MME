@@ -1,0 +1,12 @@
+{
+  "values": [
+    {
+      "id": "#mme:adamantium_nonrepairable",
+      "required": false
+    },
+    {
+      "id": "#mme:adamantium_series_repairable",
+      "required": false
+    }
+  ]
+}

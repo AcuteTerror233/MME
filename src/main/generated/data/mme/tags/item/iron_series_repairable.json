@@ -1,0 +1,25 @@
+{
+  "values": [
+    "minecraft:iron_axe",
+    "mme:iron_hatchet",
+    "minecraft:iron_pickaxe",
+    "minecraft:iron_shovel",
+    "minecraft:iron_hoe",
+    "mme:iron_mattock",
+    "mme:iron_scythe",
+    "minecraft:shears",
+    "mme:iron_fishing_rod",
+    "mme:iron_dagger",
+    "minecraft:iron_sword",
+    "mme:iron_war_hammer",
+    "mme:iron_battle_axe",
+    "minecraft:iron_helmet",
+    "minecraft:chainmail_helmet",
+    "minecraft:iron_chestplate",
+    "minecraft:chainmail_chestplate",
+    "minecraft:iron_leggings",
+    "minecraft:chainmail_leggings",
+    "minecraft:iron_boots",
+    "minecraft:chainmail_boots"
+  ]
+}

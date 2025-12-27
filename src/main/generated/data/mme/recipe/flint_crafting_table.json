@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "mme:flint_knife",
+    "#minecraft:oak_logs"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mme:flint_crafting_table"
+  }
+}

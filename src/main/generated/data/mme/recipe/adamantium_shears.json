@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "a": "mme:adamantium_ingot"
+  },
+  "pattern": [
+    " a",
+    "a "
+  ],
+  "result": {
+    "count": 1,
+    "id": "mme:adamantium_shears"
+  }
+}

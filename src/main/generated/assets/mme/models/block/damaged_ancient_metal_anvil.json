@@ -1,0 +1,8 @@
+{
+  "parent": "mme:block/template_anvil",
+  "textures": {
+    "body": "mme:block/ancient_metal_anvil",
+    "particle": "mme:block/ancient_metal_anvil",
+    "top": "mme:block/damaged_ancient_metal_anvil_top"
+  }
+}

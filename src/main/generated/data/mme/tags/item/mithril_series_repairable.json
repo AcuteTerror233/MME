@@ -1,0 +1,25 @@
+{
+  "values": [
+    "mme:mithril_axe",
+    "mme:mithril_hatchet",
+    "mme:mithril_pickaxe",
+    "mme:mithril_shovel",
+    "mme:mithril_hoe",
+    "mme:mithril_mattock",
+    "mme:mithril_scythe",
+    "mme:mithril_shears",
+    "mme:mithril_fishing_rod",
+    "mme:mithril_dagger",
+    "mme:mithril_sword",
+    "mme:mithril_war_hammer",
+    "mme:mithril_battle_axe",
+    "mme:mithril_helmet",
+    "mme:mithril_chainmail_helmet",
+    "mme:mithril_chestplate",
+    "mme:mithril_chainmail_chestplate",
+    "mme:mithril_leggings",
+    "mme:mithril_chainmail_leggings",
+    "mme:mithril_boots",
+    "mme:mithril_chainmail_boots"
+  ]
+}

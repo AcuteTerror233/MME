@@ -1,0 +1,11 @@
+{
+  "values": [
+    "#mme:needs_silver_or_copper_tool",
+    "#mme:needs_ancient_metal_tool",
+    "#mme:needs_mithril_tool",
+    "#mme:needs_adamantium_tool",
+    "#minecraft:needs_diamond_tool",
+    "#minecraft:needs_iron_tool",
+    "#minecraft:needs_stone_tool"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "values": [
+    "minecraft:iron_ingot",
+    "minecraft:gold_ingot",
+    "minecraft:netherite_ingot",
+    "minecraft:copper_ingot",
+    "mme:adamantium_ingot",
+    "mme:ancient_metal_ingot",
+    "mme:mithril_ingot",
+    "mme:silver_ingot"
+  ]
+}

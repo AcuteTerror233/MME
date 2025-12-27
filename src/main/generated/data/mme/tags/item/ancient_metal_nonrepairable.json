@@ -1,0 +1,12 @@
+{
+  "values": [
+    {
+      "id": "#mme:mithril_nonrepairable",
+      "required": false
+    },
+    {
+      "id": "#mme:mithril_series_repairable",
+      "required": false
+    }
+  ]
+}

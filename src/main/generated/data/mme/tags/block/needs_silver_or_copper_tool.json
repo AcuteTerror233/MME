@@ -1,0 +1,10 @@
+{
+  "values": [
+    "mme:silver_block",
+    "mme:silver_bars",
+    "mme:silver_door",
+    "minecraft:copper_block",
+    "mme:copper_bars",
+    "#minecraft:copper_ores"
+  ]
+}

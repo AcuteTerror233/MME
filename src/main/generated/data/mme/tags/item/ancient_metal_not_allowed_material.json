@@ -1,0 +1,13 @@
+{
+  "values": [
+    {
+      "id": "#mme:mithril_tool_materials",
+      "required": false
+    },
+    {
+      "id": "#mme:mithril_not_allowed_material",
+      "required": false
+    },
+    "mme:mithril_block"
+  ]
+}

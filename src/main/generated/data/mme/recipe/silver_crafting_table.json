@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "a": "mme:silver_ingot",
+    "b": "minecraft:leather",
+    "c": "minecraft:stick",
+    "d": "#minecraft:planks"
+  },
+  "pattern": [
+    "ab",
+    "cd"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mme:silver_crafting_table"
+  }
+}

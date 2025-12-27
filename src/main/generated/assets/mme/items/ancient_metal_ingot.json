@@ -1,6 +1,10 @@
 {
   "model": {
     "type": "minecraft:model",
+<<<<<<<< HEAD:src/main/generated/assets/mme/items/ancient_metal_ingot.json
     "model": "mme:item/ancient_metal_ingot"
+========
+    "model": "mme:block/copper_crafting_table"
+>>>>>>>> origin/master:src/main/resources/assets/mme/items/copper_crafting_table.json
   }
 }
