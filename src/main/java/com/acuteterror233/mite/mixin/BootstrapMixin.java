@@ -1,41 +1,57 @@
 package com.acuteterror233.mite.mixin;
 
-import com.acuteterror233.mite.At_mite;
-import com.acuteterror233.mite.event.BlockRegisterCallback;
-import com.acuteterror233.mite.event.ItemRegisterCallback;
-import com.acuteterror233.mite.event.ServerRecipeManagerPrepareCallback;
+import com.acuteterror233.mite.block.VanillaBLockModify;
+import com.acuteterror233.mite.event.VanillaRegisterModify;
+import com.acuteterror233.mite.item.VanillaItemModify;
 import net.minecraft.Bootstrap;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.Identifier;
+import net.minecraft.block.AbstractBlock;
+import net.minecraft.block.Block;
+import net.minecraft.item.Item;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+import java.util.function.Function;
+import java.util.function.UnaryOperator;
+
 @Mixin(Bootstrap.class)
 public class BootstrapMixin {
     @Inject(method = "initialize",at = @At("HEAD"))
     private static void initialize(CallbackInfo ci) {
-        ItemRegisterCallback.EVENT.register((registryKey, settings)->{
-            Identifier value = registryKey.getValue();
-            Integer stackLimit = At_mite.ITEM_STACK_LIMITS.get(value);
-            if (stackLimit != null) {
-                settings.maxCount(stackLimit);
-                return ActionResult.SUCCESS;
+        VanillaRegisterModify.BLOCK_REGISTER.register((key, factory, settings) -> {
+            Function<AbstractBlock.Settings, Block> customFactory = VanillaBLockModify.BLOCK_FACTORY_MODIFY.get(key.getValue());
+            UnaryOperator<AbstractBlock.Settings> settingsFactory = VanillaBLockModify.BLOCK_SETTINGS_MODIFY.get(key.getValue());
+            if (settingsFactory != null && customFactory != null){
+                return customFactory.apply(settingsFactory.apply(settings).registryKey(key));
+            }else if (customFactory != null){
+                return customFactory.apply(settings);
+            }else if (settingsFactory != null){
+                return factory.apply(settingsFactory.apply(settings).registryKey(key));
             }
-            return ActionResult.PASS;
+            return null;
         });
-        BlockRegisterCallback.EVENT.register((registryKey, settings) ->{
-            Integer stackLimit = At_mite.BLOCK_STACK_LIMITS.get(registryKey);
-            if (stackLimit != null) {
-                settings.maxCount(stackLimit);
-                return ActionResult.SUCCESS;
+        VanillaRegisterModify.ITEM_REGISTER.register((key, factory, settings) -> {
+            Function<Item.Settings, Item> customFactory = VanillaItemModify.ITEM_FACTORY_MODIFY.get(key.getValue());
+            UnaryOperator<Item.Settings> settingsFactory = VanillaItemModify.ITEM_SETTINGS_MODIFY.get(key.getValue());
+            if (customFactory != null && settingsFactory != null){
+                return customFactory.apply(settingsFactory.apply(settings).registryKey(key));
+            }else if (customFactory != null){
+                return customFactory.apply(settings);
+            }else if (settingsFactory != null){
+                return factory.apply(settingsFactory.apply(settings).registryKey(key));
             }
-            return ActionResult.PASS;
+            return null;
         });
-        ServerRecipeManagerPrepareCallback.EVENT.register((list) -> {
-            list.removeIf(recipeEntry -> At_mite.FILTER_RECIPE_SET.contains(recipeEntry.id().getValue()));
-            return ActionResult.SUCCESS;
+        VanillaRegisterModify.BLOCK_ITEM_REGISTER.register((block, factory, settings) -> {
+            UnaryOperator<Item.Settings> inClassSettingsFactory = VanillaItemModify.IN_CLASS_BLOCK_ITEM_SETTINGS_MODIFY.get(block.getClass());
+            UnaryOperator<Item.Settings> inIdentifierSettingsFactory = VanillaItemModify.IN_IDENTIFIER_ITEM_SETTINGS_MODIFY.get(block.getRegistryEntry().registryKey());
+            if (inClassSettingsFactory != null) {
+                return factory.apply(block, inClassSettingsFactory.apply(settings));
+            }if (inIdentifierSettingsFactory != null){
+                return factory.apply(block, inIdentifierSettingsFactory.apply(settings));
+            }
+            return null;
         });
     }
 }

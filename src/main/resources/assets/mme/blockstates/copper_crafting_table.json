@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "mme:block/copper_crafting_table"
+    }
+  }
+}

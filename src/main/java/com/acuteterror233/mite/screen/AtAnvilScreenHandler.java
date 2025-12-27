@@ -1,7 +1,7 @@
 package com.acuteterror233.mite.screen;
 
-import com.acuteterror233.mite.block.AnvilBlockEntity;
 import com.acuteterror233.mite.block.AtBlocks;
+import com.acuteterror233.mite.block.entity.AnvilBlockEntity;
 import com.acuteterror233.mite.registry.tag.AtTags;
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import net.minecraft.block.BlockState;
@@ -51,7 +51,7 @@ public class AtAnvilScreenHandler extends ForgingScreenHandler {
     }
 
     public AtAnvilScreenHandler(int syncId, PlayerInventory playerInventory, ScreenHandlerContext context) {
-        super(AtBlocks.ATANVILSCREENHANDLER, syncId, playerInventory, context, getForgingSlotsManager());
+        super(AtBlocks.ATANVIL, syncId, playerInventory, context, getForgingSlotsManager());
         this.addProperty(this.levelCost);
     }
 

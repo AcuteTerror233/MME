@@ -1,15 +1,24 @@
 package com.acuteterror233.mite.block;
 
-import com.acuteterror233.mite.At_mite;
+import com.acuteterror233.mite.Mme;
+import com.acuteterror233.mite.block.entity.AnvilBlockEntity;
+import com.acuteterror233.mite.block.entity.GradeFurnaceBlockEntity;
+import com.acuteterror233.mite.block.entity.RunePortalBlockEntity;
+import com.acuteterror233.mite.component.AtDataComponentTypes;
 import com.acuteterror233.mite.item.AtToolMaterials;
+import com.acuteterror233.mite.registry.tag.AtTags;
 import com.acuteterror233.mite.screen.AtAnvilScreenHandler;
-import com.acuteterror233.mite.screen.CraftingTableScreenHandler;
+import com.acuteterror233.mite.screen.GradeCraftingTableScreenHandler;
+import com.acuteterror233.mite.screen.GradeFurnaceScreenHandler;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.block.piston.PistonBehavior;
-import net.minecraft.item.*;
+import net.minecraft.item.Item;
+import net.minecraft.item.Items;
+import net.minecraft.item.TallBlockItem;
+import net.minecraft.item.ToolMaterial;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
@@ -30,77 +39,98 @@ import java.util.function.Function;
  */
 public class AtBlocks {
     public static final Block ADAMANTIUM_ORE = register(        //艾德曼矿
-            "adamantium_ore", AbstractBlock.Settings.create().strength(4.0f, 4.0f)
+            "adamantium_ore", AbstractBlock.Settings.create().strength(3.0f, 4.0f).requiresTool()
     );
+    public static final Block MITHRIL_ORE = register(           //秘银矿
+            "mithril_ore", AbstractBlock.Settings.create().strength(3.0f, 4.0f).requiresTool()
+    );
+    public static final Block SILVER_ORE = register(            //银矿
+            "silver_ore", AbstractBlock.Settings.create().strength(3.0f, 4.0f).requiresTool()
+    );
+
     public static final Block ADAMANTIUM_BARS = register(       //艾德曼栏杆
-            "adamantium_bars", PaneBlock::new, AbstractBlock.Settings.copy(Blocks.IRON_BARS).strength(10f, 10f).nonOpaque()
+            "adamantium_bars", PaneBlock::new, AbstractBlock.Settings.copy(Blocks.IRON_BARS).strength(10f, 10f).nonOpaque().requiresTool().requiresTool()
     );
-    public static final Block ADAMANTIUM_BLOCK = register(      //艾德曼块
-            "adamantium_block", AbstractBlock.Settings.copy(Blocks.BEDROCK)
+    public static final Block MITHRIL_BARS = register(          //秘银栏杆
+            "mithril_bars", PaneBlock::new, AbstractBlock.Settings.copy(ADAMANTIUM_BARS).strength(8f, 8f).nonOpaque().requiresTool().requiresTool()
     );
     public static final Block ANCIENT_METAL_BARS = register(    //远古金属栏杆
-            "ancient_metal_bars", PaneBlock::new, AbstractBlock.Settings.copy(ADAMANTIUM_BARS).strength(8f, 8f).nonOpaque()
-    );
-    public static final Block ANCIENT_METAL_BLOCK = register(   //远古金属块
-            "ancient_metal_block", AbstractBlock.Settings.create().strength(35f, 35f)
+            "ancient_metal_bars", PaneBlock::new, AbstractBlock.Settings.copy(ADAMANTIUM_BARS).strength(8f, 8f).nonOpaque().requiresTool().requiresTool()
     );
     public static final Block GOLDEN_BARS = register(             //金栏杆
-            "golden_bars", PaneBlock::new, AbstractBlock.Settings.copy(ADAMANTIUM_BARS).strength(2f, 2f).nonOpaque()
+            "golden_bars", PaneBlock::new, AbstractBlock.Settings.copy(ADAMANTIUM_BARS).strength(2f, 2f).nonOpaque().requiresTool().requiresTool()
     );
+    public static final Block SILVER_BARS = register(           //银栏杆
+            "silver_bars", PaneBlock::new, AbstractBlock.Settings.copy(ADAMANTIUM_BARS).strength(4f, 4f).nonOpaque().requiresTool().requiresTool()
+    );
+    public static final Block COPPER_BARS = register(           //铜栏杆
+            "copper_bars", PaneBlock::new, AbstractBlock.Settings.copy(ADAMANTIUM_BARS).strength(4f, 4f).nonOpaque().requiresTool().requiresTool()
+    );
+
+    public static final Block ADAMANTIUM_BLOCK = register(      //艾德曼块
+            "adamantium_block", AbstractBlock.Settings.copy(Blocks.BEDROCK).requiresTool(), new Item.Settings().component(AtDataComponentTypes.CRAFTING_TIME, 1350)
+    );
+    public static final Block ANCIENT_METAL_BLOCK = register(   //远古金属块
+            "ancient_metal_block", AbstractBlock.Settings.create().strength(35f, 35f).requiresTool(), new Item.Settings().component(AtDataComponentTypes.CRAFTING_TIME, 540)
+    );
+    public static final Block MITHRIL_BLOCK = register(         //秘银块
+            "mithril_block", AbstractBlock.Settings.create().strength(40f, 40f).requiresTool(), new Item.Settings().component(AtDataComponentTypes.CRAFTING_TIME, 810)
+    );
+    public static final Block SILVER_BLOCK = register(          //银块
+            "silver_block", AbstractBlock.Settings.create().strength(10f, 10f).requiresTool(), new Item.Settings().component(AtDataComponentTypes.CRAFTING_TIME, 90)
+    );
+
+    public static final Block CLAY_FURNACE = register(
+            "clay_furnace", settings -> new GradeFurnaceBlock(settings, 1), AbstractBlock.Settings.copy(Blocks.FURNACE).strength(0.5F)
+    );
+    public static final Block HARDENED_CLAY_FURNACE = register(
+            "hardened_clay_furnace", settings -> new GradeFurnaceBlock(settings, 1), AbstractBlock.Settings.copy(Blocks.FURNACE).strength(0.5F)
+    );
+    public static final Block NETHERRACK_FURNACE = register(
+            "netherrack_furnace", settings -> new GradeFurnaceBlock(settings, 4), AbstractBlock.Settings.copy(Blocks.FURNACE).strength(0.5F)
+    );
+    public static final Block OBSIDIAN_FURNACE = register(
+            "obsidian_furnace", settings -> new GradeFurnaceBlock(settings, 3), AbstractBlock.Settings.copy(Blocks.FURNACE).strength(0.5F)
+    );
+    public static final Block SANDSTONE_FURNACE = register(
+            "sandstone_furnace", settings -> new GradeFurnaceBlock(settings, 1), AbstractBlock.Settings.copy(Blocks.FURNACE).strength(0.5F)
+    );
+
     public static final Block MANTLE = register(                //地幔
             "mantle", AbstractBlock.Settings.copy(Blocks.BEDROCK)
     );
-    public static final Block MITHRIL_BARS = register(          //秘银栏杆
-            "mithril_bars", PaneBlock::new, AbstractBlock.Settings.copy(ADAMANTIUM_BARS).strength(8f, 8f).nonOpaque()
-    );
-    public static final Block MITHRIL_BLOCK = register(         //秘银块
-            "mithril_block", AbstractBlock.Settings.create().strength(40f, 40f)
-    );
-    public static final Block MITHRIL_ORE = register(           //秘银矿
-            "mithril_ore", AbstractBlock.Settings.create().strength(4.0f, 4.0f)
-    );
-    public static final Block SILVER_BARS = register(           //银栏杆
-            "silver_bars", PaneBlock::new, AbstractBlock.Settings.copy(ADAMANTIUM_BARS).strength(4f, 4f).nonOpaque()
-    );
-    public static final Block SILVER_BLOCK = register(          //银块
-            "silver_block", AbstractBlock.Settings.create().strength(10f, 10f)
-    );
-    public static final Block SILVER_ORE = register(            //银矿
-            "silver_ore", AbstractBlock.Settings.create().strength(4.0f, 4.0f)
-    );
-    public static final Block COPPER_BARS = register(           //铜栏杆
-            "copper_bars", PaneBlock::new, AbstractBlock.Settings.copy(ADAMANTIUM_BARS).strength(4f, 4f).nonOpaque()
-    );
+
     public static final Block ADAMANTIUM_DOOR = register(
             "adamantium_door",
             settings -> new DoorBlock(BlockSetType.IRON, settings),
-            AbstractBlock.Settings.create().mapColor(MapColor.IRON_GRAY).strength(5.0F).nonOpaque().pistonBehavior(PistonBehavior.DESTROY),
+            AbstractBlock.Settings.create().mapColor(MapColor.IRON_GRAY).strength(5.0F).nonOpaque().requiresTool().pistonBehavior(PistonBehavior.DESTROY),
             TallBlockItem::new
     );
     public static final Block ANCIENT_METAL_DOOR = register(
             "ancient_metal_door",
             settings -> new DoorBlock(BlockSetType.IRON, settings),
-            AbstractBlock.Settings.create().mapColor(MapColor.IRON_GRAY).strength(5.0F).nonOpaque().pistonBehavior(PistonBehavior.DESTROY),
+            AbstractBlock.Settings.create().mapColor(MapColor.IRON_GRAY).strength(5.0F).nonOpaque().requiresTool().pistonBehavior(PistonBehavior.DESTROY),
             TallBlockItem::new
     );
     public static final Block MITHRIL_DOOR = register(
             "mithril_door",
             settings -> new DoorBlock(BlockSetType.IRON, settings),
-            AbstractBlock.Settings.create().mapColor(MapColor.IRON_GRAY).strength(5.0F).nonOpaque().pistonBehavior(PistonBehavior.DESTROY),
+            AbstractBlock.Settings.create().mapColor(MapColor.IRON_GRAY).strength(5.0F).nonOpaque().requiresTool().pistonBehavior(PistonBehavior.DESTROY),
             TallBlockItem::new
     );
     public static final Block SILVER_DOOR = register(
             "silver_door",
             settings -> new DoorBlock(BlockSetType.IRON, settings),
-            AbstractBlock.Settings.create().mapColor(MapColor.IRON_GRAY).strength(5.0F).nonOpaque().pistonBehavior(PistonBehavior.DESTROY),
+            AbstractBlock.Settings.create().mapColor(MapColor.IRON_GRAY).strength(5.0F).nonOpaque().requiresTool().pistonBehavior(PistonBehavior.DESTROY),
             TallBlockItem::new
     );
     public static final Block GOLDEN_DOOR = register(
             "golden_door",
             settings -> new DoorBlock(BlockSetType.IRON, settings),
-            AbstractBlock.Settings.create().mapColor(MapColor.IRON_GRAY).strength(5.0F).nonOpaque().pistonBehavior(PistonBehavior.DESTROY),
+            AbstractBlock.Settings.create().mapColor(MapColor.IRON_GRAY).strength(5.0F).nonOpaque().requiresTool().pistonBehavior(PistonBehavior.DESTROY),
             TallBlockItem::new
     );
+
     public static final Block DAMAGED_ADAMANTIUM_ANVIL = register(
             "damaged_adamantium_anvil",
             AtAnvilBlock::new,
@@ -209,6 +239,7 @@ public class AtBlocks {
             AbstractBlock.Settings.copy(Blocks.ANVIL),
             new Item.Settings().maxDamage(maxDamageAnvil(AtToolMaterials.COPPER.durability()))
     );
+
     public static final Block UNDERGROUND_PORTAL = register(
             "underground_portal",
             UndergroundPortalBlock::new,
@@ -224,6 +255,7 @@ public class AtBlocks {
             RunePortalBlock::new,
             AbstractBlock.Settings.copy(Blocks.NETHER_PORTAL)
     );
+
     public static final Block MITHRIL_NUL_RUNESTORE = register(
             "mithril_nul_runestore",
             AbstractBlock.Settings.copy(Blocks.OBSIDIAN)
@@ -356,48 +388,48 @@ public class AtBlocks {
 
     public static final Block ADAMANTIUM_CRAFTING_TABLE = register(
             "adamantium_crafting_table",
-            AdamantiumCraftingTable::new,
-            AbstractBlock.Settings.copy(Blocks.CRAFTING_TABLE).strength(0.5F)
-    );
-    public static final Block ANCIENT_METAL_CRAFTING_TABLE = register(
-            "ancient_metal_crafting_table",
-            AncientMetalCraftingTable::new,
-            AbstractBlock.Settings.copy(Blocks.CRAFTING_TABLE).strength(0.5F)
+            settings -> new GradeCraftingTableBlock(settings, AtTags.ADAMANTIUM_NOT_ALLOWED_MATERIAL),
+            AbstractBlock.Settings.copy(Blocks.CRAFTING_TABLE)
     );
     public static final Block MITHRIL_CRAFTING_TABLE = register(
             "mithril_crafting_table",
-            MithrilCraftingTable::new,
-            AbstractBlock.Settings.copy(Blocks.CRAFTING_TABLE).strength(0.5F)
+            settings -> new GradeCraftingTableBlock(settings, AtTags.MITHRIL_NOT_ALLOWED_MATERIAL, ADAMANTIUM_CRAFTING_TABLE),
+            AbstractBlock.Settings.copy(Blocks.CRAFTING_TABLE)
+    );
+    public static final Block ANCIENT_METAL_CRAFTING_TABLE = register(
+            "ancient_metal_crafting_table",
+            settings -> new GradeCraftingTableBlock(settings, AtTags.ANCIENT_METAL_NOT_ALLOWED_MATERIAL, MITHRIL_CRAFTING_TABLE),
+            AbstractBlock.Settings.copy(Blocks.CRAFTING_TABLE)
     );
     public static final Block IRON_CRAFTING_TABLE = register(
             "iron_crafting_table",
-            IronCraftingTable::new,
-            AbstractBlock.Settings.copy(Blocks.CRAFTING_TABLE).strength(0.5F)
+            settings -> new GradeCraftingTableBlock(settings, AtTags.IRON_NOT_ALLOWED_MATERIAL, ANCIENT_METAL_CRAFTING_TABLE),
+            AbstractBlock.Settings.copy(Blocks.CRAFTING_TABLE)
     );
     public static final Block COPPER_CRAFTING_TABLE = register(
             "copper_crafting_table",
-            CopperCraftingTable::new,
-            AbstractBlock.Settings.copy(Blocks.CRAFTING_TABLE).strength(0.5F)
+            settings -> new GradeCraftingTableBlock(settings, AtTags.COPPER_OR_SILVER_NOT_ALLOWED_MATERIAL, IRON_CRAFTING_TABLE),
+            AbstractBlock.Settings.copy(Blocks.CRAFTING_TABLE)
     );
     public static final Block SILVER_CRAFTING_TABLE = register(
             "silver_crafting_table",
-            SilverCraftingTable::new,
-            AbstractBlock.Settings.copy(Blocks.CRAFTING_TABLE).strength(0.5F)
+            settings -> new GradeCraftingTableBlock(settings, AtTags.COPPER_OR_SILVER_NOT_ALLOWED_MATERIAL, IRON_CRAFTING_TABLE),
+            AbstractBlock.Settings.copy(Blocks.CRAFTING_TABLE)
     );
     public static final Block GOLD_CRAFTING_TABLE = register(
             "gold_crafting_table",
-            GoldCraftingTable::new,
-            AbstractBlock.Settings.copy(Blocks.CRAFTING_TABLE).strength(0.5F)
+            settings -> new GradeCraftingTableBlock(settings, AtTags.GOLD_NOT_ALLOWED_MATERIAL),
+            AbstractBlock.Settings.copy(Blocks.CRAFTING_TABLE)
     );
     public static final Block FLINT_CRAFTING_TABLE = register(
             "flint_crafting_table",
-            FlintCraftingTable::new,
-            AbstractBlock.Settings.copy(Blocks.CRAFTING_TABLE).strength(0.5F)
+            settings -> new GradeCraftingTableBlock(settings, AtTags.GOLD_NOT_ALLOWED_MATERIAL, COPPER_CRAFTING_TABLE, SILVER_CRAFTING_TABLE),
+            AbstractBlock.Settings.copy(Blocks.CRAFTING_TABLE)
     );
     public static final Block OBSIDIAN_CRAFTING_TABLE = register(
             "obsidian_crafting_table",
-            ObsidianCraftingTable::new,
-            AbstractBlock.Settings.copy(Blocks.CRAFTING_TABLE).strength(0.5F)
+            settings -> new GradeCraftingTableBlock(settings, AtTags.GOLD_NOT_ALLOWED_MATERIAL, COPPER_CRAFTING_TABLE, SILVER_CRAFTING_TABLE),
+            AbstractBlock.Settings.copy(Blocks.CRAFTING_TABLE)
     );
 
     /**
@@ -410,46 +442,23 @@ public class AtBlocks {
         return damage * 31;
     }
 
-    /**
-     * 注册方块并使用传入的 {@code factory1} 注册对应物品。
-     */
-    private static Block register(String name, Function<AbstractBlock.Settings, Block> factory, AbstractBlock.Settings settings, BiFunction<Block, Item.Settings, Item> factory1) {
-        Block block = Blocks.register(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(At_mite.MOD_ID, name)), factory, settings);
+    public static Block register(String id, AbstractBlock.Settings settings) {
+        return register(id, Block::new, settings);
+    }
+    public static Block register(String id, AbstractBlock.Settings blockSettings, Item.Settings itemSettings) {
+        return register(id, Block::new, blockSettings, itemSettings);
+    }
+    public static Block register(String id, Function<AbstractBlock.Settings, Block> factory, AbstractBlock.Settings settings) {
+        return register(id, factory, settings, new Item.Settings());
+    }
+    public static Block register(String id, Function<AbstractBlock.Settings, Block> factory, AbstractBlock.Settings settings, BiFunction<Block, Item.Settings, Item> factory1) {
+        Block block = Blocks.register(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Mme.MOD_ID, id)), factory, settings);
         Items.register(block, factory1);
         return block;
     }
-
-    /**
-     * 注册方块并注册默认方块物品。
-     */
-    private static Block register(String name, Function<AbstractBlock.Settings, Block> factory, AbstractBlock.Settings settings) {
-        Block block = Blocks.register(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(At_mite.MOD_ID, name)), factory, settings);
-        Items.register(block);
-        return block;
-    }
-
-    /**
-     * 注册简单方块（使用默认工厂）并注册默认方块物品。
-     */
-    private static Block register(String name, AbstractBlock.Settings settings) {
-        Block block = Blocks.register(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(At_mite.MOD_ID, name)), settings);
-        Items.register(block);
-        return block;
-    }
-
-    /**
-     * 注册方块并以指定 {@link Item.Settings} 注册其方块物品。
-     *
-     * @param name 注册名
-     * @param factory 方块构造工厂
-     * @param settings 方块属性
-     * @param itemSettings1 物品属性（会启用方块前缀翻译键）
-     */
-    public static Block register(String name, Function<AbstractBlock.Settings, Block> factory, AbstractBlock.Settings settings, Item.Settings itemSettings1) {
-        Block block = Blocks.register(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(At_mite.MOD_ID, name)), factory, settings);
-        RegistryKey<Item> key = RegistryKey.of(RegistryKeys.ITEM, Identifier.of(At_mite.MOD_ID, name));
-        BiFunction<Block, Item.Settings, Item> biFunction = (BlockItem::new);
-        Items.register(key, itemSettings -> biFunction.apply(block, itemSettings), itemSettings1.useBlockPrefixedTranslationKey());
+    public static Block register(String id, Function<AbstractBlock.Settings, Block> factory, AbstractBlock.Settings settings, Item.Settings itemSettings) {
+        Block block = Blocks.register(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Mme.MOD_ID, id)), factory, settings);
+        Items.register(block, itemSettings.useBlockPrefixedTranslationKey());
         return block;
     }
 
@@ -461,9 +470,10 @@ public class AtBlocks {
             FabricBlockEntityTypeBuilder.Factory<? extends T> entityFactory,
             Block... blocks
     ) {
-        Identifier id = Identifier.of(At_mite.MOD_ID, name);
+        Identifier id = Identifier.of(Mme.MOD_ID, name);
         return Registry.register(Registries.BLOCK_ENTITY_TYPE, id, FabricBlockEntityTypeBuilder.<T>create(entityFactory, blocks).build());
     }
+
     public static final BlockEntityType<AnvilBlockEntity> ANVIL_BLOCK_ENTITY =
             register(
                     "anvil"
@@ -496,6 +506,19 @@ public class AtBlocks {
                     , RunePortalBlockEntity::new
                     , RUNE_PORTAL
             );
+    public static final BlockEntityType<GradeFurnaceBlockEntity> GRADE_FURNACE_BLOCK_ENTITY =
+            register(
+                    "grade_furnace"
+                    , GradeFurnaceBlockEntity::new
+                    , CLAY_FURNACE
+                    , HARDENED_CLAY_FURNACE
+                    , SANDSTONE_FURNACE
+                    , OBSIDIAN_FURNACE
+                    , NETHERRACK_FURNACE
+                    , Blocks.FURNACE
+                    , Blocks.SMOKER
+            );
+
     /**
      * 注册界面处理器（ScreenHandler）。
      */
@@ -503,13 +526,14 @@ public class AtBlocks {
         return Registry.register(Registries.SCREEN_HANDLER, id, new ScreenHandlerType<>(factory, FeatureFlags.VANILLA_FEATURES));
     }
 
+    public static final ScreenHandlerType<AtAnvilScreenHandler> ATANVIL = register("at_anvil_screen_handler", AtAnvilScreenHandler::new);
+    public static final ScreenHandlerType<GradeCraftingTableScreenHandler> CRAFTING_TABLE = register("cs", GradeCraftingTableScreenHandler::new);
+    public static final ScreenHandlerType<GradeFurnaceScreenHandler> GRADE_FURNACE = register("grade_furnace", GradeFurnaceScreenHandler::new);
+
     /**
      * 预留初始化入口：当前无运行期逻辑，仅用于保持与其它注册流程一致。
      */
     public static void init() {
 
     }
-    public static final ScreenHandlerType<AtAnvilScreenHandler> ATANVILSCREENHANDLER = register("at_anvil_screen_handler", AtAnvilScreenHandler::new);
-    public static final ScreenHandlerType<CraftingTableScreenHandler> CRAFTINGTABLESCREENHANDLER = register("cs", CraftingTableScreenHandler::new);
-
 }

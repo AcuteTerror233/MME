@@ -1,5 +1,6 @@
 package com.acuteterror233.mite.block;
 
+import com.acuteterror233.mite.block.entity.RunePortalBlockEntity;
 import net.minecraft.block.BlockEntityProvider;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
@@ -11,10 +12,6 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.TeleportTarget;
 import org.jetbrains.annotations.Nullable;
 
-/**
- * 符文传送门：支持方块实体保存目标坐标，传送时优先传送到绑定位置，
- * 否则回退到维度默认出生点。
- */
 public class RunePortalBlock extends AbstractPortalBlock implements BlockEntityProvider {
 
     public RunePortalBlock(Settings settings) {

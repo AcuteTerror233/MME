@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "mme:block/iron_crafting_table"
+    }
+  }
+}

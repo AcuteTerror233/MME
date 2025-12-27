@@ -1,0 +1,14 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "mme:ancient_metal_chainmail_layer_1"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "mme:ancient_metal_chainmail_layer_2"
+      }
+    ]
+  }
+}

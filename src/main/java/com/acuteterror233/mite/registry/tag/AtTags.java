@@ -1,6 +1,6 @@
 package com.acuteterror233.mite.registry.tag;
 
-import com.acuteterror233.mite.At_mite;
+import com.acuteterror233.mite.Mme;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.registry.RegistryKeys;
@@ -13,10 +13,14 @@ public class AtTags {
     public static final TagKey<Block> INCORRECT_FOR_ADAMANTIUM_TOOL = ofBlock("incorrect_for_adamantium_tool");
     public static final TagKey<Block> INCORRECT_FOR_MITHRIL_TOOL = ofBlock("incorrect_for_mithril_tool");
     public static final TagKey<Block> INCORRECT_FOR_ANCIENT_METAL_TOOL = ofBlock("incorrect_for_ancient_metal_tool");
-    public static final TagKey<Block> INCORRECT_FOR_COPPER_TOOL = ofBlock("incorrect_for_copper_tool");
     public static final TagKey<Block> INCORRECT_FOR_RUSTED_IRON_TOOL = ofBlock("incorrect_for_rusted_iron_tool");
-    public static final TagKey<Block> INCORRECT_FOR_SILVER_TOOL = ofBlock("incorrect_for_silver_tool");
-    public static final TagKey<Block> INCORRECT_FOR_FLINT_TOOL = ofBlock("incorrect_for_flint_tool");
+    public static final TagKey<Block> INCORRECT_FOR_COPPER_OR_SILVER_TOOL = ofBlock("incorrect_for_copper_or_silver_tool");
+    public static final TagKey<Block> INCORRECT_FOR_FLINT_OR_OBSIDIAN_TOOL = ofBlock("incorrect_for_flint_or_obsidian_tool");
+
+    public static final TagKey<Block> NEEDS_ADAMANTIUM_TOOL = ofBlock("needs_adamantium_tool");
+    public static final TagKey<Block> NEEDS_MITHRIL_TOOL = ofBlock("needs_mithril_tool");
+    public static final TagKey<Block> NEEDS_ANCIENT_METAL_TOOL = ofBlock("needs_ancient_metal_tool");
+    public static final TagKey<Block> NEEDS_SILVER_OR_COPPER_TOOL = ofBlock("needs_silver_or_copper_tool");
 
     public static final TagKey<Block> GLASS = ofBlock("glass");
     public static final TagKey<Block> GLASS_PANE = ofBlock("glass_pane");
@@ -38,15 +42,29 @@ public class AtTags {
     public static final TagKey<Block> ADAMANTIUM_RUNESTORE = ofBlock("adamantium_runestore");
     public static final TagKey<Block> RUNESTORE = ofBlock("runestore");
 
+    public static final TagKey<Block> CRAFTING_TABLE = ofBlock("crafting_table");
+
     public static final TagKey<Item> NUGGET = ofItem("nugget");
     public static final TagKey<Item> SHARD = ofItem("shard");
     public static final TagKey<Item> INGOT = ofItem("ingot");
     public static final TagKey<Item> CHAINS = ofItem("chains");
     public static final TagKey<Item> COINS = ofItem("coins");
 
+    public static final TagKey<Item> BUCKET = ofItem("bucket");
     public static final TagKey<Item> WATER_BUCKET = ofItem("water_bucket");
     public static final TagKey<Item> MILK_BUCKET = ofItem("milk_bucket");
+    public static final TagKey<Item> LAVA_BUCKET = ofItem("lava_bucket");
+
     public static final TagKey<Item> FISHING_RODS = ofItem("fishing_rods");
+
+    public static final TagKey<Item> BATTLE_AXE = ofItem("battle_axe");
+    public static final TagKey<Item> HATCHET = ofItem("hatchet");
+    public static final TagKey<Item> DAGGER = ofItem("dagger");
+    public static final TagKey<Item> WAR_HAMMER = ofItem("war_hammer");
+    public static final TagKey<Item> MATTOCK = ofItem("mattock");
+    public static final TagKey<Item> SCYTHE = ofItem("scythe");
+    public static final TagKey<Item> SHEARS = ofItem("shears");
+
 
     //用于砧判断是否不可维修
     public static final TagKey<Item> ADAMANTIUM_NONREPAIRABLE = ofItem("adamantium_nonrepairable");
@@ -74,21 +92,23 @@ public class AtTags {
     public static final TagKey<Item> SILVER_TOOL_MATERIALS = ofItem("silver_tool_materials");
     public static final TagKey<Item> COPPER_TOOL_MATERIALS = ofItem("copper_tool_materials");
     public static final TagKey<Item> FLINT_TOOL_MATERIALS = ofItem("flint_tool_materials");
+    public static final TagKey<Item> OBSIDIAN_TOOL_MATERIALS = ofItem("obsidian_tool_materials");
 
     public static final TagKey<Item> ADAMANTIUM_NOT_ALLOWED_MATERIAL = ofItem("adamantium_not_allowed_material");
     public static final TagKey<Item> MITHRIL_NOT_ALLOWED_MATERIAL = ofItem("mithril_not_allowed_material");
     public static final TagKey<Item> ANCIENT_METAL_NOT_ALLOWED_MATERIAL = ofItem("ancient_metal_not_allowed_material");
     public static final TagKey<Item> IRON_NOT_ALLOWED_MATERIAL = ofItem("iron_not_allowed_material");
-    public static final TagKey<Item> SILVER_NOT_ALLOWED_MATERIAL = ofItem("silver_not_allowed_material");
-    public static final TagKey<Item> COPPER_NOT_ALLOWED_MATERIAL = ofItem("copper_not_allowed_material");
+    public static final TagKey<Item> COPPER_OR_SILVER_NOT_ALLOWED_MATERIAL = ofItem("copper_or_silver_not_allowed_material");
     public static final TagKey<Item> GOLD_NOT_ALLOWED_MATERIAL = ofItem("gold_not_allowed_material");
 
+    public static final TagKey<Item> STRING = ofItem("string");
+
     private static TagKey<Block> ofBlock(String id) {
-        return TagKey.of(RegistryKeys.BLOCK, Identifier.of(At_mite.MOD_ID, id));
+        return TagKey.of(RegistryKeys.BLOCK, Identifier.of(Mme.MOD_ID, id));
     }
 
     private static TagKey<Item> ofItem(String id) {
-        return TagKey.of(RegistryKeys.ITEM, Identifier.of(At_mite.MOD_ID, id));
+        return TagKey.of(RegistryKeys.ITEM, Identifier.of(Mme.MOD_ID, id));
     }
 
 }

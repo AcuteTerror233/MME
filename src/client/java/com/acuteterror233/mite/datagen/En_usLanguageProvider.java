@@ -16,8 +16,9 @@ public class En_usLanguageProvider extends FabricLanguageProvider {
 
     @Override
     public void generateTranslations(RegistryWrapper.WrapperLookup registryLookup, TranslationBuilder translationBuilder) {
-        translationBuilder.add("at_mite.craftingTable.noAllowedCrafting","\u00A7cThis item cannot be crafted at this workbench\u00A7r");
-        translationBuilder.add("itemGroup.at_mite.item_group","Minecraft is too easy!");
+        translationBuilder.add("itemGroup.mme.item_group","Make Minecraft easier!");
+        translationBuilder.add("mme.craftingTable.noAllowedCrafting","§cThis item cannot be crafted§r");
+        translationBuilder.add("mme.gradefurnac.fuelnotavailable", "§cThis furnace cannot burn this fuel§r");
         translationBuilder.add(AtItems.ADAMANTIUM_HELMET,"Adamantium Helmet");
         translationBuilder.add(AtItems.ADAMANTIUM_CHESTPLATE,"Adamantium Chestplate");
         translationBuilder.add(AtItems.ADAMANTIUM_LEGGINGS,"Adamantium Leggings");
@@ -356,6 +357,7 @@ public class En_usLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(AtItems.ANCIENT_METAL_NUGGET, "Ancient Metal Nugget");
         translationBuilder.add(AtItems.MITHRIL_NUGGET, "Mithril Nugget");
         translationBuilder.add(AtItems.SILVER_NUGGET, "Silver Nugget");
+        translationBuilder.add(AtItems.COPPER_NUGGET, "Copper Nugget");
 
         translationBuilder.add(AtItems.DIAMOND_SHARD, "Diamond Shard");
         translationBuilder.add(AtItems.EMERALD_SHARD, "Emerald Shard");
@@ -364,24 +366,24 @@ public class En_usLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(AtItems.OBSIDIAN_SHARD, "Obsidian Shard");
         translationBuilder.add(AtItems.QUARTZ_SHARD, "Quartz Shard");
 
-        translationBuilder.add(AtBlocks.ADAMANTIUM_ANVIL,"adamantium anvil");
-        translationBuilder.add(AtBlocks.CHIPPED_ADAMANTIUM_ANVIL,"chipped adamantium anvil");
-        translationBuilder.add(AtBlocks.DAMAGED_ADAMANTIUM_ANVIL,"damaged adamantium anvil");
-        translationBuilder.add(AtBlocks.MITHRIL_ANVIL,"mithril anvil");
-        translationBuilder.add(AtBlocks.CHIPPED_MITHRIL_ANVIL,"chipped mithril anvil");
-        translationBuilder.add(AtBlocks.DAMAGED_MITHRIL_ANVIL,"damaged mithril anvil");
-        translationBuilder.add(AtBlocks.ANCIENT_METAL_ANVIL,"ancient metal anvil");
-        translationBuilder.add(AtBlocks.CHIPPED_ANCIENT_METAL_ANVIL,"chipped ancient metal anvil");
-        translationBuilder.add(AtBlocks.DAMAGED_ANCIENT_METAL_ANVIL,"damaged ancient metal anvil");
-        translationBuilder.add(AtBlocks.SILVER_ANVIL,"silver anvil");
-        translationBuilder.add(AtBlocks.CHIPPED_SILVER_ANVIL,"chipped silver anvil");
-        translationBuilder.add(AtBlocks.DAMAGED_SILVER_ANVIL,"damaged silver anvil");
-        translationBuilder.add(AtBlocks.GOLDEN_ANVIL,"gold anvil");
-        translationBuilder.add(AtBlocks.CHIPPED_GOLDEN_ANVIL,"chipped gold anvil");
-        translationBuilder.add(AtBlocks.DAMAGED_GOLDEN_ANVIL,"damaged gold anvil");
-        translationBuilder.add(AtBlocks.COPPER_ANVIL,"copper anvil");
-        translationBuilder.add(AtBlocks.CHIPPED_COPPER_ANVIL,"chipped copper anvil");
-        translationBuilder.add(AtBlocks.DAMAGED_COPPER_ANVIL,"damaged copper anvil");
+        translationBuilder.add(AtBlocks.ADAMANTIUM_ANVIL,"Adamantium Anvil");
+        translationBuilder.add(AtBlocks.CHIPPED_ADAMANTIUM_ANVIL,"Chipped Adamantium Anvil");
+        translationBuilder.add(AtBlocks.DAMAGED_ADAMANTIUM_ANVIL,"Damaged Adamantium Anvil");
+        translationBuilder.add(AtBlocks.MITHRIL_ANVIL,"Mithril Anvil");
+        translationBuilder.add(AtBlocks.CHIPPED_MITHRIL_ANVIL,"Chipped Mithril Anvil");
+        translationBuilder.add(AtBlocks.DAMAGED_MITHRIL_ANVIL,"Damaged Mithril Anvil");
+        translationBuilder.add(AtBlocks.ANCIENT_METAL_ANVIL,"Ancient Metal Anvil");
+        translationBuilder.add(AtBlocks.CHIPPED_ANCIENT_METAL_ANVIL,"Chipped Ancient Metal Anvil");
+        translationBuilder.add(AtBlocks.DAMAGED_ANCIENT_METAL_ANVIL,"Damaged Ancient Metal Anvil");
+        translationBuilder.add(AtBlocks.SILVER_ANVIL,"Silver Anvil");
+        translationBuilder.add(AtBlocks.CHIPPED_SILVER_ANVIL,"chipped Silver Anvil");
+        translationBuilder.add(AtBlocks.DAMAGED_SILVER_ANVIL,"damaged Silver Anvil");
+        translationBuilder.add(AtBlocks.GOLDEN_ANVIL,"Gold Anvil");
+        translationBuilder.add(AtBlocks.CHIPPED_GOLDEN_ANVIL,"Chipped Gold Anvil");
+        translationBuilder.add(AtBlocks.DAMAGED_GOLDEN_ANVIL,"Damaged Gold Anvil");
+        translationBuilder.add(AtBlocks.COPPER_ANVIL,"Copper Anvil");
+        translationBuilder.add(AtBlocks.CHIPPED_COPPER_ANVIL,"Chipped Copper Anvil");
+        translationBuilder.add(AtBlocks.DAMAGED_COPPER_ANVIL,"Damaged Copper Anvil");
         
         translationBuilder.add(AtBlocks.MITHRIL_NUL_RUNESTORE, "Mithril Nul Runestone");
         translationBuilder.add(AtBlocks.MITHRIL_QUAS_RUNESTORE, "Mithril Quas Runestone");
@@ -419,12 +421,20 @@ public class En_usLanguageProvider extends FabricLanguageProvider {
 
         translationBuilder.add(AtBlocks.ADAMANTIUM_CRAFTING_TABLE, "Adamantium Crafting Table");
         translationBuilder.add(AtBlocks.ANCIENT_METAL_CRAFTING_TABLE, "Ancient Metal Crafting Table");
-        translationBuilder.add(AtBlocks.COPPER_CRAFTING_TABLE, "copper crafting table");
-        translationBuilder.add(AtBlocks.GOLD_CRAFTING_TABLE, "gold crafting table");
-        translationBuilder.add(AtBlocks.IRON_CRAFTING_TABLE, "iron crafting table");
-        translationBuilder.add(AtBlocks.MITHRIL_CRAFTING_TABLE, "mithril crafting table");
-        translationBuilder.add(AtBlocks.SILVER_CRAFTING_TABLE, "silver crafting table");
-        translationBuilder.add(AtBlocks.FLINT_CRAFTING_TABLE, "flint crafting table");
-        translationBuilder.add(AtBlocks.OBSIDIAN_CRAFTING_TABLE, "obsidian crafting table");
+        translationBuilder.add(AtBlocks.COPPER_CRAFTING_TABLE, "Copper Crafting Table");
+        translationBuilder.add(AtBlocks.GOLD_CRAFTING_TABLE, "Gold Crafting Table");
+        translationBuilder.add(AtBlocks.IRON_CRAFTING_TABLE, "Iron Crafting Table");
+        translationBuilder.add(AtBlocks.MITHRIL_CRAFTING_TABLE, "Mithril Crafting Table");
+        translationBuilder.add(AtBlocks.SILVER_CRAFTING_TABLE, "Silver Crafting Table");
+        translationBuilder.add(AtBlocks.FLINT_CRAFTING_TABLE, "Flint Crafting Table");
+        translationBuilder.add(AtBlocks.OBSIDIAN_CRAFTING_TABLE, "Obsidian Crafting Table");
+
+        translationBuilder.add(AtBlocks.CLAY_FURNACE, "Clay Furnace");
+        translationBuilder.add(AtBlocks.HARDENED_CLAY_FURNACE, "Hardened Clay Furnace");
+        translationBuilder.add(AtBlocks.NETHERRACK_FURNACE, "Netherrack Furnace");
+        translationBuilder.add(AtBlocks.OBSIDIAN_FURNACE, "Obsidian Furnace");
+        translationBuilder.add(AtBlocks.SANDSTONE_FURNACE, "Sandstone Furnace");
+
+        translationBuilder.add(AtItems.SINEW, "Leather Thread");
     }
 }

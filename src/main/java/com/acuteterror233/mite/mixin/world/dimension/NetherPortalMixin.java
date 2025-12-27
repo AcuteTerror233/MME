@@ -1,7 +1,8 @@
 package com.acuteterror233.mite.mixin.world.dimension;
 
 import com.acuteterror233.mite.atinterface.GeneralPortalExtension;
-import com.acuteterror233.mite.block.RunePortalBlockEntity;
+import com.acuteterror233.mite.block.AtBlocks;
+import com.acuteterror233.mite.block.entity.RunePortalBlockEntity;
 import com.acuteterror233.mite.registry.tag.AtTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -112,8 +113,8 @@ public class NetherPortalMixin implements GeneralPortalExtension {
     /*
       创建符文传送门并为每个方块实体写入目标坐标。
      */
-    public void createRunePortal(WorldAccess world, Block portal, BlockPos targetLocation) {
-        BlockState state = portal.getDefaultState().with(Properties.HORIZONTAL_AXIS, this.axis);
+    public void createRunePortal(WorldAccess world, BlockPos targetLocation) {
+        BlockState state = AtBlocks.RUNE_PORTAL.getDefaultState().with(Properties.HORIZONTAL_AXIS, this.axis);
         BlockPos.iterate(this.lowerCorner, this.lowerCorner.offset(Direction.UP, this.height - 1).offset(this.negativeDir, this.width - 1))
                 .forEach(pos -> {
                     world.setBlockState(pos, state, Block.NOTIFY_LISTENERS | Block.FORCE_STATE);

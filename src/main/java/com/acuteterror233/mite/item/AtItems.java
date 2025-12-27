@@ -1,7 +1,6 @@
 package com.acuteterror233.mite.item;
 
-import com.acuteterror233.mite.At_mite;
-import com.acuteterror233.mite.atinterface.ItemSettingsExtension;
+import com.acuteterror233.mite.Mme;
 import com.acuteterror233.mite.block.AtBlocks;
 import com.acuteterror233.mite.component.AtDataComponentTypes;
 import com.acuteterror233.mite.item.armor.AtArmorMaterials;
@@ -425,10 +424,10 @@ public class AtItems {
     public static final Item SILVER_SCYTHE = register("silver_scythe", getScytheSettings(AtToolMaterials.SILVER));
     public static final Item SILVER_SHEARS = register("silver_shears", getShearsSettings(AtToolMaterials.SILVER));
 
-    public static final Item OBSIDIAN_AXE = registerAxeItem("obsidian_axe", getAxeSettings(AtToolMaterials.FLINT));
-    public static final Item OBSIDIAN_HATCHET = registerAxeItem("obsidian_hatchet", getHandAxeSettings(AtToolMaterials.FLINT));
-    public static final Item OBSIDIAN_KNIFE = register("obsidian_knife", getDaggerSettings(AtToolMaterials.FLINT));
-    public static final Item OBSIDIAN_SHOVEL = register("obsidian_shovel", getShovelSettings(AtToolMaterials.FLINT));
+    public static final Item OBSIDIAN_AXE = registerAxeItem("obsidian_axe", getAxeSettings(AtToolMaterials.OBSIDIAN));
+    public static final Item OBSIDIAN_HATCHET = registerAxeItem("obsidian_hatchet", getHandAxeSettings(AtToolMaterials.OBSIDIAN));
+    public static final Item OBSIDIAN_KNIFE = register("obsidian_knife", getDaggerSettings(AtToolMaterials.OBSIDIAN));
+    public static final Item OBSIDIAN_SHOVEL = register("obsidian_shovel", getShovelSettings(AtToolMaterials.OBSIDIAN));
 
     public static final Item FLINT_AXE = registerAxeItem("flint_axe", getAxeSettings(AtToolMaterials.FLINT));
     public static final Item FLINT_HATCHET = registerAxeItem("flint_hatchet", getHandAxeSettings(AtToolMaterials.FLINT));
@@ -818,7 +817,7 @@ public class AtItems {
     public static final Item ADAMANTIUM_FISHING_ROD = register("adamantium_fishing_rod", FishingRodItem::new, new Item.Settings().maxDamage(128).enchantable(1));
     public static final Item ANCIENT_METAL_FISHING_ROD = register("ancient_metal_fishing_rod", FishingRodItem::new, new Item.Settings().maxDamage(96).enchantable(1));
     public static final Item COPPER_FISHING_ROD = register("copper_fishing_rod", FishingRodItem::new, new Item.Settings().maxDamage(8).enchantable(1));
-    public static final Item FLINT_FISHING_ROD = register("flint_fishing_rod", FishingRodItem::new, new Item.Settings().maxDamage(4).enchantable(1));
+    public static final Item FLINT_FISHING_ROD = register("flint_fishing_rod", FishingRodItem::new, new Item.Settings().maxDamage(32).enchantable(1));
     public static final Item GOLDEN_FISHING_ROD = register("golden_fishing_rod", FishingRodItem::new, new Item.Settings().maxDamage(4).enchantable(1));
     public static final Item IRON_FISHING_ROD = register("iron_fishing_rod", FishingRodItem::new, new Item.Settings().maxDamage(32).enchantable(1));
     public static final Item MITHRIL_FISHING_ROD = register("mithril_fishing_rod", FishingRodItem::new, new Item.Settings().maxDamage(64).enchantable(1));
@@ -826,29 +825,31 @@ public class AtItems {
     public static final Item SILVER_FISHING_ROD = register("silver_fishing_rod", FishingRodItem::new, new Item.Settings().maxDamage(8).enchantable(1));
 
     public static final Item RAW_ADAMANTIUM = register("raw_adamantium",
-            new Item.Settings().maxCount(16));
+            new Item.Settings().maxCount(16).component(AtDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
     public static final Item RAW_MITHRIL = register("raw_mithril",
-            new Item.Settings().maxCount(16));
+            new Item.Settings().maxCount(16).component(AtDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 3));
     public static final Item RAW_SILVER = register("raw_silver",
-            new Item.Settings().maxCount(16));
+            new Item.Settings().maxCount(16).component(AtDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
 
     public static final Item ADAMANTIUM_INGOT = register("adamantium_ingot",
-            new Item.Settings().component(AtDataComponentTypes.CRAFTINGTIME, 150).maxCount(16));
-    public static final Item ANCIENT_METAL_INGOT = register("ancient_metal_ingot",
-            new Item.Settings().component(AtDataComponentTypes.CRAFTINGTIME, 90).maxCount(16));
+            new Item.Settings().component(AtDataComponentTypes.CRAFTING_TIME, 150).maxCount(16));
     public static final Item MITHRIL_INGOT = register("mithril_ingot",
-            new Item.Settings().component(AtDataComponentTypes.CRAFTINGTIME, 60).maxCount(16));
+            new Item.Settings().component(AtDataComponentTypes.CRAFTING_TIME, 90).maxCount(16));
+    public static final Item ANCIENT_METAL_INGOT = register("ancient_metal_ingot",
+            new Item.Settings().component(AtDataComponentTypes.CRAFTING_TIME, 60).maxCount(16));
     public static final Item SILVER_INGOT = register("silver_ingot",
-            new Item.Settings().component(AtDataComponentTypes.CRAFTINGTIME, 5).maxCount(16));
+            new Item.Settings().component(AtDataComponentTypes.CRAFTING_TIME, 10).maxCount(16));
 
     public static final Item ADAMANTIUM_NUGGET = register("adamantium_nugget",
-            new Item.Settings().maxCount(64));
+            new Item.Settings().maxCount(32));
     public static final Item ANCIENT_METAL_NUGGET = register("ancient_metal_nugget",
-            new Item.Settings().maxCount(64));
+            new Item.Settings().maxCount(32));
     public static final Item MITHRIL_NUGGET = register("mithril_nugget",
-            new Item.Settings().maxCount(64));
+            new Item.Settings().maxCount(32));
     public static final Item SILVER_NUGGET = register("silver_nugget",
-            new Item.Settings().maxCount(64));
+            new Item.Settings().maxCount(32));
+    public static final Item COPPER_NUGGET = register("copper_nugget",
+            new Item.Settings().maxCount(32));
 
     public static final Item DIAMOND_SHARD = register("diamond_shard",
             new Item.Settings().maxCount(16));
@@ -862,10 +863,20 @@ public class AtItems {
             new Item.Settings().maxCount(16));
     public static final Item QUARTZ_SHARD = register("quartz_shard",
             new Item.Settings().maxCount(16));
+
+    public static final Item SINEW = register("sinew",
+            new Item.Settings().maxCount(16));
     public static final ItemGroup AT_MINT_GROUP = FabricItemGroup.builder()
             .icon(() -> new ItemStack(ADAMANTIUM_HELMET))
-            .displayName(Text.translatable("itemGroup.at_mite.item_group"))
+            .displayName(Text.translatable("itemGroup.mme.item_group"))
             .entries((context, entries) -> {
+                entries.add(SINEW);
+                entries.add(AtBlocks.CLAY_FURNACE);
+                entries.add(AtBlocks.HARDENED_CLAY_FURNACE);
+                entries.add(AtBlocks.NETHERRACK_FURNACE);
+                entries.add(AtBlocks.OBSIDIAN_FURNACE);
+                entries.add(AtBlocks.SANDSTONE_FURNACE);
+
                 entries.add(AtBlocks.ADAMANTIUM_CRAFTING_TABLE);
                 entries.add(AtBlocks.MITHRIL_CRAFTING_TABLE);
                 entries.add(AtBlocks.ANCIENT_METAL_CRAFTING_TABLE);
@@ -984,6 +995,7 @@ public class AtItems {
                 entries.add(ANCIENT_METAL_NUGGET);
                 entries.add(MITHRIL_NUGGET);
                 entries.add(SILVER_NUGGET);
+                entries.add(COPPER_NUGGET);
 
                 entries.add(ADAMANTIUM_FISHING_ROD);
                 entries.add(ANCIENT_METAL_FISHING_ROD);
@@ -1313,6 +1325,10 @@ public class AtItems {
                     .attributeModifiers(material.createAttributeModifiers(type))
                     .enchantable(material.enchantmentValue())
                     .component(
+                            AtDataComponentTypes.ORIGINAL_ARMOR,
+                            material.defense().getOrDefault(type, 0F)
+                    )
+                    .component(
                             DataComponentTypes.EQUIPPABLE,
                             EquippableComponent.builder(type.getEquipmentSlot()).equipSound(material.equipSound()).model(material.assetId()).build()
                     )
@@ -1427,11 +1443,11 @@ public class AtItems {
         return AttributeModifiersComponent.builder()
                 .add(
                         EntityAttributes.BLOCK_INTERACTION_RANGE,
-                        new EntityAttributeModifier(At_mite.BASE_BLOCK_INTERACTION_RANGE, blockInteractionRange, EntityAttributeModifier.Operation.ADD_VALUE),
+                        new EntityAttributeModifier(Mme.BASE_BLOCK_INTERACTION_RANGE, blockInteractionRange, EntityAttributeModifier.Operation.ADD_VALUE),
                         AttributeModifierSlot.MAINHAND)
                 .add(
                         EntityAttributes.ENTITY_INTERACTION_RANGE,
-                        new EntityAttributeModifier(At_mite.BASE_ENTITY_INTERACTION_RANGE, entityInteractionRange, EntityAttributeModifier.Operation.ADD_VALUE),
+                        new EntityAttributeModifier(Mme.BASE_ENTITY_INTERACTION_RANGE, entityInteractionRange, EntityAttributeModifier.Operation.ADD_VALUE),
                         AttributeModifierSlot.MAINHAND)
                 .add(
                         EntityAttributes.ATTACK_DAMAGE,
@@ -1454,7 +1470,7 @@ public class AtItems {
      * @return 注册完成的物品实例
      */
     private static Item register(String path) {
-        final RegistryKey<Item> registryKey = RegistryKey.of(RegistryKeys.ITEM, Identifier.of(At_mite.MOD_ID, path));
+        final RegistryKey<Item> registryKey = RegistryKey.of(RegistryKeys.ITEM, Identifier.of(Mme.MOD_ID, path));
         return Items.register(registryKey, Item::new, new Item.Settings());
     }
 
@@ -1462,7 +1478,7 @@ public class AtItems {
      * 使用默认 {@link Item} 工厂并传入自定义 {@link Item.Settings} 注册物品。
      */
     private static Item register(String path, Item.Settings settings) {
-        final RegistryKey<Item> registryKey = RegistryKey.of(RegistryKeys.ITEM, Identifier.of(At_mite.MOD_ID, path));
+        final RegistryKey<Item> registryKey = RegistryKey.of(RegistryKeys.ITEM, Identifier.of(Mme.MOD_ID, path));
         return Items.register(registryKey, Item::new, settings);
     }
 
@@ -1470,7 +1486,7 @@ public class AtItems {
      * 使用自定义工厂与自定义 {@link Item.Settings} 注册物品。
      */
     private static Item register(String path, Function<Item.Settings, Item> factory, Item.Settings settings) {
-        final RegistryKey<Item> registryKey = RegistryKey.of(RegistryKeys.ITEM, Identifier.of(At_mite.MOD_ID, path));
+        final RegistryKey<Item> registryKey = RegistryKey.of(RegistryKeys.ITEM, Identifier.of(Mme.MOD_ID, path));
         return Items.register(registryKey, factory, settings);
     }
     private static Item registerAxeItem(String path, Item.Settings settings) {
@@ -1488,13 +1504,10 @@ public class AtItems {
     public static Item register(Block block, Item.Settings settings) {
         return Items.register(block, settings);
     }
-    public static ItemSettingsExtension getItemSettings() {
-        return (ItemSettingsExtension) new Item.Settings();
-    }
     /**
      * 初始化入口：将模组物品组 {@link #AT_MINT_GROUP} 注册到游戏。
      */
     public static void init() {
-        Registry.register(Registries.ITEM_GROUP, Identifier.of(At_mite.MOD_ID, "item_group"), AT_MINT_GROUP);
+        Registry.register(Registries.ITEM_GROUP, Identifier.of(Mme.MOD_ID, "item_group"), AT_MINT_GROUP);
     }
 }

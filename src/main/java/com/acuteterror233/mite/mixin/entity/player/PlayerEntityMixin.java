@@ -51,6 +51,6 @@ public abstract class PlayerEntityMixin extends LivingEntity {
     @Unique
     public void setMaxHealth(int max) {
         Objects.requireNonNull(getAttributes().getCustomInstance(EntityAttributes.MAX_HEALTH)).setBaseValue(max);
-        ((HungerManagerExtension) hungerManager).setMaxFoodLevel(max);
+        ((HungerManagerExtension) this.hungerManager).setMaxFoodLevel(max);
     }
 }

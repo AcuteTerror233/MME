@@ -31,7 +31,7 @@ loom {
 	splitEnvironmentSourceSets()
 
 	mods {
-		"at_mite" {
+		"mme" {
 			sourceSet sourceSets.main
 			sourceSet sourceSets.client
 		}

@@ -1,0 +1,205 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:alternatives",
+          "children": [
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "condition": "minecraft:match_tool",
+                  "predicate": {
+                    "predicates": {
+                      "minecraft:enchantments": [
+                        {
+                          "enchantments": "minecraft:silk_touch",
+                          "levels": {
+                            "min": 1
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              ],
+              "name": "minecraft:gravel"
+            },
+            {
+              "type": "minecraft:alternatives",
+              "children": [
+                {
+                  "type": "minecraft:item",
+                  "conditions": [
+                    {
+                      "chances": [
+                        0.000038103947568968,
+                        0.000076207895137936,
+                        0.000152415790275873,
+                        0.000304831580551745
+                      ],
+                      "condition": "minecraft:table_bonus",
+                      "enchantment": "minecraft:fortune"
+                    }
+                  ],
+                  "name": "mme:adamantium_nugget"
+                },
+
+                {
+                  "type": "minecraft:item",
+                  "conditions": [
+                    {
+                      "chances": [
+                        0.000076207895137936,
+                        0.000152415790275873,
+                        0.000304831580551745,
+                        0.00060966316110349
+                      ],
+                      "condition": "minecraft:table_bonus",
+                      "enchantment": "minecraft:fortune"
+                    }
+                  ],
+                  "name": "mme:mithril_nugget"
+                },
+
+                {
+                  "type": "minecraft:item",
+                  "conditions": [
+                    {
+                      "chances": [
+                        0.0020576131687243,
+                        0.0041152263374486,
+                        0.0082304526748971,
+                        0.0164609053497942
+                      ],
+                      "condition": "minecraft:table_bonus",
+                      "enchantment": "minecraft:fortune"
+                    }
+                  ],
+                  "name": "mme:obsidian_shard"
+                },
+
+                {
+                  "type": "minecraft:item",
+                  "conditions": [
+                    {
+                      "chances": [
+                        0.000228623685413809,
+                        0.000457247370827618,
+                        0.000914494741655235,
+                        0.001828989483310471
+                      ],
+                      "condition": "minecraft:table_bonus",
+                      "enchantment": "minecraft:fortune"
+                    }
+                  ],
+                  "name": "mme:diamond_shard"
+                },
+
+                {
+                  "type": "minecraft:item",
+                  "conditions": [
+                    {
+                      "chances": [
+                        0.000685871056241427,
+                        0.001371742112482853,
+                        0.002743484224965706,
+                        0.005486968449931413
+                      ],
+                      "condition": "minecraft:table_bonus",
+                      "enchantment": "minecraft:fortune"
+                    }
+                  ],
+                  "name": "mme:emerald_shard"
+                },
+
+                {
+                  "type": "minecraft:item",
+                  "conditions": [
+                    {
+                      "chances": [
+                        0.0185185185185185,
+                        0.037037037037037,
+                        0.0740740740740741,
+                        0.1481481481481481
+                      ],
+                      "condition": "minecraft:table_bonus",
+                      "enchantment": "minecraft:fortune"
+                    }
+                  ],
+                  "name": "mme:silver_nugget"
+                },
+
+                {
+                  "type": "minecraft:item",
+                  "conditions": [
+                    {
+                      "chances": [
+                        0.0555555555555556,
+                        0.1111111111111111,
+                        0.2222222222222222,
+                        0.4444444444444444
+                      ],
+                      "condition": "minecraft:table_bonus",
+                      "enchantment": "minecraft:fortune"
+                    }
+                  ],
+                  "name": "mme:copper_nugget"
+                },
+
+                {
+                  "type": "minecraft:item",
+                  "conditions": [
+                    {
+                      "chances": [
+                        0.0277777777777778,
+                        0.0555555555555556,
+                        0.1111111111111111,
+                        0.2222222222222222
+                      ],
+                      "condition": "minecraft:table_bonus",
+                      "enchantment": "minecraft:fortune"
+                    }
+                  ],
+                  "name": "minecraft:flint"
+                },
+
+
+                {
+                  "type": "minecraft:item",
+                  "conditions": [
+                    {
+                      "chances": [
+                        0.15625,
+                        0.3125,
+                        0.625,
+                        1
+                      ],
+                      "condition": "minecraft:table_bonus",
+                      "enchantment": "minecraft:fortune"
+                    }
+                  ],
+                  "name": "mme:flint_shard"
+                },
+                {
+                  "type": "minecraft:item",
+                  "name": "minecraft:gravel"
+                }
+              ],
+              "conditions": [
+                {
+                  "condition": "minecraft:survives_explosion"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "minecraft:blocks/gravel"
+}

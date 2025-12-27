@@ -1,6 +1,6 @@
 package com.acuteterror233.mite.world.gen.feature;
 
-import com.acuteterror233.mite.At_mite;
+import com.acuteterror233.mite.Mme;
 import net.minecraft.registry.Registerable;
 import net.minecraft.registry.RegistryEntryLookup;
 import net.minecraft.registry.RegistryKey;
@@ -44,7 +44,7 @@ public class UndergroundPlacedFeatures {
      * 生成命名空间内的 PlacedFeature 注册键。
      */
     public static RegistryKey<PlacedFeature> of(String name) {
-        return RegistryKey.of(RegistryKeys.PLACED_FEATURE, Identifier.of(At_mite.MOD_ID, name));
+        return RegistryKey.of(RegistryKeys.PLACED_FEATURE, Identifier.of(Mme.MOD_ID, name));
     }
 
 }

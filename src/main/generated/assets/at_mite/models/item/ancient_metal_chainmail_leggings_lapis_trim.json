@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "at_mite:item/ancient_metal_chainmail_leggings",
-    "layer1": "minecraft:trims/items/leggings_trim_lapis"
-  }
-}

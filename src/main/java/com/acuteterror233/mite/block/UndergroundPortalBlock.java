@@ -1,6 +1,6 @@
 package com.acuteterror233.mite.block;
 
-import com.acuteterror233.mite.At_mite;
+import com.acuteterror233.mite.Mme;
 import com.acuteterror233.mite.world.gen.dimension.AtDimensionTypeRegistrar;
 import com.acuteterror233.mite.world.poi.PortalHelper;
 import com.mojang.logging.LogUtils;
@@ -45,6 +45,54 @@ public class UndergroundPortalBlock extends AbstractPortalBlock {
         super(settings);
     }
 
+    @Nullable
+    @Override
+    /**
+     * 入口回调：根据当前所处维度选择目标维度，并寻找/创建目标传送门。
+     */
+    public TeleportTarget createTeleportTarget(ServerWorld world, Entity entity, BlockPos pos) {
+        RegistryKey<World> registryKey = world.getRegistryKey() == AtDimensionTypeRegistrar.UNDERGROUND_LEVEL_KEY ? World.OVERWORLD : AtDimensionTypeRegistrar.UNDERGROUND_LEVEL_KEY;
+        ServerWorld serverWorld = world.getServer().getWorld(registryKey);
+        if (serverWorld == null) {
+            return null;
+        } else {
+            double v = serverWorld.getRegistryKey() == AtDimensionTypeRegistrar.UNDERGROUND_LEVEL_KEY ? 200 : -60;
+            WorldBorder worldBorder = serverWorld.getWorldBorder();
+            double d = DimensionType.getCoordinateScaleFactor(world.getDimension(), serverWorld.getDimension());
+            BlockPos blockPos = worldBorder.clampFloored(entity.getX() * d, v, entity.getZ() * d);
+            return this.getOrCreateExitPortalTarget(serverWorld, entity, pos, blockPos, worldBorder);
+        }
+    }
+    @Nullable
+    /**
+     * 在目标维度寻找既有传送门，否则尝试在边界内创建新门。
+     */
+    private TeleportTarget getOrCreateExitPortalTarget(
+            ServerWorld world, Entity entity, BlockPos sourcePos, BlockPos scaledPos, WorldBorder worldBorder
+    ) {
+        RegistryKey<PointOfInterestType> portal = RegistryKey.of(RegistryKeys.POINT_OF_INTEREST_TYPE, Identifier.of(Mme.MOD_ID, "underground_portal"));
+        Optional<BlockPos> optional = PortalHelper.getPortalPos(world, scaledPos, 16, worldBorder, portal, this);
+        BlockLocating.Rectangle rectangle;
+        TeleportTarget.PostDimensionTransition postDimensionTransition;
+        if (optional.isPresent()) {
+            BlockPos blockPos = optional.get();
+            BlockState blockState = world.getBlockState(blockPos);
+            rectangle = BlockLocating.getLargestRectangle(
+                    blockPos, blockState.get(Properties.HORIZONTAL_AXIS), 21, Direction.Axis.Y, 21, posx -> world.getBlockState(posx) == blockState
+            );
+            postDimensionTransition = TeleportTarget.SEND_TRAVEL_THROUGH_PORTAL_PACKET.then(entityx -> entityx.addPortalChunkTicketAt(blockPos));
+        } else {
+            Direction.Axis axis = entity.getWorld().getBlockState(sourcePos).getOrEmpty(AXIS).orElse(Direction.Axis.X);
+            Optional<BlockLocating.Rectangle> optional2 = PortalHelper.createPortal(world, scaledPos, axis, Blocks.OBSIDIAN, this);
+            if (optional2.isEmpty()) {
+                LOGGER.error("Unable to create a portal, likely target out of worldborder");
+                return null;
+            }
+            rectangle = optional2.get();
+            postDimensionTransition = TeleportTarget.SEND_TRAVEL_THROUGH_PORTAL_PACKET.then(TeleportTarget.ADD_PORTAL_CHUNK_TICKET);
+        }
+        return getExitPortalTarget(entity, sourcePos, rectangle, world, postDimensionTransition);
+    }
     /**
      * 计算出口传送目标（包含在门内的相对位置与朝向）。
      */
@@ -99,53 +147,5 @@ public class UndergroundPortalBlock extends AbstractPortalBlock {
         return CODEC;
     }
 
-    @Nullable
-    @Override
-    /**
-     * 入口回调：根据当前所处维度选择目标维度，并寻找/创建目标传送门。
-     */
-    public TeleportTarget createTeleportTarget(ServerWorld world, Entity entity, BlockPos pos) {
-        RegistryKey<World> registryKey = world.getRegistryKey() == AtDimensionTypeRegistrar.UNDERGROUND_LEVEL_KEY ? World.OVERWORLD : AtDimensionTypeRegistrar.UNDERGROUND_LEVEL_KEY;
-        ServerWorld serverWorld = world.getServer().getWorld(registryKey);
-        if (serverWorld == null) {
-            return null;
-        } else {
-            double v = serverWorld.getRegistryKey() == AtDimensionTypeRegistrar.UNDERGROUND_LEVEL_KEY ? 200 : -60;
-            WorldBorder worldBorder = serverWorld.getWorldBorder();
-            double d = DimensionType.getCoordinateScaleFactor(world.getDimension(), serverWorld.getDimension());
-            BlockPos blockPos = worldBorder.clampFloored(entity.getX() * d, v, entity.getZ() * d);
-            return this.getOrCreateExitPortalTarget(serverWorld, entity, pos, blockPos, worldBorder);
-        }
-    }
 
-    @Nullable
-    /**
-     * 在目标维度寻找既有传送门，否则尝试在边界内创建新门。
-     */
-    private TeleportTarget getOrCreateExitPortalTarget(
-            ServerWorld world, Entity entity, BlockPos sourcePos, BlockPos scaledPos, WorldBorder worldBorder
-    ) {
-        RegistryKey<PointOfInterestType> portal = RegistryKey.of(RegistryKeys.POINT_OF_INTEREST_TYPE, Identifier.of(At_mite.MOD_ID, "underground_portal"));
-        Optional<BlockPos> optional = PortalHelper.getPortalPos(world, scaledPos, 16, worldBorder, portal, this);
-        BlockLocating.Rectangle rectangle;
-        TeleportTarget.PostDimensionTransition postDimensionTransition;
-        if (optional.isPresent()) {
-            BlockPos blockPos = optional.get();
-            BlockState blockState = world.getBlockState(blockPos);
-            rectangle = BlockLocating.getLargestRectangle(
-                    blockPos, blockState.get(Properties.HORIZONTAL_AXIS), 21, Direction.Axis.Y, 21, posx -> world.getBlockState(posx) == blockState
-            );
-            postDimensionTransition = TeleportTarget.SEND_TRAVEL_THROUGH_PORTAL_PACKET.then(entityx -> entityx.addPortalChunkTicketAt(blockPos));
-        } else {
-            Direction.Axis axis = entity.getWorld().getBlockState(sourcePos).getOrEmpty(AXIS).orElse(Direction.Axis.X);
-            Optional<BlockLocating.Rectangle> optional2 = PortalHelper.createPortal(world, scaledPos, axis, Blocks.OBSIDIAN, this);
-            if (optional2.isEmpty()) {
-                LOGGER.error("Unable to create a portal, likely target out of worldborder");
-                return null;
-            }
-            rectangle = optional2.get();
-            postDimensionTransition = TeleportTarget.SEND_TRAVEL_THROUGH_PORTAL_PACKET.then(TeleportTarget.ADD_PORTAL_CHUNK_TICKET);
-        }
-        return getExitPortalTarget(entity, sourcePos, rectangle, world, postDimensionTransition);
-    }
 }

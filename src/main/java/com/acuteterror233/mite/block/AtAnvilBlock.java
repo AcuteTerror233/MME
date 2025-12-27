@@ -1,6 +1,7 @@
 package com.acuteterror233.mite.block;
 
 import com.acuteterror233.mite.atinterface.FallingBlockEntityExtension;
+import com.acuteterror233.mite.block.entity.AnvilBlockEntity;
 import com.acuteterror233.mite.screen.AtAnvilScreenHandler;
 import net.minecraft.block.AnvilBlock;
 import net.minecraft.block.BlockEntityProvider;
@@ -66,6 +67,7 @@ public class AtAnvilBlock extends AnvilBlock implements BlockEntityProvider {
             anvilBlockEntity.addDamage(1);
         }
     }
+
 
     @Override
     protected List<ItemStack> getDroppedStacks(BlockState state, LootWorldContext.Builder builder) {

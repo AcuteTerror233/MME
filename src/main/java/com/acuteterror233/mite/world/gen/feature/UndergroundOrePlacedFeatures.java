@@ -1,6 +1,6 @@
 package com.acuteterror233.mite.world.gen.feature;
 
-import com.acuteterror233.mite.At_mite;
+import com.acuteterror233.mite.Mme;
 import net.minecraft.registry.Registerable;
 import net.minecraft.registry.RegistryEntryLookup;
 import net.minecraft.registry.RegistryKey;
@@ -151,6 +151,6 @@ public class UndergroundOrePlacedFeatures {
         return List.of(countModifier, SquarePlacementModifier.of(), heightModifier, BiomePlacementModifier.of());
     }
     public static RegistryKey<PlacedFeature> of(String id) {
-        return RegistryKey.of(RegistryKeys.PLACED_FEATURE, Identifier.of(At_mite.MOD_ID, id));
+        return RegistryKey.of(RegistryKeys.PLACED_FEATURE, Identifier.of(Mme.MOD_ID, id));
     }
 }

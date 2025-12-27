@@ -1,14 +1,14 @@
 {
   "values": [
-    "at_mite:adamantium_arrow",
-    "at_mite:ancient_metal_arrow",
-    "at_mite:copper_arrow",
-    "at_mite:mithril_arrow",
-    "at_mite:rusted_iron_arrow",
-    "at_mite:silver_arrow",
-    "at_mite:golden_arrow",
-    "at_mite:iron_arrow",
-    "at_mite:flint_arrow",
-    "at_mite:obsidian_arrow"
+    "mme:adamantium_arrow",
+    "mme:ancient_metal_arrow",
+    "mme:copper_arrow",
+    "mme:mithril_arrow",
+    "mme:rusted_iron_arrow",
+    "mme:silver_arrow",
+    "mme:golden_arrow",
+    "mme:iron_arrow",
+    "mme:flint_arrow",
+    "mme:obsidian_arrow"
   ]
 }

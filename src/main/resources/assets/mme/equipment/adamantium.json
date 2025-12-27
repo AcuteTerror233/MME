@@ -1,0 +1,14 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "mme:adamantium_layer_1"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "mme:adamantium_layer_2"
+      }
+    ]
+  }
+}

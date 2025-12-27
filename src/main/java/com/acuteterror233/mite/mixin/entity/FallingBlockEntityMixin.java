@@ -1,7 +1,7 @@
 package com.acuteterror233.mite.mixin.entity;
 
 import com.acuteterror233.mite.atinterface.FallingBlockEntityExtension;
-import com.acuteterror233.mite.block.AnvilBlockEntity;
+import com.acuteterror233.mite.block.entity.AnvilBlockEntity;
 import net.minecraft.block.AnvilBlock;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;

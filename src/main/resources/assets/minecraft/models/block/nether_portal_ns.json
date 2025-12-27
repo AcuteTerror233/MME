@@ -1,7 +1,7 @@
 {
   "textures": {
-    "particle": "at_mite:block/nether_portal",
-    "portal": "at_mite:block/nether_portal"
+    "particle": "mme:block/nether_portal",
+    "portal": "mme:block/nether_portal"
   },
   "elements": [
     {

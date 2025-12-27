@@ -17,7 +17,7 @@ import java.util.Map;
 
 public record AtArmorMaterial(
         int durability,
-        Map<EquipmentType, Double> defense,
+        Map<EquipmentType, Float> defense,
         int enchantmentValue,
         RegistryEntry<SoundEvent> equipSound,
         float toughness,
@@ -26,7 +26,7 @@ public record AtArmorMaterial(
         RegistryKey<EquipmentAsset> assetId
 ) {
     public AttributeModifiersComponent createAttributeModifiers(EquipmentType equipmentType) {
-        double i = this.defense.getOrDefault(equipmentType, 0.0);
+        float i = this.defense.getOrDefault(equipmentType, 0.0F);
         AttributeModifiersComponent.Builder builder = AttributeModifiersComponent.builder();
         AttributeModifierSlot attributeModifierSlot = AttributeModifierSlot.forEquipmentSlot(equipmentType.getEquipmentSlot());
         Identifier identifier = Identifier.ofVanilla("armor." + equipmentType.getName());

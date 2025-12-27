@@ -1,0 +1,20 @@
+{
+  "required": true,
+  "package": "com.acuteterror233.mite.mixin.client",
+  "compatibilityLevel": "JAVA_21",
+  "client": [
+    "MinecraftClientMixin",
+    "data.BlockStateModelGeneratorMixin",
+    "data.ItemModelGeneratorMixin",
+    "gui.hud.InGameHudMixin",
+    "gui.screen.ingame.CraftingScreenMixin",
+    "gui.screen.ingame.InventoryScreenMixin",
+    "network.ClientPlayerEntityMixin",
+    "network.ClientPlayNetworkHandlerMixin",
+    "render.DimensionEffectsMixin",
+    "world.ClientWorldMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+	}
+}
