@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "id": "at_mite",
+  "id": "mme",
   "version": "1.21.5",
-  "name": "at_mite",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "name": "mme",
+  "description": "This is a mod that makes Minecraft simpler",
   "authors": [
     "AcuteTerror233",
     "Licc9",
@@ -14,23 +14,23 @@
     "sources": "https://github.com/FabricMC/fabric-example-mod"
   },
   "license": "GPL",
-  "icon": "assets/at_mite/pack.png",
+  "icon": "assets/mme/pack.png",
   "environment": "*",
   "entrypoints": {
     "main": [
-      "com.acuteterror233.mite.At_mite"
+      "com.acuteterror233.mite.Mme"
     ],
     "client": [
-      "com.acuteterror233.mite.At_miteClient"
+      "com.acuteterror233.mite.MmeClient"
     ],
     "fabric-datagen": [
-      "com.acuteterror233.mite.At_miteDataGenerator"
+      "com.acuteterror233.mite.MmeDataGenerator"
     ]
   },
   "mixins": [
-    "at_mite.mixins.json",
+    "mme.mixins.json",
     {
-      "config": "at_mite.client.mixins.json",
+      "config": "mme.client.mixins.json",
       "environment": "client"
     }
   ],

@@ -1,6 +1,6 @@
 package com.acuteterror233.mite.world.gen.dimension;
 
-import com.acuteterror233.mite.At_mite;
+import com.acuteterror233.mite.Mme;
 import net.minecraft.registry.Registerable;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
@@ -15,11 +15,11 @@ import java.util.OptionalLong;
 
 public class AtDimensionTypeRegistrar {
     public static final RegistryKey<DimensionOptions> UNDERGROUND_KEY = RegistryKey.of(RegistryKeys.DIMENSION,
-            Identifier.of(At_mite.MOD_ID, "underground"));
+            Identifier.of(Mme.MOD_ID, "underground"));
     public static final RegistryKey<World> UNDERGROUND_LEVEL_KEY = RegistryKey.of(RegistryKeys.WORLD,
-            Identifier.of(At_mite.MOD_ID, "underground"));
+            Identifier.of(Mme.MOD_ID, "underground"));
     public static final RegistryKey<DimensionType> UNDERGROUND_DIMENSION_TYPE_KEY = RegistryKey.of(RegistryKeys.DIMENSION_TYPE,
-            Identifier.of(At_mite.MOD_ID, "underground_type"));
+            Identifier.of(Mme.MOD_ID, "underground_type"));
 
     public static void bootstrap(Registerable<DimensionType> context) {
         context.register(UNDERGROUND_DIMENSION_TYPE_KEY, new DimensionType(
@@ -35,7 +35,7 @@ public class AtDimensionTypeRegistrar {
                 384,
                 384,
                 BlockTags.INFINIBURN_OVERWORLD,
-                Identifier.of(At_mite.MOD_ID, "underground"),
+                Identifier.of(Mme.MOD_ID, "underground"),
                 0.0f,
                 new DimensionType.MonsterSettings(false, false, UniformIntProvider.create(0, 7), 0)));
     }

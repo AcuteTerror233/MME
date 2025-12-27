@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "a": "mme:adamantium_ingot",
+    "b": "mme:adamantium_block"
+  },
+  "pattern": [
+    "bbb",
+    " a ",
+    "aaa"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mme:adamantium_anvil"
+  }
+}

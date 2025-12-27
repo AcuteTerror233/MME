@@ -5,11 +5,9 @@ import com.acuteterror233.mite.item.AtItems;
 import com.acuteterror233.mite.registry.tag.AtTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
-import net.minecraft.block.Blocks;
 import net.minecraft.item.Items;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.ItemTags;
-import net.minecraft.registry.tag.TagKey;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -76,6 +74,15 @@ public class ItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(AtItems.SILVER_BOOTS)
                 .add(AtItems.SILVER_CHAINMAIL_BOOTS)
                 .add(AtItems.GOLDEN_CHAINMAIL_BOOTS);
+        getOrCreateTagBuilder(AtTags.BUCKET)
+                .add(AtItems.ADAMANTIUM_BUCKET)
+                .add(AtItems.ANCIENT_METAL_BUCKET)
+                .add(AtItems.COPPER_BUCKET)
+                .add(AtItems.GOLD_BUCKET)
+                .add(AtItems.MITHRIL_BUCKET)
+                .add(AtItems.SILVER_BUCKET)
+                .add(AtItems.NETHERITE_BUCKET)
+                .add(Items.BUCKET);
         getOrCreateTagBuilder(AtTags.WATER_BUCKET)
                 .add(AtItems.WATER_ADAMANTIUM_BUCKET)
                 .add(AtItems.WATER_ANCIENT_METAL_BUCKET)
@@ -94,6 +101,15 @@ public class ItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(AtItems.MILK_SILVER_BUCKET)
                 .add(AtItems.MILK_NETHERITE_BUCKET)
                 .add(Items.MILK_BUCKET);
+        getOrCreateTagBuilder(AtTags.LAVA_BUCKET)
+                .add(AtItems.LAVA_NETHERITE_BUCKET)
+                .add(AtItems.LAVA_ADAMANTIUM_BUCKET)
+                .add(AtItems.LAVA_MITHRIL_BUCKET)
+                .add(AtItems.LAVA_ANCIENT_METAL_BUCKET)
+                .add(AtItems.LAVA_COPPER_BUCKET)
+                .add(AtItems.LAVA_SILVER_BUCKET)
+                .add(AtItems.LAVA_GOLD_BUCKET)
+                .add(Items.LAVA_BUCKET);
         getOrCreateTagBuilder(AtTags.FISHING_RODS)
                 .add(AtItems.ADAMANTIUM_FISHING_ROD)
                 .add(AtItems.ANCIENT_METAL_FISHING_ROD)
@@ -111,7 +127,8 @@ public class ItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(AtItems.ADAMANTIUM_NUGGET)
                 .add(AtItems.ANCIENT_METAL_NUGGET)
                 .add(AtItems.MITHRIL_NUGGET)
-                .add(AtItems.SILVER_NUGGET);
+                .add(AtItems.SILVER_NUGGET)
+                .add(AtItems.COPPER_NUGGET);
         getOrCreateTagBuilder(AtTags.SHARD)
                 .add(AtItems.DIAMOND_SHARD)
                 .add(AtItems.EMERALD_SHARD)
@@ -363,8 +380,8 @@ public class ItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(AtItems.SILVER_INGOT)
                 .add(AtItems.SILVER_NUGGET);
         getOrCreateTagBuilder(AtTags.COPPER_TOOL_MATERIALS)
-                .add(Items.COPPER_INGOT);
-//                .add(Items.COPPER_NUGGET);
+                .add(Items.COPPER_INGOT)
+                .add(AtItems.COPPER_NUGGET);
 
         getOrCreateTagBuilder(AtTags.ADAMANTIUM_NOT_ALLOWED_MATERIAL);
         getOrCreateTagBuilder(AtTags.MITHRIL_NOT_ALLOWED_MATERIAL)
@@ -378,11 +395,7 @@ public class ItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .addOptionalTag(AtTags.ANCIENT_METAL_TOOL_MATERIALS)
                 .addOptionalTag(AtTags.ANCIENT_METAL_NOT_ALLOWED_MATERIAL)
                 .add(AtBlocks.ANCIENT_METAL_BLOCK.asItem());
-        getOrCreateTagBuilder(AtTags.SILVER_NOT_ALLOWED_MATERIAL)
-                .addOptionalTag(ItemTags.IRON_TOOL_MATERIALS)
-                .addOptionalTag(AtTags.IRON_NOT_ALLOWED_MATERIAL)
-                .add(Items.IRON_BLOCK);
-        getOrCreateTagBuilder(AtTags.COPPER_NOT_ALLOWED_MATERIAL)
+        getOrCreateTagBuilder(AtTags.COPPER_OR_SILVER_NOT_ALLOWED_MATERIAL)
                 .addOptionalTag(ItemTags.IRON_TOOL_MATERIALS)
                 .addOptionalTag(AtTags.IRON_NOT_ALLOWED_MATERIAL)
                 .add(Items.IRON_BLOCK);
@@ -390,5 +403,124 @@ public class ItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .addOptionalTag(ItemTags.IRON_TOOL_MATERIALS)
                 .addOptionalTag(AtTags.IRON_NOT_ALLOWED_MATERIAL)
                 .add(Items.IRON_BLOCK);
+
+        getOrCreateTagBuilder(ItemTags.IRON_TOOL_MATERIALS)
+                .add(Items.IRON_NUGGET);
+
+        getOrCreateTagBuilder(AtTags.BATTLE_AXE)
+                .add(AtItems.ADAMANTIUM_BATTLE_AXE)
+                .add(AtItems.MITHRIL_BATTLE_AXE)
+                .add(AtItems.ANCIENT_METAL_BATTLE_AXE)
+                .add(AtItems.IRON_BATTLE_AXE)
+                .add(AtItems.RUSTED_IRON_BATTLE_AXE)
+                .add(AtItems.GOLDEN_BATTLE_AXE)
+                .add(AtItems.SILVER_BATTLE_AXE)
+                .add(AtItems.COPPER_BATTLE_AXE);
+        getOrCreateTagBuilder(AtTags.HATCHET)
+                .add(AtItems.ADAMANTIUM_HATCHET)
+                .add(AtItems.MITHRIL_HATCHET)
+                .add(AtItems.ANCIENT_METAL_HATCHET)
+                .add(AtItems.IRON_HATCHET)
+                .add(AtItems.RUSTED_IRON_HATCHET)
+                .add(AtItems.GOLDEN_HATCHET)
+                .add(AtItems.SILVER_HATCHET)
+                .add(AtItems.COPPER_HATCHET);
+        getOrCreateTagBuilder(AtTags.DAGGER)
+                .add(AtItems.ADAMANTIUM_DAGGER)
+                .add(AtItems.MITHRIL_DAGGER)
+                .add(AtItems.ANCIENT_METAL_DAGGER)
+                .add(AtItems.IRON_DAGGER)
+                .add(AtItems.RUSTED_IRON_DAGGER)
+                .add(AtItems.GOLDEN_DAGGER)
+                .add(AtItems.SILVER_DAGGER)
+                .add(AtItems.COPPER_DAGGER);
+        getOrCreateTagBuilder(AtTags.WAR_HAMMER)
+                .add(AtItems.ADAMANTIUM_WAR_HAMMER)
+                .add(AtItems.MITHRIL_WAR_HAMMER)
+                .add(AtItems.ANCIENT_METAL_WAR_HAMMER)
+                .add(AtItems.IRON_WAR_HAMMER)
+                .add(AtItems.RUSTED_IRON_WAR_HAMMER)
+                .add(AtItems.GOLDEN_WAR_HAMMER)
+                .add(AtItems.SILVER_WAR_HAMMER)
+                .add(AtItems.COPPER_WAR_HAMMER);
+        getOrCreateTagBuilder(AtTags.MATTOCK)
+                .add(AtItems.ADAMANTIUM_MATTOCK)
+                .add(AtItems.MITHRIL_MATTOCK)
+                .add(AtItems.ANCIENT_METAL_MATTOCK)
+                .add(AtItems.IRON_MATTOCK)
+                .add(AtItems.RUSTED_IRON_MATTOCK)
+                .add(AtItems.GOLDEN_MATTOCK)
+                .add(AtItems.SILVER_MATTOCK)
+                .add(AtItems.COPPER_MATTOCK);
+        getOrCreateTagBuilder(AtTags.SCYTHE)
+                .add(AtItems.ADAMANTIUM_SCYTHE)
+                .add(AtItems.MITHRIL_SCYTHE)
+                .add(AtItems.ANCIENT_METAL_SCYTHE)
+                .add(AtItems.IRON_SCYTHE)
+                .add(AtItems.RUSTED_IRON_SCYTHE)
+                .add(AtItems.GOLDEN_SCYTHE)
+                .add(AtItems.SILVER_SCYTHE)
+                .add(AtItems.COPPER_SCYTHE);
+        getOrCreateTagBuilder(AtTags.SHEARS)
+                .add(AtItems.ADAMANTIUM_SHEARS)
+                .add(AtItems.MITHRIL_SHEARS)
+                .add(AtItems.ANCIENT_METAL_SHEARS)
+                .add(Items.SHEARS)
+                .add(AtItems.RUSTED_IRON_SHEARS)
+                .add(AtItems.GOLDEN_SHEARS)
+                .add(AtItems.SILVER_SHEARS)
+                .add(AtItems.COPPER_SHEARS);
+
+        getOrCreateTagBuilder(ItemTags.SWORDS)
+                .addTag(AtTags.DAGGER)
+                .add(AtItems.ADAMANTIUM_SWORD)
+                .add(AtItems.MITHRIL_SWORD)
+                .add(AtItems.ANCIENT_METAL_SWORD)
+                .add(AtItems.RUSTED_IRON_SWORD)
+                .add(AtItems.SILVER_SWORD)
+                .add(AtItems.COPPER_SWORD);
+        getOrCreateTagBuilder(ItemTags.AXES)
+                .addTag(AtTags.BATTLE_AXE)
+                .addTag(AtTags.HATCHET)
+                .add(AtItems.ADAMANTIUM_AXE)
+                .add(AtItems.MITHRIL_AXE)
+                .add(AtItems.ANCIENT_METAL_AXE)
+                .add(AtItems.RUSTED_IRON_AXE)
+                .add(AtItems.SILVER_AXE)
+                .add(AtItems.COPPER_AXE);
+        getOrCreateTagBuilder(ItemTags.PICKAXES)
+                .addTag(AtTags.MATTOCK)
+                .add(AtItems.ADAMANTIUM_PICKAXE)
+                .add(AtItems.MITHRIL_PICKAXE)
+                .add(AtItems.ANCIENT_METAL_PICKAXE)
+                .add(AtItems.RUSTED_IRON_PICKAXE)
+                .add(AtItems.SILVER_PICKAXE)
+                .add(AtItems.COPPER_PICKAXE);
+        getOrCreateTagBuilder(ItemTags.SHOVELS)
+                .addTag(AtTags.MATTOCK)
+                .add(AtItems.ADAMANTIUM_SHOVEL)
+                .add(AtItems.MITHRIL_SHOVEL)
+                .add(AtItems.ANCIENT_METAL_SHOVEL)
+                .add(AtItems.RUSTED_IRON_SHOVEL)
+                .add(AtItems.SILVER_SHOVEL)
+                .add(AtItems.COPPER_SHOVEL);
+        getOrCreateTagBuilder(ItemTags.HOES)
+                .addTag(AtTags.SCYTHE)
+                .add(AtItems.ADAMANTIUM_HOE)
+                .add(AtItems.MITHRIL_HOE)
+                .add(AtItems.ANCIENT_METAL_HOE)
+                .add(AtItems.RUSTED_IRON_HOE)
+                .add(AtItems.SILVER_HOE)
+                .add(AtItems.COPPER_HOE);
+
+
+        getOrCreateTagBuilder(ItemTags.DURABILITY_ENCHANTABLE)
+                .addTag(AtTags.SHEARS);
+        getOrCreateTagBuilder(ItemTags.MINING_ENCHANTABLE)
+                .addTag(AtTags.SHEARS);
+
+        getOrCreateTagBuilder(AtTags.STRING)
+                .add(Items.STRING)
+                .add(AtItems.SINEW);
     }
 }

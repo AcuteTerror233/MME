@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_copper_chains": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mme:copper_chains"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "mme:copper_chainmail_chestplate"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_copper_chains"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "mme:copper_chainmail_chestplate"
+    ]
+  }
+}

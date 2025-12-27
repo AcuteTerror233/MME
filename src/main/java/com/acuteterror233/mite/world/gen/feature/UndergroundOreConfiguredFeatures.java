@@ -1,7 +1,7 @@
 package com.acuteterror233.mite.world.gen.feature;
 
 
-import com.acuteterror233.mite.At_mite;
+import com.acuteterror233.mite.Mme;
 import com.acuteterror233.mite.block.AtBlocks;
 import net.minecraft.registry.Registerable;
 import net.minecraft.registry.RegistryKey;
@@ -56,6 +56,6 @@ public class UndergroundOreConfiguredFeatures {
      * 生成命名空间内的 ConfiguredFeature 注册键。
      */
     public static RegistryKey<ConfiguredFeature<?, ?>> of(String id) {
-        return RegistryKey.of(RegistryKeys.CONFIGURED_FEATURE, Identifier.of(At_mite.MOD_ID,id));
+        return RegistryKey.of(RegistryKeys.CONFIGURED_FEATURE, Identifier.of(Mme.MOD_ID,id));
     }
 }

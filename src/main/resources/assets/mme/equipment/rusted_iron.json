@@ -1,0 +1,14 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "mme:rusted_iron_layer_1"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "mme:rusted_iron_layer_2"
+      }
+    ]
+  }
+}

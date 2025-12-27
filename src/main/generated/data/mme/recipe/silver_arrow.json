@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "a": "mme:silver_nugget",
+    "b": "minecraft:stick",
+    "c": "minecraft:feather"
+  },
+  "pattern": [
+    "a",
+    "b",
+    "c"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mme:silver_arrow"
+  }
+}

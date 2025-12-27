@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "mme:block/home_portal_ns"
+    },
+    "axis=z": {
+      "model": "mme:block/home_portal_ew"
+    }
+  }
+}

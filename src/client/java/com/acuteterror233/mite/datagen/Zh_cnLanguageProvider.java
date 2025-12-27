@@ -16,8 +16,9 @@ public class Zh_cnLanguageProvider extends FabricLanguageProvider {
 
     @Override
     public void generateTranslations(RegistryWrapper.WrapperLookup wrapperLookup, TranslationBuilder translationBuilder) {
-        translationBuilder.add("itemGroup.at_mite.item_group","Minecraft实在是太简单了!");
-        translationBuilder.add("at_mite.craftingTable.noAllowedCrafting","\u00A7c这个工作台无法制作此物品\u00A7r");
+        translationBuilder.add("itemGroup.mme.item_group","让我的世界更简单!");
+        translationBuilder.add("mme.craftingTable.noAllowedCrafting","§c无法制作此物品§r");
+        translationBuilder.add("mme.gradefurnac.fuelnotavailable", "§c这个熔炉无法燃烧这个燃料§r");
         translationBuilder.add(AtItems.ADAMANTIUM_HELMET,"艾德曼头盔");
         translationBuilder.add(AtItems.ADAMANTIUM_CHESTPLATE,"艾德曼胸甲");
         translationBuilder.add(AtItems.ADAMANTIUM_LEGGINGS,"艾德曼护腿");
@@ -356,6 +357,7 @@ public class Zh_cnLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(AtItems.ANCIENT_METAL_NUGGET, "远古金属粒");
         translationBuilder.add(AtItems.MITHRIL_NUGGET, "秘银粒");
         translationBuilder.add(AtItems.SILVER_NUGGET, "银粒");
+        translationBuilder.add(AtItems.COPPER_NUGGET, "铜粒");
 
         translationBuilder.add(AtItems.DIAMOND_SHARD, "钻石碎片");
         translationBuilder.add(AtItems.EMERALD_SHARD, "绿宝石碎片");
@@ -426,5 +428,13 @@ public class Zh_cnLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(AtBlocks.SILVER_CRAFTING_TABLE, "银工作台");
         translationBuilder.add(AtBlocks.FLINT_CRAFTING_TABLE, "燧石工作台");
         translationBuilder.add(AtBlocks.OBSIDIAN_CRAFTING_TABLE, "黑曜石工作台");
+
+        translationBuilder.add(AtBlocks.CLAY_FURNACE, "粘土熔炉");
+        translationBuilder.add(AtBlocks.HARDENED_CLAY_FURNACE, "硬化粘土熔炉");
+        translationBuilder.add(AtBlocks.NETHERRACK_FURNACE, "下界岩熔炉");
+        translationBuilder.add(AtBlocks.OBSIDIAN_FURNACE, "黑曜石熔炉");
+        translationBuilder.add(AtBlocks.SANDSTONE_FURNACE, "砂岩熔炉");
+
+        translationBuilder.add(AtItems.SINEW, "皮革线");
     }
 }

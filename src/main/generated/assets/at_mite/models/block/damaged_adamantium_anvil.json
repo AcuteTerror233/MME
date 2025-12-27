@@ -1,8 +1,0 @@
-{
-  "parent": "at_mite:block/template_anvil",
-  "textures": {
-    "body": "at_mite:block/adamantium_anvil",
-    "particle": "at_mite:block/adamantium_anvil",
-    "top": "at_mite:block/damaged_adamantium_anvil_top"
-  }
-}

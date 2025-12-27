@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "mme:bowl_milk",
+    "minecraft:wheat",
+    "mme:flour"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mme:cereal"
+  }
+}

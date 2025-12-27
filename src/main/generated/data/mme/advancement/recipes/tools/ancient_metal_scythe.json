@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_ancient_metal_ingot": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mme:ancient_metal_ingot"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "mme:ancient_metal_scythe"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_ancient_metal_ingot"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "mme:ancient_metal_scythe"
+    ]
+  }
+}

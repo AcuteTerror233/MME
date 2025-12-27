@@ -1,17 +1,17 @@
 {
   "values": [
-    "at_mite:adamantium_chestplate",
-    "at_mite:adamantium_chainmail_chestplate",
-    "at_mite:ancient_metal_chestplate",
-    "at_mite:ancient_metal_chainmail_chestplate",
-    "at_mite:copper_chestplate",
-    "at_mite:copper_chainmail_chestplate",
-    "at_mite:mithril_chestplate",
-    "at_mite:mithril_chainmail_chestplate",
-    "at_mite:rusted_iron_chestplate",
-    "at_mite:rusted_iron_chainmail_chestplate",
-    "at_mite:silver_chestplate",
-    "at_mite:silver_chainmail_chestplate",
-    "at_mite:golden_chainmail_chestplate"
+    "mme:adamantium_chestplate",
+    "mme:adamantium_chainmail_chestplate",
+    "mme:ancient_metal_chestplate",
+    "mme:ancient_metal_chainmail_chestplate",
+    "mme:copper_chestplate",
+    "mme:copper_chainmail_chestplate",
+    "mme:mithril_chestplate",
+    "mme:mithril_chainmail_chestplate",
+    "mme:rusted_iron_chestplate",
+    "mme:rusted_iron_chainmail_chestplate",
+    "mme:silver_chestplate",
+    "mme:silver_chainmail_chestplate",
+    "mme:golden_chainmail_chestplate"
   ]
 }

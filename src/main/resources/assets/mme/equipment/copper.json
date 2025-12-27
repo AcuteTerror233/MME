@@ -1,0 +1,14 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "mme:copper_layer_1"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "mme:copper_layer_2"
+      }
+    ]
+  }
+}

@@ -1,17 +1,17 @@
 {
   "values": [
-    "at_mite:adamantium_leggings",
-    "at_mite:adamantium_chainmail_leggings",
-    "at_mite:ancient_metal_leggings",
-    "at_mite:ancient_metal_chainmail_leggings",
-    "at_mite:copper_leggings",
-    "at_mite:copper_chainmail_leggings",
-    "at_mite:mithril_leggings",
-    "at_mite:mithril_chainmail_leggings",
-    "at_mite:rusted_iron_leggings",
-    "at_mite:rusted_iron_chainmail_leggings",
-    "at_mite:silver_leggings",
-    "at_mite:silver_chainmail_leggings",
-    "at_mite:golden_chainmail_leggings"
+    "mme:adamantium_leggings",
+    "mme:adamantium_chainmail_leggings",
+    "mme:ancient_metal_leggings",
+    "mme:ancient_metal_chainmail_leggings",
+    "mme:copper_leggings",
+    "mme:copper_chainmail_leggings",
+    "mme:mithril_leggings",
+    "mme:mithril_chainmail_leggings",
+    "mme:rusted_iron_leggings",
+    "mme:rusted_iron_chainmail_leggings",
+    "mme:silver_leggings",
+    "mme:silver_chainmail_leggings",
+    "mme:golden_chainmail_leggings"
   ]
 }

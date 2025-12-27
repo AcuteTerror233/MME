@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "a": "mme:obsidian_shard",
+    "b": "minecraft:stick",
+    "c": "#mme:string"
+  },
+  "pattern": [
+    "ab",
+    "cb"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mme:obsidian_hatchet"
+  }
+}

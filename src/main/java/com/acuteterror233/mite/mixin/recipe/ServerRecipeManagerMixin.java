@@ -1,6 +1,6 @@
 package com.acuteterror233.mite.mixin.recipe;
 
-import com.acuteterror233.mite.event.ServerRecipeManagerPrepareCallback;
+import com.acuteterror233.mite.event.ServerRecipeModify;
 import com.llamalad7.mixinextras.sugar.Local;
 import net.minecraft.recipe.PreparedRecipes;
 import net.minecraft.recipe.RecipeEntry;
@@ -16,9 +16,9 @@ import java.util.List;
 
 @Mixin(ServerRecipeManager.class)
 public class ServerRecipeManagerMixin {
-    @Inject(method = "prepare(Lnet/minecraft/resource/ResourceManager;Lnet/minecraft/util/profiler/Profiler;)Lnet/minecraft/recipe/PreparedRecipes;", at = @At("TAIL"), cancellable = true)
+    @Inject(method = "prepare(Lnet/minecraft/resource/ResourceManager;Lnet/minecraft/util/profiler/Profiler;)Lnet/minecraft/recipe/PreparedRecipes;", at = @At("RETURN"), cancellable = true)
     private static void prepare(ResourceManager resourceManager, Profiler profiler, CallbackInfoReturnable<PreparedRecipes> cir, @Local List<RecipeEntry<?>> list) {
-        ServerRecipeManagerPrepareCallback.EVENT.invoker().interact(list);
+        ServerRecipeModify.EVENT.invoker().interact(list);
         cir.setReturnValue(PreparedRecipes.of(list));
     }
 }

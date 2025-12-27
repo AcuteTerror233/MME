@@ -1,17 +1,17 @@
 {
   "values": [
-    "at_mite:adamantium_helmet",
-    "at_mite:adamantium_chainmail_helmet",
-    "at_mite:ancient_metal_helmet",
-    "at_mite:ancient_metal_chainmail_helmet",
-    "at_mite:copper_helmet",
-    "at_mite:copper_chainmail_helmet",
-    "at_mite:mithril_helmet",
-    "at_mite:mithril_chainmail_helmet",
-    "at_mite:rusted_iron_helmet",
-    "at_mite:rusted_iron_chainmail_helmet",
-    "at_mite:silver_helmet",
-    "at_mite:silver_chainmail_helmet",
-    "at_mite:golden_chainmail_helmet"
+    "mme:adamantium_helmet",
+    "mme:adamantium_chainmail_helmet",
+    "mme:ancient_metal_helmet",
+    "mme:ancient_metal_chainmail_helmet",
+    "mme:copper_helmet",
+    "mme:copper_chainmail_helmet",
+    "mme:mithril_helmet",
+    "mme:mithril_chainmail_helmet",
+    "mme:rusted_iron_helmet",
+    "mme:rusted_iron_chainmail_helmet",
+    "mme:silver_helmet",
+    "mme:silver_chainmail_helmet",
+    "mme:golden_chainmail_helmet"
   ]
 }

@@ -1,7 +1,9 @@
 package com.acuteterror233.mite.gui.screen.ingame;
 
-import com.acuteterror233.mite.screen.CraftingTableScreenHandler;
-import com.acuteterror233.mite.screen.slot.NewCraftingResultSlot;
+import com.acuteterror233.mite.screen.GradeCraftingTableScreenHandler;
+import com.acuteterror233.mite.screen.slot.CraftingTableResultSlot;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.ScreenPos;
 import net.minecraft.client.gui.screen.ingame.RecipeBookScreen;
@@ -15,10 +17,11 @@ import net.minecraft.util.Identifier;
 
 import java.util.List;
 
-public class CraftingTableScreen extends RecipeBookScreen<CraftingTableScreenHandler> {
+@Environment(EnvType.CLIENT)
+public class CraftingTableScreen extends RecipeBookScreen<GradeCraftingTableScreenHandler> {
     private static final Identifier TEXTURE = Identifier.ofVanilla("textures/gui/container/crafting_table.png");
     private static final Identifier CRAFTING_PROGRESS_TEXTURE = Identifier.ofVanilla("container/furnace/burn_progress");
-    public CraftingTableScreen(CraftingTableScreenHandler handler, PlayerInventory inventory, Text title) {
+    public CraftingTableScreen(GradeCraftingTableScreenHandler handler, PlayerInventory inventory, Text title) {
         super(handler, new AbstractCraftingRecipeBookWidget(handler), inventory, title);
     }
     @Override
@@ -44,12 +47,12 @@ public class CraftingTableScreen extends RecipeBookScreen<CraftingTableScreenHan
     }
     @Override
     protected void drawMouseoverTooltip(DrawContext drawContext, int x, int y) {
-        if (this.focusedSlot instanceof NewCraftingResultSlot && !this.handler.isAllowCrafting()){
+        if (this.focusedSlot instanceof CraftingTableResultSlot && !this.handler.isAllowCrafting()){
             if (this.focusedSlot.hasStack()) {
                 ItemStack itemStack = this.focusedSlot.getStack();
                 if (this.handler.getCursorStack().isEmpty()) {
                     List<Text> texts = this.getTooltipFromItem(itemStack);
-                    texts.add(Text.translatable("at_mite.craftingTable.noAllowedCrafting"));
+                    texts.add(Text.translatable("mme.craftingTable.noAllowedCrafting"));
                     drawContext.drawTooltip(
                             this.textRenderer, texts, itemStack.getTooltipData(), x, y, itemStack.get(DataComponentTypes.TOOLTIP_STYLE)
                     );

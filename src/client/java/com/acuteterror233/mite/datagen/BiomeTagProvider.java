@@ -22,5 +22,10 @@ public class BiomeTagProvider extends FabricTagProvider<Biome>{
                 .add(AtBiomeKeys.DRIPSTONE_CAVES)
                 .add(AtBiomeKeys.LUSH_CAVES)
                 .add(AtBiomeKeys.UNDERGROUND);
+        getOrCreateTagBuilder(BiomeTags.RUINED_PORTAL_MOUNTAIN_HAS_STRUCTURE)
+                .add(AtBiomeKeys.DEEP_DARK)
+                .add(AtBiomeKeys.DRIPSTONE_CAVES)
+                .add(AtBiomeKeys.LUSH_CAVES)
+                .add(AtBiomeKeys.UNDERGROUND);
     }
 }

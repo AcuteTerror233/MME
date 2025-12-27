@@ -178,5 +178,81 @@ public class BlockTagProvider extends FabricTagProvider.BlockTagProvider {
         getOrCreateTagBuilder(AtTags.RUNESTORE)
                 .forceAddTag(AtTags.ADAMANTIUM_RUNESTORE)
                 .forceAddTag(AtTags.MITHRIL_RUNESTORE);
+        getOrCreateTagBuilder(AtTags.CRAFTING_TABLE)
+                .add(AtBlocks.ADAMANTIUM_CRAFTING_TABLE)
+                .add(AtBlocks.MITHRIL_CRAFTING_TABLE)
+                .add(AtBlocks.ANCIENT_METAL_CRAFTING_TABLE)
+                .add(AtBlocks.IRON_CRAFTING_TABLE)
+                .add(AtBlocks.GOLD_CRAFTING_TABLE)
+                .add(AtBlocks.SILVER_CRAFTING_TABLE)
+                .add(AtBlocks.COPPER_CRAFTING_TABLE)
+                .add(AtBlocks.OBSIDIAN_CRAFTING_TABLE)
+                .add(AtBlocks.FLINT_CRAFTING_TABLE);
+
+        getOrCreateTagBuilder(AtTags.NEEDS_SILVER_OR_COPPER_TOOL)
+                .add(AtBlocks.SILVER_BLOCK)
+                .add(AtBlocks.SILVER_BARS)
+                .add(AtBlocks.SILVER_DOOR)
+                .add(Blocks.COPPER_BLOCK)
+                .add(AtBlocks.COPPER_BARS)
+                .forceAddTag(BlockTags.COPPER_ORES);
+        getOrCreateTagBuilder(AtTags.NEEDS_ANCIENT_METAL_TOOL)
+                .add(AtBlocks.ANCIENT_METAL_BLOCK)
+                .add(AtBlocks.ANCIENT_METAL_BARS);
+        getOrCreateTagBuilder(AtTags.NEEDS_MITHRIL_TOOL)
+                .add(AtBlocks.MITHRIL_BLOCK)
+                .add(AtBlocks.MITHRIL_BARS)
+                .add(AtBlocks.MITHRIL_DOOR)
+                .add(AtBlocks.ADAMANTIUM_ORE);
+        getOrCreateTagBuilder(AtTags.NEEDS_ADAMANTIUM_TOOL)
+                .add(Blocks.ANCIENT_DEBRIS)
+                .add(AtBlocks.ADAMANTIUM_BLOCK)
+                .add(AtBlocks.ADAMANTIUM_BARS)
+                .add(AtBlocks.ADAMANTIUM_DOOR);
+
+        getOrCreateTagBuilder(AtTags.INCORRECT_FOR_FLINT_OR_OBSIDIAN_TOOL)
+                .forceAddTag(AtTags.NEEDS_SILVER_OR_COPPER_TOOL)
+                .forceAddTag(AtTags.NEEDS_ANCIENT_METAL_TOOL)
+                .forceAddTag(AtTags.NEEDS_MITHRIL_TOOL)
+                .forceAddTag(AtTags.NEEDS_ADAMANTIUM_TOOL)
+                .forceAddTag(BlockTags.NEEDS_DIAMOND_TOOL)
+                .forceAddTag(BlockTags.NEEDS_IRON_TOOL)
+                .forceAddTag(BlockTags.NEEDS_STONE_TOOL);
+        getOrCreateTagBuilder(AtTags.INCORRECT_FOR_COPPER_OR_SILVER_TOOL)
+                .forceAddTag(BlockTags.NEEDS_IRON_TOOL)
+                .forceAddTag(BlockTags.NEEDS_DIAMOND_TOOL)
+                .forceAddTag(AtTags.NEEDS_ANCIENT_METAL_TOOL)
+                .forceAddTag(AtTags.NEEDS_MITHRIL_TOOL)
+                .forceAddTag(AtTags.NEEDS_ADAMANTIUM_TOOL);
+        getOrCreateTagBuilder(AtTags.INCORRECT_FOR_RUSTED_IRON_TOOL)
+                .forceAddTag(AtTags.NEEDS_ANCIENT_METAL_TOOL)
+                .forceAddTag(AtTags.NEEDS_MITHRIL_TOOL)
+                .forceAddTag(AtTags.NEEDS_ADAMANTIUM_TOOL);
+        getOrCreateTagBuilder(AtTags.INCORRECT_FOR_ANCIENT_METAL_TOOL)
+                .forceAddTag(AtTags.NEEDS_MITHRIL_TOOL)
+                .forceAddTag(AtTags.NEEDS_ADAMANTIUM_TOOL);
+        getOrCreateTagBuilder(AtTags.INCORRECT_FOR_MITHRIL_TOOL)
+                .forceAddTag(AtTags.NEEDS_ADAMANTIUM_TOOL);
+        getOrCreateTagBuilder(AtTags.INCORRECT_FOR_ADAMANTIUM_TOOL);
+
+        getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
+                .add(AtBlocks.ADAMANTIUM_ORE)
+                .add(AtBlocks.MITHRIL_ORE)
+                .add(AtBlocks.SILVER_ORE)
+                .add(AtBlocks.ADAMANTIUM_BARS)
+                .add(AtBlocks.MITHRIL_BARS)
+                .add(AtBlocks.ANCIENT_METAL_BARS)
+                .add(AtBlocks.GOLDEN_BARS)
+                .add(AtBlocks.SILVER_BARS)
+                .add(AtBlocks.COPPER_BARS)
+                .add(AtBlocks.ADAMANTIUM_BLOCK)
+                .add(AtBlocks.ANCIENT_METAL_BLOCK)
+                .add(AtBlocks.MITHRIL_BLOCK)
+                .add(AtBlocks.SILVER_BLOCK)
+                .add(AtBlocks.ADAMANTIUM_DOOR)
+                .add(AtBlocks.ANCIENT_METAL_DOOR)
+                .add(AtBlocks.MITHRIL_DOOR)
+                .add(AtBlocks.SILVER_DOOR)
+                .add(AtBlocks.GOLDEN_DOOR);
     }
 }

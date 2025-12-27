@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_mithril_chains": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mme:mithril_chains"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "mme:mithril_chainmail_chestplate"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_mithril_chains"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "mme:mithril_chainmail_chestplate"
+    ]
+  }
+}

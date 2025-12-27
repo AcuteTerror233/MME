@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "mme:obsidian_knife",
+    "#minecraft:oak_logs"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mme:obsidian_crafting_table"
+  }
+}

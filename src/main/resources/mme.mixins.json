@@ -1,0 +1,42 @@
+{
+  "required": true,
+  "package": "com.acuteterror233.mite.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "client": [
+  ],
+  "mixins": [
+    "BootstrapMixin",
+    "block.AbstractBlockMixin",
+    "block.AbstractBlockSettingsMixin",
+    "block.AbstractFireBlockMixin",
+    "block.BlocksMixin",
+    "block.BubbleColumnBlockMixin",
+    "block.CampfireBlockMixin",
+    "block.FluidBlockMixin",
+    "block.NetherPortalBlockMixin",
+    "block.PowderSnowBlockMixin",
+    "block.WaterloggableMixin",
+    "block.entity.CampfireBlockEntityMixin",
+    "component.DataComponentTypesMixin",
+    "entity.BucketableMixin",
+    "entity.FallingBlockEntityMixin",
+    "entity.passive.AnimalEntityMixin",
+    "entity.player.HungerManagerMixin",
+    "entity.player.PlayerEntityMixin",
+    "entity.projectile.FishingBobberEntityMixin",
+    "item.DyeItemMixin",
+    "item.ItemsMixin",
+    "item.ItemStackMixin",
+    "item.ToolMaterialMixin",
+    "recipe.ServerRecipeManagerMixin",
+    "screen.AnvilScreenHandlerMixin",
+    "screen.PlayerScreenHandlerMixin",
+    "screen.slot.FurnaceFuelSlotMixin",
+    "server.MinecraftServerMixin",
+    "server.world.ServerWorldMixin",
+    "world.dimension.NetherPortalMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

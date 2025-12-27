@@ -115,7 +115,7 @@ public class PortalHelper {
             bestPos = worldBorder.clampFloored(bestPos);
             Direction direction2 = direction.rotateYClockwise();
 
-            // 构建传送门底部和框架
+            // 构建传送门底部
             for (int lx = -1; lx < 2; lx++) {
                 for (int width = 0; width < 2; width++) {
                     for (int height = -1; height < 3; height++) {

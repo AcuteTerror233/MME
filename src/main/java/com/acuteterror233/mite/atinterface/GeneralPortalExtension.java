@@ -15,5 +15,5 @@ public interface GeneralPortalExtension {
     List<BlockPos> getCornerPosList();
     boolean isRunePortalValid(BlockView world, TagKey<Block> tag);
     void createPortal(WorldAccess world, Block portal);
-    void createRunePortal(WorldAccess world, Block portal, BlockPos pos);
+    void createRunePortal(WorldAccess world, BlockPos pos);
 }

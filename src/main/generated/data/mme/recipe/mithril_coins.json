@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "mme:mithril_nugget"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mme:mithril_coins"
+  }
+}

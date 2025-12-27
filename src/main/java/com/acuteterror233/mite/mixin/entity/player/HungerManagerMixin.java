@@ -22,11 +22,11 @@ public abstract class HungerManagerMixin implements HungerManagerExtension {
     @Final
     private static float DEFAULT_EXHAUSTION;
     @Unique
-    private int MaxFoodLevel = 6;
+    private int maxFoodLevel = 6;
     @Unique
     private int healTickTimer = 0;
     @Shadow
-    private int foodLevel;
+    private int foodLevel = maxFoodLevel;
     @Shadow
     private float saturationLevel;
     @Shadow
@@ -37,13 +37,13 @@ public abstract class HungerManagerMixin implements HungerManagerExtension {
     @Unique
     @Override
     public int getMaxFoodLevel() {
-        return this.MaxFoodLevel;
+        return this.maxFoodLevel;
     }
 
     @Unique
     @Override
     public void setMaxFoodLevel(int maxFoodLevel) {
-        this.MaxFoodLevel = maxFoodLevel;
+        this.maxFoodLevel = maxFoodLevel;
     }
 
     @Shadow
@@ -55,7 +55,7 @@ public abstract class HungerManagerMixin implements HungerManagerExtension {
      */
     @Overwrite
     private void addInternal(int nutrition, float saturation) {
-        this.foodLevel = MathHelper.clamp(nutrition + this.foodLevel, 0, MaxFoodLevel);
+        this.foodLevel = MathHelper.clamp(nutrition + this.foodLevel, 0, maxFoodLevel);
         this.saturationLevel = MathHelper.clamp(saturation + this.saturationLevel, 0.0F, (float) this.foodLevel);
     }
 
@@ -67,9 +67,6 @@ public abstract class HungerManagerMixin implements HungerManagerExtension {
     public void update(ServerPlayerEntity player) {
         ServerWorld serverWorld = player.getServerWorld();
         Difficulty difficulty = serverWorld.getDifficulty();
-        if (this.foodLevel > MaxFoodLevel) {
-            this.foodLevel = MaxFoodLevel;
-        }
         if (this.exhaustion > 4.0F) {
             this.exhaustion -= 4.0F;
             if (this.saturationLevel > 0.0F) {
@@ -78,25 +75,36 @@ public abstract class HungerManagerMixin implements HungerManagerExtension {
                 this.foodLevel = Math.max(this.foodLevel - 1, 0);
             }
         }
-        this.foodTickTimer++;
-        if (foodLevel > 0) {
-            this.healTickTimer++;
-            if (foodTickTimer >= 1200) {
-                this.addExhaustion(1.0f);
-                this.foodTickTimer = 0;
+
+        boolean bl = serverWorld.getGameRules().getBoolean(GameRules.NATURAL_REGENERATION);
+        if (this.foodLevel > 0) {
+            if (player.isSleeping()) {
+                this.healTickTimer += 8;
+            }else {
+                this.healTickTimer++;
             }
-            boolean bl = serverWorld.getGameRules().getBoolean(GameRules.NATURAL_REGENERATION);
-            if (bl && foodLevel >= 0 && player.canFoodHeal() && this.healTickTimer >= 1280) {
+            if (this.healTickTimer >= 1280 && bl){
                 player.heal(1.0F);
                 this.healTickTimer = 0;
             }
-        } else {
+            if (this.foodTickTimer >= 900){
+                this.foodTickTimer = 0;
+                if (this.saturationLevel > 0){
+                    this.saturationLevel--;
+                }else {
+                    this.foodLevel--;
+                }
+            }
+        }else {
             this.healTickTimer = 0;
-            if (this.foodTickTimer >= 640) {
-                player.damage(serverWorld, player.getDamageSources().starve(), 1.0F);
+            if (this.foodTickTimer >= 300) {
+                if (player.getHealth() > 10.0F || difficulty == Difficulty.HARD || player.getHealth() > 1.0F && difficulty == Difficulty.NORMAL) {
+                    player.damage(serverWorld, player.getDamageSources().starve(), 1.0F);
+                }
                 this.foodTickTimer = 0;
             }
         }
+        this.foodTickTimer++;
     }
 
     @Inject(method = "readNbt", at = @At("HEAD"))
@@ -106,6 +114,6 @@ public abstract class HungerManagerMixin implements HungerManagerExtension {
 
     @Inject(method = "writeNbt", at = @At("HEAD"))
     public void writeNbt(NbtCompound nbt, CallbackInfo ci) {
-        nbt.putInt("maxfoodlevel", this.MaxFoodLevel);
+        nbt.putInt("maxfoodlevel", this.maxFoodLevel);
     }
 }

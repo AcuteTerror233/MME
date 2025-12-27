@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "a": "minecraft:copper_ingot",
+    "b": "minecraft:string",
+    "c": "minecraft:stick"
+  },
+  "pattern": [
+    "  c",
+    " cb",
+    "cab"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mme:copper_fishing_rod"
+  }
+}
