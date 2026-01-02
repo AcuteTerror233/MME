@@ -2,7 +2,6 @@ package com.acuteterror233.mite.mixin.item;
 
 import com.acuteterror233.mite.event.VanillaRegisterModify;
 import net.minecraft.block.Block;
-import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.registry.Registries;
@@ -29,9 +28,7 @@ public class ItemsMixin {
         RegistryKey<Item> itemKey = keyOf(block.getRegistryEntry().registryKey());
         Item modify = VanillaRegisterModify.BLOCK_ITEM_REGISTER.invoker().Modify(block, factory, settings.useBlockPrefixedTranslationKey().registryKey(itemKey));
         if (modify != null){
-            if (modify instanceof BlockItem blockItem) {
-                blockItem.appendBlocks(Item.BLOCK_ITEMS, modify);
-            }
+            Item.BLOCK_ITEMS.put(block, modify);
             cir.setReturnValue(Registry.register(Registries.ITEM, itemKey, modify));
         }
     }

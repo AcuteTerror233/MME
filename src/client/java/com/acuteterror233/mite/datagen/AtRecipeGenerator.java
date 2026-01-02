@@ -30,15 +30,35 @@ public class AtRecipeGenerator extends FabricRecipeProvider {
         return new RecipeGenerator(registryLookup, exporter) {
             @Override
             public void generate() {
-                CookingRecipeJsonBuilder.createSmelting(Ingredient.ofItem(AtItems.RAW_ADAMANTIUM), RecipeCategory.FOOD, AtItems.ADAMANTIUM_INGOT, 1F, 200)
+                CookingRecipeJsonBuilder.createSmelting(Ingredient.ofItem(AtItems.RAW_ADAMANTIUM), RecipeCategory.MISC, AtItems.ADAMANTIUM_INGOT, 5F, 200)
                     .criterion("has_raw_adamantium", this.conditionsFromItem(AtItems.RAW_ADAMANTIUM))
-                    .offerTo(this.exporter);
-                CookingRecipeJsonBuilder.createSmelting(Ingredient.ofItem(AtItems.RAW_MITHRIL), RecipeCategory.FOOD, AtItems.MITHRIL_INGOT, 1F, 200)
+                    .offerTo(this.exporter, "adamantium_ingot_from_raw_adamantium");
+                CookingRecipeJsonBuilder.createSmelting(Ingredient.ofItem(AtItems.RAW_MITHRIL), RecipeCategory.MISC, AtItems.MITHRIL_INGOT, 3F, 200)
                         .criterion("has_raw_mithril", this.conditionsFromItem(AtItems.RAW_MITHRIL))
-                        .offerTo(this.exporter);
-                CookingRecipeJsonBuilder.createSmelting(Ingredient.ofItem(AtItems.RAW_SILVER), RecipeCategory.FOOD, AtItems.SILVER_INGOT, 1F, 200)
+                        .offerTo(this.exporter, "mithril_ingot_from_raw_mithril");
+                CookingRecipeJsonBuilder.createSmelting(Ingredient.ofItem(AtItems.RAW_SILVER), RecipeCategory.MISC, AtItems.SILVER_INGOT, 1F, 200)
                         .criterion("has_raw_silver", this.conditionsFromItem(AtItems.RAW_SILVER))
-                        .offerTo(this.exporter);
+                        .offerTo(this.exporter, "silver_ingot_from_raw_silver");
+
+                CookingRecipeJsonBuilder.createSmelting(Ingredient.ofItem(AtBlocks.ADAMANTIUM_ORE), RecipeCategory.MISC, AtItems.ADAMANTIUM_INGOT, 5F, 200)
+                        .criterion("has_adamantium_ore", this.conditionsFromItem(AtBlocks.ADAMANTIUM_ORE))
+                        .offerTo(this.exporter, "adamantium_ingot_from_adamantium_ore");
+                CookingRecipeJsonBuilder.createSmelting(Ingredient.ofItem(AtBlocks.MITHRIL_ORE), RecipeCategory.MISC, AtItems.MITHRIL_INGOT, 3F, 200)
+                        .criterion("has_mithril_ore", this.conditionsFromItem(AtBlocks.MITHRIL_ORE))
+                        .offerTo(this.exporter, "mithril_ingot_from_mithril_ore");
+                CookingRecipeJsonBuilder.createSmelting(Ingredient.ofItem(AtBlocks.SILVER_ORE), RecipeCategory.MISC, AtItems.SILVER_INGOT, 1F, 200)
+                        .criterion("has_silver_ore", this.conditionsFromItem(AtBlocks.SILVER_ORE))
+                        .offerTo(this.exporter, "silver_ingot_from_silver_ore");
+
+                CookingRecipeJsonBuilder.createSmelting(Ingredient.ofItem(AtBlocks.DEEPSLATE_ADAMANTIUM_ORE), RecipeCategory.MISC, AtItems.ADAMANTIUM_INGOT, 5F, 200)
+                        .criterion("has_deepslate_adamantium_ore", this.conditionsFromItem(AtBlocks.DEEPSLATE_ADAMANTIUM_ORE))
+                        .offerTo(this.exporter, "adamantium_ingot_from_deepslate_adamantium_ore");
+                CookingRecipeJsonBuilder.createSmelting(Ingredient.ofItem(AtBlocks.DEEPSLATE_MITHRIL_ORE), RecipeCategory.MISC, AtItems.MITHRIL_INGOT, 3F, 200)
+                        .criterion("has_deepslate_mithril_ore", this.conditionsFromItem(AtBlocks.DEEPSLATE_MITHRIL_ORE))
+                        .offerTo(this.exporter, "mithril_ingot_from_deepslate_mithril_ore");
+                CookingRecipeJsonBuilder.createSmelting(Ingredient.ofItem(AtBlocks.DEEPSLATE_SILVER_ORE), RecipeCategory.MISC, AtItems.SILVER_INGOT, 1F, 200)
+                        .criterion("has_deepslate_silver_ore", this.conditionsFromItem(AtBlocks.DEEPSLATE_SILVER_ORE))
+                        .offerTo(this.exporter, "silver_ingot_from_deepslate_silver_ore");
 
                 offerReversibleCompactingRecipes(RecipeCategory.MISC, AtItems.ADAMANTIUM_INGOT, RecipeCategory.BUILDING_BLOCKS, AtBlocks.ADAMANTIUM_BLOCK, "adamantium_block_from_adamantium_ingot", null , "adamantium_ingot_from_adamantium_block",null);
                 offerReversibleCompactingRecipes(RecipeCategory.MISC, AtItems.ANCIENT_METAL_INGOT, RecipeCategory.BUILDING_BLOCKS, AtBlocks.ANCIENT_METAL_BLOCK, "ancient_metal_block_from_ancient_metal_ingot", null , "ancient_metal_ingot_from_ancient_metal_block", null);
@@ -99,7 +119,7 @@ public class AtRecipeGenerator extends FabricRecipeProvider {
                 offerFishingRodRecipes(AtItems.ANCIENT_METAL_FISHING_ROD, AtItems.ANCIENT_METAL_NUGGET);
                 offerFishingRodRecipes(AtItems.MITHRIL_FISHING_ROD, AtItems.MITHRIL_NUGGET);
                 offerFishingRodRecipes(AtItems.SILVER_FISHING_ROD, AtItems.SILVER_NUGGET);
-                offerFishingRodRecipes(AtItems.COPPER_FISHING_ROD, Items.COPPER_INGOT);
+                offerFishingRodRecipes(AtItems.COPPER_FISHING_ROD, AtItems.COPPER_NUGGET);
                 offerFishingRodRecipes(AtItems.IRON_FISHING_ROD, Items.IRON_NUGGET);
                 offerFishingRodRecipes(AtItems.GOLDEN_FISHING_ROD, Items.GOLD_NUGGET);
                 offerFishingRodRecipes(AtItems.OBSIDIAN_FISHING_ROD, AtItems.OBSIDIAN_SHARD);
@@ -116,6 +136,30 @@ public class AtRecipeGenerator extends FabricRecipeProvider {
                 offerArmorRecipes(AtItems.MITHRIL_CHAINS, AtItems.MITHRIL_CHAINMAIL_HELMET, AtItems.MITHRIL_CHAINMAIL_CHESTPLATE, AtItems.MITHRIL_CHAINMAIL_LEGGINGS, AtItems.MITHRIL_CHAINMAIL_BOOTS);
                 offerArmorRecipes(AtItems.SILVER_CHAINS, AtItems.SILVER_CHAINMAIL_HELMET, AtItems.SILVER_CHAINMAIL_CHESTPLATE, AtItems.SILVER_CHAINMAIL_LEGGINGS, AtItems.SILVER_CHAINMAIL_BOOTS);
                 offerArmorRecipes(AtItems.COPPER_CHAINS, AtItems.COPPER_CHAINMAIL_HELMET, AtItems.COPPER_CHAINMAIL_CHESTPLATE, AtItems.COPPER_CHAINMAIL_LEGGINGS, AtItems.COPPER_CHAINMAIL_BOOTS);
+
+                offerNetheriteUpgradeRecipe(AtItems.ADAMANTIUM_HELMET, RecipeCategory.COMBAT, Items.NETHERITE_HELMET);
+                offerNetheriteUpgradeRecipe(AtItems.ADAMANTIUM_CHESTPLATE, RecipeCategory.COMBAT, Items.NETHERITE_CHESTPLATE);
+                offerNetheriteUpgradeRecipe(AtItems.ADAMANTIUM_LEGGINGS, RecipeCategory.COMBAT, Items.NETHERITE_LEGGINGS);
+                offerNetheriteUpgradeRecipe(AtItems.ADAMANTIUM_BOOTS, RecipeCategory.COMBAT, Items.NETHERITE_BOOTS);
+
+                offerNetheriteUpgradeRecipe(AtItems.ADAMANTIUM_CHAINMAIL_HELMET, RecipeCategory.COMBAT, AtItems.NETHERITE_CHAINMAIL_HELMET);
+                offerNetheriteUpgradeRecipe(AtItems.ADAMANTIUM_CHAINMAIL_CHESTPLATE, RecipeCategory.COMBAT, AtItems.NETHERITE_CHAINMAIL_CHESTPLATE);
+                offerNetheriteUpgradeRecipe(AtItems.ADAMANTIUM_CHAINMAIL_LEGGINGS, RecipeCategory.COMBAT, AtItems.NETHERITE_CHAINMAIL_LEGGINGS);
+                offerNetheriteUpgradeRecipe(AtItems.ADAMANTIUM_CHAINMAIL_BOOTS, RecipeCategory.COMBAT, AtItems.NETHERITE_CHAINMAIL_BOOTS);
+
+                offerNetheriteUpgradeRecipe(AtItems.ADAMANTIUM_SWORD, RecipeCategory.COMBAT, Items.NETHERITE_SWORD);
+                offerNetheriteUpgradeRecipe(AtItems.ADAMANTIUM_DAGGER, RecipeCategory.COMBAT, AtItems.NETHERITE_DAGGER);
+                offerNetheriteUpgradeRecipe(AtItems.ADAMANTIUM_PICKAXE, RecipeCategory.TOOLS, Items.NETHERITE_PICKAXE);
+                offerNetheriteUpgradeRecipe(AtItems.ADAMANTIUM_WAR_HAMMER, RecipeCategory.COMBAT, AtItems.NETHERITE_WAR_HAMMER);
+                offerNetheriteUpgradeRecipe(AtItems.ADAMANTIUM_AXE, RecipeCategory.TOOLS, Items.NETHERITE_AXE);
+                offerNetheriteUpgradeRecipe(AtItems.ADAMANTIUM_HATCHET, RecipeCategory.TOOLS, AtItems.NETHERITE_HATCHET);
+                offerNetheriteUpgradeRecipe(AtItems.ADAMANTIUM_BATTLE_AXE, RecipeCategory.COMBAT, AtItems.NETHERITE_BATTLE_AXE);
+                offerNetheriteUpgradeRecipe(AtItems.ADAMANTIUM_SHOVEL, RecipeCategory.TOOLS, Items.NETHERITE_SHOVEL);
+                offerNetheriteUpgradeRecipe(AtItems.ADAMANTIUM_HOE, RecipeCategory.TOOLS, Items.NETHERITE_HOE);
+                offerNetheriteUpgradeRecipe(AtItems.ADAMANTIUM_MATTOCK, RecipeCategory.TOOLS, AtItems.NETHERITE_MATTOCK);
+                offerNetheriteUpgradeRecipe(AtItems.ADAMANTIUM_SCYTHE, RecipeCategory.TOOLS, AtItems.NETHERITE_SCYTHE);
+                offerNetheriteUpgradeRecipe(AtItems.ADAMANTIUM_SHEARS, RecipeCategory.TOOLS, AtItems.NETHERITE_SHEARS);
+                offerNetheriteUpgradeRecipe(AtItems.ADAMANTIUM_BUCKET, RecipeCategory.TOOLS, AtItems.NETHERITE_BUCKET);
                 
                 offerToolRecipes(AtItems.ADAMANTIUM_INGOT,
                         AtItems.ADAMANTIUM_SWORD,
@@ -211,7 +255,7 @@ public class AtRecipeGenerator extends FabricRecipeProvider {
                 offerDaggerRecipesIsString(AtItems.OBSIDIAN_SHARD, AtItems.OBSIDIAN_KNIFE);
                 offerShovelRecipesIsString(AtItems.OBSIDIAN_SHARD, AtItems.OBSIDIAN_SHOVEL);
 
-                createShaped(RecipeCategory.COMBAT, AtItems.WOOD_CLUB)
+                createShaped(RecipeCategory.COMBAT, AtItems.WOODEN_CLUB)
                         .input('a', ItemTags.PLANKS)
                         .input('b', Items.STICK)
                         .pattern("a")
@@ -219,7 +263,7 @@ public class AtRecipeGenerator extends FabricRecipeProvider {
                         .pattern("b")
                         .criterion(hasItem(Items.STICK), this.conditionsFromItem(Items.STICK))
                         .offerTo(this.exporter);
-                createShaped(RecipeCategory.COMBAT, AtItems.WOOD_CUDGEL)
+                createShaped(RecipeCategory.COMBAT, AtItems.WOODEN_CUDGEL)
                         .input('a', ItemTags.PLANKS)
                         .input('b', Items.STICK)
                         .pattern("a")
@@ -448,14 +492,6 @@ public class AtRecipeGenerator extends FabricRecipeProvider {
                 offerChainsRecipes(AtItems.SILVER_NUGGET, AtItems.SILVER_CHAINS);
                 offerChainsRecipes(AtItems.COPPER_NUGGET, AtItems.COPPER_CHAINS);
 
-                offerCoinsRecipes(AtItems.ADAMANTIUM_NUGGET, AtItems.ADAMANTIUM_COINS);
-                offerCoinsRecipes(AtItems.MITHRIL_NUGGET, AtItems.MITHRIL_COINS);
-                offerCoinsRecipes(AtItems.ANCIENT_METAL_NUGGET, AtItems.ANCIENT_METAL_COINS);
-                offerCoinsRecipes(Items.IRON_NUGGET, AtItems.IRON_COINS);
-                offerCoinsRecipes(Items.GOLD_NUGGET, AtItems.GOLDEN_COINS);
-                offerCoinsRecipes(AtItems.SILVER_NUGGET, AtItems.SILVER_COINS);
-                offerCoinsRecipes(AtItems.COPPER_NUGGET, AtItems.COPPER_COINS);
-
                 offerBucketRecipes(AtItems.ADAMANTIUM_INGOT, AtItems.ADAMANTIUM_BUCKET);
                 offerBucketRecipes(Items.GOLD_INGOT, AtItems.GOLD_BUCKET);
                 offerBucketRecipes(AtItems.MITHRIL_INGOT, AtItems.MITHRIL_BUCKET);
@@ -472,13 +508,6 @@ public class AtRecipeGenerator extends FabricRecipeProvider {
                         .pattern("a a")
                         .pattern(" a ")
                         .criterion(hasItem(ingot), this.conditionsFromItem(ingot))
-                        .offerTo(this.exporter);
-            }
-
-            private void offerCoinsRecipes(Item nugget, Item coins) {
-                createShapeless(RecipeCategory.MISC, coins)
-                        .input(nugget)
-                        .criterion(hasItem(nugget), this.conditionsFromItem(nugget))
                         .offerTo(this.exporter);
             }
 

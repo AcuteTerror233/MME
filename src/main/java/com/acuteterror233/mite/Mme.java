@@ -58,8 +58,8 @@ public class Mme implements ModInitializer {
             return function != null ? function.apply(registries) : null;
         });
         FuelRegistryEvents.BUILD.register((builder, context) -> {
-            builder.add(AtItems.WOOD_CLUB, context.baseSmeltTime());
-            builder.add(AtItems.WOOD_CUDGEL, context.baseSmeltTime());
+            builder.add(AtItems.WOODEN_CLUB, context.baseSmeltTime());
+            builder.add(AtItems.WOODEN_CUDGEL, context.baseSmeltTime());
             builder.add(AtTags.LAVA_BUCKET,  context.baseSmeltTime() * 16);
             builder.add(Blocks.COAL_BLOCK, context.baseSmeltTime() * 72);
             builder.add(Blocks.DRIED_KELP_BLOCK, context.baseSmeltTime() * 8);
@@ -105,7 +105,16 @@ public class Mme implements ModInitializer {
             Identifier.ofVanilla("diamond_hoe"),
             Identifier.ofVanilla("diamond_sword"),
             Identifier.ofVanilla("crafting_table"),
-            Identifier.ofVanilla("blast_furnace")
+            Identifier.ofVanilla("blast_furnace"),
+            Identifier.ofVanilla("netherite_axe_smithing"),
+            Identifier.ofVanilla("netherite_boots_smithing"),
+            Identifier.ofVanilla("netherite_chestplate_smithing"),
+            Identifier.ofVanilla("netherite_helmet_smithing"),
+            Identifier.ofVanilla("netherite_hoe_smithing"),
+            Identifier.ofVanilla("netherite_leggings_smithing"),
+            Identifier.ofVanilla("netherite_pickaxe_smithing"),
+            Identifier.ofVanilla("netherite_shovel_smithing"),
+            Identifier.ofVanilla("netherite_sword_smithing")
     );
 
 }

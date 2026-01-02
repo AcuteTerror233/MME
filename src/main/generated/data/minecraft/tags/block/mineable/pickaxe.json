@@ -1,8 +1,11 @@
 {
   "values": [
     "mme:adamantium_ore",
+    "mme:deepslate_adamantium_ore",
     "mme:mithril_ore",
+    "mme:deepslate_mithril_ore",
     "mme:silver_ore",
+    "mme:deepslate_silver_ore",
     "mme:adamantium_bars",
     "mme:mithril_bars",
     "mme:ancient_metal_bars",

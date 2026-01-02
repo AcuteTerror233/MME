@@ -52,18 +52,6 @@ public class RunePortalCoordinateGenerator {
         }
     }
 
-    /**
-     * 构建输入字符串
-     */
-    private static String buildOrderedInput(int seed1, int seed2, int seed3, int seed4) {
-        // 位置权重影响字符串构建
-        return String.format("%d_%d_%d_%d",
-                seed1,
-                seed2,
-                seed3,
-                seed4);
-    }
-
     private static double bytesToDouble(byte[] bytes, int offset) {
         long value = 0;
         for (int i = 0; i < 8; i++) {

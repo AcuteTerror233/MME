@@ -1,5 +1,6 @@
 {
   "values": [
-    "minecraft:iron_nugget"
+    "minecraft:iron_nugget",
+    "minecraft:iron_block"
   ]
 }

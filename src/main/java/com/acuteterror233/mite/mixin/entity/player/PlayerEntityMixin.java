@@ -16,14 +16,16 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import java.util.Objects;
-
 @Mixin(PlayerEntity.class)
 public abstract class PlayerEntityMixin extends LivingEntity {
     @Shadow
     public int experienceLevel;
     @Shadow
     protected HungerManager hungerManager;
+
+    @Shadow
+    public abstract HungerManager getHungerManager();
+
     protected PlayerEntityMixin(EntityType<? extends LivingEntity> entityType, World world) {
         super(entityType, world);
     }
@@ -32,7 +34,7 @@ public abstract class PlayerEntityMixin extends LivingEntity {
     private static void createPlayerAttributes(CallbackInfoReturnable<DefaultAttributeContainer.Builder> cir) {
         cir.setReturnValue(cir.getReturnValue()
                 .add(EntityAttributes.MAX_HEALTH, 6)
-                .add(EntityAttributes.BLOCK_INTERACTION_RANGE, 1.75)
+                .add(EntityAttributes.BLOCK_INTERACTION_RANGE, 2)
                 .add(EntityAttributes.ENTITY_INTERACTION_RANGE, 1.5)
         );
     }
@@ -45,12 +47,12 @@ public abstract class PlayerEntityMixin extends LivingEntity {
     @Inject(method = "tick", at = @At("HEAD"))
     public void tick(CallbackInfo ci) {
         int maxHealth = Math.max(6, Math.min(20, 6 + (this.experienceLevel / 5) * 2));
-        setMaxHealth(maxHealth);
+        this.setMaxHealth(maxHealth);
     }
 
     @Unique
     public void setMaxHealth(int max) {
-        Objects.requireNonNull(getAttributes().getCustomInstance(EntityAttributes.MAX_HEALTH)).setBaseValue(max);
-        ((HungerManagerExtension) this.hungerManager).setMaxFoodLevel(max);
+        this.getAttributes().getCustomInstance(EntityAttributes.MAX_HEALTH).setBaseValue(max);
+        ((HungerManagerExtension) this.getHungerManager()).setMaxFoodLevel(max);
     }
 }

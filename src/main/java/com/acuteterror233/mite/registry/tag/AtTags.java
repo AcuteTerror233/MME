@@ -65,16 +65,6 @@ public class AtTags {
     public static final TagKey<Item> SCYTHE = ofItem("scythe");
     public static final TagKey<Item> SHEARS = ofItem("shears");
 
-
-    //用于砧判断是否不可维修
-    public static final TagKey<Item> ADAMANTIUM_NONREPAIRABLE = ofItem("adamantium_nonrepairable");
-    public static final TagKey<Item> MITHRIL_NONREPAIRABLE = ofItem("mithril_nonrepairable");
-    public static final TagKey<Item> ANCIENT_METAL_NONREPAIRABLE = ofItem("ancient_metal_nonrepairable");
-    public static final TagKey<Item> IRON_NONREPAIRABLE = ofItem("iron_nonrepairable");
-    public static final TagKey<Item> SILVER_NONREPAIRABLE = ofItem("silver_nonrepairable");
-    public static final TagKey<Item> COPPER_NONREPAIRABLE = ofItem("copper_nonrepairable");
-    public static final TagKey<Item> GOLDEN_NONREPAIRABLE = ofItem("golden_nonrepairable");
-
     //可维修系列工具含护甲
     public static final TagKey<Item> ADAMANTIUM_SERIES_REPAIRABLE = ofItem("adamantium_series_repairable");
     public static final TagKey<Item> MITHRIL_SERIES_REPAIRABLE = ofItem("mithril_series_repairable");

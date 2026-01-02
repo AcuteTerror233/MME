@@ -15,7 +15,7 @@
       },
       {
         "state": {
-          "Name": "mme:mithril_ore"
+          "Name": "mme:deepslate_mithril_ore"
         },
         "target": {
           "predicate_type": "minecraft:tag_match",

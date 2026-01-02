@@ -6,9 +6,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryWrapper;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.WorldEvents;
 
@@ -42,8 +40,8 @@ public class AnvilBlockEntity extends BlockEntity {
      */
     protected void readNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
         super.readNbt(nbt, registryLookup);
-        this.maxDamage = nbt.getInt("maxDamage").orElse(0);
-        addDamage(nbt.getInt("damage").orElse(0));
+        this.maxDamage = nbt.getInt("maxDamage", 0);
+        this.damage = (nbt.getInt("damage", 0));
     }
 
     public Integer getMaxDamage() {
@@ -66,29 +64,23 @@ public class AnvilBlockEntity extends BlockEntity {
      * 增加损伤并根据三等分阈值切换铁砧形态或销毁。
      */
     public void addDamage(Integer damage) {
-        int i = this.damage + damage;
-        this.damage = Math.clamp(i, 0, this.maxDamage);
-        int i1 = this.maxDamage / 3;
-        assert this.world != null;
+        int newDamage = this.damage + damage;
+        this.damage = Math.clamp(newDamage, 0, this.maxDamage);
+        int damageThreshold = this.maxDamage / 3;
         BlockState state = this.world.getBlockState(this.pos);
         Block anvil = state.getBlock();
-        if (i >= this.maxDamage) {
+        if (newDamage >= this.maxDamage) {
             this.world.removeBlock(this.pos, false);
             this.world.syncWorldEvent(WorldEvents.ANVIL_USED, pos, 0);
-        } else if (i >= i1 * 2) {
-            Block block = Registries.BLOCK.get(Identifier.ofVanilla(Registries.BLOCK.getId(anvil).toString().replace("chipped", "damaged")));
-            if (block == anvil){
-                return;
-            }
+        } else if (newDamage >= damageThreshold * 2) {
+            Block block = AtBlocks.ANVIL_MAP.get(anvil);
             generate(block, state);
-        } else if (i >= i1) {
-            Block block = Registries.BLOCK.get(Identifier.ofVanilla(Registries.BLOCK.getId(anvil).toString().replace(":", ":chipped")));
-            if (block == anvil){
-                return;
-            }
+        } else if (newDamage >= damageThreshold) {
+            Block block = AtBlocks.ANVIL_MAP.get(anvil);
             generate(block, state);
         }
     }
+
 
     /**
      * 切换当前坐标处的铁砧方块并回填方块实体耐久数据。

@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "#minecraft:netherite_tool_materials",
+  "base": "mme:adamantium_chainmail_leggings",
+  "result": {
+    "id": "mme:netherite_chainmail_leggings"
+  },
+  "template": "minecraft:netherite_upgrade_smithing_template"
+}

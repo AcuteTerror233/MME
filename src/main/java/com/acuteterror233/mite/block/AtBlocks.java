@@ -28,6 +28,8 @@ import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.ScreenHandlerType;
 import net.minecraft.util.Identifier;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
@@ -39,13 +41,35 @@ import java.util.function.Function;
  */
 public class AtBlocks {
     public static final Block ADAMANTIUM_ORE = register(        //艾德曼矿
-            "adamantium_ore", AbstractBlock.Settings.create().strength(3.0f, 4.0f).requiresTool()
+            "adamantium_ore",
+            AbstractBlock.Settings.create().strength(5.0f, 3.0f).requiresTool(),
+            new Item.Settings().component(AtDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4)
     );
     public static final Block MITHRIL_ORE = register(           //秘银矿
-            "mithril_ore", AbstractBlock.Settings.create().strength(3.0f, 4.0f).requiresTool()
+            "mithril_ore",
+            AbstractBlock.Settings.create().strength(4.0f, 3.0f).requiresTool(),
+            new Item.Settings().component(AtDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 3)
     );
     public static final Block SILVER_ORE = register(            //银矿
-            "silver_ore", AbstractBlock.Settings.create().strength(3.0f, 4.0f).requiresTool()
+            "silver_ore",
+            AbstractBlock.Settings.create().strength(3.0f, 3.0f).requiresTool(),
+            new Item.Settings().component(AtDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2)
+    );
+
+    public static final Block DEEPSLATE_ADAMANTIUM_ORE = register(        //深层艾德曼矿
+            "deepslate_adamantium_ore",
+            AbstractBlock.Settings.create().strength(4.5f, 3.0f).requiresTool(),
+            new Item.Settings().component(AtDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4)
+    );
+    public static final Block DEEPSLATE_MITHRIL_ORE = register(           //深层秘银矿
+            "deepslate_mithril_ore",
+            AbstractBlock.Settings.create().strength(4.5f, 3.0f).requiresTool(),
+            new Item.Settings().component(AtDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 3)
+    );
+    public static final Block DEEPSLATE_SILVER_ORE = register(            //深层银矿
+            "deepslate_silver_ore",
+            AbstractBlock.Settings.create().strength(4.5f, 3.0f).requiresTool(),
+            new Item.Settings().component(AtDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2)
     );
 
     public static final Block ADAMANTIUM_BARS = register(       //艾德曼栏杆
@@ -133,112 +157,135 @@ public class AtBlocks {
 
     public static final Block DAMAGED_ADAMANTIUM_ANVIL = register(
             "damaged_adamantium_anvil",
-            AtAnvilBlock::new,
+            settings -> new AtAnvilBlock(settings, AtTags.ADAMANTIUM_NOT_ALLOWED_MATERIAL),
             AbstractBlock.Settings.copy(Blocks.ANVIL),
             new Item.Settings().maxDamage(maxDamageAnvil(AtToolMaterials.ADAMANTIUM.durability()))
     );
     public static final Block CHIPPED_ADAMANTIUM_ANVIL = register(
             "chipped_adamantium_anvil",
-            AtAnvilBlock::new,
+            settings -> new AtAnvilBlock(settings, AtTags.ADAMANTIUM_NOT_ALLOWED_MATERIAL),
             AbstractBlock.Settings.copy(Blocks.ANVIL),
             new Item.Settings().maxDamage(maxDamageAnvil(AtToolMaterials.ADAMANTIUM.durability()))
     );
     public static final Block ADAMANTIUM_ANVIL = register(
             "adamantium_anvil",
-            AtAnvilBlock::new,
+            settings -> new AtAnvilBlock(settings, AtTags.ADAMANTIUM_NOT_ALLOWED_MATERIAL),
             AbstractBlock.Settings.copy(Blocks.ANVIL),
             new Item.Settings().maxDamage(maxDamageAnvil(AtToolMaterials.ADAMANTIUM.durability()))
     );
     public static final Block DAMAGED_MITHRIL_ANVIL = register(
             "damaged_mithril_anvil",
-            AtAnvilBlock::new,
+            settings -> new AtAnvilBlock(settings, AtTags.MITHRIL_NOT_ALLOWED_MATERIAL),
             AbstractBlock.Settings.copy(Blocks.ANVIL),
             new Item.Settings().maxDamage(maxDamageAnvil(AtToolMaterials.MITHRIL.durability()))
     );
     public static final Block CHIPPED_MITHRIL_ANVIL = register(
             "chipped_mithril_anvil",
-            AtAnvilBlock::new,
+            settings -> new AtAnvilBlock(settings, AtTags.MITHRIL_NOT_ALLOWED_MATERIAL),
             AbstractBlock.Settings.copy(Blocks.ANVIL),
             new Item.Settings().maxDamage(maxDamageAnvil(AtToolMaterials.MITHRIL.durability()))
     );
     public static final Block MITHRIL_ANVIL = register(
             "mithril_anvil",
-            AtAnvilBlock::new,
+            settings -> new AtAnvilBlock(settings, AtTags.MITHRIL_NOT_ALLOWED_MATERIAL),
             AbstractBlock.Settings.copy(Blocks.ANVIL),
             new Item.Settings().maxDamage(maxDamageAnvil(AtToolMaterials.MITHRIL.durability()))
     );
     public static final Block DAMAGED_ANCIENT_METAL_ANVIL = register(
             "damaged_ancient_metal_anvil",
-            AtAnvilBlock::new,
+            settings -> new AtAnvilBlock(settings, AtTags.ANCIENT_METAL_NOT_ALLOWED_MATERIAL),
             AbstractBlock.Settings.copy(Blocks.ANVIL),
             new Item.Settings().maxDamage(maxDamageAnvil(AtToolMaterials.ANCIENT_METAL.durability()))
     );
     public static final Block CHIPPED_ANCIENT_METAL_ANVIL = register(
             "chipped_ancient_metal_anvil",
-            AtAnvilBlock::new,
+            settings -> new AtAnvilBlock(settings, AtTags.ANCIENT_METAL_NOT_ALLOWED_MATERIAL),
             AbstractBlock.Settings.copy(Blocks.ANVIL),
             new Item.Settings().maxDamage(maxDamageAnvil(AtToolMaterials.ANCIENT_METAL.durability()))
     );
     public static final Block ANCIENT_METAL_ANVIL = register(
             "ancient_metal_anvil",
-            AtAnvilBlock::new,
+            settings -> new AtAnvilBlock(settings, AtTags.ANCIENT_METAL_NOT_ALLOWED_MATERIAL),
             AbstractBlock.Settings.copy(Blocks.ANVIL),
             new Item.Settings().maxDamage(maxDamageAnvil(AtToolMaterials.ANCIENT_METAL.durability()))
     );
     public static final Block DAMAGED_GOLDEN_ANVIL = register(
             "damaged_golden_anvil",
-            AtAnvilBlock::new,
+            settings -> new AtAnvilBlock(settings, AtTags.GOLD_NOT_ALLOWED_MATERIAL),
             AbstractBlock.Settings.copy(Blocks.ANVIL),
             new Item.Settings().maxDamage(maxDamageAnvil(ToolMaterial.GOLD.durability()))
     );
     public static final Block CHIPPED_GOLDEN_ANVIL = register(
             "chipped_golden_anvil",
-            AtAnvilBlock::new,
+            settings -> new AtAnvilBlock(settings, AtTags.GOLD_NOT_ALLOWED_MATERIAL),
             AbstractBlock.Settings.copy(Blocks.ANVIL),
             new Item.Settings().maxDamage(maxDamageAnvil(ToolMaterial.GOLD.durability()))
     );
     public static final Block GOLDEN_ANVIL = register(
             "golden_anvil",
-            AtAnvilBlock::new,
+            settings -> new AtAnvilBlock(settings, AtTags.GOLD_NOT_ALLOWED_MATERIAL),
             AbstractBlock.Settings.copy(Blocks.ANVIL),
             new Item.Settings().maxDamage(maxDamageAnvil(ToolMaterial.GOLD.durability()))
     );
     public static final Block DAMAGED_SILVER_ANVIL = register(
             "damaged_silver_anvil",
-            AtAnvilBlock::new,
+            settings -> new AtAnvilBlock(settings, AtTags.COPPER_OR_SILVER_NOT_ALLOWED_MATERIAL),
             AbstractBlock.Settings.copy(Blocks.ANVIL),
             new Item.Settings().maxDamage(maxDamageAnvil(AtToolMaterials.SILVER.durability()))
     );
     public static final Block CHIPPED_SILVER_ANVIL = register(
             "chipped_silver_anvil",
-            AtAnvilBlock::new,
+            settings -> new AtAnvilBlock(settings, AtTags.COPPER_OR_SILVER_NOT_ALLOWED_MATERIAL),
             AbstractBlock.Settings.copy(Blocks.ANVIL),
             new Item.Settings().maxDamage(maxDamageAnvil(AtToolMaterials.SILVER.durability()))
     );
     public static final Block SILVER_ANVIL = register(
             "silver_anvil",
-            AtAnvilBlock::new,
+            settings -> new AtAnvilBlock(settings, AtTags.COPPER_OR_SILVER_NOT_ALLOWED_MATERIAL),
             AbstractBlock.Settings.copy(Blocks.ANVIL),
             new Item.Settings().maxDamage(maxDamageAnvil(AtToolMaterials.SILVER.durability()))
     );
     public static final Block DAMAGED_COPPER_ANVIL = register(
             "damaged_copper_anvil",
-            AtAnvilBlock::new,
+            settings -> new AtAnvilBlock(settings, AtTags.COPPER_OR_SILVER_NOT_ALLOWED_MATERIAL),
             AbstractBlock.Settings.copy(Blocks.ANVIL),
             new Item.Settings().maxDamage(maxDamageAnvil(AtToolMaterials.COPPER.durability()))
     );
     public static final Block CHIPPED_COPPER_ANVIL = register(
             "chipped_copper_anvil",
-            AtAnvilBlock::new,
+            settings -> new AtAnvilBlock(settings, AtTags.COPPER_OR_SILVER_NOT_ALLOWED_MATERIAL),
             AbstractBlock.Settings.copy(Blocks.ANVIL),
             new Item.Settings().maxDamage(maxDamageAnvil(AtToolMaterials.COPPER.durability()))
     );
     public static final Block COPPER_ANVIL = register(
             "copper_anvil",
-            AtAnvilBlock::new,
+            settings -> new AtAnvilBlock(settings, AtTags.COPPER_OR_SILVER_NOT_ALLOWED_MATERIAL),
             AbstractBlock.Settings.copy(Blocks.ANVIL),
             new Item.Settings().maxDamage(maxDamageAnvil(AtToolMaterials.COPPER.durability()))
     );
+    public static final Map<Block, Block> ANVIL_MAP = new HashMap<>(){{
+        put(ADAMANTIUM_ANVIL, CHIPPED_ADAMANTIUM_ANVIL);
+        put(CHIPPED_ADAMANTIUM_ANVIL, DAMAGED_ADAMANTIUM_ANVIL);
+        put(DAMAGED_ADAMANTIUM_ANVIL, Blocks.AIR);
+        put(MITHRIL_ANVIL, CHIPPED_MITHRIL_ANVIL);
+        put(CHIPPED_MITHRIL_ANVIL, DAMAGED_MITHRIL_ANVIL);
+        put(DAMAGED_MITHRIL_ANVIL, Blocks.AIR);
+        put(ANCIENT_METAL_ANVIL, CHIPPED_ANCIENT_METAL_ANVIL);
+        put(CHIPPED_ANCIENT_METAL_ANVIL, DAMAGED_ANCIENT_METAL_ANVIL);
+        put(DAMAGED_ANCIENT_METAL_ANVIL, Blocks.AIR);
+        put(Blocks.ANVIL, Blocks.CHIPPED_ANVIL);
+        put(Blocks.CHIPPED_ANVIL, Blocks.DAMAGED_ANVIL);
+        put(Blocks.DAMAGED_ANVIL, Blocks.AIR);
+        put(GOLDEN_ANVIL, CHIPPED_GOLDEN_ANVIL);
+        put(CHIPPED_GOLDEN_ANVIL, DAMAGED_GOLDEN_ANVIL);
+        put(DAMAGED_GOLDEN_ANVIL, Blocks.AIR);
+        put(SILVER_ANVIL, CHIPPED_SILVER_ANVIL);
+        put(CHIPPED_SILVER_ANVIL, DAMAGED_SILVER_ANVIL);
+        put(DAMAGED_SILVER_ANVIL, Blocks.AIR);
+        put(COPPER_ANVIL, CHIPPED_COPPER_ANVIL);
+        put(CHIPPED_COPPER_ANVIL, DAMAGED_COPPER_ANVIL);
+        put(DAMAGED_COPPER_ANVIL, Blocks.AIR);
+    }};
 
     public static final Block UNDERGROUND_PORTAL = register(
             "underground_portal",
@@ -519,9 +566,6 @@ public class AtBlocks {
                     , Blocks.SMOKER
             );
 
-    /**
-     * 注册界面处理器（ScreenHandler）。
-     */
     private static <T extends ScreenHandler> ScreenHandlerType<T> register(String id, ScreenHandlerType.Factory<T> factory) {
         return Registry.register(Registries.SCREEN_HANDLER, id, new ScreenHandlerType<>(factory, FeatureFlags.VANILLA_FEATURES));
     }

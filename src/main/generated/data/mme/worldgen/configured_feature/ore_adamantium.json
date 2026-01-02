@@ -15,7 +15,7 @@
       },
       {
         "state": {
-          "Name": "mme:adamantium_ore"
+          "Name": "mme:deepslate_adamantium_ore"
         },
         "target": {
           "predicate_type": "minecraft:tag_match",

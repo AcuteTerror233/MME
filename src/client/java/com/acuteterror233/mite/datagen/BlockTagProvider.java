@@ -189,6 +189,24 @@ public class BlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(AtBlocks.OBSIDIAN_CRAFTING_TABLE)
                 .add(AtBlocks.FLINT_CRAFTING_TABLE);
 
+        getOrCreateTagBuilder(AtTags.NEEDS_ADAMANTIUM_TOOL)
+                .add(Blocks.ANCIENT_DEBRIS)
+                .add(Blocks.NETHERITE_BLOCK)
+                .add(AtBlocks.ADAMANTIUM_BLOCK)
+                .add(AtBlocks.ADAMANTIUM_BARS)
+                .add(AtBlocks.ADAMANTIUM_DOOR);
+        getOrCreateTagBuilder(AtTags.NEEDS_MITHRIL_TOOL)
+                .add(AtBlocks.MITHRIL_BLOCK)
+                .add(AtBlocks.MITHRIL_BARS)
+                .add(AtBlocks.MITHRIL_DOOR)
+                .add(AtBlocks.ADAMANTIUM_ORE)
+                .add(AtBlocks.DEEPSLATE_ADAMANTIUM_ORE);
+        getOrCreateTagBuilder(AtTags.NEEDS_ANCIENT_METAL_TOOL)
+                .add(AtBlocks.ANCIENT_METAL_BLOCK)
+                .add(AtBlocks.ANCIENT_METAL_BARS);
+        getOrCreateTagBuilder(BlockTags.NEEDS_IRON_TOOL)
+                .add(AtBlocks.MITHRIL_ORE)
+                .add(AtBlocks.DEEPSLATE_MITHRIL_ORE);
         getOrCreateTagBuilder(AtTags.NEEDS_SILVER_OR_COPPER_TOOL)
                 .add(AtBlocks.SILVER_BLOCK)
                 .add(AtBlocks.SILVER_BARS)
@@ -196,19 +214,6 @@ public class BlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(Blocks.COPPER_BLOCK)
                 .add(AtBlocks.COPPER_BARS)
                 .forceAddTag(BlockTags.COPPER_ORES);
-        getOrCreateTagBuilder(AtTags.NEEDS_ANCIENT_METAL_TOOL)
-                .add(AtBlocks.ANCIENT_METAL_BLOCK)
-                .add(AtBlocks.ANCIENT_METAL_BARS);
-        getOrCreateTagBuilder(AtTags.NEEDS_MITHRIL_TOOL)
-                .add(AtBlocks.MITHRIL_BLOCK)
-                .add(AtBlocks.MITHRIL_BARS)
-                .add(AtBlocks.MITHRIL_DOOR)
-                .add(AtBlocks.ADAMANTIUM_ORE);
-        getOrCreateTagBuilder(AtTags.NEEDS_ADAMANTIUM_TOOL)
-                .add(Blocks.ANCIENT_DEBRIS)
-                .add(AtBlocks.ADAMANTIUM_BLOCK)
-                .add(AtBlocks.ADAMANTIUM_BARS)
-                .add(AtBlocks.ADAMANTIUM_DOOR);
 
         getOrCreateTagBuilder(AtTags.INCORRECT_FOR_FLINT_OR_OBSIDIAN_TOOL)
                 .forceAddTag(AtTags.NEEDS_SILVER_OR_COPPER_TOOL)
@@ -237,8 +242,11 @@ public class BlockTagProvider extends FabricTagProvider.BlockTagProvider {
 
         getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
                 .add(AtBlocks.ADAMANTIUM_ORE)
+                .add(AtBlocks.DEEPSLATE_ADAMANTIUM_ORE)
                 .add(AtBlocks.MITHRIL_ORE)
+                .add(AtBlocks.DEEPSLATE_MITHRIL_ORE)
                 .add(AtBlocks.SILVER_ORE)
+                .add(AtBlocks.DEEPSLATE_SILVER_ORE)
                 .add(AtBlocks.ADAMANTIUM_BARS)
                 .add(AtBlocks.MITHRIL_BARS)
                 .add(AtBlocks.ANCIENT_METAL_BARS)
