@@ -106,7 +106,7 @@ public abstract class AbstractGradeCraftingScreenHandler extends AbstractCraftin
 
     private void isAllowedCrafting(RecipeInputInventory craftingInventory, ItemStack craftItem) {
         boolean itemFound = false;
-        for (Block block : this.UpperLevelCraftingTable) {
+            for (Block block : this.UpperLevelCraftingTable) {
             if (block.asItem() == craftItem.getItem()) {
                 itemFound = true;
                 break;

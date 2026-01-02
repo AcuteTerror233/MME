@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "#minecraft:netherite_tool_materials",
+  "base": "mme:adamantium_scythe",
+  "result": {
+    "id": "mme:netherite_scythe"
+  },
+  "template": "minecraft:netherite_upgrade_smithing_template"
+}

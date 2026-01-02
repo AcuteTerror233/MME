@@ -26,10 +26,7 @@ import net.minecraft.screen.slot.ForgingSlotsManager;
 import net.minecraft.text.Text;
 import net.minecraft.util.StringHelper;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
-
-import java.util.Optional;
 
 /**
  * 自定义铁砧界面处理器：
@@ -40,6 +37,7 @@ import java.util.Optional;
  */
 public class AtAnvilScreenHandler extends ForgingScreenHandler {
     private final Property levelCost = Property.create();
+    private final TagKey<Item> notAllowedMaterial;
     private boolean keepSecondSlot = false;
     //维修扣除计数
     private int repairItemUsage;
@@ -47,12 +45,13 @@ public class AtAnvilScreenHandler extends ForgingScreenHandler {
     private String newItemName;
 
     public AtAnvilScreenHandler(int syncId, PlayerInventory playerInventory) {
-        this(syncId, playerInventory, ScreenHandlerContext.EMPTY);
+        this(syncId, playerInventory, ScreenHandlerContext.EMPTY, null);
     }
 
-    public AtAnvilScreenHandler(int syncId, PlayerInventory playerInventory, ScreenHandlerContext context) {
+    public AtAnvilScreenHandler(int syncId, PlayerInventory playerInventory, ScreenHandlerContext context, TagKey<Item> notAllowedMaterial) {
         super(AtBlocks.ATANVIL, syncId, playerInventory, context, getForgingSlotsManager());
         this.addProperty(this.levelCost);
+        this.notAllowedMaterial = notAllowedMaterial;
     }
 
     public static ForgingSlotsManager getForgingSlotsManager() {
@@ -67,8 +66,8 @@ public class AtAnvilScreenHandler extends ForgingScreenHandler {
 
     //输出被拿走的时候执行,player拿走的玩家,stack拿走的堆栈
     @Override
-    /**
-     * 当玩家拿走输出物品时：扣除等级、消耗副槽材料，并累积铁砧耐久损耗。
+    /*
+      当玩家拿走输出物品时：扣除等级、消耗副槽材料，并累积铁砧耐久损耗。
      */
     protected void onTakeOutput(PlayerEntity player, ItemStack stack) {
         //判断是否在创造
@@ -116,18 +115,19 @@ public class AtAnvilScreenHandler extends ForgingScreenHandler {
     protected boolean canUse(BlockState state) {
         return state.isIn(BlockTags.ANVIL);
     }
+    @Override
+    public boolean canUse(PlayerEntity player) {
+        return this.context.get((world, pos) -> player.canInteractWithBlockAt(pos, 4.0) && world.getBlockState(pos.up()).isAir(), true);
+    }
 
     @Override
-    /**
-     * 计算输出与等级消耗：负责修复、结合附魔、校验冲突、设置自定义名称与 REPAIR_COST。
-     */
     public void updateResult() {
         //获取第一个堆栈
         ItemStack itemStack = this.input.getStack(0);
         //默认不保留第二个堆栈
         this.keepSecondSlot = false;
         //默认等级消耗为1
-        this.levelCost.set(1);
+        this.levelCost.set(0);
         int i = 0;
         long repair_cost = 0L;
         int j = 0;
@@ -147,17 +147,10 @@ public class AtAnvilScreenHandler extends ForgingScreenHandler {
             if (!itemStack3.isEmpty()) {
                 //获取堆栈的STORED_ENCHANTMENTS
                 boolean bl = itemStack3.contains(DataComponentTypes.STORED_ENCHANTMENTS);
-                Optional<BlockState> state = this.context.get((World::getBlockState));
-                TagKey<Item> key = AtTags.ADAMANTIUM_NONREPAIRABLE;
-                if (state.isPresent()) {
-                    BlockState blockState = state.get();
-                    key = GetNonrepairableTag(blockState);
-                }
-                // 判断堆栈是否可损坏,堆栈一可以被堆栈二修复
-                if (itemStack2.isDamageable() && itemStack.canRepairWith(itemStack3) && !itemStack.isIn(key)) {
+                if (itemStack2.isDamageable() && itemStack.canRepairWith(itemStack3) && this.notAllowedMaterial != null && !itemStack3.isIn(this.notAllowedMaterial)) {
                     int i1 = 1;
                     if (itemStack3.isIn(AtTags.NUGGET)) {
-                        i1 = 4;
+                        i1 = 6;
                     }
                     //维修耐久
                     int Damage = Math.min(itemStack2.getDamage(), itemStack2.getMaxDamage() / i1);
@@ -309,20 +302,6 @@ public class AtAnvilScreenHandler extends ForgingScreenHandler {
             this.output.setStack(0, ItemStack.EMPTY);
             this.levelCost.set(0);
         }
-    }
-
-    /**
-     * 根据当前铁砧方块类型返回对应的“不可修复材料”标签。
-     */
-    private TagKey<Item> GetNonrepairableTag(BlockState state) {
-        if (state.isIn(AtTags.ADAMANTIUM_ANVIL)) return AtTags.ADAMANTIUM_NONREPAIRABLE;
-        else if (state.isIn(AtTags.MITHRIL_ANVIL)) return AtTags.MITHRIL_NONREPAIRABLE;
-        else if (state.isIn(AtTags.ANCIENT_METAL_ANVIL)) return AtTags.ANCIENT_METAL_NONREPAIRABLE;
-        else if (state.isIn(AtTags.GOLDEN_ANVIL)) return AtTags.GOLDEN_NONREPAIRABLE;
-        else if (state.isIn(AtTags.COPPER_ANVIL)) return AtTags.COPPER_NONREPAIRABLE;
-        else if (state.isIn(AtTags.SILVER_ANVIL)) return AtTags.SILVER_NONREPAIRABLE;
-        else if (state.isIn(AtTags.IRON_ANVIL)) return AtTags.IRON_NONREPAIRABLE;
-        return AtTags.ADAMANTIUM_NONREPAIRABLE;
     }
 
     public boolean setNewItemName(String newItemName) {

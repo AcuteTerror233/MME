@@ -348,40 +348,30 @@ public class ItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(AtItems.COPPER_CHAINMAIL_LEGGINGS)
                 .add(AtItems.COPPER_BOOTS)
                 .add(AtItems.COPPER_CHAINMAIL_BOOTS);
-        getOrCreateTagBuilder(AtTags.ADAMANTIUM_NONREPAIRABLE);
-        getOrCreateTagBuilder(AtTags.MITHRIL_NONREPAIRABLE)
-                .addOptionalTag(AtTags.ADAMANTIUM_NONREPAIRABLE)
-                .addOptionalTag(AtTags.ADAMANTIUM_SERIES_REPAIRABLE);
-        getOrCreateTagBuilder(AtTags.ANCIENT_METAL_NONREPAIRABLE)
-                .addOptionalTag(AtTags.MITHRIL_NONREPAIRABLE)
-                .addOptionalTag(AtTags.MITHRIL_SERIES_REPAIRABLE);
-        getOrCreateTagBuilder(AtTags.IRON_NONREPAIRABLE)
-                .addOptionalTag(AtTags.ANCIENT_METAL_NONREPAIRABLE)
-                .addOptionalTag(AtTags.ANCIENT_METAL_SERIES_REPAIRABLE);
-        getOrCreateTagBuilder(AtTags.SILVER_NONREPAIRABLE)
-                .addOptionalTag(AtTags.IRON_NONREPAIRABLE)
-                .addOptionalTag(AtTags.IRON_SERIES_REPAIRABLE)
-                .addOptionalTag(AtTags.RUSTED_IRON_SERIES_REPAIRABLE);
-        getOrCreateTagBuilder(AtTags.COPPER_NONREPAIRABLE)
-                .addOptionalTag(AtTags.IRON_NONREPAIRABLE)
-                .addOptionalTag(AtTags.IRON_SERIES_REPAIRABLE)
-                .addOptionalTag(AtTags.RUSTED_IRON_SERIES_REPAIRABLE);
 
         getOrCreateTagBuilder(AtTags.ADAMANTIUM_TOOL_MATERIALS)
                 .add(AtItems.ADAMANTIUM_INGOT)
+                .add(AtBlocks.ADAMANTIUM_BLOCK.asItem())
                 .add(AtItems.ADAMANTIUM_NUGGET);
         getOrCreateTagBuilder(AtTags.MITHRIL_TOOL_MATERIALS)
                 .add(AtItems.MITHRIL_INGOT)
+                .add(AtBlocks.MITHRIL_BLOCK.asItem())
                 .add(AtItems.MITHRIL_NUGGET);
         getOrCreateTagBuilder(AtTags.ANCIENT_METAL_TOOL_MATERIALS)
                 .add(AtItems.ANCIENT_METAL_INGOT)
+                .add(AtBlocks.ANCIENT_METAL_BLOCK.asItem())
                 .add(AtItems.ANCIENT_METAL_NUGGET);
         getOrCreateTagBuilder(AtTags.SILVER_TOOL_MATERIALS)
                 .add(AtItems.SILVER_INGOT)
+                .add(AtBlocks.SILVER_BLOCK.asItem())
                 .add(AtItems.SILVER_NUGGET);
         getOrCreateTagBuilder(AtTags.COPPER_TOOL_MATERIALS)
                 .add(Items.COPPER_INGOT)
+                .add(Items.COPPER_BLOCK)
                 .add(AtItems.COPPER_NUGGET);
+        getOrCreateTagBuilder(ItemTags.IRON_TOOL_MATERIALS)
+                .add(Items.IRON_NUGGET)
+                .add(Items.IRON_BLOCK);
 
         getOrCreateTagBuilder(AtTags.ADAMANTIUM_NOT_ALLOWED_MATERIAL);
         getOrCreateTagBuilder(AtTags.MITHRIL_NOT_ALLOWED_MATERIAL)
@@ -404,8 +394,6 @@ public class ItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .addOptionalTag(AtTags.IRON_NOT_ALLOWED_MATERIAL)
                 .add(Items.IRON_BLOCK);
 
-        getOrCreateTagBuilder(ItemTags.IRON_TOOL_MATERIALS)
-                .add(Items.IRON_NUGGET);
 
         getOrCreateTagBuilder(AtTags.BATTLE_AXE)
                 .add(AtItems.ADAMANTIUM_BATTLE_AXE)

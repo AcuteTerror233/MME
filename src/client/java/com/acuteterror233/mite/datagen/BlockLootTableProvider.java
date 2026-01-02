@@ -20,6 +20,10 @@ public class BlockLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(AtBlocks.MITHRIL_ORE, block -> oreDrops(block, AtItems.RAW_MITHRIL));
         addDrop(AtBlocks.SILVER_ORE, block -> oreDrops(block, AtItems.RAW_SILVER));
 
+        addDrop(AtBlocks.DEEPSLATE_ADAMANTIUM_ORE, block -> oreDrops(block, AtItems.RAW_ADAMANTIUM));
+        addDrop(AtBlocks.DEEPSLATE_MITHRIL_ORE, block -> oreDrops(block, AtItems.RAW_MITHRIL));
+        addDrop(AtBlocks.DEEPSLATE_SILVER_ORE, block -> oreDrops(block, AtItems.RAW_SILVER));
+
         addDrop(AtBlocks.ADAMANTIUM_DOOR, this::doorDrops);
         addDrop(AtBlocks.ANCIENT_METAL_DOOR, this::doorDrops);
         addDrop(AtBlocks.MITHRIL_DOOR, this::doorDrops);

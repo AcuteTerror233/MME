@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 5.0,
+  "ingredient": "mme:deepslate_adamantium_ore",
+  "result": {
+    "id": "mme:adamantium_ingot"
+  }
+}

@@ -15,7 +15,7 @@
       },
       {
         "state": {
-          "Name": "mme:silver_ore"
+          "Name": "mme:deepslate_silver_ore"
         },
         "target": {
           "predicate_type": "minecraft:tag_match",

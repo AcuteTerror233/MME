@@ -2,10 +2,14 @@ package com.acuteterror233.mite.item;
 
 import com.acuteterror233.mite.block.AtBlocks;
 import com.acuteterror233.mite.component.AtDataComponentTypes;
+import com.acuteterror233.mite.item.armor.AtArmorMaterials;
 import net.minecraft.block.*;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemKeys;
 import net.minecraft.item.ToolMaterial;
+import net.minecraft.item.equipment.EquipmentType;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.util.Identifier;
 
 import java.util.Map;
@@ -99,9 +103,9 @@ public final class VanillaItemModify {
             Map.entry(Identifier.ofVanilla("lead"), settings -> settings.maxCount(16)),
             Map.entry(Identifier.ofVanilla("firework_rocket"), settings -> settings.maxCount(16)),
             Map.entry(Identifier.ofVanilla("slime_ball"), settings -> settings.maxCount(16)),
-            Map.entry(Identifier.ofVanilla("raw_copper"), settings -> settings.maxCount(16)),
-            Map.entry(Identifier.ofVanilla("raw_gold"), settings -> settings.maxCount(16)),
-            Map.entry(Identifier.ofVanilla("raw_iron"), settings -> settings.maxCount(16)),
+            Map.entry(Identifier.ofVanilla("raw_copper"), settings -> settings.maxCount(16).component(AtDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2)),
+            Map.entry(Identifier.ofVanilla("raw_gold"), settings -> settings.maxCount(16).component(AtDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2)),
+            Map.entry(Identifier.ofVanilla("raw_iron"), settings -> settings.maxCount(16).component(AtDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2)),
             Map.entry(Identifier.ofVanilla("resin_clump"), settings -> settings.maxCount(16)),
             Map.entry(Identifier.ofVanilla("torchflower_seeds"), settings -> settings.maxCount(16)),
             Map.entry(Identifier.ofVanilla("pitcher_pod"), settings -> settings.maxCount(16)),
@@ -149,8 +153,6 @@ public final class VanillaItemModify {
             // 最大堆叠为 32 的物品标识
             Map.entry(Identifier.ofVanilla("lapis_lazuli"), settings -> settings.maxCount(32)),
             Map.entry(Identifier.ofVanilla("quartz"), settings -> settings.maxCount(32)),
-            Map.entry(Identifier.ofVanilla("iron_nugget"), settings -> settings.maxCount(32)),
-            Map.entry(Identifier.ofVanilla("gold_nugget"), settings -> settings.maxCount(32)),
             Map.entry(Identifier.ofVanilla("stick"), settings -> settings.maxCount(32)),
             Map.entry(Identifier.ofVanilla("bone"), settings -> settings.maxCount(32)),
             Map.entry(Identifier.ofVanilla("bone_meal"), settings -> settings.maxCount(32)),
@@ -182,10 +184,32 @@ public final class VanillaItemModify {
             Map.entry(Identifier.ofVanilla("diamond_sword"), settings -> new Item.Settings()),
             Map.entry(Identifier.ofVanilla("diamond_pickaxe"), settings -> new Item.Settings()),
 
-            Map.entry(Identifier.ofVanilla("wood_pickaxe"), settings -> new Item.Settings()),
-            Map.entry(Identifier.ofVanilla("wood_sword"), settings -> new Item.Settings())
+            Map.entry(Identifier.ofVanilla("wooden_pickaxe"), settings -> new Item.Settings()),
+            Map.entry(Identifier.ofVanilla("wooden_sword"), settings -> new Item.Settings()),
+            
+            Map.entry(Identifier.ofVanilla("netherite_sword"), settings -> AtItems.getSwordSettings(AtToolMaterials.NETHERITE)),
+            Map.entry(Identifier.ofVanilla("netherite_pickaxe"), settings -> AtItems.getPickaxeSettings(AtToolMaterials.NETHERITE)),
+            
+            Map.entry(Identifier.ofVanilla("netherite_helmet"), settings -> AtItems.getArmorSettings(AtArmorMaterials.NETHERITE_MATERIAL, EquipmentType.HELMET)),
+            Map.entry(Identifier.ofVanilla("netherite_chestplate"), settings -> AtItems.getArmorSettings(AtArmorMaterials.NETHERITE_MATERIAL, EquipmentType.CHESTPLATE)),
+            Map.entry(Identifier.ofVanilla("netherite_leggings"), settings -> AtItems.getArmorSettings(AtArmorMaterials.NETHERITE_MATERIAL, EquipmentType.LEGGINGS)),
+            Map.entry(Identifier.ofVanilla("netherite_boots"), settings -> AtItems.getArmorSettings(AtArmorMaterials.NETHERITE_MATERIAL, EquipmentType.BOOTS)),
 
-//            Map.entry(Identifier.ofVanilla("wheat_seeds"), settings -> settings.food(new FoodComponent.Builder(), ))
+            Map.entry(Identifier.ofVanilla("iron_sword"), settings -> AtItems.getSwordSettings(AtToolMaterials.IRON)),
+            Map.entry(Identifier.ofVanilla("iron_shovel"), settings -> AtItems.getShovelSettings(AtToolMaterials.IRON)),
+            Map.entry(Identifier.ofVanilla("iron_pickaxe"), settings -> AtItems.getPickaxeSettings(AtToolMaterials.IRON)),
+            Map.entry(Identifier.ofVanilla("iron_axe"), settings -> AtItems.getAxeSettings(AtToolMaterials.IRON)),
+            Map.entry(Identifier.ofVanilla("iron_hoe"), settings -> AtItems.getHoeSettings(AtToolMaterials.IRON)),
+
+            Map.entry(Identifier.ofVanilla("iron_helmet"), settings -> AtItems.getArmorSettings(AtArmorMaterials.IRON_MATERIAL, EquipmentType.HELMET)),
+            Map.entry(Identifier.ofVanilla("iron_chestplate"), settings -> AtItems.getArmorSettings(AtArmorMaterials.IRON_MATERIAL, EquipmentType.CHESTPLATE)),
+            Map.entry(Identifier.ofVanilla("iron_leggings"), settings -> AtItems.getArmorSettings(AtArmorMaterials.IRON_MATERIAL, EquipmentType.LEGGINGS)),
+            Map.entry(Identifier.ofVanilla("iron_boots"), settings -> AtItems.getArmorSettings(AtArmorMaterials.IRON_MATERIAL, EquipmentType.BOOTS)),
+
+            Map.entry(Identifier.ofVanilla("chainmail_helmet"), settings -> AtItems.getArmorSettings(AtArmorMaterials.IRON_CHAINMAIL_MATERIAL, EquipmentType.HELMET)),
+            Map.entry(Identifier.ofVanilla("chainmail_chestplate"), settings -> AtItems.getArmorSettings(AtArmorMaterials.IRON_CHAINMAIL_MATERIAL, EquipmentType.CHESTPLATE)),
+            Map.entry(Identifier.ofVanilla("chainmail_leggings"), settings -> AtItems.getArmorSettings(AtArmorMaterials.IRON_CHAINMAIL_MATERIAL, EquipmentType.LEGGINGS)),
+            Map.entry(Identifier.ofVanilla("chainmail_boots"), settings -> AtItems.getArmorSettings(AtArmorMaterials.IRON_CHAINMAIL_MATERIAL, EquipmentType.BOOTS))
     );
     /**
      * 物品工厂修改映射表
@@ -193,29 +217,51 @@ public final class VanillaItemModify {
      * value: 工厂
      */
     public static final Map<Identifier, Function<Item.Settings, Item>> ITEM_FACTORY_MODIFY = Map.ofEntries(
-            Map.entry(Identifier.ofVanilla("stone_shovel"), Item::new),
-            Map.entry(Identifier.ofVanilla("stone_axe"), Item::new),
-            Map.entry(Identifier.ofVanilla("stone_hoe"), Item::new),
+            Map.entry(Identifier.ofVanilla("stone_shovel"), settings -> new Item(new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM,Identifier.ofVanilla("stone_shovel"))))),
+            Map.entry(Identifier.ofVanilla("stone_axe"), settings -> new Item(new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM,Identifier.ofVanilla("stone_axe"))))),
+            Map.entry(Identifier.ofVanilla("stone_hoe"), settings -> new Item(new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM,Identifier.ofVanilla("stone_hoe"))))),
 
-            Map.entry(Identifier.ofVanilla("diamond_shovel"), Item::new),
-            Map.entry(Identifier.ofVanilla("diamond_axe"), Item::new),
-            Map.entry(Identifier.ofVanilla("diamond_hoe"), Item::new),
+            Map.entry(Identifier.ofVanilla("diamond_shovel"), settings -> new Item(new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM,Identifier.ofVanilla("diamond_shovel"))))),
+            Map.entry(Identifier.ofVanilla("diamond_axe"), settings -> new Item(new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM,Identifier.ofVanilla("diamond_axe"))))),
+            Map.entry(Identifier.ofVanilla("diamond_hoe"), settings -> new Item(new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM,Identifier.ofVanilla("diamond_hoe"))))),
 
-            Map.entry(Identifier.ofVanilla("wood_axe"), Item::new),
-            Map.entry(Identifier.ofVanilla("wood_hoe"), Item::new),
+            Map.entry(Identifier.ofVanilla("wooden_axe"), settings -> new Item(new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM,Identifier.ofVanilla("wooden_axe"))))),
+            Map.entry(Identifier.ofVanilla("wooden_hoe"), settings -> new Item(new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM,Identifier.ofVanilla("wooden_hoe"))))),
+            Map.entry(Identifier.ofVanilla("wooden_shovel"), settings -> new Item(AtItems.getShovelSettings(AtToolMaterials.WOOD).registryKey(RegistryKey.of(RegistryKeys.ITEM,Identifier.ofVanilla("wooden_shovel"))))),
+
+            Map.entry(Identifier.ofVanilla("netherite_shovel"), settings -> new AtShovelItem(AtItems.getShovelSettings(AtToolMaterials.NETHERITE).registryKey(RegistryKey.of(RegistryKeys.ITEM,Identifier.ofVanilla("netherite_shovel"))))),
+            Map.entry(Identifier.ofVanilla("netherite_axe"), settings -> new AtAxeItem(AtItems.getAxeSettings(AtToolMaterials.NETHERITE).registryKey(RegistryKey.of(RegistryKeys.ITEM,Identifier.ofVanilla("netherite_axe"))))),
+            Map.entry(Identifier.ofVanilla("netherite_hoe"), settings -> new AtHoeItem(AtItems.getHoeSettings(AtToolMaterials.NETHERITE).registryKey(RegistryKey.of(RegistryKeys.ITEM,Identifier.ofVanilla("netherite_hoe"))))),
+
+            Map.entry(Identifier.ofVanilla("diamond_helmet"), settings -> new Item(new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM,Identifier.ofVanilla("diamond_helmet"))))),
+            Map.entry(Identifier.ofVanilla("diamond_chestplate"), settings -> new Item(new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM,Identifier.ofVanilla("diamond_chestplate"))))),
+            Map.entry(Identifier.ofVanilla("diamond_leggings"), settings -> new Item(new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM,Identifier.ofVanilla("diamond_leggings"))))),
+            Map.entry(Identifier.ofVanilla("diamond_boots"), settings -> new Item(new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM,Identifier.ofVanilla("diamond_boots"))))),
 
             Map.entry(Identifier.ofVanilla("diamond"), settings -> new GamItem(settings, 500)),
             Map.entry(Identifier.ofVanilla("emerald"), settings -> new GamItem(settings, 250)),
             Map.entry(Identifier.ofVanilla("lapis_lazuli"), settings -> new GamItem(settings, 50)),
             Map.entry(Identifier.ofVanilla("quartz"), settings -> new GamItem(settings, 50)),
             Map.entry(Identifier.ofVanilla("amethyst_shard"), settings -> new GamItem(settings, 75)),
-            Map.entry(Identifier.ofVanilla("echo_shard"), settings -> new GamItem(settings, 1000))
+            Map.entry(Identifier.ofVanilla("echo_shard"), settings -> new GamItem(settings, 1000)),
+
+            Map.entry(Identifier.ofVanilla("iron_nugget"), settings -> new NuggetItem(settings.maxCount(32), 200)),
+            Map.entry(Identifier.ofVanilla("gold_nugget"), settings -> new NuggetItem(settings.maxCount(32), 500))
     );
-    public static final Map<Identifier, UnaryOperator<Item.Settings>> IN_IDENTIFIER_ITEM_SETTINGS_MODIFY = Map.ofEntries(
+    public static final Map<Identifier, UnaryOperator<Item.Settings>> IN_IDENTIFIER_BLOCK_ITEM_SETTINGS_MODIFY = Map.ofEntries(
             Map.entry(Identifier.ofVanilla("iron_block"), settings -> settings.component(AtDataComponentTypes.CRAFTING_TIME, 270)),
             Map.entry(Identifier.ofVanilla("gold_block"), settings -> settings.component(AtDataComponentTypes.CRAFTING_TIME, 180)),
             Map.entry(Identifier.ofVanilla("copper_block"), settings -> settings.component(AtDataComponentTypes.CRAFTING_TIME, 90)),
-            Map.entry(Identifier.ofVanilla("netherite_block"), settings -> settings.component(AtDataComponentTypes.CRAFTING_TIME, 1800))
+            Map.entry(Identifier.ofVanilla("netherite_block"), settings -> settings.component(AtDataComponentTypes.CRAFTING_TIME, 1800)),
+
+            Map.entry(Identifier.ofVanilla("iron_ore"), settings -> settings.component(AtDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2)),
+            Map.entry(Identifier.ofVanilla("copper_ore"), settings -> settings.component(AtDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2)),
+            Map.entry(Identifier.ofVanilla("gold_ore"), settings -> settings.component(AtDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2)),
+
+            Map.entry(Identifier.ofVanilla("deepslate_iron_ore"), settings -> settings.component(AtDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2)),
+            Map.entry(Identifier.ofVanilla("deepslate_copper_ore"), settings -> settings.component(AtDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2)),
+            Map.entry(Identifier.ofVanilla("deepslate_gold_ore"), settings -> settings.component(AtDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2)),
+            Map.entry(Identifier.ofVanilla("nether_gold_ore"), settings -> settings.component(AtDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2))
     );
 
     /**

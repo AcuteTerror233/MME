@@ -35,15 +35,15 @@ public class UndergroundOreConfiguredFeatures {
         RuleTest ruleTest1 = new TagMatchRuleTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES);
         List<OreFeatureConfig.Target> mithril_Ore_List = List.of(
                 OreFeatureConfig.createTarget(ruleTest, AtBlocks.MITHRIL_ORE.getDefaultState()),
-                OreFeatureConfig.createTarget(ruleTest1, AtBlocks.MITHRIL_ORE.getDefaultState())
+                OreFeatureConfig.createTarget(ruleTest1, AtBlocks.DEEPSLATE_MITHRIL_ORE.getDefaultState())
         );
         List<OreFeatureConfig.Target> adamantium_Ore_List = List.of(
                 OreFeatureConfig.createTarget(ruleTest, AtBlocks.ADAMANTIUM_ORE.getDefaultState()),
-                OreFeatureConfig.createTarget(ruleTest1, AtBlocks.ADAMANTIUM_ORE.getDefaultState())
+                OreFeatureConfig.createTarget(ruleTest1, AtBlocks.DEEPSLATE_ADAMANTIUM_ORE.getDefaultState())
         );
         List<OreFeatureConfig.Target> silver_Ore_List = List.of(
                 OreFeatureConfig.createTarget(ruleTest, AtBlocks.SILVER_ORE.getDefaultState()),
-                OreFeatureConfig.createTarget(ruleTest1, AtBlocks.SILVER_ORE.getDefaultState())
+                OreFeatureConfig.createTarget(ruleTest1, AtBlocks.DEEPSLATE_SILVER_ORE.getDefaultState())
         );
         ConfiguredFeatures.register(featureRegisterable, ORE_MITHRIL_SMALL, Feature.ORE, new OreFeatureConfig(mithril_Ore_List, 4, 0.5f));
         ConfiguredFeatures.register(featureRegisterable, ORE_ADAMANTIUM_BURIED_SMALL, Feature.ORE, new OreFeatureConfig(adamantium_Ore_List, 4, 1.0f));

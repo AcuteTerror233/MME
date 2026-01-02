@@ -3,6 +3,7 @@
     "mme:mithril_block",
     "mme:mithril_bars",
     "mme:mithril_door",
-    "mme:adamantium_ore"
+    "mme:adamantium_ore",
+    "mme:deepslate_adamantium_ore"
   ]
 }

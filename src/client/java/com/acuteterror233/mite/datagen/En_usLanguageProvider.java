@@ -16,33 +16,23 @@ public class En_usLanguageProvider extends FabricLanguageProvider {
 
     @Override
     public void generateTranslations(RegistryWrapper.WrapperLookup registryLookup, TranslationBuilder translationBuilder) {
-        translationBuilder.add("itemGroup.mme.item_group","Make Minecraft easier!");
-        translationBuilder.add("mme.craftingTable.noAllowedCrafting","§cThis item cannot be crafted§r");
+        translationBuilder.add("itemGroup.mme.item_group", "Make Minecraft easier!");
+        translationBuilder.add("mme.craftingTable.noAllowedCrafting", "§cThis item cannot be crafted§r");
         translationBuilder.add("mme.gradefurnac.fuelnotavailable", "§cThis furnace cannot burn this fuel§r");
-        translationBuilder.add(AtItems.ADAMANTIUM_HELMET,"Adamantium Helmet");
-        translationBuilder.add(AtItems.ADAMANTIUM_CHESTPLATE,"Adamantium Chestplate");
-        translationBuilder.add(AtItems.ADAMANTIUM_LEGGINGS,"Adamantium Leggings");
-        translationBuilder.add(AtItems.ADAMANTIUM_BOOTS,"Adamantium Boots");
-        translationBuilder.add(AtItems.ADAMANTIUM_CHAINMAIL_HELMET,"Adamantium Chainmail Helmet");
-        translationBuilder.add(AtItems.ADAMANTIUM_CHAINMAIL_CHESTPLATE,"Adamantium Chainmail Chestplate");
-        translationBuilder.add(AtItems.ADAMANTIUM_CHAINMAIL_LEGGINGS,"Adamantium Chainmail Leggings");
-        translationBuilder.add(AtItems.ADAMANTIUM_CHAINMAIL_BOOTS,"Adamantium Chainmail Boots");
-        translationBuilder.add(AtItems.ANCIENT_METAL_HELMET,"Ancient Metal Helmet");
-        translationBuilder.add(AtItems.ANCIENT_METAL_CHESTPLATE,"Ancient Metal Chestplate");
-        translationBuilder.add(AtItems.ANCIENT_METAL_LEGGINGS,"Ancient Metal Leggings");
-        translationBuilder.add(AtItems.ANCIENT_METAL_BOOTS,"Ancient Metal Boots");
-        translationBuilder.add(AtItems.ANCIENT_METAL_CHAINMAIL_HELMET,"Ancient Metal Chainmail Helmet");
-        translationBuilder.add(AtItems.ANCIENT_METAL_CHAINMAIL_CHESTPLATE,"Ancient Metal Chainmail Chestplate");
-        translationBuilder.add(AtItems.ANCIENT_METAL_CHAINMAIL_LEGGINGS,"Ancient Metal Chainmail Leggings");
-        translationBuilder.add(AtItems.ANCIENT_METAL_CHAINMAIL_BOOTS,"Ancient Metal Chainmail Boots");
-        translationBuilder.add(AtItems.COPPER_HELMET,"Copper Helmet");
-        translationBuilder.add(AtItems.COPPER_CHESTPLATE,"Copper Chestplate");
-        translationBuilder.add(AtItems.COPPER_LEGGINGS,"Copper Leggings");
-        translationBuilder.add(AtItems.COPPER_BOOTS,"Copper Boots");
-        translationBuilder.add(AtItems.COPPER_CHAINMAIL_BOOTS,"Copper Chainmail boots");
-        translationBuilder.add(AtItems.COPPER_CHAINMAIL_HELMET,"Copper Chainmail Helmet");
-        translationBuilder.add(AtItems.COPPER_CHAINMAIL_CHESTPLATE,"Copper Chainmail Chestplate");
-        translationBuilder.add(AtItems.COPPER_CHAINMAIL_LEGGINGS,"Copper Chainmail Leggings");
+        translationBuilder.add("mme.nugget.tooltip", "Right click to store %d experience");
+        translationBuilder.add("mme.coins.tooltip", "Right click to gain %d experience");
+        translationBuilder.add(AtItems.NETHERITE_CHAINMAIL_HELMET, "Netherite Chainmail Helmet");
+        translationBuilder.add(AtItems.NETHERITE_CHAINMAIL_CHESTPLATE, "Netherite Chainmail Chestplate");
+        translationBuilder.add(AtItems.NETHERITE_CHAINMAIL_LEGGINGS, "Netherite Chainmail Leggings");
+        translationBuilder.add(AtItems.NETHERITE_CHAINMAIL_BOOTS, "Netherite Chainmail Boots");
+        translationBuilder.add(AtItems.ADAMANTIUM_HELMET, "Adamantium Helmet");
+        translationBuilder.add(AtItems.ADAMANTIUM_CHESTPLATE, "Adamantium Chestplate");
+        translationBuilder.add(AtItems.ADAMANTIUM_LEGGINGS, "Adamantium Leggings");
+        translationBuilder.add(AtItems.ADAMANTIUM_BOOTS, "Adamantium Boots");
+        translationBuilder.add(AtItems.ADAMANTIUM_CHAINMAIL_HELMET, "Adamantium Chainmail Helmet");
+        translationBuilder.add(AtItems.ADAMANTIUM_CHAINMAIL_CHESTPLATE, "Adamantium Chainmail Chestplate");
+        translationBuilder.add(AtItems.ADAMANTIUM_CHAINMAIL_LEGGINGS, "Adamantium Chainmail Leggings");
+        translationBuilder.add(AtItems.ADAMANTIUM_CHAINMAIL_BOOTS, "Adamantium Chainmail Boots");
         translationBuilder.add(AtItems.MITHRIL_HELMET, "Mithril Helmet");
         translationBuilder.add(AtItems.MITHRIL_CHESTPLATE, "Mithril Chestplate");
         translationBuilder.add(AtItems.MITHRIL_LEGGINGS, "Mithril Leggings");
@@ -51,6 +41,14 @@ public class En_usLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(AtItems.MITHRIL_CHAINMAIL_CHESTPLATE, "Mithril Chainmail Chestplate");
         translationBuilder.add(AtItems.MITHRIL_CHAINMAIL_LEGGINGS, "Mithril Chainmail Leggings");
         translationBuilder.add(AtItems.MITHRIL_CHAINMAIL_BOOTS, "Mithril Chainmail Boots");
+        translationBuilder.add(AtItems.ANCIENT_METAL_HELMET, "Ancient Metal Helmet");
+        translationBuilder.add(AtItems.ANCIENT_METAL_CHESTPLATE, "Ancient Metal Chestplate");
+        translationBuilder.add(AtItems.ANCIENT_METAL_LEGGINGS, "Ancient Metal Leggings");
+        translationBuilder.add(AtItems.ANCIENT_METAL_BOOTS, "Ancient Metal Boots");
+        translationBuilder.add(AtItems.ANCIENT_METAL_CHAINMAIL_HELMET, "Ancient Metal Chainmail Helmet");
+        translationBuilder.add(AtItems.ANCIENT_METAL_CHAINMAIL_CHESTPLATE, "Ancient Metal Chainmail Chestplate");
+        translationBuilder.add(AtItems.ANCIENT_METAL_CHAINMAIL_LEGGINGS, "Ancient Metal Chainmail Leggings");
+        translationBuilder.add(AtItems.ANCIENT_METAL_CHAINMAIL_BOOTS, "Ancient Metal Chainmail Boots");
         translationBuilder.add(AtItems.RUSTED_IRON_HELMET, "Rusted Iron Helmet");
         translationBuilder.add(AtItems.RUSTED_IRON_CHESTPLATE, "Rusted Iron Chestplate");
         translationBuilder.add(AtItems.RUSTED_IRON_LEGGINGS, "Rusted Iron Leggings");
@@ -59,6 +57,14 @@ public class En_usLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(AtItems.RUSTED_IRON_CHAINMAIL_CHESTPLATE, "Rusted Iron Chainmail Chestplate");
         translationBuilder.add(AtItems.RUSTED_IRON_CHAINMAIL_LEGGINGS, "Rusted Iron Chainmail Leggings");
         translationBuilder.add(AtItems.RUSTED_IRON_CHAINMAIL_BOOTS, "Rusted Iron Chainmail Boots");
+        translationBuilder.add(AtItems.COPPER_HELMET, "Copper Helmet");
+        translationBuilder.add(AtItems.COPPER_CHESTPLATE, "Copper Chestplate");
+        translationBuilder.add(AtItems.COPPER_LEGGINGS, "Copper Leggings");
+        translationBuilder.add(AtItems.COPPER_BOOTS, "Copper Boots");
+        translationBuilder.add(AtItems.COPPER_CHAINMAIL_BOOTS, "Copper Chainmail boots");
+        translationBuilder.add(AtItems.COPPER_CHAINMAIL_HELMET, "Copper Chainmail Helmet");
+        translationBuilder.add(AtItems.COPPER_CHAINMAIL_CHESTPLATE, "Copper Chainmail Chestplate");
+        translationBuilder.add(AtItems.COPPER_CHAINMAIL_LEGGINGS, "Copper Chainmail Leggings");
         translationBuilder.add(AtItems.SILVER_HELMET, "Silver Helmet");
         translationBuilder.add(AtItems.SILVER_CHESTPLATE, "Silver Chestplate");
         translationBuilder.add(AtItems.SILVER_LEGGINGS, "Silver Leggings");
@@ -121,6 +127,14 @@ public class En_usLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(AtItems.SILVER_COINS, "Silver Coins");
         translationBuilder.add(AtItems.IRON_COINS, "Iron Coins");
 
+        translationBuilder.add(AtItems.NETHERITE_BATTLE_AXE, "Netherite Battle Axe");
+        translationBuilder.add(AtItems.NETHERITE_DAGGER, "Netherite Dagger");
+        translationBuilder.add(AtItems.NETHERITE_HATCHET, "Netherite Hatchet");
+        translationBuilder.add(AtItems.NETHERITE_KNIFE, "Netherite Knife");
+        translationBuilder.add(AtItems.NETHERITE_MATTOCK, "Netherite Mattock");
+        translationBuilder.add(AtItems.NETHERITE_SCYTHE, "Netherite Scythe");
+        translationBuilder.add(AtItems.NETHERITE_SHEARS, "Netherite Shears");
+        translationBuilder.add(AtItems.NETHERITE_WAR_HAMMER, "Netherite War Hammer");
         translationBuilder.add(AtItems.ADAMANTIUM_AXE, "Adamantium Axe");
         translationBuilder.add(AtItems.ADAMANTIUM_BATTLE_AXE, "Adamantium Battle Axe");
         translationBuilder.add(AtItems.ADAMANTIUM_DAGGER, "Adamantium Dagger");
@@ -223,8 +237,8 @@ public class En_usLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(AtItems.SILVER_SWORD, "Silver Sword");
         translationBuilder.add(AtItems.SILVER_WAR_HAMMER, "Silver War Hammer");
         translationBuilder.add(AtItems.STONE_DAGGER, "Stone Dagger");
-        translationBuilder.add(AtItems.WOOD_CLUB, "Wood Club");
-        translationBuilder.add(AtItems.WOOD_CUDGEL, "Wood Cudgel ");
+        translationBuilder.add(AtItems.WOODEN_CLUB, "Wood Club");
+        translationBuilder.add(AtItems.WOODEN_CUDGEL, "Wood Cudgel ");
 
         translationBuilder.add(AtBlocks.ADAMANTIUM_ORE, "Adamantium Ore");
         translationBuilder.add(AtBlocks.ADAMANTIUM_BARS, "Adamantium Bars");
@@ -241,7 +255,7 @@ public class En_usLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(AtBlocks.MANTLE, "Mantle");
         translationBuilder.add(AtBlocks.COPPER_BARS, "Copper BARS");
 
-        translationBuilder.add(AtItems.ADAMANTIUM_BUCKET,"Adamantium Bucket");
+        translationBuilder.add(AtItems.ADAMANTIUM_BUCKET, "Adamantium Bucket");
         translationBuilder.add(AtItems.LAVA_ADAMANTIUM_BUCKET, "Adamantium Bucket of Lava");
         translationBuilder.add(AtItems.WATER_ADAMANTIUM_BUCKET, "Adamantium of Water Bucket");
         translationBuilder.add(AtItems.POWDER_SNOW_ADAMANTIUM_BUCKET, "Adamantium Bucket of Powder Snow");
@@ -253,7 +267,7 @@ public class En_usLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(AtItems.AXOLOTL_ADAMANTIUM_BUCKET, "Adamantium Bucket of Axolotl");
         translationBuilder.add(AtItems.TADPOLE_ADAMANTIUM_BUCKET, "Adamantium Bucket of Tadpole");
 
-        translationBuilder.add(AtItems.ANCIENT_METAL_BUCKET,"Ancient Metal bucket");
+        translationBuilder.add(AtItems.ANCIENT_METAL_BUCKET, "Ancient Metal bucket");
         translationBuilder.add(AtItems.LAVA_ANCIENT_METAL_BUCKET, "Ancient Metal Bucket of Lava");
         translationBuilder.add(AtItems.WATER_ANCIENT_METAL_BUCKET, "Ancient Metal of Water Bucket");
         translationBuilder.add(AtItems.POWDER_SNOW_ANCIENT_METAL_BUCKET, "Ancient Metal Bucket of Powder Snow");
@@ -265,7 +279,7 @@ public class En_usLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(AtItems.AXOLOTL_ANCIENT_METAL_BUCKET, "Ancient Metal Bucket of Axolotl");
         translationBuilder.add(AtItems.TADPOLE_ANCIENT_METAL_BUCKET, "Ancient Metal Bucket of Tadpole");
 
-        translationBuilder.add(AtItems.COPPER_BUCKET,"Copper bucket");
+        translationBuilder.add(AtItems.COPPER_BUCKET, "Copper bucket");
         translationBuilder.add(AtItems.LAVA_COPPER_BUCKET, "Copper Bucket of Lava");
         translationBuilder.add(AtItems.WATER_COPPER_BUCKET, "Copper of Water Bucket");
         translationBuilder.add(AtItems.POWDER_SNOW_COPPER_BUCKET, "Copper Bucket of Powder Snow");
@@ -277,7 +291,7 @@ public class En_usLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(AtItems.AXOLOTL_COPPER_BUCKET, "Copper Bucket of Axolotl");
         translationBuilder.add(AtItems.TADPOLE_COPPER_BUCKET, "Copper Bucket of Tadpole");
 
-        translationBuilder.add(AtItems.GOLD_BUCKET,"Gold bucket");
+        translationBuilder.add(AtItems.GOLD_BUCKET, "Gold bucket");
         translationBuilder.add(AtItems.LAVA_GOLD_BUCKET, "Gold Bucket of Lava");
         translationBuilder.add(AtItems.WATER_GOLD_BUCKET, "Gold of Water Bucket");
         translationBuilder.add(AtItems.POWDER_SNOW_GOLD_BUCKET, "Gold Bucket of Powder Snow");
@@ -289,7 +303,7 @@ public class En_usLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(AtItems.AXOLOTL_GOLD_BUCKET, "Gold Bucket of Axolotl");
         translationBuilder.add(AtItems.TADPOLE_GOLD_BUCKET, "Gold Bucket of Tadpole");
 
-        translationBuilder.add(AtItems.MITHRIL_BUCKET,"Mithril bucket");
+        translationBuilder.add(AtItems.MITHRIL_BUCKET, "Mithril bucket");
         translationBuilder.add(AtItems.LAVA_MITHRIL_BUCKET, "Mithril Bucket of Lava");
         translationBuilder.add(AtItems.WATER_MITHRIL_BUCKET, "Mithril of Water Bucket");
         translationBuilder.add(AtItems.POWDER_SNOW_MITHRIL_BUCKET, "Mithril Bucket of Powder Snow");
@@ -301,7 +315,7 @@ public class En_usLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(AtItems.AXOLOTL_MITHRIL_BUCKET, "Mithril Bucket of Axolotl");
         translationBuilder.add(AtItems.TADPOLE_MITHRIL_BUCKET, "Mithril Bucket of Tadpole");
 
-        translationBuilder.add(AtItems.SILVER_BUCKET,"Silver bucket");
+        translationBuilder.add(AtItems.SILVER_BUCKET, "Silver bucket");
         translationBuilder.add(AtItems.LAVA_SILVER_BUCKET, "Silver Bucket of Lava");
         translationBuilder.add(AtItems.WATER_SILVER_BUCKET, "Silver of Water Bucket");
         translationBuilder.add(AtItems.POWDER_SNOW_SILVER_BUCKET, "Silver Bucket of Powder Snow");
@@ -313,7 +327,7 @@ public class En_usLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(AtItems.AXOLOTL_SILVER_BUCKET, "Silver Bucket of Axolotl");
         translationBuilder.add(AtItems.TADPOLE_SILVER_BUCKET, "Silver Bucket of Tadpole");
 
-        translationBuilder.add(AtItems.NETHERITE_BUCKET,"Netherite bucket");
+        translationBuilder.add(AtItems.NETHERITE_BUCKET, "Netherite bucket");
         translationBuilder.add(AtItems.LAVA_NETHERITE_BUCKET, "Netherite Bucket of Lava");
         translationBuilder.add(AtItems.WATER_NETHERITE_BUCKET, "Netherite of Water Bucket");
         translationBuilder.add(AtItems.POWDER_SNOW_NETHERITE_BUCKET, "Netherite Bucket of Powder Snow");
@@ -325,8 +339,8 @@ public class En_usLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(AtItems.AXOLOTL_NETHERITE_BUCKET, "Netherite Bucket of Axolotl");
         translationBuilder.add(AtItems.TADPOLE_NETHERITE_BUCKET, "Netherite Bucket of Tadpole");
 
-        translationBuilder.add(AtItems.MITHRIL_BOW,"Mithril Bow");
-        translationBuilder.add(AtItems.ANCIENT_METAL_BOW,"Ancient Metal Bow");
+        translationBuilder.add(AtItems.MITHRIL_BOW, "Mithril Bow");
+        translationBuilder.add(AtItems.ANCIENT_METAL_BOW, "Ancient Metal Bow");
 
         translationBuilder.add(AtBlocks.ADAMANTIUM_DOOR, "Adamantium Door");
         translationBuilder.add(AtBlocks.ANCIENT_METAL_DOOR, "Ancient Metal Door");
@@ -366,24 +380,24 @@ public class En_usLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(AtItems.OBSIDIAN_SHARD, "Obsidian Shard");
         translationBuilder.add(AtItems.QUARTZ_SHARD, "Quartz Shard");
 
-        translationBuilder.add(AtBlocks.ADAMANTIUM_ANVIL,"Adamantium Anvil");
-        translationBuilder.add(AtBlocks.CHIPPED_ADAMANTIUM_ANVIL,"Chipped Adamantium Anvil");
-        translationBuilder.add(AtBlocks.DAMAGED_ADAMANTIUM_ANVIL,"Damaged Adamantium Anvil");
-        translationBuilder.add(AtBlocks.MITHRIL_ANVIL,"Mithril Anvil");
-        translationBuilder.add(AtBlocks.CHIPPED_MITHRIL_ANVIL,"Chipped Mithril Anvil");
-        translationBuilder.add(AtBlocks.DAMAGED_MITHRIL_ANVIL,"Damaged Mithril Anvil");
-        translationBuilder.add(AtBlocks.ANCIENT_METAL_ANVIL,"Ancient Metal Anvil");
-        translationBuilder.add(AtBlocks.CHIPPED_ANCIENT_METAL_ANVIL,"Chipped Ancient Metal Anvil");
-        translationBuilder.add(AtBlocks.DAMAGED_ANCIENT_METAL_ANVIL,"Damaged Ancient Metal Anvil");
-        translationBuilder.add(AtBlocks.SILVER_ANVIL,"Silver Anvil");
-        translationBuilder.add(AtBlocks.CHIPPED_SILVER_ANVIL,"chipped Silver Anvil");
-        translationBuilder.add(AtBlocks.DAMAGED_SILVER_ANVIL,"damaged Silver Anvil");
-        translationBuilder.add(AtBlocks.GOLDEN_ANVIL,"Gold Anvil");
-        translationBuilder.add(AtBlocks.CHIPPED_GOLDEN_ANVIL,"Chipped Gold Anvil");
-        translationBuilder.add(AtBlocks.DAMAGED_GOLDEN_ANVIL,"Damaged Gold Anvil");
-        translationBuilder.add(AtBlocks.COPPER_ANVIL,"Copper Anvil");
-        translationBuilder.add(AtBlocks.CHIPPED_COPPER_ANVIL,"Chipped Copper Anvil");
-        translationBuilder.add(AtBlocks.DAMAGED_COPPER_ANVIL,"Damaged Copper Anvil");
+        translationBuilder.add(AtBlocks.ADAMANTIUM_ANVIL, "Adamantium Anvil");
+        translationBuilder.add(AtBlocks.CHIPPED_ADAMANTIUM_ANVIL, "Chipped Adamantium Anvil");
+        translationBuilder.add(AtBlocks.DAMAGED_ADAMANTIUM_ANVIL, "Damaged Adamantium Anvil");
+        translationBuilder.add(AtBlocks.MITHRIL_ANVIL, "Mithril Anvil");
+        translationBuilder.add(AtBlocks.CHIPPED_MITHRIL_ANVIL, "Chipped Mithril Anvil");
+        translationBuilder.add(AtBlocks.DAMAGED_MITHRIL_ANVIL, "Damaged Mithril Anvil");
+        translationBuilder.add(AtBlocks.ANCIENT_METAL_ANVIL, "Ancient Metal Anvil");
+        translationBuilder.add(AtBlocks.CHIPPED_ANCIENT_METAL_ANVIL, "Chipped Ancient Metal Anvil");
+        translationBuilder.add(AtBlocks.DAMAGED_ANCIENT_METAL_ANVIL, "Damaged Ancient Metal Anvil");
+        translationBuilder.add(AtBlocks.SILVER_ANVIL, "Silver Anvil");
+        translationBuilder.add(AtBlocks.CHIPPED_SILVER_ANVIL, "chipped Silver Anvil");
+        translationBuilder.add(AtBlocks.DAMAGED_SILVER_ANVIL, "damaged Silver Anvil");
+        translationBuilder.add(AtBlocks.GOLDEN_ANVIL, "Gold Anvil");
+        translationBuilder.add(AtBlocks.CHIPPED_GOLDEN_ANVIL, "Chipped Gold Anvil");
+        translationBuilder.add(AtBlocks.DAMAGED_GOLDEN_ANVIL, "Damaged Gold Anvil");
+        translationBuilder.add(AtBlocks.COPPER_ANVIL, "Copper Anvil");
+        translationBuilder.add(AtBlocks.CHIPPED_COPPER_ANVIL, "Chipped Copper Anvil");
+        translationBuilder.add(AtBlocks.DAMAGED_COPPER_ANVIL, "Damaged Copper Anvil");
         
         translationBuilder.add(AtBlocks.MITHRIL_NUL_RUNESTORE, "Mithril Nul Runestone");
         translationBuilder.add(AtBlocks.MITHRIL_QUAS_RUNESTORE, "Mithril Quas Runestone");
@@ -434,6 +448,10 @@ public class En_usLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(AtBlocks.NETHERRACK_FURNACE, "Netherrack Furnace");
         translationBuilder.add(AtBlocks.OBSIDIAN_FURNACE, "Obsidian Furnace");
         translationBuilder.add(AtBlocks.SANDSTONE_FURNACE, "Sandstone Furnace");
+
+        translationBuilder.add(AtBlocks.DEEPSLATE_ADAMANTIUM_ORE, "Deepslate Adamantium Ore");
+        translationBuilder.add(AtBlocks.DEEPSLATE_MITHRIL_ORE, "Deepslate Mithril Ore");
+        translationBuilder.add(AtBlocks.DEEPSLATE_SILVER_ORE, "Deepslate Silver Ore");
 
         translationBuilder.add(AtItems.SINEW, "Leather Thread");
     }

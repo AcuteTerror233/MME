@@ -1,6 +1,7 @@
 {
   "values": [
     "minecraft:copper_ingot",
+    "minecraft:copper_block",
     "mme:copper_nugget"
   ]
 }

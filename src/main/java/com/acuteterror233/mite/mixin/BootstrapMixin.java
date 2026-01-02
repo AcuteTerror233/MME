@@ -45,7 +45,7 @@ public class BootstrapMixin {
         });
         VanillaRegisterModify.BLOCK_ITEM_REGISTER.register((block, factory, settings) -> {
             UnaryOperator<Item.Settings> inClassSettingsFactory = VanillaItemModify.IN_CLASS_BLOCK_ITEM_SETTINGS_MODIFY.get(block.getClass());
-            UnaryOperator<Item.Settings> inIdentifierSettingsFactory = VanillaItemModify.IN_IDENTIFIER_ITEM_SETTINGS_MODIFY.get(block.getRegistryEntry().registryKey());
+            UnaryOperator<Item.Settings> inIdentifierSettingsFactory = VanillaItemModify.IN_IDENTIFIER_BLOCK_ITEM_SETTINGS_MODIFY.get(block.getRegistryEntry().registryKey().getValue());
             if (inClassSettingsFactory != null) {
                 return factory.apply(block, inClassSettingsFactory.apply(settings));
             }if (inIdentifierSettingsFactory != null){

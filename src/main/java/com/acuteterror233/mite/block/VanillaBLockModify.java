@@ -1,5 +1,6 @@
 package com.acuteterror233.mite.block;
 
+import com.acuteterror233.mite.registry.tag.AtTags;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
@@ -14,9 +15,9 @@ import java.util.function.UnaryOperator;
 
 public final class VanillaBLockModify {
     public static final Map<Identifier, Function<AbstractBlock.Settings, Block>> BLOCK_FACTORY_MODIFY = Map.ofEntries(
-            Map.entry(Identifier.ofVanilla("anvil"), AtAnvilBlock::new),
-            Map.entry(Identifier.ofVanilla("chipped_anvil"), AtAnvilBlock::new),
-            Map.entry(Identifier.ofVanilla("damaged_anvil"), AtAnvilBlock::new),
+            Map.entry(Identifier.ofVanilla("anvil"), settings -> new AtAnvilBlock(settings, AtTags.IRON_NOT_ALLOWED_MATERIAL)),
+            Map.entry(Identifier.ofVanilla("chipped_anvil"), settings -> new AtAnvilBlock(settings, AtTags.IRON_NOT_ALLOWED_MATERIAL)),
+            Map.entry(Identifier.ofVanilla("damaged_anvil"), settings -> new AtAnvilBlock(settings, AtTags.IRON_NOT_ALLOWED_MATERIAL)),
             Map.entry(Identifier.ofVanilla("crafting_table"), Block::new),
             Map.entry(Identifier.ofVanilla("furnace"), settings -> new GradeFurnaceBlock(settings, 2)),
             Map.entry(Identifier.ofVanilla("blast_furnace"), settings -> new GradeFurnaceBlock(settings, 0)),

@@ -7,6 +7,7 @@ import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.Difficulty;
+import net.minecraft.world.GameMode;
 import net.minecraft.world.GameRules;
 import org.spongepowered.asm.mixin.*;
 import org.spongepowered.asm.mixin.injection.At;
@@ -44,6 +45,14 @@ public abstract class HungerManagerMixin implements HungerManagerExtension {
     @Override
     public void setMaxFoodLevel(int maxFoodLevel) {
         this.maxFoodLevel = maxFoodLevel;
+    }
+    /**
+     * @author AcuteTerror233
+     * @reason 修改了未满的判断
+     */
+    @Overwrite
+    public boolean isNotFull() {
+        return this.foodLevel < maxFoodLevel;
     }
 
     @Shadow
@@ -89,10 +98,12 @@ public abstract class HungerManagerMixin implements HungerManagerExtension {
             }
             if (this.foodTickTimer >= 900){
                 this.foodTickTimer = 0;
-                if (this.saturationLevel > 0){
-                    this.saturationLevel--;
-                }else {
-                    this.foodLevel--;
+                if (player.getGameMode() != GameMode.CREATIVE) {
+                    if (this.saturationLevel > 0) {
+                        this.saturationLevel--;
+                    } else {
+                        this.foodLevel--;
+                    }
                 }
             }
         }else {
