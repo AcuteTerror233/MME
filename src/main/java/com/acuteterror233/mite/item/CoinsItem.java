@@ -4,6 +4,7 @@ import com.acuteterror233.mite.MME;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -31,6 +32,7 @@ public class CoinsItem extends Item {
         ItemStack stack = new ItemStack(item);
         user.getInventory().add(stack);
         user.getItemInHand(hand).consume(1, user);
+        world.playSound(user, user.getX(), user.getY(), user.getZ(), SoundEvents.EXPERIENCE_ORB_PICKUP, user.getSoundSource(), 1.0F, 1.0F);
         return InteractionResult.CONSUME;
     }
 

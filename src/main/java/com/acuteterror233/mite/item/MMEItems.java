@@ -1294,6 +1294,18 @@ public class MMEItems {
                 entries.accept(MITHRIL_COINS);
                 entries.accept(SILVER_COINS);
 
+                entries.accept(NETHERITE_BUCKET);
+                entries.accept(WATER_NETHERITE_BUCKET);
+                entries.accept(LAVA_NETHERITE_BUCKET);
+                entries.accept(MILK_NETHERITE_BUCKET);
+                entries.accept(POWDER_SNOW_NETHERITE_BUCKET);
+                entries.accept(PUFFERFISH_NETHERITE_BUCKET);
+                entries.accept(SALMON_NETHERITE_BUCKET);
+                entries.accept(COD_NETHERITE_BUCKET);
+                entries.accept(TROPICAL_FISH_NETHERITE_BUCKET);
+                entries.accept(AXOLOTL_NETHERITE_BUCKET);
+                entries.accept(TADPOLE_NETHERITE_BUCKET);
+
                 entries.accept(ADAMANTIUM_BUCKET);
                 entries.accept(WATER_ADAMANTIUM_BUCKET);
                 entries.accept(LAVA_ADAMANTIUM_BUCKET);
@@ -1305,6 +1317,18 @@ public class MMEItems {
                 entries.accept(TROPICAL_FISH_ADAMANTIUM_BUCKET);
                 entries.accept(AXOLOTL_ADAMANTIUM_BUCKET);
                 entries.accept(TADPOLE_ADAMANTIUM_BUCKET);
+
+                entries.accept(MITHRIL_BUCKET);
+                entries.accept(WATER_MITHRIL_BUCKET);
+                entries.accept(LAVA_MITHRIL_BUCKET);
+                entries.accept(MILK_MITHRIL_BUCKET);
+                entries.accept(POWDER_SNOW_MITHRIL_BUCKET);
+                entries.accept(PUFFERFISH_MITHRIL_BUCKET);
+                entries.accept(SALMON_MITHRIL_BUCKET);
+                entries.accept(COD_MITHRIL_BUCKET);
+                entries.accept(TROPICAL_FISH_MITHRIL_BUCKET);
+                entries.accept(AXOLOTL_MITHRIL_BUCKET);
+                entries.accept(TADPOLE_MITHRIL_BUCKET);
 
                 entries.accept(ANCIENT_METAL_BUCKET);
                 entries.accept(WATER_ANCIENT_METAL_BUCKET);
@@ -1330,30 +1354,6 @@ public class MMEItems {
                 entries.accept(AXOLOTL_COPPER_BUCKET);
                 entries.accept(TADPOLE_COPPER_BUCKET);
 
-                entries.accept(GOLD_BUCKET);
-                entries.accept(WATER_GOLD_BUCKET);
-                entries.accept(LAVA_GOLD_BUCKET);
-                entries.accept(MILK_GOLD_BUCKET);
-                entries.accept(POWDER_SNOW_GOLD_BUCKET);
-                entries.accept(PUFFERFISH_GOLD_BUCKET);
-                entries.accept(SALMON_GOLD_BUCKET);
-                entries.accept(COD_GOLD_BUCKET);
-                entries.accept(TROPICAL_FISH_GOLD_BUCKET);
-                entries.accept(AXOLOTL_GOLD_BUCKET);
-                entries.accept(TADPOLE_GOLD_BUCKET);
-
-                entries.accept(MITHRIL_BUCKET);
-                entries.accept(WATER_MITHRIL_BUCKET);
-                entries.accept(LAVA_MITHRIL_BUCKET);
-                entries.accept(MILK_MITHRIL_BUCKET);
-                entries.accept(POWDER_SNOW_MITHRIL_BUCKET);
-                entries.accept(PUFFERFISH_MITHRIL_BUCKET);
-                entries.accept(SALMON_MITHRIL_BUCKET);
-                entries.accept(COD_MITHRIL_BUCKET);
-                entries.accept(TROPICAL_FISH_MITHRIL_BUCKET);
-                entries.accept(AXOLOTL_MITHRIL_BUCKET);
-                entries.accept(TADPOLE_MITHRIL_BUCKET);
-
                 entries.accept(SILVER_BUCKET);
                 entries.accept(WATER_SILVER_BUCKET);
                 entries.accept(LAVA_SILVER_BUCKET);
@@ -1366,17 +1366,17 @@ public class MMEItems {
                 entries.accept(AXOLOTL_SILVER_BUCKET);
                 entries.accept(TADPOLE_SILVER_BUCKET);
 
-                entries.accept(NETHERITE_BUCKET);
-                entries.accept(WATER_NETHERITE_BUCKET);
-                entries.accept(LAVA_NETHERITE_BUCKET);
-                entries.accept(MILK_NETHERITE_BUCKET);
-                entries.accept(POWDER_SNOW_NETHERITE_BUCKET);
-                entries.accept(PUFFERFISH_NETHERITE_BUCKET);
-                entries.accept(SALMON_NETHERITE_BUCKET);
-                entries.accept(COD_NETHERITE_BUCKET);
-                entries.accept(TROPICAL_FISH_NETHERITE_BUCKET);
-                entries.accept(AXOLOTL_NETHERITE_BUCKET);
-                entries.accept(TADPOLE_NETHERITE_BUCKET);
+                entries.accept(GOLD_BUCKET);
+                entries.accept(WATER_GOLD_BUCKET);
+                entries.accept(LAVA_GOLD_BUCKET);
+                entries.accept(MILK_GOLD_BUCKET);
+                entries.accept(POWDER_SNOW_GOLD_BUCKET);
+                entries.accept(PUFFERFISH_GOLD_BUCKET);
+                entries.accept(SALMON_GOLD_BUCKET);
+                entries.accept(COD_GOLD_BUCKET);
+                entries.accept(TROPICAL_FISH_GOLD_BUCKET);
+                entries.accept(AXOLOTL_GOLD_BUCKET);
+                entries.accept(TADPOLE_GOLD_BUCKET);
 
                 entries.accept(MITHRIL_BOW);
                 entries.accept(ANCIENT_METAL_BOW);

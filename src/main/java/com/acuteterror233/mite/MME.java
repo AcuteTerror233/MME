@@ -52,7 +52,7 @@ public class MME implements ModInitializer {
         InOverworldRemovals(OrePlacements.ORE_DIAMOND_BURIED);
         InOverworldRemovals(OrePlacements.ORE_DIAMOND_LARGE);
         InOverworldRemovals(OrePlacements.ORE_DIAMOND_MEDIUM);
-        ServerRecipeModify.EVENT.register((list) -> list.removeIf(recipeEntry -> MME.FILTER_RECIPE_SET.contains(recipeEntry.id().location())));
+        ServerRecipeModify.EVENT.register(list -> list.removeIf(recipeEntry -> MME.FILTER_RECIPE_SET.contains(recipeEntry.id().location())));
         LootTableEvents.REPLACE.register((key, original, source, registries) -> {
             Function<HolderLookup.Provider, LootTable> function = LootTableReplace.LOOT_TABLES.get(key);
             return function != null ? function.apply(registries) : null;

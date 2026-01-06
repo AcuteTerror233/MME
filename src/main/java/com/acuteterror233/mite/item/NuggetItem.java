@@ -4,6 +4,7 @@ import com.acuteterror233.mite.MME;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -32,6 +33,7 @@ public class NuggetItem extends Item {
             Item item = BuiltInRegistries.ITEM.getValue(NUGGET_EXCHANGEITEM.get(builtInRegistryHolder().key().location()));
             user.getInventory().add(new ItemStack(item));
             user.getItemInHand(hand).consume(1, user);
+            world.playSound(user, user.getX(), user.getY(), user.getZ(), SoundEvents.EXPERIENCE_ORB_PICKUP, user.getSoundSource(), 1.0F, 1.0F);
             return InteractionResult.CONSUME;
         }
         return InteractionResult.FAIL;
