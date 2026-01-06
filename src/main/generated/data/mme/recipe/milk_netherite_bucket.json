@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "mme:netherite_bucket",
+    "mme:bowl_milk",
+    "mme:bowl_milk",
+    "mme:bowl_milk",
+    "mme:bowl_milk"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mme:milk_netherite_bucket"
+  }
+}

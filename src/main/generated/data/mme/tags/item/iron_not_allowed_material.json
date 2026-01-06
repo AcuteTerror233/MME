@@ -1,13 +1,7 @@
 {
   "values": [
-    {
-      "id": "#mme:ancient_metal_tool_materials",
-      "required": false
-    },
-    {
-      "id": "#mme:ancient_metal_not_allowed_material",
-      "required": false
-    },
+    "#mme:ancient_metal_tool_materials",
+    "#mme:ancient_metal_not_allowed_material",
     "mme:ancient_metal_block"
   ]
 }

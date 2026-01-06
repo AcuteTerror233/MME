@@ -1,29 +1,29 @@
 package com.acuteterror233.mite.mixin.block;
 
-import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.BlockState;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.resource.featuretoggle.ToggleableFeature;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.BlockView;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.flag.FeatureElement;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 
-@Mixin(AbstractBlock.class)
-public abstract class AbstractBlockMixin implements ToggleableFeature {
+@Mixin(BlockBehaviour.class)
+public abstract class AbstractBlockMixin implements FeatureElement {
 
     /**
-     * @author
-     * @reason
+     * @author AcuteTerror233
+     * @reason 破坏速度重构
      */
     @Overwrite
-    public float calcBlockBreakingDelta(BlockState state, PlayerEntity player, BlockView world, BlockPos pos) {
-        float f = state.getHardness(world, pos);
+    public float getDestroyProgress(BlockState state, Player player, BlockGetter world, BlockPos pos) {
+        float f = state.getDestroySpeed(world, pos);
         if (f == -1.0F) {
             return 0.0F;
         } else {
-            int i = player.canHarvest(state) ? 300 : 20000;
-            return player.getBlockBreakingSpeed(state) / f / i;
+            int i = player.hasCorrectToolForDrops(state) ? 300 : 20000;
+            return player.getDestroySpeed(state) / f / i;
         }
     }
 }

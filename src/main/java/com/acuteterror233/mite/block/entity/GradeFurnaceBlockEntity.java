@@ -1,13 +1,14 @@
 package com.acuteterror233.mite.block.entity;
 
 import com.acuteterror233.mite.block.AtBlocks;
-import com.acuteterror233.mite.screen.GradeFurnaceScreenHandler;
-import net.minecraft.block.BlockState;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.recipe.RecipeType;
-import net.minecraft.screen.ScreenHandler;
-import net.minecraft.text.Text;
-import net.minecraft.util.math.BlockPos;
+import com.acuteterror233.mite.screen.GradeFurnaceMenu;
+import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.level.block.state.BlockState;
+import org.jetbrains.annotations.NotNull;
 
 public class GradeFurnaceBlockEntity extends AbstractGradeFurnaceBlockEntity{
     public GradeFurnaceBlockEntity(BlockPos pos, BlockState state) {
@@ -19,12 +20,12 @@ public class GradeFurnaceBlockEntity extends AbstractGradeFurnaceBlockEntity{
     }
 
     @Override
-    protected Text getContainerName() {
-        return Text.empty();
+    protected @NotNull Component getDefaultName() {
+        return Component.empty();
     }
 
     @Override
-    public ScreenHandler createScreenHandler(int syncId, PlayerInventory playerInventory) {
-        return new GradeFurnaceScreenHandler(syncId, playerInventory, this, this.propertyDelegate);
+    public @NotNull AbstractContainerMenu createMenu(int syncId, Inventory playerInventory) {
+        return new GradeFurnaceMenu(syncId, playerInventory, this, this.propertyDelegate);
     }
 }

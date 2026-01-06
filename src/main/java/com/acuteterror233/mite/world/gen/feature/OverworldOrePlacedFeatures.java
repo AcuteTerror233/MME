@@ -1,40 +1,39 @@
 package com.acuteterror233.mite.world.gen.feature;
 
-import com.acuteterror233.mite.Mme;
-import net.minecraft.registry.Registerable;
-import net.minecraft.registry.RegistryEntryLookup;
-import net.minecraft.registry.RegistryKey;
-import net.minecraft.registry.RegistryKeys;
-import net.minecraft.registry.entry.RegistryEntry;
-import net.minecraft.util.Identifier;
-import net.minecraft.world.gen.YOffset;
-import net.minecraft.world.gen.feature.ConfiguredFeature;
-import net.minecraft.world.gen.feature.PlacedFeature;
-import net.minecraft.world.gen.feature.PlacedFeatures;
-import net.minecraft.world.gen.placementmodifier.*;
+import com.acuteterror233.mite.MME;
+import net.minecraft.core.Holder;
+import net.minecraft.core.HolderGetter;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.data.worldgen.BootstrapContext;
+import net.minecraft.data.worldgen.placement.PlacementUtils;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.levelgen.VerticalAnchor;
+import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
+import net.minecraft.world.level.levelgen.placement.*;
 
 import java.util.List;
 
 public class OverworldOrePlacedFeatures {
-    public static final RegistryKey<PlacedFeature> OVERWORLD_ORE_SILVER = of("overworld_ore_silver");
-    public static final RegistryKey<PlacedFeature> OVERWORLD_ORE_SILVER_SMALL = of("overworld_ore_silver_small");
-    public static void bootstrap(Registerable<PlacedFeature> featureRegisterable){
-        RegistryEntryLookup<ConfiguredFeature<?, ?>> registryEntryLookup = featureRegisterable.getRegistryLookup(RegistryKeys.CONFIGURED_FEATURE);
-        RegistryEntry<ConfiguredFeature<?, ?>> ore_silver = registryEntryLookup.getOrThrow(UndergroundOreConfiguredFeatures.ORE_SILVER);
-        RegistryEntry<ConfiguredFeature<?, ?>> ore_silver_small = registryEntryLookup.getOrThrow(UndergroundOreConfiguredFeatures.ORE_SILVER_SMALL);
-        PlacedFeatures.register(featureRegisterable, OVERWORLD_ORE_SILVER, ore_silver, modifiers(
-                CountPlacementModifier.of(16),
-                HeightRangePlacementModifier.uniform(YOffset.fixed(-48), YOffset.fixed(144))
+    public static final ResourceKey<PlacedFeature> OVERWORLD_ORE_SILVER = of("overworld_ore_silver");
+    public static final ResourceKey<PlacedFeature> OVERWORLD_ORE_SILVER_SMALL = of("overworld_ore_silver_small");
+    public static void bootstrap(BootstrapContext<PlacedFeature> featureRegisterable){
+        HolderGetter<ConfiguredFeature<?, ?>> registryEntryLookup = featureRegisterable.lookup(Registries.CONFIGURED_FEATURE);
+        Holder<ConfiguredFeature<?, ?>> ore_silver = registryEntryLookup.getOrThrow(UndergroundOreConfiguredFeatures.ORE_SILVER);
+        Holder<ConfiguredFeature<?, ?>> ore_silver_small = registryEntryLookup.getOrThrow(UndergroundOreConfiguredFeatures.ORE_SILVER_SMALL);
+        PlacementUtils.register(featureRegisterable, OVERWORLD_ORE_SILVER, ore_silver, modifiers(
+                CountPlacement.of(16),
+                HeightRangePlacement.uniform(VerticalAnchor.absolute(-48), VerticalAnchor.absolute(144))
         ));
-        PlacedFeatures.register(featureRegisterable, OVERWORLD_ORE_SILVER_SMALL, ore_silver_small, modifiers(
-                CountPlacementModifier.of(16),
-                HeightRangePlacementModifier.uniform(YOffset.fixed(-48), YOffset.fixed(144))
+        PlacementUtils.register(featureRegisterable, OVERWORLD_ORE_SILVER_SMALL, ore_silver_small, modifiers(
+                CountPlacement.of(16),
+                HeightRangePlacement.uniform(VerticalAnchor.absolute(-48), VerticalAnchor.absolute(144))
         ));
     }
     public static List<PlacementModifier> modifiers(PlacementModifier countModifier, PlacementModifier heightModifier) {
-        return List.of(countModifier, SquarePlacementModifier.of(), heightModifier, BiomePlacementModifier.of());
+        return List.of(countModifier, InSquarePlacement.spread(), heightModifier, BiomeFilter.biome());
     }
-    public static RegistryKey<PlacedFeature> of(String id) {
-        return RegistryKey.of(RegistryKeys.PLACED_FEATURE, Identifier.of(Mme.MOD_ID, id));
+    public static ResourceKey<PlacedFeature> of(String id) {
+        return ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, id));
     }
 }

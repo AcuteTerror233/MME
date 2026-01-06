@@ -1,18 +1,18 @@
 package com.acuteterror233.mite.mixin.entity;
 
 import com.llamalad7.mixinextras.sugar.Local;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.FallingBlockEntity;
-import net.minecraft.entity.ItemEntity;
-import net.minecraft.item.ItemConvertible;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NbtCompound;
-import net.minecraft.server.world.ServerWorld;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.item.FallingBlockEntity;
+import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -27,30 +27,29 @@ public abstract class FallingBlockEntityMixin extends Entity {
     public boolean dropItem;
     @Shadow
     @Nullable
-    public NbtCompound blockEntityData;
+    public CompoundTag blockData;
     @Shadow
-    private float fallHurtAmount;
+    private float fallDamagePerDistance;
     @Shadow
     private BlockState blockState;
 
-    public FallingBlockEntityMixin(EntityType<?> type, World world) {
+    public FallingBlockEntityMixin(EntityType<?> type, Level world) {
         super(type, world);
     }
-    @Inject(method = "spawnFromBlock", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/World;setBlockState(Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/BlockState;I)Z", shift = At.Shift.BEFORE))
-    private static void spawnFromBlock(World world, BlockPos pos, BlockState state, CallbackInfoReturnable<FallingBlockEntity> cir, @Local FallingBlockEntity fallingBlockEntity) {
+    @Inject(method = "fall", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;setBlock(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z", shift = At.Shift.BEFORE))
+    private static void fall(Level world, BlockPos pos, BlockState state, CallbackInfoReturnable<FallingBlockEntity> cir, @Local FallingBlockEntity fallingBlockEntity) {
         BlockEntity blockEntity = world.getBlockEntity(pos);
         if (blockEntity != null) {
-            NbtCompound nbt = blockEntity.createNbt(world.getRegistryManager());
-            fallingBlockEntity.blockEntityData = nbt;
+            fallingBlockEntity.blockData = blockEntity.saveWithoutMetadata(world.registryAccess());
         }
     }
 
-    @Redirect(method = "tick", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/FallingBlockEntity;dropItem(Lnet/minecraft/server/world/ServerWorld;Lnet/minecraft/item/ItemConvertible;)Lnet/minecraft/entity/ItemEntity;"))
-    public ItemEntity tick(FallingBlockEntity instance, ServerWorld serverWorld, ItemConvertible itemConvertible) {
-        ItemStack stack = this.blockState.getBlock().asItem().getDefaultStack();
-        if (stack.isDamageable() && this.blockEntityData != null) {
-            stack.setDamage(this.blockEntityData.getInt("damage", 0));
+    @Redirect(method = "tick", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/item/FallingBlockEntity;spawnAtLocation(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/level/ItemLike;)Lnet/minecraft/world/entity/item/ItemEntity;"))
+    public ItemEntity tick(FallingBlockEntity instance, ServerLevel serverWorld, ItemLike itemConvertible) {
+        ItemStack stack = this.blockState.getBlock().asItem().getDefaultInstance();
+        if (stack.isDamageableItem() && this.blockData != null) {
+            stack.setDamageValue(this.blockData.getIntOr("damage", 0));
         }
-        return this.dropStack((ServerWorld) getWorld(), stack);
+        return this.spawnAtLocation((ServerLevel) level(), stack);
     }
 }

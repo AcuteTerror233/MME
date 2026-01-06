@@ -1,18 +1,18 @@
 package com.acuteterror233.mite.mixin.entity.projectile;
 
-import com.acuteterror233.mite.registry.tag.AtTags;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.projectile.FishingBobberEntity;
-import net.minecraft.entity.projectile.ProjectileEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.world.World;
+import com.acuteterror233.mite.registry.tag.MMETags;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.FishingHook;
+import net.minecraft.world.entity.projectile.Projectile;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 
-@Mixin(FishingBobberEntity.class)
-public abstract class FishingBobberEntityMixin extends ProjectileEntity {
-    public FishingBobberEntityMixin(EntityType<? extends ProjectileEntity> entityType, World world) {
+@Mixin(FishingHook.class)
+public abstract class FishingBobberEntityMixin extends Projectile {
+    public FishingBobberEntityMixin(EntityType<? extends Projectile> entityType, Level world) {
         super(entityType, world);
     }
 
@@ -21,12 +21,12 @@ public abstract class FishingBobberEntityMixin extends ProjectileEntity {
      * @reason 修改钓鱼竿浮标判断
      */
     @Overwrite
-    private boolean removeIfInvalid(PlayerEntity player) {
-        ItemStack itemStack = player.getMainHandStack();
-        ItemStack itemStack2 = player.getOffHandStack();
-        boolean bl = itemStack.isIn(AtTags.FISHING_RODS);
-        boolean bl2 = itemStack2.isIn(AtTags.FISHING_RODS);
-        if (!player.isRemoved() && player.isAlive() && (bl || bl2) && !(this.squaredDistanceTo(player) > 1024.0)) {
+    private boolean shouldStopFishing(Player player) {
+        ItemStack itemStack = player.getMainHandItem();
+        ItemStack itemStack2 = player.getOffhandItem();
+        boolean bl = itemStack.is(MMETags.FISHING_RODS);
+        boolean bl2 = itemStack2.is(MMETags.FISHING_RODS);
+        if (!player.isRemoved() && player.isAlive() && (bl || bl2) && !(this.distanceToSqr(player) > 1024.0)) {
             return false;
         } else {
             this.discard();

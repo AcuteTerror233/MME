@@ -1,113 +1,99 @@
 package com.acuteterror233.mite.block;
 
-import net.minecraft.block.*;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityCollisionHandler;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.particle.ParticleTypes;
-import net.minecraft.server.world.ServerWorld;
-import net.minecraft.sound.SoundCategory;
-import net.minecraft.sound.SoundEvents;
-import net.minecraft.state.StateManager;
-import net.minecraft.state.property.EnumProperty;
-import net.minecraft.state.property.Properties;
-import net.minecraft.util.BlockRotation;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
-import net.minecraft.util.math.random.Random;
-import net.minecraft.util.shape.VoxelShape;
-import net.minecraft.util.shape.VoxelShapes;
-import net.minecraft.world.BlockView;
-import net.minecraft.world.GameRules;
-import net.minecraft.world.World;
-import net.minecraft.world.WorldView;
-import net.minecraft.world.dimension.NetherPortal;
-import net.minecraft.world.tick.ScheduledTickView;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.InsideBlockEffectApplier;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.*;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.Portal;
+import net.minecraft.world.level.block.Rotation;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
+import net.minecraft.world.level.portal.PortalShape;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.Shapes;
+import net.minecraft.world.phys.shapes.VoxelShape;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Map;
 
-/**
- * 自定义传送门方块抽象基类：
- *
- * <p>提供与下界门一致的碰撞体积、轴向属性与粒子/环境音效，
- * 并封装了实体碰撞触发传送的基本逻辑与相邻方块更新时的自检行为。</p>
- */
 public abstract class AbstractPortalBlock extends Block implements Portal {
-    public static final EnumProperty<Direction.Axis> AXIS = Properties.HORIZONTAL_AXIS;
-    private static final Map<Direction.Axis, VoxelShape> SHAPES_BY_AXIS = VoxelShapes.createHorizontalAxisShapeMap(Block.createColumnShape(4.0, 16.0, 0.0, 16.0));
+    public static final EnumProperty<Direction.Axis> AXIS = BlockStateProperties.HORIZONTAL_AXIS;
+    private static final Map<Direction.Axis, VoxelShape> SHAPES_BY_AXIS = Shapes.rotateHorizontalAxis(Block.column(4.0, 16.0, 0.0, 16.0));
 
-    public AbstractPortalBlock(Settings settings) {
+    public AbstractPortalBlock(Properties settings) {
         super(settings);
-        this.setDefaultState(this.stateManager.getDefaultState().with(AXIS, Direction.Axis.X));
+        this.registerDefaultState(this.stateDefinition.any().setValue(AXIS, Direction.Axis.X));
     }
 
     @Override
-    protected VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        return SHAPES_BY_AXIS.get(state.get(AXIS));
+    protected @NotNull VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+        return SHAPES_BY_AXIS.get(state.getValue(AXIS));
     }
 
     @Override
-    protected VoxelShape getInsideCollisionShape(BlockState state, BlockView world, BlockPos pos, Entity entity) {
-        return state.getOutlineShape(world, pos);
+    protected @NotNull VoxelShape getEntityInsideCollisionShape(BlockState state, BlockGetter world, BlockPos pos, Entity entity) {
+        return state.getShape(world, pos);
     }
 
     @Override
-    /**
-     * 相邻方块变化时校验传送门结构，失效则替换为空气。
-     */
-    protected BlockState getStateForNeighborUpdate(
+    protected @NotNull BlockState updateShape(
             BlockState state,
-            WorldView world,
-            ScheduledTickView tickView,
+            LevelReader world,
+            ScheduledTickAccess tickView,
             BlockPos pos,
             Direction direction,
             BlockPos neighborPos,
             BlockState neighborState,
-            Random random
+            RandomSource random
     ) {
         Direction.Axis axis = direction.getAxis();
-        Direction.Axis axis2 = state.get(AXIS);
+        Direction.Axis axis2 = state.getValue(AXIS);
         boolean bl = axis2 != axis && axis.isHorizontal();
-        return !bl && !neighborState.isOf(this) && !NetherPortal.getOnAxis(world, pos, axis2).wasAlreadyValid()
-                ? Blocks.AIR.getDefaultState()
-                : super.getStateForNeighborUpdate(state, world, tickView, pos, direction, neighborPos, neighborState, random);
+        return !bl && !neighborState.is(this) && !PortalShape.findAnyShape(world, pos, axis2).isComplete()
+                ? Blocks.AIR.defaultBlockState()
+                : super.updateShape(state, world, tickView, pos, direction, neighborPos, neighborState, random);
     }
 
     @Override
-    /**
-     * 实体碰撞回调：允许可使用传送门的实体尝试传送。
-     */
-    protected void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity, EntityCollisionHandler handler) {
-        if (entity.canUsePortals(false)) {
-            entity.tryUsePortal(this, pos);
+    protected void entityInside(BlockState state, Level world, BlockPos pos, Entity entity, InsideBlockEffectApplier handler) {
+        if (entity.canUsePortal(false)) {
+            entity.setAsInsidePortal(this, pos);
         }
     }
 
     @Override
-    public int getPortalDelay(ServerWorld world, Entity entity) {
-        return entity instanceof PlayerEntity playerEntity
+    public int getPortalTransitionTime(ServerLevel world, Entity entity) {
+        return entity instanceof Player playerEntity
                 ? Math.max(
                 0,
                 world.getGameRules()
-                        .getInt(playerEntity.getAbilities().invulnerable ? GameRules.PLAYERS_NETHER_PORTAL_CREATIVE_DELAY : GameRules.PLAYERS_NETHER_PORTAL_DEFAULT_DELAY)
+                        .getInt(playerEntity.getAbilities().invulnerable ? GameRules.RULE_PLAYERS_NETHER_PORTAL_CREATIVE_DELAY : GameRules.RULE_PLAYERS_NETHER_PORTAL_DEFAULT_DELAY)
         )
                 : 0;
     }
 
     @Override
-    public Portal.Effect getPortalEffect() {
-        return Portal.Effect.CONFUSION;
+    public Portal.@NotNull Transition getLocalTransition() {
+        return Portal.Transition.CONFUSION;
     }
 
     @Override
-    /**
-     * 客户端随机显示：播放环境音并生成传送门粒子。
-     */
-    public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
+    public void animateTick(BlockState state, Level world, BlockPos pos, RandomSource random) {
         if (random.nextInt(100) == 0) {
-            world.playSoundClient(
-                    pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, SoundEvents.BLOCK_PORTAL_AMBIENT, SoundCategory.BLOCKS, 0.5F, random.nextFloat() * 0.4F + 0.8F, false
+            world.playLocalSound(
+                    pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, SoundEvents.PORTAL_AMBIENT, SoundSource.BLOCKS, 0.5F, random.nextFloat() * 0.4F + 0.8F, false
             );
         }
 
@@ -119,7 +105,7 @@ public abstract class AbstractPortalBlock extends Block implements Portal {
             double h = (random.nextFloat() - 0.5) * 0.5;
             double j = (random.nextFloat() - 0.5) * 0.5;
             int k = random.nextInt(2) * 2 - 1;
-            if (!world.getBlockState(pos.west()).isOf(this) && !world.getBlockState(pos.east()).isOf(this)) {
+            if (!world.getBlockState(pos.west()).is(this) && !world.getBlockState(pos.east()).is(this)) {
                 d = pos.getX() + 0.5 + 0.25 * k;
                 g = random.nextFloat() * 2.0F * k;
             } else {
@@ -127,21 +113,21 @@ public abstract class AbstractPortalBlock extends Block implements Portal {
                 j = random.nextFloat() * 2.0F * k;
             }
 
-            world.addParticleClient(ParticleTypes.PORTAL, d, e, f, g, h, j);
+            world.addParticle(ParticleTypes.PORTAL, d, e, f, g, h, j);
         }
     }
 
     @Override
-    protected ItemStack getPickStack(WorldView world, BlockPos pos, BlockState state, boolean includeData) {
+    protected @NotNull ItemStack getCloneItemStack(LevelReader world, BlockPos pos, BlockState state, boolean includeData) {
         return ItemStack.EMPTY;
     }
 
     @Override
-    protected BlockState rotate(BlockState state, BlockRotation rotation) {
+    protected @NotNull BlockState rotate(BlockState state, Rotation rotation) {
         return switch (rotation) {
-            case COUNTERCLOCKWISE_90, CLOCKWISE_90 -> switch ((Direction.Axis) state.get(AXIS)) {
-                case X -> state.with(AXIS, Direction.Axis.Z);
-                case Z -> state.with(AXIS, Direction.Axis.X);
+            case COUNTERCLOCKWISE_90, CLOCKWISE_90 -> switch (state.getValue(AXIS)) {
+                case X -> state.setValue(AXIS, Direction.Axis.Z);
+                case Z -> state.setValue(AXIS, Direction.Axis.X);
                 default -> state;
             };
             default -> state;
@@ -149,7 +135,7 @@ public abstract class AbstractPortalBlock extends Block implements Portal {
     }
 
     @Override
-    protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(AXIS);
     }
 }

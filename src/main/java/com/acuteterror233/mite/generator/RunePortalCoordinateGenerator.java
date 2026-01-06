@@ -1,6 +1,6 @@
 package com.acuteterror233.mite.generator;
 
-import net.minecraft.util.math.BlockPos;
+import net.minecraft.core.BlockPos;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

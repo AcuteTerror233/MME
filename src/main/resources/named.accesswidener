@@ -1,6 +1,6 @@
-accessWidener v1 named
-accessible method net/minecraft/client/data/Models block (Ljava/lang/String;[Lnet/minecraft/client/data/TextureKey;)Lnet/minecraft/client/data/Model;
-accessible field net/minecraft/screen/AnvilScreenHandler repairItemUsage I
-accessible field net/minecraft/screen/AnvilScreenHandler keepSecondSlot Z
-accessible method net/minecraft/item/Items keyOf (Lnet/minecraft/registry/RegistryKey;)Lnet/minecraft/registry/RegistryKey;
-accessible method net/minecraft/world/gen/densityfunction/DensityFunctions createNetherNoiseRouter (Lnet/minecraft/registry/RegistryEntryLookup;Lnet/minecraft/registry/RegistryEntryLookup;)Lnet/minecraft/world/gen/noise/NoiseRouter;
+accessWidener	v1	named
+accessible	method	net/minecraft/client/data/models/model/ModelTemplates	create	(Ljava/lang/String;[Lnet/minecraft/client/data/models/model/TextureSlot;)Lnet/minecraft/client/data/models/model/ModelTemplate;
+accessible	field	net/minecraft/world/inventory/AnvilMenu	repairItemCountCost	I
+accessible	field	net/minecraft/world/inventory/AnvilMenu	onlyRenaming	Z
+accessible	method	net/minecraft/world/item/Items	blockIdToItemId	(Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/resources/ResourceKey;
+accessible	method	net/minecraft/world/level/levelgen/NoiseRouterData	nether	(Lnet/minecraft/core/HolderGetter;Lnet/minecraft/core/HolderGetter;)Lnet/minecraft/world/level/levelgen/NoiseRouter;

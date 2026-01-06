@@ -1,13 +1,7 @@
 {
   "values": [
-    {
-      "id": "#minecraft:iron_tool_materials",
-      "required": false
-    },
-    {
-      "id": "#mme:iron_not_allowed_material",
-      "required": false
-    },
+    "#minecraft:iron_tool_materials",
+    "#mme:iron_not_allowed_material",
     "minecraft:iron_block"
   ]
 }

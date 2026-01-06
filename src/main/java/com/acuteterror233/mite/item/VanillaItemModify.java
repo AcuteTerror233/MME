@@ -1,369 +1,402 @@
 package com.acuteterror233.mite.item;
 
 import com.acuteterror233.mite.block.AtBlocks;
-import com.acuteterror233.mite.component.AtDataComponentTypes;
-import com.acuteterror233.mite.item.armor.AtArmorMaterials;
-import net.minecraft.block.*;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemKeys;
-import net.minecraft.item.ToolMaterial;
-import net.minecraft.item.equipment.EquipmentType;
-import net.minecraft.registry.RegistryKey;
-import net.minecraft.registry.RegistryKeys;
-import net.minecraft.util.Identifier;
+import com.acuteterror233.mite.component.MMEDataComponentTypes;
+import com.acuteterror233.mite.item.armor.MMEArmorMaterials;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.references.Items;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ToolMaterial;
+import net.minecraft.world.item.equipment.ArmorType;
+import net.minecraft.world.level.block.*;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
 import java.util.function.UnaryOperator;
 
 public final class VanillaItemModify {
+    public static Map<Class<?>, UnaryOperator<Item.Properties>> IN_CLASS_BLOCK_ITEM_SETTINGS_MODIFY = createBlockItemSettingsModifyMap();
+    public static final Map<ResourceLocation, UnaryOperator<Item.Properties>> IN_IDENTIFIER_BLOCK_ITEM_SETTINGS_MODIFY = createBlockItemSettingsModifyMapByIdentifier();
+    public static final Map<ResourceLocation, Function<Item.Properties, Item>> ITEM_FACTORY_MODIFY = createItemFactoryModifyMap();
+    public static final Map<ResourceLocation, UnaryOperator<Item.Properties>> ITEM_SETTINGS_MODIFY = createItemSettingsModifyMap();
     /**
      * 按照物品注册名划分的最大堆叠映射表。
      * Key: 物品标识符 Identifier
      * Value: 设置函数 UnaryOperator<Item.Settings>
      */
-    public static final Map<Identifier, UnaryOperator<Item.Settings>> ITEM_SETTINGS_MODIFY = Map.<Identifier, UnaryOperator<Item.Settings>>ofEntries(
-            // 最大堆叠为 1 的物品标识
-            Map.entry(Identifier.ofVanilla("heart_of_the_sea"), settings -> settings.maxCount(1)),
-            Map.entry(Identifier.ofVanilla("nether_star"), settings -> settings.maxCount(1)),
 
-            // 最大堆叠为 8 的物品标识
-            Map.entry(Identifier.ofVanilla("flint"), settings -> settings.maxCount(8)),
-            Map.entry(Identifier.ofVanilla("leather"), settings -> settings.maxCount(8)),
-            Map.entry(Identifier.ofVanilla("rabbit_hide"), settings -> settings.maxCount(8)),
-            Map.entry(Identifier.ofVanilla("honeycomb"), settings -> settings.maxCount(8)),
-            Map.entry(Identifier.ofVanilla("turtle_scute"), settings -> settings.maxCount(8)),
-            Map.entry(Identifier.ofVanilla("armadillo_scute"), settings -> settings.maxCount(8)),
-            Map.entry(Identifier.ofVanilla("blaze_rod"), settings -> settings.maxCount(8)),
-            Map.entry(Identifier.ofVanilla("breeze_rod"), settings -> settings.maxCount(8)),
-            Map.entry(Identifier.ofVanilla("shulker_shell"), settings -> settings.maxCount(8)),
-            Map.entry(Identifier.ofVanilla("blaze_powder"), settings -> settings.maxCount(8)),
-            Map.entry(Identifier.ofVanilla("sugar"), settings -> settings.maxCount(8)),
-            Map.entry(Identifier.ofVanilla("rabbit_foot"), settings -> settings.maxCount(8)),
-            Map.entry(Identifier.ofVanilla("glistering_melon_slice"), settings -> settings.maxCount(8)),
-            Map.entry(Identifier.ofVanilla("white_wool"), settings -> settings.maxCount(8)),
-            Map.entry(Identifier.ofVanilla("orange_wool"), settings -> settings.maxCount(8)),
-            Map.entry(Identifier.ofVanilla("magenta_wool"), settings -> settings.maxCount(8)),
-            Map.entry(Identifier.ofVanilla("light_blue_wool"), settings -> settings.maxCount(8)),
-            Map.entry(Identifier.ofVanilla("yellow_wool"), settings -> settings.maxCount(8)),
-            Map.entry(Identifier.ofVanilla("lime_wool"), settings -> settings.maxCount(8)),
-            Map.entry(Identifier.ofVanilla("pink_wool"), settings -> settings.maxCount(8)),
-            Map.entry(Identifier.ofVanilla("gray_wool"), settings -> settings.maxCount(8)),
-            Map.entry(Identifier.ofVanilla("light_gray_wool"), settings -> settings.maxCount(8)),
-            Map.entry(Identifier.ofVanilla("cyan_wool"), settings -> settings.maxCount(8)),
-            Map.entry(Identifier.ofVanilla("purple_wool"), settings -> settings.maxCount(8)),
-            Map.entry(Identifier.ofVanilla("blue_wool"), settings -> settings.maxCount(8)),
-            Map.entry(Identifier.ofVanilla("brown_wool"), settings -> settings.maxCount(8)),
-            Map.entry(Identifier.ofVanilla("green_wool"), settings -> settings.maxCount(8)),
-            Map.entry(Identifier.ofVanilla("red_wool"), settings -> settings.maxCount(8)),
-            Map.entry(Identifier.ofVanilla("black_wool"), settings -> settings.maxCount(8)),
-            Map.entry(Identifier.ofVanilla("inc_sac"), settings -> settings.maxCount(8)),
-            Map.entry(Identifier.ofVanilla("glow_inc_sac"), settings -> settings.maxCount(8)),
-            Map.entry(Identifier.ofVanilla("prismarine_shard"), settings -> settings.maxCount(8)),
-            Map.entry(Identifier.ofVanilla("popped_chorus_fruit"), settings -> settings.maxCount(8)),
-            Map.entry(Identifier.ofVanilla("echo_shard"), settings -> settings.maxCount(8)),
-            Map.entry(Identifier.ofVanilla("magma_cream"), settings -> settings.maxCount(8)),
-            Map.entry(Identifier.ofVanilla("phantom_membrane"), settings -> settings.maxCount(8)),
-            Map.entry(Identifier.ofVanilla("ghast_tear"), settings -> settings.maxCount(8)),
-            Map.entry(Identifier.ofVanilla("fermented_spider_eye"), settings -> settings.maxCount(8)),
-            Map.entry(Identifier.ofVanilla("acacia_planks"), settings -> settings.maxCount(8)),
-            Map.entry(Identifier.ofVanilla("birch_planks"), settings -> settings.maxCount(8)),
-            Map.entry(Identifier.ofVanilla("crimson_planks"), settings -> settings.maxCount(8)),
-            Map.entry(Identifier.ofVanilla("dark_oak_planks"), settings -> settings.maxCount(8)),
-            Map.entry(Identifier.ofVanilla("pale_oak_planks"), settings -> settings.maxCount(8)),
-            Map.entry(Identifier.ofVanilla("jungle_planks"), settings -> settings.maxCount(8)),
-            Map.entry(Identifier.ofVanilla("oak_planks"), settings -> settings.maxCount(8)),
-            Map.entry(Identifier.ofVanilla("spruce_planks"), settings -> settings.maxCount(8)),
-            Map.entry(Identifier.ofVanilla("warped_planks"), settings -> settings.maxCount(8)),
-            Map.entry(Identifier.ofVanilla("mangrove_planks"), settings -> settings.maxCount(8)),
+    private static Map<ResourceLocation, UnaryOperator<Item.Properties>> createItemSettingsModifyMap() {
+        Map<ResourceLocation, UnaryOperator<Item.Properties>> result = new HashMap<>();
 
-            // 最大堆叠为 16 的物品标识
-            Map.entry(Identifier.ofVanilla("iron_ingot"), settings -> settings.maxCount(16).component(AtDataComponentTypes.CRAFTING_TIME, 30)),
-            Map.entry(Identifier.ofVanilla("copper_ingot"), settings -> settings.maxCount(16).component(AtDataComponentTypes.CRAFTING_TIME, 10)),
-            Map.entry(Identifier.ofVanilla("gold_ingot"), settings -> settings.maxCount(16).component(AtDataComponentTypes.CRAFTING_TIME, 20)),
-            Map.entry(Identifier.ofVanilla("netherite_ingot"), settings -> settings.maxCount(16).component(AtDataComponentTypes.CRAFTING_TIME, 200)),
-            Map.entry(Identifier.ofVanilla("coal"), settings -> settings.maxCount(16)),
-            Map.entry(Identifier.ofVanilla("charcoal"), settings -> settings.maxCount(16)),
-            Map.entry(Identifier.ofVanilla("emerald"), settings -> settings.maxCount(16)),
-            Map.entry(Identifier.ofVanilla("diamond"), settings -> settings.maxCount(16)),
-            Map.entry(Identifier.ofVanilla("amethyst_shard"), settings -> settings.maxCount(16)),
-            Map.entry(Identifier.ofVanilla("netherite_scrap"), settings -> settings.maxCount(16)),
-            Map.entry(Identifier.ofVanilla("wheat"), settings -> settings.maxCount(16)),
-            Map.entry(Identifier.ofVanilla("clay_ball"), settings -> settings.maxCount(16)),
-            Map.entry(Identifier.ofVanilla("ender_eye"), settings -> settings.maxCount(16)),
-            Map.entry(Identifier.ofVanilla("bowl"), settings -> settings.maxCount(16)),
-            Map.entry(Identifier.ofVanilla("brick"), settings -> settings.maxCount(16)),
-            Map.entry(Identifier.ofVanilla("nether_brick"), settings -> settings.maxCount(16)),
-            Map.entry(Identifier.ofVanilla("resin_brick"), settings -> settings.maxCount(16)),
-            Map.entry(Identifier.ofVanilla("book"), settings -> settings.maxCount(16)),
-            Map.entry(Identifier.ofVanilla("glass_bottle"), settings -> settings.maxCount(16)),
-            Map.entry(Identifier.ofVanilla("nether_wart"), settings -> settings.maxCount(16)),
-            Map.entry(Identifier.ofVanilla("experience_bottle"), settings -> settings.maxCount(16)),
-            Map.entry(Identifier.ofVanilla("wind_charge"), settings -> settings.maxCount(16)),
-            Map.entry(Identifier.ofVanilla("lead"), settings -> settings.maxCount(16)),
-            Map.entry(Identifier.ofVanilla("firework_rocket"), settings -> settings.maxCount(16)),
-            Map.entry(Identifier.ofVanilla("slime_ball"), settings -> settings.maxCount(16)),
-            Map.entry(Identifier.ofVanilla("raw_copper"), settings -> settings.maxCount(16).component(AtDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2)),
-            Map.entry(Identifier.ofVanilla("raw_gold"), settings -> settings.maxCount(16).component(AtDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2)),
-            Map.entry(Identifier.ofVanilla("raw_iron"), settings -> settings.maxCount(16).component(AtDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2)),
-            Map.entry(Identifier.ofVanilla("resin_clump"), settings -> settings.maxCount(16)),
-            Map.entry(Identifier.ofVanilla("torchflower_seeds"), settings -> settings.maxCount(16)),
-            Map.entry(Identifier.ofVanilla("pitcher_pod"), settings -> settings.maxCount(16)),
-            Map.entry(Identifier.ofVanilla("glow_berries"), settings -> settings.maxCount(16)),
-            Map.entry(Identifier.ofVanilla("item_frame"), settings -> settings.maxCount(16)),
-            Map.entry(Identifier.ofVanilla("glow_item_frame"), settings -> settings.maxCount(16)),
-            Map.entry(Identifier.ofVanilla("painting"), settings -> settings.maxCount(16)),
-            Map.entry(Identifier.ofVanilla("fire_charge"), settings -> settings.maxCount(16)),
-            Map.entry(Identifier.ofVanilla("name_tag"), settings -> settings.maxCount(16)),
-            Map.entry(Identifier.ofVanilla("apple"), settings -> settings.maxCount(16)),
-            Map.entry(Identifier.ofVanilla("golden_apple"), settings -> settings.maxCount(16)),
-            Map.entry(Identifier.ofVanilla("enchanted_golden_apple"), settings -> settings.maxCount(16)),
-            Map.entry(Identifier.ofVanilla("chorus_fruit"), settings -> settings.maxCount(16)),
-            Map.entry(Identifier.ofVanilla("carrot"), settings -> settings.maxCount(16)),
-            Map.entry(Identifier.ofVanilla("golden_carrot"), settings -> settings.maxCount(16)),
-            Map.entry(Identifier.ofVanilla("potato"), settings -> settings.maxCount(16)),
-            Map.entry(Identifier.ofVanilla("baked_potato"), settings -> settings.maxCount(16)),
-            Map.entry(Identifier.ofVanilla("poisonous_potato"), settings -> settings.maxCount(16)),
-            Map.entry(Identifier.ofVanilla("beetroot"), settings -> settings.maxCount(16)),
-            Map.entry(Identifier.ofVanilla("beef"), settings -> settings.maxCount(16)),
-            Map.entry(Identifier.ofVanilla("cooked_beef"), settings -> settings.maxCount(16)),
-            Map.entry(Identifier.ofVanilla("porkchop"), settings -> settings.maxCount(16)),
-            Map.entry(Identifier.ofVanilla("cooked_porkchop"), settings -> settings.maxCount(16)),
-            Map.entry(Identifier.ofVanilla("mutton"), settings -> settings.maxCount(16)),
-            Map.entry(Identifier.ofVanilla("cooked_mutton"), settings -> settings.maxCount(16)),
-            Map.entry(Identifier.ofVanilla("chicken"), settings -> settings.maxCount(16)),
-            Map.entry(Identifier.ofVanilla("cooked_chicken"), settings -> settings.maxCount(16)),
-            Map.entry(Identifier.ofVanilla("rabbit"), settings -> settings.maxCount(16)),
-            Map.entry(Identifier.ofVanilla("cooked_rabbit"), settings -> settings.maxCount(16)),
-            Map.entry(Identifier.ofVanilla("cod"), settings -> settings.maxCount(16)),
-            Map.entry(Identifier.ofVanilla("cooked_cod"), settings -> settings.maxCount(16)),
-            Map.entry(Identifier.ofVanilla("salmon"), settings -> settings.maxCount(16)),
-            Map.entry(Identifier.ofVanilla("cooked_salmon"), settings -> settings.maxCount(16)),
-            Map.entry(Identifier.ofVanilla("tropical_fish"), settings -> settings.maxCount(16)),
-            Map.entry(Identifier.ofVanilla("pufferfish"), settings -> settings.maxCount(16)),
-            Map.entry(Identifier.ofVanilla("bread"), settings -> settings.maxCount(16)),
-            Map.entry(Identifier.ofVanilla("pumpkin_pie"), settings -> settings.maxCount(16)),
-            Map.entry(Identifier.ofVanilla("rotten_flesh"), settings -> settings.maxCount(16)),
-            Map.entry(Identifier.ofVanilla("spider_eye"), settings -> settings.maxCount(16)),
-            Map.entry(Identifier.ofVanilla("prismarine_crystals"), settings -> settings.maxCount(16)),
-            Map.entry(Identifier.ofVanilla("nautilus_shell"), settings -> settings.maxCount(16)),
-            Map.entry(Identifier.ofVanilla("disc_fragment_5"), settings -> settings.maxCount(16)),
-            Map.entry(Identifier.ofVanilla("firework_star"), settings -> settings.maxCount(16)),
+        // 最大堆叠为 1 的物品标识
+        result.put(ResourceLocation.withDefaultNamespace("heart_of_the_sea"), settings -> settings.stacksTo(1));
+        result.put(ResourceLocation.withDefaultNamespace("nether_star"), settings -> settings.stacksTo(1));
 
-            // 最大堆叠为 32 的物品标识
-            Map.entry(Identifier.ofVanilla("lapis_lazuli"), settings -> settings.maxCount(32)),
-            Map.entry(Identifier.ofVanilla("quartz"), settings -> settings.maxCount(32)),
-            Map.entry(Identifier.ofVanilla("stick"), settings -> settings.maxCount(32)),
-            Map.entry(Identifier.ofVanilla("bone"), settings -> settings.maxCount(32)),
-            Map.entry(Identifier.ofVanilla("bone_meal"), settings -> settings.maxCount(32)),
-            Map.entry(Identifier.ofVanilla("string"), settings -> settings.maxCount(32)),
-            Map.entry(Identifier.ofVanilla("feather"), settings -> settings.maxCount(32)),
-            Map.entry(Identifier.ofVanilla("cnowball"), settings -> settings.maxCount(32)),
-            Map.entry(Identifier.ofVanilla("paper"), settings -> settings.maxCount(32)),
-            Map.entry(Identifier.ofVanilla("redstone"), settings -> settings.maxCount(32)),
-            Map.entry(Identifier.ofVanilla("glowstone_dust"), settings -> settings.maxCount(32)),
-            Map.entry(Identifier.ofVanilla("cookie"), settings -> settings.maxCount(32)),
-            Map.entry(Identifier.ofVanilla("dried_kelp"), settings -> settings.maxCount(32)),
-            Map.entry(ItemKeys.MELON_SEEDS.getValue(), settings -> settings.maxCount(32)),
-            Map.entry(ItemKeys.PUMPKIN_SEEDS.getValue(), settings -> settings.maxCount(32)),
-            Map.entry(Identifier.ofVanilla("wheat_seeds"), settings -> settings.maxCount(32)),
-            Map.entry(Identifier.ofVanilla("cocoa_beans"), settings -> settings.maxCount(32)),
-            Map.entry(Identifier.ofVanilla("beetroot_seeds"), settings -> settings.maxCount(32)),
-            Map.entry(Identifier.ofVanilla("sweet_berries"), settings -> settings.maxCount(32)),
-            Map.entry(Identifier.ofVanilla("seagrass"), settings -> settings.maxCount(32)),
-            Map.entry(Identifier.ofVanilla("melon_slice"), settings -> settings.maxCount(32)),
-            Map.entry(Identifier.ofVanilla("gunpowder"), settings -> settings.maxCount(32)),
+        // 最大堆叠为 8 的物品标识
+        result.put(ResourceLocation.withDefaultNamespace("flint"), settings -> settings.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("leather"), settings -> settings.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("rabbit_hide"), settings -> settings.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("honeycomb"), settings -> settings.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("turtle_scute"), settings -> settings.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("armadillo_scute"), settings -> settings.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("blaze_rod"), settings -> settings.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("breeze_rod"), settings -> settings.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("shulker_shell"), settings -> settings.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("blaze_powder"), settings -> settings.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("sugar"), settings -> settings.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("rabbit_foot"), settings -> settings.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("glistering_melon_slice"), settings -> settings.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("white_wool"), settings -> settings.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("orange_wool"), settings -> settings.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("magenta_wool"), settings -> settings.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("light_blue_wool"), settings -> settings.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("yellow_wool"), settings -> settings.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("lime_wool"), settings -> settings.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("pink_wool"), settings -> settings.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("gray_wool"), settings -> settings.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("light_gray_wool"), settings -> settings.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("cyan_wool"), settings -> settings.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("purple_wool"), settings -> settings.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("blue_wool"), settings -> settings.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("brown_wool"), settings -> settings.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("green_wool"), settings -> settings.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("red_wool"), settings -> settings.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("black_wool"), settings -> settings.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("inc_sac"), settings -> settings.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("glow_inc_sac"), settings -> settings.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("prismarine_shard"), settings -> settings.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("popped_chorus_fruit"), settings -> settings.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("echo_shard"), settings -> settings.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("magma_cream"), settings -> settings.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("phantom_membrane"), settings -> settings.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("ghast_tear"), settings -> settings.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("fermented_spider_eye"), settings -> settings.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("acacia_planks"), settings -> settings.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("birch_planks"), settings -> settings.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("crimson_planks"), settings -> settings.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("dark_oak_planks"), settings -> settings.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("pale_oak_planks"), settings -> settings.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("jungle_planks"), settings -> settings.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("oak_planks"), settings -> settings.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("spruce_planks"), settings -> settings.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("warped_planks"), settings -> settings.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("mangrove_planks"), settings -> settings.stacksTo(8));
 
-            Map.entry(Identifier.ofVanilla("anvil"), settings -> settings.maxDamage(AtBlocks.maxDamageAnvil(ToolMaterial.IRON.durability()))),
-            Map.entry(Identifier.ofVanilla("chipped_anvil"), settings -> settings.maxDamage(AtBlocks.maxDamageAnvil(ToolMaterial.IRON.durability()))),
-            Map.entry(Identifier.ofVanilla("damaged_anvil"), settings -> settings.maxDamage(AtBlocks.maxDamageAnvil(ToolMaterial.IRON.durability()))),
+        // 最大堆叠为 16 的物品标识
+        result.put(ResourceLocation.withDefaultNamespace("iron_ingot"), settings -> settings.stacksTo(16).component(MMEDataComponentTypes.CRAFTING_TIME, 30));
+        result.put(ResourceLocation.withDefaultNamespace("copper_ingot"), settings -> settings.stacksTo(16).component(MMEDataComponentTypes.CRAFTING_TIME, 10));
+        result.put(ResourceLocation.withDefaultNamespace("gold_ingot"), settings -> settings.stacksTo(16).component(MMEDataComponentTypes.CRAFTING_TIME, 20));
+        result.put(ResourceLocation.withDefaultNamespace("netherite_ingot"), settings -> settings.stacksTo(16).component(MMEDataComponentTypes.CRAFTING_TIME, 200));
+        result.put(ResourceLocation.withDefaultNamespace("coal"), settings -> settings.stacksTo(16));
+        result.put(ResourceLocation.withDefaultNamespace("charcoal"), settings -> settings.stacksTo(16));
+        result.put(ResourceLocation.withDefaultNamespace("emerald"), settings -> settings.stacksTo(16));
+        result.put(ResourceLocation.withDefaultNamespace("diamond"), settings -> settings.stacksTo(16));
+        result.put(ResourceLocation.withDefaultNamespace("amethyst_shard"), settings -> settings.stacksTo(16));
+        result.put(ResourceLocation.withDefaultNamespace("netherite_scrap"), settings -> settings.stacksTo(16));
+        result.put(ResourceLocation.withDefaultNamespace("wheat"), settings -> settings.stacksTo(16));
+        result.put(ResourceLocation.withDefaultNamespace("clay_ball"), settings -> settings.stacksTo(16));
+        result.put(ResourceLocation.withDefaultNamespace("ender_eye"), settings -> settings.stacksTo(16));
+        result.put(ResourceLocation.withDefaultNamespace("bowl"), settings -> settings.stacksTo(16));
+        result.put(ResourceLocation.withDefaultNamespace("brick"), settings -> settings.stacksTo(16));
+        result.put(ResourceLocation.withDefaultNamespace("nether_brick"), settings -> settings.stacksTo(16));
+        result.put(ResourceLocation.withDefaultNamespace("resin_brick"), settings -> settings.stacksTo(16));
+        result.put(ResourceLocation.withDefaultNamespace("book"), settings -> settings.stacksTo(16));
+        result.put(ResourceLocation.withDefaultNamespace("glass_bottle"), settings -> settings.stacksTo(16));
+        result.put(ResourceLocation.withDefaultNamespace("nether_wart"), settings -> settings.stacksTo(16));
+        result.put(ResourceLocation.withDefaultNamespace("experience_bottle"), settings -> settings.stacksTo(16));
+        result.put(ResourceLocation.withDefaultNamespace("wind_charge"), settings -> settings.stacksTo(16));
+        result.put(ResourceLocation.withDefaultNamespace("lead"), settings -> settings.stacksTo(16));
+        result.put(ResourceLocation.withDefaultNamespace("firework_rocket"), settings -> settings.stacksTo(16));
+        result.put(ResourceLocation.withDefaultNamespace("slime_ball"), settings -> settings.stacksTo(16));
+        result.put(ResourceLocation.withDefaultNamespace("raw_copper"), settings -> settings.stacksTo(16).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(ResourceLocation.withDefaultNamespace("raw_gold"), settings -> settings.stacksTo(16).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(ResourceLocation.withDefaultNamespace("raw_iron"), settings -> settings.stacksTo(16).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(ResourceLocation.withDefaultNamespace("resin_clump"), settings -> settings.stacksTo(16));
+        result.put(ResourceLocation.withDefaultNamespace("torchflower_seeds"), settings -> settings.stacksTo(16));
+        result.put(ResourceLocation.withDefaultNamespace("pitcher_pod"), settings -> settings.stacksTo(16));
+        result.put(ResourceLocation.withDefaultNamespace("glow_berries"), settings -> settings.stacksTo(16));
+        result.put(ResourceLocation.withDefaultNamespace("item_frame"), settings -> settings.stacksTo(16));
+        result.put(ResourceLocation.withDefaultNamespace("glow_item_frame"), settings -> settings.stacksTo(16));
+        result.put(ResourceLocation.withDefaultNamespace("painting"), settings -> settings.stacksTo(16));
+        result.put(ResourceLocation.withDefaultNamespace("fire_charge"), settings -> settings.stacksTo(16));
+        result.put(ResourceLocation.withDefaultNamespace("name_tag"), settings -> settings.stacksTo(16));
+        result.put(ResourceLocation.withDefaultNamespace("apple"), settings -> settings.stacksTo(16));
+        result.put(ResourceLocation.withDefaultNamespace("golden_apple"), settings -> settings.stacksTo(16));
+        result.put(ResourceLocation.withDefaultNamespace("enchanted_golden_apple"), settings -> settings.stacksTo(16));
+        result.put(ResourceLocation.withDefaultNamespace("chorus_fruit"), settings -> settings.stacksTo(16));
+        result.put(ResourceLocation.withDefaultNamespace("carrot"), settings -> settings.stacksTo(16));
+        result.put(ResourceLocation.withDefaultNamespace("golden_carrot"), settings -> settings.stacksTo(16));
+        result.put(ResourceLocation.withDefaultNamespace("potato"), settings -> settings.stacksTo(16));
+        result.put(ResourceLocation.withDefaultNamespace("baked_potato"), settings -> settings.stacksTo(16));
+        result.put(ResourceLocation.withDefaultNamespace("poisonous_potato"), settings -> settings.stacksTo(16));
+        result.put(ResourceLocation.withDefaultNamespace("beetroot"), settings -> settings.stacksTo(16));
+        result.put(ResourceLocation.withDefaultNamespace("beef"), settings -> settings.stacksTo(16));
+        result.put(ResourceLocation.withDefaultNamespace("cooked_beef"), settings -> settings.stacksTo(16));
+        result.put(ResourceLocation.withDefaultNamespace("porkchop"), settings -> settings.stacksTo(16));
+        result.put(ResourceLocation.withDefaultNamespace("cooked_porkchop"), settings -> settings.stacksTo(16));
+        result.put(ResourceLocation.withDefaultNamespace("mutton"), settings -> settings.stacksTo(16));
+        result.put(ResourceLocation.withDefaultNamespace("cooked_mutton"), settings -> settings.stacksTo(16));
+        result.put(ResourceLocation.withDefaultNamespace("chicken"), settings -> settings.stacksTo(16));
+        result.put(ResourceLocation.withDefaultNamespace("cooked_chicken"), settings -> settings.stacksTo(16));
+        result.put(ResourceLocation.withDefaultNamespace("rabbit"), settings -> settings.stacksTo(16));
+        result.put(ResourceLocation.withDefaultNamespace("cooked_rabbit"), settings -> settings.stacksTo(16));
+        result.put(ResourceLocation.withDefaultNamespace("cod"), settings -> settings.stacksTo(16));
+        result.put(ResourceLocation.withDefaultNamespace("cooked_cod"), settings -> settings.stacksTo(16));
+        result.put(ResourceLocation.withDefaultNamespace("salmon"), settings -> settings.stacksTo(16));
+        result.put(ResourceLocation.withDefaultNamespace("cooked_salmon"), settings -> settings.stacksTo(16));
+        result.put(ResourceLocation.withDefaultNamespace("tropical_fish"), settings -> settings.stacksTo(16));
+        result.put(ResourceLocation.withDefaultNamespace("pufferfish"), settings -> settings.stacksTo(16));
+        result.put(ResourceLocation.withDefaultNamespace("bread"), settings -> settings.stacksTo(16));
+        result.put(ResourceLocation.withDefaultNamespace("pumpkin_pie"), settings -> settings.stacksTo(16));
+        result.put(ResourceLocation.withDefaultNamespace("rotten_flesh"), settings -> settings.stacksTo(16));
+        result.put(ResourceLocation.withDefaultNamespace("spider_eye"), settings -> settings.stacksTo(16));
+        result.put(ResourceLocation.withDefaultNamespace("prismarine_crystals"), settings -> settings.stacksTo(16));
+        result.put(ResourceLocation.withDefaultNamespace("nautilus_shell"), settings -> settings.stacksTo(16));
+        result.put(ResourceLocation.withDefaultNamespace("disc_fragment_5"), settings -> settings.stacksTo(16));
+        result.put(ResourceLocation.withDefaultNamespace("firework_star"), settings -> settings.stacksTo(16));
 
-            Map.entry(Identifier.ofVanilla("stone_sword"), settings -> new Item.Settings()),
-            Map.entry(Identifier.ofVanilla("stone_pickaxe"), settings -> new Item.Settings()),
+        // 最大堆叠为 32 的物品标识
+        result.put(ResourceLocation.withDefaultNamespace("lapis_lazuli"), settings -> settings.stacksTo(32));
+        result.put(ResourceLocation.withDefaultNamespace("quartz"), settings -> settings.stacksTo(32));
+        result.put(ResourceLocation.withDefaultNamespace("stick"), settings -> settings.stacksTo(32));
+        result.put(ResourceLocation.withDefaultNamespace("bone"), settings -> settings.stacksTo(32));
+        result.put(ResourceLocation.withDefaultNamespace("bone_meal"), settings -> settings.stacksTo(32));
+        result.put(ResourceLocation.withDefaultNamespace("string"), settings -> settings.stacksTo(32));
+        result.put(ResourceLocation.withDefaultNamespace("feather"), settings -> settings.stacksTo(32));
+        result.put(ResourceLocation.withDefaultNamespace("cnowball"), settings -> settings.stacksTo(32));
+        result.put(ResourceLocation.withDefaultNamespace("paper"), settings -> settings.stacksTo(32));
+        result.put(ResourceLocation.withDefaultNamespace("redstone"), settings -> settings.stacksTo(32));
+        result.put(ResourceLocation.withDefaultNamespace("glowstone_dust"), settings -> settings.stacksTo(32));
+        result.put(ResourceLocation.withDefaultNamespace("cookie"), settings -> settings.stacksTo(32));
+        result.put(ResourceLocation.withDefaultNamespace("dried_kelp"), settings -> settings.stacksTo(32));
+        result.put(Items.MELON_SEEDS.location(), settings -> settings.stacksTo(32));
+        result.put(Items.PUMPKIN_SEEDS.location(), settings -> settings.stacksTo(32));
+        result.put(ResourceLocation.withDefaultNamespace("wheat_seeds"), settings -> settings.stacksTo(32));
+        result.put(ResourceLocation.withDefaultNamespace("cocoa_beans"), settings -> settings.stacksTo(32));
+        result.put(ResourceLocation.withDefaultNamespace("beetroot_seeds"), settings -> settings.stacksTo(32));
+        result.put(ResourceLocation.withDefaultNamespace("sweet_berries"), settings -> settings.stacksTo(32));
+        result.put(ResourceLocation.withDefaultNamespace("seagrass"), settings -> settings.stacksTo(32));
+        result.put(ResourceLocation.withDefaultNamespace("melon_slice"), settings -> settings.stacksTo(32));
+        result.put(ResourceLocation.withDefaultNamespace("gunpowder"), settings -> settings.stacksTo(32));
 
-            Map.entry(Identifier.ofVanilla("diamond_sword"), settings -> new Item.Settings()),
-            Map.entry(Identifier.ofVanilla("diamond_pickaxe"), settings -> new Item.Settings()),
+        // Anvil durability settings
+        result.put(ResourceLocation.withDefaultNamespace("anvil"), settings -> settings.durability(AtBlocks.maxDamageAnvil(ToolMaterial.IRON.durability())));
+        result.put(ResourceLocation.withDefaultNamespace("chipped_anvil"), settings -> settings.durability(AtBlocks.maxDamageAnvil(ToolMaterial.IRON.durability())));
+        result.put(ResourceLocation.withDefaultNamespace("damaged_anvil"), settings -> settings.durability(AtBlocks.maxDamageAnvil(ToolMaterial.IRON.durability())));
 
-            Map.entry(Identifier.ofVanilla("wooden_pickaxe"), settings -> new Item.Settings()),
-            Map.entry(Identifier.ofVanilla("wooden_sword"), settings -> new Item.Settings()),
-            
-            Map.entry(Identifier.ofVanilla("netherite_sword"), settings -> AtItems.getSwordSettings(AtToolMaterials.NETHERITE)),
-            Map.entry(Identifier.ofVanilla("netherite_pickaxe"), settings -> AtItems.getPickaxeSettings(AtToolMaterials.NETHERITE)),
-            
-            Map.entry(Identifier.ofVanilla("netherite_helmet"), settings -> AtItems.getArmorSettings(AtArmorMaterials.NETHERITE_MATERIAL, EquipmentType.HELMET)),
-            Map.entry(Identifier.ofVanilla("netherite_chestplate"), settings -> AtItems.getArmorSettings(AtArmorMaterials.NETHERITE_MATERIAL, EquipmentType.CHESTPLATE)),
-            Map.entry(Identifier.ofVanilla("netherite_leggings"), settings -> AtItems.getArmorSettings(AtArmorMaterials.NETHERITE_MATERIAL, EquipmentType.LEGGINGS)),
-            Map.entry(Identifier.ofVanilla("netherite_boots"), settings -> AtItems.getArmorSettings(AtArmorMaterials.NETHERITE_MATERIAL, EquipmentType.BOOTS)),
+        // Sword and pickaxe settings
+        result.put(ResourceLocation.withDefaultNamespace("stone_sword"), settings -> new Item.Properties());
+        result.put(ResourceLocation.withDefaultNamespace("stone_pickaxe"), settings -> new Item.Properties());
+        result.put(ResourceLocation.withDefaultNamespace("diamond_sword"), settings -> new Item.Properties());
+        result.put(ResourceLocation.withDefaultNamespace("diamond_pickaxe"), settings -> new Item.Properties());
+        result.put(ResourceLocation.withDefaultNamespace("wooden_pickaxe"), settings -> new Item.Properties());
+        result.put(ResourceLocation.withDefaultNamespace("wooden_sword"), settings -> new Item.Properties());
+        result.put(ResourceLocation.withDefaultNamespace("netherite_sword"), settings -> MMEItems.getSwordSettings(MMEToolMaterials.NETHERITE));
+        result.put(ResourceLocation.withDefaultNamespace("netherite_pickaxe"), settings -> MMEItems.getPickaxeSettings(MMEToolMaterials.NETHERITE));
 
-            Map.entry(Identifier.ofVanilla("iron_sword"), settings -> AtItems.getSwordSettings(AtToolMaterials.IRON)),
-            Map.entry(Identifier.ofVanilla("iron_shovel"), settings -> AtItems.getShovelSettings(AtToolMaterials.IRON)),
-            Map.entry(Identifier.ofVanilla("iron_pickaxe"), settings -> AtItems.getPickaxeSettings(AtToolMaterials.IRON)),
-            Map.entry(Identifier.ofVanilla("iron_axe"), settings -> AtItems.getAxeSettings(AtToolMaterials.IRON)),
-            Map.entry(Identifier.ofVanilla("iron_hoe"), settings -> AtItems.getHoeSettings(AtToolMaterials.IRON)),
+        // Armor settings
+        result.put(ResourceLocation.withDefaultNamespace("netherite_helmet"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.NETHERITE_MATERIAL, ArmorType.HELMET));
+        result.put(ResourceLocation.withDefaultNamespace("netherite_chestplate"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.NETHERITE_MATERIAL, ArmorType.CHESTPLATE));
+        result.put(ResourceLocation.withDefaultNamespace("netherite_leggings"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.NETHERITE_MATERIAL, ArmorType.LEGGINGS));
+        result.put(ResourceLocation.withDefaultNamespace("netherite_boots"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.NETHERITE_MATERIAL, ArmorType.BOOTS));
 
-            Map.entry(Identifier.ofVanilla("iron_helmet"), settings -> AtItems.getArmorSettings(AtArmorMaterials.IRON_MATERIAL, EquipmentType.HELMET)),
-            Map.entry(Identifier.ofVanilla("iron_chestplate"), settings -> AtItems.getArmorSettings(AtArmorMaterials.IRON_MATERIAL, EquipmentType.CHESTPLATE)),
-            Map.entry(Identifier.ofVanilla("iron_leggings"), settings -> AtItems.getArmorSettings(AtArmorMaterials.IRON_MATERIAL, EquipmentType.LEGGINGS)),
-            Map.entry(Identifier.ofVanilla("iron_boots"), settings -> AtItems.getArmorSettings(AtArmorMaterials.IRON_MATERIAL, EquipmentType.BOOTS)),
+        result.put(ResourceLocation.withDefaultNamespace("iron_sword"), settings -> MMEItems.getSwordSettings(MMEToolMaterials.IRON));
+        result.put(ResourceLocation.withDefaultNamespace("iron_shovel"), settings -> MMEItems.getShovelSettings(MMEToolMaterials.IRON));
+        result.put(ResourceLocation.withDefaultNamespace("iron_pickaxe"), settings -> MMEItems.getPickaxeSettings(MMEToolMaterials.IRON));
+        result.put(ResourceLocation.withDefaultNamespace("iron_axe"), settings -> MMEItems.getAxeSettings(MMEToolMaterials.IRON));
+        result.put(ResourceLocation.withDefaultNamespace("iron_hoe"), settings -> MMEItems.getHoeSettings(MMEToolMaterials.IRON));
 
-            Map.entry(Identifier.ofVanilla("chainmail_helmet"), settings -> AtItems.getArmorSettings(AtArmorMaterials.IRON_CHAINMAIL_MATERIAL, EquipmentType.HELMET)),
-            Map.entry(Identifier.ofVanilla("chainmail_chestplate"), settings -> AtItems.getArmorSettings(AtArmorMaterials.IRON_CHAINMAIL_MATERIAL, EquipmentType.CHESTPLATE)),
-            Map.entry(Identifier.ofVanilla("chainmail_leggings"), settings -> AtItems.getArmorSettings(AtArmorMaterials.IRON_CHAINMAIL_MATERIAL, EquipmentType.LEGGINGS)),
-            Map.entry(Identifier.ofVanilla("chainmail_boots"), settings -> AtItems.getArmorSettings(AtArmorMaterials.IRON_CHAINMAIL_MATERIAL, EquipmentType.BOOTS))
-    );
+        result.put(ResourceLocation.withDefaultNamespace("iron_helmet"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.IRON_MATERIAL, ArmorType.HELMET));
+        result.put(ResourceLocation.withDefaultNamespace("iron_chestplate"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.IRON_MATERIAL, ArmorType.CHESTPLATE));
+        result.put(ResourceLocation.withDefaultNamespace("iron_leggings"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.IRON_MATERIAL, ArmorType.LEGGINGS));
+        result.put(ResourceLocation.withDefaultNamespace("iron_boots"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.IRON_MATERIAL, ArmorType.BOOTS));
+
+        result.put(ResourceLocation.withDefaultNamespace("chainmail_helmet"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.IRON_CHAINMAIL_MATERIAL, ArmorType.HELMET));
+        result.put(ResourceLocation.withDefaultNamespace("chainmail_chestplate"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.IRON_CHAINMAIL_MATERIAL, ArmorType.CHESTPLATE));
+        result.put(ResourceLocation.withDefaultNamespace("chainmail_leggings"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.IRON_CHAINMAIL_MATERIAL, ArmorType.LEGGINGS));
+        result.put(ResourceLocation.withDefaultNamespace("chainmail_boots"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.IRON_CHAINMAIL_MATERIAL, ArmorType.BOOTS));
+
+        return Map.copyOf(result);
+    }
+
     /**
      * 物品工厂修改映射表
      * key: 物品标识
      * value: 工厂
      */
-    public static final Map<Identifier, Function<Item.Settings, Item>> ITEM_FACTORY_MODIFY = Map.ofEntries(
-            Map.entry(Identifier.ofVanilla("stone_shovel"), settings -> new Item(new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM,Identifier.ofVanilla("stone_shovel"))))),
-            Map.entry(Identifier.ofVanilla("stone_axe"), settings -> new Item(new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM,Identifier.ofVanilla("stone_axe"))))),
-            Map.entry(Identifier.ofVanilla("stone_hoe"), settings -> new Item(new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM,Identifier.ofVanilla("stone_hoe"))))),
 
-            Map.entry(Identifier.ofVanilla("diamond_shovel"), settings -> new Item(new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM,Identifier.ofVanilla("diamond_shovel"))))),
-            Map.entry(Identifier.ofVanilla("diamond_axe"), settings -> new Item(new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM,Identifier.ofVanilla("diamond_axe"))))),
-            Map.entry(Identifier.ofVanilla("diamond_hoe"), settings -> new Item(new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM,Identifier.ofVanilla("diamond_hoe"))))),
+    private static Map<ResourceLocation, Function<Item.Properties, Item>> createItemFactoryModifyMap() {
+        Map<ResourceLocation, Function<Item.Properties, Item>> result = new HashMap<>();
 
-            Map.entry(Identifier.ofVanilla("wooden_axe"), settings -> new Item(new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM,Identifier.ofVanilla("wooden_axe"))))),
-            Map.entry(Identifier.ofVanilla("wooden_hoe"), settings -> new Item(new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM,Identifier.ofVanilla("wooden_hoe"))))),
-            Map.entry(Identifier.ofVanilla("wooden_shovel"), settings -> new Item(AtItems.getShovelSettings(AtToolMaterials.WOOD).registryKey(RegistryKey.of(RegistryKeys.ITEM,Identifier.ofVanilla("wooden_shovel"))))),
+        // 工具类物品
+        result.put(ResourceLocation.withDefaultNamespace("stone_shovel"), settings -> new Item(new Item.Properties().setId(ResourceKey.create(Registries.ITEM, ResourceLocation.withDefaultNamespace("stone_shovel")))));
+        result.put(ResourceLocation.withDefaultNamespace("stone_axe"), settings -> new Item(new Item.Properties().setId(ResourceKey.create(Registries.ITEM, ResourceLocation.withDefaultNamespace("stone_axe")))));
+        result.put(ResourceLocation.withDefaultNamespace("stone_hoe"), settings -> new Item(new Item.Properties().setId(ResourceKey.create(Registries.ITEM, ResourceLocation.withDefaultNamespace("stone_hoe")))));
 
-            Map.entry(Identifier.ofVanilla("netherite_shovel"), settings -> new AtShovelItem(AtItems.getShovelSettings(AtToolMaterials.NETHERITE).registryKey(RegistryKey.of(RegistryKeys.ITEM,Identifier.ofVanilla("netherite_shovel"))))),
-            Map.entry(Identifier.ofVanilla("netherite_axe"), settings -> new AtAxeItem(AtItems.getAxeSettings(AtToolMaterials.NETHERITE).registryKey(RegistryKey.of(RegistryKeys.ITEM,Identifier.ofVanilla("netherite_axe"))))),
-            Map.entry(Identifier.ofVanilla("netherite_hoe"), settings -> new AtHoeItem(AtItems.getHoeSettings(AtToolMaterials.NETHERITE).registryKey(RegistryKey.of(RegistryKeys.ITEM,Identifier.ofVanilla("netherite_hoe"))))),
+        result.put(ResourceLocation.withDefaultNamespace("diamond_shovel"), settings -> new Item(new Item.Properties().setId(ResourceKey.create(Registries.ITEM, ResourceLocation.withDefaultNamespace("diamond_shovel")))));
+        result.put(ResourceLocation.withDefaultNamespace("diamond_axe"), settings -> new Item(new Item.Properties().setId(ResourceKey.create(Registries.ITEM, ResourceLocation.withDefaultNamespace("diamond_axe")))));
+        result.put(ResourceLocation.withDefaultNamespace("diamond_hoe"), settings -> new Item(new Item.Properties().setId(ResourceKey.create(Registries.ITEM, ResourceLocation.withDefaultNamespace("diamond_hoe")))));
 
-            Map.entry(Identifier.ofVanilla("diamond_helmet"), settings -> new Item(new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM,Identifier.ofVanilla("diamond_helmet"))))),
-            Map.entry(Identifier.ofVanilla("diamond_chestplate"), settings -> new Item(new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM,Identifier.ofVanilla("diamond_chestplate"))))),
-            Map.entry(Identifier.ofVanilla("diamond_leggings"), settings -> new Item(new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM,Identifier.ofVanilla("diamond_leggings"))))),
-            Map.entry(Identifier.ofVanilla("diamond_boots"), settings -> new Item(new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM,Identifier.ofVanilla("diamond_boots"))))),
+        result.put(ResourceLocation.withDefaultNamespace("wooden_axe"), settings -> new Item(new Item.Properties().setId(ResourceKey.create(Registries.ITEM, ResourceLocation.withDefaultNamespace("wooden_axe")))));
+        result.put(ResourceLocation.withDefaultNamespace("wooden_hoe"), settings -> new Item(new Item.Properties().setId(ResourceKey.create(Registries.ITEM, ResourceLocation.withDefaultNamespace("wooden_hoe")))));
+        result.put(ResourceLocation.withDefaultNamespace("wooden_shovel"), settings -> new Item(MMEItems.getShovelSettings(MMEToolMaterials.WOOD).setId(ResourceKey.create(Registries.ITEM, ResourceLocation.withDefaultNamespace("wooden_shovel")))));
 
-            Map.entry(Identifier.ofVanilla("diamond"), settings -> new GamItem(settings, 500)),
-            Map.entry(Identifier.ofVanilla("emerald"), settings -> new GamItem(settings, 250)),
-            Map.entry(Identifier.ofVanilla("lapis_lazuli"), settings -> new GamItem(settings, 50)),
-            Map.entry(Identifier.ofVanilla("quartz"), settings -> new GamItem(settings, 50)),
-            Map.entry(Identifier.ofVanilla("amethyst_shard"), settings -> new GamItem(settings, 75)),
-            Map.entry(Identifier.ofVanilla("echo_shard"), settings -> new GamItem(settings, 1000)),
+        result.put(ResourceLocation.withDefaultNamespace("netherite_shovel"), settings -> new MMEShovelItem(MMEItems.getShovelSettings(MMEToolMaterials.NETHERITE).setId(ResourceKey.create(Registries.ITEM, ResourceLocation.withDefaultNamespace("netherite_shovel")))));
+        result.put(ResourceLocation.withDefaultNamespace("netherite_axe"), settings -> new MMEAxeItem(MMEItems.getAxeSettings(MMEToolMaterials.NETHERITE).setId(ResourceKey.create(Registries.ITEM, ResourceLocation.withDefaultNamespace("netherite_axe")))));
+        result.put(ResourceLocation.withDefaultNamespace("netherite_hoe"), settings -> new MMEHoeItem(MMEItems.getHoeSettings(MMEToolMaterials.NETHERITE).setId(ResourceKey.create(Registries.ITEM, ResourceLocation.withDefaultNamespace("netherite_hoe")))));
 
-            Map.entry(Identifier.ofVanilla("iron_nugget"), settings -> new NuggetItem(settings.maxCount(32), 200)),
-            Map.entry(Identifier.ofVanilla("gold_nugget"), settings -> new NuggetItem(settings.maxCount(32), 500))
-    );
-    public static final Map<Identifier, UnaryOperator<Item.Settings>> IN_IDENTIFIER_BLOCK_ITEM_SETTINGS_MODIFY = Map.ofEntries(
-            Map.entry(Identifier.ofVanilla("iron_block"), settings -> settings.component(AtDataComponentTypes.CRAFTING_TIME, 270)),
-            Map.entry(Identifier.ofVanilla("gold_block"), settings -> settings.component(AtDataComponentTypes.CRAFTING_TIME, 180)),
-            Map.entry(Identifier.ofVanilla("copper_block"), settings -> settings.component(AtDataComponentTypes.CRAFTING_TIME, 90)),
-            Map.entry(Identifier.ofVanilla("netherite_block"), settings -> settings.component(AtDataComponentTypes.CRAFTING_TIME, 1800)),
+        // 钻石装备
+        result.put(ResourceLocation.withDefaultNamespace("diamond_helmet"), settings -> new Item(new Item.Properties().setId(ResourceKey.create(Registries.ITEM, ResourceLocation.withDefaultNamespace("diamond_helmet")))));
+        result.put(ResourceLocation.withDefaultNamespace("diamond_chestplate"), settings -> new Item(new Item.Properties().setId(ResourceKey.create(Registries.ITEM, ResourceLocation.withDefaultNamespace("diamond_chestplate")))));
+        result.put(ResourceLocation.withDefaultNamespace("diamond_leggings"), settings -> new Item(new Item.Properties().setId(ResourceKey.create(Registries.ITEM, ResourceLocation.withDefaultNamespace("diamond_leggings")))));
+        result.put(ResourceLocation.withDefaultNamespace("diamond_boots"), settings -> new Item(new Item.Properties().setId(ResourceKey.create(Registries.ITEM, ResourceLocation.withDefaultNamespace("diamond_boots")))));
 
-            Map.entry(Identifier.ofVanilla("iron_ore"), settings -> settings.component(AtDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2)),
-            Map.entry(Identifier.ofVanilla("copper_ore"), settings -> settings.component(AtDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2)),
-            Map.entry(Identifier.ofVanilla("gold_ore"), settings -> settings.component(AtDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2)),
+        // GamItem
+        result.put(ResourceLocation.withDefaultNamespace("diamond"), settings -> new GamItem(settings, 500));
+        result.put(ResourceLocation.withDefaultNamespace("emerald"), settings -> new GamItem(settings, 250));
+        result.put(ResourceLocation.withDefaultNamespace("lapis_lazuli"), settings -> new GamItem(settings, 50));
+        result.put(ResourceLocation.withDefaultNamespace("quartz"), settings -> new GamItem(settings, 50));
+        result.put(ResourceLocation.withDefaultNamespace("amethyst_shard"), settings -> new GamItem(settings, 75));
+        result.put(ResourceLocation.withDefaultNamespace("echo_shard"), settings -> new GamItem(settings, 1000));
 
-            Map.entry(Identifier.ofVanilla("deepslate_iron_ore"), settings -> settings.component(AtDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2)),
-            Map.entry(Identifier.ofVanilla("deepslate_copper_ore"), settings -> settings.component(AtDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2)),
-            Map.entry(Identifier.ofVanilla("deepslate_gold_ore"), settings -> settings.component(AtDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2)),
-            Map.entry(Identifier.ofVanilla("nether_gold_ore"), settings -> settings.component(AtDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2))
-    );
+        // NuggetItem
+        result.put(ResourceLocation.withDefaultNamespace("iron_nugget"), settings -> new NuggetItem(settings.stacksTo(32), 200));
+        result.put(ResourceLocation.withDefaultNamespace("gold_nugget"), settings -> new NuggetItem(settings.stacksTo(32), 500));
+
+        return Map.copyOf(result);
+    }
+    private static Map<ResourceLocation, UnaryOperator<Item.Properties>> createBlockItemSettingsModifyMapByIdentifier() {
+        Map<ResourceLocation, UnaryOperator<Item.Properties>> result = new HashMap<>();
+
+        // Crafting time settings
+        result.put(ResourceLocation.withDefaultNamespace("iron_block"), settings -> settings.component(MMEDataComponentTypes.CRAFTING_TIME, 270));
+        result.put(ResourceLocation.withDefaultNamespace("gold_block"), settings -> settings.component(MMEDataComponentTypes.CRAFTING_TIME, 180));
+        result.put(ResourceLocation.withDefaultNamespace("copper_block"), settings -> settings.component(MMEDataComponentTypes.CRAFTING_TIME, 90));
+        result.put(ResourceLocation.withDefaultNamespace("netherite_block"), settings -> settings.component(MMEDataComponentTypes.CRAFTING_TIME, 1800));
+
+        // Combustion grade settings
+        result.put(ResourceLocation.withDefaultNamespace("iron_ore"), settings -> settings.component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(ResourceLocation.withDefaultNamespace("copper_ore"), settings -> settings.component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(ResourceLocation.withDefaultNamespace("gold_ore"), settings -> settings.component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+
+        result.put(ResourceLocation.withDefaultNamespace("deepslate_iron_ore"), settings -> settings.component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(ResourceLocation.withDefaultNamespace("deepslate_copper_ore"), settings -> settings.component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(ResourceLocation.withDefaultNamespace("deepslate_gold_ore"), settings -> settings.component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(ResourceLocation.withDefaultNamespace("nether_gold_ore"), settings -> settings.component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+
+        return Map.copyOf(result);
+    }
+
 
     /**
      * 方块物品设置修改映射表
      * key: 方块类型
      * value: 设置
      */
-    public static final Map<Class<?>, UnaryOperator<Item.Settings>> IN_CLASS_BLOCK_ITEM_SETTINGS_MODIFY = Map.ofEntries(
-            // 最大堆叠为 1 的方块类型
-            Map.entry(FenceGateBlock.class, settings -> settings.maxCount(1)),
-            Map.entry(BedBlock.class, settings -> settings.maxCount(1)),
-            Map.entry(HeavyCoreBlock.class, settings -> settings.maxCount(1)),
-            Map.entry(ShulkerBoxBlock.class, settings -> settings.maxCount(1)),
 
-            // 最大堆叠为 8 的方块类型
-            Map.entry(SlabBlock.class, settings -> settings.maxCount(8)),
-            Map.entry(WallBlock.class, settings -> settings.maxCount(8)),
-            Map.entry(TerracottaBlock.class, settings -> settings.maxCount(8)),
-            Map.entry(TintedParticleLeavesBlock.class, settings -> settings.maxCount(8)),
-            Map.entry(TransparentBlock.class, settings -> settings.maxCount(8)),
-            Map.entry(KelpPlantBlock.class, settings -> settings.maxCount(8)),
-            Map.entry(PointedDripstoneBlock.class, settings -> settings.maxCount(8)),
-            Map.entry(LadderBlock.class, settings -> settings.maxCount(8)),
-            Map.entry(CandleBlock.class, settings -> settings.maxCount(8)),
-            Map.entry(LanternBlock.class, settings -> settings.maxCount(8)),
-            Map.entry(SignBlock.class, settings -> settings.maxCount(8)),
-            Map.entry(HangingSignBlock.class, settings -> settings.maxCount(8)),
-            Map.entry(StainedGlassBlock.class, settings -> settings.maxCount(8)),
-            Map.entry(FenceBlock.class, settings -> settings.maxCount(8)),
-            Map.entry(OxidizableSlabBlock.class, settings -> settings.maxCount(8)),
-            Map.entry(MangroveLeavesBlock.class, settings -> settings.maxCount(8)),
-            Map.entry(UntintedParticleLeavesBlock.class, settings -> settings.maxCount(8)),
-            Map.entry(SnifferEggBlock.class, settings -> settings.maxCount(8)),
-            Map.entry(LilyPadBlock.class, settings -> settings.maxCount(8)),
-            Map.entry(LightningRodBlock.class, settings -> settings.maxCount(8)),
-            Map.entry(TintedGlassBlock.class, settings -> settings.maxCount(8)),
-            Map.entry(RepeaterBlock.class, settings -> settings.maxCount(8)),
-            Map.entry(ComparatorBlock.class, settings -> settings.maxCount(8)),
-            Map.entry(TripwireHookBlock.class, settings -> settings.maxCount(8)),
+    private static Map<Class<?>, UnaryOperator<Item.Properties>> createBlockItemSettingsModifyMap() {
+        Map<Class<?>, UnaryOperator<Item.Properties>> result = new HashMap<>();
 
-            // 最大堆叠为 16 的方块类型
-            Map.entry(PaneBlock.class, settings -> settings.maxCount(16)),
-            Map.entry(RailBlock.class, settings -> settings.maxCount(16)),
-            Map.entry(PressurePlateBlock.class, settings -> settings.maxCount(16)),
-            Map.entry(SaplingBlock.class, settings -> settings.maxCount(16)),
-            Map.entry(AbstractCoralBlock.class, settings -> settings.maxCount(16)),
-            Map.entry(NetherWartBlock.class, settings -> settings.maxCount(16)),
-            Map.entry(FlowerbedBlock.class, settings -> settings.maxCount(16)),
-            Map.entry(ScaffoldingBlock.class, settings -> settings.maxCount(16)),
-            Map.entry(SnowBlock.class, settings -> settings.maxCount(16)),
-            Map.entry(TorchBlock.class, settings -> settings.maxCount(16)),
-            Map.entry(MossBlock.class, settings -> settings.maxCount(16)),
-            Map.entry(RedstoneTorchBlock.class, settings -> settings.maxCount(16)),
-            Map.entry(PoweredRailBlock.class, settings -> settings.maxCount(16)),
-            Map.entry(DetectorRailBlock.class, settings -> settings.maxCount(16)),
-            Map.entry(SugarCaneBlock.class, settings -> settings.maxCount(16)),
-            Map.entry(BambooBlock.class, settings -> settings.maxCount(16)),
-            Map.entry(StainedGlassPaneBlock.class, settings -> settings.maxCount(16)),
-            Map.entry(TrapdoorBlock.class, settings -> settings.maxCount(16)),
-            Map.entry(ConcretePowderBlock.class, settings -> settings.maxCount(16)),
-            Map.entry(PaleMossCarpetBlock.class, settings -> settings.maxCount(16)),
-            Map.entry(HangingMossBlock.class, settings -> settings.maxCount(16)),
-            Map.entry(PropaguleBlock.class, settings -> settings.maxCount(16)),
-            Map.entry(ShortPlantBlock.class, settings -> settings.maxCount(16)),
-            Map.entry(ShortDryGrassBlock.class, settings -> settings.maxCount(16)),
-            Map.entry(TallDryGrassBlock.class, settings -> settings.maxCount(16)),
-            Map.entry(BushBlock.class, settings -> settings.maxCount(16)),
-            Map.entry(DryVegetationBlock.class, settings -> settings.maxCount(16)),
-            Map.entry(TorchflowerBlock.class, settings -> settings.maxCount(16)),
-            Map.entry(TallFlowerBlock.class, settings -> settings.maxCount(16)),
-            Map.entry(WeepingVinesBlock.class, settings -> settings.maxCount(16)),
-            Map.entry(VineBlock.class, settings -> settings.maxCount(16)),
-            Map.entry(GlowLichenBlock.class, settings -> settings.maxCount(16)),
-            Map.entry(HangingRootsBlock.class, settings -> settings.maxCount(16)),
-            Map.entry(FrogspawnBlock.class, settings -> settings.maxCount(16)),
-            Map.entry(TurtleEggBlock.class, settings -> settings.maxCount(16)),
-            Map.entry(CoralBlock.class, settings -> settings.maxCount(16)),
-            Map.entry(DeadCoralBlock.class, settings -> settings.maxCount(16)),
-            Map.entry(CoralFanBlock.class, settings -> settings.maxCount(16)),
-            Map.entry(DeadCoralFanBlock.class, settings -> settings.maxCount(16)),
-            Map.entry(TwistingVinesBlock.class, settings -> settings.maxCount(16)),
-            Map.entry(TallPlantBlock.class, settings -> settings.maxCount(16)),
-            Map.entry(KelpBlock.class, settings -> settings.maxCount(16)),
-            Map.entry(SeaPickleBlock.class, settings -> settings.maxCount(16)),
-            Map.entry(FlowerPotBlock.class, settings -> settings.maxCount(16)),
-            Map.entry(WeightedPressurePlateBlock.class, settings -> settings.maxCount(16)),
-            Map.entry(LeverBlock.class, settings -> settings.maxCount(16)),
-            Map.entry(ChainBlock.class, settings -> settings.maxCount(16)),
+        // 最大堆叠为 1 的方块类型
+        result.put(FenceGateBlock.class, settings -> settings.stacksTo(1));
+        result.put(BedBlock.class, settings -> settings.stacksTo(1));
+        result.put(HeavyCoreBlock.class, settings -> settings.stacksTo(1));
+        result.put(ShulkerBoxBlock.class, settings -> settings.stacksTo(1));
 
-            // 最大堆叠为 32 的方块类型
-            Map.entry(FungusBlock.class, settings -> settings.maxCount(32)),
-            Map.entry(ButtonBlock.class, settings -> settings.maxCount(32)),
-            Map.entry(CarpetBlock.class, settings -> settings.maxCount(32)),
-            Map.entry(MushroomPlantBlock.class, settings -> settings.maxCount(32)),
-            Map.entry(FlowerBlock.class, settings -> settings.maxCount(32)),
-            Map.entry(RootsBlock.class, settings -> settings.maxCount(32)),
-            Map.entry(SproutsBlock.class, settings -> settings.maxCount(32)),
-            Map.entry(StemBlock.class, settings -> settings.maxCount(32)),
-            Map.entry(CactusFlowerBlock.class, settings -> settings.maxCount(32)),
-            Map.entry(EyeblossomBlock.class, settings -> settings.maxCount(32)),
-            Map.entry(WitherRoseBlock.class, settings -> settings.maxCount(32)),
-            Map.entry(LeafLitterBlock.class, settings -> settings.maxCount(32))
-    );
+        // 最大堆叠为 8 的方块类型
+        result.put(SlabBlock.class, settings -> settings.stacksTo(8));
+        result.put(WallBlock.class, settings -> settings.stacksTo(8));
+        result.put(TerracottaBlock.class, settings -> settings.stacksTo(8));
+        result.put(TintedParticleLeavesBlock.class, settings -> settings.stacksTo(8));
+        result.put(TransparentBlock.class, settings -> settings.stacksTo(8));
+        result.put(KelpPlantBlock.class, settings -> settings.stacksTo(8));
+        result.put(PointedDripstoneBlock.class, settings -> settings.stacksTo(8));
+        result.put(LadderBlock.class, settings -> settings.stacksTo(8));
+        result.put(CandleBlock.class, settings -> settings.stacksTo(8));
+        result.put(LanternBlock.class, settings -> settings.stacksTo(8));
+        result.put(StandingSignBlock.class, settings -> settings.stacksTo(8));
+        result.put(CeilingHangingSignBlock.class, settings -> settings.stacksTo(8));
+        result.put(StainedGlassBlock.class, settings -> settings.stacksTo(8));
+        result.put(FenceBlock.class, settings -> settings.stacksTo(8));
+        result.put(WeatheringCopperSlabBlock.class, settings -> settings.stacksTo(8));
+        result.put(MangroveLeavesBlock.class, settings -> settings.stacksTo(8));
+        result.put(UntintedParticleLeavesBlock.class, settings -> settings.stacksTo(8));
+        result.put(SnifferEggBlock.class, settings -> settings.stacksTo(8));
+        result.put(WaterlilyBlock.class, settings -> settings.stacksTo(8));
+        result.put(LightningRodBlock.class, settings -> settings.stacksTo(8));
+        result.put(TintedGlassBlock.class, settings -> settings.stacksTo(8));
+        result.put(RepeaterBlock.class, settings -> settings.stacksTo(8));
+        result.put(ComparatorBlock.class, settings -> settings.stacksTo(8));
+        result.put(TripWireHookBlock.class, settings -> settings.stacksTo(8));
+
+        // 最大堆叠为 16 的方块类型
+        result.put(IronBarsBlock.class, settings -> settings.stacksTo(16));
+        result.put(RailBlock.class, settings -> settings.stacksTo(16));
+        result.put(PressurePlateBlock.class, settings -> settings.stacksTo(16));
+        result.put(SaplingBlock.class, settings -> settings.stacksTo(16));
+        result.put(BaseCoralPlantTypeBlock.class, settings -> settings.stacksTo(16));
+        result.put(NetherWartBlock.class, settings -> settings.stacksTo(16));
+        result.put(FlowerBedBlock.class, settings -> settings.stacksTo(16));
+        result.put(ScaffoldingBlock.class, settings -> settings.stacksTo(16));
+        result.put(SnowLayerBlock.class, settings -> settings.stacksTo(16));
+        result.put(TorchBlock.class, settings -> settings.stacksTo(16));
+        result.put(BonemealableFeaturePlacerBlock.class, settings -> settings.stacksTo(16));
+        result.put(RedstoneTorchBlock.class, settings -> settings.stacksTo(16));
+        result.put(PoweredRailBlock.class, settings -> settings.stacksTo(16));
+        result.put(DetectorRailBlock.class, settings -> settings.stacksTo(16));
+        result.put(SugarCaneBlock.class, settings -> settings.stacksTo(16));
+        result.put(BambooStalkBlock.class, settings -> settings.stacksTo(16));
+        result.put(StainedGlassPaneBlock.class, settings -> settings.stacksTo(16));
+        result.put(TrapDoorBlock.class, settings -> settings.stacksTo(16));
+        result.put(ConcretePowderBlock.class, settings -> settings.stacksTo(16));
+        result.put(MossyCarpetBlock.class, settings -> settings.stacksTo(16));
+        result.put(HangingMossBlock.class, settings -> settings.stacksTo(16));
+        result.put(MangrovePropaguleBlock.class, settings -> settings.stacksTo(16));
+        result.put(TallGrassBlock.class, settings -> settings.stacksTo(16));
+        result.put(ShortDryGrassBlock.class, settings -> settings.stacksTo(16));
+        result.put(TallDryGrassBlock.class, settings -> settings.stacksTo(16));
+        result.put(BushBlock.class, settings -> settings.stacksTo(16));
+        result.put(DryVegetationBlock.class, settings -> settings.stacksTo(16));
+        result.put(TorchflowerCropBlock.class, settings -> settings.stacksTo(16));
+        result.put(TallFlowerBlock.class, settings -> settings.stacksTo(16));
+        result.put(WeepingVinesBlock.class, settings -> settings.stacksTo(16));
+        result.put(VineBlock.class, settings -> settings.stacksTo(16));
+        result.put(GlowLichenBlock.class, settings -> settings.stacksTo(16));
+        result.put(HangingRootsBlock.class, settings -> settings.stacksTo(16));
+        result.put(FrogspawnBlock.class, settings -> settings.stacksTo(16));
+        result.put(TurtleEggBlock.class, settings -> settings.stacksTo(16));
+        result.put(CoralPlantBlock.class, settings -> settings.stacksTo(16));
+        result.put(BaseCoralPlantBlock.class, settings -> settings.stacksTo(16));
+        result.put(CoralFanBlock.class, settings -> settings.stacksTo(16));
+        result.put(BaseCoralFanBlock.class, settings -> settings.stacksTo(16));
+        result.put(TwistingVinesBlock.class, settings -> settings.stacksTo(16));
+        result.put(DoublePlantBlock.class, settings -> settings.stacksTo(16));
+        result.put(KelpBlock.class, settings -> settings.stacksTo(16));
+        result.put(SeaPickleBlock.class, settings -> settings.stacksTo(16));
+        result.put(FlowerPotBlock.class, settings -> settings.stacksTo(16));
+        result.put(WeightedPressurePlateBlock.class, settings -> settings.stacksTo(16));
+        result.put(LeverBlock.class, settings -> settings.stacksTo(16));
+        result.put(ChainBlock.class, settings -> settings.stacksTo(16));
+
+        // 最大堆叠为 32 的方块类型
+        result.put(FungusBlock.class, settings -> settings.stacksTo(32));
+        result.put(ButtonBlock.class, settings -> settings.stacksTo(32));
+        result.put(CarpetBlock.class, settings -> settings.stacksTo(32));
+        result.put(MushroomBlock.class, settings -> settings.stacksTo(32));
+        result.put(FlowerBlock.class, settings -> settings.stacksTo(32));
+        result.put(RootsBlock.class, settings -> settings.stacksTo(32));
+        result.put(NetherSproutsBlock.class, settings -> settings.stacksTo(32));
+        result.put(StemBlock.class, settings -> settings.stacksTo(32));
+        result.put(CactusFlowerBlock.class, settings -> settings.stacksTo(32));
+        result.put(EyeblossomBlock.class, settings -> settings.stacksTo(32));
+        result.put(WitherRoseBlock.class, settings -> settings.stacksTo(32));
+        result.put(LeafLitterBlock.class, settings -> settings.stacksTo(32));
+
+        return Map.copyOf(result);
+    }
+
 
 }

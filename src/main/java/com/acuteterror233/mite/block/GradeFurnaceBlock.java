@@ -2,57 +2,58 @@ package com.acuteterror233.mite.block;
 
 import com.acuteterror233.mite.block.entity.AbstractGradeFurnaceBlockEntity;
 import com.acuteterror233.mite.block.entity.GradeFurnaceBlockEntity;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.FurnaceBlock;
-import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.block.entity.BlockEntityTicker;
-import net.minecraft.block.entity.BlockEntityType;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.screen.NamedScreenHandlerFactory;
-import net.minecraft.screen.ScreenHandler;
-import net.minecraft.server.world.ServerWorld;
-import net.minecraft.stat.Stats;
-import net.minecraft.text.Text;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.stats.Stats;
+import net.minecraft.world.MenuProvider;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.FurnaceBlock;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityTicker;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.state.BlockState;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class GradeFurnaceBlock extends FurnaceBlock {
-    private final int grade;
-    GradeFurnaceBlock(Settings settings, int grade) {
+    private final int maxCombustionGrade;
+    GradeFurnaceBlock(Properties settings, int maxCombustionGrade) {
         super(settings);
-        this.grade = grade;
+        this.maxCombustionGrade = maxCombustionGrade;
     }
     @Override
-    protected void openScreen(World world, BlockPos pos, PlayerEntity player) {
+    protected void openContainer(Level world, BlockPos pos, Player player) {
         BlockEntity blockEntity = world.getBlockEntity(pos);
-        if (blockEntity instanceof GradeFurnaceBlockEntity) {
-            player.openHandledScreen(new NamedScreenHandlerFactory() {
+        if (blockEntity instanceof GradeFurnaceBlockEntity gradeFurnaceBlockEntity) {
+            player.openMenu(new MenuProvider() {
                 @Override
-                public @Nullable ScreenHandler createMenu(int syncId, PlayerInventory playerInventory, PlayerEntity player) {
-                    return ((GradeFurnaceBlockEntity) blockEntity).createScreenHandler(syncId, playerInventory);
+                public @NotNull AbstractContainerMenu createMenu(int syncId, Inventory playerInventory, Player player) {
+                    return gradeFurnaceBlockEntity.createMenu(syncId, playerInventory);
                 }
 
                 @Override
-                public Text getDisplayName() {
+                public @NotNull Component getDisplayName() {
                     return getName();
                 }
             });
-            player.incrementStat(Stats.INTERACT_WITH_FURNACE);
+            player.awardStat(Stats.INTERACT_WITH_FURNACE);
         }
     }
     @Nullable
     @Override
-    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world1, BlockState state1, BlockEntityType<T> type) {
-        if (world1 instanceof ServerWorld serverWorld) {
-            return validateTicker(type, AtBlocks.GRADE_FURNACE_BLOCK_ENTITY, (world, pos, state, blockEntity) -> AbstractGradeFurnaceBlockEntity.tick(serverWorld, pos, state, blockEntity));
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level world1, BlockState state1, BlockEntityType<T> type) {
+        if (world1 instanceof ServerLevel serverWorld) {
+            return createTickerHelper(type, AtBlocks.GRADE_FURNACE_BLOCK_ENTITY, (world, pos, state, blockEntity) -> AbstractGradeFurnaceBlockEntity.tick(serverWorld, pos, state, blockEntity));
         }
         return null;
     }
 
     @Override
-    public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-        return new GradeFurnaceBlockEntity(pos, state, grade);
+    public @NotNull BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+        return new GradeFurnaceBlockEntity(pos, state, this.maxCombustionGrade);
     }
 }

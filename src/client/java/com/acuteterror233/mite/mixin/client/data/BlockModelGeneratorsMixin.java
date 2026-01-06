@@ -1,0 +1,93 @@
+package com.acuteterror233.mite.mixin.client.data;
+
+import com.acuteterror233.mite.atinterface.BlockModelGeneratorsExtension;
+import com.acuteterror233.mite.data.TemplateAnvilModels;
+import net.minecraft.client.data.models.BlockModelGenerators;
+import net.minecraft.client.data.models.MultiVariant;
+import net.minecraft.client.data.models.blockstates.*;
+import net.minecraft.client.data.models.model.ModelInstance;
+import net.minecraft.client.data.models.model.ModelLocationUtils;
+import net.minecraft.client.renderer.block.model.VariantMutator;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import org.spongepowered.asm.mixin.Final;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.Unique;
+
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
+
+@Mixin(BlockModelGenerators.class)
+public abstract class BlockModelGeneratorsMixin implements BlockModelGeneratorsExtension {
+    @Shadow
+    public static MultiVariant plainVariant(ResourceLocation id) {
+        return null;
+    }
+    @Shadow
+    public static MultiVariantGenerator createSimpleBlock(Block block, MultiVariant model) {
+        return null;
+    }
+    @Shadow
+    public static ConditionBuilder condition() {
+        return null;
+    }
+    @Shadow @Final public abstract void registerSimpleFlatItemModel(Block block);
+    @Shadow @Final public Consumer<BlockModelDefinitionGenerator> blockStateOutput;
+    @Shadow @Final public BiConsumer<ResourceLocation, ModelInstance> modelOutput;
+    @Shadow @Final public static VariantMutator Y_ROT_90;
+    @Shadow @Final private static PropertyDispatch<VariantMutator> ROTATION_HORIZONTAL_FACING_ALT;
+
+    @Unique
+    @Override
+    public void MME$registerBars(Block Block) {
+        MultiVariant weightedVariant = plainVariant(ModelLocationUtils.getModelLocation(Block, "_post_ends"));
+        MultiVariant weightedVariant2 = plainVariant(ModelLocationUtils.getModelLocation(Block, "_post"));
+        MultiVariant weightedVariant3 = plainVariant(ModelLocationUtils.getModelLocation(Block, "_cap"));
+        MultiVariant weightedVariant4 = plainVariant(ModelLocationUtils.getModelLocation(Block, "_cap_alt"));
+        MultiVariant weightedVariant5 = plainVariant(ModelLocationUtils.getModelLocation(Block, "_side"));
+        MultiVariant weightedVariant6 = plainVariant(ModelLocationUtils.getModelLocation(Block, "_side_alt"));
+        this.blockStateOutput
+                .accept(
+                        MultiPartGenerator.multiPart(Block)
+                                .with(weightedVariant)
+                                .with(
+                                        condition().term(BlockStateProperties.NORTH, false).term(BlockStateProperties.EAST, false).term(BlockStateProperties.SOUTH, false).term(BlockStateProperties.WEST, false),
+                                        weightedVariant2
+                                )
+                                .with(
+                                        condition().term(BlockStateProperties.NORTH, true).term(BlockStateProperties.EAST, false).term(BlockStateProperties.SOUTH, false).term(BlockStateProperties.WEST, false),
+                                        weightedVariant3
+                                )
+                                .with(
+                                        condition().term(BlockStateProperties.NORTH, false).term(BlockStateProperties.EAST, true).term(BlockStateProperties.SOUTH, false).term(BlockStateProperties.WEST, false),
+                                        weightedVariant3.with(Y_ROT_90)
+                                )
+                                .with(
+                                        condition().term(BlockStateProperties.NORTH, false).term(BlockStateProperties.EAST, false).term(BlockStateProperties.SOUTH, true).term(BlockStateProperties.WEST, false),
+                                        weightedVariant4
+                                )
+                                .with(
+                                        condition().term(BlockStateProperties.NORTH, false).term(BlockStateProperties.EAST, false).term(BlockStateProperties.SOUTH, false).term(BlockStateProperties.WEST, true),
+                                        weightedVariant4.with(Y_ROT_90)
+                                )
+                                .with(condition().term(BlockStateProperties.NORTH, true), weightedVariant5)
+                                .with(condition().term(BlockStateProperties.EAST, true), weightedVariant5.with(Y_ROT_90))
+                                .with(condition().term(BlockStateProperties.SOUTH, true), weightedVariant6)
+                                .with(condition().term(BlockStateProperties.WEST, true), weightedVariant6.with(Y_ROT_90))
+                );
+        this.registerSimpleFlatItemModel(Block);
+    }
+    // 四张图,第一张图是基本材质,完整铁砧的注册名,之后三张都是砧顶,注册id+top,
+    @Unique
+    @Override
+    public void MME$registerAnvil(Block intact_anvil, Block chipped_anvil, Block damaged_anvil) {
+        MultiVariant weightedVariant1 = plainVariant(TemplateAnvilModels.TEMPLATE_ANVIL.create(intact_anvil, TemplateAnvilModels.TEMPLATE_ANVIL(intact_anvil, intact_anvil), this.modelOutput));
+        MultiVariant weightedVariant2 = plainVariant(TemplateAnvilModels.TEMPLATE_ANVIL.create(chipped_anvil, TemplateAnvilModels.TEMPLATE_ANVIL(intact_anvil, chipped_anvil), this.modelOutput));
+        MultiVariant weightedVariant3 = plainVariant(TemplateAnvilModels.TEMPLATE_ANVIL.create(damaged_anvil, TemplateAnvilModels.TEMPLATE_ANVIL(intact_anvil, damaged_anvil), this.modelOutput));
+        this.blockStateOutput.accept(createSimpleBlock(intact_anvil, weightedVariant1).with(ROTATION_HORIZONTAL_FACING_ALT));
+        this.blockStateOutput.accept(createSimpleBlock(chipped_anvil, weightedVariant2).with(ROTATION_HORIZONTAL_FACING_ALT));
+        this.blockStateOutput.accept(createSimpleBlock(damaged_anvil, weightedVariant3).with(ROTATION_HORIZONTAL_FACING_ALT));
+    }
+}

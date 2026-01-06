@@ -18,13 +18,13 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "com.acuteterror233.mite.Mme"
+      "com.acuteterror233.mite.MME"
     ],
     "client": [
-      "com.acuteterror233.mite.MmeClient"
+      "com.acuteterror233.mite.MMEClient"
     ],
     "fabric-datagen": [
-      "com.acuteterror233.mite.MmeDataGenerator"
+      "com.acuteterror233.mite.MMEDataGenerator"
     ]
   },
   "mixins": [

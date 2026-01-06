@@ -1,22 +1,23 @@
 package com.acuteterror233.mite.screen.slot;
 
-import com.acuteterror233.mite.screen.AbstractGradeCraftingScreenHandler;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.inventory.Inventory;
-import net.minecraft.inventory.RecipeInputInventory;
-import net.minecraft.item.ItemStack;
-import net.minecraft.screen.slot.CraftingResultSlot;
+import com.acuteterror233.mite.screen.AbstractGradeCraftingMenu;
+import net.minecraft.world.Container;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.CraftingContainer;
+import net.minecraft.world.inventory.ResultSlot;
+import net.minecraft.world.item.ItemStack;
+import org.jetbrains.annotations.NotNull;
 
-public class CraftingTableResultSlot extends CraftingResultSlot {
+public class CraftingTableResultSlot extends ResultSlot {
     boolean isCrafting = false;
-    private final AbstractGradeCraftingScreenHandler handler;
-    public CraftingTableResultSlot(PlayerEntity player, RecipeInputInventory input, Inventory inventory, AbstractGradeCraftingScreenHandler ScreenHandler, int index, int x, int y) {
+    private final AbstractGradeCraftingMenu handler;
+    public CraftingTableResultSlot(Player player, CraftingContainer input, Container inventory, AbstractGradeCraftingMenu ScreenHandler, int index, int x, int y) {
         super(player, input, inventory, index, x, y);
         this.handler = ScreenHandler;
     }
     @Override
-    public ItemStack takeStack(int amount) {
-        this.isCrafting = !getStack().isEmpty() && this.handler.isAllowCrafting();
+    public @NotNull ItemStack remove(int amount) {
+        this.isCrafting = !getItem().isEmpty() && this.handler.isAllowCrafting();
         return ItemStack.EMPTY;
     }
     public boolean isCrafting() {
@@ -25,7 +26,7 @@ public class CraftingTableResultSlot extends CraftingResultSlot {
     public void ClearCraftingState() {
         this.isCrafting = false;
     }
-    public void onQuickTransfer(ItemStack newItem, ItemStack original) {
-        this.takeStack(0);
+    public void onQuickCraft(ItemStack newItem, ItemStack original) {
+        this.remove(0);
     }
 }

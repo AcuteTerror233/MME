@@ -1,20 +1,43 @@
 package com.acuteterror233.mite.block.entity;
 
-import com.acuteterror233.mite.block.AtAnvilBlock;
 import com.acuteterror233.mite.block.AtBlocks;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.nbt.NbtCompound;
-import net.minecraft.registry.RegistryWrapper;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.WorldEvents;
+import com.acuteterror233.mite.block.MMEAnvilBlock;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.LevelEvent;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
 
-/**
- * 铁砧方块实体：持久化记录铁砧最大耐久与当前损伤，
- * 并在损伤跨越阈值时切换为破损/裂痕形态或被破坏。
- */
+import java.util.HashMap;
+import java.util.Map;
+
 public class AnvilBlockEntity extends BlockEntity {
+    public static final Map<Block, Block> ANVIL_MAP = new HashMap<>(){{
+        put(AtBlocks.ADAMANTIUM_ANVIL, AtBlocks.CHIPPED_ADAMANTIUM_ANVIL);
+        put(AtBlocks.CHIPPED_ADAMANTIUM_ANVIL, AtBlocks.DAMAGED_ADAMANTIUM_ANVIL);
+        put(AtBlocks.DAMAGED_ADAMANTIUM_ANVIL, Blocks.AIR);
+        put(AtBlocks.MITHRIL_ANVIL, AtBlocks.CHIPPED_MITHRIL_ANVIL);
+        put(AtBlocks.CHIPPED_MITHRIL_ANVIL, AtBlocks.DAMAGED_MITHRIL_ANVIL);
+        put(AtBlocks.DAMAGED_MITHRIL_ANVIL, Blocks.AIR);
+        put(AtBlocks.ANCIENT_METAL_ANVIL, AtBlocks.CHIPPED_ANCIENT_METAL_ANVIL);
+        put(AtBlocks.CHIPPED_ANCIENT_METAL_ANVIL, AtBlocks.DAMAGED_ANCIENT_METAL_ANVIL);
+        put(AtBlocks.DAMAGED_ANCIENT_METAL_ANVIL, Blocks.AIR);
+        put(Blocks.ANVIL, Blocks.CHIPPED_ANVIL);
+        put(Blocks.CHIPPED_ANVIL, Blocks.DAMAGED_ANVIL);
+        put(Blocks.DAMAGED_ANVIL, Blocks.AIR);
+        put(AtBlocks.GOLDEN_ANVIL, AtBlocks.CHIPPED_GOLDEN_ANVIL);
+        put(AtBlocks.CHIPPED_GOLDEN_ANVIL, AtBlocks.DAMAGED_GOLDEN_ANVIL);
+        put(AtBlocks.DAMAGED_GOLDEN_ANVIL, Blocks.AIR);
+        put(AtBlocks.SILVER_ANVIL, AtBlocks.CHIPPED_SILVER_ANVIL);
+        put(AtBlocks.CHIPPED_SILVER_ANVIL, AtBlocks.DAMAGED_SILVER_ANVIL);
+        put(AtBlocks.DAMAGED_SILVER_ANVIL, Blocks.AIR);
+        put(AtBlocks.COPPER_ANVIL, AtBlocks.CHIPPED_COPPER_ANVIL);
+        put(AtBlocks.CHIPPED_COPPER_ANVIL, AtBlocks.DAMAGED_COPPER_ANVIL);
+        put(AtBlocks.DAMAGED_COPPER_ANVIL, Blocks.AIR);
+    }};
     private Integer maxDamage;
     private Integer damage;
 
@@ -25,23 +48,17 @@ public class AnvilBlockEntity extends BlockEntity {
     }
 
     @Override
-    /**
-     * 将耐久数据写入 NBT。
-     */
-    protected void writeNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
+    protected void saveAdditional(CompoundTag nbt, HolderLookup.Provider registryLookup) {
         nbt.putInt("maxDamage", this.maxDamage);
         nbt.putInt("damage", this.damage);
-        super.writeNbt(nbt, registryLookup);
+        super.saveAdditional(nbt, registryLookup);
     }
 
     @Override
-    /**
-     * 从 NBT 读取耐久数据。
-     */
-    protected void readNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
-        super.readNbt(nbt, registryLookup);
-        this.maxDamage = nbt.getInt("maxDamage", 0);
-        this.damage = (nbt.getInt("damage", 0));
+    protected void loadAdditional(CompoundTag nbt, HolderLookup.Provider registryLookup) {
+        super.loadAdditional(nbt, registryLookup);
+        this.maxDamage = nbt.getIntOr("maxDamage", 0);
+        this.damage = (nbt.getIntOr("damage", 0));
     }
 
     public Integer getMaxDamage() {
@@ -60,40 +77,33 @@ public class AnvilBlockEntity extends BlockEntity {
         this.damage = damage;
     }
 
-    /**
-     * 增加损伤并根据三等分阈值切换铁砧形态或销毁。
-     */
     public void addDamage(Integer damage) {
         int newDamage = this.damage + damage;
         this.damage = Math.clamp(newDamage, 0, this.maxDamage);
         int damageThreshold = this.maxDamage / 3;
-        BlockState state = this.world.getBlockState(this.pos);
+        BlockState state = this.level.getBlockState(this.worldPosition);
         Block anvil = state.getBlock();
         if (newDamage >= this.maxDamage) {
-            this.world.removeBlock(this.pos, false);
-            this.world.syncWorldEvent(WorldEvents.ANVIL_USED, pos, 0);
+            this.level.removeBlock(this.worldPosition, false);
+            this.level.levelEvent(LevelEvent.SOUND_ANVIL_USED, worldPosition, 0);
         } else if (newDamage >= damageThreshold * 2) {
-            Block block = AtBlocks.ANVIL_MAP.get(anvil);
+            Block block = ANVIL_MAP.get(anvil);
             generate(block, state);
         } else if (newDamage >= damageThreshold) {
-            Block block = AtBlocks.ANVIL_MAP.get(anvil);
+            Block block = ANVIL_MAP.get(anvil);
             generate(block, state);
         }
     }
 
-
-    /**
-     * 切换当前坐标处的铁砧方块并回填方块实体耐久数据。
-     */
     private void generate(Block block, BlockState state) {
-        if (this.world != null) {
-            this.world.setBlockState(this.pos, block.getDefaultState().with(AtAnvilBlock.FACING, state.get(AtAnvilBlock.FACING)), Block.NOTIFY_ALL);
-            BlockEntity entity = this.world.getBlockEntity(this.pos);
+        if (this.level != null) {
+            this.level.setBlock(this.worldPosition, block.defaultBlockState().setValue(MMEAnvilBlock.FACING, state.getValue(MMEAnvilBlock.FACING)), Block.UPDATE_ALL);
+            BlockEntity entity = this.level.getBlockEntity(this.worldPosition);
             if (entity instanceof AnvilBlockEntity anvilBlockEntity) {
                 anvilBlockEntity.setMaxDamage(this.maxDamage);
                 anvilBlockEntity.setDamage(this.damage);
             }
-            this.world.syncWorldEvent(WorldEvents.ANVIL_DESTROYED, pos, 0);
+            this.level.levelEvent(LevelEvent.SOUND_ANVIL_BROKEN, worldPosition, 0);
         }
     }
 }

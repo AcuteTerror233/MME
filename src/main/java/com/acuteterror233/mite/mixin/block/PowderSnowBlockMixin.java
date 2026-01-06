@@ -1,19 +1,19 @@
 package com.acuteterror233.mite.mixin.block;
 
 import com.acuteterror233.mite.atinterface.FluidDrainableExtension;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.PowderSnowBlock;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.registry.Registries;
-import net.minecraft.sound.SoundEvent;
-import net.minecraft.sound.SoundEvents;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.WorldAccess;
-import net.minecraft.world.WorldEvents;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.LevelEvent;
+import net.minecraft.world.level.block.PowderSnowBlock;
+import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 
@@ -22,17 +22,16 @@ import java.util.Optional;
 @Mixin(PowderSnowBlock.class)
 public class PowderSnowBlockMixin implements FluidDrainableExtension {
     @Override
-    public ItemStack newtryDrainFluid(@Nullable LivingEntity drainer, WorldAccess world, BlockPos pos, BlockState state, Item item) {
-        world.setBlockState(pos, Blocks.AIR.getDefaultState(), Block.NOTIFY_ALL_AND_REDRAW);
-        if (!world.isClient()) {
-            world.syncWorldEvent(WorldEvents.BLOCK_BROKEN, pos, Block.getRawIdFromState(state));
+    public ItemStack MME$TakeFluid(@Nullable LivingEntity drainer, LevelAccessor world, BlockPos pos, BlockState state, Item item) {
+        world.setBlock(pos, Blocks.AIR.defaultBlockState(), Block.UPDATE_ALL_IMMEDIATE);
+        if (!world.isClientSide()) {
+            world.levelEvent(LevelEvent.PARTICLES_DESTROY_BLOCK, pos, Block.getId(state));
         }
-
-        return new ItemStack(Registries.ITEM.get(Registries.ITEM.getId(item).withPrefixedPath("powder_snow_")));
+        return new ItemStack(BuiltInRegistries.ITEM.getValue(BuiltInRegistries.ITEM.getKey(item).withPrefix("powder_snow_")));
     }
 
     @Override
-    public Optional<SoundEvent> getBucketFillSound() {
-        return Optional.of(SoundEvents.ITEM_BUCKET_FILL_POWDER_SNOW);
+    public Optional<SoundEvent> MME$GetBucketFillSound() {
+        return Optional.of(SoundEvents.BUCKET_FILL_POWDER_SNOW);
     }
 }

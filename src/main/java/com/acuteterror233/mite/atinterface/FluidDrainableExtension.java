@@ -1,31 +1,31 @@
 package com.acuteterror233.mite.atinterface;
 
-import net.minecraft.block.BlockState;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.fluid.FlowableFluid;
-import net.minecraft.fluid.Fluids;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.registry.Registries;
-import net.minecraft.sound.SoundEvent;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.WorldAccess;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.FlowingFluid;
+import net.minecraft.world.level.material.Fluids;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;
 
 public interface FluidDrainableExtension {
-    ItemStack newtryDrainFluid(@Nullable LivingEntity drainer, WorldAccess world, BlockPos pos, BlockState state, Item item);
+    ItemStack MME$TakeFluid(@Nullable LivingEntity drainer, LevelAccessor world, BlockPos pos, BlockState state, Item item);
 
-    Optional<SoundEvent> getBucketFillSound();
+    Optional<SoundEvent> MME$GetBucketFillSound();
 
-    default Item getItemStack(FlowableFluid fluid, Item item) {
+    default Item getFluidBucket(FlowingFluid fluid, Item bucket) {
         if (fluid == Fluids.WATER) {
-            return Registries.ITEM.get(Registries.ITEM.getId(item).withPrefixedPath("water_"));
+            return BuiltInRegistries.ITEM.getValue(BuiltInRegistries.ITEM.getKey(bucket).withPrefix("water_"));
         } else if (fluid == Fluids.LAVA) {
-            return Registries.ITEM.get(Registries.ITEM.getId(item).withPrefixedPath("lava_"));
+            return BuiltInRegistries.ITEM.getValue(BuiltInRegistries.ITEM.getKey(bucket).withPrefix("lava_"));
         } else {
-            return item;
+            return bucket;
         }
     }
 

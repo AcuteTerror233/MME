@@ -1,14 +1,14 @@
 package com.acuteterror233.mite.mixin.block;
 
 import com.acuteterror233.mite.event.VanillaRegisterModify;
-import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.MapColor;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
-import net.minecraft.registry.RegistryKey;
-import net.minecraft.sound.BlockSoundGroup;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.material.MapColor;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -31,23 +31,23 @@ public class BlocksMixin {
     public static Block DAMAGED_ANVIL;
 
     @Shadow
-    private static Block register(String id, Function<AbstractBlock.Settings, Block> factory, AbstractBlock.Settings settings) {
+    private static Block register(String id, Function<BlockBehaviour.Properties, Block> factory, BlockBehaviour.Properties settings) {
         return null;
     }
-    @Inject(method = "register(Lnet/minecraft/registry/RegistryKey;Ljava/util/function/Function;Lnet/minecraft/block/AbstractBlock$Settings;)Lnet/minecraft/block/Block;", at = @At(value = "HEAD"), cancellable = true)
-    private static void onRegister(RegistryKey<Block> key, Function<AbstractBlock.Settings, Block> factory, AbstractBlock.Settings settings, CallbackInfoReturnable<Block> cir) {
-        Block modify = VanillaRegisterModify.BLOCK_REGISTER.invoker().Modify(key, factory, settings.registryKey(key));
+    @Inject(method = "register(Lnet/minecraft/resources/ResourceKey;Ljava/util/function/Function;Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;)Lnet/minecraft/world/level/block/Block;", at = @At(value = "HEAD"), cancellable = true)
+    private static void onRegister(ResourceKey<Block> key, Function<BlockBehaviour.Properties, Block> factory, BlockBehaviour.Properties settings, CallbackInfoReturnable<Block> cir) {
+        Block modify = VanillaRegisterModify.BLOCK_REGISTER.invoker().Modify(key, factory, settings.setId(key));
         if (modify != null) {
-            cir.setReturnValue(Registry.register(Registries.BLOCK, key, modify));
+            cir.setReturnValue(Registry.register(BuiltInRegistries.BLOCK, key, modify));
         }
     }
 
-    @Inject(method = "createLogSettings", at = @At("RETURN"), cancellable = true)
-    private static void createLogSettings(MapColor topMapColor, MapColor sideMapColor, BlockSoundGroup sounds, CallbackInfoReturnable<AbstractBlock.Settings> cir) {
-        cir.setReturnValue(cir.getReturnValue().requiresTool());
+    @Inject(method = "logProperties", at = @At("RETURN"), cancellable = true)
+    private static void logProperties(MapColor topMapColor, MapColor sideMapColor, SoundType sounds, CallbackInfoReturnable<BlockBehaviour.Properties> cir) {
+        cir.setReturnValue(cir.getReturnValue().requiresCorrectToolForDrops());
     }
-    @Inject(method = "createNetherStemSettings", at = @At("RETURN"), cancellable = true)
-    private static void createNetherStemSettings(MapColor mapColor, CallbackInfoReturnable<AbstractBlock.Settings> cir) {
-        cir.setReturnValue(cir.getReturnValue().requiresTool());
+    @Inject(method = "netherStemProperties", at = @At("RETURN"), cancellable = true)
+    private static void netherStemProperties(MapColor mapColor, CallbackInfoReturnable<BlockBehaviour.Properties> cir) {
+        cir.setReturnValue(cir.getReturnValue().requiresCorrectToolForDrops());
     }
 }

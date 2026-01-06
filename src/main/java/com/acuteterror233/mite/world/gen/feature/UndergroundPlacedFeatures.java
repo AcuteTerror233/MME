@@ -1,50 +1,40 @@
 package com.acuteterror233.mite.world.gen.feature;
 
-import com.acuteterror233.mite.Mme;
-import net.minecraft.registry.Registerable;
-import net.minecraft.registry.RegistryEntryLookup;
-import net.minecraft.registry.RegistryKey;
-import net.minecraft.registry.RegistryKeys;
-import net.minecraft.registry.entry.RegistryEntry;
-import net.minecraft.util.Identifier;
-import net.minecraft.world.gen.YOffset;
-import net.minecraft.world.gen.feature.ConfiguredFeature;
-import net.minecraft.world.gen.feature.PlacedFeature;
-import net.minecraft.world.gen.feature.PlacedFeatures;
-import net.minecraft.world.gen.feature.UndergroundConfiguredFeatures;
-import net.minecraft.world.gen.placementmodifier.BiomePlacementModifier;
-import net.minecraft.world.gen.placementmodifier.CountPlacementModifier;
-import net.minecraft.world.gen.placementmodifier.HeightRangePlacementModifier;
-import net.minecraft.world.gen.placementmodifier.SquarePlacementModifier;
+import com.acuteterror233.mite.MME;
+import net.minecraft.core.Holder;
+import net.minecraft.core.HolderGetter;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.data.worldgen.BootstrapContext;
+import net.minecraft.data.worldgen.features.CaveFeatures;
+import net.minecraft.data.worldgen.placement.PlacementUtils;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.levelgen.VerticalAnchor;
+import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
+import net.minecraft.world.level.levelgen.placement.*;
 
-/**
- * 地下结构放置：定义并注册“地下怪物房”的 PlacedFeature。
- */
 public class UndergroundPlacedFeatures {
-    public static final RegistryKey<PlacedFeature> UNDERGROUND_MONSTER_ROOM = of("underground_monster_room");
+    public static final ResourceKey<PlacedFeature> UNDERGROUND_MONSTER_ROOM = of("underground_monster_room");
 
-    /**
-     * 注册地下怪物房的放置规则：密度、方形分布、垂直高度范围与生物群系限制。
-     */
-    public static void bootstrap(Registerable<PlacedFeature> featureRegisterable){
-        RegistryEntryLookup<ConfiguredFeature<?, ?>> registryEntryLookup = featureRegisterable.getRegistryLookup(RegistryKeys.CONFIGURED_FEATURE);
-        RegistryEntry.Reference<ConfiguredFeature<?, ?>> registryEntry = registryEntryLookup.getOrThrow(UndergroundConfiguredFeatures.MONSTER_ROOM);
-        PlacedFeatures.register(
+    public static void bootstrap(BootstrapContext<PlacedFeature> featureRegisterable){
+        HolderGetter<ConfiguredFeature<?, ?>> registryEntryLookup = featureRegisterable.lookup(Registries.CONFIGURED_FEATURE);
+        Holder.Reference<ConfiguredFeature<?, ?>> registryEntry = registryEntryLookup.getOrThrow(CaveFeatures.MONSTER_ROOM);
+        PlacementUtils.register(
                 featureRegisterable,
                 UNDERGROUND_MONSTER_ROOM,
                 registryEntry,
-                CountPlacementModifier.of(50),
-                SquarePlacementModifier.of(),
-                HeightRangePlacementModifier.uniform(YOffset.aboveBottom(6),YOffset.fixed(119)),
-                BiomePlacementModifier.of()
+                CountPlacement.of(50),
+                InSquarePlacement.spread(),
+                HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(6),VerticalAnchor.absolute(119)),
+                BiomeFilter.biome()
         );
     }
 
     /**
      * 生成命名空间内的 PlacedFeature 注册键。
      */
-    public static RegistryKey<PlacedFeature> of(String name) {
-        return RegistryKey.of(RegistryKeys.PLACED_FEATURE, Identifier.of(Mme.MOD_ID, name));
+    public static ResourceKey<PlacedFeature> of(String name) {
+        return ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, name));
     }
 
 }
