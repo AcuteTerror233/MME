@@ -18,6 +18,7 @@ public class MMEItemTagProvider extends FabricTagProvider.ItemTagProvider {
     @Override
     protected void addTags(HolderLookup.Provider wrapperLookup) {
         getOrCreateTagBuilder(ItemTags.HEAD_ARMOR)
+                .add(MMEItems.NETHERITE_CHAINMAIL_HELMET)
                 .add(MMEItems.ADAMANTIUM_HELMET)
                 .add(MMEItems.ADAMANTIUM_CHAINMAIL_HELMET)
                 .add(MMEItems.ANCIENT_METAL_HELMET)
@@ -32,6 +33,7 @@ public class MMEItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(MMEItems.SILVER_CHAINMAIL_HELMET)
                 .add(MMEItems.GOLDEN_CHAINMAIL_HELMET);
         getOrCreateTagBuilder(ItemTags.CHEST_ARMOR)
+                .add(MMEItems.NETHERITE_CHAINMAIL_CHESTPLATE)
                 .add(MMEItems.ADAMANTIUM_CHESTPLATE)
                 .add(MMEItems.ADAMANTIUM_CHAINMAIL_CHESTPLATE)
                 .add(MMEItems.ANCIENT_METAL_CHESTPLATE)
@@ -46,6 +48,7 @@ public class MMEItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(MMEItems.SILVER_CHAINMAIL_CHESTPLATE)
                 .add(MMEItems.GOLDEN_CHAINMAIL_CHESTPLATE);
         getOrCreateTagBuilder(ItemTags.LEG_ARMOR)
+                .add(MMEItems.NETHERITE_CHAINMAIL_LEGGINGS)
                 .add(MMEItems.ADAMANTIUM_LEGGINGS)
                 .add(MMEItems.ADAMANTIUM_CHAINMAIL_LEGGINGS)
                 .add(MMEItems.ANCIENT_METAL_LEGGINGS)
@@ -60,6 +63,7 @@ public class MMEItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(MMEItems.SILVER_CHAINMAIL_LEGGINGS)
                 .add(MMEItems.GOLDEN_CHAINMAIL_LEGGINGS);
         getOrCreateTagBuilder(ItemTags.FOOT_ARMOR)
+                .add(MMEItems.NETHERITE_CHAINMAIL_BOOTS)
                 .add(MMEItems.ADAMANTIUM_BOOTS)
                 .add(MMEItems.ADAMANTIUM_CHAINMAIL_BOOTS)
                 .add(MMEItems.ANCIENT_METAL_BOOTS)
@@ -395,6 +399,7 @@ public class MMEItemTagProvider extends FabricTagProvider.ItemTagProvider {
 
 
         getOrCreateTagBuilder(MMETags.BATTLE_AXE)
+                .add(MMEItems.NETHERITE_BATTLE_AXE)
                 .add(MMEItems.ADAMANTIUM_BATTLE_AXE)
                 .add(MMEItems.MITHRIL_BATTLE_AXE)
                 .add(MMEItems.ANCIENT_METAL_BATTLE_AXE)
@@ -404,6 +409,7 @@ public class MMEItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(MMEItems.SILVER_BATTLE_AXE)
                 .add(MMEItems.COPPER_BATTLE_AXE);
         getOrCreateTagBuilder(MMETags.HATCHET)
+                .add(MMEItems.NETHERITE_HATCHET)
                 .add(MMEItems.ADAMANTIUM_HATCHET)
                 .add(MMEItems.MITHRIL_HATCHET)
                 .add(MMEItems.ANCIENT_METAL_HATCHET)
@@ -413,6 +419,7 @@ public class MMEItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(MMEItems.SILVER_HATCHET)
                 .add(MMEItems.COPPER_HATCHET);
         getOrCreateTagBuilder(MMETags.DAGGER)
+                .add(MMEItems.NETHERITE_DAGGER)
                 .add(MMEItems.ADAMANTIUM_DAGGER)
                 .add(MMEItems.MITHRIL_DAGGER)
                 .add(MMEItems.ANCIENT_METAL_DAGGER)
@@ -422,6 +429,7 @@ public class MMEItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(MMEItems.SILVER_DAGGER)
                 .add(MMEItems.COPPER_DAGGER);
         getOrCreateTagBuilder(MMETags.WAR_HAMMER)
+                .add(MMEItems.NETHERITE_WAR_HAMMER)
                 .add(MMEItems.ADAMANTIUM_WAR_HAMMER)
                 .add(MMEItems.MITHRIL_WAR_HAMMER)
                 .add(MMEItems.ANCIENT_METAL_WAR_HAMMER)
@@ -431,6 +439,7 @@ public class MMEItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(MMEItems.SILVER_WAR_HAMMER)
                 .add(MMEItems.COPPER_WAR_HAMMER);
         getOrCreateTagBuilder(MMETags.MATTOCK)
+                .add(MMEItems.NETHERITE_MATTOCK)
                 .add(MMEItems.ADAMANTIUM_MATTOCK)
                 .add(MMEItems.MITHRIL_MATTOCK)
                 .add(MMEItems.ANCIENT_METAL_MATTOCK)
@@ -440,6 +449,7 @@ public class MMEItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(MMEItems.SILVER_MATTOCK)
                 .add(MMEItems.COPPER_MATTOCK);
         getOrCreateTagBuilder(MMETags.SCYTHE)
+                .add(MMEItems.NETHERITE_SCYTHE)
                 .add(MMEItems.ADAMANTIUM_SCYTHE)
                 .add(MMEItems.MITHRIL_SCYTHE)
                 .add(MMEItems.ANCIENT_METAL_SCYTHE)
@@ -449,6 +459,7 @@ public class MMEItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(MMEItems.SILVER_SCYTHE)
                 .add(MMEItems.COPPER_SCYTHE);
         getOrCreateTagBuilder(MMETags.SHEARS)
+                .add(MMEItems.NETHERITE_SHEARS)
                 .add(MMEItems.ADAMANTIUM_SHEARS)
                 .add(MMEItems.MITHRIL_SHEARS)
                 .add(MMEItems.ANCIENT_METAL_SHEARS)

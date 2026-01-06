@@ -8,6 +8,7 @@
     "BootstrapMixin",
     "block.AbstractBlockMixin",
     "block.BaseFireBlockMixin",
+    "block.BlockMixin",
     "block.BlocksMixin",
     "block.BubbleColumnBlockMixin",
     "block.CampfireBlockMixin",
