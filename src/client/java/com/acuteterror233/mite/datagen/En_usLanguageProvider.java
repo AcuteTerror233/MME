@@ -21,10 +21,6 @@ public class En_usLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("mme.gradefurnac.fuelnotavailable", "§cThis furnace cannot burn this fuel§r");
         translationBuilder.add("mme.nugget.tooltip", "Right click to store %d experience");
         translationBuilder.add("mme.coins.tooltip", "Right click to gain %d experience");
-        translationBuilder.add(MMEItems.NETHERITE_CHAINMAIL_HELMET, "Netherite Chainmail Helmet");
-        translationBuilder.add(MMEItems.NETHERITE_CHAINMAIL_CHESTPLATE, "Netherite Chainmail Chestplate");
-        translationBuilder.add(MMEItems.NETHERITE_CHAINMAIL_LEGGINGS, "Netherite Chainmail Leggings");
-        translationBuilder.add(MMEItems.NETHERITE_CHAINMAIL_BOOTS, "Netherite Chainmail Boots");
         translationBuilder.add(MMEItems.ADAMANTIUM_HELMET, "Adamantium Helmet");
         translationBuilder.add(MMEItems.ADAMANTIUM_CHESTPLATE, "Adamantium Chestplate");
         translationBuilder.add(MMEItems.ADAMANTIUM_LEGGINGS, "Adamantium Leggings");

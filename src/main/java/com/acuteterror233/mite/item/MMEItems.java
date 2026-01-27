@@ -35,22 +35,6 @@ import java.util.List;
 import java.util.function.Function;
 
 public class MMEItems {
-    public static final Item NETHERITE_CHAINMAIL_HELMET = register(
-            "netherite_chainmail_helmet",
-            getArmorSettings(MMEArmorMaterials.NETHERITE_MATERIAL, ArmorType.HELMET)
-    );
-    public static final Item NETHERITE_CHAINMAIL_CHESTPLATE = register(
-            "netherite_chainmail_chestplate",
-            getArmorSettings(MMEArmorMaterials.NETHERITE_CHAINMAIL_MATERIAL, ArmorType.CHESTPLATE)
-    );
-    public static final Item NETHERITE_CHAINMAIL_LEGGINGS = register(
-            "netherite_chainmail_leggings",
-            getArmorSettings(MMEArmorMaterials.NETHERITE_CHAINMAIL_MATERIAL, ArmorType.LEGGINGS)
-    );
-    public static final Item NETHERITE_CHAINMAIL_BOOTS = register(
-            "netherite_chainmail_boots",
-            getArmorSettings(MMEArmorMaterials.NETHERITE_CHAINMAIL_MATERIAL, ArmorType.BOOTS)
-    );
     public static final Item ADAMANTIUM_HELMET = register(
             "adamantium_helmet",
             getArmorSettings(MMEArmorMaterials.ADAMANTIUM_MATERIAL, ArmorType.HELMET)
@@ -1074,10 +1058,6 @@ public class MMEItems {
                 entries.accept(MITHRIL_FISHING_ROD);
                 entries.accept(OBSIDIAN_FISHING_ROD);
                 entries.accept(SILVER_FISHING_ROD);
-                entries.accept(NETHERITE_CHAINMAIL_HELMET);
-                entries.accept(NETHERITE_CHAINMAIL_CHESTPLATE);
-                entries.accept(NETHERITE_CHAINMAIL_LEGGINGS);
-                entries.accept(NETHERITE_CHAINMAIL_BOOTS);
                 entries.accept(ADAMANTIUM_HELMET);
                 entries.accept(ADAMANTIUM_CHESTPLATE);
                 entries.accept(ADAMANTIUM_LEGGINGS);

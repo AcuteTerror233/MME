@@ -21,10 +21,6 @@ public class Zh_cnLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("mme.gradefurnac.fuelnotavailable", "§c这个熔炉无法燃烧这个燃料§r");
         translationBuilder.add("mme.nugget.tooltip", "右键可存储%d经验");
         translationBuilder.add("mme.coins.tooltip", "右键可获得%d经验");
-        translationBuilder.add(MMEItems.NETHERITE_CHAINMAIL_HELMET, "下界合金锁链头盔");
-        translationBuilder.add(MMEItems.NETHERITE_CHAINMAIL_CHESTPLATE, "下界合金锁链胸甲");
-        translationBuilder.add(MMEItems.NETHERITE_CHAINMAIL_LEGGINGS, "下界合金锁链护腿");
-        translationBuilder.add(MMEItems.NETHERITE_CHAINMAIL_BOOTS, "下界合金锁链靴子");
         translationBuilder.add(MMEItems.ADAMANTIUM_HELMET, "艾德曼头盔");
         translationBuilder.add(MMEItems.ADAMANTIUM_CHESTPLATE, "艾德曼胸甲");
         translationBuilder.add(MMEItems.ADAMANTIUM_LEGGINGS, "艾德曼护腿");

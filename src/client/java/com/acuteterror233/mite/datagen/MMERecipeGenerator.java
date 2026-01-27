@@ -143,11 +143,6 @@ public class MMERecipeGenerator extends FabricRecipeProvider {
                 netheriteSmithing(MMEItems.ADAMANTIUM_LEGGINGS, RecipeCategory.COMBAT, Items.NETHERITE_LEGGINGS);
                 netheriteSmithing(MMEItems.ADAMANTIUM_BOOTS, RecipeCategory.COMBAT, Items.NETHERITE_BOOTS);
 
-                netheriteSmithing(MMEItems.ADAMANTIUM_CHAINMAIL_HELMET, RecipeCategory.COMBAT, MMEItems.NETHERITE_CHAINMAIL_HELMET);
-                netheriteSmithing(MMEItems.ADAMANTIUM_CHAINMAIL_CHESTPLATE, RecipeCategory.COMBAT, MMEItems.NETHERITE_CHAINMAIL_CHESTPLATE);
-                netheriteSmithing(MMEItems.ADAMANTIUM_CHAINMAIL_LEGGINGS, RecipeCategory.COMBAT, MMEItems.NETHERITE_CHAINMAIL_LEGGINGS);
-                netheriteSmithing(MMEItems.ADAMANTIUM_CHAINMAIL_BOOTS, RecipeCategory.COMBAT, MMEItems.NETHERITE_CHAINMAIL_BOOTS);
-
                 netheriteSmithing(MMEItems.ADAMANTIUM_SWORD, RecipeCategory.COMBAT, Items.NETHERITE_SWORD);
                 netheriteSmithing(MMEItems.ADAMANTIUM_DAGGER, RecipeCategory.COMBAT, MMEItems.NETHERITE_DAGGER);
                 netheriteSmithing(MMEItems.ADAMANTIUM_PICKAXE, RecipeCategory.TOOLS, Items.NETHERITE_PICKAXE);

@@ -18,7 +18,6 @@ public class MMEItemTagProvider extends FabricTagProvider.ItemTagProvider {
     @Override
     protected void addTags(HolderLookup.Provider wrapperLookup) {
         getOrCreateTagBuilder(ItemTags.HEAD_ARMOR)
-                .add(MMEItems.NETHERITE_CHAINMAIL_HELMET)
                 .add(MMEItems.ADAMANTIUM_HELMET)
                 .add(MMEItems.ADAMANTIUM_CHAINMAIL_HELMET)
                 .add(MMEItems.ANCIENT_METAL_HELMET)
@@ -33,7 +32,6 @@ public class MMEItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(MMEItems.SILVER_CHAINMAIL_HELMET)
                 .add(MMEItems.GOLDEN_CHAINMAIL_HELMET);
         getOrCreateTagBuilder(ItemTags.CHEST_ARMOR)
-                .add(MMEItems.NETHERITE_CHAINMAIL_CHESTPLATE)
                 .add(MMEItems.ADAMANTIUM_CHESTPLATE)
                 .add(MMEItems.ADAMANTIUM_CHAINMAIL_CHESTPLATE)
                 .add(MMEItems.ANCIENT_METAL_CHESTPLATE)
@@ -48,7 +46,6 @@ public class MMEItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(MMEItems.SILVER_CHAINMAIL_CHESTPLATE)
                 .add(MMEItems.GOLDEN_CHAINMAIL_CHESTPLATE);
         getOrCreateTagBuilder(ItemTags.LEG_ARMOR)
-                .add(MMEItems.NETHERITE_CHAINMAIL_LEGGINGS)
                 .add(MMEItems.ADAMANTIUM_LEGGINGS)
                 .add(MMEItems.ADAMANTIUM_CHAINMAIL_LEGGINGS)
                 .add(MMEItems.ANCIENT_METAL_LEGGINGS)
@@ -63,7 +60,6 @@ public class MMEItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(MMEItems.SILVER_CHAINMAIL_LEGGINGS)
                 .add(MMEItems.GOLDEN_CHAINMAIL_LEGGINGS);
         getOrCreateTagBuilder(ItemTags.FOOT_ARMOR)
-                .add(MMEItems.NETHERITE_CHAINMAIL_BOOTS)
                 .add(MMEItems.ADAMANTIUM_BOOTS)
                 .add(MMEItems.ADAMANTIUM_CHAINMAIL_BOOTS)
                 .add(MMEItems.ANCIENT_METAL_BOOTS)

@@ -1,14 +1,14 @@
 // 1.21.5	-999999999-01-01T00:00:00	mme/Tags for minecraft:item
 d7c08cbeaecec068d4027e7c98daf3fbcc94c90d data/minecraft/tags/item/arrows.json
 a5d180c1bc47b1c3ab839af0624bedd6cab3ad9a data/minecraft/tags/item/axes.json
-72022034029a312f0ab1bbb6b15ec03e816c880e data/minecraft/tags/item/chest_armor.json
+72e0ee76a52005fdbb8fd56fa09fe34b8fa5b56d data/minecraft/tags/item/chest_armor.json
 04ae86224544965b2b2196d69d40f99eea4530a6 data/minecraft/tags/item/enchantable/durability.json
 04ae86224544965b2b2196d69d40f99eea4530a6 data/minecraft/tags/item/enchantable/mining.json
-d8382db906cd861398ce74683b72bd0023786cdf data/minecraft/tags/item/foot_armor.json
-233ce2727defebe3a918e9280d4bd703221b923d data/minecraft/tags/item/head_armor.json
+ac2f4c2c63f0318b23760ec4a81ad6c415e1ac0f data/minecraft/tags/item/foot_armor.json
+fd084eaba35af06baa48ec67a47acf43b7ea9011 data/minecraft/tags/item/head_armor.json
 3c377421affc2d17add2e29288b054f84bbc0c7f data/minecraft/tags/item/hoes.json
 25a6e79dcf2e9c4ef74ade1144f00816dbca13f7 data/minecraft/tags/item/iron_tool_materials.json
-763429ec751e72225f57422a26aad4300dfd1706 data/minecraft/tags/item/leg_armor.json
+0226e0b788191e57fae74f4d796d02e3cd8b40f4 data/minecraft/tags/item/leg_armor.json
 91efb04abc2e76fe7430e3e5bac4c565e5a81d60 data/minecraft/tags/item/pickaxes.json
 6f39fd8616980eef2cc88a5af5c66b9b55543559 data/minecraft/tags/item/shovels.json
 1c2f20e953b9ff270904e78db54de6dc7b63d66f data/minecraft/tags/item/swords.json

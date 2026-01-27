@@ -99,10 +99,6 @@ public class MMEModelProvider extends FabricModelProvider {
     public void generateItemModels(ItemModelGenerators itemModelGenerator) {
         ItemModelGeneratorsExtension extendedAccessor = (ItemModelGeneratorsExtension) itemModelGenerator;
         //装备部分
-        itemModelGenerator.generateTrimmableItem(MMEItems.NETHERITE_CHAINMAIL_HELMET, MMEArmorMaterials.NETHERITE_CHAINMAIL_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_HELMET, false);
-        itemModelGenerator.generateTrimmableItem(MMEItems.NETHERITE_CHAINMAIL_CHESTPLATE, MMEArmorMaterials.NETHERITE_CHAINMAIL_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
-        itemModelGenerator.generateTrimmableItem(MMEItems.NETHERITE_CHAINMAIL_LEGGINGS, MMEArmorMaterials.NETHERITE_CHAINMAIL_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
-        itemModelGenerator.generateTrimmableItem(MMEItems.NETHERITE_CHAINMAIL_BOOTS, MMEArmorMaterials.NETHERITE_CHAINMAIL_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_BOOTS, false);
         itemModelGenerator.generateTrimmableItem(MMEItems.ADAMANTIUM_HELMET, MMEArmorMaterials.ADAMANTIUM_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_HELMET, false);
         itemModelGenerator.generateTrimmableItem(MMEItems.ADAMANTIUM_CHESTPLATE, MMEArmorMaterials.ADAMANTIUM_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
         itemModelGenerator.generateTrimmableItem(MMEItems.ADAMANTIUM_LEGGINGS, MMEArmorMaterials.ADAMANTIUM_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);

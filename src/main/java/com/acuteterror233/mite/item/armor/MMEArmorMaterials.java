@@ -17,7 +17,6 @@ import java.util.Map;
 
 public class MMEArmorMaterials {
     public static final ResourceKey<EquipmentAsset> NETHERITE_MATERIAL_KEY = EquipmentAssets.NETHERITE;
-    public static final ResourceKey<EquipmentAsset> NETHERITE_CHAINMAIL_MATERIAL_KEY = ResourceKey.create(EquipmentAssets.ROOT_ID, ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, "netherite_chainmail"));
     public static final ResourceKey<EquipmentAsset> ADAMANTIUM_MATERIAL_KEY = ResourceKey.create(EquipmentAssets.ROOT_ID, ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, "adamantium"));
     public static final ResourceKey<EquipmentAsset> ADAMANTIUM_CHAINMAIL_MATERIAL_KEY = ResourceKey.create(EquipmentAssets.ROOT_ID, ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, "adamantium_chainmail"));
     public static final ResourceKey<EquipmentAsset> MITHRIL_MATERIAL_KEY = ResourceKey.create(EquipmentAssets.ROOT_ID, ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, "mithril"));
@@ -44,16 +43,6 @@ public class MMEArmorMaterials {
             1.0F,
             ItemTags.NETHERITE_TOOL_MATERIALS,
             NETHERITE_MATERIAL_KEY
-    );
-    public static final MMEArmorMaterial NETHERITE_CHAINMAIL_MATERIAL = new MMEArmorMaterial(
-            (int) (MMEToolMaterials.NETHERITE.durability() * 0.75),
-            createDefenseMap(2.2F, 3.2F, 2.8F, 1.8F, 3.2F),
-            20,
-            SoundEvents.ARMOR_EQUIP_NETHERITE,
-            2.0F,
-            1.0F,
-            ItemTags.NETHERITE_TOOL_MATERIALS,
-            NETHERITE_CHAINMAIL_MATERIAL_KEY
     );
     public static final MMEArmorMaterial ADAMANTIUM_MATERIAL = new MMEArmorMaterial(
             MMEToolMaterials.ADAMANTIUM.durability(),
