@@ -1,4 +1,4 @@
-package com.acuteterror233.mite.mixin.entity.player;
+package com.acuteterror233.mite.mixin.world.entity.player;
 
 import com.acuteterror233.mite.atinterface.FoodDataExtension;
 import net.minecraft.nbt.CompoundTag;
@@ -16,12 +16,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(FoodData.class)
 public abstract class FoodDataMixin implements FoodDataExtension {
-    @Shadow
-    @Final
-    private static int DEFAULT_TICK_TIMER;
-    @Shadow
-    @Final
-    private static float DEFAULT_EXHAUSTION_LEVEL;
     @Unique
     private int maxFoodLevel = 6;
     @Unique

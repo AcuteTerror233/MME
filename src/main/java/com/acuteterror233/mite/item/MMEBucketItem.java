@@ -66,7 +66,6 @@ public class MMEBucketItem extends BucketItem {
                         return InteractionResult.SUCCESS.heldItemTransformedTo(itemStack3);
                     }
                 }
-
                 return InteractionResult.FAIL;
             } else {
                 BlockState blockState = world.getBlockState(blockPos);

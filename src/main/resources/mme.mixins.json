@@ -18,12 +18,6 @@
     "block.SimpleWaterloggedBlockMixin",
     "block.entity.CampfireBlockEntityMixin",
     "component.DataComponentsMixin",
-    "entity.BucketableMixin",
-    "entity.FallingBlockEntityMixin",
-    "entity.passive.AnimalMixin",
-    "entity.player.FoodDataMixin",
-    "entity.player.PlayerEntityMixin",
-    "entity.projectile.FishingBobberEntityMixin",
     "item.DyeItemMixin",
     "item.ItemsMixin",
     "item.ItemStackMixin",
@@ -33,7 +27,14 @@
     "screen.slot.FurnaceFuelSlotMixin",
     "server.MinecraftServerMixin",
     "server.world.ServerLevelMixin",
-    "world.dimension.PortalShapeMixin"
+    "world.dimension.PortalShapeMixin",
+    "world.entity.BucketableMixin",
+    "world.entity.FallingBlockEntityMixin",
+    "world.entity.animal.AbstractCowMixin",
+    "world.entity.passive.AnimalMixin",
+    "world.entity.player.FoodDataMixin",
+    "world.entity.player.PlayerEntityMixin",
+    "world.entity.projectile.FishingBobberEntityMixin"
   ],
   "injectors": {
     "defaultRequire": 1

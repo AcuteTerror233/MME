@@ -28,12 +28,12 @@ import net.minecraft.world.phys.HitResult;
 import org.jetbrains.annotations.NotNull;
 
 public class MMEMobBucketItem extends MobBucketItem {
-    private final Item item;
+    private final Item empty_barrel;
     private final Fluid fluid;
 
     public MMEMobBucketItem(EntityType<? extends Mob> type, Fluid fluid, SoundEvent emptyingSound, Properties settings, Item empty_barrel) {
         super(type, fluid, emptyingSound, settings);
-        this.item = empty_barrel;
+        this.empty_barrel = empty_barrel;
         this.fluid = fluid;
     }
 
@@ -79,7 +79,7 @@ public class MMEMobBucketItem extends MobBucketItem {
                         CriteriaTriggers.PLACED_BLOCK.trigger((ServerPlayer) user, blockPos3, itemStack);
                     }
                     user.awardStat(Stats.ITEM_USED.get(this));
-                    ItemStack itemStack2 = ItemUtils.createFilledResult(itemStack, user, !user.hasInfiniteMaterials() ? new ItemStack(item) : itemStack);
+                    ItemStack itemStack2 = ItemUtils.createFilledResult(itemStack, user, !user.hasInfiniteMaterials() ? new ItemStack(empty_barrel) : itemStack);
                     return InteractionResult.SUCCESS.heldItemTransformedTo(itemStack2);
                 } else {
                     return InteractionResult.FAIL;
