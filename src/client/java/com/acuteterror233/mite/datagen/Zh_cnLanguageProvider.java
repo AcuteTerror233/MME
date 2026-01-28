@@ -19,8 +19,8 @@ public class Zh_cnLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("itemGroup.mme.item_group", "让我的世界更简单!");
         translationBuilder.add("mme.craftingTable.noAllowedCrafting", "§c无法制作此物品§r");
         translationBuilder.add("mme.gradefurnac.fuelnotavailable", "§c这个熔炉无法燃烧这个燃料§r");
-        translationBuilder.add("mme.nugget.tooltip", "右键可存储%d经验");
-        translationBuilder.add("mme.coins.tooltip", "右键可获得%d经验");
+        translationBuilder.add("mme.nugget.tooltip", "右键存储%dXP");
+        translationBuilder.add("mme.coins.tooltip", "右键获得%dXP");
         translationBuilder.add(MMEItems.ADAMANTIUM_HELMET, "艾德曼头盔");
         translationBuilder.add(MMEItems.ADAMANTIUM_CHESTPLATE, "艾德曼胸甲");
         translationBuilder.add(MMEItems.ADAMANTIUM_LEGGINGS, "艾德曼护腿");

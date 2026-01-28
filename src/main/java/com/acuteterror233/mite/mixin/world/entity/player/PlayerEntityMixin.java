@@ -1,4 +1,4 @@
-package com.acuteterror233.mite.mixin.entity.player;
+package com.acuteterror233.mite.mixin.world.entity.player;
 
 import com.acuteterror233.mite.atinterface.FoodDataExtension;
 import net.minecraft.world.entity.EntityType;

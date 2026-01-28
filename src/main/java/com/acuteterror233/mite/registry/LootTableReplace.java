@@ -1465,7 +1465,7 @@ public final class LootTableReplace {
                                         .add(LootItem.lootTableItem(Items.EMERALD).setWeight(4).apply(SetItemCountFunction.setCount(UniformGenerator.between(2.0F, 4.0F))))
                                         .add(LootItem.lootTableItem(Items.WIND_CHARGE).setWeight(3).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 3.0F))))
                                         .add(LootItem.lootTableItem(Items.IRON_INGOT).setWeight(3).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 4.0F))))
-                                        .add(LootItem.lootTableItem(MMEItems.MITHRIL_INGOT).setWeight(2).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F))))
+                                        .add(LootItem.lootTableItem(MMEItems.ANCIENT_METAL_INGOT).setWeight(4).apply(SetItemCountFunction.setCount(UniformGenerator.between(2.0F, 3.0F))))
                                         .add(LootItem.lootTableItem(Items.HONEY_BOTTLE).setWeight(3).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F))))
                                         .add(
                                                 LootItem.lootTableItem(Items.OMINOUS_BOTTLE)
@@ -1492,10 +1492,15 @@ public final class LootTableReplace {
                                                 LootItem.lootTableItem(MMEItems.MITHRIL_AXE).setWeight(2).apply(EnchantWithLevelsFunction.enchantWithLevels(wrapperLookup, UniformGenerator.between(20.0F, 30.0F)))
                                         )
                                         .add(
+                                                LootItem.lootTableItem(MMEItems.MITHRIL_BATTLE_AXE).setWeight(2).apply(EnchantWithLevelsFunction.enchantWithLevels(wrapperLookup, UniformGenerator.between(20.0F, 30.0F)))
+                                        )
+                                        .add(
                                                 LootItem.lootTableItem(Items.IRON_CHESTPLATE)
                                                         .setWeight(2)
                                                         .apply(EnchantWithLevelsFunction.enchantWithLevels(wrapperLookup, UniformGenerator.between(20.0F, 30.0F)))
                                         )
+                                        .add(LootItem.lootTableItem(MMEItems.MITHRIL_INGOT).setWeight(2).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F))))
+                                        .add(LootItem.lootTableItem(MMEItems.ANCIENT_METAL_INGOT).setWeight(4).apply(SetItemCountFunction.setCount(UniformGenerator.between(2.0F, 3.0F))))
                                         .add(LootItem.lootTableItem(Items.GOLDEN_CARROT).setWeight(2).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F))))
                                         .add(
                                                 LootItem.lootTableItem(Items.BOOK)
@@ -1521,7 +1526,7 @@ public final class LootTableReplace {
                                                                 new EnchantRandomlyFunction.Builder()
                                                                         .withOneOf(
                                                                                 HolderSet.direct(
-                                                                                        wrapperLookup.lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(Enchantments.RIPTIDE),
+                                                                                         wrapperLookup.lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(Enchantments.RIPTIDE),
                                                                                          wrapperLookup.lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(Enchantments.LOYALTY),
                                                                                          wrapperLookup.lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(Enchantments.CHANNELING),
                                                                                          wrapperLookup.lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(Enchantments.IMPALING),
@@ -1567,7 +1572,17 @@ public final class LootTableReplace {
                                                         .apply(EnchantWithLevelsFunction.enchantWithLevels(wrapperLookup, UniformGenerator.between(20.0F, 25.0F)))
                                         )
                                         .add(
+                                                LootItem.lootTableItem(MMEItems.ADAMANTIUM_BATTLE_AXE)
+                                                        .setWeight(3)
+                                                        .apply(EnchantWithLevelsFunction.enchantWithLevels(wrapperLookup, UniformGenerator.between(20.0F, 25.0F)))
+                                        )
+                                        .add(
                                                 LootItem.lootTableItem(MMEItems.MITHRIL_CHESTPLATE)
+                                                        .setWeight(3)
+                                                        .apply(EnchantWithLevelsFunction.enchantWithLevels(wrapperLookup, UniformGenerator.between(20.0F, 25.0F)))
+                                        )
+                                        .add(
+                                                LootItem.lootTableItem(MMEItems.MITHRIL_HELMET)
                                                         .setWeight(3)
                                                         .apply(EnchantWithLevelsFunction.enchantWithLevels(wrapperLookup, UniformGenerator.between(20.0F, 25.0F)))
                                         )
@@ -1578,8 +1593,8 @@ public final class LootTableReplace {
                                                                 new EnchantRandomlyFunction.Builder()
                                                                         .withOneOf(
                                                                                 HolderSet.direct(
-                                                                                        wrapperLookup.lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(Enchantments.KNOCKBACK),
-                                                                                        wrapperLookup.lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(Enchantments.PUNCH),
+                                                                                         wrapperLookup.lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(Enchantments.KNOCKBACK),
+                                                                                         wrapperLookup.lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(Enchantments.PUNCH),
                                                                                          wrapperLookup.lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(Enchantments.SMITE),
                                                                                          wrapperLookup.lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(Enchantments.LOOTING),
                                                                                          wrapperLookup.lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(Enchantments.MULTISHOT)
@@ -1600,6 +1615,71 @@ public final class LootTableReplace {
                                                         .apply(new SetEnchantmentsFunction.Builder().withEnchantment(wrapperLookup.lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(Enchantments.WIND_BURST), ConstantValue.exactly(1.0F)))
                                         )
                                         .add(LootItem.lootTableItem(Items.DIAMOND_BLOCK).setWeight(1))
+                        ).build()
+        ),
+        Map.entry(BuiltInLootTables.TRIAL_CHAMBERS_REWARD_OMINOUS_RARE,
+                wrapperLookup -> LootTable.lootTable()
+                        .withPool(
+                                LootPool.lootPool()
+                                        .setRolls(ConstantValue.exactly(1.0F))
+                                        .add(LootItem.lootTableItem(Items.EMERALD).setWeight(5).apply(SetItemCountFunction.setCount(UniformGenerator.between(3.0F, 5.0F))))
+                                        .add(LootItem.lootTableItem(Items.IRON_BLOCK).setWeight(4))
+                                        .add(
+                                                LootItem.lootTableItem(Items.CROSSBOW)
+                                                        .setWeight(4)
+                                                        .apply(EnchantWithLevelsFunction.enchantWithLevels(wrapperLookup, UniformGenerator.between(10.0F, 20.0F)))
+                                        )
+                                        .add(LootItem.lootTableItem(Items.GOLDEN_APPLE).setWeight(3))
+                                        .add(
+                                                LootItem.lootTableItem(MMEItems.MITHRIL_AXE)
+                                                        .setWeight(3)
+                                                        .apply(EnchantWithLevelsFunction.enchantWithLevels(wrapperLookup, UniformGenerator.between(20.0F, 25.0F)))
+                                        )
+                                        .add(
+                                                LootItem.lootTableItem(MMEItems.MITHRIL_BATTLE_AXE)
+                                                        .setWeight(3)
+                                                        .apply(EnchantWithLevelsFunction.enchantWithLevels(wrapperLookup, UniformGenerator.between(20.0F, 25.0F)))
+                                        )
+                                        .add(
+                                                LootItem.lootTableItem(MMEItems.MITHRIL_CHESTPLATE)
+                                                        .setWeight(3)
+                                                        .apply(EnchantWithLevelsFunction.enchantWithLevels(wrapperLookup, UniformGenerator.between(20.0F, 25.0F)))
+                                        )
+                                        .add(
+                                                LootItem.lootTableItem(MMEItems.MITHRIL_HELMET)
+                                                        .setWeight(3)
+                                                        .apply(EnchantWithLevelsFunction.enchantWithLevels(wrapperLookup, UniformGenerator.between(20.0F, 25.0F)))
+                                        )
+                                        .add(
+                                                LootItem.lootTableItem(Items.BOOK)
+                                                        .setWeight(2)
+                                                        .apply(
+                                                                new EnchantRandomlyFunction.Builder()
+                                                                        .withOneOf(
+                                                                                HolderSet.direct(
+                                                                                        wrapperLookup.lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(Enchantments.KNOCKBACK),
+                                                                                        wrapperLookup.lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(Enchantments.PUNCH),
+                                                                                        wrapperLookup.lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(Enchantments.SMITE),
+                                                                                        wrapperLookup.lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(Enchantments.LOOTING),
+                                                                                        wrapperLookup.lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(Enchantments.MULTISHOT)
+                                                                                )
+                                                                        )
+                                                        )
+                                        )
+                                        .add(
+                                                LootItem.lootTableItem(Items.BOOK)
+                                                        .setWeight(2)
+                                                        .apply(
+                                                                new EnchantRandomlyFunction.Builder()
+                                                                        .withOneOf(HolderSet.direct(wrapperLookup.lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(Enchantments.BREACH), wrapperLookup.lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(Enchantments.DENSITY)))
+                                                        )
+                                        )
+                                        .add(
+                                                LootItem.lootTableItem(Items.BOOK)
+                                                        .setWeight(2)
+                                                        .apply(new SetEnchantmentsFunction.Builder().withEnchantment(wrapperLookup.lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(Enchantments.WIND_BURST), ConstantValue.exactly(1.0F)))
+                                        )
+                                        .add(LootItem.lootTableItem(Items.DIAMOND).setWeight(1).apply(SetItemCountFunction.setCount(ConstantValue.exactly(2.0F))))
                         ).build()
         ),
         Map.entry(BuiltInLootTables.TRIAL_CHAMBERS_REWARD_OMINOUS_UNIQUE,

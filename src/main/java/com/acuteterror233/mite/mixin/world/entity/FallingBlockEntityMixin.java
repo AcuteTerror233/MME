@@ -1,4 +1,4 @@
-package com.acuteterror233.mite.mixin.entity;
+package com.acuteterror233.mite.mixin.world.entity;
 
 import com.llamalad7.mixinextras.sugar.Local;
 import net.minecraft.core.BlockPos;
@@ -24,12 +24,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(FallingBlockEntity.class)
 public abstract class FallingBlockEntityMixin extends Entity {
     @Shadow
-    public boolean dropItem;
-    @Shadow
     @Nullable
     public CompoundTag blockData;
-    @Shadow
-    private float fallDamagePerDistance;
     @Shadow
     private BlockState blockState;
 
@@ -51,5 +47,9 @@ public abstract class FallingBlockEntityMixin extends Entity {
             stack.setDamageValue(this.blockData.getIntOr("damage", 0));
         }
         return this.spawnAtLocation((ServerLevel) level(), stack);
+    }
+    @Redirect(method = "causeFallDamage",at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/AnvilBlock;damage(Lnet/minecraft/world/level/block/state/BlockState;)Lnet/minecraft/world/level/block/state/BlockState;"))
+    public BlockState causeFallDamage(BlockState blockstate) {
+        return blockstate;
     }
 }

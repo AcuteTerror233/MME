@@ -1,4 +1,4 @@
-package com.acuteterror233.mite.mixin.entity.projectile;
+package com.acuteterror233.mite.mixin.world.entity.projectile;
 
 import com.acuteterror233.mite.registry.tag.MMETags;
 import net.minecraft.world.entity.EntityType;

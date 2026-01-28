@@ -19,8 +19,8 @@ public class En_usLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("itemGroup.mme.item_group", "Make Minecraft easier!");
         translationBuilder.add("mme.craftingTable.noAllowedCrafting", "§cThis item cannot be crafted§r");
         translationBuilder.add("mme.gradefurnac.fuelnotavailable", "§cThis furnace cannot burn this fuel§r");
-        translationBuilder.add("mme.nugget.tooltip", "Right click to store %d experience");
-        translationBuilder.add("mme.coins.tooltip", "Right click to gain %d experience");
+        translationBuilder.add("mme.nugget.tooltip", "Right click to store %d XP");
+        translationBuilder.add("mme.coins.tooltip", "Right click to gain %d XP");
         translationBuilder.add(MMEItems.ADAMANTIUM_HELMET, "Adamantium Helmet");
         translationBuilder.add(MMEItems.ADAMANTIUM_CHESTPLATE, "Adamantium Chestplate");
         translationBuilder.add(MMEItems.ADAMANTIUM_LEGGINGS, "Adamantium Leggings");

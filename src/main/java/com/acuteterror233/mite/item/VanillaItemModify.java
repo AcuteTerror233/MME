@@ -7,6 +7,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.references.Items;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ToolMaterial;
 import net.minecraft.world.item.equipment.ArmorType;
@@ -172,9 +173,9 @@ public final class VanillaItemModify {
         result.put(ResourceLocation.withDefaultNamespace("glowstone_dust"), settings -> settings.stacksTo(32));
         result.put(ResourceLocation.withDefaultNamespace("cookie"), settings -> settings.stacksTo(32));
         result.put(ResourceLocation.withDefaultNamespace("dried_kelp"), settings -> settings.stacksTo(32));
-        result.put(Items.MELON_SEEDS.location(), settings -> settings.stacksTo(32));
-        result.put(Items.PUMPKIN_SEEDS.location(), settings -> settings.stacksTo(32));
-        result.put(ResourceLocation.withDefaultNamespace("wheat_seeds"), settings -> settings.stacksTo(32));
+        result.put(Items.MELON_SEEDS.location(), settings -> settings.stacksTo(32).food(new FoodProperties.Builder().nutrition(1).saturationModifier(1.0F).alwaysEdible().build()));
+        result.put(Items.PUMPKIN_SEEDS.location(), settings -> settings.stacksTo(32).food(new FoodProperties.Builder().nutrition(1).saturationModifier(1.0F).alwaysEdible().build()));
+        result.put(ResourceLocation.withDefaultNamespace("wheat_seeds"), settings -> settings.stacksTo(32).food(new FoodProperties.Builder().nutrition(1).saturationModifier(1.0F).alwaysEdible().build()));
         result.put(ResourceLocation.withDefaultNamespace("cocoa_beans"), settings -> settings.stacksTo(32));
         result.put(ResourceLocation.withDefaultNamespace("beetroot_seeds"), settings -> settings.stacksTo(32));
         result.put(ResourceLocation.withDefaultNamespace("sweet_berries"), settings -> settings.stacksTo(32));
@@ -182,12 +183,10 @@ public final class VanillaItemModify {
         result.put(ResourceLocation.withDefaultNamespace("melon_slice"), settings -> settings.stacksTo(32));
         result.put(ResourceLocation.withDefaultNamespace("gunpowder"), settings -> settings.stacksTo(32));
 
-        // Anvil durability settings
         result.put(ResourceLocation.withDefaultNamespace("anvil"), settings -> settings.durability(AtBlocks.maxDamageAnvil(ToolMaterial.IRON.durability())));
         result.put(ResourceLocation.withDefaultNamespace("chipped_anvil"), settings -> settings.durability(AtBlocks.maxDamageAnvil(ToolMaterial.IRON.durability())));
         result.put(ResourceLocation.withDefaultNamespace("damaged_anvil"), settings -> settings.durability(AtBlocks.maxDamageAnvil(ToolMaterial.IRON.durability())));
 
-        // Sword and pickaxe settings
         result.put(ResourceLocation.withDefaultNamespace("stone_sword"), settings -> new Item.Properties());
         result.put(ResourceLocation.withDefaultNamespace("stone_pickaxe"), settings -> new Item.Properties());
         result.put(ResourceLocation.withDefaultNamespace("diamond_sword"), settings -> new Item.Properties());
@@ -197,7 +196,6 @@ public final class VanillaItemModify {
         result.put(ResourceLocation.withDefaultNamespace("netherite_sword"), settings -> MMEItems.getSwordSettings(MMEToolMaterials.NETHERITE));
         result.put(ResourceLocation.withDefaultNamespace("netherite_pickaxe"), settings -> MMEItems.getPickaxeSettings(MMEToolMaterials.NETHERITE));
 
-        // Armor settings
         result.put(ResourceLocation.withDefaultNamespace("netherite_helmet"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.NETHERITE_MATERIAL, ArmorType.HELMET));
         result.put(ResourceLocation.withDefaultNamespace("netherite_chestplate"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.NETHERITE_MATERIAL, ArmorType.CHESTPLATE));
         result.put(ResourceLocation.withDefaultNamespace("netherite_leggings"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.NETHERITE_MATERIAL, ArmorType.LEGGINGS));
@@ -254,7 +252,6 @@ public final class VanillaItemModify {
         result.put(ResourceLocation.withDefaultNamespace("diamond_leggings"), settings -> new Item(new Item.Properties().setId(ResourceKey.create(Registries.ITEM, ResourceLocation.withDefaultNamespace("diamond_leggings")))));
         result.put(ResourceLocation.withDefaultNamespace("diamond_boots"), settings -> new Item(new Item.Properties().setId(ResourceKey.create(Registries.ITEM, ResourceLocation.withDefaultNamespace("diamond_boots")))));
 
-        // GamItem
         result.put(ResourceLocation.withDefaultNamespace("diamond"), settings -> new GamItem(settings, 500));
         result.put(ResourceLocation.withDefaultNamespace("emerald"), settings -> new GamItem(settings, 250));
         result.put(ResourceLocation.withDefaultNamespace("lapis_lazuli"), settings -> new GamItem(settings, 50));
@@ -262,7 +259,6 @@ public final class VanillaItemModify {
         result.put(ResourceLocation.withDefaultNamespace("amethyst_shard"), settings -> new GamItem(settings, 75));
         result.put(ResourceLocation.withDefaultNamespace("echo_shard"), settings -> new GamItem(settings, 1000));
 
-        // NuggetItem
         result.put(ResourceLocation.withDefaultNamespace("iron_nugget"), settings -> new NuggetItem(settings.stacksTo(32), 200));
         result.put(ResourceLocation.withDefaultNamespace("gold_nugget"), settings -> new NuggetItem(settings.stacksTo(32), 500));
 
@@ -271,13 +267,11 @@ public final class VanillaItemModify {
     private static Map<ResourceLocation, UnaryOperator<Item.Properties>> createBlockItemSettingsModifyMapByIdentifier() {
         Map<ResourceLocation, UnaryOperator<Item.Properties>> result = new HashMap<>();
 
-        // Crafting time settings
         result.put(ResourceLocation.withDefaultNamespace("iron_block"), settings -> settings.component(MMEDataComponentTypes.CRAFTING_TIME, 270));
         result.put(ResourceLocation.withDefaultNamespace("gold_block"), settings -> settings.component(MMEDataComponentTypes.CRAFTING_TIME, 180));
         result.put(ResourceLocation.withDefaultNamespace("copper_block"), settings -> settings.component(MMEDataComponentTypes.CRAFTING_TIME, 90));
         result.put(ResourceLocation.withDefaultNamespace("netherite_block"), settings -> settings.component(MMEDataComponentTypes.CRAFTING_TIME, 1800));
 
-        // Combustion grade settings
         result.put(ResourceLocation.withDefaultNamespace("iron_ore"), settings -> settings.component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
         result.put(ResourceLocation.withDefaultNamespace("copper_ore"), settings -> settings.component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
         result.put(ResourceLocation.withDefaultNamespace("gold_ore"), settings -> settings.component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));

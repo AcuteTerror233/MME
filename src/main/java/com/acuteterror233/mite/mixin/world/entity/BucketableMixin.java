@@ -1,4 +1,4 @@
-package com.acuteterror233.mite.mixin.entity;
+package com.acuteterror233.mite.mixin.world.entity;
 
 import com.acuteterror233.mite.registry.tag.MMETags;
 import net.minecraft.advancements.CriteriaTriggers;
