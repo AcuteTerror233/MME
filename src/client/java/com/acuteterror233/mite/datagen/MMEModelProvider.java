@@ -3,7 +3,7 @@ package com.acuteterror233.mite.datagen;
 import com.acuteterror233.mite.MME;
 import com.acuteterror233.mite.atinterface.BlockModelGeneratorsExtension;
 import com.acuteterror233.mite.atinterface.ItemModelGeneratorsExtension;
-import com.acuteterror233.mite.block.AtBlocks;
+import com.acuteterror233.mite.block.MMEBlocks;
 import com.acuteterror233.mite.item.MMEItems;
 import com.acuteterror233.mite.item.armor.MMEArmorMaterials;
 import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
@@ -23,42 +23,42 @@ public class MMEModelProvider extends FabricModelProvider {
 
     @Override
     public void generateBlockStateModels(BlockModelGenerators blockStateModelGenerator) {
-        blockStateModelGenerator.createTrivialCube(AtBlocks.ADAMANTIUM_ORE);
-        ((BlockModelGeneratorsExtension)blockStateModelGenerator).MME$registerBars(AtBlocks.ADAMANTIUM_BARS);
-        blockStateModelGenerator.createTrivialCube(AtBlocks.ADAMANTIUM_BLOCK);
-        ((BlockModelGeneratorsExtension)blockStateModelGenerator).MME$registerBars(AtBlocks.MITHRIL_BARS);
-        blockStateModelGenerator.createTrivialCube(AtBlocks.MITHRIL_BLOCK);
-        ((BlockModelGeneratorsExtension)blockStateModelGenerator).MME$registerBars(AtBlocks.SILVER_BARS);
-        blockStateModelGenerator.createTrivialCube(AtBlocks.SILVER_BLOCK);
-        ((BlockModelGeneratorsExtension)blockStateModelGenerator).MME$registerBars(AtBlocks.ANCIENT_METAL_BARS);
-        blockStateModelGenerator.createTrivialCube(AtBlocks.ANCIENT_METAL_BLOCK);
-        ((BlockModelGeneratorsExtension)blockStateModelGenerator).MME$registerBars(AtBlocks.GOLDEN_BARS);
-        blockStateModelGenerator.createTrivialCube(AtBlocks.MANTLE);
-        blockStateModelGenerator.createTrivialCube(AtBlocks.MITHRIL_ORE);
-        blockStateModelGenerator.createTrivialCube(AtBlocks.SILVER_ORE);
-        ((BlockModelGeneratorsExtension) blockStateModelGenerator).MME$registerBars(AtBlocks.COPPER_BARS);
+        blockStateModelGenerator.createTrivialCube(MMEBlocks.ADAMANTIUM_ORE);
+        ((BlockModelGeneratorsExtension)blockStateModelGenerator).MME$registerBars(MMEBlocks.ADAMANTIUM_BARS);
+        blockStateModelGenerator.createTrivialCube(MMEBlocks.ADAMANTIUM_BLOCK);
+        ((BlockModelGeneratorsExtension)blockStateModelGenerator).MME$registerBars(MMEBlocks.MITHRIL_BARS);
+        blockStateModelGenerator.createTrivialCube(MMEBlocks.MITHRIL_BLOCK);
+        ((BlockModelGeneratorsExtension)blockStateModelGenerator).MME$registerBars(MMEBlocks.SILVER_BARS);
+        blockStateModelGenerator.createTrivialCube(MMEBlocks.SILVER_BLOCK);
+        ((BlockModelGeneratorsExtension)blockStateModelGenerator).MME$registerBars(MMEBlocks.ANCIENT_METAL_BARS);
+        blockStateModelGenerator.createTrivialCube(MMEBlocks.ANCIENT_METAL_BLOCK);
+        ((BlockModelGeneratorsExtension)blockStateModelGenerator).MME$registerBars(MMEBlocks.GOLDEN_BARS);
+        blockStateModelGenerator.createTrivialCube(MMEBlocks.MANTLE);
+        blockStateModelGenerator.createTrivialCube(MMEBlocks.MITHRIL_ORE);
+        blockStateModelGenerator.createTrivialCube(MMEBlocks.SILVER_ORE);
+        ((BlockModelGeneratorsExtension) blockStateModelGenerator).MME$registerBars(MMEBlocks.COPPER_BARS);
 
-        blockStateModelGenerator.createDoor(AtBlocks.ADAMANTIUM_DOOR);
-        blockStateModelGenerator.createDoor(AtBlocks.GOLDEN_DOOR);
-        blockStateModelGenerator.createDoor(AtBlocks.SILVER_DOOR);
-        blockStateModelGenerator.createDoor(AtBlocks.ANCIENT_METAL_DOOR);
-        blockStateModelGenerator.createDoor(AtBlocks.MITHRIL_DOOR);
-        ((BlockModelGeneratorsExtension) blockStateModelGenerator).MME$registerAnvil(AtBlocks.ADAMANTIUM_ANVIL, AtBlocks.CHIPPED_ADAMANTIUM_ANVIL, AtBlocks.DAMAGED_ADAMANTIUM_ANVIL);
-        ((BlockModelGeneratorsExtension) blockStateModelGenerator).MME$registerAnvil(AtBlocks.MITHRIL_ANVIL, AtBlocks.CHIPPED_MITHRIL_ANVIL, AtBlocks.DAMAGED_MITHRIL_ANVIL);
-        ((BlockModelGeneratorsExtension) blockStateModelGenerator).MME$registerAnvil(AtBlocks.ANCIENT_METAL_ANVIL, AtBlocks.CHIPPED_ANCIENT_METAL_ANVIL, AtBlocks.DAMAGED_ANCIENT_METAL_ANVIL);
-        ((BlockModelGeneratorsExtension) blockStateModelGenerator).MME$registerAnvil(AtBlocks.GOLDEN_ANVIL, AtBlocks.CHIPPED_GOLDEN_ANVIL, AtBlocks.DAMAGED_GOLDEN_ANVIL);
-        ((BlockModelGeneratorsExtension) blockStateModelGenerator).MME$registerAnvil(AtBlocks.SILVER_ANVIL, AtBlocks.CHIPPED_SILVER_ANVIL, AtBlocks.DAMAGED_SILVER_ANVIL);
-        ((BlockModelGeneratorsExtension) blockStateModelGenerator).MME$registerAnvil(AtBlocks.COPPER_ANVIL, AtBlocks.CHIPPED_COPPER_ANVIL, AtBlocks.DAMAGED_COPPER_ANVIL);
+        blockStateModelGenerator.createDoor(MMEBlocks.ADAMANTIUM_DOOR);
+        blockStateModelGenerator.createDoor(MMEBlocks.GOLDEN_DOOR);
+        blockStateModelGenerator.createDoor(MMEBlocks.SILVER_DOOR);
+        blockStateModelGenerator.createDoor(MMEBlocks.ANCIENT_METAL_DOOR);
+        blockStateModelGenerator.createDoor(MMEBlocks.MITHRIL_DOOR);
+        ((BlockModelGeneratorsExtension) blockStateModelGenerator).MME$registerAnvil(MMEBlocks.ADAMANTIUM_ANVIL, MMEBlocks.CHIPPED_ADAMANTIUM_ANVIL, MMEBlocks.DAMAGED_ADAMANTIUM_ANVIL);
+        ((BlockModelGeneratorsExtension) blockStateModelGenerator).MME$registerAnvil(MMEBlocks.MITHRIL_ANVIL, MMEBlocks.CHIPPED_MITHRIL_ANVIL, MMEBlocks.DAMAGED_MITHRIL_ANVIL);
+        ((BlockModelGeneratorsExtension) blockStateModelGenerator).MME$registerAnvil(MMEBlocks.ANCIENT_METAL_ANVIL, MMEBlocks.CHIPPED_ANCIENT_METAL_ANVIL, MMEBlocks.DAMAGED_ANCIENT_METAL_ANVIL);
+        ((BlockModelGeneratorsExtension) blockStateModelGenerator).MME$registerAnvil(MMEBlocks.GOLDEN_ANVIL, MMEBlocks.CHIPPED_GOLDEN_ANVIL, MMEBlocks.DAMAGED_GOLDEN_ANVIL);
+        ((BlockModelGeneratorsExtension) blockStateModelGenerator).MME$registerAnvil(MMEBlocks.SILVER_ANVIL, MMEBlocks.CHIPPED_SILVER_ANVIL, MMEBlocks.DAMAGED_SILVER_ANVIL);
+        ((BlockModelGeneratorsExtension) blockStateModelGenerator).MME$registerAnvil(MMEBlocks.COPPER_ANVIL, MMEBlocks.CHIPPED_COPPER_ANVIL, MMEBlocks.DAMAGED_COPPER_ANVIL);
         
-        blockStateModelGenerator.createFurnace(AtBlocks.CLAY_FURNACE, TexturedModel.ORIENTABLE_ONLY_TOP);
-        blockStateModelGenerator.createFurnace(AtBlocks.HARDENED_CLAY_FURNACE, TexturedModel.ORIENTABLE_ONLY_TOP);
-        blockStateModelGenerator.createFurnace(AtBlocks.NETHERRACK_FURNACE, TexturedModel.ORIENTABLE_ONLY_TOP);
-        blockStateModelGenerator.createFurnace(AtBlocks.OBSIDIAN_FURNACE, TexturedModel.ORIENTABLE_ONLY_TOP);
-        blockStateModelGenerator.createFurnace(AtBlocks.SANDSTONE_FURNACE, TexturedModel.ORIENTABLE_ONLY_TOP);
+        blockStateModelGenerator.createFurnace(MMEBlocks.CLAY_FURNACE, TexturedModel.ORIENTABLE_ONLY_TOP);
+        blockStateModelGenerator.createFurnace(MMEBlocks.HARDENED_CLAY_FURNACE, TexturedModel.ORIENTABLE_ONLY_TOP);
+        blockStateModelGenerator.createFurnace(MMEBlocks.NETHERRACK_FURNACE, TexturedModel.ORIENTABLE_ONLY_TOP);
+        blockStateModelGenerator.createFurnace(MMEBlocks.OBSIDIAN_FURNACE, TexturedModel.ORIENTABLE_ONLY_TOP);
+        blockStateModelGenerator.createFurnace(MMEBlocks.SANDSTONE_FURNACE, TexturedModel.ORIENTABLE_ONLY_TOP);
 
-        blockStateModelGenerator.createTrivialCube(AtBlocks.DEEPSLATE_ADAMANTIUM_ORE);
-        blockStateModelGenerator.createTrivialCube(AtBlocks.DEEPSLATE_MITHRIL_ORE);
-        blockStateModelGenerator.createTrivialCube(AtBlocks.DEEPSLATE_SILVER_ORE);
+        blockStateModelGenerator.createTrivialCube(MMEBlocks.DEEPSLATE_ADAMANTIUM_ORE);
+        blockStateModelGenerator.createTrivialCube(MMEBlocks.DEEPSLATE_MITHRIL_ORE);
+        blockStateModelGenerator.createTrivialCube(MMEBlocks.DEEPSLATE_SILVER_ORE);
 
 //        blockStateModelGenerator.registerSimpleCubeAll(AtBlocks.MITHRIL_NUL_RUNESTORE);
 //        blockStateModelGenerator.registerSimpleCubeAll(AtBlocks.MITHRIL_QUAS_RUNESTORE);

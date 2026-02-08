@@ -1,6 +1,6 @@
 package com.acuteterror233.mite.screen;
 
-import com.acuteterror233.mite.block.AtBlocks;
+import com.acuteterror233.mite.block.MMEBlocks;
 import com.acuteterror233.mite.registry.tag.MMETags;
 import com.acuteterror233.mite.screen.slot.CraftingTableResultSlot;
 import net.minecraft.server.level.ServerLevel;
@@ -28,7 +28,7 @@ public class GradeCraftingTableMenu extends AbstractGradeCraftingMenu {
         this(syncId, playerInventory, ContainerLevelAccess.NULL, null, null);
     }
     public GradeCraftingTableMenu(int syncId, Inventory playerInventory, ContainerLevelAccess context, Block[] upperLevelCraftingTable, TagKey<Item> disableMaterialsTag) {
-        super(AtBlocks.GRADE_CRAFTING_TABLE, syncId, upperLevelCraftingTable, disableMaterialsTag, 3, 3);
+        super(MMEBlocks.GRADE_CRAFTING_TABLE, syncId, upperLevelCraftingTable, disableMaterialsTag, 3, 3);
         this.context = context;
         this.player = playerInventory.player;
         this.addResultSlot(this.player, 124, 35);

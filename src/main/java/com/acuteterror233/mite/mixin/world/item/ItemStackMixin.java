@@ -1,4 +1,4 @@
-package com.acuteterror233.mite.mixin.item;
+package com.acuteterror233.mite.mixin.world.item;
 
 import com.acuteterror233.mite.MME;
 import com.acuteterror233.mite.component.MMEDataComponentTypes;

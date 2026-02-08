@@ -1,6 +1,6 @@
 package com.acuteterror233.mite.screen;
 
-import com.acuteterror233.mite.block.AtBlocks;
+import com.acuteterror233.mite.block.MMEBlocks;
 import com.acuteterror233.mite.block.entity.AnvilBlockEntity;
 import com.acuteterror233.mite.registry.tag.MMETags;
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
@@ -37,7 +37,7 @@ public class GradeAnvilMenu extends ItemCombinerMenu {
     }
 
     public GradeAnvilMenu(int syncId, Inventory playerInventory, ContainerLevelAccess context, TagKey<Item> notAllowedMaterial) {
-        super(AtBlocks.GRADE_ANVIL, syncId, playerInventory, context, getForgingSlotsManager());
+        super(MMEBlocks.GRADE_ANVIL, syncId, playerInventory, context, getForgingSlotsManager());
         this.addDataSlot(this.levelCost);
         this.notAllowedMaterial = notAllowedMaterial;
     }

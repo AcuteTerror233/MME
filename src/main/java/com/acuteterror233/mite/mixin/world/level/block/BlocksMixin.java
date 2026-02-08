@@ -1,4 +1,4 @@
-package com.acuteterror233.mite.mixin.block;
+package com.acuteterror233.mite.mixin.world.level.block;
 
 import com.acuteterror233.mite.event.VanillaRegisterModify;
 import net.minecraft.core.Registry;

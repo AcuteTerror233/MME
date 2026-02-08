@@ -1,15 +1,19 @@
 package com.acuteterror233.mite.item;
 
-import com.acuteterror233.mite.block.AtBlocks;
+import com.acuteterror233.mite.block.MMEBlocks;
 import com.acuteterror233.mite.component.MMEDataComponentTypes;
 import com.acuteterror233.mite.item.armor.MMEArmorMaterials;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.references.Items;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ToolMaterial;
+import net.minecraft.world.item.component.Consumables;
+import net.minecraft.world.item.consume_effects.ApplyStatusEffectsConsumeEffect;
 import net.minecraft.world.item.equipment.ArmorType;
 import net.minecraft.world.level.block.*;
 
@@ -183,9 +187,9 @@ public final class VanillaItemModify {
         result.put(ResourceLocation.withDefaultNamespace("melon_slice"), settings -> settings.stacksTo(32));
         result.put(ResourceLocation.withDefaultNamespace("gunpowder"), settings -> settings.stacksTo(32));
 
-        result.put(ResourceLocation.withDefaultNamespace("anvil"), settings -> settings.durability(AtBlocks.maxDamageAnvil(ToolMaterial.IRON.durability())));
-        result.put(ResourceLocation.withDefaultNamespace("chipped_anvil"), settings -> settings.durability(AtBlocks.maxDamageAnvil(ToolMaterial.IRON.durability())));
-        result.put(ResourceLocation.withDefaultNamespace("damaged_anvil"), settings -> settings.durability(AtBlocks.maxDamageAnvil(ToolMaterial.IRON.durability())));
+        result.put(ResourceLocation.withDefaultNamespace("anvil"), settings -> settings.durability(MMEBlocks.maxDamageAnvil(ToolMaterial.IRON.durability())));
+        result.put(ResourceLocation.withDefaultNamespace("chipped_anvil"), settings -> settings.durability(MMEBlocks.maxDamageAnvil(ToolMaterial.IRON.durability())));
+        result.put(ResourceLocation.withDefaultNamespace("damaged_anvil"), settings -> settings.durability(MMEBlocks.maxDamageAnvil(ToolMaterial.IRON.durability())));
 
         result.put(ResourceLocation.withDefaultNamespace("stone_sword"), settings -> new Item.Properties());
         result.put(ResourceLocation.withDefaultNamespace("stone_pickaxe"), settings -> new Item.Properties());
@@ -217,7 +221,20 @@ public final class VanillaItemModify {
         result.put(ResourceLocation.withDefaultNamespace("chainmail_leggings"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.IRON_CHAINMAIL_MATERIAL, ArmorType.LEGGINGS));
         result.put(ResourceLocation.withDefaultNamespace("chainmail_boots"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.IRON_CHAINMAIL_MATERIAL, ArmorType.BOOTS));
 
-        return Map.copyOf(result);
+        result.put(ResourceLocation.withDefaultNamespace("oak_planks"), properties -> properties.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("spruce_planks"), properties -> properties.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("birch_planks"), properties -> properties.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("jungle_planks"), properties -> properties.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("acacia_planks"), properties -> properties.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("dark_oak_planks"), properties -> properties.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("pale_oak_planks"), properties -> properties.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("crimson_planks"), properties -> properties.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("warped_planks"), properties -> properties.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("mangrove_planks"), properties -> properties.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("bamboo_planks"), properties -> properties.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("cherry_planks"), properties -> properties.stacksTo(8));
+
+        return result;
     }
 
     /**
@@ -281,7 +298,13 @@ public final class VanillaItemModify {
         result.put(ResourceLocation.withDefaultNamespace("deepslate_gold_ore"), settings -> settings.component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
         result.put(ResourceLocation.withDefaultNamespace("nether_gold_ore"), settings -> settings.component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
 
-        return Map.copyOf(result);
+        result.put(ResourceLocation.withDefaultNamespace("leaf_litter"), properties -> properties.food(new FoodProperties(0, 0.0F, true),
+                Consumables.defaultFood()
+                        .onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(MobEffects.BLINDNESS, 50, 0), 0.5F))
+                        .onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(MobEffects.POISON, 50, 0), 0.5F))
+                        .build()));
+
+        return result;
     }
 
 
@@ -389,7 +412,7 @@ public final class VanillaItemModify {
         result.put(WitherRoseBlock.class, settings -> settings.stacksTo(32));
         result.put(LeafLitterBlock.class, settings -> settings.stacksTo(32));
 
-        return Map.copyOf(result);
+        return result;
     }
 
 

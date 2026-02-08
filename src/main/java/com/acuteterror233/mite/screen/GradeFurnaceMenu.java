@@ -1,7 +1,7 @@
 package com.acuteterror233.mite.screen;
 
 import com.acuteterror233.mite.atinterface.GetFuelGradeRegistryExtension;
-import com.acuteterror233.mite.block.AtBlocks;
+import com.acuteterror233.mite.block.MMEBlocks;
 import com.acuteterror233.mite.item.FuelGradeRegistry;
 import net.minecraft.world.Container;
 import net.minecraft.world.SimpleContainer;
@@ -23,7 +23,7 @@ public class GradeFurnaceMenu extends AbstractFurnaceMenu {
 
     public GradeFurnaceMenu(int syncId, Inventory playerInventory, Container inventory, ContainerData propertyDelegate) {
         super(
-                AtBlocks.GRADE_FURNACE,
+                MMEBlocks.GRADE_FURNACE,
                 RecipeType.SMELTING,
                 RecipePropertySet.FURNACE_INPUT,
                 RecipeBookType.FURNACE,

@@ -1,4 +1,4 @@
-package com.acuteterror233.mite.mixin.block;
+package com.acuteterror233.mite.mixin.world.level.block;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.LivingEntity;
@@ -17,13 +17,13 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class BlockMixin {
     @Inject(method = "playerDestroy", at = @At("RETURN"))
     private void playerDestroy(Level level, Player player, BlockPos blockPos, BlockState blockState, BlockEntity blockEntity, ItemStack itemStack, CallbackInfo ci) {
-        if (!blockState.isAir()) {
+        if (!blockState.canOcclude()) {
             player.causeFoodExhaustion(1F);
         }
     }
     @Inject(method = "setPlacedBy", at = @At("HEAD"))
     public void setPlacedBy(Level level, BlockPos blockPos, BlockState blockState, LivingEntity livingEntity, ItemStack itemStack, CallbackInfo ci) {
-        if (livingEntity instanceof Player player && !blockState.isAir()) {
+        if (livingEntity instanceof Player player && !blockState.canOcclude()) {
             player.causeFoodExhaustion(1F);
         }
     }

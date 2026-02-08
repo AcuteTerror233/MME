@@ -17,5 +17,5 @@ public class MMEToolMaterials {
     public static final ToolMaterial GOLD = new ToolMaterial(MMETags.INCORRECT_FOR_COPPER_OR_SILVER_TOOL, 4, 2.0F, 2.0F, 22, ItemTags.GOLD_TOOL_MATERIALS);
     public static final ToolMaterial FLINT = new ToolMaterial(MMETags.INCORRECT_FOR_FLINT_OR_OBSIDIAN_TOOL, 4, 2.0F, 2.0F, 5, MMETags.FLINT_TOOL_MATERIALS);
     public static final ToolMaterial OBSIDIAN = new ToolMaterial(MMETags.INCORRECT_FOR_FLINT_OR_OBSIDIAN_TOOL, 6, 2.0F, 2.0F, 5, MMETags.OBSIDIAN_TOOL_MATERIALS);
-    public static final ToolMaterial WOOD = new ToolMaterial(MMETags.INCORRECT_FOR_FLINT_OR_OBSIDIAN_TOOL, 6, 2.0F, 2.0F, 5, ItemTags.WOODEN_TOOL_MATERIALS);
+    public static final ToolMaterial WOOD = new ToolMaterial(MMETags.INCORRECT_FOR_FLINT_OR_OBSIDIAN_TOOL, 4, 2.0F, 1.0F, 5, ItemTags.WOODEN_TOOL_MATERIALS);
 }

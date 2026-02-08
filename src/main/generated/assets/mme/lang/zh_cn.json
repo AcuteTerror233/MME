@@ -404,8 +404,8 @@
   "item.mme.worm_cooked": "烤熟的虫子",
   "item.mme.worm_raw": "生的虫子",
   "itemGroup.mme.item_group": "让我的世界更简单!",
-  "mme.coins.tooltip": "右键可获得%d经验",
+  "mme.coins.tooltip": "每个+%dXP",
   "mme.craftingTable.noAllowedCrafting": "§c无法制作此物品§r",
   "mme.gradefurnac.fuelnotavailable": "§c这个熔炉无法燃烧这个燃料§r",
-  "mme.nugget.tooltip": "右键可存储%d经验"
+  "mme.nugget.tooltip": "每个-%dXP"
 }

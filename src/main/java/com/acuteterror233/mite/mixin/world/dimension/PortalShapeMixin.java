@@ -1,7 +1,7 @@
 package com.acuteterror233.mite.mixin.world.dimension;
 
 import com.acuteterror233.mite.atinterface.UniversalPortalShapeExtension;
-import com.acuteterror233.mite.block.AtBlocks;
+import com.acuteterror233.mite.block.MMEBlocks;
 import com.acuteterror233.mite.block.entity.RunePortalBlockEntity;
 import com.acuteterror233.mite.registry.tag.MMETags;
 import net.minecraft.core.BlockPos;
@@ -87,7 +87,7 @@ public class PortalShapeMixin implements UniversalPortalShapeExtension {
 
     @Override
     public void MME$CreateRunePortal(LevelAccessor world, BlockPos targetLocation) {
-        BlockState state = AtBlocks.RUNE_PORTAL.defaultBlockState().setValue(BlockStateProperties.HORIZONTAL_AXIS, this.axis);
+        BlockState state = MMEBlocks.RUNE_PORTAL.defaultBlockState().setValue(BlockStateProperties.HORIZONTAL_AXIS, this.axis);
         BlockPos.betweenClosed(this.bottomLeft, this.bottomLeft.relative(Direction.UP, this.height - 1).relative(this.rightDir, this.width - 1))
                 .forEach(pos -> {
                     world.setBlock(pos, state, Block.UPDATE_CLIENTS | Block.UPDATE_KNOWN_SHAPE);

@@ -1,4 +1,4 @@
-package com.acuteterror233.mite.mixin.item.equipment;
+package com.acuteterror233.mite.mixin.world.item.equipment;
 
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.equipment.ArmorType;

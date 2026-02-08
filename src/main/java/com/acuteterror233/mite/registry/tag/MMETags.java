@@ -9,7 +9,6 @@ import net.minecraft.world.level.block.Block;
 
 public class MMETags {
 
-    //用于判断工具是否不可挖这个方块
     public static final TagKey<Block> INCORRECT_FOR_ADAMANTIUM_TOOL = ofBlock("incorrect_for_adamantium_tool");
     public static final TagKey<Block> INCORRECT_FOR_MITHRIL_TOOL = ofBlock("incorrect_for_mithril_tool");
     public static final TagKey<Block> INCORRECT_FOR_ANCIENT_METAL_TOOL = ofBlock("incorrect_for_ancient_metal_tool");

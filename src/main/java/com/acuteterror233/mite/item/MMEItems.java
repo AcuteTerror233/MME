@@ -1,7 +1,7 @@
 package com.acuteterror233.mite.item;
 
 import com.acuteterror233.mite.MME;
-import com.acuteterror233.mite.block.AtBlocks;
+import com.acuteterror233.mite.block.MMEBlocks;
 import com.acuteterror233.mite.component.MMEDataComponentTypes;
 import com.acuteterror233.mite.item.armor.MMEArmorMaterials;
 import com.acuteterror233.mite.item.equipment.MMEArmorMaterial;
@@ -874,27 +874,27 @@ public class MMEItems {
     public static final Item ADAMANTIUM_NUGGET = register(
             "adamantium_nugget",
             settings -> new NuggetItem(settings, 1000),
-            new Item.Properties().stacksTo(32)
+            new Item.Properties().stacksTo(32).component(MMEDataComponentTypes.CRAFTING_TIME, 16)
     );
     public static final Item MITHRIL_NUGGET = register(
             "mithril_nugget",
             settings -> new NuggetItem(settings, 500),
-            new Item.Properties().stacksTo(32)
+            new Item.Properties().stacksTo(32).component(MMEDataComponentTypes.CRAFTING_TIME, 10)
     );
     public static final Item ANCIENT_METAL_NUGGET = register(
             "ancient_metal_nugget",
             settings -> new NuggetItem(settings, 300),
-            new Item.Properties().stacksTo(32)
+            new Item.Properties().stacksTo(32).component(MMEDataComponentTypes.CRAFTING_TIME, 6)
     );
     public static final Item SILVER_NUGGET = register(
             "silver_nugget",
             settings -> new NuggetItem(settings, 50),
-            new Item.Properties().stacksTo(32)
+            new Item.Properties().stacksTo(32).component(MMEDataComponentTypes.CRAFTING_TIME, 1)
     );
     public static final Item COPPER_NUGGET = register(
             "copper_nugget",
             settings -> new NuggetItem(settings, 50),
-            new Item.Properties().stacksTo(32)
+            new Item.Properties().stacksTo(32).component(MMEDataComponentTypes.CRAFTING_TIME, 1)
     );
 
     public static final Item DIAMOND_SHARD = register("diamond_shard",
@@ -917,111 +917,111 @@ public class MMEItems {
             .icon(() -> new ItemStack(ADAMANTIUM_HELMET))
             .title(Component.translatable("itemGroup.mme.item_group"))
             .displayItems((context, entries) -> {
-                entries.accept(AtBlocks.CLAY_FURNACE);
-                entries.accept(AtBlocks.HARDENED_CLAY_FURNACE);
-                entries.accept(AtBlocks.NETHERRACK_FURNACE);
-                entries.accept(AtBlocks.OBSIDIAN_FURNACE);
-                entries.accept(AtBlocks.SANDSTONE_FURNACE);
+                entries.accept(MMEBlocks.CLAY_FURNACE);
+                entries.accept(MMEBlocks.HARDENED_CLAY_FURNACE);
+                entries.accept(MMEBlocks.NETHERRACK_FURNACE);
+                entries.accept(MMEBlocks.OBSIDIAN_FURNACE);
+                entries.accept(MMEBlocks.SANDSTONE_FURNACE);
 
-                entries.accept(AtBlocks.ADAMANTIUM_CRAFTING_TABLE);
-                entries.accept(AtBlocks.MITHRIL_CRAFTING_TABLE);
-                entries.accept(AtBlocks.ANCIENT_METAL_CRAFTING_TABLE);
-                entries.accept(AtBlocks.IRON_CRAFTING_TABLE);
-                entries.accept(AtBlocks.GOLD_CRAFTING_TABLE);
-                entries.accept(AtBlocks.SILVER_CRAFTING_TABLE);
-                entries.accept(AtBlocks.COPPER_CRAFTING_TABLE);
-                entries.accept(AtBlocks.FLINT_CRAFTING_TABLE);
-                entries.accept(AtBlocks.OBSIDIAN_CRAFTING_TABLE);
+                entries.accept(MMEBlocks.ADAMANTIUM_CRAFTING_TABLE);
+                entries.accept(MMEBlocks.MITHRIL_CRAFTING_TABLE);
+                entries.accept(MMEBlocks.ANCIENT_METAL_CRAFTING_TABLE);
+                entries.accept(MMEBlocks.IRON_CRAFTING_TABLE);
+                entries.accept(MMEBlocks.GOLD_CRAFTING_TABLE);
+                entries.accept(MMEBlocks.SILVER_CRAFTING_TABLE);
+                entries.accept(MMEBlocks.COPPER_CRAFTING_TABLE);
+                entries.accept(MMEBlocks.FLINT_CRAFTING_TABLE);
+                entries.accept(MMEBlocks.OBSIDIAN_CRAFTING_TABLE);
 
-                entries.accept(AtBlocks.MITHRIL_NUL_RUNESTORE);
-                entries.accept(AtBlocks.MITHRIL_QUAS_RUNESTORE);
-                entries.accept(AtBlocks.MITHRIL_POR_RUNESTORE);
-                entries.accept(AtBlocks.MITHRIL_AN_RUNESTORE);
-                entries.accept(AtBlocks.MITHRIL_NOX_RUNESTORE);
-                entries.accept(AtBlocks.MITHRIL_FLAM_RUNESTORE);
-                entries.accept(AtBlocks.MITHRIL_VAS_RUNESTORE);
-                entries.accept(AtBlocks.MITHRIL_DES_RUNESTORE);
-                entries.accept(AtBlocks.MITHRIL_ORT_RUNESTORE);
-                entries.accept(AtBlocks.MITHRIL_TYM_RUNESTORE);
-                entries.accept(AtBlocks.MITHRIL_CORP_RUNESTORE);
-                entries.accept(AtBlocks.MITHRIL_LOR_RUNESTORE);
-                entries.accept(AtBlocks.MITHRIL_MANI_RUNESTORE);
-                entries.accept(AtBlocks.MITHRIL_JUX_RUNESTORE);
-                entries.accept(AtBlocks.MITHRIL_YLEM_RUNESTORE);
-                entries.accept(AtBlocks.MITHRIL_SANCT_RUNESTORE);
+                entries.accept(MMEBlocks.MITHRIL_NUL_RUNESTORE);
+                entries.accept(MMEBlocks.MITHRIL_QUAS_RUNESTORE);
+                entries.accept(MMEBlocks.MITHRIL_POR_RUNESTORE);
+                entries.accept(MMEBlocks.MITHRIL_AN_RUNESTORE);
+                entries.accept(MMEBlocks.MITHRIL_NOX_RUNESTORE);
+                entries.accept(MMEBlocks.MITHRIL_FLAM_RUNESTORE);
+                entries.accept(MMEBlocks.MITHRIL_VAS_RUNESTORE);
+                entries.accept(MMEBlocks.MITHRIL_DES_RUNESTORE);
+                entries.accept(MMEBlocks.MITHRIL_ORT_RUNESTORE);
+                entries.accept(MMEBlocks.MITHRIL_TYM_RUNESTORE);
+                entries.accept(MMEBlocks.MITHRIL_CORP_RUNESTORE);
+                entries.accept(MMEBlocks.MITHRIL_LOR_RUNESTORE);
+                entries.accept(MMEBlocks.MITHRIL_MANI_RUNESTORE);
+                entries.accept(MMEBlocks.MITHRIL_JUX_RUNESTORE);
+                entries.accept(MMEBlocks.MITHRIL_YLEM_RUNESTORE);
+                entries.accept(MMEBlocks.MITHRIL_SANCT_RUNESTORE);
 
-                entries.accept(AtBlocks.ADAMANTIUM_NUL_RUNESTORE);
-                entries.accept(AtBlocks.ADAMANTIUM_QUAS_RUNESTORE);
-                entries.accept(AtBlocks.ADAMANTIUM_POR_RUNESTORE);
-                entries.accept(AtBlocks.ADAMANTIUM_AN_RUNESTORE);
-                entries.accept(AtBlocks.ADAMANTIUM_NOX_RUNESTORE);
-                entries.accept(AtBlocks.ADAMANTIUM_FLAM_RUNESTORE);
-                entries.accept(AtBlocks.ADAMANTIUM_VAS_RUNESTORE);
-                entries.accept(AtBlocks.ADAMANTIUM_DES_RUNESTORE);
-                entries.accept(AtBlocks.ADAMANTIUM_ORT_RUNESTORE);
-                entries.accept(AtBlocks.ADAMANTIUM_TYM_RUNESTORE);
-                entries.accept(AtBlocks.ADAMANTIUM_CORP_RUNESTORE);
-                entries.accept(AtBlocks.ADAMANTIUM_LOR_RUNESTORE);
-                entries.accept(AtBlocks.ADAMANTIUM_MANI_RUNESTORE);
-                entries.accept(AtBlocks.ADAMANTIUM_JUX_RUNESTORE);
-                entries.accept(AtBlocks.ADAMANTIUM_YLEM_RUNESTORE);
-                entries.accept(AtBlocks.ADAMANTIUM_SANCT_RUNESTORE);
+                entries.accept(MMEBlocks.ADAMANTIUM_NUL_RUNESTORE);
+                entries.accept(MMEBlocks.ADAMANTIUM_QUAS_RUNESTORE);
+                entries.accept(MMEBlocks.ADAMANTIUM_POR_RUNESTORE);
+                entries.accept(MMEBlocks.ADAMANTIUM_AN_RUNESTORE);
+                entries.accept(MMEBlocks.ADAMANTIUM_NOX_RUNESTORE);
+                entries.accept(MMEBlocks.ADAMANTIUM_FLAM_RUNESTORE);
+                entries.accept(MMEBlocks.ADAMANTIUM_VAS_RUNESTORE);
+                entries.accept(MMEBlocks.ADAMANTIUM_DES_RUNESTORE);
+                entries.accept(MMEBlocks.ADAMANTIUM_ORT_RUNESTORE);
+                entries.accept(MMEBlocks.ADAMANTIUM_TYM_RUNESTORE);
+                entries.accept(MMEBlocks.ADAMANTIUM_CORP_RUNESTORE);
+                entries.accept(MMEBlocks.ADAMANTIUM_LOR_RUNESTORE);
+                entries.accept(MMEBlocks.ADAMANTIUM_MANI_RUNESTORE);
+                entries.accept(MMEBlocks.ADAMANTIUM_JUX_RUNESTORE);
+                entries.accept(MMEBlocks.ADAMANTIUM_YLEM_RUNESTORE);
+                entries.accept(MMEBlocks.ADAMANTIUM_SANCT_RUNESTORE);
 
-                entries.accept(AtBlocks.ADAMANTIUM_ANVIL);
-                entries.accept(chipped(AtBlocks.CHIPPED_ADAMANTIUM_ANVIL));
-                entries.accept(damaged(AtBlocks.DAMAGED_ADAMANTIUM_ANVIL));
-                entries.accept(AtBlocks.MITHRIL_ANVIL);
-                entries.accept(chipped(AtBlocks.CHIPPED_MITHRIL_ANVIL));
-                entries.accept(damaged(AtBlocks.DAMAGED_MITHRIL_ANVIL));
-                entries.accept(AtBlocks.ANCIENT_METAL_ANVIL);
-                entries.accept(chipped(AtBlocks.CHIPPED_ANCIENT_METAL_ANVIL));
-                entries.accept(damaged(AtBlocks.DAMAGED_ANCIENT_METAL_ANVIL));
-                entries.accept(AtBlocks.GOLDEN_ANVIL);
-                entries.accept(chipped(AtBlocks.CHIPPED_GOLDEN_ANVIL));
-                entries.accept(damaged(AtBlocks.DAMAGED_GOLDEN_ANVIL));
-                entries.accept(AtBlocks.COPPER_ANVIL);
-                entries.accept(chipped(AtBlocks.CHIPPED_COPPER_ANVIL));
-                entries.accept(damaged(AtBlocks.DAMAGED_COPPER_ANVIL));
-                entries.accept(AtBlocks.SILVER_ANVIL);
-                entries.accept(chipped(AtBlocks.CHIPPED_SILVER_ANVIL));
-                entries.accept(damaged(AtBlocks.DAMAGED_SILVER_ANVIL));
+                entries.accept(MMEBlocks.ADAMANTIUM_ANVIL);
+                entries.accept(chipped(MMEBlocks.CHIPPED_ADAMANTIUM_ANVIL));
+                entries.accept(damaged(MMEBlocks.DAMAGED_ADAMANTIUM_ANVIL));
+                entries.accept(MMEBlocks.MITHRIL_ANVIL);
+                entries.accept(chipped(MMEBlocks.CHIPPED_MITHRIL_ANVIL));
+                entries.accept(damaged(MMEBlocks.DAMAGED_MITHRIL_ANVIL));
+                entries.accept(MMEBlocks.ANCIENT_METAL_ANVIL);
+                entries.accept(chipped(MMEBlocks.CHIPPED_ANCIENT_METAL_ANVIL));
+                entries.accept(damaged(MMEBlocks.DAMAGED_ANCIENT_METAL_ANVIL));
+                entries.accept(MMEBlocks.GOLDEN_ANVIL);
+                entries.accept(chipped(MMEBlocks.CHIPPED_GOLDEN_ANVIL));
+                entries.accept(damaged(MMEBlocks.DAMAGED_GOLDEN_ANVIL));
+                entries.accept(MMEBlocks.COPPER_ANVIL);
+                entries.accept(chipped(MMEBlocks.CHIPPED_COPPER_ANVIL));
+                entries.accept(damaged(MMEBlocks.DAMAGED_COPPER_ANVIL));
+                entries.accept(MMEBlocks.SILVER_ANVIL);
+                entries.accept(chipped(MMEBlocks.CHIPPED_SILVER_ANVIL));
+                entries.accept(damaged(MMEBlocks.DAMAGED_SILVER_ANVIL));
 
                 entries.accept(Blocks.NETHERITE_BLOCK);
-                entries.accept(AtBlocks.ADAMANTIUM_BLOCK);
-                entries.accept(AtBlocks.MITHRIL_BLOCK);
-                entries.accept(AtBlocks.ANCIENT_METAL_BLOCK);
+                entries.accept(MMEBlocks.ADAMANTIUM_BLOCK);
+                entries.accept(MMEBlocks.MITHRIL_BLOCK);
+                entries.accept(MMEBlocks.ANCIENT_METAL_BLOCK);
                 entries.accept(Blocks.IRON_BLOCK);
                 entries.accept(Blocks.GOLD_BLOCK);
-                entries.accept(AtBlocks.SILVER_BLOCK);
+                entries.accept(MMEBlocks.SILVER_BLOCK);
                 entries.accept(Blocks.COPPER_BLOCK);
 
-                entries.accept(AtBlocks.ADAMANTIUM_ORE);
-                entries.accept(AtBlocks.DEEPSLATE_ADAMANTIUM_ORE);
-                entries.accept(AtBlocks.MITHRIL_ORE);
-                entries.accept(AtBlocks.DEEPSLATE_MITHRIL_ORE);
+                entries.accept(MMEBlocks.ADAMANTIUM_ORE);
+                entries.accept(MMEBlocks.DEEPSLATE_ADAMANTIUM_ORE);
+                entries.accept(MMEBlocks.MITHRIL_ORE);
+                entries.accept(MMEBlocks.DEEPSLATE_MITHRIL_ORE);
                 entries.accept(Blocks.IRON_ORE);
                 entries.accept(Blocks.DEEPSLATE_IRON_ORE);
                 entries.accept(Blocks.GOLD_ORE);
                 entries.accept(Blocks.DEEPSLATE_GOLD_ORE);
-                entries.accept(AtBlocks.SILVER_ORE);
-                entries.accept(AtBlocks.DEEPSLATE_SILVER_ORE);
+                entries.accept(MMEBlocks.SILVER_ORE);
+                entries.accept(MMEBlocks.DEEPSLATE_SILVER_ORE);
                 entries.accept(Blocks.COPPER_ORE);
                 entries.accept(Blocks.DEEPSLATE_COPPER_ORE);
 
-                entries.accept(AtBlocks.ADAMANTIUM_BARS);
-                entries.accept(AtBlocks.MITHRIL_BARS);
-                entries.accept(AtBlocks.ANCIENT_METAL_BARS);
+                entries.accept(MMEBlocks.ADAMANTIUM_BARS);
+                entries.accept(MMEBlocks.MITHRIL_BARS);
+                entries.accept(MMEBlocks.ANCIENT_METAL_BARS);
                 entries.accept(Blocks.IRON_BARS);
-                entries.accept(AtBlocks.GOLDEN_BARS);
-                entries.accept(AtBlocks.SILVER_BARS);
-                entries.accept(AtBlocks.COPPER_BARS);
-                entries.accept(AtBlocks.MANTLE);
+                entries.accept(MMEBlocks.GOLDEN_BARS);
+                entries.accept(MMEBlocks.SILVER_BARS);
+                entries.accept(MMEBlocks.COPPER_BARS);
+                entries.accept(MMEBlocks.MANTLE);
 
-                entries.accept(AtBlocks.ADAMANTIUM_DOOR);
-                entries.accept(AtBlocks.ANCIENT_METAL_DOOR);
-                entries.accept(AtBlocks.MITHRIL_DOOR);
-                entries.accept(AtBlocks.SILVER_DOOR);
-                entries.accept(AtBlocks.GOLDEN_DOOR);
+                entries.accept(MMEBlocks.ADAMANTIUM_DOOR);
+                entries.accept(MMEBlocks.ANCIENT_METAL_DOOR);
+                entries.accept(MMEBlocks.MITHRIL_DOOR);
+                entries.accept(MMEBlocks.SILVER_DOOR);
+                entries.accept(MMEBlocks.GOLDEN_DOOR);
 
                 entries.accept(DIAMOND_SHARD);
                 entries.accept(EMERALD_SHARD);

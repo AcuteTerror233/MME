@@ -1,4 +1,4 @@
-package com.acuteterror233.mite.mixin.block.entity;
+package com.acuteterror233.mite.mixin.world.level.block.entity;
 
 import com.acuteterror233.mite.atinterface.CampfireBlockEntityExtension;
 import net.minecraft.core.BlockPos;

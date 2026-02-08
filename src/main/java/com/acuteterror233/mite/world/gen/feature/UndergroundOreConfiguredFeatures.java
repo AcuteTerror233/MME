@@ -2,7 +2,7 @@ package com.acuteterror233.mite.world.gen.feature;
 
 
 import com.acuteterror233.mite.MME;
-import com.acuteterror233.mite.block.AtBlocks;
+import com.acuteterror233.mite.block.MMEBlocks;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.features.FeatureUtils;
@@ -34,16 +34,16 @@ public class UndergroundOreConfiguredFeatures {
         RuleTest ruleTest = new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES);
         RuleTest ruleTest1 = new TagMatchTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES);
         List<OreConfiguration.TargetBlockState> mithril_Ore_List = List.of(
-                OreConfiguration.target(ruleTest, AtBlocks.MITHRIL_ORE.defaultBlockState()),
-                OreConfiguration.target(ruleTest1, AtBlocks.DEEPSLATE_MITHRIL_ORE.defaultBlockState())
+                OreConfiguration.target(ruleTest, MMEBlocks.MITHRIL_ORE.defaultBlockState()),
+                OreConfiguration.target(ruleTest1, MMEBlocks.DEEPSLATE_MITHRIL_ORE.defaultBlockState())
         );
         List<OreConfiguration.TargetBlockState> adamantium_Ore_List = List.of(
-                OreConfiguration.target(ruleTest, AtBlocks.ADAMANTIUM_ORE.defaultBlockState()),
-                OreConfiguration.target(ruleTest1, AtBlocks.DEEPSLATE_ADAMANTIUM_ORE.defaultBlockState())
+                OreConfiguration.target(ruleTest, MMEBlocks.ADAMANTIUM_ORE.defaultBlockState()),
+                OreConfiguration.target(ruleTest1, MMEBlocks.DEEPSLATE_ADAMANTIUM_ORE.defaultBlockState())
         );
         List<OreConfiguration.TargetBlockState> silver_Ore_List = List.of(
-                OreConfiguration.target(ruleTest, AtBlocks.SILVER_ORE.defaultBlockState()),
-                OreConfiguration.target(ruleTest1, AtBlocks.DEEPSLATE_SILVER_ORE.defaultBlockState())
+                OreConfiguration.target(ruleTest, MMEBlocks.SILVER_ORE.defaultBlockState()),
+                OreConfiguration.target(ruleTest1, MMEBlocks.DEEPSLATE_SILVER_ORE.defaultBlockState())
         );
         FeatureUtils.register(featureRegisterable, ORE_MITHRIL_SMALL, Feature.ORE, new OreConfiguration(mithril_Ore_List, 4, 0.5f));
         FeatureUtils.register(featureRegisterable, ORE_ADAMANTIUM_BURIED_SMALL, Feature.ORE, new OreConfiguration(adamantium_Ore_List, 4, 1.0f));

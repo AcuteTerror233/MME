@@ -404,8 +404,8 @@
   "item.mme.worm_cooked": "Worm Cooked",
   "item.mme.worm_raw": "Worm Raw",
   "itemGroup.mme.item_group": "Make Minecraft easier!",
-  "mme.coins.tooltip": "Right click to gain %d experience",
+  "mme.coins.tooltip": "%d XP per use",
   "mme.craftingTable.noAllowedCrafting": "§cThis item cannot be crafted§r",
   "mme.gradefurnac.fuelnotavailable": "§cThis furnace cannot burn this fuel§r",
-  "mme.nugget.tooltip": "Right click to store %d experience"
+  "mme.nugget.tooltip": "%d XP minus use"
 }

@@ -1,6 +1,6 @@
 package com.acuteterror233.mite;
 
-import com.acuteterror233.mite.block.AtBlocks;
+import com.acuteterror233.mite.block.MMEBlocks;
 import com.acuteterror233.mite.event.ServerRecipeModify;
 import com.acuteterror233.mite.item.MMEItems;
 import com.acuteterror233.mite.registry.LootTableReplace;
@@ -11,10 +11,8 @@ import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fabricmc.fabric.api.biome.v1.ModificationPhase;
 import net.fabricmc.fabric.api.entity.event.v1.EntitySleepEvents;
-import net.fabricmc.fabric.api.loot.v3.LootTableEvents;
 import net.fabricmc.fabric.api.object.builder.v1.world.poi.PointOfInterestHelper;
 import net.fabricmc.fabric.api.registry.FuelRegistryEvents;
-import net.minecraft.core.HolderLookup;
 import net.minecraft.data.worldgen.placement.OrePlacements;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -23,12 +21,10 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-import net.minecraft.world.level.storage.loot.LootTable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.Set;
-import java.util.function.Function;
 
 public class MME implements ModInitializer {
     public static final String MOD_ID = "mme";
@@ -39,24 +35,22 @@ public class MME implements ModInitializer {
     @Override
     public void onInitialize() {
         LOGGER.info(MOD_ID);
-        // 物品与方块注册
+
         MMEItems.init();
-        AtBlocks.init();
+        MMEBlocks.init();
 
-        // 地下传送门注册 POI
-        PointOfInterestHelper.register(ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, "underground_portal"), 0, 1, AtBlocks.UNDERGROUND_PORTAL);
+        PointOfInterestHelper.register(ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, "underground_portal"), 0, 1, MMEBlocks.UNDERGROUND_PORTAL);
 
-        // 群系添加/删除矿石
         InOverworldAdd(OverworldOrePlacedFeatures.OVERWORLD_ORE_SILVER_SMALL);
         InOverworldAdd(OverworldOrePlacedFeatures.OVERWORLD_ORE_SILVER);
         InOverworldRemovals(OrePlacements.ORE_DIAMOND_BURIED);
         InOverworldRemovals(OrePlacements.ORE_DIAMOND_LARGE);
         InOverworldRemovals(OrePlacements.ORE_DIAMOND_MEDIUM);
+
         ServerRecipeModify.EVENT.register(list -> list.removeIf(recipeEntry -> MME.FILTER_RECIPE_SET.contains(recipeEntry.id().location())));
-        LootTableEvents.REPLACE.register((key, original, source, registries) -> {
-            Function<HolderLookup.Provider, LootTable> function = LootTableReplace.LOOT_TABLES.get(key);
-            return function != null ? function.apply(registries) : null;
-        });
+
+        LootTableReplace.init();
+
         FuelRegistryEvents.BUILD.register((builder, context) -> {
             builder.add(MMEItems.WOODEN_CLUB, context.baseSmeltTime());
             builder.add(MMEItems.WOODEN_CUDGEL, context.baseSmeltTime());
@@ -66,6 +60,7 @@ public class MME implements ModInitializer {
             builder.add(Items.TORCH, context.baseSmeltTime() * 4);
             builder.add(Items.SOUL_TORCH, context.baseSmeltTime() * 6);
         });
+
         EntitySleepEvents.ALLOW_SLEEP_TIME.register((player, sleepingPos, vanillaResult) -> InteractionResult.SUCCESS);
         EntitySleepEvents.ALLOW_RESETTING_TIME.register(player -> !player.level().isBrightOutside());
     }

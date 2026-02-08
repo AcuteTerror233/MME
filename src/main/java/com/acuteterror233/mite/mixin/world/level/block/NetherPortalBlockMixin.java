@@ -1,4 +1,4 @@
-package com.acuteterror233.mite.mixin.block;
+package com.acuteterror233.mite.mixin.world.level.block;
 
 import com.acuteterror233.mite.world.gen.dimension.MMEDimensionTypeRegistrar;
 import net.minecraft.core.BlockPos;

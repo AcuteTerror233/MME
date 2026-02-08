@@ -1,6 +1,6 @@
 package com.acuteterror233.mite.block.entity;
 
-import com.acuteterror233.mite.block.AtBlocks;
+import com.acuteterror233.mite.block.MMEBlocks;
 import com.acuteterror233.mite.screen.GradeFurnaceMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -16,7 +16,7 @@ public class GradeFurnaceBlockEntity extends AbstractGradeFurnaceBlockEntity{
     }
 
     public GradeFurnaceBlockEntity(BlockPos pos, BlockState state, int maxCombustionGrade) {
-        super(AtBlocks.GRADE_FURNACE_BLOCK_ENTITY, pos, state, RecipeType.SMELTING, maxCombustionGrade);
+        super(MMEBlocks.GRADE_FURNACE_BLOCK_ENTITY, pos, state, RecipeType.SMELTING, maxCombustionGrade);
     }
 
     @Override

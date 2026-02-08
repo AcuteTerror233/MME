@@ -1,7 +1,7 @@
 package com.acuteterror233.mite.mixin.screen;
 
 import com.acuteterror233.mite.atinterface.InventoryMenuExtension;
-import com.acuteterror233.mite.block.AtBlocks;
+import com.acuteterror233.mite.block.MMEBlocks;
 import com.acuteterror233.mite.component.MMEDataComponentTypes;
 import com.acuteterror233.mite.registry.tag.MMETags;
 import com.acuteterror233.mite.screen.slot.PlayerCraftingResultSlot;
@@ -61,7 +61,7 @@ public abstract class InventoryMenuMixin extends AbstractCraftingMenu implements
         }
     };
     @Unique
-    private final Block[] CraftingTable = new Block[]{AtBlocks.COPPER_CRAFTING_TABLE, AtBlocks.SILVER_CRAFTING_TABLE};
+    private final Block[] CraftingTable = new Block[]{MMEBlocks.COPPER_CRAFTING_TABLE, MMEBlocks.SILVER_CRAFTING_TABLE};
     @Unique
     public final int[] CraftingTime = new int[]{0, DefaultCraftingTime, 0};
     @Unique

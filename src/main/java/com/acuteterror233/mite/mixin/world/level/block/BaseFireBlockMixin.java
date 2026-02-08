@@ -1,7 +1,7 @@
-package com.acuteterror233.mite.mixin.block;
+package com.acuteterror233.mite.mixin.world.level.block;
 
 import com.acuteterror233.mite.atinterface.UniversalPortalShapeExtension;
-import com.acuteterror233.mite.block.AtBlocks;
+import com.acuteterror233.mite.block.MMEBlocks;
 import com.acuteterror233.mite.generator.RunePortalCoordinateGenerator;
 import com.acuteterror233.mite.registry.tag.MMETags;
 import com.acuteterror233.mite.world.gen.dimension.MMEDimensionTypeRegistrar;
@@ -51,13 +51,13 @@ public abstract class BaseFireBlockMixin {
                     extension.MME$CreateRunePortal(world, getSafeLocation((ServerLevel) world, PurposePos));
                     return;
                 } else if (worldRegistryKey == Level.OVERWORLD && extension.MME$CheckBottomCorner(world, Blocks.BEDROCK)) {
-                    extension.MME$CreatePortal(world, AtBlocks.UNDERGROUND_PORTAL);
+                    extension.MME$CreatePortal(world, MMEBlocks.UNDERGROUND_PORTAL);
                     return;
-                } else if (worldRegistryKey == MMEDimensionTypeRegistrar.UNDERGROUND_LEVEL_KEY && extension.MME$CheckBottomCorner(world,AtBlocks.MANTLE)) {
+                } else if (worldRegistryKey == MMEDimensionTypeRegistrar.UNDERGROUND_LEVEL_KEY && extension.MME$CheckBottomCorner(world, MMEBlocks.MANTLE)) {
                     optional.get().createPortalBlocks(world);
                     return;
                 }
-                extension.MME$CreatePortal(world, AtBlocks.HOME_PORTAL);
+                extension.MME$CreatePortal(world, MMEBlocks.HOME_PORTAL);
                 return;
             }
             if (!state.canSurvive(world, pos)) {

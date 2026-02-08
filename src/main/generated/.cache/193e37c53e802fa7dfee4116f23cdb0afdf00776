@@ -42,7 +42,7 @@ ca073fb4c26b6b83a284548efa7e64847affc9d0 data/mme/loot_table/blocks/damaged_copp
 11b40034b4802ea7d963c1387610ccc1f9a31258 data/mme/loot_table/blocks/damaged_silver_anvil.json
 ac804190845f42b5478e5f179e80e07b549b37d2 data/mme/loot_table/blocks/deepslate_adamantium_ore.json
 e8d5992cf2c455d1028d8a0362ca4ffca0fda3ed data/mme/loot_table/blocks/deepslate_mithril_ore.json
-9869c922bca222422d8daa76b346250a83ccebe7 data/mme/loot_table/blocks/deepslate_silver_ore.json
+6c96fe250c82b87e2ebed0c16e0e9c8b4248700d data/mme/loot_table/blocks/deepslate_silver_ore.json
 142014e26ac1c2a5818171e5f0d136f9ac4bf321 data/mme/loot_table/blocks/flint_crafting_table.json
 d9bd5ffa6c677f0d627f03a23a66695da9377b5a data/mme/loot_table/blocks/gold_crafting_table.json
 1ec828c0f2fad272a18a88eb159ea286b0ab47ea data/mme/loot_table/blocks/golden_anvil.json
@@ -76,4 +76,4 @@ f072504e1609ebab3b4d140b9ed6a61878b5db67 data/mme/loot_table/blocks/obsidian_cra
 34b35640ea8df5c7abca8a08cbd32cfa8e91463c data/mme/loot_table/blocks/silver_bars.json
 10bb294fd9eeb018a9f676da2e70ba4b5f4c0221 data/mme/loot_table/blocks/silver_block.json
 654e314887ec2e51716f27ffe7019f8c67d6b190 data/mme/loot_table/blocks/silver_door.json
-603374b89f1453737422babb28cf82ed4d58341e data/mme/loot_table/blocks/silver_ore.json
+a1f036fd96db2bbf35a42fca32b7d7edf264d7f7 data/mme/loot_table/blocks/silver_ore.json

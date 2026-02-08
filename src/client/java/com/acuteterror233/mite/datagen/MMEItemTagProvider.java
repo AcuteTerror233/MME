@@ -1,6 +1,6 @@
 package com.acuteterror233.mite.datagen;
 
-import com.acuteterror233.mite.block.AtBlocks;
+import com.acuteterror233.mite.block.MMEBlocks;
 import com.acuteterror233.mite.item.MMEItems;
 import com.acuteterror233.mite.registry.tag.MMETags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
@@ -350,19 +350,19 @@ public class MMEItemTagProvider extends FabricTagProvider.ItemTagProvider {
 
         getOrCreateTagBuilder(MMETags.ADAMANTIUM_TOOL_MATERIALS)
                 .add(MMEItems.ADAMANTIUM_INGOT)
-                .add(AtBlocks.ADAMANTIUM_BLOCK.asItem())
+                .add(MMEBlocks.ADAMANTIUM_BLOCK.asItem())
                 .add(MMEItems.ADAMANTIUM_NUGGET);
         getOrCreateTagBuilder(MMETags.MITHRIL_TOOL_MATERIALS)
                 .add(MMEItems.MITHRIL_INGOT)
-                .add(AtBlocks.MITHRIL_BLOCK.asItem())
+                .add(MMEBlocks.MITHRIL_BLOCK.asItem())
                 .add(MMEItems.MITHRIL_NUGGET);
         getOrCreateTagBuilder(MMETags.ANCIENT_METAL_TOOL_MATERIALS)
                 .add(MMEItems.ANCIENT_METAL_INGOT)
-                .add(AtBlocks.ANCIENT_METAL_BLOCK.asItem())
+                .add(MMEBlocks.ANCIENT_METAL_BLOCK.asItem())
                 .add(MMEItems.ANCIENT_METAL_NUGGET);
         getOrCreateTagBuilder(MMETags.SILVER_TOOL_MATERIALS)
                 .add(MMEItems.SILVER_INGOT)
-                .add(AtBlocks.SILVER_BLOCK.asItem())
+                .add(MMEBlocks.SILVER_BLOCK.asItem())
                 .add(MMEItems.SILVER_NUGGET);
         getOrCreateTagBuilder(MMETags.COPPER_TOOL_MATERIALS)
                 .add(Items.COPPER_INGOT)
@@ -375,15 +375,15 @@ public class MMEItemTagProvider extends FabricTagProvider.ItemTagProvider {
         getOrCreateTagBuilder(MMETags.ADAMANTIUM_NOT_ALLOWED_MATERIAL);
         getOrCreateTagBuilder(MMETags.MITHRIL_NOT_ALLOWED_MATERIAL)
                 .addTag(MMETags.ADAMANTIUM_TOOL_MATERIALS)
-                .add(AtBlocks.ADAMANTIUM_BLOCK.asItem());
+                .add(MMEBlocks.ADAMANTIUM_BLOCK.asItem());
         getOrCreateTagBuilder(MMETags.ANCIENT_METAL_NOT_ALLOWED_MATERIAL)
                 .addTag(MMETags.MITHRIL_TOOL_MATERIALS)
                 .addTag(MMETags.MITHRIL_NOT_ALLOWED_MATERIAL)
-                .add(AtBlocks.MITHRIL_BLOCK.asItem());
+                .add(MMEBlocks.MITHRIL_BLOCK.asItem());
         getOrCreateTagBuilder(MMETags.IRON_NOT_ALLOWED_MATERIAL)
                 .addTag(MMETags.ANCIENT_METAL_TOOL_MATERIALS)
                 .addTag(MMETags.ANCIENT_METAL_NOT_ALLOWED_MATERIAL)
-                .add(AtBlocks.ANCIENT_METAL_BLOCK.asItem());
+                .add(MMEBlocks.ANCIENT_METAL_BLOCK.asItem());
         getOrCreateTagBuilder(MMETags.COPPER_OR_SILVER_NOT_ALLOWED_MATERIAL)
                 .addTag(ItemTags.IRON_TOOL_MATERIALS)
                 .addTag(MMETags.IRON_NOT_ALLOWED_MATERIAL)

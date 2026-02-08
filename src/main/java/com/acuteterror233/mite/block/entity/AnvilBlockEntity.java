@@ -1,6 +1,6 @@
 package com.acuteterror233.mite.block.entity;
 
-import com.acuteterror233.mite.block.AtBlocks;
+import com.acuteterror233.mite.block.MMEBlocks;
 import com.acuteterror233.mite.block.MMEAnvilBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
@@ -16,33 +16,33 @@ import java.util.Map;
 
 public class AnvilBlockEntity extends BlockEntity {
     public static final Map<Block, Block> ANVIL_MAP = new HashMap<>(){{
-        put(AtBlocks.ADAMANTIUM_ANVIL, AtBlocks.CHIPPED_ADAMANTIUM_ANVIL);
-        put(AtBlocks.CHIPPED_ADAMANTIUM_ANVIL, AtBlocks.DAMAGED_ADAMANTIUM_ANVIL);
-        put(AtBlocks.DAMAGED_ADAMANTIUM_ANVIL, Blocks.AIR);
-        put(AtBlocks.MITHRIL_ANVIL, AtBlocks.CHIPPED_MITHRIL_ANVIL);
-        put(AtBlocks.CHIPPED_MITHRIL_ANVIL, AtBlocks.DAMAGED_MITHRIL_ANVIL);
-        put(AtBlocks.DAMAGED_MITHRIL_ANVIL, Blocks.AIR);
-        put(AtBlocks.ANCIENT_METAL_ANVIL, AtBlocks.CHIPPED_ANCIENT_METAL_ANVIL);
-        put(AtBlocks.CHIPPED_ANCIENT_METAL_ANVIL, AtBlocks.DAMAGED_ANCIENT_METAL_ANVIL);
-        put(AtBlocks.DAMAGED_ANCIENT_METAL_ANVIL, Blocks.AIR);
+        put(MMEBlocks.ADAMANTIUM_ANVIL, MMEBlocks.CHIPPED_ADAMANTIUM_ANVIL);
+        put(MMEBlocks.CHIPPED_ADAMANTIUM_ANVIL, MMEBlocks.DAMAGED_ADAMANTIUM_ANVIL);
+        put(MMEBlocks.DAMAGED_ADAMANTIUM_ANVIL, Blocks.AIR);
+        put(MMEBlocks.MITHRIL_ANVIL, MMEBlocks.CHIPPED_MITHRIL_ANVIL);
+        put(MMEBlocks.CHIPPED_MITHRIL_ANVIL, MMEBlocks.DAMAGED_MITHRIL_ANVIL);
+        put(MMEBlocks.DAMAGED_MITHRIL_ANVIL, Blocks.AIR);
+        put(MMEBlocks.ANCIENT_METAL_ANVIL, MMEBlocks.CHIPPED_ANCIENT_METAL_ANVIL);
+        put(MMEBlocks.CHIPPED_ANCIENT_METAL_ANVIL, MMEBlocks.DAMAGED_ANCIENT_METAL_ANVIL);
+        put(MMEBlocks.DAMAGED_ANCIENT_METAL_ANVIL, Blocks.AIR);
         put(Blocks.ANVIL, Blocks.CHIPPED_ANVIL);
         put(Blocks.CHIPPED_ANVIL, Blocks.DAMAGED_ANVIL);
         put(Blocks.DAMAGED_ANVIL, Blocks.AIR);
-        put(AtBlocks.GOLDEN_ANVIL, AtBlocks.CHIPPED_GOLDEN_ANVIL);
-        put(AtBlocks.CHIPPED_GOLDEN_ANVIL, AtBlocks.DAMAGED_GOLDEN_ANVIL);
-        put(AtBlocks.DAMAGED_GOLDEN_ANVIL, Blocks.AIR);
-        put(AtBlocks.SILVER_ANVIL, AtBlocks.CHIPPED_SILVER_ANVIL);
-        put(AtBlocks.CHIPPED_SILVER_ANVIL, AtBlocks.DAMAGED_SILVER_ANVIL);
-        put(AtBlocks.DAMAGED_SILVER_ANVIL, Blocks.AIR);
-        put(AtBlocks.COPPER_ANVIL, AtBlocks.CHIPPED_COPPER_ANVIL);
-        put(AtBlocks.CHIPPED_COPPER_ANVIL, AtBlocks.DAMAGED_COPPER_ANVIL);
-        put(AtBlocks.DAMAGED_COPPER_ANVIL, Blocks.AIR);
+        put(MMEBlocks.GOLDEN_ANVIL, MMEBlocks.CHIPPED_GOLDEN_ANVIL);
+        put(MMEBlocks.CHIPPED_GOLDEN_ANVIL, MMEBlocks.DAMAGED_GOLDEN_ANVIL);
+        put(MMEBlocks.DAMAGED_GOLDEN_ANVIL, Blocks.AIR);
+        put(MMEBlocks.SILVER_ANVIL, MMEBlocks.CHIPPED_SILVER_ANVIL);
+        put(MMEBlocks.CHIPPED_SILVER_ANVIL, MMEBlocks.DAMAGED_SILVER_ANVIL);
+        put(MMEBlocks.DAMAGED_SILVER_ANVIL, Blocks.AIR);
+        put(MMEBlocks.COPPER_ANVIL, MMEBlocks.CHIPPED_COPPER_ANVIL);
+        put(MMEBlocks.CHIPPED_COPPER_ANVIL, MMEBlocks.DAMAGED_COPPER_ANVIL);
+        put(MMEBlocks.DAMAGED_COPPER_ANVIL, Blocks.AIR);
     }};
     private Integer maxDamage;
     private Integer damage;
 
     public AnvilBlockEntity(BlockPos pos, BlockState state) {
-        super(AtBlocks.ANVIL_BLOCK_ENTITY, pos, state);
+        super(MMEBlocks.ANVIL_BLOCK_ENTITY, pos, state);
         this.maxDamage = 0;
         this.damage = 0;
     }

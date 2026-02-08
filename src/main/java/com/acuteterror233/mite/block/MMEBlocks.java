@@ -37,13 +37,7 @@ import net.minecraft.world.level.material.PushReaction;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
-/**
- * 方块注册中心：定义并注册模组中的全部方块、方块实体与界面处理器。
- *
- * <p>统一封装多种 register 重载，
- * 以便在创建方块时同步完成物品注册与自定义 {@link Item.Properties} 配置。</p>
- */
-public class AtBlocks {
+public class MMEBlocks {
     public static final Block ADAMANTIUM_ORE = register(        //艾德曼矿
             "adamantium_ore",
             BlockBehaviour.Properties.of().strength(5.0f, 3.0f).requiresCorrectToolForDrops(),

@@ -1,4 +1,4 @@
-package com.acuteterror233.mite.mixin.item;
+package com.acuteterror233.mite.mixin.world.item;
 
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.DyeItem;

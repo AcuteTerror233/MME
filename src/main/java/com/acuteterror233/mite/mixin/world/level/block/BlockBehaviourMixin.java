@@ -1,4 +1,4 @@
-package com.acuteterror233.mite.mixin.block;
+package com.acuteterror233.mite.mixin.world.level.block;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Player;
@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 
 @Mixin(BlockBehaviour.class)
-public abstract class AbstractBlockMixin implements FeatureElement {
+public abstract class BlockBehaviourMixin implements FeatureElement {
 
     /**
      * @author AcuteTerror233

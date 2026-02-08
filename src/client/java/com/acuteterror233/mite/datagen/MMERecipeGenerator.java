@@ -1,7 +1,7 @@
 package com.acuteterror233.mite.datagen;
 
 import com.acuteterror233.mite.MME;
-import com.acuteterror233.mite.block.AtBlocks;
+import com.acuteterror233.mite.block.MMEBlocks;
 import com.acuteterror233.mite.item.MMEItems;
 import com.acuteterror233.mite.registry.tag.MMETags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
@@ -41,30 +41,30 @@ public class MMERecipeGenerator extends FabricRecipeProvider {
                         .unlockedBy("has_raw_silver", this.has(MMEItems.RAW_SILVER))
                         .save(this.output, "silver_ingot_from_raw_silver");
 
-                SimpleCookingRecipeBuilder.smelting(Ingredient.of(AtBlocks.ADAMANTIUM_ORE), RecipeCategory.MISC, MMEItems.ADAMANTIUM_INGOT, 5F, 200)
-                        .unlockedBy("has_adamantium_ore", this.has(AtBlocks.ADAMANTIUM_ORE))
+                SimpleCookingRecipeBuilder.smelting(Ingredient.of(MMEBlocks.ADAMANTIUM_ORE), RecipeCategory.MISC, MMEItems.ADAMANTIUM_INGOT, 5F, 200)
+                        .unlockedBy("has_adamantium_ore", this.has(MMEBlocks.ADAMANTIUM_ORE))
                         .save(this.output, "adamantium_ingot_from_adamantium_ore");
-                SimpleCookingRecipeBuilder.smelting(Ingredient.of(AtBlocks.MITHRIL_ORE), RecipeCategory.MISC, MMEItems.MITHRIL_INGOT, 3F, 200)
-                        .unlockedBy("has_mithril_ore", this.has(AtBlocks.MITHRIL_ORE))
+                SimpleCookingRecipeBuilder.smelting(Ingredient.of(MMEBlocks.MITHRIL_ORE), RecipeCategory.MISC, MMEItems.MITHRIL_INGOT, 3F, 200)
+                        .unlockedBy("has_mithril_ore", this.has(MMEBlocks.MITHRIL_ORE))
                         .save(this.output, "mithril_ingot_from_mithril_ore");
-                SimpleCookingRecipeBuilder.smelting(Ingredient.of(AtBlocks.SILVER_ORE), RecipeCategory.MISC, MMEItems.SILVER_INGOT, 1F, 200)
-                        .unlockedBy("has_silver_ore", this.has(AtBlocks.SILVER_ORE))
+                SimpleCookingRecipeBuilder.smelting(Ingredient.of(MMEBlocks.SILVER_ORE), RecipeCategory.MISC, MMEItems.SILVER_INGOT, 1F, 200)
+                        .unlockedBy("has_silver_ore", this.has(MMEBlocks.SILVER_ORE))
                         .save(this.output, "silver_ingot_from_silver_ore");
 
-                SimpleCookingRecipeBuilder.smelting(Ingredient.of(AtBlocks.DEEPSLATE_ADAMANTIUM_ORE), RecipeCategory.MISC, MMEItems.ADAMANTIUM_INGOT, 5F, 200)
-                        .unlockedBy("has_deepslate_adamantium_ore", this.has(AtBlocks.DEEPSLATE_ADAMANTIUM_ORE))
+                SimpleCookingRecipeBuilder.smelting(Ingredient.of(MMEBlocks.DEEPSLATE_ADAMANTIUM_ORE), RecipeCategory.MISC, MMEItems.ADAMANTIUM_INGOT, 5F, 200)
+                        .unlockedBy("has_deepslate_adamantium_ore", this.has(MMEBlocks.DEEPSLATE_ADAMANTIUM_ORE))
                         .save(this.output, "adamantium_ingot_from_deepslate_adamantium_ore");
-                SimpleCookingRecipeBuilder.smelting(Ingredient.of(AtBlocks.DEEPSLATE_MITHRIL_ORE), RecipeCategory.MISC, MMEItems.MITHRIL_INGOT, 3F, 200)
-                        .unlockedBy("has_deepslate_mithril_ore", this.has(AtBlocks.DEEPSLATE_MITHRIL_ORE))
+                SimpleCookingRecipeBuilder.smelting(Ingredient.of(MMEBlocks.DEEPSLATE_MITHRIL_ORE), RecipeCategory.MISC, MMEItems.MITHRIL_INGOT, 3F, 200)
+                        .unlockedBy("has_deepslate_mithril_ore", this.has(MMEBlocks.DEEPSLATE_MITHRIL_ORE))
                         .save(this.output, "mithril_ingot_from_deepslate_mithril_ore");
-                SimpleCookingRecipeBuilder.smelting(Ingredient.of(AtBlocks.DEEPSLATE_SILVER_ORE), RecipeCategory.MISC, MMEItems.SILVER_INGOT, 1F, 200)
-                        .unlockedBy("has_deepslate_silver_ore", this.has(AtBlocks.DEEPSLATE_SILVER_ORE))
+                SimpleCookingRecipeBuilder.smelting(Ingredient.of(MMEBlocks.DEEPSLATE_SILVER_ORE), RecipeCategory.MISC, MMEItems.SILVER_INGOT, 1F, 200)
+                        .unlockedBy("has_deepslate_silver_ore", this.has(MMEBlocks.DEEPSLATE_SILVER_ORE))
                         .save(this.output, "silver_ingot_from_deepslate_silver_ore");
 
-                nineBlockStorageRecipes(RecipeCategory.MISC, MMEItems.ADAMANTIUM_INGOT, RecipeCategory.BUILDING_BLOCKS, AtBlocks.ADAMANTIUM_BLOCK, "adamantium_block_from_adamantium_ingot", null , "adamantium_ingot_from_adamantium_block",null);
-                nineBlockStorageRecipes(RecipeCategory.MISC, MMEItems.ANCIENT_METAL_INGOT, RecipeCategory.BUILDING_BLOCKS, AtBlocks.ANCIENT_METAL_BLOCK, "ancient_metal_block_from_ancient_metal_ingot", null , "ancient_metal_ingot_from_ancient_metal_block", null);
-                nineBlockStorageRecipes(RecipeCategory.MISC, MMEItems.MITHRIL_INGOT, RecipeCategory.BUILDING_BLOCKS, AtBlocks.MITHRIL_BLOCK, "mithril_block_from_mithril_ingot", null , "mithril_ingot_from_mithril_block", null);
-                nineBlockStorageRecipes(RecipeCategory.MISC, MMEItems.SILVER_INGOT, RecipeCategory.BUILDING_BLOCKS, AtBlocks.SILVER_BLOCK, "silver_block_from_silver_ingot", null , "silver_ingot_from_silver_block", null);
+                nineBlockStorageRecipes(RecipeCategory.MISC, MMEItems.ADAMANTIUM_INGOT, RecipeCategory.BUILDING_BLOCKS, MMEBlocks.ADAMANTIUM_BLOCK, "adamantium_block_from_adamantium_ingot", null , "adamantium_ingot_from_adamantium_block",null);
+                nineBlockStorageRecipes(RecipeCategory.MISC, MMEItems.ANCIENT_METAL_INGOT, RecipeCategory.BUILDING_BLOCKS, MMEBlocks.ANCIENT_METAL_BLOCK, "ancient_metal_block_from_ancient_metal_ingot", null , "ancient_metal_ingot_from_ancient_metal_block", null);
+                nineBlockStorageRecipes(RecipeCategory.MISC, MMEItems.MITHRIL_INGOT, RecipeCategory.BUILDING_BLOCKS, MMEBlocks.MITHRIL_BLOCK, "mithril_block_from_mithril_ingot", null , "mithril_ingot_from_mithril_block", null);
+                nineBlockStorageRecipes(RecipeCategory.MISC, MMEItems.SILVER_INGOT, RecipeCategory.BUILDING_BLOCKS, MMEBlocks.SILVER_BLOCK, "silver_block_from_silver_ingot", null , "silver_ingot_from_silver_block", null);
 
                 nineBlockStorageRecipes(RecipeCategory.MISC, MMEItems.ADAMANTIUM_NUGGET, RecipeCategory.MISC, MMEItems.ADAMANTIUM_INGOT, "adamantium_ingot_from_adamantium_nugget", null,  "adamantium_nugget_from_adamantium_ingot", null);
                 nineBlockStorageRecipes(RecipeCategory.MISC, MMEItems.ANCIENT_METAL_NUGGET, RecipeCategory.MISC, MMEItems.ANCIENT_METAL_INGOT, "ancient_metal_ingot_from_ancient_metal_nugget", null,  "ancient_metal_nugget_from_ancient_metal_ingot", null);
@@ -78,43 +78,43 @@ public class MMERecipeGenerator extends FabricRecipeProvider {
                 twoByTwoPacker(RecipeCategory.MISC, Items.FLINT, MMEItems.FLINT_SHARD);
                 twoByTwoPacker(RecipeCategory.MISC, Items.QUARTZ, MMEItems.QUARTZ_SHARD);
 
-                offerCraftingTableRecipes(AtBlocks.ADAMANTIUM_CRAFTING_TABLE, MMEItems.ADAMANTIUM_INGOT);
-                offerCraftingTableRecipes(AtBlocks.ANCIENT_METAL_CRAFTING_TABLE, MMEItems.ANCIENT_METAL_INGOT);
-                offerCraftingTableRecipes(AtBlocks.MITHRIL_CRAFTING_TABLE, MMEItems.MITHRIL_INGOT);
-                offerCraftingTableRecipes(AtBlocks.SILVER_CRAFTING_TABLE, MMEItems.SILVER_INGOT);
-                offerCraftingTableRecipes(AtBlocks.COPPER_CRAFTING_TABLE, Items.COPPER_INGOT);
-                offerCraftingTableRecipes(AtBlocks.IRON_CRAFTING_TABLE, Items.IRON_INGOT);
-                offerCraftingTableRecipes(AtBlocks.GOLD_CRAFTING_TABLE, Items.GOLD_INGOT);
-                shapeless(RecipeCategory.DECORATIONS, AtBlocks.FLINT_CRAFTING_TABLE)
+                offerCraftingTableRecipes(MMEBlocks.ADAMANTIUM_CRAFTING_TABLE, MMEItems.ADAMANTIUM_INGOT);
+                offerCraftingTableRecipes(MMEBlocks.ANCIENT_METAL_CRAFTING_TABLE, MMEItems.ANCIENT_METAL_INGOT);
+                offerCraftingTableRecipes(MMEBlocks.MITHRIL_CRAFTING_TABLE, MMEItems.MITHRIL_INGOT);
+                offerCraftingTableRecipes(MMEBlocks.SILVER_CRAFTING_TABLE, MMEItems.SILVER_INGOT);
+                offerCraftingTableRecipes(MMEBlocks.COPPER_CRAFTING_TABLE, Items.COPPER_INGOT);
+                offerCraftingTableRecipes(MMEBlocks.IRON_CRAFTING_TABLE, Items.IRON_INGOT);
+                offerCraftingTableRecipes(MMEBlocks.GOLD_CRAFTING_TABLE, Items.GOLD_INGOT);
+                shapeless(RecipeCategory.DECORATIONS, MMEBlocks.FLINT_CRAFTING_TABLE)
                         .requires(MMEItems.FLINT_KNIFE)
                         .requires(ItemTags.OAK_LOGS)
                         .unlockedBy(getHasName(MMEItems.FLINT_KNIFE), this.has(MMEItems.FLINT_KNIFE))
                         .save(this.output);
-                shapeless(RecipeCategory.DECORATIONS, AtBlocks.OBSIDIAN_CRAFTING_TABLE)
+                shapeless(RecipeCategory.DECORATIONS, MMEBlocks.OBSIDIAN_CRAFTING_TABLE)
                         .requires(MMEItems.OBSIDIAN_KNIFE)
                         .requires(ItemTags.OAK_LOGS)
                         .unlockedBy(getHasName(MMEItems.OBSIDIAN_KNIFE), this.has(MMEItems.OBSIDIAN_KNIFE))
                         .save(this.output);
 
-                offerAnvilRecipes(AtBlocks.ADAMANTIUM_ANVIL, MMEItems.ADAMANTIUM_INGOT, AtBlocks.ADAMANTIUM_BLOCK);
-                offerAnvilRecipes(AtBlocks.ANCIENT_METAL_ANVIL, MMEItems.ANCIENT_METAL_INGOT, AtBlocks.ANCIENT_METAL_BLOCK);
-                offerAnvilRecipes(AtBlocks.MITHRIL_ANVIL, MMEItems.MITHRIL_INGOT, AtBlocks.MITHRIL_BLOCK);
-                offerAnvilRecipes(AtBlocks.SILVER_ANVIL, MMEItems.SILVER_INGOT, AtBlocks.SILVER_BLOCK);
-                offerAnvilRecipes(AtBlocks.COPPER_ANVIL, Items.COPPER_INGOT, Blocks.COPPER_BLOCK);
-                offerAnvilRecipes(AtBlocks.GOLDEN_ANVIL, Items.GOLD_INGOT, Blocks.GOLD_BLOCK);
+                offerAnvilRecipes(MMEBlocks.ADAMANTIUM_ANVIL, MMEItems.ADAMANTIUM_INGOT, MMEBlocks.ADAMANTIUM_BLOCK);
+                offerAnvilRecipes(MMEBlocks.ANCIENT_METAL_ANVIL, MMEItems.ANCIENT_METAL_INGOT, MMEBlocks.ANCIENT_METAL_BLOCK);
+                offerAnvilRecipes(MMEBlocks.MITHRIL_ANVIL, MMEItems.MITHRIL_INGOT, MMEBlocks.MITHRIL_BLOCK);
+                offerAnvilRecipes(MMEBlocks.SILVER_ANVIL, MMEItems.SILVER_INGOT, MMEBlocks.SILVER_BLOCK);
+                offerAnvilRecipes(MMEBlocks.COPPER_ANVIL, Items.COPPER_INGOT, Blocks.COPPER_BLOCK);
+                offerAnvilRecipes(MMEBlocks.GOLDEN_ANVIL, Items.GOLD_INGOT, Blocks.GOLD_BLOCK);
 
-                offerBarsRecipes(AtBlocks.ADAMANTIUM_BARS, MMEItems.ADAMANTIUM_INGOT);
-                offerBarsRecipes(AtBlocks.ANCIENT_METAL_BARS, MMEItems.ANCIENT_METAL_INGOT);
-                offerBarsRecipes(AtBlocks.MITHRIL_BARS, MMEItems.MITHRIL_INGOT);
-                offerBarsRecipes(AtBlocks.SILVER_BARS, MMEItems.SILVER_INGOT);
-                offerBarsRecipes(AtBlocks.COPPER_BARS, Items.COPPER_INGOT);
-                offerBarsRecipes(AtBlocks.GOLDEN_BARS, Items.GOLD_INGOT);
+                offerBarsRecipes(MMEBlocks.ADAMANTIUM_BARS, MMEItems.ADAMANTIUM_INGOT);
+                offerBarsRecipes(MMEBlocks.ANCIENT_METAL_BARS, MMEItems.ANCIENT_METAL_INGOT);
+                offerBarsRecipes(MMEBlocks.MITHRIL_BARS, MMEItems.MITHRIL_INGOT);
+                offerBarsRecipes(MMEBlocks.SILVER_BARS, MMEItems.SILVER_INGOT);
+                offerBarsRecipes(MMEBlocks.COPPER_BARS, Items.COPPER_INGOT);
+                offerBarsRecipes(MMEBlocks.GOLDEN_BARS, Items.GOLD_INGOT);
 
-                offerDoorRecipes(AtBlocks.ADAMANTIUM_DOOR, MMEItems.ADAMANTIUM_INGOT);
-                offerDoorRecipes(AtBlocks.ANCIENT_METAL_DOOR, MMEItems.ANCIENT_METAL_INGOT);
-                offerDoorRecipes(AtBlocks.MITHRIL_DOOR, MMEItems.MITHRIL_INGOT);
-                offerDoorRecipes(AtBlocks.SILVER_DOOR, MMEItems.SILVER_INGOT);
-                offerDoorRecipes(AtBlocks.GOLDEN_DOOR, Items.GOLD_INGOT);
+                offerDoorRecipes(MMEBlocks.ADAMANTIUM_DOOR, MMEItems.ADAMANTIUM_INGOT);
+                offerDoorRecipes(MMEBlocks.ANCIENT_METAL_DOOR, MMEItems.ANCIENT_METAL_INGOT);
+                offerDoorRecipes(MMEBlocks.MITHRIL_DOOR, MMEItems.MITHRIL_INGOT);
+                offerDoorRecipes(MMEBlocks.SILVER_DOOR, MMEItems.SILVER_INGOT);
+                offerDoorRecipes(MMEBlocks.GOLDEN_DOOR, Items.GOLD_INGOT);
 
                 offerFishingRodRecipes(MMEItems.ADAMANTIUM_FISHING_ROD, MMEItems.ADAMANTIUM_NUGGET);
                 offerFishingRodRecipes(MMEItems.ANCIENT_METAL_FISHING_ROD, MMEItems.ANCIENT_METAL_NUGGET);

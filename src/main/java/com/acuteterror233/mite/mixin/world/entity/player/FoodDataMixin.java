@@ -49,9 +49,6 @@ public abstract class FoodDataMixin implements FoodDataExtension {
         return this.foodLevel < maxFoodLevel;
     }
 
-    @Shadow
-    public abstract void addExhaustion(float exhaustion);
-
     /**
      * @author AcuteTerror233
      * @reason 添加最大食物等级判断
@@ -103,9 +100,7 @@ public abstract class FoodDataMixin implements FoodDataExtension {
         }else {
             this.healTickTimer = 0;
             if (this.tickTimer >= 300) {
-                if (player.getHealth() > 10.0F || difficulty == Difficulty.HARD || player.getHealth() > 1.0F && difficulty == Difficulty.NORMAL) {
-                    player.hurtServer(serverWorld, player.damageSources().starve(), 1.0F);
-                }
+                player.hurtServer(serverWorld, player.damageSources().starve(), 1.0F);
                 this.tickTimer = 0;
             }
         }
