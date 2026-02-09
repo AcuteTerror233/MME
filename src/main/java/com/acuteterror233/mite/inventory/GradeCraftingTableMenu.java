@@ -1,8 +1,8 @@
-package com.acuteterror233.mite.screen;
+package com.acuteterror233.mite.inventory;
 
 import com.acuteterror233.mite.block.MMEBlocks;
+import com.acuteterror233.mite.inventory.slot.CraftingTableResultSlot;
 import com.acuteterror233.mite.registry.tag.MMETags;
-import com.acuteterror233.mite.screen.slot.CraftingTableResultSlot;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.Container;

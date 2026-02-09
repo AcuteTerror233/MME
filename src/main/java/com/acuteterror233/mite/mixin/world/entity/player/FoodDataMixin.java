@@ -20,8 +20,9 @@ public abstract class FoodDataMixin implements FoodDataExtension {
     private int maxFoodLevel = 6;
     @Unique
     private int healTickTimer = 0;
+    @Mutable
     @Shadow
-    private int foodLevel;
+    private int foodLevel = 6;
     @Shadow
     private float saturationLevel;
     @Shadow
@@ -87,7 +88,7 @@ public abstract class FoodDataMixin implements FoodDataExtension {
                 player.heal(1.0F);
                 this.healTickTimer = 0;
             }
-            if (this.tickTimer >= 900){
+            if (this.tickTimer >= 1800){
                 this.tickTimer = 0;
                 if (player.gameMode() != GameType.CREATIVE) {
                     if (this.saturationLevel > 0) {

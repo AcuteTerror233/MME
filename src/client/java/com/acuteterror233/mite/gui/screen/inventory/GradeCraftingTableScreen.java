@@ -1,7 +1,7 @@
 package com.acuteterror233.mite.gui.screen.inventory;
 
-import com.acuteterror233.mite.screen.GradeCraftingTableMenu;
-import com.acuteterror233.mite.screen.slot.CraftingTableResultSlot;
+import com.acuteterror233.mite.inventory.GradeCraftingTableMenu;
+import com.acuteterror233.mite.inventory.slot.CraftingTableResultSlot;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.gui.GuiGraphics;
@@ -14,6 +14,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.item.ItemStack;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
@@ -31,7 +32,7 @@ public class GradeCraftingTableScreen extends AbstractRecipeBookScreen<GradeCraf
     }
 
     @Override
-    protected ScreenPosition getRecipeBookButtonPosition() {
+    protected @NotNull ScreenPosition getRecipeBookButtonPosition() {
         return new ScreenPosition(this.leftPos + 5, this.height / 2 - 49);
     }
 

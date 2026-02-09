@@ -1,7 +1,7 @@
-package com.acuteterror233.mite.screen;
+package com.acuteterror233.mite.inventory;
 
 import com.acuteterror233.mite.component.MMEDataComponentTypes;
-import com.acuteterror233.mite.screen.slot.CraftingTableResultSlot;
+import com.acuteterror233.mite.inventory.slot.CraftingTableResultSlot;
 import net.minecraft.network.protocol.game.ClientboundContainerSetSlotPacket;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;

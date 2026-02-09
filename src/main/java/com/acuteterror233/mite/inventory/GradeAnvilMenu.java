@@ -1,4 +1,4 @@
-package com.acuteterror233.mite.screen;
+package com.acuteterror233.mite.inventory;
 
 import com.acuteterror233.mite.block.MMEBlocks;
 import com.acuteterror233.mite.block.entity.AnvilBlockEntity;

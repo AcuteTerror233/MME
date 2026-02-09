@@ -1,7 +1,7 @@
 package com.acuteterror233.mite.block.entity;
 
 import com.acuteterror233.mite.block.MMEBlocks;
-import com.acuteterror233.mite.screen.GradeFurnaceMenu;
+import com.acuteterror233.mite.inventory.GradeFurnaceMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Inventory;

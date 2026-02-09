@@ -1,4 +1,4 @@
-package com.acuteterror233.mite.mixin.screen.slot;
+package com.acuteterror233.mite.mixin.inventory.slot;
 
 import com.acuteterror233.mite.registry.tag.MMETags;
 import net.minecraft.world.inventory.FurnaceFuelSlot;

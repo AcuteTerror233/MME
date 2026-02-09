@@ -507,6 +507,15 @@ public class MMERecipeGenerator extends FabricRecipeProvider {
                         .requires(Items.LEATHER)
                         .unlockedBy(getHasName(Items.LEATHER), has(Items.LEATHER))
                         .save(this.output);
+                shaped(RecipeCategory.DECORATIONS, MMEBlocks.EMERALD_ENCHANTING_TABLE)
+                        .define('B', Items.BOOK)
+                        .define('#', Blocks.OBSIDIAN)
+                        .define('D', Items.EMERALD)
+                        .pattern(" B ")
+                        .pattern("D#D")
+                        .pattern("###")
+                        .unlockedBy("has_obsidian", this.has(Blocks.OBSIDIAN))
+                        .save(this.output);
             }
 
             private void offerMilkBucketRecipes(Item milkBucket, Item bucket) {

@@ -449,6 +449,8 @@ public class En_usLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(MMEBlocks.DEEPSLATE_MITHRIL_ORE, "Deepslate Mithril Ore");
         translationBuilder.add(MMEBlocks.DEEPSLATE_SILVER_ORE, "Deepslate Silver Ore");
 
+        translationBuilder.add(MMEBlocks.EMERALD_ENCHANTING_TABLE, "Emerald Enchanting Table");
+
         translationBuilder.add(MMEItems.SINEW, "Leather Thread");
     }
 }

@@ -6,6 +6,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 
@@ -32,7 +33,11 @@ public final class VanillaBlockModify {
             Map.entry(ResourceLocation.withDefaultNamespace("chipped_anvil"),settings -> BlockBehaviour.Properties.ofFullCopy(Blocks.ANVIL)),
             Map.entry(ResourceLocation.withDefaultNamespace("damaged_anvil"),settings -> BlockBehaviour.Properties.ofFullCopy(Blocks.ANVIL)),
             Map.entry(ResourceLocation.withDefaultNamespace("crafting_table"), settings -> settings.strength(0.5F)),
-            Map.entry(ResourceLocation.withDefaultNamespace("obsidian"), settings -> settings.strength(3.0F, 1200.0F))
-
+            Map.entry(ResourceLocation.withDefaultNamespace("obsidian"), settings -> settings.strength(3.0F, 1200.0F)),
+            Map.entry(ResourceLocation.withDefaultNamespace("enchanting_table"), properties -> BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_RED)
+                    .instrument(NoteBlockInstrument.BASEDRUM)
+                    .lightLevel(blockStatex -> 7)
+                    .strength(0.5F, 1200.0F))
     );
 }

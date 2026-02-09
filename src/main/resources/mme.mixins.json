@@ -7,9 +7,9 @@
   "mixins": [
     "BootstrapMixin",
     "component.DataComponentsMixin",
+    "inventory.InventoryMenuMixin",
+    "inventory.slot.FurnaceFuelSlotMixin",
     "recipe.RecipeManagerMixin",
-    "screen.InventoryMenuMixin",
-    "screen.slot.FurnaceFuelSlotMixin",
     "server.MinecraftServerMixin",
     "server.world.ServerLevelMixin",
     "world.dimension.PortalShapeMixin",
@@ -28,6 +28,7 @@
     "world.item.ItemsMixin",
     "world.item.ItemStackMixin",
     "world.item.equipment.ArmorTypeMixin",
+    "world.item.equipment.EnchantmentHelperMixin",
     "world.level.block.BambooStalkBlockMixin",
     "world.level.block.BaseFireBlockMixin",
     "world.level.block.BlockBehaviourMixin",
@@ -38,6 +39,7 @@
     "world.level.block.CampfireBlockMixin",
     "world.level.block.CocoaBlockMixin",
     "world.level.block.CropBlockMixin",
+    "world.level.block.EnchantingTableBlockMixin",
     "world.level.block.GrowingPlantHeadBlockMixin",
     "world.level.block.LiquidBlockMixin",
     "world.level.block.NetherPortalBlockMixin",
@@ -47,7 +49,9 @@
     "world.level.block.StemBlockMixin",
     "world.level.block.SugarCaneBlockMixin",
     "world.level.block.SweetBerryBushBlockMixin",
-    "world.level.block.entity.CampfireBlockEntityMixin"
+    "world.level.block.entity.BlockEntityTypeMixin",
+    "world.level.block.entity.CampfireBlockEntityMixin",
+    "world.level.block.state.BlockBehaviourPropertiesMixin"
   ],
   "injectors": {
     "defaultRequire": 1

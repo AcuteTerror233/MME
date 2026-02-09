@@ -1,6 +1,6 @@
 package com.acuteterror233.mite.gui.screen.inventory;
 
-import com.acuteterror233.mite.screen.GradeAnvilMenu;
+import com.acuteterror233.mite.inventory.GradeAnvilMenu;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.Minecraft;

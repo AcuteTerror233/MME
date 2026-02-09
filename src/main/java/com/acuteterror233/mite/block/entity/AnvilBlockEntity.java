@@ -1,7 +1,7 @@
 package com.acuteterror233.mite.block.entity;
 
-import com.acuteterror233.mite.block.MMEBlocks;
 import com.acuteterror233.mite.block.MMEAnvilBlock;
+import com.acuteterror233.mite.block.MMEBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;

@@ -42,6 +42,8 @@ public class MMETags {
     public static final TagKey<Block> RUNESTORE = ofBlock("runestore");
 
     public static final TagKey<Block> CRAFTING_TABLE = ofBlock("crafting_table");
+    public static final TagKey<Block> ENCHANTING_TABLE = ofBlock("enchanting_table");
+    public static final TagKey<Block> MINEABLE_WITH_MATTOCK = ofBlock("mineable_with_mattock");
 
     public static final TagKey<Item> NUGGET = ofItem("nugget");
     public static final TagKey<Item> SHARD = ofItem("shard");

@@ -1,7 +1,7 @@
 package com.acuteterror233.mite.block;
 
 import com.acuteterror233.mite.block.entity.AnvilBlockEntity;
-import com.acuteterror233.mite.screen.GradeAnvilMenu;
+import com.acuteterror233.mite.inventory.GradeAnvilMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.MenuProvider;

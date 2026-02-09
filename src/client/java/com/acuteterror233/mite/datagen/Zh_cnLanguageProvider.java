@@ -449,6 +449,8 @@ public class Zh_cnLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(MMEBlocks.DEEPSLATE_MITHRIL_ORE, "深岩秘银矿石");
         translationBuilder.add(MMEBlocks.DEEPSLATE_SILVER_ORE, "深岩银矿石");
 
+        translationBuilder.add(MMEBlocks.EMERALD_ENCHANTING_TABLE, "绿宝石附魔台");
+
         translationBuilder.add(MMEItems.SINEW, "皮革线");
     }
 }

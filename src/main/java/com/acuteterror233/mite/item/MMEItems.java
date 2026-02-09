@@ -5,6 +5,7 @@ import com.acuteterror233.mite.block.MMEBlocks;
 import com.acuteterror233.mite.component.MMEDataComponentTypes;
 import com.acuteterror233.mite.item.armor.MMEArmorMaterials;
 import com.acuteterror233.mite.item.equipment.MMEArmorMaterial;
+import com.acuteterror233.mite.registry.tag.MMETags;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderSet;
@@ -917,6 +918,8 @@ public class MMEItems {
             .icon(() -> new ItemStack(ADAMANTIUM_HELMET))
             .title(Component.translatable("itemGroup.mme.item_group"))
             .displayItems((context, entries) -> {
+                entries.accept(MMEBlocks.EMERALD_ENCHANTING_TABLE);
+
                 entries.accept(MMEBlocks.CLAY_FURNACE);
                 entries.accept(MMEBlocks.HARDENED_CLAY_FURNACE);
                 entries.accept(MMEBlocks.NETHERRACK_FURNACE);
@@ -1421,7 +1424,7 @@ public class MMEItems {
         return applyToolSettings(new Item.Properties(), material, BlockTags.MINEABLE_WITH_HOE, 2, 2, 1, -1.0F, 0.5F, 0.5F, 0);
     }
     public static Item.Properties getMattockSettings(ToolMaterial material) {
-        return applyToolSettings(new Item.Properties(), material, BlockTags.MINEABLE_WITH_HOE, 4, 2, 2, -1.5F, 0.5F, 0.5F, 0);
+        return applyToolSettings(new Item.Properties(), material, MMETags.MINEABLE_WITH_MATTOCK, 4, 2, 2, -1.5F, 0.5F, 0.5F, 0);
     }
 
     public static Item.Properties getShovelSettings(ToolMaterial material) {

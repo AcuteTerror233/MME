@@ -188,6 +188,12 @@ public class MMEBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(MMEBlocks.COPPER_CRAFTING_TABLE)
                 .add(MMEBlocks.OBSIDIAN_CRAFTING_TABLE)
                 .add(MMEBlocks.FLINT_CRAFTING_TABLE);
+        getOrCreateTagBuilder(MMETags.ENCHANTING_TABLE)
+                .add(Blocks.ENCHANTING_TABLE)
+                .add(MMEBlocks.EMERALD_ENCHANTING_TABLE);
+        getOrCreateTagBuilder(MMETags.MINEABLE_WITH_MATTOCK)
+                .forceAddTag(BlockTags.MINEABLE_WITH_HOE)
+                .forceAddTag(BlockTags.MINEABLE_WITH_SHOVEL);
 
         getOrCreateTagBuilder(MMETags.NEEDS_ADAMANTIUM_TOOL)
                 .add(Blocks.ANCIENT_DEBRIS)

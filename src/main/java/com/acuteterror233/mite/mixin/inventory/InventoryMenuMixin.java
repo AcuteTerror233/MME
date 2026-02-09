@@ -1,10 +1,10 @@
-package com.acuteterror233.mite.mixin.screen;
+package com.acuteterror233.mite.mixin.inventory;
 
 import com.acuteterror233.mite.atinterface.InventoryMenuExtension;
 import com.acuteterror233.mite.block.MMEBlocks;
 import com.acuteterror233.mite.component.MMEDataComponentTypes;
+import com.acuteterror233.mite.inventory.slot.PlayerCraftingResultSlot;
 import com.acuteterror233.mite.registry.tag.MMETags;
-import com.acuteterror233.mite.screen.slot.PlayerCraftingResultSlot;
 import net.minecraft.network.protocol.game.ClientboundContainerSetSlotPacket;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;

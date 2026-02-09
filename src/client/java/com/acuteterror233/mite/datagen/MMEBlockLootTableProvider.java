@@ -30,6 +30,8 @@ public class MMEBlockLootTableProvider extends FabricBlockLootTableProvider {
         add(MMEBlocks.SILVER_DOOR, this::createDoorTable);
         add(MMEBlocks.GOLDEN_DOOR, this::createDoorTable);
 
+        add(MMEBlocks.EMERALD_ENCHANTING_TABLE, block -> createNameableBlockEntityTable(MMEBlocks.EMERALD_ENCHANTING_TABLE));
+
         dropSelf(MMEBlocks.ANCIENT_METAL_BLOCK);
         dropSelf(MMEBlocks.MITHRIL_BLOCK);
         dropSelf(MMEBlocks.SILVER_BLOCK);

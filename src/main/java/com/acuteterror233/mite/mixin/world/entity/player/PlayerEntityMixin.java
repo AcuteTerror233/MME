@@ -21,9 +21,6 @@ public abstract class PlayerEntityMixin extends LivingEntity {
     @Shadow
     public int experienceLevel;
     @Shadow
-    protected FoodData foodData;
-
-    @Shadow
     public abstract FoodData getFoodData();
 
     protected PlayerEntityMixin(EntityType<? extends LivingEntity> entityType, Level world) {

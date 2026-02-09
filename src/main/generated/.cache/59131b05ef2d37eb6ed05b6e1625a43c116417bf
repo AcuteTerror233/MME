@@ -10,6 +10,7 @@ ae8d30015d54aa48ebe1001bdd0100dd6a3d05f6 data/mme/tags/block/bars.json
 b27eaf9c99a44e9a8f3622f7248ac52694ba62c2 data/mme/tags/block/copper_anvil.json
 4d24b95fa371d2184b9dfdbfe015ee5a6e686541 data/mme/tags/block/crafting_table.json
 85c9d14f2e8d3299c43cabcb3307f5dcc00237dc data/mme/tags/block/damaged_anvil.json
+8de6175095a22e4970b9d450abbf5b3fc7290709 data/mme/tags/block/enchanting_table.json
 55d021ee37fe4ddcf34b5e733280ae51aa90d6be data/mme/tags/block/glass.json
 0a20218273c87ee1535047a6594e5e7e7faaa512 data/mme/tags/block/glass_pane.json
 369a009310ff573befba49776ff9573a0216eb7b data/mme/tags/block/golden_anvil.json
@@ -21,6 +22,7 @@ fb16b696795a7d6b43e5548b68acbe8818bbec47 data/mme/tags/block/incorrect_for_mithr
 06fc3b9b3432647c4819f45f84f46294e5080549 data/mme/tags/block/incorrect_for_rusted_iron_tool.json
 9c2722aa696dcdd087a18d71415f5977b4e17400 data/mme/tags/block/intact_anvil.json
 49fc3802397b9999fbbc71f9d4e9c1962cab6506 data/mme/tags/block/iron_anvil.json
+bf724fd7c5e66d652464f165e85c837954e69986 data/mme/tags/block/mineable_with_mattock.json
 29fd11ef996d5a1d1348d4dcdc7639eb3c53a912 data/mme/tags/block/mithril_anvil.json
 1e6c866fd13f6109a8236f8c13009083e9d8db1b data/mme/tags/block/mithril_runestore.json
 d688736e8b8d674e4444c45e653566397d34c5e1 data/mme/tags/block/needs_adamantium_tool.json

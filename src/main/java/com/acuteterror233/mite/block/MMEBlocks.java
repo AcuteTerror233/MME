@@ -5,11 +5,12 @@ import com.acuteterror233.mite.block.entity.AnvilBlockEntity;
 import com.acuteterror233.mite.block.entity.GradeFurnaceBlockEntity;
 import com.acuteterror233.mite.block.entity.RunePortalBlockEntity;
 import com.acuteterror233.mite.component.MMEDataComponentTypes;
+import com.acuteterror233.mite.inventory.GradeAnvilMenu;
+import com.acuteterror233.mite.inventory.GradeCraftingTableMenu;
+import com.acuteterror233.mite.inventory.GradeFurnaceMenu;
+import com.acuteterror233.mite.inventory.MMEEnchantmentMenu;
 import com.acuteterror233.mite.item.MMEToolMaterials;
 import com.acuteterror233.mite.registry.tag.MMETags;
-import com.acuteterror233.mite.screen.GradeAnvilMenu;
-import com.acuteterror233.mite.screen.GradeCraftingTableMenu;
-import com.acuteterror233.mite.screen.GradeFurnaceMenu;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -454,6 +455,12 @@ public class MMEBlocks {
             BlockBehaviour.Properties.ofFullCopy(Blocks.CRAFTING_TABLE)
     );
 
+    public static final Block EMERALD_ENCHANTING_TABLE = register(
+            "emerald_enchanting_table",
+            EmeraldEnchantingTableBlock::new,
+            BlockBehaviour.Properties.ofFullCopy(Blocks.ENCHANTING_TABLE)
+    );
+
     public static int maxDamageAnvil(int damage) {
         return damage * 31;
     }
@@ -539,6 +546,7 @@ public class MMEBlocks {
     public static final MenuType<GradeAnvilMenu> GRADE_ANVIL = register("grade_anvil", GradeAnvilMenu::new);
     public static final MenuType<GradeCraftingTableMenu> GRADE_CRAFTING_TABLE = register("grade_crafting_table", GradeCraftingTableMenu::new);
     public static final MenuType<GradeFurnaceMenu> GRADE_FURNACE = register("grade_furnace", GradeFurnaceMenu::new);
+    public static final MenuType<MMEEnchantmentMenu> MME_ENCHANTMENT = register("mme_enchantment", MMEEnchantmentMenu::new);
     public static void init() {
 
     }
