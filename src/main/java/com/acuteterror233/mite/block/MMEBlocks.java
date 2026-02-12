@@ -41,12 +41,12 @@ import java.util.function.Function;
 public class MMEBlocks {
     public static final Block ADAMANTIUM_ORE = register(        //艾德曼矿
             "adamantium_ore",
-            BlockBehaviour.Properties.of().strength(5.0f, 3.0f).requiresCorrectToolForDrops(),
+            BlockBehaviour.Properties.of().strength(5.0f, 10.0f).requiresCorrectToolForDrops(),
             new Item.Properties().component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4)
     );
     public static final Block MITHRIL_ORE = register(           //秘银矿
             "mithril_ore",
-            BlockBehaviour.Properties.of().strength(4.0f, 3.0f).requiresCorrectToolForDrops(),
+            BlockBehaviour.Properties.of().strength(4.0f, 5.0f).requiresCorrectToolForDrops(),
             new Item.Properties().component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 3)
     );
     public static final Block SILVER_ORE = register(            //银矿
@@ -57,12 +57,12 @@ public class MMEBlocks {
 
     public static final Block DEEPSLATE_ADAMANTIUM_ORE = register(        //深层艾德曼矿
             "deepslate_adamantium_ore",
-            BlockBehaviour.Properties.of().strength(4.5f, 3.0f).requiresCorrectToolForDrops(),
+            BlockBehaviour.Properties.of().strength(5.5f, 10.0f).requiresCorrectToolForDrops(),
             new Item.Properties().component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4)
     );
     public static final Block DEEPSLATE_MITHRIL_ORE = register(           //深层秘银矿
             "deepslate_mithril_ore",
-            BlockBehaviour.Properties.of().strength(4.5f, 3.0f).requiresCorrectToolForDrops(),
+            BlockBehaviour.Properties.of().strength(4.5f, 5.0f).requiresCorrectToolForDrops(),
             new Item.Properties().component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 3)
     );
     public static final Block DEEPSLATE_SILVER_ORE = register(            //深层银矿
@@ -153,7 +153,24 @@ public class MMEBlocks {
             BlockBehaviour.Properties.of().mapColor(MapColor.METAL).strength(5.0F).noOcclusion().requiresCorrectToolForDrops().pushReaction(PushReaction.DESTROY),
             DoubleHighBlockItem::new
     );
-
+    public static final Block DAMAGED_NETHERITE_ANVIL = register(
+            "damaged_netherite_anvil",
+            settings -> new MMEAnvilBlock(settings, MMETags.NETHERITE_NOT_ALLOWED_MATERIAL),
+            BlockBehaviour.Properties.ofFullCopy(Blocks.ANVIL),
+            new Item.Properties().durability(maxDamageAnvil(MMEToolMaterials.NETHERITE.durability()))
+    );
+    public static final Block CHIPPED_NETHERITE_ANVIL = register(
+            "chipped_netherite_anvil",
+            settings -> new MMEAnvilBlock(settings, MMETags.NETHERITE_NOT_ALLOWED_MATERIAL),
+            BlockBehaviour.Properties.ofFullCopy(Blocks.ANVIL),
+            new Item.Properties().durability(maxDamageAnvil(MMEToolMaterials.NETHERITE.durability()))
+    );
+    public static final Block NETHERITE_ANVIL = register(
+            "netherite_anvil",
+            settings -> new MMEAnvilBlock(settings, MMETags.NETHERITE_NOT_ALLOWED_MATERIAL),
+            BlockBehaviour.Properties.ofFullCopy(Blocks.ANVIL),
+            new Item.Properties().durability(maxDamageAnvil(MMEToolMaterials.NETHERITE.durability()))
+    );
     public static final Block DAMAGED_ADAMANTIUM_ANVIL = register(
             "damaged_adamantium_anvil",
             settings -> new MMEAnvilBlock(settings, MMETags.ADAMANTIUM_NOT_ALLOWED_MATERIAL),
@@ -498,6 +515,9 @@ public class MMEBlocks {
             register(
                     "anvil"
                     , AnvilBlockEntity::new
+                    , NETHERITE_ANVIL
+                    , CHIPPED_NETHERITE_ANVIL
+                    , DAMAGED_NETHERITE_ANVIL
                     , ADAMANTIUM_ANVIL
                     , CHIPPED_ADAMANTIUM_ANVIL
                     , DAMAGED_ADAMANTIUM_ANVIL

@@ -15,6 +15,6 @@ public class MMEDataComponentTypes {
     public static final DataComponentType<Integer> REQUIRED_COMBUSTION_GRADE = register("required_combustion_grade", builder -> builder.persistent(ExtraCodecs.NON_NEGATIVE_INT).networkSynchronized(ByteBufCodecs.VAR_INT));
     public static final DataComponentType<Float> ORIGINAL_ARMOR = register("original_armor", builder -> builder.persistent(ExtraCodecs.POSITIVE_FLOAT).networkSynchronized(ByteBufCodecs.FLOAT));
     private static <T> DataComponentType<T> register(String id, UnaryOperator<DataComponentType.Builder<T>> builderOperator) {
-        return Registry.register(BuiltInRegistries.DATA_COMPONENT_TYPE, ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, id), ((DataComponentType.Builder)builderOperator.apply(DataComponentType.builder())).build());
+        return Registry.register(BuiltInRegistries.DATA_COMPONENT_TYPE, ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, id), builderOperator.apply(DataComponentType.builder()).build());
     }
 }

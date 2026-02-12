@@ -69,6 +69,9 @@ public class MMEBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(MMEBlocks.SILVER_BARS)
                 .add(MMEBlocks.COPPER_BARS);
         getOrCreateTagBuilder(BlockTags.ANVIL)
+                .add(MMEBlocks.NETHERITE_ANVIL)
+                .add(MMEBlocks.CHIPPED_NETHERITE_ANVIL)
+                .add(MMEBlocks.DAMAGED_NETHERITE_ANVIL)
                 .add(MMEBlocks.ADAMANTIUM_ANVIL)
                 .add(MMEBlocks.CHIPPED_ADAMANTIUM_ANVIL)
                 .add(MMEBlocks.DAMAGED_ADAMANTIUM_ANVIL)
@@ -88,6 +91,7 @@ public class MMEBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(MMEBlocks.CHIPPED_COPPER_ANVIL)
                 .add(MMEBlocks.DAMAGED_COPPER_ANVIL);
         getOrCreateTagBuilder(MMETags.INTACT_ANVIL)
+                .add(MMEBlocks.NETHERITE_ANVIL)
                 .add(MMEBlocks.ADAMANTIUM_ANVIL)
                 .add(MMEBlocks.MITHRIL_ANVIL)
                 .add(MMEBlocks.ANCIENT_METAL_ANVIL)
@@ -95,6 +99,7 @@ public class MMEBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(MMEBlocks.GOLDEN_ANVIL)
                 .add(MMEBlocks.COPPER_ANVIL);
         getOrCreateTagBuilder(MMETags.CHIPPED_ANVIL)
+                .add(MMEBlocks.CHIPPED_NETHERITE_ANVIL)
                 .add(MMEBlocks.CHIPPED_ADAMANTIUM_ANVIL)
                 .add(MMEBlocks.CHIPPED_MITHRIL_ANVIL)
                 .add(MMEBlocks.CHIPPED_ANCIENT_METAL_ANVIL)
@@ -102,12 +107,17 @@ public class MMEBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(MMEBlocks.CHIPPED_GOLDEN_ANVIL)
                 .add(MMEBlocks.CHIPPED_COPPER_ANVIL);
         getOrCreateTagBuilder(MMETags.DAMAGED_ANVIL)
+                .add(MMEBlocks.DAMAGED_NETHERITE_ANVIL)
                 .add(MMEBlocks.DAMAGED_ADAMANTIUM_ANVIL)
                 .add(MMEBlocks.DAMAGED_MITHRIL_ANVIL)
                 .add(MMEBlocks.DAMAGED_ANCIENT_METAL_ANVIL)
                 .add(MMEBlocks.DAMAGED_SILVER_ANVIL)
                 .add(MMEBlocks.DAMAGED_GOLDEN_ANVIL)
                 .add(MMEBlocks.DAMAGED_COPPER_ANVIL);
+        getOrCreateTagBuilder(MMETags.NETHERITE_ANVIL)
+                .add(MMEBlocks.NETHERITE_ANVIL)
+                .add(MMEBlocks.CHIPPED_NETHERITE_ANVIL)
+                .add(MMEBlocks.DAMAGED_NETHERITE_ANVIL);
         getOrCreateTagBuilder(MMETags.ADAMANTIUM_ANVIL)
                 .add(MMEBlocks.ADAMANTIUM_ANVIL)
                 .add(MMEBlocks.CHIPPED_ADAMANTIUM_ANVIL)

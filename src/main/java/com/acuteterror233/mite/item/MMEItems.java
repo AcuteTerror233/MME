@@ -448,27 +448,6 @@ public class MMEItems {
     public static final Item WOODEN_CLUB = register("wooden_club", getSwordSettings(MMEToolMaterials.WOOD));
     public static final Item WOODEN_CUDGEL = register("wooden_cudgel", getDaggerSettings(MMEToolMaterials.WOOD));
 
-    public static final Item ADAMANTIUM_ARROW = register("adamantium_arrow",
-            new Item.Properties().stacksTo(16));
-    public static final Item ANCIENT_METAL_ARROW = register("ancient_metal_arrow",
-            new Item.Properties().stacksTo(16));
-    public static final Item COPPER_ARROW = register("copper_arrow",
-            new Item.Properties().stacksTo(16));
-    public static final Item FLINT_ARROW = register("flint_arrow",
-            new Item.Properties().stacksTo(16));
-    public static final Item GOLDEN_ARROW = register("golden_arrow",
-            new Item.Properties().stacksTo(16));
-    public static final Item IRON_ARROW = register("iron_arrow",
-            new Item.Properties().stacksTo(16));
-    public static final Item MITHRIL_ARROW = register("mithril_arrow",
-            new Item.Properties().stacksTo(16));
-    public static final Item OBSIDIAN_ARROW = register("obsidian_arrow",
-            new Item.Properties().stacksTo(16));
-    public static final Item SILVER_ARROW = register("silver_arrow",
-            new Item.Properties().stacksTo(16));
-    public static final Item RUSTED_IRON_ARROW = register("rusted_iron_arrow",
-            new Item.Properties().stacksTo(16));
-
     public static final Item ADAMANTIUM_CHAINS = register("adamantium_chains",
             new Item.Properties().stacksTo(16).component(MMEDataComponentTypes.CRAFTING_TIME, 75));
     public static final Item MITHRIL_CHAINS = register("mithril_chains",
@@ -844,8 +823,6 @@ public class MMEItems {
             settings -> new MMEMobBucketItem(EntityType.TADPOLE, Fluids.WATER, SoundEvents.BUCKET_EMPTY_TADPOLE, settings, NETHERITE_BUCKET),
             new Item.Properties().stacksTo(1).component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY).fireResistant()
     );
-    public static final Item MITHRIL_BOW = register("mithril_bow", BowItem::new, new Item.Properties().durability(128).enchantable(1));
-    public static final Item ANCIENT_METAL_BOW = register("ancient_metal_bow", BowItem::new, new Item.Properties().durability(64).enchantable(1));
     public static final Item ADAMANTIUM_FISHING_ROD = register("adamantium_fishing_rod", FishingRodItem::new, new Item.Properties().durability(128).enchantable(1));
     public static final Item ANCIENT_METAL_FISHING_ROD = register("ancient_metal_fishing_rod", FishingRodItem::new, new Item.Properties().durability(96).enchantable(1));
     public static final Item COPPER_FISHING_ROD = register("copper_fishing_rod", FishingRodItem::new, new Item.Properties().durability(8).enchantable(1));
@@ -970,6 +947,9 @@ public class MMEItems {
                 entries.accept(MMEBlocks.ADAMANTIUM_YLEM_RUNESTORE);
                 entries.accept(MMEBlocks.ADAMANTIUM_SANCT_RUNESTORE);
 
+                entries.accept(MMEBlocks.NETHERITE_ANVIL);
+                entries.accept(chipped(MMEBlocks.CHIPPED_NETHERITE_ANVIL));
+                entries.accept(damaged(MMEBlocks.DAMAGED_NETHERITE_ANVIL));
                 entries.accept(MMEBlocks.ADAMANTIUM_ANVIL);
                 entries.accept(chipped(MMEBlocks.CHIPPED_ADAMANTIUM_ANVIL));
                 entries.accept(damaged(MMEBlocks.DAMAGED_ADAMANTIUM_ANVIL));
@@ -1251,16 +1231,6 @@ public class MMEItems {
                 entries.accept(PORRIDGE);
                 entries.accept(SINEW);
 
-                entries.accept(ADAMANTIUM_ARROW);
-                entries.accept(ANCIENT_METAL_ARROW);
-                entries.accept(COPPER_ARROW);
-                entries.accept(FLINT_ARROW);
-                entries.accept(GOLDEN_ARROW);
-                entries.accept(IRON_ARROW);
-                entries.accept(MITHRIL_ARROW);
-                entries.accept(OBSIDIAN_ARROW);
-                entries.accept(SILVER_ARROW);
-                entries.accept(RUSTED_IRON_ARROW);
                 entries.accept(ADAMANTIUM_CHAINS);
                 entries.accept(GOLDEN_CHAINS);
                 entries.accept(IRON_CHAINS);
@@ -1360,9 +1330,6 @@ public class MMEItems {
                 entries.accept(TROPICAL_FISH_GOLD_BUCKET);
                 entries.accept(AXOLOTL_GOLD_BUCKET);
                 entries.accept(TADPOLE_GOLD_BUCKET);
-
-                entries.accept(MITHRIL_BOW);
-                entries.accept(ANCIENT_METAL_BOW);
             })
             .build();
 

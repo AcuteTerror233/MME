@@ -43,6 +43,7 @@ public class MMEModelProvider extends FabricModelProvider {
         blockStateModelGenerator.createDoor(MMEBlocks.SILVER_DOOR);
         blockStateModelGenerator.createDoor(MMEBlocks.ANCIENT_METAL_DOOR);
         blockStateModelGenerator.createDoor(MMEBlocks.MITHRIL_DOOR);
+        ((BlockModelGeneratorsExtension) blockStateModelGenerator).MME$registerAnvil(MMEBlocks.NETHERITE_ANVIL, MMEBlocks.CHIPPED_NETHERITE_ANVIL, MMEBlocks.DAMAGED_NETHERITE_ANVIL);
         ((BlockModelGeneratorsExtension) blockStateModelGenerator).MME$registerAnvil(MMEBlocks.ADAMANTIUM_ANVIL, MMEBlocks.CHIPPED_ADAMANTIUM_ANVIL, MMEBlocks.DAMAGED_ADAMANTIUM_ANVIL);
         ((BlockModelGeneratorsExtension) blockStateModelGenerator).MME$registerAnvil(MMEBlocks.MITHRIL_ANVIL, MMEBlocks.CHIPPED_MITHRIL_ANVIL, MMEBlocks.DAMAGED_MITHRIL_ANVIL);
         ((BlockModelGeneratorsExtension) blockStateModelGenerator).MME$registerAnvil(MMEBlocks.ANCIENT_METAL_ANVIL, MMEBlocks.CHIPPED_ANCIENT_METAL_ANVIL, MMEBlocks.DAMAGED_ANCIENT_METAL_ANVIL);
@@ -180,17 +181,7 @@ public class MMEModelProvider extends FabricModelProvider {
         itemModelGenerator.generateFlatItem(MMEItems.SORBET, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(MMEItems.VEGETABLE_SOUP, ModelTemplates.FLAT_ITEM);
 
-        //币,锁链和箭
-        itemModelGenerator.generateFlatItem(MMEItems.ADAMANTIUM_ARROW, ModelTemplates.FLAT_ITEM);
-        itemModelGenerator.generateFlatItem(MMEItems.ANCIENT_METAL_ARROW, ModelTemplates.FLAT_ITEM);
-        itemModelGenerator.generateFlatItem(MMEItems.COPPER_ARROW, ModelTemplates.FLAT_ITEM);
-        itemModelGenerator.generateFlatItem(MMEItems.MITHRIL_ARROW, ModelTemplates.FLAT_ITEM);
-        itemModelGenerator.generateFlatItem(MMEItems.RUSTED_IRON_ARROW, ModelTemplates.FLAT_ITEM);
-        itemModelGenerator.generateFlatItem(MMEItems.SILVER_ARROW, ModelTemplates.FLAT_ITEM);
-        itemModelGenerator.generateFlatItem(MMEItems.FLINT_ARROW, ModelTemplates.FLAT_ITEM);
-        itemModelGenerator.generateFlatItem(MMEItems.GOLDEN_ARROW, ModelTemplates.FLAT_ITEM);
-        itemModelGenerator.generateFlatItem(MMEItems.IRON_ARROW, ModelTemplates.FLAT_ITEM);
-        itemModelGenerator.generateFlatItem(MMEItems.OBSIDIAN_ARROW, ModelTemplates.FLAT_ITEM);
+        //币,锁链
         itemModelGenerator.generateFlatItem(MMEItems.ADAMANTIUM_CHAINS, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(MMEItems.ANCIENT_METAL_CHAINS, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(MMEItems.COPPER_CHAINS, ModelTemplates.FLAT_ITEM);
@@ -415,9 +406,6 @@ public class MMEModelProvider extends FabricModelProvider {
         extendedAccessor.MME$registerBucket(MMEItems.TROPICAL_FISH_NETHERITE_BUCKET, TROPICAL_FISH, MMEItems.NETHERITE_BUCKET);
         extendedAccessor.MME$registerBucket(MMEItems.AXOLOTL_NETHERITE_BUCKET, AXOLOTL, MMEItems.NETHERITE_BUCKET);
         extendedAccessor.MME$registerBucket(MMEItems.TADPOLE_NETHERITE_BUCKET, TADPOLE, MMEItems.NETHERITE_BUCKET);
-
-        itemModelGenerator.generateBow(MMEItems.MITHRIL_BOW);
-        itemModelGenerator.generateBow(MMEItems.ANCIENT_METAL_BOW);
 
         ResourceLocation cast = itemModelGenerator.createFlatItemModel(Items.FISHING_ROD, "_cast", ModelTemplates.FLAT_HANDHELD_ROD_ITEM);
         extendedAccessor.MME$registerFishingRod(MMEItems.ADAMANTIUM_FISHING_ROD, cast);

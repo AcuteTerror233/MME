@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "mme:block/chipped_netherite_anvil",
+      "y": 270
+    },
+    "facing=north": {
+      "model": "mme:block/chipped_netherite_anvil",
+      "y": 180
+    },
+    "facing=south": {
+      "model": "mme:block/chipped_netherite_anvil"
+    },
+    "facing=west": {
+      "model": "mme:block/chipped_netherite_anvil",
+      "y": 90
+    }
+  }
+}

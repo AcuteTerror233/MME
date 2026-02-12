@@ -1,11 +1,9 @@
-MME
+Make Minecraft Easy (MME)
 ======
 
-Version：1.21.5
-* In the future, it will be supported up to 1.21~latest
-* Regarding ModLoader, after the fabric version stabilizes, we will attempt to port it to Neoforge
+目前支持版本：1.21.5
+* 未来版本会更新至1.21 ~ 最新。
+* ModLoader为Fabric,未来考虑移植到NeoForge
 
-### info
-This is a secondary creation project aimed at redesigning and modernizing gameplay based on the core gameplay and spirit of the classic hardcore survival mod MITE (Minecraft is Too Easy).
-
-Please note that this project is not an official MITE module, but an independently developed adaptation inspired by it.
+### 介绍
+这是一个基于Minecraft Is Too Easy(以下简称Mite)为灵感的Mod，复刻了大部分Mite的内容。

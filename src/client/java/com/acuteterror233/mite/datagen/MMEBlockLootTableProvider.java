@@ -52,6 +52,9 @@ public class MMEBlockLootTableProvider extends FabricBlockLootTableProvider {
         dropSelf(MMEBlocks.FLINT_CRAFTING_TABLE);
         dropSelf(MMEBlocks.OBSIDIAN_CRAFTING_TABLE);
 
+        dropSelf(MMEBlocks.NETHERITE_ANVIL);
+        dropSelf(MMEBlocks.CHIPPED_NETHERITE_ANVIL);
+        dropSelf(MMEBlocks.DAMAGED_NETHERITE_ANVIL);
         dropSelf(MMEBlocks.ADAMANTIUM_ANVIL);
         dropSelf(MMEBlocks.CHIPPED_ADAMANTIUM_ANVIL);
         dropSelf(MMEBlocks.DAMAGED_ADAMANTIUM_ANVIL);

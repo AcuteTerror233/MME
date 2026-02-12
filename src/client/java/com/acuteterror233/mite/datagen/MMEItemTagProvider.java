@@ -144,17 +144,6 @@ public class MMEItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(MMEItems.ANCIENT_METAL_INGOT)
                 .add(MMEItems.MITHRIL_INGOT)
                 .add(MMEItems.SILVER_INGOT);
-        getOrCreateTagBuilder(ItemTags.ARROWS)
-                .add(MMEItems.ADAMANTIUM_ARROW)
-                .add(MMEItems.ANCIENT_METAL_ARROW)
-                .add(MMEItems.COPPER_ARROW)
-                .add(MMEItems.MITHRIL_ARROW)
-                .add(MMEItems.RUSTED_IRON_ARROW)
-                .add(MMEItems.SILVER_ARROW)
-                .add(MMEItems.GOLDEN_ARROW)
-                .add(MMEItems.IRON_ARROW)
-                .add(MMEItems.FLINT_ARROW)
-                .add(MMEItems.OBSIDIAN_ARROW);
         getOrCreateTagBuilder(MMETags.CHAINS)
                 .add(MMEItems.ADAMANTIUM_CHAINS)
                 .add(MMEItems.ANCIENT_METAL_CHAINS)
@@ -372,26 +361,23 @@ public class MMEItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(Items.IRON_NUGGET)
                 .add(Items.IRON_BLOCK);
 
-        getOrCreateTagBuilder(MMETags.ADAMANTIUM_NOT_ALLOWED_MATERIAL);
+        getOrCreateTagBuilder(MMETags.NETHERITE_NOT_ALLOWED_MATERIAL);
+        getOrCreateTagBuilder(MMETags.ADAMANTIUM_NOT_ALLOWED_MATERIAL)
+                .forceAddTag(ItemTags.NETHERITE_TOOL_MATERIALS);
         getOrCreateTagBuilder(MMETags.MITHRIL_NOT_ALLOWED_MATERIAL)
-                .addTag(MMETags.ADAMANTIUM_TOOL_MATERIALS)
-                .add(MMEBlocks.ADAMANTIUM_BLOCK.asItem());
+                .addTag(MMETags.ADAMANTIUM_TOOL_MATERIALS);
         getOrCreateTagBuilder(MMETags.ANCIENT_METAL_NOT_ALLOWED_MATERIAL)
                 .addTag(MMETags.MITHRIL_TOOL_MATERIALS)
-                .addTag(MMETags.MITHRIL_NOT_ALLOWED_MATERIAL)
-                .add(MMEBlocks.MITHRIL_BLOCK.asItem());
+                .addTag(MMETags.MITHRIL_NOT_ALLOWED_MATERIAL);
         getOrCreateTagBuilder(MMETags.IRON_NOT_ALLOWED_MATERIAL)
                 .addTag(MMETags.ANCIENT_METAL_TOOL_MATERIALS)
-                .addTag(MMETags.ANCIENT_METAL_NOT_ALLOWED_MATERIAL)
-                .add(MMEBlocks.ANCIENT_METAL_BLOCK.asItem());
+                .addTag(MMETags.ANCIENT_METAL_NOT_ALLOWED_MATERIAL);
         getOrCreateTagBuilder(MMETags.COPPER_OR_SILVER_NOT_ALLOWED_MATERIAL)
                 .addTag(ItemTags.IRON_TOOL_MATERIALS)
-                .addTag(MMETags.IRON_NOT_ALLOWED_MATERIAL)
-                .add(Items.IRON_BLOCK);
+                .addTag(MMETags.IRON_NOT_ALLOWED_MATERIAL);
         getOrCreateTagBuilder(MMETags.GOLD_NOT_ALLOWED_MATERIAL)
                 .addTag(ItemTags.IRON_TOOL_MATERIALS)
-                .addTag(MMETags.IRON_NOT_ALLOWED_MATERIAL)
-                .add(Items.IRON_BLOCK);
+                .addTag(MMETags.IRON_NOT_ALLOWED_MATERIAL);
 
 
         getOrCreateTagBuilder(MMETags.BATTLE_AXE)
@@ -506,7 +492,26 @@ public class MMEItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(MMEItems.RUSTED_IRON_HOE)
                 .add(MMEItems.SILVER_HOE)
                 .add(MMEItems.COPPER_HOE);
-
+        getOrCreateTagBuilder(ItemTags.FISHING_ENCHANTABLE)
+                .add(MMEItems.ADAMANTIUM_FISHING_ROD)
+                .add(MMEItems.MITHRIL_FISHING_ROD)
+                .add(MMEItems.ANCIENT_METAL_FISHING_ROD)
+                .add(MMEItems.IRON_FISHING_ROD)
+                .add(MMEItems.SILVER_FISHING_ROD)
+                .add(MMEItems.COPPER_FISHING_ROD)
+                .add(MMEItems.GOLDEN_FISHING_ROD)
+                .add(MMEItems.OBSIDIAN_FISHING_ROD)
+                .add(MMEItems.FLINT_FISHING_ROD);
+        getOrCreateTagBuilder(ItemTags.DURABILITY_ENCHANTABLE)
+                .add(MMEItems.ADAMANTIUM_FISHING_ROD)
+                .add(MMEItems.MITHRIL_FISHING_ROD)
+                .add(MMEItems.ANCIENT_METAL_FISHING_ROD)
+                .add(MMEItems.IRON_FISHING_ROD)
+                .add(MMEItems.SILVER_FISHING_ROD)
+                .add(MMEItems.COPPER_FISHING_ROD)
+                .add(MMEItems.GOLDEN_FISHING_ROD)
+                .add(MMEItems.OBSIDIAN_FISHING_ROD)
+                .add(MMEItems.FLINT_FISHING_ROD);
 
         getOrCreateTagBuilder(ItemTags.DURABILITY_ENCHANTABLE)
                 .addTag(MMETags.SHEARS);

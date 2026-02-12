@@ -1,7 +1,6 @@
 {
   "values": [
     "#minecraft:iron_tool_materials",
-    "#mme:iron_not_allowed_material",
-    "minecraft:iron_block"
+    "#mme:iron_not_allowed_material"
   ]
 }

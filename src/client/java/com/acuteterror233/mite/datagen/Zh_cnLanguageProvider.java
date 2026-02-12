@@ -97,16 +97,6 @@ public class Zh_cnLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(MMEItems.SORBET, "雪糕");
         translationBuilder.add(MMEItems.VEGETABLE_SOUP, "蔬菜汤");
 
-        translationBuilder.add(MMEItems.ADAMANTIUM_ARROW, "艾德曼箭");
-        translationBuilder.add(MMEItems.ANCIENT_METAL_ARROW, "远古金属箭");
-        translationBuilder.add(MMEItems.COPPER_ARROW, "铜箭");
-        translationBuilder.add(MMEItems.MITHRIL_ARROW, "秘银箭");
-        translationBuilder.add(MMEItems.RUSTED_IRON_ARROW, "锈铁箭");
-        translationBuilder.add(MMEItems.SILVER_ARROW, "银箭");
-        translationBuilder.add(MMEItems.FLINT_ARROW, "燧石箭");
-        translationBuilder.add(MMEItems.GOLDEN_ARROW, "金箭");
-        translationBuilder.add(MMEItems.IRON_ARROW, "铁箭");
-        translationBuilder.add(MMEItems.OBSIDIAN_ARROW, "黑曜石箭");
         translationBuilder.add(MMEItems.ADAMANTIUM_CHAINS, "艾德曼锁链");
         translationBuilder.add(MMEItems.ANCIENT_METAL_CHAINS, "远古金属链");
         translationBuilder.add(MMEItems.COPPER_CHAINS, "铜链");
@@ -335,9 +325,6 @@ public class Zh_cnLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(MMEItems.AXOLOTL_GOLD_BUCKET, "装有美西螈的金桶");
         translationBuilder.add(MMEItems.TADPOLE_GOLD_BUCKET, "装有蝌蚪的金桶");
 
-        translationBuilder.add(MMEItems.MITHRIL_BOW, "秘银弓");
-        translationBuilder.add(MMEItems.ANCIENT_METAL_BOW, "远古金属弓");
-
         translationBuilder.add(MMEBlocks.ADAMANTIUM_DOOR, "艾德曼门");
         translationBuilder.add(MMEBlocks.ANCIENT_METAL_DOOR, "远古金属门");
         translationBuilder.add(MMEBlocks.MITHRIL_DOOR, "秘银门");
@@ -376,6 +363,9 @@ public class Zh_cnLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(MMEItems.OBSIDIAN_SHARD, "黑曜石碎片");
         translationBuilder.add(MMEItems.QUARTZ_SHARD, "石英碎片");
 
+        translationBuilder.add(MMEBlocks.NETHERITE_ANVIL, "下界合金砧");
+        translationBuilder.add(MMEBlocks.CHIPPED_NETHERITE_ANVIL, "开裂的下界合金砧");
+        translationBuilder.add(MMEBlocks.DAMAGED_NETHERITE_ANVIL, "损坏的下界合金砧");
         translationBuilder.add(MMEBlocks.ADAMANTIUM_ANVIL, "艾德曼砧");
         translationBuilder.add(MMEBlocks.CHIPPED_ADAMANTIUM_ANVIL, "开裂的艾德曼砧");
         translationBuilder.add(MMEBlocks.DAMAGED_ADAMANTIUM_ANVIL, "损坏的艾德曼砧");
@@ -439,8 +429,8 @@ public class Zh_cnLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(MMEBlocks.FLINT_CRAFTING_TABLE, "燧石工作台");
         translationBuilder.add(MMEBlocks.OBSIDIAN_CRAFTING_TABLE, "黑曜石工作台");
 
-        translationBuilder.add(MMEBlocks.CLAY_FURNACE, "粘土熔炉");
-        translationBuilder.add(MMEBlocks.HARDENED_CLAY_FURNACE, "硬化粘土熔炉");
+        translationBuilder.add(MMEBlocks.CLAY_FURNACE, "黏土熔炉");
+        translationBuilder.add(MMEBlocks.HARDENED_CLAY_FURNACE, "硬化黏土熔炉");
         translationBuilder.add(MMEBlocks.NETHERRACK_FURNACE, "下界岩熔炉");
         translationBuilder.add(MMEBlocks.OBSIDIAN_FURNACE, "黑曜石熔炉");
         translationBuilder.add(MMEBlocks.SANDSTONE_FURNACE, "砂岩熔炉");

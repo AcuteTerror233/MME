@@ -97,16 +97,6 @@ public class En_usLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(MMEItems.SORBET, "Sorbet");
         translationBuilder.add(MMEItems.VEGETABLE_SOUP, "Vegetable Soup");
 
-        translationBuilder.add(MMEItems.ADAMANTIUM_ARROW, "Adamantium Arrow");
-        translationBuilder.add(MMEItems.ANCIENT_METAL_ARROW, "Ancient Metal Arrow");
-        translationBuilder.add(MMEItems.COPPER_ARROW, "Copper Arrow");
-        translationBuilder.add(MMEItems.MITHRIL_ARROW, "Mithril Arrow");
-        translationBuilder.add(MMEItems.RUSTED_IRON_ARROW, "Rusted Iron Arrow");
-        translationBuilder.add(MMEItems.SILVER_ARROW, "Silver Arrow");
-        translationBuilder.add(MMEItems.FLINT_ARROW, "Flint Arrow");
-        translationBuilder.add(MMEItems.GOLDEN_ARROW, "Gold Arrow");
-        translationBuilder.add(MMEItems.IRON_ARROW, "Iron Arrow");
-        translationBuilder.add(MMEItems.OBSIDIAN_ARROW, "Obsidian Arrow");
         translationBuilder.add(MMEItems.ADAMANTIUM_CHAINS, "Adamantium Chains");
         translationBuilder.add(MMEItems.ANCIENT_METAL_CHAINS, "Ancient Metal Chains");
         translationBuilder.add(MMEItems.COPPER_CHAINS, "Copper Chains");
@@ -335,9 +325,6 @@ public class En_usLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(MMEItems.AXOLOTL_NETHERITE_BUCKET, "Netherite Bucket of Axolotl");
         translationBuilder.add(MMEItems.TADPOLE_NETHERITE_BUCKET, "Netherite Bucket of Tadpole");
 
-        translationBuilder.add(MMEItems.MITHRIL_BOW, "Mithril Bow");
-        translationBuilder.add(MMEItems.ANCIENT_METAL_BOW, "Ancient Metal Bow");
-
         translationBuilder.add(MMEBlocks.ADAMANTIUM_DOOR, "Adamantium Door");
         translationBuilder.add(MMEBlocks.ANCIENT_METAL_DOOR, "Ancient Metal Door");
         translationBuilder.add(MMEBlocks.MITHRIL_DOOR, "Mithril Door");
@@ -376,6 +363,9 @@ public class En_usLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(MMEItems.OBSIDIAN_SHARD, "Obsidian Shard");
         translationBuilder.add(MMEItems.QUARTZ_SHARD, "Quartz Shard");
 
+        translationBuilder.add(MMEBlocks.NETHERITE_ANVIL, "Netherite Anvil");
+        translationBuilder.add(MMEBlocks.CHIPPED_NETHERITE_ANVIL, "Chipped Netherite Anvil");
+        translationBuilder.add(MMEBlocks.DAMAGED_NETHERITE_ANVIL, "Damaged Netherite Anvil");
         translationBuilder.add(MMEBlocks.ADAMANTIUM_ANVIL, "Adamantium Anvil");
         translationBuilder.add(MMEBlocks.CHIPPED_ADAMANTIUM_ANVIL, "Chipped Adamantium Anvil");
         translationBuilder.add(MMEBlocks.DAMAGED_ADAMANTIUM_ANVIL, "Damaged Adamantium Anvil");

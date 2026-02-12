@@ -28,6 +28,7 @@ public class MMETags {
     public static final TagKey<Block> CHIPPED_ANVIL = ofBlock("chipped_anvil");
     public static final TagKey<Block> DAMAGED_ANVIL = ofBlock("damaged_anvil");
 
+    public static final TagKey<Block> NETHERITE_ANVIL = ofBlock("netherite_anvil");
     public static final TagKey<Block> ADAMANTIUM_ANVIL = ofBlock("adamantium_anvil");
     public static final TagKey<Block> MITHRIL_ANVIL = ofBlock("mithril_anvil");
     public static final TagKey<Block> ANCIENT_METAL_ANVIL = ofBlock("damaged_anvil");
@@ -84,6 +85,7 @@ public class MMETags {
     public static final TagKey<Item> FLINT_TOOL_MATERIALS = ofItem("flint_tool_materials");
     public static final TagKey<Item> OBSIDIAN_TOOL_MATERIALS = ofItem("obsidian_tool_materials");
 
+    public static final TagKey<Item> NETHERITE_NOT_ALLOWED_MATERIAL = ofItem("netherite_not_allowed_material");
     public static final TagKey<Item> ADAMANTIUM_NOT_ALLOWED_MATERIAL = ofItem("adamantium_not_allowed_material");
     public static final TagKey<Item> MITHRIL_NOT_ALLOWED_MATERIAL = ofItem("mithril_not_allowed_material");
     public static final TagKey<Item> ANCIENT_METAL_NOT_ALLOWED_MATERIAL = ofItem("ancient_metal_not_allowed_material");

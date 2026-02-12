@@ -1,7 +1,6 @@
 {
   "values": [
     "#mme:mithril_tool_materials",
-    "#mme:mithril_not_allowed_material",
-    "mme:mithril_block"
+    "#mme:mithril_not_allowed_material"
   ]
 }

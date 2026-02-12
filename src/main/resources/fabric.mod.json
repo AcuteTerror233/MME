@@ -3,16 +3,18 @@
   "id": "mme",
   "version": "1.21.5",
   "name": "mme",
-  "description": "This is a mod that makes Minecraft simpler",
+  "description": "这是一个让我的世界'更简单'的Mod",
   "authors": [
-    "AcuteTerror233",
-    "Licc9",
-    "HappySama"
+    "AcuteTerror233"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
+    "homepage": "https://www.acuteterror233.com",
+    "sources": "https://github.com/AcuteTerror233/MME"
   },
+  "contributors": [
+    "HappySama",
+    "Licc9"
+  ],
   "license": "GPL",
   "icon": "assets/mme/pack.png",
   "environment": "*",

@@ -16,6 +16,7 @@
     "world.entity.BucketableMixin",
     "world.entity.FallingBlockEntityMixin",
     "world.entity.animal.AbstractCowMixin",
+    "world.entity.boss.enderdragon.EndCrystalMixin",
     "world.entity.item.PrimedTntMixin",
     "world.entity.monster.CreeperMixin",
     "world.entity.monster.ZombieMixin",

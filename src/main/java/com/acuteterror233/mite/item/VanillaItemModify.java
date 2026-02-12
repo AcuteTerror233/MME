@@ -211,6 +211,12 @@ public final class VanillaItemModify {
         result.put(ResourceLocation.withDefaultNamespace("iron_axe"), settings -> MMEItems.getAxeSettings(MMEToolMaterials.IRON));
         result.put(ResourceLocation.withDefaultNamespace("iron_hoe"), settings -> MMEItems.getHoeSettings(MMEToolMaterials.IRON));
 
+        result.put(ResourceLocation.withDefaultNamespace("golden_sword"), settings -> MMEItems.getSwordSettings(MMEToolMaterials.GOLD));
+        result.put(ResourceLocation.withDefaultNamespace("golden_shovel"), settings -> MMEItems.getShovelSettings(MMEToolMaterials.GOLD));
+        result.put(ResourceLocation.withDefaultNamespace("golden_pickaxe"), settings -> MMEItems.getPickaxeSettings(MMEToolMaterials.GOLD));
+        result.put(ResourceLocation.withDefaultNamespace("golden_axe"), settings -> MMEItems.getAxeSettings(MMEToolMaterials.GOLD));
+        result.put(ResourceLocation.withDefaultNamespace("golden_hoe"), settings -> MMEItems.getHoeSettings(MMEToolMaterials.GOLD));
+
         result.put(ResourceLocation.withDefaultNamespace("iron_helmet"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.IRON_MATERIAL, ArmorType.HELMET));
         result.put(ResourceLocation.withDefaultNamespace("iron_chestplate"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.IRON_MATERIAL, ArmorType.CHESTPLATE));
         result.put(ResourceLocation.withDefaultNamespace("iron_leggings"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.IRON_MATERIAL, ArmorType.LEGGINGS));
@@ -234,6 +240,9 @@ public final class VanillaItemModify {
         result.put(ResourceLocation.withDefaultNamespace("bamboo_planks"), properties -> properties.stacksTo(8));
         result.put(ResourceLocation.withDefaultNamespace("cherry_planks"), properties -> properties.stacksTo(8));
 
+        result.put(ResourceLocation.withDefaultNamespace("fishing_rod"), properties -> new Item.Properties());
+        result.put(ResourceLocation.withDefaultNamespace("bow"), properties -> properties.durability(64));
+        result.put(ResourceLocation.withDefaultNamespace("crossbow"), properties -> properties.durability(128));
         return result;
     }
 
@@ -259,6 +268,14 @@ public final class VanillaItemModify {
         result.put(ResourceLocation.withDefaultNamespace("wooden_hoe"), settings -> new Item(new Item.Properties().setId(ResourceKey.create(Registries.ITEM, ResourceLocation.withDefaultNamespace("wooden_hoe")))));
         result.put(ResourceLocation.withDefaultNamespace("wooden_shovel"), settings -> new Item(MMEItems.getShovelSettings(MMEToolMaterials.WOOD).setId(ResourceKey.create(Registries.ITEM, ResourceLocation.withDefaultNamespace("wooden_shovel")))));
 
+        result.put(ResourceLocation.withDefaultNamespace("iron_shovel"), MMEShovelItem::new);
+        result.put(ResourceLocation.withDefaultNamespace("iron_axe"), MMEAxeItem::new);
+        result.put(ResourceLocation.withDefaultNamespace("iron_hoe"), MMEHoeItem::new);
+
+        result.put(ResourceLocation.withDefaultNamespace("golden_shovel"), MMEShovelItem::new);
+        result.put(ResourceLocation.withDefaultNamespace("golden_axe"), MMEAxeItem::new);
+        result.put(ResourceLocation.withDefaultNamespace("golden_hoe"), MMEHoeItem::new);
+
         result.put(ResourceLocation.withDefaultNamespace("netherite_shovel"), settings -> new MMEShovelItem(MMEItems.getShovelSettings(MMEToolMaterials.NETHERITE).setId(ResourceKey.create(Registries.ITEM, ResourceLocation.withDefaultNamespace("netherite_shovel")))));
         result.put(ResourceLocation.withDefaultNamespace("netherite_axe"), settings -> new MMEAxeItem(MMEItems.getAxeSettings(MMEToolMaterials.NETHERITE).setId(ResourceKey.create(Registries.ITEM, ResourceLocation.withDefaultNamespace("netherite_axe")))));
         result.put(ResourceLocation.withDefaultNamespace("netherite_hoe"), settings -> new MMEHoeItem(MMEItems.getHoeSettings(MMEToolMaterials.NETHERITE).setId(ResourceKey.create(Registries.ITEM, ResourceLocation.withDefaultNamespace("netherite_hoe")))));
@@ -278,7 +295,7 @@ public final class VanillaItemModify {
 
         result.put(ResourceLocation.withDefaultNamespace("iron_nugget"), settings -> new NuggetItem(settings.stacksTo(32), 200));
         result.put(ResourceLocation.withDefaultNamespace("gold_nugget"), settings -> new NuggetItem(settings.stacksTo(32), 500));
-
+        result.put(ResourceLocation.withDefaultNamespace("fishing_rod"), Item::new);
         return Map.copyOf(result);
     }
     private static Map<ResourceLocation, UnaryOperator<Item.Properties>> createBlockItemSettingsModifyMapByIdentifier() {

@@ -109,7 +109,8 @@ public class MME implements ModInitializer {
             ResourceLocation.withDefaultNamespace("netherite_leggings_smithing"),
             ResourceLocation.withDefaultNamespace("netherite_pickaxe_smithing"),
             ResourceLocation.withDefaultNamespace("netherite_shovel_smithing"),
-            ResourceLocation.withDefaultNamespace("netherite_sword_smithing")
+            ResourceLocation.withDefaultNamespace("netherite_sword_smithing"),
+            ResourceLocation.withDefaultNamespace("fishing_rod")
     );
 
 }

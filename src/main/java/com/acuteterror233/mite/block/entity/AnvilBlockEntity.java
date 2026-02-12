@@ -16,6 +16,9 @@ import java.util.Map;
 
 public class AnvilBlockEntity extends BlockEntity {
     public static final Map<Block, Block> ANVIL_MAP = new HashMap<>(){{
+        put(MMEBlocks.NETHERITE_ANVIL, MMEBlocks.CHIPPED_NETHERITE_ANVIL);
+        put(MMEBlocks.CHIPPED_NETHERITE_ANVIL, MMEBlocks.DAMAGED_NETHERITE_ANVIL);
+        put(MMEBlocks.DAMAGED_NETHERITE_ANVIL, Blocks.AIR);
         put(MMEBlocks.ADAMANTIUM_ANVIL, MMEBlocks.CHIPPED_ADAMANTIUM_ANVIL);
         put(MMEBlocks.CHIPPED_ADAMANTIUM_ANVIL, MMEBlocks.DAMAGED_ADAMANTIUM_ANVIL);
         put(MMEBlocks.DAMAGED_ADAMANTIUM_ANVIL, Blocks.AIR);
@@ -79,14 +82,13 @@ public class AnvilBlockEntity extends BlockEntity {
 
     public void addDamage(Integer Damage) {
         if (this.level != null) {
+            int oldDamage = this.damage;
             this.damage = Math.clamp(this.damage + Damage, 0, this.maxDamage);
             int DamageThreshold = this.maxDamage / 3;
             if (this.damage >= this.maxDamage) {
                 this.level.removeBlock(this.worldPosition, false);
                 this.level.levelEvent(LevelEvent.SOUND_ANVIL_USED, worldPosition, 0);
-            } else if (this.damage >= DamageThreshold * 2) {
-                generate();
-            } else if (this.damage >= DamageThreshold) {
+            } else if (oldDamage < (DamageThreshold * 2) && this.damage >= (DamageThreshold * 2) || oldDamage < DamageThreshold && this.damage >= DamageThreshold) {
                 generate();
             }
         }

@@ -1,5 +1,8 @@
 {
   "values": [
+    "mme:netherite_anvil",
+    "mme:chipped_netherite_anvil",
+    "mme:damaged_netherite_anvil",
     "mme:adamantium_anvil",
     "mme:chipped_adamantium_anvil",
     "mme:damaged_adamantium_anvil",

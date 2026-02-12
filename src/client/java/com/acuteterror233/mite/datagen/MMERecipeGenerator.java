@@ -96,6 +96,7 @@ public class MMERecipeGenerator extends FabricRecipeProvider {
                         .unlockedBy(getHasName(MMEItems.OBSIDIAN_KNIFE), this.has(MMEItems.OBSIDIAN_KNIFE))
                         .save(this.output);
 
+                offerAnvilRecipes(MMEBlocks.NETHERITE_ANVIL, Items.NETHERITE_INGOT, Blocks.NETHERITE_BLOCK);
                 offerAnvilRecipes(MMEBlocks.ADAMANTIUM_ANVIL, MMEItems.ADAMANTIUM_INGOT, MMEBlocks.ADAMANTIUM_BLOCK);
                 offerAnvilRecipes(MMEBlocks.ANCIENT_METAL_ANVIL, MMEItems.ANCIENT_METAL_INGOT, MMEBlocks.ANCIENT_METAL_BLOCK);
                 offerAnvilRecipes(MMEBlocks.MITHRIL_ANVIL, MMEItems.MITHRIL_INGOT, MMEBlocks.MITHRIL_BLOCK);
@@ -477,16 +478,6 @@ public class MMERecipeGenerator extends FabricRecipeProvider {
                         .requires(Items.WHEAT_SEEDS)
                         .unlockedBy(getHasName(MMEItems.BOWL_WATER), this.has(MMEItems.BOWL_WATER))
                         .save(this.output);
-
-                offerArrowRecipes(MMEItems.ADAMANTIUM_NUGGET, MMEItems.ADAMANTIUM_ARROW);
-                offerArrowRecipes(MMEItems.ANCIENT_METAL_NUGGET, MMEItems.ANCIENT_METAL_ARROW);
-                offerArrowRecipes(MMEItems.FLINT_SHARD, MMEItems.FLINT_ARROW);
-                offerArrowRecipes(Items.IRON_NUGGET, MMEItems.IRON_ARROW);
-                offerArrowRecipes(Items.GOLD_NUGGET, MMEItems.GOLDEN_ARROW);
-                offerArrowRecipes(MMEItems.MITHRIL_NUGGET, MMEItems.MITHRIL_ARROW);
-                offerArrowRecipes(MMEItems.OBSIDIAN_SHARD, MMEItems.OBSIDIAN_ARROW);
-                offerArrowRecipes(MMEItems.SILVER_NUGGET, MMEItems.SILVER_ARROW);
-                offerArrowRecipes(MMEItems.COPPER_NUGGET, MMEItems.COPPER_ARROW);
 
                 offerChainsRecipes(MMEItems.ADAMANTIUM_NUGGET, MMEItems.ADAMANTIUM_CHAINS);
                 offerChainsRecipes(MMEItems.MITHRIL_NUGGET, MMEItems.MITHRIL_CHAINS);
