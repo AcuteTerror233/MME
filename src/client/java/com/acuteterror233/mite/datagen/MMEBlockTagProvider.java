@@ -17,13 +17,13 @@ public class MMEBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider wrapperLookup) {
-        getOrCreateTagBuilder(BlockTags.DOORS)
+        this.valueLookupBuilder(BlockTags.DOORS)
                 .add(MMEBlocks.GOLDEN_DOOR)
                 .add(MMEBlocks.SILVER_DOOR)
                 .add(MMEBlocks.MITHRIL_DOOR)
                 .add(MMEBlocks.ANCIENT_METAL_DOOR)
                 .add(MMEBlocks.ADAMANTIUM_DOOR);
-        getOrCreateTagBuilder(MMETags.GLASS)
+        this.valueLookupBuilder(MMETags.GLASS)
                 .add(Blocks.GLASS)
                 .add(Blocks.WHITE_STAINED_GLASS)
                 .add(Blocks.ORANGE_STAINED_GLASS)
@@ -42,7 +42,7 @@ public class MMEBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(Blocks.RED_STAINED_GLASS)
                 .add(Blocks.BLACK_STAINED_GLASS)
                 .add(Blocks.TINTED_GLASS);
-        getOrCreateTagBuilder(MMETags.GLASS_PANE)
+        this.valueLookupBuilder(MMETags.GLASS_PANE)
                 .add(Blocks.GLASS_PANE)
                 .add(Blocks.WHITE_STAINED_GLASS_PANE)
                 .add(Blocks.ORANGE_STAINED_GLASS_PANE)
@@ -60,7 +60,7 @@ public class MMEBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(Blocks.GREEN_STAINED_GLASS_PANE)
                 .add(Blocks.RED_STAINED_GLASS_PANE)
                 .add(Blocks.BLACK_STAINED_GLASS_PANE);
-        getOrCreateTagBuilder(MMETags.BARS)
+        this.valueLookupBuilder(MMETags.BARS)
                 .add(Blocks.IRON_BARS)
                 .add(MMEBlocks.ADAMANTIUM_BARS)
                 .add(MMEBlocks.ANCIENT_METAL_BARS)
@@ -68,7 +68,7 @@ public class MMEBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(MMEBlocks.MITHRIL_BARS)
                 .add(MMEBlocks.SILVER_BARS)
                 .add(MMEBlocks.COPPER_BARS);
-        getOrCreateTagBuilder(BlockTags.ANVIL)
+        this.valueLookupBuilder(BlockTags.ANVIL)
                 .add(MMEBlocks.NETHERITE_ANVIL)
                 .add(MMEBlocks.CHIPPED_NETHERITE_ANVIL)
                 .add(MMEBlocks.DAMAGED_NETHERITE_ANVIL)
@@ -90,7 +90,7 @@ public class MMEBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(MMEBlocks.COPPER_ANVIL)
                 .add(MMEBlocks.CHIPPED_COPPER_ANVIL)
                 .add(MMEBlocks.DAMAGED_COPPER_ANVIL);
-        getOrCreateTagBuilder(MMETags.INTACT_ANVIL)
+        this.valueLookupBuilder(MMETags.INTACT_ANVIL)
                 .add(MMEBlocks.NETHERITE_ANVIL)
                 .add(MMEBlocks.ADAMANTIUM_ANVIL)
                 .add(MMEBlocks.MITHRIL_ANVIL)
@@ -98,7 +98,7 @@ public class MMEBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(MMEBlocks.SILVER_ANVIL)
                 .add(MMEBlocks.GOLDEN_ANVIL)
                 .add(MMEBlocks.COPPER_ANVIL);
-        getOrCreateTagBuilder(MMETags.CHIPPED_ANVIL)
+        this.valueLookupBuilder(MMETags.CHIPPED_ANVIL)
                 .add(MMEBlocks.CHIPPED_NETHERITE_ANVIL)
                 .add(MMEBlocks.CHIPPED_ADAMANTIUM_ANVIL)
                 .add(MMEBlocks.CHIPPED_MITHRIL_ANVIL)
@@ -106,7 +106,7 @@ public class MMEBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(MMEBlocks.CHIPPED_SILVER_ANVIL)
                 .add(MMEBlocks.CHIPPED_GOLDEN_ANVIL)
                 .add(MMEBlocks.CHIPPED_COPPER_ANVIL);
-        getOrCreateTagBuilder(MMETags.DAMAGED_ANVIL)
+        this.valueLookupBuilder(MMETags.DAMAGED_ANVIL)
                 .add(MMEBlocks.DAMAGED_NETHERITE_ANVIL)
                 .add(MMEBlocks.DAMAGED_ADAMANTIUM_ANVIL)
                 .add(MMEBlocks.DAMAGED_MITHRIL_ANVIL)
@@ -114,44 +114,44 @@ public class MMEBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(MMEBlocks.DAMAGED_SILVER_ANVIL)
                 .add(MMEBlocks.DAMAGED_GOLDEN_ANVIL)
                 .add(MMEBlocks.DAMAGED_COPPER_ANVIL);
-        getOrCreateTagBuilder(MMETags.NETHERITE_ANVIL)
+        this.valueLookupBuilder(MMETags.NETHERITE_ANVIL)
                 .add(MMEBlocks.NETHERITE_ANVIL)
                 .add(MMEBlocks.CHIPPED_NETHERITE_ANVIL)
                 .add(MMEBlocks.DAMAGED_NETHERITE_ANVIL);
-        getOrCreateTagBuilder(MMETags.ADAMANTIUM_ANVIL)
+        this.valueLookupBuilder(MMETags.ADAMANTIUM_ANVIL)
                 .add(MMEBlocks.ADAMANTIUM_ANVIL)
                 .add(MMEBlocks.CHIPPED_ADAMANTIUM_ANVIL)
                 .add(MMEBlocks.DAMAGED_ADAMANTIUM_ANVIL);
-        getOrCreateTagBuilder(MMETags.MITHRIL_ANVIL)
+        this.valueLookupBuilder(MMETags.MITHRIL_ANVIL)
                 .add(MMEBlocks.MITHRIL_ANVIL)
                 .add(MMEBlocks.CHIPPED_MITHRIL_ANVIL)
                 .add(MMEBlocks.DAMAGED_MITHRIL_ANVIL);
-        getOrCreateTagBuilder(MMETags.ANCIENT_METAL_ANVIL)
+        this.valueLookupBuilder(MMETags.ANCIENT_METAL_ANVIL)
                 .add(MMEBlocks.ANCIENT_METAL_ANVIL)
                 .add(MMEBlocks.CHIPPED_ANCIENT_METAL_ANVIL)
                 .add(MMEBlocks.DAMAGED_ANCIENT_METAL_ANVIL);
-        getOrCreateTagBuilder(MMETags.SILVER_ANVIL)
+        this.valueLookupBuilder(MMETags.SILVER_ANVIL)
                 .add(MMEBlocks.SILVER_ANVIL)
                 .add(MMEBlocks.CHIPPED_SILVER_ANVIL)
                 .add(MMEBlocks.DAMAGED_SILVER_ANVIL);
-        getOrCreateTagBuilder(MMETags.GOLDEN_ANVIL)
+        this.valueLookupBuilder(MMETags.GOLDEN_ANVIL)
                 .add(MMEBlocks.GOLDEN_ANVIL)
                 .add(MMEBlocks.CHIPPED_GOLDEN_ANVIL)
                 .add(MMEBlocks.DAMAGED_GOLDEN_ANVIL);
-        getOrCreateTagBuilder(MMETags.COPPER_ANVIL)
+        this.valueLookupBuilder(MMETags.COPPER_ANVIL)
                 .add(MMEBlocks.COPPER_ANVIL)
                 .add(MMEBlocks.CHIPPED_COPPER_ANVIL)
                 .add(MMEBlocks.DAMAGED_COPPER_ANVIL);
-        getOrCreateTagBuilder(MMETags.IRON_ANVIL)
+        this.valueLookupBuilder(MMETags.IRON_ANVIL)
                 .add(Blocks.ANVIL)
                 .add(Blocks.CHIPPED_ANVIL)
                 .add(Blocks.DAMAGED_ANVIL);
-        getOrCreateTagBuilder(MMETags.PORTAL)
+        this.valueLookupBuilder(MMETags.PORTAL)
                 .add(MMEBlocks.UNDERGROUND_PORTAL)
                 .add(MMEBlocks.HOME_PORTAL)
                 .add(MMEBlocks.RUNE_PORTAL)
                 .add(Blocks.NETHER_PORTAL);
-        getOrCreateTagBuilder(MMETags.MITHRIL_RUNESTORE)
+        this.valueLookupBuilder(MMETags.MITHRIL_RUNESTORE)
                 .add(MMEBlocks.MITHRIL_NUL_RUNESTORE)
                 .add(MMEBlocks.MITHRIL_QUAS_RUNESTORE)
                 .add(MMEBlocks.MITHRIL_POR_RUNESTORE)
@@ -168,7 +168,7 @@ public class MMEBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(MMEBlocks.MITHRIL_JUX_RUNESTORE)
                 .add(MMEBlocks.MITHRIL_YLEM_RUNESTORE)
                 .add(MMEBlocks.MITHRIL_SANCT_RUNESTORE);
-        getOrCreateTagBuilder(MMETags.ADAMANTIUM_RUNESTORE)
+        this.valueLookupBuilder(MMETags.ADAMANTIUM_RUNESTORE)
                 .add(MMEBlocks.ADAMANTIUM_NUL_RUNESTORE)
                 .add(MMEBlocks.ADAMANTIUM_QUAS_RUNESTORE)
                 .add(MMEBlocks.ADAMANTIUM_POR_RUNESTORE)
@@ -185,10 +185,10 @@ public class MMEBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(MMEBlocks.ADAMANTIUM_JUX_RUNESTORE)
                 .add(MMEBlocks.ADAMANTIUM_YLEM_RUNESTORE)
                 .add(MMEBlocks.ADAMANTIUM_SANCT_RUNESTORE);
-        getOrCreateTagBuilder(MMETags.RUNESTORE)
+        this.valueLookupBuilder(MMETags.RUNESTORE)
                 .forceAddTag(MMETags.ADAMANTIUM_RUNESTORE)
                 .forceAddTag(MMETags.MITHRIL_RUNESTORE);
-        getOrCreateTagBuilder(MMETags.CRAFTING_TABLE)
+        this.valueLookupBuilder(MMETags.CRAFTING_TABLE)
                 .add(MMEBlocks.ADAMANTIUM_CRAFTING_TABLE)
                 .add(MMEBlocks.MITHRIL_CRAFTING_TABLE)
                 .add(MMEBlocks.ANCIENT_METAL_CRAFTING_TABLE)
@@ -198,32 +198,32 @@ public class MMEBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(MMEBlocks.COPPER_CRAFTING_TABLE)
                 .add(MMEBlocks.OBSIDIAN_CRAFTING_TABLE)
                 .add(MMEBlocks.FLINT_CRAFTING_TABLE);
-        getOrCreateTagBuilder(MMETags.ENCHANTING_TABLE)
+        this.valueLookupBuilder(MMETags.ENCHANTING_TABLE)
                 .add(Blocks.ENCHANTING_TABLE)
                 .add(MMEBlocks.EMERALD_ENCHANTING_TABLE);
-        getOrCreateTagBuilder(MMETags.MINEABLE_WITH_MATTOCK)
+        this.valueLookupBuilder(MMETags.MINEABLE_WITH_MATTOCK)
                 .forceAddTag(BlockTags.MINEABLE_WITH_HOE)
                 .forceAddTag(BlockTags.MINEABLE_WITH_SHOVEL);
 
-        getOrCreateTagBuilder(MMETags.NEEDS_ADAMANTIUM_TOOL)
+        this.valueLookupBuilder(MMETags.NEEDS_ADAMANTIUM_TOOL)
                 .add(Blocks.ANCIENT_DEBRIS)
                 .add(Blocks.NETHERITE_BLOCK)
                 .add(MMEBlocks.ADAMANTIUM_BLOCK)
                 .add(MMEBlocks.ADAMANTIUM_BARS)
                 .add(MMEBlocks.ADAMANTIUM_DOOR);
-        getOrCreateTagBuilder(MMETags.NEEDS_MITHRIL_TOOL)
+        this.valueLookupBuilder(MMETags.NEEDS_MITHRIL_TOOL)
                 .add(MMEBlocks.MITHRIL_BLOCK)
                 .add(MMEBlocks.MITHRIL_BARS)
                 .add(MMEBlocks.MITHRIL_DOOR)
                 .add(MMEBlocks.ADAMANTIUM_ORE)
                 .add(MMEBlocks.DEEPSLATE_ADAMANTIUM_ORE);
-        getOrCreateTagBuilder(MMETags.NEEDS_ANCIENT_METAL_TOOL)
+        this.valueLookupBuilder(MMETags.NEEDS_ANCIENT_METAL_TOOL)
                 .add(MMEBlocks.ANCIENT_METAL_BLOCK)
                 .add(MMEBlocks.ANCIENT_METAL_BARS);
-        getOrCreateTagBuilder(BlockTags.NEEDS_IRON_TOOL)
+        this.valueLookupBuilder(BlockTags.NEEDS_IRON_TOOL)
                 .add(MMEBlocks.MITHRIL_ORE)
                 .add(MMEBlocks.DEEPSLATE_MITHRIL_ORE);
-        getOrCreateTagBuilder(MMETags.NEEDS_SILVER_OR_COPPER_TOOL)
+        this.valueLookupBuilder(MMETags.NEEDS_SILVER_OR_COPPER_TOOL)
                 .add(MMEBlocks.SILVER_BLOCK)
                 .add(MMEBlocks.SILVER_BARS)
                 .add(MMEBlocks.SILVER_DOOR)
@@ -231,7 +231,7 @@ public class MMEBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(MMEBlocks.COPPER_BARS)
                 .forceAddTag(BlockTags.COPPER_ORES);
 
-        getOrCreateTagBuilder(MMETags.INCORRECT_FOR_FLINT_OR_OBSIDIAN_TOOL)
+        this.valueLookupBuilder(MMETags.INCORRECT_FOR_FLINT_OR_OBSIDIAN_TOOL)
                 .forceAddTag(MMETags.NEEDS_SILVER_OR_COPPER_TOOL)
                 .forceAddTag(MMETags.NEEDS_ANCIENT_METAL_TOOL)
                 .forceAddTag(MMETags.NEEDS_MITHRIL_TOOL)
@@ -239,24 +239,24 @@ public class MMEBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .forceAddTag(BlockTags.NEEDS_DIAMOND_TOOL)
                 .forceAddTag(BlockTags.NEEDS_IRON_TOOL)
                 .forceAddTag(BlockTags.NEEDS_STONE_TOOL);
-        getOrCreateTagBuilder(MMETags.INCORRECT_FOR_COPPER_OR_SILVER_TOOL)
+        this.valueLookupBuilder(MMETags.INCORRECT_FOR_COPPER_OR_SILVER_TOOL)
                 .forceAddTag(BlockTags.NEEDS_IRON_TOOL)
                 .forceAddTag(BlockTags.NEEDS_DIAMOND_TOOL)
                 .forceAddTag(MMETags.NEEDS_ANCIENT_METAL_TOOL)
                 .forceAddTag(MMETags.NEEDS_MITHRIL_TOOL)
                 .forceAddTag(MMETags.NEEDS_ADAMANTIUM_TOOL);
-        getOrCreateTagBuilder(MMETags.INCORRECT_FOR_RUSTED_IRON_TOOL)
+        this.valueLookupBuilder(MMETags.INCORRECT_FOR_RUSTED_IRON_TOOL)
                 .forceAddTag(MMETags.NEEDS_ANCIENT_METAL_TOOL)
                 .forceAddTag(MMETags.NEEDS_MITHRIL_TOOL)
                 .forceAddTag(MMETags.NEEDS_ADAMANTIUM_TOOL);
-        getOrCreateTagBuilder(MMETags.INCORRECT_FOR_ANCIENT_METAL_TOOL)
+        this.valueLookupBuilder(MMETags.INCORRECT_FOR_ANCIENT_METAL_TOOL)
                 .forceAddTag(MMETags.NEEDS_MITHRIL_TOOL)
                 .forceAddTag(MMETags.NEEDS_ADAMANTIUM_TOOL);
-        getOrCreateTagBuilder(MMETags.INCORRECT_FOR_MITHRIL_TOOL)
+        this.valueLookupBuilder(MMETags.INCORRECT_FOR_MITHRIL_TOOL)
                 .forceAddTag(MMETags.NEEDS_ADAMANTIUM_TOOL);
-        getOrCreateTagBuilder(MMETags.INCORRECT_FOR_ADAMANTIUM_TOOL);
+        this.valueLookupBuilder(MMETags.INCORRECT_FOR_ADAMANTIUM_TOOL);
 
-        getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_PICKAXE)
+        this.valueLookupBuilder(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(MMEBlocks.ADAMANTIUM_ORE)
                 .add(MMEBlocks.DEEPSLATE_ADAMANTIUM_ORE)
                 .add(MMEBlocks.MITHRIL_ORE)

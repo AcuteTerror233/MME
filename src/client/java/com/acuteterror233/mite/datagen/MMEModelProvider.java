@@ -433,12 +433,8 @@ public class MMEModelProvider extends FabricModelProvider {
         itemModelGenerator.generateFlatItem(MMEItems.SILVER_NUGGET, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(MMEItems.COPPER_NUGGET, ModelTemplates.FLAT_ITEM);
 
-        itemModelGenerator.generateFlatItem(MMEItems.DIAMOND_SHARD, ModelTemplates.FLAT_ITEM);
-        itemModelGenerator.generateFlatItem(MMEItems.EMERALD_SHARD, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(MMEItems.FLINT_SHARD, ModelTemplates.FLAT_ITEM);
-        itemModelGenerator.generateFlatItem(MMEItems.GLASS_SHARD, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(MMEItems.OBSIDIAN_SHARD, ModelTemplates.FLAT_ITEM);
-        itemModelGenerator.generateFlatItem(MMEItems.QUARTZ_SHARD, ModelTemplates.FLAT_ITEM);
 
         itemModelGenerator.generateFlatItem(MMEItems.SINEW, ModelTemplates.FLAT_ITEM);
     }

@@ -28,6 +28,7 @@
     "world.item.DyeItemMixin",
     "world.item.ItemsMixin",
     "world.item.ItemStackMixin",
+    "world.item.component.ItemAttributeModifiersMixin",
     "world.item.equipment.ArmorTypeMixin",
     "world.item.equipment.EnchantmentHelperMixin",
     "world.level.block.BambooStalkBlockMixin",

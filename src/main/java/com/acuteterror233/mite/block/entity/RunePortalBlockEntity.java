@@ -2,10 +2,10 @@ package com.acuteterror233.mite.block.entity;
 
 import com.acuteterror233.mite.block.MMEBlocks;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
 
 public class RunePortalBlockEntity extends BlockEntity{
     private BlockPos destinationPos;
@@ -13,15 +13,15 @@ public class RunePortalBlockEntity extends BlockEntity{
         super(MMEBlocks.RUNE_PORTAL_BLOCK_ENTITY, pos, state);
     }
     @Override
-    protected void saveAdditional(CompoundTag nbt, HolderLookup.Provider registryLookup) {
-        nbt.store("destinations", BlockPos.CODEC, destinationPos);
-        super.saveAdditional(nbt, registryLookup);
+    protected void saveAdditional(ValueOutput valueOutput) {
+        valueOutput.store("destinations", BlockPos.CODEC, destinationPos);
+        super.saveAdditional(valueOutput);
     }
 
     @Override
-    protected void loadAdditional(CompoundTag nbt, HolderLookup.Provider registryLookup) {
-        super.loadAdditional(nbt, registryLookup);
-        nbt.read("destinations", BlockPos.CODEC).ifPresent(blockPos -> this.destinationPos = blockPos);
+    protected void loadAdditional(ValueInput valueInput) {
+        super.loadAdditional(valueInput);
+        valueInput.read("destinations", BlockPos.CODEC).ifPresent(blockPos -> this.destinationPos = blockPos);
     }
 
     public void setDestinationPosPos(BlockPos pos) {

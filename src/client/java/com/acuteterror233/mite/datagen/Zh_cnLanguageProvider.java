@@ -356,12 +356,8 @@ public class Zh_cnLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(MMEItems.SILVER_NUGGET, "银粒");
         translationBuilder.add(MMEItems.COPPER_NUGGET, "铜粒");
 
-        translationBuilder.add(MMEItems.DIAMOND_SHARD, "钻石碎片");
-        translationBuilder.add(MMEItems.EMERALD_SHARD, "绿宝石碎片");
         translationBuilder.add(MMEItems.FLINT_SHARD, "燧石碎片");
-        translationBuilder.add(MMEItems.GLASS_SHARD, "玻璃碎片");
         translationBuilder.add(MMEItems.OBSIDIAN_SHARD, "黑曜石碎片");
-        translationBuilder.add(MMEItems.QUARTZ_SHARD, "石英碎片");
 
         translationBuilder.add(MMEBlocks.NETHERITE_ANVIL, "下界合金砧");
         translationBuilder.add(MMEBlocks.CHIPPED_NETHERITE_ANVIL, "开裂的下界合金砧");

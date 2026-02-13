@@ -72,11 +72,8 @@ public class MMERecipeGenerator extends FabricRecipeProvider {
                 nineBlockStorageRecipes(RecipeCategory.MISC, MMEItems.SILVER_NUGGET, RecipeCategory.MISC, MMEItems.SILVER_INGOT, "silver_ingot_from_silver_nugget", null,  "silver_nugget_from_silver_ingot", null);
                 nineBlockStorageRecipes(RecipeCategory.MISC, MMEItems.COPPER_NUGGET, RecipeCategory.MISC, Items.COPPER_INGOT, "copper_ingot_from_copper_nugget", null,  "copper_nugget_from_copper_ingot", null);
 
-                nineBlockStorageRecipes(RecipeCategory.MISC, MMEItems.DIAMOND_SHARD, RecipeCategory.MISC, Items.DIAMOND, "diamond_from_diamond_shard", null,  "diamond_shard_from_diamond", null);
-                nineBlockStorageRecipes(RecipeCategory.MISC, MMEItems.EMERALD_SHARD, RecipeCategory.MISC, Items.EMERALD, "emerald_from_emerald_shard", null,  "emerald_shard_from_emerald", null);
                 nineBlockStorageRecipes(RecipeCategory.MISC, MMEItems.OBSIDIAN_SHARD, RecipeCategory.MISC, Blocks.OBSIDIAN, "obsidian_from_obsidian_shard", null,  "obsidian_shard_from_obsidian", null);
                 twoByTwoPacker(RecipeCategory.MISC, Items.FLINT, MMEItems.FLINT_SHARD);
-                twoByTwoPacker(RecipeCategory.MISC, Items.QUARTZ, MMEItems.QUARTZ_SHARD);
 
                 offerCraftingTableRecipes(MMEBlocks.ADAMANTIUM_CRAFTING_TABLE, MMEItems.ADAMANTIUM_INGOT);
                 offerCraftingTableRecipes(MMEBlocks.ANCIENT_METAL_CRAFTING_TABLE, MMEItems.ANCIENT_METAL_INGOT);

@@ -1,4 +1,4 @@
-// 1.21.5	-999999999-01-01T00:00:00	mme/Tags for minecraft:item
+// 1.21.6	-999999999-01-01T00:00:00	mme/Tags for minecraft:item
 a5d180c1bc47b1c3ab839af0624bedd6cab3ad9a data/minecraft/tags/item/axes.json
 72e0ee76a52005fdbb8fd56fa09fe34b8fa5b56d data/minecraft/tags/item/chest_armor.json
 7167ee640e77ae2988fe6d5f809e4c5feb2f048d data/minecraft/tags/item/enchantable/durability.json
@@ -43,7 +43,6 @@ ac2add5f21d4796344a06767cb64df90eb5659b6 data/mme/tags/item/mattock.json
 10921fb3bd42d27013c338d7840c2c50f75fd3ef data/mme/tags/item/nugget.json
 a076029a2420487af65e3bd2ff8265d8feb944f0 data/mme/tags/item/rusted_iron_series_repairable.json
 f0e07abd51501ae917c3c9fbfb3ba0eeefe7df3b data/mme/tags/item/scythe.json
-b14131412a3e2c9bef7a99afd661b55a1f5b8aa5 data/mme/tags/item/shard.json
 8381be3de4963df5a7567749f0be18ba01b7c127 data/mme/tags/item/shears.json
 24ec9b8785be984eebc71ca8feeb7ff2cf655f8e data/mme/tags/item/silver_series_repairable.json
 b7abcf429161b5a300f7101bcdf6a755d628fc5c data/mme/tags/item/silver_tool_materials.json

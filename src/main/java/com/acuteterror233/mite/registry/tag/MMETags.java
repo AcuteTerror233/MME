@@ -47,7 +47,6 @@ public class MMETags {
     public static final TagKey<Block> MINEABLE_WITH_MATTOCK = ofBlock("mineable_with_mattock");
 
     public static final TagKey<Item> NUGGET = ofItem("nugget");
-    public static final TagKey<Item> SHARD = ofItem("shard");
     public static final TagKey<Item> INGOT = ofItem("ingot");
     public static final TagKey<Item> CHAINS = ofItem("chains");
     public static final TagKey<Item> COINS = ofItem("coins");

@@ -3,13 +3,13 @@ package com.acuteterror233.mite.block.entity;
 import com.acuteterror233.mite.block.MMEAnvilBlock;
 import com.acuteterror233.mite.block.MMEBlocks;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LevelEvent;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -51,17 +51,17 @@ public class AnvilBlockEntity extends BlockEntity {
     }
 
     @Override
-    protected void saveAdditional(CompoundTag nbt, HolderLookup.Provider registryLookup) {
-        nbt.putInt("maxDamage", this.maxDamage);
-        nbt.putInt("damage", this.damage);
-        super.saveAdditional(nbt, registryLookup);
+    protected void saveAdditional(ValueOutput valueOutput) {
+        valueOutput.putInt("maxDamage", this.maxDamage);
+        valueOutput.putInt("damage", this.damage);
+        super.saveAdditional(valueOutput);
     }
 
     @Override
-    protected void loadAdditional(CompoundTag nbt, HolderLookup.Provider registryLookup) {
-        super.loadAdditional(nbt, registryLookup);
-        this.maxDamage = nbt.getIntOr("maxDamage", 0);
-        this.damage = (nbt.getIntOr("damage", 0));
+    protected void loadAdditional(ValueInput valueInput) {
+        super.loadAdditional(valueInput);
+        this.maxDamage = valueInput.getIntOr("maxDamage", 0);
+        this.damage = valueInput.getIntOr("damage", 0);
     }
 
     public Integer getMaxDamage() {

@@ -7,7 +7,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.screens.inventory.ItemCombinerScreen;
-import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.game.ServerboundRenameItemPacket;
@@ -17,7 +17,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
-import org.lwjgl.glfw.GLFW;
 
 @Environment(EnvType.CLIENT)
 public class GradeAnvilScreen extends ItemCombinerScreen<GradeAnvilMenu> {
@@ -73,29 +72,25 @@ public class GradeAnvilScreen extends ItemCombinerScreen<GradeAnvilMenu> {
         }
     }
     @Override
-    public boolean keyPressed(int keyCode, int scanCode, int modifiers) {
-        if (keyCode == GLFW.GLFW_KEY_ESCAPE) {
+    public boolean keyPressed(int i, int j, int k) {
+        if (i == 256) {
             this.minecraft.player.closeContainer();
         }
-        return !this.name.keyPressed(keyCode, scanCode, modifiers) && !this.name.canConsumeInput() ? super.keyPressed(keyCode, scanCode, modifiers) : true;
-    }
 
-    @Override
-    public void renderFg(GuiGraphics context, int mouseX, int mouseY, float deltaTicks) {
-        this.name.render(context, mouseX, mouseY, deltaTicks);
+        return !this.name.keyPressed(i, j, k) && !this.name.canConsumeInput() ? super.keyPressed(i, j, k) : true;
     }
 
     @Override
     protected void renderErrorIcon(GuiGraphics context, int x, int y) {
         if ((this.menu.getSlot(0).hasItem() || this.menu.getSlot(1).hasItem()) && !this.menu.getSlot(this.menu.getResultSlot()).hasItem()) {
-            context.blitSprite(RenderType::guiTextured, ERROR_TEXTURE, x + 99, y + 45, 28, 21);
+            context.blitSprite(RenderPipelines.GUI_TEXTURED, ERROR_TEXTURE, x + 99, y + 45, 28, 21);
         }
     }
     @Override
     protected void renderBg(GuiGraphics context, float deltaTicks, int mouseX, int mouseY) {
         super.renderBg(context, deltaTicks, mouseX, mouseY);
         context.blitSprite(
-                RenderType::guiTextured, this.menu.getSlot(0).hasItem() ? TEXT_FIELD_TEXTURE : TEXT_FIELD_DISABLED_TEXTURE, this.leftPos + 59, this.topPos + 20, 110, 16
+                RenderPipelines.GUI_TEXTURED, this.menu.getSlot(0).hasItem() ? TEXT_FIELD_TEXTURE : TEXT_FIELD_DISABLED_TEXTURE, this.leftPos + 59, this.topPos + 20, 110, 16
         );
     }
     @Override
@@ -107,30 +102,34 @@ public class GradeAnvilScreen extends ItemCombinerScreen<GradeAnvilMenu> {
         }
     }
     @Override
-    protected void renderLabels(GuiGraphics context, int mouseX, int mouseY) {
-        super.renderLabels(context, mouseX, mouseY);
-        int i = this.menu.getLevelCost();
-        if (i > 0) {
-            int j = 8453920;
-            Component text;
-            if (i >= 40 && !this.minecraft.player.hasInfiniteMaterials()) {
-                text = TOO_EXPENSIVE_TEXT;
-                j = 16736352;
+    protected void renderLabels(GuiGraphics guiGraphics, int i, int j) {
+        super.renderLabels(guiGraphics, i, j);
+        int k = this.menu.getLevelCost();
+        if (k > 0) {
+            int l = -8323296;
+            Component component;
+            if (k >= 40 && !this.minecraft.player.hasInfiniteMaterials()) {
+                component = TOO_EXPENSIVE_TEXT;
+                l = -40864;
             } else if (!this.menu.getSlot(2).hasItem()) {
-                text = null;
+                component = null;
             } else {
-                text = Component.translatable("container.repair.cost", i);
+                component = Component.translatable("container.repair.cost", new Object[]{k});
                 if (!this.menu.getSlot(2).mayPickup(this.player)) {
-                    j = 16736352;
+                    l = -40864;
                 }
             }
 
-            if (text != null) {
-                int k = this.imageWidth - 8 - this.font.width(text) - 2;
-                int l = 69;
-                context.fill(k - 2, 67, this.imageWidth - 8, 79, 1325400064);
-                context.drawString(this.font, text, k, 69, j);
+            if (component != null) {
+                int m = this.imageWidth - 8 - this.font.width(component) - 2;
+                guiGraphics.fill(m - 2, 67, this.imageWidth - 8, 79, 1325400064);
+                guiGraphics.drawString(this.font, component, m, 69, l);
             }
         }
+    }
+    @Override
+    protected void containerTick() {
+        super.containerTick();
+        this.minecraft.player.experienceDisplayStartTick = this.minecraft.player.tickCount;
     }
 }

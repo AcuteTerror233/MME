@@ -8,7 +8,7 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.navigation.ScreenPosition;
 import net.minecraft.client.gui.screens.inventory.AbstractRecipeBookScreen;
 import net.minecraft.client.gui.screens.recipebook.CraftingRecipeBookComponent;
-import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -43,8 +43,8 @@ public class GradeCraftingTableScreen extends AbstractRecipeBookScreen<GradeCraf
         double v = this.menu.getCraftingTime();
         int l = (int) (v * 24);
         int j = (this.height - this.imageHeight) / 2;
-        context.blit(RenderType::guiTextured, TEXTURE, x, j, 0.0F, 0.0F, this.imageWidth, this.imageHeight, 256, 256);
-        context.blitSprite(RenderType::guiTextured, CRAFTING_PROGRESS_TEXTURE, 24, 16, 0, 0, x + 90, y + 34, l, 16);
+        context.blit(RenderPipelines.GUI_TEXTURED, TEXTURE, x, j, 0.0F, 0.0F, this.imageWidth, this.imageHeight, 256, 256);
+        context.blitSprite(RenderPipelines.GUI_TEXTURED, CRAFTING_PROGRESS_TEXTURE, 24, 16, 0, 0, x + 90, y + 34, l, 16);
     }
     @Override
     protected void renderTooltip(GuiGraphics drawContext, int x, int y) {
@@ -54,7 +54,7 @@ public class GradeCraftingTableScreen extends AbstractRecipeBookScreen<GradeCraf
                 if (this.menu.getCarried().isEmpty()) {
                     List<Component> texts = this.getTooltipFromContainerItem(itemStack);
                     texts.add(Component.translatable("mme.craftingTable.noAllowedCrafting"));
-                    drawContext.renderTooltip(
+                    drawContext.setTooltipForNextFrame(
                             this.font, texts, itemStack.getTooltipImage(), x, y, itemStack.get(DataComponents.TOOLTIP_STYLE)
                     );
                 }

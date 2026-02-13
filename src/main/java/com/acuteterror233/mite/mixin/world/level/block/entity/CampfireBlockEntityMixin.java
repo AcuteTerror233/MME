@@ -2,8 +2,6 @@ package com.acuteterror233.mite.mixin.world.level.block.entity;
 
 import com.acuteterror233.mite.atinterface.CampfireBlockEntityExtension;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.item.crafting.CampfireCookingRecipe;
 import net.minecraft.world.item.crafting.RecipeManager;
@@ -11,6 +9,8 @@ import net.minecraft.world.item.crafting.SingleRecipeInput;
 import net.minecraft.world.level.block.entity.CampfireBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
@@ -31,12 +31,12 @@ public class CampfireBlockEntityMixin implements CampfireBlockEntityExtension {
         }
     }
     @Inject(method = "loadAdditional", at = @At("TAIL"))
-    public void loadAdditional(CompoundTag nbt, HolderLookup.Provider registries, CallbackInfo ci) {
-        nbt.getInt("remaining_ignition_time").ifPresent(remainingIgnitionTime -> this.remainingIgnitionTime = remainingIgnitionTime);
+    public void loadAdditional(ValueInput valueInput, CallbackInfo ci) {
+        valueInput.getInt("remaining_ignition_time").ifPresent(remainingIgnitionTime -> this.remainingIgnitionTime = remainingIgnitionTime);
     }
     @Inject(method = "saveAdditional", at = @At("TAIL"))
-    public void saveAdditional(CompoundTag nbt, HolderLookup.Provider registries, CallbackInfo ci) {
-        nbt.putInt("remaining_ignition_time", this.remainingIgnitionTime);
+    public void saveAdditional(ValueOutput valueOutput, CallbackInfo ci) {
+        valueOutput.putInt("remaining_ignition_time", this.remainingIgnitionTime);
     }
 
     @Override

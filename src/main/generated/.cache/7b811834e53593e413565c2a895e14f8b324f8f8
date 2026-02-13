@@ -1,4 +1,4 @@
-// 1.21.5	-999999999-01-01T00:00:00	mme/mme
+// 1.21.6	-999999999-01-01T00:00:00	mme/mme
 c703fa3428180358b3f7356a15e99b3896cd42d7 data/mme/advancement/recipes/building_blocks/adamantium_block_from_adamantium_ingot.json
 c6e5e0da5985ff2879b93b97a8aff14bbf9f54a1 data/mme/advancement/recipes/building_blocks/ancient_metal_block_from_ancient_metal_ingot.json
 489bfcfe5344d99f34a028cd4835c11a3d9ce3fa data/mme/advancement/recipes/building_blocks/mithril_block_from_mithril_ingot.json
@@ -150,10 +150,6 @@ e680841aea55b8c95993d87d15cdf44e7f47ce92 data/mme/advancement/recipes/misc/coppe
 1db8fc61515767c5f252f6eecf9eb2dd10e075ab data/mme/advancement/recipes/misc/copper_chains.json
 ae94f3a97aee68b527cbbe0613b38dee78660678 data/mme/advancement/recipes/misc/copper_ingot_from_copper_nugget.json
 0228c53a7b2796a2f49047b49e9662d5c045c9e5 data/mme/advancement/recipes/misc/copper_nugget_from_copper_ingot.json
-6d6efd0870e11936c39ac858bd025d6657e561ae data/mme/advancement/recipes/misc/diamond_from_diamond_shard.json
-06805d8346a811e0c20ff333be8e5ac514e8434c data/mme/advancement/recipes/misc/diamond_shard_from_diamond.json
-99025438d76e602a467b31696dabb9c5194a0231 data/mme/advancement/recipes/misc/emerald_from_emerald_shard.json
-b2eaca3ef2c5fe54fb96b8a40717be923dd570dc data/mme/advancement/recipes/misc/emerald_shard_from_emerald.json
 f3c1268fb46417f599177ca6545bfb23461a395f data/mme/advancement/recipes/misc/flint.json
 45fca5d3fdf8a7ebc6123f2a90f0075c5c1a58f6 data/mme/advancement/recipes/misc/gold_bucket.json
 126ef04a4b3aaa0da5eb93b2b5351ed7271fad37 data/mme/advancement/recipes/misc/golden_chains.json
@@ -169,7 +165,6 @@ fcd28b6c617c4eae179dd619ddaf0e5e69963d63 data/mme/advancement/recipes/misc/mithr
 0266de1bfa355cd9631fe20352d0be723bfa6dc8 data/mme/advancement/recipes/misc/netherite_bucket.json
 e0702f43d2bb7e9a2cec8666e8a05c9ceb8b0e43 data/mme/advancement/recipes/misc/obsidian_from_obsidian_shard.json
 946298cb8804dbef3f280db0bbab301233df9c78 data/mme/advancement/recipes/misc/obsidian_shard_from_obsidian.json
-3d613f0e02587bf7147aa12f4f812ccb19a66886 data/mme/advancement/recipes/misc/quartz.json
 06c8f752b9371a756141fdb5330486e750bfb065 data/mme/advancement/recipes/misc/silver_bucket.json
 9d190ba9ac456be7429f2e3c444ac12ffb5a84f6 data/mme/advancement/recipes/misc/silver_chains.json
 72df9c8bce3d7112defb5fee7c63f2f86dd7bf72 data/mme/advancement/recipes/misc/silver_ingot_from_deepslate_silver_ore.json
@@ -367,13 +362,9 @@ ff179ae2821358f4828378b3d0d681e415a072c6 data/mme/recipe/copper_shovel.json
 f9bd457068a0b330cb7c86028a8fce1fd5c55104 data/mme/recipe/copper_war_hammer.json
 4ad3d584901e6c6023fa717b2d1a4137e8f7b8b1 data/mme/recipe/cream_of_mushroom_soup.json
 8c801d73043a6ba51766246526ca97f8053072e4 data/mme/recipe/cream_of_vegetable_soup.json
-a8697b054d1ed16f02ddc74f4421563a7362a8ad data/mme/recipe/diamond_from_diamond_shard.json
-277ea5ea6de5167ea06e2db7e62e585e892e6b7f data/mme/recipe/diamond_shard_from_diamond.json
 75785303d1d2090b66f86e19d5bba347b37d8164 data/mme/recipe/dough_form_bowl_water.json
 1f8a0132302dcff66a0dba73d5ab24662895cab4 data/mme/recipe/dough_form_water_bucket.json
 ee03be32f545e622c60a0954a2f4806d38985b18 data/mme/recipe/emerald_enchanting_table.json
-6073dceea315624d1c3dcc1dd01378a7cb159df6 data/mme/recipe/emerald_from_emerald_shard.json
-e31bffca654a617f52279f1ce9eb96fc735a732a data/mme/recipe/emerald_shard_from_emerald.json
 787e3a2273dfafa42b6dea7c905f703a36b9390d data/mme/recipe/flint.json
 12dab0fe0426698ae24c3e40be19c72ad1a7e938 data/mme/recipe/flint_axe.json
 603f4bca9f4a10522f538c7a589f7d2ea0b1a22e data/mme/recipe/flint_crafting_table.json
@@ -474,7 +465,6 @@ c4d70c51b10b6ba885e4981ce98e096ba04fc892 data/mme/recipe/obsidian_knife.json
 3ffcba03aeae1471ab4558da7244cdb7f8cee6be data/mme/recipe/obsidian_shovel.json
 ed2b6687f218224892e6816cf23d118cad9a4ba9 data/mme/recipe/porridge.json
 f6b754920e4e71d9492d799c691149a9a0a09758 data/mme/recipe/pumpkin_soup.json
-175b42e6827faa4bb81e514619c6798e79340c40 data/mme/recipe/quartz.json
 9976adf910b8e1f4d42edd8c8f757b860cb5efc5 data/mme/recipe/silver_anvil.json
 44aeda77ac48ee1535a1228b0aa285b6e0a92dae data/mme/recipe/silver_axe.json
 b6c5e61d272b86c2eea68e6cfbfc5b81bfb98709 data/mme/recipe/silver_bars.json

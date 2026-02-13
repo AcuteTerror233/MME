@@ -41,7 +41,7 @@ public class GradeFurnaceScreen extends AbstractFurnaceScreen<GradeFurnaceMenu> 
                 if (this.menu.getCarried().isEmpty()) {
                     List<Component> texts = this.getTooltipFromContainerItem(itemStack);
                     texts.add(Component.translatable("mme.gradefurnac.fuelnotavailable"));
-                    drawContext.renderTooltip(
+                    drawContext.setTooltipForNextFrame(
                             this.font, texts, itemStack.getTooltipImage(), x, y, itemStack.get(DataComponents.TOOLTIP_STYLE)
                     );
                 }

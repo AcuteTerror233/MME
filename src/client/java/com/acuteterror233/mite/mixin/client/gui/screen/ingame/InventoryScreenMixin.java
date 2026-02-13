@@ -7,7 +7,7 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractRecipeBookScreen;
 import net.minecraft.client.gui.screens.inventory.InventoryScreen;
 import net.minecraft.client.gui.screens.recipebook.RecipeBookComponent;
-import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -35,7 +35,7 @@ public abstract class InventoryScreenMixin extends AbstractRecipeBookScreen<Inve
         int y = this.topPos;
         double v = ((InventoryMenuExtension)this.menu).MME$GetCraftingTime();
         int l = (int) (v * 18);
-        context.blitSprite(RenderType::guiTextured, CRAFTING_PROGRESS_TEXTURE, 18, 15, 0, 0, x + 135, y + 28, l, 15);
+        context.blitSprite(RenderPipelines.GUI_TEXTURED, CRAFTING_PROGRESS_TEXTURE, 18, 15, 0, 0, x + 135, y + 28, l, 15);
     }
     @Override
     protected void renderTooltip(GuiGraphics drawContext, int x, int y) {
@@ -45,7 +45,7 @@ public abstract class InventoryScreenMixin extends AbstractRecipeBookScreen<Inve
                 if (this.menu.getCarried().isEmpty()) {
                     List<Component> texts = this.getTooltipFromContainerItem(itemStack);
                     texts.add(Component.translatable("mme.craftingTable.noAllowedCrafting"));
-                    drawContext.renderTooltip(
+                    drawContext.setTooltipForNextFrame(
                             this.font, texts, itemStack.getTooltipImage(), x, y, itemStack.get(DataComponents.TOOLTIP_STYLE)
                     );
                 }

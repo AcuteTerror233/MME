@@ -356,12 +356,8 @@ public class En_usLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(MMEItems.SILVER_NUGGET, "Silver Nugget");
         translationBuilder.add(MMEItems.COPPER_NUGGET, "Copper Nugget");
 
-        translationBuilder.add(MMEItems.DIAMOND_SHARD, "Diamond Shard");
-        translationBuilder.add(MMEItems.EMERALD_SHARD, "Emerald Shard");
         translationBuilder.add(MMEItems.FLINT_SHARD, "Flint Shard");
-        translationBuilder.add(MMEItems.GLASS_SHARD, "Glass Shard");
         translationBuilder.add(MMEItems.OBSIDIAN_SHARD, "Obsidian Shard");
-        translationBuilder.add(MMEItems.QUARTZ_SHARD, "Quartz Shard");
 
         translationBuilder.add(MMEBlocks.NETHERITE_ANVIL, "Netherite Anvil");
         translationBuilder.add(MMEBlocks.CHIPPED_NETHERITE_ANVIL, "Chipped Netherite Anvil");

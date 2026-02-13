@@ -34,7 +34,7 @@ public class MME implements ModInitializer {
 
     @Override
     public void onInitialize() {
-        LOGGER.info(MOD_ID);
+        LOGGER.info("Make Minecraft Easy");
 
         MMEItems.init();
         MMEBlocks.init();

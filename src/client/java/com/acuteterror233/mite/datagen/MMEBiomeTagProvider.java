@@ -17,12 +17,12 @@ public class MMEBiomeTagProvider extends FabricTagProvider<Biome>{
 
     @Override
     protected void addTags(HolderLookup.Provider wrapperLookup) {
-        tag(BiomeTags.HAS_MINESHAFT)
+        this.builder(BiomeTags.HAS_MINESHAFT)
                 .add(MMEBiomeKeys.DEEP_DARK)
                 .add(MMEBiomeKeys.DRIPSTONE_CAVES)
                 .add(MMEBiomeKeys.LUSH_CAVES)
                 .add(MMEBiomeKeys.UNDERGROUND);
-        tag(BiomeTags.HAS_RUINED_PORTAL_MOUNTAIN)
+        this.builder(BiomeTags.HAS_RUINED_PORTAL_MOUNTAIN)
                 .add(MMEBiomeKeys.DEEP_DARK)
                 .add(MMEBiomeKeys.DRIPSTONE_CAVES)
                 .add(MMEBiomeKeys.LUSH_CAVES)

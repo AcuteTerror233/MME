@@ -1,4 +1,4 @@
-// 1.21.5	-999999999-01-01T00:00:00	mme/Model Definitions
+// 1.21.6	-999999999-01-01T00:00:00	mme/Model Definitions
 68acdda18e3b964a9e389ab37bc71128839b91f7 assets/minecraft/models/item/fishing_rod_cast.json
 012f927ccd95d8bf16e0c88636c440829a8bb8dd assets/mme/blockstates/adamantium_anvil.json
 b6c5166d2bfd78375bbc0ac8f85086e95ba665c1 assets/mme/blockstates/adamantium_bars.json
@@ -183,9 +183,7 @@ c1282470ef4705746a685d8f034b9336500be8dd assets/mme/items/damaged_silver_anvil.j
 25a72e903de9d400078f920ecbcac00ae43777d5 assets/mme/items/deepslate_adamantium_ore.json
 c699aad7da8556cfc6ed1d495cf84d4cc32765d5 assets/mme/items/deepslate_mithril_ore.json
 2c9dee2e9b5af0c95e0f157bb05995072a3bfca5 assets/mme/items/deepslate_silver_ore.json
-3bd5092c958741a278c91e038513a4fefbca5476 assets/mme/items/diamond_shard.json
 1226d96de371d880176117747bb916309c9f548d assets/mme/items/dough.json
-e120cd3230f3dcd88eb84ed5725da4793ada3a7c assets/mme/items/emerald_shard.json
 958dfb29817464042523568da85ef3b995f145dc assets/mme/items/flint_axe.json
 4ee6de46f46c30339cb0901778eb4aca66159f0c assets/mme/items/flint_fishing_rod.json
 72b25567010cbe7c94520fc6f6d2ad1141a4c83e assets/mme/items/flint_hatchet.json
@@ -193,7 +191,6 @@ b4826eaf902f3135c518d4833fb1efdb49f05937 assets/mme/items/flint_knife.json
 05facb3221861e7cd9e118f6c4f0b49ef1eac131 assets/mme/items/flint_shard.json
 04ec47d6eed31c212c56b2abb7cf0862054cd1a1 assets/mme/items/flint_shovel.json
 8a892192564e1f2a937fc745754fb75026d1e1b4 assets/mme/items/flour.json
-af154a1dd1b14885eb4531fb9412fa36214b44eb assets/mme/items/glass_shard.json
 ab4927fe4a071a12b42ba4144233aa5ac1c8704c assets/mme/items/gold_bucket.json
 862b629e1b31538d78aeb84b65edede7073ff0ac assets/mme/items/gold_coins.json
 e1f9bf7d785ab7fd7e2b99b15d6f9ce4531361a8 assets/mme/items/golden_anvil.json
@@ -311,7 +308,6 @@ b251cffc05203d6773c33e8d9cd208b4fe7cf057 assets/mme/items/pufferfish_copper_buck
 427353c78a9c36af5a6f37c485f29984a446efbc assets/mme/items/pufferfish_netherite_bucket.json
 625d4d6475ee2e29152af816342dbbc8921acc96 assets/mme/items/pufferfish_silver_bucket.json
 ea966547416a520118d5f46c1e43b7ae1e7536f9 assets/mme/items/pumpkin_soup.json
-4248de4a4cbc90a8a4b4eb640581265115af15ff assets/mme/items/quartz_shard.json
 dcf3bb21f101ae42dda1d83fc8d17dd6f10c6bac assets/mme/items/raw_adamantium.json
 b20fae0248bc2a0e5c8822bb58aeb00e7d7bb393 assets/mme/items/raw_mithril.json
 f860feb1bd9b46c5bc45a8dc591a25aead2ef447 assets/mme/items/raw_silver.json
@@ -863,9 +859,7 @@ db2a845bd016e3afa99e80024bc17cd4a77fb851 assets/mme/models/item/copper_sword.jso
 352dbd5f5ec28b21c62868680f26e0279cdc98f4 assets/mme/models/item/copper_war_hammer.json
 6bee0543143d8374e83ff8b6e296bab75c587d03 assets/mme/models/item/cream_of_mushroom_soup.json
 28b0f51395654765d40387cf9920f23ecb06d102 assets/mme/models/item/cream_of_vegetable_soup.json
-46b3bd8453d6af680377fe7381907e86dab0abe6 assets/mme/models/item/diamond_shard.json
 f453a919b2f6386054453bb4c1d0d7021b4c637b assets/mme/models/item/dough.json
-dec83fff9c5128d8ad0c6fafb0831b9d1fa4dc4b assets/mme/models/item/emerald_shard.json
 426205fde725fbc562abda590c31b22dfa7bdd3c assets/mme/models/item/flint_axe.json
 844bcec2909f162457abf505192ea3a491bfb573 assets/mme/models/item/flint_fishing_rod.json
 0f4d729888d7666f3265a8e53eb6330fad924491 assets/mme/models/item/flint_hatchet.json
@@ -873,7 +867,6 @@ dec83fff9c5128d8ad0c6fafb0831b9d1fa4dc4b assets/mme/models/item/emerald_shard.js
 1ee2f664e644c2ff2db744395dca0709b74bd30b assets/mme/models/item/flint_shard.json
 ba68c1dd26df61ee6eaf8af5afa8f56a143a300b assets/mme/models/item/flint_shovel.json
 d6cb6033a9457e87031ede534b02a3a4817215b9 assets/mme/models/item/flour.json
-ca91e0afba4da34a9b172b1f4b30e84dffedc414 assets/mme/models/item/glass_shard.json
 7d3a4626e2ae17bc7850b0eb49946ae370e0d50b assets/mme/models/item/gold_bucket.json
 1b28cf862bfe5313e0de987811d3cd4dd98fd03a assets/mme/models/item/gold_coins.json
 12a631dc714dd751e665db8bb57c6e23a97a889f assets/mme/models/item/golden_bars.json
@@ -1114,7 +1107,6 @@ c517ae4dfdfd226960fdaa6a85c6109db85ce50f assets/mme/models/item/pufferfish_mithr
 1119be33052d2538be7e51d49199f753bb5b9fa2 assets/mme/models/item/pufferfish_netherite_bucket.json
 36d00910423d66ec73c6a1af42ddf7ac39eb0793 assets/mme/models/item/pufferfish_silver_bucket.json
 f66bd05bec741666c87d1a85c8d481a59fcdb62c assets/mme/models/item/pumpkin_soup.json
-43a7f9313f418d06b45a2520d51ce7886297b147 assets/mme/models/item/quartz_shard.json
 3abb9c466a61c2e3ce30cc7d500f9d61dd07e497 assets/mme/models/item/raw_adamantium.json
 d05fbc6b3949bf3a680cfb04a43f912b17c7c4cc assets/mme/models/item/raw_mithril.json
 bf99911a277df5b6373131f439e97b492d01270e assets/mme/models/item/raw_silver.json

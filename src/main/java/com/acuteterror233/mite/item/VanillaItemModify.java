@@ -186,6 +186,7 @@ public final class VanillaItemModify {
         result.put(ResourceLocation.withDefaultNamespace("seagrass"), settings -> settings.stacksTo(32));
         result.put(ResourceLocation.withDefaultNamespace("melon_slice"), settings -> settings.stacksTo(32));
         result.put(ResourceLocation.withDefaultNamespace("gunpowder"), settings -> settings.stacksTo(32));
+        result.put(ResourceLocation.withDefaultNamespace("arrow"), properties -> properties.stacksTo(32));
 
         result.put(ResourceLocation.withDefaultNamespace("anvil"), settings -> settings.durability(MMEBlocks.maxDamageAnvil(ToolMaterial.IRON.durability())));
         result.put(ResourceLocation.withDefaultNamespace("chipped_anvil"), settings -> settings.durability(MMEBlocks.maxDamageAnvil(ToolMaterial.IRON.durability())));
@@ -343,7 +344,7 @@ public final class VanillaItemModify {
         // 最大堆叠为 8 的方块类型
         result.put(SlabBlock.class, settings -> settings.stacksTo(8));
         result.put(WallBlock.class, settings -> settings.stacksTo(8));
-        result.put(TerracottaBlock.class, settings -> settings.stacksTo(8));
+        result.put(GlazedTerracottaBlock.class, settings -> settings.stacksTo(8));
         result.put(TintedParticleLeavesBlock.class, settings -> settings.stacksTo(8));
         result.put(TransparentBlock.class, settings -> settings.stacksTo(8));
         result.put(KelpPlantBlock.class, settings -> settings.stacksTo(8));

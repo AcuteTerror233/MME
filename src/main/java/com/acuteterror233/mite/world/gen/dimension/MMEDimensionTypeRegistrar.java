@@ -10,6 +10,7 @@ import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.dimension.DimensionType;
 
+import java.util.Optional;
 import java.util.OptionalLong;
 
 public class MMEDimensionTypeRegistrar {
@@ -33,6 +34,7 @@ public class MMEDimensionTypeRegistrar {
                 BlockTags.INFINIBURN_OVERWORLD,
                 ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, "underground"),
                 0.0f,
+                Optional.empty(),
                 new DimensionType.MonsterSettings(false, false, UniformInt.of(0, 7), 0)));
     }
 }
