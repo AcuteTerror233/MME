@@ -6,20 +6,9 @@
     "mme:deepslate_mithril_ore",
     "mme:silver_ore",
     "mme:deepslate_silver_ore",
-    "mme:adamantium_bars",
-    "mme:mithril_bars",
-    "mme:ancient_metal_bars",
-    "mme:golden_bars",
-    "mme:silver_bars",
-    "mme:copper_bars",
     "mme:adamantium_block",
     "mme:ancient_metal_block",
     "mme:mithril_block",
-    "mme:silver_block",
-    "mme:adamantium_door",
-    "mme:ancient_metal_door",
-    "mme:mithril_door",
-    "mme:silver_door",
-    "mme:golden_door"
+    "mme:silver_block"
   ]
 }

@@ -72,11 +72,8 @@ public class MMERecipeGenerator extends FabricRecipeProvider {
                 nineBlockStorageRecipes(RecipeCategory.MISC, MMEItems.SILVER_NUGGET, RecipeCategory.MISC, MMEItems.SILVER_INGOT, "silver_ingot_from_silver_nugget", null,  "silver_nugget_from_silver_ingot", null);
                 nineBlockStorageRecipes(RecipeCategory.MISC, MMEItems.COPPER_NUGGET, RecipeCategory.MISC, Items.COPPER_INGOT, "copper_ingot_from_copper_nugget", null,  "copper_nugget_from_copper_ingot", null);
 
-                nineBlockStorageRecipes(RecipeCategory.MISC, MMEItems.DIAMOND_SHARD, RecipeCategory.MISC, Items.DIAMOND, "diamond_from_diamond_shard", null,  "diamond_shard_from_diamond", null);
-                nineBlockStorageRecipes(RecipeCategory.MISC, MMEItems.EMERALD_SHARD, RecipeCategory.MISC, Items.EMERALD, "emerald_from_emerald_shard", null,  "emerald_shard_from_emerald", null);
                 nineBlockStorageRecipes(RecipeCategory.MISC, MMEItems.OBSIDIAN_SHARD, RecipeCategory.MISC, Blocks.OBSIDIAN, "obsidian_from_obsidian_shard", null,  "obsidian_shard_from_obsidian", null);
                 twoByTwoPacker(RecipeCategory.MISC, Items.FLINT, MMEItems.FLINT_SHARD);
-                twoByTwoPacker(RecipeCategory.MISC, Items.QUARTZ, MMEItems.QUARTZ_SHARD);
 
                 offerCraftingTableRecipes(MMEBlocks.ADAMANTIUM_CRAFTING_TABLE, MMEItems.ADAMANTIUM_INGOT);
                 offerCraftingTableRecipes(MMEBlocks.ANCIENT_METAL_CRAFTING_TABLE, MMEItems.ANCIENT_METAL_INGOT);
@@ -103,19 +100,6 @@ public class MMERecipeGenerator extends FabricRecipeProvider {
                 offerAnvilRecipes(MMEBlocks.SILVER_ANVIL, MMEItems.SILVER_INGOT, MMEBlocks.SILVER_BLOCK);
                 offerAnvilRecipes(MMEBlocks.COPPER_ANVIL, Items.COPPER_INGOT, Blocks.COPPER_BLOCK);
                 offerAnvilRecipes(MMEBlocks.GOLDEN_ANVIL, Items.GOLD_INGOT, Blocks.GOLD_BLOCK);
-
-                offerBarsRecipes(MMEBlocks.ADAMANTIUM_BARS, MMEItems.ADAMANTIUM_INGOT);
-                offerBarsRecipes(MMEBlocks.ANCIENT_METAL_BARS, MMEItems.ANCIENT_METAL_INGOT);
-                offerBarsRecipes(MMEBlocks.MITHRIL_BARS, MMEItems.MITHRIL_INGOT);
-                offerBarsRecipes(MMEBlocks.SILVER_BARS, MMEItems.SILVER_INGOT);
-                offerBarsRecipes(MMEBlocks.COPPER_BARS, Items.COPPER_INGOT);
-                offerBarsRecipes(MMEBlocks.GOLDEN_BARS, Items.GOLD_INGOT);
-
-                offerDoorRecipes(MMEBlocks.ADAMANTIUM_DOOR, MMEItems.ADAMANTIUM_INGOT);
-                offerDoorRecipes(MMEBlocks.ANCIENT_METAL_DOOR, MMEItems.ANCIENT_METAL_INGOT);
-                offerDoorRecipes(MMEBlocks.MITHRIL_DOOR, MMEItems.MITHRIL_INGOT);
-                offerDoorRecipes(MMEBlocks.SILVER_DOOR, MMEItems.SILVER_INGOT);
-                offerDoorRecipes(MMEBlocks.GOLDEN_DOOR, Items.GOLD_INGOT);
 
                 offerFishingRodRecipes(MMEItems.ADAMANTIUM_FISHING_ROD, MMEItems.ADAMANTIUM_NUGGET);
                 offerFishingRodRecipes(MMEItems.ANCIENT_METAL_FISHING_ROD, MMEItems.ANCIENT_METAL_NUGGET);
@@ -473,7 +457,7 @@ public class MMERecipeGenerator extends FabricRecipeProvider {
                         .save(this.output);
                 shapeless(RecipeCategory.FOOD, MMEItems.PORRIDGE)
                         .requires(MMEItems.BOWL_WATER)
-                        .requires(MMEItems.BLUEBERRIE)
+                        .requires(MMEItems.BLUE_BERRIE)
                         .requires(Items.SUGAR)
                         .requires(Items.WHEAT_SEEDS)
                         .unlockedBy(getHasName(MMEItems.BOWL_WATER), this.has(MMEItems.BOWL_WATER))

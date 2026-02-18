@@ -71,7 +71,7 @@ public class Zh_cnLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(MMEItems.SILVER_CHAINMAIL_BOOTS, "银锁链靴子");
 
         translationBuilder.add(MMEItems.BANANA, "香蕉");
-        translationBuilder.add(MMEItems.BLUEBERRIE, "蓝莓");
+        translationBuilder.add(MMEItems.BLUE_BERRIE, "蓝莓");
         translationBuilder.add(MMEItems.CHEESE, "奶酪");
         translationBuilder.add(MMEItems.CHOCOLATE, "巧克力");
         translationBuilder.add(MMEItems.DOUGH, "面团");
@@ -227,18 +227,12 @@ public class Zh_cnLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(MMEItems.WOODEN_CUDGEL, "小木棒");
 
         translationBuilder.add(MMEBlocks.ADAMANTIUM_ORE, "艾德曼矿");
-        translationBuilder.add(MMEBlocks.ADAMANTIUM_BARS, "艾德曼栏杆");
         translationBuilder.add(MMEBlocks.ADAMANTIUM_BLOCK, "艾德曼块");
-        translationBuilder.add(MMEBlocks.ANCIENT_METAL_BARS, "古代金属栏杆");
         translationBuilder.add(MMEBlocks.ANCIENT_METAL_BLOCK, "古代金属块");
-        translationBuilder.add(MMEBlocks.MITHRIL_BARS, "秘银栏杆");
         translationBuilder.add(MMEBlocks.MITHRIL_BLOCK, "秘银块");
         translationBuilder.add(MMEBlocks.MITHRIL_ORE, "秘银矿");
-        translationBuilder.add(MMEBlocks.SILVER_BARS, "银栏杆");
         translationBuilder.add(MMEBlocks.SILVER_BLOCK, "银块");
         translationBuilder.add(MMEBlocks.SILVER_ORE, "银矿");
-        translationBuilder.add(MMEBlocks.COPPER_BARS, "铜栏杆");
-        translationBuilder.add(MMEBlocks.GOLDEN_BARS, "金栏杆");
         translationBuilder.add(MMEBlocks.MANTLE, "地幔");
 
         translationBuilder.add(MMEItems.NETHERITE_BUCKET, "下界合金桶");
@@ -325,12 +319,6 @@ public class Zh_cnLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(MMEItems.AXOLOTL_GOLD_BUCKET, "装有美西螈的金桶");
         translationBuilder.add(MMEItems.TADPOLE_GOLD_BUCKET, "装有蝌蚪的金桶");
 
-        translationBuilder.add(MMEBlocks.ADAMANTIUM_DOOR, "艾德曼门");
-        translationBuilder.add(MMEBlocks.ANCIENT_METAL_DOOR, "远古金属门");
-        translationBuilder.add(MMEBlocks.MITHRIL_DOOR, "秘银门");
-        translationBuilder.add(MMEBlocks.SILVER_DOOR, "银门");
-        translationBuilder.add(MMEBlocks.GOLDEN_DOOR, "金门");
-
         translationBuilder.add(MMEItems.ADAMANTIUM_FISHING_ROD, "艾德曼鱼竿");
         translationBuilder.add(MMEItems.ANCIENT_METAL_FISHING_ROD, "远古金属鱼竿");
         translationBuilder.add(MMEItems.MITHRIL_FISHING_ROD, "秘银鱼竿");
@@ -356,12 +344,8 @@ public class Zh_cnLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(MMEItems.SILVER_NUGGET, "银粒");
         translationBuilder.add(MMEItems.COPPER_NUGGET, "铜粒");
 
-        translationBuilder.add(MMEItems.DIAMOND_SHARD, "钻石碎片");
-        translationBuilder.add(MMEItems.EMERALD_SHARD, "绿宝石碎片");
         translationBuilder.add(MMEItems.FLINT_SHARD, "燧石碎片");
-        translationBuilder.add(MMEItems.GLASS_SHARD, "玻璃碎片");
         translationBuilder.add(MMEItems.OBSIDIAN_SHARD, "黑曜石碎片");
-        translationBuilder.add(MMEItems.QUARTZ_SHARD, "石英碎片");
 
         translationBuilder.add(MMEBlocks.NETHERITE_ANVIL, "下界合金砧");
         translationBuilder.add(MMEBlocks.CHIPPED_NETHERITE_ANVIL, "开裂的下界合金砧");
@@ -435,9 +419,9 @@ public class Zh_cnLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(MMEBlocks.OBSIDIAN_FURNACE, "黑曜石熔炉");
         translationBuilder.add(MMEBlocks.SANDSTONE_FURNACE, "砂岩熔炉");
 
-        translationBuilder.add(MMEBlocks.DEEPSLATE_ADAMANTIUM_ORE, "深岩艾德曼矿石");
-        translationBuilder.add(MMEBlocks.DEEPSLATE_MITHRIL_ORE, "深岩秘银矿石");
-        translationBuilder.add(MMEBlocks.DEEPSLATE_SILVER_ORE, "深岩银矿石");
+        translationBuilder.add(MMEBlocks.DEEPSLATE_ADAMANTIUM_ORE, "深层艾德曼矿石");
+        translationBuilder.add(MMEBlocks.DEEPSLATE_MITHRIL_ORE, "深层秘银矿石");
+        translationBuilder.add(MMEBlocks.DEEPSLATE_SILVER_ORE, "深层银矿石");
 
         translationBuilder.add(MMEBlocks.EMERALD_ENCHANTING_TABLE, "绿宝石附魔台");
 

@@ -87,40 +87,6 @@
                   "conditions": [
                     {
                       "chances": [
-                        0.000228623685413809,
-                        0.000457247370827618,
-                        0.000914494741655235,
-                        0.001828989483310471
-                      ],
-                      "condition": "minecraft:table_bonus",
-                      "enchantment": "minecraft:fortune"
-                    }
-                  ],
-                  "name": "mme:diamond_shard"
-                },
-
-                {
-                  "type": "minecraft:item",
-                  "conditions": [
-                    {
-                      "chances": [
-                        0.000685871056241427,
-                        0.001371742112482853,
-                        0.002743484224965706,
-                        0.005486968449931413
-                      ],
-                      "condition": "minecraft:table_bonus",
-                      "enchantment": "minecraft:fortune"
-                    }
-                  ],
-                  "name": "mme:emerald_shard"
-                },
-
-                {
-                  "type": "minecraft:item",
-                  "conditions": [
-                    {
-                      "chances": [
                         0.0185185185185185,
                         0.037037037037037,
                         0.0740740740740741,

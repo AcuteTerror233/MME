@@ -20,20 +20,14 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuType;
-import net.minecraft.world.item.DoubleHighBlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.ToolMaterial;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.DoorBlock;
-import net.minecraft.world.level.block.IronBarsBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.properties.BlockSetType;
-import net.minecraft.world.level.material.MapColor;
-import net.minecraft.world.level.material.PushReaction;
 
 import java.util.function.BiFunction;
 import java.util.function.Function;
@@ -71,25 +65,6 @@ public class MMEBlocks {
             new Item.Properties().component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2)
     );
 
-    public static final Block ADAMANTIUM_BARS = register(       //艾德曼栏杆
-            "adamantium_bars", IronBarsBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BARS).strength(10f, 10f).noOcclusion().requiresCorrectToolForDrops().requiresCorrectToolForDrops()
-    );
-    public static final Block MITHRIL_BARS = register(          //秘银栏杆
-            "mithril_bars", IronBarsBlock::new, BlockBehaviour.Properties.ofFullCopy(ADAMANTIUM_BARS).strength(8f, 8f).noOcclusion().requiresCorrectToolForDrops().requiresCorrectToolForDrops()
-    );
-    public static final Block ANCIENT_METAL_BARS = register(    //远古金属栏杆
-            "ancient_metal_bars", IronBarsBlock::new, BlockBehaviour.Properties.ofFullCopy(ADAMANTIUM_BARS).strength(8f, 8f).noOcclusion().requiresCorrectToolForDrops().requiresCorrectToolForDrops()
-    );
-    public static final Block GOLDEN_BARS = register(             //金栏杆
-            "golden_bars", IronBarsBlock::new, BlockBehaviour.Properties.ofFullCopy(ADAMANTIUM_BARS).strength(2f, 2f).noOcclusion().requiresCorrectToolForDrops().requiresCorrectToolForDrops()
-    );
-    public static final Block SILVER_BARS = register(           //银栏杆
-            "silver_bars", IronBarsBlock::new, BlockBehaviour.Properties.ofFullCopy(ADAMANTIUM_BARS).strength(4f, 4f).noOcclusion().requiresCorrectToolForDrops().requiresCorrectToolForDrops()
-    );
-    public static final Block COPPER_BARS = register(           //铜栏杆
-            "copper_bars", IronBarsBlock::new, BlockBehaviour.Properties.ofFullCopy(ADAMANTIUM_BARS).strength(4f, 4f).noOcclusion().requiresCorrectToolForDrops().requiresCorrectToolForDrops()
-    );
-
     public static final Block ADAMANTIUM_BLOCK = register(      //艾德曼块
             "adamantium_block", BlockBehaviour.Properties.ofFullCopy(Blocks.BEDROCK).requiresCorrectToolForDrops(), new Item.Properties().component(MMEDataComponentTypes.CRAFTING_TIME, 1350)
     );
@@ -123,36 +98,6 @@ public class MMEBlocks {
             "mantle", BlockBehaviour.Properties.ofFullCopy(Blocks.BEDROCK)
     );
 
-    public static final Block ADAMANTIUM_DOOR = register(
-            "adamantium_door",
-            settings -> new DoorBlock(BlockSetType.IRON, settings),
-            BlockBehaviour.Properties.of().mapColor(MapColor.METAL).strength(5.0F).noOcclusion().requiresCorrectToolForDrops().pushReaction(PushReaction.DESTROY),
-            DoubleHighBlockItem::new
-    );
-    public static final Block ANCIENT_METAL_DOOR = register(
-            "ancient_metal_door",
-            settings -> new DoorBlock(BlockSetType.IRON, settings),
-            BlockBehaviour.Properties.of().mapColor(MapColor.METAL).strength(5.0F).noOcclusion().requiresCorrectToolForDrops().pushReaction(PushReaction.DESTROY),
-            DoubleHighBlockItem::new
-    );
-    public static final Block MITHRIL_DOOR = register(
-            "mithril_door",
-            settings -> new DoorBlock(BlockSetType.IRON, settings),
-            BlockBehaviour.Properties.of().mapColor(MapColor.METAL).strength(5.0F).noOcclusion().requiresCorrectToolForDrops().pushReaction(PushReaction.DESTROY),
-            DoubleHighBlockItem::new
-    );
-    public static final Block SILVER_DOOR = register(
-            "silver_door",
-            settings -> new DoorBlock(BlockSetType.IRON, settings),
-            BlockBehaviour.Properties.of().mapColor(MapColor.METAL).strength(5.0F).noOcclusion().requiresCorrectToolForDrops().pushReaction(PushReaction.DESTROY),
-            DoubleHighBlockItem::new
-    );
-    public static final Block GOLDEN_DOOR = register(
-            "golden_door",
-            settings -> new DoorBlock(BlockSetType.IRON, settings),
-            BlockBehaviour.Properties.of().mapColor(MapColor.METAL).strength(5.0F).noOcclusion().requiresCorrectToolForDrops().pushReaction(PushReaction.DESTROY),
-            DoubleHighBlockItem::new
-    );
     public static final Block DAMAGED_NETHERITE_ANVIL = register(
             "damaged_netherite_anvil",
             settings -> new MMEAnvilBlock(settings, MMETags.NETHERITE_NOT_ALLOWED_MATERIAL),
@@ -478,8 +423,14 @@ public class MMEBlocks {
             BlockBehaviour.Properties.ofFullCopy(Blocks.ENCHANTING_TABLE)
     );
 
+    public static final Block BLUE_BERRY_BUSH = registerNoItem(
+            "blue_berry_bush",
+            BlueBerryBushBlock::new,
+            BlockBehaviour.Properties.ofFullCopy(Blocks.SWEET_BERRY_BUSH)
+    );
+
     public static int maxDamageAnvil(int damage) {
-        return damage * 31;
+        return (damage * 31) * 2;
     }
 
     public static Block register(String id, BlockBehaviour.Properties settings) {
@@ -490,6 +441,9 @@ public class MMEBlocks {
     }
     public static Block register(String id, Function<BlockBehaviour.Properties, Block> factory, BlockBehaviour.Properties settings) {
         return register(id, factory, settings, new Item.Properties());
+    }
+    public static Block registerNoItem(String id, Function<BlockBehaviour.Properties, Block> factory, BlockBehaviour.Properties settings) {
+        return Blocks.register(ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, id)), factory, settings);
     }
     public static Block register(String id, Function<BlockBehaviour.Properties, Block> factory, BlockBehaviour.Properties settings, BiFunction<Block, Item.Properties, Item> factory1) {
         Block block = Blocks.register(ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, id)), factory, settings);

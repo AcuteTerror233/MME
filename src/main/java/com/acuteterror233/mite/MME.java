@@ -5,7 +5,7 @@ import com.acuteterror233.mite.event.ServerRecipeModify;
 import com.acuteterror233.mite.item.MMEItems;
 import com.acuteterror233.mite.registry.LootTableReplace;
 import com.acuteterror233.mite.registry.tag.MMETags;
-import com.acuteterror233.mite.world.gen.feature.OverworldOrePlacedFeatures;
+import com.acuteterror233.mite.world.gen.feature.OverworldPlacedFeatures;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
@@ -18,7 +18,9 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.FireBlock;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import org.slf4j.Logger;
@@ -41,11 +43,57 @@ public class MME implements ModInitializer {
 
         PointOfInterestHelper.register(ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, "underground_portal"), 0, 1, MMEBlocks.UNDERGROUND_PORTAL);
 
-        InOverworldAdd(OverworldOrePlacedFeatures.OVERWORLD_ORE_SILVER_SMALL);
-        InOverworldAdd(OverworldOrePlacedFeatures.OVERWORLD_ORE_SILVER);
+        InOverworldAdd(OverworldPlacedFeatures.OVERWORLD_ORE_SILVER_SMALL);
+        InOverworldAdd(OverworldPlacedFeatures.OVERWORLD_ORE_SILVER);
         InOverworldRemovals(OrePlacements.ORE_DIAMOND_BURIED);
         InOverworldRemovals(OrePlacements.ORE_DIAMOND_LARGE);
         InOverworldRemovals(OrePlacements.ORE_DIAMOND_MEDIUM);
+
+        BiomeModifications.addFeature(
+                biomeSelectionContext -> biomeSelectionContext.getBiomeKey().isFor(Biomes.MEADOW.registryKey()),
+                GenerationStep.Decoration.VEGETAL_DECORATION,
+                OverworldPlacedFeatures.BLUE_BERRY_RARE
+        );
+        BiomeModifications.addFeature(
+                biomeSelectionContext -> biomeSelectionContext.getBiomeKey().isFor(Biomes.GROVE.registryKey()),
+                GenerationStep.Decoration.VEGETAL_DECORATION,
+                OverworldPlacedFeatures.BLUE_BERRY_RARE
+        );BiomeModifications.addFeature(
+                biomeSelectionContext -> biomeSelectionContext.getBiomeKey().isFor(Biomes.WINDSWEPT_HILLS.registryKey()),
+                GenerationStep.Decoration.VEGETAL_DECORATION,
+                OverworldPlacedFeatures.BLUE_BERRY_RARE
+        );
+        BiomeModifications.addFeature(
+                biomeSelectionContext -> biomeSelectionContext.getBiomeKey().isFor(Biomes.DARK_FOREST.registryKey()),
+                GenerationStep.Decoration.VEGETAL_DECORATION,
+                OverworldPlacedFeatures.BLUE_BERRY_RARE
+        );
+
+        BiomeModifications.addFeature(
+                biomeSelectionContext -> biomeSelectionContext.getBiomeKey().isFor(Biomes.WINDSWEPT_FOREST.registryKey()),
+                GenerationStep.Decoration.VEGETAL_DECORATION,
+                OverworldPlacedFeatures.BLUE_BERRY_COMMON
+        );
+        BiomeModifications.addFeature(
+                biomeSelectionContext -> biomeSelectionContext.getBiomeKey().isFor(Biomes.TAIGA.registryKey()),
+                GenerationStep.Decoration.VEGETAL_DECORATION,
+                OverworldPlacedFeatures.BLUE_BERRY_COMMON
+        );
+        BiomeModifications.addFeature(
+                biomeSelectionContext -> biomeSelectionContext.getBiomeKey().isFor(Biomes.SNOWY_TAIGA.registryKey()),
+                GenerationStep.Decoration.VEGETAL_DECORATION,
+                OverworldPlacedFeatures.BLUE_BERRY_COMMON
+        );
+        BiomeModifications.addFeature(
+                biomeSelectionContext -> biomeSelectionContext.getBiomeKey().isFor(Biomes.OLD_GROWTH_PINE_TAIGA.registryKey()),
+                GenerationStep.Decoration.VEGETAL_DECORATION,
+                OverworldPlacedFeatures.BLUE_BERRY_COMMON
+        );
+        BiomeModifications.addFeature(
+                biomeSelectionContext -> biomeSelectionContext.getBiomeKey().isFor(Biomes.OLD_GROWTH_SPRUCE_TAIGA.registryKey()),
+                GenerationStep.Decoration.VEGETAL_DECORATION,
+                OverworldPlacedFeatures.BLUE_BERRY_COMMON
+        );
 
         ServerRecipeModify.EVENT.register(list -> list.removeIf(recipeEntry -> MME.FILTER_RECIPE_SET.contains(recipeEntry.id().location())));
 
@@ -63,6 +111,9 @@ public class MME implements ModInitializer {
 
         EntitySleepEvents.ALLOW_SLEEP_TIME.register((player, sleepingPos, vanillaResult) -> InteractionResult.SUCCESS);
         EntitySleepEvents.ALLOW_RESETTING_TIME.register(player -> !player.level().isBrightOutside());
+
+        FireBlock fireBlock = (FireBlock)Blocks.FIRE;
+        fireBlock.setFlammable(MMEBlocks.BLUE_BERRY_BUSH, 60, 100);
     }
 
     private void InOverworldAdd(ResourceKey<PlacedFeature> key) {

@@ -17,12 +17,6 @@ public class MMEBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider wrapperLookup) {
-        getOrCreateTagBuilder(BlockTags.DOORS)
-                .add(MMEBlocks.GOLDEN_DOOR)
-                .add(MMEBlocks.SILVER_DOOR)
-                .add(MMEBlocks.MITHRIL_DOOR)
-                .add(MMEBlocks.ANCIENT_METAL_DOOR)
-                .add(MMEBlocks.ADAMANTIUM_DOOR);
         getOrCreateTagBuilder(MMETags.GLASS)
                 .add(Blocks.GLASS)
                 .add(Blocks.WHITE_STAINED_GLASS)
@@ -60,14 +54,6 @@ public class MMEBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(Blocks.GREEN_STAINED_GLASS_PANE)
                 .add(Blocks.RED_STAINED_GLASS_PANE)
                 .add(Blocks.BLACK_STAINED_GLASS_PANE);
-        getOrCreateTagBuilder(MMETags.BARS)
-                .add(Blocks.IRON_BARS)
-                .add(MMEBlocks.ADAMANTIUM_BARS)
-                .add(MMEBlocks.ANCIENT_METAL_BARS)
-                .add(MMEBlocks.GOLDEN_BARS)
-                .add(MMEBlocks.MITHRIL_BARS)
-                .add(MMEBlocks.SILVER_BARS)
-                .add(MMEBlocks.COPPER_BARS);
         getOrCreateTagBuilder(BlockTags.ANVIL)
                 .add(MMEBlocks.NETHERITE_ANVIL)
                 .add(MMEBlocks.CHIPPED_NETHERITE_ANVIL)
@@ -208,27 +194,19 @@ public class MMEBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         getOrCreateTagBuilder(MMETags.NEEDS_ADAMANTIUM_TOOL)
                 .add(Blocks.ANCIENT_DEBRIS)
                 .add(Blocks.NETHERITE_BLOCK)
-                .add(MMEBlocks.ADAMANTIUM_BLOCK)
-                .add(MMEBlocks.ADAMANTIUM_BARS)
-                .add(MMEBlocks.ADAMANTIUM_DOOR);
+                .add(MMEBlocks.ADAMANTIUM_BLOCK);
         getOrCreateTagBuilder(MMETags.NEEDS_MITHRIL_TOOL)
                 .add(MMEBlocks.MITHRIL_BLOCK)
-                .add(MMEBlocks.MITHRIL_BARS)
-                .add(MMEBlocks.MITHRIL_DOOR)
                 .add(MMEBlocks.ADAMANTIUM_ORE)
                 .add(MMEBlocks.DEEPSLATE_ADAMANTIUM_ORE);
         getOrCreateTagBuilder(MMETags.NEEDS_ANCIENT_METAL_TOOL)
-                .add(MMEBlocks.ANCIENT_METAL_BLOCK)
-                .add(MMEBlocks.ANCIENT_METAL_BARS);
+                .add(MMEBlocks.ANCIENT_METAL_BLOCK);
         getOrCreateTagBuilder(BlockTags.NEEDS_IRON_TOOL)
                 .add(MMEBlocks.MITHRIL_ORE)
                 .add(MMEBlocks.DEEPSLATE_MITHRIL_ORE);
         getOrCreateTagBuilder(MMETags.NEEDS_SILVER_OR_COPPER_TOOL)
                 .add(MMEBlocks.SILVER_BLOCK)
-                .add(MMEBlocks.SILVER_BARS)
-                .add(MMEBlocks.SILVER_DOOR)
                 .add(Blocks.COPPER_BLOCK)
-                .add(MMEBlocks.COPPER_BARS)
                 .forceAddTag(BlockTags.COPPER_ORES);
 
         getOrCreateTagBuilder(MMETags.INCORRECT_FOR_FLINT_OR_OBSIDIAN_TOOL)
@@ -263,20 +241,13 @@ public class MMEBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(MMEBlocks.DEEPSLATE_MITHRIL_ORE)
                 .add(MMEBlocks.SILVER_ORE)
                 .add(MMEBlocks.DEEPSLATE_SILVER_ORE)
-                .add(MMEBlocks.ADAMANTIUM_BARS)
-                .add(MMEBlocks.MITHRIL_BARS)
-                .add(MMEBlocks.ANCIENT_METAL_BARS)
-                .add(MMEBlocks.GOLDEN_BARS)
-                .add(MMEBlocks.SILVER_BARS)
-                .add(MMEBlocks.COPPER_BARS)
                 .add(MMEBlocks.ADAMANTIUM_BLOCK)
                 .add(MMEBlocks.ANCIENT_METAL_BLOCK)
                 .add(MMEBlocks.MITHRIL_BLOCK)
-                .add(MMEBlocks.SILVER_BLOCK)
-                .add(MMEBlocks.ADAMANTIUM_DOOR)
-                .add(MMEBlocks.ANCIENT_METAL_DOOR)
-                .add(MMEBlocks.MITHRIL_DOOR)
-                .add(MMEBlocks.SILVER_DOOR)
-                .add(MMEBlocks.GOLDEN_DOOR);
+                .add(MMEBlocks.SILVER_BLOCK);
+        getOrCreateTagBuilder(BlockTags.BEE_GROWABLES)
+                .add(MMEBlocks.BLUE_BERRY_BUSH);
+        getOrCreateTagBuilder(BlockTags.FALL_DAMAGE_RESETTING)
+                .add(MMEBlocks.BLUE_BERRY_BUSH);
     }
 }

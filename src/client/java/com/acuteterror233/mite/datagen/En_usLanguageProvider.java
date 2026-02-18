@@ -71,7 +71,7 @@ public class En_usLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(MMEItems.SILVER_CHAINMAIL_BOOTS, "Silver Chainmail Boots");
 
         translationBuilder.add(MMEItems.BANANA, "Banana");
-        translationBuilder.add(MMEItems.BLUEBERRIE, "Blueberry");
+        translationBuilder.add(MMEItems.BLUE_BERRIE, "Blueberry");
         translationBuilder.add(MMEItems.CHEESE, "Cheese");
         translationBuilder.add(MMEItems.CHOCOLATE, "Chocolate");
         translationBuilder.add(MMEItems.DOUGH, "Dough");
@@ -227,19 +227,13 @@ public class En_usLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(MMEItems.WOODEN_CUDGEL, "Wood Cudgel ");
 
         translationBuilder.add(MMEBlocks.ADAMANTIUM_ORE, "Adamantium Ore");
-        translationBuilder.add(MMEBlocks.ADAMANTIUM_BARS, "Adamantium Bars");
         translationBuilder.add(MMEBlocks.ADAMANTIUM_BLOCK, "Adamantium Block");
-        translationBuilder.add(MMEBlocks.ANCIENT_METAL_BARS, "Ancient Metal Bars");
         translationBuilder.add(MMEBlocks.ANCIENT_METAL_BLOCK, "Ancient Metal Block");
-        translationBuilder.add(MMEBlocks.GOLDEN_BARS, "Gold Bars");
-        translationBuilder.add(MMEBlocks.MITHRIL_BARS, "Mithril Bars");
         translationBuilder.add(MMEBlocks.MITHRIL_BLOCK, "Mithril Block");
         translationBuilder.add(MMEBlocks.MITHRIL_ORE, "Mithril Ore");
-        translationBuilder.add(MMEBlocks.SILVER_BARS, "Silver BARS");
         translationBuilder.add(MMEBlocks.SILVER_BLOCK, "Silver Block");
         translationBuilder.add(MMEBlocks.SILVER_ORE, "Silver Ore");
         translationBuilder.add(MMEBlocks.MANTLE, "Mantle");
-        translationBuilder.add(MMEBlocks.COPPER_BARS, "Copper BARS");
 
         translationBuilder.add(MMEItems.ADAMANTIUM_BUCKET, "Adamantium Bucket");
         translationBuilder.add(MMEItems.LAVA_ADAMANTIUM_BUCKET, "Adamantium Bucket of Lava");
@@ -325,12 +319,6 @@ public class En_usLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(MMEItems.AXOLOTL_NETHERITE_BUCKET, "Netherite Bucket of Axolotl");
         translationBuilder.add(MMEItems.TADPOLE_NETHERITE_BUCKET, "Netherite Bucket of Tadpole");
 
-        translationBuilder.add(MMEBlocks.ADAMANTIUM_DOOR, "Adamantium Door");
-        translationBuilder.add(MMEBlocks.ANCIENT_METAL_DOOR, "Ancient Metal Door");
-        translationBuilder.add(MMEBlocks.MITHRIL_DOOR, "Mithril Door");
-        translationBuilder.add(MMEBlocks.SILVER_DOOR, "Silver Door");
-        translationBuilder.add(MMEBlocks.GOLDEN_DOOR, "Gold Door");
-
         translationBuilder.add(MMEItems.ADAMANTIUM_FISHING_ROD, "Adamantium Fishing Rod");
         translationBuilder.add(MMEItems.ANCIENT_METAL_FISHING_ROD, "Ancient Metal Fishing Rod");
         translationBuilder.add(MMEItems.MITHRIL_FISHING_ROD, "Mithril Fishing Rod");
@@ -356,12 +344,8 @@ public class En_usLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(MMEItems.SILVER_NUGGET, "Silver Nugget");
         translationBuilder.add(MMEItems.COPPER_NUGGET, "Copper Nugget");
 
-        translationBuilder.add(MMEItems.DIAMOND_SHARD, "Diamond Shard");
-        translationBuilder.add(MMEItems.EMERALD_SHARD, "Emerald Shard");
         translationBuilder.add(MMEItems.FLINT_SHARD, "Flint Shard");
-        translationBuilder.add(MMEItems.GLASS_SHARD, "Glass Shard");
         translationBuilder.add(MMEItems.OBSIDIAN_SHARD, "Obsidian Shard");
-        translationBuilder.add(MMEItems.QUARTZ_SHARD, "Quartz Shard");
 
         translationBuilder.add(MMEBlocks.NETHERITE_ANVIL, "Netherite Anvil");
         translationBuilder.add(MMEBlocks.CHIPPED_NETHERITE_ANVIL, "Chipped Netherite Anvil");

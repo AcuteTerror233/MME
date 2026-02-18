@@ -23,7 +23,6 @@ public class MMETags {
 
     public static final TagKey<Block> GLASS = ofBlock("glass");
     public static final TagKey<Block> GLASS_PANE = ofBlock("glass_pane");
-    public static final TagKey<Block> BARS = ofBlock("bars");
     public static final TagKey<Block> INTACT_ANVIL = ofBlock("intact_anvil");
     public static final TagKey<Block> CHIPPED_ANVIL = ofBlock("chipped_anvil");
     public static final TagKey<Block> DAMAGED_ANVIL = ofBlock("damaged_anvil");

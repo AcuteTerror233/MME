@@ -49,7 +49,9 @@ public abstract class PlayerEntityMixin extends LivingEntity {
 
     @Unique
     public void setMaxHealth(int max) {
-        this.getAttributes().getInstance(Attributes.MAX_HEALTH).setBaseValue(max);
-        ((FoodDataExtension) this.getFoodData()).MME$SetMaxFoodLevel(max);
+        if ((int) this.getAttributes().getInstance(Attributes.MAX_HEALTH).getValue() != max) {
+            this.getAttributes().getInstance(Attributes.MAX_HEALTH).setBaseValue(max);
+            ((FoodDataExtension) this.getFoodData()).MME$SetMaxFoodLevel(max);
+        }
     }
 }

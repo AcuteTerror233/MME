@@ -129,12 +129,8 @@ public class MMEItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(MMEItems.SILVER_NUGGET)
                 .add(MMEItems.COPPER_NUGGET);
         getOrCreateTagBuilder(MMETags.SHARD)
-                .add(MMEItems.DIAMOND_SHARD)
-                .add(MMEItems.EMERALD_SHARD)
                 .add(MMEItems.FLINT_SHARD)
-                .add(MMEItems.GLASS_SHARD)
-                .add(MMEItems.OBSIDIAN_SHARD)
-                .add(MMEItems.QUARTZ_SHARD);
+                .add(MMEItems.OBSIDIAN_SHARD);
         getOrCreateTagBuilder(MMETags.INGOT)
                 .add(Items.IRON_INGOT)
                 .add(Items.GOLD_INGOT)
@@ -399,7 +395,9 @@ public class MMEItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(MMEItems.RUSTED_IRON_HATCHET)
                 .add(MMEItems.GOLDEN_HATCHET)
                 .add(MMEItems.SILVER_HATCHET)
-                .add(MMEItems.COPPER_HATCHET);
+                .add(MMEItems.COPPER_HATCHET)
+                .add(MMEItems.FLINT_HATCHET)
+                .add(MMEItems.OBSIDIAN_HATCHET);
         getOrCreateTagBuilder(MMETags.DAGGER)
                 .add(MMEItems.NETHERITE_DAGGER)
                 .add(MMEItems.ADAMANTIUM_DAGGER)
@@ -467,7 +465,9 @@ public class MMEItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(MMEItems.ANCIENT_METAL_AXE)
                 .add(MMEItems.RUSTED_IRON_AXE)
                 .add(MMEItems.SILVER_AXE)
-                .add(MMEItems.COPPER_AXE);
+                .add(MMEItems.COPPER_AXE)
+                .add(MMEItems.FLINT_AXE)
+                .add(MMEItems.OBSIDIAN_AXE);
         getOrCreateTagBuilder(ItemTags.PICKAXES)
                 .addTag(MMETags.MATTOCK)
                 .add(MMEItems.ADAMANTIUM_PICKAXE)

@@ -7,9 +7,13 @@ import org.spongepowered.asm.mixin.Shadow;
 
 @Mixin(BlockBehaviour.Properties.class)
 public abstract class BlockBehaviourPropertiesMixin {
+    /**
+     * @author AcuteTerror233
+     * @reason 不能秒破
+     */
     @Overwrite
     public BlockBehaviour.Properties instabreak() {
-        return this.strength(0.05F);
+        return this.strength(0.01F);
     }
     @Shadow
     public abstract BlockBehaviour.Properties strength(float f);

@@ -88,7 +88,7 @@ public abstract class FoodDataMixin implements FoodDataExtension {
                 player.heal(1.0F);
                 this.healTickTimer = 0;
             }
-            if (this.tickTimer >= 1800){
+            if (this.tickTimer >= 900){
                 this.tickTimer = 0;
                 if (player.gameMode() != GameType.CREATIVE) {
                     if (this.saturationLevel > 0) {

@@ -5,6 +5,7 @@ import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 
 public class MMEConfiguredFeatures {
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> featureRegisterable) {
-        UndergroundOreConfiguredFeatures.bootstrap(featureRegisterable);
+        UndergroundConfiguredFeatures.bootstrap(featureRegisterable);
+        OverworldConfiguredFeatures.bootstrap(featureRegisterable);
     }
 }

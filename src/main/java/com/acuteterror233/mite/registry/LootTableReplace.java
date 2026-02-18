@@ -1894,6 +1894,7 @@ public final class LootTableReplace {
                                         .add(LootItem.lootTableItem(Items.ARROW).apply(SetItemCountFunction.setCount(UniformGenerator.between(5.0F, 10.0F))).setWeight(10))
                         ).build()
         );
+
         List<Block> Log = List.of(
                 Blocks.OAK_LOG,
                 Blocks.SPRUCE_LOG,
@@ -1942,6 +1943,7 @@ public final class LootTableReplace {
                 Blocks.STRIPPED_WARPED_HYPHAE
         );
         Log.forEach(block -> LOOT_TABLES.put(block.getLootTable().get(), provider -> LootTableReplace.createLogItemTable(provider, block, Items.STICK, 2, 4).build()));
+
         LootTableEvents.REPLACE.register((key, original, source, registries) -> {
             Function<HolderLookup.Provider, LootTable> function = LOOT_TABLES.get(key);
             return function != null ? function.apply(registries) : null;

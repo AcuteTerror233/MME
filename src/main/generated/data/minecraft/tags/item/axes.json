@@ -7,6 +7,8 @@
     "mme:ancient_metal_axe",
     "mme:rusted_iron_axe",
     "mme:silver_axe",
-    "mme:copper_axe"
+    "mme:copper_axe",
+    "mme:flint_axe",
+    "mme:obsidian_axe"
   ]
 }

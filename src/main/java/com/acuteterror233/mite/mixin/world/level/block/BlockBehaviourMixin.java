@@ -22,7 +22,7 @@ public abstract class BlockBehaviourMixin implements FeatureElement {
         if (f == -1.0F) {
             return 0.0F;
         } else {
-            int i = player.hasCorrectToolForDrops(state) ? 300 : 20000;
+            int i = player.hasCorrectToolForDrops(state) ? 450 : 20000;
             return player.getDestroySpeed(state) / f / i;
         }
     }

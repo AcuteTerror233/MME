@@ -8,6 +8,8 @@
     "mme:rusted_iron_hatchet",
     "mme:golden_hatchet",
     "mme:silver_hatchet",
-    "mme:copper_hatchet"
+    "mme:copper_hatchet",
+    "mme:flint_hatchet",
+    "mme:obsidian_hatchet"
   ]
 }

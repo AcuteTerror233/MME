@@ -248,8 +248,9 @@ public class MMEItems {
     public static final Item BANANA = register(
             "banana",
             new Item.Properties().food(new FoodProperties(2, 1.0F, false)).stacksTo(16));
-    public static final Item BLUEBERRIE = register(
-            "blueberry",
+    public static final Item BLUE_BERRIE = register(
+            "blue_berry",
+            Items.createBlockItemWithCustomItemName(MMEBlocks.BLUE_BERRY_BUSH),
             new Item.Properties().food(new FoodProperties(1, 1.0F, false)).stacksTo(16));
     public static final Item CHEESE = register(
             "cheese",
@@ -434,19 +435,20 @@ public class MMEItems {
     public static final Item SILVER_SCYTHE = register("silver_scythe", getScytheSettings(MMEToolMaterials.SILVER));
     public static final Item SILVER_SHEARS = register("silver_shears", getShearsSettings(MMEToolMaterials.SILVER));
 
-    public static final Item OBSIDIAN_AXE = registerAxeItem("obsidian_axe", getAxeSettings(MMEToolMaterials.OBSIDIAN));
-    public static final Item OBSIDIAN_HATCHET = registerAxeItem("obsidian_hatchet", getHandAxeSettings(MMEToolMaterials.OBSIDIAN));
-    public static final Item OBSIDIAN_KNIFE = register("obsidian_knife", getDaggerSettings(MMEToolMaterials.OBSIDIAN));
-    public static final Item OBSIDIAN_SHOVEL = register("obsidian_shovel", getShovelSettings(MMEToolMaterials.OBSIDIAN));
+    public static final Item OBSIDIAN_AXE = registerAxeItem("obsidian_axe", applyToolSettings(new Item.Properties(), MMEToolMaterials.OBSIDIAN, BlockTags.MINEABLE_WITH_AXE, 3.4F, 2, 4, -2.7F, 0.5F, 0.5F, 5));
+    public static final Item OBSIDIAN_HATCHET = registerAxeItem("obsidian_hatchet", applyToolSettings(new Item.Properties(), MMEToolMaterials.OBSIDIAN, BlockTags.MINEABLE_WITH_AXE, 1, 2, 3, -2.7F, 0.25F, 0.25F, 5));
+    public static final Item OBSIDIAN_KNIFE = register("obsidian_knife", applySwordSettings(new Item.Properties(), MMEToolMaterials.OBSIDIAN, 3, 1, 2, -2.0F, 0.25F, 0.25F));
+    public static final Item OBSIDIAN_SHOVEL = register("obsidian_shovel", applyToolSettings(new Item.Properties(), MMEToolMaterials.OBSIDIAN, BlockTags.MINEABLE_WITH_SHOVEL, 3, 2, 1, -2.8F, 0.75F, 0.75F, 0));
 
-    public static final Item FLINT_AXE = registerAxeItem("flint_axe", getAxeSettings(MMEToolMaterials.FLINT));
-    public static final Item FLINT_HATCHET = registerAxeItem("flint_hatchet", getHandAxeSettings(MMEToolMaterials.FLINT));
-    public static final Item FLINT_KNIFE = register("flint_knife", getDaggerSettings(MMEToolMaterials.FLINT));
-    public static final Item FLINT_SHOVEL = register("flint_shovel", getShovelSettings(MMEToolMaterials.FLINT));
+    public static final Item FLINT_AXE = registerAxeItem("flint_axe", applyToolSettings(new Item.Properties(), MMEToolMaterials.FLINT, BlockTags.MINEABLE_WITH_AXE, 3.4F, 2, 4, -2.7F, 0.5F, 0.5F, 5));
+    public static final Item FLINT_HATCHET = registerAxeItem("flint_hatchet", applyToolSettings(new Item.Properties(), MMEToolMaterials.FLINT, BlockTags.MINEABLE_WITH_AXE, 1, 2, 3, -2.7F, 0.25F, 0.25F, 5));
+    public static final Item FLINT_KNIFE = register("flint_knife", applySwordSettings(new Item.Properties(), MMEToolMaterials.FLINT, 3, 1, 2, -2.0F, 0.25F, 0.25F));
+    public static final Item FLINT_SHOVEL = register("flint_shovel", applyToolSettings(new Item.Properties(), MMEToolMaterials.FLINT, BlockTags.MINEABLE_WITH_SHOVEL, 3, 2, 1, -2.8F, 0.75F, 0.75F, 0));
 
     public static final Item STONE_DAGGER = register("stone_dagger");
-    public static final Item WOODEN_CLUB = register("wooden_club", getSwordSettings(MMEToolMaterials.WOOD));
-    public static final Item WOODEN_CUDGEL = register("wooden_cudgel", getDaggerSettings(MMEToolMaterials.WOOD));
+
+    public static final Item WOODEN_CLUB = register("wooden_club", applySwordSettings(new Item.Properties(), MMEToolMaterials.WOOD, 2, 1, 4, -2.4F, 0.5F, 0.5F));
+    public static final Item WOODEN_CUDGEL = register("wooden_cudgel", applySwordSettings(new Item.Properties(), MMEToolMaterials.WOOD, 1, 1, 3, -2.0F, 0.25F, 0.25F));
 
     public static final Item ADAMANTIUM_CHAINS = register("adamantium_chains",
             new Item.Properties().stacksTo(16).component(MMEDataComponentTypes.CRAFTING_TIME, 75));
@@ -875,17 +877,9 @@ public class MMEItems {
             new Item.Properties().stacksTo(32).component(MMEDataComponentTypes.CRAFTING_TIME, 1)
     );
 
-    public static final Item DIAMOND_SHARD = register("diamond_shard",
-            new Item.Properties().stacksTo(16));
-    public static final Item EMERALD_SHARD = register("emerald_shard",
-            new Item.Properties().stacksTo(16));
     public static final Item FLINT_SHARD = register("flint_shard",
             new Item.Properties().stacksTo(16));
-    public static final Item GLASS_SHARD = register("glass_shard",
-            new Item.Properties().stacksTo(16));
     public static final Item OBSIDIAN_SHARD = register("obsidian_shard",
-            new Item.Properties().stacksTo(16));
-    public static final Item QUARTZ_SHARD = register("quartz_shard",
             new Item.Properties().stacksTo(16));
 
     public static final Item SINEW = register("sinew",
@@ -991,27 +985,10 @@ public class MMEItems {
                 entries.accept(Blocks.COPPER_ORE);
                 entries.accept(Blocks.DEEPSLATE_COPPER_ORE);
 
-                entries.accept(MMEBlocks.ADAMANTIUM_BARS);
-                entries.accept(MMEBlocks.MITHRIL_BARS);
-                entries.accept(MMEBlocks.ANCIENT_METAL_BARS);
-                entries.accept(Blocks.IRON_BARS);
-                entries.accept(MMEBlocks.GOLDEN_BARS);
-                entries.accept(MMEBlocks.SILVER_BARS);
-                entries.accept(MMEBlocks.COPPER_BARS);
                 entries.accept(MMEBlocks.MANTLE);
 
-                entries.accept(MMEBlocks.ADAMANTIUM_DOOR);
-                entries.accept(MMEBlocks.ANCIENT_METAL_DOOR);
-                entries.accept(MMEBlocks.MITHRIL_DOOR);
-                entries.accept(MMEBlocks.SILVER_DOOR);
-                entries.accept(MMEBlocks.GOLDEN_DOOR);
-
-                entries.accept(DIAMOND_SHARD);
-                entries.accept(EMERALD_SHARD);
                 entries.accept(FLINT_SHARD);
-                entries.accept(GLASS_SHARD);
                 entries.accept(OBSIDIAN_SHARD);
-                entries.accept(QUARTZ_SHARD);
 
                 entries.accept(RAW_ADAMANTIUM);
                 entries.accept(RAW_MITHRIL);
@@ -1204,7 +1181,7 @@ public class MMEItems {
                 entries.accept(WOODEN_CUDGEL);
 
                 entries.accept(BANANA);
-                entries.accept(BLUEBERRIE);
+                entries.accept(BLUE_BERRIE);
                 entries.accept(CHEESE);
                 entries.accept(CHOCOLATE);
                 entries.accept(FLOUR);
@@ -1367,10 +1344,10 @@ public class MMEItems {
     }
 
     public static Item.Properties getDaggerSettings(ToolMaterial material) {
-        return applySwordSettings(new Item.Properties(), material, 1, 1, 2, -2.0F, 0.25F, 0.25F);
+        return applySwordSettings(new Item.Properties(), material, 2, 1, 2, -2.0F, 0.25F, 0.25F);
     }
     public static Item.Properties getSwordSettings(ToolMaterial material) {
-        return applySwordSettings(new Item.Properties(), material, 2, 1, 3, -2.4F, 0.5F, 0.5F);
+        return applySwordSettings(new Item.Properties(), material, 5, 1, 3, -2.4F, 0.5F, 0.5F);
     }
 
     public static Item.Properties getScytheSettings(ToolMaterial material) {
@@ -1378,24 +1355,24 @@ public class MMEItems {
     }
 
     public static Item.Properties getAxeSettings(ToolMaterial material) {
-        return applyToolSettings(new Item.Properties(), material, BlockTags.MINEABLE_WITH_AXE, 3, 2, 4, -2.7F, 0.5F, 0.5F, 5);
+        return applyToolSettings(new Item.Properties(), material, BlockTags.MINEABLE_WITH_AXE, 5, 2, 4, -2.7F, 0.5F, 0.5F, 5);
     }
     public static Item.Properties getBattleAxeSettings(ToolMaterial material) {
-        return applyToolSettings(new Item.Properties(), material, BlockTags.MINEABLE_WITH_AXE, 5, 1, 5, -3F, 0.5F, 0.75F, 5);
+        return applyToolSettings(new Item.Properties(), material, BlockTags.MINEABLE_WITH_AXE, 7, 1, 5, -3F, 0.5F, 0.75F, 5);
     }
     public static Item.Properties getHandAxeSettings(ToolMaterial material) {
-        return applyToolSettings(new Item.Properties(), material, BlockTags.MINEABLE_WITH_AXE, 1, 2, 3, -2.7F, 0.25F, 0.25F, 5);
+        return applyToolSettings(new Item.Properties(), material, BlockTags.MINEABLE_WITH_AXE, 2, 2, 3, -2.7F, 0.25F, 0.25F, 5);
     }
 
     public static Item.Properties getHoeSettings(ToolMaterial material) {
-        return applyToolSettings(new Item.Properties(), material, BlockTags.MINEABLE_WITH_HOE, 2, 2, 1, -1.0F, 0.5F, 0.5F, 0);
+        return applyToolSettings(new Item.Properties(), material, BlockTags.MINEABLE_WITH_HOE, 4, 2, 1, -1.0F, 0.5F, 0.5F, 0);
     }
     public static Item.Properties getMattockSettings(ToolMaterial material) {
-        return applyToolSettings(new Item.Properties(), material, MMETags.MINEABLE_WITH_MATTOCK, 4, 2, 2, -1.5F, 0.5F, 0.5F, 0);
+        return applyToolSettings(new Item.Properties(), material, MMETags.MINEABLE_WITH_MATTOCK, 6, 2, 2, -1.5F, 0.5F, 0.5F, 0);
     }
 
     public static Item.Properties getShovelSettings(ToolMaterial material) {
-        return applyToolSettings(new Item.Properties(), material, BlockTags.MINEABLE_WITH_SHOVEL, 1, 2, 1, -2.8F, 0.75F, 0.75F, 0);
+        return applyToolSettings(new Item.Properties(), material, BlockTags.MINEABLE_WITH_SHOVEL, 3, 2, 1, -2.8F, 0.75F, 0.75F, 0);
     }
 
     public static Item.Properties getPickaxeSettings(ToolMaterial material) {
@@ -1415,7 +1392,7 @@ public class MMEItems {
             Item.Properties settings,
             ToolMaterial material,
             TagKey<Block> effectiveBlocks,
-            int durabilityMultiplier,
+            float durabilityMultiplier,
             int itemDamagePerAttack,
             float attackDamage,
             float attackSpeed,
@@ -1490,8 +1467,8 @@ public class MMEItems {
                         EquipmentSlotGroup.MAINHAND)
                 .build();
     }
-    public static Item.Properties applyBaseSettings(Item.Properties settings, ToolMaterial material, int durabilityMultiplier) {
-        Item.Properties settings1 = settings.durability(material.durability() * durabilityMultiplier).repairable(material.repairItems()).enchantable(material.enchantmentValue());
+    public static Item.Properties applyBaseSettings(Item.Properties settings, ToolMaterial material, float durabilityMultiplier) {
+        Item.Properties settings1 = settings.durability((int) (material.durability() * durabilityMultiplier)).repairable(material.repairItems()).enchantable(material.enchantmentValue());
         if (material == ToolMaterial.NETHERITE){
             return settings1.fireResistant();
         }

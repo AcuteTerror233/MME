@@ -4,7 +4,19 @@ import com.acuteterror233.mite.block.MMEBlocks;
 import com.acuteterror233.mite.item.MMEItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
+import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.world.item.enchantment.Enchantments;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.SweetBerryBushBlock;
+import net.minecraft.world.level.storage.loot.LootPool;
+import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
+import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
+import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
+import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -15,6 +27,27 @@ public class MMEBlockLootTableProvider extends FabricBlockLootTableProvider {
 
     @Override
     public void generate() {
+        add(MMEBlocks.BLUE_BERRY_BUSH,
+                (Block block) -> this.applyExplosionDecay(block,
+                        LootTable.lootTable()
+                                .withPool(
+                                        LootPool.lootPool()
+                                        .when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(Blocks.SWEET_BERRY_BUSH)
+                                                .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(SweetBerryBushBlock.AGE, 3)))
+                                        .add(LootItem.lootTableItem(MMEItems.BLUE_BERRIE))
+                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(2.0f, 3.0f)))
+                                        .apply(ApplyBonusCount.addUniformBonusCount(registries.getOrThrow(Enchantments.FORTUNE)))
+                                )
+                                .withPool(
+                                        LootPool.lootPool().when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(Blocks.SWEET_BERRY_BUSH)
+                                        .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(SweetBerryBushBlock.AGE, 2)))
+                                        .add(LootItem.lootTableItem(MMEItems.BLUE_BERRIE))
+                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0f, 2.0f)))
+                                        .apply(ApplyBonusCount.addUniformBonusCount(registries.getOrThrow(Enchantments.FORTUNE)))
+                                )
+                )
+        );
+
 
         add(MMEBlocks.ADAMANTIUM_ORE, block -> createOreDrop(block, MMEItems.RAW_ADAMANTIUM));
         add(MMEBlocks.MITHRIL_ORE, block -> createOreDrop(block, MMEItems.RAW_MITHRIL));
@@ -24,24 +57,11 @@ public class MMEBlockLootTableProvider extends FabricBlockLootTableProvider {
         add(MMEBlocks.DEEPSLATE_MITHRIL_ORE, block -> createOreDrop(block, MMEItems.RAW_MITHRIL));
         add(MMEBlocks.DEEPSLATE_SILVER_ORE, block -> createOreDrop(block, MMEItems.RAW_SILVER));
 
-        add(MMEBlocks.ADAMANTIUM_DOOR, this::createDoorTable);
-        add(MMEBlocks.ANCIENT_METAL_DOOR, this::createDoorTable);
-        add(MMEBlocks.MITHRIL_DOOR, this::createDoorTable);
-        add(MMEBlocks.SILVER_DOOR, this::createDoorTable);
-        add(MMEBlocks.GOLDEN_DOOR, this::createDoorTable);
-
         add(MMEBlocks.EMERALD_ENCHANTING_TABLE, block -> createNameableBlockEntityTable(MMEBlocks.EMERALD_ENCHANTING_TABLE));
 
         dropSelf(MMEBlocks.ANCIENT_METAL_BLOCK);
         dropSelf(MMEBlocks.MITHRIL_BLOCK);
         dropSelf(MMEBlocks.SILVER_BLOCK);
-
-        dropSelf(MMEBlocks.ADAMANTIUM_BARS);
-        dropSelf(MMEBlocks.MITHRIL_BARS);
-        dropSelf(MMEBlocks.COPPER_BARS);
-        dropSelf(MMEBlocks.SILVER_BARS);
-        dropSelf(MMEBlocks.ANCIENT_METAL_BARS);
-        dropSelf(MMEBlocks.GOLDEN_BARS);
 
         dropSelf(MMEBlocks.ADAMANTIUM_CRAFTING_TABLE);
         dropSelf(MMEBlocks.ANCIENT_METAL_CRAFTING_TABLE);

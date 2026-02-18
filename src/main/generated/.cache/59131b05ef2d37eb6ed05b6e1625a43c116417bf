@@ -1,11 +1,11 @@
 // 1.21.5	-999999999-01-01T00:00:00	mme/Tags for minecraft:block
 8fc1780a61e0251433e2e097e0d5ec51612fcedf data/minecraft/tags/block/anvil.json
-b20abc38084b6fa9c9e1d4c25ccc12b9e22374f9 data/minecraft/tags/block/doors.json
-fd49bbaa82042b5c85edc72a1659ec35227796f6 data/minecraft/tags/block/mineable/pickaxe.json
+81fc4139a20bae277d213d7ad056e021a95d6b91 data/minecraft/tags/block/bee_growables.json
+81fc4139a20bae277d213d7ad056e021a95d6b91 data/minecraft/tags/block/fall_damage_resetting.json
+5b75cdf19f92945a0e92028a672004e4001813a3 data/minecraft/tags/block/mineable/pickaxe.json
 146d8d026d6963c3d4df2ea8afb072e9736c3ace data/minecraft/tags/block/needs_iron_tool.json
 294e618c82aa13b9de90cbc6fa0f9c9188819f32 data/mme/tags/block/adamantium_anvil.json
 f010029a567299565a3c0590aefa168d5cfafb66 data/mme/tags/block/adamantium_runestore.json
-ae8d30015d54aa48ebe1001bdd0100dd6a3d05f6 data/mme/tags/block/bars.json
 a4e7ef2349bb5665d8b58b8bf91172f31207418f data/mme/tags/block/chipped_anvil.json
 b27eaf9c99a44e9a8f3622f7248ac52694ba62c2 data/mme/tags/block/copper_anvil.json
 4d24b95fa371d2184b9dfdbfe015ee5a6e686541 data/mme/tags/block/crafting_table.json
@@ -25,10 +25,10 @@ b3a048c599f7c698251edaf2cf02f322c38103ff data/mme/tags/block/intact_anvil.json
 bf724fd7c5e66d652464f165e85c837954e69986 data/mme/tags/block/mineable_with_mattock.json
 29fd11ef996d5a1d1348d4dcdc7639eb3c53a912 data/mme/tags/block/mithril_anvil.json
 1e6c866fd13f6109a8236f8c13009083e9d8db1b data/mme/tags/block/mithril_runestore.json
-d688736e8b8d674e4444c45e653566397d34c5e1 data/mme/tags/block/needs_adamantium_tool.json
-41a4d258e47ef22c70bab549b62bfd034ae3c0d7 data/mme/tags/block/needs_ancient_metal_tool.json
-c76bdffe5ed89727a51ea0b49bb524abbdea820d data/mme/tags/block/needs_mithril_tool.json
-ce4c93e6da0e2ac3e3b001f8408960a408e8fd4a data/mme/tags/block/needs_silver_or_copper_tool.json
+ab43f298d87a5b304a7c97826e9bfffc3148a412 data/mme/tags/block/needs_adamantium_tool.json
+d0d54a2190aa214394e1c5cf8fc435ba0565a931 data/mme/tags/block/needs_ancient_metal_tool.json
+904cf9e11a080d424a659bd6f5d70206b18b63c0 data/mme/tags/block/needs_mithril_tool.json
+1e5c5058c170b077148293d02c6c8730e03194e8 data/mme/tags/block/needs_silver_or_copper_tool.json
 57c9e218225f50835916efb6db92c02cfce3e7e8 data/mme/tags/block/netherite_anvil.json
 b26d2ecdbcb6aed3dbca1a291330f218ed312772 data/mme/tags/block/portal.json
 8cd62766ccf0ae90b6d41f578398f07ffc71f4a5 data/mme/tags/block/runestore.json

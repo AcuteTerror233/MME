@@ -24,25 +24,14 @@ public class MMEModelProvider extends FabricModelProvider {
     @Override
     public void generateBlockStateModels(BlockModelGenerators blockStateModelGenerator) {
         blockStateModelGenerator.createTrivialCube(MMEBlocks.ADAMANTIUM_ORE);
-        ((BlockModelGeneratorsExtension)blockStateModelGenerator).MME$registerBars(MMEBlocks.ADAMANTIUM_BARS);
         blockStateModelGenerator.createTrivialCube(MMEBlocks.ADAMANTIUM_BLOCK);
-        ((BlockModelGeneratorsExtension)blockStateModelGenerator).MME$registerBars(MMEBlocks.MITHRIL_BARS);
         blockStateModelGenerator.createTrivialCube(MMEBlocks.MITHRIL_BLOCK);
-        ((BlockModelGeneratorsExtension)blockStateModelGenerator).MME$registerBars(MMEBlocks.SILVER_BARS);
         blockStateModelGenerator.createTrivialCube(MMEBlocks.SILVER_BLOCK);
-        ((BlockModelGeneratorsExtension)blockStateModelGenerator).MME$registerBars(MMEBlocks.ANCIENT_METAL_BARS);
         blockStateModelGenerator.createTrivialCube(MMEBlocks.ANCIENT_METAL_BLOCK);
-        ((BlockModelGeneratorsExtension)blockStateModelGenerator).MME$registerBars(MMEBlocks.GOLDEN_BARS);
         blockStateModelGenerator.createTrivialCube(MMEBlocks.MANTLE);
         blockStateModelGenerator.createTrivialCube(MMEBlocks.MITHRIL_ORE);
         blockStateModelGenerator.createTrivialCube(MMEBlocks.SILVER_ORE);
-        ((BlockModelGeneratorsExtension) blockStateModelGenerator).MME$registerBars(MMEBlocks.COPPER_BARS);
 
-        blockStateModelGenerator.createDoor(MMEBlocks.ADAMANTIUM_DOOR);
-        blockStateModelGenerator.createDoor(MMEBlocks.GOLDEN_DOOR);
-        blockStateModelGenerator.createDoor(MMEBlocks.SILVER_DOOR);
-        blockStateModelGenerator.createDoor(MMEBlocks.ANCIENT_METAL_DOOR);
-        blockStateModelGenerator.createDoor(MMEBlocks.MITHRIL_DOOR);
         ((BlockModelGeneratorsExtension) blockStateModelGenerator).MME$registerAnvil(MMEBlocks.NETHERITE_ANVIL, MMEBlocks.CHIPPED_NETHERITE_ANVIL, MMEBlocks.DAMAGED_NETHERITE_ANVIL);
         ((BlockModelGeneratorsExtension) blockStateModelGenerator).MME$registerAnvil(MMEBlocks.ADAMANTIUM_ANVIL, MMEBlocks.CHIPPED_ADAMANTIUM_ANVIL, MMEBlocks.DAMAGED_ADAMANTIUM_ANVIL);
         ((BlockModelGeneratorsExtension) blockStateModelGenerator).MME$registerAnvil(MMEBlocks.MITHRIL_ANVIL, MMEBlocks.CHIPPED_MITHRIL_ANVIL, MMEBlocks.DAMAGED_MITHRIL_ANVIL);
@@ -155,7 +144,7 @@ public class MMEModelProvider extends FabricModelProvider {
 
         //食物部分
         itemModelGenerator.generateFlatItem(MMEItems.BANANA, ModelTemplates.FLAT_ITEM);
-        itemModelGenerator.generateFlatItem(MMEItems.BLUEBERRIE, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(MMEItems.BLUE_BERRIE, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(MMEItems.CHEESE, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(MMEItems.CHOCOLATE, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(MMEItems.DOUGH, ModelTemplates.FLAT_ITEM);
@@ -433,12 +422,8 @@ public class MMEModelProvider extends FabricModelProvider {
         itemModelGenerator.generateFlatItem(MMEItems.SILVER_NUGGET, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(MMEItems.COPPER_NUGGET, ModelTemplates.FLAT_ITEM);
 
-        itemModelGenerator.generateFlatItem(MMEItems.DIAMOND_SHARD, ModelTemplates.FLAT_ITEM);
-        itemModelGenerator.generateFlatItem(MMEItems.EMERALD_SHARD, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(MMEItems.FLINT_SHARD, ModelTemplates.FLAT_ITEM);
-        itemModelGenerator.generateFlatItem(MMEItems.GLASS_SHARD, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(MMEItems.OBSIDIAN_SHARD, ModelTemplates.FLAT_ITEM);
-        itemModelGenerator.generateFlatItem(MMEItems.QUARTZ_SHARD, ModelTemplates.FLAT_ITEM);
 
         itemModelGenerator.generateFlatItem(MMEItems.SINEW, ModelTemplates.FLAT_ITEM);
     }

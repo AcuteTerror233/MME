@@ -1,5 +1,5 @@
 // 1.21.5	-999999999-01-01T00:00:00	mme/Tags for minecraft:item
-a5d180c1bc47b1c3ab839af0624bedd6cab3ad9a data/minecraft/tags/item/axes.json
+c26bc668cd940f4f93816cf35a8d792a0ca9e1ac data/minecraft/tags/item/axes.json
 72e0ee76a52005fdbb8fd56fa09fe34b8fa5b56d data/minecraft/tags/item/chest_armor.json
 7167ee640e77ae2988fe6d5f809e4c5feb2f048d data/minecraft/tags/item/enchantable/durability.json
 2c8a7c09ac005e996a2075f536adddbcb74ba510 data/minecraft/tags/item/enchantable/fishing.json
@@ -29,7 +29,7 @@ c36257a90f69201576983c667bd1bfc3cfe62ed8 data/mme/tags/item/copper_series_repair
 be2b1f39ec940749345ee93d0e9e6b00fd5dc1fb data/mme/tags/item/fishing_rods.json
 06297e3c72fe0b12bf9db435c1d4046fafe18fd3 data/mme/tags/item/gold_not_allowed_material.json
 7faceaaf812e90cb3f05bdfda85cf207c68846d2 data/mme/tags/item/gold_series_repairable.json
-d11cd75ba857e7bc7790e9efbed3c48da2e02cd1 data/mme/tags/item/hatchet.json
+39d1b9e44f3939790a21ac0eacf75efa88574710 data/mme/tags/item/hatchet.json
 355ba72dc42bbaf2dc5d29fcad6ca76635359796 data/mme/tags/item/ingot.json
 da3fed610bd7cae6783d2523e14b099c05d251a8 data/mme/tags/item/iron_not_allowed_material.json
 88b4ecf799dca9ff343ba5d8d3a42e61ea3912d0 data/mme/tags/item/iron_series_repairable.json
@@ -43,7 +43,7 @@ ac2add5f21d4796344a06767cb64df90eb5659b6 data/mme/tags/item/mattock.json
 10921fb3bd42d27013c338d7840c2c50f75fd3ef data/mme/tags/item/nugget.json
 a076029a2420487af65e3bd2ff8265d8feb944f0 data/mme/tags/item/rusted_iron_series_repairable.json
 f0e07abd51501ae917c3c9fbfb3ba0eeefe7df3b data/mme/tags/item/scythe.json
-b14131412a3e2c9bef7a99afd661b55a1f5b8aa5 data/mme/tags/item/shard.json
+6a3f2dfc47243837222e919308cb005e6f8e710b data/mme/tags/item/shard.json
 8381be3de4963df5a7567749f0be18ba01b7c127 data/mme/tags/item/shears.json
 24ec9b8785be984eebc71ca8feeb7ff2cf655f8e data/mme/tags/item/silver_series_repairable.json
 b7abcf429161b5a300f7101bcdf6a755d628fc5c data/mme/tags/item/silver_tool_materials.json
