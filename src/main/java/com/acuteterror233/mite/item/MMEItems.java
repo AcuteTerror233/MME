@@ -281,16 +281,16 @@ public class MMEItems {
             new Item.Properties().stacksTo(16));
     public static final Item BEEF_STEW = register(
             "beef_stew",
-            new Item.Properties().food(new FoodProperties(5, 5.0F, false)).usingConvertsTo(Items.BOWL).craftRemainder(Items.BOWL).stacksTo(4));
+            new Item.Properties().food(new FoodProperties(10, 10.0F, false)).usingConvertsTo(Items.BOWL).craftRemainder(Items.BOWL).stacksTo(4));
     public static final Item BOWL_MILK = register(
             "bowl_milk",
-            new Item.Properties().food(new FoodProperties(5, 5.0F, false)).usingConvertsTo(Items.BOWL).craftRemainder(Items.BOWL).stacksTo(4));
+            new Item.Properties().food(new FoodProperties(2, 0, false)).usingConvertsTo(Items.BOWL).craftRemainder(Items.BOWL).stacksTo(4));
     public static final Item BOWL_SALAD = register(
             "bowl_salad",
-            new Item.Properties().food(new FoodProperties(5, 5.0F, false)).usingConvertsTo(Items.BOWL).craftRemainder(Items.BOWL).stacksTo(4));
+            new Item.Properties().food(new FoodProperties(1, 1.0F, false)).usingConvertsTo(Items.BOWL).craftRemainder(Items.BOWL).stacksTo(4));
     public static final Item BOWL_WATER = register(
             "bowl_water",
-            new Item.Properties().food(new FoodProperties(5, 5.0F, false)).usingConvertsTo(Items.BOWL).craftRemainder(Items.BOWL).stacksTo(4));
+            new Item.Properties().food(new FoodProperties(0, 0F, true)).usingConvertsTo(Items.BOWL).craftRemainder(Items.BOWL).stacksTo(4));
     public static final Item CEREAL = register(
             "cereal",
             new Item.Properties().food(new FoodProperties(5, 5.0F, false)).usingConvertsTo(Items.BOWL).craftRemainder(Items.BOWL).stacksTo(4));
@@ -438,7 +438,7 @@ public class MMEItems {
     public static final Item OBSIDIAN_AXE = registerAxeItem("obsidian_axe", applyToolSettings(new Item.Properties(), MMEToolMaterials.OBSIDIAN, BlockTags.MINEABLE_WITH_AXE, 3.4F, 2, 4, -2.7F, 0.5F, 0.5F, 5));
     public static final Item OBSIDIAN_HATCHET = registerAxeItem("obsidian_hatchet", applyToolSettings(new Item.Properties(), MMEToolMaterials.OBSIDIAN, BlockTags.MINEABLE_WITH_AXE, 1, 2, 3, -2.7F, 0.25F, 0.25F, 5));
     public static final Item OBSIDIAN_KNIFE = register("obsidian_knife", applySwordSettings(new Item.Properties(), MMEToolMaterials.OBSIDIAN, 3, 1, 2, -2.0F, 0.25F, 0.25F));
-    public static final Item OBSIDIAN_SHOVEL = register("obsidian_shovel", applyToolSettings(new Item.Properties(), MMEToolMaterials.OBSIDIAN, BlockTags.MINEABLE_WITH_SHOVEL, 3, 2, 1, -2.8F, 0.75F, 0.75F, 0));
+    public static final Item OBSIDIAN_SHOVEL = register("obsidian_shovel", applyToolSettings(new Item.Properties(), MMEToolMaterials.OBSIDIAN, BlockTags.MINEABLE_WITH_SHOVEL, 5, 2, 1, -2.8F, 0.75F, 0.75F, 0));
 
     public static final Item FLINT_AXE = registerAxeItem("flint_axe", applyToolSettings(new Item.Properties(), MMEToolMaterials.FLINT, BlockTags.MINEABLE_WITH_AXE, 3.4F, 2, 4, -2.7F, 0.5F, 0.5F, 5));
     public static final Item FLINT_HATCHET = registerAxeItem("flint_hatchet", applyToolSettings(new Item.Properties(), MMEToolMaterials.FLINT, BlockTags.MINEABLE_WITH_AXE, 1, 2, 3, -2.7F, 0.25F, 0.25F, 5));

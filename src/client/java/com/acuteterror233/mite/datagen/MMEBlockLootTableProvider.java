@@ -68,6 +68,7 @@ public class MMEBlockLootTableProvider extends FabricBlockLootTableProvider {
         dropSelf(MMEBlocks.MITHRIL_CRAFTING_TABLE);
         dropSelf(MMEBlocks.GOLD_CRAFTING_TABLE);
         dropSelf(MMEBlocks.IRON_CRAFTING_TABLE);
+        dropSelf(MMEBlocks.SILVER_CRAFTING_TABLE);
         dropSelf(MMEBlocks.COPPER_CRAFTING_TABLE);
         dropSelf(MMEBlocks.FLINT_CRAFTING_TABLE);
         dropSelf(MMEBlocks.OBSIDIAN_CRAFTING_TABLE);
