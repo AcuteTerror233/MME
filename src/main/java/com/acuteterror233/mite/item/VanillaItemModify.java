@@ -227,6 +227,16 @@ public final class VanillaItemModify {
         result.put(ResourceLocation.withDefaultNamespace("chainmail_leggings"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.IRON_CHAINMAIL_MATERIAL, ArmorType.LEGGINGS));
         result.put(ResourceLocation.withDefaultNamespace("chainmail_boots"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.IRON_CHAINMAIL_MATERIAL, ArmorType.BOOTS));
 
+        result.put(ResourceLocation.withDefaultNamespace("golden_helmet"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.GOLD_MATERIAL, ArmorType.HELMET));
+        result.put(ResourceLocation.withDefaultNamespace("golden_chestplate"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.GOLD_MATERIAL, ArmorType.CHESTPLATE));
+        result.put(ResourceLocation.withDefaultNamespace("golden_leggings"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.GOLD_MATERIAL, ArmorType.LEGGINGS));
+        result.put(ResourceLocation.withDefaultNamespace("golden_boots"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.GOLD_MATERIAL, ArmorType.BOOTS));
+
+        result.put(ResourceLocation.withDefaultNamespace("leather_helmet"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.LEATHER_MATERIAL, ArmorType.HELMET));
+        result.put(ResourceLocation.withDefaultNamespace("leather_chestplate"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.LEATHER_MATERIAL, ArmorType.CHESTPLATE));
+        result.put(ResourceLocation.withDefaultNamespace("leather_leggings"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.LEATHER_MATERIAL, ArmorType.LEGGINGS));
+        result.put(ResourceLocation.withDefaultNamespace("leather_boots"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.LEATHER_MATERIAL, ArmorType.BOOTS));
+
         result.put(ResourceLocation.withDefaultNamespace("oak_planks"), properties -> properties.stacksTo(8));
         result.put(ResourceLocation.withDefaultNamespace("spruce_planks"), properties -> properties.stacksTo(8));
         result.put(ResourceLocation.withDefaultNamespace("birch_planks"), properties -> properties.stacksTo(8));
@@ -315,10 +325,16 @@ public final class VanillaItemModify {
         result.put(ResourceLocation.withDefaultNamespace("deepslate_gold_ore"), settings -> settings.component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
         result.put(ResourceLocation.withDefaultNamespace("nether_gold_ore"), settings -> settings.component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
 
-        result.put(ResourceLocation.withDefaultNamespace("leaf_litter"), properties -> properties.food(new FoodProperties(0, 0.0F, true),
+        result.put(ResourceLocation.withDefaultNamespace("brown_mushroom"), properties -> properties.food(new FoodProperties(2, 0.0F, false)));
+        result.put(ResourceLocation.withDefaultNamespace("red_mushroom"), properties -> properties.food(new FoodProperties(2, 0.0F, false),
                 Consumables.defaultFood()
-                        .onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(MobEffects.BLINDNESS, 50, 0), 0.5F))
-                        .onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(MobEffects.POISON, 50, 0), 0.5F))
+                        .onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(MobEffects.POISON, 1200), 1F))
+                        .build()));
+
+        result.put(ResourceLocation.withDefaultNamespace("leaf_litter"), properties -> properties.food(new FoodProperties(1, 0.0F, true),
+                Consumables.defaultFood()
+                        .onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(MobEffects.BLINDNESS, 200, 0), 0.5F))
+                        .onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(MobEffects.POISON, 1200, 0), 0.5F))
                         .build()));
 
         return result;

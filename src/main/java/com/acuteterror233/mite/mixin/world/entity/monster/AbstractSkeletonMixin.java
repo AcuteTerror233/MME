@@ -33,15 +33,11 @@ public abstract class AbstractSkeletonMixin  extends Monster implements RangedAt
         super.populateDefaultEquipmentSlots(randomSource, difficultyInstance);
         Level level = this.level();
         if (level.dimension() == Level.OVERWORLD){
-            if (getY() > 63) {
+            float v = randomSource.nextFloat();
+            if (v < 0.3F || !this.getSlot(100).get().isEmpty()){
                 addMainhand(MMEItems.WOODEN_CLUB);
-            }else {
-                float v = randomSource.nextFloat();
-                if (v < 0.3F || !this.getSlot(100).get().isEmpty()){
-                    addMainhand(MMEItems.WOODEN_CLUB);
-                }else if (v < 0.7F){
-                    this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(Items.BOW));
-                }
+            }else if (v < 0.7F){
+                this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(Items.BOW));
             }
         } else if (level.dimension() == MMEDimensionTypeRegistrar.UNDERGROUND_LEVEL_KEY) {
             float v = randomSource.nextFloat();
@@ -56,6 +52,10 @@ public abstract class AbstractSkeletonMixin  extends Monster implements RangedAt
             }
         }
     }
+    /**
+     * @author AcuteTerror233
+     * @reason 修改属性
+     */
     @Overwrite
     public static AttributeSupplier.Builder createAttributes() {
         AttributeSupplier.Builder builder = Monster.createMonsterAttributes();
