@@ -72,6 +72,36 @@ public class MMERecipeGenerator extends FabricRecipeProvider {
                 nineBlockStorageRecipes(RecipeCategory.MISC, MMEItems.SILVER_NUGGET, RecipeCategory.MISC, MMEItems.SILVER_INGOT, "silver_ingot_from_silver_nugget", null,  "silver_nugget_from_silver_ingot", null);
                 nineBlockStorageRecipes(RecipeCategory.MISC, MMEItems.COPPER_NUGGET, RecipeCategory.MISC, Items.COPPER_INGOT, "copper_ingot_from_copper_nugget", null,  "copper_nugget_from_copper_ingot", null);
 
+                twoByTwoPacker(RecipeCategory.DECORATIONS, Items.CLAY, MMEBlocks.CLAY_FURNACE);
+                shaped(RecipeCategory.DECORATIONS, MMEBlocks.HARDENED_CLAY_FURNACE)
+                        .define('a', Items.TERRACOTTA)
+                        .pattern("aaa")
+                        .pattern("a a")
+                        .pattern("aaa")
+                        .unlockedBy("has_terracotta", this.has(Items.TERRACOTTA))
+                        .save(this.output);
+                shaped(RecipeCategory.DECORATIONS, MMEBlocks.NETHERRACK_FURNACE)
+                        .define('a', Items.NETHERRACK)
+                        .pattern("aaa")
+                        .pattern("a a")
+                        .pattern("aaa")
+                        .unlockedBy("has_netherrack", this.has(Items.TERRACOTTA))
+                        .save(this.output);
+                shaped(RecipeCategory.DECORATIONS, MMEBlocks.OBSIDIAN_FURNACE)
+                        .define('a', Items.OBSIDIAN)
+                        .pattern("aaa")
+                        .pattern("a a")
+                        .pattern("aaa")
+                        .unlockedBy("has_obsidian", this.has(Items.OBSIDIAN))
+                        .save(this.output);
+                shaped(RecipeCategory.DECORATIONS, MMEBlocks.SANDSTONE_FURNACE)
+                        .define('a', Items.SANDSTONE)
+                        .pattern("aaa")
+                        .pattern("a a")
+                        .pattern("aaa")
+                        .unlockedBy("has_sandstone", this.has(Items.SANDSTONE))
+                        .save(this.output);
+
                 nineBlockStorageRecipes(RecipeCategory.MISC, MMEItems.OBSIDIAN_SHARD, RecipeCategory.MISC, Blocks.OBSIDIAN, "obsidian_from_obsidian_shard", null,  "obsidian_shard_from_obsidian", null);
                 twoByTwoPacker(RecipeCategory.MISC, Items.FLINT, MMEItems.FLINT_SHARD);
 

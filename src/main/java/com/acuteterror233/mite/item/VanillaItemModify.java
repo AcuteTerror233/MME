@@ -42,7 +42,6 @@ public final class VanillaItemModify {
 
         // 最大堆叠为 8 的物品标识
         result.put(ResourceLocation.withDefaultNamespace("flint"), settings -> settings.stacksTo(8));
-        result.put(ResourceLocation.withDefaultNamespace("leather"), settings -> settings.stacksTo(8));
         result.put(ResourceLocation.withDefaultNamespace("rabbit_hide"), settings -> settings.stacksTo(8));
         result.put(ResourceLocation.withDefaultNamespace("honeycomb"), settings -> settings.stacksTo(8));
         result.put(ResourceLocation.withDefaultNamespace("turtle_scute"), settings -> settings.stacksTo(8));
@@ -95,6 +94,7 @@ public final class VanillaItemModify {
         result.put(ResourceLocation.withDefaultNamespace("copper_ingot"), settings -> settings.stacksTo(16).component(MMEDataComponentTypes.CRAFTING_TIME, 10));
         result.put(ResourceLocation.withDefaultNamespace("gold_ingot"), settings -> settings.stacksTo(16).component(MMEDataComponentTypes.CRAFTING_TIME, 20));
         result.put(ResourceLocation.withDefaultNamespace("netherite_ingot"), settings -> settings.stacksTo(16).component(MMEDataComponentTypes.CRAFTING_TIME, 200));
+        result.put(ResourceLocation.withDefaultNamespace("leather"), settings -> settings.stacksTo(16).component(MMEDataComponentTypes.CRAFTING_TIME, 2));
         result.put(ResourceLocation.withDefaultNamespace("coal"), settings -> settings.stacksTo(16));
         result.put(ResourceLocation.withDefaultNamespace("charcoal"), settings -> settings.stacksTo(16));
         result.put(ResourceLocation.withDefaultNamespace("emerald"), settings -> settings.stacksTo(16));
@@ -336,7 +336,6 @@ public final class VanillaItemModify {
                         .onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(MobEffects.BLINDNESS, 200, 0), 0.5F))
                         .onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(MobEffects.POISON, 1200, 0), 0.5F))
                         .build()));
-
         return result;
     }
 

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "a": "minecraft:terracotta"
+  },
+  "pattern": [
+    "aaa",
+    "a a",
+    "aaa"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mme:hardened_clay_furnace"
+  }
+}

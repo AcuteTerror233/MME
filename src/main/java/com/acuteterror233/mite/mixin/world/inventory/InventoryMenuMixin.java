@@ -1,4 +1,4 @@
-package com.acuteterror233.mite.mixin.inventory;
+package com.acuteterror233.mite.mixin.world.inventory;
 
 import com.acuteterror233.mite.atinterface.InventoryMenuExtension;
 import com.acuteterror233.mite.block.MMEBlocks;
