@@ -963,27 +963,17 @@ public class MMEItems {
                 entries.accept(chipped(MMEBlocks.CHIPPED_SILVER_ANVIL));
                 entries.accept(damaged(MMEBlocks.DAMAGED_SILVER_ANVIL));
 
-                entries.accept(Blocks.NETHERITE_BLOCK);
                 entries.accept(MMEBlocks.ADAMANTIUM_BLOCK);
                 entries.accept(MMEBlocks.MITHRIL_BLOCK);
                 entries.accept(MMEBlocks.ANCIENT_METAL_BLOCK);
-                entries.accept(Blocks.IRON_BLOCK);
-                entries.accept(Blocks.GOLD_BLOCK);
                 entries.accept(MMEBlocks.SILVER_BLOCK);
-                entries.accept(Blocks.COPPER_BLOCK);
 
                 entries.accept(MMEBlocks.ADAMANTIUM_ORE);
                 entries.accept(MMEBlocks.DEEPSLATE_ADAMANTIUM_ORE);
                 entries.accept(MMEBlocks.MITHRIL_ORE);
                 entries.accept(MMEBlocks.DEEPSLATE_MITHRIL_ORE);
-                entries.accept(Blocks.IRON_ORE);
-                entries.accept(Blocks.DEEPSLATE_IRON_ORE);
-                entries.accept(Blocks.GOLD_ORE);
-                entries.accept(Blocks.DEEPSLATE_GOLD_ORE);
                 entries.accept(MMEBlocks.SILVER_ORE);
                 entries.accept(MMEBlocks.DEEPSLATE_SILVER_ORE);
-                entries.accept(Blocks.COPPER_ORE);
-                entries.accept(Blocks.DEEPSLATE_COPPER_ORE);
 
                 entries.accept(MMEBlocks.MANTLE);
 
@@ -994,14 +984,10 @@ public class MMEItems {
                 entries.accept(RAW_MITHRIL);
                 entries.accept(RAW_SILVER);
 
-                entries.accept(Items.NETHERITE_INGOT);
                 entries.accept(ADAMANTIUM_INGOT);
                 entries.accept(MITHRIL_INGOT);
                 entries.accept(ANCIENT_METAL_INGOT);
-                entries.accept(Items.IRON_INGOT);
-                entries.accept(Items.GOLD_INGOT);
                 entries.accept(SILVER_INGOT);
-                entries.accept(Items.COPPER_INGOT);
 
                 entries.accept(ADAMANTIUM_NUGGET);
                 entries.accept(ANCIENT_METAL_NUGGET);

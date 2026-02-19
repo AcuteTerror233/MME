@@ -32,7 +32,7 @@ public class MMEArmorMaterials {
     public static final ResourceKey<EquipmentAsset> SILVER_MATERIAL_KEY = ResourceKey.create(EquipmentAssets.ROOT_ID, ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, "silver"));
     public static final ResourceKey<EquipmentAsset> SILVER_CHAINMAIL_MATERIAL_KEY = ResourceKey.create(EquipmentAssets.ROOT_ID, ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, "silver_chainmail"));
     public static final ResourceKey<EquipmentAsset> GOLD_CHAINMAIL_MATERIAL_KEY = ResourceKey.create(EquipmentAssets.ROOT_ID, ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, "gold_chainmail"));
-    public static final ResourceKey<EquipmentAsset> GOLD_MATERIAL_KEY = ResourceKey.create(EquipmentAssets.ROOT_ID, ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, "gold"));
+    public static final ResourceKey<EquipmentAsset> GOLD_MATERIAL_KEY = EquipmentAssets.GOLD;
 
     public static final MMEArmorMaterial NETHERITE_MATERIAL = new MMEArmorMaterial(
             MMEToolMaterials.NETHERITE.durability(),
@@ -203,6 +203,16 @@ public class MMEArmorMaterials {
             0.0F,
             ItemTags.GOLD_TOOL_MATERIALS,
             GOLD_MATERIAL_KEY
+    );
+    public static final MMEArmorMaterial LEATHER_MATERIAL = new MMEArmorMaterial(
+            5,
+            createDefenseMap(0.36F, 0.6F, 0.8F, 0.24F, 0.5F),
+            21,
+            SoundEvents.ARMOR_EQUIP_LEATHER,
+            0.0F,
+            0.0F,
+            ItemTags.REPAIRS_LEATHER_ARMOR,
+            EquipmentAssets.LEATHER
     );
     private static Map<ArmorType, Float> createDefenseMap(float bootsDefense, float leggingsDefense, float chestplateDefense, float helmetDefense, float bodyDefense) {
         return Maps.newEnumMap(

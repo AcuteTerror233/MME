@@ -1,6 +1,7 @@
 package com.acuteterror233.mite.mixin.world.entity.player;
 
 import com.acuteterror233.mite.atinterface.FoodDataExtension;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -13,6 +14,7 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
@@ -22,6 +24,12 @@ public abstract class PlayerEntityMixin extends LivingEntity {
     public int experienceLevel;
     @Shadow
     public abstract FoodData getFoodData();
+
+    @Redirect(method = "blockUsingItem", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/LivingEntity;getSecondsToDisableBlocking()F"))
+    public float blockUsingItem(LivingEntity instance) {
+        float v = instance.getSecondsToDisableBlocking();
+        return v > 0 ? v : 0.25F;
+    }
 
     protected PlayerEntityMixin(EntityType<? extends LivingEntity> entityType, Level world) {
         super(entityType, world);
@@ -53,5 +61,10 @@ public abstract class PlayerEntityMixin extends LivingEntity {
             this.getAttributes().getInstance(Attributes.MAX_HEALTH).setBaseValue(max);
             ((FoodDataExtension) this.getFoodData()).MME$SetMaxFoodLevel(max);
         }
+    }
+
+    @Inject(method = "attack", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/player/Player;awardStat(Lnet/minecraft/resources/ResourceLocation;I)V"))
+    public void attack(Entity entity, CallbackInfo ci) {
+        this.getFoodData().addExhaustion(0.5F);
     }
 }

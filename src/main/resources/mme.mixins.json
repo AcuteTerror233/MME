@@ -13,6 +13,7 @@
     "server.MinecraftServerMixin",
     "server.level.ServerLevelMixin",
     "world.dimension.PortalShapeMixin",
+    "world.effect.PoisonMobEffectMixin",
     "world.entity.BucketableMixin",
     "world.entity.FallingBlockEntityMixin",
     "world.entity.MobMixin",
