@@ -79,19 +79,19 @@ public class MMEBlocks {
     );
 
     public static final Block CLAY_FURNACE = register(
-            "clay_furnace", settings -> new GradeFurnaceBlock(settings, 1), BlockBehaviour.Properties.ofFullCopy(Blocks.FURNACE).strength(0.5F)
+            "clay_furnace", settings -> new GradeFurnaceBlock(settings, 1), BlockBehaviour.Properties.ofFullCopy(Blocks.FURNACE)
     );
     public static final Block HARDENED_CLAY_FURNACE = register(
-            "hardened_clay_furnace", settings -> new GradeFurnaceBlock(settings, 1), BlockBehaviour.Properties.ofFullCopy(Blocks.FURNACE).strength(0.5F)
+            "hardened_clay_furnace", settings -> new GradeFurnaceBlock(settings, 1), BlockBehaviour.Properties.ofFullCopy(Blocks.FURNACE)
     );
     public static final Block NETHERRACK_FURNACE = register(
-            "netherrack_furnace", settings -> new GradeFurnaceBlock(settings, 4), BlockBehaviour.Properties.ofFullCopy(Blocks.FURNACE).strength(0.5F)
+            "netherrack_furnace", settings -> new GradeFurnaceBlock(settings, 4), BlockBehaviour.Properties.ofFullCopy(Blocks.FURNACE)
     );
     public static final Block OBSIDIAN_FURNACE = register(
-            "obsidian_furnace", settings -> new GradeFurnaceBlock(settings, 3), BlockBehaviour.Properties.ofFullCopy(Blocks.FURNACE).strength(0.5F)
+            "obsidian_furnace", settings -> new GradeFurnaceBlock(settings, 3), BlockBehaviour.Properties.ofFullCopy(Blocks.FURNACE)
     );
     public static final Block SANDSTONE_FURNACE = register(
-            "sandstone_furnace", settings -> new GradeFurnaceBlock(settings, 1), BlockBehaviour.Properties.ofFullCopy(Blocks.FURNACE).strength(0.5F)
+            "sandstone_furnace", settings -> new GradeFurnaceBlock(settings, 1), BlockBehaviour.Properties.ofFullCopy(Blocks.FURNACE)
     );
 
     public static final Block MANTLE = register(                //地幔

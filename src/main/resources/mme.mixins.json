@@ -7,8 +7,6 @@
   "mixins": [
     "BootstrapMixin",
     "component.DataComponentsMixin",
-    "inventory.InventoryMenuMixin",
-    "inventory.slot.FurnaceFuelSlotMixin",
     "recipe.RecipeManagerMixin",
     "server.MinecraftServerMixin",
     "server.level.ServerLevelMixin",
@@ -27,6 +25,9 @@
     "world.entity.player.FoodDataMixin",
     "world.entity.player.PlayerEntityMixin",
     "world.entity.projectile.FishingBobberEntityMixin",
+    "world.inventory.FurnaceResultSlotMixin",
+    "world.inventory.InventoryMenuMixin",
+    "world.inventory.slot.FurnaceFuelSlotMixin",
     "world.item.BoneMealItemMixin",
     "world.item.DyeItemMixin",
     "world.item.ItemsMixin",
