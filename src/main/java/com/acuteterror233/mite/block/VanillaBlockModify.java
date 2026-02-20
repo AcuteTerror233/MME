@@ -48,6 +48,15 @@ public final class VanillaBlockModify {
                     .instrument(NoteBlockInstrument.BASEDRUM)
                     .lightLevel(blockStatex -> 7)
                     .strength(0.3F, 1200.0F)),
-            Map.entry(ResourceLocation.withDefaultNamespace("chest"), properties -> properties.strength(0.3F))
+            Map.entry(ResourceLocation.withDefaultNamespace("chest"), properties -> properties.strength(0.3F)),
+            Map.entry(ResourceLocation.withDefaultNamespace("short_grass"), properties -> properties.strength(0.01F)),
+            Map.entry(ResourceLocation.withDefaultNamespace("fern"), properties -> properties.strength(0.01F)),
+            Map.entry(ResourceLocation.withDefaultNamespace("flowering_azalea"), properties -> properties.strength(0.01F)),
+            Map.entry(ResourceLocation.withDefaultNamespace("bush"), properties -> properties.strength(0.01F)),
+            Map.entry(ResourceLocation.withDefaultNamespace("sugar_cane"), properties -> properties.strength(0.01F)),
+            Map.entry(ResourceLocation.withDefaultNamespace("tall_grass"), properties -> properties.strength(0.01F)),
+            Map.entry(ResourceLocation.withDefaultNamespace("large_fern"), properties -> properties.strength(0.01F)),
+            Map.entry(ResourceLocation.withDefaultNamespace("twisting_vines"), properties -> properties.strength(0.01F)),
+            Map.entry(ResourceLocation.withDefaultNamespace("weeping_vines"), properties -> properties.strength(0.01F))
     );
 }

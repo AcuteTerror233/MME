@@ -39,7 +39,7 @@ public abstract class PlayerEntityMixin extends LivingEntity {
     private static void createPlayerAttributes(CallbackInfoReturnable<AttributeSupplier.Builder> cir) {
         cir.setReturnValue(cir.getReturnValue()
                 .add(Attributes.MAX_HEALTH, 6)
-                .add(Attributes.BLOCK_INTERACTION_RANGE, 2.5)
+                .add(Attributes.BLOCK_INTERACTION_RANGE, 3)
                 .add(Attributes.ENTITY_INTERACTION_RANGE, 1.5)
         );
     }

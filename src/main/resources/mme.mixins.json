@@ -55,8 +55,7 @@
     "world.level.block.SugarCaneBlockMixin",
     "world.level.block.SweetBerryBushBlockMixin",
     "world.level.block.entity.BlockEntityTypeMixin",
-    "world.level.block.entity.CampfireBlockEntityMixin",
-    "world.level.block.state.BlockBehaviourPropertiesMixin"
+    "world.level.block.entity.CampfireBlockEntityMixin"
   ],
   "injectors": {
     "defaultRequire": 1

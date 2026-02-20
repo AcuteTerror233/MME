@@ -469,7 +469,7 @@ public class MMEItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(MMEItems.FLINT_AXE)
                 .add(MMEItems.OBSIDIAN_AXE);
         getOrCreateTagBuilder(ItemTags.PICKAXES)
-                .addTag(MMETags.MATTOCK)
+                .addTag(MMETags.WAR_HAMMER)
                 .add(MMEItems.ADAMANTIUM_PICKAXE)
                 .add(MMEItems.MITHRIL_PICKAXE)
                 .add(MMEItems.ANCIENT_METAL_PICKAXE)
@@ -485,7 +485,6 @@ public class MMEItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(MMEItems.SILVER_SHOVEL)
                 .add(MMEItems.COPPER_SHOVEL);
         getOrCreateTagBuilder(ItemTags.HOES)
-                .addTag(MMETags.SCYTHE)
                 .add(MMEItems.ADAMANTIUM_HOE)
                 .add(MMEItems.MITHRIL_HOE)
                 .add(MMEItems.ANCIENT_METAL_HOE)
