@@ -1961,14 +1961,16 @@ public final class LootTableReplace {
     public static LootTable.Builder createSilkTouchWithPickaxesWithExplosiveItemTable(HolderLookup.Provider provider, ItemLike silkTouchItem, ItemLike digItem, ItemLike blastingItem){
         return createSilkTouchWithTagWithExplosiveItemTable(provider, silkTouchItem, ConstantValue.exactly(1.0F), digItem, ConstantValue.exactly(1.0F), ItemTags.PICKAXES, blastingItem, ConstantValue.exactly(1.0F));
     }
-    public static LootTable.Builder createSilkTouchWithTagWithExplosiveItemTable(HolderLookup.Provider provider,
-                                                                                 ItemLike silkTouchItem,
-                                                                                 NumberProvider count1,
-                                                                                 ItemLike digItem,
-                                                                                 NumberProvider count2,
-                                                                                 TagKey<Item> tag,
-                                                                                 ItemLike blastingItem,
-                                                                                 NumberProvider count3) {
+    public static LootTable.Builder createSilkTouchWithTagWithExplosiveItemTable(
+            HolderLookup.Provider provider,
+            ItemLike silkTouchItem,
+            NumberProvider count1,
+            ItemLike digItem,
+            NumberProvider count2,
+            TagKey<Item> tag,
+            ItemLike blastingItem,
+            NumberProvider count3
+    ) {
         return LootTable.lootTable()
                 .withPool(
                         LootPool.lootPool()

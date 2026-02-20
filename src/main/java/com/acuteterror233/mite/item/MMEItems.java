@@ -1369,7 +1369,7 @@ public class MMEItems {
     }
 
     public static Item.Properties getShearsSettings(ToolMaterial material) {
-        return applyBaseSettings(new Item.Properties(), material, 2)
+        return applyBaseSettings(new Item.Properties(), material, 7)
                 .component(DataComponents.TOOL, ShearsItem.createToolProperties())
                 .attributes(CreateAttributeModifiers(0.5f, 0.5f, material.attackDamageBonus(), 0));
     }
