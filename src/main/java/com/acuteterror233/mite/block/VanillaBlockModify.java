@@ -42,7 +42,7 @@ public final class VanillaBlockModify {
             Map.entry(ResourceLocation.withDefaultNamespace("chipped_anvil"),settings -> BlockBehaviour.Properties.ofFullCopy(Blocks.ANVIL)),
             Map.entry(ResourceLocation.withDefaultNamespace("damaged_anvil"),settings -> BlockBehaviour.Properties.ofFullCopy(Blocks.ANVIL)),
             Map.entry(ResourceLocation.withDefaultNamespace("crafting_table"), settings -> settings.strength(0.3F)),
-            Map.entry(ResourceLocation.withDefaultNamespace("obsidian"), settings -> settings.strength(3.0F, 1200.0F)),
+            Map.entry(ResourceLocation.withDefaultNamespace("obsidian"), settings -> settings.strength(2.0F, 1200.0F)),
             Map.entry(ResourceLocation.withDefaultNamespace("enchanting_table"), properties -> BlockBehaviour.Properties.of()
                     .mapColor(MapColor.COLOR_RED)
                     .instrument(NoteBlockInstrument.BASEDRUM)

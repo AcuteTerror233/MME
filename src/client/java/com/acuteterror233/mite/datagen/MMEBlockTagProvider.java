@@ -200,7 +200,9 @@ public class MMEBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(MMEBlocks.ADAMANTIUM_ORE)
                 .add(MMEBlocks.DEEPSLATE_ADAMANTIUM_ORE);
         getOrCreateTagBuilder(MMETags.NEEDS_ANCIENT_METAL_TOOL)
-                .add(MMEBlocks.ANCIENT_METAL_BLOCK);
+                .add(MMEBlocks.ANCIENT_METAL_BLOCK)
+                .add(Blocks.DIAMOND_ORE)
+                .add(Blocks.DEEPSLATE_DIAMOND_ORE);
         getOrCreateTagBuilder(BlockTags.NEEDS_IRON_TOOL)
                 .add(MMEBlocks.MITHRIL_ORE)
                 .add(MMEBlocks.DEEPSLATE_MITHRIL_ORE);

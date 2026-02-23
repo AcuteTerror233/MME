@@ -30,8 +30,10 @@
     "world.inventory.slot.FurnaceFuelSlotMixin",
     "world.item.BoneMealItemMixin",
     "world.item.DyeItemMixin",
+    "world.item.EggItemMixin",
     "world.item.ItemsMixin",
     "world.item.ItemStackMixin",
+    "world.item.ShearsItemMixin",
     "world.item.equipment.ArmorTypeMixin",
     "world.item.equipment.EnchantmentHelperMixin",
     "world.level.block.BambooStalkBlockMixin",
@@ -41,6 +43,7 @@
     "world.level.block.BlocksMixin",
     "world.level.block.BubbleColumnBlockMixin",
     "world.level.block.CactusBlockMixin",
+    "world.level.block.CakeBlockMixin",
     "world.level.block.CampfireBlockMixin",
     "world.level.block.CocoaBlockMixin",
     "world.level.block.CropBlockMixin",
@@ -55,7 +58,8 @@
     "world.level.block.SugarCaneBlockMixin",
     "world.level.block.SweetBerryBushBlockMixin",
     "world.level.block.entity.BlockEntityTypeMixin",
-    "world.level.block.entity.CampfireBlockEntityMixin"
+    "world.level.block.entity.CampfireBlockEntityMixin",
+    "world.level.levelgen.feature.configurations.OreConfigurationMixin"
   ],
   "injectors": {
     "defaultRequire": 1

@@ -430,7 +430,7 @@ public class MMEBlocks {
     );
 
     public static int maxDamageAnvil(int damage) {
-        return (damage * 31) * 2;
+        return (damage * 40) * 2;
     }
 
     public static Block register(String id, BlockBehaviour.Properties settings) {

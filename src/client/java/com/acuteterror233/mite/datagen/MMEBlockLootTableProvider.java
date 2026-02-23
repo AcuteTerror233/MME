@@ -48,6 +48,11 @@ public class MMEBlockLootTableProvider extends FabricBlockLootTableProvider {
                 )
         );
 
+        dropSelf(MMEBlocks.CLAY_FURNACE);
+        dropSelf(MMEBlocks.HARDENED_CLAY_FURNACE);
+        dropSelf(MMEBlocks.NETHERRACK_FURNACE);
+        dropSelf(MMEBlocks.OBSIDIAN_FURNACE);
+        dropSelf(MMEBlocks.SANDSTONE_FURNACE);
 
         add(MMEBlocks.ADAMANTIUM_ORE, block -> createOreDrop(block, MMEItems.RAW_ADAMANTIUM));
         add(MMEBlocks.MITHRIL_ORE, block -> createOreDrop(block, MMEItems.RAW_MITHRIL));

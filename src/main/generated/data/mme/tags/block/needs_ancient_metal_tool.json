@@ -1,5 +1,7 @@
 {
   "values": [
-    "mme:ancient_metal_block"
+    "mme:ancient_metal_block",
+    "minecraft:diamond_ore",
+    "minecraft:deepslate_diamond_ore"
   ]
 }

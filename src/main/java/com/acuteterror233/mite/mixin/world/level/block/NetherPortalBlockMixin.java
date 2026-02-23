@@ -21,13 +21,6 @@ import org.spongepowered.asm.mixin.Shadow;
 
 @Mixin(NetherPortalBlock.class)
 public class NetherPortalBlockMixin {
-    @Shadow
-    @Final
-    public static EnumProperty<Direction.Axis> AXIS;
-    @Shadow
-    @Final
-    private static Logger LOGGER;
-
     /**
      * @author  AcuteTerror233
      * @reason  更改的地狱传送门的传送逻辑

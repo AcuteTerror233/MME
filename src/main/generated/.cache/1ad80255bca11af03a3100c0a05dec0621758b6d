@@ -251,7 +251,6 @@ f44bf5359a79ad674b32aadd8df674f25b146107 assets/mme/items/mithril_scythe.json
 70ebc920846757627543746105ce6a0e1bce37ac assets/mme/items/mithril_shovel.json
 9ec4efa88b99c13bc31ebc8c585b58c8e006e6d9 assets/mme/items/mithril_sword.json
 ef24f57fd637f0ce7735accd3b1c942a9a67b6ce assets/mme/items/mithril_war_hammer.json
-abc3054715f62cacdea817c550ebcfa68b788052 assets/mme/items/mushroom_stew.json
 d48bdeb9c146b7e2f8c93edb079d68f7afd615e8 assets/mme/items/netherite_anvil.json
 5d452db2ff3d97bfe8388f4d040fb0db4ad6c49a assets/mme/items/netherite_battle_axe.json
 14931c0355f1cb8bd210ef8a9eab9f9aaf3b3979 assets/mme/items/netherite_bucket.json
@@ -1002,7 +1001,6 @@ c694fc38f36adf335ebd7ce9c1b17ce78c40c3c5 assets/mme/models/item/mithril_shears.j
 b29c86072033d58d7343c5bff5ddf938afc30adb assets/mme/models/item/mithril_shovel.json
 102275a526574583f5635f69aab8ed026af69cfd assets/mme/models/item/mithril_sword.json
 00a6329d8a2bb3b94bc104aca6f93e137badc39e assets/mme/models/item/mithril_war_hammer.json
-167fef9afcabba073273e9a6182858ca9d9b23b9 assets/mme/models/item/mushroom_stew.json
 d67e9f29936c4be9cd3811a74551d06e7ebc4ed4 assets/mme/models/item/netherite_battle_axe.json
 bb73a1c35004f0e28dfc4b55a8b32dc3c84e12d1 assets/mme/models/item/netherite_bucket.json
 e93c0a669edfc9bca3f80c9589c0e85a311b0eab assets/mme/models/item/netherite_dagger.json

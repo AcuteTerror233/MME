@@ -3,6 +3,7 @@ package com.acuteterror233.mite.item;
 import com.acuteterror233.mite.block.MMEBlocks;
 import com.acuteterror233.mite.component.MMEDataComponentTypes;
 import com.acuteterror233.mite.item.armor.MMEArmorMaterials;
+import com.acuteterror233.mite.world.food.FoodNutrition;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.references.Items;
 import net.minecraft.resources.ResourceKey;
@@ -11,7 +12,7 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ToolMaterial;
+import net.minecraft.world.item.component.Consumable;
 import net.minecraft.world.item.component.Consumables;
 import net.minecraft.world.item.consume_effects.ApplyStatusEffectsConsumeEffect;
 import net.minecraft.world.item.equipment.ArmorType;
@@ -23,7 +24,7 @@ import java.util.function.Function;
 import java.util.function.UnaryOperator;
 
 public final class VanillaItemModify {
-    public static Map<Class<?>, UnaryOperator<Item.Properties>> IN_CLASS_BLOCK_ITEM_SETTINGS_MODIFY = createBlockItemSettingsModifyMap();
+    public static Map<Class<?>, UnaryOperator<Item.Properties>> IN_CLASS_BLOCK_ITEM_SETTINGS_MODIFY = createBlockItemSettingsModifyMapByClass();
     public static final Map<ResourceLocation, UnaryOperator<Item.Properties>> IN_IDENTIFIER_BLOCK_ITEM_SETTINGS_MODIFY = createBlockItemSettingsModifyMapByIdentifier();
     public static final Map<ResourceLocation, Function<Item.Properties, Item>> ITEM_FACTORY_MODIFY = createItemFactoryModifyMap();
     public static final Map<ResourceLocation, UnaryOperator<Item.Properties>> ITEM_SETTINGS_MODIFY = createItemSettingsModifyMap();
@@ -50,7 +51,6 @@ public final class VanillaItemModify {
         result.put(ResourceLocation.withDefaultNamespace("breeze_rod"), settings -> settings.stacksTo(8));
         result.put(ResourceLocation.withDefaultNamespace("shulker_shell"), settings -> settings.stacksTo(8));
         result.put(ResourceLocation.withDefaultNamespace("blaze_powder"), settings -> settings.stacksTo(8));
-        result.put(ResourceLocation.withDefaultNamespace("sugar"), settings -> settings.stacksTo(8));
         result.put(ResourceLocation.withDefaultNamespace("rabbit_foot"), settings -> settings.stacksTo(8));
         result.put(ResourceLocation.withDefaultNamespace("glistering_melon_slice"), settings -> settings.stacksTo(8));
         result.put(ResourceLocation.withDefaultNamespace("white_wool"), settings -> settings.stacksTo(8));
@@ -88,12 +88,41 @@ public final class VanillaItemModify {
         result.put(ResourceLocation.withDefaultNamespace("spruce_planks"), settings -> settings.stacksTo(8));
         result.put(ResourceLocation.withDefaultNamespace("warped_planks"), settings -> settings.stacksTo(8));
         result.put(ResourceLocation.withDefaultNamespace("mangrove_planks"), settings -> settings.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("oak_planks"), properties -> properties.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("spruce_planks"), properties -> properties.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("birch_planks"), properties -> properties.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("jungle_planks"), properties -> properties.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("acacia_planks"), properties -> properties.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("dark_oak_planks"), properties -> properties.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("pale_oak_planks"), properties -> properties.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("crimson_planks"), properties -> properties.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("warped_planks"), properties -> properties.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("mangrove_planks"), properties -> properties.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("bamboo_planks"), properties -> properties.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("cherry_planks"), properties -> properties.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("sugar"), settings -> settings
+                .stacksTo(8)
+                .food(new FoodProperties(0, 1, false))
+                .component(MMEDataComponentTypes.FOOD_NUTRITION, new FoodNutrition(0, 0, 4800))
+        );
+        result.put(ResourceLocation.withDefaultNamespace("raw_copper"), settings -> settings
+                .stacksTo(8)
+                .component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2)
+        );
+        result.put(ResourceLocation.withDefaultNamespace("raw_gold"), settings -> settings
+                .stacksTo(8)
+                .component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2)
+        );
+        result.put(ResourceLocation.withDefaultNamespace("raw_iron"), settings -> settings
+                .stacksTo(8)
+                .component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2)
+        );
 
         // 最大堆叠为 16 的物品标识
-        result.put(ResourceLocation.withDefaultNamespace("iron_ingot"), settings -> settings.stacksTo(16).component(MMEDataComponentTypes.CRAFTING_TIME, 30));
-        result.put(ResourceLocation.withDefaultNamespace("copper_ingot"), settings -> settings.stacksTo(16).component(MMEDataComponentTypes.CRAFTING_TIME, 10));
-        result.put(ResourceLocation.withDefaultNamespace("gold_ingot"), settings -> settings.stacksTo(16).component(MMEDataComponentTypes.CRAFTING_TIME, 20));
-        result.put(ResourceLocation.withDefaultNamespace("netherite_ingot"), settings -> settings.stacksTo(16).component(MMEDataComponentTypes.CRAFTING_TIME, 200));
+        result.put(ResourceLocation.withDefaultNamespace("iron_ingot"), settings -> settings.stacksTo(16).component(MMEDataComponentTypes.CRAFTING_TIME, 10));
+        result.put(ResourceLocation.withDefaultNamespace("copper_ingot"), settings -> settings.stacksTo(16).component(MMEDataComponentTypes.CRAFTING_TIME, 5));
+        result.put(ResourceLocation.withDefaultNamespace("gold_ingot"), settings -> settings.stacksTo(16).component(MMEDataComponentTypes.CRAFTING_TIME, 5));
+        result.put(ResourceLocation.withDefaultNamespace("netherite_ingot"), settings -> settings.stacksTo(16).component(MMEDataComponentTypes.CRAFTING_TIME, 70));
         result.put(ResourceLocation.withDefaultNamespace("leather"), settings -> settings.stacksTo(16).component(MMEDataComponentTypes.CRAFTING_TIME, 2));
         result.put(ResourceLocation.withDefaultNamespace("coal"), settings -> settings.stacksTo(16));
         result.put(ResourceLocation.withDefaultNamespace("charcoal"), settings -> settings.stacksTo(16));
@@ -110,15 +139,11 @@ public final class VanillaItemModify {
         result.put(ResourceLocation.withDefaultNamespace("resin_brick"), settings -> settings.stacksTo(16));
         result.put(ResourceLocation.withDefaultNamespace("book"), settings -> settings.stacksTo(16));
         result.put(ResourceLocation.withDefaultNamespace("glass_bottle"), settings -> settings.stacksTo(16));
-        result.put(ResourceLocation.withDefaultNamespace("nether_wart"), settings -> settings.stacksTo(16));
         result.put(ResourceLocation.withDefaultNamespace("experience_bottle"), settings -> settings.stacksTo(16));
         result.put(ResourceLocation.withDefaultNamespace("wind_charge"), settings -> settings.stacksTo(16));
         result.put(ResourceLocation.withDefaultNamespace("lead"), settings -> settings.stacksTo(16));
         result.put(ResourceLocation.withDefaultNamespace("firework_rocket"), settings -> settings.stacksTo(16));
         result.put(ResourceLocation.withDefaultNamespace("slime_ball"), settings -> settings.stacksTo(16));
-        result.put(ResourceLocation.withDefaultNamespace("raw_copper"), settings -> settings.stacksTo(16).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
-        result.put(ResourceLocation.withDefaultNamespace("raw_gold"), settings -> settings.stacksTo(16).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
-        result.put(ResourceLocation.withDefaultNamespace("raw_iron"), settings -> settings.stacksTo(16).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
         result.put(ResourceLocation.withDefaultNamespace("resin_clump"), settings -> settings.stacksTo(16));
         result.put(ResourceLocation.withDefaultNamespace("torchflower_seeds"), settings -> settings.stacksTo(16));
         result.put(ResourceLocation.withDefaultNamespace("pitcher_pod"), settings -> settings.stacksTo(16));
@@ -128,40 +153,140 @@ public final class VanillaItemModify {
         result.put(ResourceLocation.withDefaultNamespace("painting"), settings -> settings.stacksTo(16));
         result.put(ResourceLocation.withDefaultNamespace("fire_charge"), settings -> settings.stacksTo(16));
         result.put(ResourceLocation.withDefaultNamespace("name_tag"), settings -> settings.stacksTo(16));
-        result.put(ResourceLocation.withDefaultNamespace("apple"), settings -> settings.stacksTo(16));
-        result.put(ResourceLocation.withDefaultNamespace("golden_apple"), settings -> settings.stacksTo(16));
-        result.put(ResourceLocation.withDefaultNamespace("enchanted_golden_apple"), settings -> settings.stacksTo(16));
         result.put(ResourceLocation.withDefaultNamespace("chorus_fruit"), settings -> settings.stacksTo(16));
-        result.put(ResourceLocation.withDefaultNamespace("carrot"), settings -> settings.stacksTo(16));
-        result.put(ResourceLocation.withDefaultNamespace("golden_carrot"), settings -> settings.stacksTo(16));
-        result.put(ResourceLocation.withDefaultNamespace("potato"), settings -> settings.stacksTo(16));
-        result.put(ResourceLocation.withDefaultNamespace("baked_potato"), settings -> settings.stacksTo(16));
-        result.put(ResourceLocation.withDefaultNamespace("poisonous_potato"), settings -> settings.stacksTo(16));
         result.put(ResourceLocation.withDefaultNamespace("beetroot"), settings -> settings.stacksTo(16));
-        result.put(ResourceLocation.withDefaultNamespace("beef"), settings -> settings.stacksTo(16));
-        result.put(ResourceLocation.withDefaultNamespace("cooked_beef"), settings -> settings.stacksTo(16));
-        result.put(ResourceLocation.withDefaultNamespace("porkchop"), settings -> settings.stacksTo(16));
-        result.put(ResourceLocation.withDefaultNamespace("cooked_porkchop"), settings -> settings.stacksTo(16));
-        result.put(ResourceLocation.withDefaultNamespace("mutton"), settings -> settings.stacksTo(16));
-        result.put(ResourceLocation.withDefaultNamespace("cooked_mutton"), settings -> settings.stacksTo(16));
-        result.put(ResourceLocation.withDefaultNamespace("chicken"), settings -> settings.stacksTo(16));
-        result.put(ResourceLocation.withDefaultNamespace("cooked_chicken"), settings -> settings.stacksTo(16));
         result.put(ResourceLocation.withDefaultNamespace("rabbit"), settings -> settings.stacksTo(16));
         result.put(ResourceLocation.withDefaultNamespace("cooked_rabbit"), settings -> settings.stacksTo(16));
-        result.put(ResourceLocation.withDefaultNamespace("cod"), settings -> settings.stacksTo(16));
-        result.put(ResourceLocation.withDefaultNamespace("cooked_cod"), settings -> settings.stacksTo(16));
-        result.put(ResourceLocation.withDefaultNamespace("salmon"), settings -> settings.stacksTo(16));
-        result.put(ResourceLocation.withDefaultNamespace("cooked_salmon"), settings -> settings.stacksTo(16));
         result.put(ResourceLocation.withDefaultNamespace("tropical_fish"), settings -> settings.stacksTo(16));
         result.put(ResourceLocation.withDefaultNamespace("pufferfish"), settings -> settings.stacksTo(16));
-        result.put(ResourceLocation.withDefaultNamespace("bread"), settings -> settings.stacksTo(16));
-        result.put(ResourceLocation.withDefaultNamespace("pumpkin_pie"), settings -> settings.stacksTo(16));
-        result.put(ResourceLocation.withDefaultNamespace("rotten_flesh"), settings -> settings.stacksTo(16));
-        result.put(ResourceLocation.withDefaultNamespace("spider_eye"), settings -> settings.stacksTo(16));
         result.put(ResourceLocation.withDefaultNamespace("prismarine_crystals"), settings -> settings.stacksTo(16));
         result.put(ResourceLocation.withDefaultNamespace("nautilus_shell"), settings -> settings.stacksTo(16));
         result.put(ResourceLocation.withDefaultNamespace("disc_fragment_5"), settings -> settings.stacksTo(16));
         result.put(ResourceLocation.withDefaultNamespace("firework_star"), settings -> settings.stacksTo(16));
+        result.put(ResourceLocation.withDefaultNamespace("mutton"), settings -> settings
+                .stacksTo(16)
+                .food(new FoodProperties(3, 3, false))
+                .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().protein(24000).build())
+        );
+        result.put(ResourceLocation.withDefaultNamespace("cooked_mutton"), settings -> settings
+                .stacksTo(16)
+                .food(new FoodProperties(6, 6, false))
+                .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().protein(48000).build())
+        );
+        result.put(ResourceLocation.withDefaultNamespace("pumpkin_pie"), settings -> settings
+                .stacksTo(16)
+                .food(new FoodProperties(6, 10, false))
+                .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().protein(48000).fiber(48000).sugar(4800).build())
+        );
+        result.put(ResourceLocation.withDefaultNamespace("potato"), settings -> settings
+                .stacksTo(16)
+                .food(new FoodProperties(1, 3, false))
+        );
+        result.put(ResourceLocation.withDefaultNamespace("baked_potato"), settings -> settings
+                .stacksTo(16)
+                .food(new FoodProperties(2, 6, false))
+        );
+        result.put(ResourceLocation.withDefaultNamespace("poisonous_potato"), settings -> settings
+                .stacksTo(16)
+                .food(new FoodProperties(0, 2, false), Consumables.POISONOUS_POTATO)
+        );
+        result.put(ResourceLocation.withDefaultNamespace("carrot"), settings -> settings
+                .stacksTo(16)
+                .food(new FoodProperties(2, 1, false))
+                .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().fiber(16000).build())
+        );
+        result.put(ResourceLocation.withDefaultNamespace("golden_carrot"), settings -> settings
+                .stacksTo(16)
+                .food(new FoodProperties(2, 1, false))
+                .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().fiber(16000).build())
+        );
+        result.put(ResourceLocation.withDefaultNamespace("spider_eye"), settings -> settings
+                .stacksTo(16)
+                .food(new FoodProperties(1, 0, false))
+                .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().protein(8000).build())
+        );
+        result.put(ResourceLocation.withDefaultNamespace("nether_wart"), settings -> settings
+                .stacksTo(16)
+                .food(new FoodProperties(1, 1, false))
+        );
+        result.put(ResourceLocation.withDefaultNamespace("rotten_flesh"), settings -> settings
+                .stacksTo(16)
+                .food(new FoodProperties(1, 2, false))
+                .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().protein(8000).build())
+        );
+        result.put(ResourceLocation.withDefaultNamespace("chicken"), settings -> settings
+                .stacksTo(16)
+                .food(new FoodProperties(3, 3, false), Consumables
+                        .defaultFood()
+                        .onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(MobEffects.POISON, 1200), 0.5F))
+                        .build()
+                )
+                .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().protein(24000).build())
+        );
+        result.put(ResourceLocation.withDefaultNamespace("cooked_chicken"), settings -> settings
+                .stacksTo(16)
+                .food(new FoodProperties(6, 6, false))
+                .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().protein(48000).build())
+        );
+        result.put(ResourceLocation.withDefaultNamespace("beef"), settings -> settings
+                .stacksTo(16)
+                .food(new FoodProperties(5, 5, false))
+                .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().protein(40000).build())
+        );
+        result.put(ResourceLocation.withDefaultNamespace("cooked_beef"), settings -> settings
+                .stacksTo(16)
+                .food(new FoodProperties(10, 10, false))
+                .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().protein(80000).build())
+        );
+        result.put(ResourceLocation.withDefaultNamespace("cod"), settings -> settings
+                .stacksTo(16)
+                .food(new FoodProperties(3, 3, false))
+                .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().protein(24000).build())
+        );
+        result.put(ResourceLocation.withDefaultNamespace("cooked_cod"), settings -> settings
+                .stacksTo(16)
+                .food(new FoodProperties(6, 6, false))
+                .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().protein(48000).build())
+        );
+        result.put(ResourceLocation.withDefaultNamespace("salmon"), settings -> settings
+                .stacksTo(16)
+                .food(new FoodProperties(3, 3, false))
+                .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().protein(24000).build())
+        );
+        result.put(ResourceLocation.withDefaultNamespace("cooked_salmon"), settings -> settings
+                .stacksTo(16)
+                .food(new FoodProperties(6, 6, false))
+                .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().protein(48000).build())
+        );
+        result.put(ResourceLocation.withDefaultNamespace("porkchop"), settings -> settings
+                .stacksTo(16)
+                .food(new FoodProperties(4, 4, false))
+                .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().protein(32000).build())
+        );
+        result.put(ResourceLocation.withDefaultNamespace("cooked_porkchop"), settings -> settings
+                .stacksTo(16)
+                .food(new FoodProperties(8, 8, false))
+                .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().protein(64000).build())
+        );
+        result.put(ResourceLocation.withDefaultNamespace("bread"), settings -> settings
+                .stacksTo(16)
+                .food(new FoodProperties(2, 8, false))
+        );
+        result.put(ResourceLocation.withDefaultNamespace("apple"), settings -> settings
+                .stacksTo(16)
+                .food(new FoodProperties(1, 2, false))
+                .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().fiber(8000).sugar(4800).build())
+        );
+        result.put(ResourceLocation.withDefaultNamespace("golden_apple"), settings -> settings
+                .stacksTo(16)
+                .food(new FoodProperties(1, 2, false))
+                .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().fiber(8000).sugar(4800).build())
+        );
+        result.put(ResourceLocation.withDefaultNamespace("enchanted_golden_apple"), settings -> settings
+                .stacksTo(16)
+                .food(new FoodProperties(1, 2, false))
+                .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().fiber(8000).sugar(4800).build())
+        );
 
         // 最大堆叠为 32 的物品标识
         result.put(ResourceLocation.withDefaultNamespace("lapis_lazuli"), settings -> settings.stacksTo(32));
@@ -175,21 +300,34 @@ public final class VanillaItemModify {
         result.put(ResourceLocation.withDefaultNamespace("paper"), settings -> settings.stacksTo(32));
         result.put(ResourceLocation.withDefaultNamespace("redstone"), settings -> settings.stacksTo(32));
         result.put(ResourceLocation.withDefaultNamespace("glowstone_dust"), settings -> settings.stacksTo(32));
-        result.put(ResourceLocation.withDefaultNamespace("cookie"), settings -> settings.stacksTo(32));
         result.put(ResourceLocation.withDefaultNamespace("dried_kelp"), settings -> settings.stacksTo(32));
-        result.put(Items.MELON_SEEDS.location(), settings -> settings.stacksTo(32).food(new FoodProperties.Builder().nutrition(1).saturationModifier(1.0F).alwaysEdible().build()));
-        result.put(Items.PUMPKIN_SEEDS.location(), settings -> settings.stacksTo(32).food(new FoodProperties.Builder().nutrition(1).saturationModifier(1.0F).alwaysEdible().build()));
-        result.put(ResourceLocation.withDefaultNamespace("wheat_seeds"), settings -> settings.stacksTo(32).food(new FoodProperties.Builder().nutrition(1).saturationModifier(1.0F).alwaysEdible().build()));
         result.put(ResourceLocation.withDefaultNamespace("cocoa_beans"), settings -> settings.stacksTo(32));
         result.put(ResourceLocation.withDefaultNamespace("beetroot_seeds"), settings -> settings.stacksTo(32));
         result.put(ResourceLocation.withDefaultNamespace("sweet_berries"), settings -> settings.stacksTo(32));
         result.put(ResourceLocation.withDefaultNamespace("seagrass"), settings -> settings.stacksTo(32));
-        result.put(ResourceLocation.withDefaultNamespace("melon_slice"), settings -> settings.stacksTo(32));
         result.put(ResourceLocation.withDefaultNamespace("gunpowder"), settings -> settings.stacksTo(32));
-
-        result.put(ResourceLocation.withDefaultNamespace("anvil"), settings -> settings.durability(MMEBlocks.maxDamageAnvil(ToolMaterial.IRON.durability())));
-        result.put(ResourceLocation.withDefaultNamespace("chipped_anvil"), settings -> settings.durability(MMEBlocks.maxDamageAnvil(ToolMaterial.IRON.durability())));
-        result.put(ResourceLocation.withDefaultNamespace("damaged_anvil"), settings -> settings.durability(MMEBlocks.maxDamageAnvil(ToolMaterial.IRON.durability())));
+        result.put(ResourceLocation.withDefaultNamespace("melon_slice"), settings -> settings
+                .stacksTo(32)
+                .food(new FoodProperties(1, 1, false))
+                .component(MMEDataComponentTypes.FOOD_NUTRITION, new FoodNutrition(0, 8000, 4800))
+        );
+        result.put(ResourceLocation.withDefaultNamespace("cookie"), settings -> settings
+                .stacksTo(32)
+                .food(new FoodProperties(1, 3, false))
+                .component(MMEDataComponentTypes.FOOD_NUTRITION, new FoodNutrition(0, 0, 1200))
+        );
+        result.put(Items.MELON_SEEDS.location(), settings -> settings
+                .stacksTo(32)
+                .food(new FoodProperties(1, 1, false))
+        );
+        result.put(Items.PUMPKIN_SEEDS.location(), settings -> settings
+                .stacksTo(32)
+                .food(new FoodProperties(2, 1, false))
+        );
+        result.put(ResourceLocation.withDefaultNamespace("wheat_seeds"), settings -> settings
+                .stacksTo(32)
+                .food(new FoodProperties(0, 1, false))
+        );
 
         result.put(ResourceLocation.withDefaultNamespace("stone_sword"), settings -> new Item.Properties());
         result.put(ResourceLocation.withDefaultNamespace("stone_pickaxe"), settings -> new Item.Properties());
@@ -210,6 +348,7 @@ public final class VanillaItemModify {
         result.put(ResourceLocation.withDefaultNamespace("iron_pickaxe"), settings -> MMEItems.getPickaxeSettings(MMEToolMaterials.IRON));
         result.put(ResourceLocation.withDefaultNamespace("iron_axe"), settings -> MMEItems.getAxeSettings(MMEToolMaterials.IRON));
         result.put(ResourceLocation.withDefaultNamespace("iron_hoe"), settings -> MMEItems.getHoeSettings(MMEToolMaterials.IRON));
+        result.put(ResourceLocation.withDefaultNamespace("shears"), settings -> MMEItems.getShearsSettings(MMEToolMaterials.IRON));
 
         result.put(ResourceLocation.withDefaultNamespace("golden_sword"), settings -> MMEItems.getSwordSettings(MMEToolMaterials.GOLD));
         result.put(ResourceLocation.withDefaultNamespace("golden_shovel"), settings -> MMEItems.getShovelSettings(MMEToolMaterials.GOLD));
@@ -237,22 +376,23 @@ public final class VanillaItemModify {
         result.put(ResourceLocation.withDefaultNamespace("leather_leggings"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.LEATHER_MATERIAL, ArmorType.LEGGINGS));
         result.put(ResourceLocation.withDefaultNamespace("leather_boots"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.LEATHER_MATERIAL, ArmorType.BOOTS));
 
-        result.put(ResourceLocation.withDefaultNamespace("oak_planks"), properties -> properties.stacksTo(8));
-        result.put(ResourceLocation.withDefaultNamespace("spruce_planks"), properties -> properties.stacksTo(8));
-        result.put(ResourceLocation.withDefaultNamespace("birch_planks"), properties -> properties.stacksTo(8));
-        result.put(ResourceLocation.withDefaultNamespace("jungle_planks"), properties -> properties.stacksTo(8));
-        result.put(ResourceLocation.withDefaultNamespace("acacia_planks"), properties -> properties.stacksTo(8));
-        result.put(ResourceLocation.withDefaultNamespace("dark_oak_planks"), properties -> properties.stacksTo(8));
-        result.put(ResourceLocation.withDefaultNamespace("pale_oak_planks"), properties -> properties.stacksTo(8));
-        result.put(ResourceLocation.withDefaultNamespace("crimson_planks"), properties -> properties.stacksTo(8));
-        result.put(ResourceLocation.withDefaultNamespace("warped_planks"), properties -> properties.stacksTo(8));
-        result.put(ResourceLocation.withDefaultNamespace("mangrove_planks"), properties -> properties.stacksTo(8));
-        result.put(ResourceLocation.withDefaultNamespace("bamboo_planks"), properties -> properties.stacksTo(8));
-        result.put(ResourceLocation.withDefaultNamespace("cherry_planks"), properties -> properties.stacksTo(8));
-
         result.put(ResourceLocation.withDefaultNamespace("fishing_rod"), properties -> new Item.Properties());
         result.put(ResourceLocation.withDefaultNamespace("bow"), properties -> properties.durability(64));
         result.put(ResourceLocation.withDefaultNamespace("crossbow"), properties -> properties.durability(128));
+        result.put(ResourceLocation.withDefaultNamespace("mushroom_stew"), properties -> properties.food(new FoodProperties(4, 2, false)));
+        result.put(ResourceLocation.withDefaultNamespace("milk_bucket"), properties -> properties.food(new FoodProperties(4, 0, false), Consumables.MILK_BUCKET));
+        result.put(ResourceLocation.withDefaultNamespace("egg"), properties -> properties
+                .food(new FoodProperties(3, 1, false))
+                .component(MMEDataComponentTypes.FOOD_NUTRITION, new FoodNutrition(24000, 0 ,0))
+        );
+        result.put(ResourceLocation.withDefaultNamespace("blue_egg"), properties -> properties
+                .food(new FoodProperties(3, 1, false))
+                .component(MMEDataComponentTypes.FOOD_NUTRITION, new FoodNutrition(24000, 0 ,0))
+        );
+        result.put(ResourceLocation.withDefaultNamespace("brown_egg"), properties -> properties
+                .food(new FoodProperties(3, 1, false))
+                .component(MMEDataComponentTypes.FOOD_NUTRITION, new FoodNutrition(24000, 0 ,0))
+        );
         return result;
     }
 
@@ -311,10 +451,10 @@ public final class VanillaItemModify {
     private static Map<ResourceLocation, UnaryOperator<Item.Properties>> createBlockItemSettingsModifyMapByIdentifier() {
         Map<ResourceLocation, UnaryOperator<Item.Properties>> result = new HashMap<>();
 
-        result.put(ResourceLocation.withDefaultNamespace("iron_block"), settings -> settings.component(MMEDataComponentTypes.CRAFTING_TIME, 270));
-        result.put(ResourceLocation.withDefaultNamespace("gold_block"), settings -> settings.component(MMEDataComponentTypes.CRAFTING_TIME, 180));
-        result.put(ResourceLocation.withDefaultNamespace("copper_block"), settings -> settings.component(MMEDataComponentTypes.CRAFTING_TIME, 90));
-        result.put(ResourceLocation.withDefaultNamespace("netherite_block"), settings -> settings.component(MMEDataComponentTypes.CRAFTING_TIME, 1800));
+        result.put(ResourceLocation.withDefaultNamespace("iron_block"), settings -> settings.component(MMEDataComponentTypes.CRAFTING_TIME, 90));
+        result.put(ResourceLocation.withDefaultNamespace("gold_block"), settings -> settings.component(MMEDataComponentTypes.CRAFTING_TIME, 45));
+        result.put(ResourceLocation.withDefaultNamespace("copper_block"), settings -> settings.component(MMEDataComponentTypes.CRAFTING_TIME, 45));
+        result.put(ResourceLocation.withDefaultNamespace("netherite_block"), settings -> settings.component(MMEDataComponentTypes.CRAFTING_TIME, 630));
 
         result.put(ResourceLocation.withDefaultNamespace("iron_ore"), settings -> settings.component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
         result.put(ResourceLocation.withDefaultNamespace("copper_ore"), settings -> settings.component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
@@ -325,17 +465,27 @@ public final class VanillaItemModify {
         result.put(ResourceLocation.withDefaultNamespace("deepslate_gold_ore"), settings -> settings.component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
         result.put(ResourceLocation.withDefaultNamespace("nether_gold_ore"), settings -> settings.component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
 
-        result.put(ResourceLocation.withDefaultNamespace("brown_mushroom"), properties -> properties.food(new FoodProperties(2, 0.0F, false)));
-        result.put(ResourceLocation.withDefaultNamespace("red_mushroom"), properties -> properties.food(new FoodProperties(2, 0.0F, false),
+        result.put(ResourceLocation.withDefaultNamespace("brown_mushroom"), properties -> properties.food(new FoodProperties(1, 1.0F, false)));
+        result.put(ResourceLocation.withDefaultNamespace("red_mushroom"), properties -> properties.food(new FoodProperties(1, 1.0F, false),
                 Consumables.defaultFood()
                         .onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(MobEffects.POISON, 1200), 1F))
                         .build()));
 
-        result.put(ResourceLocation.withDefaultNamespace("leaf_litter"), properties -> properties.food(new FoodProperties(1, 0.0F, true),
+        result.put(ResourceLocation.withDefaultNamespace("leaf_litter"), properties -> properties.food(new FoodProperties(0, 0.0F, true),
                 Consumables.defaultFood()
                         .onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(MobEffects.BLINDNESS, 200, 0), 0.5F))
                         .onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(MobEffects.POISON, 1200, 0), 0.5F))
                         .build()));
+
+        result.put(ResourceLocation.withDefaultNamespace("anvil"), settings -> settings
+                .durability(MMEBlocks.maxDamageAnvil(MMEToolMaterials.IRON.durability()))
+        );
+        result.put(ResourceLocation.withDefaultNamespace("chipped_anvil"), settings -> settings
+                .durability(MMEBlocks.maxDamageAnvil(MMEToolMaterials.IRON.durability()))
+        );
+        result.put(ResourceLocation.withDefaultNamespace("damaged_anvil"), settings -> settings
+                .durability(MMEBlocks.maxDamageAnvil(MMEToolMaterials.IRON.durability()))
+        );
         return result;
     }
 
@@ -346,7 +496,7 @@ public final class VanillaItemModify {
      * value: 设置
      */
 
-    private static Map<Class<?>, UnaryOperator<Item.Properties>> createBlockItemSettingsModifyMap() {
+    private static Map<Class<?>, UnaryOperator<Item.Properties>> createBlockItemSettingsModifyMapByClass() {
         Map<Class<?>, UnaryOperator<Item.Properties>> result = new HashMap<>();
 
         // 最大堆叠为 1 的方块类型

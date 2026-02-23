@@ -164,7 +164,6 @@ public class MMEModelProvider extends FabricModelProvider {
         itemModelGenerator.generateFlatItem(MMEItems.CREAM_OF_VEGETABLE_SOUP, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(MMEItems.ICE_CREAM, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(MMEItems.MASHED_POTATO, ModelTemplates.FLAT_ITEM);
-        itemModelGenerator.generateFlatItem(MMEItems.MUSHROOM_STEW, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(MMEItems.PORRIDGE, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(MMEItems.PUMPKIN_SOUP, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(MMEItems.SORBET, ModelTemplates.FLAT_ITEM);

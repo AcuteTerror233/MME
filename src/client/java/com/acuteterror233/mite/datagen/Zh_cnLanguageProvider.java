@@ -2,6 +2,7 @@ package com.acuteterror233.mite.datagen;
 
 import com.acuteterror233.mite.block.MMEBlocks;
 import com.acuteterror233.mite.item.MMEItems;
+import com.acuteterror233.mite.world.effect.MMEMobEffects;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.minecraft.core.HolderLookup;
@@ -85,13 +86,12 @@ public class Zh_cnLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(MMEItems.BOWL_MILK, "一碗牛奶");
         translationBuilder.add(MMEItems.BOWL_SALAD, "一碗沙拉");
         translationBuilder.add(MMEItems.BOWL_WATER, "一碗水");
-        translationBuilder.add(MMEItems.CEREAL, "麦片");
+        translationBuilder.add(MMEItems.CEREAL, "麦片粥");
         translationBuilder.add(MMEItems.CHICKEN_SOUP, "鸡汤");
         translationBuilder.add(MMEItems.CREAM_OF_MUSHROOM_SOUP, "奶油蘑菇汤");
         translationBuilder.add(MMEItems.CREAM_OF_VEGETABLE_SOUP, "奶油蔬菜汤");
         translationBuilder.add(MMEItems.ICE_CREAM, "冰淇淋");
         translationBuilder.add(MMEItems.MASHED_POTATO, "土豆泥");
-        translationBuilder.add(MMEItems.MUSHROOM_STEW, "蘑菇炖汤");
         translationBuilder.add(MMEItems.PORRIDGE, "蓝莓粥");
         translationBuilder.add(MMEItems.PUMPKIN_SOUP, "南瓜汤");
         translationBuilder.add(MMEItems.SORBET, "雪糕");
@@ -426,5 +426,8 @@ public class Zh_cnLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(MMEBlocks.EMERALD_ENCHANTING_TABLE, "绿宝石附魔台");
 
         translationBuilder.add(MMEItems.SINEW, "皮革线");
+
+        translationBuilder.add(MMEMobEffects.INSULIN_RESISTANCE.value(), "糖尿病");
+        translationBuilder.add(MMEMobEffects.MALNUTRITION.value(), "营养不良");
     }
 }

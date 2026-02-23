@@ -2,6 +2,7 @@ package com.acuteterror233.mite.datagen;
 
 import com.acuteterror233.mite.block.MMEBlocks;
 import com.acuteterror233.mite.item.MMEItems;
+import com.acuteterror233.mite.world.effect.MMEMobEffects;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.minecraft.core.HolderLookup;
@@ -85,13 +86,12 @@ public class En_usLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(MMEItems.BOWL_MILK, "Bowl of Milk");
         translationBuilder.add(MMEItems.BOWL_SALAD, "Bowl of Salad");
         translationBuilder.add(MMEItems.BOWL_WATER, "Bowl of Water");
-        translationBuilder.add(MMEItems.CEREAL, "Cereal");
+        translationBuilder.add(MMEItems.CEREAL, "Cereal Porridge");
         translationBuilder.add(MMEItems.CHICKEN_SOUP, "Chicken Soup");
         translationBuilder.add(MMEItems.CREAM_OF_MUSHROOM_SOUP, "Cream of Mushroom Soup");
         translationBuilder.add(MMEItems.CREAM_OF_VEGETABLE_SOUP, "Cream of Vegetable Soup");
         translationBuilder.add(MMEItems.ICE_CREAM, "Ice Cream");
         translationBuilder.add(MMEItems.MASHED_POTATO, "Mashed Potato");
-        translationBuilder.add(MMEItems.MUSHROOM_STEW, "Mushroom Stew");
         translationBuilder.add(MMEItems.PORRIDGE, "Blueberry Porridge");
         translationBuilder.add(MMEItems.PUMPKIN_SOUP, "Pumpkin Soup");
         translationBuilder.add(MMEItems.SORBET, "Sorbet");
@@ -426,5 +426,8 @@ public class En_usLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(MMEBlocks.EMERALD_ENCHANTING_TABLE, "Emerald Enchanting Table");
 
         translationBuilder.add(MMEItems.SINEW, "Leather Thread");
+
+        translationBuilder.add(MMEMobEffects.INSULIN_RESISTANCE.value(), "Diabetes");
+        translationBuilder.add(MMEMobEffects.MALNUTRITION.value(), "Malnutrition");
     }
 }

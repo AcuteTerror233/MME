@@ -5,6 +5,7 @@ import com.acuteterror233.mite.event.ServerRecipeModify;
 import com.acuteterror233.mite.item.MMEItems;
 import com.acuteterror233.mite.registry.LootTableReplace;
 import com.acuteterror233.mite.registry.tag.MMETags;
+import com.acuteterror233.mite.world.effect.MMEMobEffects;
 import com.acuteterror233.mite.world.gen.feature.OverworldPlacedFeatures;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
@@ -13,6 +14,8 @@ import net.fabricmc.fabric.api.biome.v1.ModificationPhase;
 import net.fabricmc.fabric.api.entity.event.v1.EntitySleepEvents;
 import net.fabricmc.fabric.api.object.builder.v1.world.poi.PointOfInterestHelper;
 import net.fabricmc.fabric.api.registry.FuelRegistryEvents;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.worldgen.placement.OrePlacements;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -36,10 +39,12 @@ public class MME implements ModInitializer {
 
     @Override
     public void onInitialize() {
-        LOGGER.info(MOD_ID);
+        LOGGER.info("Make Minecraft Easy");
 
         MMEItems.init();
         MMEBlocks.init();
+        MMEMobEffects.init();
+        LootTableReplace.init();
 
         PointOfInterestHelper.register(ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, "underground_portal"), 0, 1, MMEBlocks.UNDERGROUND_PORTAL);
 
@@ -98,8 +103,6 @@ public class MME implements ModInitializer {
 
         ServerRecipeModify.EVENT.register(list -> list.removeIf(recipeEntry -> MME.FILTER_RECIPE_SET.contains(recipeEntry.id().location())));
 
-        LootTableReplace.init();
-
         FuelRegistryEvents.BUILD.register((builder, context) -> {
             builder.add(MMEItems.WOODEN_CLUB, context.baseSmeltTime());
             builder.add(MMEItems.WOODEN_CUDGEL, context.baseSmeltTime());
@@ -115,6 +118,7 @@ public class MME implements ModInitializer {
 
         FireBlock fireBlock = (FireBlock)Blocks.FIRE;
         fireBlock.setFlammable(MMEBlocks.BLUE_BERRY_BUSH, 60, 100);
+
     }
 
     private void InOverworldAdd(ResourceKey<PlacedFeature> key) {

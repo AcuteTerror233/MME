@@ -9,6 +9,7 @@ import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.advancements.critereon.MinMaxBounds;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.HolderSet;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.component.predicates.DataComponentPredicates;
 import net.minecraft.core.component.predicates.EnchantmentsPredicate;
 import net.minecraft.core.registries.Registries;
@@ -33,6 +34,7 @@ import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.EmptyLootItem;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.*;
+import net.minecraft.world.level.storage.loot.predicates.BonusLevelTableCondition;
 import net.minecraft.world.level.storage.loot.predicates.ExplosionCondition;
 import net.minecraft.world.level.storage.loot.predicates.MatchTool;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
@@ -1943,6 +1945,35 @@ public final class LootTableReplace {
                 Blocks.STRIPPED_WARPED_HYPHAE
         );
         Log.forEach(block -> LOOT_TABLES.put(block.getLootTable().get(), provider -> LootTableReplace.createLogItemTable(provider, block, Items.STICK, 2, 4).build()));
+
+        LOOT_TABLES.put(Blocks.GRASS_BLOCK.getLootTable().get(),
+                provider -> LootTable.lootTable()
+                        .withPool(new LootPool.Builder()
+                                .setRolls(ConstantValue.exactly(1.0F))
+                                .add(LootItem.lootTableItem(Items.GRASS_BLOCK)
+                                        .when(MatchTool.toolMatches(
+                                                    ItemPredicate.Builder.item()
+                                                            .withComponents(
+                                                                    DataComponentMatchers.Builder.components()
+                                                                            .partial(
+                                                                                    DataComponentPredicates.ENCHANTMENTS,
+                                                                                    EnchantmentsPredicate.enchantments(
+                                                                                            List.of(
+                                                                                                    new EnchantmentPredicate(provider.lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(Enchantments.SILK_TOUCH), MinMaxBounds.Ints.atLeast(1))
+                                                                                            )
+                                                                                    )
+                                                                            ).build()
+                                                            )
+                                            )
+                                        ).otherwise(LootItem.lootTableItem(MMEItems.WORM_RAW)
+                                                .when(BonusLevelTableCondition.bonusLevelFlatChance(provider.lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(Enchantments.FORTUNE), 0.05F, 0.0625F, 0.083333336F, 0.1F))
+                                        ).otherwise(LootItem.lootTableItem(Items.DIRT)
+                                                .when(ExplosionCondition.survivesExplosion())
+                                        )
+                                )
+                        )
+                        .build()
+        );
 
         LootTableEvents.REPLACE.register((key, original, source, registries) -> {
             Function<HolderLookup.Provider, LootTable> function = LOOT_TABLES.get(key);
