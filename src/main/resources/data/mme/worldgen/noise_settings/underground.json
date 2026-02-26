@@ -242,10 +242,10 @@
           "type": "minecraft:vertical_gradient",
           "random_name": "mme:mantle",
           "true_at_and_below": {
-            "above_bottom": -2
+            "above_bottom": 0
           },
           "false_at_and_above": {
-            "above_bottom": 3
+            "above_bottom": 5
           }
         },
         "then_run": {

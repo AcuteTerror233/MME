@@ -12,7 +12,6 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.component.Consumable;
 import net.minecraft.world.item.component.Consumables;
 import net.minecraft.world.item.consume_effects.ApplyStatusEffectsConsumeEffect;
 import net.minecraft.world.item.equipment.ArmorType;
@@ -24,7 +23,7 @@ import java.util.function.Function;
 import java.util.function.UnaryOperator;
 
 public final class VanillaItemModify {
-    public static Map<Class<?>, UnaryOperator<Item.Properties>> IN_CLASS_BLOCK_ITEM_SETTINGS_MODIFY = createBlockItemSettingsModifyMapByClass();
+    public static final Map<Class<?>, UnaryOperator<Item.Properties>> IN_CLASS_BLOCK_ITEM_SETTINGS_MODIFY = createBlockItemSettingsModifyMapByClass();
     public static final Map<ResourceLocation, UnaryOperator<Item.Properties>> IN_IDENTIFIER_BLOCK_ITEM_SETTINGS_MODIFY = createBlockItemSettingsModifyMapByIdentifier();
     public static final Map<ResourceLocation, Function<Item.Properties, Item>> ITEM_FACTORY_MODIFY = createItemFactoryModifyMap();
     public static final Map<ResourceLocation, UnaryOperator<Item.Properties>> ITEM_SETTINGS_MODIFY = createItemSettingsModifyMap();
@@ -104,18 +103,6 @@ public final class VanillaItemModify {
                 .stacksTo(8)
                 .food(new FoodProperties(0, 1, false))
                 .component(MMEDataComponentTypes.FOOD_NUTRITION, new FoodNutrition(0, 0, 4800))
-        );
-        result.put(ResourceLocation.withDefaultNamespace("raw_copper"), settings -> settings
-                .stacksTo(8)
-                .component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2)
-        );
-        result.put(ResourceLocation.withDefaultNamespace("raw_gold"), settings -> settings
-                .stacksTo(8)
-                .component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2)
-        );
-        result.put(ResourceLocation.withDefaultNamespace("raw_iron"), settings -> settings
-                .stacksTo(8)
-                .component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2)
         );
 
         // 最大堆叠为 16 的物品标识
@@ -279,13 +266,25 @@ public final class VanillaItemModify {
         );
         result.put(ResourceLocation.withDefaultNamespace("golden_apple"), settings -> settings
                 .stacksTo(16)
-                .food(new FoodProperties(1, 2, false))
+                .food(new FoodProperties(1, 2, false), Consumables.GOLDEN_APPLE)
                 .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().fiber(8000).sugar(4800).build())
         );
         result.put(ResourceLocation.withDefaultNamespace("enchanted_golden_apple"), settings -> settings
                 .stacksTo(16)
-                .food(new FoodProperties(1, 2, false))
+                .food(new FoodProperties(1, 2, false), Consumables.ENCHANTED_GOLDEN_APPLE)
                 .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().fiber(8000).sugar(4800).build())
+        );
+        result.put(ResourceLocation.withDefaultNamespace("raw_copper"), settings -> settings
+                .stacksTo(16)
+                .component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2)
+        );
+        result.put(ResourceLocation.withDefaultNamespace("raw_gold"), settings -> settings
+                .stacksTo(16)
+                .component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2)
+        );
+        result.put(ResourceLocation.withDefaultNamespace("raw_iron"), settings -> settings
+                .stacksTo(16)
+                .component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2)
         );
 
         // 最大堆叠为 32 的物品标识
@@ -446,6 +445,7 @@ public final class VanillaItemModify {
         result.put(ResourceLocation.withDefaultNamespace("iron_nugget"), settings -> new NuggetItem(settings.stacksTo(32), 200));
         result.put(ResourceLocation.withDefaultNamespace("gold_nugget"), settings -> new NuggetItem(settings.stacksTo(32), 500));
         result.put(ResourceLocation.withDefaultNamespace("fishing_rod"), Item::new);
+        result.put(ResourceLocation.withDefaultNamespace("bowl"), BowlItem::new);
         return Map.copyOf(result);
     }
     private static Map<ResourceLocation, UnaryOperator<Item.Properties>> createBlockItemSettingsModifyMapByIdentifier() {

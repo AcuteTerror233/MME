@@ -26,7 +26,7 @@ public class ClientPlayNetworkHandlerMixin implements GetFuelGradeRegistryExtens
         this.fuelGradeRegistry = FuelGradeRegistry.createDefault(clientConnectionState.receivedRegistries(), this.enabledFeatures);
     }
     @Inject(method = "handleUpdateTags", at = @At("TAIL"))
-    private void onSynchronizeTags(CallbackInfo ci){
+    private void handleUpdateTags(CallbackInfo ci){
         this.fuelGradeRegistry = FuelGradeRegistry.createDefault(registryAccess, this.enabledFeatures);
     }
 

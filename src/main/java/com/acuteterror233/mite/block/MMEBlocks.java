@@ -25,6 +25,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.ToolMaterial;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.MagmaBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -95,7 +96,14 @@ public class MMEBlocks {
     );
 
     public static final Block MANTLE = register(                //地幔
-            "mantle", BlockBehaviour.Properties.ofFullCopy(Blocks.BEDROCK)
+            "mantle",
+            MagmaBlock::new,
+            BlockBehaviour.Properties
+                    .ofFullCopy(Blocks.BEDROCK)
+                    .lightLevel(blockStatex -> 3)
+                    .isValidSpawn((blockStatex, blockGetter, blockPos, entityType) -> entityType.fireImmune())
+                    .hasPostProcess(Blocks::always)
+                    .emissiveRendering(Blocks::always)
     );
 
     public static final Block DAMAGED_NETHERITE_ANVIL = register(

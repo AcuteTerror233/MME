@@ -1673,6 +1673,7 @@ public class MMEItems {
                             Equippable.builder(type.getSlot()).setEquipSound(material.equipSound()).setAsset(material.assetId()).build()
                     )
                     .repairable(material.repairIngredient());
+
     }
 
     public static Item.Properties getDaggerSettings(ToolMaterial material) {

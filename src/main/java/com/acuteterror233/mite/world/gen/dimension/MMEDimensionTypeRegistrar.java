@@ -26,7 +26,7 @@ public class MMEDimensionTypeRegistrar {
                 false,
                 1.0f,
                 true,
-                false,
+                true,
                 -64,
                 384,
                 384,

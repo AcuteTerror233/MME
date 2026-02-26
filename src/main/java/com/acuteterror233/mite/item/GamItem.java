@@ -22,7 +22,7 @@ public class GamItem extends Item {
     }
     @Override
     public @NotNull InteractionResult use(Level world, Player user, InteractionHand hand) {
-        user.giveExperiencePoints(experience);
+        user.giveExperiencePoints(this.experience);
         user.getItemInHand(hand).consume(1, user);
         world.playSound(user, user.getX(), user.getY(), user.getZ(), SoundEvents.EXPERIENCE_ORB_PICKUP, user.getSoundSource(), 1.0F, 1.0F);
         return InteractionResult.CONSUME;

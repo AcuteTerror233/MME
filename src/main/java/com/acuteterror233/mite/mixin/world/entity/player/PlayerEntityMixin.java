@@ -1,10 +1,6 @@
 package com.acuteterror233.mite.mixin.world.entity.player;
 
 import com.acuteterror233.mite.atinterface.FoodDataExtension;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -28,12 +24,6 @@ public abstract class PlayerEntityMixin extends LivingEntity {
     public int experienceLevel;
     @Shadow
     public abstract FoodData getFoodData();
-
-//    @Inject(method = "defineSynchedData", at = @At("TAIL"))
-//    public void defineSynchedData(SynchedEntityData.Builder builder, CallbackInfo ci) {
-//        builder.define(FOOD_DATA, new CompoundTag());
-//        getFoodData().readAdditionalSaveData(entityData.get(FOOD_DATA));
-//    }
 
     @Redirect(method = "blockUsingItem", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/LivingEntity;getSecondsToDisableBlocking()F"))
     public float blockUsingItem(LivingEntity instance) {
@@ -67,7 +57,7 @@ public abstract class PlayerEntityMixin extends LivingEntity {
 
     @Unique
     public void setMaxHealth(int max) {
-        if ((int) this.getAttributes().getInstance(Attributes.MAX_HEALTH).getValue() != max) {
+        if ((int) this.getAttributes().getInstance(Attributes.MAX_HEALTH).getValue() != max || ((FoodDataExtension)this.getFoodData()).MME$GetMaxFoodLevel() != max) {
             this.getAttributes().getInstance(Attributes.MAX_HEALTH).setBaseValue(max);
             ((FoodDataExtension) this.getFoodData()).MME$SetMaxFoodLevel(max);
         }

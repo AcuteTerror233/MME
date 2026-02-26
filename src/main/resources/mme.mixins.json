@@ -10,6 +10,7 @@
     "recipe.RecipeManagerMixin",
     "server.MinecraftServerMixin",
     "server.level.ServerLevelMixin",
+    "server.level.ServerPlayerMixin",
     "world.dimension.PortalShapeMixin",
     "world.effect.PoisonMobEffectMixin",
     "world.entity.BucketableMixin",

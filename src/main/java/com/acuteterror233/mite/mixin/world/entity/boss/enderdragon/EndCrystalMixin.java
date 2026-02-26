@@ -1,5 +1,6 @@
 package com.acuteterror233.mite.mixin.world.entity.boss.enderdragon;
 
+import com.acuteterror233.mite.registry.tag.MMETags;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.damagesource.DamageSource;
@@ -7,7 +8,6 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.boss.enderdragon.EndCrystal;
 import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
@@ -29,7 +29,7 @@ public abstract class EndCrystalMixin extends Entity{
             return false;
         } else if (damageSource.getEntity() instanceof EnderDragon) {
             return false;
-        } else if (damageSource.getWeaponItem() == null || !damageSource.getWeaponItem().is(Items.NETHERITE_PICKAXE)) {
+        } else if (damageSource.getWeaponItem() == null || !damageSource.getWeaponItem().is(MMETags.ADAMANTIUM_SERIES_REPAIRABLE)) {
             return false;
         } else {
             if (!this.isRemoved()) {

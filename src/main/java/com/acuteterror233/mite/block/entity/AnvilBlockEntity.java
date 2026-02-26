@@ -87,25 +87,22 @@ public class AnvilBlockEntity extends BlockEntity {
             int DamageThreshold = this.maxDamage / 3;
             if (this.damage >= this.maxDamage) {
                 this.level.removeBlock(this.worldPosition, false);
-                this.level.levelEvent(LevelEvent.SOUND_ANVIL_USED, worldPosition, 0);
+                this.level.levelEvent(LevelEvent.SOUND_ANVIL_BROKEN, worldPosition, 0);
             } else if (oldDamage < (DamageThreshold * 2) && this.damage >= (DamageThreshold * 2) || oldDamage < DamageThreshold && this.damage >= DamageThreshold) {
-                generate();
+                Block NewAnvil = ANVIL_MAP.getOrDefault(getBlockState().getBlock(), Blocks.AIR);
+                BlockState state = Blocks.AIR.defaultBlockState();
+                if (!NewAnvil.equals(Blocks.AIR)) {
+                    state = NewAnvil.defaultBlockState().setValue(MMEAnvilBlock.FACING, getBlockState().getValue(MMEAnvilBlock.FACING));
+                }
+                this.level.setBlock(this.worldPosition, state, Block.UPDATE_ALL);
+                BlockEntity entity = this.level.getBlockEntity(this.worldPosition);
+                if (entity instanceof AnvilBlockEntity anvilBlockEntity) {
+                    anvilBlockEntity.setMaxDamage(this.maxDamage);
+                    anvilBlockEntity.setDamage(this.damage);
+                }
+            }else {
+                this.level.levelEvent(1030, this.worldPosition, 0);
             }
         }
-    }
-
-    private void generate() {
-        Block NewAnvil = ANVIL_MAP.getOrDefault(getBlockState().getBlock(), Blocks.AIR);
-        BlockState state = Blocks.AIR.defaultBlockState();
-        if (!NewAnvil.equals(Blocks.AIR)) {
-            state = NewAnvil.defaultBlockState().setValue(MMEAnvilBlock.FACING, getBlockState().getValue(MMEAnvilBlock.FACING));
-        }
-        this.level.setBlock(this.worldPosition, state, Block.UPDATE_ALL);
-        BlockEntity entity = this.level.getBlockEntity(this.worldPosition);
-        if (entity instanceof AnvilBlockEntity anvilBlockEntity) {
-            anvilBlockEntity.setMaxDamage(this.maxDamage);
-            anvilBlockEntity.setDamage(this.damage);
-        }
-        this.level.levelEvent(LevelEvent.SOUND_ANVIL_BROKEN, worldPosition, 0);
     }
 }
