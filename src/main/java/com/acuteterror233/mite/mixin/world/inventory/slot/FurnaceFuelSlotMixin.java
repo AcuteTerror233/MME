@@ -1,6 +1,6 @@
 package com.acuteterror233.mite.mixin.world.inventory.slot;
 
-import com.acuteterror233.mite.registry.tag.MMETags;
+import com.acuteterror233.mite.registry.tag.MMEItemTags;
 import net.minecraft.world.inventory.FurnaceFuelSlot;
 import net.minecraft.world.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;
@@ -14,6 +14,6 @@ public class FurnaceFuelSlotMixin {
      */
     @Overwrite
     public static boolean isBucket(ItemStack stack){
-        return stack.is(MMETags.BUCKET);
+        return stack.is(MMEItemTags.BUCKET);
     }
 }

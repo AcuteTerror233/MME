@@ -4,7 +4,7 @@ import com.acuteterror233.mite.block.MMEBlocks;
 import com.acuteterror233.mite.event.ServerRecipeModify;
 import com.acuteterror233.mite.item.MMEItems;
 import com.acuteterror233.mite.registry.LootTableReplace;
-import com.acuteterror233.mite.registry.tag.MMETags;
+import com.acuteterror233.mite.registry.tag.MMEItemTags;
 import com.acuteterror233.mite.world.effect.MMEMobEffects;
 import com.acuteterror233.mite.world.gen.feature.OverworldPlacedFeatures;
 import net.fabricmc.api.ModInitializer;
@@ -104,7 +104,7 @@ public class MME implements ModInitializer {
         FuelRegistryEvents.BUILD.register((builder, context) -> {
             builder.add(MMEItems.WOODEN_CLUB, context.baseSmeltTime());
             builder.add(MMEItems.WOODEN_CUDGEL, context.baseSmeltTime());
-            builder.add(MMETags.LAVA_BUCKET,  context.baseSmeltTime() * 16);
+            builder.add(MMEItemTags.LAVA_BUCKET,  context.baseSmeltTime() * 16);
             builder.add(Blocks.COAL_BLOCK, context.baseSmeltTime() * 72);
             builder.add(Blocks.DRIED_KELP_BLOCK, context.baseSmeltTime() * 8);
             builder.add(Items.TORCH, context.baseSmeltTime() * 4);
@@ -116,7 +116,6 @@ public class MME implements ModInitializer {
 
         FireBlock fireBlock = (FireBlock)Blocks.FIRE;
         fireBlock.setFlammable(MMEBlocks.BLUE_BERRY_BUSH, 60, 100);
-
     }
 
     private void InOverworldAdd(ResourceKey<PlacedFeature> key) {

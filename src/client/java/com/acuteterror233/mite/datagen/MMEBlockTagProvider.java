@@ -1,7 +1,7 @@
 package com.acuteterror233.mite.datagen;
 
 import com.acuteterror233.mite.block.MMEBlocks;
-import com.acuteterror233.mite.registry.tag.MMETags;
+import com.acuteterror233.mite.registry.tag.MMEBlockTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.core.HolderLookup;
@@ -17,7 +17,7 @@ public class MMEBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider wrapperLookup) {
-        getOrCreateTagBuilder(MMETags.GLASS)
+        getOrCreateTagBuilder(MMEBlockTags.GLASS)
                 .add(Blocks.GLASS)
                 .add(Blocks.WHITE_STAINED_GLASS)
                 .add(Blocks.ORANGE_STAINED_GLASS)
@@ -36,7 +36,7 @@ public class MMEBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(Blocks.RED_STAINED_GLASS)
                 .add(Blocks.BLACK_STAINED_GLASS)
                 .add(Blocks.TINTED_GLASS);
-        getOrCreateTagBuilder(MMETags.GLASS_PANE)
+        getOrCreateTagBuilder(MMEBlockTags.GLASS_PANE)
                 .add(Blocks.GLASS_PANE)
                 .add(Blocks.WHITE_STAINED_GLASS_PANE)
                 .add(Blocks.ORANGE_STAINED_GLASS_PANE)
@@ -76,7 +76,7 @@ public class MMEBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(MMEBlocks.COPPER_ANVIL)
                 .add(MMEBlocks.CHIPPED_COPPER_ANVIL)
                 .add(MMEBlocks.DAMAGED_COPPER_ANVIL);
-        getOrCreateTagBuilder(MMETags.INTACT_ANVIL)
+        getOrCreateTagBuilder(MMEBlockTags.INTACT_ANVIL)
                 .add(MMEBlocks.NETHERITE_ANVIL)
                 .add(MMEBlocks.ADAMANTIUM_ANVIL)
                 .add(MMEBlocks.MITHRIL_ANVIL)
@@ -84,7 +84,7 @@ public class MMEBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(MMEBlocks.SILVER_ANVIL)
                 .add(MMEBlocks.GOLDEN_ANVIL)
                 .add(MMEBlocks.COPPER_ANVIL);
-        getOrCreateTagBuilder(MMETags.CHIPPED_ANVIL)
+        getOrCreateTagBuilder(MMEBlockTags.CHIPPED_ANVIL)
                 .add(MMEBlocks.CHIPPED_NETHERITE_ANVIL)
                 .add(MMEBlocks.CHIPPED_ADAMANTIUM_ANVIL)
                 .add(MMEBlocks.CHIPPED_MITHRIL_ANVIL)
@@ -92,7 +92,7 @@ public class MMEBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(MMEBlocks.CHIPPED_SILVER_ANVIL)
                 .add(MMEBlocks.CHIPPED_GOLDEN_ANVIL)
                 .add(MMEBlocks.CHIPPED_COPPER_ANVIL);
-        getOrCreateTagBuilder(MMETags.DAMAGED_ANVIL)
+        getOrCreateTagBuilder(MMEBlockTags.DAMAGED_ANVIL)
                 .add(MMEBlocks.DAMAGED_NETHERITE_ANVIL)
                 .add(MMEBlocks.DAMAGED_ADAMANTIUM_ANVIL)
                 .add(MMEBlocks.DAMAGED_MITHRIL_ANVIL)
@@ -100,44 +100,44 @@ public class MMEBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(MMEBlocks.DAMAGED_SILVER_ANVIL)
                 .add(MMEBlocks.DAMAGED_GOLDEN_ANVIL)
                 .add(MMEBlocks.DAMAGED_COPPER_ANVIL);
-        getOrCreateTagBuilder(MMETags.NETHERITE_ANVIL)
+        getOrCreateTagBuilder(MMEBlockTags.NETHERITE_ANVIL)
                 .add(MMEBlocks.NETHERITE_ANVIL)
                 .add(MMEBlocks.CHIPPED_NETHERITE_ANVIL)
                 .add(MMEBlocks.DAMAGED_NETHERITE_ANVIL);
-        getOrCreateTagBuilder(MMETags.ADAMANTIUM_ANVIL)
+        getOrCreateTagBuilder(MMEBlockTags.ADAMANTIUM_ANVIL)
                 .add(MMEBlocks.ADAMANTIUM_ANVIL)
                 .add(MMEBlocks.CHIPPED_ADAMANTIUM_ANVIL)
                 .add(MMEBlocks.DAMAGED_ADAMANTIUM_ANVIL);
-        getOrCreateTagBuilder(MMETags.MITHRIL_ANVIL)
+        getOrCreateTagBuilder(MMEBlockTags.MITHRIL_ANVIL)
                 .add(MMEBlocks.MITHRIL_ANVIL)
                 .add(MMEBlocks.CHIPPED_MITHRIL_ANVIL)
                 .add(MMEBlocks.DAMAGED_MITHRIL_ANVIL);
-        getOrCreateTagBuilder(MMETags.ANCIENT_METAL_ANVIL)
+        getOrCreateTagBuilder(MMEBlockTags.ANCIENT_METAL_ANVIL)
                 .add(MMEBlocks.ANCIENT_METAL_ANVIL)
                 .add(MMEBlocks.CHIPPED_ANCIENT_METAL_ANVIL)
                 .add(MMEBlocks.DAMAGED_ANCIENT_METAL_ANVIL);
-        getOrCreateTagBuilder(MMETags.SILVER_ANVIL)
+        getOrCreateTagBuilder(MMEBlockTags.SILVER_ANVIL)
                 .add(MMEBlocks.SILVER_ANVIL)
                 .add(MMEBlocks.CHIPPED_SILVER_ANVIL)
                 .add(MMEBlocks.DAMAGED_SILVER_ANVIL);
-        getOrCreateTagBuilder(MMETags.GOLDEN_ANVIL)
+        getOrCreateTagBuilder(MMEBlockTags.GOLDEN_ANVIL)
                 .add(MMEBlocks.GOLDEN_ANVIL)
                 .add(MMEBlocks.CHIPPED_GOLDEN_ANVIL)
                 .add(MMEBlocks.DAMAGED_GOLDEN_ANVIL);
-        getOrCreateTagBuilder(MMETags.COPPER_ANVIL)
+        getOrCreateTagBuilder(MMEBlockTags.COPPER_ANVIL)
                 .add(MMEBlocks.COPPER_ANVIL)
                 .add(MMEBlocks.CHIPPED_COPPER_ANVIL)
                 .add(MMEBlocks.DAMAGED_COPPER_ANVIL);
-        getOrCreateTagBuilder(MMETags.IRON_ANVIL)
+        getOrCreateTagBuilder(MMEBlockTags.IRON_ANVIL)
                 .add(Blocks.ANVIL)
                 .add(Blocks.CHIPPED_ANVIL)
                 .add(Blocks.DAMAGED_ANVIL);
-        getOrCreateTagBuilder(MMETags.PORTAL)
+        getOrCreateTagBuilder(MMEBlockTags.PORTAL)
                 .add(MMEBlocks.UNDERGROUND_PORTAL)
                 .add(MMEBlocks.HOME_PORTAL)
                 .add(MMEBlocks.RUNE_PORTAL)
                 .add(Blocks.NETHER_PORTAL);
-        getOrCreateTagBuilder(MMETags.MITHRIL_RUNESTORE)
+        getOrCreateTagBuilder(MMEBlockTags.MITHRIL_RUNESTORE)
                 .add(MMEBlocks.MITHRIL_NUL_RUNESTORE)
                 .add(MMEBlocks.MITHRIL_QUAS_RUNESTORE)
                 .add(MMEBlocks.MITHRIL_POR_RUNESTORE)
@@ -154,7 +154,7 @@ public class MMEBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(MMEBlocks.MITHRIL_JUX_RUNESTORE)
                 .add(MMEBlocks.MITHRIL_YLEM_RUNESTORE)
                 .add(MMEBlocks.MITHRIL_SANCT_RUNESTORE);
-        getOrCreateTagBuilder(MMETags.ADAMANTIUM_RUNESTORE)
+        getOrCreateTagBuilder(MMEBlockTags.ADAMANTIUM_RUNESTORE)
                 .add(MMEBlocks.ADAMANTIUM_NUL_RUNESTORE)
                 .add(MMEBlocks.ADAMANTIUM_QUAS_RUNESTORE)
                 .add(MMEBlocks.ADAMANTIUM_POR_RUNESTORE)
@@ -171,10 +171,10 @@ public class MMEBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(MMEBlocks.ADAMANTIUM_JUX_RUNESTORE)
                 .add(MMEBlocks.ADAMANTIUM_YLEM_RUNESTORE)
                 .add(MMEBlocks.ADAMANTIUM_SANCT_RUNESTORE);
-        getOrCreateTagBuilder(MMETags.RUNESTORE)
-                .forceAddTag(MMETags.ADAMANTIUM_RUNESTORE)
-                .forceAddTag(MMETags.MITHRIL_RUNESTORE);
-        getOrCreateTagBuilder(MMETags.CRAFTING_TABLE)
+        getOrCreateTagBuilder(MMEBlockTags.RUNESTORE)
+                .forceAddTag(MMEBlockTags.ADAMANTIUM_RUNESTORE)
+                .forceAddTag(MMEBlockTags.MITHRIL_RUNESTORE);
+        getOrCreateTagBuilder(MMEBlockTags.CRAFTING_TABLE)
                 .add(MMEBlocks.ADAMANTIUM_CRAFTING_TABLE)
                 .add(MMEBlocks.MITHRIL_CRAFTING_TABLE)
                 .add(MMEBlocks.ANCIENT_METAL_CRAFTING_TABLE)
@@ -184,57 +184,57 @@ public class MMEBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(MMEBlocks.COPPER_CRAFTING_TABLE)
                 .add(MMEBlocks.OBSIDIAN_CRAFTING_TABLE)
                 .add(MMEBlocks.FLINT_CRAFTING_TABLE);
-        getOrCreateTagBuilder(MMETags.ENCHANTING_TABLE)
+        getOrCreateTagBuilder(MMEBlockTags.ENCHANTING_TABLE)
                 .add(Blocks.ENCHANTING_TABLE)
                 .add(MMEBlocks.EMERALD_ENCHANTING_TABLE);
-        getOrCreateTagBuilder(MMETags.MINEABLE_WITH_MATTOCK)
+        getOrCreateTagBuilder(MMEBlockTags.MINEABLE_WITH_MATTOCK)
                 .forceAddTag(BlockTags.MINEABLE_WITH_HOE)
                 .forceAddTag(BlockTags.MINEABLE_WITH_SHOVEL);
 
-        getOrCreateTagBuilder(MMETags.NEEDS_ADAMANTIUM_TOOL)
+        getOrCreateTagBuilder(MMEBlockTags.NEEDS_ADAMANTIUM_TOOL)
                 .add(Blocks.ANCIENT_DEBRIS)
                 .add(Blocks.NETHERITE_BLOCK)
                 .add(MMEBlocks.ADAMANTIUM_BLOCK);
-        getOrCreateTagBuilder(MMETags.NEEDS_MITHRIL_TOOL)
+        getOrCreateTagBuilder(MMEBlockTags.NEEDS_MITHRIL_TOOL)
                 .add(MMEBlocks.MITHRIL_BLOCK)
                 .add(MMEBlocks.ADAMANTIUM_ORE)
                 .add(MMEBlocks.DEEPSLATE_ADAMANTIUM_ORE);
-        getOrCreateTagBuilder(MMETags.NEEDS_ANCIENT_METAL_TOOL)
+        getOrCreateTagBuilder(MMEBlockTags.NEEDS_ANCIENT_METAL_TOOL)
                 .add(MMEBlocks.ANCIENT_METAL_BLOCK)
                 .add(Blocks.DIAMOND_ORE)
                 .add(Blocks.DEEPSLATE_DIAMOND_ORE);
         getOrCreateTagBuilder(BlockTags.NEEDS_IRON_TOOL)
                 .add(MMEBlocks.MITHRIL_ORE)
                 .add(MMEBlocks.DEEPSLATE_MITHRIL_ORE);
-        getOrCreateTagBuilder(MMETags.NEEDS_SILVER_OR_COPPER_TOOL)
+        getOrCreateTagBuilder(MMEBlockTags.NEEDS_SILVER_OR_COPPER_TOOL)
                 .add(MMEBlocks.SILVER_BLOCK)
                 .add(Blocks.COPPER_BLOCK)
                 .forceAddTag(BlockTags.COPPER_ORES);
 
-        getOrCreateTagBuilder(MMETags.INCORRECT_FOR_FLINT_OR_OBSIDIAN_TOOL)
-                .forceAddTag(MMETags.NEEDS_SILVER_OR_COPPER_TOOL)
-                .forceAddTag(MMETags.NEEDS_ANCIENT_METAL_TOOL)
-                .forceAddTag(MMETags.NEEDS_MITHRIL_TOOL)
-                .forceAddTag(MMETags.NEEDS_ADAMANTIUM_TOOL)
+        getOrCreateTagBuilder(MMEBlockTags.INCORRECT_FOR_FLINT_OR_OBSIDIAN_TOOL)
+                .forceAddTag(MMEBlockTags.NEEDS_SILVER_OR_COPPER_TOOL)
+                .forceAddTag(MMEBlockTags.NEEDS_ANCIENT_METAL_TOOL)
+                .forceAddTag(MMEBlockTags.NEEDS_MITHRIL_TOOL)
+                .forceAddTag(MMEBlockTags.NEEDS_ADAMANTIUM_TOOL)
                 .forceAddTag(BlockTags.NEEDS_DIAMOND_TOOL)
                 .forceAddTag(BlockTags.NEEDS_IRON_TOOL)
                 .forceAddTag(BlockTags.NEEDS_STONE_TOOL);
-        getOrCreateTagBuilder(MMETags.INCORRECT_FOR_COPPER_OR_SILVER_TOOL)
+        getOrCreateTagBuilder(MMEBlockTags.INCORRECT_FOR_COPPER_OR_SILVER_TOOL)
                 .forceAddTag(BlockTags.NEEDS_IRON_TOOL)
                 .forceAddTag(BlockTags.NEEDS_DIAMOND_TOOL)
-                .forceAddTag(MMETags.NEEDS_ANCIENT_METAL_TOOL)
-                .forceAddTag(MMETags.NEEDS_MITHRIL_TOOL)
-                .forceAddTag(MMETags.NEEDS_ADAMANTIUM_TOOL);
-        getOrCreateTagBuilder(MMETags.INCORRECT_FOR_RUSTED_IRON_TOOL)
-                .forceAddTag(MMETags.NEEDS_ANCIENT_METAL_TOOL)
-                .forceAddTag(MMETags.NEEDS_MITHRIL_TOOL)
-                .forceAddTag(MMETags.NEEDS_ADAMANTIUM_TOOL);
-        getOrCreateTagBuilder(MMETags.INCORRECT_FOR_ANCIENT_METAL_TOOL)
-                .forceAddTag(MMETags.NEEDS_MITHRIL_TOOL)
-                .forceAddTag(MMETags.NEEDS_ADAMANTIUM_TOOL);
-        getOrCreateTagBuilder(MMETags.INCORRECT_FOR_MITHRIL_TOOL)
-                .forceAddTag(MMETags.NEEDS_ADAMANTIUM_TOOL);
-        getOrCreateTagBuilder(MMETags.INCORRECT_FOR_ADAMANTIUM_TOOL);
+                .forceAddTag(MMEBlockTags.NEEDS_ANCIENT_METAL_TOOL)
+                .forceAddTag(MMEBlockTags.NEEDS_MITHRIL_TOOL)
+                .forceAddTag(MMEBlockTags.NEEDS_ADAMANTIUM_TOOL);
+        getOrCreateTagBuilder(MMEBlockTags.INCORRECT_FOR_RUSTED_IRON_TOOL)
+                .forceAddTag(MMEBlockTags.NEEDS_ANCIENT_METAL_TOOL)
+                .forceAddTag(MMEBlockTags.NEEDS_MITHRIL_TOOL)
+                .forceAddTag(MMEBlockTags.NEEDS_ADAMANTIUM_TOOL);
+        getOrCreateTagBuilder(MMEBlockTags.INCORRECT_FOR_ANCIENT_METAL_TOOL)
+                .forceAddTag(MMEBlockTags.NEEDS_MITHRIL_TOOL)
+                .forceAddTag(MMEBlockTags.NEEDS_ADAMANTIUM_TOOL);
+        getOrCreateTagBuilder(MMEBlockTags.INCORRECT_FOR_MITHRIL_TOOL)
+                .forceAddTag(MMEBlockTags.NEEDS_ADAMANTIUM_TOOL);
+        getOrCreateTagBuilder(MMEBlockTags.INCORRECT_FOR_ADAMANTIUM_TOOL);
 
         getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(MMEBlocks.ADAMANTIUM_ORE)
@@ -251,5 +251,13 @@ public class MMEBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(MMEBlocks.BLUE_BERRY_BUSH);
         getOrCreateTagBuilder(BlockTags.FALL_DAMAGE_RESETTING)
                 .add(MMEBlocks.BLUE_BERRY_BUSH);
+        getOrCreateTagBuilder(BlockTags.SWORD_INSTANTLY_MINES)
+                .add(Blocks.SHORT_GRASS)
+                .add(Blocks.FERN)
+                .add(Blocks.TALL_GRASS)
+                .add(Blocks.LARGE_FERN)
+                .add(Blocks.SHORT_DRY_GRASS)
+                .add(Blocks.TALL_DRY_GRASS)
+                .add(Blocks.KELP);
     }
 }

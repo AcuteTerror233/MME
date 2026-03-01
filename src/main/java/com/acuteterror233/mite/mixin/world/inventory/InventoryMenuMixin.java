@@ -4,7 +4,7 @@ import com.acuteterror233.mite.atinterface.InventoryMenuExtension;
 import com.acuteterror233.mite.block.MMEBlocks;
 import com.acuteterror233.mite.component.MMEDataComponentTypes;
 import com.acuteterror233.mite.inventory.slot.PlayerCraftingResultSlot;
-import com.acuteterror233.mite.registry.tag.MMETags;
+import com.acuteterror233.mite.registry.tag.MMEItemTags;
 import net.minecraft.network.protocol.game.ClientboundContainerSetSlotPacket;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -65,7 +65,7 @@ public abstract class InventoryMenuMixin extends AbstractCraftingMenu implements
     @Unique
     public final int[] CraftingTime = new int[]{0, DefaultCraftingTime, 0};
     @Unique
-    private final TagKey<Item> DisableMaterialsTag = MMETags.COPPER_OR_SILVER_NOT_ALLOWED_MATERIAL;
+    private final TagKey<Item> DisableMaterialsTag = MMEItemTags.COPPER_OR_SILVER_NOT_ALLOWED_MATERIAL;
     @Final
     @Shadow
     private Player owner;

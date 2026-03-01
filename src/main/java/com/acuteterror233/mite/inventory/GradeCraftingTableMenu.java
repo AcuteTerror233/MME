@@ -2,7 +2,7 @@ package com.acuteterror233.mite.inventory;
 
 import com.acuteterror233.mite.block.MMEBlocks;
 import com.acuteterror233.mite.inventory.slot.CraftingTableResultSlot;
-import com.acuteterror233.mite.registry.tag.MMETags;
+import com.acuteterror233.mite.registry.tag.MMEBlockTags;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.Container;
@@ -64,7 +64,7 @@ public class GradeCraftingTableMenu extends AbstractGradeCraftingMenu {
     }
     @Override
     public boolean stillValid(Player player) {
-        return this.context.evaluate((world, pos) -> world.getBlockState(pos).is(MMETags.CRAFTING_TABLE) && player.canInteractWithBlock(pos, 4.0) && world.getBlockState(pos.above()).isAir(), true);
+        return this.context.evaluate((world, pos) -> world.getBlockState(pos).is(MMEBlockTags.CRAFTING_TABLE) && player.canInteractWithBlock(pos, 4.0) && world.getBlockState(pos.above()).isAir(), true);
     }
     @Override
     protected @NotNull Player owner() {

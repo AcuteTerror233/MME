@@ -1,6 +1,6 @@
 package com.acuteterror233.mite.mixin.world.entity.projectile;
 
-import com.acuteterror233.mite.registry.tag.MMETags;
+import com.acuteterror233.mite.registry.tag.MMEItemTags;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.FishingHook;
@@ -24,8 +24,8 @@ public abstract class FishingBobberEntityMixin extends Projectile {
     private boolean shouldStopFishing(Player player) {
         ItemStack itemStack = player.getMainHandItem();
         ItemStack itemStack2 = player.getOffhandItem();
-        boolean bl = itemStack.is(MMETags.FISHING_RODS);
-        boolean bl2 = itemStack2.is(MMETags.FISHING_RODS);
+        boolean bl = itemStack.is(MMEItemTags.FISHING_RODS);
+        boolean bl2 = itemStack2.is(MMEItemTags.FISHING_RODS);
         if (!player.isRemoved() && player.isAlive() && (bl || bl2) && !(this.distanceToSqr(player) > 1024.0)) {
             return false;
         } else {

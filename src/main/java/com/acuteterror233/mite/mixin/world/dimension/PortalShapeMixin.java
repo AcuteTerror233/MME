@@ -3,7 +3,7 @@ package com.acuteterror233.mite.mixin.world.dimension;
 import com.acuteterror233.mite.atinterface.UniversalPortalShapeExtension;
 import com.acuteterror233.mite.block.MMEBlocks;
 import com.acuteterror233.mite.block.entity.RunePortalBlockEntity;
-import com.acuteterror233.mite.registry.tag.MMETags;
+import com.acuteterror233.mite.registry.tag.MMEBlockTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.tags.BlockTags;
@@ -104,6 +104,6 @@ public class PortalShapeMixin implements UniversalPortalShapeExtension {
      */
     @Overwrite
     private static boolean isEmpty(BlockState state) {
-        return state.isAir() || state.is(BlockTags.FIRE) || state.is(MMETags.PORTAL);
+        return state.isAir() || state.is(BlockTags.FIRE) || state.is(MMEBlockTags.PORTAL);
     }
 }

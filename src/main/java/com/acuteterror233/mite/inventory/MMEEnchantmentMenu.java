@@ -1,7 +1,7 @@
 package com.acuteterror233.mite.inventory;
 
 import com.acuteterror233.mite.block.MMEBlocks;
-import com.acuteterror233.mite.registry.tag.MMETags;
+import com.acuteterror233.mite.registry.tag.MMEBlockTags;
 import net.minecraft.Util;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.*;
@@ -220,7 +220,7 @@ public class MMEEnchantmentMenu extends AbstractContainerMenu {
 
     @Override
     public boolean stillValid(Player player) {
-        return stillValid(this.access, player, MMETags.ENCHANTING_TABLE);
+        return stillValid(this.access, player, MMEBlockTags.ENCHANTING_TABLE);
     }
     public static boolean stillValid(ContainerLevelAccess containerLevelAccess, Player player, TagKey<Block> tagKey) {
         return containerLevelAccess.evaluate((level, blockPos) -> level.getBlockState(blockPos).is(tagKey) && player.canInteractWithBlock(blockPos, 4.0), true);

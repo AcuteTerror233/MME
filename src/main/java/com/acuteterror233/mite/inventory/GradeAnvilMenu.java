@@ -2,7 +2,7 @@ package com.acuteterror233.mite.inventory;
 
 import com.acuteterror233.mite.block.MMEBlocks;
 import com.acuteterror233.mite.block.entity.AnvilBlockEntity;
-import com.acuteterror233.mite.registry.tag.MMETags;
+import com.acuteterror233.mite.registry.tag.MMEItemTags;
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponents;
@@ -138,7 +138,7 @@ public class GradeAnvilMenu extends ItemCombinerMenu {
                 if (itemStack2.isDamageableItem() && itemStack.isValidRepairItem(itemStack3) && this.notAllowedMaterial != null && !itemStack3.is(this.notAllowedMaterial)) {
                     int i1 = 1;
                     // 如果第二个物品是金属粒，则修复效率降低
-                    if (itemStack3.is(MMETags.NUGGET)) {
+                    if (itemStack3.is(MMEItemTags.NUGGET)) {
                         i1 = 6;
                     }
                     // 计算最大可修复的耐久度

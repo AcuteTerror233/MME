@@ -1,6 +1,6 @@
 package com.acuteterror233.mite.item;
 
-import com.acuteterror233.mite.registry.tag.MMETags;
+import com.acuteterror233.mite.registry.tag.MMEItemTags;
 import it.unimi.dsi.fastutil.objects.Object2IntLinkedOpenHashMap;
 import it.unimi.dsi.fastutil.objects.Object2IntSortedMap;
 import net.minecraft.core.Holder;
@@ -40,7 +40,7 @@ public class FuelGradeRegistry {
     public static FuelGradeRegistry createDefault(HolderLookup.Provider registries, FeatureFlagSet enabledFeatures) {
         return new FuelGradeRegistry.Builder(registries, enabledFeatures)
                 .add(Items.BLAZE_ROD, 4)
-                .add(MMETags.LAVA_BUCKET, 3)
+                .add(MMEItemTags.LAVA_BUCKET, 3)
                 .add(Items.COAL, 2)
                 .add(Blocks.COAL_BLOCK, 2)
                 .add(Items.CHARCOAL, 1)

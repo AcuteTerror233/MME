@@ -10,7 +10,7 @@ import com.acuteterror233.mite.inventory.GradeCraftingTableMenu;
 import com.acuteterror233.mite.inventory.GradeFurnaceMenu;
 import com.acuteterror233.mite.inventory.MMEEnchantmentMenu;
 import com.acuteterror233.mite.item.MMEToolMaterials;
-import com.acuteterror233.mite.registry.tag.MMETags;
+import com.acuteterror233.mite.registry.tag.MMEItemTags;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -108,127 +108,127 @@ public class MMEBlocks {
 
     public static final Block DAMAGED_NETHERITE_ANVIL = register(
             "damaged_netherite_anvil",
-            settings -> new MMEAnvilBlock(settings, MMETags.NETHERITE_NOT_ALLOWED_MATERIAL),
+            settings -> new MMEAnvilBlock(settings, MMEItemTags.NETHERITE_NOT_ALLOWED_MATERIAL),
             BlockBehaviour.Properties.ofFullCopy(Blocks.ANVIL),
             new Item.Properties().durability(maxDamageAnvil(MMEToolMaterials.NETHERITE.durability()))
     );
     public static final Block CHIPPED_NETHERITE_ANVIL = register(
             "chipped_netherite_anvil",
-            settings -> new MMEAnvilBlock(settings, MMETags.NETHERITE_NOT_ALLOWED_MATERIAL),
+            settings -> new MMEAnvilBlock(settings, MMEItemTags.NETHERITE_NOT_ALLOWED_MATERIAL),
             BlockBehaviour.Properties.ofFullCopy(Blocks.ANVIL),
             new Item.Properties().durability(maxDamageAnvil(MMEToolMaterials.NETHERITE.durability()))
     );
     public static final Block NETHERITE_ANVIL = register(
             "netherite_anvil",
-            settings -> new MMEAnvilBlock(settings, MMETags.NETHERITE_NOT_ALLOWED_MATERIAL),
+            settings -> new MMEAnvilBlock(settings, MMEItemTags.NETHERITE_NOT_ALLOWED_MATERIAL),
             BlockBehaviour.Properties.ofFullCopy(Blocks.ANVIL),
             new Item.Properties().durability(maxDamageAnvil(MMEToolMaterials.NETHERITE.durability()))
     );
     public static final Block DAMAGED_ADAMANTIUM_ANVIL = register(
             "damaged_adamantium_anvil",
-            settings -> new MMEAnvilBlock(settings, MMETags.ADAMANTIUM_NOT_ALLOWED_MATERIAL),
+            settings -> new MMEAnvilBlock(settings, MMEItemTags.ADAMANTIUM_NOT_ALLOWED_MATERIAL),
             BlockBehaviour.Properties.ofFullCopy(Blocks.ANVIL),
             new Item.Properties().durability(maxDamageAnvil(MMEToolMaterials.ADAMANTIUM.durability()))
     );
     public static final Block CHIPPED_ADAMANTIUM_ANVIL = register(
             "chipped_adamantium_anvil",
-            settings -> new MMEAnvilBlock(settings, MMETags.ADAMANTIUM_NOT_ALLOWED_MATERIAL),
+            settings -> new MMEAnvilBlock(settings, MMEItemTags.ADAMANTIUM_NOT_ALLOWED_MATERIAL),
             BlockBehaviour.Properties.ofFullCopy(Blocks.ANVIL),
             new Item.Properties().durability(maxDamageAnvil(MMEToolMaterials.ADAMANTIUM.durability()))
     );
     public static final Block ADAMANTIUM_ANVIL = register(
             "adamantium_anvil",
-            settings -> new MMEAnvilBlock(settings, MMETags.ADAMANTIUM_NOT_ALLOWED_MATERIAL),
+            settings -> new MMEAnvilBlock(settings, MMEItemTags.ADAMANTIUM_NOT_ALLOWED_MATERIAL),
             BlockBehaviour.Properties.ofFullCopy(Blocks.ANVIL),
             new Item.Properties().durability(maxDamageAnvil(MMEToolMaterials.ADAMANTIUM.durability()))
     );
     public static final Block DAMAGED_MITHRIL_ANVIL = register(
             "damaged_mithril_anvil",
-            settings -> new MMEAnvilBlock(settings, MMETags.MITHRIL_NOT_ALLOWED_MATERIAL),
+            settings -> new MMEAnvilBlock(settings, MMEItemTags.MITHRIL_NOT_ALLOWED_MATERIAL),
             BlockBehaviour.Properties.ofFullCopy(Blocks.ANVIL),
             new Item.Properties().durability(maxDamageAnvil(MMEToolMaterials.MITHRIL.durability()))
     );
     public static final Block CHIPPED_MITHRIL_ANVIL = register(
             "chipped_mithril_anvil",
-            settings -> new MMEAnvilBlock(settings, MMETags.MITHRIL_NOT_ALLOWED_MATERIAL),
+            settings -> new MMEAnvilBlock(settings, MMEItemTags.MITHRIL_NOT_ALLOWED_MATERIAL),
             BlockBehaviour.Properties.ofFullCopy(Blocks.ANVIL),
             new Item.Properties().durability(maxDamageAnvil(MMEToolMaterials.MITHRIL.durability()))
     );
     public static final Block MITHRIL_ANVIL = register(
             "mithril_anvil",
-            settings -> new MMEAnvilBlock(settings, MMETags.MITHRIL_NOT_ALLOWED_MATERIAL),
+            settings -> new MMEAnvilBlock(settings, MMEItemTags.MITHRIL_NOT_ALLOWED_MATERIAL),
             BlockBehaviour.Properties.ofFullCopy(Blocks.ANVIL),
             new Item.Properties().durability(maxDamageAnvil(MMEToolMaterials.MITHRIL.durability()))
     );
     public static final Block DAMAGED_ANCIENT_METAL_ANVIL = register(
             "damaged_ancient_metal_anvil",
-            settings -> new MMEAnvilBlock(settings, MMETags.ANCIENT_METAL_NOT_ALLOWED_MATERIAL),
+            settings -> new MMEAnvilBlock(settings, MMEItemTags.ANCIENT_METAL_NOT_ALLOWED_MATERIAL),
             BlockBehaviour.Properties.ofFullCopy(Blocks.ANVIL),
             new Item.Properties().durability(maxDamageAnvil(MMEToolMaterials.ANCIENT_METAL.durability()))
     );
     public static final Block CHIPPED_ANCIENT_METAL_ANVIL = register(
             "chipped_ancient_metal_anvil",
-            settings -> new MMEAnvilBlock(settings, MMETags.ANCIENT_METAL_NOT_ALLOWED_MATERIAL),
+            settings -> new MMEAnvilBlock(settings, MMEItemTags.ANCIENT_METAL_NOT_ALLOWED_MATERIAL),
             BlockBehaviour.Properties.ofFullCopy(Blocks.ANVIL),
             new Item.Properties().durability(maxDamageAnvil(MMEToolMaterials.ANCIENT_METAL.durability()))
     );
     public static final Block ANCIENT_METAL_ANVIL = register(
             "ancient_metal_anvil",
-            settings -> new MMEAnvilBlock(settings, MMETags.ANCIENT_METAL_NOT_ALLOWED_MATERIAL),
+            settings -> new MMEAnvilBlock(settings, MMEItemTags.ANCIENT_METAL_NOT_ALLOWED_MATERIAL),
             BlockBehaviour.Properties.ofFullCopy(Blocks.ANVIL),
             new Item.Properties().durability(maxDamageAnvil(MMEToolMaterials.ANCIENT_METAL.durability()))
     );
     public static final Block DAMAGED_GOLDEN_ANVIL = register(
             "damaged_golden_anvil",
-            settings -> new MMEAnvilBlock(settings, MMETags.GOLD_NOT_ALLOWED_MATERIAL),
+            settings -> new MMEAnvilBlock(settings, MMEItemTags.GOLD_NOT_ALLOWED_MATERIAL),
             BlockBehaviour.Properties.ofFullCopy(Blocks.ANVIL),
             new Item.Properties().durability(maxDamageAnvil(ToolMaterial.GOLD.durability()))
     );
     public static final Block CHIPPED_GOLDEN_ANVIL = register(
             "chipped_golden_anvil",
-            settings -> new MMEAnvilBlock(settings, MMETags.GOLD_NOT_ALLOWED_MATERIAL),
+            settings -> new MMEAnvilBlock(settings, MMEItemTags.GOLD_NOT_ALLOWED_MATERIAL),
             BlockBehaviour.Properties.ofFullCopy(Blocks.ANVIL),
             new Item.Properties().durability(maxDamageAnvil(ToolMaterial.GOLD.durability()))
     );
     public static final Block GOLDEN_ANVIL = register(
             "golden_anvil",
-            settings -> new MMEAnvilBlock(settings, MMETags.GOLD_NOT_ALLOWED_MATERIAL),
+            settings -> new MMEAnvilBlock(settings, MMEItemTags.GOLD_NOT_ALLOWED_MATERIAL),
             BlockBehaviour.Properties.ofFullCopy(Blocks.ANVIL),
             new Item.Properties().durability(maxDamageAnvil(ToolMaterial.GOLD.durability()))
     );
     public static final Block DAMAGED_SILVER_ANVIL = register(
             "damaged_silver_anvil",
-            settings -> new MMEAnvilBlock(settings, MMETags.COPPER_OR_SILVER_NOT_ALLOWED_MATERIAL),
+            settings -> new MMEAnvilBlock(settings, MMEItemTags.COPPER_OR_SILVER_NOT_ALLOWED_MATERIAL),
             BlockBehaviour.Properties.ofFullCopy(Blocks.ANVIL),
             new Item.Properties().durability(maxDamageAnvil(MMEToolMaterials.SILVER.durability()))
     );
     public static final Block CHIPPED_SILVER_ANVIL = register(
             "chipped_silver_anvil",
-            settings -> new MMEAnvilBlock(settings, MMETags.COPPER_OR_SILVER_NOT_ALLOWED_MATERIAL),
+            settings -> new MMEAnvilBlock(settings, MMEItemTags.COPPER_OR_SILVER_NOT_ALLOWED_MATERIAL),
             BlockBehaviour.Properties.ofFullCopy(Blocks.ANVIL),
             new Item.Properties().durability(maxDamageAnvil(MMEToolMaterials.SILVER.durability()))
     );
     public static final Block SILVER_ANVIL = register(
             "silver_anvil",
-            settings -> new MMEAnvilBlock(settings, MMETags.COPPER_OR_SILVER_NOT_ALLOWED_MATERIAL),
+            settings -> new MMEAnvilBlock(settings, MMEItemTags.COPPER_OR_SILVER_NOT_ALLOWED_MATERIAL),
             BlockBehaviour.Properties.ofFullCopy(Blocks.ANVIL),
             new Item.Properties().durability(maxDamageAnvil(MMEToolMaterials.SILVER.durability()))
     );
     public static final Block DAMAGED_COPPER_ANVIL = register(
             "damaged_copper_anvil",
-            settings -> new MMEAnvilBlock(settings, MMETags.COPPER_OR_SILVER_NOT_ALLOWED_MATERIAL),
+            settings -> new MMEAnvilBlock(settings, MMEItemTags.COPPER_OR_SILVER_NOT_ALLOWED_MATERIAL),
             BlockBehaviour.Properties.ofFullCopy(Blocks.ANVIL),
             new Item.Properties().durability(maxDamageAnvil(MMEToolMaterials.COPPER.durability()))
     );
     public static final Block CHIPPED_COPPER_ANVIL = register(
             "chipped_copper_anvil",
-            settings -> new MMEAnvilBlock(settings, MMETags.COPPER_OR_SILVER_NOT_ALLOWED_MATERIAL),
+            settings -> new MMEAnvilBlock(settings, MMEItemTags.COPPER_OR_SILVER_NOT_ALLOWED_MATERIAL),
             BlockBehaviour.Properties.ofFullCopy(Blocks.ANVIL),
             new Item.Properties().durability(maxDamageAnvil(MMEToolMaterials.COPPER.durability()))
     );
     public static final Block COPPER_ANVIL = register(
             "copper_anvil",
-            settings -> new MMEAnvilBlock(settings, MMETags.COPPER_OR_SILVER_NOT_ALLOWED_MATERIAL),
+            settings -> new MMEAnvilBlock(settings, MMEItemTags.COPPER_OR_SILVER_NOT_ALLOWED_MATERIAL),
             BlockBehaviour.Properties.ofFullCopy(Blocks.ANVIL),
             new Item.Properties().durability(maxDamageAnvil(MMEToolMaterials.COPPER.durability()))
     );
@@ -381,47 +381,47 @@ public class MMEBlocks {
 
     public static final Block ADAMANTIUM_CRAFTING_TABLE = register(
             "adamantium_crafting_table",
-            settings -> new GradeCraftingTableBlock(settings, MMETags.ADAMANTIUM_NOT_ALLOWED_MATERIAL),
+            settings -> new GradeCraftingTableBlock(settings, MMEItemTags.ADAMANTIUM_NOT_ALLOWED_MATERIAL),
             BlockBehaviour.Properties.ofFullCopy(Blocks.CRAFTING_TABLE)
     );
     public static final Block MITHRIL_CRAFTING_TABLE = register(
             "mithril_crafting_table",
-            settings -> new GradeCraftingTableBlock(settings, MMETags.MITHRIL_NOT_ALLOWED_MATERIAL, ADAMANTIUM_CRAFTING_TABLE),
+            settings -> new GradeCraftingTableBlock(settings, MMEItemTags.MITHRIL_NOT_ALLOWED_MATERIAL, ADAMANTIUM_CRAFTING_TABLE),
             BlockBehaviour.Properties.ofFullCopy(Blocks.CRAFTING_TABLE)
     );
     public static final Block ANCIENT_METAL_CRAFTING_TABLE = register(
             "ancient_metal_crafting_table",
-            settings -> new GradeCraftingTableBlock(settings, MMETags.ANCIENT_METAL_NOT_ALLOWED_MATERIAL, MITHRIL_CRAFTING_TABLE),
+            settings -> new GradeCraftingTableBlock(settings, MMEItemTags.ANCIENT_METAL_NOT_ALLOWED_MATERIAL, MITHRIL_CRAFTING_TABLE),
             BlockBehaviour.Properties.ofFullCopy(Blocks.CRAFTING_TABLE)
     );
     public static final Block IRON_CRAFTING_TABLE = register(
             "iron_crafting_table",
-            settings -> new GradeCraftingTableBlock(settings, MMETags.IRON_NOT_ALLOWED_MATERIAL, ANCIENT_METAL_CRAFTING_TABLE),
+            settings -> new GradeCraftingTableBlock(settings, MMEItemTags.IRON_NOT_ALLOWED_MATERIAL, ANCIENT_METAL_CRAFTING_TABLE),
             BlockBehaviour.Properties.ofFullCopy(Blocks.CRAFTING_TABLE)
     );
     public static final Block COPPER_CRAFTING_TABLE = register(
             "copper_crafting_table",
-            settings -> new GradeCraftingTableBlock(settings, MMETags.COPPER_OR_SILVER_NOT_ALLOWED_MATERIAL, IRON_CRAFTING_TABLE),
+            settings -> new GradeCraftingTableBlock(settings, MMEItemTags.COPPER_OR_SILVER_NOT_ALLOWED_MATERIAL, IRON_CRAFTING_TABLE),
             BlockBehaviour.Properties.ofFullCopy(Blocks.CRAFTING_TABLE)
     );
     public static final Block SILVER_CRAFTING_TABLE = register(
             "silver_crafting_table",
-            settings -> new GradeCraftingTableBlock(settings, MMETags.COPPER_OR_SILVER_NOT_ALLOWED_MATERIAL, IRON_CRAFTING_TABLE),
+            settings -> new GradeCraftingTableBlock(settings, MMEItemTags.COPPER_OR_SILVER_NOT_ALLOWED_MATERIAL, IRON_CRAFTING_TABLE),
             BlockBehaviour.Properties.ofFullCopy(Blocks.CRAFTING_TABLE)
     );
     public static final Block GOLD_CRAFTING_TABLE = register(
             "gold_crafting_table",
-            settings -> new GradeCraftingTableBlock(settings, MMETags.GOLD_NOT_ALLOWED_MATERIAL),
+            settings -> new GradeCraftingTableBlock(settings, MMEItemTags.GOLD_NOT_ALLOWED_MATERIAL),
             BlockBehaviour.Properties.ofFullCopy(Blocks.CRAFTING_TABLE)
     );
     public static final Block FLINT_CRAFTING_TABLE = register(
             "flint_crafting_table",
-            settings -> new GradeCraftingTableBlock(settings, MMETags.GOLD_NOT_ALLOWED_MATERIAL, COPPER_CRAFTING_TABLE, SILVER_CRAFTING_TABLE),
+            settings -> new GradeCraftingTableBlock(settings, MMEItemTags.GOLD_NOT_ALLOWED_MATERIAL, COPPER_CRAFTING_TABLE, SILVER_CRAFTING_TABLE),
             BlockBehaviour.Properties.ofFullCopy(Blocks.CRAFTING_TABLE)
     );
     public static final Block OBSIDIAN_CRAFTING_TABLE = register(
             "obsidian_crafting_table",
-            settings -> new GradeCraftingTableBlock(settings, MMETags.GOLD_NOT_ALLOWED_MATERIAL, COPPER_CRAFTING_TABLE, SILVER_CRAFTING_TABLE),
+            settings -> new GradeCraftingTableBlock(settings, MMEItemTags.GOLD_NOT_ALLOWED_MATERIAL, COPPER_CRAFTING_TABLE, SILVER_CRAFTING_TABLE),
             BlockBehaviour.Properties.ofFullCopy(Blocks.CRAFTING_TABLE)
     );
 

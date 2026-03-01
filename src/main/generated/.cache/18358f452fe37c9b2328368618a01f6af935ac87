@@ -26,6 +26,7 @@ a30897ac2c72cf62849cc08b3b08a3693fcc7ccf data/mme/tags/item/ancient_metal_tool_m
 c36257a90f69201576983c667bd1bfc3cfe62ed8 data/mme/tags/item/copper_series_repairable.json
 517aa363871502cb79caeca2cc19eaf9a4cac707 data/mme/tags/item/copper_tool_materials.json
 4c2ffa2b694109cd8d961fbebce57ef0a235ca9e data/mme/tags/item/dagger.json
+db4456ed0e58af30d8201f89d010ede5d81188cc data/mme/tags/item/dagger_enchantable.json
 be2b1f39ec940749345ee93d0e9e6b00fd5dc1fb data/mme/tags/item/fishing_rods.json
 06297e3c72fe0b12bf9db435c1d4046fafe18fd3 data/mme/tags/item/gold_not_allowed_material.json
 7faceaaf812e90cb3f05bdfda85cf207c68846d2 data/mme/tags/item/gold_series_repairable.json

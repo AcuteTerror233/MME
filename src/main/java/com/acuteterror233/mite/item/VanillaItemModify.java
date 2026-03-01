@@ -18,6 +18,7 @@ import net.minecraft.world.item.equipment.ArmorType;
 import net.minecraft.world.level.block.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 import java.util.function.UnaryOperator;
@@ -134,22 +135,35 @@ public final class VanillaItemModify {
         result.put(ResourceLocation.withDefaultNamespace("resin_clump"), settings -> settings.stacksTo(16));
         result.put(ResourceLocation.withDefaultNamespace("torchflower_seeds"), settings -> settings.stacksTo(16));
         result.put(ResourceLocation.withDefaultNamespace("pitcher_pod"), settings -> settings.stacksTo(16));
-        result.put(ResourceLocation.withDefaultNamespace("glow_berries"), settings -> settings.stacksTo(16));
         result.put(ResourceLocation.withDefaultNamespace("item_frame"), settings -> settings.stacksTo(16));
         result.put(ResourceLocation.withDefaultNamespace("glow_item_frame"), settings -> settings.stacksTo(16));
         result.put(ResourceLocation.withDefaultNamespace("painting"), settings -> settings.stacksTo(16));
         result.put(ResourceLocation.withDefaultNamespace("fire_charge"), settings -> settings.stacksTo(16));
         result.put(ResourceLocation.withDefaultNamespace("name_tag"), settings -> settings.stacksTo(16));
         result.put(ResourceLocation.withDefaultNamespace("chorus_fruit"), settings -> settings.stacksTo(16));
-        result.put(ResourceLocation.withDefaultNamespace("beetroot"), settings -> settings.stacksTo(16));
-        result.put(ResourceLocation.withDefaultNamespace("rabbit"), settings -> settings.stacksTo(16));
-        result.put(ResourceLocation.withDefaultNamespace("cooked_rabbit"), settings -> settings.stacksTo(16));
         result.put(ResourceLocation.withDefaultNamespace("tropical_fish"), settings -> settings.stacksTo(16));
         result.put(ResourceLocation.withDefaultNamespace("pufferfish"), settings -> settings.stacksTo(16));
         result.put(ResourceLocation.withDefaultNamespace("prismarine_crystals"), settings -> settings.stacksTo(16));
         result.put(ResourceLocation.withDefaultNamespace("nautilus_shell"), settings -> settings.stacksTo(16));
         result.put(ResourceLocation.withDefaultNamespace("disc_fragment_5"), settings -> settings.stacksTo(16));
         result.put(ResourceLocation.withDefaultNamespace("firework_star"), settings -> settings.stacksTo(16));
+        result.put(ResourceLocation.withDefaultNamespace("glow_berries"), settings -> settings
+                .stacksTo(16)
+                .food(new FoodProperties(1, 1, false))
+                .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().fiber(4800).build())
+        );
+        result.put(ResourceLocation.withDefaultNamespace("rabbit"), settings -> settings
+                .stacksTo(16)
+                .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().protein(24000).build())
+        );
+        result.put(ResourceLocation.withDefaultNamespace("cooked_rabbit"), settings -> settings
+                .stacksTo(16)
+                .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().protein(48000).build())
+        );
+        result.put(ResourceLocation.withDefaultNamespace("beetroot"), settings -> settings
+                .stacksTo(16)
+                .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().fiber(16000).build())
+        );
         result.put(ResourceLocation.withDefaultNamespace("mutton"), settings -> settings
                 .stacksTo(16)
                 .food(new FoodProperties(3, 3, false))
@@ -266,12 +280,27 @@ public final class VanillaItemModify {
         );
         result.put(ResourceLocation.withDefaultNamespace("golden_apple"), settings -> settings
                 .stacksTo(16)
-                .food(new FoodProperties(1, 2, false), Consumables.GOLDEN_APPLE)
+                .food(new FoodProperties(1, 2, true), Consumables.defaultFood()
+                        .onConsume(
+                                new ApplyStatusEffectsConsumeEffect(List.of(new MobEffectInstance(MobEffects.REGENERATION, 1200, 1), new MobEffectInstance(MobEffects.ABSORPTION, 2400, 0)))
+                        ).build()
+                )
                 .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().fiber(8000).sugar(4800).build())
         );
         result.put(ResourceLocation.withDefaultNamespace("enchanted_golden_apple"), settings -> settings
                 .stacksTo(16)
-                .food(new FoodProperties(1, 2, false), Consumables.ENCHANTED_GOLDEN_APPLE)
+                .food(new FoodProperties(1, 2, true), Consumables.defaultFood()
+                        .onConsume(
+                                new ApplyStatusEffectsConsumeEffect(
+                                        List.of(
+                                                new MobEffectInstance(MobEffects.REGENERATION, 2400, 1),
+                                                new MobEffectInstance(MobEffects.RESISTANCE, 6000, 0),
+                                                new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 6000, 0),
+                                                new MobEffectInstance(MobEffects.ABSORPTION, 2400, 3)
+                                        )
+                                )
+                        ).build()
+                )
                 .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().fiber(8000).sugar(4800).build())
         );
         result.put(ResourceLocation.withDefaultNamespace("raw_copper"), settings -> settings
@@ -299,12 +328,22 @@ public final class VanillaItemModify {
         result.put(ResourceLocation.withDefaultNamespace("paper"), settings -> settings.stacksTo(32));
         result.put(ResourceLocation.withDefaultNamespace("redstone"), settings -> settings.stacksTo(32));
         result.put(ResourceLocation.withDefaultNamespace("glowstone_dust"), settings -> settings.stacksTo(32));
-        result.put(ResourceLocation.withDefaultNamespace("dried_kelp"), settings -> settings.stacksTo(32));
         result.put(ResourceLocation.withDefaultNamespace("cocoa_beans"), settings -> settings.stacksTo(32));
-        result.put(ResourceLocation.withDefaultNamespace("beetroot_seeds"), settings -> settings.stacksTo(32));
-        result.put(ResourceLocation.withDefaultNamespace("sweet_berries"), settings -> settings.stacksTo(32));
         result.put(ResourceLocation.withDefaultNamespace("seagrass"), settings -> settings.stacksTo(32));
         result.put(ResourceLocation.withDefaultNamespace("gunpowder"), settings -> settings.stacksTo(32));
+        result.put(ResourceLocation.withDefaultNamespace("sweet_berries"), settings -> settings
+                .stacksTo(32)
+                .food(new FoodProperties(1, 1, false))
+                .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().sugar(4800).build())
+        );
+        result.put(ResourceLocation.withDefaultNamespace("dried_kelp"), settings -> settings
+                .stacksTo(32)
+                .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().fiber(4800).build())
+        );
+        result.put(ResourceLocation.withDefaultNamespace("beetroot_seeds"), settings -> settings
+                .stacksTo(32)
+                .food(new FoodProperties(1, 1, false))
+        );
         result.put(ResourceLocation.withDefaultNamespace("melon_slice"), settings -> settings
                 .stacksTo(32)
                 .food(new FoodProperties(1, 1, false))
@@ -378,19 +417,39 @@ public final class VanillaItemModify {
         result.put(ResourceLocation.withDefaultNamespace("fishing_rod"), properties -> new Item.Properties());
         result.put(ResourceLocation.withDefaultNamespace("bow"), properties -> properties.durability(64));
         result.put(ResourceLocation.withDefaultNamespace("crossbow"), properties -> properties.durability(128));
-        result.put(ResourceLocation.withDefaultNamespace("mushroom_stew"), properties -> properties.food(new FoodProperties(4, 2, false)));
-        result.put(ResourceLocation.withDefaultNamespace("milk_bucket"), properties -> properties.food(new FoodProperties(4, 0, false), Consumables.MILK_BUCKET));
+        result.put(ResourceLocation.withDefaultNamespace("mushroom_stew"), properties -> properties
+                .food(new FoodProperties(4, 2, false))
+        );
+        result.put(ResourceLocation.withDefaultNamespace("milk_bucket"), properties -> properties
+                .food(new FoodProperties(4, 0, false), Consumables.MILK_BUCKET)
+        );
         result.put(ResourceLocation.withDefaultNamespace("egg"), properties -> properties
                 .food(new FoodProperties(3, 1, false))
-                .component(MMEDataComponentTypes.FOOD_NUTRITION, new FoodNutrition(24000, 0 ,0))
+                .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().protein(8000).build())
         );
         result.put(ResourceLocation.withDefaultNamespace("blue_egg"), properties -> properties
                 .food(new FoodProperties(3, 1, false))
-                .component(MMEDataComponentTypes.FOOD_NUTRITION, new FoodNutrition(24000, 0 ,0))
+                .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().protein(8000).build())
         );
         result.put(ResourceLocation.withDefaultNamespace("brown_egg"), properties -> properties
                 .food(new FoodProperties(3, 1, false))
-                .component(MMEDataComponentTypes.FOOD_NUTRITION, new FoodNutrition(24000, 0 ,0))
+                .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().protein(8000).build())
+        );
+        result.put(ResourceLocation.withDefaultNamespace("beetroot_soup"), properties -> properties
+                .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().fiber(112000).build())
+        );
+        result.put(ResourceLocation.withDefaultNamespace("rabbit_stew"), properties -> properties
+                .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().fiber(48000).protein(48000).build())
+        );
+        result.put(ResourceLocation.withDefaultNamespace("suspicious_stew"), properties -> properties
+                .food(new FoodProperties(3, 3, true))
+        );
+        result.put(ResourceLocation.withDefaultNamespace("chorus_fruit"), properties -> properties
+                .food(new FoodProperties(1, 1, false))
+                .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().fiber(12000).build())
+        );
+        result.put(ResourceLocation.withDefaultNamespace("honey_bottle"), properties -> properties
+                .food(new FoodProperties(0, 2, true))
         );
         return result;
     }

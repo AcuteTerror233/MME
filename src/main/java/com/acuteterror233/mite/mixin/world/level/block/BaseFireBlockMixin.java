@@ -3,7 +3,7 @@ package com.acuteterror233.mite.mixin.world.level.block;
 import com.acuteterror233.mite.atinterface.UniversalPortalShapeExtension;
 import com.acuteterror233.mite.block.MMEBlocks;
 import com.acuteterror233.mite.generator.RunePortalCoordinateGenerator;
-import com.acuteterror233.mite.registry.tag.MMETags;
+import com.acuteterror233.mite.registry.tag.MMEBlockTags;
 import com.acuteterror233.mite.world.gen.dimension.MMEDimensionTypeRegistrar;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -37,8 +37,8 @@ public abstract class BaseFireBlockMixin {
             if (optional.isPresent()) {
                 UniversalPortalShapeExtension extension = (UniversalPortalShapeExtension) optional.get();
                 ResourceKey<Level> worldRegistryKey = world.dimension();
-                boolean adamantiumRunePortalValid = extension.MME$VerifyPortalValid(world, MMETags.ADAMANTIUM_RUNESTORE);
-                boolean mithrilPortalValid = extension.MME$VerifyPortalValid(world, MMETags.MITHRIL_RUNESTORE);
+                boolean adamantiumRunePortalValid = extension.MME$VerifyPortalValid(world, MMEBlockTags.ADAMANTIUM_RUNESTORE);
+                boolean mithrilPortalValid = extension.MME$VerifyPortalValid(world, MMEBlockTags.MITHRIL_RUNESTORE);
                 if (adamantiumRunePortalValid || mithrilPortalValid && worldRegistryKey != Level.END) {
                     int maxDistance = 6000;
                     int minDistance = 4000;

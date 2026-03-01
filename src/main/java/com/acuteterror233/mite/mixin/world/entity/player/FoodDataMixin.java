@@ -12,8 +12,6 @@ import net.minecraft.world.Difficulty;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.ai.attributes.AttributeInstance;
-import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.food.FoodData;
 import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.GameType;
@@ -125,72 +123,60 @@ public abstract class FoodDataMixin implements FoodDataExtension {
 
     @Unique
     public void updatePlayerEffects(ServerPlayer player) {
-        // 处理 fiber 相关逻辑
-        handleNutrientEffect(player, this.fiber, MMEMobEffects.MALNUTRITION, () -> this.fiber--, () -> addFiber(1));
-
-        // 处理 protein 相关逻辑
-        handleNutrientEffect(player, this.protein, MMEMobEffects.MALNUTRITION, () -> this.protein--, () -> addProtein(1));
+        // 处理 营养 相关逻辑
+        handleNutrientEffect(player, MMEMobEffects.MALNUTRITION);
 
         // 处理 sugar 相关逻辑
         handleSugar(player, this.sugar, MMEMobEffects.INSULIN_RESISTANCE, () -> this.sugar--);
     }
 
     @Unique
-    private void handleNutrientEffect(ServerPlayer player, float nutrientLevel, Holder<MobEffect> effect, Runnable decrementAction, Runnable incrementAction) {
+    private void handleNutrientEffect(ServerPlayer player, Holder<MobEffect> effect) {
         if (!player.hasInfiniteMaterials()){
-            // 处理营养不足的情况
-            if (nutrientLevel >= 0) {
+            if (this.fiber > 0) {
+                this.fiber--;
+            }
+            if (this.protein > 0) {
+                this.protein--;
+            }
+            if (this.fiber <= 0 || this.protein <= 0){
+                if (!player.hasEffect(effect)){
+                    player.addEffect(new MobEffectInstance(effect , -1 , 0, true, false));
+                }
+            }else {
                 if (player.hasEffect(effect)) {
                     player.removeEffect(effect);
                 }
-                if (player.level().getDifficulty() == Difficulty.PEACEFUL) {
-                    incrementAction.run();
-                }else {
-                    decrementAction.run();
-                }
-            } else if (!player.hasEffect(effect)) {
-                // 添加持续时间为永久的效果（-1 表示永久）
-                player.addEffect(new MobEffectInstance(effect, -1, 0, false, false), player);
             }
-        }else {
-            incrementAction.run();
         }
     }
 
     @Unique
     private void handleSugar(ServerPlayer player, float sugar, Holder<MobEffect> effect, Runnable decrementAction) {
-        if (!player.hasInfiniteMaterials()){
-            // 处理糖的情况
-            if (sugar > 0) {
-                decrementAction.run();
+        // 处理糖的情况
+        if (sugar > 0) {
+            decrementAction.run();
+        }
+        // 根据糖分阈值给予不同等级的反胃效果
+        if (sugar > 144000) {
+            if (player.getEffect(effect).getAmplifier() != 2){
+                player.addEffect(new MobEffectInstance(effect, -1, 2, true, false), player);
             }
-            // 根据糖分阈值给予不同等级的反胃效果
-            if (sugar > 144000) {
-                if (player.getEffect(effect).getAmplifier() != 2){
-                    player.addEffect(new MobEffectInstance(effect, -1, 2, false, false), player);
-                }
-            } else if (sugar > 96000) {
-                if (player.getEffect(effect).getAmplifier() != 1){
-                    player.addEffect(new MobEffectInstance(effect, -1, 1, false, false), player);
-                }
-            } else if (sugar > 48000) {
-                if (!player.hasEffect(effect)){
-                    player.addEffect(new MobEffectInstance(effect, -1, 0, false, false), player);
-                    AttributeInstance maxHealth = player.getAttribute(Attributes.MAX_HEALTH);
-                    if (maxHealth.getBaseValue() >= 2) {
-                        maxHealth.setBaseValue(maxHealth.getBaseValue() - 2);
-                    }
-                }else {
-                    player.getAttribute(Attributes.MAX_HEALTH).setBaseValue(Attributes.MAX_HEALTH.value().getDefaultValue());
-                }
-            } else {
-                // 糖分低于48000，移除反胃效果
-                if (player.hasEffect(MobEffects.NAUSEA)) {
-                    player.removeEffect(MobEffects.NAUSEA);
-                }
-                if (player.hasEffect(effect)) {
-                    player.removeEffect(effect);
-                }
+        } else if (sugar > 96000) {
+            if (player.getEffect(effect).getAmplifier() != 1){
+                player.addEffect(new MobEffectInstance(effect, -1, 1, true, false), player);
+            }
+        } else if (sugar > 48000) {
+            if (!player.hasEffect(effect)){
+                player.addEffect(new MobEffectInstance(effect, -1, 0, true, false), player);
+            }
+        } else {
+            // 糖分低于48000，移除反胃效果
+            if (player.hasEffect(MobEffects.NAUSEA)) {
+                player.removeEffect(MobEffects.NAUSEA);
+            }
+            if (player.hasEffect(effect)) {
+                player.removeEffect(effect);
             }
         }
     }

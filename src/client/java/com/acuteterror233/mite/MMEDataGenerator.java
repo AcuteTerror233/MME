@@ -1,6 +1,7 @@
 package com.acuteterror233.mite;
 
 import com.acuteterror233.mite.datagen.*;
+import com.acuteterror233.mite.item.enchantment.MMEEnchantments;
 import com.acuteterror233.mite.world.biome.MMEBiomes;
 import com.acuteterror233.mite.world.gen.dimension.MMEDimensionTypeRegistrar;
 import com.acuteterror233.mite.world.gen.feature.MMEConfiguredFeatures;
@@ -23,6 +24,7 @@ public class MMEDataGenerator implements DataGeneratorEntrypoint {
         pack.addProvider(MMEBiomeTagProvider::new);
         pack.addProvider(Zh_cnLanguageProvider::new);
         pack.addProvider(En_usLanguageProvider::new);
+        pack.addProvider(MMEEntityTypeTagProvider::new);
 	}
     @Override
     public void buildRegistry(RegistrySetBuilder registryBuilder){
@@ -30,5 +32,6 @@ public class MMEDataGenerator implements DataGeneratorEntrypoint {
         registryBuilder.add(Registries.BIOME, MMEBiomes::bootstrap);
         registryBuilder.add(Registries.PLACED_FEATURE, MMEPlacedFeatures::bootstrap);
         registryBuilder.add(Registries.CONFIGURED_FEATURE, MMEConfiguredFeatures::bootstrap);
+        registryBuilder.add(Registries.ENCHANTMENT, MMEEnchantments::bootstrap);
     }
 }

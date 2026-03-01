@@ -2,6 +2,7 @@ package com.acuteterror233.mite.datagen;
 
 import com.acuteterror233.mite.block.MMEBlocks;
 import com.acuteterror233.mite.item.MMEItems;
+import com.acuteterror233.mite.item.enchantment.MMEEnchantments;
 import com.acuteterror233.mite.world.effect.MMEMobEffects;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
@@ -114,7 +115,7 @@ public class Zh_cnLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(MMEItems.IRON_COINS, "铁币");
 
         translationBuilder.add(MMEItems.NETHERITE_BATTLE_AXE, "下界合金战斧");
-        translationBuilder.add(MMEItems.NETHERITE_DAGGER, "下界合金匕首");
+        translationBuilder.add(MMEItems.NETHERITE_DAGGER, "下界合金短剑");
         translationBuilder.add(MMEItems.NETHERITE_HATCHET, "下界合金短斧");
         translationBuilder.add(MMEItems.NETHERITE_KNIFE, "下界合金小刀");
         translationBuilder.add(MMEItems.NETHERITE_MATTOCK, "下界合金鹤嘴锄");
@@ -123,7 +124,7 @@ public class Zh_cnLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(MMEItems.NETHERITE_WAR_HAMMER, "下界合金战锤");
         translationBuilder.add(MMEItems.ADAMANTIUM_AXE, "艾德曼斧");
         translationBuilder.add(MMEItems.ADAMANTIUM_BATTLE_AXE, "艾德曼战斧");
-        translationBuilder.add(MMEItems.ADAMANTIUM_DAGGER, "艾德曼匕首");
+        translationBuilder.add(MMEItems.ADAMANTIUM_DAGGER, "艾德曼短剑");
         translationBuilder.add(MMEItems.ADAMANTIUM_HATCHET, "艾德曼短斧");
         translationBuilder.add(MMEItems.ADAMANTIUM_HOE, "艾德曼锄头");
         translationBuilder.add(MMEItems.ADAMANTIUM_KNIFE, "艾德曼小刀");
@@ -136,7 +137,7 @@ public class Zh_cnLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(MMEItems.ADAMANTIUM_WAR_HAMMER, "艾德曼战锤");
         translationBuilder.add(MMEItems.MITHRIL_AXE, "秘银斧");
         translationBuilder.add(MMEItems.MITHRIL_BATTLE_AXE, "秘银战斧");
-        translationBuilder.add(MMEItems.MITHRIL_DAGGER, "秘银匕首");
+        translationBuilder.add(MMEItems.MITHRIL_DAGGER, "秘银短剑");
         translationBuilder.add(MMEItems.MITHRIL_HATCHET, "秘银短斧");
         translationBuilder.add(MMEItems.MITHRIL_HOE, "秘银锄头");
         translationBuilder.add(MMEItems.MITHRIL_KNIFE, "秘银小刀");
@@ -149,7 +150,7 @@ public class Zh_cnLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(MMEItems.MITHRIL_WAR_HAMMER, "秘银战锤");
         translationBuilder.add(MMEItems.ANCIENT_METAL_AXE, "远古金属斧");
         translationBuilder.add(MMEItems.ANCIENT_METAL_BATTLE_AXE, "远古金属战斧");
-        translationBuilder.add(MMEItems.ANCIENT_METAL_DAGGER, "远古金属匕首");
+        translationBuilder.add(MMEItems.ANCIENT_METAL_DAGGER, "远古金属短剑");
         translationBuilder.add(MMEItems.ANCIENT_METAL_HATCHET, "远古金属短斧");
         translationBuilder.add(MMEItems.ANCIENT_METAL_HOE, "远古金属锄头");
         translationBuilder.add(MMEItems.ANCIENT_METAL_KNIFE, "远古金属小刀");
@@ -161,7 +162,7 @@ public class Zh_cnLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(MMEItems.ANCIENT_METAL_SWORD, "远古金属剑");
         translationBuilder.add(MMEItems.ANCIENT_METAL_WAR_HAMMER, "远古金属战锤");
         translationBuilder.add(MMEItems.IRON_BATTLE_AXE, "铁战斧");
-        translationBuilder.add(MMEItems.IRON_DAGGER, "铁匕首");
+        translationBuilder.add(MMEItems.IRON_DAGGER, "铁短剑");
         translationBuilder.add(MMEItems.IRON_HATCHET, "铁短斧");
         translationBuilder.add(MMEItems.IRON_KNIFE, "铁小刀");
         translationBuilder.add(MMEItems.IRON_MATTOCK, "铁鹤嘴锄");
@@ -169,7 +170,7 @@ public class Zh_cnLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(MMEItems.IRON_WAR_HAMMER, "铁战锤");
         translationBuilder.add(MMEItems.RUSTED_IRON_AXE, "锈铁斧");
         translationBuilder.add(MMEItems.RUSTED_IRON_BATTLE_AXE, "锈铁战斧");
-        translationBuilder.add(MMEItems.RUSTED_IRON_DAGGER, "锈铁匕首");
+        translationBuilder.add(MMEItems.RUSTED_IRON_DAGGER, "锈铁短剑");
         translationBuilder.add(MMEItems.RUSTED_IRON_HATCHET, "锈铁短斧");
         translationBuilder.add(MMEItems.RUSTED_IRON_HOE, "锈铁锄头");
         translationBuilder.add(MMEItems.RUSTED_IRON_KNIFE, "锈铁小刀");
@@ -182,7 +183,7 @@ public class Zh_cnLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(MMEItems.RUSTED_IRON_WAR_HAMMER, "锈铁战锤");
         translationBuilder.add(MMEItems.COPPER_AXE, "铜斧");
         translationBuilder.add(MMEItems.COPPER_BATTLE_AXE, "铜战斧");
-        translationBuilder.add(MMEItems.COPPER_DAGGER, "铜匕首");
+        translationBuilder.add(MMEItems.COPPER_DAGGER, "铜短剑");
         translationBuilder.add(MMEItems.COPPER_HATCHET, "铜短斧");
         translationBuilder.add(MMEItems.COPPER_HOE, "铜锄头");
         translationBuilder.add(MMEItems.COPPER_KNIFE, "铜小刀");
@@ -195,7 +196,7 @@ public class Zh_cnLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(MMEItems.COPPER_WAR_HAMMER, "铜战锤");
         translationBuilder.add(MMEItems.SILVER_AXE, "银斧");
         translationBuilder.add(MMEItems.SILVER_BATTLE_AXE, "银战斧");
-        translationBuilder.add(MMEItems.SILVER_DAGGER, "银匕首");
+        translationBuilder.add(MMEItems.SILVER_DAGGER, "银短剑");
         translationBuilder.add(MMEItems.SILVER_HATCHET, "银短斧");
         translationBuilder.add(MMEItems.SILVER_HOE, "银锄头");
         translationBuilder.add(MMEItems.SILVER_KNIFE, "银小刀");
@@ -207,7 +208,7 @@ public class Zh_cnLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(MMEItems.SILVER_SWORD, "银剑");
         translationBuilder.add(MMEItems.SILVER_WAR_HAMMER, "银战锤");
         translationBuilder.add(MMEItems.GOLDEN_BATTLE_AXE, "金战斧");
-        translationBuilder.add(MMEItems.GOLDEN_DAGGER, "金匕首");
+        translationBuilder.add(MMEItems.GOLDEN_DAGGER, "金短剑");
         translationBuilder.add(MMEItems.GOLDEN_HATCHET, "金短斧");
         translationBuilder.add(MMEItems.GOLDEN_KNIFE, "金小刀");
         translationBuilder.add(MMEItems.GOLDEN_MATTOCK, "金鹤嘴锄");
@@ -222,7 +223,7 @@ public class Zh_cnLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(MMEItems.OBSIDIAN_HATCHET, "黑曜石短斧");
         translationBuilder.add(MMEItems.OBSIDIAN_KNIFE, "黑曜石小刀");
         translationBuilder.add(MMEItems.OBSIDIAN_SHOVEL, "黑曜石铲子");
-        translationBuilder.add(MMEItems.STONE_DAGGER, "石匕首");
+        translationBuilder.add(MMEItems.STONE_DAGGER, "石短剑");
         translationBuilder.add(MMEItems.WOODEN_CLUB, "木棒");
         translationBuilder.add(MMEItems.WOODEN_CUDGEL, "小木棒");
 
@@ -429,5 +430,7 @@ public class Zh_cnLanguageProvider extends FabricLanguageProvider {
 
         translationBuilder.add(MMEMobEffects.INSULIN_RESISTANCE.value(), "糖尿病");
         translationBuilder.add(MMEMobEffects.MALNUTRITION.value(), "营养不良");
+
+        translationBuilder.addEnchantment(MMEEnchantments.BUTCHERING, "屠宰");
     }
 }

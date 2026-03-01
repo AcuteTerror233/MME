@@ -1,7 +1,7 @@
 package com.acuteterror233.mite.mixin.world.entity.animal;
 
 import com.acuteterror233.mite.item.MMEItems;
-import com.acuteterror233.mite.registry.tag.MMETags;
+import com.acuteterror233.mite.registry.tag.MMEItemTags;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.sounds.SoundEvents;
@@ -42,7 +42,7 @@ public abstract class AbstractCowMixin extends Animal {
     public @NotNull InteractionResult mobInteract(Player player, InteractionHand interactionHand) {
         ItemStack itemStack = player.getItemInHand(interactionHand);
         if (!this.isBaby()) {
-            if (itemStack.is(MMETags.BUCKET) && this.milkCounter == 4){
+            if (itemStack.is(MMEItemTags.BUCKET) && this.milkCounter == 4){
                 this.milkCounter-=4;
                 player.playSound(SoundEvents.COW_MILK, 1.0F, 1.0F);
                 Optional<Item> milk = BuiltInRegistries.ITEM.getOptional(BuiltInRegistries.ITEM.getKey(itemStack.getItem()).withPrefix("milk_"));

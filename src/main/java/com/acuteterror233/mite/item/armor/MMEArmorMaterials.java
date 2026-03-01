@@ -3,7 +3,7 @@ package com.acuteterror233.mite.item.armor;
 import com.acuteterror233.mite.MME;
 import com.acuteterror233.mite.item.MMEToolMaterials;
 import com.acuteterror233.mite.item.equipment.MMEArmorMaterial;
-import com.acuteterror233.mite.registry.tag.MMETags;
+import com.acuteterror233.mite.registry.tag.MMEItemTags;
 import com.google.common.collect.Maps;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -51,7 +51,7 @@ public class MMEArmorMaterials {
             SoundEvents.ARMOR_EQUIP_NETHERITE,
             1.0F,
             0.75F,
-            MMETags.ADAMANTIUM_TOOL_MATERIALS,
+            MMEItemTags.ADAMANTIUM_TOOL_MATERIALS,
             ADAMANTIUM_MATERIAL_KEY
     );
     public static final MMEArmorMaterial ADAMANTIUM_CHAINMAIL_MATERIAL = new MMEArmorMaterial(
@@ -61,7 +61,7 @@ public class MMEArmorMaterials {
             SoundEvents.ARMOR_EQUIP_NETHERITE,
             1.0F,
             0.75F,
-            MMETags.ADAMANTIUM_TOOL_MATERIALS,
+            MMEItemTags.ADAMANTIUM_TOOL_MATERIALS,
             ADAMANTIUM_CHAINMAIL_MATERIAL_KEY
     );
     public static final MMEArmorMaterial MITHRIL_MATERIAL = new MMEArmorMaterial(
@@ -71,7 +71,7 @@ public class MMEArmorMaterials {
             SoundEvents.ARMOR_EQUIP_DIAMOND,
             0.0F,
             0.5F,
-            MMETags.MITHRIL_TOOL_MATERIALS,
+            MMEItemTags.MITHRIL_TOOL_MATERIALS,
             MITHRIL_MATERIAL_KEY
     );
     public static final MMEArmorMaterial MITHRIL_CHAINMAIL_MATERIAL = new MMEArmorMaterial(
@@ -81,7 +81,7 @@ public class MMEArmorMaterials {
             SoundEvents.ARMOR_EQUIP_DIAMOND,
             0.0F,
             0.5F,
-            MMETags.MITHRIL_TOOL_MATERIALS,
+            MMEItemTags.MITHRIL_TOOL_MATERIALS,
             MITHRIL_CHAINMAIL_MATERIAL_KEY
     );
     public static final MMEArmorMaterial ANCIENT_METAL_MATERIAL = new MMEArmorMaterial(
@@ -91,7 +91,7 @@ public class MMEArmorMaterials {
             SoundEvents.ARMOR_EQUIP_GOLD,
             0.0F,
             0.0F,
-            MMETags.ANCIENT_METAL_TOOL_MATERIALS,
+            MMEItemTags.ANCIENT_METAL_TOOL_MATERIALS,
             ANCIENT_METAL_MATERIAL_KEY
     );
     public static final MMEArmorMaterial ANCIENT_METAL_CHAINMAIL_MATERIAL = new MMEArmorMaterial(
@@ -101,7 +101,7 @@ public class MMEArmorMaterials {
             SoundEvents.ARMOR_EQUIP_GOLD,
             0.0F,
             0.0F,
-            MMETags.ANCIENT_METAL_TOOL_MATERIALS,
+            MMEItemTags.ANCIENT_METAL_TOOL_MATERIALS,
             ANCIENT_METAL_CHAINMAIL_MATERIAL_KEY
     );
     public static final MMEArmorMaterial IRON_MATERIAL = new MMEArmorMaterial(
@@ -151,7 +151,7 @@ public class MMEArmorMaterials {
             SoundEvents.ARMOR_EQUIP_CHAIN,
             0.0F,
             0.0F,
-            MMETags.COPPER_TOOL_MATERIALS,
+            MMEItemTags.COPPER_TOOL_MATERIALS,
             COPPER_MATERIAL_KEY
     );
     public static final MMEArmorMaterial COPPER_CHAINMAIL_MATERIAL = new MMEArmorMaterial(
@@ -161,7 +161,7 @@ public class MMEArmorMaterials {
             SoundEvents.ARMOR_EQUIP_CHAIN,
             0.0F,
             0.0F,
-            MMETags.COPPER_TOOL_MATERIALS,
+            MMEItemTags.COPPER_TOOL_MATERIALS,
             COPPER_CHAINMAIL_MATERIAL_KEY
     );
     public static final MMEArmorMaterial SILVER_MATERIAL = new MMEArmorMaterial(
@@ -171,7 +171,7 @@ public class MMEArmorMaterials {
             SoundEvents.ARMOR_EQUIP_CHAIN,
             0.0F,
             0.0F,
-            MMETags.SILVER_TOOL_MATERIALS,
+            MMEItemTags.SILVER_TOOL_MATERIALS,
             SILVER_MATERIAL_KEY
     );
     public static final MMEArmorMaterial SILVER_CHAINMAIL_MATERIAL = new MMEArmorMaterial(
@@ -181,7 +181,7 @@ public class MMEArmorMaterials {
             SoundEvents.ARMOR_EQUIP_CHAIN,
             0.0F,
             0.0F,
-            MMETags.SILVER_TOOL_MATERIALS,
+            MMEItemTags.SILVER_TOOL_MATERIALS,
             SILVER_CHAINMAIL_MATERIAL_KEY
     );
     public static final MMEArmorMaterial GOLD_CHAINMAIL_MATERIAL = new MMEArmorMaterial(

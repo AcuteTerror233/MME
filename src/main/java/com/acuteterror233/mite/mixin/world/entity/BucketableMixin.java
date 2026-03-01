@@ -1,6 +1,6 @@
 package com.acuteterror233.mite.mixin.world.entity;
 
-import com.acuteterror233.mite.registry.tag.MMETags;
+import com.acuteterror233.mite.registry.tag.MMEItemTags;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
@@ -28,7 +28,7 @@ public interface BucketableMixin {
     @Overwrite
     static <T extends LivingEntity & Bucketable> Optional<InteractionResult> bucketMobPickup(Player player, InteractionHand hand, T entity) {
         ItemStack itemStack = player.getItemInHand(hand);
-        if (itemStack.is(MMETags.WATER_BUCKET) && entity.isAlive()) {
+        if (itemStack.is(MMEItemTags.WATER_BUCKET) && entity.isAlive()) {
             entity.playSound(entity.getPickupSound(), 1.0F, 1.0F);
             ItemStack itemStack2 = new ItemStack(BuiltInRegistries.ITEM.getValue(ResourceLocation.parse(BuiltInRegistries.ITEM.getKey(itemStack.getItem()).toString().replace("water", "")).withPrefix(BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType()).toString().replace("minecraft:", ""))));
             entity.saveToBucketTag(itemStack2);

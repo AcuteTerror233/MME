@@ -2,11 +2,9 @@ package com.acuteterror233.mite.registry;
 
 import com.acuteterror233.mite.block.MMEBlocks;
 import com.acuteterror233.mite.item.MMEItems;
+import com.acuteterror233.mite.item.enchantment.MMEEnchantments;
 import net.fabricmc.fabric.api.loot.v3.LootTableEvents;
-import net.minecraft.advancements.critereon.DataComponentMatchers;
-import net.minecraft.advancements.critereon.EnchantmentPredicate;
-import net.minecraft.advancements.critereon.ItemPredicate;
-import net.minecraft.advancements.critereon.MinMaxBounds;
+import net.minecraft.advancements.critereon.*;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.component.predicates.DataComponentPredicates;
@@ -14,28 +12,26 @@ import net.minecraft.core.component.predicates.EnchantmentsPredicate;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.InstrumentTags;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.tags.StructureTags;
-import net.minecraft.tags.TagKey;
+import net.minecraft.tags.*;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.Potions;
+import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.saveddata.maps.MapDecorationTypes;
 import net.minecraft.world.level.storage.loot.BuiltInLootTables;
+import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.EmptyLootItem;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.*;
-import net.minecraft.world.level.storage.loot.predicates.BonusLevelTableCondition;
-import net.minecraft.world.level.storage.loot.predicates.ExplosionCondition;
-import net.minecraft.world.level.storage.loot.predicates.MatchTool;
+import net.minecraft.world.level.storage.loot.predicates.*;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.NumberProvider;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
@@ -46,12 +42,12 @@ import java.util.Map;
 import java.util.function.Function;
 
 public final class LootTableReplace {
-    public static Map<ResourceKey<LootTable>, Function<HolderLookup.Provider, LootTable>> LOOT_TABLES = new HashMap<>();
+    public static Map<ResourceKey<LootTable>, Function<HolderLookup.Provider, LootTable>> LOOT_TABLES_REPLACE = new HashMap<>();
     public static void init(){
-        LOOT_TABLES.put(Blocks.STONE.getLootTable().get(),
+        LOOT_TABLES_REPLACE.put(Blocks.STONE.getLootTable().get(),
                 provider -> createSilkTouchWithPickaxesWithExplosiveItemTable(provider, Blocks.STONE, Blocks.COBBLESTONE, Blocks.GRAVEL).build()
         );
-        LOOT_TABLES.put(BuiltInLootTables.SPAWN_BONUS_CHEST,
+        LOOT_TABLES_REPLACE.put(BuiltInLootTables.SPAWN_BONUS_CHEST,
                 provider -> LootTable.lootTable()
                         .withPool(
                                 LootPool.lootPool()
@@ -68,7 +64,7 @@ public final class LootTableReplace {
                                         .add(LootItem.lootTableItem(MMEItems.SILVER_NUGGET).setWeight(5).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F))))
                         ).build()
         );
-        LOOT_TABLES.put(BuiltInLootTables.END_CITY_TREASURE,
+        LOOT_TABLES_REPLACE.put(BuiltInLootTables.END_CITY_TREASURE,
                 provider -> LootTable.lootTable()
                         .withPool(
                                 LootPool.lootPool()
@@ -156,7 +152,7 @@ public final class LootTableReplace {
                                         .add(LootItem.lootTableItem(Items.SPIRE_ARMOR_TRIM_SMITHING_TEMPLATE).setWeight(1))
                         ).build()
         );
-        LOOT_TABLES.put(
+        LOOT_TABLES_REPLACE.put(
                 BuiltInLootTables.SIMPLE_DUNGEON,
                 provider ->  LootTable.lootTable()
                         .withPool(
@@ -201,7 +197,7 @@ public final class LootTableReplace {
                                         .add(LootItem.lootTableItem(Items.STRING).setWeight(10).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 8.0F))))
                         ).build()
         );
-        LOOT_TABLES.put(
+        LOOT_TABLES_REPLACE.put(
                 BuiltInLootTables.VILLAGE_WEAPONSMITH,
                 provider -> LootTable.lootTable()
                         .withPool(
@@ -226,7 +222,7 @@ public final class LootTableReplace {
                                         .add(EmptyLootItem.emptyItem().setWeight(2))
                         ).build()
         );
-        LOOT_TABLES.put(
+        LOOT_TABLES_REPLACE.put(
                 BuiltInLootTables.VILLAGE_TOOLSMITH,
                 provider -> LootTable.lootTable()
                         .withPool(
@@ -239,7 +235,7 @@ public final class LootTableReplace {
                                         .add(LootItem.lootTableItem(Items.STICK).setWeight(20).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 3.0F))))
                         ).build()
         );
-        LOOT_TABLES.put(BuiltInLootTables.VILLAGE_ARMORER,
+        LOOT_TABLES_REPLACE.put(BuiltInLootTables.VILLAGE_ARMORER,
                 provider -> 	LootTable.lootTable()
                         .withPool(
                                 LootPool.lootPool()
@@ -257,7 +253,7 @@ public final class LootTableReplace {
                                         .add(LootItem.lootTableItem(Items.EMERALD).setWeight(1))
                         ).build()
         );
-        LOOT_TABLES.put(BuiltInLootTables.VILLAGE_CARTOGRAPHER,
+        LOOT_TABLES_REPLACE.put(BuiltInLootTables.VILLAGE_CARTOGRAPHER,
                 provider -> LootTable.lootTable()
                         .withPool(
                                 LootPool.lootPool()
@@ -275,7 +271,7 @@ public final class LootTableReplace {
                                         .add(EmptyLootItem.emptyItem().setWeight(2))
                         ).build()
         );
-        LOOT_TABLES.put(BuiltInLootTables.VILLAGE_MASON,
+        LOOT_TABLES_REPLACE.put(BuiltInLootTables.VILLAGE_MASON,
                 provider -> 			LootTable.lootTable()
                         .withPool(
                                 LootPool.lootPool()
@@ -288,7 +284,7 @@ public final class LootTableReplace {
                                         .add(LootItem.lootTableItem(Items.EMERALD).setWeight(1))
                         ).build()
         );
-        LOOT_TABLES.put(BuiltInLootTables.VILLAGE_SHEPHERD,
+        LOOT_TABLES_REPLACE.put(BuiltInLootTables.VILLAGE_SHEPHERD,
                 provider ->
                         LootTable.lootTable()
                                 .withPool(
@@ -303,7 +299,7 @@ public final class LootTableReplace {
                                                 .add(LootItem.lootTableItem(Items.WHEAT).setWeight(1))
                                 ).build()
         );
-        LOOT_TABLES.put(BuiltInLootTables.VILLAGE_BUTCHER,
+        LOOT_TABLES_REPLACE.put(BuiltInLootTables.VILLAGE_BUTCHER,
                 provider -> 	LootTable.lootTable()
                         .withPool(
                                 LootPool.lootPool()
@@ -315,7 +311,7 @@ public final class LootTableReplace {
                                         .add(LootItem.lootTableItem(Items.CHICKEN).setWeight(6).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F))))
                         ).build()
         );
-        LOOT_TABLES.put(BuiltInLootTables.VILLAGE_FLETCHER,
+        LOOT_TABLES_REPLACE.put(BuiltInLootTables.VILLAGE_FLETCHER,
                 provider -> LootTable.lootTable()
                         .withPool(
                                 LootPool.lootPool()
@@ -327,7 +323,7 @@ public final class LootTableReplace {
                                         .add(LootItem.lootTableItem(Items.STICK).setWeight(6).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F))))
                         ).build()
         );
-        LOOT_TABLES.put(BuiltInLootTables.VILLAGE_FISHER,
+        LOOT_TABLES_REPLACE.put(BuiltInLootTables.VILLAGE_FISHER,
                 provider -> LootTable.lootTable()
                         .withPool(
                                 LootPool.lootPool()
@@ -337,7 +333,7 @@ public final class LootTableReplace {
                                         .add(LootItem.lootTableItem(Items.WHEAT_SEEDS).setWeight(3).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F))))
                         ).build()
         );
-        LOOT_TABLES.put(BuiltInLootTables.VILLAGE_TANNERY,
+        LOOT_TABLES_REPLACE.put(BuiltInLootTables.VILLAGE_TANNERY,
                 provider -> LootTable.lootTable()
                         .withPool(
                                 LootPool.lootPool()
@@ -356,7 +352,7 @@ public final class LootTableReplace {
                                         .add(EmptyLootItem.emptyItem().setWeight(2))
                         ).build()
         );
-        LOOT_TABLES.put(BuiltInLootTables.VILLAGE_TEMPLE,
+        LOOT_TABLES_REPLACE.put(BuiltInLootTables.VILLAGE_TEMPLE,
                 provider -> LootTable.lootTable()
                         .withPool(
                                 LootPool.lootPool()
@@ -368,7 +364,7 @@ public final class LootTableReplace {
                                         .add(LootItem.lootTableItem(Items.EMERALD).setWeight(1))
                         ).build()
         );
-        LOOT_TABLES.put(BuiltInLootTables.VILLAGE_DESERT_HOUSE,
+        LOOT_TABLES_REPLACE.put(BuiltInLootTables.VILLAGE_DESERT_HOUSE,
                 provider -> LootTable.lootTable()
                         .withPool(
                                 LootPool.lootPool()
@@ -388,7 +384,7 @@ public final class LootTableReplace {
                                         .add(EmptyLootItem.emptyItem().setWeight(2))
                         ).build()
         );
-        LOOT_TABLES.put(BuiltInLootTables.VILLAGE_PLAINS_HOUSE,
+        LOOT_TABLES_REPLACE.put(BuiltInLootTables.VILLAGE_PLAINS_HOUSE,
                 provider -> 	LootTable.lootTable()
                         .withPool(
                                 LootPool.lootPool()
@@ -409,7 +405,7 @@ public final class LootTableReplace {
                                         .add(EmptyLootItem.emptyItem().setWeight(2))
                         ).build()
         );
-        LOOT_TABLES.put(BuiltInLootTables.VILLAGE_TAIGA_HOUSE,
+        LOOT_TABLES_REPLACE.put(BuiltInLootTables.VILLAGE_TAIGA_HOUSE,
                 provider -> 	LootTable.lootTable()
                         .withPool(
                                 LootPool.lootPool()
@@ -431,7 +427,7 @@ public final class LootTableReplace {
                                         .add(EmptyLootItem.emptyItem().setWeight(2))
                         ).build()
         );
-        LOOT_TABLES.put(BuiltInLootTables.VILLAGE_SNOWY_HOUSE,
+        LOOT_TABLES_REPLACE.put(BuiltInLootTables.VILLAGE_SNOWY_HOUSE,
                 provider -> LootTable.lootTable()
                         .withPool(
                                 LootPool.lootPool()
@@ -452,7 +448,7 @@ public final class LootTableReplace {
                                         .add(EmptyLootItem.emptyItem().setWeight(2))
                         ).build()
         );
-        LOOT_TABLES.put(BuiltInLootTables.VILLAGE_SAVANNA_HOUSE,
+        LOOT_TABLES_REPLACE.put(BuiltInLootTables.VILLAGE_SAVANNA_HOUSE,
                 provider -> LootTable.lootTable()
                         .withPool(
                                 LootPool.lootPool()
@@ -472,7 +468,7 @@ public final class LootTableReplace {
                                         .add(EmptyLootItem.emptyItem().setWeight(2))
                         ).build()
         );
-        LOOT_TABLES.put(BuiltInLootTables.ABANDONED_MINESHAFT,
+        LOOT_TABLES_REPLACE.put(BuiltInLootTables.ABANDONED_MINESHAFT,
                 provider -> LootTable.lootTable()
                         .withPool(
                                 LootPool.lootPool()
@@ -509,7 +505,7 @@ public final class LootTableReplace {
                                         .add(LootItem.lootTableItem(Blocks.TORCH).setWeight(10).apply(SetItemCountFunction.setCount(UniformGenerator.between(2.0F, 6.0F))))
                         ).build()
         );
-        LOOT_TABLES.put(BuiltInLootTables.NETHER_BRIDGE,
+        LOOT_TABLES_REPLACE.put(BuiltInLootTables.NETHER_BRIDGE,
                 provider -> LootTable.lootTable()
                         .withPool(
                                 LootPool.lootPool()
@@ -534,7 +530,7 @@ public final class LootTableReplace {
                                         .add(LootItem.lootTableItem(Items.RIB_ARMOR_TRIM_SMITHING_TEMPLATE).setWeight(1))
                         ).build()
         );
-        LOOT_TABLES.put(BuiltInLootTables.STRONGHOLD_LIBRARY,
+        LOOT_TABLES_REPLACE.put(BuiltInLootTables.STRONGHOLD_LIBRARY,
                 provider -> LootTable.lootTable()
                         .withPool(
                                 LootPool.lootPool()
@@ -551,7 +547,7 @@ public final class LootTableReplace {
                                         .add(LootItem.lootTableItem(Items.EYE_ARMOR_TRIM_SMITHING_TEMPLATE).setWeight(1))
                         ).build()
         );
-        LOOT_TABLES.put(BuiltInLootTables.STRONGHOLD_CROSSING,
+        LOOT_TABLES_REPLACE.put(BuiltInLootTables.STRONGHOLD_CROSSING,
                 provider -> LootTable.lootTable()
                         .withPool(
                                 LootPool.lootPool()
@@ -566,7 +562,7 @@ public final class LootTableReplace {
                                         .add(LootItem.lootTableItem(Items.BOOK).apply(EnchantWithLevelsFunction.enchantWithLevels(provider, ConstantValue.exactly(25.0F))))
                         ).build()
         );
-        LOOT_TABLES.put(BuiltInLootTables.STRONGHOLD_CORRIDOR,
+        LOOT_TABLES_REPLACE.put(BuiltInLootTables.STRONGHOLD_CORRIDOR,
                 provider -> LootTable.lootTable()
                         .withPool(
                                 LootPool.lootPool()
@@ -598,7 +594,7 @@ public final class LootTableReplace {
                                         .add(LootItem.lootTableItem(Items.EYE_ARMOR_TRIM_SMITHING_TEMPLATE).setWeight(1))
                         ).build()
         );
-        LOOT_TABLES.put(BuiltInLootTables.DESERT_PYRAMID,
+        LOOT_TABLES_REPLACE.put(BuiltInLootTables.DESERT_PYRAMID,
                 provider -> LootTable.lootTable()
                         .withPool(
                                 LootPool.lootPool()
@@ -634,7 +630,7 @@ public final class LootTableReplace {
                                         .add(LootItem.lootTableItem(Items.DUNE_ARMOR_TRIM_SMITHING_TEMPLATE).setWeight(1).apply(SetItemCountFunction.setCount(ConstantValue.exactly(2.0F))))
                         ).build()
         );
-        LOOT_TABLES.put(BuiltInLootTables.JUNGLE_TEMPLE,
+        LOOT_TABLES_REPLACE.put(BuiltInLootTables.JUNGLE_TEMPLE,
                 provider -> LootTable.lootTable()
                         .withPool(
                                 LootPool.lootPool()
@@ -657,7 +653,7 @@ public final class LootTableReplace {
                                         .add(LootItem.lootTableItem(Items.WILD_ARMOR_TRIM_SMITHING_TEMPLATE).setWeight(1).apply(SetItemCountFunction.setCount(ConstantValue.exactly(2.0F))))
                         ).build()
         );
-        LOOT_TABLES.put(BuiltInLootTables.JUNGLE_TEMPLE_DISPENSER,
+        LOOT_TABLES_REPLACE.put(BuiltInLootTables.JUNGLE_TEMPLE_DISPENSER,
                 provider -> LootTable.lootTable()
                         .withPool(
                                 LootPool.lootPool()
@@ -665,7 +661,7 @@ public final class LootTableReplace {
                                         .add(LootItem.lootTableItem(Items.ARROW).setWeight(30).apply(SetItemCountFunction.setCount(UniformGenerator.between(2.0F, 7.0F))))
                         ).build()
         );
-        LOOT_TABLES.put(BuiltInLootTables.IGLOO_CHEST,
+        LOOT_TABLES_REPLACE.put(BuiltInLootTables.IGLOO_CHEST,
                 provider -> LootTable.lootTable()
                         .withPool(
                                 LootPool.lootPool()
@@ -684,7 +680,7 @@ public final class LootTableReplace {
                         )
                         .build()
         );
-        LOOT_TABLES.put(BuiltInLootTables.WOODLAND_MANSION,
+        LOOT_TABLES_REPLACE.put(BuiltInLootTables.WOODLAND_MANSION,
                 provider -> LootTable.lootTable()
                         .withPool(
                                 LootPool.lootPool()
@@ -728,7 +724,7 @@ public final class LootTableReplace {
                                         .add(LootItem.lootTableItem(Items.VEX_ARMOR_TRIM_SMITHING_TEMPLATE).setWeight(1))
                         ).build()
         );
-        LOOT_TABLES.put(BuiltInLootTables.UNDERWATER_RUIN_SMALL,
+        LOOT_TABLES_REPLACE.put(BuiltInLootTables.UNDERWATER_RUIN_SMALL,
                 provider -> LootTable.lootTable()
                         .withPool(
                                 LootPool.lootPool()
@@ -759,7 +755,7 @@ public final class LootTableReplace {
                                         )
                         ).build()
         );
-        LOOT_TABLES.put(BuiltInLootTables.UNDERWATER_RUIN_BIG,
+        LOOT_TABLES_REPLACE.put(BuiltInLootTables.UNDERWATER_RUIN_BIG,
                 provider -> LootTable.lootTable()
                         .withPool(
                                 LootPool.lootPool()
@@ -791,7 +787,7 @@ public final class LootTableReplace {
                                         )
                         ).build()
         );
-        LOOT_TABLES.put(BuiltInLootTables.BURIED_TREASURE,
+        LOOT_TABLES_REPLACE.put(BuiltInLootTables.BURIED_TREASURE,
                 provider -> LootTable.lootTable()
                         .withPool(LootPool.lootPool()
                                 .setRolls(ConstantValue.exactly(1.0F))
@@ -830,7 +826,7 @@ public final class LootTableReplace {
                                         .add(LootItem.lootTableItem(Items.POTION)).apply(SetPotionFunction.setPotion(Potions.WATER_BREATHING))
                         ).build()
         );
-        LOOT_TABLES.put(BuiltInLootTables.SHIPWRECK_MAP,
+        LOOT_TABLES_REPLACE.put(BuiltInLootTables.SHIPWRECK_MAP,
                 provider -> LootTable.lootTable()
                         .withPool(
                                 LootPool.lootPool()
@@ -864,7 +860,7 @@ public final class LootTableReplace {
                                         .add(LootItem.lootTableItem(Items.COAST_ARMOR_TRIM_SMITHING_TEMPLATE).setWeight(1).apply(SetItemCountFunction.setCount(ConstantValue.exactly(2.0F))))
                         ).build()
         );
-        LOOT_TABLES.put(BuiltInLootTables.SHIPWRECK_SUPPLY,
+        LOOT_TABLES_REPLACE.put(BuiltInLootTables.SHIPWRECK_SUPPLY,
                 provider -> LootTable.lootTable()
                         .withPool(
                                 LootPool.lootPool()
@@ -906,7 +902,7 @@ public final class LootTableReplace {
                                         .add(LootItem.lootTableItem(Items.COAST_ARMOR_TRIM_SMITHING_TEMPLATE).setWeight(1).apply(SetItemCountFunction.setCount(ConstantValue.exactly(2.0F))))
                         ).build()
         );
-        LOOT_TABLES.put(BuiltInLootTables.SHIPWRECK_TREASURE,
+        LOOT_TABLES_REPLACE.put(BuiltInLootTables.SHIPWRECK_TREASURE,
                 provider -> LootTable.lootTable()
                         .withPool(
                                 LootPool.lootPool()
@@ -931,7 +927,7 @@ public final class LootTableReplace {
                                         .add(LootItem.lootTableItem(Items.COAST_ARMOR_TRIM_SMITHING_TEMPLATE).setWeight(1).apply(SetItemCountFunction.setCount(ConstantValue.exactly(2.0F))))
                         ).build()
         );
-        LOOT_TABLES.put(BuiltInLootTables.PILLAGER_OUTPOST,
+        LOOT_TABLES_REPLACE.put(BuiltInLootTables.PILLAGER_OUTPOST,
                 provider -> LootTable.lootTable()
                         .withPool(LootPool.lootPool().setRolls(UniformGenerator.between(0.0F, 1.0F)).add(LootItem.lootTableItem(Items.CROSSBOW)))
                         .withPool(
@@ -968,7 +964,7 @@ public final class LootTableReplace {
                                         .add(LootItem.lootTableItem(Items.SENTRY_ARMOR_TRIM_SMITHING_TEMPLATE).setWeight(1).apply(SetItemCountFunction.setCount(ConstantValue.exactly(2.0F))))
                         ).build()
         );
-        LOOT_TABLES.put(BuiltInLootTables.BASTION_TREASURE,
+        LOOT_TABLES_REPLACE.put(BuiltInLootTables.BASTION_TREASURE,
                 provider -> LootTable.lootTable()
                         .withPool(
                                 LootPool.lootPool()
@@ -1064,7 +1060,7 @@ public final class LootTableReplace {
                         .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE).setWeight(1)))
                         .build()
         );
-        LOOT_TABLES.put(BuiltInLootTables.BASTION_OTHER,
+        LOOT_TABLES_REPLACE.put(BuiltInLootTables.BASTION_OTHER,
                 provider -> LootTable.lootTable()
                         .withPool(
                                 LootPool.lootPool()
@@ -1156,7 +1152,7 @@ public final class LootTableReplace {
                                         .add(LootItem.lootTableItem(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE).setWeight(1))
                         ).build()
         );
-        LOOT_TABLES.put(BuiltInLootTables.BASTION_BRIDGE,
+        LOOT_TABLES_REPLACE.put(BuiltInLootTables.BASTION_BRIDGE,
                 provider -> LootTable.lootTable()
                         .withPool(
                                 LootPool.lootPool()
@@ -1280,7 +1276,7 @@ public final class LootTableReplace {
                                         .add(LootItem.lootTableItem(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE).setWeight(1))
                         ).build()
         );
-        LOOT_TABLES.put(BuiltInLootTables.BASTION_HOGLIN_STABLE,
+        LOOT_TABLES_REPLACE.put(BuiltInLootTables.BASTION_HOGLIN_STABLE,
                 provider -> LootTable.lootTable()
                         .withPool(
                                 LootPool.lootPool()
@@ -1352,7 +1348,7 @@ public final class LootTableReplace {
                                         .add(LootItem.lootTableItem(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE).setWeight(1))
                         ).build()
         );
-        LOOT_TABLES.put(BuiltInLootTables.ANCIENT_CITY,
+        LOOT_TABLES_REPLACE.put(BuiltInLootTables.ANCIENT_CITY,
                 provider -> LootTable.lootTable()
                         .withPool(
                                 LootPool.lootPool()
@@ -1414,7 +1410,7 @@ public final class LootTableReplace {
                                         .add(LootItem.lootTableItem(Items.SILENCE_ARMOR_TRIM_SMITHING_TEMPLATE).setWeight(1))
                         ).build()
         );
-        LOOT_TABLES.put(BuiltInLootTables.ANCIENT_CITY_ICE_BOX,
+        LOOT_TABLES_REPLACE.put(BuiltInLootTables.ANCIENT_CITY_ICE_BOX,
                 provider -> LootTable.lootTable()
                         .withPool(
                                 LootPool.lootPool()
@@ -1435,7 +1431,7 @@ public final class LootTableReplace {
                                         .add(LootItem.lootTableItem(Items.SNOWBALL).setWeight(4).apply(SetItemCountFunction.setCount(UniformGenerator.between(2.0F, 6.0F))))
                         ).build()
         );
-        LOOT_TABLES.put(BuiltInLootTables.RUINED_PORTAL,
+        LOOT_TABLES_REPLACE.put(BuiltInLootTables.RUINED_PORTAL,
                 provider -> LootTable.lootTable()
                         .withPool(
                                 LootPool.lootPool()
@@ -1470,7 +1466,7 @@ public final class LootTableReplace {
                                         .add(LootItem.lootTableItem(Items.LODESTONE).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F))))
                         ).build()
         );
-        LOOT_TABLES.put(BuiltInLootTables.TRIAL_CHAMBERS_REWARD_COMMON,
+        LOOT_TABLES_REPLACE.put(BuiltInLootTables.TRIAL_CHAMBERS_REWARD_COMMON,
                 provider -> LootTable.lootTable()
                         .withPool(
                                 LootPool.lootPool()
@@ -1502,7 +1498,7 @@ public final class LootTableReplace {
                                         .add(LootItem.lootTableItem(Items.DIAMOND).setWeight(1).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F))))
                         ).build()
         );
-        LOOT_TABLES.put(BuiltInLootTables.TRIAL_CHAMBERS_REWARD_RARE,
+        LOOT_TABLES_REPLACE.put(BuiltInLootTables.TRIAL_CHAMBERS_REWARD_RARE,
                 provider -> LootTable.lootTable()
                         .withPool(
                                 LootPool.lootPool()
@@ -1567,7 +1563,7 @@ public final class LootTableReplace {
                                         )
                         ).build()
         );
-        LOOT_TABLES.put(BuiltInLootTables.TRIAL_CHAMBERS_REWARD_UNIQUE,
+        LOOT_TABLES_REPLACE.put(BuiltInLootTables.TRIAL_CHAMBERS_REWARD_UNIQUE,
                 provider -> LootTable.lootTable()
                         .withPool(
                                 LootPool.lootPool()
@@ -1591,7 +1587,7 @@ public final class LootTableReplace {
                                         .add(LootItem.lootTableItem(MMEItems.ADAMANTIUM_SWORD).apply(EnchantWithLevelsFunction.enchantWithLevels(provider, UniformGenerator.between(40.0F, 50.0F))))
                         ).build()
         );
-        LOOT_TABLES.put(BuiltInLootTables.TRIAL_CHAMBERS_REWARD_OMINOUS_COMMON,
+        LOOT_TABLES_REPLACE.put(BuiltInLootTables.TRIAL_CHAMBERS_REWARD_OMINOUS_COMMON,
                 provider -> LootTable.lootTable()
                         .withPool(
                                 LootPool.lootPool()
@@ -1657,7 +1653,7 @@ public final class LootTableReplace {
                                         .add(LootItem.lootTableItem(Items.DIAMOND_BLOCK).setWeight(1))
                         ).build()
         );
-        LOOT_TABLES.put(BuiltInLootTables.TRIAL_CHAMBERS_REWARD_OMINOUS_RARE,
+        LOOT_TABLES_REPLACE.put(BuiltInLootTables.TRIAL_CHAMBERS_REWARD_OMINOUS_RARE,
                 provider -> LootTable.lootTable()
                         .withPool(
                                 LootPool.lootPool()
@@ -1728,7 +1724,7 @@ public final class LootTableReplace {
                                         .add(LootItem.lootTableItem(MMEBlocks.ADAMANTIUM_DES_RUNESTORE).setWeight(3))
                         ).build()
         );
-        LOOT_TABLES.put(BuiltInLootTables.TRIAL_CHAMBERS_REWARD_OMINOUS_UNIQUE,
+        LOOT_TABLES_REPLACE.put(BuiltInLootTables.TRIAL_CHAMBERS_REWARD_OMINOUS_UNIQUE,
                 provider -> LootTable.lootTable()
                         .withPool(
                                 LootPool.lootPool()
@@ -1746,7 +1742,7 @@ public final class LootTableReplace {
                                         .add(LootItem.lootTableItem(Items.HEAVY_CORE).setWeight(1))
                         ).build()
         );
-        LOOT_TABLES.put(BuiltInLootTables.TRIAL_CHAMBERS_SUPPLY,
+        LOOT_TABLES_REPLACE.put(BuiltInLootTables.TRIAL_CHAMBERS_SUPPLY,
                 provider -> LootTable.lootTable()
                         .withPool(
                                 LootPool.lootPool()
@@ -1784,7 +1780,7 @@ public final class LootTableReplace {
                                         .add(LootItem.lootTableItem(Items.MILK_BUCKET).apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F))))
                         ).build()
         );
-        LOOT_TABLES.put(BuiltInLootTables.TRIAL_CHAMBERS_CORRIDOR,
+        LOOT_TABLES_REPLACE.put(BuiltInLootTables.TRIAL_CHAMBERS_CORRIDOR,
                 provider -> LootTable.lootTable()
                         .withPool(
                                 LootPool.lootPool()
@@ -1817,7 +1813,7 @@ public final class LootTableReplace {
                                         .add(LootItem.lootTableItem(Items.TUFF).apply(SetItemCountFunction.setCount(UniformGenerator.between(8.0F, 20.0F))).setWeight(3))
                         ).build()
         );
-        LOOT_TABLES.put(BuiltInLootTables.TRIAL_CHAMBERS_INTERSECTION,
+        LOOT_TABLES_REPLACE.put(BuiltInLootTables.TRIAL_CHAMBERS_INTERSECTION,
                 provider -> LootTable.lootTable()
                         .withPool(
                                 LootPool.lootPool()
@@ -1842,7 +1838,7 @@ public final class LootTableReplace {
                                         .add(LootItem.lootTableItem(Items.IRON_BLOCK).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F))).setWeight(20))
                         ).build()
         );
-        LOOT_TABLES.put(BuiltInLootTables.TRIAL_CHAMBERS_INTERSECTION_BARREL,
+        LOOT_TABLES_REPLACE.put(BuiltInLootTables.TRIAL_CHAMBERS_INTERSECTION_BARREL,
                 provider -> LootTable.lootTable()
                         .withPool(
                                 LootPool.lootPool()
@@ -1884,7 +1880,7 @@ public final class LootTableReplace {
                                         .add(LootItem.lootTableItem(Items.BAKED_POTATO).apply(SetItemCountFunction.setCount(UniformGenerator.between(6.0F, 10.0F))).setWeight(10))
                         ).build()
         );
-        LOOT_TABLES.put(BuiltInLootTables.TRIAL_CHAMBERS_ENTRANCE,
+        LOOT_TABLES_REPLACE.put(BuiltInLootTables.TRIAL_CHAMBERS_ENTRANCE,
                 provider -> LootTable.lootTable()
                         .withPool(
                                 LootPool.lootPool()
@@ -1893,6 +1889,24 @@ public final class LootTableReplace {
                                         .add(LootItem.lootTableItem(Items.STICK).apply(SetItemCountFunction.setCount(UniformGenerator.between(2.0F, 5.0F))).setWeight(5))
                                         .add(LootItem.lootTableItem(Items.HONEYCOMB).apply(SetItemCountFunction.setCount(UniformGenerator.between(2.0F, 8.0F))).setWeight(10))
                                         .add(LootItem.lootTableItem(Items.ARROW).apply(SetItemCountFunction.setCount(UniformGenerator.between(5.0F, 10.0F))).setWeight(10))
+                        ).build()
+        );
+        LOOT_TABLES_REPLACE.put(BuiltInLootTables.TRIAL_CHAMBERS_CORRIDOR_POT,
+                provider -> LootTable.lootTable()
+                        .withPool(
+                                LootPool.lootPool()
+                                        .setRolls(ConstantValue.exactly(1.0F))
+                                        .add(LootItem.lootTableItem(Items.EMERALD).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 3.0F))).setWeight(125))
+                                        .add(LootItem.lootTableItem(Items.DIAMOND).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F))).setWeight(3))
+                                        .add(LootItem.lootTableItem(Items.ARROW).apply(SetItemCountFunction.setCount(UniformGenerator.between(2.0F, 8.0F))).setWeight(100))
+                                        .add(LootItem.lootTableItem(Items.IRON_INGOT).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F))).setWeight(30))
+                                        .add(LootItem.lootTableItem(Items.COPPER_INGOT).apply(SetItemCountFunction.setCount(UniformGenerator.between(2.0F, 4.0F))).setWeight(50))
+                                        .add(LootItem.lootTableItem(MMEItems.SILVER_INGOT).apply(SetItemCountFunction.setCount(UniformGenerator.between(2.0F, 4.0F))).setWeight(50))
+                                        .add(LootItem.lootTableItem(Items.TRIAL_KEY).apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F))).setWeight(5))
+                                        .add(LootItem.lootTableItem(Items.MUSIC_DISC_CREATOR_MUSIC_BOX).setWeight(1))
+                                        .add(LootItem.lootTableItem(Items.PUMPKIN_PIE).setWeight(100).apply(SetItemCountFunction.setCount(UniformGenerator.between(3.0F, 7.0F))))
+                                        .add(LootItem.lootTableItem(Items.COOKED_COD).setWeight(100).apply(SetItemCountFunction.setCount(UniformGenerator.between(3.0F, 7.0F))))
+                                        .add(LootItem.lootTableItem(Items.DRIED_KELP).setWeight(100).apply(SetItemCountFunction.setCount(UniformGenerator.between(4.0F, 8.0F))))
                         ).build()
         );
 
@@ -1943,9 +1957,9 @@ public final class LootTableReplace {
                 Blocks.STRIPPED_CRIMSON_HYPHAE,
                 Blocks.STRIPPED_WARPED_HYPHAE
         );
-        Log.forEach(block -> LOOT_TABLES.put(block.getLootTable().get(), provider -> LootTableReplace.createLogItemTable(provider, block, Items.STICK, 2, 4).build()));
+        Log.forEach(block -> LOOT_TABLES_REPLACE.put(block.getLootTable().get(), provider -> LootTableReplace.createLogItemTable(provider, block, Items.STICK, 2, 4).build()));
 
-        LOOT_TABLES.put(Blocks.GRASS_BLOCK.getLootTable().get(),
+        LOOT_TABLES_REPLACE.put(Blocks.GRASS_BLOCK.getLootTable().get(),
                 provider -> LootTable.lootTable()
                         .withPool(new LootPool.Builder()
                                 .setRolls(ConstantValue.exactly(1.0F))
@@ -1973,11 +1987,62 @@ public final class LootTableReplace {
                         )
                         .build()
         );
-
+        LOOT_TABLES_REPLACE.put(EntityType.COW.getDefaultLootTable().get(),
+                provider -> LootTable.lootTable()
+                        .withPool(
+                                LootPool.lootPool()
+                                        .setRolls(ConstantValue.exactly(1.0F))
+                                        .add(
+                                                LootItem.lootTableItem(Items.LEATHER)
+                                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F)))
+                                                        .apply(butcheringMultiplier(provider, UniformGenerator.between(0.0F, 1.0F)))
+                                        )
+                        )
+                        .withPool(
+                                LootPool.lootPool()
+                                        .setRolls(ConstantValue.exactly(1.0F))
+                                        .add(
+                                                LootItem.lootTableItem(Items.BEEF)
+                                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 3.0F)))
+                                                        .apply(SmeltItemFunction.smelted().when(shouldSmeltLoot(provider)))
+                                                        .apply(butcheringMultiplier(provider, UniformGenerator.between(0.0F, 1.0F)))
+                                        )
+                        ).build()
+        );
         LootTableEvents.REPLACE.register((key, original, source, registries) -> {
-            Function<HolderLookup.Provider, LootTable> function = LOOT_TABLES.get(key);
+            Function<HolderLookup.Provider, LootTable> function = LOOT_TABLES_REPLACE.get(key);
             return function != null ? function.apply(registries) : null;
         });
+    }
+    public static EnchantedCountIncreaseFunction.Builder butcheringMultiplier(HolderLookup.Provider provider, NumberProvider numberProvider) {
+        HolderLookup.RegistryLookup<Enchantment> registryLookup = provider.lookupOrThrow(Registries.ENCHANTMENT);
+        return new EnchantedCountIncreaseFunction.Builder(registryLookup.getOrThrow(MMEEnchantments.BUTCHERING), numberProvider);
+    }
+    public static AnyOfCondition.Builder shouldSmeltLoot(HolderLookup.Provider provider) {
+        HolderLookup.RegistryLookup<Enchantment> registryLookup = provider.lookupOrThrow(Registries.ENCHANTMENT);
+        return AnyOfCondition.anyOf(
+                LootItemEntityPropertyCondition.hasProperties(
+                        LootContext.EntityTarget.THIS, EntityPredicate.Builder.entity().flags(EntityFlagsPredicate.Builder.flags().setOnFire(true))
+                ),
+                LootItemEntityPropertyCondition.hasProperties(
+                        LootContext.EntityTarget.DIRECT_ATTACKER,
+                        EntityPredicate.Builder.entity()
+                                .equipment(
+                                        EntityEquipmentPredicate.Builder.equipment()
+                                                .mainhand(
+                                                        ItemPredicate.Builder.item()
+                                                                .withComponents(
+                                                                        DataComponentMatchers.Builder.components()
+                                                                                .partial(
+                                                                                        DataComponentPredicates.ENCHANTMENTS,
+                                                                                        EnchantmentsPredicate.enchantments(List.of(new EnchantmentPredicate(registryLookup.getOrThrow(EnchantmentTags.SMELTS_LOOT), MinMaxBounds.Ints.ANY)))
+                                                                                )
+                                                                                .build()
+                                                                )
+                                                )
+                                )
+                )
+        );
     }
     public static LootTable.Builder createLogItemTable(
             HolderLookup.Provider provider,

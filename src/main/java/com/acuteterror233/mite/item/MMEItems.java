@@ -5,7 +5,7 @@ import com.acuteterror233.mite.block.MMEBlocks;
 import com.acuteterror233.mite.component.MMEDataComponentTypes;
 import com.acuteterror233.mite.item.armor.MMEArmorMaterials;
 import com.acuteterror233.mite.item.equipment.MMEArmorMaterial;
-import com.acuteterror233.mite.registry.tag.MMETags;
+import com.acuteterror233.mite.registry.tag.MMEBlockTags;
 import com.acuteterror233.mite.world.food.FoodNutrition;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.minecraft.core.HolderGetter;
@@ -332,7 +332,7 @@ public class MMEItems {
     public static final Item BOWL_MILK = register(
             "bowl_milk",
             new Item.Properties()
-                    .food(new FoodProperties(0, 1, false))
+                    .food(new FoodProperties(0, 1, false), Consumables.MILK_BUCKET)
                     .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().protein(8000).build())
                     .usingConvertsTo(Items.BOWL)
                     .craftRemainder(Items.BOWL)
@@ -1684,7 +1684,7 @@ public class MMEItems {
     }
 
     public static Item.Properties getScytheSettings(ToolMaterial material) {
-        return applySwordSettings(new Item.Properties(), material, 5, 1, 3, -3.0f , 0.75f, 0.75f);
+        return applySwordSettings(new Item.Properties(), material, 9, 1, 3, -3.0f , 0.75f, 0.75f);
     }
 
     public static Item.Properties getAxeSettings(ToolMaterial material) {
@@ -1701,7 +1701,7 @@ public class MMEItems {
         return applyToolSettings(new Item.Properties(), material, BlockTags.MINEABLE_WITH_HOE, 4, 2, 1, -1.0F, 0.5F, 0.5F, 0);
     }
     public static Item.Properties getMattockSettings(ToolMaterial material) {
-        return applyToolSettings(new Item.Properties(), material, MMETags.MINEABLE_WITH_MATTOCK, 6, 2, 2, -1.5F, 0.5F, 0.5F, 0);
+        return applyToolSettings(new Item.Properties(), material, MMEBlockTags.MINEABLE_WITH_MATTOCK, 6, 2, 2, -1.5F, 0.5F, 0.5F, 0);
     }
 
     public static Item.Properties getShovelSettings(ToolMaterial material) {

@@ -4,6 +4,7 @@
 81fc4139a20bae277d213d7ad056e021a95d6b91 data/minecraft/tags/block/fall_damage_resetting.json
 5b75cdf19f92945a0e92028a672004e4001813a3 data/minecraft/tags/block/mineable/pickaxe.json
 146d8d026d6963c3d4df2ea8afb072e9736c3ace data/minecraft/tags/block/needs_iron_tool.json
+69d177e82cc5b51ff25bfaf5222d6aacc2fff230 data/minecraft/tags/block/sword_instantly_mines.json
 294e618c82aa13b9de90cbc6fa0f9c9188819f32 data/mme/tags/block/adamantium_anvil.json
 f010029a567299565a3c0590aefa168d5cfafb66 data/mme/tags/block/adamantium_runestore.json
 a4e7ef2349bb5665d8b58b8bf91172f31207418f data/mme/tags/block/chipped_anvil.json

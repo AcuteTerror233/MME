@@ -4,6 +4,7 @@ import com.acuteterror233.mite.atinterface.FoodDataExtension;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
@@ -57,8 +58,11 @@ public abstract class PlayerEntityMixin extends LivingEntity {
 
     @Unique
     public void setMaxHealth(int max) {
-        if ((int) this.getAttributes().getInstance(Attributes.MAX_HEALTH).getValue() != max || ((FoodDataExtension)this.getFoodData()).MME$GetMaxFoodLevel() != max) {
-            this.getAttributes().getInstance(Attributes.MAX_HEALTH).setBaseValue(max);
+        AttributeInstance instance = this.getAttributes().getInstance(Attributes.MAX_HEALTH);
+        int maxHealthBaseValue = (int) instance.getBaseValue();
+        int maxFoodLevel = ((FoodDataExtension) this.getFoodData()).MME$GetMaxFoodLevel();
+        if (maxHealthBaseValue != max || maxFoodLevel != max) {
+            instance.setBaseValue(max);
             ((FoodDataExtension) this.getFoodData()).MME$SetMaxFoodLevel(max);
         }
     }
@@ -66,5 +70,10 @@ public abstract class PlayerEntityMixin extends LivingEntity {
     @Inject(method = "attack", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/player/Player;awardStat(Lnet/minecraft/resources/ResourceLocation;I)V"))
     public void attack(Entity entity, CallbackInfo ci) {
         this.getFoodData().addExhaustion(0.5F);
+    }
+
+    @Redirect(method = "getBaseExperienceReward", at = @At(value = "INVOKE", target = "Ljava/lang/Math;min(II)I"))
+    public int getBaseExperienceReward(int a, int b) {
+        return a;
     }
 }

@@ -2,6 +2,7 @@ package com.acuteterror233.mite.datagen;
 
 import com.acuteterror233.mite.block.MMEBlocks;
 import com.acuteterror233.mite.item.MMEItems;
+import com.acuteterror233.mite.item.enchantment.MMEEnchantments;
 import com.acuteterror233.mite.world.effect.MMEMobEffects;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
@@ -429,5 +430,7 @@ public class En_usLanguageProvider extends FabricLanguageProvider {
 
         translationBuilder.add(MMEMobEffects.INSULIN_RESISTANCE.value(), "Diabetes");
         translationBuilder.add(MMEMobEffects.MALNUTRITION.value(), "Malnutrition");
+
+        translationBuilder.addEnchantment(MMEEnchantments.BUTCHERING, "Butchering");
     }
 }

@@ -3,7 +3,7 @@ package com.acuteterror233.mite.block.entity;
 import com.acuteterror233.mite.atinterface.GetFuelGradeRegistryExtension;
 import com.acuteterror233.mite.component.MMEDataComponentTypes;
 import com.acuteterror233.mite.item.FuelGradeRegistry;
-import com.acuteterror233.mite.registry.tag.MMETags;
+import com.acuteterror233.mite.registry.tag.MMEItemTags;
 import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
 import it.unimi.dsi.fastutil.objects.Reference2IntMap;
@@ -272,7 +272,7 @@ public abstract class AbstractGradeFurnaceBlockEntity extends BaseContainerBlock
                 itemStack3.grow(1);
             }
 
-            if (itemStack.is(Blocks.WET_SPONGE.asItem()) && !inventory.get(1).isEmpty() && inventory.get(1).is(MMETags.BUCKET)) {
+            if (itemStack.is(Blocks.WET_SPONGE.asItem()) && !inventory.get(1).isEmpty() && inventory.get(1).is(MMEItemTags.BUCKET)) {
                 Item waterItem = BuiltInRegistries.ITEM.getValue(BuiltInRegistries.ITEM.getKey(inventory.get(1).getItem()).withPrefix("water_"));
                 inventory.set(1, new ItemStack(waterItem));
             }
@@ -355,7 +355,7 @@ public abstract class AbstractGradeFurnaceBlockEntity extends BaseContainerBlock
             return true;
         } else {
             ItemStack itemStack = this.inventory.get(1);
-            return this.level.fuelValues().isFuel(stack) || stack.is(MMETags.BUCKET) && !itemStack.is(MMETags.BUCKET);
+            return this.level.fuelValues().isFuel(stack) || stack.is(MMEItemTags.BUCKET) && !itemStack.is(MMEItemTags.BUCKET);
         }
     }
 

@@ -48,6 +48,7 @@
     "world.level.block.CampfireBlockMixin",
     "world.level.block.CocoaBlockMixin",
     "world.level.block.CropBlockMixin",
+    "world.level.block.DropExperienceBlockMixin",
     "world.level.block.EnchantingTableBlockMixin",
     "world.level.block.GrowingPlantHeadBlockMixin",
     "world.level.block.LiquidBlockMixin",
