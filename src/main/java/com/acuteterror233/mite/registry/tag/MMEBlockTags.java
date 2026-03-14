@@ -42,6 +42,8 @@ public interface MMEBlockTags {
     TagKey<Block> CRAFTING_TABLE = key("crafting_table");
     TagKey<Block> ENCHANTING_TABLE = key("enchanting_table");
     TagKey<Block> MINEABLE_WITH_MATTOCK = key("mineable_with_mattock");
+    TagKey<Block> MINEABLE_WITH_SCYTHE =  key("scythe_efficient");
+    TagKey<Block> HERBACEOUS_PLANTS = key("herbacious_plants");
 
     static TagKey<Block> key(String id) {
         return TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, id));

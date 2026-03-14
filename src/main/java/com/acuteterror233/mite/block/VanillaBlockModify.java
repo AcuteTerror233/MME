@@ -35,8 +35,8 @@ public final class VanillaBlockModify {
                         .lightLevel(Blocks.litBlockEmission(13))
                         .setId(ResourceKey.create(Registries.BLOCK, ResourceLocation.withDefaultNamespace("furnace"))), 2)
         );
-        result.put(ResourceLocation.withDefaultNamespace("blast_furnace"), settings -> new GradeFurnaceBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.FURNACE).setId(ResourceKey.create(Registries.BLOCK, ResourceLocation.withDefaultNamespace("blast_furnace"))), 0));
-        result.put(ResourceLocation.withDefaultNamespace("smoker"), settings -> new GradeFurnaceBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.FURNACE).setId(ResourceKey.create(Registries.BLOCK, ResourceLocation.withDefaultNamespace("smoker"))), 1));
+        result.put(ResourceLocation.withDefaultNamespace("blast_furnace"), settings -> new GradeFurnaceBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.FURNACE).setId(ResourceKey.create(Registries.BLOCK, ResourceLocation.withDefaultNamespace("blast_furnace"))), 4));
+        result.put(ResourceLocation.withDefaultNamespace("smoker"), settings -> new GradeFurnaceBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.FURNACE).setId(ResourceKey.create(Registries.BLOCK, ResourceLocation.withDefaultNamespace("smoker"))), 2));
         return result;
     } 
     private static Map<ResourceLocation, UnaryOperator<BlockBehaviour.Properties>> createBlockSettingsModifyMap() {
@@ -66,6 +66,17 @@ public final class VanillaBlockModify {
         result.put(ResourceLocation.withDefaultNamespace("twisting_vines"), properties -> properties.strength(0.01F));
         result.put(ResourceLocation.withDefaultNamespace("weeping_vines"), properties -> properties.strength(0.01F));
         result.put(ResourceLocation.withDefaultNamespace("kelp"), properties -> properties.strength(0.01F));
+        result.put(ResourceLocation.withDefaultNamespace("firefly_bush"), properties -> properties.strength(0.01F));
+        result.put(ResourceLocation.withDefaultNamespace("tall_dry_grass"), properties -> properties.strength(0.01F));
+        result.put(ResourceLocation.withDefaultNamespace("dead_bush"), properties -> properties.strength(0.01F));
+        result.put(ResourceLocation.withDefaultNamespace("short_dry_grass"), properties -> properties.strength(0.01F));
+        result.put(ResourceLocation.withDefaultNamespace("wheat"), properties -> properties.strength(0.05F));
+        result.put(ResourceLocation.withDefaultNamespace("potatoes"), properties -> properties.strength(0.05F));
+        result.put(ResourceLocation.withDefaultNamespace("carrots"), properties ->  properties.strength(0.05F));
+        result.put(ResourceLocation.withDefaultNamespace("beetroots"), properties -> properties.strength(0.05F));
+        result.put(ResourceLocation.withDefaultNamespace("melon_stem"), properties -> properties.strength(0.05F));
+        result.put(ResourceLocation.withDefaultNamespace("pumpkin_stem"), properties -> properties.strength(0.05F));
+        result.put(ResourceLocation.withDefaultNamespace("nether_wart"), properties -> properties.strength(0.05F));
         return result;
     }
      

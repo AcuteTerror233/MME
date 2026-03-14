@@ -5,6 +5,7 @@ import com.acuteterror233.mite.event.ServerRecipeModify;
 import com.acuteterror233.mite.item.MMEItems;
 import com.acuteterror233.mite.registry.LootTableReplace;
 import com.acuteterror233.mite.registry.tag.MMEItemTags;
+import com.acuteterror233.mite.world.biome.BiomeModification;
 import com.acuteterror233.mite.world.effect.MMEMobEffects;
 import com.acuteterror233.mite.world.gen.feature.OverworldPlacedFeatures;
 import net.fabricmc.api.ModInitializer;
@@ -19,7 +20,6 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.FireBlock;
 import net.minecraft.world.level.levelgen.GenerationStep;
@@ -43,6 +43,7 @@ public class MME implements ModInitializer {
         MMEBlocks.init();
         MMEMobEffects.init();
         LootTableReplace.init();
+        BiomeModification.init();
 
         PointOfInterestHelper.register(ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, "underground_portal"), 0, 1, MMEBlocks.UNDERGROUND_PORTAL);
 
@@ -51,53 +52,6 @@ public class MME implements ModInitializer {
         InOverworldRemovals(OrePlacements.ORE_DIAMOND_BURIED);
         InOverworldRemovals(OrePlacements.ORE_DIAMOND_LARGE);
         InOverworldRemovals(OrePlacements.ORE_DIAMOND_MEDIUM);
-
-        BiomeModifications.addFeature(
-                biomeSelectionContext -> biomeSelectionContext.getBiomeKey().isFor(Biomes.MEADOW.registryKey()),
-                GenerationStep.Decoration.VEGETAL_DECORATION,
-                OverworldPlacedFeatures.BLUE_BERRY_RARE
-        );
-        BiomeModifications.addFeature(
-                biomeSelectionContext -> biomeSelectionContext.getBiomeKey().isFor(Biomes.GROVE.registryKey()),
-                GenerationStep.Decoration.VEGETAL_DECORATION,
-                OverworldPlacedFeatures.BLUE_BERRY_RARE
-        );
-        BiomeModifications.addFeature(
-                biomeSelectionContext -> biomeSelectionContext.getBiomeKey().isFor(Biomes.WINDSWEPT_HILLS.registryKey()),
-                GenerationStep.Decoration.VEGETAL_DECORATION,
-                OverworldPlacedFeatures.BLUE_BERRY_RARE
-        );
-        BiomeModifications.addFeature(
-                biomeSelectionContext -> biomeSelectionContext.getBiomeKey().isFor(Biomes.DARK_FOREST.registryKey()),
-                GenerationStep.Decoration.VEGETAL_DECORATION,
-                OverworldPlacedFeatures.BLUE_BERRY_RARE
-        );
-
-        BiomeModifications.addFeature(
-                biomeSelectionContext -> biomeSelectionContext.getBiomeKey().isFor(Biomes.WINDSWEPT_FOREST.registryKey()),
-                GenerationStep.Decoration.VEGETAL_DECORATION,
-                OverworldPlacedFeatures.BLUE_BERRY_COMMON
-        );
-        BiomeModifications.addFeature(
-                biomeSelectionContext -> biomeSelectionContext.getBiomeKey().isFor(Biomes.TAIGA.registryKey()),
-                GenerationStep.Decoration.VEGETAL_DECORATION,
-                OverworldPlacedFeatures.BLUE_BERRY_COMMON
-        );
-        BiomeModifications.addFeature(
-                biomeSelectionContext -> biomeSelectionContext.getBiomeKey().isFor(Biomes.SNOWY_TAIGA.registryKey()),
-                GenerationStep.Decoration.VEGETAL_DECORATION,
-                OverworldPlacedFeatures.BLUE_BERRY_COMMON
-        );
-        BiomeModifications.addFeature(
-                biomeSelectionContext -> biomeSelectionContext.getBiomeKey().isFor(Biomes.OLD_GROWTH_PINE_TAIGA.registryKey()),
-                GenerationStep.Decoration.VEGETAL_DECORATION,
-                OverworldPlacedFeatures.BLUE_BERRY_COMMON
-        );
-        BiomeModifications.addFeature(
-                biomeSelectionContext -> biomeSelectionContext.getBiomeKey().isFor(Biomes.OLD_GROWTH_SPRUCE_TAIGA.registryKey()),
-                GenerationStep.Decoration.VEGETAL_DECORATION,
-                OverworldPlacedFeatures.BLUE_BERRY_COMMON
-        );
 
         ServerRecipeModify.EVENT.register(list -> list.removeIf(recipeEntry -> MME.FILTER_RECIPE_SET.contains(recipeEntry.id().location())));
 
@@ -153,7 +107,6 @@ public class MME implements ModInitializer {
             ResourceLocation.withDefaultNamespace("diamond_hoe"),
             ResourceLocation.withDefaultNamespace("diamond_sword"),
             ResourceLocation.withDefaultNamespace("crafting_table"),
-            ResourceLocation.withDefaultNamespace("blast_furnace"),
             ResourceLocation.withDefaultNamespace("netherite_axe_smithing"),
             ResourceLocation.withDefaultNamespace("netherite_boots_smithing"),
             ResourceLocation.withDefaultNamespace("netherite_chestplate_smithing"),

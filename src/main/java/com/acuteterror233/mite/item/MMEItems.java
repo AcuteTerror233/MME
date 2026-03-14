@@ -332,7 +332,7 @@ public class MMEItems {
     public static final Item BOWL_MILK = register(
             "bowl_milk",
             new Item.Properties()
-                    .food(new FoodProperties(0, 1, false), Consumables.MILK_BUCKET)
+                    .food(new FoodProperties(1, 0, false), Consumables.MILK_BUCKET)
                     .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().protein(8000).build())
                     .usingConvertsTo(Items.BOWL)
                     .craftRemainder(Items.BOWL)
@@ -350,9 +350,8 @@ public class MMEItems {
     public static final Item BOWL_WATER = register(
             "bowl_water",
             new Item.Properties()
-                    .food(new FoodProperties(0, 0F, true))
+                    .food(new FoodProperties(0, 0F, true), Consumables.defaultDrink().build())
                     .usingConvertsTo(Items.BOWL)
-                    .craftRemainder(Items.BOWL)
                     .stacksTo(4)
     );
     public static final Item CEREAL = register(
@@ -367,7 +366,7 @@ public class MMEItems {
     public static final Item CHICKEN_SOUP = register(
             "chicken_soup",
             new Item.Properties()
-                    .food(new FoodProperties(10, 10.0F, false))
+                    .food(new FoodProperties(10, 10.0F, false), Consumables.defaultDrink().build())
                     .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().protein(80000).fiber(80000).build())
                     .usingConvertsTo(Items.BOWL)
                     .craftRemainder(Items.BOWL)
@@ -376,7 +375,7 @@ public class MMEItems {
     public static final Item CREAM_OF_MUSHROOM_SOUP = register(
             "cream_of_mushroom_soup",
             new Item.Properties()
-                    .food(new FoodProperties(5, 3.0F, false))
+                    .food(new FoodProperties(5, 3.0F, false), Consumables.defaultDrink().build())
                     .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().protein(40000).build())
                     .usingConvertsTo(Items.BOWL)
                     .craftRemainder(Items.BOWL)
@@ -385,7 +384,7 @@ public class MMEItems {
     public static final Item CREAM_OF_VEGETABLE_SOUP = register(
             "cream_of_vegetable_soup",
             new Item.Properties()
-                    .food(new FoodProperties(7, 7.0F, false))
+                    .food(new FoodProperties(7, 7.0F, false), Consumables.defaultDrink().build())
                     .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().protein(56000).fiber(56000).build())
                     .usingConvertsTo(Items.BOWL)
                     .craftRemainder(Items.BOWL)
@@ -421,7 +420,7 @@ public class MMEItems {
     public static final Item PUMPKIN_SOUP = register(
             "pumpkin_soup",
             new Item.Properties()
-                    .food(new FoodProperties(2, 1.0F, false))
+                    .food(new FoodProperties(2, 1.0F, false), Consumables.defaultDrink().build())
                     .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().fiber(16000).build())
                     .usingConvertsTo(Items.BOWL)
                     .craftRemainder(Items.BOWL)
@@ -439,7 +438,7 @@ public class MMEItems {
     public static final Item VEGETABLE_SOUP = register(
             "vegetable_soup",
             new Item.Properties()
-                    .food(new FoodProperties(6, 6.0F, false))
+                    .food(new FoodProperties(6, 6.0F, false), Consumables.defaultDrink().build())
                     .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().fiber(48000).build())
                     .usingConvertsTo(Items.BOWL)
                     .craftRemainder(Items.BOWL)
@@ -1661,7 +1660,7 @@ public class MMEItems {
     }
 
     public static Item.Properties getArmorSettings(MMEArmorMaterial material, ArmorType type) {
-            return new Item.Properties().durability(type.getDurability(material.durability()))
+            return new Item.Properties().durability(type.getDurability((int) (material.durability() * 0.45)))
                     .attributes(material.createAttributeModifiers(type))
                     .enchantable(material.enchantmentValue())
                     .component(
@@ -1684,7 +1683,7 @@ public class MMEItems {
     }
 
     public static Item.Properties getScytheSettings(ToolMaterial material) {
-        return applySwordSettings(new Item.Properties(), material, 9, 1, 3, -3.0f , 0.75f, 0.75f);
+        return applyToolSettings(new Item.Properties(), material, MMEBlockTags.MINEABLE_WITH_SCYTHE, 9, 1, 3, -3.0f , 0.75f, 0.75f);
     }
 
     public static Item.Properties getAxeSettings(ToolMaterial material) {
@@ -1698,27 +1697,40 @@ public class MMEItems {
     }
 
     public static Item.Properties getHoeSettings(ToolMaterial material) {
-        return applyToolSettings(new Item.Properties(), material, BlockTags.MINEABLE_WITH_HOE, 4, 2, 1, -1.0F, 0.5F, 0.5F, 0);
+        return applyToolSettings(new Item.Properties(), material, BlockTags.MINEABLE_WITH_HOE, 4, 2, 1, -1.0F, 0.5F, 0.5F);
     }
     public static Item.Properties getMattockSettings(ToolMaterial material) {
-        return applyToolSettings(new Item.Properties(), material, MMEBlockTags.MINEABLE_WITH_MATTOCK, 6, 2, 2, -1.5F, 0.5F, 0.5F, 0);
+        return applyToolSettings(new Item.Properties(), material, MMEBlockTags.MINEABLE_WITH_MATTOCK, 6, 2, 2, -1.5F, 0.5F, 0.5F);
     }
 
     public static Item.Properties getShovelSettings(ToolMaterial material) {
-        return applyToolSettings(new Item.Properties(), material, BlockTags.MINEABLE_WITH_SHOVEL, 3, 2, 1, -2.8F, 0.75F, 0.75F, 0);
+        return applyToolSettings(new Item.Properties(), material, BlockTags.MINEABLE_WITH_SHOVEL, 3, 2, 1, -2.8F, 0.75F, 0.75F);
     }
 
     public static Item.Properties getPickaxeSettings(ToolMaterial material) {
-        return applyToolSettings(new Item.Properties(), material, BlockTags.MINEABLE_WITH_PICKAXE, 3, 2, 2, -2.8f , 0.75f, 0.75f, 0);
+        return applyToolSettings(new Item.Properties(), material, BlockTags.MINEABLE_WITH_PICKAXE, 3, 2, 2, -2.8f , 0.75f, 0.75f);
     }
     public static Item.Properties getWarHammerSettings(ToolMaterial material) {
-        return applyToolSettings(new Item.Properties(), material, BlockTags.MINEABLE_WITH_PICKAXE, 5, 1, 3, -3.0f , 0.75f, 0.75f, 0);
+        return applyToolSettings(new Item.Properties(), material, BlockTags.MINEABLE_WITH_PICKAXE, 5, 1, 3, -3.0f , 0.75f, 0.75f);
     }
 
     public static Item.Properties getShearsSettings(ToolMaterial material) {
         return applyBaseSettings(new Item.Properties(), material, 7)
                 .component(DataComponents.TOOL, ShearsItem.createToolProperties())
                 .attributes(CreateAttributeModifiers(0.5f, 0.5f, material.attackDamageBonus(), 0));
+    }
+    public static Item.Properties applyToolSettings(
+            Item.Properties settings,
+            ToolMaterial material,
+            TagKey<Block> effectiveBlocks,
+            float durabilityMultiplier,
+            int itemDamagePerAttack,
+            float attackDamage,
+            float attackSpeed,
+            float blockInteractionRange,
+            float entityInteractionRange
+    ){
+        return applyToolSettings(settings, material, effectiveBlocks, durabilityMultiplier, itemDamagePerAttack, attackDamage, attackSpeed, blockInteractionRange, entityInteractionRange, 0.0F);
     }
 
     public static Item.Properties applyToolSettings(

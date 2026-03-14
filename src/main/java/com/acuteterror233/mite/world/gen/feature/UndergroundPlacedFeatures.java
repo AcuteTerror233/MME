@@ -17,27 +17,27 @@ import net.minecraft.world.level.levelgen.placement.*;
 import java.util.List;
 
 public class UndergroundPlacedFeatures {
-    public static final ResourceKey<PlacedFeature> ORE_ADAMANTIUM_BURIED = of("ore_adamantium_buried");
-    public static final ResourceKey<PlacedFeature> ORE_ADAMANTIUM_BURIED_SMALL = of("ore_adamantium_buried_small");
-    public static final ResourceKey<PlacedFeature> ORE_MITHRIL = of("ore_mithril");
-    public static final ResourceKey<PlacedFeature> ORE_MITHRIL_SMALL = of("ore_mithril_small");
-    public static final ResourceKey<PlacedFeature> ORE_SILVER = of("ore_silver");
-    public static final ResourceKey<PlacedFeature> ORE_SILVER_SMALL = of("ore_silver_small");
-    public static final ResourceKey<PlacedFeature> ORE_IRON = of("ore_iron");
-    public static final ResourceKey<PlacedFeature> ORE_IRON_SMALL = of("ore_iron_small");
-    public static final ResourceKey<PlacedFeature> ORE_COPPER = of("ore_copper");
-    public static final ResourceKey<PlacedFeature> ORE_COPPER_SMALL = of("ore_copper_small");
-    public static final ResourceKey<PlacedFeature> ORE_EMERALD = of("ore_emerald");
-    public static final ResourceKey<PlacedFeature> ORE_LAPIS = of("ore_lapis");
-    public static final ResourceKey<PlacedFeature> ORE_LAPIS_BURIED = of("ore_lapis_buried");
-    public static final ResourceKey<PlacedFeature> ORE_REDSTONE = of("ore_redstone");
-    public static final ResourceKey<PlacedFeature> ORE_DIRT = of("ore_dirt");
-    public static final ResourceKey<PlacedFeature> ORE_GRAVEL = of("ore_gravel");
-    public static final ResourceKey<PlacedFeature> ORE_TUFF = of("ore_tuff");
-    public static final ResourceKey<PlacedFeature> ORE_DIAMOND_FIRST_LAYER = of("ore_diamond_first_layer");
-    public static final ResourceKey<PlacedFeature> ORE_DIAMOND_FIRST_LAYER_BURIED = of("ore_diamond_first_layer_buried");
-    public static final ResourceKey<PlacedFeature> ORE_DIAMOND_SECOND_LAYER = of("ore_diamond_second_layer");
-    public static final ResourceKey<PlacedFeature> ORE_DIAMOND_SECOND_LAYER_BURIED = of("ore_diamond_second_layer_buried");
+    public static final ResourceKey<PlacedFeature> UNDERGROUND_ORE_ADAMANTIUM_BURIED = of("ore_adamantium_buried");
+    public static final ResourceKey<PlacedFeature> UNDERGROUND_ORE_ADAMANTIUM_BURIED_SMALL = of("ore_adamantium_buried_small");
+    public static final ResourceKey<PlacedFeature> UNDERGROUND_ORE_MITHRIL = of("ore_mithril");
+    public static final ResourceKey<PlacedFeature> UNDERGROUND_ORE_MITHRIL_SMALL = of("ore_mithril_small");
+    public static final ResourceKey<PlacedFeature> UNDERGROUND_ORE_SILVER = of("ore_silver");
+    public static final ResourceKey<PlacedFeature> UNDERGROUND_ORE_SILVER_SMALL = of("ore_silver_small");
+    public static final ResourceKey<PlacedFeature> UNDERGROUND_ORE_IRON = of("ore_iron");
+    public static final ResourceKey<PlacedFeature> UNDERGROUND_ORE_IRON_SMALL = of("ore_iron_small");
+    public static final ResourceKey<PlacedFeature> UNDERGROUND_ORE_COPPER = of("ore_copper");
+    public static final ResourceKey<PlacedFeature> UNDERGROUND_ORE_COPPER_SMALL = of("ore_copper_small");
+    public static final ResourceKey<PlacedFeature> UNDERGROUND_ORE_EMERALD = of("ore_emerald");
+    public static final ResourceKey<PlacedFeature> UNDERGROUND_ORE_LAPIS = of("ore_lapis");
+    public static final ResourceKey<PlacedFeature> UNDERGROUND_ORE_LAPIS_BURIED = of("ore_lapis_buried");
+    public static final ResourceKey<PlacedFeature> UNDERGROUND_ORE_REDSTONE = of("ore_redstone");
+    public static final ResourceKey<PlacedFeature> UNDERGROUND_ORE_DIRT = of("ore_dirt");
+    public static final ResourceKey<PlacedFeature> UNDERGROUND_ORE_GRAVEL = of("ore_gravel");
+    public static final ResourceKey<PlacedFeature> UNDERGROUND_ORE_TUFF = of("ore_tuff");
+    public static final ResourceKey<PlacedFeature> UNDERGROUND_ORE_DIAMOND_FIRST_LAYER = of("ore_diamond_first_layer");
+    public static final ResourceKey<PlacedFeature> UNDERGROUND_ORE_DIAMOND_FIRST_LAYER_BURIED = of("ore_diamond_first_layer_buried");
+    public static final ResourceKey<PlacedFeature> UNDERGROUND_ORE_DIAMOND_SECOND_LAYER = of("ore_diamond_second_layer");
+    public static final ResourceKey<PlacedFeature> UNDERGROUND_ORE_DIAMOND_SECOND_LAYER_BURIED = of("ore_diamond_second_layer_buried");
     public static final ResourceKey<PlacedFeature> UNDERGROUND_MONSTER_ROOM = of("underground_monster_room");
 
     public static void bootstrap(BootstrapContext<PlacedFeature> featureRegisterable){
@@ -64,88 +64,88 @@ public class UndergroundPlacedFeatures {
         Holder<ConfiguredFeature<?, ?>> ore_diamond_medium = registryEntryLookup.getOrThrow(OreFeatures.ORE_DIAMOND_MEDIUM);
         Holder<ConfiguredFeature<?, ?>> ore_diamond_large = registryEntryLookup.getOrThrow(OreFeatures.ORE_DIAMOND_LARGE);
         Holder<ConfiguredFeature<?, ?>> ore_diamond_buried = registryEntryLookup.getOrThrow(OreFeatures.ORE_DIAMOND_BURIED);
-        PlacementUtils.register(featureRegisterable, ORE_ADAMANTIUM_BURIED, ore_adamantium_buried, modifiers(
+        PlacementUtils.register(featureRegisterable, UNDERGROUND_ORE_ADAMANTIUM_BURIED, ore_adamantium_buried, modifiers(
                 CountPlacement.of(3),
                 HeightRangePlacement.triangle(VerticalAnchor.absolute(-88), VerticalAnchor.absolute(-8))
         ));
-        PlacementUtils.register(featureRegisterable, ORE_ADAMANTIUM_BURIED_SMALL, ore_adamantium_buried_small, modifiers(
+        PlacementUtils.register(featureRegisterable, UNDERGROUND_ORE_ADAMANTIUM_BURIED_SMALL, ore_adamantium_buried_small, modifiers(
                 CountPlacement.of(5),
                 HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(-8))
         ));
-        PlacementUtils.register(featureRegisterable, ORE_MITHRIL, ore_mithril, modifiers(
+        PlacementUtils.register(featureRegisterable, UNDERGROUND_ORE_MITHRIL, ore_mithril, modifiers(
                 CountPlacement.of(3),
                 HeightRangePlacement.triangle(VerticalAnchor.absolute(40), VerticalAnchor.absolute(180))
         ));
-        PlacementUtils.register(featureRegisterable, ORE_MITHRIL_SMALL, ore_mithril_small, modifiers(
+        PlacementUtils.register(featureRegisterable, UNDERGROUND_ORE_MITHRIL_SMALL, ore_mithril_small, modifiers(
                 CountPlacement.of(7),
                 HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(70))
         ));
-        PlacementUtils.register(featureRegisterable, ORE_SILVER, ore_silver, modifiers(
+        PlacementUtils.register(featureRegisterable, UNDERGROUND_ORE_SILVER, ore_silver, modifiers(
                 CountPlacement.of(7),
                 HeightRangePlacement.uniform(VerticalAnchor.absolute(128), VerticalAnchor.top())
         ));
-        PlacementUtils.register(featureRegisterable, ORE_SILVER_SMALL, ore_silver_small, modifiers(
+        PlacementUtils.register(featureRegisterable, UNDERGROUND_ORE_SILVER_SMALL, ore_silver_small, modifiers(
                 CountPlacement.of(10),
                 HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(127))
         ));
-        PlacementUtils.register(featureRegisterable, ORE_COPPER, ore_copper, modifiers(
+        PlacementUtils.register(featureRegisterable, UNDERGROUND_ORE_COPPER, ore_copper, modifiers(
                 CountPlacement.of(10),
                 HeightRangePlacement.uniform(VerticalAnchor.absolute(128), VerticalAnchor.top())
         ));
-        PlacementUtils.register(featureRegisterable, ORE_COPPER_SMALL, ore_copper_small, modifiers(
+        PlacementUtils.register(featureRegisterable, UNDERGROUND_ORE_COPPER_SMALL, ore_copper_small, modifiers(
                 CountPlacement.of(15),
                 HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(127))
         ));
-        PlacementUtils.register(featureRegisterable, ORE_EMERALD, ore_emerald, modifiers(
+        PlacementUtils.register(featureRegisterable, UNDERGROUND_ORE_EMERALD, ore_emerald, modifiers(
                 CountPlacement.of(20),
                 HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.top())
         ));
-        PlacementUtils.register(featureRegisterable, ORE_LAPIS, ore_lapis, modifiers(
+        PlacementUtils.register(featureRegisterable, UNDERGROUND_ORE_LAPIS, ore_lapis, modifiers(
                 CountPlacement.of(8),
                 HeightRangePlacement.uniform(VerticalAnchor.absolute(70), VerticalAnchor.absolute(320)))
         );
-        PlacementUtils.register(featureRegisterable, ORE_LAPIS_BURIED, ore_lapis_buried, modifiers(
+        PlacementUtils.register(featureRegisterable, UNDERGROUND_ORE_LAPIS_BURIED, ore_lapis_buried, modifiers(
                 CountPlacement.of(12),
                 HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(70)))
         );
-        PlacementUtils.register(featureRegisterable, ORE_IRON, ore_iron, modifiers(
+        PlacementUtils.register(featureRegisterable, UNDERGROUND_ORE_IRON, ore_iron, modifiers(
                 CountPlacement.of(10),
                 HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.top()))
         );
-        PlacementUtils.register(featureRegisterable, ORE_IRON_SMALL, ore_iron_small, modifiers(
+        PlacementUtils.register(featureRegisterable, UNDERGROUND_ORE_IRON_SMALL, ore_iron_small, modifiers(
                 CountPlacement.of(20),
                 HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.top()))
         );
-        PlacementUtils.register(featureRegisterable, ORE_REDSTONE, ore_redstone, modifiers(
+        PlacementUtils.register(featureRegisterable, UNDERGROUND_ORE_REDSTONE, ore_redstone, modifiers(
                 CountPlacement.of(20),
                 HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.top())
         ));
-        PlacementUtils.register(featureRegisterable, ORE_DIRT, ore_dirt, modifiers(
-                CountPlacement.of(25),
+        PlacementUtils.register(featureRegisterable, UNDERGROUND_ORE_DIRT, ore_dirt, modifiers(
+                CountPlacement.of(15),
                 HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.top())
         ));
-        PlacementUtils.register(featureRegisterable, ORE_GRAVEL, ore_gravel, modifiers(
-                CountPlacement.of(25),
+        PlacementUtils.register(featureRegisterable, UNDERGROUND_ORE_GRAVEL, ore_gravel, modifiers(
+                CountPlacement.of(15),
                 HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.top())
         ));
-        PlacementUtils.register(featureRegisterable, ORE_TUFF, ore_tuff, modifiers(
-                CountPlacement.of(25),
+        PlacementUtils.register(featureRegisterable, UNDERGROUND_ORE_TUFF, ore_tuff, modifiers(
+                CountPlacement.of(15),
                 HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.top())
         ));
-        PlacementUtils.register(featureRegisterable, ORE_DIAMOND_FIRST_LAYER, ore_diamond_small, modifiers(
-                CountPlacement.of(5),
+        PlacementUtils.register(featureRegisterable, UNDERGROUND_ORE_DIAMOND_FIRST_LAYER, ore_diamond_small, modifiers(
+                CountPlacement.of(1),
                 HeightRangePlacement.uniform(VerticalAnchor.absolute(128), VerticalAnchor.top())
         ));
-        PlacementUtils.register(featureRegisterable, ORE_DIAMOND_FIRST_LAYER_BURIED, ore_diamond_medium, modifiers(
-                CountPlacement.of(5),
+        PlacementUtils.register(featureRegisterable, UNDERGROUND_ORE_DIAMOND_FIRST_LAYER_BURIED, ore_diamond_medium, modifiers(
+                CountPlacement.of(1),
                 HeightRangePlacement.uniform(VerticalAnchor.absolute(128), VerticalAnchor.top())
         ));
-        PlacementUtils.register(featureRegisterable, ORE_DIAMOND_SECOND_LAYER, ore_diamond_large, modifiers(
-                CountPlacement.of(5),
+        PlacementUtils.register(featureRegisterable, UNDERGROUND_ORE_DIAMOND_SECOND_LAYER, ore_diamond_large, modifiers(
+                CountPlacement.of(2),
                 HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(127))
         ));
-        PlacementUtils.register(featureRegisterable, ORE_DIAMOND_SECOND_LAYER_BURIED, ore_diamond_buried, modifiers(
-                CountPlacement.of(5),
+        PlacementUtils.register(featureRegisterable, UNDERGROUND_ORE_DIAMOND_SECOND_LAYER_BURIED, ore_diamond_buried, modifiers(
+                CountPlacement.of(2),
                 HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(127))
         ));
         PlacementUtils.register(

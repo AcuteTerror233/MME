@@ -69,7 +69,7 @@ public abstract class AbstractCowMixin extends Animal {
     @Override
     public void tick(){
         super.tick();
-        if (this.recoveryCounter <= 12000 && this.milkCounter < this.maxMilkCounter){
+        if (this.milkCounter < maxMilkCounter){
             this.recoveryCounter++;
         }
         if (this.recoveryCounter > 12000){

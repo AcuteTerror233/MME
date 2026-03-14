@@ -464,15 +464,6 @@ public class MMEBlocks {
         return block;
     }
 
-    private static <T extends BlockEntity> BlockEntityType<T> register(
-            String name,
-            FabricBlockEntityTypeBuilder.Factory<? extends T> entityFactory,
-            Block... blocks
-    ) {
-        ResourceLocation id = ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, name);
-        return Registry.register(BuiltInRegistries.BLOCK_ENTITY_TYPE, id, FabricBlockEntityTypeBuilder.<T>create(entityFactory, blocks).build());
-    }
-
     public static final BlockEntityType<AnvilBlockEntity> ANVIL_BLOCK_ENTITY =
             register(
                     "anvil"
@@ -520,15 +511,24 @@ public class MMEBlocks {
                     , Blocks.FURNACE
                     , Blocks.SMOKER
             );
-
-    private static <T extends AbstractContainerMenu> MenuType<T> register(String id, MenuType.MenuSupplier<T> factory) {
-        return Registry.register(BuiltInRegistries.MENU, id, new MenuType<>(factory, FeatureFlags.VANILLA_SET));
+    private static <T extends BlockEntity> BlockEntityType<T> register(
+            String name,
+            FabricBlockEntityTypeBuilder.Factory<? extends T> entityFactory,
+            Block... blocks
+    ) {
+        ResourceLocation id = ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, name);
+        return Registry.register(BuiltInRegistries.BLOCK_ENTITY_TYPE, id, FabricBlockEntityTypeBuilder.<T>create(entityFactory, blocks).build());
     }
+
 
     public static final MenuType<GradeAnvilMenu> GRADE_ANVIL = register("grade_anvil", GradeAnvilMenu::new);
     public static final MenuType<GradeCraftingTableMenu> GRADE_CRAFTING_TABLE = register("grade_crafting_table", GradeCraftingTableMenu::new);
     public static final MenuType<GradeFurnaceMenu> GRADE_FURNACE = register("grade_furnace", GradeFurnaceMenu::new);
     public static final MenuType<MMEEnchantmentMenu> MME_ENCHANTMENT = register("mme_enchantment", MMEEnchantmentMenu::new);
+    private static <T extends AbstractContainerMenu> MenuType<T> register(String id, MenuType.MenuSupplier<T> factory) {
+        return Registry.register(BuiltInRegistries.MENU, id, new MenuType<>(factory, FeatureFlags.VANILLA_SET));
+    }
+
     public static void init() {
 
     }

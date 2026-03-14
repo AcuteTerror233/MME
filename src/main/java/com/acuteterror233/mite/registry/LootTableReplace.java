@@ -3,6 +3,7 @@ package com.acuteterror233.mite.registry;
 import com.acuteterror233.mite.block.MMEBlocks;
 import com.acuteterror233.mite.item.MMEItems;
 import com.acuteterror233.mite.item.enchantment.MMEEnchantments;
+import com.acuteterror233.mite.registry.tag.MMEItemTags;
 import net.fabricmc.fabric.api.loot.v3.LootTableEvents;
 import net.minecraft.advancements.critereon.*;
 import net.minecraft.core.HolderLookup;
@@ -10,6 +11,7 @@ import net.minecraft.core.HolderSet;
 import net.minecraft.core.component.predicates.DataComponentPredicates;
 import net.minecraft.core.component.predicates.EnchantmentsPredicate;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.data.loot.EntityLootSubProvider;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.*;
@@ -20,9 +22,10 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
+import net.minecraft.world.item.enchantment.LevelBasedValue;
 import net.minecraft.world.level.ItemLike;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.saveddata.maps.MapDecorationTypes;
 import net.minecraft.world.level.storage.loot.BuiltInLootTables;
 import net.minecraft.world.level.storage.loot.LootContext;
@@ -41,9 +44,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 
+@SuppressWarnings("OptionalGetWithoutIsPresent")
 public final class LootTableReplace {
-    public static Map<ResourceKey<LootTable>, Function<HolderLookup.Provider, LootTable>> LOOT_TABLES_REPLACE = new HashMap<>();
     public static void init(){
+        Map<ResourceKey<LootTable>, Function<HolderLookup.Provider, LootTable>> LOOT_TABLES_REPLACE = new HashMap<>();
         LOOT_TABLES_REPLACE.put(Blocks.STONE.getLootTable().get(),
                 provider -> createSilkTouchWithPickaxesWithExplosiveItemTable(provider, Blocks.STONE, Blocks.COBBLESTONE, Blocks.GRAVEL).build()
         );
@@ -2009,10 +2013,253 @@ public final class LootTableReplace {
                                         )
                         ).build()
         );
+        LOOT_TABLES_REPLACE.put(EntityType.CHICKEN.getDefaultLootTable().get(),
+                provider -> LootTable.lootTable()
+                        .withPool(
+                                LootPool.lootPool()
+                                        .setRolls(ConstantValue.exactly(1.0F))
+                                        .add(
+                                                LootItem.lootTableItem(Items.FEATHER)
+                                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F)))
+                                                        .apply(butcheringMultiplier(provider, UniformGenerator.between(0.0F, 1.0F)))
+                                        )
+                        )
+                        .withPool(
+                                LootPool.lootPool()
+                                        .setRolls(ConstantValue.exactly(1.0F))
+                                        .add(
+                                                LootItem.lootTableItem(Items.CHICKEN)
+                                                        .apply(SmeltItemFunction.smelted().when(shouldSmeltLoot(provider)))
+                                                        .apply(butcheringMultiplier(provider, UniformGenerator.between(0.0F, 1.0F)))
+                                        )
+                        ).build()
+        );
+        LOOT_TABLES_REPLACE.put(EntityType.HOGLIN.getDefaultLootTable().get(),
+                provider -> LootTable.lootTable()
+                        .withPool(
+                                LootPool.lootPool()
+                                        .setRolls(ConstantValue.exactly(1.0F))
+                                        .add(
+                                                LootItem.lootTableItem(Items.PORKCHOP)
+                                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(2.0F, 4.0F)))
+                                                        .apply(SmeltItemFunction.smelted().when(shouldSmeltLoot(provider)))
+                                                        .apply(butcheringMultiplier(provider, UniformGenerator.between(0.0F, 1.0F)))
+                                        )
+                        )
+                        .withPool(
+                                LootPool.lootPool()
+                                        .setRolls(ConstantValue.exactly(1.0F))
+                                        .add(
+                                                LootItem.lootTableItem(Items.LEATHER)
+                                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 1.0F)))
+                                                        .apply(butcheringMultiplier(provider, UniformGenerator.between(0.0F, 1.0F)))
+                                        )
+                        ).build()
+        );
+        LOOT_TABLES_REPLACE.put(EntityType.MOOSHROOM.getDefaultLootTable().get(),
+                provider -> LootTable.lootTable()
+                        .withPool(
+                                LootPool.lootPool()
+                                        .setRolls(ConstantValue.exactly(1.0F))
+                                        .add(
+                                                LootItem.lootTableItem(Items.LEATHER)
+                                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F)))
+                                                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(provider, UniformGenerator.between(0.0F, 1.0F)))
+                                        )
+                        )
+                        .withPool(
+                                LootPool.lootPool()
+                                        .setRolls(ConstantValue.exactly(1.0F))
+                                        .add(
+                                                LootItem.lootTableItem(Items.BEEF)
+                                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 3.0F)))
+                                                        .apply(SmeltItemFunction.smelted().when(shouldSmeltLoot(provider)))
+                                                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(provider, UniformGenerator.between(0.0F, 1.0F)))
+                                        )
+                        ).build()
+        );
+        LOOT_TABLES_REPLACE.put(EntityType.PIG.getDefaultLootTable().get(),
+                provider -> LootTable.lootTable()
+                        .withPool(
+                                LootPool.lootPool()
+                                        .setRolls(ConstantValue.exactly(1.0F))
+                                        .add(
+                                                LootItem.lootTableItem(Items.PORKCHOP)
+                                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 3.0F)))
+                                                        .apply(SmeltItemFunction.smelted().when(shouldSmeltLoot(provider)))
+                                                        .apply(butcheringMultiplier(provider, UniformGenerator.between(0.0F, 1.0F)))
+                                        )
+                        ).build()
+        );
+        LOOT_TABLES_REPLACE.put(EntityType.SHEEP.getDefaultLootTable().get(),
+                provider -> LootTable.lootTable()
+                        .withPool(
+                                LootPool.lootPool()
+                                        .setRolls(ConstantValue.exactly(1.0F))
+                                        .add(
+                                                LootItem.lootTableItem(Items.MUTTON)
+                                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)))
+                                                        .apply(SmeltItemFunction.smelted().when(shouldSmeltLoot(provider)))
+                                                        .apply(butcheringMultiplier(provider, UniformGenerator.between(0.0F, 1.0F)))
+                                        )
+                        )
+                        .withPool(EntityLootSubProvider.createSheepDispatchPool(BuiltInLootTables.SHEEP_BY_DYE))
+                        .build()
+        );
+        LOOT_TABLES_REPLACE.put(EntityType.RABBIT.getDefaultLootTable().get(),
+                provider -> LootTable.lootTable()
+                        .withPool(
+                                LootPool.lootPool()
+                                        .setRolls(ConstantValue.exactly(1.0F))
+                                        .add(
+                                                LootItem.lootTableItem(Items.RABBIT_HIDE)
+                                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 1.0F)))
+                                                        .apply(butcheringMultiplier(provider, UniformGenerator.between(0.0F, 1.0F)))
+                                        )
+                        )
+                        .withPool(
+                                LootPool.lootPool()
+                                        .setRolls(ConstantValue.exactly(1.0F))
+                                        .add(
+                                                LootItem.lootTableItem(Items.RABBIT)
+                                                        .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F)))
+                                                        .apply(SmeltItemFunction.smelted().when(shouldSmeltLoot(provider)))
+                                                        .apply(butcheringMultiplier(provider, UniformGenerator.between(0.0F, 1.0F)))
+                                        )
+                        )
+                        .withPool(
+                                LootPool.lootPool()
+                                        .setRolls(ConstantValue.exactly(1.0F))
+                                        .add(LootItem.lootTableItem(Items.RABBIT_FOOT))
+                                        .when(LootItemKilledByPlayerCondition.killedByPlayer())
+                                        .when(randomChanceAndButcheringBoost(provider, 0.1F, 0.03F))
+                        ).build()
+        );
+        LOOT_TABLES_REPLACE.put(Blocks.WHEAT.getLootTable().get(),
+                provider -> LootTable.lootTable()
+                        .withPool(
+                                LootPool.lootPool()
+                                        .add(LootItem.lootTableItem(Items.WHEAT)
+                                                .apply(ApplyBonusCount.addBonusBinomialDistributionCount(provider.lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(MMEEnchantments.HARVESTING), (float) 3 / 18, 3)))
+                                        .when(propertyCondition(Blocks.WHEAT, CropBlock.AGE, 7)
+                                                .and(MatchTool.toolMatches(ItemPredicate.Builder.item().of(provider.lookupOrThrow(Registries.ITEM), MMEItemTags.SCYTHE)))
+                                        )
+                        ).withPool(
+                                LootPool.lootPool()
+                                        .add(LootItem.lootTableItem(Items.WHEAT_SEEDS))
+                                        .when(propertyCondition(Blocks.WHEAT, CropBlock.AGE, 0))
+                        ).build()
+        );
+        LOOT_TABLES_REPLACE.put(Blocks.POTATOES.getLootTable().get(),
+                provider -> LootTable.lootTable()
+                        .withPool(
+                                LootPool.lootPool()
+                                        .add(LootItem.lootTableItem(Items.POTATO)
+                                                .apply(ApplyBonusCount.addBonusBinomialDistributionCount(provider.lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(MMEEnchantments.HARVESTING), (float) 5 / 18, 3))
+                                        ).when(propertyCondition(Blocks.POTATOES, PotatoBlock.AGE, 7))
+                        ).withPool(
+                                LootPool.lootPool()
+                                        .add(LootItem.lootTableItem(Items.POISONOUS_POTATO).when(LootItemRandomChanceCondition.randomChance(0.02F)))
+                                        .when(propertyCondition(Blocks.POTATOES, PotatoBlock.AGE, 7))
+                        ).withPool(
+                                LootPool.lootPool()
+                                        .add(LootItem.lootTableItem(Items.POTATO))
+                                        .when(propertyCondition(Blocks.POTATOES, PotatoBlock.AGE, 0))
+                        ).build()
+        );
+        LOOT_TABLES_REPLACE.put(Blocks.CARROTS.getLootTable().get(),
+                provider -> LootTable.lootTable()
+                        .withPool(
+                                LootPool.lootPool()
+                                        .add(LootItem.lootTableItem(Items.CARROT)
+                                                .apply(ApplyBonusCount.addBonusBinomialDistributionCount(provider.lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(MMEEnchantments.HARVESTING), (float) 5 / 18, 3))
+                                        ).when(propertyCondition(Blocks.CARROTS, CarrotBlock.AGE, 7))
+                        ).withPool(
+                                LootPool.lootPool()
+                                        .add(LootItem.lootTableItem(Items.CARROT))
+                                        .when(propertyCondition(Blocks.CARROTS, CarrotBlock.AGE, 0))
+                        ).build()
+        );
+        LOOT_TABLES_REPLACE.put(Blocks.BEETROOTS.getLootTable().get(),
+                provider -> LootTable.lootTable()
+                        .withPool(
+                                LootPool.lootPool()
+                                        .add(LootItem.lootTableItem(Items.BEETROOT)
+                                                .apply(ApplyBonusCount.addBonusBinomialDistributionCount(provider.lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(MMEEnchantments.HARVESTING), (float) 5 / 18, 3))
+                                        ).when(propertyCondition(Blocks.BEETROOTS, CropBlock.AGE, 3))
+                        ).withPool(
+                                LootPool.lootPool()
+                                        .add(LootItem.lootTableItem(Items.BEETROOT_SEEDS))
+                                        .when(propertyCondition(Blocks.BEETROOTS, CropBlock.AGE, 0))
+                        ).build()
+        );
+        LOOT_TABLES_REPLACE.put(Blocks.MELON_STEM.getLootTable().get(),
+                provider -> LootTable.lootTable()
+                        .withPool(
+                                LootPool.lootPool()
+                                        .add(LootItem.lootTableItem(Items.MELON_SEEDS))
+                                        .when(propertyCondition(Blocks.MELON_STEM, StemBlock.AGE, 0))
+                        ).build()
+        );
+        LOOT_TABLES_REPLACE.put(Blocks.PUMPKIN_STEM.getLootTable().get(),
+                provider -> LootTable.lootTable()
+                        .withPool(
+                                LootPool.lootPool()
+                                        .add(LootItem.lootTableItem(Items.PUMPKIN_SEEDS))
+                                        .when(propertyCondition(Blocks.PUMPKIN_STEM, StemBlock.AGE, 0))
+                        ).build()
+        );
+        LOOT_TABLES_REPLACE.put(Blocks.NETHER_WART.getLootTable().get(),
+                provider -> LootTable.lootTable()
+                        .withPool(
+                                LootPool.lootPool()
+                                        .add(LootItem.lootTableItem(Items.NETHER_WART)
+                                                .apply(ApplyBonusCount.addBonusBinomialDistributionCount(provider.lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(MMEEnchantments.HARVESTING), (float) 6 / 18, 3)))
+                                        .when(propertyCondition(Blocks.NETHER_WART, NetherWartBlock.AGE, 3))
+                        )
+                        .withPool(
+                                LootPool.lootPool()
+                                        .add(LootItem.lootTableItem(Items.NETHER_WART))
+                                        .when(propertyCondition(Blocks.NETHER_WART, NetherWartBlock.AGE, 0))
+                        ).build()
+        );
+        LOOT_TABLES_REPLACE.put(Blocks.LAPIS_ORE.getLootTable().get(),
+                provider -> createSilkTouchWithTagWithExplosiveItemTable(
+                        provider,
+                        Blocks.LAPIS_ORE,
+                        ConstantValue.exactly(1),
+                        ItemTags.PICKAXES,
+                        Items.LAPIS_LAZULI,
+                        UniformGenerator.between(2, 4),
+                        Items.LAPIS_LAZULI,
+                        UniformGenerator.between(2, 4)
+                ).build()
+        );
+
+        LOOT_TABLES_REPLACE.put(Blocks.COPPER_ORE.getLootTable().get(),
+                provider -> createSilkTouchWithPickaxesWithExplosiveItemTable(
+                        provider,
+                        Blocks.COPPER_ORE,
+                        Items.RAW_COPPER,
+                        Items.RAW_COPPER
+                ).build()
+        );
+
         LootTableEvents.REPLACE.register((key, original, source, registries) -> {
             Function<HolderLookup.Provider, LootTable> function = LOOT_TABLES_REPLACE.get(key);
             return function != null ? function.apply(registries) : null;
         });
+    }
+
+    public static LootItemBlockStatePropertyCondition.Builder propertyCondition(Block block, Property<Integer> property, int i) {
+        return LootItemBlockStatePropertyCondition
+                .hasBlockStateProperties(block)
+                .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(property, i));
+    }
+
+    public static LootItemCondition.Builder randomChanceAndButcheringBoost(HolderLookup.Provider provider, float f, float g) {
+        HolderLookup.RegistryLookup<Enchantment> registryLookup = provider.lookupOrThrow(Registries.ENCHANTMENT);
+        return () -> new LootItemRandomChanceWithEnchantedBonusCondition(f, new LevelBasedValue.Linear(f + g, g), registryLookup.getOrThrow(MMEEnchantments.BUTCHERING));
     }
     public static EnchantedCountIncreaseFunction.Builder butcheringMultiplier(HolderLookup.Provider provider, NumberProvider numberProvider) {
         HolderLookup.RegistryLookup<Enchantment> registryLookup = provider.lookupOrThrow(Registries.ENCHANTMENT);
@@ -2051,18 +2298,18 @@ public final class LootTableReplace {
             int min,
             int max
     ){
-      return createSilkTouchWithTagWithExplosiveItemTable(provider, silkTouchAndDigItem, ConstantValue.exactly(1.0F), silkTouchAndDigItem, ConstantValue.exactly(1.0F), ItemTags.AXES, blastingItem, UniformGenerator.between(min, max));
+      return createSilkTouchWithTagWithExplosiveItemTable(provider, silkTouchAndDigItem, ConstantValue.exactly(1.0F), ItemTags.AXES, silkTouchAndDigItem, ConstantValue.exactly(1.0F), blastingItem, UniformGenerator.between(min, max));
     }
     public static LootTable.Builder createSilkTouchWithPickaxesWithExplosiveItemTable(HolderLookup.Provider provider, ItemLike silkTouchItem, ItemLike digItem, ItemLike blastingItem){
-        return createSilkTouchWithTagWithExplosiveItemTable(provider, silkTouchItem, ConstantValue.exactly(1.0F), digItem, ConstantValue.exactly(1.0F), ItemTags.PICKAXES, blastingItem, ConstantValue.exactly(1.0F));
+        return createSilkTouchWithTagWithExplosiveItemTable(provider, silkTouchItem, ConstantValue.exactly(1.0F), ItemTags.PICKAXES, digItem, ConstantValue.exactly(1.0F), blastingItem, ConstantValue.exactly(1.0F));
     }
     public static LootTable.Builder createSilkTouchWithTagWithExplosiveItemTable(
             HolderLookup.Provider provider,
             ItemLike silkTouchItem,
             NumberProvider count1,
+            TagKey<Item> allowedDigTag,
             ItemLike digItem,
             NumberProvider count2,
-            TagKey<Item> tag,
             ItemLike blastingItem,
             NumberProvider count3
     ) {
@@ -2092,7 +2339,7 @@ public final class LootTableReplace {
                                                         .apply(SetItemCountFunction.setCount(count2))
                                                         .when(MatchTool.toolMatches(
                                                                 ItemPredicate.Builder.item()
-                                                                        .of(provider.lookupOrThrow(Registries.ITEM), tag)
+                                                                        .of(provider.lookupOrThrow(Registries.ITEM), allowedDigTag)
                                                                 )
                                                         )
                                         ).otherwise(

@@ -100,8 +100,6 @@ public class AnvilBlockEntity extends BlockEntity {
                     anvilBlockEntity.setMaxDamage(this.maxDamage);
                     anvilBlockEntity.setDamage(this.damage);
                 }
-            }else {
-                this.level.levelEvent(1030, this.worldPosition, 0);
             }
         }
     }

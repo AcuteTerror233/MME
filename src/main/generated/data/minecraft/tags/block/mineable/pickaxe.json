@@ -1,5 +1,7 @@
 {
   "values": [
+    "#mme:mithril_runestore",
+    "#mme:adamantium_runestore",
     "mme:adamantium_ore",
     "mme:deepslate_adamantium_ore",
     "mme:mithril_ore",

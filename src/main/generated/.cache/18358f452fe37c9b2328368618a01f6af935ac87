@@ -30,6 +30,7 @@ db4456ed0e58af30d8201f89d010ede5d81188cc data/mme/tags/item/dagger_enchantable.j
 be2b1f39ec940749345ee93d0e9e6b00fd5dc1fb data/mme/tags/item/fishing_rods.json
 06297e3c72fe0b12bf9db435c1d4046fafe18fd3 data/mme/tags/item/gold_not_allowed_material.json
 7faceaaf812e90cb3f05bdfda85cf207c68846d2 data/mme/tags/item/gold_series_repairable.json
+3590777e6c747d311acf635c3b61e4c3f3aa232c data/mme/tags/item/harvesting_enchantable.json
 39d1b9e44f3939790a21ac0eacf75efa88574710 data/mme/tags/item/hatchet.json
 355ba72dc42bbaf2dc5d29fcad6ca76635359796 data/mme/tags/item/ingot.json
 da3fed610bd7cae6783d2523e14b099c05d251a8 data/mme/tags/item/iron_not_allowed_material.json

@@ -47,7 +47,7 @@ public abstract class BaseFireBlockMixin {
                         minDistance *= 8;
                     }
                     List<BlockState> list = extension.MME$GetBottomStateList(world);
-                    BlockPos PurposePos = RunePortalCoordinateGenerator.getRunePortalCoordinate(list.get(0).toString(), list.get(1).toString(), list.get(2).toString(), list.get(3).toString(), pos, minDistance, maxDistance);
+                    BlockPos PurposePos = RunePortalCoordinateGenerator.getRunePortalCoordinate(list, pos, minDistance, maxDistance);
                     extension.MME$CreateRunePortal(world, getSafeLocation((ServerLevel) world, PurposePos));
                     return;
                 } else if (worldRegistryKey == Level.OVERWORLD && extension.MME$CheckBottomCorner(world, Blocks.BEDROCK)) {

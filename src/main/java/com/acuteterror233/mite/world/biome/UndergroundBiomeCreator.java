@@ -134,27 +134,27 @@ public class UndergroundBiomeCreator {
                 .build();
     }
     public static void addDefaultOres(BiomeGenerationSettings.Builder builder) {
-        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, UndergroundPlacedFeatures.ORE_ADAMANTIUM_BURIED);
-        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, UndergroundPlacedFeatures.ORE_ADAMANTIUM_BURIED_SMALL);
-        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, UndergroundPlacedFeatures.ORE_MITHRIL);
-        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, UndergroundPlacedFeatures.ORE_MITHRIL_SMALL);
-        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, UndergroundPlacedFeatures.ORE_SILVER);
-        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, UndergroundPlacedFeatures.ORE_SILVER_SMALL);
-        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, UndergroundPlacedFeatures.ORE_COPPER);
-        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, UndergroundPlacedFeatures.ORE_COPPER_SMALL);
-        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, UndergroundPlacedFeatures.ORE_EMERALD);
-        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, UndergroundPlacedFeatures.ORE_LAPIS);
-        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, UndergroundPlacedFeatures.ORE_LAPIS_BURIED);
-        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, UndergroundPlacedFeatures.ORE_IRON);
-        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, UndergroundPlacedFeatures.ORE_IRON_SMALL);
-        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, UndergroundPlacedFeatures.ORE_REDSTONE);
-        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, UndergroundPlacedFeatures.ORE_TUFF);
-        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, UndergroundPlacedFeatures.ORE_DIRT);
-        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, UndergroundPlacedFeatures.ORE_GRAVEL);
-        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, UndergroundPlacedFeatures.ORE_DIAMOND_FIRST_LAYER);
-        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, UndergroundPlacedFeatures.ORE_DIAMOND_FIRST_LAYER_BURIED);
-        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, UndergroundPlacedFeatures.ORE_DIAMOND_SECOND_LAYER);
-        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, UndergroundPlacedFeatures.ORE_DIAMOND_SECOND_LAYER_BURIED);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, UndergroundPlacedFeatures.UNDERGROUND_ORE_ADAMANTIUM_BURIED);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, UndergroundPlacedFeatures.UNDERGROUND_ORE_ADAMANTIUM_BURIED_SMALL);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, UndergroundPlacedFeatures.UNDERGROUND_ORE_MITHRIL);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, UndergroundPlacedFeatures.UNDERGROUND_ORE_MITHRIL_SMALL);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, UndergroundPlacedFeatures.UNDERGROUND_ORE_SILVER);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, UndergroundPlacedFeatures.UNDERGROUND_ORE_SILVER_SMALL);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, UndergroundPlacedFeatures.UNDERGROUND_ORE_COPPER);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, UndergroundPlacedFeatures.UNDERGROUND_ORE_COPPER_SMALL);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, UndergroundPlacedFeatures.UNDERGROUND_ORE_EMERALD);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, UndergroundPlacedFeatures.UNDERGROUND_ORE_LAPIS);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, UndergroundPlacedFeatures.UNDERGROUND_ORE_LAPIS_BURIED);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, UndergroundPlacedFeatures.UNDERGROUND_ORE_IRON);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, UndergroundPlacedFeatures.UNDERGROUND_ORE_IRON_SMALL);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, UndergroundPlacedFeatures.UNDERGROUND_ORE_REDSTONE);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, UndergroundPlacedFeatures.UNDERGROUND_ORE_TUFF);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, UndergroundPlacedFeatures.UNDERGROUND_ORE_DIRT);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, UndergroundPlacedFeatures.UNDERGROUND_ORE_GRAVEL);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, UndergroundPlacedFeatures.UNDERGROUND_ORE_DIAMOND_FIRST_LAYER);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, UndergroundPlacedFeatures.UNDERGROUND_ORE_DIAMOND_FIRST_LAYER_BURIED);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, UndergroundPlacedFeatures.UNDERGROUND_ORE_DIAMOND_SECOND_LAYER);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, UndergroundPlacedFeatures.UNDERGROUND_ORE_DIAMOND_SECOND_LAYER_BURIED);
         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, net.minecraft.data.worldgen.placement.CavePlacements.GLOW_LICHEN);
     }
 }

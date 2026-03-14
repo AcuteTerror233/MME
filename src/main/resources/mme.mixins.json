@@ -22,6 +22,7 @@
     "world.entity.monster.AbstractSkeletonMixin",
     "world.entity.monster.CreeperMixin",
     "world.entity.monster.ZombieMixin",
+    "world.entity.npc.VillagerTradesMixin",
     "world.entity.passive.AnimalMixin",
     "world.entity.player.FoodDataMixin",
     "world.entity.player.PlayerEntityMixin",

@@ -381,33 +381,33 @@ public final class VanillaItemModify {
         result.put(ResourceLocation.withDefaultNamespace("netherite_leggings"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.NETHERITE_MATERIAL, ArmorType.LEGGINGS));
         result.put(ResourceLocation.withDefaultNamespace("netherite_boots"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.NETHERITE_MATERIAL, ArmorType.BOOTS));
 
-        result.put(ResourceLocation.withDefaultNamespace("iron_sword"), settings -> MMEItems.getSwordSettings(MMEToolMaterials.IRON));
-        result.put(ResourceLocation.withDefaultNamespace("iron_shovel"), settings -> MMEItems.getShovelSettings(MMEToolMaterials.IRON));
-        result.put(ResourceLocation.withDefaultNamespace("iron_pickaxe"), settings -> MMEItems.getPickaxeSettings(MMEToolMaterials.IRON));
-        result.put(ResourceLocation.withDefaultNamespace("iron_axe"), settings -> MMEItems.getAxeSettings(MMEToolMaterials.IRON));
-        result.put(ResourceLocation.withDefaultNamespace("iron_hoe"), settings -> MMEItems.getHoeSettings(MMEToolMaterials.IRON));
+        result.put(ResourceLocation.withDefaultNamespace("iron_sword"), settings -> MMEItems.getSwordSettings(MMEToolMaterials.IRON).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(ResourceLocation.withDefaultNamespace("iron_shovel"), settings -> MMEItems.getShovelSettings(MMEToolMaterials.IRON).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(ResourceLocation.withDefaultNamespace("iron_pickaxe"), settings -> MMEItems.getPickaxeSettings(MMEToolMaterials.IRON).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(ResourceLocation.withDefaultNamespace("iron_axe"), settings -> MMEItems.getAxeSettings(MMEToolMaterials.IRON).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(ResourceLocation.withDefaultNamespace("iron_hoe"), settings -> MMEItems.getHoeSettings(MMEToolMaterials.IRON).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
         result.put(ResourceLocation.withDefaultNamespace("shears"), settings -> MMEItems.getShearsSettings(MMEToolMaterials.IRON));
 
-        result.put(ResourceLocation.withDefaultNamespace("golden_sword"), settings -> MMEItems.getSwordSettings(MMEToolMaterials.GOLD));
-        result.put(ResourceLocation.withDefaultNamespace("golden_shovel"), settings -> MMEItems.getShovelSettings(MMEToolMaterials.GOLD));
-        result.put(ResourceLocation.withDefaultNamespace("golden_pickaxe"), settings -> MMEItems.getPickaxeSettings(MMEToolMaterials.GOLD));
-        result.put(ResourceLocation.withDefaultNamespace("golden_axe"), settings -> MMEItems.getAxeSettings(MMEToolMaterials.GOLD));
-        result.put(ResourceLocation.withDefaultNamespace("golden_hoe"), settings -> MMEItems.getHoeSettings(MMEToolMaterials.GOLD));
+        result.put(ResourceLocation.withDefaultNamespace("golden_sword"), settings -> MMEItems.getSwordSettings(MMEToolMaterials.GOLD).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(ResourceLocation.withDefaultNamespace("golden_shovel"), settings -> MMEItems.getShovelSettings(MMEToolMaterials.GOLD).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(ResourceLocation.withDefaultNamespace("golden_pickaxe"), settings -> MMEItems.getPickaxeSettings(MMEToolMaterials.GOLD).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(ResourceLocation.withDefaultNamespace("golden_axe"), settings -> MMEItems.getAxeSettings(MMEToolMaterials.GOLD).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(ResourceLocation.withDefaultNamespace("golden_hoe"), settings -> MMEItems.getHoeSettings(MMEToolMaterials.GOLD).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
 
-        result.put(ResourceLocation.withDefaultNamespace("iron_helmet"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.IRON_MATERIAL, ArmorType.HELMET));
-        result.put(ResourceLocation.withDefaultNamespace("iron_chestplate"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.IRON_MATERIAL, ArmorType.CHESTPLATE));
-        result.put(ResourceLocation.withDefaultNamespace("iron_leggings"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.IRON_MATERIAL, ArmorType.LEGGINGS));
-        result.put(ResourceLocation.withDefaultNamespace("iron_boots"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.IRON_MATERIAL, ArmorType.BOOTS));
+        result.put(ResourceLocation.withDefaultNamespace("iron_helmet"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.IRON_MATERIAL, ArmorType.HELMET).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(ResourceLocation.withDefaultNamespace("iron_chestplate"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.IRON_MATERIAL, ArmorType.CHESTPLATE).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(ResourceLocation.withDefaultNamespace("iron_leggings"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.IRON_MATERIAL, ArmorType.LEGGINGS).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(ResourceLocation.withDefaultNamespace("iron_boots"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.IRON_MATERIAL, ArmorType.BOOTS).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
 
-        result.put(ResourceLocation.withDefaultNamespace("chainmail_helmet"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.IRON_CHAINMAIL_MATERIAL, ArmorType.HELMET));
-        result.put(ResourceLocation.withDefaultNamespace("chainmail_chestplate"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.IRON_CHAINMAIL_MATERIAL, ArmorType.CHESTPLATE));
-        result.put(ResourceLocation.withDefaultNamespace("chainmail_leggings"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.IRON_CHAINMAIL_MATERIAL, ArmorType.LEGGINGS));
-        result.put(ResourceLocation.withDefaultNamespace("chainmail_boots"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.IRON_CHAINMAIL_MATERIAL, ArmorType.BOOTS));
+        result.put(ResourceLocation.withDefaultNamespace("chainmail_helmet"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.IRON_CHAINMAIL_MATERIAL, ArmorType.HELMET).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(ResourceLocation.withDefaultNamespace("chainmail_chestplate"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.IRON_CHAINMAIL_MATERIAL, ArmorType.CHESTPLATE).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(ResourceLocation.withDefaultNamespace("chainmail_leggings"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.IRON_CHAINMAIL_MATERIAL, ArmorType.LEGGINGS).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(ResourceLocation.withDefaultNamespace("chainmail_boots"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.IRON_CHAINMAIL_MATERIAL, ArmorType.BOOTS).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
 
-        result.put(ResourceLocation.withDefaultNamespace("golden_helmet"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.GOLD_MATERIAL, ArmorType.HELMET));
-        result.put(ResourceLocation.withDefaultNamespace("golden_chestplate"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.GOLD_MATERIAL, ArmorType.CHESTPLATE));
-        result.put(ResourceLocation.withDefaultNamespace("golden_leggings"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.GOLD_MATERIAL, ArmorType.LEGGINGS));
-        result.put(ResourceLocation.withDefaultNamespace("golden_boots"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.GOLD_MATERIAL, ArmorType.BOOTS));
+        result.put(ResourceLocation.withDefaultNamespace("golden_helmet"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.GOLD_MATERIAL, ArmorType.HELMET).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(ResourceLocation.withDefaultNamespace("golden_chestplate"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.GOLD_MATERIAL, ArmorType.CHESTPLATE).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(ResourceLocation.withDefaultNamespace("golden_leggings"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.GOLD_MATERIAL, ArmorType.LEGGINGS).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(ResourceLocation.withDefaultNamespace("golden_boots"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.GOLD_MATERIAL, ArmorType.BOOTS).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
 
         result.put(ResourceLocation.withDefaultNamespace("leather_helmet"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.LEATHER_MATERIAL, ArmorType.HELMET));
         result.put(ResourceLocation.withDefaultNamespace("leather_chestplate"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.LEATHER_MATERIAL, ArmorType.CHESTPLATE));
@@ -518,11 +518,24 @@ public final class VanillaItemModify {
         result.put(ResourceLocation.withDefaultNamespace("iron_ore"), settings -> settings.component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
         result.put(ResourceLocation.withDefaultNamespace("copper_ore"), settings -> settings.component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
         result.put(ResourceLocation.withDefaultNamespace("gold_ore"), settings -> settings.component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(ResourceLocation.withDefaultNamespace("diamond_ore"), settings -> settings.component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(ResourceLocation.withDefaultNamespace("lapis_ore"), settings -> settings.component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(ResourceLocation.withDefaultNamespace("redstone_ore"), settings -> settings.component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(ResourceLocation.withDefaultNamespace("coal_ore"), settings -> settings.component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(ResourceLocation.withDefaultNamespace("emerald_ore"), settings -> settings.component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
 
         result.put(ResourceLocation.withDefaultNamespace("deepslate_iron_ore"), settings -> settings.component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
         result.put(ResourceLocation.withDefaultNamespace("deepslate_copper_ore"), settings -> settings.component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
         result.put(ResourceLocation.withDefaultNamespace("deepslate_gold_ore"), settings -> settings.component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
         result.put(ResourceLocation.withDefaultNamespace("nether_gold_ore"), settings -> settings.component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(ResourceLocation.withDefaultNamespace("deepslate_diamond_ore"), settings -> settings.component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(ResourceLocation.withDefaultNamespace("deepslate_lapis_ore"), settings -> settings.component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(ResourceLocation.withDefaultNamespace("deepslate_redstone_ore"), settings -> settings.component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(ResourceLocation.withDefaultNamespace("deepslate_coal_ore"), settings -> settings.component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(ResourceLocation.withDefaultNamespace("deepslate_emerald_ore"), settings -> settings.component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+
+        result.put(ResourceLocation.withDefaultNamespace("nether_quartz_ore"), properties -> properties.component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(ResourceLocation.withDefaultNamespace("ancient_debris"), properties -> properties.component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
 
         result.put(ResourceLocation.withDefaultNamespace("brown_mushroom"), properties -> properties.food(new FoodProperties(1, 1.0F, false)));
         result.put(ResourceLocation.withDefaultNamespace("red_mushroom"), properties -> properties.food(new FoodProperties(1, 1.0F, false),
@@ -545,6 +558,20 @@ public final class VanillaItemModify {
         result.put(ResourceLocation.withDefaultNamespace("damaged_anvil"), settings -> settings
                 .durability(MMEBlocks.maxDamageAnvil(MMEToolMaterials.IRON.durability()))
         );
+        result.put(ResourceLocation.withDefaultNamespace("sand"), properties -> properties.component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(ResourceLocation.withDefaultNamespace("red_sand"), properties -> properties.component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(ResourceLocation.withDefaultNamespace("cobblestone"), properties -> properties.component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(ResourceLocation.withDefaultNamespace("cobbled_deepslate"), properties -> properties.component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(ResourceLocation.withDefaultNamespace("stone"), properties -> properties.component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(ResourceLocation.withDefaultNamespace("sandstone"), properties -> properties.component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(ResourceLocation.withDefaultNamespace("red_sandstone"), properties -> properties.component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(ResourceLocation.withDefaultNamespace("quartz_block"), properties -> properties.component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(ResourceLocation.withDefaultNamespace("stone_bricks"), properties -> properties.component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(ResourceLocation.withDefaultNamespace("nether_bricks"), properties -> properties.component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(ResourceLocation.withDefaultNamespace("polished_blackstone_bricks"), properties -> properties.component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(ResourceLocation.withDefaultNamespace("deepslate_bricks"), properties -> properties.component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(ResourceLocation.withDefaultNamespace("deepslate_tiles"), properties -> properties.component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(ResourceLocation.withDefaultNamespace("basalt"), properties -> properties.component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
         return result;
     }
 
@@ -567,7 +594,7 @@ public final class VanillaItemModify {
         // 最大堆叠为 8 的方块类型
         result.put(SlabBlock.class, settings -> settings.stacksTo(8));
         result.put(WallBlock.class, settings -> settings.stacksTo(8));
-        result.put(TerracottaBlock.class, settings -> settings.stacksTo(8));
+        result.put(TerracottaBlock.class, settings -> settings.stacksTo(8).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
         result.put(TintedParticleLeavesBlock.class, settings -> settings.stacksTo(8));
         result.put(TransparentBlock.class, settings -> settings.stacksTo(8));
         result.put(KelpPlantBlock.class, settings -> settings.stacksTo(8));

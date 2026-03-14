@@ -1,9 +1,11 @@
 package com.acuteterror233.mite.generator;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.block.state.BlockState;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 
 /**
  * 该功能由AI编写
@@ -13,18 +15,18 @@ public class RunePortalCoordinateGenerator {
      * 生成在全方向均匀分布的坐标
      */
     public static BlockPos getRunePortalCoordinate(
-            String seed1, String seed2, String seed3, String seed4,
-            BlockPos originalCoord,
+            List<BlockState> list,
+            BlockPos originalPos,
             int minDistance, int maxDistance) {
 
-        int origX = originalCoord.getX();
-        int origZ = originalCoord.getZ();
+        int origX = originalPos.getX();
+        int origZ = originalPos.getZ();
 
         try {
             MessageDigest digest = MessageDigest.getInstance("SHA-256");
 
             // 使用顺序敏感的混合
-            String input = seed1 + seed2 + seed3 + seed4;
+            String input = list.getFirst().getBlock().toString() + list.get(1).getBlock() + list.get(2).getBlock() + list.getLast().getBlock();
             byte[] hash = digest.digest(input.getBytes());
 
             // 生成多个随机值
@@ -45,7 +47,7 @@ public class RunePortalCoordinateGenerator {
             int newX = (int) (origX + distance * Math.cos(angle));
             int newZ = (int) (origZ + distance * Math.sin(angle));
 
-            return new BlockPos(newX, originalCoord.getY(), newZ);
+            return new BlockPos(newX, originalPos.getY(), newZ);
 
         } catch (NoSuchAlgorithmException e) {
             throw new RuntimeException("SHA-256 algorithm not available", e);

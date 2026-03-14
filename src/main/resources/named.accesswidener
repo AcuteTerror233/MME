@@ -3,3 +3,4 @@ accessible class net/minecraft/world/level/block/entity/BlockEntityType$BlockEnt
 accessible method net/minecraft/world/level/block/entity/BlockEntityType register (Ljava/lang/String;Lnet/minecraft/world/level/block/entity/BlockEntityType$BlockEntitySupplier;[Lnet/minecraft/world/level/block/Block;)Lnet/minecraft/world/level/block/entity/BlockEntityType;
 accessible method net/minecraft/world/item/Items blockIdToItemId (Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/resources/ResourceKey;
 accessible method net/minecraft/world/item/Items createBlockItemWithCustomItemName (Lnet/minecraft/world/level/block/Block;)Ljava/util/function/Function;
+accessible class net/minecraft/world/level/storage/loot/functions/ApplyBonusCount$OreDrops

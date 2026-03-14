@@ -1,0 +1,22 @@
+{
+  "anvil_cost": 4,
+  "description": {
+    "translate": "enchantment.mme.harvesting"
+  },
+  "exclusive_set": "#minecraft:exclusive_set/mining",
+  "max_cost": {
+    "base": 65,
+    "per_level_above_first": 9
+  },
+  "max_level": 3,
+  "min_cost": {
+    "base": 15,
+    "per_level_above_first": 9
+  },
+  "primary_items": "#mme:scythe",
+  "slots": [
+    "mainhand"
+  ],
+  "supported_items": "#mme:harvesting_enchantable",
+  "weight": 2
+}

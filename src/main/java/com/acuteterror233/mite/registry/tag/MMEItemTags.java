@@ -29,6 +29,7 @@ public interface MMEItemTags {
     TagKey<Item> SHEARS = key("shears");
 
     TagKey<Item> DAGGER_ENCHANTABLE = key("dagger_enchantable");
+    TagKey<Item> HARVESTING_ENCHANTABLE =  key("harvesting_enchantable");
 
     TagKey<Item> ADAMANTIUM_SERIES_REPAIRABLE = key("adamantium_series_repairable");
     TagKey<Item> MITHRIL_SERIES_REPAIRABLE = key("mithril_series_repairable");

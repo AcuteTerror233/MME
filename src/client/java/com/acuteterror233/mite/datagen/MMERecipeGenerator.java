@@ -377,6 +377,12 @@ public class MMERecipeGenerator extends FabricRecipeProvider {
                         .requires(Items.COCOA_BEANS)
                         .unlockedBy(getHasName(Items.SUGAR), this.has(Items.SUGAR))
                         .save(this.output);
+                shapeless(RecipeCategory.FOOD, Items.WHEAT_SEEDS, 2)
+                        .requires(Items.WHEAT)
+                        .unlockedBy(getHasName(Items.WHEAT), this.has(Items.WHEAT));
+                shapeless(RecipeCategory.FOOD, MMEItems.FLOUR, 3)
+                        .requires(Items.WHEAT)
+                        .unlockedBy(getHasName(Items.WHEAT), this.has(Items.WHEAT));
                 shapeless(RecipeCategory.FOOD, MMEItems.DOUGH)
                         .requires(MMEItems.FLOUR)
                         .requires(MMEItems.BOWL_WATER)
@@ -390,6 +396,8 @@ public class MMERecipeGenerator extends FabricRecipeProvider {
                         .requires(MMEItemTags.WATER_BUCKET)
                         .unlockedBy(getHasName(MMEItems.FLOUR), this.has(MMEItems.FLOUR))
                         .save(this.output, "dough_form_water_bucket");
+                smeltingResultFromBase(MMEItems.DOUGH, Items.BREAD);
+                SimpleCookingRecipeBuilder.smoking(Ingredient.of(MMEItems.DOUGH), RecipeCategory.FOOD, Items.BREAD, 0.35F, 100);
                 shapeless(RecipeCategory.FOOD, MMEItems.PUMPKIN_SOUP)
                         .requires(Items.PUMPKIN)
                         .requires(MMEItems.BOWL_WATER)

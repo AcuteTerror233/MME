@@ -50,7 +50,7 @@ public class MMEArmorMaterials {
             20,
             SoundEvents.ARMOR_EQUIP_NETHERITE,
             1.0F,
-            0.75F,
+            0.5F,
             MMEItemTags.ADAMANTIUM_TOOL_MATERIALS,
             ADAMANTIUM_MATERIAL_KEY
     );
@@ -60,7 +60,7 @@ public class MMEArmorMaterials {
             20,
             SoundEvents.ARMOR_EQUIP_NETHERITE,
             1.0F,
-            0.75F,
+            0.5F,
             MMEItemTags.ADAMANTIUM_TOOL_MATERIALS,
             ADAMANTIUM_CHAINMAIL_MATERIAL_KEY
     );
@@ -70,7 +70,7 @@ public class MMEArmorMaterials {
             18,
             SoundEvents.ARMOR_EQUIP_DIAMOND,
             0.0F,
-            0.5F,
+            0.1F,
             MMEItemTags.MITHRIL_TOOL_MATERIALS,
             MITHRIL_MATERIAL_KEY
     );
@@ -80,7 +80,7 @@ public class MMEArmorMaterials {
             18,
             SoundEvents.ARMOR_EQUIP_DIAMOND,
             0.0F,
-            0.5F,
+            0.1F,
             MMEItemTags.MITHRIL_TOOL_MATERIALS,
             MITHRIL_CHAINMAIL_MATERIAL_KEY
     );

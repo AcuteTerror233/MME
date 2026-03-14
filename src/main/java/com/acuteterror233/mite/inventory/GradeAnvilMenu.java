@@ -80,6 +80,7 @@ public class GradeAnvilMenu extends ItemCombinerMenu {
             BlockEntity entity = world.getBlockEntity(pos);
             if (entity instanceof AnvilBlockEntity blockEntity) {
                 blockEntity.addDamage(i);
+                world.levelEvent(1030, pos, 0);
             }
         });
         this.levelCost.set(0);

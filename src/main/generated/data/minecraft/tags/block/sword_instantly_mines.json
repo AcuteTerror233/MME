@@ -1,11 +1,6 @@
 {
   "values": [
-    "minecraft:short_grass",
-    "minecraft:fern",
-    "minecraft:tall_grass",
-    "minecraft:large_fern",
-    "minecraft:short_dry_grass",
-    "minecraft:tall_dry_grass",
+    "#mme:herbacious_plants",
     "minecraft:kelp"
   ]
 }

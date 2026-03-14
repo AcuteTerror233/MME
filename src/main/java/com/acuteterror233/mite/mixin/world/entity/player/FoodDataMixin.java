@@ -11,7 +11,6 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodData;
 import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.GameType;
@@ -123,11 +122,9 @@ public abstract class FoodDataMixin implements FoodDataExtension {
 
     @Unique
     public void updatePlayerEffects(ServerPlayer player) {
-        // 处理 营养 相关逻辑
         handleNutrientEffect(player, MMEMobEffects.MALNUTRITION);
 
-        // 处理 sugar 相关逻辑
-        handleSugar(player, this.sugar, MMEMobEffects.INSULIN_RESISTANCE, () -> this.sugar--);
+        handleSugar(player, MMEMobEffects.INSULIN_RESISTANCE);
     }
 
     @Unique
@@ -148,33 +145,40 @@ public abstract class FoodDataMixin implements FoodDataExtension {
                     player.removeEffect(effect);
                 }
             }
+        }else {
+            if (this.fiber <= 0) {
+                this.fiber = 1;
+            }
+            if (this.protein <= 0) {
+                this.protein = 1;
+            }
+            if (player.hasEffect(effect)) {
+                player.removeEffect(effect);
+            }
         }
     }
 
     @Unique
-    private void handleSugar(ServerPlayer player, float sugar, Holder<MobEffect> effect, Runnable decrementAction) {
-        // 处理糖的情况
-        if (sugar > 0) {
-            decrementAction.run();
+    private void handleSugar(ServerPlayer player, Holder<MobEffect> effect) {
+        if (this.sugar > 0) {
+            this.sugar--;
         }
-        // 根据糖分阈值给予不同等级的反胃效果
-        if (sugar > 144000) {
+        if (this.sugar > 144000) {
             if (player.getEffect(effect).getAmplifier() != 2){
+                player.removeEffect(effect);
                 player.addEffect(new MobEffectInstance(effect, -1, 2, true, false), player);
             }
-        } else if (sugar > 96000) {
+        } else if (this.sugar > 96000) {
             if (player.getEffect(effect).getAmplifier() != 1){
+                player.removeEffect(effect);
                 player.addEffect(new MobEffectInstance(effect, -1, 1, true, false), player);
             }
-        } else if (sugar > 48000) {
+        } else if (this.sugar > 48000) {
             if (!player.hasEffect(effect)){
+                player.removeEffect(effect);
                 player.addEffect(new MobEffectInstance(effect, -1, 0, true, false), player);
             }
         } else {
-            // 糖分低于48000，移除反胃效果
-            if (player.hasEffect(MobEffects.NAUSEA)) {
-                player.removeEffect(MobEffects.NAUSEA);
-            }
             if (player.hasEffect(effect)) {
                 player.removeEffect(effect);
             }

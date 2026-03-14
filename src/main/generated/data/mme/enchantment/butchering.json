@@ -25,14 +25,15 @@
       }
     ]
   },
+  "exclusive_set": "#mme:equipment_drops_exclusive",
   "max_cost": {
-    "base": 70,
-    "per_level_above_first": 8
+    "base": 65,
+    "per_level_above_first": 9
   },
   "max_level": 3,
   "min_cost": {
-    "base": 20,
-    "per_level_above_first": 8
+    "base": 15,
+    "per_level_above_first": 9
   },
   "slots": [
     "mainhand"
