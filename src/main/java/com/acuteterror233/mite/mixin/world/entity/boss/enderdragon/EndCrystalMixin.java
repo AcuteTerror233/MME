@@ -19,17 +19,13 @@ public abstract class EndCrystalMixin extends Entity{
         super(entityType, level);
     }
 
-    /**
-     * @author AcuteTerror233
-     * @reason 只允许下届合金镐破坏
-     */
     @Overwrite
     public final boolean hurtServer(ServerLevel serverLevel, DamageSource damageSource, float f) {
         if (this.isInvulnerableToBase(damageSource)) {
             return false;
         } else if (damageSource.getEntity() instanceof EnderDragon) {
             return false;
-        } else if (damageSource.getWeaponItem() == null || !damageSource.getWeaponItem().is(MMEItemTags.ADAMANTIUM_SERIES_REPAIRABLE)) {
+        } else if (damageSource.getWeaponItem() == null || !damageSource.getWeaponItem().is(MMEItemTags.DESTRUCTIBLE_ENDCRYSTAL)) {
             return false;
         } else {
             if (!this.isRemoved()) {

@@ -1,4 +1,4 @@
-Make Minecraft Easy (MME)
+Might Makes Everything (MME)
 ======
 
 目前支持版本：1.21.5

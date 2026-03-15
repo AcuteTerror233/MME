@@ -498,8 +498,25 @@ public class MMETagProvider {
                     .add(MMEItems.MITHRIL_COINS)
                     .add(MMEItems.GOLD_COINS)
                     .add(MMEItems.SILVER_COINS)
-                    .add(MMEItems.IRON_COINS);
-            getOrCreateTagBuilder(MMEItemTags.ADAMANTIUM_SERIES_REPAIRABLE)
+                    .add(MMEItems.IRON_COINS);      
+            getOrCreateTagBuilder(MMEItemTags.NETHERITE_TOOLS)
+                    .add(Items.NETHERITE_AXE)
+                    .add(MMEItems.NETHERITE_HATCHET)
+                    .add(Items.NETHERITE_PICKAXE)
+                    .add(Items.NETHERITE_SHOVEL)
+                    .add(Items.NETHERITE_HOE)
+                    .add(MMEItems.NETHERITE_MATTOCK)
+                    .add(MMEItems.NETHERITE_SCYTHE)
+                    .add(MMEItems.NETHERITE_SHEARS)
+                    .add(MMEItems.NETHERITE_DAGGER)
+                    .add(Items.NETHERITE_SWORD)
+                    .add(MMEItems.NETHERITE_WAR_HAMMER)
+                    .add(MMEItems.NETHERITE_BATTLE_AXE)
+                    .add(Items.NETHERITE_HELMET)
+                    .add(Items.NETHERITE_CHESTPLATE)
+                    .add(Items.NETHERITE_LEGGINGS)
+                    .add(Items.NETHERITE_BOOTS);
+            getOrCreateTagBuilder(MMEItemTags.ADAMANTIUM_TOOLS)
                     .add(MMEItems.ADAMANTIUM_AXE)
                     .add(MMEItems.ADAMANTIUM_HATCHET)
                     .add(MMEItems.ADAMANTIUM_PICKAXE)
@@ -521,7 +538,7 @@ public class MMETagProvider {
                     .add(MMEItems.ADAMANTIUM_CHAINMAIL_LEGGINGS)
                     .add(MMEItems.ADAMANTIUM_BOOTS)
                     .add(MMEItems.ADAMANTIUM_CHAINMAIL_BOOTS);
-            getOrCreateTagBuilder(MMEItemTags.MITHRIL_SERIES_REPAIRABLE)
+            getOrCreateTagBuilder(MMEItemTags.MITHRIL_TOOLS)
                     .add(MMEItems.MITHRIL_AXE)
                     .add(MMEItems.MITHRIL_HATCHET)
                     .add(MMEItems.MITHRIL_PICKAXE)
@@ -543,7 +560,7 @@ public class MMETagProvider {
                     .add(MMEItems.MITHRIL_CHAINMAIL_LEGGINGS)
                     .add(MMEItems.MITHRIL_BOOTS)
                     .add(MMEItems.MITHRIL_CHAINMAIL_BOOTS);
-            getOrCreateTagBuilder(MMEItemTags.ANCIENT_METAL_SERIES_REPAIRABLE)
+            getOrCreateTagBuilder(MMEItemTags.ANCIENT_METAL_TOOLS)
                     .add(MMEItems.ANCIENT_METAL_AXE)
                     .add(MMEItems.ANCIENT_METAL_HATCHET)
                     .add(MMEItems.ANCIENT_METAL_PICKAXE)
@@ -565,7 +582,7 @@ public class MMETagProvider {
                     .add(MMEItems.ANCIENT_METAL_CHAINMAIL_LEGGINGS)
                     .add(MMEItems.ANCIENT_METAL_BOOTS)
                     .add(MMEItems.ANCIENT_METAL_CHAINMAIL_BOOTS);
-            getOrCreateTagBuilder(MMEItemTags.GOLD_SERIES_REPAIRABLE)
+            getOrCreateTagBuilder(MMEItemTags.GOLDEN_TOOLS)
                     .add(Items.GOLDEN_AXE)
                     .add(MMEItems.GOLDEN_HATCHET)
                     .add(Items.GOLDEN_PICKAXE)
@@ -587,7 +604,7 @@ public class MMETagProvider {
                     .add(MMEItems.GOLDEN_CHAINMAIL_LEGGINGS)
                     .add(Items.GOLDEN_BOOTS)
                     .add(MMEItems.GOLDEN_CHAINMAIL_BOOTS);
-            getOrCreateTagBuilder(MMEItemTags.IRON_SERIES_REPAIRABLE)
+            getOrCreateTagBuilder(MMEItemTags.IRON_TOOLS)
                     .add(Items.IRON_AXE)
                     .add(MMEItems.IRON_HATCHET)
                     .add(Items.IRON_PICKAXE)
@@ -609,7 +626,7 @@ public class MMETagProvider {
                     .add(Items.CHAINMAIL_LEGGINGS)
                     .add(Items.IRON_BOOTS)
                     .add(Items.CHAINMAIL_BOOTS);
-            getOrCreateTagBuilder(MMEItemTags.RUSTED_IRON_SERIES_REPAIRABLE)
+            getOrCreateTagBuilder(MMEItemTags.RUSTED_IRON_TOOLS)
                     .add(MMEItems.RUSTED_IRON_AXE)
                     .add(MMEItems.RUSTED_IRON_HATCHET)
                     .add(MMEItems.RUSTED_IRON_PICKAXE)
@@ -630,7 +647,7 @@ public class MMETagProvider {
                     .add(MMEItems.RUSTED_IRON_CHAINMAIL_LEGGINGS)
                     .add(MMEItems.RUSTED_IRON_BOOTS)
                     .add(MMEItems.RUSTED_IRON_CHAINMAIL_BOOTS);
-            getOrCreateTagBuilder(MMEItemTags.SILVER_SERIES_REPAIRABLE)
+            getOrCreateTagBuilder(MMEItemTags.SILVER_TOOLS)
                     .add(MMEItems.SILVER_AXE)
                     .add(MMEItems.SILVER_HATCHET)
                     .add(MMEItems.SILVER_PICKAXE)
@@ -652,7 +669,7 @@ public class MMETagProvider {
                     .add(MMEItems.SILVER_CHAINMAIL_LEGGINGS)
                     .add(MMEItems.SILVER_BOOTS)
                     .add(MMEItems.SILVER_CHAINMAIL_BOOTS);
-            getOrCreateTagBuilder(MMEItemTags.COPPER_SERIES_REPAIRABLE)
+            getOrCreateTagBuilder(MMEItemTags.COPPER_TOOLS)
                     .add(MMEItems.COPPER_AXE)
                     .add(MMEItems.COPPER_HATCHET)
                     .add(MMEItems.COPPER_PICKAXE)
@@ -674,6 +691,9 @@ public class MMETagProvider {
                     .add(MMEItems.COPPER_CHAINMAIL_LEGGINGS)
                     .add(MMEItems.COPPER_BOOTS)
                     .add(MMEItems.COPPER_CHAINMAIL_BOOTS);
+            getOrCreateTagBuilder(MMEItemTags.DESTRUCTIBLE_ENDCRYSTAL)
+                    .addTag(MMEItemTags.NETHERITE_TOOLS)
+                    .addTag(MMEItemTags.ADAMANTIUM_TOOLS);
 
             getOrCreateTagBuilder(MMEItemTags.ADAMANTIUM_TOOL_MATERIALS)
                     .add(MMEItems.ADAMANTIUM_INGOT)

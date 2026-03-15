@@ -31,14 +31,17 @@ public interface MMEItemTags {
     TagKey<Item> DAGGER_ENCHANTABLE = key("dagger_enchantable");
     TagKey<Item> HARVESTING_ENCHANTABLE =  key("harvesting_enchantable");
 
-    TagKey<Item> ADAMANTIUM_SERIES_REPAIRABLE = key("adamantium_series_repairable");
-    TagKey<Item> MITHRIL_SERIES_REPAIRABLE = key("mithril_series_repairable");
-    TagKey<Item> ANCIENT_METAL_SERIES_REPAIRABLE = key("ancient_metal_series_repairable");
-    TagKey<Item> RUSTED_IRON_SERIES_REPAIRABLE = key("rusted_iron_series_repairable");
-    TagKey<Item> IRON_SERIES_REPAIRABLE = key("iron_series_repairable");
-    TagKey<Item> SILVER_SERIES_REPAIRABLE = key("silver_series_repairable");
-    TagKey<Item> COPPER_SERIES_REPAIRABLE = key("copper_series_repairable");
-    TagKey<Item> GOLD_SERIES_REPAIRABLE = key("gold_series_repairable");
+    TagKey<Item> NETHERITE_TOOLS =  key("netherite_tools");
+    TagKey<Item> ADAMANTIUM_TOOLS = key("adamantium_tools");
+    TagKey<Item> MITHRIL_TOOLS = key("mithril_tools");
+    TagKey<Item> ANCIENT_METAL_TOOLS = key("ancient_metal_tools");
+    TagKey<Item> RUSTED_IRON_TOOLS = key("rusted_iron_tools");
+    TagKey<Item> IRON_TOOLS = key("iron_tools");
+    TagKey<Item> SILVER_TOOLS = key("silver_tools");
+    TagKey<Item> COPPER_TOOLS = key("copper_tools");
+    TagKey<Item> GOLDEN_TOOLS = key("golden_tools");
+
+    TagKey<Item> DESTRUCTIBLE_ENDCRYSTAL  = key("destructible_endcrystal");
 
     TagKey<Item> ADAMANTIUM_TOOL_MATERIALS = key("adamantium_tool_materials");
     TagKey<Item> MITHRIL_TOOL_MATERIALS = key("mithril_tool_materials");

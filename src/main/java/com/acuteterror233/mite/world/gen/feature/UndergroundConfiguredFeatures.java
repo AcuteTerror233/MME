@@ -42,8 +42,8 @@ public class UndergroundConfiguredFeatures {
         );
         FeatureUtils.register(featureRegisterable, ORE_ADAMANTIUM_BURIED, Feature.ORE, new OreConfiguration(adamantium_Ore_List, 4, 1.0f));
         FeatureUtils.register(featureRegisterable, ORE_ADAMANTIUM_BURIED_SMALL, Feature.ORE, new OreConfiguration(adamantium_Ore_List, 2, 1.0f));
-        FeatureUtils.register(featureRegisterable, ORE_MITHRIL, Feature.ORE, new OreConfiguration(mithril_Ore_List, 4, 0.5f));
-        FeatureUtils.register(featureRegisterable, ORE_MITHRIL_SMALL, Feature.ORE, new OreConfiguration(mithril_Ore_List, 4, 0.5f));
+        FeatureUtils.register(featureRegisterable, ORE_MITHRIL, Feature.ORE, new OreConfiguration(mithril_Ore_List, 4, 0f));
+        FeatureUtils.register(featureRegisterable, ORE_MITHRIL_SMALL, Feature.ORE, new OreConfiguration(mithril_Ore_List, 4, 0f));
         FeatureUtils.register(featureRegisterable, ORE_SILVER, Feature.ORE, new OreConfiguration(silver_Ore_List, 6, 0.2f));
         FeatureUtils.register(featureRegisterable, ORE_SILVER_SMALL, Feature.ORE, new OreConfiguration(silver_Ore_List, 2, 0.2f));
     }
