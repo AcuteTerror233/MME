@@ -2,6 +2,7 @@ package com.acuteterror233.mite.mixin.world.entity.monster;
 
 import com.acuteterror233.mite.MME;
 import com.acuteterror233.mite.item.MMEItems;
+import com.acuteterror233.mite.world.entity.ai.goal.ZombieAttackCropBlockGoal;
 import com.acuteterror233.mite.world.gen.dimension.MMEDimensionTypeRegistrar;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.RandomSource;
@@ -21,6 +22,9 @@ import net.minecraft.world.level.Level;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Unique;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(Zombie.class)
 public abstract class ZombieMixin extends Monster {
@@ -36,6 +40,17 @@ public abstract class ZombieMixin extends Monster {
     private static final float HARD_DIFFICULTY_MULTIPLIER = 2.0F;
     protected ZombieMixin(EntityType<? extends Monster> entityType, Level level) {
         super(entityType, level);
+    }
+
+    @Inject(method = "registerGoals", at = @At("TAIL"))
+    protected void registerGoals(CallbackInfo ci) {
+        Zombie zombie = (Zombie) (Object) this;
+        this.goalSelector.addGoal(4, new ZombieAttackCropBlockGoal.Wheat(zombie, 1.0F, 3));
+        this.goalSelector.addGoal(4, new ZombieAttackCropBlockGoal.Potatoes(zombie, 1.0F, 3));
+        this.goalSelector.addGoal(4, new ZombieAttackCropBlockGoal.Carrots(zombie, 1.0F, 3));
+        this.goalSelector.addGoal(4, new ZombieAttackCropBlockGoal.Beetroots(zombie, 1.0F, 3));
+        this.goalSelector.addGoal(4, new ZombieAttackCropBlockGoal.MelonStem(zombie, 1.0F, 3));
+        this.goalSelector.addGoal(4, new ZombieAttackCropBlockGoal.PumpkinStem(zombie, 1.0F, 3));
     }
 
     /**

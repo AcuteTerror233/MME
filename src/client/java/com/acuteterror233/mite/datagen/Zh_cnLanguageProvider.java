@@ -223,7 +223,6 @@ public class Zh_cnLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(MMEItems.OBSIDIAN_HATCHET, "黑曜石短斧");
         translationBuilder.add(MMEItems.OBSIDIAN_KNIFE, "黑曜石小刀");
         translationBuilder.add(MMEItems.OBSIDIAN_SHOVEL, "黑曜石铲子");
-        translationBuilder.add(MMEItems.STONE_DAGGER, "石短剑");
         translationBuilder.add(MMEItems.WOODEN_CLUB, "木棒");
         translationBuilder.add(MMEItems.WOODEN_CUDGEL, "小木棒");
 
@@ -427,10 +426,14 @@ public class Zh_cnLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(MMEBlocks.EMERALD_ENCHANTING_TABLE, "绿宝石附魔台");
 
         translationBuilder.add(MMEItems.SINEW, "皮革线");
+        translationBuilder.add(MMEItems.MANURE, "粪便");
 
         translationBuilder.add(MMEMobEffects.INSULIN_RESISTANCE.value(), "糖尿病");
         translationBuilder.add(MMEMobEffects.MALNUTRITION.value(), "营养不良");
 
         translationBuilder.addEnchantment(MMEEnchantments.BUTCHERING, "屠宰");
+        translationBuilder.addEnchantment(MMEEnchantments.CLEAVING, "劈裂");
+        translationBuilder.addEnchantment(MMEEnchantments.HARVESTING, "收获");
+        translationBuilder.addEnchantment(MMEEnchantments.FERTILITY, "肥沃");
     }
 }

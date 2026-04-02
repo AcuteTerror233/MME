@@ -1,6 +1,7 @@
 package com.acuteterror233.mite.registry;
 
 import com.acuteterror233.mite.block.MMEBlocks;
+import com.acuteterror233.mite.block.state.properties.MMEBlockStateProperties;
 import com.acuteterror233.mite.item.MMEItems;
 import com.acuteterror233.mite.item.enchantment.MMEEnchantments;
 import com.acuteterror233.mite.registry.tag.MMEItemTags;
@@ -2143,6 +2144,7 @@ public final class LootTableReplace {
                                                 .apply(ApplyBonusCount.addBonusBinomialDistributionCount(provider.lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(MMEEnchantments.HARVESTING), (float) 3 / 18, 3)))
                                         .when(propertyCondition(Blocks.WHEAT, CropBlock.AGE, 7)
                                                 .and(MatchTool.toolMatches(ItemPredicate.Builder.item().of(provider.lookupOrThrow(Registries.ITEM), MMEItemTags.SCYTHE)))
+                                                .and(propertyCondition(Blocks.WHEAT, MMEBlockStateProperties.DISEASE_LEVEL, 0))
                                         )
                         ).withPool(
                                 LootPool.lootPool()
@@ -2156,11 +2158,13 @@ public final class LootTableReplace {
                                 LootPool.lootPool()
                                         .add(LootItem.lootTableItem(Items.POTATO)
                                                 .apply(ApplyBonusCount.addBonusBinomialDistributionCount(provider.lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(MMEEnchantments.HARVESTING), (float) 5 / 18, 3))
-                                        ).when(propertyCondition(Blocks.POTATOES, PotatoBlock.AGE, 7))
+                                        ).when(propertyCondition(Blocks.POTATOES, PotatoBlock.AGE, 7)
+                                                .and(propertyCondition(Blocks.WHEAT, MMEBlockStateProperties.DISEASE_LEVEL, 0)))
                         ).withPool(
                                 LootPool.lootPool()
                                         .add(LootItem.lootTableItem(Items.POISONOUS_POTATO).when(LootItemRandomChanceCondition.randomChance(0.02F)))
-                                        .when(propertyCondition(Blocks.POTATOES, PotatoBlock.AGE, 7))
+                                        .when(propertyCondition(Blocks.POTATOES, PotatoBlock.AGE, 7)
+                                                .and(propertyCondition(Blocks.WHEAT, MMEBlockStateProperties.DISEASE_LEVEL, 0)))
                         ).withPool(
                                 LootPool.lootPool()
                                         .add(LootItem.lootTableItem(Items.POTATO))
@@ -2173,7 +2177,8 @@ public final class LootTableReplace {
                                 LootPool.lootPool()
                                         .add(LootItem.lootTableItem(Items.CARROT)
                                                 .apply(ApplyBonusCount.addBonusBinomialDistributionCount(provider.lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(MMEEnchantments.HARVESTING), (float) 5 / 18, 3))
-                                        ).when(propertyCondition(Blocks.CARROTS, CarrotBlock.AGE, 7))
+                                        ).when(propertyCondition(Blocks.CARROTS, CarrotBlock.AGE, 7)
+                                                .and(propertyCondition(Blocks.WHEAT, MMEBlockStateProperties.DISEASE_LEVEL, 0)))
                         ).withPool(
                                 LootPool.lootPool()
                                         .add(LootItem.lootTableItem(Items.CARROT))
@@ -2186,7 +2191,8 @@ public final class LootTableReplace {
                                 LootPool.lootPool()
                                         .add(LootItem.lootTableItem(Items.BEETROOT)
                                                 .apply(ApplyBonusCount.addBonusBinomialDistributionCount(provider.lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(MMEEnchantments.HARVESTING), (float) 5 / 18, 3))
-                                        ).when(propertyCondition(Blocks.BEETROOTS, CropBlock.AGE, 3))
+                                        ).when(propertyCondition(Blocks.BEETROOTS, CropBlock.AGE, 3)
+                                                .and(propertyCondition(Blocks.WHEAT, MMEBlockStateProperties.DISEASE_LEVEL, 0)))
                         ).withPool(
                                 LootPool.lootPool()
                                         .add(LootItem.lootTableItem(Items.BEETROOT_SEEDS))

@@ -15,7 +15,6 @@ import net.minecraft.client.renderer.RenderType;
 public class MMEClient implements ClientModInitializer {
 	@Override
 	public void onInitializeClient() {
-
         DimensionRenderingRegistry.registerCloudRenderer(MMEDimensionTypeRegistrar.UNDERGROUND_LEVEL_KEY, context -> {});
 
         BlockRenderLayerMap.INSTANCE.putBlock(MMEBlocks.UNDERGROUND_PORTAL, RenderType.translucent());

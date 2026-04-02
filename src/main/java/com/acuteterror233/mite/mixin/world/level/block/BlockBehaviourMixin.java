@@ -14,7 +14,7 @@ public abstract class BlockBehaviourMixin implements FeatureElement {
 
     /**
      * @author AcuteTerror233
-     * @reason 破坏速度重构
+     * @reason 破坏速度更改
      */
     @Overwrite
     public float getDestroyProgress(BlockState state, Player player, BlockGetter world, BlockPos pos) {

@@ -36,7 +36,7 @@ public final class VanillaBlockModify {
                         .setId(ResourceKey.create(Registries.BLOCK, ResourceLocation.withDefaultNamespace("furnace"))), 2)
         );
         result.put(ResourceLocation.withDefaultNamespace("blast_furnace"), settings -> new GradeFurnaceBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.FURNACE).setId(ResourceKey.create(Registries.BLOCK, ResourceLocation.withDefaultNamespace("blast_furnace"))), 4));
-        result.put(ResourceLocation.withDefaultNamespace("smoker"), settings -> new GradeFurnaceBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.FURNACE).setId(ResourceKey.create(Registries.BLOCK, ResourceLocation.withDefaultNamespace("smoker"))), 2));
+        result.put(ResourceLocation.withDefaultNamespace("smoker"), settings -> new GradeFurnaceBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.FURNACE).setId(ResourceKey.create(Registries.BLOCK, ResourceLocation.withDefaultNamespace("smoker"))), 1));
         return result;
     } 
     private static Map<ResourceLocation, UnaryOperator<BlockBehaviour.Properties>> createBlockSettingsModifyMap() {

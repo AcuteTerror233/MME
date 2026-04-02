@@ -11,6 +11,7 @@ public class RunePortalBlockEntity extends BlockEntity{
     private BlockPos destinationPos;
     public RunePortalBlockEntity(BlockPos pos, BlockState state) {
         super(MMEBlocks.RUNE_PORTAL_BLOCK_ENTITY, pos, state);
+        this.destinationPos = pos;
     }
     @Override
     protected void saveAdditional(CompoundTag nbt, HolderLookup.Provider registryLookup) {

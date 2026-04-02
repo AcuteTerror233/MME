@@ -1,8 +1,9 @@
 // 1.21.5	-999999999-01-01T00:00:00	mme/mme_dynamic_registry
 e770a94505aab634afc9c9633e82d85540cf4eb3 data/mme/damage_type/corrosion.json
 832289616e7ba0598f38bd21c67e7965d6993532 data/mme/dimension_type/underground_type.json
-6dbc8fc37401339a9dd1f97bacc041ae4d33e5fe data/mme/enchantment/butchering.json
-86ca11816ed4929402822fc32dc7b9ceaca4f867 data/mme/enchantment/cleaving.json
+7b2779bbf662ddad9ee01d617d9486b2c955ba03 data/mme/enchantment/butchering.json
+e9ced7b339dc68f010c193c0a4945e6711bdb294 data/mme/enchantment/cleaving.json
+5202a766b3a22cdc9cd7444c281db5bf9217ce7d data/mme/enchantment/fertility.json
 fa3dd32fa80ce7163fee09e1e859f80b217b133e data/mme/enchantment/harvesting.json
 5b40b7c6c5f223d5e88b1d7b14d4c21aed4a7647 data/mme/worldgen/biome/deep_dark.json
 7aaab7fbf58cc90309f65aedb59373cb8641db12 data/mme/worldgen/biome/dripstone_caves.json

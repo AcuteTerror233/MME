@@ -510,6 +510,7 @@ public class MMEBlocks {
                     , NETHERRACK_FURNACE
                     , Blocks.FURNACE
                     , Blocks.SMOKER
+                    , Blocks.BLAST_FURNACE
             );
     private static <T extends BlockEntity> BlockEntityType<T> register(
             String name,

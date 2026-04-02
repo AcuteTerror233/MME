@@ -40,14 +40,14 @@ public abstract class BaseFireBlockMixin {
                 boolean adamantiumRunePortalValid = extension.MME$VerifyPortalValid(world, MMEBlockTags.ADAMANTIUM_RUNESTORE);
                 boolean mithrilPortalValid = extension.MME$VerifyPortalValid(world, MMEBlockTags.MITHRIL_RUNESTORE);
                 if (adamantiumRunePortalValid || mithrilPortalValid && worldRegistryKey != Level.END) {
-                    int maxDistance = 6000;
-                    int minDistance = 4000;
+                    int maxDistance = 8000;
+                    int minDistance = 6000;
                     if (adamantiumRunePortalValid){
-                        maxDistance *= 8;
-                        minDistance *= 8;
+                        maxDistance *= 4;
+                        minDistance *= 4;
                     }
                     List<BlockState> list = extension.MME$GetBottomStateList(world);
-                    BlockPos PurposePos = RunePortalCoordinateGenerator.getRunePortalCoordinate(list, pos, minDistance, maxDistance);
+                    BlockPos PurposePos = RunePortalCoordinateGenerator.getRunePortalCoordinate(list, world, pos, minDistance, maxDistance);
                     extension.MME$CreateRunePortal(world, getSafeLocation((ServerLevel) world, PurposePos));
                     return;
                 } else if (worldRegistryKey == Level.OVERWORLD && extension.MME$CheckBottomCorner(world, Blocks.BEDROCK)) {

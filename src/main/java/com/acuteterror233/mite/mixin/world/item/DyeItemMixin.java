@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(DyeItem.class)
-public class DyeItemMixin {
+public abstract class DyeItemMixin {
     @Inject(method = "<init>", at = @At("HEAD"))
     private static void init(DyeColor color, Item.Properties settings, CallbackInfo ci) {
         settings.stacksTo(16);

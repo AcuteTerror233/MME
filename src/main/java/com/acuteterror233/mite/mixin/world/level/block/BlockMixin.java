@@ -21,6 +21,7 @@ public class BlockMixin {
             player.causeFoodExhaustion(1F);
         }
     }
+
     @Inject(method = "setPlacedBy", at = @At("HEAD"))
     public void setPlacedBy(Level level, BlockPos blockPos, BlockState blockState, LivingEntity livingEntity, ItemStack itemStack, CallbackInfo ci) {
         if (livingEntity instanceof Player player && blockState.canOcclude()) {

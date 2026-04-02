@@ -6,4 +6,4 @@ Might Makes Everything (MME)
 * ModLoader为Fabric,未来考虑移植到NeoForge
 
 ### 介绍
-这是一个基于Minecraft Is Too Easy(以下简称Mite)为灵感的Mod，复刻了大部分Mite的内容。
+这是一个基于Mite为灵感的Mod，复刻了大部分Mite的内容。

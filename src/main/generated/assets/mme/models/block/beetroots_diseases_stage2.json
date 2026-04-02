@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/crop",
+  "textures": {
+    "crop": "mme:block/crops/beetroots_diseases_stage2"
+  }
+}

@@ -14,6 +14,8 @@ import net.minecraft.client.data.models.model.ModelTemplates;
 import net.minecraft.client.data.models.model.TexturedModel;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 
 
 public class MMEModelProvider extends FabricModelProvider {
@@ -23,6 +25,7 @@ public class MMEModelProvider extends FabricModelProvider {
 
     @Override
     public void generateBlockStateModels(BlockModelGenerators blockStateModelGenerator) {
+        BlockModelGeneratorsExtension extendedAccessor = (BlockModelGeneratorsExtension) blockStateModelGenerator;
         blockStateModelGenerator.createTrivialCube(MMEBlocks.ADAMANTIUM_ORE);
         blockStateModelGenerator.createTrivialCube(MMEBlocks.ADAMANTIUM_BLOCK);
         blockStateModelGenerator.createTrivialCube(MMEBlocks.MITHRIL_BLOCK);
@@ -32,13 +35,13 @@ public class MMEModelProvider extends FabricModelProvider {
         blockStateModelGenerator.createTrivialCube(MMEBlocks.MITHRIL_ORE);
         blockStateModelGenerator.createTrivialCube(MMEBlocks.SILVER_ORE);
 
-        ((BlockModelGeneratorsExtension) blockStateModelGenerator).MME$registerAnvil(MMEBlocks.NETHERITE_ANVIL, MMEBlocks.CHIPPED_NETHERITE_ANVIL, MMEBlocks.DAMAGED_NETHERITE_ANVIL);
-        ((BlockModelGeneratorsExtension) blockStateModelGenerator).MME$registerAnvil(MMEBlocks.ADAMANTIUM_ANVIL, MMEBlocks.CHIPPED_ADAMANTIUM_ANVIL, MMEBlocks.DAMAGED_ADAMANTIUM_ANVIL);
-        ((BlockModelGeneratorsExtension) blockStateModelGenerator).MME$registerAnvil(MMEBlocks.MITHRIL_ANVIL, MMEBlocks.CHIPPED_MITHRIL_ANVIL, MMEBlocks.DAMAGED_MITHRIL_ANVIL);
-        ((BlockModelGeneratorsExtension) blockStateModelGenerator).MME$registerAnvil(MMEBlocks.ANCIENT_METAL_ANVIL, MMEBlocks.CHIPPED_ANCIENT_METAL_ANVIL, MMEBlocks.DAMAGED_ANCIENT_METAL_ANVIL);
-        ((BlockModelGeneratorsExtension) blockStateModelGenerator).MME$registerAnvil(MMEBlocks.GOLDEN_ANVIL, MMEBlocks.CHIPPED_GOLDEN_ANVIL, MMEBlocks.DAMAGED_GOLDEN_ANVIL);
-        ((BlockModelGeneratorsExtension) blockStateModelGenerator).MME$registerAnvil(MMEBlocks.SILVER_ANVIL, MMEBlocks.CHIPPED_SILVER_ANVIL, MMEBlocks.DAMAGED_SILVER_ANVIL);
-        ((BlockModelGeneratorsExtension) blockStateModelGenerator).MME$registerAnvil(MMEBlocks.COPPER_ANVIL, MMEBlocks.CHIPPED_COPPER_ANVIL, MMEBlocks.DAMAGED_COPPER_ANVIL);
+        extendedAccessor.MME$registerAnvil(MMEBlocks.NETHERITE_ANVIL, MMEBlocks.CHIPPED_NETHERITE_ANVIL, MMEBlocks.DAMAGED_NETHERITE_ANVIL);
+        extendedAccessor.MME$registerAnvil(MMEBlocks.ADAMANTIUM_ANVIL, MMEBlocks.CHIPPED_ADAMANTIUM_ANVIL, MMEBlocks.DAMAGED_ADAMANTIUM_ANVIL);
+        extendedAccessor.MME$registerAnvil(MMEBlocks.MITHRIL_ANVIL, MMEBlocks.CHIPPED_MITHRIL_ANVIL, MMEBlocks.DAMAGED_MITHRIL_ANVIL);
+        extendedAccessor.MME$registerAnvil(MMEBlocks.ANCIENT_METAL_ANVIL, MMEBlocks.CHIPPED_ANCIENT_METAL_ANVIL, MMEBlocks.DAMAGED_ANCIENT_METAL_ANVIL);
+        extendedAccessor.MME$registerAnvil(MMEBlocks.GOLDEN_ANVIL, MMEBlocks.CHIPPED_GOLDEN_ANVIL, MMEBlocks.DAMAGED_GOLDEN_ANVIL);
+        extendedAccessor.MME$registerAnvil(MMEBlocks.SILVER_ANVIL, MMEBlocks.CHIPPED_SILVER_ANVIL, MMEBlocks.DAMAGED_SILVER_ANVIL);
+        extendedAccessor.MME$registerAnvil(MMEBlocks.COPPER_ANVIL, MMEBlocks.CHIPPED_COPPER_ANVIL, MMEBlocks.DAMAGED_COPPER_ANVIL);
         
         blockStateModelGenerator.createFurnace(MMEBlocks.CLAY_FURNACE, TexturedModel.ORIENTABLE_ONLY_TOP);
         blockStateModelGenerator.createFurnace(MMEBlocks.HARDENED_CLAY_FURNACE, TexturedModel.ORIENTABLE_ONLY_TOP);
@@ -49,6 +52,12 @@ public class MMEModelProvider extends FabricModelProvider {
         blockStateModelGenerator.createTrivialCube(MMEBlocks.DEEPSLATE_ADAMANTIUM_ORE);
         blockStateModelGenerator.createTrivialCube(MMEBlocks.DEEPSLATE_MITHRIL_ORE);
         blockStateModelGenerator.createTrivialCube(MMEBlocks.DEEPSLATE_SILVER_ORE);
+
+        extendedAccessor.MME$registerCrop(Blocks.WHEAT, BlockStateProperties.AGE_7, 0, 1, 2, 3, 4, 5, 6, 7);
+        extendedAccessor.MME$registerCrop(Blocks.CARROTS, BlockStateProperties.AGE_7, 0, 0, 1, 1, 2, 2, 2, 3);
+        extendedAccessor.MME$registerCrop(Blocks.POTATOES, BlockStateProperties.AGE_7, 0, 0, 1, 1, 2, 2, 2, 3);
+        extendedAccessor.MME$registerCrop(Blocks.BEETROOTS, BlockStateProperties.AGE_3, 0, 1, 2, 3);
+        extendedAccessor.MME$registerFarmland();
 
 //        blockStateModelGenerator.registerSimpleCubeAll(AtBlocks.MITHRIL_NUL_RUNESTORE);
 //        blockStateModelGenerator.registerSimpleCubeAll(AtBlocks.MITHRIL_QUAS_RUNESTORE);
@@ -296,7 +305,6 @@ public class MMEModelProvider extends FabricModelProvider {
         itemModelGenerator.generateFlatItem(MMEItems.OBSIDIAN_HATCHET, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGenerator.generateFlatItem(MMEItems.OBSIDIAN_KNIFE, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGenerator.generateFlatItem(MMEItems.OBSIDIAN_SHOVEL, ModelTemplates.FLAT_HANDHELD_ITEM);
-        itemModelGenerator.generateFlatItem(MMEItems.STONE_DAGGER, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGenerator.generateFlatItem(MMEItems.WOODEN_CLUB, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGenerator.generateFlatItem(MMEItems.WOODEN_CUDGEL, ModelTemplates.FLAT_HANDHELD_ITEM);
 
@@ -425,5 +433,6 @@ public class MMEModelProvider extends FabricModelProvider {
         itemModelGenerator.generateFlatItem(MMEItems.OBSIDIAN_SHARD, ModelTemplates.FLAT_ITEM);
 
         itemModelGenerator.generateFlatItem(MMEItems.SINEW, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(MMEItems.MANURE,  ModelTemplates.FLAT_ITEM);
     }
 }

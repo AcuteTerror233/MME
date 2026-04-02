@@ -223,7 +223,6 @@ public class En_usLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(MMEItems.SILVER_SHOVEL, "Silver Shovel");
         translationBuilder.add(MMEItems.SILVER_SWORD, "Silver Sword");
         translationBuilder.add(MMEItems.SILVER_WAR_HAMMER, "Silver War Hammer");
-        translationBuilder.add(MMEItems.STONE_DAGGER, "Stone Dagger");
         translationBuilder.add(MMEItems.WOODEN_CLUB, "Wood Club");
         translationBuilder.add(MMEItems.WOODEN_CUDGEL, "Wood Cudgel ");
 
@@ -427,10 +426,14 @@ public class En_usLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(MMEBlocks.EMERALD_ENCHANTING_TABLE, "Emerald Enchanting Table");
 
         translationBuilder.add(MMEItems.SINEW, "Leather Thread");
+        translationBuilder.add(MMEItems.MANURE, "Manure");
 
         translationBuilder.add(MMEMobEffects.INSULIN_RESISTANCE.value(), "Diabetes");
         translationBuilder.add(MMEMobEffects.MALNUTRITION.value(), "Malnutrition");
 
         translationBuilder.addEnchantment(MMEEnchantments.BUTCHERING, "Butchering");
+        translationBuilder.addEnchantment(MMEEnchantments.CLEAVING, "Cleaving");
+        translationBuilder.addEnchantment(MMEEnchantments.HARVESTING, "Harvesting");
+        translationBuilder.addEnchantment(MMEEnchantments.FERTILITY, "Fertility");
     }
 }

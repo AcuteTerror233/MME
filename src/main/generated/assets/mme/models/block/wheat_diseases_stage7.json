@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/crop",
+  "textures": {
+    "crop": "mme:block/crops/wheat_diseases_stage7"
+  }
+}

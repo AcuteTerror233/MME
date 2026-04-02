@@ -28,7 +28,6 @@ public class MMEBucketItem extends BucketItem {
     private final Item empty_barrel;
     private final Fluid fluid;
 
-    // 注册名格式必须是"生物/液体_材质"
     public MMEBucketItem(Fluid fluid, Properties settings, Item empty_barrel) {
         super(fluid, settings);
         this.fluid = fluid;

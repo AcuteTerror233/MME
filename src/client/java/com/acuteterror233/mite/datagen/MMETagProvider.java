@@ -77,6 +77,21 @@ public class MMETagProvider {
                     .add(EntityType.PIG)
                     .add(EntityType.SHEEP)
                     .add(EntityType.RABBIT);
+            getOrCreateTagBuilder(MMEEntityTypeTags.PRODUCE_MANURE)
+                    .add(EntityType.COW)
+                    .add(EntityType.CAMEL)
+                    .add(EntityType.DONKEY)
+                    .add(EntityType.GOAT)
+                    .add(EntityType.HORSE)
+                    .add(EntityType.LLAMA)
+                    .add(EntityType.MOOSHROOM)
+                    .add(EntityType.MULE)
+                    .add(EntityType.PANDA)
+                    .add(EntityType.PIG)
+                    .add(EntityType.POLAR_BEAR)
+                    .add(EntityType.SHEEP)
+                    .add(EntityType.SNIFFER)
+                    .add(EntityType.TRADER_LLAMA);
         }
     }
 
@@ -888,6 +903,9 @@ public class MMETagProvider {
                     .forceAddTag(ItemTags.HOES)
                     .addTag(MMEItemTags.MATTOCK)
                     .addTag(MMEItemTags.SCYTHE);
+            getOrCreateTagBuilder(MMEItemTags.FERTILITY_ENCHANTABLE)
+                    .forceAddTag(ItemTags.HOES)
+                    .addTag(MMEItemTags.MATTOCK);
         }
     }
 }

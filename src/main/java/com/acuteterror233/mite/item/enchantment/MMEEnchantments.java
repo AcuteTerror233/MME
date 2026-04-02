@@ -2,6 +2,7 @@ package com.acuteterror233.mite.item.enchantment;
 
 import com.acuteterror233.mite.MME;
 import com.acuteterror233.mite.registry.tag.MMEEnchantmentTags;
+import com.acuteterror233.mite.registry.tag.MMEEntityTypeTags;
 import com.acuteterror233.mite.registry.tag.MMEItemTags;
 import net.minecraft.advancements.critereon.EntityPredicate;
 import net.minecraft.advancements.critereon.EntityTypePredicate;
@@ -60,7 +61,9 @@ public final class MMEEnchantments {
                         new AddValue(LevelBasedValue.perLevel(0.01F)),
                         LootItemEntityPropertyCondition.hasProperties(
                                 LootContext.EntityTarget.ATTACKER, EntityPredicate.Builder.entity().entityType(EntityTypePredicate.of(entityTypeGetter, EntityType.PLAYER))
-                        )
+                        ).and(LootItemEntityPropertyCondition.hasProperties(
+                                LootContext.EntityTarget.THIS, EntityPredicate.Builder.entity().entityType(EntityTypePredicate.of(entityTypeGetter, MMEEntityTypeTags.SENSITIVE_TO_BUTCHERING))
+                        ))
                 ).exclusiveWith(enchantmentGetter.getOrThrow(MMEEnchantmentTags.EQUIPMENT_DROPS_EXCLUSIVE))
         );
         register(
@@ -72,8 +75,8 @@ public final class MMEEnchantments {
                                 itemGetter.getOrThrow(MMEItemTags.BATTLE_AXE),
                                 5,
                                 5,
-                                Enchantment.dynamicCost(15, 9),
-                                Enchantment.dynamicCost(65, 9),
+                                Enchantment.dynamicCost(10, 5),
+                                Enchantment.dynamicCost(55, 5),
                                 3,
                                 EquipmentSlotGroup.MAINHAND
                         )
@@ -97,6 +100,23 @@ public final class MMEEnchantments {
                                 EquipmentSlotGroup.MAINHAND
                         )
                 ).exclusiveWith(enchantmentGetter.getOrThrow(EnchantmentTags.MINING_EXCLUSIVE))
+        );
+
+        register(
+                bootstrapContext,
+                FERTILITY,
+                Enchantment.enchantment(
+                        Enchantment.definition(
+                                itemGetter.getOrThrow(MMEItemTags.FERTILITY_ENCHANTABLE),
+                                itemGetter.getOrThrow(ItemTags.HOES),
+                                5,
+                                5,
+                                Enchantment.dynamicCost(10, 5),
+                                Enchantment.dynamicCost(55, 5),
+                                4,
+                                EquipmentSlotGroup.MAINHAND
+                        )
+                )
         );
     }
     private static void register(BootstrapContext<Enchantment> bootstrapContext, ResourceKey<Enchantment> resourceKey, Enchantment.Builder builder) {

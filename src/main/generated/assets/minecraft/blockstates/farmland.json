@@ -1,0 +1,52 @@
+{
+  "variants": {
+    "fertile=false,moisture=0": {
+      "model": "minecraft:block/farmland"
+    },
+    "fertile=false,moisture=1": {
+      "model": "minecraft:block/farmland"
+    },
+    "fertile=false,moisture=2": {
+      "model": "minecraft:block/farmland"
+    },
+    "fertile=false,moisture=3": {
+      "model": "minecraft:block/farmland"
+    },
+    "fertile=false,moisture=4": {
+      "model": "minecraft:block/farmland"
+    },
+    "fertile=false,moisture=5": {
+      "model": "minecraft:block/farmland"
+    },
+    "fertile=false,moisture=6": {
+      "model": "minecraft:block/farmland"
+    },
+    "fertile=false,moisture=7": {
+      "model": "minecraft:block/farmland_moist"
+    },
+    "fertile=true,moisture=0": {
+      "model": "mme:block/farmland_manure"
+    },
+    "fertile=true,moisture=1": {
+      "model": "mme:block/farmland_manure"
+    },
+    "fertile=true,moisture=2": {
+      "model": "mme:block/farmland_manure"
+    },
+    "fertile=true,moisture=3": {
+      "model": "mme:block/farmland_manure"
+    },
+    "fertile=true,moisture=4": {
+      "model": "mme:block/farmland_manure"
+    },
+    "fertile=true,moisture=5": {
+      "model": "mme:block/farmland_manure"
+    },
+    "fertile=true,moisture=6": {
+      "model": "mme:block/farmland_manure"
+    },
+    "fertile=true,moisture=7": {
+      "model": "mme:block/farmland_manure_moist"
+    }
+  }
+}

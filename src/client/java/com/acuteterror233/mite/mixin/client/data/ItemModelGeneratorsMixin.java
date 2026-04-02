@@ -42,7 +42,6 @@ public abstract class ItemModelGeneratorsMixin implements ItemModelGeneratorsExt
         }
     }
 
-
     @Unique
     public final void MME$registerFishingRod(Item item, ResourceLocation cast) {
         ItemModel.Unbaked unbaked = ItemModelUtils.plainModel(this.createFlatItemModel(item, ModelTemplates.FLAT_HANDHELD_ROD_ITEM));

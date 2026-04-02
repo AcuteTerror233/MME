@@ -1,0 +1,76 @@
+{
+  "variants": {
+    "age=0,disease_level=0": {
+      "model": "minecraft:block/potatoes_stage0"
+    },
+    "age=0,disease_level=1": {
+      "model": "mme:block/potatoes_diseases_stage0"
+    },
+    "age=0,disease_level=2": {
+      "model": "mme:block/potatoes_wither_stage0"
+    },
+    "age=1,disease_level=0": {
+      "model": "minecraft:block/potatoes_stage0"
+    },
+    "age=1,disease_level=1": {
+      "model": "mme:block/potatoes_diseases_stage0"
+    },
+    "age=1,disease_level=2": {
+      "model": "mme:block/potatoes_wither_stage0"
+    },
+    "age=2,disease_level=0": {
+      "model": "minecraft:block/potatoes_stage1"
+    },
+    "age=2,disease_level=1": {
+      "model": "mme:block/potatoes_diseases_stage1"
+    },
+    "age=2,disease_level=2": {
+      "model": "mme:block/potatoes_wither_stage1"
+    },
+    "age=3,disease_level=0": {
+      "model": "minecraft:block/potatoes_stage1"
+    },
+    "age=3,disease_level=1": {
+      "model": "mme:block/potatoes_diseases_stage1"
+    },
+    "age=3,disease_level=2": {
+      "model": "mme:block/potatoes_wither_stage1"
+    },
+    "age=4,disease_level=0": {
+      "model": "minecraft:block/potatoes_stage2"
+    },
+    "age=4,disease_level=1": {
+      "model": "mme:block/potatoes_diseases_stage2"
+    },
+    "age=4,disease_level=2": {
+      "model": "mme:block/potatoes_wither_stage2"
+    },
+    "age=5,disease_level=0": {
+      "model": "minecraft:block/potatoes_stage2"
+    },
+    "age=5,disease_level=1": {
+      "model": "mme:block/potatoes_diseases_stage2"
+    },
+    "age=5,disease_level=2": {
+      "model": "mme:block/potatoes_wither_stage2"
+    },
+    "age=6,disease_level=0": {
+      "model": "minecraft:block/potatoes_stage2"
+    },
+    "age=6,disease_level=1": {
+      "model": "mme:block/potatoes_diseases_stage2"
+    },
+    "age=6,disease_level=2": {
+      "model": "mme:block/potatoes_wither_stage2"
+    },
+    "age=7,disease_level=0": {
+      "model": "minecraft:block/potatoes_stage3"
+    },
+    "age=7,disease_level=1": {
+      "model": "mme:block/potatoes_diseases_stage3"
+    },
+    "age=7,disease_level=2": {
+      "model": "mme:block/potatoes_wither_stage3"
+    }
+  }
+}

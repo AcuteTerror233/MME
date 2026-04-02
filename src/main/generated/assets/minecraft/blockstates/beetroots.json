@@ -1,0 +1,40 @@
+{
+  "variants": {
+    "age=0,disease_level=0": {
+      "model": "minecraft:block/beetroots_stage0"
+    },
+    "age=0,disease_level=1": {
+      "model": "mme:block/beetroots_diseases_stage0"
+    },
+    "age=0,disease_level=2": {
+      "model": "mme:block/beetroots_wither_stage0"
+    },
+    "age=1,disease_level=0": {
+      "model": "minecraft:block/beetroots_stage1"
+    },
+    "age=1,disease_level=1": {
+      "model": "mme:block/beetroots_diseases_stage1"
+    },
+    "age=1,disease_level=2": {
+      "model": "mme:block/beetroots_wither_stage1"
+    },
+    "age=2,disease_level=0": {
+      "model": "minecraft:block/beetroots_stage2"
+    },
+    "age=2,disease_level=1": {
+      "model": "mme:block/beetroots_diseases_stage2"
+    },
+    "age=2,disease_level=2": {
+      "model": "mme:block/beetroots_wither_stage2"
+    },
+    "age=3,disease_level=0": {
+      "model": "minecraft:block/beetroots_stage3"
+    },
+    "age=3,disease_level=1": {
+      "model": "mme:block/beetroots_diseases_stage3"
+    },
+    "age=3,disease_level=2": {
+      "model": "mme:block/beetroots_wither_stage3"
+    }
+  }
+}

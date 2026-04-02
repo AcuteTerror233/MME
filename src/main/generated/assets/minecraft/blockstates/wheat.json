@@ -1,0 +1,76 @@
+{
+  "variants": {
+    "age=0,disease_level=0": {
+      "model": "minecraft:block/wheat_stage0"
+    },
+    "age=0,disease_level=1": {
+      "model": "mme:block/wheat_diseases_stage0"
+    },
+    "age=0,disease_level=2": {
+      "model": "mme:block/wheat_wither_stage0"
+    },
+    "age=1,disease_level=0": {
+      "model": "minecraft:block/wheat_stage1"
+    },
+    "age=1,disease_level=1": {
+      "model": "mme:block/wheat_diseases_stage1"
+    },
+    "age=1,disease_level=2": {
+      "model": "mme:block/wheat_wither_stage1"
+    },
+    "age=2,disease_level=0": {
+      "model": "minecraft:block/wheat_stage2"
+    },
+    "age=2,disease_level=1": {
+      "model": "mme:block/wheat_diseases_stage2"
+    },
+    "age=2,disease_level=2": {
+      "model": "mme:block/wheat_wither_stage2"
+    },
+    "age=3,disease_level=0": {
+      "model": "minecraft:block/wheat_stage3"
+    },
+    "age=3,disease_level=1": {
+      "model": "mme:block/wheat_diseases_stage3"
+    },
+    "age=3,disease_level=2": {
+      "model": "mme:block/wheat_wither_stage3"
+    },
+    "age=4,disease_level=0": {
+      "model": "minecraft:block/wheat_stage4"
+    },
+    "age=4,disease_level=1": {
+      "model": "mme:block/wheat_diseases_stage4"
+    },
+    "age=4,disease_level=2": {
+      "model": "mme:block/wheat_wither_stage4"
+    },
+    "age=5,disease_level=0": {
+      "model": "minecraft:block/wheat_stage5"
+    },
+    "age=5,disease_level=1": {
+      "model": "mme:block/wheat_diseases_stage5"
+    },
+    "age=5,disease_level=2": {
+      "model": "mme:block/wheat_wither_stage5"
+    },
+    "age=6,disease_level=0": {
+      "model": "minecraft:block/wheat_stage6"
+    },
+    "age=6,disease_level=1": {
+      "model": "mme:block/wheat_diseases_stage6"
+    },
+    "age=6,disease_level=2": {
+      "model": "mme:block/wheat_wither_stage6"
+    },
+    "age=7,disease_level=0": {
+      "model": "minecraft:block/wheat_stage7"
+    },
+    "age=7,disease_level=1": {
+      "model": "mme:block/wheat_diseases_stage7"
+    },
+    "age=7,disease_level=2": {
+      "model": "mme:block/wheat_wither_stage7"
+    }
+  }
+}

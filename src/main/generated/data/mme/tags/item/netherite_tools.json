@@ -1,0 +1,20 @@
+{
+  "values": [
+    "minecraft:netherite_axe",
+    "mme:netherite_hatchet",
+    "minecraft:netherite_pickaxe",
+    "minecraft:netherite_shovel",
+    "minecraft:netherite_hoe",
+    "mme:netherite_mattock",
+    "mme:netherite_scythe",
+    "mme:netherite_shears",
+    "mme:netherite_dagger",
+    "minecraft:netherite_sword",
+    "mme:netherite_war_hammer",
+    "mme:netherite_battle_axe",
+    "minecraft:netherite_helmet",
+    "minecraft:netherite_chestplate",
+    "minecraft:netherite_leggings",
+    "minecraft:netherite_boots"
+  ]
+}

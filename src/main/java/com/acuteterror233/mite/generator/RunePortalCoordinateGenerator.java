@@ -1,6 +1,7 @@
 package com.acuteterror233.mite.generator;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 
 import java.security.MessageDigest;
@@ -14,10 +15,7 @@ public class RunePortalCoordinateGenerator {
     /**
      * 生成在全方向均匀分布的坐标
      */
-    public static BlockPos getRunePortalCoordinate(
-            List<BlockState> list,
-            BlockPos originalPos,
-            int minDistance, int maxDistance) {
+    public static BlockPos getRunePortalCoordinate(List<BlockState> list, Level world ,BlockPos originalPos, int minDistance, int maxDistance) {
 
         int origX = originalPos.getX();
         int origZ = originalPos.getZ();
@@ -26,7 +24,7 @@ public class RunePortalCoordinateGenerator {
             MessageDigest digest = MessageDigest.getInstance("SHA-256");
 
             // 使用顺序敏感的混合
-            String input = list.getFirst().getBlock().toString() + list.get(1).getBlock() + list.get(2).getBlock() + list.getLast().getBlock();
+            String input = list.getFirst().getBlock().getName().getString() + list.get(1).getBlock() + list.get(2).getBlock() + list.getLast().getBlock() + world.getServer().getWorldData().worldGenOptions().seed();
             byte[] hash = digest.digest(input.getBytes());
 
             // 生成多个随机值

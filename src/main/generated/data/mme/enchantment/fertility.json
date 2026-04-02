@@ -1,0 +1,21 @@
+{
+  "anvil_cost": 4,
+  "description": {
+    "translate": "enchantment.mme.fertility"
+  },
+  "max_cost": {
+    "base": 55,
+    "per_level_above_first": 5
+  },
+  "max_level": 5,
+  "min_cost": {
+    "base": 10,
+    "per_level_above_first": 5
+  },
+  "primary_items": "#minecraft:hoes",
+  "slots": [
+    "mainhand"
+  ],
+  "supported_items": "#mme:fertility_enchantable",
+  "weight": 5
+}

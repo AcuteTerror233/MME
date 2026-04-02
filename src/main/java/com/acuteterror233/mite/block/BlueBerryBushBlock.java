@@ -20,7 +20,6 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.BonemealableBlock;
 import net.minecraft.world.level.block.VegetationBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
@@ -35,8 +34,7 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class BlueBerryBushBlock
-        extends VegetationBlock
-        implements BonemealableBlock {
+        extends VegetationBlock {
     public static final MapCodec<BlueBerryBushBlock> CODEC = BlueBerryBushBlock.simpleCodec(BlueBerryBushBlock::new);
     public static final IntegerProperty AGE = BlockStateProperties.AGE_3;
     private static final VoxelShape SHAPE_SAPLING = Block.column(10.0, 0.0, 8.0);
@@ -125,21 +123,5 @@ public class BlueBerryBushBlock
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(AGE);
-    }
-
-    @Override
-    public boolean isValidBonemealTarget(LevelReader levelReader, BlockPos blockPos, BlockState blockState) {
-        return blockState.getValue(AGE) < 3;
-    }
-
-    @Override
-    public boolean isBonemealSuccess(Level level, RandomSource randomSource, BlockPos blockPos, BlockState blockState) {
-        return true;
-    }
-
-    @Override
-    public void performBonemeal(ServerLevel serverLevel, RandomSource randomSource, BlockPos blockPos, BlockState blockState) {
-        int i = Math.min(3, blockState.getValue(AGE) + 1);
-        serverLevel.setBlock(blockPos, blockState.setValue(AGE, i), 2);
     }
 }

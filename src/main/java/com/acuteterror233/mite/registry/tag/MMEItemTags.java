@@ -30,6 +30,7 @@ public interface MMEItemTags {
 
     TagKey<Item> DAGGER_ENCHANTABLE = key("dagger_enchantable");
     TagKey<Item> HARVESTING_ENCHANTABLE =  key("harvesting_enchantable");
+    TagKey<Item> FERTILITY_ENCHANTABLE =  key("fertility_enchantable");
 
     TagKey<Item> NETHERITE_TOOLS =  key("netherite_tools");
     TagKey<Item> ADAMANTIUM_TOOLS = key("adamantium_tools");

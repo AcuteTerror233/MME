@@ -479,7 +479,7 @@ public class MMEItems {
     public static final Item ANCIENT_METAL_SHOVEL = registerShovelItem("ancient_metal_shovel", getShovelSettings(MMEToolMaterials.ANCIENT_METAL));
     public static final Item ANCIENT_METAL_HOE = registerHoeItem("ancient_metal_hoe", getHoeSettings(MMEToolMaterials.ANCIENT_METAL));
     public static final Item ANCIENT_METAL_MATTOCK = registerHoeItem("ancient_metal_mattock", getMattockSettings(MMEToolMaterials.ANCIENT_METAL));
-    public static final Item ANCIENT_METAL_SCYTHE = registerAxeItem("ancient_metal_scythe", getScytheSettings(MMEToolMaterials.ANCIENT_METAL));
+    public static final Item ANCIENT_METAL_SCYTHE = register("ancient_metal_scythe", getScytheSettings(MMEToolMaterials.ANCIENT_METAL));
     public static final Item ANCIENT_METAL_SHEARS = registerShearsItem("ancient_metal_shears", getShearsSettings(MMEToolMaterials.ANCIENT_METAL));
 
     public static final Item COPPER_AXE = registerAxeItem("copper_axe", getAxeSettings(MMEToolMaterials.COPPER));
@@ -490,9 +490,9 @@ public class MMEItems {
     public static final Item COPPER_KNIFE = register("copper_knife");
     public static final Item COPPER_PICKAXE = register("copper_pickaxe", getPickaxeSettings(MMEToolMaterials.COPPER));
     public static final Item COPPER_WAR_HAMMER = register("copper_war_hammer", getWarHammerSettings(MMEToolMaterials.COPPER));
-    public static final Item COPPER_SHOVEL = register("copper_shovel", getShovelSettings(MMEToolMaterials.COPPER));
-    public static final Item COPPER_HOE = register("copper_hoe", getHoeSettings(MMEToolMaterials.COPPER));
-    public static final Item COPPER_MATTOCK = register("copper_mattock", getMattockSettings(MMEToolMaterials.COPPER));
+    public static final Item COPPER_SHOVEL = registerShovelItem("copper_shovel", getShovelSettings(MMEToolMaterials.COPPER));
+    public static final Item COPPER_HOE = registerHoeItem("copper_hoe", getHoeSettings(MMEToolMaterials.COPPER));
+    public static final Item COPPER_MATTOCK = registerHoeItem("copper_mattock", getMattockSettings(MMEToolMaterials.COPPER));
     public static final Item COPPER_SCYTHE = register("copper_scythe", getScytheSettings(MMEToolMaterials.COPPER));
     public static final Item COPPER_SHEARS = registerShearsItem("copper_shears", getShearsSettings(MMEToolMaterials.COPPER));
 
@@ -501,7 +501,7 @@ public class MMEItems {
     public static final Item GOLDEN_DAGGER = register("golden_dagger", getDaggerSettings(MMEToolMaterials.GOLD));
     public static final Item GOLDEN_KNIFE = register("golden_knife");
     public static final Item GOLDEN_WAR_HAMMER = register("golden_war_hammer", getWarHammerSettings(MMEToolMaterials.GOLD));
-    public static final Item GOLDEN_MATTOCK = register("golden_mattock", getMattockSettings(MMEToolMaterials.GOLD));
+    public static final Item GOLDEN_MATTOCK = registerHoeItem("golden_mattock", getMattockSettings(MMEToolMaterials.GOLD));
     public static final Item GOLDEN_SCYTHE = register("golden_scythe", getScytheSettings(MMEToolMaterials.GOLD));
     public static final Item GOLDEN_SHEARS = registerShearsItem("golden_shears", getShearsSettings(MMEToolMaterials.GOLD));
 
@@ -510,7 +510,7 @@ public class MMEItems {
     public static final Item IRON_HATCHET = registerAxeItem("iron_hatchet", getHandAxeSettings(MMEToolMaterials.IRON));
     public static final Item IRON_WAR_HAMMER = register("iron_war_hammer", getWarHammerSettings(MMEToolMaterials.IRON));
     public static final Item IRON_KNIFE = register("iron_knife");
-    public static final Item IRON_MATTOCK = register("iron_mattock", getMattockSettings(MMEToolMaterials.IRON));
+    public static final Item IRON_MATTOCK = registerHoeItem("iron_mattock", getMattockSettings(MMEToolMaterials.IRON));
     public static final Item IRON_SCYTHE = register("iron_scythe", getScytheSettings(MMEToolMaterials.IRON));
 
     public static final Item MITHRIL_AXE = registerAxeItem("mithril_axe", getAxeSettings(MMEToolMaterials.MITHRIL));
@@ -521,9 +521,9 @@ public class MMEItems {
     public static final Item MITHRIL_KNIFE = register("mithril_knife");
     public static final Item MITHRIL_PICKAXE = register("mithril_pickaxe", getPickaxeSettings(MMEToolMaterials.MITHRIL));
     public static final Item MITHRIL_WAR_HAMMER = register("mithril_war_hammer", getWarHammerSettings(MMEToolMaterials.MITHRIL));
-    public static final Item MITHRIL_SHOVEL = register("mithril_shovel", getShovelSettings(MMEToolMaterials.MITHRIL));
-    public static final Item MITHRIL_HOE = register("mithril_hoe", getHoeSettings(MMEToolMaterials.MITHRIL));
-    public static final Item MITHRIL_MATTOCK = register("mithril_mattock", getMattockSettings(MMEToolMaterials.MITHRIL));
+    public static final Item MITHRIL_SHOVEL = registerShovelItem("mithril_shovel", getShovelSettings(MMEToolMaterials.MITHRIL));
+    public static final Item MITHRIL_HOE = registerHoeItem("mithril_hoe", getHoeSettings(MMEToolMaterials.MITHRIL));
+    public static final Item MITHRIL_MATTOCK = registerHoeItem("mithril_mattock", getMattockSettings(MMEToolMaterials.MITHRIL));
     public static final Item MITHRIL_SCYTHE = register("mithril_scythe", getScytheSettings(MMEToolMaterials.MITHRIL));
     public static final Item MITHRIL_SHEARS = registerShearsItem("mithril_shears", getShearsSettings(MMEToolMaterials.MITHRIL));
 
@@ -535,9 +535,9 @@ public class MMEItems {
     public static final Item RUSTED_IRON_KNIFE = register("rusted_iron_knife");
     public static final Item RUSTED_IRON_PICKAXE = register("rusted_iron_pickaxe", getPickaxeSettings(MMEToolMaterials.RUSTED_IRON));
     public static final Item RUSTED_IRON_WAR_HAMMER = register("rusted_iron_war_hammer", getWarHammerSettings(MMEToolMaterials.RUSTED_IRON));
-    public static final Item RUSTED_IRON_SHOVEL = register("rusted_iron_shovel", getShovelSettings(MMEToolMaterials.RUSTED_IRON));
-    public static final Item RUSTED_IRON_HOE = register("rusted_iron_hoe", getHoeSettings(MMEToolMaterials.RUSTED_IRON));
-    public static final Item RUSTED_IRON_MATTOCK = register("rusted_iron_mattock", getMattockSettings(MMEToolMaterials.RUSTED_IRON));
+    public static final Item RUSTED_IRON_SHOVEL = registerShovelItem("rusted_iron_shovel", getShovelSettings(MMEToolMaterials.RUSTED_IRON));
+    public static final Item RUSTED_IRON_HOE = registerHoeItem("rusted_iron_hoe", getHoeSettings(MMEToolMaterials.RUSTED_IRON));
+    public static final Item RUSTED_IRON_MATTOCK = registerHoeItem("rusted_iron_mattock", getMattockSettings(MMEToolMaterials.RUSTED_IRON));
     public static final Item RUSTED_IRON_SCYTHE = register("rusted_iron_scythe", getScytheSettings(MMEToolMaterials.RUSTED_IRON));
     public static final Item RUSTED_IRON_SHEARS = registerShearsItem("rusted_iron_shears", getShearsSettings(MMEToolMaterials.RUSTED_IRON));
 
@@ -549,9 +549,9 @@ public class MMEItems {
     public static final Item SILVER_SWORD = register("silver_sword", getSwordSettings(MMEToolMaterials.SILVER));
     public static final Item SILVER_PICKAXE = register("silver_pickaxe", getPickaxeSettings(MMEToolMaterials.SILVER));
     public static final Item SILVER_WAR_HAMMER = register("silver_war_hammer", getWarHammerSettings(MMEToolMaterials.SILVER));
-    public static final Item SILVER_SHOVEL = register("silver_shovel", getShovelSettings(MMEToolMaterials.SILVER));
-    public static final Item SILVER_HOE = register("silver_hoe", getHoeSettings(MMEToolMaterials.SILVER));
-    public static final Item SILVER_MATTOCK = register("silver_mattock", getMattockSettings(MMEToolMaterials.SILVER));
+    public static final Item SILVER_SHOVEL = registerShovelItem("silver_shovel", getShovelSettings(MMEToolMaterials.SILVER));
+    public static final Item SILVER_HOE = registerHoeItem("silver_hoe", getHoeSettings(MMEToolMaterials.SILVER));
+    public static final Item SILVER_MATTOCK = registerHoeItem("silver_mattock", getMattockSettings(MMEToolMaterials.SILVER));
     public static final Item SILVER_SCYTHE = register("silver_scythe", getScytheSettings(MMEToolMaterials.SILVER));
     public static final Item SILVER_SHEARS = registerShearsItem("silver_shears", getShearsSettings(MMEToolMaterials.SILVER));
 
@@ -564,8 +564,6 @@ public class MMEItems {
     public static final Item FLINT_HATCHET = registerAxeItem("flint_hatchet", applyToolSettings(new Item.Properties(), MMEToolMaterials.FLINT, BlockTags.MINEABLE_WITH_AXE, 1, 2, 3, -2.7F, 0.25F, 0.25F, 5));
     public static final Item FLINT_KNIFE = register("flint_knife", applySwordSettings(new Item.Properties(), MMEToolMaterials.FLINT, 3, 1, 2, -2.0F, 0.25F, 0.25F));
     public static final Item FLINT_SHOVEL = register("flint_shovel", applyToolSettings(new Item.Properties(), MMEToolMaterials.FLINT, BlockTags.MINEABLE_WITH_SHOVEL, 3, 2, 1, -2.8F, 0.75F, 0.75F, 0));
-
-    public static final Item STONE_DAGGER = register("stone_dagger");
 
     public static final Item WOODEN_CLUB = register("wooden_club", applySwordSettings(new Item.Properties(), MMEToolMaterials.WOOD, 2, 1, 4, -2.4F, 0.5F, 0.5F));
     public static final Item WOODEN_CUDGEL = register("wooden_cudgel", applySwordSettings(new Item.Properties(), MMEToolMaterials.WOOD, 1, 1, 3, -2.0F, 0.25F, 0.25F));
@@ -1230,6 +1228,11 @@ public class MMEItems {
 
     public static final Item SINEW = register("sinew",
             new Item.Properties().stacksTo(16));
+    public static final Item MANURE = register(
+            "manure",
+            ManureItem::new,
+            new Item.Properties().stacksTo(16)
+    );
 
     public static final CreativeModeTab AT_MINT_GROUP = FabricItemGroup.builder()
             .icon(() -> new ItemStack(ADAMANTIUM_HELMET))
@@ -1492,7 +1495,6 @@ public class MMEItems {
                 entries.accept(SILVER_SHOVEL);
                 entries.accept(SILVER_SWORD);
                 entries.accept(SILVER_WAR_HAMMER);
-                entries.accept(STONE_DAGGER);
                 entries.accept(GOLDEN_BATTLE_AXE);
                 entries.accept(GOLDEN_DAGGER);
                 entries.accept(GOLDEN_HATCHET);
@@ -1538,6 +1540,7 @@ public class MMEItems {
                 entries.accept(MASHED_POTATO);
                 entries.accept(PORRIDGE);
                 entries.accept(SINEW);
+                entries.accept(MANURE);
 
                 entries.accept(ADAMANTIUM_CHAINS);
                 entries.accept(GOLDEN_CHAINS);
