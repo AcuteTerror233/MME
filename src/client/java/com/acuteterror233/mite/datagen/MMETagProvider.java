@@ -467,6 +467,7 @@ public class MMETagProvider {
                     .add(MMEItems.LAVA_GOLD_BUCKET)
                     .add(Items.LAVA_BUCKET);
             getOrCreateTagBuilder(MMEItemTags.FISHING_RODS)
+                    .add(MMEItems.NETHERITE_FISHING_ROD)
                     .add(MMEItems.ADAMANTIUM_FISHING_ROD)
                     .add(MMEItems.ANCIENT_METAL_FISHING_ROD)
                     .add(MMEItems.COPPER_FISHING_ROD)
@@ -480,6 +481,7 @@ public class MMETagProvider {
             getOrCreateTagBuilder(MMEItemTags.NUGGET)
                     .add(Items.IRON_NUGGET)
                     .add(Items.GOLD_NUGGET)
+                    .add(MMEItems.NETHERITE_NUGGET)
                     .add(MMEItems.ADAMANTIUM_NUGGET)
                     .add(MMEItems.ANCIENT_METAL_NUGGET)
                     .add(MMEItems.MITHRIL_NUGGET)
@@ -507,11 +509,12 @@ public class MMETagProvider {
                     .add(MMEItems.GOLDEN_CHAINS)
                     .add(MMEItems.IRON_CHAINS);
             getOrCreateTagBuilder(MMEItemTags.COINS)
+                    .add(MMEItems.NETHERITE_COINS)
                     .add(MMEItems.ADAMANTIUM_COINS)
                     .add(MMEItems.ANCIENT_METAL_COINS)
                     .add(MMEItems.COPPER_COINS)
                     .add(MMEItems.MITHRIL_COINS)
-                    .add(MMEItems.GOLD_COINS)
+                    .add(MMEItems.GOLDEN_COINS)
                     .add(MMEItems.SILVER_COINS)
                     .add(MMEItems.IRON_COINS);      
             getOrCreateTagBuilder(MMEItemTags.NETHERITE_TOOLS)
@@ -710,29 +713,27 @@ public class MMETagProvider {
                     .addTag(MMEItemTags.NETHERITE_TOOLS)
                     .addTag(MMEItemTags.ADAMANTIUM_TOOLS);
 
+            getOrCreateTagBuilder(MMEItemTags.NETHERITE_TOOL_MATERIALS)
+                    .add(Items.NETHERITE_INGOT)
+                    .add(MMEItems.NETHERITE_NUGGET);
             getOrCreateTagBuilder(MMEItemTags.ADAMANTIUM_TOOL_MATERIALS)
                     .add(MMEItems.ADAMANTIUM_INGOT)
-                    .add(MMEBlocks.ADAMANTIUM_BLOCK.asItem())
                     .add(MMEItems.ADAMANTIUM_NUGGET);
             getOrCreateTagBuilder(MMEItemTags.MITHRIL_TOOL_MATERIALS)
                     .add(MMEItems.MITHRIL_INGOT)
-                    .add(MMEBlocks.MITHRIL_BLOCK.asItem())
                     .add(MMEItems.MITHRIL_NUGGET);
             getOrCreateTagBuilder(MMEItemTags.ANCIENT_METAL_TOOL_MATERIALS)
                     .add(MMEItems.ANCIENT_METAL_INGOT)
-                    .add(MMEBlocks.ANCIENT_METAL_BLOCK.asItem())
                     .add(MMEItems.ANCIENT_METAL_NUGGET);
             getOrCreateTagBuilder(MMEItemTags.SILVER_TOOL_MATERIALS)
                     .add(MMEItems.SILVER_INGOT)
-                    .add(MMEBlocks.SILVER_BLOCK.asItem())
                     .add(MMEItems.SILVER_NUGGET);
             getOrCreateTagBuilder(MMEItemTags.COPPER_TOOL_MATERIALS)
                     .add(Items.COPPER_INGOT)
-                    .add(Items.COPPER_BLOCK)
                     .add(MMEItems.COPPER_NUGGET);
             getOrCreateTagBuilder(ItemTags.IRON_TOOL_MATERIALS)
                     .add(Items.IRON_NUGGET)
-                    .add(Items.IRON_BLOCK);
+                    .add(Items.IRON_INGOT);
 
             getOrCreateTagBuilder(MMEItemTags.NETHERITE_NOT_ALLOWED_MATERIAL);
             getOrCreateTagBuilder(MMEItemTags.ADAMANTIUM_NOT_ALLOWED_MATERIAL)
@@ -871,6 +872,7 @@ public class MMETagProvider {
                     .add(MMEItems.SILVER_HOE)
                     .add(MMEItems.COPPER_HOE);
             getOrCreateTagBuilder(ItemTags.FISHING_ENCHANTABLE)
+                    .add(MMEItems.NETHERITE_FISHING_ROD)
                     .add(MMEItems.ADAMANTIUM_FISHING_ROD)
                     .add(MMEItems.MITHRIL_FISHING_ROD)
                     .add(MMEItems.ANCIENT_METAL_FISHING_ROD)
@@ -881,6 +883,7 @@ public class MMETagProvider {
                     .add(MMEItems.OBSIDIAN_FISHING_ROD)
                     .add(MMEItems.FLINT_FISHING_ROD);
             getOrCreateTagBuilder(ItemTags.DURABILITY_ENCHANTABLE)
+                    .add(MMEItems.NETHERITE_FISHING_ROD)
                     .add(MMEItems.ADAMANTIUM_FISHING_ROD)
                     .add(MMEItems.MITHRIL_FISHING_ROD)
                     .add(MMEItems.ANCIENT_METAL_FISHING_ROD)
@@ -889,9 +892,7 @@ public class MMETagProvider {
                     .add(MMEItems.COPPER_FISHING_ROD)
                     .add(MMEItems.GOLDEN_FISHING_ROD)
                     .add(MMEItems.OBSIDIAN_FISHING_ROD)
-                    .add(MMEItems.FLINT_FISHING_ROD);
-
-            getOrCreateTagBuilder(ItemTags.DURABILITY_ENCHANTABLE)
+                    .add(MMEItems.FLINT_FISHING_ROD)
                     .addTag(MMEItemTags.SHEARS);
             getOrCreateTagBuilder(ItemTags.MINING_ENCHANTABLE)
                     .addTag(MMEItemTags.SHEARS);

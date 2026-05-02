@@ -1,0 +1,175 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_silver_axe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mme:silver_axe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_silver_boots": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mme:silver_boots"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_silver_chainmail_boots": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mme:silver_chainmail_boots"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_silver_chainmail_chestplate": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mme:silver_chainmail_chestplate"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_silver_chainmail_helmet": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mme:silver_chainmail_helmet"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_silver_chainmail_leggings": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mme:silver_chainmail_leggings"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_silver_chestplate": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mme:silver_chestplate"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_silver_helmet": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mme:silver_helmet"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_silver_hoe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mme:silver_hoe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_silver_leggings": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mme:silver_leggings"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_silver_pickaxe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mme:silver_pickaxe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_silver_shears": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mme:silver_shears"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_silver_shovel": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mme:silver_shovel"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_silver_sword": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mme:silver_sword"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "mme:silver_nugget_from_blasting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_silver_pickaxe",
+      "has_silver_shovel",
+      "has_silver_axe",
+      "has_silver_hoe",
+      "has_silver_sword",
+      "has_silver_helmet",
+      "has_silver_chestplate",
+      "has_silver_leggings",
+      "has_silver_boots",
+      "has_silver_chainmail_helmet",
+      "has_silver_chainmail_chestplate",
+      "has_silver_chainmail_leggings",
+      "has_silver_chainmail_boots",
+      "has_silver_shears"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "mme:silver_nugget_from_blasting"
+    ]
+  }
+}

@@ -18,10 +18,10 @@ public class En_usLanguageProvider extends FabricLanguageProvider {
 
     @Override
     public void generateTranslations(HolderLookup.Provider registryLookup, TranslationBuilder translationBuilder) {
-        translationBuilder.add("itemGroup.mme.item_group", "Make Minecraft easier!");
+        translationBuilder.add("itemGroup.mme.item_group", "Might Makes Everything");
         translationBuilder.add("mme.craftingTable.noAllowedCrafting", "§cThis item cannot be crafted§r");
         translationBuilder.add("mme.gradefurnac.fuelnotavailable", "§cThis furnace cannot burn this fuel§r");
-        translationBuilder.add("mme.nugget.tooltip", "%d XP minus use");
+        translationBuilder.add("mme.nugget.tooltip", "Right-click to make coins and store %dXP");
         translationBuilder.add("mme.coins.tooltip", "%d XP per use");
         translationBuilder.add(MMEItems.ADAMANTIUM_HELMET, "Adamantium Helmet");
         translationBuilder.add(MMEItems.ADAMANTIUM_CHESTPLATE, "Adamantium Chestplate");
@@ -71,6 +71,10 @@ public class En_usLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(MMEItems.SILVER_CHAINMAIL_CHESTPLATE, "Silver Chainmail Chestplate");
         translationBuilder.add(MMEItems.SILVER_CHAINMAIL_LEGGINGS, "Silver Chainmail Leggings");
         translationBuilder.add(MMEItems.SILVER_CHAINMAIL_BOOTS, "Silver Chainmail Boots");
+        translationBuilder.add(MMEItems.GOLDEN_CHAINMAIL_HELMET, "Golden Chainmail Helmet");
+        translationBuilder.add(MMEItems.GOLDEN_CHAINMAIL_CHESTPLATE, "Golden Chainmail Chestplate");
+        translationBuilder.add(MMEItems.GOLDEN_CHAINMAIL_LEGGINGS, "Golden Chainmail Leggings");
+        translationBuilder.add(MMEItems.GOLDEN_CHAINMAIL_BOOTS, "Golden Chainmail Boots");
 
         translationBuilder.add(MMEItems.BANANA, "Banana");
         translationBuilder.add(MMEItems.BLUE_BERRIE, "Blueberry");
@@ -106,11 +110,12 @@ public class En_usLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(MMEItems.SILVER_CHAINS, "Silver Chains");
         translationBuilder.add(MMEItems.GOLDEN_CHAINS, "Steel Chains");
         translationBuilder.add(MMEItems.IRON_CHAINS, "Tin Chains");
+        translationBuilder.add(MMEItems.NETHERITE_COINS, "Netherite Coins");
         translationBuilder.add(MMEItems.ADAMANTIUM_COINS, "Adamantium Coins");
         translationBuilder.add(MMEItems.ANCIENT_METAL_COINS, "Ancient Metal Coins");
         translationBuilder.add(MMEItems.COPPER_COINS, "Copper Coins");
         translationBuilder.add(MMEItems.MITHRIL_COINS, "Mithril Coins");
-        translationBuilder.add(MMEItems.GOLD_COINS, "Rusted Iron Coins");
+        translationBuilder.add(MMEItems.GOLDEN_COINS, "Rusted Iron Coins");
         translationBuilder.add(MMEItems.SILVER_COINS, "Silver Coins");
         translationBuilder.add(MMEItems.IRON_COINS, "Iron Coins");
 
@@ -319,6 +324,7 @@ public class En_usLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(MMEItems.AXOLOTL_NETHERITE_BUCKET, "Netherite Bucket of Axolotl");
         translationBuilder.add(MMEItems.TADPOLE_NETHERITE_BUCKET, "Netherite Bucket of Tadpole");
 
+        translationBuilder.add(MMEItems.NETHERITE_FISHING_ROD, "Netherite Fishing Rod");
         translationBuilder.add(MMEItems.ADAMANTIUM_FISHING_ROD, "Adamantium Fishing Rod");
         translationBuilder.add(MMEItems.ANCIENT_METAL_FISHING_ROD, "Ancient Metal Fishing Rod");
         translationBuilder.add(MMEItems.MITHRIL_FISHING_ROD, "Mithril Fishing Rod");
@@ -338,6 +344,7 @@ public class En_usLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(MMEItems.MITHRIL_INGOT, "Mithril Ingot");
         translationBuilder.add(MMEItems.SILVER_INGOT, "Silver Ingot");
 
+        translationBuilder.add(MMEItems.NETHERITE_NUGGET, "Netherite Nugget");
         translationBuilder.add(MMEItems.ADAMANTIUM_NUGGET, "Adamantium Nugget");
         translationBuilder.add(MMEItems.ANCIENT_METAL_NUGGET, "Ancient Metal Nugget");
         translationBuilder.add(MMEItems.MITHRIL_NUGGET, "Mithril Nugget");

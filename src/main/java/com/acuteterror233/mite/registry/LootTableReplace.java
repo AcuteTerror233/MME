@@ -39,6 +39,7 @@ import net.minecraft.world.level.storage.loot.predicates.*;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.NumberProvider;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
 import java.util.List;
@@ -47,6 +48,8 @@ import java.util.function.Function;
 
 @SuppressWarnings("OptionalGetWithoutIsPresent")
 public final class LootTableReplace {
+    public static final float[] JUNGLE_LEAVES_SAPLING_CHANGES = new float[]{0.025F, 0.027777778F, 0.03125F, 0.041666668F, 0.1F};
+    public static final float[] NORMAL_LEAVES_SAPLING_CHANCES = new float[]{0.05F, 0.0625F, 0.083333336F, 0.1F};
     public static void init(){
         Map<ResourceKey<LootTable>, Function<HolderLookup.Provider, LootTable>> LOOT_TABLES_REPLACE = new HashMap<>();
         LOOT_TABLES_REPLACE.put(Blocks.STONE.getLootTable().get(),
@@ -2251,10 +2254,90 @@ public final class LootTableReplace {
                 ).build()
         );
 
+        LOOT_TABLES_REPLACE.put(Blocks.JUNGLE_LEAVES.getLootTable().get(), 
+                provider -> createAdditionalFruitDrops(provider, Blocks.JUNGLE_LEAVES, Blocks.JUNGLE_SAPLING, JUNGLE_LEAVES_SAPLING_CHANGES, MMEItems.BANANA)
+                        .withPool(
+                                LootPool.lootPool()
+                                        .setRolls(ConstantValue.exactly(1.0F))
+                                        .when(hasShearsOrSilkTouch(provider).invert())
+                                        .add(
+                                                LootItem.lootTableItem(MMEItems.LEMON)
+                                                        .apply(ApplyExplosionDecay.explosionDecay())
+                                                        .when(
+                                                                BonusLevelTableCondition.bonusLevelFlatChance(provider.getOrThrow(Enchantments.FORTUNE), 0.005F, 0.0055555557F, 0.00625F, 0.008333334F, 0.025F)
+                                                        )
+                                        )
+                        ).build()
+        );
+        LOOT_TABLES_REPLACE.put(Blocks.ACACIA_LEAVES.getLootTable().get(),
+                provider -> createAdditionalFruitDrops(provider, Blocks.ACACIA_LEAVES, Blocks.ACACIA_SAPLING, NORMAL_LEAVES_SAPLING_CHANCES, MMEItems.ORANGE).build()
+        );
+
         LootTableEvents.REPLACE.register((key, original, source, registries) -> {
             Function<HolderLookup.Provider, LootTable> function = LOOT_TABLES_REPLACE.get(key);
             return function != null ? function.apply(registries) : null;
         });
+    }
+
+    private static LootTable.Builder createAdditionalFruitDrops(HolderLookup.Provider provider, Block leaves, Block sapling, float[] leavesSaplingChanges, ItemLike fruit){
+        return createLeavesDrops(provider, leaves, sapling, leavesSaplingChanges)
+                .withPool(
+                        LootPool.lootPool()
+                                .setRolls(ConstantValue.exactly(1.0F))
+                                .when(hasShearsOrSilkTouch(provider).invert())
+                                .add(
+                                        LootItem.lootTableItem(fruit)
+                                                .apply(ApplyExplosionDecay.explosionDecay())
+                                                .when(
+                                                        BonusLevelTableCondition.bonusLevelFlatChance(provider.getOrThrow(Enchantments.FORTUNE), 0.005F, 0.0055555557F, 0.00625F, 0.008333334F, 0.025F)
+                                                )
+                                )
+                );
+    }
+    private static LootTable.Builder createLeavesDrops(HolderLookup.Provider provider, Block leaves, Block sapling, float[] leavesSaplingChanges) {
+        return LootTable.lootTable()
+                .withPool(
+                        LootPool.lootPool()
+                                .setRolls(ConstantValue.exactly(1.0F))
+                                .add(
+                                        LootItem.lootTableItem(leaves)
+                                                .when(hasShearsOrSilkTouch(provider))
+                                                .otherwise(
+                                                        LootItem.lootTableItem(sapling)
+                                                                .when((ExplosionCondition.survivesExplosion()))
+                                                                .when(BonusLevelTableCondition.bonusLevelFlatChance(provider.getOrThrow(Enchantments.FORTUNE), leavesSaplingChanges))
+                                                )
+                                )
+                ).withPool(
+                        LootPool.lootPool()
+                                .setRolls(ConstantValue.exactly(1.0F))
+                                .when(hasShearsOrSilkTouch(provider).invert())
+                                .add(
+                                        LootItem.lootTableItem(Items.STICK)
+                                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)))
+                                                .apply(ApplyExplosionDecay.explosionDecay())
+                                ).when(BonusLevelTableCondition.bonusLevelFlatChance(provider.getOrThrow(Enchantments.FORTUNE), leavesSaplingChanges))
+                );
+    }
+
+    private static AnyOfCondition.@NotNull Builder hasShearsOrSilkTouch(HolderLookup.Provider provider) {
+        return MatchTool.toolMatches(ItemPredicate.Builder.item().of(provider.lookupOrThrow(Registries.ITEM), Items.SHEARS))
+                .or(MatchTool.toolMatches(
+                                ItemPredicate.Builder.item()
+                                        .withComponents(
+                                                DataComponentMatchers.Builder.components()
+                                                        .partial(
+                                                                DataComponentPredicates.ENCHANTMENTS,
+                                                                EnchantmentsPredicate.enchantments(
+                                                                        List.of(
+                                                                                new EnchantmentPredicate(provider.lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(Enchantments.SILK_TOUCH), MinMaxBounds.Ints.atLeast(1))
+                                                                        )
+                                                                )
+                                                        )
+                                                        .build()
+                                        )
+                        )
+                );
     }
 
     public static LootItemBlockStatePropertyCondition.Builder propertyCondition(Block block, Property<Integer> property, int i) {

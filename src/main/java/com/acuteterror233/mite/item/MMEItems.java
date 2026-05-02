@@ -151,7 +151,7 @@ public class MMEItems {
     );
     public static final Item MITHRIL_CHAINMAIL_HELMET = register(
             "mithril_chainmail_helmet",
-            getArmorSettings(MMEArmorMaterials.MITHRIL_CHAINMAIL_MATERIAL, ArmorType.BOOTS)
+            getArmorSettings(MMEArmorMaterials.MITHRIL_CHAINMAIL_MATERIAL, ArmorType.HELMET)
     );
     public static final Item MITHRIL_CHAINMAIL_CHESTPLATE = register(
             "mithril_chainmail_chestplate",
@@ -585,6 +585,11 @@ public class MMEItems {
     public static final Item SILVER_CHAINS = register("silver_chains",
             new Item.Properties().stacksTo(16).component(MMEDataComponentTypes.CRAFTING_TIME, 5));
 
+    public static final Item NETHERITE_COINS = register(
+            "netherite_coins",
+            settings -> new CoinsItem(settings, 5000),
+            new Item.Properties().stacksTo(32)
+    );
     public static final Item ADAMANTIUM_COINS = register(
             "adamantium_coins",
             settings -> new CoinsItem(settings, 1000),
@@ -605,8 +610,8 @@ public class MMEItems {
             settings -> new CoinsItem(settings, 200),
             new Item.Properties().stacksTo(32)
     );
-    public static final Item GOLD_COINS = register(
-            "gold_coins",
+    public static final Item GOLDEN_COINS = register(
+            "golden_coins",
             settings -> new CoinsItem(settings, 500),
             new Item.Properties().stacksTo(32)
     );
@@ -1169,15 +1174,16 @@ public class MMEItems {
                     .component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)
                     .fireResistant()
     );
-    public static final Item ADAMANTIUM_FISHING_ROD = register("adamantium_fishing_rod", FishingRodItem::new, new Item.Properties().durability(128).enchantable(1));
-    public static final Item ANCIENT_METAL_FISHING_ROD = register("ancient_metal_fishing_rod", FishingRodItem::new, new Item.Properties().durability(96).enchantable(1));
-    public static final Item COPPER_FISHING_ROD = register("copper_fishing_rod", FishingRodItem::new, new Item.Properties().durability(8).enchantable(1));
-    public static final Item FLINT_FISHING_ROD = register("flint_fishing_rod", FishingRodItem::new, new Item.Properties().durability(32).enchantable(1));
-    public static final Item GOLDEN_FISHING_ROD = register("golden_fishing_rod", FishingRodItem::new, new Item.Properties().durability(4).enchantable(1));
-    public static final Item IRON_FISHING_ROD = register("iron_fishing_rod", FishingRodItem::new, new Item.Properties().durability(32).enchantable(1));
-    public static final Item MITHRIL_FISHING_ROD = register("mithril_fishing_rod", FishingRodItem::new, new Item.Properties().durability(64).enchantable(1));
-    public static final Item OBSIDIAN_FISHING_ROD = register("obsidian_fishing_rod", FishingRodItem::new, new Item.Properties().durability(32).enchantable(1));
-    public static final Item SILVER_FISHING_ROD = register("silver_fishing_rod", FishingRodItem::new, new Item.Properties().durability(8).enchantable(1));
+    public static final Item NETHERITE_FISHING_ROD = register("netherite_fishing_rod", FishingRodItem::new, new Item.Properties().durability(256).enchantable(24));
+    public static final Item ADAMANTIUM_FISHING_ROD = register("adamantium_fishing_rod", FishingRodItem::new, new Item.Properties().durability(128).enchantable(21));
+    public static final Item ANCIENT_METAL_FISHING_ROD = register("ancient_metal_fishing_rod", FishingRodItem::new, new Item.Properties().durability(96).enchantable(15));
+    public static final Item COPPER_FISHING_ROD = register("copper_fishing_rod", FishingRodItem::new, new Item.Properties().durability(8).enchantable(10));
+    public static final Item FLINT_FISHING_ROD = register("flint_fishing_rod", FishingRodItem::new, new Item.Properties().durability(32).enchantable(5));
+    public static final Item GOLDEN_FISHING_ROD = register("golden_fishing_rod", FishingRodItem::new, new Item.Properties().durability(4).enchantable(22));
+    public static final Item IRON_FISHING_ROD = register("iron_fishing_rod", FishingRodItem::new, new Item.Properties().durability(32).enchantable(12));
+    public static final Item MITHRIL_FISHING_ROD = register("mithril_fishing_rod", FishingRodItem::new, new Item.Properties().durability(64).enchantable(18));
+    public static final Item OBSIDIAN_FISHING_ROD = register("obsidian_fishing_rod", FishingRodItem::new, new Item.Properties().durability(32).enchantable(5));
+    public static final Item SILVER_FISHING_ROD = register("silver_fishing_rod", FishingRodItem::new, new Item.Properties().durability(8).enchantable(10));
 
     public static final Item RAW_ADAMANTIUM = register("raw_adamantium",
             new Item.Properties().stacksTo(8).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
@@ -1195,30 +1201,35 @@ public class MMEItems {
     public static final Item SILVER_INGOT = register("silver_ingot",
             new Item.Properties().component(MMEDataComponentTypes.CRAFTING_TIME, 5).stacksTo(16));
 
+    public static final Item NETHERITE_NUGGET = register(
+            "netherite_nugget",
+            settings -> new NuggetItem(settings, 5000),
+            new Item.Properties().component(MMEDataComponentTypes.CRAFTING_TIME, 10)
+    );
     public static final Item ADAMANTIUM_NUGGET = register(
             "adamantium_nugget",
             settings -> new NuggetItem(settings, 1000),
-            new Item.Properties().stacksTo(32).component(MMEDataComponentTypes.CRAFTING_TIME, 7)
+            new Item.Properties().component(MMEDataComponentTypes.CRAFTING_TIME, 7)
     );
     public static final Item MITHRIL_NUGGET = register(
             "mithril_nugget",
             settings -> new NuggetItem(settings, 500),
-            new Item.Properties().stacksTo(32).component(MMEDataComponentTypes.CRAFTING_TIME, 5)
+            new Item.Properties().component(MMEDataComponentTypes.CRAFTING_TIME, 5)
     );
     public static final Item ANCIENT_METAL_NUGGET = register(
             "ancient_metal_nugget",
             settings -> new NuggetItem(settings, 300),
-            new Item.Properties().stacksTo(32).component(MMEDataComponentTypes.CRAFTING_TIME, 4)
+            new Item.Properties().component(MMEDataComponentTypes.CRAFTING_TIME, 4)
     );
     public static final Item SILVER_NUGGET = register(
             "silver_nugget",
             settings -> new NuggetItem(settings, 50),
-            new Item.Properties().stacksTo(32).component(MMEDataComponentTypes.CRAFTING_TIME, 1)
+            new Item.Properties().component(MMEDataComponentTypes.CRAFTING_TIME, 1)
     );
     public static final Item COPPER_NUGGET = register(
             "copper_nugget",
             settings -> new NuggetItem(settings, 50),
-            new Item.Properties().stacksTo(32).component(MMEDataComponentTypes.CRAFTING_TIME, 1)
+            new Item.Properties().component(MMEDataComponentTypes.CRAFTING_TIME, 1)
     );
 
     public static final Item FLINT_SHARD = register("flint_shard",
@@ -1235,7 +1246,7 @@ public class MMEItems {
     );
 
     public static final CreativeModeTab AT_MINT_GROUP = FabricItemGroup.builder()
-            .icon(() -> new ItemStack(ADAMANTIUM_HELMET))
+            .icon(() -> new ItemStack(MMEBlocks.ADAMANTIUM_AN_RUNESTORE))
             .title(Component.translatable("itemGroup.mme.item_group"))
             .displayItems((context, entries) -> {
                 entries.accept(MMEBlocks.EMERALD_ENCHANTING_TABLE);
@@ -1291,26 +1302,26 @@ public class MMEItems {
                 entries.accept(MMEBlocks.ADAMANTIUM_SANCT_RUNESTORE);
 
                 entries.accept(MMEBlocks.NETHERITE_ANVIL);
-                entries.accept(chipped(MMEBlocks.CHIPPED_NETHERITE_ANVIL));
-                entries.accept(damaged(MMEBlocks.DAMAGED_NETHERITE_ANVIL));
+                entries.accept(MMEBlocks.CHIPPED_NETHERITE_ANVIL);
+                entries.accept(MMEBlocks.DAMAGED_NETHERITE_ANVIL);
                 entries.accept(MMEBlocks.ADAMANTIUM_ANVIL);
-                entries.accept(chipped(MMEBlocks.CHIPPED_ADAMANTIUM_ANVIL));
-                entries.accept(damaged(MMEBlocks.DAMAGED_ADAMANTIUM_ANVIL));
+                entries.accept(MMEBlocks.CHIPPED_ADAMANTIUM_ANVIL);
+                entries.accept(MMEBlocks.DAMAGED_ADAMANTIUM_ANVIL);
                 entries.accept(MMEBlocks.MITHRIL_ANVIL);
-                entries.accept(chipped(MMEBlocks.CHIPPED_MITHRIL_ANVIL));
-                entries.accept(damaged(MMEBlocks.DAMAGED_MITHRIL_ANVIL));
+                entries.accept(MMEBlocks.CHIPPED_MITHRIL_ANVIL);
+                entries.accept(MMEBlocks.DAMAGED_MITHRIL_ANVIL);
                 entries.accept(MMEBlocks.ANCIENT_METAL_ANVIL);
-                entries.accept(chipped(MMEBlocks.CHIPPED_ANCIENT_METAL_ANVIL));
-                entries.accept(damaged(MMEBlocks.DAMAGED_ANCIENT_METAL_ANVIL));
+                entries.accept(MMEBlocks.CHIPPED_ANCIENT_METAL_ANVIL);
+                entries.accept(MMEBlocks.DAMAGED_ANCIENT_METAL_ANVIL);
                 entries.accept(MMEBlocks.GOLDEN_ANVIL);
-                entries.accept(chipped(MMEBlocks.CHIPPED_GOLDEN_ANVIL));
-                entries.accept(damaged(MMEBlocks.DAMAGED_GOLDEN_ANVIL));
+                entries.accept(MMEBlocks.CHIPPED_GOLDEN_ANVIL);
+                entries.accept(MMEBlocks.DAMAGED_GOLDEN_ANVIL);
                 entries.accept(MMEBlocks.COPPER_ANVIL);
-                entries.accept(chipped(MMEBlocks.CHIPPED_COPPER_ANVIL));
-                entries.accept(damaged(MMEBlocks.DAMAGED_COPPER_ANVIL));
+                entries.accept(MMEBlocks.CHIPPED_COPPER_ANVIL);
+                entries.accept(MMEBlocks.DAMAGED_COPPER_ANVIL);
                 entries.accept(MMEBlocks.SILVER_ANVIL);
-                entries.accept(chipped(MMEBlocks.CHIPPED_SILVER_ANVIL));
-                entries.accept(damaged(MMEBlocks.DAMAGED_SILVER_ANVIL));
+                entries.accept(MMEBlocks.CHIPPED_SILVER_ANVIL);
+                entries.accept(MMEBlocks.DAMAGED_SILVER_ANVIL);
 
                 entries.accept(MMEBlocks.ADAMANTIUM_BLOCK);
                 entries.accept(MMEBlocks.MITHRIL_BLOCK);
@@ -1338,12 +1349,14 @@ public class MMEItems {
                 entries.accept(ANCIENT_METAL_INGOT);
                 entries.accept(SILVER_INGOT);
 
+                entries.accept(NETHERITE_NUGGET);
                 entries.accept(ADAMANTIUM_NUGGET);
                 entries.accept(ANCIENT_METAL_NUGGET);
                 entries.accept(MITHRIL_NUGGET);
                 entries.accept(SILVER_NUGGET);
                 entries.accept(COPPER_NUGGET);
 
+                entries.accept(NETHERITE_FISHING_ROD);
                 entries.accept(ADAMANTIUM_FISHING_ROD);
                 entries.accept(ANCIENT_METAL_FISHING_ROD);
                 entries.accept(COPPER_FISHING_ROD);
@@ -1401,6 +1414,10 @@ public class MMEItems {
                 entries.accept(SILVER_CHAINMAIL_CHESTPLATE);
                 entries.accept(SILVER_CHAINMAIL_LEGGINGS);
                 entries.accept(SILVER_CHAINMAIL_BOOTS);
+                entries.accept(GOLDEN_CHAINMAIL_HELMET);
+                entries.accept(GOLDEN_CHAINMAIL_CHESTPLATE);
+                entries.accept(GOLDEN_CHAINMAIL_LEGGINGS);
+                entries.accept(GOLDEN_CHAINMAIL_BOOTS);
 
                 entries.accept(NETHERITE_BATTLE_AXE);
                 entries.accept(NETHERITE_DAGGER);
@@ -1550,10 +1567,11 @@ public class MMEItems {
                 entries.accept(ANCIENT_METAL_CHAINS);
                 entries.accept(COPPER_CHAINS);
                 entries.accept(RUSTED_IRON_CHAINS);
+                entries.accept(NETHERITE_COINS);
                 entries.accept(ADAMANTIUM_COINS);
                 entries.accept(ANCIENT_METAL_COINS);
                 entries.accept(COPPER_COINS);
-                entries.accept(GOLD_COINS);
+                entries.accept(GOLDEN_COINS);
                 entries.accept(IRON_COINS);
                 entries.accept(MITHRIL_COINS);
                 entries.accept(SILVER_COINS);

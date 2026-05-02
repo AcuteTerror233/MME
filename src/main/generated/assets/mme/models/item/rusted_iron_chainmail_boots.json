@@ -1,6 +1,7 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "mme:item/rusted_iron_chainmail_boots"
+    "layer0": "mme:item/rusted_iron_boots",
+    "layer1": "mme:item/boots_chainmail_overlay"
   }
 }

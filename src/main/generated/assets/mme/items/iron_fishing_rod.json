@@ -3,7 +3,7 @@
     "type": "minecraft:condition",
     "on_false": {
       "type": "minecraft:model",
-      "model": "mme:item/iron_fishing_rod"
+      "model": "minecraft:item/fishing_rod"
     },
     "on_true": {
       "type": "minecraft:model",

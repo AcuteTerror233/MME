@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 100,
+  "experience": 0.1,
+  "ingredient": [
+    "mme:copper_pickaxe",
+    "mme:copper_shovel",
+    "mme:copper_axe",
+    "mme:copper_hoe",
+    "mme:copper_sword",
+    "mme:copper_helmet",
+    "mme:copper_chestplate",
+    "mme:copper_leggings",
+    "mme:copper_boots",
+    "mme:copper_chainmail_helmet",
+    "mme:copper_chainmail_chestplate",
+    "mme:copper_chainmail_leggings",
+    "mme:copper_chainmail_boots",
+    "mme:copper_shears"
+  ],
+  "result": {
+    "id": "mme:copper_nugget"
+  }
+}

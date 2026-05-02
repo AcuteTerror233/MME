@@ -1,10 +1,11 @@
 {
   "values": [
+    "mme:netherite_coins",
     "mme:adamantium_coins",
     "mme:ancient_metal_coins",
     "mme:copper_coins",
     "mme:mithril_coins",
-    "mme:gold_coins",
+    "mme:golden_coins",
     "mme:silver_coins",
     "mme:iron_coins"
   ]

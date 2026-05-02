@@ -185,8 +185,8 @@ public class MMEArmorMaterials {
             SILVER_CHAINMAIL_MATERIAL_KEY
     );
     public static final MMEArmorMaterial GOLD_CHAINMAIL_MATERIAL = new MMEArmorMaterial(
-            MMEToolMaterials.GOLD.durability(),
-            createDefenseMap(1.7F, 2.7F, 2.3F, 1.3F, 2.7F),
+            (int) (MMEToolMaterials.GOLD.durability() * 0.75),
+            createDefenseMap(1.0F, 2.7F, 1.5F, 0.83F, 2.7F),
             21,
             SoundEvents.ARMOR_EQUIP_GOLD,
             0.0F,
@@ -195,8 +195,8 @@ public class MMEArmorMaterials {
             GOLD_CHAINMAIL_MATERIAL_KEY
     );
     public static final MMEArmorMaterial GOLD_MATERIAL = new MMEArmorMaterial(
-            (int) (MMEToolMaterials.GOLD.durability() * 0.75),
-            createDefenseMap(1.7F, 2.7F, 2.3F, 1.3F, 2.7F),
+            MMEToolMaterials.GOLD.durability(),
+            createDefenseMap(1.5F, 2.3F, 2.0F, 1.2F, 2.3F),
             21,
             SoundEvents.ARMOR_EQUIP_GOLD,
             0.0F,

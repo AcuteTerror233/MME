@@ -13,6 +13,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.AnvilBlock;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -25,8 +26,10 @@ import java.util.List;
 
 public class MMEAnvilBlock extends AnvilBlock implements EntityBlock {
     private final TagKey<Item> notAllowedMaterial;
-    public MMEAnvilBlock(Properties settings, TagKey<Item> notAllowedMaterial) {
+    private final Block damageBlock;
+    public MMEAnvilBlock(Properties settings, TagKey<Item> notAllowedMaterial, Block damageBlock) {
         super(settings);
+        this.damageBlock = damageBlock;
         this.notAllowedMaterial = notAllowedMaterial;
     }
 
@@ -59,7 +62,7 @@ public class MMEAnvilBlock extends AnvilBlock implements EntityBlock {
 
     @Override
     public @Nullable BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-        return new AnvilBlockEntity(pos, state);
+        return new AnvilBlockEntity(pos, state, this.damageBlock);
     }
 
     @Nullable

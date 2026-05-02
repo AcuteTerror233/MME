@@ -1,6 +1,7 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "mme:item/rusted_iron_chainmail_chestplate"
+    "layer0": "mme:item/rusted_iron_chestplate",
+    "layer1": "mme:item/chestplate_chainmail_overlay"
   }
 }

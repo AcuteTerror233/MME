@@ -23,9 +23,9 @@ public final class VanillaBlockModify {
 
     private static Map<ResourceLocation, Function<BlockBehaviour.Properties, Block>> createBlockFactoryModifyMap() {
         Map<ResourceLocation, Function<BlockBehaviour.Properties, Block>> result = new HashMap<>();
-        result.put(ResourceLocation.withDefaultNamespace("anvil"), settings -> new MMEAnvilBlock(settings, MMEItemTags.IRON_NOT_ALLOWED_MATERIAL));
-        result.put(ResourceLocation.withDefaultNamespace("chipped_anvil"), settings -> new MMEAnvilBlock(settings, MMEItemTags.IRON_NOT_ALLOWED_MATERIAL));
-        result.put(ResourceLocation.withDefaultNamespace("damaged_anvil"), settings -> new MMEAnvilBlock(settings, MMEItemTags.IRON_NOT_ALLOWED_MATERIAL));
+        result.put(ResourceLocation.withDefaultNamespace("anvil"), settings -> new MMEAnvilBlock(settings, MMEItemTags.IRON_NOT_ALLOWED_MATERIAL, Blocks.CHIPPED_ANVIL));
+        result.put(ResourceLocation.withDefaultNamespace("chipped_anvil"), settings -> new MMEAnvilBlock(settings, MMEItemTags.IRON_NOT_ALLOWED_MATERIAL, Blocks.DAMAGED_ANVIL));
+        result.put(ResourceLocation.withDefaultNamespace("damaged_anvil"), settings -> new MMEAnvilBlock(settings, MMEItemTags.IRON_NOT_ALLOWED_MATERIAL, Blocks.AIR));
         result.put(ResourceLocation.withDefaultNamespace("crafting_table"), Block::new);
         result.put(ResourceLocation.withDefaultNamespace("furnace"), settings -> new GradeFurnaceBlock(
                 BlockBehaviour.Properties.of()

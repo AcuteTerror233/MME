@@ -37,7 +37,7 @@ public class MME implements ModInitializer {
 
     @Override
     public void onInitialize() {
-        LOGGER.info("Make Minecraft Easy");
+        LOGGER.info("Make Minecraft Easy!");
 
         MMEItems.init();
         MMEBlocks.init();

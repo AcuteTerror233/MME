@@ -134,10 +134,10 @@ public class MMEModelProvider extends FabricModelProvider {
         itemModelGenerator.generateTrimmableItem(MMEItems.RUSTED_IRON_CHESTPLATE, MMEArmorMaterials.RUSTED_IRON_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
         itemModelGenerator.generateTrimmableItem(MMEItems.RUSTED_IRON_LEGGINGS, MMEArmorMaterials.RUSTED_IRON_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
         itemModelGenerator.generateTrimmableItem(MMEItems.RUSTED_IRON_BOOTS, MMEArmorMaterials.RUSTED_IRON_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_BOOTS, false);
-        itemModelGenerator.generateTrimmableItem(MMEItems.RUSTED_IRON_CHAINMAIL_HELMET, MMEArmorMaterials.RUSTED_IRON_CHAINMAIL_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_HELMET, false);
-        itemModelGenerator.generateTrimmableItem(MMEItems.RUSTED_IRON_CHAINMAIL_CHESTPLATE, MMEArmorMaterials.RUSTED_IRON_CHAINMAIL_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
-        itemModelGenerator.generateTrimmableItem(MMEItems.RUSTED_IRON_CHAINMAIL_LEGGINGS, MMEArmorMaterials.RUSTED_IRON_CHAINMAIL_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
-        itemModelGenerator.generateTrimmableItem(MMEItems.RUSTED_IRON_CHAINMAIL_BOOTS, MMEArmorMaterials.RUSTED_IRON_CHAINMAIL_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_BOOTS, false);
+        extendedAccessor.MME$registerChainmailTrimmableItem(MMEItems.RUSTED_IRON_CHAINMAIL_HELMET, MMEItems.RUSTED_IRON_HELMET, MMEArmorMaterials.RUSTED_IRON_CHAINMAIL_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_HELMET, "helmet");
+        extendedAccessor.MME$registerChainmailTrimmableItem(MMEItems.RUSTED_IRON_CHAINMAIL_CHESTPLATE, MMEItems.RUSTED_IRON_CHESTPLATE, MMEArmorMaterials.RUSTED_IRON_CHAINMAIL_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, "chestplate");
+        extendedAccessor.MME$registerChainmailTrimmableItem(MMEItems.RUSTED_IRON_CHAINMAIL_LEGGINGS, MMEItems.RUSTED_IRON_LEGGINGS, MMEArmorMaterials.RUSTED_IRON_CHAINMAIL_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, "leggings");
+        extendedAccessor.MME$registerChainmailTrimmableItem(MMEItems.RUSTED_IRON_CHAINMAIL_BOOTS, MMEItems.RUSTED_IRON_BOOTS, MMEArmorMaterials.RUSTED_IRON_CHAINMAIL_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_BOOTS, "boots");
         itemModelGenerator.generateTrimmableItem(MMEItems.SILVER_HELMET, MMEArmorMaterials.SILVER_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_HELMET, false);
         itemModelGenerator.generateTrimmableItem(MMEItems.SILVER_CHESTPLATE, MMEArmorMaterials.SILVER_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
         itemModelGenerator.generateTrimmableItem(MMEItems.SILVER_LEGGINGS, MMEArmorMaterials.SILVER_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
@@ -146,10 +146,10 @@ public class MMEModelProvider extends FabricModelProvider {
         itemModelGenerator.generateTrimmableItem(MMEItems.SILVER_CHAINMAIL_CHESTPLATE, MMEArmorMaterials.SILVER_CHAINMAIL_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
         itemModelGenerator.generateTrimmableItem(MMEItems.SILVER_CHAINMAIL_LEGGINGS, MMEArmorMaterials.SILVER_CHAINMAIL_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
         itemModelGenerator.generateTrimmableItem(MMEItems.SILVER_CHAINMAIL_BOOTS, MMEArmorMaterials.SILVER_CHAINMAIL_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_BOOTS, false);
-        itemModelGenerator.generateTrimmableItem(MMEItems.GOLDEN_CHAINMAIL_HELMET, MMEArmorMaterials.GOLD_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_HELMET, false);
-        itemModelGenerator.generateTrimmableItem(MMEItems.GOLDEN_CHAINMAIL_CHESTPLATE, MMEArmorMaterials.GOLD_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
-        itemModelGenerator.generateTrimmableItem(MMEItems.GOLDEN_CHAINMAIL_LEGGINGS, MMEArmorMaterials.GOLD_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
-        itemModelGenerator.generateTrimmableItem(MMEItems.GOLDEN_CHAINMAIL_BOOTS, MMEArmorMaterials.GOLD_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_BOOTS, false);
+        extendedAccessor.MME$registerChainmailTrimmableItem(MMEItems.GOLDEN_CHAINMAIL_HELMET, Items.GOLDEN_HELMET, MMEArmorMaterials.GOLD_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_HELMET, "helmet");
+        extendedAccessor.MME$registerChainmailTrimmableItem(MMEItems.GOLDEN_CHAINMAIL_CHESTPLATE, Items.GOLDEN_CHESTPLATE, MMEArmorMaterials.GOLD_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, "chestplate");
+        extendedAccessor.MME$registerChainmailTrimmableItem(MMEItems.GOLDEN_CHAINMAIL_LEGGINGS, Items.GOLDEN_LEGGINGS, MMEArmorMaterials.GOLD_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, "leggings");
+        extendedAccessor.MME$registerChainmailTrimmableItem(MMEItems.GOLDEN_CHAINMAIL_BOOTS, Items.GOLDEN_BOOTS, MMEArmorMaterials.GOLD_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_BOOTS, "boots");
 
         //食物部分
         itemModelGenerator.generateFlatItem(MMEItems.BANANA, ModelTemplates.FLAT_ITEM);
@@ -187,11 +187,12 @@ public class MMEModelProvider extends FabricModelProvider {
         itemModelGenerator.generateFlatItem(MMEItems.SILVER_CHAINS, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(MMEItems.GOLDEN_CHAINS, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(MMEItems.IRON_CHAINS, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(MMEItems.NETHERITE_COINS, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(MMEItems.ADAMANTIUM_COINS, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(MMEItems.ANCIENT_METAL_COINS, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(MMEItems.COPPER_COINS, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(MMEItems.MITHRIL_COINS, ModelTemplates.FLAT_ITEM);
-        itemModelGenerator.generateFlatItem(MMEItems.GOLD_COINS, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(MMEItems.GOLDEN_COINS, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(MMEItems.SILVER_COINS, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(MMEItems.IRON_COINS, ModelTemplates.FLAT_ITEM);
 
@@ -404,13 +405,15 @@ public class MMEModelProvider extends FabricModelProvider {
         extendedAccessor.MME$registerBucket(MMEItems.TADPOLE_NETHERITE_BUCKET, TADPOLE, MMEItems.NETHERITE_BUCKET);
 
         ResourceLocation cast = itemModelGenerator.createFlatItemModel(Items.FISHING_ROD, "_cast", ModelTemplates.FLAT_HANDHELD_ROD_ITEM);
+        ResourceLocation netheriteCast = itemModelGenerator.createFlatItemModel(MMEItems.NETHERITE_FISHING_ROD, "_cast", ModelTemplates.FLAT_HANDHELD_ROD_ITEM);
+        extendedAccessor.MME$registerFishingRod(MMEItems.NETHERITE_FISHING_ROD, netheriteCast);
         extendedAccessor.MME$registerFishingRod(MMEItems.ADAMANTIUM_FISHING_ROD, cast);
         extendedAccessor.MME$registerFishingRod(MMEItems.MITHRIL_FISHING_ROD, cast);
         extendedAccessor.MME$registerFishingRod(MMEItems.ANCIENT_METAL_FISHING_ROD, cast);
         extendedAccessor.MME$registerFishingRod(MMEItems.SILVER_FISHING_ROD, cast);
         extendedAccessor.MME$registerFishingRod(MMEItems.COPPER_FISHING_ROD, cast);
         extendedAccessor.MME$registerFishingRod(MMEItems.GOLDEN_FISHING_ROD, cast);
-        extendedAccessor.MME$registerFishingRod(MMEItems.IRON_FISHING_ROD, cast);
+        extendedAccessor.MME$registerIronFishingRod(MMEItems.IRON_FISHING_ROD, cast);
         extendedAccessor.MME$registerFishingRod(MMEItems.FLINT_FISHING_ROD, cast);
         extendedAccessor.MME$registerFishingRod(MMEItems.OBSIDIAN_FISHING_ROD, cast);
 
@@ -423,6 +426,7 @@ public class MMEModelProvider extends FabricModelProvider {
         itemModelGenerator.generateFlatItem(MMEItems.ANCIENT_METAL_INGOT, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(MMEItems.SILVER_INGOT, ModelTemplates.FLAT_ITEM);
 
+        itemModelGenerator.generateFlatItem(MMEItems.NETHERITE_NUGGET, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(MMEItems.ADAMANTIUM_NUGGET, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(MMEItems.MITHRIL_NUGGET, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(MMEItems.ANCIENT_METAL_NUGGET, ModelTemplates.FLAT_ITEM);

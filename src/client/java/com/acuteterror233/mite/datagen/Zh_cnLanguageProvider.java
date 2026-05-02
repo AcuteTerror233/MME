@@ -18,10 +18,10 @@ public class Zh_cnLanguageProvider extends FabricLanguageProvider {
 
     @Override
     public void generateTranslations(HolderLookup.Provider wrapperLookup, TranslationBuilder translationBuilder) {
-        translationBuilder.add("itemGroup.mme.item_group", "让我的世界更简单!");
+        translationBuilder.add("itemGroup.mme.item_group", "唯力是尊");
         translationBuilder.add("mme.craftingTable.noAllowedCrafting", "§c无法制作此物品§r");
-        translationBuilder.add("mme.gradefurnac.fuelnotavailable", "§c这个熔炉无法燃烧这个燃料§r");
-        translationBuilder.add("mme.nugget.tooltip", "每个-%dXP");
+        translationBuilder.add("mme.gradefurnac.fuelnotavailable", "§c无法燃烧这个燃料§r");
+        translationBuilder.add("mme.nugget.tooltip", "右键做成币储存%dXP");
         translationBuilder.add("mme.coins.tooltip", "每个+%dXP");
         translationBuilder.add(MMEItems.ADAMANTIUM_HELMET, "艾德曼头盔");
         translationBuilder.add(MMEItems.ADAMANTIUM_CHESTPLATE, "艾德曼胸甲");
@@ -71,6 +71,10 @@ public class Zh_cnLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(MMEItems.SILVER_CHAINMAIL_CHESTPLATE, "银锁链胸甲");
         translationBuilder.add(MMEItems.SILVER_CHAINMAIL_LEGGINGS, "银锁链护腿");
         translationBuilder.add(MMEItems.SILVER_CHAINMAIL_BOOTS, "银锁链靴子");
+        translationBuilder.add(MMEItems.GOLDEN_CHAINMAIL_HELMET, "金锁链头盔");
+        translationBuilder.add(MMEItems.GOLDEN_CHAINMAIL_CHESTPLATE, "金锁链胸甲");
+        translationBuilder.add(MMEItems.GOLDEN_CHAINMAIL_LEGGINGS, "金锁链护腿");
+        translationBuilder.add(MMEItems.GOLDEN_CHAINMAIL_BOOTS, "金锁链靴子");
 
         translationBuilder.add(MMEItems.BANANA, "香蕉");
         translationBuilder.add(MMEItems.BLUE_BERRIE, "蓝莓");
@@ -98,7 +102,7 @@ public class Zh_cnLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(MMEItems.SORBET, "雪糕");
         translationBuilder.add(MMEItems.VEGETABLE_SOUP, "蔬菜汤");
 
-        translationBuilder.add(MMEItems.ADAMANTIUM_CHAINS, "艾德曼锁链");
+        translationBuilder.add(MMEItems.ADAMANTIUM_CHAINS, "艾德曼链");
         translationBuilder.add(MMEItems.ANCIENT_METAL_CHAINS, "远古金属链");
         translationBuilder.add(MMEItems.COPPER_CHAINS, "铜链");
         translationBuilder.add(MMEItems.MITHRIL_CHAINS, "秘银链");
@@ -106,11 +110,12 @@ public class Zh_cnLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(MMEItems.SILVER_CHAINS, "银链");
         translationBuilder.add(MMEItems.GOLDEN_CHAINS, "金链");
         translationBuilder.add(MMEItems.IRON_CHAINS, "铁链");
+        translationBuilder.add(MMEItems.NETHERITE_COINS, "下界合金币");
         translationBuilder.add(MMEItems.ADAMANTIUM_COINS, "艾德曼币");
         translationBuilder.add(MMEItems.ANCIENT_METAL_COINS, "远古金属币");
         translationBuilder.add(MMEItems.COPPER_COINS, "铜币");
         translationBuilder.add(MMEItems.MITHRIL_COINS, "秘银币");
-        translationBuilder.add(MMEItems.GOLD_COINS, "金币");
+        translationBuilder.add(MMEItems.GOLDEN_COINS, "金币");
         translationBuilder.add(MMEItems.SILVER_COINS, "银币");
         translationBuilder.add(MMEItems.IRON_COINS, "铁币");
 
@@ -319,6 +324,7 @@ public class Zh_cnLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(MMEItems.AXOLOTL_GOLD_BUCKET, "装有美西螈的金桶");
         translationBuilder.add(MMEItems.TADPOLE_GOLD_BUCKET, "装有蝌蚪的金桶");
 
+        translationBuilder.add(MMEItems.NETHERITE_FISHING_ROD, "下界合金鱼竿");
         translationBuilder.add(MMEItems.ADAMANTIUM_FISHING_ROD, "艾德曼鱼竿");
         translationBuilder.add(MMEItems.ANCIENT_METAL_FISHING_ROD, "远古金属鱼竿");
         translationBuilder.add(MMEItems.MITHRIL_FISHING_ROD, "秘银鱼竿");
@@ -338,6 +344,7 @@ public class Zh_cnLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(MMEItems.MITHRIL_INGOT, "秘银锭");
         translationBuilder.add(MMEItems.SILVER_INGOT, "银锭");
 
+        translationBuilder.add(MMEItems.NETHERITE_NUGGET, "下界合金粒");
         translationBuilder.add(MMEItems.ADAMANTIUM_NUGGET, "艾德曼粒");
         translationBuilder.add(MMEItems.ANCIENT_METAL_NUGGET, "远古金属粒");
         translationBuilder.add(MMEItems.MITHRIL_NUGGET, "秘银粒");

@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 100,
+  "experience": 0.1,
+  "ingredient": [
+    "mme:ancient_metal_pickaxe",
+    "mme:ancient_metal_shovel",
+    "mme:ancient_metal_axe",
+    "mme:ancient_metal_hoe",
+    "mme:ancient_metal_sword",
+    "mme:ancient_metal_helmet",
+    "mme:ancient_metal_chestplate",
+    "mme:ancient_metal_leggings",
+    "mme:ancient_metal_boots",
+    "mme:ancient_metal_chainmail_helmet",
+    "mme:ancient_metal_chainmail_chestplate",
+    "mme:ancient_metal_chainmail_leggings",
+    "mme:ancient_metal_chainmail_boots",
+    "mme:ancient_metal_shears"
+  ],
+  "result": {
+    "id": "mme:ancient_metal_nugget"
+  }
+}

@@ -44,6 +44,7 @@ public interface MMEItemTags {
 
     TagKey<Item> DESTRUCTIBLE_ENDCRYSTAL  = key("destructible_endcrystal");
 
+    TagKey<Item> NETHERITE_TOOL_MATERIALS = key("netherite_tool_materials");
     TagKey<Item> ADAMANTIUM_TOOL_MATERIALS = key("adamantium_tool_materials");
     TagKey<Item> MITHRIL_TOOL_MATERIALS = key("mithril_tool_materials");
     TagKey<Item> ANCIENT_METAL_TOOL_MATERIALS = key("ancient_metal_tool_materials");

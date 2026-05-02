@@ -7,6 +7,7 @@ import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.Mth;
@@ -79,7 +80,13 @@ public class GradeAnvilMenu extends ItemCombinerMenu {
         this.access.execute((world, pos) -> {
             BlockEntity entity = world.getBlockEntity(pos);
             if (entity instanceof AnvilBlockEntity blockEntity) {
+                int i1 = blockEntity.getDamage() + i;
                 blockEntity.addDamage(i);
+                if (i1 >= blockEntity.getMaxDamage()) {
+                    if (this.player instanceof ServerPlayer serverPlayer) {
+                        serverPlayer.closeContainer();
+                    }
+                }
                 world.levelEvent(1030, pos, 0);
             }
         });

@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 100,
+  "experience": 0.1,
+  "ingredient": [
+    "mme:silver_pickaxe",
+    "mme:silver_shovel",
+    "mme:silver_axe",
+    "mme:silver_hoe",
+    "mme:silver_sword",
+    "mme:silver_helmet",
+    "mme:silver_chestplate",
+    "mme:silver_leggings",
+    "mme:silver_boots",
+    "mme:silver_chainmail_helmet",
+    "mme:silver_chainmail_chestplate",
+    "mme:silver_chainmail_leggings",
+    "mme:silver_chainmail_boots",
+    "mme:silver_shears"
+  ],
+  "result": {
+    "id": "mme:silver_nugget"
+  }
+}

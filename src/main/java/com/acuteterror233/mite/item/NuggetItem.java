@@ -22,7 +22,7 @@ import java.util.function.Consumer;
 public class NuggetItem extends Item {
     private final int experience;
     public NuggetItem(Properties settings, int experience) {
-        super(settings);
+        super(settings.stacksTo(32));
         this.experience = experience;
     }
 
