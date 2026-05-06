@@ -1245,7 +1245,7 @@ public class MMEItems {
             new Item.Properties().stacksTo(16)
     );
 
-    public static final CreativeModeTab AT_MINT_GROUP = FabricItemGroup.builder()
+    public static final CreativeModeTab MME_GROUP = FabricItemGroup.builder()
             .icon(() -> new ItemStack(MMEBlocks.ADAMANTIUM_AN_RUNESTORE))
             .title(Component.translatable("itemGroup.mme.item_group"))
             .displayItems((context, entries) -> {
@@ -1877,6 +1877,6 @@ public class MMEItems {
     }
 
     public static void init() {
-        Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, "item_group"), AT_MINT_GROUP);
+        Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, "item_group"), MME_GROUP);
     }
 }

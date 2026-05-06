@@ -1,0 +1,50 @@
+{
+  "parent": "minecraft:story/wheat_seeds",
+  "criteria": {
+    "eat_blue_egg": {
+      "conditions": {
+        "item": {
+          "items": "minecraft:blue_egg"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "eat_brown_egg": {
+      "conditions": {
+        "item": {
+          "items": "minecraft:brown_egg"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "eat_egg": {
+      "conditions": {
+        "item": {
+          "items": "minecraft:egg"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "mme.advancements.story.egg.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "minecraft:egg"
+    },
+    "title": {
+      "translate": "mme.advancements.story.egg.title"
+    }
+  },
+  "requirements": [
+    [
+      "eat_egg",
+      "eat_brown_egg",
+      "eat_blue_egg"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft:story/iron_tools",
+  "criteria": {
+    "get_mithril": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mme:mithril_ingot"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "mme.advancements.story.mithril.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "mme:mithril_ingot"
+    },
+    "title": {
+      "translate": "mme.advancements.story.mithril.title"
+    }
+  },
+  "requirements": [
+    [
+      "get_mithril"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft:story/crafting_table",
+  "criteria": {
+    "get_wooden_club": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mme:wooden_club"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "mme.advancements.story.cudgel.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "mme:wooden_club"
+    },
+    "title": {
+      "translate": "mme.advancements.story.cudgel.title"
+    }
+  },
+  "requirements": [
+    [
+      "get_wooden_club"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

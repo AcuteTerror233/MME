@@ -1,0 +1,31 @@
+{
+  "criteria": {
+    "root": {
+      "conditions": {
+        "to": "mme:underground"
+      },
+      "trigger": "minecraft:changed_dimension"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "background": "mme:gui/advancements/backgrounds/underground",
+    "description": {
+      "translate": "mme.advancements.underground.root.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "minecraft:deepslate"
+    },
+    "show_toast": false,
+    "title": {
+      "translate": "mme.advancements.underground.root.title"
+    }
+  },
+  "requirements": [
+    [
+      "root"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

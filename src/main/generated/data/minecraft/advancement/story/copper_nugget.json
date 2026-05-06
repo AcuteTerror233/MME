@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft:story/flint_shovel",
+  "criteria": {
+    "get_copper_nugget": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#mme:copper_or_silver_nugget"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "mme.advancements.story.copper_nugget.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "mme:copper_nugget"
+    },
+    "title": {
+      "translate": "mme.advancements.story.copper_nugget.title"
+    }
+  },
+  "requirements": [
+    [
+      "get_copper_nugget"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

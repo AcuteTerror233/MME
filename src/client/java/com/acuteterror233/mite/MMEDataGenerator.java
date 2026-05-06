@@ -20,6 +20,7 @@ public class MMEDataGenerator implements DataGeneratorEntrypoint {
         pack.addProvider(MMERecipeGenerator::new);
         pack.addProvider(MMEBlockLootTableProvider::new);
         pack.addProvider(MMEDynamicRegistry::new);
+        pack.addProvider(MMEAdvancementProvider::new);
         pack.addProvider(Zh_cnLanguageProvider::new);
         pack.addProvider(En_usLanguageProvider::new);
         pack.addProvider(MMETagProvider.BiomeTag::new);

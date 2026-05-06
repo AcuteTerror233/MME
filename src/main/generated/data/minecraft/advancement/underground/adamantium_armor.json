@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:underground/smelt_adamantium",
+  "criteria": {
+    "get_adamantium_armor": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#mme:adamantium_armor"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "mme.advancements.underground.adamantium_armor.description"
+    },
+    "frame": "goal",
+    "icon": {
+      "count": 1,
+      "id": "mme:adamantium_chestplate"
+    },
+    "title": {
+      "translate": "mme.advancements.underground.adamantium_armor.title"
+    }
+  },
+  "requirements": [
+    [
+      "get_adamantium_armor"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

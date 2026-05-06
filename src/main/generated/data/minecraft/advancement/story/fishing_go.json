@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft:story/metal_crafting_table",
+  "criteria": {
+    "get_metal_fishing_rod": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#mme:metal_fishing_rods"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "mme.advancements.story.fishing_go.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "mme:iron_fishing_rod"
+    },
+    "title": {
+      "translate": "mme.advancements.story.fishing_go.title"
+    }
+  },
+  "requirements": [
+    [
+      "get_metal_fishing_rod"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

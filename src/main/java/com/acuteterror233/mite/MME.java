@@ -1,5 +1,6 @@
 package com.acuteterror233.mite;
 
+import com.acuteterror233.mite.atinterface.FoodDataExtension;
 import com.acuteterror233.mite.block.MMEBlocks;
 import com.acuteterror233.mite.event.ServerRecipeModify;
 import com.acuteterror233.mite.item.MMEItems;
@@ -7,17 +8,22 @@ import com.acuteterror233.mite.registry.LootTableReplace;
 import com.acuteterror233.mite.registry.tag.MMEItemTags;
 import com.acuteterror233.mite.world.biome.BiomeModification;
 import com.acuteterror233.mite.world.effect.MMEMobEffects;
+import com.acuteterror233.mite.world.food.FoodNutrition;
 import com.acuteterror233.mite.world.gen.feature.OverworldPlacedFeatures;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fabricmc.fabric.api.biome.v1.ModificationPhase;
+import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.fabricmc.fabric.api.entity.event.v1.EntitySleepEvents;
 import net.fabricmc.fabric.api.object.builder.v1.world.poi.PointOfInterestHelper;
 import net.fabricmc.fabric.api.registry.FuelRegistryEvents;
+import net.minecraft.commands.Commands;
 import net.minecraft.data.worldgen.placement.OrePlacements;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
@@ -70,6 +76,22 @@ public class MME implements ModInitializer {
 
         FireBlock fireBlock = (FireBlock)Blocks.FIRE;
         fireBlock.setFlammable(MMEBlocks.BLUE_BERRY_BUSH, 60, 100);
+
+        CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) ->
+                dispatcher.register(
+                        Commands.literal("nutrition")
+                                .requires(stack -> stack.getPlayer() != null)
+                                .executes(context -> {
+                                    context.getSource().sendSuccess(() -> {
+                                                ServerPlayer player = context.getSource().getPlayer();
+                                                FoodNutrition foodNutrition = ((FoodDataExtension) player.getFoodData()).MME$GetFoodNutrition();
+                                                return Component.translatable("mme.nutrition.tooltip", player.getName(), foodNutrition.fiber(), foodNutrition.protein(), foodNutrition.sugar());
+                                            },
+                                            false);
+                                    return 1;
+                                })
+                )
+        );
     }
 
     private void InOverworldAdd(ResourceKey<PlacedFeature> key) {

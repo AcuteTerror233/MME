@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft:underground/mithril_tool",
+  "criteria": {
+    "get_adamantium_ore": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#mme:adamantium_ore"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "mme.advancements.underground.find_adamantium.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "mme:adamantium_ore"
+    },
+    "title": {
+      "translate": "mme.advancements.underground.find_adamantium.title"
+    }
+  },
+  "requirements": [
+    [
+      "get_adamantium_ore"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

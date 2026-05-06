@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft:story/metal_crafting_table",
+  "criteria": {
+    "get_better_armor": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#mme:copper_or_silver_armor"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "mme.advancements.story.better_armor.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "mme:copper_chestplate"
+    },
+    "title": {
+      "translate": "mme.advancements.story.better_armor.title"
+    }
+  },
+  "requirements": [
+    [
+      "get_better_armor"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

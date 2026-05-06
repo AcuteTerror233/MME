@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft:story/clay_furnace",
+  "criteria": {
+    "get_torch": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:torch"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "mme.advancements.story.torch.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "minecraft:torch"
+    },
+    "title": {
+      "translate": "mme.advancements.story.torch.title"
+    }
+  },
+  "requirements": [
+    [
+      "get_torch"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

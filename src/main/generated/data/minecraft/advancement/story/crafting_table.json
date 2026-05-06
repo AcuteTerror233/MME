@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft:story/log",
+  "criteria": {
+    "get_crafting_table": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#mme:crafting_table"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "mme.advancements.story.crafting_table.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "mme:flint_crafting_table"
+    },
+    "title": {
+      "translate": "mme.advancements.story.crafting_table.title"
+    }
+  },
+  "requirements": [
+    [
+      "get_crafting_table"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

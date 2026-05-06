@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft:underground/ancient_metal_crafting_table",
+  "criteria": {
+    "get_mithril_tool": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#mme:mithril_tools"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "mme.advancements.underground.mithril_tool.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "mme:mithril_pickaxe"
+    },
+    "title": {
+      "translate": "mme.advancements.underground.mithril_tool.title"
+    }
+  },
+  "requirements": [
+    [
+      "get_mithril_tool"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

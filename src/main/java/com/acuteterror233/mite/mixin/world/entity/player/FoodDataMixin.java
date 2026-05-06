@@ -11,6 +11,7 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodData;
 import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.GameType;
@@ -124,7 +125,7 @@ public abstract class FoodDataMixin implements FoodDataExtension {
     public void updatePlayerEffects(ServerPlayer player) {
         handleNutrientEffect(player, MMEMobEffects.MALNUTRITION);
 
-        handleSugar(player, MMEMobEffects.INSULIN_RESISTANCE);
+        handleSugar(player);
     }
 
     @Unique
@@ -159,28 +160,44 @@ public abstract class FoodDataMixin implements FoodDataExtension {
     }
 
     @Unique
-    private void handleSugar(ServerPlayer player, Holder<MobEffect> effect) {
-        if (this.sugar > 0) {
-            this.sugar--;
-        }
-        if (this.sugar > 144000) {
-            if (player.getEffect(effect).getAmplifier() != 2){
-                player.removeEffect(effect);
-                player.addEffect(new MobEffectInstance(effect, -1, 2, true, false), player);
+    private void handleSugar(ServerPlayer player) {
+        if (!player.hasInfiniteMaterials()) {
+            if (this.sugar > 0) {
+                this.sugar--;
             }
-        } else if (this.sugar > 96000) {
-            if (player.getEffect(effect).getAmplifier() != 1){
-                player.removeEffect(effect);
-                player.addEffect(new MobEffectInstance(effect, -1, 1, true, false), player);
+            if (this.sugar > 144000) {
+                if (player.getEffect(MMEMobEffects.INSULIN_RESISTANCE).getAmplifier() != 2) {
+                    player.removeEffect(MMEMobEffects.INSULIN_RESISTANCE);
+                    player.addEffect(new MobEffectInstance(MMEMobEffects.INSULIN_RESISTANCE, -1, 2, true, false), player);
+                    player.addEffect(new MobEffectInstance(MobEffects.WITHER, -1, 0, true, false), player);
+                }
+            } else if (this.sugar > 96000) {
+                if (player.hasEffect(MobEffects.WITHER)) {
+                    player.removeEffect(MobEffects.WITHER);
+                }
+                if (player.getEffect(MMEMobEffects.INSULIN_RESISTANCE).getAmplifier() != 1) {
+                    player.removeEffect(MMEMobEffects.INSULIN_RESISTANCE);
+                    player.addEffect(new MobEffectInstance(MMEMobEffects.INSULIN_RESISTANCE, -1, 1, true, false), player);
+                    player.addEffect(new MobEffectInstance(MobEffects.DARKNESS, -1, 0, true, false), player);
+                }
+            } else if (this.sugar > 48000) {
+                if (player.hasEffect(MobEffects.DARKNESS)) {
+                    player.removeEffect(MobEffects.DARKNESS);
+                }
+                if (!player.hasEffect(MMEMobEffects.INSULIN_RESISTANCE)) {
+                    player.removeEffect(MMEMobEffects.INSULIN_RESISTANCE);
+                    player.addEffect(new MobEffectInstance(MMEMobEffects.INSULIN_RESISTANCE, -1, 0, true, false), player);
+                }
+            } else {
+                if (player.hasEffect(MMEMobEffects.INSULIN_RESISTANCE)) {
+                    player.removeEffect(MMEMobEffects.INSULIN_RESISTANCE);
+                }
             }
-        } else if (this.sugar > 48000) {
-            if (!player.hasEffect(effect)){
-                player.removeEffect(effect);
-                player.addEffect(new MobEffectInstance(effect, -1, 0, true, false), player);
-            }
-        } else {
-            if (player.hasEffect(effect)) {
-                player.removeEffect(effect);
+        }else {
+            if (player.hasEffect(MMEMobEffects.INSULIN_RESISTANCE)) {
+                player.removeEffect(MobEffects.WITHER);
+                player.removeEffect(MobEffects.DARKNESS);
+                player.removeEffect(MMEMobEffects.INSULIN_RESISTANCE);
             }
         }
     }
@@ -227,6 +244,11 @@ public abstract class FoodDataMixin implements FoodDataExtension {
         this.sugar = Math.min(192000, this.sugar + foodNutrition.sugar());
     }
 
+    @Override
+    public FoodNutrition MME$GetFoodNutrition() {
+        return new FoodNutrition(this.protein, this.fiber, this.sugar);
+    }
+
     @Unique
     public void addFiber(int i) {
         this.fiber = Math.min(160000, this.fiber + i);
@@ -239,4 +261,5 @@ public abstract class FoodDataMixin implements FoodDataExtension {
     public void addSugar(int i) {
         this.sugar = Math.min(192000, this.sugar + i);
     }
+
 }

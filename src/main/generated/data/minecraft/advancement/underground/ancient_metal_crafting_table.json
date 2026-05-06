@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft:underground/find_ancient_metal",
+  "criteria": {
+    "get_ancient_metal_crafting_table": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mme:ancient_metal_crafting_table"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "mme.advancements.underground.ancient_metal_crafting_table.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "mme:ancient_metal_crafting_table"
+    },
+    "title": {
+      "translate": "mme.advancements.underground.ancient_metal_crafting_table.title"
+    }
+  },
+  "requirements": [
+    [
+      "get_ancient_metal_crafting_table"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -606,9 +606,9 @@ public class VillagerTradesMixin {
                                 ImmutableMap.of(
                                         1,
                                         new VillagerTrades.ItemListing[]{
-                                                new VillagerTrades.EmeraldForItems(Items.CHICKEN, 3, 16, 2),
-                                                new VillagerTrades.EmeraldForItems(Items.PORKCHOP, 2, 16, 2),
-                                                new VillagerTrades.EmeraldForItems(Items.RABBIT, 2, 16, 2),
+                                                new VillagerTrades.EmeraldForItems(Items.CHICKEN, 8, 16, 2),
+                                                new VillagerTrades.EmeraldForItems(Items.PORKCHOP, 6, 16, 2),
+                                                new VillagerTrades.EmeraldForItems(Items.RABBIT, 4, 16, 2),
                                                 new VillagerTrades.ItemsForEmeralds(Items.RABBIT_STEW, 1, 1, 1)
                                         },
                                         2,
@@ -619,8 +619,8 @@ public class VillagerTradesMixin {
                                         },
                                         3,
                                         new VillagerTrades.ItemListing[]{
-                                                new VillagerTrades.EmeraldForItems(Items.MUTTON, 3, 16, 20),
-                                                new VillagerTrades.EmeraldForItems(Items.BEEF, 2, 16, 20)
+                                                new VillagerTrades.EmeraldForItems(Items.MUTTON, 8, 16, 20),
+                                                new VillagerTrades.EmeraldForItems(Items.BEEF, 6, 16, 20)
                                         },
                                         4,
                                         new VillagerTrades.ItemListing[]{

@@ -53,22 +53,6 @@ public final class VanillaItemModify {
         result.put(ResourceLocation.withDefaultNamespace("blaze_powder"), settings -> settings.stacksTo(8));
         result.put(ResourceLocation.withDefaultNamespace("rabbit_foot"), settings -> settings.stacksTo(8));
         result.put(ResourceLocation.withDefaultNamespace("glistering_melon_slice"), settings -> settings.stacksTo(8));
-        result.put(ResourceLocation.withDefaultNamespace("white_wool"), settings -> settings.stacksTo(8));
-        result.put(ResourceLocation.withDefaultNamespace("orange_wool"), settings -> settings.stacksTo(8));
-        result.put(ResourceLocation.withDefaultNamespace("magenta_wool"), settings -> settings.stacksTo(8));
-        result.put(ResourceLocation.withDefaultNamespace("light_blue_wool"), settings -> settings.stacksTo(8));
-        result.put(ResourceLocation.withDefaultNamespace("yellow_wool"), settings -> settings.stacksTo(8));
-        result.put(ResourceLocation.withDefaultNamespace("lime_wool"), settings -> settings.stacksTo(8));
-        result.put(ResourceLocation.withDefaultNamespace("pink_wool"), settings -> settings.stacksTo(8));
-        result.put(ResourceLocation.withDefaultNamespace("gray_wool"), settings -> settings.stacksTo(8));
-        result.put(ResourceLocation.withDefaultNamespace("light_gray_wool"), settings -> settings.stacksTo(8));
-        result.put(ResourceLocation.withDefaultNamespace("cyan_wool"), settings -> settings.stacksTo(8));
-        result.put(ResourceLocation.withDefaultNamespace("purple_wool"), settings -> settings.stacksTo(8));
-        result.put(ResourceLocation.withDefaultNamespace("blue_wool"), settings -> settings.stacksTo(8));
-        result.put(ResourceLocation.withDefaultNamespace("brown_wool"), settings -> settings.stacksTo(8));
-        result.put(ResourceLocation.withDefaultNamespace("green_wool"), settings -> settings.stacksTo(8));
-        result.put(ResourceLocation.withDefaultNamespace("red_wool"), settings -> settings.stacksTo(8));
-        result.put(ResourceLocation.withDefaultNamespace("black_wool"), settings -> settings.stacksTo(8));
         result.put(ResourceLocation.withDefaultNamespace("inc_sac"), settings -> settings.stacksTo(8));
         result.put(ResourceLocation.withDefaultNamespace("glow_inc_sac"), settings -> settings.stacksTo(8));
         result.put(ResourceLocation.withDefaultNamespace("prismarine_shard"), settings -> settings.stacksTo(8));
@@ -572,6 +556,23 @@ public final class VanillaItemModify {
         result.put(ResourceLocation.withDefaultNamespace("deepslate_bricks"), properties -> properties.component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
         result.put(ResourceLocation.withDefaultNamespace("deepslate_tiles"), properties -> properties.component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
         result.put(ResourceLocation.withDefaultNamespace("basalt"), properties -> properties.component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+
+        result.put(ResourceLocation.withDefaultNamespace("white_wool"), settings -> settings.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("orange_wool"), settings -> settings.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("magenta_wool"), settings -> settings.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("light_blue_wool"), settings -> settings.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("yellow_wool"), settings -> settings.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("lime_wool"), settings -> settings.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("pink_wool"), settings -> settings.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("gray_wool"), settings -> settings.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("light_gray_wool"), settings -> settings.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("cyan_wool"), settings -> settings.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("purple_wool"), settings -> settings.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("blue_wool"), settings -> settings.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("brown_wool"), settings -> settings.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("green_wool"), settings -> settings.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("red_wool"), settings -> settings.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("black_wool"), settings -> settings.stacksTo(8));
         return result;
     }
 

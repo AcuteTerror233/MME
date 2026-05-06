@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft:underground/smelt_adamantium",
+  "criteria": {
+    "get_adamantium_tool": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#mme:adamantium_tools"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "mme.advancements.underground.adamantium_tool.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "mme:adamantium_pickaxe"
+    },
+    "title": {
+      "translate": "mme.advancements.underground.adamantium_tool.title"
+    }
+  },
+  "requirements": [
+    [
+      "get_adamantium_tool"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

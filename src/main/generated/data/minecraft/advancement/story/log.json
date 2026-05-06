@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft:story/flint_hatchet",
+  "criteria": {
+    "get_log": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#minecraft:logs"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "mme.advancements.story.log.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "minecraft:oak_log"
+    },
+    "title": {
+      "translate": "mme.advancements.story.log.title"
+    }
+  },
+  "requirements": [
+    [
+      "get_log"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,44 @@
+{
+  "parent": "minecraft:underground/root",
+  "criteria": {
+    "deep_down": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "dimension": "mme:underground",
+                "position": {
+                  "y": {
+                    "max": -60.0
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "mme.advancements.underground.deep_down.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "mme:mantle"
+    },
+    "title": {
+      "translate": "mme.advancements.underground.deep_down.title"
+    }
+  },
+  "requirements": [
+    [
+      "deep_down"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

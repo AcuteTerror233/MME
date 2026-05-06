@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft:story/mithril",
+  "criteria": {
+    "get_mithril_armor": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#mme:mithril_armor"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "mme.advancements.story.shiny_gear.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "mme:mithril_chestplate"
+    },
+    "title": {
+      "translate": "mme.advancements.story.shiny_gear.title"
+    }
+  },
+  "requirements": [
+    [
+      "get_mithril_armor"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

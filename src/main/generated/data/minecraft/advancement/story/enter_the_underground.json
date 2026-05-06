@@ -1,0 +1,29 @@
+{
+  "parent": "minecraft:story/form_obsidian",
+  "criteria": {
+    "entered_underground": {
+      "conditions": {
+        "to": "mme:underground"
+      },
+      "trigger": "minecraft:changed_dimension"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "mme.advancements.story.enter_the_underground.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "mme:mantle"
+    },
+    "title": {
+      "translate": "mme.advancements.story.enter_the_underground.title"
+    }
+  },
+  "requirements": [
+    [
+      "entered_underground"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -62,7 +62,21 @@ public interface MMEItemTags {
     TagKey<Item> COPPER_OR_SILVER_NOT_ALLOWED_MATERIAL = key("copper_or_silver_not_allowed_material");
     TagKey<Item> GOLD_NOT_ALLOWED_MATERIAL = key("gold_not_allowed_material");
 
+    TagKey<Item> COPPER_OR_SILVER_NUGGET = key("copper_or_silver_nugget");
+    TagKey<Item> METAL_CRAFTING_TABLE = key("metal_crafting_table");
+    TagKey<Item> COPPER_OR_SILVER_ARMOR = key("copper_or_silver_armor");
+    TagKey<Item> COPPER_OR_SILVER_PICKAXE = key("copper_or_silver_pickaxe");
+    TagKey<Item> LEATHER_ARMOR = key("leather_armor");
+    TagKey<Item> METAL_FISHING_RODS = key("metal_fishing_rods");
+    TagKey<Item> COOKED_FISH = key("cooked_fish");
+    TagKey<Item> COPPER_OR_SILVER_ORE = key("copper_or_silver_ore");
+    TagKey<Item> MITHRIL_ARMOR = key("mithril_armor");
     TagKey<Item> STRING = key("string");
+    TagKey<Item> CRAFTING_TABLE = key("crafting_table");
+    TagKey<Item> SILVER_ORE = key("silver_ore");
+    TagKey<Item> MITHRIL_ORE = key("mithril_ore");
+    TagKey<Item> ADAMANTIUM_ORE = key("adamantium_ore");
+    TagKey<Item> ADAMANTIUM_ARMOR = key("adamantium_armor");
 
     private static TagKey<Item> key(String id) {
         return TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, id));

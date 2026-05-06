@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft:story/metal_crafting_table",
+  "criteria": {
+    "get_pickaxe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#mme:copper_or_silver_pickaxe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "mme.advancements.story.pickaxe.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "mme:copper_pickaxe"
+    },
+    "title": {
+      "translate": "mme.advancements.story.pickaxe.title"
+    }
+  },
+  "requirements": [
+    [
+      "get_pickaxe"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

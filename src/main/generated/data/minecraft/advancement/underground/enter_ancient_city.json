@@ -1,0 +1,40 @@
+{
+  "parent": "minecraft:underground/root",
+  "criteria": {
+    "in_ancient_city": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "structures": "minecraft:ancient_city"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "mme.advancements.underground.enter_ancient_city.description"
+    },
+    "frame": "goal",
+    "icon": {
+      "count": 1,
+      "id": "minecraft:sculk_catalyst"
+    },
+    "title": {
+      "translate": "mme.advancements.underground.enter_ancient_city.title"
+    }
+  },
+  "requirements": [
+    [
+      "in_ancient_city"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

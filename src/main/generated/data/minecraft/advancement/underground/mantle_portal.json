@@ -1,0 +1,31 @@
+{
+  "parent": "minecraft:underground/deep_down",
+  "criteria": {
+    "entered_nether_from_underground": {
+      "conditions": {
+        "to": "minecraft:the_nether"
+      },
+      "trigger": "minecraft:changed_dimension"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "mme.advancements.underground.mantle_portal.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "minecraft:flint_and_steel"
+    },
+    "show_toast": false,
+    "title": {
+      "translate": "mme.advancements.underground.mantle_portal.title"
+    }
+  },
+  "requirements": [
+    [
+      "entered_nether_from_underground"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

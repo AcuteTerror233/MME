@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft:story/metal_crafting_table",
+  "criteria": {
+    "get_copper_or_silver_ore": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#mme:copper_or_silver_ore"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "mme.advancements.story.mine_stone.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "mme:silver_ore"
+    },
+    "title": {
+      "translate": "mme.advancements.story.mine_stone.title"
+    }
+  },
+  "requirements": [
+    [
+      "get_copper_or_silver_ore"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

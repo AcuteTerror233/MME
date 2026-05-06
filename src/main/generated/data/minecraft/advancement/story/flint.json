@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft:story/root",
+  "criteria": {
+    "get_flint": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:flint"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "mme.advancements.story.flint.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "minecraft:flint"
+    },
+    "title": {
+      "translate": "mme.advancements.story.flint.title"
+    }
+  },
+  "requirements": [
+    [
+      "get_flint"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

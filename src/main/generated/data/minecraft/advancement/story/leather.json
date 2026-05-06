@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft:story/crafting_table",
+  "criteria": {
+    "get_leather": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:leather"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "mme.advancements.story.leather.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "minecraft:leather"
+    },
+    "title": {
+      "translate": "mme.advancements.story.leather.title"
+    }
+  },
+  "requirements": [
+    [
+      "get_leather"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

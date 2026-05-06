@@ -1,0 +1,10 @@
+{
+  "values": [
+    "minecraft:copper_ore",
+    "minecraft:deepslate_copper_ore",
+    "minecraft:raw_copper",
+    "mme:raw_silver",
+    "mme:silver_ore",
+    "mme:deepslate_silver_ore"
+  ]
+}

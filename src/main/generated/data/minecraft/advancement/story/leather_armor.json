@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft:story/leather",
+  "criteria": {
+    "get_leather_armor": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#mme:leather_armor"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "mme.advancements.story.leather_armor.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "minecraft:leather_chestplate"
+    },
+    "title": {
+      "translate": "mme.advancements.story.leather_armor.title"
+    }
+  },
+  "requirements": [
+    [
+      "get_leather_armor"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

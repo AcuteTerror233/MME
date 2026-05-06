@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft:story/fishing_go",
+  "criteria": {
+    "get_cooked_fish": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#mme:cooked_fish"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "mme.advancements.story.delicious_fish.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "minecraft:cooked_cod"
+    },
+    "title": {
+      "translate": "mme.advancements.story.delicious_fish.title"
+    }
+  },
+  "requirements": [
+    [
+      "get_cooked_fish"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

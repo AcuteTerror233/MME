@@ -6,4 +6,5 @@ public interface FoodDataExtension {
     int MME$GetMaxFoodLevel();
     void MME$SetMaxFoodLevel(int maxFoodLevel);
     void MME$AddFoodNutrition(FoodNutrition foodNutrition);
+    FoodNutrition MME$GetFoodNutrition();
 }

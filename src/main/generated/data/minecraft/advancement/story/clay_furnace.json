@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft:story/root",
+  "criteria": {
+    "get_clay_furnace": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mme:clay_furnace"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "mme.advancements.story.clay_furnace.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "mme:clay_furnace"
+    },
+    "title": {
+      "translate": "mme.advancements.story.clay_furnace.title"
+    }
+  },
+  "requirements": [
+    [
+      "get_clay_furnace"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -14,7 +14,7 @@ public class MMEMobEffects {
     );
     public static final Holder<MobEffect> INSULIN_RESISTANCE = register(
             "insulin_resistance",
-            new PermanentNegativeMobEffect(16777215)
+            new PermanentNegativeMobEffect(16777215).setBlendDuration(150, 20, 60)
     );
 
     private static Holder<MobEffect> register(String id, MobEffect mobEffect) {
