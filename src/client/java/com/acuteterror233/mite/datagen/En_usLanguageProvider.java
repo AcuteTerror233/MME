@@ -4,6 +4,8 @@ import com.acuteterror233.mite.block.MMEBlocks;
 import com.acuteterror233.mite.item.MMEItems;
 import com.acuteterror233.mite.item.enchantment.MMEEnchantments;
 import com.acuteterror233.mite.world.effect.MMEMobEffects;
+import com.acuteterror233.mite.world.entity.MMEEntityTypes;
+
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.minecraft.core.HolderLookup;
@@ -513,6 +515,28 @@ public class En_usLanguageProvider extends FabricLanguageProvider {
 
         translationBuilder.add(MMEItems.SINEW, "Leather Thread");
         translationBuilder.add(MMEItems.MANURE, "Manure");
+        translationBuilder.add(MMEItems.GHOUL_SPAWN_EGG, "Ghoul Spawn Egg");
+        translationBuilder.add(MMEEntityTypes.GHOUL, "Ghoul");
+        translationBuilder.add(MMEItems.SHADOW_SPAWN_EGG, "Shadow Spawn Egg");
+        translationBuilder.add(MMEEntityTypes.SHADOW, "Shadow");
+        translationBuilder.add(MMEItems.WIGHT_SPAWN_EGG, "Wight Spawn Egg");
+        translationBuilder.add(MMEEntityTypes.WIGHT, "Wight");
+        translationBuilder.add(MMEItems.INVISIBLE_STALKER_SPAWN_EGG, "Invisible Stalker Spawn Egg");
+        translationBuilder.add(MMEEntityTypes.INVISIBLE_STALKER, "Invisible Stalker");
+        translationBuilder.add(MMEItems.DEMON_SPIDER_SPAWN_EGG, "Demon Spider Spawn Egg");
+        translationBuilder.add(MMEEntityTypes.DEMON_SPIDER, "Demon Spider");
+        translationBuilder.add(MMEItems.PHASE_SPIDER_SPAWN_EGG, "Phase Spider Spawn Egg");
+        translationBuilder.add(MMEEntityTypes.PHASE_SPIDER, "Phase Spider");
+        translationBuilder.add(MMEItems.INFERNAL_CREEPER_SPAWN_EGG, "Infernal Creeper Spawn Egg");
+        translationBuilder.add(MMEEntityTypes.INFERNAL_CREEPER, "Infernal Creeper");
+        translationBuilder.add(MMEItems.FIRE_ELEMENTAL_SPAWN_EGG, "Fire Elemental Spawn Egg");
+        translationBuilder.add(MMEEntityTypes.FIRE_ELEMENTAL, "Fire Elemental");
+        translationBuilder.add(MMEItems.VAMPIRE_BAT_SPAWN_EGG, "Vampire Bat Spawn Egg");
+        translationBuilder.add(MMEEntityTypes.VAMPIRE_BAT, "Vampire Bat");
+        translationBuilder.add(MMEItems.NIGHTWING_SPAWN_EGG, "Nightwing Spawn Egg");
+        translationBuilder.add(MMEEntityTypes.NIGHTWING, "Nightwing");
+        translationBuilder.add(MMEItems.GIANT_VAMPIRE_BAT_SPAWN_EGG, "Giant Vampire Bat Spawn Egg");
+        translationBuilder.add(MMEEntityTypes.GIANT_VAMPIRE_BAT, "Giant Vampire Bat");
 
         translationBuilder.add(MMEMobEffects.INSULIN_RESISTANCE.value(), "Diabetes");
         translationBuilder.add(MMEMobEffects.MALNUTRITION.value(), "Malnutrition");

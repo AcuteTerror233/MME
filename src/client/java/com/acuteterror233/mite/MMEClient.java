@@ -5,10 +5,13 @@ import com.acuteterror233.mite.gui.screen.inventory.GradeAnvilScreen;
 import com.acuteterror233.mite.gui.screen.inventory.GradeCraftingTableScreen;
 import com.acuteterror233.mite.gui.screen.inventory.GradeFurnaceScreen;
 import com.acuteterror233.mite.gui.screen.inventory.MMEEnchantmentScreen;
+import com.acuteterror233.mite.renderer.entity.*;
+import com.acuteterror233.mite.world.entity.MMEEntityTypes;
 import com.acuteterror233.mite.world.gen.dimension.MMEDimensionTypeRegistrar;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendering.v1.DimensionRenderingRegistry;
+import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.RenderType;
 
@@ -25,5 +28,17 @@ public class MMEClient implements ClientModInitializer {
         MenuScreens.register(MMEBlocks.GRADE_CRAFTING_TABLE, GradeCraftingTableScreen::new);
         MenuScreens.register(MMEBlocks.GRADE_FURNACE, GradeFurnaceScreen::new);
         MenuScreens.register(MMEBlocks.MME_ENCHANTMENT, MMEEnchantmentScreen::new);
+
+        EntityRendererRegistry.register(MMEEntityTypes.GHOUL, GhoulRenderer::new);
+        EntityRendererRegistry.register(MMEEntityTypes.SHADOW, ShadowRenderer::new);
+        EntityRendererRegistry.register(MMEEntityTypes.WIGHT, WightRenderer::new);
+        EntityRendererRegistry.register(MMEEntityTypes.INVISIBLE_STALKER, InvisibleStalkerRenderer::new);
+        EntityRendererRegistry.register(MMEEntityTypes.DEMON_SPIDER, DemonSpiderRenderer::new);
+        EntityRendererRegistry.register(MMEEntityTypes.PHASE_SPIDER, PhaseSpiderRenderer::new);
+        EntityRendererRegistry.register(MMEEntityTypes.INFERNAL_CREEPER, InfernalCreeperRenderer::new);
+        EntityRendererRegistry.register(MMEEntityTypes.FIRE_ELEMENTAL, FireElementalRenderer::new);
+        EntityRendererRegistry.register(MMEEntityTypes.VAMPIRE_BAT, VampireBatRenderer::new);
+        EntityRendererRegistry.register(MMEEntityTypes.NIGHTWING, NightwingRenderer::new);
+        EntityRendererRegistry.register(MMEEntityTypes.GIANT_VAMPIRE_BAT, GiantVampireBatRenderer::new);
 	}
 }

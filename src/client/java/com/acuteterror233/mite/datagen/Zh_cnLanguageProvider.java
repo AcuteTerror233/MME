@@ -4,6 +4,8 @@ import com.acuteterror233.mite.block.MMEBlocks;
 import com.acuteterror233.mite.item.MMEItems;
 import com.acuteterror233.mite.item.enchantment.MMEEnchantments;
 import com.acuteterror233.mite.world.effect.MMEMobEffects;
+import com.acuteterror233.mite.world.entity.MMEEntityTypes;
+
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.minecraft.core.HolderLookup;
@@ -48,8 +50,6 @@ public class Zh_cnLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("mme.advancements.story.flint_shovel.description", "铲铲铲");
         translationBuilder.add("mme.advancements.story.cudgel.title", "出击时间到");
         translationBuilder.add("mme.advancements.story.cudgel.description", "好像也就只能欺负欺负小白");
-        translationBuilder.add("mme.advancements.story.monster_hunter.title", "怪物猎人");
-        translationBuilder.add("mme.advancements.story.monster_hunter.description", "击杀一个敌对生物");
         translationBuilder.add("mme.advancements.story.copper_nugget.title", "贵金属");
         translationBuilder.add("mme.advancements.story.copper_nugget.description", "太贵重了");
         translationBuilder.add("mme.advancements.story.metal_crafting_table.title", "金属工作台");
@@ -513,6 +513,28 @@ public class Zh_cnLanguageProvider extends FabricLanguageProvider {
 
         translationBuilder.add(MMEItems.SINEW, "皮革线");
         translationBuilder.add(MMEItems.MANURE, "粪便");
+        translationBuilder.add(MMEItems.GHOUL_SPAWN_EGG, "食尸鬼刷怪蛋");
+        translationBuilder.add(MMEEntityTypes.GHOUL, "食尸鬼");
+        translationBuilder.add(MMEItems.SHADOW_SPAWN_EGG, "黑色食尸鬼刷怪蛋");
+        translationBuilder.add(MMEEntityTypes.SHADOW, "黑色食尸鬼");
+        translationBuilder.add(MMEItems.WIGHT_SPAWN_EGG, "白色食尸鬼刷怪蛋");
+        translationBuilder.add(MMEEntityTypes.WIGHT, "白色食尸鬼");
+        translationBuilder.add(MMEItems.INVISIBLE_STALKER_SPAWN_EGG, "影子潜伏者刷怪蛋");
+        translationBuilder.add(MMEEntityTypes.INVISIBLE_STALKER, "影子潜伏者");
+        translationBuilder.add(MMEItems.DEMON_SPIDER_SPAWN_EGG, "恶魔蜘蛛刷怪蛋");
+        translationBuilder.add(MMEEntityTypes.DEMON_SPIDER, "恶魔蜘蛛");
+        translationBuilder.add(MMEItems.PHASE_SPIDER_SPAWN_EGG, "相位蜘蛛刷怪蛋");
+        translationBuilder.add(MMEEntityTypes.PHASE_SPIDER, "相位蜘蛛");
+        translationBuilder.add(MMEItems.INFERNAL_CREEPER_SPAWN_EGG, "地狱爬行者刷怪蛋");
+        translationBuilder.add(MMEEntityTypes.INFERNAL_CREEPER, "地狱爬行者");
+        translationBuilder.add(MMEItems.FIRE_ELEMENTAL_SPAWN_EGG, "火元素刷怪蛋");
+        translationBuilder.add(MMEEntityTypes.FIRE_ELEMENTAL, "火元素");
+        translationBuilder.add(MMEItems.VAMPIRE_BAT_SPAWN_EGG, "吸血蝙蝠刷怪蛋");
+        translationBuilder.add(MMEEntityTypes.VAMPIRE_BAT, "吸血蝙蝠");
+        translationBuilder.add(MMEItems.NIGHTWING_SPAWN_EGG, "暗影蝙蝠刷怪蛋");
+        translationBuilder.add(MMEEntityTypes.NIGHTWING, "暗影蝙蝠");
+        translationBuilder.add(MMEItems.GIANT_VAMPIRE_BAT_SPAWN_EGG, "吸血巨蝠刷怪蛋");
+        translationBuilder.add(MMEEntityTypes.GIANT_VAMPIRE_BAT, "吸血巨蝠");
 
         translationBuilder.add(MMEMobEffects.INSULIN_RESISTANCE.value(), "糖尿病");
         translationBuilder.add(MMEMobEffects.MALNUTRITION.value(), "营养不良");

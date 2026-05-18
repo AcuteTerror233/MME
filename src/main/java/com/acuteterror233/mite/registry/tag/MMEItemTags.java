@@ -73,6 +73,8 @@ public interface MMEItemTags {
     TagKey<Item> MITHRIL_ARMOR = key("mithril_armor");
     TagKey<Item> STRING = key("string");
     TagKey<Item> CRAFTING_TABLE = key("crafting_table");
+    TagKey<Item> SILVER_WEAPONS = key("silver_weapons");
+    TagKey<Item> SILVER_ARMOR = key("silver_armor");
     TagKey<Item> SILVER_ORE = key("silver_ore");
     TagKey<Item> MITHRIL_ORE = key("mithril_ore");
     TagKey<Item> ADAMANTIUM_ORE = key("adamantium_ore");

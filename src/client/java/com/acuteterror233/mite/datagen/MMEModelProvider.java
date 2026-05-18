@@ -10,7 +10,9 @@ import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
+import net.minecraft.client.data.models.model.ItemModelUtils;
 import net.minecraft.client.data.models.model.ModelTemplates;
+import net.minecraft.client.data.models.model.TextureMapping;
 import net.minecraft.client.data.models.model.TexturedModel;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
@@ -438,5 +440,17 @@ public class MMEModelProvider extends FabricModelProvider {
 
         itemModelGenerator.generateFlatItem(MMEItems.SINEW, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(MMEItems.MANURE,  ModelTemplates.FLAT_ITEM);
+
+        itemModelGenerator.generateFlatItem(MMEItems.GHOUL_SPAWN_EGG, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(MMEItems.SHADOW_SPAWN_EGG, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(MMEItems.WIGHT_SPAWN_EGG, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(MMEItems.INVISIBLE_STALKER_SPAWN_EGG, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(MMEItems.DEMON_SPIDER_SPAWN_EGG, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(MMEItems.PHASE_SPIDER_SPAWN_EGG, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(MMEItems.INFERNAL_CREEPER_SPAWN_EGG, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(MMEItems.FIRE_ELEMENTAL_SPAWN_EGG, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.itemModelOutput.accept(MMEItems.VAMPIRE_BAT_SPAWN_EGG, ItemModelUtils.plainModel(itemModelGenerator.generateLayeredItem(MMEItems.VAMPIRE_BAT_SPAWN_EGG, TextureMapping.getItemTexture(Items.BAT_SPAWN_EGG), TextureMapping.getItemTexture(MMEItems.VAMPIRE_BAT_SPAWN_EGG))));
+        itemModelGenerator.generateFlatItem(MMEItems.NIGHTWING_SPAWN_EGG, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(MMEItems.GIANT_VAMPIRE_BAT_SPAWN_EGG, ModelTemplates.FLAT_ITEM);
     }
 }

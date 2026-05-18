@@ -195,7 +195,9 @@ c1282470ef4705746a685d8f034b9336500be8dd assets/mme/items/damaged_silver_anvil.j
 25a72e903de9d400078f920ecbcac00ae43777d5 assets/mme/items/deepslate_adamantium_ore.json
 c699aad7da8556cfc6ed1d495cf84d4cc32765d5 assets/mme/items/deepslate_mithril_ore.json
 2c9dee2e9b5af0c95e0f157bb05995072a3bfca5 assets/mme/items/deepslate_silver_ore.json
+17d6c2b28eb802dfb070391e10c3ba084840ae01 assets/mme/items/demon_spider_spawn_egg.json
 1226d96de371d880176117747bb916309c9f548d assets/mme/items/dough.json
+a129325c14584606c421622744f507d1bc4b25bc assets/mme/items/fire_elemental_spawn_egg.json
 958dfb29817464042523568da85ef3b995f145dc assets/mme/items/flint_axe.json
 4ee6de46f46c30339cb0901778eb4aca66159f0c assets/mme/items/flint_fishing_rod.json
 72b25567010cbe7c94520fc6f6d2ad1141a4c83e assets/mme/items/flint_hatchet.json
@@ -203,6 +205,8 @@ b4826eaf902f3135c518d4833fb1efdb49f05937 assets/mme/items/flint_knife.json
 05facb3221861e7cd9e118f6c4f0b49ef1eac131 assets/mme/items/flint_shard.json
 04ec47d6eed31c212c56b2abb7cf0862054cd1a1 assets/mme/items/flint_shovel.json
 8a892192564e1f2a937fc745754fb75026d1e1b4 assets/mme/items/flour.json
+02d0e81269972b0b9016643955ac49d8fd2a268b assets/mme/items/ghoul_spawn_egg.json
+5461bcdd06998862ee633fabbd30916bc3ce0e39 assets/mme/items/giant_vampire_bat_spawn_egg.json
 ab4927fe4a071a12b42ba4144233aa5ac1c8704c assets/mme/items/gold_bucket.json
 e1f9bf7d785ab7fd7e2b99b15d6f9ce4531361a8 assets/mme/items/golden_anvil.json
 bd8b22f51140c948573043ccc6b210dcb558f182 assets/mme/items/golden_battle_axe.json
@@ -222,6 +226,8 @@ d393a9075dff9293eb0f3e6b4373545921e2c424 assets/mme/items/golden_hatchet.json
 70414b76aa22660088f5972c0c7b341b0881139a assets/mme/items/golden_war_hammer.json
 ceb1735c8908e63e9336dd171548e682da83dc54 assets/mme/items/hardened_clay_furnace.json
 3089f3fbdd9b3c163b6f206cea50440384844e93 assets/mme/items/ice_cream.json
+1f1ea36953c572bdf9e331c4ccf30e04ff7479e8 assets/mme/items/infernal_creeper_spawn_egg.json
+d7a97dab41932eef54cab37fc74f2857d0fdc47e assets/mme/items/invisible_stalker_spawn_egg.json
 05a2c320829af8d1e7199fec2fa0370c1f193bcb assets/mme/items/iron_battle_axe.json
 1c4f53b7ce3aef09fa0b3828b73b84990ab7323a assets/mme/items/iron_chains.json
 77914501ef85a5aacc1fd588186896526628ba0e assets/mme/items/iron_coins.json
@@ -294,6 +300,7 @@ e852619d256d8810760c0f3340e2c2dbf600cdf9 assets/mme/items/netherite_nugget.json
 530f68d0ae18bb1c64cd4f5289a9ad96a06f6c93 assets/mme/items/netherite_shears.json
 b8ac865cef719d7fbc921316c1be683c91f154a6 assets/mme/items/netherite_war_hammer.json
 00be45a64da1a91fc9401f569ff3a0803ffebda1 assets/mme/items/netherrack_furnace.json
+4ea2e8c3cad6086a48c12cddd90d1d7a005579a2 assets/mme/items/nightwing_spawn_egg.json
 5a03c916cb5150562a085546e211b029a2f6631c assets/mme/items/obsidian_axe.json
 b89e67eadcd1809d84ef801bec3f7a05025d0b3f assets/mme/items/obsidian_fishing_rod.json
 3650a1951d858c25cbd5d6e86bc6dba66f45ca4b assets/mme/items/obsidian_furnace.json
@@ -303,6 +310,7 @@ bc43abf572793be32081a13a8cf772642d51e2d4 assets/mme/items/obsidian_knife.json
 544801c541dfda54ba8740a6c9396bf9489ab5dc assets/mme/items/obsidian_shovel.json
 0d0c2399d6b583f1fa402a28fee82c0ca8046c76 assets/mme/items/onion.json
 f9c0f67bc8ae7b74ff74b1f49a87ab91016634c4 assets/mme/items/orange.json
+2da5bb0fcea71979441e992399ed9bfc57790ad7 assets/mme/items/phase_spider_spawn_egg.json
 b94aff3838408995169e7f61eb750f6cdfd24138 assets/mme/items/porridge.json
 f06219db83e677c3ac734742d95fb81eb56127d4 assets/mme/items/powder_snow_adamantium_bucket.json
 ae3ec3236be643ee13442e84ecd0c255864581ba assets/mme/items/powder_snow_ancient_metal_bucket.json
@@ -352,6 +360,7 @@ a4cc230ddd5da051b1ed16f8f614d30df18a7b26 assets/mme/items/salmon_mithril_bucket.
 486264da902d65c7b2a832545f10dda303979852 assets/mme/items/salmon_netherite_bucket.json
 8a5131f13ef7872ed5daff8f173fa1474697c20c assets/mme/items/salmon_silver_bucket.json
 6ecb8c7f5e29a2900f590e5cf753a688205d2b34 assets/mme/items/sandstone_furnace.json
+4ff9d4260ff1f9fd72809b79b55bc6562187575c assets/mme/items/shadow_spawn_egg.json
 7519708cdc08e4dfbadf6d426e449f4f1b0ae0ce assets/mme/items/silver_anvil.json
 ad532eed17e751bf5b6248271e5a7f1844ae8008 assets/mme/items/silver_axe.json
 c152ca4b95623e3699f6f09190f7158d903ebab2 assets/mme/items/silver_battle_axe.json
@@ -398,6 +407,7 @@ a6b3bc0ea5fab5bc962cbcaa7ed49961622f40a4 assets/mme/items/tropical_fish_copper_b
 2fc8445c7ba09702b06f8097e5549d29e7b3c83f assets/mme/items/tropical_fish_mithril_bucket.json
 226732b730f234d2f891f6606cc7c1e41192a406 assets/mme/items/tropical_fish_netherite_bucket.json
 9fa928d5b9279fb540a1d80977418f03ef287531 assets/mme/items/tropical_fish_silver_bucket.json
+99aa433cd09d27ce307448d24052c09c09499ccb assets/mme/items/vampire_bat_spawn_egg.json
 058afe59b6524c886e442ddd5f588908f06819be assets/mme/items/vegetable_soup.json
 9439478271c2415cd2df0fca9a96ed0db20537ca assets/mme/items/water_adamantium_bucket.json
 ad49fa1fc79b3c3b8d9b34fa2cc651ce528b6cbd assets/mme/items/water_ancient_metal_bucket.json
@@ -406,6 +416,7 @@ c704c28a225be6fc60691f7116781cc19e77e555 assets/mme/items/water_gold_bucket.json
 1b0687bd3e4d8afb748425b91f22d74d6f5f85ba assets/mme/items/water_mithril_bucket.json
 02fb011323350b6c87a08117b1c32e9c367e51dc assets/mme/items/water_netherite_bucket.json
 7f2dd3b2a0463979fa7f4f58e4363cca97185e15 assets/mme/items/water_silver_bucket.json
+7f795a31a6f8c703bb7e234665e776aa2a83db17 assets/mme/items/wight_spawn_egg.json
 a164534b8679140e6ebe37a4be080dbda5da7bfc assets/mme/items/wooden_club.json
 5d6486169d39d17f3a5da61b41fdc09695a3a2b3 assets/mme/items/wooden_cudgel.json
 5cfbea980600b55b08275bc99af055856474cc8c assets/mme/items/worm_cooked.json
@@ -864,7 +875,9 @@ db2a845bd016e3afa99e80024bc17cd4a77fb851 assets/mme/models/item/copper_sword.jso
 352dbd5f5ec28b21c62868680f26e0279cdc98f4 assets/mme/models/item/copper_war_hammer.json
 6bee0543143d8374e83ff8b6e296bab75c587d03 assets/mme/models/item/cream_of_mushroom_soup.json
 28b0f51395654765d40387cf9920f23ecb06d102 assets/mme/models/item/cream_of_vegetable_soup.json
+a19eabdf0765a3b5f60c5cd8a5f7e75ff6466ed8 assets/mme/models/item/demon_spider_spawn_egg.json
 f453a919b2f6386054453bb4c1d0d7021b4c637b assets/mme/models/item/dough.json
+902d167ea2a059e2899be760d1c0f44d8497e04d assets/mme/models/item/fire_elemental_spawn_egg.json
 426205fde725fbc562abda590c31b22dfa7bdd3c assets/mme/models/item/flint_axe.json
 844bcec2909f162457abf505192ea3a491bfb573 assets/mme/models/item/flint_fishing_rod.json
 0f4d729888d7666f3265a8e53eb6330fad924491 assets/mme/models/item/flint_hatchet.json
@@ -872,6 +885,8 @@ f453a919b2f6386054453bb4c1d0d7021b4c637b assets/mme/models/item/dough.json
 1ee2f664e644c2ff2db744395dca0709b74bd30b assets/mme/models/item/flint_shard.json
 ba68c1dd26df61ee6eaf8af5afa8f56a143a300b assets/mme/models/item/flint_shovel.json
 d6cb6033a9457e87031ede534b02a3a4817215b9 assets/mme/models/item/flour.json
+5d6de3e075b427e321c582280e9f966fda879135 assets/mme/models/item/ghoul_spawn_egg.json
+841acd6c41659c4ad07fea49bc9ab04a9b7c2a1f assets/mme/models/item/giant_vampire_bat_spawn_egg.json
 7d3a4626e2ae17bc7850b0eb49946ae370e0d50b assets/mme/models/item/gold_bucket.json
 cb1b3d1a97a9abd9092e5b17abe704c776488b7d assets/mme/models/item/golden_battle_axe.json
 a866158600e5336c35d018e2ffa59b27148a4790 assets/mme/models/item/golden_chainmail_boots.json
@@ -933,6 +948,8 @@ a0332c4baa8ab8e231fd521f8182a828425f5315 assets/mme/models/item/golden_mattock.j
 059144c7404201ba8c9a9d5290557692b466ff41 assets/mme/models/item/golden_shears.json
 36eb4edf8601d8edc848ad9c90c7ecac97d9f1db assets/mme/models/item/golden_war_hammer.json
 f25a6647085eee2c8b46e5a2b0a9cbb0644d9ed4 assets/mme/models/item/ice_cream.json
+e521ff852244e7a9515fb46d8d91ea7b1ab9c1de assets/mme/models/item/infernal_creeper_spawn_egg.json
+4ad6ff304120fd8c01f61f5a03184bd3af719bcd assets/mme/models/item/invisible_stalker_spawn_egg.json
 9b9fd4cb79813f739bc9cc3898b54e62cef5ef84 assets/mme/models/item/iron_battle_axe.json
 48492ca59ceeac40c83ea43f5531c7ff61899ddf assets/mme/models/item/iron_chains.json
 05c414115f9695015806bded52ce7f156e7a1f1a assets/mme/models/item/iron_coins.json
@@ -1087,6 +1104,7 @@ e93c0a669edfc9bca3f80c9589c0e85a311b0eab assets/mme/models/item/netherite_dagger
 c6104396019b34170cc3f12dd186179b9722eb72 assets/mme/models/item/netherite_scythe.json
 7bb50eaab04c6103d4fb65b3ff70fc10ea9a2ba7 assets/mme/models/item/netherite_shears.json
 4a7315d61e8a259937e114ef6da580d09c3d41b3 assets/mme/models/item/netherite_war_hammer.json
+b5c42b207f952e59e93600cf717493aea79751b4 assets/mme/models/item/nightwing_spawn_egg.json
 bf4a574cd6de23a8b055d3d16d860cf792e21fa8 assets/mme/models/item/obsidian_axe.json
 f06117a4c7a80bc1a5555191c6ca601956ee9ae7 assets/mme/models/item/obsidian_fishing_rod.json
 d5f4ccfb7e53f10dd7bea837637e53da398d8c96 assets/mme/models/item/obsidian_hatchet.json
@@ -1095,6 +1113,7 @@ d5f4ccfb7e53f10dd7bea837637e53da398d8c96 assets/mme/models/item/obsidian_hatchet
 2e20d03273e01c76e172021616257e87d6a6cd31 assets/mme/models/item/obsidian_shovel.json
 cb94d5a44086da5cdd8627ca0ead7a4ef495198b assets/mme/models/item/onion.json
 f2637398b40a5f48e19da8a253db7acb0e09cae5 assets/mme/models/item/orange.json
+5a506ae35f3dc8de9fdafaaa0e531570eb4c9bdf assets/mme/models/item/phase_spider_spawn_egg.json
 7c175ad20fce20a305f73ceaf63a8ced6f5e612a assets/mme/models/item/porridge.json
 274008f6b04558fa422272fc0a1bba9da81b67e2 assets/mme/models/item/powder_snow_adamantium_bucket.json
 b272d0ed54fbddfd0bd16c375123dc02b493469c assets/mme/models/item/powder_snow_ancient_metal_bucket.json
@@ -1231,6 +1250,7 @@ d6deab3c3cea326c0fb2997051530a94a037c8a9 assets/mme/models/item/salmon_adamantiu
 afecdd8a3e66a4ff2286c637b837e769d09bfe33 assets/mme/models/item/salmon_mithril_bucket.json
 f6bbb9f978a1af67876534857ac6dab113410d14 assets/mme/models/item/salmon_netherite_bucket.json
 c745316f080a121e54623276f764a6bbf88de886 assets/mme/models/item/salmon_silver_bucket.json
+535f9c8f07699eb4591983a4266a6f380364d4d4 assets/mme/models/item/shadow_spawn_egg.json
 dbf0ae7ea6bb89e8a375351d18f5a80d505675b9 assets/mme/models/item/silver_axe.json
 713351bbc723004be39ab5e0203bdcc4f0d4c825 assets/mme/models/item/silver_battle_axe.json
 063b8fc96f02cd9b0088cca67c5fb677e2dab0bd assets/mme/models/item/silver_boots.json
@@ -1362,6 +1382,7 @@ cc6c655dcde0b6333441a786dae98e6deb6fd363 assets/mme/models/item/tadpole_silver_b
 aa3ddcf981eb181d7583b164fd5dd2e2bd03e4e7 assets/mme/models/item/tropical_fish_mithril_bucket.json
 eff74f1dfb416b1a7dbc6d138ab335557b7197f9 assets/mme/models/item/tropical_fish_netherite_bucket.json
 1d4b55b85424ffe7279f0f9f3112f6e9442c8253 assets/mme/models/item/tropical_fish_silver_bucket.json
+56def183f2dedd31c1ef86692f0cb5eb55761de5 assets/mme/models/item/vampire_bat_spawn_egg.json
 cff53c456cca07ab4b0bd7b6e6369f5ba75a3b74 assets/mme/models/item/vegetable_soup.json
 498915bb8d230201a897c337812e4814c04c0fb7 assets/mme/models/item/water_adamantium_bucket.json
 08deb41d24922f3dbea484de3105b321d9dafc5f assets/mme/models/item/water_ancient_metal_bucket.json
@@ -1370,6 +1391,7 @@ cff53c456cca07ab4b0bd7b6e6369f5ba75a3b74 assets/mme/models/item/vegetable_soup.j
 afef613e83889a2c4434dbfe311f285164672085 assets/mme/models/item/water_mithril_bucket.json
 f846ec40c63b5ef722d17775c63fac775c5164f9 assets/mme/models/item/water_netherite_bucket.json
 770f3c2f3c6c87038eb4d8302ebd8abde3a591fd assets/mme/models/item/water_silver_bucket.json
+94ce86b59d47429d00b5bdbdf9031d341c5c0032 assets/mme/models/item/wight_spawn_egg.json
 760d869206894c7a0a2783438130cf7fed33f3fe assets/mme/models/item/wooden_club.json
 db33439877a839ad1e86d50db6b024a0434d09f7 assets/mme/models/item/wooden_cudgel.json
 eda7a228168b26f90b8b7164702c3de23c02c20d assets/mme/models/item/worm_cooked.json

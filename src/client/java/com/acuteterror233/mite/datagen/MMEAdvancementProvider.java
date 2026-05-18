@@ -3,7 +3,6 @@ package com.acuteterror233.mite.datagen;
 import com.acuteterror233.mite.MME;
 import com.acuteterror233.mite.block.MMEBlocks;
 import com.acuteterror233.mite.item.MMEItems;
-import com.acuteterror233.mite.registry.tag.MMEEntityTypeTags;
 import com.acuteterror233.mite.registry.tag.MMEItemTags;
 import com.acuteterror233.mite.world.gen.dimension.MMEDimensionTypeRegistrar;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
@@ -237,22 +236,6 @@ public class MMEAdvancementProvider extends FabricAdvancementProvider {
                 )
                 .addCriterion("get_wooden_club", InventoryChangeTrigger.TriggerInstance.hasItems(MMEItems.WOODEN_CLUB))
                 .save(consumer, "story/cudgel");
-        AdvancementHolder monsterHunter = Advancement.Builder.advancement()
-                .parent(cudgel)
-                .display(
-                        Items.BONE,
-                        Component.translatable("mme.advancements.story.monster_hunter.title"),
-                        Component.translatable("mme.advancements.story.monster_hunter.description"),
-                        null,
-                        AdvancementType.TASK,
-                        true,
-                        true,
-                        false
-                )
-                .addCriterion("killed_monster", KilledTrigger.TriggerInstance.playerKilledEntity(
-                        EntityPredicate.Builder.entity().entityType(EntityTypePredicate.of(entityTypeGetter, MMEEntityTypeTags.HOSTILE))
-                ))
-                .save(consumer, "story/monster_hunter");
         AdvancementHolder copperNugget = Advancement.Builder.advancement()
                 .parent(flint_shovel)
                 .display(

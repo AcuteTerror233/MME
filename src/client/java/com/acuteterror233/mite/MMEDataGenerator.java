@@ -1,9 +1,9 @@
 package com.acuteterror233.mite;
 
 import com.acuteterror233.mite.datagen.*;
-import com.acuteterror233.mite.entity.damage.MMEDamageTypes;
 import com.acuteterror233.mite.item.enchantment.MMEEnchantments;
 import com.acuteterror233.mite.world.biome.MMEBiomes;
+import com.acuteterror233.mite.world.entity.damage.MMEDamageTypes;
 import com.acuteterror233.mite.world.gen.dimension.MMEDimensionTypeRegistrar;
 import com.acuteterror233.mite.world.gen.feature.MMEConfiguredFeatures;
 import com.acuteterror233.mite.world.gen.feature.MMEPlacedFeatures;
@@ -19,6 +19,7 @@ public class MMEDataGenerator implements DataGeneratorEntrypoint {
 		pack.addProvider(MMEModelProvider::new);
         pack.addProvider(MMERecipeGenerator::new);
         pack.addProvider(MMEBlockLootTableProvider::new);
+        pack.addProvider(MMEEntityLootTableProvider::new);
         pack.addProvider(MMEDynamicRegistry::new);
         pack.addProvider(MMEAdvancementProvider::new);
         pack.addProvider(Zh_cnLanguageProvider::new);

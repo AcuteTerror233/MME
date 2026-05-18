@@ -8,6 +8,7 @@ import com.acuteterror233.mite.registry.LootTableReplace;
 import com.acuteterror233.mite.registry.tag.MMEItemTags;
 import com.acuteterror233.mite.world.biome.BiomeModification;
 import com.acuteterror233.mite.world.effect.MMEMobEffects;
+import com.acuteterror233.mite.world.entity.MMEEntityTypes;
 import com.acuteterror233.mite.world.food.FoodNutrition;
 import com.acuteterror233.mite.world.gen.feature.OverworldPlacedFeatures;
 import net.fabricmc.api.ModInitializer;
@@ -48,6 +49,7 @@ public class MME implements ModInitializer {
         MMEItems.init();
         MMEBlocks.init();
         MMEMobEffects.init();
+        MMEEntityTypes.init();
         LootTableReplace.init();
         BiomeModification.init();
 

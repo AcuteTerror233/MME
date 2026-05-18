@@ -1,0 +1,33 @@
+package com.acuteterror233.mite.world.entity.monster;
+
+import com.acuteterror233.mite.world.entity.ai.goal.DestroyTorchGoal;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.DifficultyInstance;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.monster.Zombie;
+import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.NotNull;
+
+public class InvisibleStalker extends Zombie {
+    public InvisibleStalker(EntityType<? extends InvisibleStalker> entityType, Level level) {
+        super(entityType, level);
+    }
+
+    @Override
+    protected void registerGoals() {
+        super.registerGoals();
+        this.goalSelector.addGoal(10, new DestroyTorchGoal(this, 0.8));
+    }
+
+    @Override
+    protected void populateDefaultEquipmentSlots(RandomSource randomSource, DifficultyInstance difficultyInstance) {
+
+    }
+
+    public static AttributeSupplier.@NotNull Builder createAttributes() {
+        return Zombie.createAttributes()
+                .add(Attributes.MOVEMENT_SPEED, 0.22F);
+    }
+}

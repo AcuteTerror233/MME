@@ -64,9 +64,11 @@ a076029a2420487af65e3bd2ff8265d8feb944f0 data/mme/tags/item/rusted_iron_tools.js
 f0e07abd51501ae917c3c9fbfb3ba0eeefe7df3b data/mme/tags/item/scythe.json
 6a3f2dfc47243837222e919308cb005e6f8e710b data/mme/tags/item/shard.json
 8381be3de4963df5a7567749f0be18ba01b7c127 data/mme/tags/item/shears.json
+c6bc350704277d8955bbaff4c42d021d32582c66 data/mme/tags/item/silver_armor.json
 b5b76e629cfb9c6119fb5046bd6259a3058a784f data/mme/tags/item/silver_ore.json
 069f485466ed0e7e5094663fbfecce85579abefc data/mme/tags/item/silver_tool_materials.json
 24ec9b8785be984eebc71ca8feeb7ff2cf655f8e data/mme/tags/item/silver_tools.json
+e901214d070b3bf155ee4baf7b05b1e2ad1a9592 data/mme/tags/item/silver_weapons.json
 e28c2faa4e90f0c6f7d52bf9151144a9a501211c data/mme/tags/item/string.json
 c6ae28c8fe89862d13d79af19005025a96d9496e data/mme/tags/item/war_hammer.json
 fcf74fd92391524e42b75f8b18a71113b098c1e4 data/mme/tags/item/water_bucket.json
