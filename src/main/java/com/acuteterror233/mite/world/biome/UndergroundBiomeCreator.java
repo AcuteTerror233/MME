@@ -1,12 +1,15 @@
 package com.acuteterror233.mite.world.biome;
 
+import com.acuteterror233.mite.world.entity.MMEEntityTypes;
 import com.acuteterror233.mite.world.gen.feature.UndergroundPlacedFeatures;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.data.worldgen.BiomeDefaultFeatures;
 import net.minecraft.data.worldgen.Carvers;
 import net.minecraft.data.worldgen.biome.OverworldBiomes;
+import net.minecraft.data.worldgen.placement.CavePlacements;
 import net.minecraft.sounds.Musics;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.biome.*;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.carver.ConfiguredWorldCarver;
@@ -23,6 +26,7 @@ public class UndergroundBiomeCreator {
         BiomeDefaultFeatures.addDefaultSoftDisks(lookupBackedBuilder);
         BiomeDefaultFeatures.addDefaultSprings(lookupBackedBuilder);
         BiomeDefaultFeatures.dripstoneCavesSpawns(builder);
+        addMonsters(builder);
         return new Biome.BiomeBuilder()
                 .hasPrecipitation(false)
                 .temperature(0.4F)
@@ -51,8 +55,9 @@ public class UndergroundBiomeCreator {
         BiomeDefaultFeatures.addDefaultMushrooms(lookupBackedBuilder);
         BiomeDefaultFeatures.addDefaultSoftDisks(lookupBackedBuilder);
         BiomeDefaultFeatures.addDefaultSprings(lookupBackedBuilder);
-        BiomeDefaultFeatures.dripstoneCavesSpawns(builder);
         BiomeDefaultFeatures.addDripstone(lookupBackedBuilder);
+        BiomeDefaultFeatures.dripstoneCavesSpawns(builder);
+        addMonsters(builder);
         return new Biome.BiomeBuilder()
                 .hasPrecipitation(false)
                 .temperature(0.8F)
@@ -80,10 +85,11 @@ public class UndergroundBiomeCreator {
         BiomeDefaultFeatures.addDefaultCrystalFormations(lookupBackedBuilder);
         BiomeDefaultFeatures.addDefaultMushrooms(lookupBackedBuilder);
         BiomeDefaultFeatures.addDefaultSoftDisks(lookupBackedBuilder);
-        BiomeDefaultFeatures.dripstoneCavesSpawns(builder);
         BiomeDefaultFeatures.addDefaultSprings(lookupBackedBuilder);
         BiomeDefaultFeatures.addLushCavesSpecialOres(lookupBackedBuilder);
         BiomeDefaultFeatures.addLushCavesVegetationFeatures(lookupBackedBuilder);
+        BiomeDefaultFeatures.dripstoneCavesSpawns(builder);
+        addMonsters(builder);
         return new Biome.BiomeBuilder()
                 .hasPrecipitation(false)
                 .temperature(0.5F)
@@ -155,6 +161,19 @@ public class UndergroundBiomeCreator {
         builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, UndergroundPlacedFeatures.UNDERGROUND_ORE_DIAMOND_FIRST_LAYER_BURIED);
         builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, UndergroundPlacedFeatures.UNDERGROUND_ORE_DIAMOND_SECOND_LAYER);
         builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, UndergroundPlacedFeatures.UNDERGROUND_ORE_DIAMOND_SECOND_LAYER_BURIED);
-        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, net.minecraft.data.worldgen.placement.CavePlacements.GLOW_LICHEN);
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, CavePlacements.GLOW_LICHEN);
+    }
+
+    public static void addMonsters(MobSpawnSettings.Builder builder) {
+        builder.addSpawn(MobCategory.MONSTER, 10, new MobSpawnSettings.SpawnerData(MMEEntityTypes.GHOUL, 4, 4));
+        builder.addSpawn(MobCategory.MONSTER, 10, new MobSpawnSettings.SpawnerData(MMEEntityTypes.SHADOW, 1, 3));
+        builder.addSpawn(MobCategory.MONSTER, 10, new MobSpawnSettings.SpawnerData(MMEEntityTypes.WIGHT, 1, 2));
+        builder.addSpawn(MobCategory.MONSTER, 5, new MobSpawnSettings.SpawnerData(MMEEntityTypes.INVISIBLE_STALKER, 1, 3));
+        builder.addSpawn(MobCategory.MONSTER, 6, new MobSpawnSettings.SpawnerData(MMEEntityTypes.DEMON_SPIDER, 1, 3));
+        builder.addSpawn(MobCategory.MONSTER, 9, new MobSpawnSettings.SpawnerData(MMEEntityTypes.PHASE_SPIDER, 2, 4));
+        builder.addSpawn(MobCategory.MONSTER, 8, new MobSpawnSettings.SpawnerData(MMEEntityTypes.INFERNAL_CREEPER, 1, 2));
+        builder.addSpawn(MobCategory.MONSTER, 5, new MobSpawnSettings.SpawnerData(MMEEntityTypes.VAMPIRE_BAT, 2, 5));
+        builder.addSpawn(MobCategory.MONSTER, 3, new MobSpawnSettings.SpawnerData(MMEEntityTypes.NIGHTWING, 1, 2));
+        builder.addSpawn(MobCategory.MONSTER, 2, new MobSpawnSettings.SpawnerData(MMEEntityTypes.GIANT_VAMPIRE_BAT, 1, 1));
     }
 }

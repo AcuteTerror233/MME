@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "mme:item/invisible_stalker_spawn_egg"
+  }
+}

@@ -8,12 +8,14 @@ import com.acuteterror233.mite.registry.tag.MMEEnchantmentTags;
 import com.acuteterror233.mite.registry.tag.MMEEntityTypeTags;
 import com.acuteterror233.mite.registry.tag.MMEItemTags;
 import com.acuteterror233.mite.world.biome.MMEBiomeKeys;
+import com.acuteterror233.mite.world.entity.MMEEntityTypes;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.tags.BiomeTags;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Items;
@@ -69,6 +71,14 @@ public class MMETagProvider {
 
         @Override
         protected void addTags(HolderLookup.Provider wrapperLookup) {
+            getOrCreateTagBuilder(EntityTypeTags.ZOMBIES)
+                    .add(MMEEntityTypes.GHOUL)
+                    .add(MMEEntityTypes.SHADOW)
+                    .add(MMEEntityTypes.WIGHT)
+                    .add(MMEEntityTypes.INVISIBLE_STALKER);
+            getOrCreateTagBuilder(EntityTypeTags.ARTHROPOD)
+                    .add(MMEEntityTypes.DEMON_SPIDER)
+                    .add(MMEEntityTypes.PHASE_SPIDER);
             getOrCreateTagBuilder(MMEEntityTypeTags.SENSITIVE_TO_BUTCHERING)
                     .add(EntityType.CHICKEN)
                     .add(EntityType.COW)
@@ -92,39 +102,6 @@ public class MMETagProvider {
                     .add(EntityType.SHEEP)
                     .add(EntityType.SNIFFER)
                     .add(EntityType.TRADER_LLAMA);
-            getOrCreateTagBuilder(MMEEntityTypeTags.HOSTILE)
-                    .add(EntityType.BLAZE)
-                    .add(EntityType.CAVE_SPIDER)
-                    .add(EntityType.CREEPER)
-                    .add(EntityType.DROWNED)
-                    .add(EntityType.ENDERMAN)
-                    .add(EntityType.ENDERMITE)
-                    .add(EntityType.EVOKER)
-                    .add(EntityType.GHAST)
-                    .add(EntityType.GUARDIAN)
-                    .add(EntityType.HOGLIN)
-                    .add(EntityType.HUSK)
-                    .add(EntityType.MAGMA_CUBE)
-                    .add(EntityType.PHANTOM)
-                    .add(EntityType.PIGLIN)
-                    .add(EntityType.PIGLIN_BRUTE)
-                    .add(EntityType.PILLAGER)
-                    .add(EntityType.RAVAGER)
-                    .add(EntityType.SHULKER)
-                    .add(EntityType.SILVERFISH)
-                    .add(EntityType.SKELETON)
-                    .add(EntityType.SLIME)
-                    .add(EntityType.SPIDER)
-                    .add(EntityType.STRAY)
-                    .add(EntityType.VEX)
-                    .add(EntityType.VINDICATOR)
-                    .add(EntityType.WARDEN)
-                    .add(EntityType.WITCH)
-                    .add(EntityType.WITHER_SKELETON)
-                    .add(EntityType.ZOGLIN)
-                    .add(EntityType.ZOMBIE)
-                    .add(EntityType.ZOMBIE_VILLAGER)
-                    .add(EntityType.ZOMBIFIED_PIGLIN);
         }
     }
 
@@ -789,6 +766,28 @@ public class MMETagProvider {
                     .add(MMEItems.SILVER_SWORD)
                     .add(MMEItems.SILVER_WAR_HAMMER)
                     .add(MMEItems.SILVER_BATTLE_AXE)
+                    .add(MMEItems.SILVER_HELMET)
+                    .add(MMEItems.SILVER_CHAINMAIL_HELMET)
+                    .add(MMEItems.SILVER_CHESTPLATE)
+                    .add(MMEItems.SILVER_CHAINMAIL_CHESTPLATE)
+                    .add(MMEItems.SILVER_LEGGINGS)
+                    .add(MMEItems.SILVER_CHAINMAIL_LEGGINGS)
+                    .add(MMEItems.SILVER_BOOTS)
+                    .add(MMEItems.SILVER_CHAINMAIL_BOOTS);
+            getOrCreateTagBuilder(MMEItemTags.SILVER_WEAPONS)
+                    .add(MMEItems.SILVER_SWORD)
+                    .add(MMEItems.SILVER_AXE)
+                    .add(MMEItems.SILVER_BATTLE_AXE)
+                    .add(MMEItems.SILVER_DAGGER)
+                    .add(MMEItems.SILVER_HATCHET)
+                    .add(MMEItems.SILVER_PICKAXE)
+                    .add(MMEItems.SILVER_SHOVEL)
+                    .add(MMEItems.SILVER_HOE)
+                    .add(MMEItems.SILVER_MATTOCK)
+                    .add(MMEItems.SILVER_SCYTHE)
+                    .add(MMEItems.SILVER_WAR_HAMMER)
+                    .add(MMEItems.SILVER_SHEARS);
+            getOrCreateTagBuilder(MMEItemTags.SILVER_ARMOR)
                     .add(MMEItems.SILVER_HELMET)
                     .add(MMEItems.SILVER_CHAINMAIL_HELMET)
                     .add(MMEItems.SILVER_CHESTPLATE)

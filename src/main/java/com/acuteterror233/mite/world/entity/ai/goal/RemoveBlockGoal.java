@@ -19,8 +19,8 @@ import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
 public class RemoveBlockGoal extends MoveToBlockGoal {
-    private final Block blockToRemove;
-    private final Mob removerMob;
+    protected final Block blockToRemove;
+    protected final Mob removerMob;
     private int ticksSinceReachedGoal;
 
     public RemoveBlockGoal(Block block, PathfinderMob pathfinderMob, double d, int i) {
@@ -127,7 +127,7 @@ public class RemoveBlockGoal extends MoveToBlockGoal {
     }
 
     @Nullable
-    private BlockPos getPosWithBlock(BlockPos blockPos, BlockGetter blockGetter) {
+    protected BlockPos getPosWithBlock(BlockPos blockPos, BlockGetter blockGetter) {
         if (blockGetter.getBlockState(blockPos).is(this.blockToRemove)) {
             return blockPos;
         } else {

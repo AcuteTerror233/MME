@@ -6,6 +6,7 @@ import com.acuteterror233.mite.component.MMEDataComponentTypes;
 import com.acuteterror233.mite.item.armor.MMEArmorMaterials;
 import com.acuteterror233.mite.item.equipment.MMEArmorMaterial;
 import com.acuteterror233.mite.registry.tag.MMEBlockTags;
+import com.acuteterror233.mite.world.entity.MMEEntityTypes;
 import com.acuteterror233.mite.world.food.FoodNutrition;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.minecraft.core.HolderGetter;
@@ -1244,6 +1245,61 @@ public class MMEItems {
             ManureItem::new,
             new Item.Properties().stacksTo(16)
     );
+    public static final Item GHOUL_SPAWN_EGG = register(
+            "ghoul_spawn_egg",
+            properties -> new SpawnEggItem(MMEEntityTypes.GHOUL, properties),
+            new Item.Properties()
+    );
+    public static final Item SHADOW_SPAWN_EGG = register(
+            "shadow_spawn_egg",
+            properties -> new SpawnEggItem(MMEEntityTypes.SHADOW, properties),
+            new Item.Properties()
+    );
+    public static final Item WIGHT_SPAWN_EGG = register(
+            "wight_spawn_egg",
+            properties -> new SpawnEggItem(MMEEntityTypes.WIGHT, properties),
+            new Item.Properties()
+    );
+    public static final Item INVISIBLE_STALKER_SPAWN_EGG = register(
+            "invisible_stalker_spawn_egg",
+            properties -> new SpawnEggItem(MMEEntityTypes.INVISIBLE_STALKER, properties),
+            new Item.Properties()
+    );
+    public static final Item DEMON_SPIDER_SPAWN_EGG = register(
+            "demon_spider_spawn_egg",
+            properties -> new SpawnEggItem(MMEEntityTypes.DEMON_SPIDER, properties),
+            new Item.Properties()
+    );
+    public static final Item PHASE_SPIDER_SPAWN_EGG = register(
+            "phase_spider_spawn_egg",
+            properties -> new SpawnEggItem(MMEEntityTypes.PHASE_SPIDER, properties),
+            new Item.Properties()
+    );
+    public static final Item INFERNAL_CREEPER_SPAWN_EGG = register(
+            "infernal_creeper_spawn_egg",
+            properties -> new SpawnEggItem(MMEEntityTypes.INFERNAL_CREEPER, properties),
+            new Item.Properties()
+    );
+    public static final Item FIRE_ELEMENTAL_SPAWN_EGG = register(
+            "fire_elemental_spawn_egg",
+            properties -> new SpawnEggItem(MMEEntityTypes.FIRE_ELEMENTAL, properties),
+            new Item.Properties()
+    );
+    public static final Item VAMPIRE_BAT_SPAWN_EGG = register(
+            "vampire_bat_spawn_egg",
+            properties -> new SpawnEggItem(MMEEntityTypes.VAMPIRE_BAT, properties),
+            new Item.Properties()
+    );
+    public static final Item NIGHTWING_SPAWN_EGG = register(
+            "nightwing_spawn_egg",
+            properties -> new SpawnEggItem(MMEEntityTypes.NIGHTWING, properties),
+            new Item.Properties()
+    );
+    public static final Item GIANT_VAMPIRE_BAT_SPAWN_EGG = register(
+            "giant_vampire_bat_spawn_egg",
+            properties -> new SpawnEggItem(MMEEntityTypes.GIANT_VAMPIRE_BAT, properties),
+            new Item.Properties()
+    );
 
     public static final CreativeModeTab MME_GROUP = FabricItemGroup.builder()
             .icon(() -> new ItemStack(MMEBlocks.ADAMANTIUM_AN_RUNESTORE))
@@ -1558,6 +1614,17 @@ public class MMEItems {
                 entries.accept(PORRIDGE);
                 entries.accept(SINEW);
                 entries.accept(MANURE);
+                entries.accept(GHOUL_SPAWN_EGG);
+                entries.accept(SHADOW_SPAWN_EGG);
+                entries.accept(WIGHT_SPAWN_EGG);
+                entries.accept(INVISIBLE_STALKER_SPAWN_EGG);
+                entries.accept(DEMON_SPIDER_SPAWN_EGG);
+                entries.accept(PHASE_SPIDER_SPAWN_EGG);
+                entries.accept(INFERNAL_CREEPER_SPAWN_EGG);
+                entries.accept(FIRE_ELEMENTAL_SPAWN_EGG);
+                entries.accept(VAMPIRE_BAT_SPAWN_EGG);
+                entries.accept(NIGHTWING_SPAWN_EGG);
+                entries.accept(GIANT_VAMPIRE_BAT_SPAWN_EGG);
 
                 entries.accept(ADAMANTIUM_CHAINS);
                 entries.accept(GOLDEN_CHAINS);
