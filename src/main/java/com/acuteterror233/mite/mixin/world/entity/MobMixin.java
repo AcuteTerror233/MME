@@ -19,6 +19,9 @@ import org.spongepowered.asm.mixin.Shadow;
 import java.util.List;
 
 @Mixin(Mob.class)
+/**
+ * Mixin for {@code Mob} — 扩展生物通用行为。
+ */
 public abstract class MobMixin extends LivingEntity implements EquipmentUser, Leashable, Targeting{
     @Final
     @Shadow

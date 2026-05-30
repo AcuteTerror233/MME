@@ -4,9 +4,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.Level;
 
 /**
- * 吸血巨蝠 (Giant Vampire Bat)。
- * 继承 VampireBat，体型增大一倍。
- * 体型由 EntityType.Builder.sized() 控制，此处无需额外覆写。
+ * 巨型吸血鬼蝙蝠实体，继承吸血鬼蝙蝠行为，体型更大。
  */
 public class GiantVampireBat extends VampireBat {
     public GiantVampireBat(EntityType<? extends GiantVampireBat> entityType, Level level) {

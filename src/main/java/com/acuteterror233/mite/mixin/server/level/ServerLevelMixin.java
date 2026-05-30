@@ -10,6 +10,9 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 
 @Mixin(ServerLevel.class)
+/**
+ * Mixin for {@code ServerLevel} — 实现燃料等级注册表获取接口。
+ */
 public class ServerLevelMixin implements GetFuelGradeRegistryExtension {
     @Shadow @Final private MinecraftServer server;
     @Unique

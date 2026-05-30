@@ -15,6 +15,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import java.util.List;
 
 @Mixin(RecipeManager.class)
+/**
+ * Mixin for {@code RecipeManager} — 在配方加载后触发服务器配方修改事件。
+ */
 public class RecipeManagerMixin {
     @Inject(method = "prepare(Lnet/minecraft/server/packs/resources/ResourceManager;Lnet/minecraft/util/profiling/ProfilerFiller;)Lnet/minecraft/world/item/crafting/RecipeMap;", at = @At("RETURN"), cancellable = true)
     private static void prepare(ResourceManager resourceManager, ProfilerFiller profiler, CallbackInfoReturnable<RecipeMap> cir, @Local List<RecipeHolder<?>> list) {

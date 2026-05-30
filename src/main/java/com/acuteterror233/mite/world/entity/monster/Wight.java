@@ -17,6 +17,10 @@ import net.minecraft.world.entity.monster.Zombie;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * 尸鬼实体，继承僵尸行为。
+ * 对银器武器以外伤害免疫。
+ */
 public class Wight extends Zombie {
     private static final EquipmentSlot[] ARMOR_SLOTS = {EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET};
 

@@ -8,6 +8,10 @@ import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.levelgen.GenerationStep;
 
+/**
+ * 原版生物群落修改器。
+ * 向原版生物群落添加 MME 自定义特征（矿物生成、实体生成等）。
+ */
 public final class BiomeModification {
     public static void init(){
         BiomeModifications.addFeature(

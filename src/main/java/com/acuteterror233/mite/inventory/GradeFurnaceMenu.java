@@ -13,6 +13,10 @@ import net.minecraft.world.inventory.SimpleContainerData;
 import net.minecraft.world.item.crafting.RecipePropertySet;
 import net.minecraft.world.item.crafting.RecipeType;
 
+/**
+ * 等级熔炉菜单，继承 {@link AbstractFurnaceMenu}。
+ * 限制燃料槽仅接受对应燃烧等级的燃料。
+ */
 public class GradeFurnaceMenu extends AbstractFurnaceMenu {
     private final ContainerData propertyDelegate;
     private final Container inventory;

@@ -6,6 +6,9 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.state.BatRenderState;
 
+/**
+ * 巨型吸血鬼蝙蝠渲染器。
+ */
 public class GiantVampireBatRenderer extends VampireBatRenderer<GiantVampireBat>{
     public GiantVampireBatRenderer(EntityRendererProvider.Context context) {
         super(context);

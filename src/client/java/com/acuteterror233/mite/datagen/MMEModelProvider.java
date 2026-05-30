@@ -20,6 +20,10 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 
 
+/**
+ * MME 模型数据生成器。
+ * 为 MME 物品和方块生成模型 JSON。
+ */
 public class MMEModelProvider extends FabricModelProvider {
     public MMEModelProvider(FabricDataOutput output) {
         super(output);

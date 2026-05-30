@@ -6,6 +6,10 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.biome.Biome;
 
+/**
+ * MME 模组生物群落资源键定义。
+ * 定义地下维度相关生物群落的 {@link ResourceKey}。
+ */
 public class MMEBiomeKeys {
     public static final ResourceKey<Biome> UNDERGROUND = key("underground");
     public static final ResourceKey<Biome> DRIPSTONE_CAVES = key("dripstone_caves");

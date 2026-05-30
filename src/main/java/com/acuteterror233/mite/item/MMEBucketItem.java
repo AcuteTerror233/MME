@@ -24,6 +24,10 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * MME 桶物品，继承 {@link BucketItem}。
+ * 支持自定义材料（铜、银等）的桶装液体操作。
+ */
 public class MMEBucketItem extends BucketItem {
     private final Item empty_barrel;
     private final Fluid fluid;

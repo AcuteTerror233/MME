@@ -7,6 +7,9 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 
 @Mixin(FurnaceFuelSlot.class)
+/**
+ * Mixin for {@code FurnaceFuelSlot} — 修改熔炉燃料栏位判定逻辑。
+ */
 public class FurnaceFuelSlotMixin {
     /**
      * @author AcuteTerror233

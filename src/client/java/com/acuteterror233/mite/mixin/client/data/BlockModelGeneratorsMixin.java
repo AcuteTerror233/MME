@@ -29,6 +29,9 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 
 @Mixin(BlockModelGenerators.class)
+/**
+ * Mixin for {@code BlockModelGenerators} — 实现方块模型生成扩展接口。
+ */
 public abstract class BlockModelGeneratorsMixin implements BlockModelGeneratorsExtension {
     @Shadow
     public static MultiVariant plainVariant(ResourceLocation id) {

@@ -46,6 +46,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 
+/**
+ * 替换 Minecraft 原版战利品表（方块掉落、生物掉落、宝箱/结构战利品）。
+ * 通过 {@link net.fabricmc.fabric.api.loot.v3.LootTableEvents#REPLACE} 事件注册。
+ * <p>
+ * 同时提供树叶掉落、精准采集/时运判定、自动烧炼等工具方法。
+ */
 @SuppressWarnings("OptionalGetWithoutIsPresent")
 public final class LootTableReplace {
     public static final float[] JUNGLE_LEAVES_SAPLING_CHANGES = new float[]{0.025F, 0.027777778F, 0.03125F, 0.041666668F, 0.1F};
@@ -2271,6 +2277,176 @@ public final class LootTableReplace {
         );
         LOOT_TABLES_REPLACE.put(Blocks.ACACIA_LEAVES.getLootTable().get(),
                 provider -> createAdditionalFruitDrops(provider, Blocks.ACACIA_LEAVES, Blocks.ACACIA_SAPLING, NORMAL_LEAVES_SAPLING_CHANCES, MMEItems.ORANGE).build()
+        );
+        // --- 普通树叶（掉落树苗 + 木棍） ---
+        LOOT_TABLES_REPLACE.put(Blocks.SPRUCE_LEAVES.getLootTable().get(),
+                provider -> createLeavesDrops(provider, Blocks.SPRUCE_LEAVES, Blocks.SPRUCE_SAPLING, NORMAL_LEAVES_SAPLING_CHANCES).build()
+        );
+        LOOT_TABLES_REPLACE.put(Blocks.BIRCH_LEAVES.getLootTable().get(),
+                provider -> createLeavesDrops(provider, Blocks.BIRCH_LEAVES, Blocks.BIRCH_SAPLING, NORMAL_LEAVES_SAPLING_CHANCES).build()
+        );
+        LOOT_TABLES_REPLACE.put(Blocks.CHERRY_LEAVES.getLootTable().get(),
+                provider -> createLeavesDrops(provider, Blocks.CHERRY_LEAVES, Blocks.CHERRY_SAPLING, NORMAL_LEAVES_SAPLING_CHANCES).build()
+        );
+        LOOT_TABLES_REPLACE.put(Blocks.PALE_OAK_LEAVES.getLootTable().get(),
+                provider -> createLeavesDrops(provider, Blocks.PALE_OAK_LEAVES, Blocks.PALE_OAK_SAPLING, NORMAL_LEAVES_SAPLING_CHANCES).build()
+        );
+        LOOT_TABLES_REPLACE.put(Blocks.AZALEA_LEAVES.getLootTable().get(),
+                provider -> createLeavesDrops(provider, Blocks.AZALEA_LEAVES, Blocks.AZALEA, NORMAL_LEAVES_SAPLING_CHANCES).build()
+        );
+        LOOT_TABLES_REPLACE.put(Blocks.FLOWERING_AZALEA_LEAVES.getLootTable().get(),
+                provider -> createLeavesDrops(provider, Blocks.FLOWERING_AZALEA_LEAVES, Blocks.FLOWERING_AZALEA, NORMAL_LEAVES_SAPLING_CHANCES).build()
+        );
+        // --- 橡树/深色橡树树叶（额外掉落苹果） ---
+        LOOT_TABLES_REPLACE.put(Blocks.OAK_LEAVES.getLootTable().get(),
+                provider -> createLeavesDrops(provider, Blocks.OAK_LEAVES, Blocks.OAK_SAPLING, NORMAL_LEAVES_SAPLING_CHANCES)
+                        .withPool(
+                                LootPool.lootPool()
+                                        .setRolls(ConstantValue.exactly(1.0F))
+                                        .when(hasShearsOrSilkTouch(provider).invert())
+                                        .add(
+                                                LootItem.lootTableItem(Items.APPLE)
+                                                        .apply(ApplyExplosionDecay.explosionDecay())
+                                                        .when(
+                                                                BonusLevelTableCondition.bonusLevelFlatChance(provider.getOrThrow(Enchantments.FORTUNE), 0.005F, 0.0055555557F, 0.00625F, 0.008333334F, 0.025F)
+                                                        )
+                                        )
+                        ).build()
+        );
+        LOOT_TABLES_REPLACE.put(Blocks.DARK_OAK_LEAVES.getLootTable().get(),
+                provider -> createLeavesDrops(provider, Blocks.DARK_OAK_LEAVES, Blocks.DARK_OAK_SAPLING, NORMAL_LEAVES_SAPLING_CHANCES)
+                        .withPool(
+                                LootPool.lootPool()
+                                        .setRolls(ConstantValue.exactly(1.0F))
+                                        .when(hasShearsOrSilkTouch(provider).invert())
+                                        .add(
+                                                LootItem.lootTableItem(Items.APPLE)
+                                                        .apply(ApplyExplosionDecay.explosionDecay())
+                                                        .when(
+                                                                BonusLevelTableCondition.bonusLevelFlatChance(provider.getOrThrow(Enchantments.FORTUNE), 0.005F, 0.0055555557F, 0.00625F, 0.008333334F, 0.025F)
+                                                        )
+                                        )
+                        ).build()
+        );
+        // --- 红树树叶（无树苗，直接掉木棍） ---
+        LOOT_TABLES_REPLACE.put(Blocks.MANGROVE_LEAVES.getLootTable().get(),
+                provider -> LootTable.lootTable()
+                        .withPool(
+                                LootPool.lootPool()
+                                        .setRolls(ConstantValue.exactly(1.0F))
+                                        .add(
+                                                LootItem.lootTableItem(Blocks.MANGROVE_LEAVES)
+                                                        .when(hasShearsOrSilkTouch(provider))
+                                                        .otherwise(
+                                                                LootItem.lootTableItem(Items.STICK)
+                                                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)))
+                                                                        .apply(ApplyExplosionDecay.explosionDecay())
+                                                                        .when(BonusLevelTableCondition.bonusLevelFlatChance(provider.getOrThrow(Enchantments.FORTUNE), NORMAL_LEAVES_SAPLING_CHANCES))
+                                                        )
+                                        )
+                        ).build()
+        );
+        // --- 沙砾（时运掉落各种粒） ---
+        LOOT_TABLES_REPLACE.put(Blocks.GRAVEL.getLootTable().get(),
+                provider -> LootTable.lootTable()
+                        .withPool(
+                                LootPool.lootPool()
+                                        .setRolls(ConstantValue.exactly(1.0F))
+                                        .add(
+                                                LootItem.lootTableItem(Blocks.GRAVEL)
+                                                        .when(MatchTool.toolMatches(
+                                                                ItemPredicate.Builder.item()
+                                                                        .withComponents(
+                                                                                DataComponentMatchers.Builder.components()
+                                                                                        .partial(
+                                                                                                DataComponentPredicates.ENCHANTMENTS,
+                                                                                                EnchantmentsPredicate.enchantments(
+                                                                                                        List.of(
+                                                                                                                new EnchantmentPredicate(provider.lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(Enchantments.SILK_TOUCH), MinMaxBounds.Ints.atLeast(1))
+                                                                                                        )
+                                                                                                )
+                                                                                        ).build()
+                                                                        )
+                                                        ))
+                                                        .otherwise(
+                                                                LootItem.lootTableItem(MMEItems.ADAMANTIUM_NUGGET)
+                                                                        .when(BonusLevelTableCondition.bonusLevelFlatChance(provider.getOrThrow(Enchantments.FORTUNE), 0.000038103947568968F, 0.000076207895137936F, 0.000152415790275873F, 0.000304831580551745F))
+                                                                        .otherwise(
+                                                                                LootItem.lootTableItem(MMEItems.MITHRIL_NUGGET)
+                                                                                        .when(BonusLevelTableCondition.bonusLevelFlatChance(provider.getOrThrow(Enchantments.FORTUNE), 0.000076207895137936F, 0.000152415790275873F, 0.000304831580551745F, 0.00060966316110349F))
+                                                                                        .otherwise(
+                                                                                                LootItem.lootTableItem(MMEItems.OBSIDIAN_SHARD)
+                                                                                                        .when(BonusLevelTableCondition.bonusLevelFlatChance(provider.getOrThrow(Enchantments.FORTUNE), 0.0020576131687243F, 0.0041152263374486F, 0.0082304526748971F, 0.0164609053497942F))
+                                                                                                        .otherwise(
+                                                                                                                LootItem.lootTableItem(MMEItems.SILVER_NUGGET)
+                                                                                                                        .when(BonusLevelTableCondition.bonusLevelFlatChance(provider.getOrThrow(Enchantments.FORTUNE), 0.0185185185185185F, 0.037037037037037F, 0.0740740740740741F, 0.1481481481481481F))
+                                                                                                                        .otherwise(
+                                                                                                                                LootItem.lootTableItem(MMEItems.COPPER_NUGGET)
+                                                                                                                                        .when(BonusLevelTableCondition.bonusLevelFlatChance(provider.getOrThrow(Enchantments.FORTUNE), 0.0555555555555556F, 0.1111111111111111F, 0.2222222222222222F, 0.4444444444444444F))
+                                                                                                                                        .otherwise(
+                                                                                                                                                LootItem.lootTableItem(Items.FLINT)
+                                                                                                                                                        .when(BonusLevelTableCondition.bonusLevelFlatChance(provider.getOrThrow(Enchantments.FORTUNE), 0.0277777777777778F, 0.0555555555555556F, 0.1111111111111111F, 0.2222222222222222F))
+                                                                                                                                                        .otherwise(
+                                                                                                                                                                LootItem.lootTableItem(MMEItems.FLINT_SHARD)
+                                                                                                                                                                        .when(BonusLevelTableCondition.bonusLevelFlatChance(provider.getOrThrow(Enchantments.FORTUNE), 0.15625F, 0.3125F, 0.625F, 1.0F))
+                                                                                                                                                                        .otherwise(
+                                                                                                                                                                                LootItem.lootTableItem(Blocks.GRAVEL)
+                                                                                                                                                                                        .when(ExplosionCondition.survivesExplosion())
+                                                                                                                                                                        )
+                                                                                                                                                        )
+                                                                                                                                        )
+                                                                                                                        )
+                                                                                                        )
+                                                                                        )
+                                                                        )
+                                                        )
+                                        )
+                        ).build()
+        );
+        // --- 深层铜矿石（精准采集 + 时运） ---
+        LOOT_TABLES_REPLACE.put(Blocks.DEEPSLATE_COPPER_ORE.getLootTable().get(),
+                provider -> createSilkTouchWithPickaxesWithExplosiveItemTable(
+                        provider,
+                        Blocks.DEEPSLATE_COPPER_ORE,
+                        Items.RAW_COPPER,
+                        Items.RAW_COPPER
+                ).build()
+        );
+        // --- 营火（掉落木炭 × 2） ---
+        LOOT_TABLES_REPLACE.put(Blocks.CAMPFIRE.getLootTable().get(),
+                provider -> LootTable.lootTable()
+                        .withPool(
+                                LootPool.lootPool()
+                                        .setRolls(ConstantValue.exactly(1.0F))
+                                        .add(
+                                                LootItem.lootTableItem(Items.CHARCOAL)
+                                                        .apply(SetItemCountFunction.setCount(ConstantValue.exactly(2.0F)))
+                                                        .when(MatchTool.toolMatches(ItemPredicate.Builder.item()))
+                                                        .otherwise(
+                                                                LootItem.lootTableItem(Items.CHARCOAL)
+                                                                        .apply(SetItemCountFunction.setCount(ConstantValue.exactly(2.0F)))
+                                                                        .when(ExplosionCondition.survivesExplosion())
+                                                        )
+                                        )
+                        ).build()
+        );
+        // --- 灵魂营火（掉落灵魂土 × 1） ---
+        LOOT_TABLES_REPLACE.put(Blocks.SOUL_CAMPFIRE.getLootTable().get(),
+                provider -> LootTable.lootTable()
+                        .withPool(
+                                LootPool.lootPool()
+                                        .setRolls(ConstantValue.exactly(1.0F))
+                                        .add(
+                                                LootItem.lootTableItem(Blocks.SOUL_SOIL)
+                                                        .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F)))
+                                                        .when(MatchTool.toolMatches(ItemPredicate.Builder.item()))
+                                                        .otherwise(
+                                                                LootItem.lootTableItem(Blocks.SOUL_SOIL)
+                                                                        .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F)))
+                                                                        .when(ExplosionCondition.survivesExplosion())
+                                                        )
+                                        )
+                        ).build()
         );
 
         LootTableEvents.REPLACE.register((key, original, source, registries) -> {

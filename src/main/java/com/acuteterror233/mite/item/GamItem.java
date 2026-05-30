@@ -14,6 +14,10 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Consumer;
 
+/**
+ * 通用材料物品（Gam），继承 {@link Item}。
+ * 用作多种合成配方的中间材料。
+ */
 public class GamItem extends Item {
     private final int experience;
     public GamItem(Properties settings, int experience) {

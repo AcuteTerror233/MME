@@ -17,6 +17,10 @@ import net.minecraft.world.entity.monster.Zombie;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
+/**
+ * 暗影实体，继承僵尸行为。
+ * 对银器武器以外伤害免疫。
+ */
 public class Shadow extends Zombie {
     public Shadow(EntityType<? extends Shadow> entityType, Level level) {
         super(entityType, level);

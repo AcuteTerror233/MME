@@ -11,6 +11,9 @@ import net.minecraft.world.entity.monster.Spider;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * 恶魔蜘蛛实体，继承蜘蛛行为。
+ */
 public class DemonSpider extends Spider {
     public DemonSpider(EntityType<? extends DemonSpider> entityType, Level level) {
         super(entityType, level);

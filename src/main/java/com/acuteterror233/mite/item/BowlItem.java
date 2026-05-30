@@ -18,6 +18,10 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * 碗物品，继承 {@link Item}。
+ * 用于盛装食物的容器物品。
+ */
 public class BowlItem extends Item {
     public BowlItem(Properties properties) {
         super(properties);

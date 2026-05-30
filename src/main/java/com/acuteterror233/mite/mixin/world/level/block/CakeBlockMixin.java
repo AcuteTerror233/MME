@@ -9,6 +9,9 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(CakeBlock.class)
+/**
+ * Mixin for {@code CakeBlock} — 修改蛋糕食用行为。
+ */
 public class CakeBlockMixin {
     @Redirect(method = "eat", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/food/FoodData;eat(IF)V"))
     private static void eat(FoodData foodData, int i, float f) {

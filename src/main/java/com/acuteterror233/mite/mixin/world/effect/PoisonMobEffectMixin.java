@@ -5,6 +5,9 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 
 @Mixin(PoisonMobEffect.class)
+/**
+ * Mixin for {@code PoisonMobEffect} — 调整中毒效果的伤害机制。
+ */
 public class PoisonMobEffectMixin {
 
     /**

@@ -11,6 +11,9 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(ArmorType.class)
+/**
+ * Mixin for {@code ArmorType} — 注册 MME 自定义盔甲类型。
+ */
 public class ArmorTypeMixin {
     @Mutable
     @Shadow

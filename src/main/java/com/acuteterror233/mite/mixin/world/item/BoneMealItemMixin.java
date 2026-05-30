@@ -12,6 +12,9 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 
 @Mixin(BoneMealItem.class)
+/**
+ * Mixin for {@code BoneMealItem} — 修改骨粉催熟行为。
+ */
 public abstract class BoneMealItemMixin {
     /**
      * @author AcuteTerror233

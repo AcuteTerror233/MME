@@ -14,6 +14,10 @@ import net.minecraft.world.level.levelgen.placement.*;
 
 import java.util.List;
 
+/**
+ * 主世界放置特征注册。
+ * 定义主世界特征的生成规则（高度、频率、生物群落等）。
+ */
 public class OverworldPlacedFeatures {
     public static final ResourceKey<PlacedFeature> OVERWORLD_ORE_SILVER = of("overworld_ore_silver");
     public static final ResourceKey<PlacedFeature> OVERWORLD_ORE_SILVER_SMALL = of("overworld_ore_silver_small");

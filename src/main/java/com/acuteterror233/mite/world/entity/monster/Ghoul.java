@@ -11,6 +11,9 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.monster.Zombie;
 import net.minecraft.world.level.Level;
 
+/**
+ * 食尸鬼实体，继承僵尸行为。
+ */
 public class Ghoul extends Zombie {
     public Ghoul(EntityType<? extends Ghoul> entityType, Level level) {
         super(entityType, level);

@@ -19,6 +19,10 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.concurrent.CompletableFuture;
 
+/**
+ * MME 实体战利品表数据生成器。
+ * 为 MME 自定义实体生成战利品表 JSON（食尸鬼、蜘蛛、苦力怕等）。
+ */
 public class MMEEntityLootTableProvider extends FabricEntityLootTableProvider {
     public MMEEntityLootTableProvider(FabricDataOutput output, @NotNull CompletableFuture<HolderLookup.Provider> registryLookup) {
         super(output, registryLookup);

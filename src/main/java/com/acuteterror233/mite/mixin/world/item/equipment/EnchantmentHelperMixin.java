@@ -9,6 +9,9 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 
 @Mixin(EnchantmentHelper.class)
+/**
+ * Mixin for {@code EnchantmentHelper} — 修改附魔辅助逻辑。
+ */
 public class EnchantmentHelperMixin {
     @Overwrite
     public static int getEnchantmentCost(RandomSource randomSource, int i, int j, ItemStack itemStack) {

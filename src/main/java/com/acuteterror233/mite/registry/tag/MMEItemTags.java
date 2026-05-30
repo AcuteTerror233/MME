@@ -6,6 +6,10 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 
+/**
+ * MME 模组物品标签定义。
+ * 用于分类物品类型（粒、锭、碎片、桶、硬币等）及工具等级材料。
+ */
 public interface MMEItemTags {
     TagKey<Item> NUGGET = key("nugget");
     TagKey<Item> SHARD = key("shard");

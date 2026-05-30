@@ -9,6 +9,10 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.concurrent.CompletableFuture;
 
+/**
+ * MME 动态注册表数据生成器。
+ * 注册维度类型、生物群落、配置特征等世界生成数据。
+ */
 public class MMEDynamicRegistry extends FabricDynamicRegistryProvider {
     public MMEDynamicRegistry(FabricDataOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
         super(output, registriesFuture);

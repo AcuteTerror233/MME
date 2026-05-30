@@ -20,6 +20,10 @@ import net.minecraft.world.item.ItemStack;
 import org.lwjgl.glfw.GLFW;
 
 @Environment(EnvType.CLIENT)
+/**
+ * 等级铁砧 GUI 界面。
+ * 渲染等级铁砧的客户端界面。
+ */
 public class GradeAnvilScreen extends ItemCombinerScreen<GradeAnvilMenu> {
     private static final ResourceLocation TEXT_FIELD_TEXTURE = ResourceLocation.withDefaultNamespace("container/anvil/text_field");
     private static final ResourceLocation TEXT_FIELD_DISABLED_TEXTURE = ResourceLocation.withDefaultNamespace("container/anvil/text_field_disabled");

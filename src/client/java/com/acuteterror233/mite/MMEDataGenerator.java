@@ -12,6 +12,10 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.core.registries.Registries;
 
+/**
+ * MME 数据生成入口，实现 {@link DataGeneratorEntrypoint}。
+ * 注册所有数据生成 Provider：战利品表、配方、标签、模型、进度、语言文件。
+ */
 public class MMEDataGenerator implements DataGeneratorEntrypoint {
 	@Override
 	public void onInitializeDataGenerator(FabricDataGenerator generator) {

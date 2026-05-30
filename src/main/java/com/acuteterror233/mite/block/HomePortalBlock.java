@@ -9,6 +9,10 @@ import net.minecraft.world.level.portal.TeleportTransition;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
+/**
+ * 家园传送门方块。
+ * 将实体传送至世界出生点。
+ */
 public class HomePortalBlock extends AbstractPortalBlock {
     public HomePortalBlock(Properties settings) {
         super(settings);

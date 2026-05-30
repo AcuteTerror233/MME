@@ -11,6 +11,9 @@ import net.minecraft.client.renderer.entity.state.ZombieRenderState;
 import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * 火元素渲染器。
+ */
 public class FireElementalRenderer extends HumanoidMobRenderer<FireElemental, ZombieRenderState, ZombieModel<ZombieRenderState>> {
     private static final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, "textures/entity/fire_elemental.png");
 

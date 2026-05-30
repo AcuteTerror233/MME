@@ -10,6 +10,10 @@ import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * 等级熔炉方块实体，继承抽象等级熔炉逻辑。
+ * 使用烧炼配方类型，可指定最大燃烧等级。
+ */
 public class GradeFurnaceBlockEntity extends AbstractGradeFurnaceBlockEntity{
     public GradeFurnaceBlockEntity(BlockPos pos, BlockState state) {
         this(pos, state, 1);

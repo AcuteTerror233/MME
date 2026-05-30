@@ -22,6 +22,9 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(FallingBlockEntity.class)
+/**
+ * Mixin for {@code FallingBlockEntity} — 修改掉落方块实体行为。
+ */
 public abstract class FallingBlockEntityMixin extends Entity {
     @Shadow
     @Nullable

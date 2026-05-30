@@ -11,6 +11,9 @@ import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
 @Mixin(SugarCaneBlock.class)
+/**
+ * Mixin for {@code SugarCaneBlock} — 修改甘蔗生长行为。
+ */
 public class SugarCaneBlockMixin {
     @Shadow
     @Final

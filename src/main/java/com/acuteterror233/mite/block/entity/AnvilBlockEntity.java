@@ -14,6 +14,10 @@ import net.minecraft.world.level.block.state.BlockState;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * 铁砧方块实体。
+ * 存储铁砧的损坏等级和材料限制信息，控制铁砧降级逻辑。
+ */
 public class AnvilBlockEntity extends BlockEntity {
     public static final Map<Block, Block> ANVIL_MAP = new HashMap<>(){{
         put(MMEBlocks.NETHERITE_ANVIL, MMEBlocks.CHIPPED_NETHERITE_ANVIL);

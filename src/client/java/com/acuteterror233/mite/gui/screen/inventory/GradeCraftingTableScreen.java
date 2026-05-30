@@ -19,6 +19,10 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 @Environment(EnvType.CLIENT)
+/**
+ * 等级工作台 GUI 界面。
+ * 渲染等级工作台的客户端界面。
+ */
 public class GradeCraftingTableScreen extends AbstractRecipeBookScreen<GradeCraftingTableMenu> {
     private static final ResourceLocation TEXTURE = ResourceLocation.withDefaultNamespace("textures/gui/container/crafting_table.png");
     private static final ResourceLocation CRAFTING_PROGRESS_TEXTURE = ResourceLocation.withDefaultNamespace("container/furnace/burn_progress");

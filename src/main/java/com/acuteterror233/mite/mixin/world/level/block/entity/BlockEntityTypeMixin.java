@@ -10,6 +10,9 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(BlockEntityType.class)
+/**
+ * Mixin for {@code BlockEntityType} — 注册 MME 自定义方块实体类型。
+ */
 public class BlockEntityTypeMixin {
     @Redirect(method = "<clinit>", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/entity/BlockEntityType;register(Ljava/lang/String;Lnet/minecraft/world/level/block/entity/BlockEntityType$BlockEntitySupplier;[Lnet/minecraft/world/level/block/Block;)Lnet/minecraft/world/level/block/entity/BlockEntityType;"))
     private static <T extends BlockEntity>BlockEntityType<T> register(String string, BlockEntityType.BlockEntitySupplier<? extends T> blockEntitySupplier, Block[] blocks) {

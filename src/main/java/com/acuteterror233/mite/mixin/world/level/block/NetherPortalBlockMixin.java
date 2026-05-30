@@ -16,6 +16,9 @@ import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
 
 @Mixin(NetherPortalBlock.class)
+/**
+ * Mixin for {@code NetherPortalBlock} — 修改地狱门行为和传送逻辑。
+ */
 public class NetherPortalBlockMixin {
     /**
      * @author  AcuteTerror233

@@ -9,6 +9,9 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(DyeItem.class)
+/**
+ * Mixin for {@code DyeItem} — 修改染料使用行为。
+ */
 public abstract class DyeItemMixin {
     @Inject(method = "<init>", at = @At("HEAD"))
     private static void init(DyeColor color, Item.Properties settings, CallbackInfo ci) {

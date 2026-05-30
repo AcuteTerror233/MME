@@ -6,6 +6,9 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 
 @Mixin(ApplyBonusCount.OreDrops.class)
+/**
+ * Mixin for {@code ApplyBonusCount} — 应用 MME 自定义附魔（如收割）的时运加成。
+ */
 public class ApplyBonusCountMixin {
     @Overwrite
     public int calculateNewCount(RandomSource randomSource, int i, int j) {

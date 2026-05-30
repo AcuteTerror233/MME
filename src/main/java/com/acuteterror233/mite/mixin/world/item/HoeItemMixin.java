@@ -21,6 +21,9 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 import java.util.function.Consumer;
 
 @Mixin(HoeItem.class)
+/**
+ * Mixin for {@code HoeItem} — 修改锄头锄地行为。
+ */
 public abstract class HoeItemMixin extends Item {
     public HoeItemMixin(Properties properties) {
         super(properties);

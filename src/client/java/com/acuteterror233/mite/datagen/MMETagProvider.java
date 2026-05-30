@@ -26,6 +26,10 @@ import net.minecraft.world.level.block.Blocks;
 
 import java.util.concurrent.CompletableFuture;
 
+/**
+ * MME 标签数据生成器。
+ * 生成 MME 模组的物品/方块/实体标签 JSON。
+ */
 public class MMETagProvider {
     MMETagProvider() {
 

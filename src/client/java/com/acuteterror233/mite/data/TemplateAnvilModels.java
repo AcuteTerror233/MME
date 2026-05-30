@@ -9,6 +9,10 @@ import net.minecraft.world.level.block.Block;
 
 import java.util.Optional;
 
+/**
+ * 铁砧模型模板。
+ * 生成铁砧不同损坏状态的方块模型 JSON。
+ */
 public class TemplateAnvilModels {
     public static final TextureSlot BODY = TextureSlot.create("body");
     public static final ModelTemplate TEMPLATE_ANVIL = new ModelTemplate(Optional.of(ResourceLocation.fromNamespaceAndPath(MME.MOD_ID,"block/template_anvil")),Optional.empty(), BODY, TextureSlot.TOP,TextureSlot.PARTICLE);

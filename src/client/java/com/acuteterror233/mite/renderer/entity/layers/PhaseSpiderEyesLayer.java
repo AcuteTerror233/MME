@@ -11,6 +11,9 @@ import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
 import net.minecraft.resources.ResourceLocation;
 
 @Environment(EnvType.CLIENT)
+/**
+ * 相位蜘蛛眼睛发光层渲染。
+ */
 public class PhaseSpiderEyesLayer<M extends SpiderModel> extends EyesLayer<LivingEntityRenderState, M> {
     private static final RenderType SPIDER_EYES = RenderType.eyes(ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, "textures/entity/phase_spider_eyes.png"));
 

@@ -16,6 +16,9 @@ import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
 @Mixin(Gui.class)
+/**
+ * Mixin for {@code Gui} — 修改游戏界面 HUD 渲染。
+ */
 public abstract class GuiMixin {
     @Final
     @Shadow

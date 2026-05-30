@@ -16,6 +16,9 @@ import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * 吸血鬼蝙蝠渲染器基类。
+ */
 public class VampireBatRenderer<T extends VampireBat> extends MobRenderer<T, BatRenderState, BatModel> {
     private static final ResourceLocation TEXTURE = ResourceLocation.withDefaultNamespace("textures/entity/bat.png");
     private static final ResourceLocation EYES = ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, "textures/entity/bat/vampire_bat.png");

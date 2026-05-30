@@ -14,6 +14,10 @@ import java.util.Objects;
 /**
  * 该功能由AI编写
  */
+/**
+ * 符文传送门坐标生成器。
+ * 计算符文传送门在目标维度的对应坐标。
+ */
 public class RunePortalCoordinateGenerator {
     private static final ThreadLocal<MessageDigest> SHA_256 = ThreadLocal.withInitial(() -> {
         try {

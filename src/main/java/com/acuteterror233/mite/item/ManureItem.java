@@ -10,6 +10,10 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * 肥料物品，继承 {@link Item}。
+ * 用作骨粉替代物，由动物粪便产出。
+ */
 public class ManureItem extends Item {
     public ManureItem(Properties properties) {
         super(properties);

@@ -31,6 +31,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import java.util.Optional;
 
 @Mixin(InventoryMenu.class)
+/**
+ * Mixin for {@code InventoryMenu} — 实现物品栏菜单扩展接口。
+ */
 public abstract class InventoryMenuMixin extends AbstractCraftingMenu implements InventoryMenuExtension {
     @Unique
     private final int DefaultCraftingTime = 100;

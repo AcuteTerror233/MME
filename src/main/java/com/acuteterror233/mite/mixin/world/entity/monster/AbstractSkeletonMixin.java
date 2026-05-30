@@ -19,6 +19,9 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 
 @Mixin(AbstractSkeleton.class)
+/**
+ * Mixin for {@code AbstractSkeleton} — 修改骷髅远程攻击行为。
+ */
 public abstract class AbstractSkeletonMixin  extends Monster implements RangedAttackMob {
     protected AbstractSkeletonMixin(EntityType<? extends Monster> entityType, Level level) {
         super(entityType, level);

@@ -23,6 +23,10 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.concurrent.CompletableFuture;
 
+/**
+ * MME 配方数据生成器。
+ * 为 MME 模组生成合成/烧炼配方 JSON。
+ */
 public class MMERecipeGenerator extends FabricRecipeProvider {
 
     private static final ImmutableList<ItemLike> ADAMANTIUM_SMELTABLES = ImmutableList.of(MMEBlocks.ADAMANTIUM_ORE, MMEBlocks.DEEPSLATE_ADAMANTIUM_ORE, MMEItems.RAW_ADAMANTIUM);

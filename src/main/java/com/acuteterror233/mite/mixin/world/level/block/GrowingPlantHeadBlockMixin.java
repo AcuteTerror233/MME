@@ -13,6 +13,9 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(GrowingPlantHeadBlock.class)
+/**
+ * Mixin for {@code GrowingPlantHeadBlock} — 修改植物顶端生长行为。
+ */
 public class GrowingPlantHeadBlockMixin {
     @Mutable
     @Shadow

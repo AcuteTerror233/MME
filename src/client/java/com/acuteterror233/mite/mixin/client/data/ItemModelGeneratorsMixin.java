@@ -27,6 +27,9 @@ import java.util.List;
 import java.util.function.BiConsumer;
 
 @Mixin(ItemModelGenerators.class)
+/**
+ * Mixin for {@code ItemModelGenerators} — 实现物品模型生成扩展接口。
+ */
 public abstract class ItemModelGeneratorsMixin implements ItemModelGeneratorsExtension {
 
     @Shadow @Final public ItemModelOutput itemModelOutput;

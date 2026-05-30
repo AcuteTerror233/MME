@@ -8,6 +8,9 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(CactusBlock.class)
+/**
+ * Mixin for {@code CactusBlock} — 修改仙人掌生长行为。
+ */
 public class CactusBlockMixin {
     @Redirect(method = "randomTick", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/state/BlockState;getValue(Lnet/minecraft/world/level/block/state/properties/Property;)Ljava/lang/Comparable;"))
     public Comparable<Integer> getValue(BlockState blockState, Property<Integer> property) {

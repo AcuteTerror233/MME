@@ -16,6 +16,10 @@ import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvi
 
 import java.util.List;
 
+/**
+ * 主世界配置特征注册。
+ * 定义主世界新增的矿物和植被特征（如蓝莓灌木丛）。
+ */
 public class OverworldConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> BLUE_BERRY_BUSH = createKey("blue_berry_bush");
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> featureRegisterable){

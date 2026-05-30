@@ -33,6 +33,10 @@ import net.minecraft.world.level.block.EnchantingTableBlock;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * MME 附魔菜单，替代原版附魔台界面。
+ * 提供自定义附魔逻辑，支持附魔等级和材料限制。
+ */
 public class MMEEnchantmentMenu extends AbstractContainerMenu {
     static final ResourceLocation EMPTY_SLOT_LAPIS_LAZULI = ResourceLocation.withDefaultNamespace("container/slot/lapis_lazuli");
     private final Container enchantSlots = new SimpleContainer(2) {

@@ -7,6 +7,10 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 
+/**
+ * 符文传送门方块实体。
+ * 存储传送门的目标坐标，支持 NBT 持久化。
+ */
 public class RunePortalBlockEntity extends BlockEntity{
     private BlockPos destinationPos;
     public RunePortalBlockEntity(BlockPos pos, BlockState state) {

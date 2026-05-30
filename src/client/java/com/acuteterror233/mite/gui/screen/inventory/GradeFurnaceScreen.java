@@ -19,6 +19,10 @@ import net.minecraft.world.item.crafting.RecipeBookCategories;
 import java.util.List;
 
 @Environment(EnvType.CLIENT)
+/**
+ * 等级熔炉 GUI 界面。
+ * 渲染等级熔炉的客户端界面。
+ */
 public class GradeFurnaceScreen extends AbstractFurnaceScreen<GradeFurnaceMenu> {
     private static final ResourceLocation LIT_PROGRESS_TEXTURE = ResourceLocation.withDefaultNamespace("container/furnace/lit_progress");
     private static final ResourceLocation BURN_PROGRESS_TEXTURE = ResourceLocation.withDefaultNamespace("container/furnace/burn_progress");

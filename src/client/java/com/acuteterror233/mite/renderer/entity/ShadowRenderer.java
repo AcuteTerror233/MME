@@ -7,6 +7,9 @@ import net.minecraft.client.renderer.entity.state.ZombieRenderState;
 import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * 暗影渲染器。
+ */
 public class ShadowRenderer extends ZombieRenderer {
     private static final ResourceLocation SHADOW_LOCATION = ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, "textures/entity/zombie/shadow.png");
 

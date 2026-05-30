@@ -6,6 +6,10 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.block.Block;
 
+/**
+ * MME 模组方块标签定义。
+ * 用于控制工具挖掘等级（{@code INCORRECT_FOR_*} / {@code NEEDS_*}）等方块属性分类。
+ */
 public interface MMEBlockTags {
     TagKey<Block> INCORRECT_FOR_ADAMANTIUM_TOOL = key("incorrect_for_adamantium_tool");
     TagKey<Block> INCORRECT_FOR_MITHRIL_TOOL = key("incorrect_for_mithril_tool");

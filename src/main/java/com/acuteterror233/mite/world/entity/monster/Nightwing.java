@@ -9,8 +9,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 
 /**
- * 暗影蝙蝠 (Nightwing)。
- * 继承 VampireBat，攻击附带 5 秒黑暗效果。
+ * 夜翼实体，继承吸血鬼蝙蝠行为。
  */
 public class Nightwing extends VampireBat {
     public Nightwing(EntityType<? extends Nightwing> entityType, Level level) {

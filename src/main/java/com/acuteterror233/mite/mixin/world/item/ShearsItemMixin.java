@@ -17,6 +17,9 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(ShearsItem.class)
+/**
+ * Mixin for {@code ShearsItem} — 修改剪刀挖掘速度判定。
+ */
 public class ShearsItemMixin {
     @Inject(method = "useOn", at = @At("HEAD"), cancellable = true)
     public void useOn(UseOnContext useOnContext, CallbackInfoReturnable<InteractionResult> cir) {

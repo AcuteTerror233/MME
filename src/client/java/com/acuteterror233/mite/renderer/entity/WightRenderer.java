@@ -7,6 +7,9 @@ import net.minecraft.client.renderer.entity.state.ZombieRenderState;
 import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * 尸鬼渲染器。
+ */
 public class WightRenderer extends ZombieRenderer {
     private static final ResourceLocation WIGHT_LOCATION = ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, "textures/entity/zombie/wight.png");
 

@@ -32,6 +32,10 @@ import java.util.List;
 import java.util.Optional;
 
 @Environment(EnvType.CLIENT)
+/**
+ * MME 附魔 GUI 界面。
+ * 渲染绿玉附魔台的客户端界面。
+ */
 public class MMEEnchantmentScreen extends AbstractContainerScreen<MMEEnchantmentMenu> {
     private static final ResourceLocation[] ENABLED_LEVEL_SPRITES = new ResourceLocation[]{
             ResourceLocation.withDefaultNamespace("container/enchanting_table/level_1"),

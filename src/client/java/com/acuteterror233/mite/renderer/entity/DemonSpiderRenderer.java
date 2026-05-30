@@ -8,6 +8,9 @@ import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
 import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * 恶魔蜘蛛渲染器。
+ */
 public class DemonSpiderRenderer extends SpiderRenderer<DemonSpider> {
     private static final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, "textures/entity/spider/demon_spider.png");
 

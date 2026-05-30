@@ -12,6 +12,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.util.List;
 
 @Mixin(OreConfiguration.class)
+/**
+ * Mixin for {@code OreConfiguration} — 修改矿物生成配置。
+ */
 public class OreConfigurationMixin {
     @Mutable
     @Final

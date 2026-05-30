@@ -33,6 +33,10 @@ import net.minecraft.world.level.pathfinder.PathType;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * 火元素实体，敌对火焰生物。
+ * 免疫非银器伤害，在岩浆中活动，攻击点燃目标，对水敏感。
+ */
 public class FireElemental extends Monster {
     public FireElemental(EntityType<? extends FireElemental> entityType, Level level) {
         super(entityType, level);
@@ -101,18 +105,18 @@ public class FireElemental extends Monster {
     }
 
     @Override
-    protected SoundEvent getAmbientSound() {
-        return null;
+    protected @NotNull SoundEvent getAmbientSound() {
+        return SoundEvents.FIRE_AMBIENT;
     }
 
     @Override
     protected @NotNull SoundEvent getHurtSound(DamageSource damageSource) {
-        return SoundEvents.ZOMBIE_HURT;
+        return SoundEvents.EMPTY;
     }
 
     @Override
     protected @NotNull SoundEvent getDeathSound() {
-        return SoundEvents.ZOMBIE_DEATH;
+        return SoundEvents.EMPTY;
     }
 
     @Override

@@ -15,6 +15,10 @@ import net.minecraft.world.item.equipment.EquipmentAssets;
 
 import java.util.Map;
 
+/**
+ * MME 模组盔甲材料定义。
+ * 定义精金、秘银、远古金属、生锈铁、铜、银等盔甲的材料属性和资源键。
+ */
 public class MMEArmorMaterials {
     public static final ResourceKey<EquipmentAsset> NETHERITE_MATERIAL_KEY = EquipmentAssets.NETHERITE;
     public static final ResourceKey<EquipmentAsset> ADAMANTIUM_MATERIAL_KEY = ResourceKey.create(EquipmentAssets.ROOT_ID, ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, "adamantium"));

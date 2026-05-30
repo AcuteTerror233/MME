@@ -28,6 +28,10 @@ import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+/**
+ * 相位蜘蛛实体，继承蜘蛛行为。
+ * 可进行短距离传送。
+ */
 public class PhaseSpider extends Spider {
     private static final EntityDataAccessor<Integer> DODGE_CHARGES = SynchedEntityData.defineId(PhaseSpider.class, EntityDataSerializers.INT);
     private static final int MAX_DODGE_CHARGES = 5;

@@ -14,6 +14,9 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(FarmBlock.class)
+/**
+ * Mixin for {@code FarmBlock} — 添加肥力系统支持。
+ */
 public abstract class FarmBlockMixin extends Block {
     @Shadow
     public static final IntegerProperty MOISTURE = BlockStateProperties.MOISTURE;

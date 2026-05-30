@@ -24,6 +24,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Mixin(PortalShape.class)
+/**
+ * Mixin for {@code PortalShape} — 实现通用传送门形状检测接口。
+ */
 public class PortalShapeMixin implements UniversalPortalShapeExtension {
     @Shadow
     @Final

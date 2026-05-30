@@ -26,6 +26,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.util.function.Consumer;
 
 @Mixin(ItemStack.class)
+/**
+ * Mixin for {@code ItemStack} — 扩展物品堆行为。
+ */
 public abstract class ItemStackMixin  implements DataComponentHolder, FabricItemStack {
 
     @Shadow

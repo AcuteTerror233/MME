@@ -35,6 +35,9 @@ import java.util.Objects;
 import java.util.Optional;
 
 @Mixin(VillagerTrades.class)
+/**
+ * Mixin for {@code VillagerTrades} — 修改村民交易列表。
+ */
 public class VillagerTradesMixin {
     @Shadow
     @Final

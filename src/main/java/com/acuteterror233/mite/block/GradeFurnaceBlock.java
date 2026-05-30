@@ -19,6 +19,10 @@ import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+/**
+ * 等级熔炉方块，继承原版熔炉行为并限制燃料燃烧等级。
+ * 每个等级的熔炉只能使用不超过其最大燃烧等级的燃料。
+ */
 public class GradeFurnaceBlock extends FurnaceBlock {
     private final int maxCombustionGrade;
     GradeFurnaceBlock(Properties settings, int maxCombustionGrade) {

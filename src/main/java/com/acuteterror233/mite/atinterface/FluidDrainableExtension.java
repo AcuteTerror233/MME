@@ -14,6 +14,10 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;
 
+/**
+ * 可排液扩展接口。
+ * 允许方块实体在特定条件下被桶类物品排出液体。
+ */
 public interface FluidDrainableExtension {
     ItemStack MME$TakeFluid(@Nullable LivingEntity drainer, LevelAccessor world, BlockPos pos, BlockState state, Item item);
 

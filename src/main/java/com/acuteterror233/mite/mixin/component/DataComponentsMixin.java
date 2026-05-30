@@ -17,6 +17,9 @@ import org.spongepowered.asm.mixin.Mutable;
 import org.spongepowered.asm.mixin.Shadow;
 
 @Mixin(DataComponents.class)
+/**
+ * Mixin for {@code DataComponents} — 注册 MME 自定义数据组件。
+ */
 public class DataComponentsMixin {
     @Final
     @Shadow

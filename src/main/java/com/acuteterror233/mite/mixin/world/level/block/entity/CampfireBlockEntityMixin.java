@@ -18,6 +18,9 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(CampfireBlockEntity.class)
+/**
+ * Mixin for {@code CampfireBlockEntity} — 实现营火方块实体扩展接口。
+ */
 public class CampfireBlockEntityMixin implements CampfireBlockEntityExtension {
     @Unique private int remainingIgnitionTime = 1600;
     @Inject(method = "cookTick", at = @At("HEAD"))

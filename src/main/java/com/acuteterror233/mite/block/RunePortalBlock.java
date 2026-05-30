@@ -12,6 +12,10 @@ import net.minecraft.world.level.portal.TeleportTransition;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
+/**
+ * 符文传送门方块。
+ * 通过方块实体 {@link com.acuteterror233.mite.block.entity.RunePortalBlockEntity} 存储目标坐标，传送至预定的目的地。
+ */
 public class RunePortalBlock extends AbstractPortalBlock implements EntityBlock {
 
     public RunePortalBlock(Properties settings) {

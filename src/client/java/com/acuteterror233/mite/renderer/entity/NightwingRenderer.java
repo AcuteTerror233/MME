@@ -7,6 +7,9 @@ import net.minecraft.client.renderer.entity.state.BatRenderState;
 import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * 夜翼渲染器。
+ */
 public class NightwingRenderer extends VampireBatRenderer<Nightwing>{
     private static final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, "textures/entity/bat/nightwing.png");
     public NightwingRenderer(EntityRendererProvider.Context context) {

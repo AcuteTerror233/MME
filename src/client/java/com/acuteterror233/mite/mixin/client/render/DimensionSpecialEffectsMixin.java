@@ -12,6 +12,9 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(DimensionSpecialEffects.class)
+/**
+ * Mixin for {@code DimensionSpecialEffects} — 自定义维度视觉效果（天空颜色等）。
+ */
 public class DimensionSpecialEffectsMixin {
     @Final @Shadow private static Object2ObjectMap<ResourceLocation, DimensionSpecialEffects> EFFECTS;
     @Inject(method = "<clinit>",at = @At("TAIL"))

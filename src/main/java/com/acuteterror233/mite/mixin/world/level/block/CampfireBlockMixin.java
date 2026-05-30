@@ -18,6 +18,9 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 
 @Mixin(CampfireBlock.class)
+/**
+ * Mixin for {@code CampfireBlock} — 修改营火行为。
+ */
 public class CampfireBlockMixin {
     /**
      * @author AcuteTerror233

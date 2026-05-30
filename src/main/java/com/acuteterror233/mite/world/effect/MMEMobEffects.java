@@ -7,6 +7,10 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffect;
 
+/**
+ * MME 模组状态效果注册中心。
+ * 注册自定义药水效果（营养不良、胰岛素抵抗等）。
+ */
 public class MMEMobEffects {
     public static final Holder<MobEffect> MALNUTRITION = register(
             "malnutrition",

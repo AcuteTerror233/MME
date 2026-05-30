@@ -15,6 +15,10 @@ import net.minecraft.world.item.equipment.EquipmentAsset;
 
 import java.util.Map;
 
+/**
+ * MME 模组盔甲材料数据记录。
+ * 封装盔甲材料的耐久倍数、护甲值、附魔能力、修理物品、声音和属性修饰符。
+ */
 public record MMEArmorMaterial(
         int durability,
         Map<ArmorType, Float> defense,

@@ -24,6 +24,9 @@ import org.spongepowered.asm.mixin.Unique;
 import java.util.Optional;
 
 @Mixin(AbstractCow.class)
+/**
+ * Mixin for {@code Cow} — 扩展牛的行为。
+ */
 public abstract class AbstractCowMixin extends Animal {
     @Unique
     private int recoveryCounter = 0;

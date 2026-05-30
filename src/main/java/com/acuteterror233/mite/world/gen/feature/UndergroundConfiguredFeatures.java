@@ -17,6 +17,10 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
 
 import java.util.List;
 
+/**
+ * 地下维度配置特征注册。
+ * 定义地下世界的矿物和植被生成特征。
+ */
 public class UndergroundConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_ADAMANTIUM_BURIED = of("ore_adamantium");
     public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_ADAMANTIUM_BURIED_SMALL = of("ore_adamantium_small");

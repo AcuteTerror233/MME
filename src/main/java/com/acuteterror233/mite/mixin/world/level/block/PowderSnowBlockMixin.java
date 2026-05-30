@@ -20,6 +20,9 @@ import org.spongepowered.asm.mixin.Mixin;
 import java.util.Optional;
 
 @Mixin(PowderSnowBlock.class)
+/**
+ * Mixin for {@code PowderSnowBlock} — 实现细雪可排液接口。
+ */
 public class PowderSnowBlockMixin implements FluidDrainableExtension {
     @Override
     public ItemStack MME$TakeFluid(@Nullable LivingEntity drainer, LevelAccessor world, BlockPos pos, BlockState state, Item item) {

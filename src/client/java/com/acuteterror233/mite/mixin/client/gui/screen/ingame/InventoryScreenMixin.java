@@ -23,6 +23,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.util.List;
 
 @Mixin(InventoryScreen.class)
+/**
+ * Mixin for {@code InventoryScreen} — 修改物品栏界面。
+ */
 public abstract class InventoryScreenMixin extends AbstractRecipeBookScreen<InventoryMenu> {
     @Unique
     private static final ResourceLocation CRAFTING_PROGRESS_TEXTURE = ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, "container/inventory/inventory_progress");

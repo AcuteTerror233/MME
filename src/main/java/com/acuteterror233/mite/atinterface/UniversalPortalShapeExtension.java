@@ -9,6 +9,10 @@ import net.minecraft.world.level.block.state.BlockState;
 
 import java.util.List;
 
+/**
+ * 通用传送门形状扩展接口。
+ * 允许自定义传送门结构检测逻辑。
+ */
 public interface UniversalPortalShapeExtension {
     boolean MME$CheckBottomCorner(BlockGetter world, Block block);
     List<BlockState> MME$GetBottomStateList(BlockGetter world);

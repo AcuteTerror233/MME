@@ -33,6 +33,10 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
+/**
+ * MME 模组方块注册中心。
+ * 定义并注册所有自定义方块及其对应的方块实体、菜单类型。
+ */
 public class MMEBlocks {
     public static final Block ADAMANTIUM_ORE = register(        //艾德曼矿
             "adamantium_ore",

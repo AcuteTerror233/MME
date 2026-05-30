@@ -14,6 +14,9 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(ServerPlayer.class)
+/**
+ * Mixin for {@code ServerPlayer} — 扩展服务端玩家行为（营养、配方等）。
+ */
 public abstract class ServerPlayerMixin extends Player {
     @Shadow
     public ServerGamePacketListenerImpl connection;

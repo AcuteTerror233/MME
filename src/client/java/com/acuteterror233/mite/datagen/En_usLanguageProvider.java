@@ -12,6 +12,10 @@ import net.minecraft.core.HolderLookup;
 
 import java.util.concurrent.CompletableFuture;
 
+/**
+ * 英文语言文件生成器。
+ * 为 MME 模组物品/方块生成英文翻译键值对。
+ */
 public class En_usLanguageProvider extends FabricLanguageProvider {
 
     public En_usLanguageProvider(FabricDataOutput dataOutput, CompletableFuture<HolderLookup.Provider> registryLookup) {

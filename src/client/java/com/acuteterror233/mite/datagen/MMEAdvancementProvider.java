@@ -29,6 +29,10 @@ import net.minecraft.world.level.levelgen.structure.BuiltinStructures;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Consumer;
 
+/**
+ * MME 进度数据生成器。
+ * 生成模组自定义进度 JSON。
+ */
 public class MMEAdvancementProvider extends FabricAdvancementProvider {
     public MMEAdvancementProvider(FabricDataOutput output, CompletableFuture<HolderLookup.Provider> registryLookup) {
         super(output, registryLookup);

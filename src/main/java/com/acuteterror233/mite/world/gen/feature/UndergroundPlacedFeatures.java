@@ -16,6 +16,10 @@ import net.minecraft.world.level.levelgen.placement.*;
 
 import java.util.List;
 
+/**
+ * 地下维度放置特征注册。
+ * 定义地下世界特征的生成规则（高度、频率等）。
+ */
 public class UndergroundPlacedFeatures {
     public static final ResourceKey<PlacedFeature> UNDERGROUND_ORE_ADAMANTIUM_BURIED = of("ore_adamantium_buried");
     public static final ResourceKey<PlacedFeature> UNDERGROUND_ORE_ADAMANTIUM_BURIED_SMALL = of("ore_adamantium_buried_small");

@@ -21,6 +21,10 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;
 
+/**
+ * 抽象等级合成菜单。
+ * 实现带制作时间和材料限制的合成逻辑基类。
+ */
 public abstract class AbstractGradeCraftingMenu extends AbstractCraftingMenu {
     private final int DefaultCraftingTime = 100;
     private final ContainerData property = new ContainerData() {

@@ -15,6 +15,10 @@ import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.RenderType;
 
+/**
+ * MME 模组客户端入口，实现 {@link ClientModInitializer}。
+ * 注册客户端渲染器、GUI 界面、模型生成和颜色提供器。
+ */
 public class MMEClient implements ClientModInitializer {
 	@Override
 	public void onInitializeClient() {

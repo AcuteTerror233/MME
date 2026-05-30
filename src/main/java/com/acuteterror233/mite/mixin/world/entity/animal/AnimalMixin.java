@@ -15,6 +15,9 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(Animal.class)
+/**
+ * Mixin for {@code Animal} — 扩展动物通用行为。
+ */
 public abstract class AnimalMixin extends AgeableMob {
     @Unique
     public int manureTime;

@@ -6,6 +6,10 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.ToolMaterial;
 
+/**
+ * MME 模组工具材料定义。
+ * 定义精金、秘银、远古金属、生锈铁、铜、银等工具材料的挖掘属性。
+ */
 public class MMEToolMaterials {
     public static final ToolMaterial NETHERITE = new ToolMaterial(BlockTags.INCORRECT_FOR_NETHERITE_TOOL, 256, 18.0F, 8.0F, 24, ItemTags.NETHERITE_TOOL_MATERIALS);
     public static final ToolMaterial ADAMANTIUM = new ToolMaterial(MMEBlockTags.INCORRECT_FOR_ADAMANTIUM_TOOL, 128, 16.0F, 7.0F, 21, MMEItemTags.ADAMANTIUM_TOOL_MATERIALS);

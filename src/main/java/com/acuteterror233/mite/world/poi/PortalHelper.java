@@ -20,6 +20,10 @@ import net.minecraft.world.level.levelgen.Heightmap;
 import java.util.Comparator;
 import java.util.Optional;
 
+/**
+ * 传送门辅助工具。
+ * 处理传送门生成逻辑，在目标维度寻找/创建对应的地狱门方块。
+ */
 public class PortalHelper {
     public static Optional<BlockPos> getPortalPos(ServerLevel world, BlockPos pos, int PreloadSize, WorldBorder worldBorder, ResourceKey<PoiType> matchesKey, Block block) {
         PoiManager pointOfInterestStorage = world.getPoiManager();

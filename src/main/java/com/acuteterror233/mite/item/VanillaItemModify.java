@@ -23,6 +23,10 @@ import java.util.Map;
 import java.util.function.Function;
 import java.util.function.UnaryOperator;
 
+/**
+ * 原版物品属性修改器。
+ * 批量修改原版物品的堆叠上限、食物属性、燃料值等。
+ */
 public final class VanillaItemModify {
     public static final Map<Class<?>, UnaryOperator<Item.Properties>> IN_CLASS_BLOCK_ITEM_SETTINGS_MODIFY = createBlockItemSettingsModifyMapByClass();
     public static final Map<ResourceLocation, UnaryOperator<Item.Properties>> IN_IDENTIFIER_BLOCK_ITEM_SETTINGS_MODIFY = createBlockItemSettingsModifyMapByIdentifier();

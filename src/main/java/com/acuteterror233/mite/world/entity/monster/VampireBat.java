@@ -30,6 +30,10 @@ import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+/**
+ * 吸血鬼蝙蝠实体，飞行敌对生物。
+ * 可吸取玩家生命值。
+ */
 public class VampireBat extends FlyingMob implements Enemy {
     private static final EntityDataAccessor<Byte> DATA_ID_FLAGS = SynchedEntityData.defineId(VampireBat.class, EntityDataSerializers.BYTE);
     private static final int FLAG_RESTING = 1;

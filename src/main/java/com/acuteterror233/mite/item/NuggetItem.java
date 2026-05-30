@@ -19,6 +19,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Consumer;
 
+/**
+ * 粒物品，继承 {@link Item}。
+ * 通用金属粒（铜粒、银粒等），用于合成和战利品。
+ */
 public class NuggetItem extends Item {
     private final int experience;
     public NuggetItem(Properties settings, int experience) {

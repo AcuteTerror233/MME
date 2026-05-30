@@ -25,6 +25,9 @@ import java.util.List;
 import java.util.Optional;
 
 @Mixin(BaseFireBlock.class)
+/**
+ * Mixin for {@code BaseFireBlock} — 修改火焰扩散逻辑。
+ */
 public abstract class BaseFireBlockMixin {
     /**
      * @author  AcuteTerror233

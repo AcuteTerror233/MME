@@ -8,6 +8,9 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(ShovelItem.class)
+/**
+ * Mixin for {@code ShovelItem} — 修改锹挖掘速度判定。
+ */
 public class ShovelItemMixin {
     @Redirect(method = "<init>", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/Item$Properties;shovel(Lnet/minecraft/world/item/ToolMaterial;FF)Lnet/minecraft/world/item/Item$Properties;"))
     private static Item.Properties init(Item.Properties instance, ToolMaterial toolMaterial, float f, float g) {

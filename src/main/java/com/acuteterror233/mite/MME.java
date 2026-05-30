@@ -36,6 +36,10 @@ import org.slf4j.LoggerFactory;
 
 import java.util.Set;
 
+/**
+ * MME 模组主入口，实现 {@link ModInitializer}。
+ * 负责注册所有方块、物品、实体、生物群落修改、战利品表替换和命令。
+ */
 public class MME implements ModInitializer {
     public static final String MOD_ID = "mme";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);

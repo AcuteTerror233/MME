@@ -17,6 +17,9 @@ import java.util.function.Function;
 import java.util.function.UnaryOperator;
 
 @Mixin(Bootstrap.class)
+/**
+ * Mixin for {@code Bootstrap} — 在启动阶段触发原版注册修改。
+ */
 public class BootstrapMixin {
     @Inject(method = "bootStrap()V", at = @At("HEAD"), remap = false)
     private static void initialize(CallbackInfo ci) {

@@ -20,6 +20,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(Player.class)
+/**
+ * Mixin for {@code Player} — 扩展玩家行为。
+ */
 public abstract class PlayerEntityMixin extends LivingEntity {
     @Shadow
     public int experienceLevel;

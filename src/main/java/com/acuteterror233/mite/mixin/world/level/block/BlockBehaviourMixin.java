@@ -10,6 +10,9 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 
 @Mixin(BlockBehaviour.class)
+/**
+ * Mixin for {@code BlockBehaviour} — 修改方块通用行为。
+ */
 public abstract class BlockBehaviourMixin implements FeatureElement {
 
     /**

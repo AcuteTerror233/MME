@@ -20,6 +20,10 @@ import net.minecraft.world.level.chunk.status.ChunkStatus;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
+/**
+ * 破坏作物 AI 目标。
+ * 使实体寻找并破坏成熟作物。
+ */
 public class DestroyCropGoal extends MoveToBlockGoal {
     private final Mob removerMob;
     private int ticksSinceReachedGoal;

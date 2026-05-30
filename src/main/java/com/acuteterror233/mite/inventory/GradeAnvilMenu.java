@@ -25,6 +25,10 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
 
+/**
+ * 等级铁砧菜单，继承 {@link ItemCombinerMenu}。
+ * 限制可用材料等级，控制修理/组合操作的消耗和产出。
+ */
 public class GradeAnvilMenu extends ItemCombinerMenu {
     private final DataSlot levelCost = DataSlot.standalone();
     private final TagKey<Item> notAllowedMaterial;

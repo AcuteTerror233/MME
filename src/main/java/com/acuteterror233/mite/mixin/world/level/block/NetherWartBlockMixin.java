@@ -13,6 +13,9 @@ import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
 
 @Mixin(NetherWartBlock.class)
+/**
+ * Mixin for {@code NetherWartBlock} — 添加病害和肥力支持。
+ */
 public class NetherWartBlockMixin {
     @Final
     @Shadow

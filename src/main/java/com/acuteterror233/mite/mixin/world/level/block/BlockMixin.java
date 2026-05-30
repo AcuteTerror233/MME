@@ -14,6 +14,9 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(Block.class)
+/**
+ * Mixin for {@code Block} — 修改方块通用属性。
+ */
 public class BlockMixin {
     @Inject(method = "playerDestroy", at = @At("RETURN"))
     private void playerDestroy(Level level, Player player, BlockPos blockPos, BlockState blockState, BlockEntity blockEntity, ItemStack itemStack, CallbackInfo ci) {

@@ -7,6 +7,9 @@ import net.minecraft.client.renderer.entity.state.ZombieRenderState;
 import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * 食尸鬼渲染器。
+ */
 public class GhoulRenderer extends ZombieRenderer {
     private static final ResourceLocation GHOUL_LOCATION = ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, "textures/entity/zombie/ghoul.png");
 

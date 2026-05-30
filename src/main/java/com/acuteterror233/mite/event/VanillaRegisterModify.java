@@ -10,6 +10,10 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
+/**
+ * 原版注册修改器。
+ * 在模组初始化时修改原版注册项（如物品属性、方块行为等）。
+ */
 public final class VanillaRegisterModify {
 
     /**

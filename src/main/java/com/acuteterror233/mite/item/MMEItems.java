@@ -37,6 +37,10 @@ import net.minecraft.world.level.material.Fluids;
 import java.util.List;
 import java.util.function.Function;
 
+/**
+ * MME 模组物品注册中心。
+ * 定义并注册所有自定义物品（工具、武器、盔甲、材料、食物等）及其创造模式物品栏。
+ */
 public class MMEItems {
     public static final Item ADAMANTIUM_HELMET = register(
             "adamantium_helmet",

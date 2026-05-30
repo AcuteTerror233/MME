@@ -8,6 +8,10 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.pathfinder.PathComputationType;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * 移动到岩浆 AI 目标。
+ * 使实体寻找并移动到岩浆方块。
+ */
 public class MoveToLavaGoal extends MoveToBlockGoal {
     private final PathfinderMob mob;
     public MoveToLavaGoal(PathfinderMob mob, double speedModifier) {

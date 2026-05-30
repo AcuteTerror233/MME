@@ -12,6 +12,10 @@ import net.minecraft.world.level.dimension.DimensionType;
 
 import java.util.OptionalLong;
 
+/**
+ * MME 维度类型注册器。
+ * 在数据生成阶段注册地下维度的维度类型参数。
+ */
 public class MMEDimensionTypeRegistrar {
     public static final ResourceKey<Level> UNDERGROUND_LEVEL_KEY = ResourceKey.create(Registries.DIMENSION,
             ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, "underground"));

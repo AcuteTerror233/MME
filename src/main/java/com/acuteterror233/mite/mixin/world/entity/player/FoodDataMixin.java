@@ -21,6 +21,9 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(FoodData.class)
+/**
+ * Mixin for {@code FoodData} — 实现营养系统扩展接口。
+ */
 public abstract class FoodDataMixin implements FoodDataExtension {
     @Unique
     private int maxFoodLevel = 6;

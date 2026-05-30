@@ -10,6 +10,10 @@ import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.block.Block;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * MME 细雪桶物品，继承 {@link SolidBucketItem}。
+ * 支持自定义材料制成的细雪桶。
+ */
 public class MMEPowderSnowBucketItem extends SolidBucketItem {
     Item bucket;
 

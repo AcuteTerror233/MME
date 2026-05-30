@@ -27,6 +27,9 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(Zombie.class)
+/**
+ * Mixin for {@code Zombie} — 扩展僵尸行为（破坏作物、火把等）。
+ */
 public abstract class ZombieMixin extends Monster {
     @Unique
     private static final float LOW_Y_THRESHOLD_UNDERGROUND = 125.0F;

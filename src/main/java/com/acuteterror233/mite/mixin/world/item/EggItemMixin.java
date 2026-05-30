@@ -12,6 +12,9 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(EggItem.class)
+/**
+ * Mixin for {@code EggItem} — 修改鸡蛋投掷行为。
+ */
 public abstract class EggItemMixin extends Item {
     public EggItemMixin(Properties properties) {
         super(properties);

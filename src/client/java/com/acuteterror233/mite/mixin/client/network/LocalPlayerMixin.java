@@ -8,6 +8,9 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 
 @Mixin(LocalPlayer.class)
+/**
+ * Mixin for {@code LocalPlayer} — 扩展客户端玩家行为。
+ */
 public abstract class LocalPlayerMixin extends AbstractClientPlayer {
     public LocalPlayerMixin(ClientLevel world, GameProfile profile) {
         super(world, profile);

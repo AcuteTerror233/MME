@@ -14,6 +14,10 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.chunk.ChunkAccess;
 import net.minecraft.world.level.chunk.status.ChunkStatus;
 
+/**
+ * 破坏火把 AI 目标。
+ * 继承 {@link RemoveBlockGoal}，专门移除火把方块。
+ */
 public class DestroyTorchGoal extends RemoveBlockGoal {
     public DestroyTorchGoal(PathfinderMob mob, double speedModifier) {
         super(Blocks.TORCH, mob, speedModifier, 15);

@@ -12,6 +12,10 @@ import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.level.levelgen.Heightmap;
 
+/**
+ * MME 模组实体类型注册中心。
+ * 注册所有自定义实体（食尸鬼、暗影、尸鬼、火元素、炼狱苦力怕等）及其默认属性。
+ */
 public class MMEEntityTypes {
     public static final EntityType<Ghoul> GHOUL = register(
             "ghoul",
