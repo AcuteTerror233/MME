@@ -1,6 +1,7 @@
 package com.acuteterror233.mite.block.entity;
 
 import com.acuteterror233.mite.block.MMEAnvilBlock;
+import com.acuteterror233.mite.block.MMEBlockEntityTypes;
 import com.acuteterror233.mite.block.MMEBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
@@ -50,7 +51,7 @@ public class AnvilBlockEntity extends BlockEntity {
     private Block damageBlock;
 
     public AnvilBlockEntity(BlockPos pos, BlockState state) {
-        super(MMEBlocks.ANVIL_BLOCK_ENTITY, pos, state);
+        super(MMEBlockEntityTypes.ANVIL, pos, state);
         this.maxDamage = 0;
         this.damage = 0;
     }

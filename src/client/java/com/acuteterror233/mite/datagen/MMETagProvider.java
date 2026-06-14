@@ -850,8 +850,10 @@ public class MMETagProvider {
 
             getOrCreateTagBuilder(MMEItemTags.NETHERITE_NOT_ALLOWED_MATERIAL);
             getOrCreateTagBuilder(MMEItemTags.ADAMANTIUM_NOT_ALLOWED_MATERIAL)
+                    .addTag(MMEItemTags.NETHERITE_NOT_ALLOWED_MATERIAL)
                     .forceAddTag(ItemTags.NETHERITE_TOOL_MATERIALS);
             getOrCreateTagBuilder(MMEItemTags.MITHRIL_NOT_ALLOWED_MATERIAL)
+                    .addTag(MMEItemTags.ADAMANTIUM_NOT_ALLOWED_MATERIAL)
                     .addTag(MMEItemTags.ADAMANTIUM_TOOL_MATERIALS);
             getOrCreateTagBuilder(MMEItemTags.ANCIENT_METAL_NOT_ALLOWED_MATERIAL)
                     .addTag(MMEItemTags.MITHRIL_TOOL_MATERIALS)
@@ -1038,6 +1040,24 @@ public class MMETagProvider {
                     .add(MMEBlocks.COPPER_CRAFTING_TABLE.asItem())
                     .add(MMEBlocks.SILVER_CRAFTING_TABLE.asItem())
                     .add(MMEBlocks.GOLD_CRAFTING_TABLE.asItem());
+            getOrCreateTagBuilder(MMEItemTags.ADAMANTIUM_CRAFTING_TABLE_EXCEPTIONS);
+            getOrCreateTagBuilder(MMEItemTags.MITHRIL_CRAFTING_TABLE_EXCEPTIONS)
+                    .add(MMEBlocks.ADAMANTIUM_CRAFTING_TABLE.asItem());
+            getOrCreateTagBuilder(MMEItemTags.ANCIENT_METAL_CRAFTING_TABLE_EXCEPTIONS)
+                    .add(MMEBlocks.MITHRIL_CRAFTING_TABLE.asItem());
+            getOrCreateTagBuilder(MMEItemTags.IRON_CRAFTING_TABLE_EXCEPTIONS)
+                    .add(MMEBlocks.ANCIENT_METAL_CRAFTING_TABLE.asItem());
+            getOrCreateTagBuilder(MMEItemTags.COPPER_CRAFTING_TABLE_EXCEPTIONS)
+                    .add(MMEBlocks.IRON_CRAFTING_TABLE.asItem());
+            getOrCreateTagBuilder(MMEItemTags.SILVER_CRAFTING_TABLE_EXCEPTIONS)
+                    .add(MMEBlocks.IRON_CRAFTING_TABLE.asItem());
+            getOrCreateTagBuilder(MMEItemTags.GOLD_CRAFTING_TABLE_EXCEPTIONS);
+            getOrCreateTagBuilder(MMEItemTags.FLINT_CRAFTING_TABLE_EXCEPTIONS)
+                    .add(MMEBlocks.COPPER_CRAFTING_TABLE.asItem())
+                    .add(MMEBlocks.SILVER_CRAFTING_TABLE.asItem());
+            getOrCreateTagBuilder(MMEItemTags.OBSIDIAN_CRAFTING_TABLE_EXCEPTIONS)
+                    .add(MMEBlocks.COPPER_CRAFTING_TABLE.asItem())
+                    .add(MMEBlocks.SILVER_CRAFTING_TABLE.asItem());
         }
     }
 }

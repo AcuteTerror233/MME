@@ -1,6 +1,6 @@
 package com.acuteterror233.mite.inventory;
 
-import com.acuteterror233.mite.block.MMEBlocks;
+import com.acuteterror233.mite.block.MMEMenuTypes;
 import com.acuteterror233.mite.inventory.slot.CraftingTableResultSlot;
 import com.acuteterror233.mite.registry.tag.MMEBlockTags;
 import net.minecraft.server.level.ServerLevel;
@@ -15,7 +15,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.CraftingRecipe;
 import net.minecraft.world.item.crafting.RecipeHolder;
-import net.minecraft.world.level.block.Block;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
@@ -29,16 +28,18 @@ public class GradeCraftingTableMenu extends AbstractGradeCraftingMenu {
     private final Player player;
     private boolean filling;
     public GradeCraftingTableMenu(int syncId, Inventory playerInventory) {
-        this(syncId, playerInventory, ContainerLevelAccess.NULL, null, null);
+        this(syncId, playerInventory, ContainerLevelAccess.NULL, null, null, 0.0f);
     }
-    public GradeCraftingTableMenu(int syncId, Inventory playerInventory, ContainerLevelAccess context, Block[] upperLevelCraftingTable, TagKey<Item> disableMaterialsTag) {
-        super(MMEBlocks.GRADE_CRAFTING_TABLE, syncId, upperLevelCraftingTable, disableMaterialsTag, 3, 3);
+
+    public GradeCraftingTableMenu(int syncId, Inventory playerInventory, ContainerLevelAccess context, TagKey<Item> exceptionsTag, TagKey<Item> disableMaterialsTag, float craftingSpeedBonus) {
+        super(MMEMenuTypes.GRADE_CRAFTING_TABLE, syncId, exceptionsTag, disableMaterialsTag, craftingSpeedBonus, 3, 3);
         this.context = context;
         this.player = playerInventory.player;
         this.addResultSlot(this.player, 124, 35);
         this.addCraftingGridSlots(30, 17);
         this.addStandardInventorySlots(playerInventory, 8, 84);
     }
+
     @Override
     public void slotsChanged(Container inventory) {
         if (!this.filling) {

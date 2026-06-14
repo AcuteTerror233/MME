@@ -22,7 +22,7 @@ import java.util.concurrent.CompletableFuture;
 
 /**
  * MME 方块战利品表数据生成器。
- * 为 MME 自定义方块生成战利品表 JSON（如蓝莓灌木丛）。
+ * 为 MME 自定义方块生成战利品表 JSON。
  */
 public class MMEBlockLootTableProvider extends FabricBlockLootTableProvider {
     public MMEBlockLootTableProvider(FabricDataOutput dataOutput, CompletableFuture<HolderLookup.Provider> registryLookup) {

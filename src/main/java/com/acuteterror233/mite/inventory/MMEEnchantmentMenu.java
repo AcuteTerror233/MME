@@ -1,6 +1,6 @@
 package com.acuteterror233.mite.inventory;
 
-import com.acuteterror233.mite.block.MMEBlocks;
+import com.acuteterror233.mite.block.MMEMenuTypes;
 import com.acuteterror233.mite.registry.tag.MMEBlockTags;
 import net.minecraft.Util;
 import net.minecraft.advancements.CriteriaTriggers;
@@ -59,7 +59,7 @@ public class MMEEnchantmentMenu extends AbstractContainerMenu {
     }
 
     public MMEEnchantmentMenu(int i, Inventory inventory, ContainerLevelAccess containerLevelAccess, int maxEnchantmentLevel) {
-        super(MMEBlocks.MME_ENCHANTMENT, i);
+        super(MMEMenuTypes.MME_ENCHANTMENT, i);
         this.maxEnchantmentLevel = maxEnchantmentLevel;
         this.access = containerLevelAccess;
         this.addSlot(new Slot(this.enchantSlots, 0, 15, 47) {

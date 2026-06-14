@@ -77,6 +77,15 @@ public interface MMEItemTags {
     TagKey<Item> MITHRIL_ARMOR = key("mithril_armor");
     TagKey<Item> STRING = key("string");
     TagKey<Item> CRAFTING_TABLE = key("crafting_table");
+    TagKey<Item> ADAMANTIUM_CRAFTING_TABLE_EXCEPTIONS = key("adamantium_crafting_table_exceptions");
+    TagKey<Item> MITHRIL_CRAFTING_TABLE_EXCEPTIONS = key("mithril_crafting_table_exceptions");
+    TagKey<Item> ANCIENT_METAL_CRAFTING_TABLE_EXCEPTIONS = key("ancient_metal_crafting_table_exceptions");
+    TagKey<Item> IRON_CRAFTING_TABLE_EXCEPTIONS = key("iron_crafting_table_exceptions");
+    TagKey<Item> COPPER_CRAFTING_TABLE_EXCEPTIONS = key("copper_crafting_table_exceptions");
+    TagKey<Item> SILVER_CRAFTING_TABLE_EXCEPTIONS = key("silver_crafting_table_exceptions");
+    TagKey<Item> GOLD_CRAFTING_TABLE_EXCEPTIONS = key("gold_crafting_table_exceptions");
+    TagKey<Item> FLINT_CRAFTING_TABLE_EXCEPTIONS = key("flint_crafting_table_exceptions");
+    TagKey<Item> OBSIDIAN_CRAFTING_TABLE_EXCEPTIONS = key("obsidian_crafting_table_exceptions");
     TagKey<Item> SILVER_WEAPONS = key("silver_weapons");
     TagKey<Item> SILVER_ARMOR = key("silver_armor");
     TagKey<Item> SILVER_ORE = key("silver_ore");

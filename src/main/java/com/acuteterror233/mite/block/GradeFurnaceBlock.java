@@ -51,7 +51,7 @@ public class GradeFurnaceBlock extends FurnaceBlock {
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level world1, BlockState state1, BlockEntityType<T> type) {
         if (world1 instanceof ServerLevel serverWorld) {
-            return createTickerHelper(type, MMEBlocks.GRADE_FURNACE_BLOCK_ENTITY, (world, pos, state, blockEntity) -> AbstractGradeFurnaceBlockEntity.tick(serverWorld, pos, state, blockEntity));
+            return createTickerHelper(type, MMEBlockEntityTypes.GRADE_FURNACE, (world, pos, state, blockEntity) -> AbstractGradeFurnaceBlockEntity.tick(serverWorld, pos, state, blockEntity));
         }
         return null;
     }

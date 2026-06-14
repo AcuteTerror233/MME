@@ -15,7 +15,6 @@ import net.minecraft.world.item.crafting.CraftingInput;
 import net.minecraft.world.item.crafting.CraftingRecipe;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeType;
-import net.minecraft.world.level.block.Block;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -31,9 +30,9 @@ public abstract class AbstractGradeCraftingMenu extends AbstractCraftingMenu {
         @Override
         public int get(int index) {
             return switch (index) {
-                case 0 -> CraftingTime[0];
-                case 1 -> CraftingTime[1];
-                case 2 -> CraftingTime[2];
+                case 0 -> craftingstatus[0];
+                case 1 -> craftingstatus[1];
+                case 2 -> craftingstatus[2];
                 default -> 0;
             };
         }
@@ -41,9 +40,9 @@ public abstract class AbstractGradeCraftingMenu extends AbstractCraftingMenu {
         @Override
         public void set(int index, int value) {
             switch (index) {
-                case 0 -> CraftingTime[0] = value;
-                case 1 -> CraftingTime[1] = value;
-                case 2 -> CraftingTime[2] = Mth.clamp(value, 0, 1);
+                case 0 -> craftingstatus[0] = value;
+                case 1 -> craftingstatus[1] = value;
+                case 2 -> craftingstatus[2] = Mth.clamp(value, 0, 1);
             }
         }
 
@@ -52,13 +51,15 @@ public abstract class AbstractGradeCraftingMenu extends AbstractCraftingMenu {
             return 3;
         }
     };
-    private final Block[] UpperLevelCraftingTable;
-    public final int[] CraftingTime = new int[]{0, DefaultCraftingTime, 0};
-    private final TagKey<Item> DisableMaterialsTag;
-    public AbstractGradeCraftingMenu(MenuType<?> type, int syncId, Block[] upperLevelCraftingTable, TagKey<Item> disableMaterialsTag, int width, int height) {
+    private final TagKey<Item> exceptionsTag;
+    private final TagKey<Item> disableMaterialsTag;
+    private final float craftingSpeedBonus;
+    public final int[] craftingstatus = new int[]{0, DefaultCraftingTime, 0};
+    public AbstractGradeCraftingMenu(MenuType<?> type, int syncId, TagKey<Item>  exceptionsTag, TagKey<Item> disableMaterialsTag, float craftingSpeedBonus, int width, int height) {
         super(type, syncId, width, height);
-        this.UpperLevelCraftingTable = upperLevelCraftingTable;
-        this.DisableMaterialsTag = disableMaterialsTag;
+        this.exceptionsTag = exceptionsTag;
+        this.disableMaterialsTag = disableMaterialsTag;
+        this.craftingSpeedBonus = craftingSpeedBonus;
         this.addDataSlots(this.property);
     }
     @Override
@@ -73,50 +74,47 @@ public abstract class AbstractGradeCraftingMenu extends AbstractCraftingMenu {
             ResultContainer resultInventory,
             @Nullable RecipeHolder<CraftingRecipe> recipe
     ) {
-        int CraftingTime = 0;
-        CraftingInput craftingRecipeInput = craftingInventory.asCraftInput();
-        ServerPlayer serverPlayerEntity = (ServerPlayer)player;
-        ItemStack itemStack = ItemStack.EMPTY;
-        Optional<RecipeHolder<CraftingRecipe>> optional = world.getServer().getRecipeManager().getRecipeFor(RecipeType.CRAFTING, craftingRecipeInput, world, recipe);
-        if (optional.isPresent()) {
-            RecipeHolder<CraftingRecipe> recipeEntry = optional.get();
-            CraftingRecipe craftingRecipe = recipeEntry.value();
-            if (resultInventory.setRecipeUsed(serverPlayerEntity, recipeEntry)) {
-                ItemStack craftItem = craftingRecipe.assemble(craftingRecipeInput, world.registryAccess());
-                if (craftItem.isItemEnabled(world.enabledFeatures())) {
-                    this.property.set(2, 1);
-                    isAllowedCrafting(craftingInventory, craftItem);
-                    CraftingTime = AdditionalCraftingTime(craftingInventory);
-                    itemStack = craftItem;
+        if (this.getResultSlot() instanceof CraftingTableResultSlot slot) {
+            this.property.set(2, 0);
+            this.property.set(0, 0);
+            slot.ClearCraftingState();
+            int CraftingTime = 0;
+            CraftingInput craftingRecipeInput = craftingInventory.asCraftInput();
+            ServerPlayer serverPlayerEntity = (ServerPlayer) player;
+            ItemStack itemStack = ItemStack.EMPTY;
+            Optional<RecipeHolder<CraftingRecipe>> optional = world.getServer().getRecipeManager().getRecipeFor(RecipeType.CRAFTING, craftingRecipeInput, world, recipe);
+            if (optional.isPresent()) {
+                RecipeHolder<CraftingRecipe> recipeEntry = optional.get();
+                CraftingRecipe craftingRecipe = recipeEntry.value();
+                if (resultInventory.setRecipeUsed(serverPlayerEntity, recipeEntry)) {
+                    ItemStack craftItem = craftingRecipe.assemble(craftingRecipeInput, world.registryAccess());
+                    if (craftItem.isItemEnabled(world.enabledFeatures())) {
+                        this.property.set(2, 1);
+                        checkCrafting(craftingInventory, craftItem);
+                        CraftingTime = AdditionalCraftingTime(craftingInventory);
+                        itemStack = craftItem;
+                    }
                 }
-            }
-        }else {
-            if (this.getResultSlot() instanceof CraftingTableResultSlot slot) {
+            } else {
                 this.property.set(2, 0);
                 this.property.set(0, 0);
                 slot.ClearCraftingState();
             }
+            this.property.set(1, CraftingTime + this.DefaultCraftingTime);
+            resultInventory.setItem(0, itemStack);
+            handler.setRemoteSlot(0, itemStack);
+            serverPlayerEntity.connection.send(new ClientboundContainerSetSlotPacket(handler.containerId, handler.incrementStateId(), 0, itemStack));
         }
-        this.property.set(1, CraftingTime + this.DefaultCraftingTime);
-        resultInventory.setItem(0, itemStack);
-        handler.setRemoteSlot(0, itemStack);
-        serverPlayerEntity.connection.send(new ClientboundContainerSetSlotPacket(handler.containerId, handler.incrementStateId(), 0, itemStack));
     }
 
-    private void isAllowedCrafting(CraftingContainer craftingInventory, ItemStack craftItem) {
-        boolean itemFound = true;
-        for (Block block : this.UpperLevelCraftingTable) {
-            if (block.asItem() == craftItem.getItem()) {
-                itemFound = false;
-                break;
-            }
+    private void checkCrafting(CraftingContainer craftingInventory, ItemStack craftItem) {
+        if (craftItem.is(this.exceptionsTag)) {
+            return;
         }
-        if (itemFound) {
-            for (ItemStack stack : craftingInventory) {
-                if (stack.is(this.DisableMaterialsTag)) {
-                    this.property.set(2, 0);
-                    break;
-                }
+        for (ItemStack stack : craftingInventory) {
+            if (stack.is(this.disableMaterialsTag)) {
+                this.property.set(2, 0);
+                return;
             }
         }
     }
@@ -125,8 +123,8 @@ public abstract class AbstractGradeCraftingMenu extends AbstractCraftingMenu {
     public void broadcastChanges(){
         if (getResultSlot() instanceof CraftingTableResultSlot slot) {
             if (slot.isCrafting()) {
-                this.CraftingTime[0]++;
-                if (this.CraftingTime[0] >= this.CraftingTime[1]){
+                this.craftingstatus[0]++;
+                if (this.craftingstatus[0] >= this.craftingstatus[1]){
                     Player player = owner();
                     ItemStack stack = slot.getItem();
                     if (!player.getInventory().add(stack)) {
@@ -137,7 +135,7 @@ public abstract class AbstractGradeCraftingMenu extends AbstractCraftingMenu {
                     if (slot.getItem().isEmpty()){
                         slot.ClearCraftingState();
                     }
-                    this.CraftingTime[0] = 0;
+                    this.craftingstatus[0] = 0;
                 }
             }
         }
@@ -151,7 +149,7 @@ public abstract class AbstractGradeCraftingMenu extends AbstractCraftingMenu {
                 CraftingTime += i * 20;
             }
         }
-        return (int) (CraftingTime / (1 + ((double) (owner().experienceLevel * 2) / 100)) );
+        return (int) (CraftingTime / (1 + ((double) (owner().experienceLevel * 2) / 100) + this.craftingSpeedBonus) );
     }
 
     public double getCraftingTime() {
