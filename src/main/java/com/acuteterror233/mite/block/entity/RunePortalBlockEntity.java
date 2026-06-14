@@ -1,6 +1,6 @@
 package com.acuteterror233.mite.block.entity;
 
-import com.acuteterror233.mite.block.MMEBlocks;
+import com.acuteterror233.mite.block.MMEBlockEntityTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
@@ -14,7 +14,7 @@ import net.minecraft.world.level.block.state.BlockState;
 public class RunePortalBlockEntity extends BlockEntity{
     private BlockPos destinationPos;
     public RunePortalBlockEntity(BlockPos pos, BlockState state) {
-        super(MMEBlocks.RUNE_PORTAL_BLOCK_ENTITY, pos, state);
+        super(MMEBlockEntityTypes.RUNE_PORTAL, pos, state);
         this.destinationPos = pos;
     }
     @Override

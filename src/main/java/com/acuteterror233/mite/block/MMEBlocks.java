@@ -1,33 +1,18 @@
 package com.acuteterror233.mite.block;
 
 import com.acuteterror233.mite.MME;
-import com.acuteterror233.mite.block.entity.AnvilBlockEntity;
-import com.acuteterror233.mite.block.entity.GradeFurnaceBlockEntity;
-import com.acuteterror233.mite.block.entity.RunePortalBlockEntity;
 import com.acuteterror233.mite.component.MMEDataComponentTypes;
-import com.acuteterror233.mite.inventory.GradeAnvilMenu;
-import com.acuteterror233.mite.inventory.GradeCraftingTableMenu;
-import com.acuteterror233.mite.inventory.GradeFurnaceMenu;
-import com.acuteterror233.mite.inventory.MMEEnchantmentMenu;
 import com.acuteterror233.mite.item.MMEToolMaterials;
 import com.acuteterror233.mite.registry.tag.MMEItemTags;
-import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.flag.FeatureFlags;
-import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.ToolMaterial;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.MagmaBlock;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 
 import java.util.function.BiFunction;
@@ -385,47 +370,47 @@ public class MMEBlocks {
 
     public static final Block ADAMANTIUM_CRAFTING_TABLE = register(
             "adamantium_crafting_table",
-            settings -> new GradeCraftingTableBlock(settings, MMEItemTags.ADAMANTIUM_NOT_ALLOWED_MATERIAL),
+            settings -> new GradeCraftingTableBlock(settings, MMEItemTags.ADAMANTIUM_NOT_ALLOWED_MATERIAL, MMEItemTags.ADAMANTIUM_CRAFTING_TABLE_EXCEPTIONS, 0.18f),
             BlockBehaviour.Properties.ofFullCopy(Blocks.CRAFTING_TABLE)
     );
     public static final Block MITHRIL_CRAFTING_TABLE = register(
             "mithril_crafting_table",
-            settings -> new GradeCraftingTableBlock(settings, MMEItemTags.MITHRIL_NOT_ALLOWED_MATERIAL, ADAMANTIUM_CRAFTING_TABLE),
+            settings -> new GradeCraftingTableBlock(settings, MMEItemTags.MITHRIL_NOT_ALLOWED_MATERIAL, MMEItemTags.MITHRIL_CRAFTING_TABLE_EXCEPTIONS, 0.15f),
             BlockBehaviour.Properties.ofFullCopy(Blocks.CRAFTING_TABLE)
     );
     public static final Block ANCIENT_METAL_CRAFTING_TABLE = register(
             "ancient_metal_crafting_table",
-            settings -> new GradeCraftingTableBlock(settings, MMEItemTags.ANCIENT_METAL_NOT_ALLOWED_MATERIAL, MITHRIL_CRAFTING_TABLE),
+            settings -> new GradeCraftingTableBlock(settings, MMEItemTags.ANCIENT_METAL_NOT_ALLOWED_MATERIAL, MMEItemTags.ANCIENT_METAL_CRAFTING_TABLE_EXCEPTIONS, 0.12f),
             BlockBehaviour.Properties.ofFullCopy(Blocks.CRAFTING_TABLE)
     );
     public static final Block IRON_CRAFTING_TABLE = register(
             "iron_crafting_table",
-            settings -> new GradeCraftingTableBlock(settings, MMEItemTags.IRON_NOT_ALLOWED_MATERIAL, ANCIENT_METAL_CRAFTING_TABLE),
+            settings -> new GradeCraftingTableBlock(settings, MMEItemTags.IRON_NOT_ALLOWED_MATERIAL, MMEItemTags.IRON_CRAFTING_TABLE_EXCEPTIONS, 0.09f),
             BlockBehaviour.Properties.ofFullCopy(Blocks.CRAFTING_TABLE)
     );
     public static final Block COPPER_CRAFTING_TABLE = register(
             "copper_crafting_table",
-            settings -> new GradeCraftingTableBlock(settings, MMEItemTags.COPPER_OR_SILVER_NOT_ALLOWED_MATERIAL, IRON_CRAFTING_TABLE),
+            settings -> new GradeCraftingTableBlock(settings, MMEItemTags.COPPER_OR_SILVER_NOT_ALLOWED_MATERIAL, MMEItemTags.COPPER_CRAFTING_TABLE_EXCEPTIONS, 0.06f),
             BlockBehaviour.Properties.ofFullCopy(Blocks.CRAFTING_TABLE)
     );
     public static final Block SILVER_CRAFTING_TABLE = register(
             "silver_crafting_table",
-            settings -> new GradeCraftingTableBlock(settings, MMEItemTags.COPPER_OR_SILVER_NOT_ALLOWED_MATERIAL, IRON_CRAFTING_TABLE),
+            settings -> new GradeCraftingTableBlock(settings, MMEItemTags.COPPER_OR_SILVER_NOT_ALLOWED_MATERIAL, MMEItemTags.SILVER_CRAFTING_TABLE_EXCEPTIONS, 0.06f),
             BlockBehaviour.Properties.ofFullCopy(Blocks.CRAFTING_TABLE)
     );
     public static final Block GOLD_CRAFTING_TABLE = register(
             "gold_crafting_table",
-            settings -> new GradeCraftingTableBlock(settings, MMEItemTags.GOLD_NOT_ALLOWED_MATERIAL),
+            settings -> new GradeCraftingTableBlock(settings, MMEItemTags.GOLD_NOT_ALLOWED_MATERIAL, MMEItemTags.GOLD_CRAFTING_TABLE_EXCEPTIONS, 0.03f),
             BlockBehaviour.Properties.ofFullCopy(Blocks.CRAFTING_TABLE)
     );
     public static final Block FLINT_CRAFTING_TABLE = register(
             "flint_crafting_table",
-            settings -> new GradeCraftingTableBlock(settings, MMEItemTags.GOLD_NOT_ALLOWED_MATERIAL, COPPER_CRAFTING_TABLE, SILVER_CRAFTING_TABLE),
+            settings -> new GradeCraftingTableBlock(settings, MMEItemTags.GOLD_NOT_ALLOWED_MATERIAL, MMEItemTags.FLINT_CRAFTING_TABLE_EXCEPTIONS, 0.03f),
             BlockBehaviour.Properties.ofFullCopy(Blocks.CRAFTING_TABLE)
     );
     public static final Block OBSIDIAN_CRAFTING_TABLE = register(
             "obsidian_crafting_table",
-            settings -> new GradeCraftingTableBlock(settings, MMEItemTags.GOLD_NOT_ALLOWED_MATERIAL, COPPER_CRAFTING_TABLE, SILVER_CRAFTING_TABLE),
+            settings -> new GradeCraftingTableBlock(settings, MMEItemTags.GOLD_NOT_ALLOWED_MATERIAL, MMEItemTags.OBSIDIAN_CRAFTING_TABLE_EXCEPTIONS, 0.03f),
             BlockBehaviour.Properties.ofFullCopy(Blocks.CRAFTING_TABLE)
     );
 
@@ -468,73 +453,8 @@ public class MMEBlocks {
         return block;
     }
 
-    public static final BlockEntityType<AnvilBlockEntity> ANVIL_BLOCK_ENTITY =
-            register(
-                    "anvil"
-                    , AnvilBlockEntity::new
-                    , NETHERITE_ANVIL
-                    , CHIPPED_NETHERITE_ANVIL
-                    , DAMAGED_NETHERITE_ANVIL
-                    , ADAMANTIUM_ANVIL
-                    , CHIPPED_ADAMANTIUM_ANVIL
-                    , DAMAGED_ADAMANTIUM_ANVIL
-                    , MITHRIL_ANVIL
-                    , CHIPPED_MITHRIL_ANVIL
-                    , DAMAGED_MITHRIL_ANVIL
-                    , ANCIENT_METAL_ANVIL
-                    , CHIPPED_ANCIENT_METAL_ANVIL
-                    , DAMAGED_ANCIENT_METAL_ANVIL
-                    , Blocks.ANVIL
-                    , Blocks.CHIPPED_ANVIL
-                    , Blocks.DAMAGED_ANVIL
-                    , SILVER_ANVIL
-                    , CHIPPED_SILVER_ANVIL
-                    , DAMAGED_SILVER_ANVIL
-                    , COPPER_ANVIL
-                    , CHIPPED_COPPER_ANVIL
-                    , DAMAGED_COPPER_ANVIL
-                    , GOLDEN_ANVIL
-                    , CHIPPED_GOLDEN_ANVIL
-                    , DAMAGED_GOLDEN_ANVIL
-            );
-    public static final BlockEntityType<RunePortalBlockEntity> RUNE_PORTAL_BLOCK_ENTITY =
-            register(
-                    "rune_portal"
-                    , RunePortalBlockEntity::new
-                    , RUNE_PORTAL
-            );
-    public static final BlockEntityType<GradeFurnaceBlockEntity> GRADE_FURNACE_BLOCK_ENTITY =
-            register(
-                    "grade_furnace"
-                    , GradeFurnaceBlockEntity::new
-                    , CLAY_FURNACE
-                    , HARDENED_CLAY_FURNACE
-                    , SANDSTONE_FURNACE
-                    , OBSIDIAN_FURNACE
-                    , NETHERRACK_FURNACE
-                    , Blocks.FURNACE
-                    , Blocks.SMOKER
-                    , Blocks.BLAST_FURNACE
-            );
-    private static <T extends BlockEntity> BlockEntityType<T> register(
-            String name,
-            FabricBlockEntityTypeBuilder.Factory<? extends T> entityFactory,
-            Block... blocks
-    ) {
-        ResourceLocation id = ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, name);
-        return Registry.register(BuiltInRegistries.BLOCK_ENTITY_TYPE, id, FabricBlockEntityTypeBuilder.<T>create(entityFactory, blocks).build());
-    }
-
-
-    public static final MenuType<GradeAnvilMenu> GRADE_ANVIL = register("grade_anvil", GradeAnvilMenu::new);
-    public static final MenuType<GradeCraftingTableMenu> GRADE_CRAFTING_TABLE = register("grade_crafting_table", GradeCraftingTableMenu::new);
-    public static final MenuType<GradeFurnaceMenu> GRADE_FURNACE = register("grade_furnace", GradeFurnaceMenu::new);
-    public static final MenuType<MMEEnchantmentMenu> MME_ENCHANTMENT = register("mme_enchantment", MMEEnchantmentMenu::new);
-    private static <T extends AbstractContainerMenu> MenuType<T> register(String id, MenuType.MenuSupplier<T> factory) {
-        return Registry.register(BuiltInRegistries.MENU, id, new MenuType<>(factory, FeatureFlags.VANILLA_SET));
-    }
-
     public static void init() {
-
+        MMEBlockEntityTypes.init();
+        MMEMenuTypes.init();
     }
 }

@@ -1,10 +1,8 @@
 package com.acuteterror233.mite;
 
 import com.acuteterror233.mite.block.MMEBlocks;
-import com.acuteterror233.mite.gui.screen.inventory.GradeAnvilScreen;
-import com.acuteterror233.mite.gui.screen.inventory.GradeCraftingTableScreen;
-import com.acuteterror233.mite.gui.screen.inventory.GradeFurnaceScreen;
-import com.acuteterror233.mite.gui.screen.inventory.MMEEnchantmentScreen;
+import com.acuteterror233.mite.block.MMEMenuTypes;
+import com.acuteterror233.mite.gui.screen.inventory.*;
 import com.acuteterror233.mite.renderer.entity.*;
 import com.acuteterror233.mite.world.entity.MMEEntityTypes;
 import com.acuteterror233.mite.world.gen.dimension.MMEDimensionTypeRegistrar;
@@ -28,10 +26,12 @@ public class MMEClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(MMEBlocks.HOME_PORTAL, RenderType.translucent());
         BlockRenderLayerMap.INSTANCE.putBlock(MMEBlocks.RUNE_PORTAL, RenderType.translucent());
         BlockRenderLayerMap.INSTANCE.putBlock(MMEBlocks.BLUE_BERRY_BUSH, RenderType.cutout());
-        MenuScreens.register(MMEBlocks.GRADE_ANVIL, GradeAnvilScreen::new);
-        MenuScreens.register(MMEBlocks.GRADE_CRAFTING_TABLE, GradeCraftingTableScreen::new);
-        MenuScreens.register(MMEBlocks.GRADE_FURNACE, GradeFurnaceScreen::new);
-        MenuScreens.register(MMEBlocks.MME_ENCHANTMENT, MMEEnchantmentScreen::new);
+        MenuScreens.register(MMEMenuTypes.GRADE_ANVIL, GradeAnvilScreen::new);
+        MenuScreens.register(MMEMenuTypes.GRADE_CRAFTING_TABLE, GradeCraftingTableScreen::new);
+        MenuScreens.register(MMEMenuTypes.GRADE_FURNACE, GradeFurnaceScreen::new);
+        MenuScreens.register(MMEMenuTypes.SMOKER_GRADE_FURNACE, GradeSmokerScreen::new);
+        MenuScreens.register(MMEMenuTypes.BLAST_GRADE_FURNACE, GradeBlastFurnaceScreen::new);
+        MenuScreens.register(MMEMenuTypes.MME_ENCHANTMENT, MMEEnchantmentScreen::new);
 
         EntityRendererRegistry.register(MMEEntityTypes.GHOUL, GhoulRenderer::new);
         EntityRendererRegistry.register(MMEEntityTypes.SHADOW, ShadowRenderer::new);

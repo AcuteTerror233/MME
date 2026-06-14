@@ -22,17 +22,16 @@ import org.jetbrains.annotations.Nullable;
  * 每个等级的工作台只能使用对应材料标签内的物品合成，可指定升级目标工作台。
  */
 public class GradeCraftingTableBlock extends Block {
-    private final Block[] upperLevelCraftingTable;
+    private final TagKey<Item> exceptionsTag;
     private final TagKey<Item> disableMaterialsTag;
-    public GradeCraftingTableBlock(Properties settings, TagKey<Item> disableMaterialsTag){
-        this(settings, disableMaterialsTag, new Block[0]);
+    private final float craftingSpeedBonus;
+    public GradeCraftingTableBlock(Properties settings, TagKey<Item> disableMaterialsTag, TagKey<Item> exceptionsTag, float craftingSpeedBonus) {
+        super(settings);
+        this.exceptionsTag = exceptionsTag;
+        this.disableMaterialsTag = disableMaterialsTag;
+        this.craftingSpeedBonus = craftingSpeedBonus;
     }
 
-    public GradeCraftingTableBlock(Properties settings, TagKey<Item> disableMaterialsTag, Block... upperLevelCraftingTable) {
-        super(settings);
-        this.disableMaterialsTag = disableMaterialsTag;
-        this.upperLevelCraftingTable = upperLevelCraftingTable;
-    }
     @Override
     protected @NotNull InteractionResult useWithoutItem(BlockState state, Level world, BlockPos pos, Player player, BlockHitResult hit) {
         if (!world.isClientSide) {
@@ -49,8 +48,9 @@ public class GradeCraftingTableBlock extends Block {
                         syncId,
                         inventory,
                         ContainerLevelAccess.create(world, pos),
-                        this.upperLevelCraftingTable,
-                        this.disableMaterialsTag
+                        this.exceptionsTag,
+                        this.disableMaterialsTag,
+                        this.craftingSpeedBonus
                 ), getName()
         );
     }
