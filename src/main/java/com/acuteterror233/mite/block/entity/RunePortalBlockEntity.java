@@ -2,10 +2,10 @@ package com.acuteterror233.mite.block.entity;
 
 import com.acuteterror233.mite.block.MMEBlockEntityTypes;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
 
 /**
  * 符文传送门方块实体。
@@ -18,14 +18,14 @@ public class RunePortalBlockEntity extends BlockEntity{
         this.destinationPos = pos;
     }
     @Override
-    protected void saveAdditional(CompoundTag nbt, HolderLookup.Provider registryLookup) {
+    protected void saveAdditional(ValueOutput nbt) {
         nbt.store("destinations", BlockPos.CODEC, destinationPos);
-        super.saveAdditional(nbt, registryLookup);
+        super.saveAdditional(nbt);
     }
 
     @Override
-    protected void loadAdditional(CompoundTag nbt, HolderLookup.Provider registryLookup) {
-        super.loadAdditional(nbt, registryLookup);
+    protected void loadAdditional(ValueInput nbt) {
+        super.loadAdditional(nbt);
         nbt.read("destinations", BlockPos.CODEC).ifPresent(blockPos -> this.destinationPos = blockPos);
     }
 

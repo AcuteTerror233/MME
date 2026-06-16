@@ -10,5 +10,6 @@ import org.spongepowered.asm.mixin.Shadow;
  * Mixin for {@code Creeper} — 修改苦力怕行为。
  */
 public class CreeperMixin {
-    @Shadow @Mutable private int explosionRadius = 2;
+    @Shadow @Mutable
+    public int explosionRadius = 2;
 }

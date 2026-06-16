@@ -3,7 +3,6 @@ package com.acuteterror233.mite.mixin.world.entity.animal;
 import com.acuteterror233.mite.item.MMEItems;
 import com.acuteterror233.mite.registry.tag.MMEItemTags;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -16,6 +15,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemUtils;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
 import org.jetbrains.annotations.NotNull;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
@@ -82,14 +83,14 @@ public abstract class AbstractCowMixin extends Animal {
     }
 
     @Override
-    public void addAdditionalSaveData(CompoundTag compoundTag) {
+    public void addAdditionalSaveData(ValueOutput compoundTag) {
         super.addAdditionalSaveData(compoundTag);
         compoundTag.putInt("RecoveryCounter", recoveryCounter);
         compoundTag.putInt("MilkCounter", milkCounter);
     }
 
     @Override
-    public void readAdditionalSaveData(CompoundTag compoundTag) {
+    public void readAdditionalSaveData(ValueInput compoundTag) {
         super.readAdditionalSaveData(compoundTag);
         this.recoveryCounter = compoundTag.getInt("RecoveryCounter").orElse(0);
         this.milkCounter = compoundTag.getInt("MilkCounter").orElse(recoveryCounter);

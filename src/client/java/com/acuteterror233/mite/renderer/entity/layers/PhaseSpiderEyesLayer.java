@@ -9,6 +9,7 @@ import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.entity.layers.EyesLayer;
 import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
 import net.minecraft.resources.ResourceLocation;
+import org.jetbrains.annotations.NotNull;
 
 @Environment(EnvType.CLIENT)
 /**
@@ -22,7 +23,7 @@ public class PhaseSpiderEyesLayer<M extends SpiderModel> extends EyesLayer<Livin
     }
 
     @Override
-    public RenderType renderType() {
+    public @NotNull RenderType renderType() {
         return SPIDER_EYES;
     }
 }

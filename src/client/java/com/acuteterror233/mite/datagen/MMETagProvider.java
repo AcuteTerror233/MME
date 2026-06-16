@@ -34,33 +34,33 @@ public class MMETagProvider {
     MMETagProvider() {
 
     }
-    public static class EnchantmentTag extends FabricTagProvider<Enchantment>{
+    public static class EnchantmentTag extends FabricTagProvider<Enchantment> {
         public EnchantmentTag(FabricDataOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
             super(output, Registries.ENCHANTMENT, registriesFuture);
         }
 
         @Override
         protected void addTags(HolderLookup.Provider wrapperLookup) {
-            tag(MMEEnchantmentTags.EQUIPMENT_DROPS_EXCLUSIVE)
+            builder(MMEEnchantmentTags.EQUIPMENT_DROPS_EXCLUSIVE)
                     .add(Enchantments.LOOTING)
                     .add(MMEEnchantments.BUTCHERING);
         }
     }
 
 
-    public static class BiomeTag extends FabricTagProvider<Biome>{
+    public static class BiomeTag extends FabricTagProvider<Biome> {
         public BiomeTag(FabricDataOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
             super(output, Registries.BIOME, registriesFuture);
         }
 
         @Override
         protected void addTags(HolderLookup.Provider wrapperLookup) {
-            tag(BiomeTags.HAS_MINESHAFT)
+            builder(BiomeTags.HAS_MINESHAFT)
                     .add(MMEBiomeKeys.DEEP_DARK)
                     .add(MMEBiomeKeys.DRIPSTONE_CAVES)
                     .add(MMEBiomeKeys.LUSH_CAVES)
                     .add(MMEBiomeKeys.UNDERGROUND);
-            tag(BiomeTags.HAS_RUINED_PORTAL_MOUNTAIN)
+            builder(BiomeTags.HAS_RUINED_PORTAL_MOUNTAIN)
                     .add(MMEBiomeKeys.DEEP_DARK)
                     .add(MMEBiomeKeys.DRIPSTONE_CAVES)
                     .add(MMEBiomeKeys.LUSH_CAVES)
@@ -68,22 +68,22 @@ public class MMETagProvider {
         }
     }
 
-    public static class EntityTypeTag extends FabricTagProvider<EntityType<?>> {
+    public static class EntityTypeTag extends FabricTagProvider.FabricValueLookupTagProvider<EntityType<?>> {
         public EntityTypeTag(FabricDataOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
-            super(output, Registries.ENTITY_TYPE, registriesFuture);
+            super(output, Registries.ENTITY_TYPE, registriesFuture, entityType -> entityType.builtInRegistryHolder().key());
         }
 
         @Override
         protected void addTags(HolderLookup.Provider wrapperLookup) {
-            getOrCreateTagBuilder(EntityTypeTags.ZOMBIES)
+            valueLookupBuilder(EntityTypeTags.ZOMBIES)
                     .add(MMEEntityTypes.GHOUL)
                     .add(MMEEntityTypes.SHADOW)
                     .add(MMEEntityTypes.WIGHT)
                     .add(MMEEntityTypes.INVISIBLE_STALKER);
-            getOrCreateTagBuilder(EntityTypeTags.ARTHROPOD)
+            valueLookupBuilder(EntityTypeTags.ARTHROPOD)
                     .add(MMEEntityTypes.DEMON_SPIDER)
                     .add(MMEEntityTypes.PHASE_SPIDER);
-            getOrCreateTagBuilder(MMEEntityTypeTags.SENSITIVE_TO_BUTCHERING)
+            valueLookupBuilder(MMEEntityTypeTags.SENSITIVE_TO_BUTCHERING)
                     .add(EntityType.CHICKEN)
                     .add(EntityType.COW)
                     .add(EntityType.HOGLIN)
@@ -91,7 +91,7 @@ public class MMETagProvider {
                     .add(EntityType.PIG)
                     .add(EntityType.SHEEP)
                     .add(EntityType.RABBIT);
-            getOrCreateTagBuilder(MMEEntityTypeTags.PRODUCE_MANURE)
+            valueLookupBuilder(MMEEntityTypeTags.PRODUCE_MANURE)
                     .add(EntityType.COW)
                     .add(EntityType.CAMEL)
                     .add(EntityType.DONKEY)
@@ -116,7 +116,7 @@ public class MMETagProvider {
 
         @Override
         protected void addTags(HolderLookup.Provider wrapperLookup) {
-            getOrCreateTagBuilder(MMEBlockTags.GLASS)
+            valueLookupBuilder(MMEBlockTags.GLASS)
                     .add(Blocks.GLASS)
                     .add(Blocks.WHITE_STAINED_GLASS)
                     .add(Blocks.ORANGE_STAINED_GLASS)
@@ -135,7 +135,7 @@ public class MMETagProvider {
                     .add(Blocks.RED_STAINED_GLASS)
                     .add(Blocks.BLACK_STAINED_GLASS)
                     .add(Blocks.TINTED_GLASS);
-            getOrCreateTagBuilder(MMEBlockTags.GLASS_PANE)
+            valueLookupBuilder(MMEBlockTags.GLASS_PANE)
                     .add(Blocks.GLASS_PANE)
                     .add(Blocks.WHITE_STAINED_GLASS_PANE)
                     .add(Blocks.ORANGE_STAINED_GLASS_PANE)
@@ -153,7 +153,7 @@ public class MMETagProvider {
                     .add(Blocks.GREEN_STAINED_GLASS_PANE)
                     .add(Blocks.RED_STAINED_GLASS_PANE)
                     .add(Blocks.BLACK_STAINED_GLASS_PANE);
-            getOrCreateTagBuilder(BlockTags.ANVIL)
+            valueLookupBuilder(BlockTags.ANVIL)
                     .add(MMEBlocks.NETHERITE_ANVIL)
                     .add(MMEBlocks.CHIPPED_NETHERITE_ANVIL)
                     .add(MMEBlocks.DAMAGED_NETHERITE_ANVIL)
@@ -175,7 +175,7 @@ public class MMETagProvider {
                     .add(MMEBlocks.COPPER_ANVIL)
                     .add(MMEBlocks.CHIPPED_COPPER_ANVIL)
                     .add(MMEBlocks.DAMAGED_COPPER_ANVIL);
-            getOrCreateTagBuilder(MMEBlockTags.INTACT_ANVIL)
+            valueLookupBuilder(MMEBlockTags.INTACT_ANVIL)
                     .add(MMEBlocks.NETHERITE_ANVIL)
                     .add(MMEBlocks.ADAMANTIUM_ANVIL)
                     .add(MMEBlocks.MITHRIL_ANVIL)
@@ -183,7 +183,7 @@ public class MMETagProvider {
                     .add(MMEBlocks.SILVER_ANVIL)
                     .add(MMEBlocks.GOLDEN_ANVIL)
                     .add(MMEBlocks.COPPER_ANVIL);
-            getOrCreateTagBuilder(MMEBlockTags.CHIPPED_ANVIL)
+            valueLookupBuilder(MMEBlockTags.CHIPPED_ANVIL)
                     .add(MMEBlocks.CHIPPED_NETHERITE_ANVIL)
                     .add(MMEBlocks.CHIPPED_ADAMANTIUM_ANVIL)
                     .add(MMEBlocks.CHIPPED_MITHRIL_ANVIL)
@@ -191,7 +191,7 @@ public class MMETagProvider {
                     .add(MMEBlocks.CHIPPED_SILVER_ANVIL)
                     .add(MMEBlocks.CHIPPED_GOLDEN_ANVIL)
                     .add(MMEBlocks.CHIPPED_COPPER_ANVIL);
-            getOrCreateTagBuilder(MMEBlockTags.DAMAGED_ANVIL)
+            valueLookupBuilder(MMEBlockTags.DAMAGED_ANVIL)
                     .add(MMEBlocks.DAMAGED_NETHERITE_ANVIL)
                     .add(MMEBlocks.DAMAGED_ADAMANTIUM_ANVIL)
                     .add(MMEBlocks.DAMAGED_MITHRIL_ANVIL)
@@ -199,44 +199,44 @@ public class MMETagProvider {
                     .add(MMEBlocks.DAMAGED_SILVER_ANVIL)
                     .add(MMEBlocks.DAMAGED_GOLDEN_ANVIL)
                     .add(MMEBlocks.DAMAGED_COPPER_ANVIL);
-            getOrCreateTagBuilder(MMEBlockTags.NETHERITE_ANVIL)
+            valueLookupBuilder(MMEBlockTags.NETHERITE_ANVIL)
                     .add(MMEBlocks.NETHERITE_ANVIL)
                     .add(MMEBlocks.CHIPPED_NETHERITE_ANVIL)
                     .add(MMEBlocks.DAMAGED_NETHERITE_ANVIL);
-            getOrCreateTagBuilder(MMEBlockTags.ADAMANTIUM_ANVIL)
+            valueLookupBuilder(MMEBlockTags.ADAMANTIUM_ANVIL)
                     .add(MMEBlocks.ADAMANTIUM_ANVIL)
                     .add(MMEBlocks.CHIPPED_ADAMANTIUM_ANVIL)
                     .add(MMEBlocks.DAMAGED_ADAMANTIUM_ANVIL);
-            getOrCreateTagBuilder(MMEBlockTags.MITHRIL_ANVIL)
+            valueLookupBuilder(MMEBlockTags.MITHRIL_ANVIL)
                     .add(MMEBlocks.MITHRIL_ANVIL)
                     .add(MMEBlocks.CHIPPED_MITHRIL_ANVIL)
                     .add(MMEBlocks.DAMAGED_MITHRIL_ANVIL);
-            getOrCreateTagBuilder(MMEBlockTags.ANCIENT_METAL_ANVIL)
+            valueLookupBuilder(MMEBlockTags.ANCIENT_METAL_ANVIL)
                     .add(MMEBlocks.ANCIENT_METAL_ANVIL)
                     .add(MMEBlocks.CHIPPED_ANCIENT_METAL_ANVIL)
                     .add(MMEBlocks.DAMAGED_ANCIENT_METAL_ANVIL);
-            getOrCreateTagBuilder(MMEBlockTags.SILVER_ANVIL)
+            valueLookupBuilder(MMEBlockTags.SILVER_ANVIL)
                     .add(MMEBlocks.SILVER_ANVIL)
                     .add(MMEBlocks.CHIPPED_SILVER_ANVIL)
                     .add(MMEBlocks.DAMAGED_SILVER_ANVIL);
-            getOrCreateTagBuilder(MMEBlockTags.GOLDEN_ANVIL)
+            valueLookupBuilder(MMEBlockTags.GOLDEN_ANVIL)
                     .add(MMEBlocks.GOLDEN_ANVIL)
                     .add(MMEBlocks.CHIPPED_GOLDEN_ANVIL)
                     .add(MMEBlocks.DAMAGED_GOLDEN_ANVIL);
-            getOrCreateTagBuilder(MMEBlockTags.COPPER_ANVIL)
+            valueLookupBuilder(MMEBlockTags.COPPER_ANVIL)
                     .add(MMEBlocks.COPPER_ANVIL)
                     .add(MMEBlocks.CHIPPED_COPPER_ANVIL)
                     .add(MMEBlocks.DAMAGED_COPPER_ANVIL);
-            getOrCreateTagBuilder(MMEBlockTags.IRON_ANVIL)
+            valueLookupBuilder(MMEBlockTags.IRON_ANVIL)
                     .add(Blocks.ANVIL)
                     .add(Blocks.CHIPPED_ANVIL)
                     .add(Blocks.DAMAGED_ANVIL);
-            getOrCreateTagBuilder(MMEBlockTags.PORTAL)
+            valueLookupBuilder(MMEBlockTags.PORTAL)
                     .add(MMEBlocks.UNDERGROUND_PORTAL)
                     .add(MMEBlocks.HOME_PORTAL)
                     .add(MMEBlocks.RUNE_PORTAL)
                     .add(Blocks.NETHER_PORTAL);
-            getOrCreateTagBuilder(MMEBlockTags.MITHRIL_RUNESTORE)
+            valueLookupBuilder(MMEBlockTags.MITHRIL_RUNESTORE)
                     .add(MMEBlocks.MITHRIL_NUL_RUNESTORE)
                     .add(MMEBlocks.MITHRIL_QUAS_RUNESTORE)
                     .add(MMEBlocks.MITHRIL_POR_RUNESTORE)
@@ -253,7 +253,7 @@ public class MMETagProvider {
                     .add(MMEBlocks.MITHRIL_JUX_RUNESTORE)
                     .add(MMEBlocks.MITHRIL_YLEM_RUNESTORE)
                     .add(MMEBlocks.MITHRIL_SANCT_RUNESTORE);
-            getOrCreateTagBuilder(MMEBlockTags.ADAMANTIUM_RUNESTORE)
+            valueLookupBuilder(MMEBlockTags.ADAMANTIUM_RUNESTORE)
                     .add(MMEBlocks.ADAMANTIUM_NUL_RUNESTORE)
                     .add(MMEBlocks.ADAMANTIUM_QUAS_RUNESTORE)
                     .add(MMEBlocks.ADAMANTIUM_POR_RUNESTORE)
@@ -270,10 +270,10 @@ public class MMETagProvider {
                     .add(MMEBlocks.ADAMANTIUM_JUX_RUNESTORE)
                     .add(MMEBlocks.ADAMANTIUM_YLEM_RUNESTORE)
                     .add(MMEBlocks.ADAMANTIUM_SANCT_RUNESTORE);
-            getOrCreateTagBuilder(MMEBlockTags.RUNESTORE)
+            valueLookupBuilder(MMEBlockTags.RUNESTORE)
                     .forceAddTag(MMEBlockTags.ADAMANTIUM_RUNESTORE)
                     .forceAddTag(MMEBlockTags.MITHRIL_RUNESTORE);
-            getOrCreateTagBuilder(MMEBlockTags.CRAFTING_TABLE)
+            valueLookupBuilder(MMEBlockTags.CRAFTING_TABLE)
                     .add(MMEBlocks.ADAMANTIUM_CRAFTING_TABLE)
                     .add(MMEBlocks.MITHRIL_CRAFTING_TABLE)
                     .add(MMEBlocks.ANCIENT_METAL_CRAFTING_TABLE)
@@ -283,34 +283,34 @@ public class MMETagProvider {
                     .add(MMEBlocks.COPPER_CRAFTING_TABLE)
                     .add(MMEBlocks.OBSIDIAN_CRAFTING_TABLE)
                     .add(MMEBlocks.FLINT_CRAFTING_TABLE);
-            getOrCreateTagBuilder(MMEBlockTags.ENCHANTING_TABLE)
+            valueLookupBuilder(MMEBlockTags.ENCHANTING_TABLE)
                     .add(Blocks.ENCHANTING_TABLE)
                     .add(MMEBlocks.EMERALD_ENCHANTING_TABLE);
-            getOrCreateTagBuilder(MMEBlockTags.MINEABLE_WITH_MATTOCK)
+            valueLookupBuilder(MMEBlockTags.MINEABLE_WITH_MATTOCK)
                     .forceAddTag(BlockTags.MINEABLE_WITH_HOE)
                     .forceAddTag(BlockTags.MINEABLE_WITH_SHOVEL);
 
-            getOrCreateTagBuilder(MMEBlockTags.NEEDS_ADAMANTIUM_TOOL)
+            valueLookupBuilder(MMEBlockTags.NEEDS_ADAMANTIUM_TOOL)
                     .add(Blocks.ANCIENT_DEBRIS)
                     .add(Blocks.NETHERITE_BLOCK)
                     .add(MMEBlocks.ADAMANTIUM_BLOCK);
-            getOrCreateTagBuilder(MMEBlockTags.NEEDS_MITHRIL_TOOL)
+            valueLookupBuilder(MMEBlockTags.NEEDS_MITHRIL_TOOL)
                     .add(MMEBlocks.MITHRIL_BLOCK)
                     .add(MMEBlocks.ADAMANTIUM_ORE)
                     .add(MMEBlocks.DEEPSLATE_ADAMANTIUM_ORE);
-            getOrCreateTagBuilder(MMEBlockTags.NEEDS_ANCIENT_METAL_TOOL)
+            valueLookupBuilder(MMEBlockTags.NEEDS_ANCIENT_METAL_TOOL)
                     .add(MMEBlocks.ANCIENT_METAL_BLOCK)
                     .add(Blocks.DIAMOND_ORE)
                     .add(Blocks.DEEPSLATE_DIAMOND_ORE);
-            getOrCreateTagBuilder(BlockTags.NEEDS_IRON_TOOL)
+            valueLookupBuilder(BlockTags.NEEDS_IRON_TOOL)
                     .add(MMEBlocks.MITHRIL_ORE)
                     .add(MMEBlocks.DEEPSLATE_MITHRIL_ORE);
-            getOrCreateTagBuilder(MMEBlockTags.NEEDS_SILVER_OR_COPPER_TOOL)
+            valueLookupBuilder(MMEBlockTags.NEEDS_SILVER_OR_COPPER_TOOL)
                     .add(MMEBlocks.SILVER_BLOCK)
                     .add(Blocks.COPPER_BLOCK)
                     .forceAddTag(BlockTags.COPPER_ORES);
 
-            getOrCreateTagBuilder(MMEBlockTags.INCORRECT_FOR_FLINT_OR_OBSIDIAN_TOOL)
+            valueLookupBuilder(MMEBlockTags.INCORRECT_FOR_FLINT_OR_OBSIDIAN_TOOL)
                     .forceAddTag(MMEBlockTags.NEEDS_SILVER_OR_COPPER_TOOL)
                     .forceAddTag(MMEBlockTags.NEEDS_ANCIENT_METAL_TOOL)
                     .forceAddTag(MMEBlockTags.NEEDS_MITHRIL_TOOL)
@@ -318,24 +318,24 @@ public class MMETagProvider {
                     .forceAddTag(BlockTags.NEEDS_DIAMOND_TOOL)
                     .forceAddTag(BlockTags.NEEDS_IRON_TOOL)
                     .forceAddTag(BlockTags.NEEDS_STONE_TOOL);
-            getOrCreateTagBuilder(MMEBlockTags.INCORRECT_FOR_COPPER_OR_SILVER_TOOL)
+            valueLookupBuilder(MMEBlockTags.INCORRECT_FOR_COPPER_OR_SILVER_TOOL)
                     .forceAddTag(BlockTags.NEEDS_IRON_TOOL)
                     .forceAddTag(BlockTags.NEEDS_DIAMOND_TOOL)
                     .forceAddTag(MMEBlockTags.NEEDS_ANCIENT_METAL_TOOL)
                     .forceAddTag(MMEBlockTags.NEEDS_MITHRIL_TOOL)
                     .forceAddTag(MMEBlockTags.NEEDS_ADAMANTIUM_TOOL);
-            getOrCreateTagBuilder(MMEBlockTags.INCORRECT_FOR_RUSTED_IRON_TOOL)
+            valueLookupBuilder(MMEBlockTags.INCORRECT_FOR_RUSTED_IRON_TOOL)
                     .forceAddTag(MMEBlockTags.NEEDS_ANCIENT_METAL_TOOL)
                     .forceAddTag(MMEBlockTags.NEEDS_MITHRIL_TOOL)
                     .forceAddTag(MMEBlockTags.NEEDS_ADAMANTIUM_TOOL);
-            getOrCreateTagBuilder(MMEBlockTags.INCORRECT_FOR_ANCIENT_METAL_TOOL)
+            valueLookupBuilder(MMEBlockTags.INCORRECT_FOR_ANCIENT_METAL_TOOL)
                     .forceAddTag(MMEBlockTags.NEEDS_MITHRIL_TOOL)
                     .forceAddTag(MMEBlockTags.NEEDS_ADAMANTIUM_TOOL);
-            getOrCreateTagBuilder(MMEBlockTags.INCORRECT_FOR_MITHRIL_TOOL)
+            valueLookupBuilder(MMEBlockTags.INCORRECT_FOR_MITHRIL_TOOL)
                     .forceAddTag(MMEBlockTags.NEEDS_ADAMANTIUM_TOOL);
-            getOrCreateTagBuilder(MMEBlockTags.INCORRECT_FOR_ADAMANTIUM_TOOL);
+            valueLookupBuilder(MMEBlockTags.INCORRECT_FOR_ADAMANTIUM_TOOL);
 
-            getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_PICKAXE)
+            valueLookupBuilder(BlockTags.MINEABLE_WITH_PICKAXE)
                     .addTag(MMEBlockTags.MITHRIL_RUNESTORE)
                     .addTag(MMEBlockTags.ADAMANTIUM_RUNESTORE)
                     .add(MMEBlocks.ADAMANTIUM_ORE)
@@ -348,11 +348,11 @@ public class MMETagProvider {
                     .add(MMEBlocks.ANCIENT_METAL_BLOCK)
                     .add(MMEBlocks.MITHRIL_BLOCK)
                     .add(MMEBlocks.SILVER_BLOCK);
-            getOrCreateTagBuilder(BlockTags.BEE_GROWABLES)
+            valueLookupBuilder(BlockTags.BEE_GROWABLES)
                     .add(MMEBlocks.BLUE_BERRY_BUSH);
-            getOrCreateTagBuilder(BlockTags.FALL_DAMAGE_RESETTING)
+            valueLookupBuilder(BlockTags.FALL_DAMAGE_RESETTING)
                     .add(MMEBlocks.BLUE_BERRY_BUSH);
-            getOrCreateTagBuilder(MMEBlockTags.HERBACEOUS_PLANTS)
+            valueLookupBuilder(MMEBlockTags.HERBACEOUS_PLANTS)
                     .add(Blocks.TALL_DRY_GRASS)
                     .add(Blocks.SHORT_GRASS)
                     .add(Blocks.FERN)
@@ -365,14 +365,14 @@ public class MMETagProvider {
                     .add(Blocks.WEEPING_VINES)
                     .add(Blocks.DEAD_BUSH)
                     .add(Blocks.SHORT_DRY_GRASS);
-            getOrCreateTagBuilder(BlockTags.SWORD_INSTANTLY_MINES)
+            valueLookupBuilder(BlockTags.SWORD_INSTANTLY_MINES)
                     .addTag(MMEBlockTags.HERBACEOUS_PLANTS)
                     .add(Blocks.KELP);
-            getOrCreateTagBuilder(MMEBlockTags.MINEABLE_WITH_SCYTHE)
+            valueLookupBuilder(MMEBlockTags.MINEABLE_WITH_SCYTHE)
                     .addTag(MMEBlockTags.HERBACEOUS_PLANTS)
                     .add(Blocks.WHEAT)
                     .add(Blocks.KELP);
-            getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_HOE)
+            valueLookupBuilder(BlockTags.MINEABLE_WITH_HOE)
                     .add(Blocks.POTATOES)
                     .add(Blocks.CARROTS)
                     .add(Blocks.BEETROOTS)
@@ -388,7 +388,7 @@ public class MMETagProvider {
         }
         @Override
         protected void addTags(HolderLookup.Provider wrapperLookup) {
-            getOrCreateTagBuilder(ItemTags.HEAD_ARMOR)
+            valueLookupBuilder(ItemTags.HEAD_ARMOR)
                     .add(MMEItems.ADAMANTIUM_HELMET)
                     .add(MMEItems.ADAMANTIUM_CHAINMAIL_HELMET)
                     .add(MMEItems.ANCIENT_METAL_HELMET)
@@ -402,7 +402,7 @@ public class MMETagProvider {
                     .add(MMEItems.SILVER_HELMET)
                     .add(MMEItems.SILVER_CHAINMAIL_HELMET)
                     .add(MMEItems.GOLDEN_CHAINMAIL_HELMET);
-            getOrCreateTagBuilder(ItemTags.CHEST_ARMOR)
+            valueLookupBuilder(ItemTags.CHEST_ARMOR)
                     .add(MMEItems.ADAMANTIUM_CHESTPLATE)
                     .add(MMEItems.ADAMANTIUM_CHAINMAIL_CHESTPLATE)
                     .add(MMEItems.ANCIENT_METAL_CHESTPLATE)
@@ -416,7 +416,7 @@ public class MMETagProvider {
                     .add(MMEItems.SILVER_CHESTPLATE)
                     .add(MMEItems.SILVER_CHAINMAIL_CHESTPLATE)
                     .add(MMEItems.GOLDEN_CHAINMAIL_CHESTPLATE);
-            getOrCreateTagBuilder(ItemTags.LEG_ARMOR)
+            valueLookupBuilder(ItemTags.LEG_ARMOR)
                     .add(MMEItems.ADAMANTIUM_LEGGINGS)
                     .add(MMEItems.ADAMANTIUM_CHAINMAIL_LEGGINGS)
                     .add(MMEItems.ANCIENT_METAL_LEGGINGS)
@@ -430,7 +430,7 @@ public class MMETagProvider {
                     .add(MMEItems.SILVER_LEGGINGS)
                     .add(MMEItems.SILVER_CHAINMAIL_LEGGINGS)
                     .add(MMEItems.GOLDEN_CHAINMAIL_LEGGINGS);
-            getOrCreateTagBuilder(ItemTags.FOOT_ARMOR)
+            valueLookupBuilder(ItemTags.FOOT_ARMOR)
                     .add(MMEItems.ADAMANTIUM_BOOTS)
                     .add(MMEItems.ADAMANTIUM_CHAINMAIL_BOOTS)
                     .add(MMEItems.ANCIENT_METAL_BOOTS)
@@ -444,7 +444,7 @@ public class MMETagProvider {
                     .add(MMEItems.SILVER_BOOTS)
                     .add(MMEItems.SILVER_CHAINMAIL_BOOTS)
                     .add(MMEItems.GOLDEN_CHAINMAIL_BOOTS);
-            getOrCreateTagBuilder(MMEItemTags.BUCKET)
+            valueLookupBuilder(MMEItemTags.BUCKET)
                     .add(MMEItems.ADAMANTIUM_BUCKET)
                     .add(MMEItems.ANCIENT_METAL_BUCKET)
                     .add(MMEItems.COPPER_BUCKET)
@@ -453,7 +453,7 @@ public class MMETagProvider {
                     .add(MMEItems.SILVER_BUCKET)
                     .add(MMEItems.NETHERITE_BUCKET)
                     .add(Items.BUCKET);
-            getOrCreateTagBuilder(MMEItemTags.WATER_BUCKET)
+            valueLookupBuilder(MMEItemTags.WATER_BUCKET)
                     .add(MMEItems.WATER_ADAMANTIUM_BUCKET)
                     .add(MMEItems.WATER_ANCIENT_METAL_BUCKET)
                     .add(MMEItems.WATER_COPPER_BUCKET)
@@ -462,7 +462,7 @@ public class MMETagProvider {
                     .add(MMEItems.WATER_SILVER_BUCKET)
                     .add(MMEItems.WATER_NETHERITE_BUCKET)
                     .add(Items.WATER_BUCKET);
-            getOrCreateTagBuilder(MMEItemTags.MILK_BUCKET)
+            valueLookupBuilder(MMEItemTags.MILK_BUCKET)
                     .add(MMEItems.MILK_ADAMANTIUM_BUCKET)
                     .add(MMEItems.MILK_ANCIENT_METAL_BUCKET)
                     .add(MMEItems.MILK_COPPER_BUCKET)
@@ -471,7 +471,7 @@ public class MMETagProvider {
                     .add(MMEItems.MILK_SILVER_BUCKET)
                     .add(MMEItems.MILK_NETHERITE_BUCKET)
                     .add(Items.MILK_BUCKET);
-            getOrCreateTagBuilder(MMEItemTags.LAVA_BUCKET)
+            valueLookupBuilder(MMEItemTags.LAVA_BUCKET)
                     .add(MMEItems.LAVA_NETHERITE_BUCKET)
                     .add(MMEItems.LAVA_ADAMANTIUM_BUCKET)
                     .add(MMEItems.LAVA_MITHRIL_BUCKET)
@@ -480,7 +480,7 @@ public class MMETagProvider {
                     .add(MMEItems.LAVA_SILVER_BUCKET)
                     .add(MMEItems.LAVA_GOLD_BUCKET)
                     .add(Items.LAVA_BUCKET);
-            getOrCreateTagBuilder(MMEItemTags.FISHING_RODS)
+            valueLookupBuilder(MMEItemTags.FISHING_RODS)
                     .add(MMEItems.NETHERITE_FISHING_ROD)
                     .add(MMEItems.ADAMANTIUM_FISHING_ROD)
                     .add(MMEItems.ANCIENT_METAL_FISHING_ROD)
@@ -492,7 +492,7 @@ public class MMETagProvider {
                     .add(MMEItems.FLINT_FISHING_ROD)
                     .add(MMEItems.OBSIDIAN_FISHING_ROD)
                     .add(Items.FISHING_ROD);
-            getOrCreateTagBuilder(MMEItemTags.METAL_FISHING_RODS)
+            valueLookupBuilder(MMEItemTags.METAL_FISHING_RODS)
                     .add(MMEItems.NETHERITE_FISHING_ROD)
                     .add(MMEItems.ADAMANTIUM_FISHING_ROD)
                     .add(MMEItems.ANCIENT_METAL_FISHING_ROD)
@@ -501,17 +501,17 @@ public class MMETagProvider {
                     .add(MMEItems.GOLDEN_FISHING_ROD)
                     .add(MMEItems.IRON_FISHING_ROD)
                     .add(MMEItems.SILVER_FISHING_ROD);
-            getOrCreateTagBuilder(MMEItemTags.COOKED_FISH)
+            valueLookupBuilder(MMEItemTags.COOKED_FISH)
                     .add(Items.COOKED_COD)
                     .add(Items.COOKED_SALMON);
-            getOrCreateTagBuilder(MMEItemTags.COPPER_OR_SILVER_ORE)
+            valueLookupBuilder(MMEItemTags.COPPER_OR_SILVER_ORE)
                     .add(Items.COPPER_ORE)
                     .add(Items.DEEPSLATE_COPPER_ORE)
                     .add(Items.RAW_COPPER)
                     .add(MMEItems.RAW_SILVER)
                     .add(MMEBlocks.SILVER_ORE.asItem())
                     .add(MMEBlocks.DEEPSLATE_SILVER_ORE.asItem());
-            getOrCreateTagBuilder(MMEItemTags.MITHRIL_ARMOR)
+            valueLookupBuilder(MMEItemTags.MITHRIL_ARMOR)
                     .add(MMEItems.MITHRIL_HELMET)
                     .add(MMEItems.MITHRIL_CHESTPLATE)
                     .add(MMEItems.MITHRIL_LEGGINGS)
@@ -520,7 +520,7 @@ public class MMETagProvider {
                     .add(MMEItems.MITHRIL_CHAINMAIL_CHESTPLATE)
                     .add(MMEItems.MITHRIL_CHAINMAIL_LEGGINGS)
                     .add(MMEItems.MITHRIL_CHAINMAIL_BOOTS);
-            getOrCreateTagBuilder(MMEItemTags.ADAMANTIUM_ARMOR)
+            valueLookupBuilder(MMEItemTags.ADAMANTIUM_ARMOR)
                     .add(MMEItems.ADAMANTIUM_HELMET)
                     .add(MMEItems.ADAMANTIUM_CHESTPLATE)
                     .add(MMEItems.ADAMANTIUM_LEGGINGS)
@@ -529,19 +529,19 @@ public class MMETagProvider {
                     .add(MMEItems.ADAMANTIUM_CHAINMAIL_CHESTPLATE)
                     .add(MMEItems.ADAMANTIUM_CHAINMAIL_LEGGINGS)
                     .add(MMEItems.ADAMANTIUM_CHAINMAIL_BOOTS);
-            getOrCreateTagBuilder(MMEItemTags.SILVER_ORE)
+            valueLookupBuilder(MMEItemTags.SILVER_ORE)
                     .add(MMEItems.RAW_SILVER)
                     .add(MMEBlocks.SILVER_ORE.asItem())
                     .add(MMEBlocks.DEEPSLATE_SILVER_ORE.asItem());
-            getOrCreateTagBuilder(MMEItemTags.MITHRIL_ORE)
+            valueLookupBuilder(MMEItemTags.MITHRIL_ORE)
                     .add(MMEItems.RAW_MITHRIL)
                     .add(MMEBlocks.MITHRIL_ORE.asItem())
                     .add(MMEBlocks.DEEPSLATE_MITHRIL_ORE.asItem());
-            getOrCreateTagBuilder(MMEItemTags.ADAMANTIUM_ORE)
+            valueLookupBuilder(MMEItemTags.ADAMANTIUM_ORE)
                     .add(MMEItems.RAW_ADAMANTIUM)
                     .add(MMEBlocks.ADAMANTIUM_ORE.asItem())
                     .add(MMEBlocks.DEEPSLATE_ADAMANTIUM_ORE.asItem());
-            getOrCreateTagBuilder(MMEItemTags.NUGGET)
+            valueLookupBuilder(MMEItemTags.NUGGET)
                     .add(Items.IRON_NUGGET)
                     .add(Items.GOLD_NUGGET)
                     .add(MMEItems.NETHERITE_NUGGET)
@@ -550,13 +550,13 @@ public class MMETagProvider {
                     .add(MMEItems.MITHRIL_NUGGET)
                     .add(MMEItems.SILVER_NUGGET)
                     .add(MMEItems.COPPER_NUGGET);
-            getOrCreateTagBuilder(MMEItemTags.SHARD)
+            valueLookupBuilder(MMEItemTags.SHARD)
                     .add(MMEItems.FLINT_SHARD)
                     .add(MMEItems.OBSIDIAN_SHARD);
-            getOrCreateTagBuilder(MMEItemTags.COPPER_OR_SILVER_NUGGET)
+            valueLookupBuilder(MMEItemTags.COPPER_OR_SILVER_NUGGET)
                     .add(MMEItems.COPPER_NUGGET)
                     .add(MMEItems.SILVER_NUGGET);
-            getOrCreateTagBuilder(MMEItemTags.COPPER_OR_SILVER_ARMOR)
+            valueLookupBuilder(MMEItemTags.COPPER_OR_SILVER_ARMOR)
                     .add(MMEItems.COPPER_HELMET)
                     .add(MMEItems.COPPER_CHESTPLATE)
                     .add(MMEItems.COPPER_LEGGINGS)
@@ -573,15 +573,15 @@ public class MMETagProvider {
                     .add(MMEItems.SILVER_CHAINMAIL_CHESTPLATE)
                     .add(MMEItems.SILVER_CHAINMAIL_LEGGINGS)
                     .add(MMEItems.SILVER_CHAINMAIL_BOOTS);
-            getOrCreateTagBuilder(MMEItemTags.COPPER_OR_SILVER_PICKAXE)
+            valueLookupBuilder(MMEItemTags.COPPER_OR_SILVER_PICKAXE)
                     .add(MMEItems.COPPER_PICKAXE)
                     .add(MMEItems.SILVER_PICKAXE);
-            getOrCreateTagBuilder(MMEItemTags.LEATHER_ARMOR)
+            valueLookupBuilder(MMEItemTags.LEATHER_ARMOR)
                     .add(Items.LEATHER_HELMET)
                     .add(Items.LEATHER_CHESTPLATE)
                     .add(Items.LEATHER_LEGGINGS)
                     .add(Items.LEATHER_BOOTS);
-            getOrCreateTagBuilder(MMEItemTags.INGOT)
+            valueLookupBuilder(MMEItemTags.INGOT)
                     .add(Items.IRON_INGOT)
                     .add(Items.GOLD_INGOT)
                     .add(Items.NETHERITE_INGOT)
@@ -590,7 +590,7 @@ public class MMETagProvider {
                     .add(MMEItems.ANCIENT_METAL_INGOT)
                     .add(MMEItems.MITHRIL_INGOT)
                     .add(MMEItems.SILVER_INGOT);
-            getOrCreateTagBuilder(MMEItemTags.CHAINS)
+            valueLookupBuilder(MMEItemTags.CHAINS)
                     .add(MMEItems.ADAMANTIUM_CHAINS)
                     .add(MMEItems.ANCIENT_METAL_CHAINS)
                     .add(MMEItems.COPPER_CHAINS)
@@ -599,7 +599,7 @@ public class MMETagProvider {
                     .add(MMEItems.SILVER_CHAINS)
                     .add(MMEItems.GOLDEN_CHAINS)
                     .add(MMEItems.IRON_CHAINS);
-            getOrCreateTagBuilder(MMEItemTags.COINS)
+            valueLookupBuilder(MMEItemTags.COINS)
                     .add(MMEItems.NETHERITE_COINS)
                     .add(MMEItems.ADAMANTIUM_COINS)
                     .add(MMEItems.ANCIENT_METAL_COINS)
@@ -608,7 +608,7 @@ public class MMETagProvider {
                     .add(MMEItems.GOLDEN_COINS)
                     .add(MMEItems.SILVER_COINS)
                     .add(MMEItems.IRON_COINS);      
-            getOrCreateTagBuilder(MMEItemTags.NETHERITE_TOOLS)
+            valueLookupBuilder(MMEItemTags.NETHERITE_TOOLS)
                     .add(Items.NETHERITE_AXE)
                     .add(MMEItems.NETHERITE_HATCHET)
                     .add(Items.NETHERITE_PICKAXE)
@@ -625,7 +625,7 @@ public class MMETagProvider {
                     .add(Items.NETHERITE_CHESTPLATE)
                     .add(Items.NETHERITE_LEGGINGS)
                     .add(Items.NETHERITE_BOOTS);
-            getOrCreateTagBuilder(MMEItemTags.ADAMANTIUM_TOOLS)
+            valueLookupBuilder(MMEItemTags.ADAMANTIUM_TOOLS)
                     .add(MMEItems.ADAMANTIUM_AXE)
                     .add(MMEItems.ADAMANTIUM_HATCHET)
                     .add(MMEItems.ADAMANTIUM_PICKAXE)
@@ -647,7 +647,7 @@ public class MMETagProvider {
                     .add(MMEItems.ADAMANTIUM_CHAINMAIL_LEGGINGS)
                     .add(MMEItems.ADAMANTIUM_BOOTS)
                     .add(MMEItems.ADAMANTIUM_CHAINMAIL_BOOTS);
-            getOrCreateTagBuilder(MMEItemTags.MITHRIL_TOOLS)
+            valueLookupBuilder(MMEItemTags.MITHRIL_TOOLS)
                     .add(MMEItems.MITHRIL_AXE)
                     .add(MMEItems.MITHRIL_HATCHET)
                     .add(MMEItems.MITHRIL_PICKAXE)
@@ -669,7 +669,7 @@ public class MMETagProvider {
                     .add(MMEItems.MITHRIL_CHAINMAIL_LEGGINGS)
                     .add(MMEItems.MITHRIL_BOOTS)
                     .add(MMEItems.MITHRIL_CHAINMAIL_BOOTS);
-            getOrCreateTagBuilder(MMEItemTags.ANCIENT_METAL_TOOLS)
+            valueLookupBuilder(MMEItemTags.ANCIENT_METAL_TOOLS)
                     .add(MMEItems.ANCIENT_METAL_AXE)
                     .add(MMEItems.ANCIENT_METAL_HATCHET)
                     .add(MMEItems.ANCIENT_METAL_PICKAXE)
@@ -691,7 +691,7 @@ public class MMETagProvider {
                     .add(MMEItems.ANCIENT_METAL_CHAINMAIL_LEGGINGS)
                     .add(MMEItems.ANCIENT_METAL_BOOTS)
                     .add(MMEItems.ANCIENT_METAL_CHAINMAIL_BOOTS);
-            getOrCreateTagBuilder(MMEItemTags.GOLDEN_TOOLS)
+            valueLookupBuilder(MMEItemTags.GOLDEN_TOOLS)
                     .add(Items.GOLDEN_AXE)
                     .add(MMEItems.GOLDEN_HATCHET)
                     .add(Items.GOLDEN_PICKAXE)
@@ -713,7 +713,7 @@ public class MMETagProvider {
                     .add(MMEItems.GOLDEN_CHAINMAIL_LEGGINGS)
                     .add(Items.GOLDEN_BOOTS)
                     .add(MMEItems.GOLDEN_CHAINMAIL_BOOTS);
-            getOrCreateTagBuilder(MMEItemTags.IRON_TOOLS)
+            valueLookupBuilder(MMEItemTags.IRON_TOOLS)
                     .add(Items.IRON_AXE)
                     .add(MMEItems.IRON_HATCHET)
                     .add(Items.IRON_PICKAXE)
@@ -735,7 +735,7 @@ public class MMETagProvider {
                     .add(Items.CHAINMAIL_LEGGINGS)
                     .add(Items.IRON_BOOTS)
                     .add(Items.CHAINMAIL_BOOTS);
-            getOrCreateTagBuilder(MMEItemTags.RUSTED_IRON_TOOLS)
+            valueLookupBuilder(MMEItemTags.RUSTED_IRON_TOOLS)
                     .add(MMEItems.RUSTED_IRON_AXE)
                     .add(MMEItems.RUSTED_IRON_HATCHET)
                     .add(MMEItems.RUSTED_IRON_PICKAXE)
@@ -756,7 +756,7 @@ public class MMETagProvider {
                     .add(MMEItems.RUSTED_IRON_CHAINMAIL_LEGGINGS)
                     .add(MMEItems.RUSTED_IRON_BOOTS)
                     .add(MMEItems.RUSTED_IRON_CHAINMAIL_BOOTS);
-            getOrCreateTagBuilder(MMEItemTags.SILVER_TOOLS)
+            valueLookupBuilder(MMEItemTags.SILVER_TOOLS)
                     .add(MMEItems.SILVER_AXE)
                     .add(MMEItems.SILVER_HATCHET)
                     .add(MMEItems.SILVER_PICKAXE)
@@ -778,7 +778,7 @@ public class MMETagProvider {
                     .add(MMEItems.SILVER_CHAINMAIL_LEGGINGS)
                     .add(MMEItems.SILVER_BOOTS)
                     .add(MMEItems.SILVER_CHAINMAIL_BOOTS);
-            getOrCreateTagBuilder(MMEItemTags.SILVER_WEAPONS)
+            valueLookupBuilder(MMEItemTags.SILVER_WEAPONS)
                     .add(MMEItems.SILVER_SWORD)
                     .add(MMEItems.SILVER_AXE)
                     .add(MMEItems.SILVER_BATTLE_AXE)
@@ -791,7 +791,7 @@ public class MMETagProvider {
                     .add(MMEItems.SILVER_SCYTHE)
                     .add(MMEItems.SILVER_WAR_HAMMER)
                     .add(MMEItems.SILVER_SHEARS);
-            getOrCreateTagBuilder(MMEItemTags.SILVER_ARMOR)
+            valueLookupBuilder(MMEItemTags.SILVER_ARMOR)
                     .add(MMEItems.SILVER_HELMET)
                     .add(MMEItems.SILVER_CHAINMAIL_HELMET)
                     .add(MMEItems.SILVER_CHESTPLATE)
@@ -800,7 +800,7 @@ public class MMETagProvider {
                     .add(MMEItems.SILVER_CHAINMAIL_LEGGINGS)
                     .add(MMEItems.SILVER_BOOTS)
                     .add(MMEItems.SILVER_CHAINMAIL_BOOTS);
-            getOrCreateTagBuilder(MMEItemTags.COPPER_TOOLS)
+            valueLookupBuilder(MMEItemTags.COPPER_TOOLS)
                     .add(MMEItems.COPPER_AXE)
                     .add(MMEItems.COPPER_HATCHET)
                     .add(MMEItems.COPPER_PICKAXE)
@@ -822,54 +822,54 @@ public class MMETagProvider {
                     .add(MMEItems.COPPER_CHAINMAIL_LEGGINGS)
                     .add(MMEItems.COPPER_BOOTS)
                     .add(MMEItems.COPPER_CHAINMAIL_BOOTS);
-            getOrCreateTagBuilder(MMEItemTags.DESTRUCTIBLE_ENDCRYSTAL)
+            valueLookupBuilder(MMEItemTags.DESTRUCTIBLE_ENDCRYSTAL)
                     .addTag(MMEItemTags.NETHERITE_TOOLS)
                     .addTag(MMEItemTags.ADAMANTIUM_TOOLS);
 
-            getOrCreateTagBuilder(MMEItemTags.NETHERITE_TOOL_MATERIALS)
+            valueLookupBuilder(MMEItemTags.NETHERITE_TOOL_MATERIALS)
                     .add(Items.NETHERITE_INGOT)
                     .add(MMEItems.NETHERITE_NUGGET);
-            getOrCreateTagBuilder(MMEItemTags.ADAMANTIUM_TOOL_MATERIALS)
+            valueLookupBuilder(MMEItemTags.ADAMANTIUM_TOOL_MATERIALS)
                     .add(MMEItems.ADAMANTIUM_INGOT)
                     .add(MMEItems.ADAMANTIUM_NUGGET);
-            getOrCreateTagBuilder(MMEItemTags.MITHRIL_TOOL_MATERIALS)
+            valueLookupBuilder(MMEItemTags.MITHRIL_TOOL_MATERIALS)
                     .add(MMEItems.MITHRIL_INGOT)
                     .add(MMEItems.MITHRIL_NUGGET);
-            getOrCreateTagBuilder(MMEItemTags.ANCIENT_METAL_TOOL_MATERIALS)
+            valueLookupBuilder(MMEItemTags.ANCIENT_METAL_TOOL_MATERIALS)
                     .add(MMEItems.ANCIENT_METAL_INGOT)
                     .add(MMEItems.ANCIENT_METAL_NUGGET);
-            getOrCreateTagBuilder(MMEItemTags.SILVER_TOOL_MATERIALS)
+            valueLookupBuilder(MMEItemTags.SILVER_TOOL_MATERIALS)
                     .add(MMEItems.SILVER_INGOT)
                     .add(MMEItems.SILVER_NUGGET);
-            getOrCreateTagBuilder(MMEItemTags.COPPER_TOOL_MATERIALS)
+            valueLookupBuilder(MMEItemTags.COPPER_TOOL_MATERIALS)
                     .add(Items.COPPER_INGOT)
                     .add(MMEItems.COPPER_NUGGET);
-            getOrCreateTagBuilder(ItemTags.IRON_TOOL_MATERIALS)
+            valueLookupBuilder(ItemTags.IRON_TOOL_MATERIALS)
                     .add(Items.IRON_NUGGET)
                     .add(Items.IRON_INGOT);
 
-            getOrCreateTagBuilder(MMEItemTags.NETHERITE_NOT_ALLOWED_MATERIAL);
-            getOrCreateTagBuilder(MMEItemTags.ADAMANTIUM_NOT_ALLOWED_MATERIAL)
+            valueLookupBuilder(MMEItemTags.NETHERITE_NOT_ALLOWED_MATERIAL);
+            valueLookupBuilder(MMEItemTags.ADAMANTIUM_NOT_ALLOWED_MATERIAL)
                     .addTag(MMEItemTags.NETHERITE_NOT_ALLOWED_MATERIAL)
                     .forceAddTag(ItemTags.NETHERITE_TOOL_MATERIALS);
-            getOrCreateTagBuilder(MMEItemTags.MITHRIL_NOT_ALLOWED_MATERIAL)
+            valueLookupBuilder(MMEItemTags.MITHRIL_NOT_ALLOWED_MATERIAL)
                     .addTag(MMEItemTags.ADAMANTIUM_NOT_ALLOWED_MATERIAL)
                     .addTag(MMEItemTags.ADAMANTIUM_TOOL_MATERIALS);
-            getOrCreateTagBuilder(MMEItemTags.ANCIENT_METAL_NOT_ALLOWED_MATERIAL)
+            valueLookupBuilder(MMEItemTags.ANCIENT_METAL_NOT_ALLOWED_MATERIAL)
                     .addTag(MMEItemTags.MITHRIL_TOOL_MATERIALS)
                     .addTag(MMEItemTags.MITHRIL_NOT_ALLOWED_MATERIAL);
-            getOrCreateTagBuilder(MMEItemTags.IRON_NOT_ALLOWED_MATERIAL)
+            valueLookupBuilder(MMEItemTags.IRON_NOT_ALLOWED_MATERIAL)
                     .addTag(MMEItemTags.ANCIENT_METAL_TOOL_MATERIALS)
                     .addTag(MMEItemTags.ANCIENT_METAL_NOT_ALLOWED_MATERIAL);
-            getOrCreateTagBuilder(MMEItemTags.COPPER_OR_SILVER_NOT_ALLOWED_MATERIAL)
+            valueLookupBuilder(MMEItemTags.COPPER_OR_SILVER_NOT_ALLOWED_MATERIAL)
                     .addTag(ItemTags.IRON_TOOL_MATERIALS)
                     .addTag(MMEItemTags.IRON_NOT_ALLOWED_MATERIAL);
-            getOrCreateTagBuilder(MMEItemTags.GOLD_NOT_ALLOWED_MATERIAL)
+            valueLookupBuilder(MMEItemTags.GOLD_NOT_ALLOWED_MATERIAL)
                     .addTag(ItemTags.IRON_TOOL_MATERIALS)
                     .addTag(MMEItemTags.IRON_NOT_ALLOWED_MATERIAL);
 
 
-            getOrCreateTagBuilder(MMEItemTags.BATTLE_AXE)
+            valueLookupBuilder(MMEItemTags.BATTLE_AXE)
                     .add(MMEItems.NETHERITE_BATTLE_AXE)
                     .add(MMEItems.ADAMANTIUM_BATTLE_AXE)
                     .add(MMEItems.MITHRIL_BATTLE_AXE)
@@ -879,7 +879,7 @@ public class MMETagProvider {
                     .add(MMEItems.GOLDEN_BATTLE_AXE)
                     .add(MMEItems.SILVER_BATTLE_AXE)
                     .add(MMEItems.COPPER_BATTLE_AXE);
-            getOrCreateTagBuilder(MMEItemTags.HATCHET)
+            valueLookupBuilder(MMEItemTags.HATCHET)
                     .add(MMEItems.NETHERITE_HATCHET)
                     .add(MMEItems.ADAMANTIUM_HATCHET)
                     .add(MMEItems.MITHRIL_HATCHET)
@@ -891,7 +891,7 @@ public class MMETagProvider {
                     .add(MMEItems.COPPER_HATCHET)
                     .add(MMEItems.FLINT_HATCHET)
                     .add(MMEItems.OBSIDIAN_HATCHET);
-            getOrCreateTagBuilder(MMEItemTags.DAGGER)
+            valueLookupBuilder(MMEItemTags.DAGGER)
                     .add(MMEItems.NETHERITE_DAGGER)
                     .add(MMEItems.ADAMANTIUM_DAGGER)
                     .add(MMEItems.MITHRIL_DAGGER)
@@ -901,9 +901,9 @@ public class MMETagProvider {
                     .add(MMEItems.GOLDEN_DAGGER)
                     .add(MMEItems.SILVER_DAGGER)
                     .add(MMEItems.COPPER_DAGGER);
-            getOrCreateTagBuilder(MMEItemTags.DAGGER_ENCHANTABLE)
+            valueLookupBuilder(MMEItemTags.DAGGER_ENCHANTABLE)
                     .addTag(MMEItemTags.DAGGER);
-            getOrCreateTagBuilder(MMEItemTags.WAR_HAMMER)
+            valueLookupBuilder(MMEItemTags.WAR_HAMMER)
                     .add(MMEItems.NETHERITE_WAR_HAMMER)
                     .add(MMEItems.ADAMANTIUM_WAR_HAMMER)
                     .add(MMEItems.MITHRIL_WAR_HAMMER)
@@ -913,7 +913,7 @@ public class MMETagProvider {
                     .add(MMEItems.GOLDEN_WAR_HAMMER)
                     .add(MMEItems.SILVER_WAR_HAMMER)
                     .add(MMEItems.COPPER_WAR_HAMMER);
-            getOrCreateTagBuilder(MMEItemTags.MATTOCK)
+            valueLookupBuilder(MMEItemTags.MATTOCK)
                     .add(MMEItems.NETHERITE_MATTOCK)
                     .add(MMEItems.ADAMANTIUM_MATTOCK)
                     .add(MMEItems.MITHRIL_MATTOCK)
@@ -923,7 +923,7 @@ public class MMETagProvider {
                     .add(MMEItems.GOLDEN_MATTOCK)
                     .add(MMEItems.SILVER_MATTOCK)
                     .add(MMEItems.COPPER_MATTOCK);
-            getOrCreateTagBuilder(MMEItemTags.SCYTHE)
+            valueLookupBuilder(MMEItemTags.SCYTHE)
                     .add(MMEItems.NETHERITE_SCYTHE)
                     .add(MMEItems.ADAMANTIUM_SCYTHE)
                     .add(MMEItems.MITHRIL_SCYTHE)
@@ -933,7 +933,7 @@ public class MMETagProvider {
                     .add(MMEItems.GOLDEN_SCYTHE)
                     .add(MMEItems.SILVER_SCYTHE)
                     .add(MMEItems.COPPER_SCYTHE);
-            getOrCreateTagBuilder(MMEItemTags.SHEARS)
+            valueLookupBuilder(MMEItemTags.SHEARS)
                     .add(MMEItems.NETHERITE_SHEARS)
                     .add(MMEItems.ADAMANTIUM_SHEARS)
                     .add(MMEItems.MITHRIL_SHEARS)
@@ -944,7 +944,7 @@ public class MMETagProvider {
                     .add(MMEItems.SILVER_SHEARS)
                     .add(MMEItems.COPPER_SHEARS);
 
-            getOrCreateTagBuilder(ItemTags.SWORDS)
+            valueLookupBuilder(ItemTags.SWORDS)
                     .addTag(MMEItemTags.DAGGER)
                     .add(MMEItems.ADAMANTIUM_SWORD)
                     .add(MMEItems.MITHRIL_SWORD)
@@ -952,7 +952,7 @@ public class MMETagProvider {
                     .add(MMEItems.RUSTED_IRON_SWORD)
                     .add(MMEItems.SILVER_SWORD)
                     .add(MMEItems.COPPER_SWORD);
-            getOrCreateTagBuilder(ItemTags.AXES)
+            valueLookupBuilder(ItemTags.AXES)
                     .addTag(MMEItemTags.BATTLE_AXE)
                     .addTag(MMEItemTags.HATCHET)
                     .add(MMEItems.ADAMANTIUM_AXE)
@@ -963,7 +963,7 @@ public class MMETagProvider {
                     .add(MMEItems.COPPER_AXE)
                     .add(MMEItems.FLINT_AXE)
                     .add(MMEItems.OBSIDIAN_AXE);
-            getOrCreateTagBuilder(ItemTags.PICKAXES)
+            valueLookupBuilder(ItemTags.PICKAXES)
                     .addTag(MMEItemTags.WAR_HAMMER)
                     .add(MMEItems.ADAMANTIUM_PICKAXE)
                     .add(MMEItems.MITHRIL_PICKAXE)
@@ -971,7 +971,7 @@ public class MMETagProvider {
                     .add(MMEItems.RUSTED_IRON_PICKAXE)
                     .add(MMEItems.SILVER_PICKAXE)
                     .add(MMEItems.COPPER_PICKAXE);
-            getOrCreateTagBuilder(ItemTags.SHOVELS)
+            valueLookupBuilder(ItemTags.SHOVELS)
                     .addTag(MMEItemTags.MATTOCK)
                     .add(MMEItems.ADAMANTIUM_SHOVEL)
                     .add(MMEItems.MITHRIL_SHOVEL)
@@ -979,14 +979,14 @@ public class MMETagProvider {
                     .add(MMEItems.RUSTED_IRON_SHOVEL)
                     .add(MMEItems.SILVER_SHOVEL)
                     .add(MMEItems.COPPER_SHOVEL);
-            getOrCreateTagBuilder(ItemTags.HOES)
+            valueLookupBuilder(ItemTags.HOES)
                     .add(MMEItems.ADAMANTIUM_HOE)
                     .add(MMEItems.MITHRIL_HOE)
                     .add(MMEItems.ANCIENT_METAL_HOE)
                     .add(MMEItems.RUSTED_IRON_HOE)
                     .add(MMEItems.SILVER_HOE)
                     .add(MMEItems.COPPER_HOE);
-            getOrCreateTagBuilder(ItemTags.FISHING_ENCHANTABLE)
+            valueLookupBuilder(ItemTags.FISHING_ENCHANTABLE)
                     .add(MMEItems.NETHERITE_FISHING_ROD)
                     .add(MMEItems.ADAMANTIUM_FISHING_ROD)
                     .add(MMEItems.MITHRIL_FISHING_ROD)
@@ -997,7 +997,7 @@ public class MMETagProvider {
                     .add(MMEItems.GOLDEN_FISHING_ROD)
                     .add(MMEItems.OBSIDIAN_FISHING_ROD)
                     .add(MMEItems.FLINT_FISHING_ROD);
-            getOrCreateTagBuilder(ItemTags.DURABILITY_ENCHANTABLE)
+            valueLookupBuilder(ItemTags.DURABILITY_ENCHANTABLE)
                     .add(MMEItems.NETHERITE_FISHING_ROD)
                     .add(MMEItems.ADAMANTIUM_FISHING_ROD)
                     .add(MMEItems.MITHRIL_FISHING_ROD)
@@ -1009,20 +1009,20 @@ public class MMETagProvider {
                     .add(MMEItems.OBSIDIAN_FISHING_ROD)
                     .add(MMEItems.FLINT_FISHING_ROD)
                     .addTag(MMEItemTags.SHEARS);
-            getOrCreateTagBuilder(ItemTags.MINING_ENCHANTABLE)
+            valueLookupBuilder(ItemTags.MINING_ENCHANTABLE)
                     .addTag(MMEItemTags.SHEARS);
 
-            getOrCreateTagBuilder(MMEItemTags.STRING)
+            valueLookupBuilder(MMEItemTags.STRING)
                     .add(Items.STRING)
                     .add(MMEItems.SINEW);
-            getOrCreateTagBuilder(MMEItemTags.HARVESTING_ENCHANTABLE)
+            valueLookupBuilder(MMEItemTags.HARVESTING_ENCHANTABLE)
                     .forceAddTag(ItemTags.HOES)
                     .addTag(MMEItemTags.MATTOCK)
                     .addTag(MMEItemTags.SCYTHE);
-            getOrCreateTagBuilder(MMEItemTags.FERTILITY_ENCHANTABLE)
+            valueLookupBuilder(MMEItemTags.FERTILITY_ENCHANTABLE)
                     .forceAddTag(ItemTags.HOES)
                     .addTag(MMEItemTags.MATTOCK);
-            getOrCreateTagBuilder(MMEItemTags.CRAFTING_TABLE)
+            valueLookupBuilder(MMEItemTags.CRAFTING_TABLE)
                     .add(MMEBlocks.ADAMANTIUM_CRAFTING_TABLE.asItem())
                     .add(MMEBlocks.MITHRIL_CRAFTING_TABLE.asItem())
                     .add(MMEBlocks.ANCIENT_METAL_CRAFTING_TABLE.asItem())
@@ -1032,7 +1032,7 @@ public class MMETagProvider {
                     .add(MMEBlocks.GOLD_CRAFTING_TABLE.asItem())
                     .add(MMEBlocks.FLINT_CRAFTING_TABLE.asItem())
                     .add(MMEBlocks.OBSIDIAN_CRAFTING_TABLE.asItem());
-            getOrCreateTagBuilder(MMEItemTags.METAL_CRAFTING_TABLE)
+            valueLookupBuilder(MMEItemTags.METAL_CRAFTING_TABLE)
                     .add(MMEBlocks.ADAMANTIUM_CRAFTING_TABLE.asItem())
                     .add(MMEBlocks.MITHRIL_CRAFTING_TABLE.asItem())
                     .add(MMEBlocks.ANCIENT_METAL_CRAFTING_TABLE.asItem())
@@ -1040,22 +1040,22 @@ public class MMETagProvider {
                     .add(MMEBlocks.COPPER_CRAFTING_TABLE.asItem())
                     .add(MMEBlocks.SILVER_CRAFTING_TABLE.asItem())
                     .add(MMEBlocks.GOLD_CRAFTING_TABLE.asItem());
-            getOrCreateTagBuilder(MMEItemTags.ADAMANTIUM_CRAFTING_TABLE_EXCEPTIONS);
-            getOrCreateTagBuilder(MMEItemTags.MITHRIL_CRAFTING_TABLE_EXCEPTIONS)
+            valueLookupBuilder(MMEItemTags.ADAMANTIUM_CRAFTING_TABLE_EXCEPTIONS);
+            valueLookupBuilder(MMEItemTags.MITHRIL_CRAFTING_TABLE_EXCEPTIONS)
                     .add(MMEBlocks.ADAMANTIUM_CRAFTING_TABLE.asItem());
-            getOrCreateTagBuilder(MMEItemTags.ANCIENT_METAL_CRAFTING_TABLE_EXCEPTIONS)
+            valueLookupBuilder(MMEItemTags.ANCIENT_METAL_CRAFTING_TABLE_EXCEPTIONS)
                     .add(MMEBlocks.MITHRIL_CRAFTING_TABLE.asItem());
-            getOrCreateTagBuilder(MMEItemTags.IRON_CRAFTING_TABLE_EXCEPTIONS)
+            valueLookupBuilder(MMEItemTags.IRON_CRAFTING_TABLE_EXCEPTIONS)
                     .add(MMEBlocks.ANCIENT_METAL_CRAFTING_TABLE.asItem());
-            getOrCreateTagBuilder(MMEItemTags.COPPER_CRAFTING_TABLE_EXCEPTIONS)
+            valueLookupBuilder(MMEItemTags.COPPER_CRAFTING_TABLE_EXCEPTIONS)
                     .add(MMEBlocks.IRON_CRAFTING_TABLE.asItem());
-            getOrCreateTagBuilder(MMEItemTags.SILVER_CRAFTING_TABLE_EXCEPTIONS)
+            valueLookupBuilder(MMEItemTags.SILVER_CRAFTING_TABLE_EXCEPTIONS)
                     .add(MMEBlocks.IRON_CRAFTING_TABLE.asItem());
-            getOrCreateTagBuilder(MMEItemTags.GOLD_CRAFTING_TABLE_EXCEPTIONS);
-            getOrCreateTagBuilder(MMEItemTags.FLINT_CRAFTING_TABLE_EXCEPTIONS)
+            valueLookupBuilder(MMEItemTags.GOLD_CRAFTING_TABLE_EXCEPTIONS);
+            valueLookupBuilder(MMEItemTags.FLINT_CRAFTING_TABLE_EXCEPTIONS)
                     .add(MMEBlocks.COPPER_CRAFTING_TABLE.asItem())
                     .add(MMEBlocks.SILVER_CRAFTING_TABLE.asItem());
-            getOrCreateTagBuilder(MMEItemTags.OBSIDIAN_CRAFTING_TABLE_EXCEPTIONS)
+            valueLookupBuilder(MMEItemTags.OBSIDIAN_CRAFTING_TABLE_EXCEPTIONS)
                     .add(MMEBlocks.COPPER_CRAFTING_TABLE.asItem())
                     .add(MMEBlocks.SILVER_CRAFTING_TABLE.asItem());
         }

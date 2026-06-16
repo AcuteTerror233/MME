@@ -1,7 +1,6 @@
 package com.acuteterror233.mite.world.entity.monster;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -25,7 +24,10 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.Heightmap;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -34,7 +36,7 @@ import org.jetbrains.annotations.Nullable;
  * 吸血鬼蝙蝠实体，飞行敌对生物。
  * 可吸取玩家生命值。
  */
-public class VampireBat extends FlyingMob implements Enemy {
+public class VampireBat extends Mob implements Enemy {
     private static final EntityDataAccessor<Byte> DATA_ID_FLAGS = SynchedEntityData.defineId(VampireBat.class, EntityDataSerializers.BYTE);
     private static final int FLAG_RESTING = 1;
     private static final TargetingConditions BAT_RESTING_TARGETING = TargetingConditions.forNonCombat().range(4.0);
@@ -204,13 +206,13 @@ public class VampireBat extends FlyingMob implements Enemy {
     }
 
     @Override
-    public void readAdditionalSaveData(CompoundTag compoundTag) {
+    public void readAdditionalSaveData(ValueInput compoundTag) {
         super.readAdditionalSaveData(compoundTag);
         this.entityData.set(DATA_ID_FLAGS, compoundTag.getByteOr("BatFlags", (byte)0));
     }
 
     @Override
-    public void addAdditionalSaveData(CompoundTag compoundTag) {
+    public void addAdditionalSaveData(ValueOutput compoundTag) {
         super.addAdditionalSaveData(compoundTag);
         compoundTag.putByte("BatFlags", this.entityData.get(DATA_ID_FLAGS));
     }
@@ -245,6 +247,15 @@ public class VampireBat extends FlyingMob implements Enemy {
             return false;
         }
         return Mob.checkMobSpawnRules(entityType, serverLevelAccessor, entitySpawnReason, blockPos, randomSource);
+    }
+
+    @Override
+    protected void checkFallDamage(double d, boolean bl, BlockState blockState, BlockPos blockPos) {
+    }
+
+    @Override
+    public boolean isIgnoringBlockTriggers() {
+        return true;
     }
 
     enum AttackPhase {

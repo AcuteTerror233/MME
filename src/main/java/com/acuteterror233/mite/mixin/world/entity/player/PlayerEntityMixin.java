@@ -55,7 +55,7 @@ public abstract class PlayerEntityMixin extends LivingEntity {
 
     @Inject(method = "tick", at = @At("HEAD"))
     public void tick(CallbackInfo ci) {
-        int maxHealth = Math.max(6, Math.min(20, 6 + (this.experienceLevel / 5) * 2));
+        int maxHealth = Math.clamp(6 + (this.experienceLevel / 5) * 2, 6, 20);
         this.setMaxHealth(maxHealth);
     }
 

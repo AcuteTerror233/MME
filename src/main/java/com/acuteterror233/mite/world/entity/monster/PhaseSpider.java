@@ -24,6 +24,8 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -88,13 +90,13 @@ public class PhaseSpider extends Spider {
     }
 
     @Override
-    public void addAdditionalSaveData(net.minecraft.nbt.CompoundTag tag) {
+    public void addAdditionalSaveData(ValueOutput tag) {
         super.addAdditionalSaveData(tag);
         tag.putInt("DodgeCharges", getDodgeCharges());
     }
 
     @Override
-    public void readAdditionalSaveData(net.minecraft.nbt.CompoundTag tag) {
+    public void readAdditionalSaveData(ValueInput tag) {
         super.readAdditionalSaveData(tag);
         this.addDodgeCharges(tag.getInt("DodgeCharges").orElse(MAX_DODGE_CHARGES));
     }

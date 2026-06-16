@@ -7,11 +7,11 @@ import com.acuteterror233.mite.renderer.entity.*;
 import com.acuteterror233.mite.world.entity.MMEEntityTypes;
 import com.acuteterror233.mite.world.gen.dimension.MMEDimensionTypeRegistrar;
 import net.fabricmc.api.ClientModInitializer;
-import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.fabricmc.fabric.api.client.rendering.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendering.v1.DimensionRenderingRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.minecraft.client.gui.screens.MenuScreens;
-import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.chunk.ChunkSectionLayer;
 
 /**
  * MME 模组客户端入口，实现 {@link ClientModInitializer}。
@@ -22,10 +22,10 @@ public class MMEClient implements ClientModInitializer {
 	public void onInitializeClient() {
         DimensionRenderingRegistry.registerCloudRenderer(MMEDimensionTypeRegistrar.UNDERGROUND_LEVEL_KEY, context -> {});
 
-        BlockRenderLayerMap.INSTANCE.putBlock(MMEBlocks.UNDERGROUND_PORTAL, RenderType.translucent());
-        BlockRenderLayerMap.INSTANCE.putBlock(MMEBlocks.HOME_PORTAL, RenderType.translucent());
-        BlockRenderLayerMap.INSTANCE.putBlock(MMEBlocks.RUNE_PORTAL, RenderType.translucent());
-        BlockRenderLayerMap.INSTANCE.putBlock(MMEBlocks.BLUE_BERRY_BUSH, RenderType.cutout());
+        BlockRenderLayerMap.putBlock(MMEBlocks.UNDERGROUND_PORTAL, ChunkSectionLayer.TRANSLUCENT);
+        BlockRenderLayerMap.putBlock(MMEBlocks.HOME_PORTAL, ChunkSectionLayer.TRANSLUCENT);
+        BlockRenderLayerMap.putBlock(MMEBlocks.RUNE_PORTAL, ChunkSectionLayer.TRANSLUCENT);
+        BlockRenderLayerMap.putBlock(MMEBlocks.BLUE_BERRY_BUSH, ChunkSectionLayer.CUTOUT);
         MenuScreens.register(MMEMenuTypes.GRADE_ANVIL, GradeAnvilScreen::new);
         MenuScreens.register(MMEMenuTypes.GRADE_CRAFTING_TABLE, GradeCraftingTableScreen::new);
         MenuScreens.register(MMEMenuTypes.GRADE_FURNACE, GradeFurnaceScreen::new);

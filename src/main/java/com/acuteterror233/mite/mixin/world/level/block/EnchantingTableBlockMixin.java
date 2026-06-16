@@ -18,7 +18,7 @@ import org.spongepowered.asm.mixin.Overwrite;
 
 @Mixin(EnchantingTableBlock.class)
 /**
- * Mixin for {@code EnchantingTableBlock} — 替换为 MME 附魔台。
+ * Mixin for {@code EnchantingTableBlock} — 替换为 MME 附魔台菜单。
  */
 public class EnchantingTableBlockMixin {
     @Overwrite

@@ -577,6 +577,23 @@ public final class VanillaItemModify {
         result.put(ResourceLocation.withDefaultNamespace("green_wool"), settings -> settings.stacksTo(8));
         result.put(ResourceLocation.withDefaultNamespace("red_wool"), settings -> settings.stacksTo(8));
         result.put(ResourceLocation.withDefaultNamespace("black_wool"), settings -> settings.stacksTo(8));
+
+        result.put(ResourceLocation.withDefaultNamespace("white_terracotta"), settings -> settings.stacksTo(8).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(ResourceLocation.withDefaultNamespace("orange_terracotta"), settings -> settings.stacksTo(8).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(ResourceLocation.withDefaultNamespace("magenta_terracotta"), settings -> settings.stacksTo(8).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(ResourceLocation.withDefaultNamespace("light_blue_terracotta"), settings -> settings.stacksTo(8).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(ResourceLocation.withDefaultNamespace("yellow_terracotta"), settings -> settings.stacksTo(8).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(ResourceLocation.withDefaultNamespace("lime_terracotta"), settings -> settings.stacksTo(8).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(ResourceLocation.withDefaultNamespace("pink_terracotta"), settings -> settings.stacksTo(8).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(ResourceLocation.withDefaultNamespace("gray_terracotta"), settings -> settings.stacksTo(8).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(ResourceLocation.withDefaultNamespace("light_gray_terracotta"), settings -> settings.stacksTo(8).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(ResourceLocation.withDefaultNamespace("cyan_terracotta"), settings -> settings.stacksTo(8).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(ResourceLocation.withDefaultNamespace("purple_terracotta"), settings -> settings.stacksTo(8).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(ResourceLocation.withDefaultNamespace("blue_terracotta"), settings -> settings.stacksTo(8).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(ResourceLocation.withDefaultNamespace("brown_terracotta"), settings -> settings.stacksTo(8).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(ResourceLocation.withDefaultNamespace("green_terracotta"), settings -> settings.stacksTo(8).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(ResourceLocation.withDefaultNamespace("red_terracotta"), settings -> settings.stacksTo(8).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(ResourceLocation.withDefaultNamespace("black_terracotta"), settings -> settings.stacksTo(8).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
         return result;
     }
 
@@ -599,7 +616,6 @@ public final class VanillaItemModify {
         // 最大堆叠为 8 的方块类型
         result.put(SlabBlock.class, settings -> settings.stacksTo(8));
         result.put(WallBlock.class, settings -> settings.stacksTo(8));
-        result.put(TerracottaBlock.class, settings -> settings.stacksTo(8).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
         result.put(TintedParticleLeavesBlock.class, settings -> settings.stacksTo(8));
         result.put(TransparentBlock.class, settings -> settings.stacksTo(8));
         result.put(KelpPlantBlock.class, settings -> settings.stacksTo(8));

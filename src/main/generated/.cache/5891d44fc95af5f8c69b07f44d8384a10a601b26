@@ -1,4 +1,4 @@
-// 1.21.5	-999999999-01-01T00:00:00	Might Makes Everything/Tags for minecraft:item
+// 1.21.6	-999999999-01-01T00:00:00	Might Makes Everything/Tags for minecraft:item
 c26bc668cd940f4f93816cf35a8d792a0ca9e1ac data/minecraft/tags/item/axes.json
 72e0ee76a52005fdbb8fd56fa09fe34b8fa5b56d data/minecraft/tags/item/chest_armor.json
 ed25358a34554c49dadb431ec43a861d43a165f9 data/minecraft/tags/item/enchantable/durability.json
@@ -14,7 +14,7 @@ e136de5a86f02880ddb15706255c2493a88f28fb data/minecraft/tags/item/iron_tool_mate
 1c2f20e953b9ff270904e78db54de6dc7b63d66f data/minecraft/tags/item/swords.json
 e98dcbfb1013bb08a2df246d8e3302e0b6c7bfaa data/mme/tags/item/adamantium_armor.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/mme/tags/item/adamantium_crafting_table_exceptions.json
-e44fae1bdd90b3532843daacaec5f78fdc377832 data/mme/tags/item/adamantium_not_allowed_material.json
+6b7e2c1a29e492332f3277891e60e9a5e76d589c data/mme/tags/item/adamantium_not_allowed_material.json
 56596fcaf95429a434842317fee84b81c1347f80 data/mme/tags/item/adamantium_ore.json
 2f752862f983c6375730a6112dd3a103d07cdcbc data/mme/tags/item/adamantium_tool_materials.json
 38ae5a95d85424e20bb01522469a2428ed425e85 data/mme/tags/item/adamantium_tools.json
@@ -59,7 +59,7 @@ ac2add5f21d4796344a06767cb64df90eb5659b6 data/mme/tags/item/mattock.json
 8bc6d0df8c19320b7876423f69a8bdbc0e25e1de data/mme/tags/item/milk_bucket.json
 d3a7390fa1418072b7243756b15b914781629b13 data/mme/tags/item/mithril_armor.json
 2665d4bc84b3d8b323eb710a69cea203f1b96443 data/mme/tags/item/mithril_crafting_table_exceptions.json
-3815e3533ed10b1235959e27ce61d950c637fd4a data/mme/tags/item/mithril_not_allowed_material.json
+914010b81c20829028562c85d8861c7a6c25a7be data/mme/tags/item/mithril_not_allowed_material.json
 6844add9cec83da63286dfacf4f129d36fcfb29a data/mme/tags/item/mithril_ore.json
 6d68d28250bcde979dfd934f2c6cb7a00d976d81 data/mme/tags/item/mithril_tool_materials.json
 3259b62fe477f45cdf18f66acb6adb0ec573c214 data/mme/tags/item/mithril_tools.json

@@ -7,7 +7,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.screens.inventory.ItemCombinerScreen;
-import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.game.ServerboundRenameItemPacket;
@@ -50,19 +50,28 @@ public class GradeAnvilScreen extends ItemCombinerScreen<GradeAnvilMenu> {
         this.name.setMaxLength(50);
         this.name.setResponder(this::onRenamed);
         this.name.setValue("");
-        this.addWidget(this.name);
+        this.addRenderableWidget(this.name);
         this.name.setEditable(this.menu.getSlot(0).hasItem());
     }
+
+    @Override
+    protected void containerTick() {
+        super.containerTick();
+        this.minecraft.player.experienceDisplayStartTick = this.minecraft.player.tickCount;
+    }
+
     @Override
     protected void setInitialFocus() {
         this.setInitialFocus(this.name);
     }
+
     @Override
     public void resize(Minecraft client, int width, int height) {
         String string = this.name.getValue();
         this.init(client, width, height);
         this.name.setValue(string);
     }
+
     private void onRenamed(String name) {
         Slot slot = this.menu.getSlot(0);
         if (slot.hasItem()) {
@@ -76,6 +85,7 @@ public class GradeAnvilScreen extends ItemCombinerScreen<GradeAnvilMenu> {
             }
         }
     }
+
     @Override
     public boolean keyPressed(int keyCode, int scanCode, int modifiers) {
         if (keyCode == GLFW.GLFW_KEY_ESCAPE) {
@@ -85,23 +95,19 @@ public class GradeAnvilScreen extends ItemCombinerScreen<GradeAnvilMenu> {
     }
 
     @Override
-    public void renderFg(GuiGraphics context, int mouseX, int mouseY, float deltaTicks) {
-        this.name.render(context, mouseX, mouseY, deltaTicks);
-    }
-
-    @Override
     protected void renderErrorIcon(GuiGraphics context, int x, int y) {
         if ((this.menu.getSlot(0).hasItem() || this.menu.getSlot(1).hasItem()) && !this.menu.getSlot(this.menu.getResultSlot()).hasItem()) {
-            context.blitSprite(RenderType::guiTextured, ERROR_TEXTURE, x + 99, y + 45, 28, 21);
+            context.blitSprite(RenderPipelines.GUI_TEXTURED, ERROR_TEXTURE, x + 99, y + 45, 28, 21);
         }
     }
     @Override
     protected void renderBg(GuiGraphics context, float deltaTicks, int mouseX, int mouseY) {
         super.renderBg(context, deltaTicks, mouseX, mouseY);
         context.blitSprite(
-                RenderType::guiTextured, this.menu.getSlot(0).hasItem() ? TEXT_FIELD_TEXTURE : TEXT_FIELD_DISABLED_TEXTURE, this.leftPos + 59, this.topPos + 20, 110, 16
+                RenderPipelines.GUI_TEXTURED, this.menu.getSlot(0).hasItem() ? TEXT_FIELD_TEXTURE : TEXT_FIELD_DISABLED_TEXTURE, this.leftPos + 59, this.topPos + 20, 110, 16
         );
     }
+
     @Override
     public void slotChanged(AbstractContainerMenu handler, int slotId, ItemStack stack) {
         if (slotId == 0) {
@@ -110,22 +116,23 @@ public class GradeAnvilScreen extends ItemCombinerScreen<GradeAnvilMenu> {
             this.setFocused(this.name);
         }
     }
+
     @Override
     protected void renderLabels(GuiGraphics context, int mouseX, int mouseY) {
         super.renderLabels(context, mouseX, mouseY);
         int i = this.menu.getLevelCost();
         if (i > 0) {
-            int j = 8453920;
+            int j = -8453920;
             Component text;
             if (i >= 40 && !this.minecraft.player.hasInfiniteMaterials()) {
                 text = TOO_EXPENSIVE_TEXT;
-                j = 16736352;
+                j = -40864;
             } else if (!this.menu.getSlot(2).hasItem()) {
                 text = null;
             } else {
                 text = Component.translatable("container.repair.cost", i);
                 if (!this.menu.getSlot(2).mayPickup(this.player)) {
-                    j = 16736352;
+                    j = -40864;
                 }
             }
 

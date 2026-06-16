@@ -4,7 +4,7 @@ import com.acuteterror233.mite.atinterface.FoodDataExtension;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.util.ARGB;
 import net.minecraft.world.entity.player.Player;
@@ -49,6 +49,6 @@ public abstract class GuiMixin {
             this.blockState = this.minecraft.level.getBlockState(this.minecraft.player.blockPosition().above());
         }
         TextureAtlasSprite textureAtlasSprite = this.minecraft.getBlockRenderer().getBlockModelShaper().getParticleIcon(this.blockState);
-        guiGraphics.blitSprite(RenderType::guiTexturedOverlay, textureAtlasSprite, 0, 0, guiGraphics.guiWidth(), guiGraphics.guiHeight(), i);
+        guiGraphics.blitSprite(RenderPipelines.GUI_TEXTURED, textureAtlasSprite, 0, 0, guiGraphics.guiWidth(), guiGraphics.guiHeight(), i);
     }
 }

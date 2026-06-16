@@ -8,9 +8,11 @@ import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
 import it.unimi.dsi.fastutil.objects.Reference2IntMap;
 import it.unimi.dsi.fastutil.objects.Reference2IntOpenHashMap;
-import net.minecraft.core.*;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.core.NonNullList;
+import net.minecraft.core.RegistryAccess;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -35,6 +37,8 @@ import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.entity.FuelValues;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -101,10 +105,10 @@ public abstract class AbstractGradeFurnaceBlockEntity extends BaseContainerBlock
     }
 
     @Override
-    protected void loadAdditional(CompoundTag nbt, HolderLookup.Provider registries) {
-        super.loadAdditional(nbt, registries);
+    protected void loadAdditional(ValueInput nbt) {
+        super.loadAdditional(nbt);
         this.inventory = NonNullList.withSize(this.getContainerSize(), ItemStack.EMPTY);
-        ContainerHelper.loadAllItems(nbt, this.inventory, registries);
+        ContainerHelper.loadAllItems(nbt, this.inventory);
         this.cookingTimeSpent = nbt.getShortOr("cooking_time_spent", (short)0);
         this.cookingTotalTime = nbt.getShortOr("cooking_total_time", (short)0);
         this.litTimeRemaining = nbt.getShortOr("lit_time_remaining", (short)0);
@@ -116,15 +120,15 @@ public abstract class AbstractGradeFurnaceBlockEntity extends BaseContainerBlock
     }
 
     @Override
-    protected void saveAdditional(CompoundTag nbt, HolderLookup.Provider registries) {
-        super.saveAdditional(nbt, registries);
+    protected void saveAdditional(ValueOutput nbt) {
+        super.saveAdditional(nbt);
         nbt.putShort("cooking_time_spent", (short)this.cookingTimeSpent);
         nbt.putShort("cooking_total_time", (short)this.cookingTotalTime);
         nbt.putShort("lit_time_remaining", (short)this.litTimeRemaining);
         nbt.putShort("lit_total_time", (short)this.litTotalTime);
         nbt.putShort("current_combustion_grade", (short)this.currentCombustionGrade);
         nbt.putShort("max_combustion_grade", (short)this.maxCombustionGrade);
-        ContainerHelper.saveAllItems(nbt, this.inventory, registries);
+        ContainerHelper.saveAllItems(nbt, this.inventory);
         nbt.store("RecipesUsed", CODEC, this.recipesUsed);
     }
 
@@ -378,7 +382,7 @@ public abstract class AbstractGradeFurnaceBlockEntity extends BaseContainerBlock
     }
 
     public void dropExperienceForRecipesUsed(ServerPlayer player) {
-        List<RecipeHolder<?>> list = this.getRecipesUsedAndDropExperience(player.serverLevel(), player.position());
+        List<RecipeHolder<?>> list = this.getRecipesUsedAndDropExperience(player.level(), player.position());
         player.awardRecipes(list);
 
         for (RecipeHolder<?> recipeEntry : list) {

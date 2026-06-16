@@ -4,7 +4,6 @@ import com.acuteterror233.mite.atinterface.FoodDataExtension;
 import com.acuteterror233.mite.world.effect.MMEMobEffects;
 import com.acuteterror233.mite.world.food.FoodNutrition;
 import net.minecraft.core.Holder;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.Mth;
@@ -15,6 +14,8 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodData;
 import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.GameType;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
 import org.spongepowered.asm.mixin.*;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -81,7 +82,7 @@ public abstract class FoodDataMixin implements FoodDataExtension {
      */
     @Overwrite
     public void tick(ServerPlayer player) {
-        ServerLevel serverWorld = player.serverLevel();
+        ServerLevel serverWorld = player.level();
         Difficulty difficulty = serverWorld.getDifficulty();
         if (this.exhaustionLevel > 4.0F) {
             this.exhaustionLevel -= 4.0F;
@@ -207,7 +208,7 @@ public abstract class FoodDataMixin implements FoodDataExtension {
 
 
     @Inject(method = "readAdditionalSaveData", at = @At("TAIL"))
-    public void readAdditionalSaveData(CompoundTag nbt, CallbackInfo ci) {
+    public void readAdditionalSaveData(ValueInput nbt, CallbackInfo ci) {
         this.maxFoodLevel = nbt.getIntOr("maxFoodLevel", 6);
         this.fiber = nbt.getFloatOr("fiber", 100000);
         this.protein = nbt.getFloatOr("protein", 100000);
@@ -215,7 +216,7 @@ public abstract class FoodDataMixin implements FoodDataExtension {
     }
 
     @Inject(method = "addAdditionalSaveData", at = @At("TAIL"))
-    public void addAdditionalSaveData(CompoundTag nbt, CallbackInfo ci) {
+    public void addAdditionalSaveData(ValueOutput nbt, CallbackInfo ci) {
         nbt.putInt("maxFoodLevel", this.maxFoodLevel);
         nbt.putFloat("fiber", this.fiber);
         nbt.putFloat("protein", this.protein);
