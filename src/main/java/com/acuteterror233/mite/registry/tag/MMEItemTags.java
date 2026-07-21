@@ -92,6 +92,7 @@ public interface MMEItemTags {
     TagKey<Item> MITHRIL_ORE = key("mithril_ore");
     TagKey<Item> ADAMANTIUM_ORE = key("adamantium_ore");
     TagKey<Item> ADAMANTIUM_ARMOR = key("adamantium_armor");
+    TagKey<Item> AIR = key("air");
 
     private static TagKey<Item> key(String id) {
         return TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, id));

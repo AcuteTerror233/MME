@@ -32,12 +32,12 @@ public final class VanillaItemModify {
     public static final Map<ResourceLocation, UnaryOperator<Item.Properties>> IN_IDENTIFIER_BLOCK_ITEM_SETTINGS_MODIFY = createBlockItemSettingsModifyMapByIdentifier();
     public static final Map<ResourceLocation, Function<Item.Properties, Item>> ITEM_FACTORY_MODIFY = createItemFactoryModifyMap();
     public static final Map<ResourceLocation, UnaryOperator<Item.Properties>> ITEM_SETTINGS_MODIFY = createItemSettingsModifyMap();
+
     /**
      * 按照物品注册名划分的最大堆叠映射表。
      * Key: 物品标识符 Identifier
      * Value: 设置函数 UnaryOperator<Item.Settings>
      */
-
     private static Map<ResourceLocation, UnaryOperator<Item.Properties>> createItemSettingsModifyMap() {
         Map<ResourceLocation, UnaryOperator<Item.Properties>> result = new HashMap<>();
 
@@ -312,13 +312,14 @@ public final class VanillaItemModify {
         result.put(ResourceLocation.withDefaultNamespace("bone_meal"), settings -> settings.stacksTo(32));
         result.put(ResourceLocation.withDefaultNamespace("string"), settings -> settings.stacksTo(32));
         result.put(ResourceLocation.withDefaultNamespace("feather"), settings -> settings.stacksTo(32));
-        result.put(ResourceLocation.withDefaultNamespace("cnowball"), settings -> settings.stacksTo(32));
+        result.put(ResourceLocation.withDefaultNamespace("snowball"), settings -> settings.stacksTo(32));
         result.put(ResourceLocation.withDefaultNamespace("paper"), settings -> settings.stacksTo(32));
         result.put(ResourceLocation.withDefaultNamespace("redstone"), settings -> settings.stacksTo(32));
         result.put(ResourceLocation.withDefaultNamespace("glowstone_dust"), settings -> settings.stacksTo(32));
         result.put(ResourceLocation.withDefaultNamespace("cocoa_beans"), settings -> settings.stacksTo(32));
         result.put(ResourceLocation.withDefaultNamespace("seagrass"), settings -> settings.stacksTo(32));
         result.put(ResourceLocation.withDefaultNamespace("gunpowder"), settings -> settings.stacksTo(32));
+        result.put(ResourceLocation.withDefaultNamespace("copper_nugget"), settings -> settings.stacksTo(32).component(MMEDataComponentTypes.CRAFTING_TIME, 1));
         result.put(ResourceLocation.withDefaultNamespace("sweet_berries"), settings -> settings
                 .stacksTo(32)
                 .food(new FoodProperties(1, 1, false))
@@ -356,18 +357,33 @@ public final class VanillaItemModify {
         );
 
         result.put(ResourceLocation.withDefaultNamespace("stone_sword"), settings -> new Item.Properties());
+        result.put(ResourceLocation.withDefaultNamespace("stone_shovel"), settings -> new Item.Properties());
         result.put(ResourceLocation.withDefaultNamespace("stone_pickaxe"), settings -> new Item.Properties());
-        result.put(ResourceLocation.withDefaultNamespace("diamond_sword"), settings -> new Item.Properties());
-        result.put(ResourceLocation.withDefaultNamespace("diamond_pickaxe"), settings -> new Item.Properties());
-        result.put(ResourceLocation.withDefaultNamespace("wooden_pickaxe"), settings -> new Item.Properties());
-        result.put(ResourceLocation.withDefaultNamespace("wooden_sword"), settings -> new Item.Properties());
-        result.put(ResourceLocation.withDefaultNamespace("netherite_sword"), settings -> MMEItems.getSwordSettings(MMEToolMaterials.NETHERITE));
-        result.put(ResourceLocation.withDefaultNamespace("netherite_pickaxe"), settings -> MMEItems.getPickaxeSettings(MMEToolMaterials.NETHERITE));
+        result.put(ResourceLocation.withDefaultNamespace("stone_axe"), settings -> new Item.Properties());
+        result.put(ResourceLocation.withDefaultNamespace("stone_hoe"), settings -> new Item.Properties());
 
-        result.put(ResourceLocation.withDefaultNamespace("netherite_helmet"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.NETHERITE_MATERIAL, ArmorType.HELMET));
-        result.put(ResourceLocation.withDefaultNamespace("netherite_chestplate"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.NETHERITE_MATERIAL, ArmorType.CHESTPLATE));
-        result.put(ResourceLocation.withDefaultNamespace("netherite_leggings"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.NETHERITE_MATERIAL, ArmorType.LEGGINGS));
-        result.put(ResourceLocation.withDefaultNamespace("netherite_boots"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.NETHERITE_MATERIAL, ArmorType.BOOTS));
+        result.put(ResourceLocation.withDefaultNamespace("diamond_sword"), settings -> new Item.Properties());
+        result.put(ResourceLocation.withDefaultNamespace("diamond_shovel"), settings -> new Item.Properties());
+        result.put(ResourceLocation.withDefaultNamespace("diamond_pickaxe"), settings -> new Item.Properties());
+        result.put(ResourceLocation.withDefaultNamespace("diamond_axe"), settings -> new Item.Properties());
+        result.put(ResourceLocation.withDefaultNamespace("diamond_hoe"), settings -> new Item.Properties());
+
+        result.put(ResourceLocation.withDefaultNamespace("wooden_sword"), settings -> new Item.Properties());
+        result.put(ResourceLocation.withDefaultNamespace("wooden_shovel"), settings -> MMEItems.getShovelSettings(MMEToolMaterials.WOOD));
+        result.put(ResourceLocation.withDefaultNamespace("wooden_pickaxe"), settings -> new Item.Properties());
+        result.put(ResourceLocation.withDefaultNamespace("wooden_axe"), settings -> new Item.Properties());
+        result.put(ResourceLocation.withDefaultNamespace("wooden_hoe"), settings -> new Item.Properties());
+
+        result.put(ResourceLocation.withDefaultNamespace("netherite_sword"), settings -> MMEItems.getSwordSettings(MMEToolMaterials.NETHERITE).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
+        result.put(ResourceLocation.withDefaultNamespace("netherite_shovel"), settings -> MMEItems.getShovelSettings(MMEToolMaterials.NETHERITE).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
+        result.put(ResourceLocation.withDefaultNamespace("netherite_pickaxe"), settings -> MMEItems.getPickaxeSettings(MMEToolMaterials.NETHERITE).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
+        result.put(ResourceLocation.withDefaultNamespace("netherite_axe"), settings -> MMEItems.getAxeSettings(MMEToolMaterials.NETHERITE).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
+        result.put(ResourceLocation.withDefaultNamespace("netherite_hoe"), settings -> MMEItems.getHoeSettings(MMEToolMaterials.NETHERITE).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
+
+        result.put(ResourceLocation.withDefaultNamespace("netherite_helmet"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.NETHERITE_MATERIAL, ArmorType.HELMET).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
+        result.put(ResourceLocation.withDefaultNamespace("netherite_chestplate"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.NETHERITE_MATERIAL, ArmorType.CHESTPLATE).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
+        result.put(ResourceLocation.withDefaultNamespace("netherite_leggings"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.NETHERITE_MATERIAL, ArmorType.LEGGINGS).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
+        result.put(ResourceLocation.withDefaultNamespace("netherite_boots"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.NETHERITE_MATERIAL, ArmorType.BOOTS).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
 
         result.put(ResourceLocation.withDefaultNamespace("iron_sword"), settings -> MMEItems.getSwordSettings(MMEToolMaterials.IRON).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
         result.put(ResourceLocation.withDefaultNamespace("iron_shovel"), settings -> MMEItems.getShovelSettings(MMEToolMaterials.IRON).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
@@ -381,6 +397,17 @@ public final class VanillaItemModify {
         result.put(ResourceLocation.withDefaultNamespace("golden_pickaxe"), settings -> MMEItems.getPickaxeSettings(MMEToolMaterials.GOLD).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
         result.put(ResourceLocation.withDefaultNamespace("golden_axe"), settings -> MMEItems.getAxeSettings(MMEToolMaterials.GOLD).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
         result.put(ResourceLocation.withDefaultNamespace("golden_hoe"), settings -> MMEItems.getHoeSettings(MMEToolMaterials.GOLD).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+
+        result.put(ResourceLocation.withDefaultNamespace("copper_sword"), settings -> MMEItems.getSwordSettings(MMEToolMaterials.COPPER).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(ResourceLocation.withDefaultNamespace("copper_shovel"), settings -> MMEItems.getShovelSettings(MMEToolMaterials.COPPER).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(ResourceLocation.withDefaultNamespace("copper_pickaxe"), settings -> MMEItems.getPickaxeSettings(MMEToolMaterials.COPPER).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(ResourceLocation.withDefaultNamespace("copper_axe"), settings -> MMEItems.getAxeSettings(MMEToolMaterials.COPPER).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(ResourceLocation.withDefaultNamespace("copper_hoe"), settings -> MMEItems.getHoeSettings(MMEToolMaterials.COPPER).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+
+        result.put(ResourceLocation.withDefaultNamespace("copper_helmet"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.COPPER_MATERIAL, ArmorType.HELMET).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(ResourceLocation.withDefaultNamespace("copper_chestplate"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.COPPER_MATERIAL, ArmorType.CHESTPLATE).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(ResourceLocation.withDefaultNamespace("copper_leggings"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.COPPER_MATERIAL, ArmorType.LEGGINGS).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(ResourceLocation.withDefaultNamespace("copper_boots"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.COPPER_MATERIAL, ArmorType.BOOTS).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
 
         result.put(ResourceLocation.withDefaultNamespace("iron_helmet"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.IRON_MATERIAL, ArmorType.HELMET).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
         result.put(ResourceLocation.withDefaultNamespace("iron_chestplate"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.IRON_MATERIAL, ArmorType.CHESTPLATE).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
@@ -452,17 +479,16 @@ public final class VanillaItemModify {
         Map<ResourceLocation, Function<Item.Properties, Item>> result = new HashMap<>();
 
         // 工具类物品
-        result.put(ResourceLocation.withDefaultNamespace("stone_shovel"), settings -> new Item(new Item.Properties().setId(ResourceKey.create(Registries.ITEM, ResourceLocation.withDefaultNamespace("stone_shovel")))));
-        result.put(ResourceLocation.withDefaultNamespace("stone_axe"), settings -> new Item(new Item.Properties().setId(ResourceKey.create(Registries.ITEM, ResourceLocation.withDefaultNamespace("stone_axe")))));
-        result.put(ResourceLocation.withDefaultNamespace("stone_hoe"), settings -> new Item(new Item.Properties().setId(ResourceKey.create(Registries.ITEM, ResourceLocation.withDefaultNamespace("stone_hoe")))));
+        result.put(ResourceLocation.withDefaultNamespace("stone_shovel"), Item::new);
+        result.put(ResourceLocation.withDefaultNamespace("stone_axe"), Item::new);
+        result.put(ResourceLocation.withDefaultNamespace("stone_hoe"), Item::new);
 
-        result.put(ResourceLocation.withDefaultNamespace("diamond_shovel"), settings -> new Item(new Item.Properties().setId(ResourceKey.create(Registries.ITEM, ResourceLocation.withDefaultNamespace("diamond_shovel")))));
-        result.put(ResourceLocation.withDefaultNamespace("diamond_axe"), settings -> new Item(new Item.Properties().setId(ResourceKey.create(Registries.ITEM, ResourceLocation.withDefaultNamespace("diamond_axe")))));
-        result.put(ResourceLocation.withDefaultNamespace("diamond_hoe"), settings -> new Item(new Item.Properties().setId(ResourceKey.create(Registries.ITEM, ResourceLocation.withDefaultNamespace("diamond_hoe")))));
+        result.put(ResourceLocation.withDefaultNamespace("diamond_shovel"), Item::new);
+        result.put(ResourceLocation.withDefaultNamespace("diamond_axe"), Item::new);
+        result.put(ResourceLocation.withDefaultNamespace("diamond_hoe"), Item::new);
 
-        result.put(ResourceLocation.withDefaultNamespace("wooden_axe"), settings -> new Item(new Item.Properties().setId(ResourceKey.create(Registries.ITEM, ResourceLocation.withDefaultNamespace("wooden_axe")))));
-        result.put(ResourceLocation.withDefaultNamespace("wooden_hoe"), settings -> new Item(new Item.Properties().setId(ResourceKey.create(Registries.ITEM, ResourceLocation.withDefaultNamespace("wooden_hoe")))));
-        result.put(ResourceLocation.withDefaultNamespace("wooden_shovel"), settings -> new Item(MMEItems.getShovelSettings(MMEToolMaterials.WOOD).setId(ResourceKey.create(Registries.ITEM, ResourceLocation.withDefaultNamespace("wooden_shovel")))));
+        result.put(ResourceLocation.withDefaultNamespace("wooden_axe"), Item::new);
+        result.put(ResourceLocation.withDefaultNamespace("wooden_hoe"), Item::new);
 
         result.put(ResourceLocation.withDefaultNamespace("iron_shovel"), MMEShovelItem::new);
         result.put(ResourceLocation.withDefaultNamespace("iron_axe"), MMEAxeItem::new);
@@ -472,11 +498,14 @@ public final class VanillaItemModify {
         result.put(ResourceLocation.withDefaultNamespace("golden_axe"), MMEAxeItem::new);
         result.put(ResourceLocation.withDefaultNamespace("golden_hoe"), MMEHoeItem::new);
 
-        result.put(ResourceLocation.withDefaultNamespace("netherite_shovel"), settings -> new MMEShovelItem(MMEItems.getShovelSettings(MMEToolMaterials.NETHERITE).setId(ResourceKey.create(Registries.ITEM, ResourceLocation.withDefaultNamespace("netherite_shovel")))));
-        result.put(ResourceLocation.withDefaultNamespace("netherite_axe"), settings -> new MMEAxeItem(MMEItems.getAxeSettings(MMEToolMaterials.NETHERITE).setId(ResourceKey.create(Registries.ITEM, ResourceLocation.withDefaultNamespace("netherite_axe")))));
-        result.put(ResourceLocation.withDefaultNamespace("netherite_hoe"), settings -> new MMEHoeItem(MMEItems.getHoeSettings(MMEToolMaterials.NETHERITE).setId(ResourceKey.create(Registries.ITEM, ResourceLocation.withDefaultNamespace("netherite_hoe")))));
+        result.put(ResourceLocation.withDefaultNamespace("copper_shovel"), MMEShovelItem::new);
+        result.put(ResourceLocation.withDefaultNamespace("copper_axe"), MMEAxeItem::new);
+        result.put(ResourceLocation.withDefaultNamespace("copper_hoe"), MMEHoeItem::new);
 
-        // 钻石装备
+        result.put(ResourceLocation.withDefaultNamespace("netherite_shovel"), MMEShovelItem::new);
+        result.put(ResourceLocation.withDefaultNamespace("netherite_axe"), MMEAxeItem::new);
+        result.put(ResourceLocation.withDefaultNamespace("netherite_hoe"), MMEHoeItem::new);
+
         result.put(ResourceLocation.withDefaultNamespace("diamond_helmet"), settings -> new Item(new Item.Properties().setId(ResourceKey.create(Registries.ITEM, ResourceLocation.withDefaultNamespace("diamond_helmet")))));
         result.put(ResourceLocation.withDefaultNamespace("diamond_chestplate"), settings -> new Item(new Item.Properties().setId(ResourceKey.create(Registries.ITEM, ResourceLocation.withDefaultNamespace("diamond_chestplate")))));
         result.put(ResourceLocation.withDefaultNamespace("diamond_leggings"), settings -> new Item(new Item.Properties().setId(ResourceKey.create(Registries.ITEM, ResourceLocation.withDefaultNamespace("diamond_leggings")))));
@@ -491,6 +520,7 @@ public final class VanillaItemModify {
 
         result.put(ResourceLocation.withDefaultNamespace("iron_nugget"), settings -> new NuggetItem(settings.stacksTo(32), 200));
         result.put(ResourceLocation.withDefaultNamespace("gold_nugget"), settings -> new NuggetItem(settings.stacksTo(32), 500));
+        result.put(ResourceLocation.withDefaultNamespace("copper_nugget"), settings -> new NuggetItem(settings.stacksTo(32), 50));
         result.put(ResourceLocation.withDefaultNamespace("fishing_rod"), Item::new);
         result.put(ResourceLocation.withDefaultNamespace("bowl"), BowlItem::new);
         return Map.copyOf(result);
@@ -594,6 +624,20 @@ public final class VanillaItemModify {
         result.put(ResourceLocation.withDefaultNamespace("green_terracotta"), settings -> settings.stacksTo(8).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
         result.put(ResourceLocation.withDefaultNamespace("red_terracotta"), settings -> settings.stacksTo(8).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
         result.put(ResourceLocation.withDefaultNamespace("black_terracotta"), settings -> settings.stacksTo(8).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+
+        result.put(ResourceLocation.withDefaultNamespace("acacia_shelf"), settings -> settings.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("bamboo_shelf"), settings -> settings.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("birch_shelf"), settings -> settings.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("cherry_shelf"), settings -> settings.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("crimson_shelf"), settings -> settings.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("dark_oak_shelf"), settings -> settings.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("jungle_shelf"), settings -> settings.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("mangrove_shelf"), settings -> settings.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("oak_shelf"), settings -> settings.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("pale_oak_shelf"), settings -> settings.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("spruce_shelf"), settings -> settings.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("warped_shelf"), settings -> settings.stacksTo(8));
+        result.put(ResourceLocation.withDefaultNamespace("copper_bars"), settings -> settings.stacksTo(16));
         return result;
     }
 

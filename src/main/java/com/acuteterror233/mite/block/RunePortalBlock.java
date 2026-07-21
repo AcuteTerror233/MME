@@ -26,7 +26,7 @@ public class RunePortalBlock extends AbstractPortalBlock implements EntityBlock 
     public @Nullable TeleportTransition getPortalDestination(ServerLevel world, Entity entity, BlockPos pos) {
         BlockPos pos1;
         if (world.getBlockEntity(pos) instanceof RunePortalBlockEntity runePortal) pos1 = runePortal.getDestinationPos();
-        else pos1 = world.getSharedSpawnPos();
+        else pos1 = world.getRespawnData().pos();
         return new TeleportTransition(world, pos1.getBottomCenter(), Vec3.ZERO, 0.0F, 0.0F, Relative.union(Relative.DELTA, Relative.ROTATION), TeleportTransition.PLAY_PORTAL_SOUND.then(TeleportTransition.PLACE_PORTAL_TICKET));
     }
 

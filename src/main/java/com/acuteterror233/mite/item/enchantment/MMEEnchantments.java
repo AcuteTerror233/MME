@@ -34,6 +34,7 @@ public final class MMEEnchantments {
     public static final ResourceKey<Enchantment> PIERCING = key("piercing");
     public static final ResourceKey<Enchantment> SPEED = key("speed");
     public static final ResourceKey<Enchantment> ENDURANCE = key("endurance");
+    public static final ResourceKey<Enchantment> UPGRADE = key("upgrade");
 
     public static void bootstrap(BootstrapContext<Enchantment> bootstrapContext) {
         HolderGetter<DamageType> damageTypeGetter = bootstrapContext.lookup(Registries.DAMAGE_TYPE);
@@ -102,6 +103,21 @@ public final class MMEEnchantments {
                 ).exclusiveWith(enchantmentGetter.getOrThrow(EnchantmentTags.MINING_EXCLUSIVE))
         );
 
+        register(
+                bootstrapContext,
+                UPGRADE,
+                Enchantment.enchantment(
+                        Enchantment.definition(
+                                itemGetter.getOrThrow(MMEItemTags.AIR),
+                                1,
+                                1,
+                                Enchantment.dynamicCost(1, 1),
+                                Enchantment.dynamicCost(2, 1),
+                                1,
+                                EquipmentSlotGroup.ANY
+                        )
+                )
+        );
         register(
                 bootstrapContext,
                 FERTILITY,

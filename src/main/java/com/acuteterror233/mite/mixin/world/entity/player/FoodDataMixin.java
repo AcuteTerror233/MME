@@ -45,6 +45,12 @@ public abstract class FoodDataMixin implements FoodDataExtension {
     private float fiber = 100000;
     @Unique
     private float sugar = 0;
+    @Unique
+    private static final float sugar_threshold_1 = 48000;
+    @Unique
+    private static final float sugar_threshold_2 = 96000;
+    @Unique
+    private static final float sugar_threshold_3 = 144000;
 
     @Unique
     @Override
@@ -165,45 +171,44 @@ public abstract class FoodDataMixin implements FoodDataExtension {
 
     @Unique
     private void handleSugar(ServerPlayer player) {
-        if (!player.hasInfiniteMaterials()) {
-            if (this.sugar > 0) {
-                this.sugar--;
-            }
-            if (this.sugar > 144000) {
-                if (player.getEffect(MMEMobEffects.INSULIN_RESISTANCE).getAmplifier() != 2) {
-                    player.removeEffect(MMEMobEffects.INSULIN_RESISTANCE);
-                    player.addEffect(new MobEffectInstance(MMEMobEffects.INSULIN_RESISTANCE, -1, 2, true, false), player);
-                    player.addEffect(new MobEffectInstance(MobEffects.WITHER, -1, 0, true, false), player);
-                }
-            } else if (this.sugar > 96000) {
-                if (player.hasEffect(MobEffects.WITHER)) {
-                    player.removeEffect(MobEffects.WITHER);
-                }
-                if (player.getEffect(MMEMobEffects.INSULIN_RESISTANCE).getAmplifier() != 1) {
-                    player.removeEffect(MMEMobEffects.INSULIN_RESISTANCE);
-                    player.addEffect(new MobEffectInstance(MMEMobEffects.INSULIN_RESISTANCE, -1, 1, true, false), player);
-                    player.addEffect(new MobEffectInstance(MobEffects.DARKNESS, -1, 0, true, false), player);
-                }
-            } else if (this.sugar > 48000) {
-                if (player.hasEffect(MobEffects.DARKNESS)) {
-                    player.removeEffect(MobEffects.DARKNESS);
-                }
-                if (!player.hasEffect(MMEMobEffects.INSULIN_RESISTANCE)) {
-                    player.removeEffect(MMEMobEffects.INSULIN_RESISTANCE);
-                    player.addEffect(new MobEffectInstance(MMEMobEffects.INSULIN_RESISTANCE, -1, 0, true, false), player);
-                }
-            } else {
-                if (player.hasEffect(MMEMobEffects.INSULIN_RESISTANCE)) {
-                    player.removeEffect(MMEMobEffects.INSULIN_RESISTANCE);
-                }
-            }
-        }else {
-            if (player.hasEffect(MMEMobEffects.INSULIN_RESISTANCE)) {
-                player.removeEffect(MobEffects.WITHER);
-                player.removeEffect(MobEffects.DARKNESS);
-                player.removeEffect(MMEMobEffects.INSULIN_RESISTANCE);
-            }
+        if (player.hasInfiniteMaterials()) {
+            clearAllSugarEffects(player);
+            return;
         }
+        if (this.sugar > 0) this.sugar--;
+        if (this.sugar > sugar_threshold_3) {
+            applyStage(player, 2, MobEffects.WITHER);
+        } else if (this.sugar > sugar_threshold_2) {
+            applyStage(player, 1, MobEffects.DARKNESS);
+        } else if (this.sugar > sugar_threshold_1) {
+            applyStage(player, 0);
+        } else {
+            player.removeEffect(MMEMobEffects.INSULIN_RESISTANCE);
+        }
+    }
+
+    @Unique
+    private static void clearAllSugarEffects(ServerPlayer player) {
+        player.removeEffect(MobEffects.WITHER);
+        player.removeEffect(MobEffects.DARKNESS);
+        player.removeEffect(MMEMobEffects.INSULIN_RESISTANCE);
+    }
+
+    @Unique
+    private void applyStage(ServerPlayer player, int amplifier, Holder<MobEffect> secondary) {
+        MobEffectInstance current = player.getEffect(MMEMobEffects.INSULIN_RESISTANCE);
+        if (current != null && current.getAmplifier() == amplifier) return;
+        clearAllSugarEffects(player);
+        player.addEffect(new MobEffectInstance(MMEMobEffects.INSULIN_RESISTANCE, -1, amplifier, true, false), player);
+        player.addEffect(new MobEffectInstance(secondary, -1, 0, true, false), player);
+    }
+
+    @Unique
+    private void applyStage(ServerPlayer player, int amplifier) {
+        MobEffectInstance current = player.getEffect(MMEMobEffects.INSULIN_RESISTANCE);
+        if (current != null && current.getAmplifier() == amplifier) return;
+        clearAllSugarEffects(player);
+        player.addEffect(new MobEffectInstance(MMEMobEffects.INSULIN_RESISTANCE, -1, amplifier, true, false), player);
     }
 
 
@@ -229,7 +234,7 @@ public abstract class FoodDataMixin implements FoodDataExtension {
      */
     @Overwrite
     public void setFoodLevel(int i) {
-        this.foodLevel = i > maxFoodLevel ? maxFoodLevel : i;
+        this.foodLevel = Math.min(i, maxFoodLevel);
     }
 
     /**
@@ -243,9 +248,9 @@ public abstract class FoodDataMixin implements FoodDataExtension {
 
     @Override
     public void MME$AddFoodNutrition(FoodNutrition foodNutrition) {
-        this.fiber = Math.min(160000, this.fiber + foodNutrition.fiber());
-        this.protein = Math.min(160000, this.protein + foodNutrition.protein());
-        this.sugar = Math.min(192000, this.sugar + foodNutrition.sugar());
+        addFiber((int) foodNutrition.fiber());
+        addProtein((int) foodNutrition.protein());
+        addSugar((int) foodNutrition.sugar());
     }
 
     @Override

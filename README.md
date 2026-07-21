@@ -1,8 +1,7 @@
 Might Makes Everything (MME)
 ======
 
-目前支持版本：1.21.5
-* 未来版本会更新至1.21 ~ 最新。
+* 基于1.21.5开发，正在持续更新至最新版本
 * ModLoader为Fabric,未来考虑移植到NeoForge
 
 ### 介绍

@@ -1,7 +1,7 @@
-// 1.21.6	-999999999-01-01T00:00:00	Might Makes Everything/Advancements
-439b349b2752f99ee36cf6f020c1c82462bd5ec5 data/minecraft/advancement/story/better_armor.json
+// 1.21.9	-999999999-01-01T00:00:00	Might Makes Everything/Advancements
+3d320a7e8c51fb8130e962a3129e11acb9fd90f2 data/minecraft/advancement/story/better_armor.json
 c30bc4e1390e11afff8f12470a617d488d9d3cf5 data/minecraft/advancement/story/clay_furnace.json
-b710f78c430a1e35df07c8de28ee1bb2e4fb0826 data/minecraft/advancement/story/copper_nugget.json
+3d9807bc190aca534497f4743596a4a59f991fe6 data/minecraft/advancement/story/copper_nugget.json
 cb2f61aa4912ff87c65046c996103b49fdc92117 data/minecraft/advancement/story/crafting_table.json
 8a306f95ddd6768fa2e42e02faec89374acfa2f3 data/minecraft/advancement/story/cudgel.json
 a13cd32f6bcdcad0204145ec3c507af188c19518 data/minecraft/advancement/story/cure_zombie_villager.json
@@ -33,7 +33,7 @@ a394b9febbcdd8d19e5fe64a9ba4442abbe3cb84 data/minecraft/advancement/story/obtain
 d18e13ee49abb4dd795f94e638864e0b13527cdd data/minecraft/advancement/story/shiny_gear.json
 588826b48fbc4c18cb877189989e1df363cbdf8d data/minecraft/advancement/story/smelt_iron.json
 395f8d9b5f89e6fc5674cd13aff782b593b3dac6 data/minecraft/advancement/story/torch.json
-122dea8994154469167660fbe3364dcfde2ec763 data/minecraft/advancement/story/upgrade_tools.json
+29d2a7816643237fd0995ecd3a77b7eb30ab3ea5 data/minecraft/advancement/story/upgrade_tools.json
 85290c1c4511630332a74cf8baf15f798fb9060a data/minecraft/advancement/story/wheat_seeds.json
 6a1ffee4208fdc154ac246f43ed275aa1c55c3eb data/minecraft/advancement/underground/adamantium_armor.json
 38f1a63c40b1c2b36e8e2b2ee9cb818e403fe6ab data/minecraft/advancement/underground/adamantium_tool.json

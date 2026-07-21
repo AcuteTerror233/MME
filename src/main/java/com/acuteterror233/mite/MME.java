@@ -59,11 +59,11 @@ public class MME implements ModInitializer {
 
         PointOfInterestHelper.register(ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, "underground_portal"), 0, 1, MMEBlocks.UNDERGROUND_PORTAL);
 
-        InOverworldAdd(OverworldPlacedFeatures.OVERWORLD_ORE_SILVER_SMALL);
-        InOverworldAdd(OverworldPlacedFeatures.OVERWORLD_ORE_SILVER);
-        InOverworldRemovals(OrePlacements.ORE_DIAMOND_BURIED);
-        InOverworldRemovals(OrePlacements.ORE_DIAMOND_LARGE);
-        InOverworldRemovals(OrePlacements.ORE_DIAMOND_MEDIUM);
+        inOverworldAdd(OverworldPlacedFeatures.OVERWORLD_ORE_SILVER_SMALL);
+        inOverworldAdd(OverworldPlacedFeatures.OVERWORLD_ORE_SILVER);
+        inOverworldRemovals(OrePlacements.ORE_DIAMOND_BURIED);
+        inOverworldRemovals(OrePlacements.ORE_DIAMOND_LARGE);
+        inOverworldRemovals(OrePlacements.ORE_DIAMOND_MEDIUM);
 
         ServerRecipeModify.EVENT.register(list -> list.removeIf(recipeEntry -> MME.FILTER_RECIPE_SET.contains(recipeEntry.id().location())));
 
@@ -100,7 +100,7 @@ public class MME implements ModInitializer {
         );
     }
 
-    private void InOverworldAdd(ResourceKey<PlacedFeature> key) {
+    private void inOverworldAdd(ResourceKey<PlacedFeature> key) {
         BiomeModifications.addFeature(
                 BiomeSelectors.foundInOverworld(),
                 GenerationStep.Decoration.UNDERGROUND_ORES,
@@ -108,7 +108,7 @@ public class MME implements ModInitializer {
         );
     }
 
-    private static void InOverworldRemovals(ResourceKey<PlacedFeature> oreDiamond) {
+    private static void inOverworldRemovals(ResourceKey<PlacedFeature> oreDiamond) {
         BiomeModifications.create(oreDiamond.location()).add(
                 ModificationPhase.REMOVALS,
                 BiomeSelectors.foundInOverworld(),

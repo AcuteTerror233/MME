@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "key": {
-    "a": "mme:copper_nugget",
+    "a": "minecraft:copper_nugget",
     "b": "minecraft:string",
     "c": "minecraft:stick"
   },

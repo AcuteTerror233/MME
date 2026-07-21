@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 100,
+  "experience": 0.1,
+  "ingredient": [
+    "mme:netherite_battle_axe",
+    "mme:netherite_dagger",
+    "mme:netherite_hatchet",
+    "mme:netherite_mattock",
+    "mme:netherite_scythe",
+    "mme:netherite_shears",
+    "mme:netherite_war_hammer",
+    "minecraft:netherite_sword",
+    "minecraft:netherite_pickaxe",
+    "minecraft:netherite_axe",
+    "minecraft:netherite_shovel",
+    "minecraft:netherite_hoe",
+    "minecraft:netherite_helmet",
+    "minecraft:netherite_chestplate",
+    "minecraft:netherite_leggings",
+    "minecraft:netherite_boots"
+  ],
+  "result": {
+    "id": "mme:netherite_nugget"
+  }
+}

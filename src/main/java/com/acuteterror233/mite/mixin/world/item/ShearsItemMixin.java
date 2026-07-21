@@ -3,7 +3,6 @@ package com.acuteterror233.mite.mixin.world.item;
 import net.minecraft.core.BlockPos;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ShearsItem;
@@ -30,7 +29,7 @@ public class ShearsItemMixin {
             ItemStack itemStack = useOnContext.getItemInHand();
             Player player = useOnContext.getPlayer();
             if (player != null) {
-                itemStack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(useOnContext.getHand()));
+                itemStack.hurtAndBreak(1, player, useOnContext.getHand().asEquipmentSlot());
             }
             level.destroyBlock(blockPos, false);
             Block.dropResources(blockState, level, blockPos, null, player, itemStack);

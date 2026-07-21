@@ -18,7 +18,7 @@
     },
     "icon": {
       "count": 1,
-      "id": "mme:copper_chestplate"
+      "id": "minecraft:copper_chestplate"
     },
     "title": {
       "translate": "mme.advancements.story.better_armor.title"

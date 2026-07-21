@@ -11,5 +11,4 @@ public class MMEShovelItem extends ShovelItem {
     public MMEShovelItem(Item.Properties settings) {
         super(null, 0, 0, settings);
     }
-
 }

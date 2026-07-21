@@ -1,0 +1,197 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_netherite_axe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:netherite_axe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_netherite_battle_axe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mme:netherite_battle_axe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_netherite_boots": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:netherite_boots"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_netherite_chestplate": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:netherite_chestplate"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_netherite_dagger": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mme:netherite_dagger"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_netherite_hatchet": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mme:netherite_hatchet"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_netherite_helmet": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:netherite_helmet"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_netherite_hoe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:netherite_hoe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_netherite_leggings": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:netherite_leggings"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_netherite_mattock": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mme:netherite_mattock"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_netherite_pickaxe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:netherite_pickaxe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_netherite_scythe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mme:netherite_scythe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_netherite_shears": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mme:netherite_shears"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_netherite_shovel": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:netherite_shovel"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_netherite_sword": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:netherite_sword"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_netherite_war_hammer": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mme:netherite_war_hammer"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "mme:netherite_nugget_from_blasting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_netherite_battle_axe",
+      "has_netherite_dagger",
+      "has_netherite_hatchet",
+      "has_netherite_mattock",
+      "has_netherite_scythe",
+      "has_netherite_shears",
+      "has_netherite_war_hammer",
+      "has_netherite_sword",
+      "has_netherite_pickaxe",
+      "has_netherite_axe",
+      "has_netherite_shovel",
+      "has_netherite_hoe",
+      "has_netherite_helmet",
+      "has_netherite_chestplate",
+      "has_netherite_leggings",
+      "has_netherite_boots"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "mme:netherite_nugget_from_blasting"
+    ]
+  }
+}

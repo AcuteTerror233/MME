@@ -3,11 +3,10 @@ package com.acuteterror233.mite.renderer.entity;
 import com.acuteterror233.mite.MME;
 import com.acuteterror233.mite.world.entity.monster.VampireBat;
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.model.BatModel;
 import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
@@ -21,16 +20,17 @@ import org.jetbrains.annotations.NotNull;
  */
 public class VampireBatRenderer<T extends VampireBat> extends MobRenderer<T, BatRenderState, BatModel> {
     private static final ResourceLocation TEXTURE = ResourceLocation.withDefaultNamespace("textures/entity/bat.png");
-    private static final ResourceLocation EYES = ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, "textures/entity/bat/vampire_bat.png");
+    private static final RenderType EYES = RenderType.eyes(ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, "textures/entity/bat/vampire_bat.png"));
 
     public VampireBatRenderer(EntityRendererProvider.Context context) {
         super(context, new BatModel(context.bakeLayer(ModelLayers.BAT)), 0.25F);
         this.addLayer(new RenderLayer<>(this) {
             @Override
-            public void render(PoseStack poseStack, MultiBufferSource multiBufferSource, int i, BatRenderState entityRenderState, float f, float g) {
-                RenderType renderType = this.getParentModel().renderType(EYES);
-                VertexConsumer buffer = multiBufferSource.getBuffer(renderType);
-                getParentModel().renderToBuffer(poseStack, buffer, i, OverlayTexture.NO_OVERLAY);
+            public void submit(PoseStack poseStack, SubmitNodeCollector submitNodeCollector, int i, BatRenderState entityRenderState, float f, float g) {
+                submitNodeCollector.order(1)
+                        .submitModel(
+                                this.getParentModel(), entityRenderState, poseStack, EYES, i, OverlayTexture.NO_OVERLAY, -1, null, entityRenderState.outlineColor, null
+                        );
             }
         });
     }
