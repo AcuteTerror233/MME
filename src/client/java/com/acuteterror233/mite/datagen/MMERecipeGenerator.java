@@ -24,8 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.concurrent.CompletableFuture;
 
 /**
- * MME 配方数据生成器。
- * 为 MME 模组生成合成/烧炼配方 JSON。
+ * MME 配方数据生成器
  */
 public class MMERecipeGenerator extends FabricRecipeProvider {
 
@@ -57,6 +56,12 @@ public class MMERecipeGenerator extends FabricRecipeProvider {
                                         MMEItems.MITHRIL_AXE,
                                         MMEItems.MITHRIL_HOE,
                                         MMEItems.MITHRIL_SWORD,
+                                        MMEItems.MITHRIL_BATTLE_AXE,
+                                        MMEItems.MITHRIL_DAGGER,
+                                        MMEItems.MITHRIL_HATCHET,
+                                        MMEItems.MITHRIL_WAR_HAMMER,
+                                        MMEItems.MITHRIL_MATTOCK,
+                                        MMEItems.MITHRIL_SCYTHE,
                                         MMEItems.MITHRIL_HELMET,
                                         MMEItems.MITHRIL_CHESTPLATE,
                                         MMEItems.MITHRIL_LEGGINGS,
@@ -77,6 +82,12 @@ public class MMERecipeGenerator extends FabricRecipeProvider {
                         .unlockedBy("has_mithril_axe", this.has(MMEItems.MITHRIL_AXE))
                         .unlockedBy("has_mithril_hoe", this.has(MMEItems.MITHRIL_HOE))
                         .unlockedBy("has_mithril_sword", this.has(MMEItems.MITHRIL_SWORD))
+                        .unlockedBy("has_mithril_battle_axe", this.has(MMEItems.MITHRIL_BATTLE_AXE))
+                        .unlockedBy("has_mithril_dagger", this.has(MMEItems.MITHRIL_DAGGER))
+                        .unlockedBy("has_mithril_hatchet", this.has(MMEItems.MITHRIL_HATCHET))
+                        .unlockedBy("has_mithril_war_hammer", this.has(MMEItems.MITHRIL_WAR_HAMMER))
+                        .unlockedBy("has_mithril_mattock", this.has(MMEItems.MITHRIL_MATTOCK))
+                        .unlockedBy("has_mithril_scythe", this.has(MMEItems.MITHRIL_SCYTHE))
                         .unlockedBy("has_mithril_helmet", this.has(MMEItems.MITHRIL_HELMET))
                         .unlockedBy("has_mithril_chestplate", this.has(MMEItems.MITHRIL_CHESTPLATE))
                         .unlockedBy("has_mithril_leggings", this.has(MMEItems.MITHRIL_LEGGINGS))
@@ -94,6 +105,12 @@ public class MMERecipeGenerator extends FabricRecipeProvider {
                                         MMEItems.ANCIENT_METAL_AXE,
                                         MMEItems.ANCIENT_METAL_HOE,
                                         MMEItems.ANCIENT_METAL_SWORD,
+                                        MMEItems.ANCIENT_METAL_BATTLE_AXE,
+                                        MMEItems.ANCIENT_METAL_DAGGER,
+                                        MMEItems.ANCIENT_METAL_HATCHET,
+                                        MMEItems.ANCIENT_METAL_WAR_HAMMER,
+                                        MMEItems.ANCIENT_METAL_MATTOCK,
+                                        MMEItems.ANCIENT_METAL_SCYTHE,
                                         MMEItems.ANCIENT_METAL_HELMET,
                                         MMEItems.ANCIENT_METAL_CHESTPLATE,
                                         MMEItems.ANCIENT_METAL_LEGGINGS,
@@ -114,6 +131,12 @@ public class MMERecipeGenerator extends FabricRecipeProvider {
                         .unlockedBy("has_ancient_metal_axe", this.has(MMEItems.ANCIENT_METAL_AXE))
                         .unlockedBy("has_ancient_metal_hoe", this.has(MMEItems.ANCIENT_METAL_HOE))
                         .unlockedBy("has_ancient_metal_sword", this.has(MMEItems.ANCIENT_METAL_SWORD))
+                        .unlockedBy("has_ancient_metal_battle_axe", this.has(MMEItems.ANCIENT_METAL_BATTLE_AXE))
+                        .unlockedBy("has_ancient_metal_dagger", this.has(MMEItems.ANCIENT_METAL_DAGGER))
+                        .unlockedBy("has_ancient_metal_hatchet", this.has(MMEItems.ANCIENT_METAL_HATCHET))
+                        .unlockedBy("has_ancient_metal_war_hammer", this.has(MMEItems.ANCIENT_METAL_WAR_HAMMER))
+                        .unlockedBy("has_ancient_metal_mattock", this.has(MMEItems.ANCIENT_METAL_MATTOCK))
+                        .unlockedBy("has_ancient_metal_scythe", this.has(MMEItems.ANCIENT_METAL_SCYTHE))
                         .unlockedBy("has_ancient_metal_helmet", this.has(MMEItems.ANCIENT_METAL_HELMET))
                         .unlockedBy("has_ancient_metal_chestplate", this.has(MMEItems.ANCIENT_METAL_CHESTPLATE))
                         .unlockedBy("has_ancient_metal_leggings", this.has(MMEItems.ANCIENT_METAL_LEGGINGS))
@@ -131,6 +154,12 @@ public class MMERecipeGenerator extends FabricRecipeProvider {
                                         MMEItems.RUSTED_IRON_AXE,
                                         MMEItems.RUSTED_IRON_HOE,
                                         MMEItems.RUSTED_IRON_SWORD,
+                                        MMEItems.RUSTED_IRON_BATTLE_AXE,
+                                        MMEItems.RUSTED_IRON_DAGGER,
+                                        MMEItems.RUSTED_IRON_HATCHET,
+                                        MMEItems.RUSTED_IRON_WAR_HAMMER,
+                                        MMEItems.RUSTED_IRON_MATTOCK,
+                                        MMEItems.RUSTED_IRON_SCYTHE,
                                         MMEItems.RUSTED_IRON_HELMET,
                                         MMEItems.RUSTED_IRON_CHESTPLATE,
                                         MMEItems.RUSTED_IRON_LEGGINGS,
@@ -158,6 +187,12 @@ public class MMERecipeGenerator extends FabricRecipeProvider {
                         .unlockedBy("has_rusted_iron_axe", this.has(MMEItems.RUSTED_IRON_AXE))
                         .unlockedBy("has_rusted_iron_hoe", this.has(MMEItems.RUSTED_IRON_HOE))
                         .unlockedBy("has_rusted_iron_sword", this.has(MMEItems.RUSTED_IRON_SWORD))
+                        .unlockedBy("has_rusted_iron_battle_axe", this.has(MMEItems.RUSTED_IRON_BATTLE_AXE))
+                        .unlockedBy("has_rusted_iron_dagger", this.has(MMEItems.RUSTED_IRON_DAGGER))
+                        .unlockedBy("has_rusted_iron_hatchet", this.has(MMEItems.RUSTED_IRON_HATCHET))
+                        .unlockedBy("has_rusted_iron_war_hammer", this.has(MMEItems.RUSTED_IRON_WAR_HAMMER))
+                        .unlockedBy("has_rusted_iron_mattock", this.has(MMEItems.RUSTED_IRON_MATTOCK))
+                        .unlockedBy("has_rusted_iron_scythe", this.has(MMEItems.RUSTED_IRON_SCYTHE))
                         .unlockedBy("has_rusted_iron_helmet", this.has(MMEItems.RUSTED_IRON_HELMET))
                         .unlockedBy("has_rusted_iron_chestplate", this.has(MMEItems.RUSTED_IRON_CHESTPLATE))
                         .unlockedBy("has_rusted_iron_leggings", this.has(MMEItems.RUSTED_IRON_LEGGINGS))
@@ -167,25 +202,22 @@ public class MMERecipeGenerator extends FabricRecipeProvider {
                         .unlockedBy("has_rusted_iron_chainmail_leggings", this.has(MMEItems.RUSTED_IRON_CHAINMAIL_LEGGINGS))
                         .unlockedBy("has_rusted_iron_chainmail_boots", this.has(MMEItems.RUSTED_IRON_CHAINMAIL_BOOTS))
                         .unlockedBy("has_rusted_iron_shears", this.has(MMEItems.RUSTED_IRON_SHEARS))
-                        .unlockedBy("has_iron_hoe", this.has(MMEItems.IRON_BATTLE_AXE))
-                        .unlockedBy("has_iron_sword", this.has(MMEItems.IRON_DAGGER))
-                        .unlockedBy("has_iron_helmet", this.has(MMEItems.IRON_HATCHET))
-                        .unlockedBy("has_iron_chestplate", this.has(MMEItems.IRON_WAR_HAMMER))
-                        .unlockedBy("has_iron_leggings", this.has(MMEItems.IRON_MATTOCK))
-                        .unlockedBy("has_iron_boots", this.has(MMEItems.IRON_SCYTHE))
+                        .unlockedBy("has_iron_battle_axe", this.has(MMEItems.IRON_BATTLE_AXE))
+                        .unlockedBy("has_iron_dagger", this.has(MMEItems.IRON_DAGGER))
+                        .unlockedBy("has_iron_hatchet", this.has(MMEItems.IRON_HATCHET))
+                        .unlockedBy("has_iron_war_hammer", this.has(MMEItems.IRON_WAR_HAMMER))
+                        .unlockedBy("has_iron_mattock", this.has(MMEItems.IRON_MATTOCK))
+                        .unlockedBy("has_iron_scythe", this.has(MMEItems.IRON_SCYTHE))
                         .unlockedBy("has_shears", this.has(Items.SHEARS))
                         .save(this.output, getBlastingRecipeName(Items.IRON_NUGGET) + "_from_mme");
                 SimpleCookingRecipeBuilder.blasting(
                                 Ingredient.of(
-                                        MMEItems.COPPER_PICKAXE,
-                                        MMEItems.COPPER_SHOVEL,
-                                        MMEItems.COPPER_AXE,
-                                        MMEItems.COPPER_HOE,
-                                        MMEItems.COPPER_SWORD,
-                                        MMEItems.COPPER_HELMET,
-                                        MMEItems.COPPER_CHESTPLATE,
-                                        MMEItems.COPPER_LEGGINGS,
-                                        MMEItems.COPPER_BOOTS,
+                                        MMEItems.COPPER_BATTLE_AXE,
+                                        MMEItems.COPPER_HATCHET,
+                                        MMEItems.COPPER_DAGGER,
+                                        MMEItems.COPPER_WAR_HAMMER,
+                                        MMEItems.COPPER_MATTOCK,
+                                        MMEItems.COPPER_SCYTHE,
                                         MMEItems.COPPER_CHAINMAIL_HELMET,
                                         MMEItems.COPPER_CHAINMAIL_CHESTPLATE,
                                         MMEItems.COPPER_CHAINMAIL_LEGGINGS,
@@ -193,25 +225,22 @@ public class MMERecipeGenerator extends FabricRecipeProvider {
                                         MMEItems.COPPER_SHEARS
                                 ),
                                 RecipeCategory.MISC,
-                                MMEItems.COPPER_NUGGET,
+                                Items.COPPER_NUGGET,
                                 0.1F,
                                 100
                         )
-                        .unlockedBy("has_copper_pickaxe", this.has(MMEItems.COPPER_PICKAXE))
-                        .unlockedBy("has_copper_shovel", this.has(MMEItems.COPPER_SHOVEL))
-                        .unlockedBy("has_copper_axe", this.has(MMEItems.COPPER_AXE))
-                        .unlockedBy("has_copper_hoe", this.has(MMEItems.COPPER_HOE))
-                        .unlockedBy("has_copper_sword", this.has(MMEItems.COPPER_SWORD))
-                        .unlockedBy("has_copper_helmet", this.has(MMEItems.COPPER_HELMET))
-                        .unlockedBy("has_copper_chestplate", this.has(MMEItems.COPPER_CHESTPLATE))
-                        .unlockedBy("has_copper_leggings", this.has(MMEItems.COPPER_LEGGINGS))
-                        .unlockedBy("has_copper_boots", this.has(MMEItems.COPPER_BOOTS))
+                        .unlockedBy("has_copper_battle_axe", this.has(MMEItems.COPPER_BATTLE_AXE))
+                        .unlockedBy("has_copper_hatchet", this.has(MMEItems.COPPER_HATCHET))
+                        .unlockedBy("has_copper_dagger", this.has(MMEItems.COPPER_DAGGER))
+                        .unlockedBy("has_copper_war_hammer", this.has(MMEItems.COPPER_WAR_HAMMER))
+                        .unlockedBy("has_copper_mattock", this.has(MMEItems.COPPER_MATTOCK))
+                        .unlockedBy("has_copper_scythe", this.has(MMEItems.COPPER_SCYTHE))
                         .unlockedBy("has_copper_chainmail_helmet", this.has(MMEItems.COPPER_CHAINMAIL_HELMET))
                         .unlockedBy("has_copper_chainmail_chestplate", this.has(MMEItems.COPPER_CHAINMAIL_CHESTPLATE))
                         .unlockedBy("has_copper_chainmail_leggings", this.has(MMEItems.COPPER_CHAINMAIL_LEGGINGS))
                         .unlockedBy("has_copper_chainmail_boots", this.has(MMEItems.COPPER_CHAINMAIL_BOOTS))
                         .unlockedBy("has_copper_shears", this.has(MMEItems.COPPER_SHEARS))
-                        .save(this.output, getBlastingRecipeName(MMEItems.COPPER_NUGGET));
+                        .save(this.output, getBlastingRecipeName(Items.COPPER_NUGGET));
                 SimpleCookingRecipeBuilder.blasting(
                                 Ingredient.of(
                                         MMEItems.SILVER_PICKAXE,
@@ -219,6 +248,12 @@ public class MMERecipeGenerator extends FabricRecipeProvider {
                                         MMEItems.SILVER_AXE,
                                         MMEItems.SILVER_HOE,
                                         MMEItems.SILVER_SWORD,
+                                        MMEItems.SILVER_BATTLE_AXE,
+                                        MMEItems.SILVER_DAGGER,
+                                        MMEItems.SILVER_HATCHET,
+                                        MMEItems.SILVER_WAR_HAMMER,
+                                        MMEItems.SILVER_MATTOCK,
+                                        MMEItems.SILVER_SCYTHE,
                                         MMEItems.SILVER_HELMET,
                                         MMEItems.SILVER_CHESTPLATE,
                                         MMEItems.SILVER_LEGGINGS,
@@ -239,6 +274,12 @@ public class MMERecipeGenerator extends FabricRecipeProvider {
                         .unlockedBy("has_silver_axe", this.has(MMEItems.SILVER_AXE))
                         .unlockedBy("has_silver_hoe", this.has(MMEItems.SILVER_HOE))
                         .unlockedBy("has_silver_sword", this.has(MMEItems.SILVER_SWORD))
+                        .unlockedBy("has_silver_battle_axe", this.has(MMEItems.SILVER_BATTLE_AXE))
+                        .unlockedBy("has_silver_dagger", this.has(MMEItems.SILVER_DAGGER))
+                        .unlockedBy("has_silver_hatchet", this.has(MMEItems.SILVER_HATCHET))
+                        .unlockedBy("has_silver_war_hammer", this.has(MMEItems.SILVER_WAR_HAMMER))
+                        .unlockedBy("has_silver_mattock", this.has(MMEItems.SILVER_MATTOCK))
+                        .unlockedBy("has_silver_scythe", this.has(MMEItems.SILVER_SCYTHE))
                         .unlockedBy("has_silver_helmet", this.has(MMEItems.SILVER_HELMET))
                         .unlockedBy("has_silver_chestplate", this.has(MMEItems.SILVER_CHESTPLATE))
                         .unlockedBy("has_silver_leggings", this.has(MMEItems.SILVER_LEGGINGS))
@@ -250,6 +291,131 @@ public class MMERecipeGenerator extends FabricRecipeProvider {
                         .unlockedBy("has_silver_shears", this.has(MMEItems.SILVER_SHEARS))
                         .save(this.output, getBlastingRecipeName(MMEItems.SILVER_NUGGET));
 
+                SimpleCookingRecipeBuilder.blasting(
+                                Ingredient.of(
+                                        MMEItems.ADAMANTIUM_PICKAXE,
+                                        MMEItems.ADAMANTIUM_SHOVEL,
+                                        MMEItems.ADAMANTIUM_AXE,
+                                        MMEItems.ADAMANTIUM_HOE,
+                                        MMEItems.ADAMANTIUM_SWORD,
+                                        MMEItems.ADAMANTIUM_DAGGER,
+                                        MMEItems.ADAMANTIUM_WAR_HAMMER,
+                                        MMEItems.ADAMANTIUM_HATCHET,
+                                        MMEItems.ADAMANTIUM_BATTLE_AXE,
+                                        MMEItems.ADAMANTIUM_MATTOCK,
+                                        MMEItems.ADAMANTIUM_SCYTHE,
+                                        MMEItems.ADAMANTIUM_SHEARS,
+                                        MMEItems.ADAMANTIUM_HELMET,
+                                        MMEItems.ADAMANTIUM_CHESTPLATE,
+                                        MMEItems.ADAMANTIUM_LEGGINGS,
+                                        MMEItems.ADAMANTIUM_BOOTS,
+                                        MMEItems.ADAMANTIUM_CHAINMAIL_HELMET,
+                                        MMEItems.ADAMANTIUM_CHAINMAIL_CHESTPLATE,
+                                        MMEItems.ADAMANTIUM_CHAINMAIL_LEGGINGS,
+                                        MMEItems.ADAMANTIUM_CHAINMAIL_BOOTS
+                                ),
+                                RecipeCategory.MISC,
+                                MMEItems.ADAMANTIUM_NUGGET,
+                                0.1F,
+                                100
+                        )
+                        .unlockedBy("has_adamantium_pickaxe", this.has(MMEItems.ADAMANTIUM_PICKAXE))
+                        .unlockedBy("has_adamantium_shovel", this.has(MMEItems.ADAMANTIUM_SHOVEL))
+                        .unlockedBy("has_adamantium_axe", this.has(MMEItems.ADAMANTIUM_AXE))
+                        .unlockedBy("has_adamantium_hoe", this.has(MMEItems.ADAMANTIUM_HOE))
+                        .unlockedBy("has_adamantium_sword", this.has(MMEItems.ADAMANTIUM_SWORD))
+                        .unlockedBy("has_adamantium_dagger", this.has(MMEItems.ADAMANTIUM_DAGGER))
+                        .unlockedBy("has_adamantium_war_hammer", this.has(MMEItems.ADAMANTIUM_WAR_HAMMER))
+                        .unlockedBy("has_adamantium_hatchet", this.has(MMEItems.ADAMANTIUM_HATCHET))
+                        .unlockedBy("has_adamantium_battle_axe", this.has(MMEItems.ADAMANTIUM_BATTLE_AXE))
+                        .unlockedBy("has_adamantium_mattock", this.has(MMEItems.ADAMANTIUM_MATTOCK))
+                        .unlockedBy("has_adamantium_scythe", this.has(MMEItems.ADAMANTIUM_SCYTHE))
+                        .unlockedBy("has_adamantium_shears", this.has(MMEItems.ADAMANTIUM_SHEARS))
+                        .unlockedBy("has_adamantium_helmet", this.has(MMEItems.ADAMANTIUM_HELMET))
+                        .unlockedBy("has_adamantium_chestplate", this.has(MMEItems.ADAMANTIUM_CHESTPLATE))
+                        .unlockedBy("has_adamantium_leggings", this.has(MMEItems.ADAMANTIUM_LEGGINGS))
+                        .unlockedBy("has_adamantium_boots", this.has(MMEItems.ADAMANTIUM_BOOTS))
+                        .unlockedBy("has_adamantium_chainmail_helmet", this.has(MMEItems.ADAMANTIUM_CHAINMAIL_HELMET))
+                        .unlockedBy("has_adamantium_chainmail_chestplate", this.has(MMEItems.ADAMANTIUM_CHAINMAIL_CHESTPLATE))
+                        .unlockedBy("has_adamantium_chainmail_leggings", this.has(MMEItems.ADAMANTIUM_CHAINMAIL_LEGGINGS))
+                        .unlockedBy("has_adamantium_chainmail_boots", this.has(MMEItems.ADAMANTIUM_CHAINMAIL_BOOTS))
+                        .save(this.output, getBlastingRecipeName(MMEItems.ADAMANTIUM_NUGGET));
+
+                SimpleCookingRecipeBuilder.blasting(
+                                Ingredient.of(
+                                        MMEItems.NETHERITE_BATTLE_AXE,
+                                        MMEItems.NETHERITE_DAGGER,
+                                        MMEItems.NETHERITE_HATCHET,
+                                        MMEItems.NETHERITE_MATTOCK,
+                                        MMEItems.NETHERITE_SCYTHE,
+                                        MMEItems.NETHERITE_SHEARS,
+                                        MMEItems.NETHERITE_WAR_HAMMER,
+                                        Items.NETHERITE_SWORD,
+                                        Items.NETHERITE_PICKAXE,
+                                        Items.NETHERITE_AXE,
+                                        Items.NETHERITE_SHOVEL,
+                                        Items.NETHERITE_HOE,
+                                        Items.NETHERITE_HELMET,
+                                        Items.NETHERITE_CHESTPLATE,
+                                        Items.NETHERITE_LEGGINGS,
+                                        Items.NETHERITE_BOOTS
+                                ),
+                                RecipeCategory.MISC,
+                                MMEItems.NETHERITE_NUGGET,
+                                0.1F,
+                                100
+                        )
+                        .unlockedBy("has_netherite_battle_axe", this.has(MMEItems.NETHERITE_BATTLE_AXE))
+                        .unlockedBy("has_netherite_dagger", this.has(MMEItems.NETHERITE_DAGGER))
+                        .unlockedBy("has_netherite_hatchet", this.has(MMEItems.NETHERITE_HATCHET))
+                        .unlockedBy("has_netherite_mattock", this.has(MMEItems.NETHERITE_MATTOCK))
+                        .unlockedBy("has_netherite_scythe", this.has(MMEItems.NETHERITE_SCYTHE))
+                        .unlockedBy("has_netherite_shears", this.has(MMEItems.NETHERITE_SHEARS))
+                        .unlockedBy("has_netherite_war_hammer", this.has(MMEItems.NETHERITE_WAR_HAMMER))
+                        .unlockedBy("has_netherite_sword", this.has(Items.NETHERITE_SWORD))
+                        .unlockedBy("has_netherite_pickaxe", this.has(Items.NETHERITE_PICKAXE))
+                        .unlockedBy("has_netherite_axe", this.has(Items.NETHERITE_AXE))
+                        .unlockedBy("has_netherite_shovel", this.has(Items.NETHERITE_SHOVEL))
+                        .unlockedBy("has_netherite_hoe", this.has(Items.NETHERITE_HOE))
+                        .unlockedBy("has_netherite_helmet", this.has(Items.NETHERITE_HELMET))
+                        .unlockedBy("has_netherite_chestplate", this.has(Items.NETHERITE_CHESTPLATE))
+                        .unlockedBy("has_netherite_leggings", this.has(Items.NETHERITE_LEGGINGS))
+                        .unlockedBy("has_netherite_boots", this.has(Items.NETHERITE_BOOTS))
+                        .save(this.output, getBlastingRecipeName(MMEItems.NETHERITE_NUGGET));
+
+                SimpleCookingRecipeBuilder.blasting(
+                                Ingredient.of(
+                                        MMEItems.GOLDEN_BATTLE_AXE,
+                                        MMEItems.GOLDEN_DAGGER,
+                                        MMEItems.GOLDEN_HATCHET,
+                                        MMEItems.GOLDEN_MATTOCK,
+                                        MMEItems.GOLDEN_SCYTHE,
+                                        MMEItems.GOLDEN_SHEARS,
+                                        MMEItems.GOLDEN_CHAINMAIL_HELMET,
+                                        MMEItems.GOLDEN_CHAINMAIL_CHESTPLATE,
+                                        MMEItems.GOLDEN_CHAINMAIL_LEGGINGS,
+                                        MMEItems.GOLDEN_CHAINMAIL_BOOTS,
+                                        MMEItems.GOLDEN_WAR_HAMMER
+                                ),
+                                RecipeCategory.MISC,
+                                Items.GOLD_NUGGET,
+                                0.1F,
+                                100
+                        )
+                        .unlockedBy("has_golden_battle_axe", this.has(MMEItems.GOLDEN_BATTLE_AXE))
+                        .unlockedBy("has_golden_dagger", this.has(MMEItems.GOLDEN_DAGGER))
+                        .unlockedBy("has_golden_hatchet", this.has(MMEItems.GOLDEN_HATCHET))
+                        .unlockedBy("has_golden_mattock", this.has(MMEItems.GOLDEN_MATTOCK))
+                        .unlockedBy("has_golden_scythe", this.has(MMEItems.GOLDEN_SCYTHE))
+                        .unlockedBy("has_golden_shears", this.has(MMEItems.GOLDEN_SHEARS))
+                        .unlockedBy("has_golden_chainmail_helmet", this.has(MMEItems.GOLDEN_CHAINMAIL_HELMET))
+                        .unlockedBy("has_golden_chainmail_chestplate", this.has(MMEItems.GOLDEN_CHAINMAIL_CHESTPLATE))
+                        .unlockedBy("has_golden_chainmail_leggings", this.has(MMEItems.GOLDEN_CHAINMAIL_LEGGINGS))
+                        .unlockedBy("has_golden_chainmail_boots", this.has(MMEItems.GOLDEN_CHAINMAIL_BOOTS))
+                        .unlockedBy("has_golden_war_hammer", this.has(MMEItems.GOLDEN_WAR_HAMMER))
+                        .save(this.output, getBlastingRecipeName(Items.GOLD_NUGGET) + "_from_mme_extra");
+
+
                 SimpleCookingRecipeBuilder.smelting(
                                 Ingredient.of(
                                         MMEItems.MITHRIL_PICKAXE,
@@ -257,6 +423,12 @@ public class MMERecipeGenerator extends FabricRecipeProvider {
                                         MMEItems.MITHRIL_AXE,
                                         MMEItems.MITHRIL_HOE,
                                         MMEItems.MITHRIL_SWORD,
+                                        MMEItems.MITHRIL_BATTLE_AXE,
+                                        MMEItems.MITHRIL_DAGGER,
+                                        MMEItems.MITHRIL_HATCHET,
+                                        MMEItems.MITHRIL_WAR_HAMMER,
+                                        MMEItems.MITHRIL_MATTOCK,
+                                        MMEItems.MITHRIL_SCYTHE,
                                         MMEItems.MITHRIL_HELMET,
                                         MMEItems.MITHRIL_CHESTPLATE,
                                         MMEItems.MITHRIL_LEGGINGS,
@@ -270,13 +442,19 @@ public class MMERecipeGenerator extends FabricRecipeProvider {
                                 RecipeCategory.MISC,
                                 MMEItems.MITHRIL_NUGGET,
                                 0.1F,
-                                100
+                                200
                         )
                         .unlockedBy("has_mithril_pickaxe", this.has(MMEItems.MITHRIL_PICKAXE))
                         .unlockedBy("has_mithril_shovel", this.has(MMEItems.MITHRIL_SHOVEL))
                         .unlockedBy("has_mithril_axe", this.has(MMEItems.MITHRIL_AXE))
                         .unlockedBy("has_mithril_hoe", this.has(MMEItems.MITHRIL_HOE))
                         .unlockedBy("has_mithril_sword", this.has(MMEItems.MITHRIL_SWORD))
+                        .unlockedBy("has_mithril_battle_axe", this.has(MMEItems.MITHRIL_BATTLE_AXE))
+                        .unlockedBy("has_mithril_dagger", this.has(MMEItems.MITHRIL_DAGGER))
+                        .unlockedBy("has_mithril_hatchet", this.has(MMEItems.MITHRIL_HATCHET))
+                        .unlockedBy("has_mithril_war_hammer", this.has(MMEItems.MITHRIL_WAR_HAMMER))
+                        .unlockedBy("has_mithril_mattock", this.has(MMEItems.MITHRIL_MATTOCK))
+                        .unlockedBy("has_mithril_scythe", this.has(MMEItems.MITHRIL_SCYTHE))
                         .unlockedBy("has_mithril_helmet", this.has(MMEItems.MITHRIL_HELMET))
                         .unlockedBy("has_mithril_chestplate", this.has(MMEItems.MITHRIL_CHESTPLATE))
                         .unlockedBy("has_mithril_leggings", this.has(MMEItems.MITHRIL_LEGGINGS))
@@ -294,6 +472,12 @@ public class MMERecipeGenerator extends FabricRecipeProvider {
                                         MMEItems.ANCIENT_METAL_AXE,
                                         MMEItems.ANCIENT_METAL_HOE,
                                         MMEItems.ANCIENT_METAL_SWORD,
+                                        MMEItems.ANCIENT_METAL_BATTLE_AXE,
+                                        MMEItems.ANCIENT_METAL_DAGGER,
+                                        MMEItems.ANCIENT_METAL_HATCHET,
+                                        MMEItems.ANCIENT_METAL_WAR_HAMMER,
+                                        MMEItems.ANCIENT_METAL_MATTOCK,
+                                        MMEItems.ANCIENT_METAL_SCYTHE,
                                         MMEItems.ANCIENT_METAL_HELMET,
                                         MMEItems.ANCIENT_METAL_CHESTPLATE,
                                         MMEItems.ANCIENT_METAL_LEGGINGS,
@@ -307,13 +491,19 @@ public class MMERecipeGenerator extends FabricRecipeProvider {
                                 RecipeCategory.MISC,
                                 MMEItems.ANCIENT_METAL_NUGGET,
                                 0.1F,
-                                100
+                                200
                         )
                         .unlockedBy("has_ancient_metal_pickaxe", this.has(MMEItems.ANCIENT_METAL_PICKAXE))
                         .unlockedBy("has_ancient_metal_shovel", this.has(MMEItems.ANCIENT_METAL_SHOVEL))
                         .unlockedBy("has_ancient_metal_axe", this.has(MMEItems.ANCIENT_METAL_AXE))
                         .unlockedBy("has_ancient_metal_hoe", this.has(MMEItems.ANCIENT_METAL_HOE))
                         .unlockedBy("has_ancient_metal_sword", this.has(MMEItems.ANCIENT_METAL_SWORD))
+                        .unlockedBy("has_ancient_metal_battle_axe", this.has(MMEItems.ANCIENT_METAL_BATTLE_AXE))
+                        .unlockedBy("has_ancient_metal_dagger", this.has(MMEItems.ANCIENT_METAL_DAGGER))
+                        .unlockedBy("has_ancient_metal_hatchet", this.has(MMEItems.ANCIENT_METAL_HATCHET))
+                        .unlockedBy("has_ancient_metal_war_hammer", this.has(MMEItems.ANCIENT_METAL_WAR_HAMMER))
+                        .unlockedBy("has_ancient_metal_mattock", this.has(MMEItems.ANCIENT_METAL_MATTOCK))
+                        .unlockedBy("has_ancient_metal_scythe", this.has(MMEItems.ANCIENT_METAL_SCYTHE))
                         .unlockedBy("has_ancient_metal_helmet", this.has(MMEItems.ANCIENT_METAL_HELMET))
                         .unlockedBy("has_ancient_metal_chestplate", this.has(MMEItems.ANCIENT_METAL_CHESTPLATE))
                         .unlockedBy("has_ancient_metal_leggings", this.has(MMEItems.ANCIENT_METAL_LEGGINGS))
@@ -331,6 +521,12 @@ public class MMERecipeGenerator extends FabricRecipeProvider {
                                         MMEItems.RUSTED_IRON_AXE,
                                         MMEItems.RUSTED_IRON_HOE,
                                         MMEItems.RUSTED_IRON_SWORD,
+                                        MMEItems.RUSTED_IRON_BATTLE_AXE,
+                                        MMEItems.RUSTED_IRON_DAGGER,
+                                        MMEItems.RUSTED_IRON_HATCHET,
+                                        MMEItems.RUSTED_IRON_WAR_HAMMER,
+                                        MMEItems.RUSTED_IRON_MATTOCK,
+                                        MMEItems.RUSTED_IRON_SCYTHE,
                                         MMEItems.RUSTED_IRON_HELMET,
                                         MMEItems.RUSTED_IRON_CHESTPLATE,
                                         MMEItems.RUSTED_IRON_LEGGINGS,
@@ -351,13 +547,19 @@ public class MMERecipeGenerator extends FabricRecipeProvider {
                                 RecipeCategory.MISC,
                                 Items.IRON_NUGGET,
                                 0.1F,
-                                100
+                                200
                         )
                         .unlockedBy("has_rusted_iron_pickaxe", this.has(MMEItems.RUSTED_IRON_PICKAXE))
                         .unlockedBy("has_rusted_iron_shovel", this.has(MMEItems.RUSTED_IRON_SHOVEL))
                         .unlockedBy("has_rusted_iron_axe", this.has(MMEItems.RUSTED_IRON_AXE))
                         .unlockedBy("has_rusted_iron_hoe", this.has(MMEItems.RUSTED_IRON_HOE))
                         .unlockedBy("has_rusted_iron_sword", this.has(MMEItems.RUSTED_IRON_SWORD))
+                        .unlockedBy("has_rusted_iron_battle_axe", this.has(MMEItems.RUSTED_IRON_BATTLE_AXE))
+                        .unlockedBy("has_rusted_iron_dagger", this.has(MMEItems.RUSTED_IRON_DAGGER))
+                        .unlockedBy("has_rusted_iron_hatchet", this.has(MMEItems.RUSTED_IRON_HATCHET))
+                        .unlockedBy("has_rusted_iron_war_hammer", this.has(MMEItems.RUSTED_IRON_WAR_HAMMER))
+                        .unlockedBy("has_rusted_iron_mattock", this.has(MMEItems.RUSTED_IRON_MATTOCK))
+                        .unlockedBy("has_rusted_iron_scythe", this.has(MMEItems.RUSTED_IRON_SCYTHE))
                         .unlockedBy("has_rusted_iron_helmet", this.has(MMEItems.RUSTED_IRON_HELMET))
                         .unlockedBy("has_rusted_iron_chestplate", this.has(MMEItems.RUSTED_IRON_CHESTPLATE))
                         .unlockedBy("has_rusted_iron_leggings", this.has(MMEItems.RUSTED_IRON_LEGGINGS))
@@ -367,51 +569,45 @@ public class MMERecipeGenerator extends FabricRecipeProvider {
                         .unlockedBy("has_rusted_iron_chainmail_leggings", this.has(MMEItems.RUSTED_IRON_CHAINMAIL_LEGGINGS))
                         .unlockedBy("has_rusted_iron_chainmail_boots", this.has(MMEItems.RUSTED_IRON_CHAINMAIL_BOOTS))
                         .unlockedBy("has_rusted_iron_shears", this.has(MMEItems.RUSTED_IRON_SHEARS))
-                        .unlockedBy("has_iron_hoe", this.has(MMEItems.IRON_BATTLE_AXE))
-                        .unlockedBy("has_iron_sword", this.has(MMEItems.IRON_DAGGER))
-                        .unlockedBy("has_iron_helmet", this.has(MMEItems.IRON_HATCHET))
-                        .unlockedBy("has_iron_chestplate", this.has(MMEItems.IRON_WAR_HAMMER))
-                        .unlockedBy("has_iron_leggings", this.has(MMEItems.IRON_MATTOCK))
-                        .unlockedBy("has_iron_boots", this.has(MMEItems.IRON_SCYTHE))
+                        .unlockedBy("has_iron_battle_axe", this.has(MMEItems.IRON_BATTLE_AXE))
+                        .unlockedBy("has_iron_dagger", this.has(MMEItems.IRON_DAGGER))
+                        .unlockedBy("has_iron_hatchet", this.has(MMEItems.IRON_HATCHET))
+                        .unlockedBy("has_iron_war_hammer", this.has(MMEItems.IRON_WAR_HAMMER))
+                        .unlockedBy("has_iron_mattock", this.has(MMEItems.IRON_MATTOCK))
+                        .unlockedBy("has_iron_scythe", this.has(MMEItems.IRON_SCYTHE))
                         .unlockedBy("has_shears", this.has(Items.SHEARS))
                         .save(this.output, getSmeltingRecipeName(Items.IRON_NUGGET) + "_from_mme");
                 SimpleCookingRecipeBuilder.smelting(
                                 Ingredient.of(
-                                        MMEItems.COPPER_PICKAXE,
-                                        MMEItems.COPPER_SHOVEL,
-                                        MMEItems.COPPER_AXE,
-                                        MMEItems.COPPER_HOE,
-                                        MMEItems.COPPER_SWORD,
-                                        MMEItems.COPPER_HELMET,
-                                        MMEItems.COPPER_CHESTPLATE,
-                                        MMEItems.COPPER_LEGGINGS,
-                                        MMEItems.COPPER_BOOTS,
                                         MMEItems.COPPER_CHAINMAIL_HELMET,
                                         MMEItems.COPPER_CHAINMAIL_CHESTPLATE,
                                         MMEItems.COPPER_CHAINMAIL_LEGGINGS,
                                         MMEItems.COPPER_CHAINMAIL_BOOTS,
+                                        MMEItems.COPPER_BATTLE_AXE,
+                                        MMEItems.COPPER_DAGGER,
+                                        MMEItems.COPPER_HATCHET,
+                                        MMEItems.COPPER_MATTOCK,
+                                        MMEItems.COPPER_SCYTHE,
+                                        MMEItems.COPPER_WAR_HAMMER,
                                         MMEItems.COPPER_SHEARS
                                 ),
                                 RecipeCategory.MISC,
-                                MMEItems.COPPER_NUGGET,
+                                Items.COPPER_NUGGET,
                                 0.1F,
-                                100
+                                200
                         )
-                        .unlockedBy("has_copper_pickaxe", this.has(MMEItems.COPPER_PICKAXE))
-                        .unlockedBy("has_copper_shovel", this.has(MMEItems.COPPER_SHOVEL))
-                        .unlockedBy("has_copper_axe", this.has(MMEItems.COPPER_AXE))
-                        .unlockedBy("has_copper_hoe", this.has(MMEItems.COPPER_HOE))
-                        .unlockedBy("has_copper_sword", this.has(MMEItems.COPPER_SWORD))
-                        .unlockedBy("has_copper_helmet", this.has(MMEItems.COPPER_HELMET))
-                        .unlockedBy("has_copper_chestplate", this.has(MMEItems.COPPER_CHESTPLATE))
-                        .unlockedBy("has_copper_leggings", this.has(MMEItems.COPPER_LEGGINGS))
-                        .unlockedBy("has_copper_boots", this.has(MMEItems.COPPER_BOOTS))
                         .unlockedBy("has_copper_chainmail_helmet", this.has(MMEItems.COPPER_CHAINMAIL_HELMET))
                         .unlockedBy("has_copper_chainmail_chestplate", this.has(MMEItems.COPPER_CHAINMAIL_CHESTPLATE))
                         .unlockedBy("has_copper_chainmail_leggings", this.has(MMEItems.COPPER_CHAINMAIL_LEGGINGS))
                         .unlockedBy("has_copper_chainmail_boots", this.has(MMEItems.COPPER_CHAINMAIL_BOOTS))
                         .unlockedBy("has_copper_shears", this.has(MMEItems.COPPER_SHEARS))
-                        .save(this.output, getSmeltingRecipeName(MMEItems.COPPER_NUGGET));
+                        .unlockedBy("has_copper_battle_axe", this.has(MMEItems.COPPER_BATTLE_AXE))
+                        .unlockedBy("has_copper_dagger", this.has(MMEItems.COPPER_DAGGER))
+                        .unlockedBy("has_copper_hatchet", this.has(MMEItems.COPPER_HATCHET))
+                        .unlockedBy("has_copper_mattock", this.has(MMEItems.COPPER_MATTOCK))
+                        .unlockedBy("has_copper_scythe", this.has(MMEItems.COPPER_SCYTHE))
+                        .unlockedBy("has_copper_war_hammer", this.has(MMEItems.COPPER_WAR_HAMMER))
+                        .save(this.output, getSmeltingRecipeName(Items.COPPER_NUGGET));
                 SimpleCookingRecipeBuilder.smelting(
                                 Ingredient.of(
                                         MMEItems.SILVER_PICKAXE,
@@ -419,6 +615,12 @@ public class MMERecipeGenerator extends FabricRecipeProvider {
                                         MMEItems.SILVER_AXE,
                                         MMEItems.SILVER_HOE,
                                         MMEItems.SILVER_SWORD,
+                                        MMEItems.SILVER_BATTLE_AXE,
+                                        MMEItems.SILVER_DAGGER,
+                                        MMEItems.SILVER_HATCHET,
+                                        MMEItems.SILVER_WAR_HAMMER,
+                                        MMEItems.SILVER_MATTOCK,
+                                        MMEItems.SILVER_SCYTHE,
                                         MMEItems.SILVER_HELMET,
                                         MMEItems.SILVER_CHESTPLATE,
                                         MMEItems.SILVER_LEGGINGS,
@@ -432,13 +634,19 @@ public class MMERecipeGenerator extends FabricRecipeProvider {
                                 RecipeCategory.MISC,
                                 MMEItems.SILVER_NUGGET,
                                 0.1F,
-                                100
+                                200
                         )
                         .unlockedBy("has_silver_pickaxe", this.has(MMEItems.SILVER_PICKAXE))
                         .unlockedBy("has_silver_shovel", this.has(MMEItems.SILVER_SHOVEL))
                         .unlockedBy("has_silver_axe", this.has(MMEItems.SILVER_AXE))
                         .unlockedBy("has_silver_hoe", this.has(MMEItems.SILVER_HOE))
                         .unlockedBy("has_silver_sword", this.has(MMEItems.SILVER_SWORD))
+                        .unlockedBy("has_silver_battle_axe", this.has(MMEItems.SILVER_BATTLE_AXE))
+                        .unlockedBy("has_silver_dagger", this.has(MMEItems.SILVER_DAGGER))
+                        .unlockedBy("has_silver_hatchet", this.has(MMEItems.SILVER_HATCHET))
+                        .unlockedBy("has_silver_war_hammer", this.has(MMEItems.SILVER_WAR_HAMMER))
+                        .unlockedBy("has_silver_mattock", this.has(MMEItems.SILVER_MATTOCK))
+                        .unlockedBy("has_silver_scythe", this.has(MMEItems.SILVER_SCYTHE))
                         .unlockedBy("has_silver_helmet", this.has(MMEItems.SILVER_HELMET))
                         .unlockedBy("has_silver_chestplate", this.has(MMEItems.SILVER_CHESTPLATE))
                         .unlockedBy("has_silver_leggings", this.has(MMEItems.SILVER_LEGGINGS))
@@ -450,6 +658,131 @@ public class MMERecipeGenerator extends FabricRecipeProvider {
                         .unlockedBy("has_silver_shears", this.has(MMEItems.SILVER_SHEARS))
                         .save(this.output, getSmeltingRecipeName(MMEItems.SILVER_NUGGET));
 
+                SimpleCookingRecipeBuilder.smelting(
+                                Ingredient.of(
+                                        MMEItems.ADAMANTIUM_PICKAXE,
+                                        MMEItems.ADAMANTIUM_SHOVEL,
+                                        MMEItems.ADAMANTIUM_AXE,
+                                        MMEItems.ADAMANTIUM_HOE,
+                                        MMEItems.ADAMANTIUM_SWORD,
+                                        MMEItems.ADAMANTIUM_DAGGER,
+                                        MMEItems.ADAMANTIUM_WAR_HAMMER,
+                                        MMEItems.ADAMANTIUM_HATCHET,
+                                        MMEItems.ADAMANTIUM_BATTLE_AXE,
+                                        MMEItems.ADAMANTIUM_MATTOCK,
+                                        MMEItems.ADAMANTIUM_SCYTHE,
+                                        MMEItems.ADAMANTIUM_SHEARS,
+                                        MMEItems.ADAMANTIUM_HELMET,
+                                        MMEItems.ADAMANTIUM_CHESTPLATE,
+                                        MMEItems.ADAMANTIUM_LEGGINGS,
+                                        MMEItems.ADAMANTIUM_BOOTS,
+                                        MMEItems.ADAMANTIUM_CHAINMAIL_HELMET,
+                                        MMEItems.ADAMANTIUM_CHAINMAIL_CHESTPLATE,
+                                        MMEItems.ADAMANTIUM_CHAINMAIL_LEGGINGS,
+                                        MMEItems.ADAMANTIUM_CHAINMAIL_BOOTS
+                                ),
+                                RecipeCategory.MISC,
+                                MMEItems.ADAMANTIUM_NUGGET,
+                                0.1F,
+                                200
+                        )
+                        .unlockedBy("has_adamantium_pickaxe", this.has(MMEItems.ADAMANTIUM_PICKAXE))
+                        .unlockedBy("has_adamantium_shovel", this.has(MMEItems.ADAMANTIUM_SHOVEL))
+                        .unlockedBy("has_adamantium_axe", this.has(MMEItems.ADAMANTIUM_AXE))
+                        .unlockedBy("has_adamantium_hoe", this.has(MMEItems.ADAMANTIUM_HOE))
+                        .unlockedBy("has_adamantium_sword", this.has(MMEItems.ADAMANTIUM_SWORD))
+                        .unlockedBy("has_adamantium_dagger", this.has(MMEItems.ADAMANTIUM_DAGGER))
+                        .unlockedBy("has_adamantium_war_hammer", this.has(MMEItems.ADAMANTIUM_WAR_HAMMER))
+                        .unlockedBy("has_adamantium_hatchet", this.has(MMEItems.ADAMANTIUM_HATCHET))
+                        .unlockedBy("has_adamantium_battle_axe", this.has(MMEItems.ADAMANTIUM_BATTLE_AXE))
+                        .unlockedBy("has_adamantium_mattock", this.has(MMEItems.ADAMANTIUM_MATTOCK))
+                        .unlockedBy("has_adamantium_scythe", this.has(MMEItems.ADAMANTIUM_SCYTHE))
+                        .unlockedBy("has_adamantium_shears", this.has(MMEItems.ADAMANTIUM_SHEARS))
+                        .unlockedBy("has_adamantium_helmet", this.has(MMEItems.ADAMANTIUM_HELMET))
+                        .unlockedBy("has_adamantium_chestplate", this.has(MMEItems.ADAMANTIUM_CHESTPLATE))
+                        .unlockedBy("has_adamantium_leggings", this.has(MMEItems.ADAMANTIUM_LEGGINGS))
+                        .unlockedBy("has_adamantium_boots", this.has(MMEItems.ADAMANTIUM_BOOTS))
+                        .unlockedBy("has_adamantium_chainmail_helmet", this.has(MMEItems.ADAMANTIUM_CHAINMAIL_HELMET))
+                        .unlockedBy("has_adamantium_chainmail_chestplate", this.has(MMEItems.ADAMANTIUM_CHAINMAIL_CHESTPLATE))
+                        .unlockedBy("has_adamantium_chainmail_leggings", this.has(MMEItems.ADAMANTIUM_CHAINMAIL_LEGGINGS))
+                        .unlockedBy("has_adamantium_chainmail_boots", this.has(MMEItems.ADAMANTIUM_CHAINMAIL_BOOTS))
+                        .save(this.output, getSmeltingRecipeName(MMEItems.ADAMANTIUM_NUGGET));
+
+                SimpleCookingRecipeBuilder.smelting(
+                                Ingredient.of(
+                                        MMEItems.NETHERITE_BATTLE_AXE,
+                                        MMEItems.NETHERITE_DAGGER,
+                                        MMEItems.NETHERITE_HATCHET,
+                                        MMEItems.NETHERITE_MATTOCK,
+                                        MMEItems.NETHERITE_SCYTHE,
+                                        MMEItems.NETHERITE_SHEARS,
+                                        MMEItems.NETHERITE_WAR_HAMMER,
+                                        Items.NETHERITE_SWORD,
+                                        Items.NETHERITE_PICKAXE,
+                                        Items.NETHERITE_AXE,
+                                        Items.NETHERITE_SHOVEL,
+                                        Items.NETHERITE_HOE,
+                                        Items.NETHERITE_HELMET,
+                                        Items.NETHERITE_CHESTPLATE,
+                                        Items.NETHERITE_LEGGINGS,
+                                        Items.NETHERITE_BOOTS
+                                ),
+                                RecipeCategory.MISC,
+                                MMEItems.NETHERITE_NUGGET,
+                                0.1F,
+                                200
+                        )
+                        .unlockedBy("has_netherite_battle_axe", this.has(MMEItems.NETHERITE_BATTLE_AXE))
+                        .unlockedBy("has_netherite_dagger", this.has(MMEItems.NETHERITE_DAGGER))
+                        .unlockedBy("has_netherite_hatchet", this.has(MMEItems.NETHERITE_HATCHET))
+                        .unlockedBy("has_netherite_mattock", this.has(MMEItems.NETHERITE_MATTOCK))
+                        .unlockedBy("has_netherite_scythe", this.has(MMEItems.NETHERITE_SCYTHE))
+                        .unlockedBy("has_netherite_shears", this.has(MMEItems.NETHERITE_SHEARS))
+                        .unlockedBy("has_netherite_war_hammer", this.has(MMEItems.NETHERITE_WAR_HAMMER))
+                        .unlockedBy("has_netherite_sword", this.has(Items.NETHERITE_SWORD))
+                        .unlockedBy("has_netherite_pickaxe", this.has(Items.NETHERITE_PICKAXE))
+                        .unlockedBy("has_netherite_axe", this.has(Items.NETHERITE_AXE))
+                        .unlockedBy("has_netherite_shovel", this.has(Items.NETHERITE_SHOVEL))
+                        .unlockedBy("has_netherite_hoe", this.has(Items.NETHERITE_HOE))
+                        .unlockedBy("has_netherite_helmet", this.has(Items.NETHERITE_HELMET))
+                        .unlockedBy("has_netherite_chestplate", this.has(Items.NETHERITE_CHESTPLATE))
+                        .unlockedBy("has_netherite_leggings", this.has(Items.NETHERITE_LEGGINGS))
+                        .unlockedBy("has_netherite_boots", this.has(Items.NETHERITE_BOOTS))
+                        .save(this.output, getSmeltingRecipeName(MMEItems.NETHERITE_NUGGET));
+
+                SimpleCookingRecipeBuilder.smelting(
+                                Ingredient.of(
+                                        MMEItems.GOLDEN_BATTLE_AXE,
+                                        MMEItems.GOLDEN_DAGGER,
+                                        MMEItems.GOLDEN_HATCHET,
+                                        MMEItems.GOLDEN_MATTOCK,
+                                        MMEItems.GOLDEN_SCYTHE,
+                                        MMEItems.GOLDEN_SHEARS,
+                                        MMEItems.GOLDEN_CHAINMAIL_HELMET,
+                                        MMEItems.GOLDEN_CHAINMAIL_CHESTPLATE,
+                                        MMEItems.GOLDEN_CHAINMAIL_LEGGINGS,
+                                        MMEItems.GOLDEN_CHAINMAIL_BOOTS,
+                                        MMEItems.GOLDEN_WAR_HAMMER
+                                ),
+                                RecipeCategory.MISC,
+                                Items.GOLD_NUGGET,
+                                0.1F,
+                                200
+                        )
+                        .unlockedBy("has_golden_battle_axe", this.has(MMEItems.GOLDEN_BATTLE_AXE))
+                        .unlockedBy("has_golden_dagger", this.has(MMEItems.GOLDEN_DAGGER))
+                        .unlockedBy("has_golden_hatchet", this.has(MMEItems.GOLDEN_HATCHET))
+                        .unlockedBy("has_golden_mattock", this.has(MMEItems.GOLDEN_MATTOCK))
+                        .unlockedBy("has_golden_scythe", this.has(MMEItems.GOLDEN_SCYTHE))
+                        .unlockedBy("has_golden_shears", this.has(MMEItems.GOLDEN_SHEARS))
+                        .unlockedBy("has_golden_chainmail_helmet", this.has(MMEItems.GOLDEN_CHAINMAIL_HELMET))
+                        .unlockedBy("has_golden_chainmail_chestplate", this.has(MMEItems.GOLDEN_CHAINMAIL_CHESTPLATE))
+                        .unlockedBy("has_golden_chainmail_leggings", this.has(MMEItems.GOLDEN_CHAINMAIL_LEGGINGS))
+                        .unlockedBy("has_golden_chainmail_boots", this.has(MMEItems.GOLDEN_CHAINMAIL_BOOTS))
+                        .unlockedBy("has_golden_war_hammer", this.has(MMEItems.GOLDEN_WAR_HAMMER))
+                        .save(this.output, getSmeltingRecipeName(Items.GOLD_NUGGET) + "_from_mme_extra");
+
+
                 nineBlockStorageRecipes(RecipeCategory.MISC, MMEItems.ADAMANTIUM_INGOT, RecipeCategory.BUILDING_BLOCKS, MMEBlocks.ADAMANTIUM_BLOCK, "adamantium_block_from_adamantium_ingot", null , "adamantium_ingot_from_adamantium_block",null);
                 nineBlockStorageRecipes(RecipeCategory.MISC, MMEItems.ANCIENT_METAL_INGOT, RecipeCategory.BUILDING_BLOCKS, MMEBlocks.ANCIENT_METAL_BLOCK, "ancient_metal_block_from_ancient_metal_ingot", null , "ancient_metal_ingot_from_ancient_metal_block", null);
                 nineBlockStorageRecipes(RecipeCategory.MISC, MMEItems.MITHRIL_INGOT, RecipeCategory.BUILDING_BLOCKS, MMEBlocks.MITHRIL_BLOCK, "mithril_block_from_mithril_ingot", null , "mithril_ingot_from_mithril_block", null);
@@ -460,7 +793,7 @@ public class MMERecipeGenerator extends FabricRecipeProvider {
                 nineBlockStorageRecipes(RecipeCategory.MISC, MMEItems.ANCIENT_METAL_NUGGET, RecipeCategory.MISC, MMEItems.ANCIENT_METAL_INGOT, "ancient_metal_ingot_from_ancient_metal_nugget", null,  "ancient_metal_nugget_from_ancient_metal_ingot", null);
                 nineBlockStorageRecipes(RecipeCategory.MISC, MMEItems.MITHRIL_NUGGET, RecipeCategory.MISC, MMEItems.MITHRIL_INGOT, "mithril_ingot_from_mithril_nugget", null,  "mithril_nugget_from_mithril_ingot", null);
                 nineBlockStorageRecipes(RecipeCategory.MISC, MMEItems.SILVER_NUGGET, RecipeCategory.MISC, MMEItems.SILVER_INGOT, "silver_ingot_from_silver_nugget", null,  "silver_nugget_from_silver_ingot", null);
-                nineBlockStorageRecipes(RecipeCategory.MISC, MMEItems.COPPER_NUGGET, RecipeCategory.MISC, Items.COPPER_INGOT, "copper_ingot_from_copper_nugget", null,  "copper_nugget_from_copper_ingot", null);
+                nineBlockStorageRecipes(RecipeCategory.MISC, Items.COPPER_NUGGET, RecipeCategory.MISC, Items.COPPER_INGOT, "copper_ingot_from_copper_nugget", null,  "copper_nugget_from_copper_ingot", null);
 
                 twoByTwoPacker(RecipeCategory.DECORATIONS, MMEBlocks.CLAY_FURNACE, Items.CLAY);
                 shaped(RecipeCategory.DECORATIONS, MMEBlocks.HARDENED_CLAY_FURNACE)
@@ -525,7 +858,7 @@ public class MMERecipeGenerator extends FabricRecipeProvider {
                 offerFishingRodRecipes(MMEItems.ANCIENT_METAL_FISHING_ROD, MMEItems.ANCIENT_METAL_NUGGET);
                 offerFishingRodRecipes(MMEItems.MITHRIL_FISHING_ROD, MMEItems.MITHRIL_NUGGET);
                 offerFishingRodRecipes(MMEItems.SILVER_FISHING_ROD, MMEItems.SILVER_NUGGET);
-                offerFishingRodRecipes(MMEItems.COPPER_FISHING_ROD, MMEItems.COPPER_NUGGET);
+                offerFishingRodRecipes(MMEItems.COPPER_FISHING_ROD, Items.COPPER_NUGGET);
                 offerFishingRodRecipes(MMEItems.IRON_FISHING_ROD, Items.IRON_NUGGET);
                 offerFishingRodRecipes(MMEItems.GOLDEN_FISHING_ROD, Items.GOLD_NUGGET);
                 offerFishingRodRecipes(MMEItems.OBSIDIAN_FISHING_ROD, MMEItems.OBSIDIAN_SHARD);
@@ -535,7 +868,6 @@ public class MMERecipeGenerator extends FabricRecipeProvider {
                 offerArmorRecipes(MMEItems.ANCIENT_METAL_INGOT, MMEItems.ANCIENT_METAL_HELMET, MMEItems.ANCIENT_METAL_CHESTPLATE, MMEItems.ANCIENT_METAL_LEGGINGS, MMEItems.ANCIENT_METAL_BOOTS);
                 offerArmorRecipes(MMEItems.MITHRIL_INGOT, MMEItems.MITHRIL_HELMET, MMEItems.MITHRIL_CHESTPLATE, MMEItems.MITHRIL_LEGGINGS, MMEItems.MITHRIL_BOOTS);
                 offerArmorRecipes(MMEItems.SILVER_INGOT, MMEItems.SILVER_HELMET, MMEItems.SILVER_CHESTPLATE, MMEItems.SILVER_LEGGINGS, MMEItems.SILVER_BOOTS);
-                offerArmorRecipes(Items.COPPER_INGOT, MMEItems.COPPER_HELMET, MMEItems.COPPER_CHESTPLATE, MMEItems.COPPER_LEGGINGS, MMEItems.COPPER_BOOTS);
 
                 offerArmorRecipes(MMEItems.ADAMANTIUM_CHAINS, MMEItems.ADAMANTIUM_CHAINMAIL_HELMET, MMEItems.ADAMANTIUM_CHAINMAIL_CHESTPLATE, MMEItems.ADAMANTIUM_CHAINMAIL_LEGGINGS, MMEItems.ADAMANTIUM_CHAINMAIL_BOOTS);
                 offerArmorRecipes(MMEItems.ANCIENT_METAL_CHAINS, MMEItems.ANCIENT_METAL_CHAINMAIL_HELMET, MMEItems.ANCIENT_METAL_CHAINMAIL_CHESTPLATE, MMEItems.ANCIENT_METAL_CHAINMAIL_LEGGINGS, MMEItems.ANCIENT_METAL_CHAINMAIL_BOOTS);
@@ -620,20 +952,15 @@ public class MMERecipeGenerator extends FabricRecipeProvider {
                         MMEItems.SILVER_SCYTHE,
                         MMEItems.SILVER_SHEARS
                 );
-                toolsRecipes(Items.COPPER_INGOT,
-                        MMEItems.COPPER_SWORD,
-                        MMEItems.COPPER_DAGGER,
-                        MMEItems.COPPER_PICKAXE,
-                        MMEItems.COPPER_WAR_HAMMER,
-                        MMEItems.COPPER_AXE,
-                        MMEItems.COPPER_HATCHET,
-                        MMEItems.COPPER_BATTLE_AXE,
-                        MMEItems.COPPER_SHOVEL,
-                        MMEItems.COPPER_HOE,
-                        MMEItems.COPPER_MATTOCK,
-                        MMEItems.COPPER_SCYTHE,
-                        MMEItems.COPPER_SHEARS
-                );
+
+
+                offerBattleaxeRecipes(Items.COPPER_INGOT, MMEItems.COPPER_BATTLE_AXE);
+                offerDaggerRecipes(Items.COPPER_INGOT, MMEItems.COPPER_DAGGER);
+                offerHatchetRecipes(Items.COPPER_INGOT, MMEItems.COPPER_HATCHET);
+                offerMattockRecipes(Items.COPPER_INGOT, MMEItems.COPPER_MATTOCK);
+                offerScytheRecipes(Items.COPPER_INGOT, MMEItems.COPPER_SCYTHE);
+                offerWarhammerRecipes(Items.COPPER_INGOT, MMEItems.COPPER_WAR_HAMMER);
+                
                 offerBattleaxeRecipes(Items.IRON_INGOT, MMEItems.IRON_BATTLE_AXE);
                 offerDaggerRecipes(Items.IRON_INGOT, MMEItems.IRON_DAGGER);
                 offerHatchetRecipes(Items.IRON_INGOT, MMEItems.IRON_HATCHET);
@@ -894,7 +1221,7 @@ public class MMERecipeGenerator extends FabricRecipeProvider {
                 offerChainsRecipes(Items.IRON_NUGGET, MMEItems.IRON_CHAINS);
                 offerChainsRecipes(Items.GOLD_NUGGET, MMEItems.GOLDEN_CHAINS);
                 offerChainsRecipes(MMEItems.SILVER_NUGGET, MMEItems.SILVER_CHAINS);
-                offerChainsRecipes(MMEItems.COPPER_NUGGET, MMEItems.COPPER_CHAINS);
+                offerChainsRecipes(Items.COPPER_NUGGET, MMEItems.COPPER_CHAINS);
 
                 offerBucketRecipes(MMEItems.ADAMANTIUM_INGOT, MMEItems.ADAMANTIUM_BUCKET);
                 offerBucketRecipes(Items.GOLD_INGOT, MMEItems.GOLD_BUCKET);

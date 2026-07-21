@@ -1,6 +1,8 @@
 package com.acuteterror233.mite.inventory;
 
 import com.acuteterror233.mite.block.MMEMenuTypes;
+import com.acuteterror233.mite.item.enchantment.MMEEnchantments;
+import com.acuteterror233.mite.registry.EnchantedUpgradeRegistry;
 import com.acuteterror233.mite.registry.tag.MMEBlockTags;
 import net.minecraft.Util;
 import net.minecraft.advancements.CriteriaTriggers;
@@ -22,6 +24,7 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.inventory.DataSlot;
 import net.minecraft.world.inventory.Slot;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantment;
@@ -29,6 +32,7 @@ import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.EnchantmentInstance;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.EnchantingTableBlock;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 import java.util.Optional;
@@ -96,7 +100,7 @@ public class MMEEnchantmentMenu extends AbstractContainerMenu {
     public void slotsChanged(Container container) {
         if (container == this.enchantSlots) {
             ItemStack itemStack = container.getItem(0);
-            if (!itemStack.isEmpty() && itemStack.isEnchantable()) {
+            if (!itemStack.isEmpty() && (itemStack.isEnchantable() || EnchantedUpgradeRegistry.getUpgrade(itemStack) != null)) {
                 this.access.execute((level, blockPos) -> {
                     IdMap<Holder<Enchantment>> idMap = level.registryAccess().lookupOrThrow(Registries.ENCHANTMENT).asHolderIdMap();
                     int enchantmentLevel = 0;
@@ -122,11 +126,24 @@ public class MMEEnchantmentMenu extends AbstractContainerMenu {
                         if (this.costs[jx] > 0) {
                             List<EnchantmentInstance> list = this.getEnchantmentList(level.registryAccess(), itemStack, jx, this.costs[jx]);
                             if (list != null && !list.isEmpty()) {
-                                EnchantmentInstance enchantmentInstance = (EnchantmentInstance)list.get(this.random.nextInt(list.size()));
+                                EnchantmentInstance enchantmentInstance = list.get(this.random.nextInt(list.size()));
                                 this.enchantClue[jx] = idMap.getId(enchantmentInstance.enchantment());
                                 this.levelClue[jx] = enchantmentInstance.level();
                             }
                         }
+                    }
+
+                    Item enchantedUpgrade = EnchantedUpgradeRegistry.getUpgrade(itemStack);
+                    if (enchantedUpgrade != null) {
+                        this.costs[0] = 2;
+                        this.costs[1] = 0;
+                        this.costs[2] = 0;
+                        this.enchantClue[0] = idMap.getId(level.registryAccess().lookupOrThrow(Registries.ENCHANTMENT).get(MMEEnchantments.UPGRADE).orElseThrow());
+                        this.levelClue[0] = 1;
+                        this.enchantClue[1] = -1;
+                        this.levelClue[1] = -1;
+                        this.enchantClue[2] = -1;
+                        this.levelClue[2] = -1;
                     }
 
                     this.broadcastChanges();
@@ -156,6 +173,25 @@ public class MMEEnchantmentMenu extends AbstractContainerMenu {
             } else {
                 this.access.execute((level, blockPos) -> {
                     ItemStack itemStack3 = itemStack;
+                    Item enchantedUpgrade = EnchantedUpgradeRegistry.getUpgrade(itemStack);
+                    if (enchantedUpgrade != null && i == 0) {
+                        player.onEnchantmentPerformed(itemStack, j);
+                        itemStack3 = itemStack.transmuteCopy(enchantedUpgrade);
+                        this.enchantSlots.setItem(0, itemStack3);
+                        itemStack2.consume(j, player);
+                        if (itemStack2.isEmpty()) {
+                            this.enchantSlots.setItem(1, ItemStack.EMPTY);
+                        }
+                        player.awardStat(Stats.ENCHANT_ITEM);
+                        if (player instanceof ServerPlayer) {
+                            CriteriaTriggers.ENCHANTED_ITEM.trigger((ServerPlayer)player, itemStack3, j);
+                        }
+                        this.enchantSlots.setChanged();
+                        this.enchantmentSeed.set(player.getEnchantmentSeed());
+                        this.slotsChanged(this.enchantSlots);
+                        level.playSound(null, blockPos, SoundEvents.ENCHANTMENT_TABLE_USE, SoundSource.BLOCKS, 1.0F, level.random.nextFloat() * 0.1F + 0.9F);
+                        return;
+                    }
                     List<EnchantmentInstance> list = this.getEnchantmentList(level.registryAccess(), itemStack, i, this.costs[i]);
                     if (!list.isEmpty()) {
                         player.onEnchantmentPerformed(itemStack, j);
@@ -198,7 +234,7 @@ public class MMEEnchantmentMenu extends AbstractContainerMenu {
         if (optional.isEmpty()) {
             return List.of();
         } else {
-            List<EnchantmentInstance> list = EnchantmentHelper.selectEnchantment(this.random, itemStack, j, ((HolderSet.Named)optional.get()).stream());
+            List<EnchantmentInstance> list = EnchantmentHelper.selectEnchantment(this.random, itemStack, j, optional.get().stream());
             if (itemStack.is(Items.BOOK) && list.size() > 1) {
                 list.remove(this.random.nextInt(list.size()));
             }
@@ -231,10 +267,10 @@ public class MMEEnchantmentMenu extends AbstractContainerMenu {
     }
 
     @Override
-    public ItemStack quickMoveStack(Player player, int i) {
+    public @NotNull ItemStack quickMoveStack(Player player, int i) {
         ItemStack itemStack = ItemStack.EMPTY;
         Slot slot = this.slots.get(i);
-        if (slot != null && slot.hasItem()) {
+        if (slot.hasItem()) {
             ItemStack itemStack2 = slot.getItem();
             itemStack = itemStack2.copy();
             if (i == 0) {
@@ -250,13 +286,13 @@ public class MMEEnchantmentMenu extends AbstractContainerMenu {
                     return ItemStack.EMPTY;
                 }
             } else {
-                if (this.slots.get(0).hasItem() || !this.slots.get(0).mayPlace(itemStack2)) {
+                if (this.slots.getFirst().hasItem() || !this.slots.getFirst().mayPlace(itemStack2)) {
                     return ItemStack.EMPTY;
                 }
 
                 ItemStack itemStack3 = itemStack2.copyWithCount(1);
                 itemStack2.shrink(1);
-                this.slots.get(0).setByPlayer(itemStack3);
+                this.slots.getFirst().setByPlayer(itemStack3);
             }
 
             if (itemStack2.isEmpty()) {

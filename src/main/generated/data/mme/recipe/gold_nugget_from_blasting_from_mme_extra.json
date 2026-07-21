@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 100,
+  "experience": 0.1,
+  "ingredient": [
+    "mme:golden_battle_axe",
+    "mme:golden_dagger",
+    "mme:golden_hatchet",
+    "mme:golden_mattock",
+    "mme:golden_scythe",
+    "mme:golden_shears",
+    "mme:golden_chainmail_helmet",
+    "mme:golden_chainmail_chestplate",
+    "mme:golden_chainmail_leggings",
+    "mme:golden_chainmail_boots",
+    "mme:golden_war_hammer"
+  ],
+  "result": {
+    "id": "minecraft:gold_nugget"
+  }
+}

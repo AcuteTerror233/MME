@@ -48,7 +48,7 @@ public class VampireBat extends Mob implements Enemy {
 
     public VampireBat(EntityType<? extends VampireBat> entityType, Level level) {
         super(entityType, level);
-        if (!level.isClientSide) {
+        if (!level.isClientSide()) {
             this.setResting(true);
         }
     }

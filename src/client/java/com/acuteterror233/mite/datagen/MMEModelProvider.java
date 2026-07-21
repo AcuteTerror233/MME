@@ -120,10 +120,6 @@ public class MMEModelProvider extends FabricModelProvider {
         itemModelGenerator.generateTrimmableItem(MMEItems.ANCIENT_METAL_CHAINMAIL_CHESTPLATE, MMEArmorMaterials.ANCIENT_METAL_CHAINMAIL_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
         itemModelGenerator.generateTrimmableItem(MMEItems.ANCIENT_METAL_CHAINMAIL_LEGGINGS, MMEArmorMaterials.ANCIENT_METAL_CHAINMAIL_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
         itemModelGenerator.generateTrimmableItem(MMEItems.ANCIENT_METAL_CHAINMAIL_BOOTS, MMEArmorMaterials.ANCIENT_METAL_CHAINMAIL_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_BOOTS, false);
-        itemModelGenerator.generateTrimmableItem(MMEItems.COPPER_HELMET, MMEArmorMaterials.COPPER_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_HELMET, false);
-        itemModelGenerator.generateTrimmableItem(MMEItems.COPPER_CHESTPLATE, MMEArmorMaterials.COPPER_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
-        itemModelGenerator.generateTrimmableItem(MMEItems.COPPER_LEGGINGS, MMEArmorMaterials.COPPER_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
-        itemModelGenerator.generateTrimmableItem(MMEItems.COPPER_BOOTS, MMEArmorMaterials.COPPER_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_BOOTS, false);
         itemModelGenerator.generateTrimmableItem(MMEItems.COPPER_CHAINMAIL_HELMET, MMEArmorMaterials.COPPER_CHAINMAIL_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_HELMET, false);
         itemModelGenerator.generateTrimmableItem(MMEItems.COPPER_CHAINMAIL_CHESTPLATE, MMEArmorMaterials.COPPER_CHAINMAIL_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
         itemModelGenerator.generateTrimmableItem(MMEItems.COPPER_CHAINMAIL_LEGGINGS, MMEArmorMaterials.COPPER_CHAINMAIL_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
@@ -270,18 +266,13 @@ public class MMEModelProvider extends FabricModelProvider {
         itemModelGenerator.generateFlatItem(MMEItems.RUSTED_IRON_SHOVEL, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGenerator.generateFlatItem(MMEItems.RUSTED_IRON_SWORD, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGenerator.generateFlatItem(MMEItems.RUSTED_IRON_WAR_HAMMER, ModelTemplates.FLAT_HANDHELD_ITEM);
-        itemModelGenerator.generateFlatItem(MMEItems.COPPER_AXE, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGenerator.generateFlatItem(MMEItems.COPPER_BATTLE_AXE, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGenerator.generateFlatItem(MMEItems.COPPER_DAGGER, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGenerator.generateFlatItem(MMEItems.COPPER_HATCHET, ModelTemplates.FLAT_HANDHELD_ITEM);
-        itemModelGenerator.generateFlatItem(MMEItems.COPPER_HOE, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGenerator.generateFlatItem(MMEItems.COPPER_KNIFE, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGenerator.generateFlatItem(MMEItems.COPPER_MATTOCK, ModelTemplates.FLAT_HANDHELD_ITEM);
-        itemModelGenerator.generateFlatItem(MMEItems.COPPER_PICKAXE, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGenerator.generateFlatItem(MMEItems.COPPER_SCYTHE, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGenerator.generateFlatItem(MMEItems.COPPER_SHEARS, ModelTemplates.FLAT_HANDHELD_ITEM);
-        itemModelGenerator.generateFlatItem(MMEItems.COPPER_SHOVEL, ModelTemplates.FLAT_HANDHELD_ITEM);
-        itemModelGenerator.generateFlatItem(MMEItems.COPPER_SWORD, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGenerator.generateFlatItem(MMEItems.COPPER_WAR_HAMMER, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGenerator.generateFlatItem(MMEItems.SILVER_AXE, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGenerator.generateFlatItem(MMEItems.SILVER_BATTLE_AXE, ModelTemplates.FLAT_HANDHELD_ITEM);
@@ -437,7 +428,6 @@ public class MMEModelProvider extends FabricModelProvider {
         itemModelGenerator.generateFlatItem(MMEItems.MITHRIL_NUGGET, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(MMEItems.ANCIENT_METAL_NUGGET, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(MMEItems.SILVER_NUGGET, ModelTemplates.FLAT_ITEM);
-        itemModelGenerator.generateFlatItem(MMEItems.COPPER_NUGGET, ModelTemplates.FLAT_ITEM);
 
         itemModelGenerator.generateFlatItem(MMEItems.FLINT_SHARD, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(MMEItems.OBSIDIAN_SHARD, ModelTemplates.FLAT_ITEM);

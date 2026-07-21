@@ -1,7 +1,7 @@
 {
   "type": "minecraft:smelting",
   "category": "misc",
-  "cookingtime": 100,
+  "cookingtime": 200,
   "experience": 0.1,
   "ingredient": [
     "mme:rusted_iron_pickaxe",
@@ -9,6 +9,12 @@
     "mme:rusted_iron_axe",
     "mme:rusted_iron_hoe",
     "mme:rusted_iron_sword",
+    "mme:rusted_iron_battle_axe",
+    "mme:rusted_iron_dagger",
+    "mme:rusted_iron_hatchet",
+    "mme:rusted_iron_war_hammer",
+    "mme:rusted_iron_mattock",
+    "mme:rusted_iron_scythe",
     "mme:rusted_iron_helmet",
     "mme:rusted_iron_chestplate",
     "mme:rusted_iron_leggings",

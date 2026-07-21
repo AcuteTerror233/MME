@@ -1,7 +1,7 @@
 {
   "type": "minecraft:smelting",
   "category": "misc",
-  "cookingtime": 100,
+  "cookingtime": 200,
   "experience": 0.1,
   "ingredient": [
     "mme:mithril_pickaxe",
@@ -9,6 +9,12 @@
     "mme:mithril_axe",
     "mme:mithril_hoe",
     "mme:mithril_sword",
+    "mme:mithril_battle_axe",
+    "mme:mithril_dagger",
+    "mme:mithril_hatchet",
+    "mme:mithril_war_hammer",
+    "mme:mithril_mattock",
+    "mme:mithril_scythe",
     "mme:mithril_helmet",
     "mme:mithril_chestplate",
     "mme:mithril_leggings",

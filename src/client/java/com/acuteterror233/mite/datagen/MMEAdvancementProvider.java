@@ -243,7 +243,7 @@ public class MMEAdvancementProvider extends FabricAdvancementProvider {
         AdvancementHolder copperNugget = Advancement.Builder.advancement()
                 .parent(flint_shovel)
                 .display(
-                        MMEItems.COPPER_NUGGET,
+                        Items.COPPER_NUGGET,
                         Component.translatable("mme.advancements.story.copper_nugget.title"),
                         Component.translatable("mme.advancements.story.copper_nugget.description"),
                         null,
@@ -285,7 +285,7 @@ public class MMEAdvancementProvider extends FabricAdvancementProvider {
         AdvancementHolder betterArmor = Advancement.Builder.advancement()
                 .parent(metalCraftingTable)
                 .display(
-                        MMEItems.COPPER_CHESTPLATE,
+                        Items.COPPER_CHESTPLATE,
                         Component.translatable("mme.advancements.story.better_armor.title"),
                         Component.translatable("mme.advancements.story.better_armor.description"),
                         null,
@@ -299,7 +299,7 @@ public class MMEAdvancementProvider extends FabricAdvancementProvider {
         AdvancementHolder pickaxe = Advancement.Builder.advancement()
                 .parent(metalCraftingTable)
                 .display(
-                        MMEItems.COPPER_PICKAXE,
+                        Items.COPPER_PICKAXE,
                         Component.translatable("mme.advancements.story.pickaxe.title"),
                         Component.translatable("mme.advancements.story.pickaxe.description"),
                         null,

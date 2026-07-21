@@ -63,7 +63,7 @@ public class MMEBucketItem extends BucketItem {
                         fluidDrainable.MME$GetBucketFillSound().ifPresent(sound -> user.playSound(sound, 1.0F, 1.0F));
                         world.gameEvent(user, GameEvent.FLUID_PICKUP, blockPos);
                         ItemStack itemStack3 = ItemUtils.createFilledResult(itemStack, user, itemStack2);
-                        if (!world.isClientSide) {
+                        if (!world.isClientSide()) {
                             CriteriaTriggers.FILLED_BUCKET.trigger((ServerPlayer) user, itemStack2);
                         }
                         return InteractionResult.SUCCESS.heldItemTransformedTo(itemStack3);

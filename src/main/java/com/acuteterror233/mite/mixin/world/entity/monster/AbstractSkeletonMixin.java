@@ -46,8 +46,8 @@ public abstract class AbstractSkeletonMixin  extends Monster implements RangedAt
             float v = randomSource.nextFloat();
             if (v < 0.3F || !this.getSlot(100).get().isEmpty()){
                 switch (randomSource.nextInt(3)){
-                    case 0: addMainhand(MMEItems.COPPER_SWORD);
-                    case 1: addMainhand(MMEItems.SILVER_SWORD);
+                    case 0: addMainhand(Items.COPPER_SWORD); break;
+                    case 1: addMainhand(MMEItems.SILVER_SWORD); break;
                     case 2: addMainhand(MMEItems.RUSTED_IRON_SWORD);
                 }
             }else if (v < 0.7F){

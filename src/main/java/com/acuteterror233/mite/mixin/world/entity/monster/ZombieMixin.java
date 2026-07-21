@@ -34,7 +34,7 @@ public abstract class ZombieMixin extends Monster {
     @Unique
     private static final float LOW_Y_THRESHOLD_UNDERGROUND = 125.0F;
     @Unique
-    private static final float LOW_Y_THRESHOLD_OVERWORLD = 63.0F;
+    private static final float LOW_Y_THRESHOLD_OVERWORLD = 0.0F;
     @Unique
     private static final float LOW_Y_DROP_RATE = 0.25F;
     @Unique
@@ -58,7 +58,10 @@ public abstract class ZombieMixin extends Monster {
     @Overwrite
     public void populateDefaultEquipmentSlots(RandomSource randomSource, DifficultyInstance difficultyInstance) {
         super.populateDefaultEquipmentSlots(randomSource, difficultyInstance);
-        boolean fullArmor = !this.getSlot(100).get().isEmpty();
+        boolean fullArmor = !this.getItemBySlot(EquipmentSlot.HEAD).isEmpty()
+                && !this.getItemBySlot(EquipmentSlot.CHEST).isEmpty()
+                && !this.getItemBySlot(EquipmentSlot.LEGS).isEmpty()
+                && !this.getItemBySlot(EquipmentSlot.FEET).isEmpty();
         if (fullArmor){
             this.addEffect(new MobEffectInstance(MobEffects.STRENGTH, -1, 1));
             this.getAttribute(Attributes.MOVEMENT_SPEED).addOrReplacePermanentModifier(
@@ -111,7 +114,7 @@ public abstract class ZombieMixin extends Monster {
         switch (index) {
             case 0: this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(MMEItems.RUSTED_IRON_SWORD)); break;
             case 1: this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(MMEItems.RUSTED_IRON_BATTLE_AXE)); break;
-            case 2: this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(MMEItems.COPPER_SWORD)); break;
+            case 2: this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(Items.COPPER_SWORD)); break;
             case 3: this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(MMEItems.COPPER_BATTLE_AXE)); break;
             case 4: this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(MMEItems.SILVER_SWORD)); break;
             case 5: this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(MMEItems.SILVER_BATTLE_AXE)); break;
@@ -122,10 +125,10 @@ public abstract class ZombieMixin extends Monster {
     @Unique
     private void setOverworldLowYWeapon(int index) {
         switch (index) {
-            case 0: this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(MMEItems.WOODEN_CLUB)); break;
-            case 1: this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(MMEItems.WOODEN_CUDGEL)); break;
-            case 2: this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(MMEItems.FLINT_SHOVEL)); break;
-            case 3: this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(MMEItems.FLINT_AXE)); break;
+            case 0: this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(Items.COPPER_SWORD)); break;
+            case 1: this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(MMEItems.COPPER_BATTLE_AXE)); break;
+            case 2: this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(MMEItems.SILVER_SWORD)); break;
+            case 3: this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(MMEItems.SILVER_BATTLE_AXE)); break;
         }
     }
 
@@ -133,10 +136,10 @@ public abstract class ZombieMixin extends Monster {
     @Unique
     private void setOverworldHighYWeapon(int index) {
         switch (index) {
-            case 0: this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(MMEItems.COPPER_SWORD)); break;
-            case 1: this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(MMEItems.COPPER_BATTLE_AXE)); break;
-            case 2: this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(MMEItems.SILVER_SWORD)); break;
-            case 3: this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(MMEItems.SILVER_BATTLE_AXE)); break;
+            case 0: this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(MMEItems.WOODEN_CLUB)); break;
+            case 1: this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(MMEItems.WOODEN_CUDGEL)); break;
+            case 2: this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(MMEItems.FLINT_SHOVEL)); break;
+            case 3: this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(MMEItems.FLINT_AXE)); break;
         }
     }
 }

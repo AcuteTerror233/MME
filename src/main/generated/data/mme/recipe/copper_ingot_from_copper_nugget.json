@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "#": "mme:copper_nugget"
+    "#": "minecraft:copper_nugget"
   },
   "pattern": [
     "###",

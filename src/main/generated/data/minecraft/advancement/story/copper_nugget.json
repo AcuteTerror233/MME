@@ -18,7 +18,7 @@
     },
     "icon": {
       "count": 1,
-      "id": "mme:copper_nugget"
+      "id": "minecraft:copper_nugget"
     },
     "title": {
       "translate": "mme.advancements.story.copper_nugget.title"

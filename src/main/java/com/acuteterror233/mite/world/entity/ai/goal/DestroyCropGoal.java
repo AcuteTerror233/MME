@@ -94,7 +94,7 @@ public class DestroyCropGoal extends MoveToBlockGoal {
                 if (this.ticksSinceReachedGoal > 0) {
                     Vec3 vec3 = this.removerMob.getDeltaMovement();
                     this.removerMob.setDeltaMovement(vec3.x, 0.3, vec3.z);
-                    if (!level.isClientSide) {
+                    if (!level.isClientSide()) {
                         ((ServerLevel) level)
                                 .sendParticles(
                                         new ItemParticleOption(ParticleTypes.ITEM, new ItemStack(Blocks.DIRT)),
@@ -120,7 +120,7 @@ public class DestroyCropGoal extends MoveToBlockGoal {
 
                 if (this.ticksSinceReachedGoal > 60) {
                     level.removeBlock(blockPos2, false);
-                    if (!level.isClientSide) {
+                    if (!level.isClientSide()) {
                         for (int i = 0; i < 20; i++) {
                             double d = randomSource.nextGaussian() * 0.02;
                             double e = randomSource.nextGaussian() * 0.02;

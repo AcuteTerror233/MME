@@ -393,7 +393,6 @@ public class MMETagProvider {
                     .add(MMEItems.ADAMANTIUM_CHAINMAIL_HELMET)
                     .add(MMEItems.ANCIENT_METAL_HELMET)
                     .add(MMEItems.ANCIENT_METAL_CHAINMAIL_HELMET)
-                    .add(MMEItems.COPPER_HELMET)
                     .add(MMEItems.COPPER_CHAINMAIL_HELMET)
                     .add(MMEItems.MITHRIL_HELMET)
                     .add(MMEItems.MITHRIL_CHAINMAIL_HELMET)
@@ -407,7 +406,6 @@ public class MMETagProvider {
                     .add(MMEItems.ADAMANTIUM_CHAINMAIL_CHESTPLATE)
                     .add(MMEItems.ANCIENT_METAL_CHESTPLATE)
                     .add(MMEItems.ANCIENT_METAL_CHAINMAIL_CHESTPLATE)
-                    .add(MMEItems.COPPER_CHESTPLATE)
                     .add(MMEItems.COPPER_CHAINMAIL_CHESTPLATE)
                     .add(MMEItems.MITHRIL_CHESTPLATE)
                     .add(MMEItems.MITHRIL_CHAINMAIL_CHESTPLATE)
@@ -421,7 +419,6 @@ public class MMETagProvider {
                     .add(MMEItems.ADAMANTIUM_CHAINMAIL_LEGGINGS)
                     .add(MMEItems.ANCIENT_METAL_LEGGINGS)
                     .add(MMEItems.ANCIENT_METAL_CHAINMAIL_LEGGINGS)
-                    .add(MMEItems.COPPER_LEGGINGS)
                     .add(MMEItems.COPPER_CHAINMAIL_LEGGINGS)
                     .add(MMEItems.MITHRIL_LEGGINGS)
                     .add(MMEItems.MITHRIL_CHAINMAIL_LEGGINGS)
@@ -435,7 +432,6 @@ public class MMETagProvider {
                     .add(MMEItems.ADAMANTIUM_CHAINMAIL_BOOTS)
                     .add(MMEItems.ANCIENT_METAL_BOOTS)
                     .add(MMEItems.ANCIENT_METAL_CHAINMAIL_BOOTS)
-                    .add(MMEItems.COPPER_BOOTS)
                     .add(MMEItems.COPPER_CHAINMAIL_BOOTS)
                     .add(MMEItems.MITHRIL_BOOTS)
                     .add(MMEItems.MITHRIL_CHAINMAIL_BOOTS)
@@ -549,18 +545,14 @@ public class MMETagProvider {
                     .add(MMEItems.ANCIENT_METAL_NUGGET)
                     .add(MMEItems.MITHRIL_NUGGET)
                     .add(MMEItems.SILVER_NUGGET)
-                    .add(MMEItems.COPPER_NUGGET);
+                    .add(Items.COPPER_NUGGET);
             valueLookupBuilder(MMEItemTags.SHARD)
                     .add(MMEItems.FLINT_SHARD)
                     .add(MMEItems.OBSIDIAN_SHARD);
             valueLookupBuilder(MMEItemTags.COPPER_OR_SILVER_NUGGET)
-                    .add(MMEItems.COPPER_NUGGET)
+                    .add(Items.COPPER_NUGGET)
                     .add(MMEItems.SILVER_NUGGET);
             valueLookupBuilder(MMEItemTags.COPPER_OR_SILVER_ARMOR)
-                    .add(MMEItems.COPPER_HELMET)
-                    .add(MMEItems.COPPER_CHESTPLATE)
-                    .add(MMEItems.COPPER_LEGGINGS)
-                    .add(MMEItems.COPPER_BOOTS)
                     .add(MMEItems.COPPER_CHAINMAIL_HELMET)
                     .add(MMEItems.COPPER_CHAINMAIL_CHESTPLATE)
                     .add(MMEItems.COPPER_CHAINMAIL_LEGGINGS)
@@ -574,7 +566,7 @@ public class MMETagProvider {
                     .add(MMEItems.SILVER_CHAINMAIL_LEGGINGS)
                     .add(MMEItems.SILVER_CHAINMAIL_BOOTS);
             valueLookupBuilder(MMEItemTags.COPPER_OR_SILVER_PICKAXE)
-                    .add(MMEItems.COPPER_PICKAXE)
+                    .add(Items.COPPER_PICKAXE)
                     .add(MMEItems.SILVER_PICKAXE);
             valueLookupBuilder(MMEItemTags.LEATHER_ARMOR)
                     .add(Items.LEATHER_HELMET)
@@ -801,26 +793,22 @@ public class MMETagProvider {
                     .add(MMEItems.SILVER_BOOTS)
                     .add(MMEItems.SILVER_CHAINMAIL_BOOTS);
             valueLookupBuilder(MMEItemTags.COPPER_TOOLS)
-                    .add(MMEItems.COPPER_AXE)
+                    .add(Items.COPPER_AXE)
                     .add(MMEItems.COPPER_HATCHET)
-                    .add(MMEItems.COPPER_PICKAXE)
-                    .add(MMEItems.COPPER_SHOVEL)
-                    .add(MMEItems.COPPER_HOE)
+                    .add(Items.COPPER_PICKAXE)
+                    .add(Items.COPPER_SHOVEL)
+                    .add(Items.COPPER_HOE)
                     .add(MMEItems.COPPER_MATTOCK)
                     .add(MMEItems.COPPER_SCYTHE)
                     .add(MMEItems.COPPER_SHEARS)
                     .add(MMEItems.COPPER_FISHING_ROD)
                     .add(MMEItems.COPPER_DAGGER)
-                    .add(MMEItems.COPPER_SWORD)
+                    .add(Items.COPPER_SWORD)
                     .add(MMEItems.COPPER_WAR_HAMMER)
                     .add(MMEItems.COPPER_BATTLE_AXE)
-                    .add(MMEItems.COPPER_HELMET)
                     .add(MMEItems.COPPER_CHAINMAIL_HELMET)
-                    .add(MMEItems.COPPER_CHESTPLATE)
                     .add(MMEItems.COPPER_CHAINMAIL_CHESTPLATE)
-                    .add(MMEItems.COPPER_LEGGINGS)
                     .add(MMEItems.COPPER_CHAINMAIL_LEGGINGS)
-                    .add(MMEItems.COPPER_BOOTS)
                     .add(MMEItems.COPPER_CHAINMAIL_BOOTS);
             valueLookupBuilder(MMEItemTags.DESTRUCTIBLE_ENDCRYSTAL)
                     .addTag(MMEItemTags.NETHERITE_TOOLS)
@@ -843,7 +831,7 @@ public class MMETagProvider {
                     .add(MMEItems.SILVER_NUGGET);
             valueLookupBuilder(MMEItemTags.COPPER_TOOL_MATERIALS)
                     .add(Items.COPPER_INGOT)
-                    .add(MMEItems.COPPER_NUGGET);
+                    .add(Items.COPPER_NUGGET);
             valueLookupBuilder(ItemTags.IRON_TOOL_MATERIALS)
                     .add(Items.IRON_NUGGET)
                     .add(Items.IRON_INGOT);
@@ -951,7 +939,7 @@ public class MMETagProvider {
                     .add(MMEItems.ANCIENT_METAL_SWORD)
                     .add(MMEItems.RUSTED_IRON_SWORD)
                     .add(MMEItems.SILVER_SWORD)
-                    .add(MMEItems.COPPER_SWORD);
+                    .add(Items.COPPER_SWORD);
             valueLookupBuilder(ItemTags.AXES)
                     .addTag(MMEItemTags.BATTLE_AXE)
                     .addTag(MMEItemTags.HATCHET)
@@ -960,7 +948,7 @@ public class MMETagProvider {
                     .add(MMEItems.ANCIENT_METAL_AXE)
                     .add(MMEItems.RUSTED_IRON_AXE)
                     .add(MMEItems.SILVER_AXE)
-                    .add(MMEItems.COPPER_AXE)
+                    .add(Items.COPPER_AXE)
                     .add(MMEItems.FLINT_AXE)
                     .add(MMEItems.OBSIDIAN_AXE);
             valueLookupBuilder(ItemTags.PICKAXES)
@@ -970,7 +958,7 @@ public class MMETagProvider {
                     .add(MMEItems.ANCIENT_METAL_PICKAXE)
                     .add(MMEItems.RUSTED_IRON_PICKAXE)
                     .add(MMEItems.SILVER_PICKAXE)
-                    .add(MMEItems.COPPER_PICKAXE);
+                    .add(Items.COPPER_PICKAXE);
             valueLookupBuilder(ItemTags.SHOVELS)
                     .addTag(MMEItemTags.MATTOCK)
                     .add(MMEItems.ADAMANTIUM_SHOVEL)
@@ -978,14 +966,14 @@ public class MMETagProvider {
                     .add(MMEItems.ANCIENT_METAL_SHOVEL)
                     .add(MMEItems.RUSTED_IRON_SHOVEL)
                     .add(MMEItems.SILVER_SHOVEL)
-                    .add(MMEItems.COPPER_SHOVEL);
+                    .add(Items.COPPER_SHOVEL);
             valueLookupBuilder(ItemTags.HOES)
                     .add(MMEItems.ADAMANTIUM_HOE)
                     .add(MMEItems.MITHRIL_HOE)
                     .add(MMEItems.ANCIENT_METAL_HOE)
                     .add(MMEItems.RUSTED_IRON_HOE)
                     .add(MMEItems.SILVER_HOE)
-                    .add(MMEItems.COPPER_HOE);
+                    .add(Items.COPPER_HOE);
             valueLookupBuilder(ItemTags.FISHING_ENCHANTABLE)
                     .add(MMEItems.NETHERITE_FISHING_ROD)
                     .add(MMEItems.ADAMANTIUM_FISHING_ROD)
@@ -1058,6 +1046,7 @@ public class MMETagProvider {
             valueLookupBuilder(MMEItemTags.OBSIDIAN_CRAFTING_TABLE_EXCEPTIONS)
                     .add(MMEBlocks.COPPER_CRAFTING_TABLE.asItem())
                     .add(MMEBlocks.SILVER_CRAFTING_TABLE.asItem());
+            valueLookupBuilder(MMEItemTags.AIR);
         }
     }
 }

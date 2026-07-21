@@ -8,7 +8,7 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.RegistryLayer;
 import net.minecraft.server.Services;
 import net.minecraft.server.WorldStem;
-import net.minecraft.server.level.progress.ChunkProgressListenerFactory;
+import net.minecraft.server.level.progress.LevelLoadListener;
 import net.minecraft.server.packs.repository.PackRepository;
 import net.minecraft.world.level.storage.LevelStorageSource;
 import net.minecraft.world.level.storage.WorldData;
@@ -35,7 +35,7 @@ public class MinecraftServerMixin implements GetFuelGradeRegistryExtension {
     @Shadow @Final protected WorldData worldData;
     @Unique private FuelGradeRegistry fuelgraderegistry;
     @Inject(method = "<init>", at = @At("TAIL"))
-    private void init(Thread serverThread, LevelStorageSource.LevelStorageAccess session, PackRepository dataPackManager, WorldStem saveLoader, Proxy proxy, DataFixer dataFixer, Services apiServices, ChunkProgressListenerFactory worldGenerationProgressListenerFactory, CallbackInfo ci){
+    private void init(Thread thread, LevelStorageSource.LevelStorageAccess levelStorageAccess, PackRepository packRepository, WorldStem worldStem, Proxy proxy, DataFixer dataFixer, Services services, LevelLoadListener levelLoadListener, CallbackInfo ci){
         this.fuelgraderegistry = FuelGradeRegistry.createDefault(this.registries.compositeAccess(), this.worldData.enabledFeatures());
     }
     @Inject(method = "reloadResources", at = @At("TAIL"))

@@ -5,7 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": "mme:copper_nugget"
+            "items": "minecraft:copper_nugget"
           }
         ]
       },

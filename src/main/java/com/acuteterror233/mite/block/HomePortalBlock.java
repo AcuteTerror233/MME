@@ -21,6 +21,6 @@ public class HomePortalBlock extends AbstractPortalBlock {
     @Override
     public @Nullable TeleportTransition getPortalDestination(ServerLevel world, Entity entity, BlockPos pos) {
         ServerLevel overworld = world.getServer().getLevel(Level.OVERWORLD);
-        return new TeleportTransition(overworld, world.getSharedSpawnPos().getBottomCenter(), Vec3.ZERO, 0.0F, 0.0F, Relative.union(Relative.DELTA, Relative.ROTATION), TeleportTransition.PLAY_PORTAL_SOUND.then(TeleportTransition.PLACE_PORTAL_TICKET));
+        return new TeleportTransition(overworld, world.getRespawnData().pos().getBottomCenter(), Vec3.ZERO, 0.0F, 0.0F, Relative.union(Relative.DELTA, Relative.ROTATION), TeleportTransition.PLAY_PORTAL_SOUND.then(TeleportTransition.PLACE_PORTAL_TICKET));
     }
 }

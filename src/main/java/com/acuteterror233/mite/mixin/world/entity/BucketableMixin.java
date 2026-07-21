@@ -35,7 +35,7 @@ public interface BucketableMixin {
             ItemStack itemStack3 = ItemUtils.createFilledResult(itemStack, player, itemStack2, false);
             player.setItemInHand(hand, itemStack3);
             Level world = entity.level();
-            if (!world.isClientSide) {
+            if (!world.isClientSide()) {
                 CriteriaTriggers.FILLED_BUCKET.trigger((ServerPlayer) player, itemStack2);
             }
 

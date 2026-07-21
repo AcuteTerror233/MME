@@ -18,7 +18,7 @@
     },
     "icon": {
       "count": 1,
-      "id": "mme:copper_pickaxe"
+      "id": "minecraft:copper_pickaxe"
     },
     "title": {
       "translate": "mme.advancements.story.pickaxe.title"

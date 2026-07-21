@@ -140,10 +140,6 @@ public class En_usLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(MMEItems.RUSTED_IRON_CHAINMAIL_CHESTPLATE, "Rusted Iron Chainmail Chestplate");
         translationBuilder.add(MMEItems.RUSTED_IRON_CHAINMAIL_LEGGINGS, "Rusted Iron Chainmail Leggings");
         translationBuilder.add(MMEItems.RUSTED_IRON_CHAINMAIL_BOOTS, "Rusted Iron Chainmail Boots");
-        translationBuilder.add(MMEItems.COPPER_HELMET, "Copper Helmet");
-        translationBuilder.add(MMEItems.COPPER_CHESTPLATE, "Copper Chestplate");
-        translationBuilder.add(MMEItems.COPPER_LEGGINGS, "Copper Leggings");
-        translationBuilder.add(MMEItems.COPPER_BOOTS, "Copper Boots");
         translationBuilder.add(MMEItems.COPPER_CHAINMAIL_HELMET, "Copper Chainmail Helmet");
         translationBuilder.add(MMEItems.COPPER_CHAINMAIL_CHESTPLATE, "Copper Chainmail Chestplate");
         translationBuilder.add(MMEItems.COPPER_CHAINMAIL_LEGGINGS, "Copper Chainmail Leggings");
@@ -271,18 +267,13 @@ public class En_usLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(MMEItems.RUSTED_IRON_SHOVEL, "Rusted Iron Shovel");
         translationBuilder.add(MMEItems.RUSTED_IRON_SWORD, "Rusted Iron Sword");
         translationBuilder.add(MMEItems.RUSTED_IRON_WAR_HAMMER, "Rusted Iron War Hammer");
-        translationBuilder.add(MMEItems.COPPER_AXE, "Copper Axe");
         translationBuilder.add(MMEItems.COPPER_BATTLE_AXE, "Copper Battle Axe");
         translationBuilder.add(MMEItems.COPPER_DAGGER, "Copper Dagger");
         translationBuilder.add(MMEItems.COPPER_HATCHET, "Copper Hatchet");
-        translationBuilder.add(MMEItems.COPPER_HOE, "Copper Hoe");
         translationBuilder.add(MMEItems.COPPER_KNIFE, "Copper Knife");
         translationBuilder.add(MMEItems.COPPER_MATTOCK, "Copper Mattock");
-        translationBuilder.add(MMEItems.COPPER_PICKAXE, "Copper Pickaxe");
         translationBuilder.add(MMEItems.COPPER_SCYTHE, "Copper Scythe");
         translationBuilder.add(MMEItems.COPPER_SHEARS, "Copper Shears");
-        translationBuilder.add(MMEItems.COPPER_SHOVEL, "Copper Shovel");
-        translationBuilder.add(MMEItems.COPPER_SWORD, "Copper Sword");
         translationBuilder.add(MMEItems.COPPER_WAR_HAMMER, "Copper War Hammer");
         translationBuilder.add(MMEItems.SILVER_AXE, "Silver Axe");
         translationBuilder.add(MMEItems.SILVER_BATTLE_AXE, "Silver Battle Axe");
@@ -434,7 +425,6 @@ public class En_usLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(MMEItems.ANCIENT_METAL_NUGGET, "Ancient Metal Nugget");
         translationBuilder.add(MMEItems.MITHRIL_NUGGET, "Mithril Nugget");
         translationBuilder.add(MMEItems.SILVER_NUGGET, "Silver Nugget");
-        translationBuilder.add(MMEItems.COPPER_NUGGET, "Copper Nugget");
 
         translationBuilder.add(MMEItems.FLINT_SHARD, "Flint Shard");
         translationBuilder.add(MMEItems.OBSIDIAN_SHARD, "Obsidian Shard");
@@ -549,5 +539,7 @@ public class En_usLanguageProvider extends FabricLanguageProvider {
         translationBuilder.addEnchantment(MMEEnchantments.CLEAVING, "Cleaving");
         translationBuilder.addEnchantment(MMEEnchantments.HARVESTING, "Harvesting");
         translationBuilder.addEnchantment(MMEEnchantments.FERTILITY, "Fertility");
+        translationBuilder.addEnchantment(MMEEnchantments.UPGRADE, "Infuse");
+        translationBuilder.add("container.enchant.upgrade_target", "§7Enchant → %s");
     }
 }

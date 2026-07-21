@@ -8,6 +8,7 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.gui.screens.inventory.EnchantmentNames;
+import net.minecraft.client.input.MouseButtonEvent;
 import net.minecraft.client.model.BookModel;
 import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.renderer.RenderPipelines;
@@ -80,20 +81,20 @@ public class MMEEnchantmentScreen extends AbstractContainerScreen<MMEEnchantment
     }
 
     @Override
-    public boolean mouseClicked(double d, double e, int i) {
-        int j = (this.width - this.imageWidth) / 2;
-        int k = (this.height - this.imageHeight) / 2;
+    public boolean mouseClicked(MouseButtonEvent mouseButtonEvent, boolean bl) {
+        int i = (this.width - this.imageWidth) / 2;
+        int j = (this.height - this.imageHeight) / 2;
 
-        for (int l = 0; l < 3; l++) {
-            double f = d - (j + 60);
-            double g = e - (k + 14 + 19 * l);
-            if (f >= 0.0 && g >= 0.0 && f < 108.0 && g < 19.0 && this.menu.clickMenuButton(this.minecraft.player, l)) {
-                this.minecraft.gameMode.handleInventoryButtonClick(this.menu.containerId, l);
+        for (int k = 0; k < 3; k++) {
+            double d = mouseButtonEvent.x() - (i + 60);
+            double e = mouseButtonEvent.y() - (j + 14 + 19 * k);
+            if (d >= 0.0 && e >= 0.0 && d < 108.0 && e < 19.0 && this.menu.clickMenuButton(this.minecraft.player, k)) {
+                this.minecraft.gameMode.handleInventoryButtonClick(this.menu.containerId, k);
                 return true;
             }
         }
 
-        return super.mouseClicked(d, e, i);
+        return super.mouseClicked(mouseButtonEvent, bl);
     }
 
     @Override
@@ -163,7 +164,7 @@ public class MMEEnchantmentScreen extends AbstractContainerScreen<MMEEnchantment
         for (int l = 0; l < 3; l++) {
             int m = this.menu.costs[l];
             Optional<Holder.Reference<Enchantment>> optional = this.minecraft.level.registryAccess().lookupOrThrow(Registries.ENCHANTMENT).get(this.menu.enchantClue[l]);
-            if (!optional.isEmpty()) {
+                    if (!optional.isEmpty()) {
                 int n = this.menu.levelClue[l];
                 int o = l + 1;
                 if (this.isHovering(60, 14 + 19 * l, 108, 17, i, j) && m > 0 && n >= 0 && optional != null) {

@@ -3,7 +3,6 @@ package com.acuteterror233.mite.mixin.world.entity;
 import com.acuteterror233.mite.item.MMEItems;
 import com.acuteterror233.mite.world.gen.dimension.MMEDimensionTypeRegistrar;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.Difficulty;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.item.Item;
@@ -16,6 +15,8 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Mixin(Mob.class)
@@ -37,9 +38,8 @@ public abstract class MobMixin extends LivingEntity implements EquipmentUser, Le
     @Overwrite
     public void populateDefaultEquipmentSlots(RandomSource randomSource, DifficultyInstance difficultyInstance) {
         if (randomSource.nextFloat() < (getY() <= 0 || this.level().dimension().equals(MMEDimensionTypeRegistrar.UNDERGROUND_LEVEL_KEY) ? 0.6F : 0.15F * difficultyInstance.getSpecialMultiplier())) {
-            int i = randomSource.nextInt(2); // 初始值为 0 或 1
+            int i = randomSource.nextInt(2);
             Level level = this.level();
-            float f = level.getDifficulty() == Difficulty.HARD ? 0.1F : 0.25F;
             if (randomSource.nextFloat() < 0.15F || level.dimension() == MMEDimensionTypeRegistrar.UNDERGROUND_LEVEL_KEY) {
                 i+=2;
             }
@@ -53,19 +53,20 @@ public abstract class MobMixin extends LivingEntity implements EquipmentUser, Le
                 i++;
             }
 
-            boolean bl = true;
+            List<EquipmentSlot> shuffledSlots = new ArrayList<>(EQUIPMENT_POPULATION_ORDER);
+            Collections.shuffle(shuffledSlots, new java.util.Random(randomSource.nextInt()));
 
-            for (EquipmentSlot equipmentSlot : EQUIPMENT_POPULATION_ORDER) {
-                ItemStack itemStack = this.getItemBySlot(equipmentSlot);
-                if (!bl && randomSource.nextFloat() < f) {
-                    break;
-                }
+            float equipChance = 0.4F;
 
-                bl = false;
-                if (itemStack.isEmpty()) {
-                    Item item = getEquipmentForSlot(equipmentSlot, i);
-                    if (item != null) {
-                        this.setItemSlot(equipmentSlot, new ItemStack(item));
+            for (EquipmentSlot equipmentSlot : shuffledSlots) {
+                if (randomSource.nextFloat() < equipChance) {
+                    ItemStack itemStack = this.getItemBySlot(equipmentSlot);
+                    if (itemStack.isEmpty()) {
+                        Item item = getEquipmentForSlot(equipmentSlot, i);
+                        if (item != null) {
+                            this.setItemSlot(equipmentSlot, new ItemStack(item));
+                            equipChance -= 0.08F;
+                        }
                     }
                 }
             }
@@ -80,7 +81,7 @@ public abstract class MobMixin extends LivingEntity implements EquipmentUser, Le
     public static @Nullable Item getEquipmentForSlot(EquipmentSlot equipmentSlot, int i) {
         return switch (equipmentSlot) {
             case HEAD -> switch (i) {
-                case 0 -> MMEItems.COPPER_HELMET;
+                case 0 -> Items.COPPER_HELMET;
                 case 1 -> MMEItems.SILVER_HELMET;
                 case 2 -> MMEItems.RUSTED_IRON_HELMET;
                 case 3 -> MMEItems.RUSTED_IRON_CHAINMAIL_HELMET;
@@ -90,7 +91,7 @@ public abstract class MobMixin extends LivingEntity implements EquipmentUser, Le
                 default -> null;
             };
             case CHEST -> switch (i) {
-                case 0 -> MMEItems.COPPER_CHESTPLATE;
+                case 0 -> Items.COPPER_CHESTPLATE;
                 case 1 -> MMEItems.SILVER_CHESTPLATE;
                 case 2 -> MMEItems.RUSTED_IRON_CHESTPLATE;
                 case 3 -> MMEItems.RUSTED_IRON_CHAINMAIL_CHESTPLATE;
@@ -100,7 +101,7 @@ public abstract class MobMixin extends LivingEntity implements EquipmentUser, Le
                 default -> null;
             };
             case LEGS -> switch (i) {
-                case 0 -> MMEItems.COPPER_LEGGINGS;
+                case 0 -> Items.COPPER_LEGGINGS;
                 case 1 -> MMEItems.SILVER_LEGGINGS;
                 case 2 -> MMEItems.RUSTED_IRON_LEGGINGS;
                 case 3 -> MMEItems.RUSTED_IRON_CHAINMAIL_LEGGINGS;
@@ -110,7 +111,7 @@ public abstract class MobMixin extends LivingEntity implements EquipmentUser, Le
                 default -> null;
             };
             case FEET -> switch (i) {
-                case 0 -> MMEItems.COPPER_BOOTS;
+                case 0 -> Items.COPPER_BOOTS;
                 case 1 -> MMEItems.SILVER_BOOTS;
                 case 2 -> MMEItems.RUSTED_IRON_BOOTS;
                 case 3 -> MMEItems.RUSTED_IRON_CHAINMAIL_BOOTS;

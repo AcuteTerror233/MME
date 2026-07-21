@@ -34,7 +34,7 @@ public class GradeCraftingTableBlock extends Block {
 
     @Override
     protected @NotNull InteractionResult useWithoutItem(BlockState state, Level world, BlockPos pos, Player player, BlockHitResult hit) {
-        if (!world.isClientSide) {
+        if (!world.isClientSide()) {
             player.openMenu(state.getMenuProvider(world, pos));
             player.awardStat(Stats.INTERACT_WITH_CRAFTING_TABLE);
         }

@@ -138,10 +138,6 @@ public class Zh_cnLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(MMEItems.RUSTED_IRON_CHAINMAIL_CHESTPLATE, "锈铁锁链胸甲");
         translationBuilder.add(MMEItems.RUSTED_IRON_CHAINMAIL_LEGGINGS, "锈铁锁链护腿");
         translationBuilder.add(MMEItems.RUSTED_IRON_CHAINMAIL_BOOTS, "锈铁锁链靴子");
-        translationBuilder.add(MMEItems.COPPER_HELMET, "铜头盔");
-        translationBuilder.add(MMEItems.COPPER_CHESTPLATE, "铜胸甲");
-        translationBuilder.add(MMEItems.COPPER_LEGGINGS, "铜护腿");
-        translationBuilder.add(MMEItems.COPPER_BOOTS, "铜靴子");
         translationBuilder.add(MMEItems.COPPER_CHAINMAIL_HELMET, "铜锁链头盔");
         translationBuilder.add(MMEItems.COPPER_CHAINMAIL_CHESTPLATE, "铜锁链胸甲");
         translationBuilder.add(MMEItems.COPPER_CHAINMAIL_LEGGINGS, "铜锁链护腿");
@@ -269,18 +265,13 @@ public class Zh_cnLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(MMEItems.RUSTED_IRON_SHOVEL, "锈铁铲子");
         translationBuilder.add(MMEItems.RUSTED_IRON_SWORD, "锈铁剑");
         translationBuilder.add(MMEItems.RUSTED_IRON_WAR_HAMMER, "锈铁战锤");
-        translationBuilder.add(MMEItems.COPPER_AXE, "铜斧");
         translationBuilder.add(MMEItems.COPPER_BATTLE_AXE, "铜战斧");
         translationBuilder.add(MMEItems.COPPER_DAGGER, "铜短剑");
         translationBuilder.add(MMEItems.COPPER_HATCHET, "铜短斧");
-        translationBuilder.add(MMEItems.COPPER_HOE, "铜锄头");
         translationBuilder.add(MMEItems.COPPER_KNIFE, "铜小刀");
         translationBuilder.add(MMEItems.COPPER_MATTOCK, "铜鹤嘴锄");
-        translationBuilder.add(MMEItems.COPPER_PICKAXE, "铜镐");
         translationBuilder.add(MMEItems.COPPER_SCYTHE, "铜镰刀");
         translationBuilder.add(MMEItems.COPPER_SHEARS, "铜剪刀");
-        translationBuilder.add(MMEItems.COPPER_SHOVEL, "铜铲子");
-        translationBuilder.add(MMEItems.COPPER_SWORD, "铜剑");
         translationBuilder.add(MMEItems.COPPER_WAR_HAMMER, "铜战锤");
         translationBuilder.add(MMEItems.SILVER_AXE, "银斧");
         translationBuilder.add(MMEItems.SILVER_BATTLE_AXE, "银战斧");
@@ -432,7 +423,6 @@ public class Zh_cnLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(MMEItems.ANCIENT_METAL_NUGGET, "远古金属粒");
         translationBuilder.add(MMEItems.MITHRIL_NUGGET, "秘银粒");
         translationBuilder.add(MMEItems.SILVER_NUGGET, "银粒");
-        translationBuilder.add(MMEItems.COPPER_NUGGET, "铜粒");
 
         translationBuilder.add(MMEItems.FLINT_SHARD, "燧石碎片");
         translationBuilder.add(MMEItems.OBSIDIAN_SHARD, "黑曜石碎片");
@@ -547,5 +537,7 @@ public class Zh_cnLanguageProvider extends FabricLanguageProvider {
         translationBuilder.addEnchantment(MMEEnchantments.CLEAVING, "劈裂");
         translationBuilder.addEnchantment(MMEEnchantments.HARVESTING, "收获");
         translationBuilder.addEnchantment(MMEEnchantments.FERTILITY, "肥沃");
+        translationBuilder.addEnchantment(MMEEnchantments.UPGRADE, "灌注");
+        translationBuilder.add("container.enchant.upgrade_target", "§7附魔 → %s");
     }
 }
