@@ -4,11 +4,10 @@ import com.acuteterror233.mite.block.MMEMenuTypes;
 import com.acuteterror233.mite.item.enchantment.MMEEnchantments;
 import com.acuteterror233.mite.registry.EnchantedUpgradeRegistry;
 import com.acuteterror233.mite.registry.tag.MMEBlockTags;
-import net.minecraft.Util;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.*;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -16,6 +15,7 @@ import net.minecraft.stats.Stats;
 import net.minecraft.tags.EnchantmentTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.RandomSource;
+import net.minecraft.util.Util;
 import net.minecraft.world.Container;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
@@ -33,6 +33,7 @@ import net.minecraft.world.item.enchantment.EnchantmentInstance;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.EnchantingTableBlock;
 import org.jetbrains.annotations.NotNull;
+import org.jspecify.annotations.NonNull;
 
 import java.util.List;
 import java.util.Optional;
@@ -42,7 +43,7 @@ import java.util.Optional;
  * 提供自定义附魔逻辑，支持附魔等级和材料限制。
  */
 public class MMEEnchantmentMenu extends AbstractContainerMenu {
-    static final ResourceLocation EMPTY_SLOT_LAPIS_LAZULI = ResourceLocation.withDefaultNamespace("container/slot/lapis_lazuli");
+    static final Identifier EMPTY_SLOT_LAPIS_LAZULI = Identifier.withDefaultNamespace("container/slot/lapis_lazuli");
     private final Container enchantSlots = new SimpleContainer(2) {
         @Override
         public void setChanged() {
@@ -74,12 +75,12 @@ public class MMEEnchantmentMenu extends AbstractContainerMenu {
         });
         this.addSlot(new Slot(this.enchantSlots, 1, 35, 47) {
             @Override
-            public boolean mayPlace(ItemStack itemStack) {
+            public boolean mayPlace(@NonNull ItemStack itemStack) {
                 return itemStack.is(Items.LAPIS_LAZULI);
             }
 
             @Override
-            public ResourceLocation getNoItemIcon() {
+            public Identifier getNoItemIcon() {
                 return MMEEnchantmentMenu.EMPTY_SLOT_LAPIS_LAZULI;
             }
         });
@@ -97,7 +98,7 @@ public class MMEEnchantmentMenu extends AbstractContainerMenu {
     }
 
     @Override
-    public void slotsChanged(Container container) {
+    public void slotsChanged(@NonNull Container container) {
         if (container == this.enchantSlots) {
             ItemStack itemStack = container.getItem(0);
             if (!itemStack.isEmpty() && (itemStack.isEnchantable() || EnchantedUpgradeRegistry.getUpgrade(itemStack) != null)) {
@@ -159,7 +160,7 @@ public class MMEEnchantmentMenu extends AbstractContainerMenu {
     }
 
     @Override
-    public boolean clickMenuButton(Player player, int i) {
+    public boolean clickMenuButton(@NonNull Player player, int i) {
         if (i >= 0 && i < this.costs.length) {
             ItemStack itemStack = this.enchantSlots.getItem(0);
             ItemStack itemStack2 = this.enchantSlots.getItem(1);
@@ -253,21 +254,21 @@ public class MMEEnchantmentMenu extends AbstractContainerMenu {
     }
 
     @Override
-    public void removed(Player player) {
+    public void removed(@NonNull Player player) {
         super.removed(player);
         this.access.execute((level, blockPos) -> this.clearContainer(player, this.enchantSlots));
     }
 
     @Override
-    public boolean stillValid(Player player) {
+    public boolean stillValid(@NonNull Player player) {
         return stillValid(this.access, player, MMEBlockTags.ENCHANTING_TABLE);
     }
     public static boolean stillValid(ContainerLevelAccess containerLevelAccess, Player player, TagKey<Block> tagKey) {
-        return containerLevelAccess.evaluate((level, blockPos) -> level.getBlockState(blockPos).is(tagKey) && player.canInteractWithBlock(blockPos, 4.0), true);
+        return containerLevelAccess.evaluate((level, blockPos) -> level.getBlockState(blockPos).is(tagKey) && player.isWithinBlockInteractionRange(blockPos, 4.0), true);
     }
 
     @Override
-    public @NotNull ItemStack quickMoveStack(Player player, int i) {
+    public @NotNull ItemStack quickMoveStack(@NonNull Player player, int i) {
         ItemStack itemStack = ItemStack.EMPTY;
         Slot slot = this.slots.get(i);
         if (slot.hasItem()) {

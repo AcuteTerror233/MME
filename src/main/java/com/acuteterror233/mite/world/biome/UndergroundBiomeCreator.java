@@ -7,10 +7,12 @@ import net.minecraft.data.worldgen.BiomeDefaultFeatures;
 import net.minecraft.data.worldgen.Carvers;
 import net.minecraft.data.worldgen.biome.OverworldBiomes;
 import net.minecraft.data.worldgen.placement.CavePlacements;
-import net.minecraft.sounds.Musics;
-import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.attribute.EnvironmentAttributes;
 import net.minecraft.world.entity.MobCategory;
-import net.minecraft.world.level.biome.*;
+import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.biome.BiomeGenerationSettings;
+import net.minecraft.world.level.biome.BiomeSpecialEffects;
+import net.minecraft.world.level.biome.MobSpawnSettings;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.carver.ConfiguredWorldCarver;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
@@ -35,13 +37,8 @@ public class UndergroundBiomeCreator {
                 .hasPrecipitation(false)
                 .temperature(0.4F)
                 .downfall(0.8F)
-                .specialEffects(new BiomeSpecialEffects.Builder()
-                        .waterColor(4159204)
-                        .waterFogColor(329011)
-                        .fogColor(12638463)
-                        .skyColor(OverworldBiomes.calculateSkyColor(0.4F))
-                        .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)
-                        .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_GROVE)).build())
+                .setAttribute(EnvironmentAttributes.SKY_COLOR, OverworldBiomes.calculateSkyColor(0.4F))
+                .specialEffects(new BiomeSpecialEffects.Builder().waterColor(4159204).build())
                 .mobSpawnSettings(builder.build())
                 .generationSettings(lookupBackedBuilder
                         .addCarver(Carvers.CAVE)
@@ -66,13 +63,8 @@ public class UndergroundBiomeCreator {
                 .hasPrecipitation(false)
                 .temperature(0.8F)
                 .downfall(0.4F)
-                .specialEffects(new BiomeSpecialEffects.Builder()
-                        .waterColor(4159204)
-                        .waterFogColor(329011)
-                        .fogColor(12638463)
-                        .skyColor(OverworldBiomes.calculateSkyColor(0.8F))
-                        .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)
-                        .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_DRIPSTONE_CAVES)).build())
+                .setAttribute(EnvironmentAttributes.SKY_COLOR, OverworldBiomes.calculateSkyColor(0.8F))
+                .specialEffects(new BiomeSpecialEffects.Builder().waterColor(4159204).build())
                 .mobSpawnSettings(builder.build())
                 .generationSettings(lookupBackedBuilder
                         .addCarver(Carvers.CAVE)
@@ -98,13 +90,8 @@ public class UndergroundBiomeCreator {
                 .hasPrecipitation(false)
                 .temperature(0.5F)
                 .downfall(0.5F)
-                .specialEffects(new BiomeSpecialEffects.Builder()
-                        .waterColor(4159204)
-                        .waterFogColor(329011)
-                        .fogColor(12638463)
-                        .skyColor(OverworldBiomes.calculateSkyColor(0.5F))
-                        .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)
-                        .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_LUSH_CAVES)).build())
+                .setAttribute(EnvironmentAttributes.SKY_COLOR, OverworldBiomes.calculateSkyColor(0.5F))
+                .specialEffects(new BiomeSpecialEffects.Builder().waterColor(4159204).build())
                 .mobSpawnSettings(builder.build())
                 .generationSettings(lookupBackedBuilder
                         .addCarver(Carvers.CAVE)
@@ -128,13 +115,8 @@ public class UndergroundBiomeCreator {
                 .hasPrecipitation(false)
                 .temperature(0.8F)
                 .downfall(0.4F)
-                .specialEffects(new BiomeSpecialEffects.Builder()
-                        .waterColor(4159204)
-                        .waterFogColor(329011)
-                        .fogColor(12638463)
-                        .skyColor(OverworldBiomes.calculateSkyColor(0.8F))
-                        .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)
-                        .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_DEEP_DARK)).build())
+                .setAttribute(EnvironmentAttributes.SKY_COLOR, OverworldBiomes.calculateSkyColor(0.8F))
+                .specialEffects(new BiomeSpecialEffects.Builder().waterColor(4159204).build())
                 .mobSpawnSettings(builder.build())
                 .generationSettings(lookupBackedBuilder
                         .addCarver(Carvers.CAVE)

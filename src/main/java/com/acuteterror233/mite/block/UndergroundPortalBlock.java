@@ -5,13 +5,13 @@ import com.acuteterror233.mite.world.gen.dimension.MMEDimensionTypeRegistrar;
 import com.acuteterror233.mite.world.poi.PortalHelper;
 import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
-import net.minecraft.BlockUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.BlockUtil;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityDimensions;
 import net.minecraft.world.entity.Relative;
@@ -29,6 +29,7 @@ import net.minecraft.world.level.portal.TeleportTransition;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jspecify.annotations.NonNull;
 import org.slf4j.Logger;
 
 import java.util.Optional;
@@ -48,7 +49,7 @@ public class UndergroundPortalBlock extends AbstractPortalBlock {
 
     @Nullable
     @Override
-    public TeleportTransition getPortalDestination(ServerLevel world, Entity entity, BlockPos pos) {
+    public TeleportTransition getPortalDestination(ServerLevel world, @NonNull Entity entity, @NonNull BlockPos pos) {
         ResourceKey<Level> registryKey = world.dimension() == MMEDimensionTypeRegistrar.UNDERGROUND_LEVEL_KEY ? Level.OVERWORLD : MMEDimensionTypeRegistrar.UNDERGROUND_LEVEL_KEY;
         ServerLevel serverWorld = world.getServer().getLevel(registryKey);
         if (serverWorld == null) {
@@ -65,7 +66,7 @@ public class UndergroundPortalBlock extends AbstractPortalBlock {
     private TeleportTransition getOrCreateExitPortalTarget(
             ServerLevel world, Entity entity, BlockPos sourcePos, BlockPos scaledPos, WorldBorder worldBorder
     ) {
-        ResourceKey<PoiType> portal = ResourceKey.create(Registries.POINT_OF_INTEREST_TYPE, ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, "underground_portal"));
+        ResourceKey<PoiType> portal = ResourceKey.create(Registries.POINT_OF_INTEREST_TYPE, Identifier.fromNamespaceAndPath(MME.MOD_ID, "underground_portal"));
         Optional<BlockPos> optional = PortalHelper.getPortalPos(world, scaledPos, 16, worldBorder, portal, this);
         BlockUtil.FoundRectangle rectangle;
         TeleportTransition.PostTeleportTransition postDimensionTransition;

@@ -22,10 +22,9 @@ import net.fabricmc.fabric.api.registry.FuelRegistryEvents;
 import net.minecraft.commands.Commands;
 import net.minecraft.data.worldgen.placement.OrePlacements;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.FireBlock;
@@ -43,8 +42,8 @@ import java.util.Set;
 public class MME implements ModInitializer {
     public static final String MOD_ID = "mme";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
-    public static final ResourceLocation BASE_BLOCK_INTERACTION_RANGE = ResourceLocation.withDefaultNamespace("block_interaction_range");
-    public static final ResourceLocation BASE_ENTITY_INTERACTION_RANGE = ResourceLocation.withDefaultNamespace("entity_interaction_range");
+    public static final Identifier BASE_BLOCK_INTERACTION_RANGE = Identifier.withDefaultNamespace("block_interaction_range");
+    public static final Identifier BASE_ENTITY_INTERACTION_RANGE = Identifier.withDefaultNamespace("entity_interaction_range");
 
     @Override
     public void onInitialize() {
@@ -57,7 +56,7 @@ public class MME implements ModInitializer {
         LootTableReplace.init();
         BiomeModification.init();
 
-        PointOfInterestHelper.register(ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, "underground_portal"), 0, 1, MMEBlocks.UNDERGROUND_PORTAL);
+        PointOfInterestHelper.register(Identifier.fromNamespaceAndPath(MME.MOD_ID, "underground_portal"), 0, 1, MMEBlocks.UNDERGROUND_PORTAL);
 
         inOverworldAdd(OverworldPlacedFeatures.OVERWORLD_ORE_SILVER_SMALL);
         inOverworldAdd(OverworldPlacedFeatures.OVERWORLD_ORE_SILVER);
@@ -65,7 +64,7 @@ public class MME implements ModInitializer {
         inOverworldRemovals(OrePlacements.ORE_DIAMOND_LARGE);
         inOverworldRemovals(OrePlacements.ORE_DIAMOND_MEDIUM);
 
-        ServerRecipeModify.EVENT.register(list -> list.removeIf(recipeEntry -> MME.FILTER_RECIPE_SET.contains(recipeEntry.id().location())));
+        ServerRecipeModify.EVENT.register(list -> list.removeIf(recipeEntry -> MME.FILTER_RECIPE_SET.contains(recipeEntry.id().identifier())));
 
         FuelRegistryEvents.BUILD.register((builder, context) -> {
             builder.add(MMEItems.WOODEN_CLUB, context.baseSmeltTime());
@@ -77,7 +76,7 @@ public class MME implements ModInitializer {
             builder.add(Items.SOUL_TORCH, context.baseSmeltTime() * 6);
         });
 
-        EntitySleepEvents.ALLOW_SLEEP_TIME.register((player, sleepingPos, vanillaResult) -> InteractionResult.SUCCESS);
+        EntitySleepEvents.ALLOW_SLEEPING.register((player, sleepingPos) -> null);
         EntitySleepEvents.ALLOW_RESETTING_TIME.register(player -> !player.level().isBrightOutside());
 
         FireBlock fireBlock = (FireBlock)Blocks.FIRE;
@@ -109,7 +108,7 @@ public class MME implements ModInitializer {
     }
 
     private static void inOverworldRemovals(ResourceKey<PlacedFeature> oreDiamond) {
-        BiomeModifications.create(oreDiamond.location()).add(
+        BiomeModifications.create(oreDiamond.identifier()).add(
                 ModificationPhase.REMOVALS,
                 BiomeSelectors.foundInOverworld(),
                 context -> context.getGenerationSettings().removeFeature(oreDiamond)
@@ -119,33 +118,33 @@ public class MME implements ModInitializer {
     /**
      * 筛选掉的配方标识符集合。
      */
-    public static Set<ResourceLocation> FILTER_RECIPE_SET = Set.of(
-            ResourceLocation.withDefaultNamespace("wooden_pickaxe"),
-            ResourceLocation.withDefaultNamespace("wooden_axe"),
-            ResourceLocation.withDefaultNamespace("wooden_hoe"),
-            ResourceLocation.withDefaultNamespace("wooden_sword"),
-            ResourceLocation.withDefaultNamespace("stone_shovel"),
-            ResourceLocation.withDefaultNamespace("stone_pickaxe"),
-            ResourceLocation.withDefaultNamespace("stone_axe"),
-            ResourceLocation.withDefaultNamespace("stone_hoe"),
-            ResourceLocation.withDefaultNamespace("stone_sword"),
-            ResourceLocation.withDefaultNamespace("diamond_shovel"),
-            ResourceLocation.withDefaultNamespace("diamond_pickaxe"),
-            ResourceLocation.withDefaultNamespace("diamond_axe"),
-            ResourceLocation.withDefaultNamespace("diamond_hoe"),
-            ResourceLocation.withDefaultNamespace("diamond_sword"),
-            ResourceLocation.withDefaultNamespace("crafting_table"),
-            ResourceLocation.withDefaultNamespace("netherite_axe_smithing"),
-            ResourceLocation.withDefaultNamespace("netherite_boots_smithing"),
-            ResourceLocation.withDefaultNamespace("netherite_chestplate_smithing"),
-            ResourceLocation.withDefaultNamespace("netherite_helmet_smithing"),
-            ResourceLocation.withDefaultNamespace("netherite_hoe_smithing"),
-            ResourceLocation.withDefaultNamespace("netherite_leggings_smithing"),
-            ResourceLocation.withDefaultNamespace("netherite_pickaxe_smithing"),
-            ResourceLocation.withDefaultNamespace("netherite_shovel_smithing"),
-            ResourceLocation.withDefaultNamespace("netherite_sword_smithing"),
-            ResourceLocation.withDefaultNamespace("fishing_rod"),
-            ResourceLocation.withDefaultNamespace("crafter")
+    public static Set<Identifier> FILTER_RECIPE_SET = Set.of(
+            Identifier.withDefaultNamespace("wooden_pickaxe"),
+            Identifier.withDefaultNamespace("wooden_axe"),
+            Identifier.withDefaultNamespace("wooden_hoe"),
+            Identifier.withDefaultNamespace("wooden_sword"),
+            Identifier.withDefaultNamespace("stone_shovel"),
+            Identifier.withDefaultNamespace("stone_pickaxe"),
+            Identifier.withDefaultNamespace("stone_axe"),
+            Identifier.withDefaultNamespace("stone_hoe"),
+            Identifier.withDefaultNamespace("stone_sword"),
+            Identifier.withDefaultNamespace("diamond_shovel"),
+            Identifier.withDefaultNamespace("diamond_pickaxe"),
+            Identifier.withDefaultNamespace("diamond_axe"),
+            Identifier.withDefaultNamespace("diamond_hoe"),
+            Identifier.withDefaultNamespace("diamond_sword"),
+            Identifier.withDefaultNamespace("crafting_table"),
+            Identifier.withDefaultNamespace("netherite_axe_smithing"),
+            Identifier.withDefaultNamespace("netherite_boots_smithing"),
+            Identifier.withDefaultNamespace("netherite_chestplate_smithing"),
+            Identifier.withDefaultNamespace("netherite_helmet_smithing"),
+            Identifier.withDefaultNamespace("netherite_hoe_smithing"),
+            Identifier.withDefaultNamespace("netherite_leggings_smithing"),
+            Identifier.withDefaultNamespace("netherite_pickaxe_smithing"),
+            Identifier.withDefaultNamespace("netherite_shovel_smithing"),
+            Identifier.withDefaultNamespace("netherite_sword_smithing"),
+            Identifier.withDefaultNamespace("fishing_rod"),
+            Identifier.withDefaultNamespace("crafter")
     );
 
 }

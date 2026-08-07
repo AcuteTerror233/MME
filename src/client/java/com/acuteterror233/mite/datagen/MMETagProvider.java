@@ -3,26 +3,23 @@ package com.acuteterror233.mite.datagen;
 import com.acuteterror233.mite.block.MMEBlocks;
 import com.acuteterror233.mite.item.MMEItems;
 import com.acuteterror233.mite.item.enchantment.MMEEnchantments;
-import com.acuteterror233.mite.registry.tag.MMEBlockTags;
-import com.acuteterror233.mite.registry.tag.MMEEnchantmentTags;
-import com.acuteterror233.mite.registry.tag.MMEEntityTypeTags;
-import com.acuteterror233.mite.registry.tag.MMEItemTags;
+import com.acuteterror233.mite.registry.tag.*;
 import com.acuteterror233.mite.world.biome.MMEBiomeKeys;
 import com.acuteterror233.mite.world.entity.MMEEntityTypes;
+import com.acuteterror233.mite.world.entity.decoration.painting.MMEPaintingVariants;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.tags.BiomeTags;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.EntityTypeTags;
-import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.*;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.decoration.painting.PaintingVariant;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.timeline.Timeline;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -33,6 +30,52 @@ import java.util.concurrent.CompletableFuture;
 public class MMETagProvider {
     MMETagProvider() {
 
+    }
+    public static class PaintingVariantTag extends FabricTagProvider<PaintingVariant>{
+        public PaintingVariantTag(FabricDataOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
+            super(output, Registries.PAINTING_VARIANT, registriesFuture);
+        }
+
+        @Override
+        protected void addTags(HolderLookup.Provider wrapperLookup) {
+            builder(PaintingVariantTags.PLACEABLE)
+                    .add(MMEPaintingVariants.ABYSS)
+                    .add(MMEPaintingVariants.BARON_ALMRIC)
+                    .add(MMEPaintingVariants.BOAT)
+                    .add(MMEPaintingVariants.CASTLE)
+                    .add(MMEPaintingVariants.CASTLE_BRITANNIA)
+                    .add(MMEPaintingVariants.DARKLANDS)
+                    .add(MMEPaintingVariants.DEATHTRAP_DUNGEON)
+                    .add(MMEPaintingVariants.DND_BASIC)
+                    .add(MMEPaintingVariants.DRARACLE)
+                    .add(MMEPaintingVariants.ELDEN_GROVE)
+                    .add(MMEPaintingVariants.FAIR_DAY)
+                    .add(MMEPaintingVariants.FALLEN_BRIDGE)
+                    .add(MMEPaintingVariants.GATE_CLOSING)
+                    .add(MMEPaintingVariants.GHOUL)
+                    .add(MMEPaintingVariants.GLADSTONE_KEEP)
+                    .add(MMEPaintingVariants.GRAVES)
+                    .add(MMEPaintingVariants.KING_RICHARD)
+                    .add(MMEPaintingVariants.MESSENGER)
+                    .add(MMEPaintingVariants.MOUNTAINS)
+                    .add(MMEPaintingVariants.ROLANDS_MANOR)
+                    .add(MMEPaintingVariants.SCOTIA)
+                    .add(MMEPaintingVariants.SHIP)
+                    .add(MMEPaintingVariants.SUNLIGHT)
+                    .add(MMEPaintingVariants.TITAN)
+                    .add(MMEPaintingVariants.WOLVES);
+        }
+    }
+    public static class TimeLineTag extends FabricTagProvider<Timeline>{
+        public TimeLineTag(FabricDataOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
+            super(output, Registries.TIMELINE, registriesFuture);
+        }
+
+        @Override
+        protected void addTags(HolderLookup.Provider wrapperLookup) {
+            builder(MMETimelineTags.IN_UNDERGROUND)
+                    .forceAddTag(TimelineTags.UNIVERSAL);
+        }
     }
     public static class EnchantmentTag extends FabricTagProvider<Enchantment> {
         public EnchantmentTag(FabricDataOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
@@ -940,6 +983,13 @@ public class MMETagProvider {
                     .add(MMEItems.RUSTED_IRON_SWORD)
                     .add(MMEItems.SILVER_SWORD)
                     .add(Items.COPPER_SWORD);
+            valueLookupBuilder(ItemTags.SPEARS)
+                    .add(MMEItems.ADAMANTIUM_SPEAR)
+                    .add(MMEItems.MITHRIL_SPEAR)
+                    .add(MMEItems.ANCIENT_METAL_SPEAR)
+                    .add(MMEItems.RUSTED_IRON_SPEAR)
+                    .add(MMEItems.SILVER_SPEAR)
+                    .add(MMEItems.FLINT_SPEAR);
             valueLookupBuilder(ItemTags.AXES)
                     .addTag(MMEItemTags.BATTLE_AXE)
                     .addTag(MMEItemTags.HATCHET)

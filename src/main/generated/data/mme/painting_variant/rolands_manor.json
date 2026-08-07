@@ -1,0 +1,13 @@
+{
+  "asset_id": "mme:rolands_manor",
+  "author": {
+    "color": "gray",
+    "translate": "painting.mme.rolands_manor.author"
+  },
+  "height": 2,
+  "title": {
+    "color": "yellow",
+    "translate": "painting.mme.rolands_manor.title"
+  },
+  "width": 3
+}

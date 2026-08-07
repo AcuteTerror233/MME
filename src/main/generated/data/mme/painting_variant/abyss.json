@@ -1,0 +1,13 @@
+{
+  "asset_id": "mme:abyss",
+  "author": {
+    "color": "gray",
+    "translate": "painting.mme.abyss.author"
+  },
+  "height": 2,
+  "title": {
+    "color": "yellow",
+    "translate": "painting.mme.abyss.title"
+  },
+  "width": 3
+}

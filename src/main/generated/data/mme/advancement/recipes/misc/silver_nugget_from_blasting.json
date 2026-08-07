@@ -181,6 +181,16 @@
       },
       "trigger": "minecraft:inventory_changed"
     },
+    "has_silver_spear": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mme:silver_spear"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
     "has_silver_sword": {
       "conditions": {
         "items": [
@@ -230,7 +240,8 @@
       "has_silver_chainmail_chestplate",
       "has_silver_chainmail_leggings",
       "has_silver_chainmail_boots",
-      "has_silver_shears"
+      "has_silver_shears",
+      "has_silver_spear"
     ]
   ],
   "rewards": {

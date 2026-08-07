@@ -1,0 +1,13 @@
+{
+  "asset_id": "mme:gladstone_keep",
+  "author": {
+    "color": "gray",
+    "translate": "painting.mme.gladstone_keep.author"
+  },
+  "height": 2,
+  "title": {
+    "color": "yellow",
+    "translate": "painting.mme.gladstone_keep.title"
+  },
+  "width": 3
+}

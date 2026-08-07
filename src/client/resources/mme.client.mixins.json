@@ -8,8 +8,6 @@
     "gui.GuiMixin",
     "gui.screen.ingame.InventoryScreenMixin",
     "network.ClientPlayNetworkHandlerMixin",
-    "network.LocalPlayerMixin",
-    "render.DimensionSpecialEffectsMixin",
     "world.ClientLevelMixin"
   ],
   "injectors": {

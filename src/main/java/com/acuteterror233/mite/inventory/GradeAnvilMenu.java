@@ -24,6 +24,7 @@ import net.minecraft.world.item.enchantment.ItemEnchantments;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
+import org.jspecify.annotations.NonNull;
 
 /**
  * 等级铁砧菜单，继承 {@link ItemCombinerMenu}。
@@ -61,7 +62,7 @@ public class GradeAnvilMenu extends ItemCombinerMenu {
     }
 
     @Override
-    protected void onTake(Player player, ItemStack stack) {
+    protected void onTake(Player player, @NonNull ItemStack stack) {
         if (!player.hasInfiniteMaterials()) {
             player.giveExperienceLevels(-this.levelCost.get());
         }
@@ -103,8 +104,8 @@ public class GradeAnvilMenu extends ItemCombinerMenu {
         return state.is(BlockTags.ANVIL);
     }
     @Override
-    public boolean stillValid(Player player) {
-        return this.access.evaluate((world, pos) -> player.canInteractWithBlock(pos, 4.0) && world.getBlockState(pos.above()).isAir(), true);
+    public boolean stillValid(@NonNull Player player) {
+        return this.access.evaluate((world, pos) -> player.isWithinBlockInteractionRange(pos, 4.0) && world.getBlockState(pos.above()).isAir(), true);
     }
 
     /**

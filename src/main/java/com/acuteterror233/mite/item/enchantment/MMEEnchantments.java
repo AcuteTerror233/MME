@@ -4,13 +4,13 @@ import com.acuteterror233.mite.MME;
 import com.acuteterror233.mite.registry.tag.MMEEnchantmentTags;
 import com.acuteterror233.mite.registry.tag.MMEEntityTypeTags;
 import com.acuteterror233.mite.registry.tag.MMEItemTags;
-import net.minecraft.advancements.critereon.EntityPredicate;
-import net.minecraft.advancements.critereon.EntityTypePredicate;
+import net.minecraft.advancements.criterion.EntityPredicate;
+import net.minecraft.advancements.criterion.EntityTypePredicate;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
+import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.EnchantmentTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.damagesource.DamageType;
@@ -136,10 +136,10 @@ public final class MMEEnchantments {
         );
     }
     private static void register(BootstrapContext<Enchantment> bootstrapContext, ResourceKey<Enchantment> resourceKey, Enchantment.Builder builder) {
-        bootstrapContext.register(resourceKey, builder.build(resourceKey.location()));
+        bootstrapContext.register(resourceKey, builder.build(resourceKey.identifier()));
     }
 
     private static ResourceKey<Enchantment> key(String id) {
-        return ResourceKey.create(Registries.ENCHANTMENT, ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, id));
+        return ResourceKey.create(Registries.ENCHANTMENT, Identifier.fromNamespaceAndPath(MME.MOD_ID, id));
     }
 }

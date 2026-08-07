@@ -241,6 +241,16 @@
       },
       "trigger": "minecraft:inventory_changed"
     },
+    "has_rusted_iron_spear": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mme:rusted_iron_spear"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
     "has_rusted_iron_sword": {
       "conditions": {
         "items": [
@@ -301,6 +311,7 @@
       "has_rusted_iron_chainmail_leggings",
       "has_rusted_iron_chainmail_boots",
       "has_rusted_iron_shears",
+      "has_rusted_iron_spear",
       "has_iron_battle_axe",
       "has_iron_dagger",
       "has_iron_hatchet",

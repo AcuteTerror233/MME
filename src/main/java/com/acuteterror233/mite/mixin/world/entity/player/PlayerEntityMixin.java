@@ -29,6 +29,9 @@ public abstract class PlayerEntityMixin extends LivingEntity {
     @Shadow
     public abstract FoodData getFoodData();
 
+    @Shadow
+    protected FoodData foodData;
+
     @Redirect(method = "blockUsingItem", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/LivingEntity;getSecondsToDisableBlocking()F"))
     public float blockUsingItem(LivingEntity instance) {
         float v = instance.getSecondsToDisableBlocking();
@@ -70,7 +73,7 @@ public abstract class PlayerEntityMixin extends LivingEntity {
         }
     }
 
-    @Inject(method = "attack", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/player/Player;awardStat(Lnet/minecraft/resources/ResourceLocation;I)V"))
+    @Inject(method = "attack", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/Entity;hurtOrSimulate(Lnet/minecraft/world/damagesource/DamageSource;F)Z"))
     public void attack(Entity entity, CallbackInfo ci) {
         this.getFoodData().addExhaustion(0.5F);
     }
@@ -78,5 +81,10 @@ public abstract class PlayerEntityMixin extends LivingEntity {
     @Redirect(method = "getBaseExperienceReward", at = @At(value = "INVOKE", target = "Ljava/lang/Math;min(II)I"))
     public int getBaseExperienceReward(int a, int b) {
         return a;
+    }
+
+    @Inject(method = "causeFoodExhaustion", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/food/FoodData;addExhaustion(F)V"))
+    public void causeFoodExhaustion(float f, CallbackInfo ci) {
+        foodData.addExhaustion(f * 3);
     }
 }

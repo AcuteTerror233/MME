@@ -7,8 +7,8 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.animal.AbstractCow;
 import net.minecraft.world.entity.animal.Animal;
+import net.minecraft.world.entity.animal.cow.AbstractCow;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -18,16 +18,17 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
 import org.jetbrains.annotations.NotNull;
+import org.jspecify.annotations.NonNull;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Unique;
 
 import java.util.Optional;
 
-@Mixin(AbstractCow.class)
 /**
- * Mixin for {@code Cow} — 扩展牛的行为。
+ * Mixin for {@code AbstractCow} — 扩展牛的行为。
  */
+@Mixin(AbstractCow.class)
 public abstract class AbstractCowMixin extends Animal {
     @Unique
     private int recoveryCounter = 0;
@@ -43,7 +44,7 @@ public abstract class AbstractCowMixin extends Animal {
      * @reason 修改牛的交互
      */
     @Overwrite
-    public @NotNull InteractionResult mobInteract(Player player, InteractionHand interactionHand) {
+    public @NotNull InteractionResult mobInteract(Player player, @NonNull InteractionHand interactionHand) {
         ItemStack itemStack = player.getItemInHand(interactionHand);
         if (!this.isBaby()) {
             if (itemStack.is(MMEItemTags.BUCKET) && this.milkCounter == 4){
@@ -83,14 +84,14 @@ public abstract class AbstractCowMixin extends Animal {
     }
 
     @Override
-    public void addAdditionalSaveData(ValueOutput compoundTag) {
+    public void addAdditionalSaveData(@NonNull ValueOutput compoundTag) {
         super.addAdditionalSaveData(compoundTag);
         compoundTag.putInt("RecoveryCounter", recoveryCounter);
         compoundTag.putInt("MilkCounter", milkCounter);
     }
 
     @Override
-    public void readAdditionalSaveData(ValueInput compoundTag) {
+    public void readAdditionalSaveData(@NonNull ValueInput compoundTag) {
         super.readAdditionalSaveData(compoundTag);
         this.recoveryCounter = compoundTag.getInt("RecoveryCounter").orElse(0);
         this.milkCounter = compoundTag.getInt("MilkCounter").orElse(recoveryCounter);

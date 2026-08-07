@@ -4,7 +4,7 @@ import com.acuteterror233.mite.MME;
 import com.acuteterror233.mite.item.MMEItems;
 import com.acuteterror233.mite.world.entity.ai.goal.DestroyCropGoal;
 import com.acuteterror233.mite.world.gen.dimension.MMEDimensionTypeRegistrar;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.DifficultyInstance;
@@ -15,10 +15,11 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.monster.Monster;
-import net.minecraft.world.entity.monster.Zombie;
+import net.minecraft.world.entity.monster.zombie.Zombie;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import org.jspecify.annotations.NonNull;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Unique;
@@ -26,10 +27,10 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin(Zombie.class)
 /**
  * Mixin for {@code Zombie} — 扩展僵尸行为（破坏作物、火把等）。
  */
+@Mixin(Zombie.class)
 public abstract class ZombieMixin extends Monster {
     @Unique
     private static final float LOW_Y_THRESHOLD_UNDERGROUND = 125.0F;
@@ -56,7 +57,7 @@ public abstract class ZombieMixin extends Monster {
      * @reason 添加手持武器
      */
     @Overwrite
-    public void populateDefaultEquipmentSlots(RandomSource randomSource, DifficultyInstance difficultyInstance) {
+    public void populateDefaultEquipmentSlots(@NonNull RandomSource randomSource, @NonNull DifficultyInstance difficultyInstance) {
         super.populateDefaultEquipmentSlots(randomSource, difficultyInstance);
         boolean fullArmor = !this.getItemBySlot(EquipmentSlot.HEAD).isEmpty()
                 && !this.getItemBySlot(EquipmentSlot.CHEST).isEmpty()
@@ -66,7 +67,7 @@ public abstract class ZombieMixin extends Monster {
             this.addEffect(new MobEffectInstance(MobEffects.STRENGTH, -1, 1));
             this.getAttribute(Attributes.MOVEMENT_SPEED).addOrReplacePermanentModifier(
                     new AttributeModifier(
-                            ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, "speed_modifier"),
+                            Identifier.fromNamespaceAndPath(MME.MOD_ID, "speed_modifier"),
                             0.1F,
                             AttributeModifier.Operation.ADD_VALUE
                     )

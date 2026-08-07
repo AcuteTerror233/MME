@@ -4,6 +4,7 @@ import com.acuteterror233.mite.datagen.*;
 import com.acuteterror233.mite.item.enchantment.MMEEnchantments;
 import com.acuteterror233.mite.world.biome.MMEBiomes;
 import com.acuteterror233.mite.world.entity.damage.MMEDamageTypes;
+import com.acuteterror233.mite.world.entity.decoration.painting.MMEPaintingVariants;
 import com.acuteterror233.mite.world.gen.dimension.MMEDimensionTypeRegistrar;
 import com.acuteterror233.mite.world.gen.feature.MMEConfiguredFeatures;
 import com.acuteterror233.mite.world.gen.feature.MMEPlacedFeatures;
@@ -28,6 +29,8 @@ public class MMEDataGenerator implements DataGeneratorEntrypoint {
         pack.addProvider(MMEAdvancementProvider::new);
         pack.addProvider(Zh_cnLanguageProvider::new);
         pack.addProvider(En_usLanguageProvider::new);
+        pack.addProvider(MMETagProvider.PaintingVariantTag::new);
+        pack.addProvider(MMETagProvider.TimeLineTag::new);
         pack.addProvider(MMETagProvider.BiomeTag::new);
         pack.addProvider(MMETagProvider.ItemTag::new);
         pack.addProvider(MMETagProvider.BlockTag::new);
@@ -42,5 +45,6 @@ public class MMEDataGenerator implements DataGeneratorEntrypoint {
         registryBuilder.add(Registries.CONFIGURED_FEATURE, MMEConfiguredFeatures::bootstrap);
         registryBuilder.add(Registries.ENCHANTMENT, MMEEnchantments::bootstrap);
         registryBuilder.add(Registries.DAMAGE_TYPE, MMEDamageTypes::bootstrap);
+        registryBuilder.add(Registries.PAINTING_VARIANT, MMEPaintingVariants::bootstrap);
     }
 }

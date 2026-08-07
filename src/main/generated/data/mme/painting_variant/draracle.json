@@ -1,0 +1,13 @@
+{
+  "asset_id": "mme:draracle",
+  "author": {
+    "color": "gray",
+    "translate": "painting.mme.draracle.author"
+  },
+  "height": 2,
+  "title": {
+    "color": "yellow",
+    "translate": "painting.mme.draracle.title"
+  },
+  "width": 3
+}

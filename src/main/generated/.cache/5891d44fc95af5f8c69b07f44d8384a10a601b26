@@ -1,4 +1,4 @@
-// 1.21.9	-999999999-01-01T00:00:00	Might Makes Everything/Tags for minecraft:item
+// 1.21.11	-999999999-01-01T00:00:00	Might Makes Everything/Tags for minecraft:item
 732649e41e1f92a1c5f890c32d1a7b87a8d2bae2 data/minecraft/tags/item/axes.json
 249be801429180267fe27ccb645d82f7285185fc data/minecraft/tags/item/chest_armor.json
 ed25358a34554c49dadb431ec43a861d43a165f9 data/minecraft/tags/item/enchantable/durability.json
@@ -11,6 +11,7 @@ e136de5a86f02880ddb15706255c2493a88f28fb data/minecraft/tags/item/iron_tool_mate
 06ab386aa2a2a7ed32a103ba642ebe26819ff9ff data/minecraft/tags/item/leg_armor.json
 5af2a2813f4fcabb6af30211d1e20b4bbddd4c2c data/minecraft/tags/item/pickaxes.json
 96eeedf481038de3d6d5baf0a74728f21b299bf0 data/minecraft/tags/item/shovels.json
+30ab84b20a6f3bf60d876720e61b59c8ec51300d data/minecraft/tags/item/spears.json
 9d605b80d8776d54300836d3e63e9b385eae1b6e data/minecraft/tags/item/swords.json
 e98dcbfb1013bb08a2df246d8e3302e0b6c7bfaa data/mme/tags/item/adamantium_armor.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/mme/tags/item/adamantium_crafting_table_exceptions.json

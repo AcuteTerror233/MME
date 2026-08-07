@@ -1,0 +1,13 @@
+{
+  "asset_id": "mme:baron_almric",
+  "author": {
+    "color": "gray",
+    "translate": "painting.mme.baron_almric.author"
+  },
+  "height": 2,
+  "title": {
+    "color": "yellow",
+    "translate": "painting.mme.baron_almric.title"
+  },
+  "width": 3
+}

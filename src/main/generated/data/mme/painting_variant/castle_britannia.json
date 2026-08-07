@@ -1,0 +1,13 @@
+{
+  "asset_id": "mme:castle_britannia",
+  "author": {
+    "color": "gray",
+    "translate": "painting.mme.castle_britannia.author"
+  },
+  "height": 2,
+  "title": {
+    "color": "yellow",
+    "translate": "painting.mme.castle_britannia.title"
+  },
+  "width": 4
+}

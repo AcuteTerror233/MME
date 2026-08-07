@@ -1,0 +1,13 @@
+{
+  "asset_id": "mme:scotia",
+  "author": {
+    "color": "gray",
+    "translate": "painting.mme.scotia.author"
+  },
+  "height": 2,
+  "title": {
+    "color": "yellow",
+    "translate": "painting.mme.scotia.title"
+  },
+  "width": 2
+}

@@ -5,8 +5,8 @@ import com.acuteterror233.mite.item.MMEToolMaterials;
 import com.acuteterror233.mite.item.equipment.MMEArmorMaterial;
 import com.acuteterror233.mite.registry.tag.MMEItemTags;
 import com.google.common.collect.Maps;
+import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.equipment.ArmorType;
@@ -21,21 +21,21 @@ import java.util.Map;
  */
 public class MMEArmorMaterials {
     public static final ResourceKey<EquipmentAsset> NETHERITE_MATERIAL_KEY = EquipmentAssets.NETHERITE;
-    public static final ResourceKey<EquipmentAsset> ADAMANTIUM_MATERIAL_KEY = ResourceKey.create(EquipmentAssets.ROOT_ID, ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, "adamantium"));
-    public static final ResourceKey<EquipmentAsset> ADAMANTIUM_CHAINMAIL_MATERIAL_KEY = ResourceKey.create(EquipmentAssets.ROOT_ID, ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, "adamantium_chainmail"));
-    public static final ResourceKey<EquipmentAsset> MITHRIL_MATERIAL_KEY = ResourceKey.create(EquipmentAssets.ROOT_ID, ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, "mithril"));
-    public static final ResourceKey<EquipmentAsset> MITHRIL_CHAINMAIL_MATERIAL_KEY = ResourceKey.create(EquipmentAssets.ROOT_ID, ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, "mithril_chainmail"));
-    public static final ResourceKey<EquipmentAsset> ANCIENT_METAL_MATERIAL_KEY = ResourceKey.create(EquipmentAssets.ROOT_ID, ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, "ancient_metal"));
-    public static final ResourceKey<EquipmentAsset> ANCIENT_METAL_CHAINMAIL_MATERIAL_KEY = ResourceKey.create(EquipmentAssets.ROOT_ID, ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, "ancient_metal_chainmail"));
+    public static final ResourceKey<EquipmentAsset> ADAMANTIUM_MATERIAL_KEY = ResourceKey.create(EquipmentAssets.ROOT_ID, Identifier.fromNamespaceAndPath(MME.MOD_ID, "adamantium"));
+    public static final ResourceKey<EquipmentAsset> ADAMANTIUM_CHAINMAIL_MATERIAL_KEY = ResourceKey.create(EquipmentAssets.ROOT_ID, Identifier.fromNamespaceAndPath(MME.MOD_ID, "adamantium_chainmail"));
+    public static final ResourceKey<EquipmentAsset> MITHRIL_MATERIAL_KEY = ResourceKey.create(EquipmentAssets.ROOT_ID, Identifier.fromNamespaceAndPath(MME.MOD_ID, "mithril"));
+    public static final ResourceKey<EquipmentAsset> MITHRIL_CHAINMAIL_MATERIAL_KEY = ResourceKey.create(EquipmentAssets.ROOT_ID, Identifier.fromNamespaceAndPath(MME.MOD_ID, "mithril_chainmail"));
+    public static final ResourceKey<EquipmentAsset> ANCIENT_METAL_MATERIAL_KEY = ResourceKey.create(EquipmentAssets.ROOT_ID, Identifier.fromNamespaceAndPath(MME.MOD_ID, "ancient_metal"));
+    public static final ResourceKey<EquipmentAsset> ANCIENT_METAL_CHAINMAIL_MATERIAL_KEY = ResourceKey.create(EquipmentAssets.ROOT_ID, Identifier.fromNamespaceAndPath(MME.MOD_ID, "ancient_metal_chainmail"));
     public static final ResourceKey<EquipmentAsset> IRON_MATERIAL_KEY = EquipmentAssets.IRON;
     public static final ResourceKey<EquipmentAsset> IRON_CHAINMAIL_MATERIAL_KEY = EquipmentAssets.CHAINMAIL;
-    public static final ResourceKey<EquipmentAsset> RUSTED_IRON_MATERIAL_KEY = ResourceKey.create(EquipmentAssets.ROOT_ID, ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, "rusted_iron"));
-    public static final ResourceKey<EquipmentAsset> RUSTED_IRON_CHAINMAIL_MATERIAL_KEY = ResourceKey.create(EquipmentAssets.ROOT_ID, ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, "rusted_iron_chainmail"));
-    public static final ResourceKey<EquipmentAsset> COPPER_MATERIAL_KEY = ResourceKey.create(EquipmentAssets.ROOT_ID, ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, "copper"));
-    public static final ResourceKey<EquipmentAsset> COPPER_CHAINMAIL_MATERIAL_KEY = ResourceKey.create(EquipmentAssets.ROOT_ID, ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, "copper_chainmail"));
-    public static final ResourceKey<EquipmentAsset> SILVER_MATERIAL_KEY = ResourceKey.create(EquipmentAssets.ROOT_ID, ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, "silver"));
-    public static final ResourceKey<EquipmentAsset> SILVER_CHAINMAIL_MATERIAL_KEY = ResourceKey.create(EquipmentAssets.ROOT_ID, ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, "silver_chainmail"));
-    public static final ResourceKey<EquipmentAsset> GOLD_CHAINMAIL_MATERIAL_KEY = ResourceKey.create(EquipmentAssets.ROOT_ID, ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, "gold_chainmail"));
+    public static final ResourceKey<EquipmentAsset> RUSTED_IRON_MATERIAL_KEY = ResourceKey.create(EquipmentAssets.ROOT_ID, Identifier.fromNamespaceAndPath(MME.MOD_ID, "rusted_iron"));
+    public static final ResourceKey<EquipmentAsset> RUSTED_IRON_CHAINMAIL_MATERIAL_KEY = ResourceKey.create(EquipmentAssets.ROOT_ID, Identifier.fromNamespaceAndPath(MME.MOD_ID, "rusted_iron_chainmail"));
+    public static final ResourceKey<EquipmentAsset> COPPER_MATERIAL_KEY = ResourceKey.create(EquipmentAssets.ROOT_ID, Identifier.fromNamespaceAndPath(MME.MOD_ID, "copper"));
+    public static final ResourceKey<EquipmentAsset> COPPER_CHAINMAIL_MATERIAL_KEY = ResourceKey.create(EquipmentAssets.ROOT_ID, Identifier.fromNamespaceAndPath(MME.MOD_ID, "copper_chainmail"));
+    public static final ResourceKey<EquipmentAsset> SILVER_MATERIAL_KEY = ResourceKey.create(EquipmentAssets.ROOT_ID, Identifier.fromNamespaceAndPath(MME.MOD_ID, "silver"));
+    public static final ResourceKey<EquipmentAsset> SILVER_CHAINMAIL_MATERIAL_KEY = ResourceKey.create(EquipmentAssets.ROOT_ID, Identifier.fromNamespaceAndPath(MME.MOD_ID, "silver_chainmail"));
+    public static final ResourceKey<EquipmentAsset> GOLD_CHAINMAIL_MATERIAL_KEY = ResourceKey.create(EquipmentAssets.ROOT_ID, Identifier.fromNamespaceAndPath(MME.MOD_ID, "gold_chainmail"));
     public static final ResourceKey<EquipmentAsset> GOLD_MATERIAL_KEY = EquipmentAssets.GOLD;
 
     public static final MMEArmorMaterial NETHERITE_MATERIAL = new MMEArmorMaterial(

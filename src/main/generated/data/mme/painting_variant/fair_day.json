@@ -1,0 +1,13 @@
+{
+  "asset_id": "mme:fair_day",
+  "author": {
+    "color": "gray",
+    "translate": "painting.mme.fair_day.author"
+  },
+  "height": 2,
+  "title": {
+    "color": "yellow",
+    "translate": "painting.mme.fair_day.title"
+  },
+  "width": 4
+}

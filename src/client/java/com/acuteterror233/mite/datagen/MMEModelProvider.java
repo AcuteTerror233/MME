@@ -14,7 +14,7 @@ import net.minecraft.client.data.models.model.ItemModelUtils;
 import net.minecraft.client.data.models.model.ModelTemplates;
 import net.minecraft.client.data.models.model.TextureMapping;
 import net.minecraft.client.data.models.model.TexturedModel;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -306,16 +306,23 @@ public class MMEModelProvider extends FabricModelProvider {
         itemModelGenerator.generateFlatItem(MMEItems.WOODEN_CLUB, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGenerator.generateFlatItem(MMEItems.WOODEN_CUDGEL, ModelTemplates.FLAT_HANDHELD_ITEM);
 
-        ResourceLocation AXOLOTL = ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, "item/nobuckets/axolotl");
-        ResourceLocation COD = ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, "item/nobuckets/cod");
-        ResourceLocation LAVA = ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, "item/nobuckets/lava");
-        ResourceLocation MILK = ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, "item/nobuckets/milk");
-        ResourceLocation POWDER_SNOW = ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, "item/nobuckets/powder_snow");
-        ResourceLocation PUFFERFISH = ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, "item/nobuckets/pufferfish");
-        ResourceLocation SALMON = ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, "item/nobuckets/salmon");
-        ResourceLocation TADPOLE = ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, "item/nobuckets/tadpole");
-        ResourceLocation TROPICAL_FISH = ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, "item/nobuckets/tropical_fish");
-        ResourceLocation WATER = ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, "item/nobuckets/water");
+        itemModelGenerator.generateSpear(MMEItems.ADAMANTIUM_SPEAR);
+        itemModelGenerator.generateSpear(MMEItems.ANCIENT_METAL_SPEAR);
+        itemModelGenerator.generateSpear(MMEItems.MITHRIL_SPEAR);
+        itemModelGenerator.generateSpear(MMEItems.RUSTED_IRON_SPEAR);
+        itemModelGenerator.generateSpear(MMEItems.SILVER_SPEAR);
+        itemModelGenerator.generateSpear(MMEItems.FLINT_SPEAR);
+
+        Identifier AXOLOTL = Identifier.fromNamespaceAndPath(MME.MOD_ID, "item/nobuckets/axolotl");
+        Identifier COD = Identifier.fromNamespaceAndPath(MME.MOD_ID, "item/nobuckets/cod");
+        Identifier LAVA = Identifier.fromNamespaceAndPath(MME.MOD_ID, "item/nobuckets/lava");
+        Identifier MILK = Identifier.fromNamespaceAndPath(MME.MOD_ID, "item/nobuckets/milk");
+        Identifier POWDER_SNOW = Identifier.fromNamespaceAndPath(MME.MOD_ID, "item/nobuckets/powder_snow");
+        Identifier PUFFERFISH = Identifier.fromNamespaceAndPath(MME.MOD_ID, "item/nobuckets/pufferfish");
+        Identifier SALMON = Identifier.fromNamespaceAndPath(MME.MOD_ID, "item/nobuckets/salmon");
+        Identifier TADPOLE = Identifier.fromNamespaceAndPath(MME.MOD_ID, "item/nobuckets/tadpole");
+        Identifier TROPICAL_FISH = Identifier.fromNamespaceAndPath(MME.MOD_ID, "item/nobuckets/tropical_fish");
+        Identifier WATER = Identifier.fromNamespaceAndPath(MME.MOD_ID, "item/nobuckets/water");
 
         extendedAccessor.MME$registerBucket(MMEItems.ADAMANTIUM_BUCKET, null, MMEItems.ADAMANTIUM_BUCKET);
         extendedAccessor.MME$registerBucket(MMEItems.WATER_ADAMANTIUM_BUCKET, WATER, MMEItems.ADAMANTIUM_BUCKET);
@@ -401,8 +408,8 @@ public class MMEModelProvider extends FabricModelProvider {
         extendedAccessor.MME$registerBucket(MMEItems.AXOLOTL_NETHERITE_BUCKET, AXOLOTL, MMEItems.NETHERITE_BUCKET);
         extendedAccessor.MME$registerBucket(MMEItems.TADPOLE_NETHERITE_BUCKET, TADPOLE, MMEItems.NETHERITE_BUCKET);
 
-        ResourceLocation cast = itemModelGenerator.createFlatItemModel(Items.FISHING_ROD, "_cast", ModelTemplates.FLAT_HANDHELD_ROD_ITEM);
-        ResourceLocation netheriteCast = itemModelGenerator.createFlatItemModel(MMEItems.NETHERITE_FISHING_ROD, "_cast", ModelTemplates.FLAT_HANDHELD_ROD_ITEM);
+        Identifier cast = itemModelGenerator.createFlatItemModel(Items.FISHING_ROD, "_cast", ModelTemplates.FLAT_HANDHELD_ROD_ITEM);
+        Identifier netheriteCast = itemModelGenerator.createFlatItemModel(MMEItems.NETHERITE_FISHING_ROD, "_cast", ModelTemplates.FLAT_HANDHELD_ROD_ITEM);
         extendedAccessor.MME$registerFishingRod(MMEItems.NETHERITE_FISHING_ROD, netheriteCast);
         extendedAccessor.MME$registerFishingRod(MMEItems.ADAMANTIUM_FISHING_ROD, cast);
         extendedAccessor.MME$registerFishingRod(MMEItems.MITHRIL_FISHING_ROD, cast);

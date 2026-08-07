@@ -141,6 +141,16 @@
       },
       "trigger": "minecraft:inventory_changed"
     },
+    "has_netherite_spear": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:netherite_spear"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
     "has_netherite_sword": {
       "conditions": {
         "items": [
@@ -179,6 +189,7 @@
       "has_netherite_shears",
       "has_netherite_war_hammer",
       "has_netherite_sword",
+      "has_netherite_spear",
       "has_netherite_pickaxe",
       "has_netherite_axe",
       "has_netherite_shovel",

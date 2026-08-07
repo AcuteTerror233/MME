@@ -1,8 +1,8 @@
 package com.acuteterror233.mite.item.equipment;
 
 import net.minecraft.core.Holder;
+import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EquipmentSlotGroup;
@@ -33,7 +33,7 @@ public record MMEArmorMaterial(
         float i = this.defense.getOrDefault(equipmentType, 0.0F);
         ItemAttributeModifiers.Builder builder = ItemAttributeModifiers.builder();
         EquipmentSlotGroup attributeModifierSlot = EquipmentSlotGroup.bySlot(equipmentType.getSlot());
-        ResourceLocation identifier = ResourceLocation.withDefaultNamespace("armor." + equipmentType.getName());
+        Identifier identifier = Identifier.withDefaultNamespace("armor." + equipmentType.getName());
         builder.add(Attributes.ARMOR, new AttributeModifier(identifier, i, AttributeModifier.Operation.ADD_VALUE), attributeModifierSlot);
         builder.add(
                 Attributes.ARMOR_TOUGHNESS,

@@ -1,0 +1,13 @@
+{
+  "asset_id": "mme:gate_closing",
+  "author": {
+    "color": "gray",
+    "translate": "painting.mme.gate_closing.author"
+  },
+  "height": 2,
+  "title": {
+    "color": "yellow",
+    "translate": "painting.mme.gate_closing.title"
+  },
+  "width": 4
+}

@@ -16,10 +16,10 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.util.function.Function;
 import java.util.function.UnaryOperator;
 
-@Mixin(Bootstrap.class)
 /**
  * Mixin for {@code Bootstrap} — 在启动阶段触发原版注册修改。
  */
+@Mixin(Bootstrap.class)
 public class BootstrapMixin {
     @Inject(method = "bootStrap()V", at = @At("HEAD"), remap = false)
     private static void initialize(CallbackInfo ci) {
@@ -31,8 +31,8 @@ public class BootstrapMixin {
     @Unique
     private static void registerBlockModifications() {
         VanillaRegisterModify.BLOCK_REGISTER.register((key, factory, settings) -> {
-            Function<BlockBehaviour.Properties, Block> customFactory = VanillaBlockModify.BLOCK_FACTORY_MODIFY.get(key.location());
-            UnaryOperator<BlockBehaviour.Properties> settingsModifier = VanillaBlockModify.BLOCK_SETTINGS_MODIFY.get(key.location());
+            Function<BlockBehaviour.Properties, Block> customFactory = VanillaBlockModify.BLOCK_FACTORY_MODIFY.get(key.identifier());
+            UnaryOperator<BlockBehaviour.Properties> settingsModifier = VanillaBlockModify.BLOCK_SETTINGS_MODIFY.get(key.identifier());
 
             if (settingsModifier != null && customFactory != null) {
                 return customFactory.apply(settingsModifier.apply(settings).setId(key));
@@ -49,8 +49,8 @@ public class BootstrapMixin {
     @Unique
     private static void registerItemModifications() {
         VanillaRegisterModify.ITEM_REGISTER.register((key, factory, settings) -> {
-            Function<Item.Properties, Item> customFactory = VanillaItemModify.ITEM_FACTORY_MODIFY.get(key.location());
-            UnaryOperator<Item.Properties> settingsModifier = VanillaItemModify.ITEM_SETTINGS_MODIFY.get(key.location());
+            Function<Item.Properties, Item> customFactory = VanillaItemModify.ITEM_FACTORY_MODIFY.get(key.identifier());
+            UnaryOperator<Item.Properties> settingsModifier = VanillaItemModify.ITEM_SETTINGS_MODIFY.get(key.identifier());
 
             if (customFactory != null && settingsModifier != null) {
                 return customFactory.apply(settingsModifier.apply(settings).setId(key));
@@ -68,7 +68,7 @@ public class BootstrapMixin {
     private static void registerBlockItemModifications() {
         VanillaRegisterModify.BLOCK_ITEM_REGISTER.register((block, factory, settings) -> {
             UnaryOperator<Item.Properties> classSettingsModifier = VanillaItemModify.IN_CLASS_BLOCK_ITEM_SETTINGS_MODIFY.get(block.getClass());
-            UnaryOperator<Item.Properties> identifierSettingsModifier = VanillaItemModify.IN_IDENTIFIER_BLOCK_ITEM_SETTINGS_MODIFY.get(block.builtInRegistryHolder().key().location());
+            UnaryOperator<Item.Properties> identifierSettingsModifier = VanillaItemModify.IN_IDENTIFIER_BLOCK_ITEM_SETTINGS_MODIFY.get(block.builtInRegistryHolder().key().identifier());
 
             if (classSettingsModifier != null && identifierSettingsModifier != null) {
                 Item.Properties modifiedSettings = classSettingsModifier.apply(settings);

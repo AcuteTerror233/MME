@@ -1,0 +1,13 @@
+{
+  "asset_id": "mme:castle",
+  "author": {
+    "color": "gray",
+    "translate": "painting.mme.castle.author"
+  },
+  "height": 2,
+  "title": {
+    "color": "yellow",
+    "translate": "painting.mme.castle.title"
+  },
+  "width": 2
+}

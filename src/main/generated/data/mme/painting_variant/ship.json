@@ -1,0 +1,13 @@
+{
+  "asset_id": "mme:ship",
+  "author": {
+    "color": "gray",
+    "translate": "painting.mme.ship.author"
+  },
+  "height": 2,
+  "title": {
+    "color": "yellow",
+    "translate": "painting.mme.ship.title"
+  },
+  "width": 3
+}

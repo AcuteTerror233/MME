@@ -1,0 +1,13 @@
+{
+  "asset_id": "mme:king_richard",
+  "author": {
+    "color": "gray",
+    "translate": "painting.mme.king_richard.author"
+  },
+  "height": 2,
+  "title": {
+    "color": "yellow",
+    "translate": "painting.mme.king_richard.title"
+  },
+  "width": 2
+}

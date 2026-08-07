@@ -1,0 +1,13 @@
+{
+  "asset_id": "mme:dnd_basic",
+  "author": {
+    "color": "gray",
+    "translate": "painting.mme.dnd_basic.author"
+  },
+  "height": 2,
+  "title": {
+    "color": "yellow",
+    "translate": "painting.mme.dnd_basic.title"
+  },
+  "width": 2
+}

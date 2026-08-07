@@ -6,7 +6,7 @@ import net.minecraft.core.Registry;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.util.ExtraCodecs;
 
 import java.util.function.UnaryOperator;
@@ -22,6 +22,6 @@ public class MMEDataComponentTypes {
     public static final DataComponentType<FoodNutrition> FOOD_NUTRITION = register("food_nutrition", builder -> builder.persistent(FoodNutrition.DIRECT_CODEC).networkSynchronized(FoodNutrition.DIRECT_STREAM_CODEC));
 
     private static <T> DataComponentType<T> register(String id, UnaryOperator<DataComponentType.Builder<T>> builderOperator) {
-        return Registry.register(BuiltInRegistries.DATA_COMPONENT_TYPE, ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, id), builderOperator.apply(DataComponentType.builder()).build());
+        return Registry.register(BuiltInRegistries.DATA_COMPONENT_TYPE, Identifier.fromNamespaceAndPath(MME.MOD_ID, id), builderOperator.apply(DataComponentType.builder()).build());
     }
 }

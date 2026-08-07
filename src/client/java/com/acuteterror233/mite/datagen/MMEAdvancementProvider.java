@@ -11,12 +11,12 @@ import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementHolder;
 import net.minecraft.advancements.AdvancementRequirements;
 import net.minecraft.advancements.AdvancementType;
-import net.minecraft.advancements.critereon.*;
+import net.minecraft.advancements.criterion.*;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.entity.EntityType;
@@ -47,7 +47,7 @@ public class MMEAdvancementProvider extends FabricAdvancementProvider {
                         Blocks.GRASS_BLOCK,
                         Component.translatable("advancements.story.root.title"),
                         Component.translatable("mme.advancements.story.root.description"),
-                        ResourceLocation.withDefaultNamespace("gui/advancements/backgrounds/stone"),
+                        Identifier.withDefaultNamespace("gui/advancements/backgrounds/stone"),
                         AdvancementType.TASK,
                         false,
                         false,
@@ -568,7 +568,7 @@ public class MMEAdvancementProvider extends FabricAdvancementProvider {
                         Blocks.DEEPSLATE,
                         Component.translatable("mme.advancements.underground.root.title"),
                         Component.translatable("mme.advancements.underground.root.description"),
-                        ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, "gui/advancements/backgrounds/underground"),
+                        Identifier.fromNamespaceAndPath(MME.MOD_ID, "gui/advancements/backgrounds/underground"),
                         AdvancementType.TASK,
                         false,
                         false,

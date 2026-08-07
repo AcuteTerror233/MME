@@ -69,7 +69,7 @@ public class GradeCraftingTableMenu extends AbstractGradeCraftingMenu {
     }
     @Override
     public boolean stillValid(Player player) {
-        return this.context.evaluate((world, pos) -> world.getBlockState(pos).is(MMEBlockTags.CRAFTING_TABLE) && player.canInteractWithBlock(pos, 4.0) && world.getBlockState(pos.above()).isAir(), true);
+        return this.context.evaluate((world, pos) -> world.getBlockState(pos).is(MMEBlockTags.CRAFTING_TABLE) && player.isWithinBlockInteractionRange(pos, 4.0) && world.getBlockState(pos.above()).isAir(), true);
     }
     @Override
     protected @NotNull Player owner() {

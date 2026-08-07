@@ -1,4 +1,4 @@
-// 1.21.9	-999999999-01-01T00:00:00	Might Makes Everything/Model Definitions
+// 1.21.11	-999999999-01-01T00:00:00	Might Makes Everything/Model Definitions
 ac0b876e3cdf27dea39da007dc2adfdb450e3685 assets/minecraft/blockstates/beetroots.json
 be11d70a6abc31fd5709531f0fd0e1e8e7108288 assets/minecraft/blockstates/carrots.json
 a1d9709e09d74d05dd9f1c18217f3297f47b9e20 assets/minecraft/blockstates/farmland.json
@@ -93,6 +93,7 @@ a6a8555da427d35e519bca9a0346f8ff766b7e1b assets/mme/items/adamantium_pickaxe.jso
 89b34eeb8c4e75eed3ebbd3f7616749b4ca378c6 assets/mme/items/adamantium_scythe.json
 0fd8ef5e3064462a55044f4dd87d87c2ca293143 assets/mme/items/adamantium_shears.json
 4a36eb3333cf8e9396f31baa9813e81fcea5c951 assets/mme/items/adamantium_shovel.json
+fc74f277c5c15588649dc3698d7dd6417628fc1a assets/mme/items/adamantium_spear.json
 2b623f5a7577c2500b8e06d2f9ed0879c58bef04 assets/mme/items/adamantium_sword.json
 ceb88a8788004f9bd3ab37c9598b305a27f7c163 assets/mme/items/adamantium_war_hammer.json
 4f470c054d3fc76a0bc4468194739ce661b47246 assets/mme/items/ancient_metal_anvil.json
@@ -122,6 +123,7 @@ e1904960dbc724b782a5e1f59d33d1e1fd8f8783 assets/mme/items/ancient_metal_pickaxe.
 7f10340f1a78dd109ecd989d3d243a7776cb9556 assets/mme/items/ancient_metal_scythe.json
 4fb977e187a5fe4ba457733023682e71979d8674 assets/mme/items/ancient_metal_shears.json
 a0c6fa6b8551c24509ce2236bd9f738e07e3c9c3 assets/mme/items/ancient_metal_shovel.json
+be44500a3b188cd7a2a8d5d0b19ec188c72161a2 assets/mme/items/ancient_metal_spear.json
 344e023bc29d61e375ca757e183caf9285dda7ed assets/mme/items/ancient_metal_sword.json
 38c47f14ce1b7855399cab3246b308ec640b5a84 assets/mme/items/ancient_metal_war_hammer.json
 0d59724146dbd547aef0d5b6882d31a370c42868 assets/mme/items/axolotl_adamantium_bucket.json
@@ -194,6 +196,7 @@ a129325c14584606c421622744f507d1bc4b25bc assets/mme/items/fire_elemental_spawn_e
 b4826eaf902f3135c518d4833fb1efdb49f05937 assets/mme/items/flint_knife.json
 05facb3221861e7cd9e118f6c4f0b49ef1eac131 assets/mme/items/flint_shard.json
 04ec47d6eed31c212c56b2abb7cf0862054cd1a1 assets/mme/items/flint_shovel.json
+a12857eb6b3707cffdd5358ac3a3ef16bdb2cccf assets/mme/items/flint_spear.json
 8a892192564e1f2a937fc745754fb75026d1e1b4 assets/mme/items/flour.json
 02d0e81269972b0b9016643955ac49d8fd2a268b assets/mme/items/ghoul_spawn_egg.json
 5461bcdd06998862ee633fabbd30916bc3ce0e39 assets/mme/items/giant_vampire_bat_spawn_egg.json
@@ -274,6 +277,7 @@ a81345aed583b052e2680224bfda73e8f201a5ae assets/mme/items/mithril_pickaxe.json
 f44bf5359a79ad674b32aadd8df674f25b146107 assets/mme/items/mithril_scythe.json
 521d09dd6d933a5a210b3c871cf74ff29d644396 assets/mme/items/mithril_shears.json
 70ebc920846757627543746105ce6a0e1bce37ac assets/mme/items/mithril_shovel.json
+9be96b5bfb130a571cfc3071b9ce379b734d6db1 assets/mme/items/mithril_spear.json
 9ec4efa88b99c13bc31ebc8c585b58c8e006e6d9 assets/mme/items/mithril_sword.json
 ef24f57fd637f0ce7735accd3b1c942a9a67b6ce assets/mme/items/mithril_war_hammer.json
 d48bdeb9c146b7e2f8c93edb079d68f7afd615e8 assets/mme/items/netherite_anvil.json
@@ -340,6 +344,7 @@ c938908457fd8356c39f78f30052c72b77c29856 assets/mme/items/rusted_iron_pickaxe.js
 08da029a2027d84fd193cec0f4cc33dbce9668ae assets/mme/items/rusted_iron_scythe.json
 a8610b9e4d19b6d74af4fe225ee280ae52deb555 assets/mme/items/rusted_iron_shears.json
 30fb82c0095dd06694d5a0d5bb2292ebcafeddb7 assets/mme/items/rusted_iron_shovel.json
+30aba8d469425ac2f7c6999db7a71189134c083d assets/mme/items/rusted_iron_spear.json
 b180585d378ec68a1d999941341aa0be8f29e4c8 assets/mme/items/rusted_iron_sword.json
 87078017988c21ea65ddbc0a0fa6ae91d10e666c assets/mme/items/rusted_iron_war_hammer.json
 4d91dea41d6969ba1e62eabafca0994051ce2632 assets/mme/items/salmon_adamantium_bucket.json
@@ -379,6 +384,7 @@ b79608e9a1c83af53be097e356683ff887058466 assets/mme/items/silver_ingot.json
 5f23ce9d66fa35cdc810fe865499d81de06a0daa assets/mme/items/silver_scythe.json
 092dd5db991ca7490f123304e393747d9039b4c3 assets/mme/items/silver_shears.json
 53065b4d4a762a774644810260b3ea5cbae5da56 assets/mme/items/silver_shovel.json
+e5b6298a1e20ee5089a506e984263441f1963e04 assets/mme/items/silver_spear.json
 41505893703af06af5f82d44b0cf0518d665000b assets/mme/items/silver_sword.json
 19eb230498485b9a1a5da4f3019c823e5afa46cc assets/mme/items/silver_war_hammer.json
 0058e61b5de1b22e6a82ab4be892559c13321253 assets/mme/items/sinew.json
@@ -608,6 +614,8 @@ a9c42058b1cd07e046583306bdaf697154aeab67 assets/mme/models/item/adamantium_picka
 a38944b0b63d7988c9dbae8a1d74849afdba0e04 assets/mme/models/item/adamantium_scythe.json
 20befe23610c55ed33bdea3201f488f2d1e9351d assets/mme/models/item/adamantium_shears.json
 37fd7be5e856f2d42a39b7cf81993eb2b9946c1f assets/mme/models/item/adamantium_shovel.json
+50ab76cdd6a7d161b3d885333eb7a6d8fe7f94a2 assets/mme/models/item/adamantium_spear.json
+811488622636f4f36df568ac1ab506ac08627231 assets/mme/models/item/adamantium_spear_in_hand.json
 aaa342c3ccebdd8e9f16072693343abab0c17ca9 assets/mme/models/item/adamantium_sword.json
 35b011ddb47d26360920c3dedc7f737317c8f83e assets/mme/models/item/adamantium_war_hammer.json
 1da84ae578f5f75d230e0408c6994207d95aeb83 assets/mme/models/item/ancient_metal_axe.json
@@ -723,6 +731,8 @@ c8de69fb3779791da1d51831b24a804dd3306ee5 assets/mme/models/item/ancient_metal_nu
 2a54cdf0445e6ebf516f8395242ab095f4ef70f9 assets/mme/models/item/ancient_metal_scythe.json
 26dc78351fb97134f8c992311df7d33e5ceac9f6 assets/mme/models/item/ancient_metal_shears.json
 2b3a2f3f1b2cef4994a875733f7081e1c6841880 assets/mme/models/item/ancient_metal_shovel.json
+fa6aa4d9bd624b96d22218559a3aeefbf5aecab6 assets/mme/models/item/ancient_metal_spear.json
+e4b0e2dea9397fa1de09c2c7e1fbb8eef4022a10 assets/mme/models/item/ancient_metal_spear_in_hand.json
 1451a18e2477576f75f2434acbd3a8a91492cf76 assets/mme/models/item/ancient_metal_sword.json
 0b454b14db93d8d2ba7651616c145e9259abaff9 assets/mme/models/item/ancient_metal_war_hammer.json
 acde15e544893675e9ed96b8439c687b5e4d6182 assets/mme/models/item/axolotl_adamantium_bucket.json
@@ -820,6 +830,8 @@ f453a919b2f6386054453bb4c1d0d7021b4c637b assets/mme/models/item/dough.json
 6f76c66f5dbab8ac5bc181947765c50b7276f7cd assets/mme/models/item/flint_knife.json
 1ee2f664e644c2ff2db744395dca0709b74bd30b assets/mme/models/item/flint_shard.json
 ba68c1dd26df61ee6eaf8af5afa8f56a143a300b assets/mme/models/item/flint_shovel.json
+955350074a0265747717af976fcf1e7bba77ae8c assets/mme/models/item/flint_spear.json
+b0c94a6ce308fbbf74e78cb36c723c30e419de3c assets/mme/models/item/flint_spear_in_hand.json
 d6cb6033a9457e87031ede534b02a3a4817215b9 assets/mme/models/item/flour.json
 5d6de3e075b427e321c582280e9f966fda879135 assets/mme/models/item/ghoul_spawn_egg.json
 841acd6c41659c4ad07fea49bc9ab04a9b7c2a1f assets/mme/models/item/giant_vampire_bat_spawn_egg.json
@@ -1025,6 +1037,8 @@ a73779235c1527bac4f0322b3e32b0e765fdd9ff assets/mme/models/item/mithril_leggings
 fada9759c6635cdadc7acc5347021e177afd3042 assets/mme/models/item/mithril_scythe.json
 c694fc38f36adf335ebd7ce9c1b17ce78c40c3c5 assets/mme/models/item/mithril_shears.json
 b29c86072033d58d7343c5bff5ddf938afc30adb assets/mme/models/item/mithril_shovel.json
+7f89e2ab04685be58df9466cee62bd701a268131 assets/mme/models/item/mithril_spear.json
+df4814970b285c6eb3d58f293dc3f0ca1e1c9ae1 assets/mme/models/item/mithril_spear_in_hand.json
 102275a526574583f5635f69aab8ed026af69cfd assets/mme/models/item/mithril_sword.json
 00a6329d8a2bb3b94bc104aca6f93e137badc39e assets/mme/models/item/mithril_war_hammer.json
 d67e9f29936c4be9cd3811a74551d06e7ebc4ed4 assets/mme/models/item/netherite_battle_axe.json
@@ -1177,6 +1191,8 @@ df5e00da1db46d396c6f6f24c17b52ffcccb9955 assets/mme/models/item/rusted_iron_pick
 75e406ab38ee55745c151a7527afaf2e7decf1d9 assets/mme/models/item/rusted_iron_scythe.json
 0fc93ce7f4eedfbbe1a25b4dccd946a51bd9543c assets/mme/models/item/rusted_iron_shears.json
 1a281383a2e8a0a814356603a0ad2a5106990159 assets/mme/models/item/rusted_iron_shovel.json
+0dddbc029d25e9ba2adf468b0891019749ab227a assets/mme/models/item/rusted_iron_spear.json
+963451aa7488e0f5967066f1f765a6d2449a5191 assets/mme/models/item/rusted_iron_spear_in_hand.json
 a63ab8904aa331ebbda5a2496f3b7778dc82c4d6 assets/mme/models/item/rusted_iron_sword.json
 6fac28bf683b0f21f3dc78c54837ca4dfdfbe0a1 assets/mme/models/item/rusted_iron_war_hammer.json
 d6deab3c3cea326c0fb2997051530a94a037c8a9 assets/mme/models/item/salmon_adamantium_bucket.json
@@ -1300,6 +1316,8 @@ c544b65d17813419d5874aa607f4ae242fc3705e assets/mme/models/item/silver_leggings_
 8894fac506fcd0fc7ccc7dae1c2644c451a20e05 assets/mme/models/item/silver_scythe.json
 57239a34a8cf173b953307909f0e5208337a91ea assets/mme/models/item/silver_shears.json
 bf262b5bcf57abc4aa049bd589f00f920c1f212b assets/mme/models/item/silver_shovel.json
+0b42c243160e9d665abe52f8555bffd13ed8cac9 assets/mme/models/item/silver_spear.json
+7b2aa141ddf965a8856c1143611c0d6708d07888 assets/mme/models/item/silver_spear_in_hand.json
 b702f841c84b7be1559099dd2a8102afde0fa3c1 assets/mme/models/item/silver_sword.json
 ba5ba9eccbfa15d9249c1f081a3ec9067f8ae5a8 assets/mme/models/item/silver_war_hammer.json
 2e1d83681515802f1342fec7acf5f6ce4df4a46d assets/mme/models/item/sinew.json

@@ -10,7 +10,7 @@ import net.minecraft.client.gui.screens.inventory.AbstractRecipeBookScreen;
 import net.minecraft.client.gui.screens.recipebook.CraftingRecipeBookComponent;
 import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
@@ -23,8 +23,8 @@ import java.util.List;
  * 渲染等级工作台的客户端界面。
  */
 public class GradeCraftingTableScreen extends AbstractRecipeBookScreen<GradeCraftingTableMenu> {
-    private static final ResourceLocation TEXTURE = ResourceLocation.withDefaultNamespace("textures/gui/container/crafting_table.png");
-    private static final ResourceLocation CRAFTING_PROGRESS_TEXTURE = ResourceLocation.withDefaultNamespace("container/furnace/burn_progress");
+    private static final Identifier TEXTURE = Identifier.withDefaultNamespace("textures/gui/container/crafting_table.png");
+    private static final Identifier CRAFTING_PROGRESS_TEXTURE = Identifier.withDefaultNamespace("container/furnace/burn_progress");
     public GradeCraftingTableScreen(GradeCraftingTableMenu handler, Inventory inventory, Component title) {
         super(handler, new CraftingRecipeBookComponent(handler), inventory, title);
     }

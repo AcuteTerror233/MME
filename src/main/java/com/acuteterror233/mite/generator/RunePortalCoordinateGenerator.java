@@ -46,16 +46,16 @@ public class RunePortalCoordinateGenerator {
         MinecraftServer server = world.getServer();
         long seed = server != null
                 ? server.getWorldData().worldGenOptions().seed()
-                : world.dimension().location().hashCode();
+                : world.dimension().identifier().hashCode();
 
         MessageDigest digest = SHA_256.get();
         digest.reset();
 
         // 使用顺序敏感的混合，并统一用稳定 key 避免本地化文本影响
-        String input = list.getFirst().getBlock().builtInRegistryHolder().key().location() + "|"
-                + list.get(1).getBlock().builtInRegistryHolder().key().location() + "|"
-                + list.get(2).getBlock().builtInRegistryHolder().key().location() + "|"
-                + list.getLast().getBlock().builtInRegistryHolder().key().location() + "|"
+        String input = list.getFirst().getBlock().builtInRegistryHolder().key().identifier() + "|"
+                + list.get(1).getBlock().builtInRegistryHolder().key().identifier() + "|"
+                + list.get(2).getBlock().builtInRegistryHolder().key().identifier() + "|"
+                + list.getLast().getBlock().builtInRegistryHolder().key().identifier() + "|"
                 + seed;
         byte[] hash = digest.digest(input.getBytes(StandardCharsets.UTF_8));
 

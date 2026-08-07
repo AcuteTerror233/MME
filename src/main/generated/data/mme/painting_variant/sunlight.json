@@ -1,0 +1,13 @@
+{
+  "asset_id": "mme:sunlight",
+  "author": {
+    "color": "gray",
+    "translate": "painting.mme.sunlight.author"
+  },
+  "height": 2,
+  "title": {
+    "color": "yellow",
+    "translate": "painting.mme.sunlight.title"
+  },
+  "width": 2
+}

@@ -2,7 +2,7 @@ package com.acuteterror233.mite.registry.tag;
 
 import com.acuteterror233.mite.MME;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.block.Block;
 
@@ -50,6 +50,6 @@ public interface MMEBlockTags {
     TagKey<Block> HERBACEOUS_PLANTS = key("herbacious_plants");
 
     static TagKey<Block> key(String id) {
-        return TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, id));
+        return TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(MME.MOD_ID, id));
     }
 }

@@ -181,6 +181,16 @@
       },
       "trigger": "minecraft:inventory_changed"
     },
+    "has_adamantium_spear": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mme:adamantium_spear"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
     "has_adamantium_sword": {
       "conditions": {
         "items": [
@@ -223,6 +233,7 @@
       "has_adamantium_mattock",
       "has_adamantium_scythe",
       "has_adamantium_shears",
+      "has_adamantium_spear",
       "has_adamantium_helmet",
       "has_adamantium_chestplate",
       "has_adamantium_leggings",

@@ -1,0 +1,13 @@
+{
+  "asset_id": "mme:wolves",
+  "author": {
+    "color": "gray",
+    "translate": "painting.mme.wolves.author"
+  },
+  "height": 2,
+  "title": {
+    "color": "yellow",
+    "translate": "painting.mme.wolves.title"
+  },
+  "width": 2
+}

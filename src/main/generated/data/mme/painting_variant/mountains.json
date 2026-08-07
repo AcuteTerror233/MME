@@ -1,0 +1,13 @@
+{
+  "asset_id": "mme:mountains",
+  "author": {
+    "color": "gray",
+    "translate": "painting.mme.mountains.author"
+  },
+  "height": 2,
+  "title": {
+    "color": "yellow",
+    "translate": "painting.mme.mountains.title"
+  },
+  "width": 2
+}

@@ -9,8 +9,8 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.gui.screens.inventory.EnchantmentNames;
 import net.minecraft.client.input.MouseButtonEvent;
-import net.minecraft.client.model.BookModel;
 import net.minecraft.client.model.geom.ModelLayers;
+import net.minecraft.client.model.object.book.BookModel;
 import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
@@ -18,7 +18,7 @@ import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.FormattedText;
 import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.player.Inventory;
@@ -34,25 +34,25 @@ import java.util.Optional;
  * 渲染附魔台的客户端界面。
  */
 public class MMEEnchantmentScreen extends AbstractContainerScreen<MMEEnchantmentMenu> {
-    private static final ResourceLocation[] ENABLED_LEVEL_SPRITES = new ResourceLocation[]{
-            ResourceLocation.withDefaultNamespace("container/enchanting_table/level_1"),
-            ResourceLocation.withDefaultNamespace("container/enchanting_table/level_2"),
-            ResourceLocation.withDefaultNamespace("container/enchanting_table/level_3")
+    private static final Identifier[] ENABLED_LEVEL_SPRITES = new Identifier[]{
+            Identifier.withDefaultNamespace("container/enchanting_table/level_1"),
+            Identifier.withDefaultNamespace("container/enchanting_table/level_2"),
+            Identifier.withDefaultNamespace("container/enchanting_table/level_3")
     };
-    private static final ResourceLocation[] DISABLED_LEVEL_SPRITES = new ResourceLocation[]{
-            ResourceLocation.withDefaultNamespace("container/enchanting_table/level_1_disabled"),
-            ResourceLocation.withDefaultNamespace("container/enchanting_table/level_2_disabled"),
-            ResourceLocation.withDefaultNamespace("container/enchanting_table/level_3_disabled")
+    private static final Identifier[] DISABLED_LEVEL_SPRITES = new Identifier[]{
+            Identifier.withDefaultNamespace("container/enchanting_table/level_1_disabled"),
+            Identifier.withDefaultNamespace("container/enchanting_table/level_2_disabled"),
+            Identifier.withDefaultNamespace("container/enchanting_table/level_3_disabled")
     };
-    private static final ResourceLocation ENCHANTMENT_SLOT_DISABLED_SPRITE = ResourceLocation.withDefaultNamespace(
+    private static final Identifier ENCHANTMENT_SLOT_DISABLED_SPRITE = Identifier.withDefaultNamespace(
             "container/enchanting_table/enchantment_slot_disabled"
     );
-    private static final ResourceLocation ENCHANTMENT_SLOT_HIGHLIGHTED_SPRITE = ResourceLocation.withDefaultNamespace(
+    private static final Identifier ENCHANTMENT_SLOT_HIGHLIGHTED_SPRITE = Identifier.withDefaultNamespace(
             "container/enchanting_table/enchantment_slot_highlighted"
     );
-    private static final ResourceLocation ENCHANTMENT_SLOT_SPRITE = ResourceLocation.withDefaultNamespace("container/enchanting_table/enchantment_slot");
-    private static final ResourceLocation ENCHANTING_TABLE_LOCATION = ResourceLocation.withDefaultNamespace("textures/gui/container/enchanting_table.png");
-    private static final ResourceLocation ENCHANTING_BOOK_LOCATION = ResourceLocation.withDefaultNamespace("textures/entity/enchanting_table_book.png");
+    private static final Identifier ENCHANTMENT_SLOT_SPRITE = Identifier.withDefaultNamespace("container/enchanting_table/enchantment_slot");
+    private static final Identifier ENCHANTING_TABLE_LOCATION = Identifier.withDefaultNamespace("textures/gui/container/enchanting_table.png");
+    private static final Identifier ENCHANTING_BOOK_LOCATION = Identifier.withDefaultNamespace("textures/entity/enchanting_table_book.png");
     private final RandomSource random = RandomSource.create();
     private BookModel bookModel;
     public float flip;

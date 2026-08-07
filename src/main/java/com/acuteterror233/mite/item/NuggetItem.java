@@ -3,7 +3,7 @@ package com.acuteterror233.mite.item;
 import com.acuteterror233.mite.MME;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -25,14 +25,14 @@ import java.util.function.Consumer;
  */
 public class NuggetItem extends Item {
     private final int experience;
-    public static final Map<ResourceLocation, ResourceLocation> NUGGET_EXCHANGEITEM = new HashMap<>(){{
-        put(ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, "adamantium_nugget"), ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, "adamantium_coins"));
-        put(ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, "mithril_nugget"), ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, "mithril_coins"));
-        put(ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, "ancient_metal_nugget"), ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, "ancient_metal_coins"));
-        put(ResourceLocation.withDefaultNamespace("iron_nugget"), ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, "iron_coins"));
-        put(ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, "silver_nugget"), ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, "silver_coins"));
-        put(ResourceLocation.withDefaultNamespace("copper_nugget"), ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, "copper_coins"));
-        put(ResourceLocation.withDefaultNamespace("gold_nugget"), ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, "gold_coins"));
+    public static final Map<Identifier, Identifier> NUGGET_EXCHANGEITEM = new HashMap<>(){{
+        put(Identifier.fromNamespaceAndPath(MME.MOD_ID, "adamantium_nugget"), Identifier.fromNamespaceAndPath(MME.MOD_ID, "adamantium_coins"));
+        put(Identifier.fromNamespaceAndPath(MME.MOD_ID, "mithril_nugget"), Identifier.fromNamespaceAndPath(MME.MOD_ID, "mithril_coins"));
+        put(Identifier.fromNamespaceAndPath(MME.MOD_ID, "ancient_metal_nugget"), Identifier.fromNamespaceAndPath(MME.MOD_ID, "ancient_metal_coins"));
+        put(Identifier.withDefaultNamespace("iron_nugget"), Identifier.fromNamespaceAndPath(MME.MOD_ID, "iron_coins"));
+        put(Identifier.fromNamespaceAndPath(MME.MOD_ID, "silver_nugget"), Identifier.fromNamespaceAndPath(MME.MOD_ID, "silver_coins"));
+        put(Identifier.withDefaultNamespace("copper_nugget"), Identifier.fromNamespaceAndPath(MME.MOD_ID, "copper_coins"));
+        put(Identifier.withDefaultNamespace("gold_nugget"), Identifier.fromNamespaceAndPath(MME.MOD_ID, "gold_coins"));
     }};
     public NuggetItem(Properties settings, int experience) {
         super(settings.stacksTo(32));
@@ -43,7 +43,7 @@ public class NuggetItem extends Item {
     public @NotNull InteractionResult use(Level world, Player user, InteractionHand hand) {
         if (user.totalExperience >= this.experience) {
             user.giveExperiencePoints(-this.experience);
-            Item item = BuiltInRegistries.ITEM.getValue(NUGGET_EXCHANGEITEM.get(builtInRegistryHolder().key().location()));
+            Item item = BuiltInRegistries.ITEM.getValue(NUGGET_EXCHANGEITEM.get(builtInRegistryHolder().key().identifier()));
             user.getInventory().add(new ItemStack(item));
             user.getItemInHand(hand).consume(1, user);
             world.playSound(user, user.getX(), user.getY(), user.getZ(), SoundEvents.EXPERIENCE_ORB_PICKUP, user.getSoundSource(), 1.0F, 1.0F);

@@ -14,7 +14,7 @@ import net.minecraft.client.data.models.blockstates.PropertyDispatch;
 import net.minecraft.client.data.models.model.*;
 import net.minecraft.client.renderer.block.model.VariantMutator;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -34,7 +34,7 @@ import java.util.function.Function;
  */
 public abstract class BlockModelGeneratorsMixin implements BlockModelGeneratorsExtension {
     @Shadow
-    public static MultiVariant plainVariant(ResourceLocation id) {
+    public static MultiVariant plainVariant(Identifier id) {
         return null;
     }
     @Shadow
@@ -43,14 +43,14 @@ public abstract class BlockModelGeneratorsMixin implements BlockModelGeneratorsE
     }
     @Shadow
     @Final
-    public ResourceLocation createSuffixedVariant(
-            Block block, String string, ModelTemplate modelTemplate, Function<ResourceLocation, TextureMapping> function
+    public Identifier createSuffixedVariant(
+            Block block, String string, ModelTemplate modelTemplate, Function<Identifier, TextureMapping> function
     ){
         return null;
     }
 
     @Shadow @Final public Consumer<BlockModelDefinitionGenerator> blockStateOutput;
-    @Shadow @Final public BiConsumer<ResourceLocation, ModelInstance> modelOutput;
+    @Shadow @Final public BiConsumer<Identifier, ModelInstance> modelOutput;
     @Shadow @Final private static PropertyDispatch<VariantMutator> ROTATION_HORIZONTAL_FACING_ALT;
 
     // 四张图,第一张图是基本材质,完整铁砧的注册名,之后三张都是砧顶,注册id+top,
@@ -72,11 +72,11 @@ public abstract class BlockModelGeneratorsMixin implements BlockModelGeneratorsE
         if (property.getPossibleValues().size() != is.length) {
             throw new IllegalArgumentException();
         } else {
-            ResourceLocation resourceLocation = BuiltInRegistries.BLOCK.getKey(block);
-            ResourceLocation path = ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, resourceLocation.getPath());
-            Int2ObjectMap<ResourceLocation> int2ObjectMap = new Int2ObjectOpenHashMap<>();
-            Int2ObjectMap<ResourceLocation> int2ObjectDiseasesMap = new Int2ObjectOpenHashMap<>();
-            Int2ObjectMap<ResourceLocation> int2ObjectWitherMap = new Int2ObjectOpenHashMap<>();
+            Identifier resourceLocation = BuiltInRegistries.BLOCK.getKey(block);
+            Identifier path = Identifier.fromNamespaceAndPath(MME.MOD_ID, resourceLocation.getPath());
+            Int2ObjectMap<Identifier> int2ObjectMap = new Int2ObjectOpenHashMap<>();
+            Int2ObjectMap<Identifier> int2ObjectDiseasesMap = new Int2ObjectOpenHashMap<>();
+            Int2ObjectMap<Identifier> int2ObjectWitherMap = new Int2ObjectOpenHashMap<>();
             this.blockStateOutput
                     .accept(
                             MultiVariantGenerator.dispatch(block)
@@ -126,13 +126,13 @@ public abstract class BlockModelGeneratorsMixin implements BlockModelGeneratorsE
                 .put(TextureSlot.TOP, TextureMapping.getBlockTexture(Blocks.FARMLAND, "_moist"));
         TextureMapping farmlandManure = new TextureMapping()
                 .put(TextureSlot.DIRT, TextureMapping.getBlockTexture(Blocks.DIRT))
-                .put(TextureSlot.TOP, ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, "block/farmland_manure"));
+                .put(TextureSlot.TOP, Identifier.fromNamespaceAndPath(MME.MOD_ID, "block/farmland_manure"));
         TextureMapping farmlandManureMoist = new TextureMapping()
                 .put(TextureSlot.DIRT, TextureMapping.getBlockTexture(Blocks.DIRT))
-                .put(TextureSlot.TOP, ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, "block/farmland_moist_manure"));
+                .put(TextureSlot.TOP, Identifier.fromNamespaceAndPath(MME.MOD_ID, "block/farmland_moist_manure"));
 
-        MultiVariant multiVariantFarmlandManureMoist = plainVariant(ModelTemplates.FARMLAND.create(ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, "block/farmland_manure_moist"), farmlandManureMoist, this.modelOutput));
-        MultiVariant multiVariantFarmlandManure = plainVariant(ModelTemplates.FARMLAND.create(ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, "block/farmland_manure"), farmlandManure, this.modelOutput));
+        MultiVariant multiVariantFarmlandManureMoist = plainVariant(ModelTemplates.FARMLAND.create(Identifier.fromNamespaceAndPath(MME.MOD_ID, "block/farmland_manure_moist"), farmlandManureMoist, this.modelOutput));
+        MultiVariant multiVariantFarmlandManure = plainVariant(ModelTemplates.FARMLAND.create(Identifier.fromNamespaceAndPath(MME.MOD_ID, "block/farmland_manure"), farmlandManure, this.modelOutput));
         MultiVariant multiVariantFarmlandMoist = plainVariant(ModelTemplates.FARMLAND.create(TextureMapping.getBlockTexture(Blocks.FARMLAND, "_moist"), farmlandMoist, this.modelOutput));
         MultiVariant multiVariantFarmland = plainVariant(ModelTemplates.FARMLAND.create(TextureMapping.getBlockTexture(Blocks.FARMLAND), farmland, this.modelOutput));
 

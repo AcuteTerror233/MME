@@ -16,11 +16,12 @@ import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -35,6 +36,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.material.Fluids;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Function;
 
 /**
@@ -456,6 +458,7 @@ public class MMEItems {
     public static final Item ADAMANTIUM_MATTOCK = registerHoeItem("adamantium_mattock", getMattockSettings(MMEToolMaterials.ADAMANTIUM).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
     public static final Item ADAMANTIUM_SCYTHE = register("adamantium_scythe", getScytheSettings(MMEToolMaterials.ADAMANTIUM).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
     public static final Item ADAMANTIUM_SHEARS = registerShearsItem("adamantium_shears", getShearsSettings(MMEToolMaterials.ADAMANTIUM).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
+    public static final Item ADAMANTIUM_SPEAR = register("adamantium_spear", applySpearSettings(new Item.Properties(), MMEToolMaterials.ADAMANTIUM, 1.10F, 1.16F, 0.45F, 2.5F, 6.8F, 5.8F, 5.1F, 9.0F, 4.6F).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
 
     public static final Item ANCIENT_METAL_AXE = registerAxeItem("ancient_metal_axe", getAxeSettings(MMEToolMaterials.ANCIENT_METAL));
     public static final Item ANCIENT_METAL_BATTLE_AXE = registerAxeItem("ancient_metal_battle_axe", getBattleAxeSettings(MMEToolMaterials.ANCIENT_METAL));
@@ -470,6 +473,7 @@ public class MMEItems {
     public static final Item ANCIENT_METAL_MATTOCK = registerHoeItem("ancient_metal_mattock", getMattockSettings(MMEToolMaterials.ANCIENT_METAL));
     public static final Item ANCIENT_METAL_SCYTHE = register("ancient_metal_scythe", getScytheSettings(MMEToolMaterials.ANCIENT_METAL));
     public static final Item ANCIENT_METAL_SHEARS = registerShearsItem("ancient_metal_shears", getShearsSettings(MMEToolMaterials.ANCIENT_METAL));
+    public static final Item ANCIENT_METAL_SPEAR = register("ancient_metal_spear", applySpearSettings(new Item.Properties(), MMEToolMaterials.ANCIENT_METAL, 1.02F, 1.05F, 0.53F, 2.5F, 7.5F, 6.5F, 5.1F, 10.0F, 4.6F));
 
     public static final Item COPPER_BATTLE_AXE = registerAxeItem("copper_battle_axe", getBattleAxeSettings(MMEToolMaterials.COPPER));
     public static final Item COPPER_HATCHET = registerAxeItem("copper_hatchet", getHandAxeSettings(MMEToolMaterials.COPPER));
@@ -510,6 +514,7 @@ public class MMEItems {
     public static final Item MITHRIL_MATTOCK = registerHoeItem("mithril_mattock", getMattockSettings(MMEToolMaterials.MITHRIL).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 3));
     public static final Item MITHRIL_SCYTHE = register("mithril_scythe", getScytheSettings(MMEToolMaterials.MITHRIL).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 3));
     public static final Item MITHRIL_SHEARS = registerShearsItem("mithril_shears", getShearsSettings(MMEToolMaterials.MITHRIL).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 3));
+    public static final Item MITHRIL_SPEAR = register("mithril_spear", applySpearSettings(new Item.Properties(), MMEToolMaterials.MITHRIL, 1.06F, 1.10F, 0.50F, 2.5F, 7.2F, 6.2F, 5.1F, 9.5F, 4.6F).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 3));
 
     public static final Item RUSTED_IRON_AXE = registerAxeItem("rusted_iron_axe", getAxeSettings(MMEToolMaterials.RUSTED_IRON));
     public static final Item RUSTED_IRON_BATTLE_AXE = registerAxeItem("rusted_iron_battle_axe", getBattleAxeSettings(MMEToolMaterials.RUSTED_IRON));
@@ -524,6 +529,7 @@ public class MMEItems {
     public static final Item RUSTED_IRON_MATTOCK = registerHoeItem("rusted_iron_mattock", getMattockSettings(MMEToolMaterials.RUSTED_IRON));
     public static final Item RUSTED_IRON_SCYTHE = register("rusted_iron_scythe", getScytheSettings(MMEToolMaterials.RUSTED_IRON));
     public static final Item RUSTED_IRON_SHEARS = registerShearsItem("rusted_iron_shears", getShearsSettings(MMEToolMaterials.RUSTED_IRON));
+    public static final Item RUSTED_IRON_SPEAR = register("rusted_iron_spear", applySpearSettings(new Item.Properties(), MMEToolMaterials.RUSTED_IRON, 0.90F, 0.88F, 0.63F, 3.6F, 8.6F, 7.6F, 5.1F, 11.8F, 4.6F));
 
     public static final Item SILVER_AXE = registerAxeItem("silver_axe", getAxeSettings(MMEToolMaterials.SILVER));
     public static final Item SILVER_BATTLE_AXE = registerAxeItem("silver_battle_axe", getBattleAxeSettings(MMEToolMaterials.SILVER));
@@ -538,6 +544,7 @@ public class MMEItems {
     public static final Item SILVER_MATTOCK = registerHoeItem("silver_mattock", getMattockSettings(MMEToolMaterials.SILVER));
     public static final Item SILVER_SCYTHE = register("silver_scythe", getScytheSettings(MMEToolMaterials.SILVER));
     public static final Item SILVER_SHEARS = registerShearsItem("silver_shears", getShearsSettings(MMEToolMaterials.SILVER));
+    public static final Item SILVER_SPEAR = register("silver_spear", applySpearSettings(new Item.Properties(), MMEToolMaterials.SILVER, 0.98F, 1.00F, 0.56F, 2.8F, 7.8F, 6.8F, 5.1F, 10.5F, 4.6F));
 
     public static final Item OBSIDIAN_AXE = registerAxeItem("obsidian_axe", applyToolSettings(new Item.Properties(), MMEToolMaterials.OBSIDIAN, BlockTags.MINEABLE_WITH_AXE, 3.4F, 2, 4, -2.7F, 0.5F, 0.5F, 5));
     public static final Item OBSIDIAN_HATCHET = registerAxeItem("obsidian_hatchet", applyToolSettings(new Item.Properties(), MMEToolMaterials.OBSIDIAN, BlockTags.MINEABLE_WITH_AXE, 1, 2, 3, -2.7F, 0.25F, 0.25F, 5));
@@ -548,6 +555,7 @@ public class MMEItems {
     public static final Item FLINT_HATCHET = registerAxeItem("flint_hatchet", applyToolSettings(new Item.Properties(), MMEToolMaterials.FLINT, BlockTags.MINEABLE_WITH_AXE, 1, 2, 3, -2.7F, 0.25F, 0.25F, 5));
     public static final Item FLINT_KNIFE = register("flint_knife", applySwordSettings(new Item.Properties(), MMEToolMaterials.FLINT, 3, 1, 2, -2.0F, 0.25F, 0.25F));
     public static final Item FLINT_SHOVEL = register("flint_shovel", applyToolSettings(new Item.Properties(), MMEToolMaterials.FLINT, BlockTags.MINEABLE_WITH_SHOVEL, 3, 2, 1, -2.8F, 0.75F, 0.75F, 0));
+    public static final Item FLINT_SPEAR = register("flint_spear", applySpearSettings(new Item.Properties(), MMEToolMaterials.FLINT, 0.72F, 0.76F, 0.70F, 4.8F, 12.0F, 9.8F, 5.1F, 14.2F, 4.6F));
 
     public static final Item WOODEN_CLUB = register("wooden_club", applySwordSettings(new Item.Properties(), MMEToolMaterials.WOOD, 2, 1, 4, -2.4F, 0.5F, 0.5F));
     public static final Item WOODEN_CUDGEL = register("wooden_cudgel", applySwordSettings(new Item.Properties(), MMEToolMaterials.WOOD, 1, 1, 3, -2.0F, 0.25F, 0.25F));
@@ -1467,6 +1475,7 @@ public class MMEItems {
                 entries.accept(ADAMANTIUM_SCYTHE);
                 entries.accept(ADAMANTIUM_SHEARS);
                 entries.accept(ADAMANTIUM_SHOVEL);
+                entries.accept(ADAMANTIUM_SPEAR);
                 entries.accept(ADAMANTIUM_SWORD);
                 entries.accept(ADAMANTIUM_WAR_HAMMER);
                 entries.accept(MITHRIL_AXE);
@@ -1480,6 +1489,7 @@ public class MMEItems {
                 entries.accept(MITHRIL_SCYTHE);
                 entries.accept(MITHRIL_SHEARS);
                 entries.accept(MITHRIL_SHOVEL);
+                entries.accept(MITHRIL_SPEAR);
                 entries.accept(MITHRIL_SWORD);
                 entries.accept(MITHRIL_WAR_HAMMER);
                 entries.accept(ANCIENT_METAL_AXE);
@@ -1493,6 +1503,7 @@ public class MMEItems {
                 entries.accept(ANCIENT_METAL_SCYTHE);
                 entries.accept(ANCIENT_METAL_SHEARS);
                 entries.accept(ANCIENT_METAL_SHOVEL);
+                entries.accept(ANCIENT_METAL_SPEAR);
                 entries.accept(ANCIENT_METAL_SWORD);
                 entries.accept(ANCIENT_METAL_WAR_HAMMER);
                 entries.accept(IRON_BATTLE_AXE);
@@ -1513,6 +1524,7 @@ public class MMEItems {
                 entries.accept(RUSTED_IRON_SCYTHE);
                 entries.accept(RUSTED_IRON_SHEARS);
                 entries.accept(RUSTED_IRON_SHOVEL);
+                entries.accept(RUSTED_IRON_SPEAR);
                 entries.accept(RUSTED_IRON_SWORD);
                 entries.accept(RUSTED_IRON_WAR_HAMMER);
                 entries.accept(COPPER_BATTLE_AXE);
@@ -1534,6 +1546,7 @@ public class MMEItems {
                 entries.accept(SILVER_SCYTHE);
                 entries.accept(SILVER_SHEARS);
                 entries.accept(SILVER_SHOVEL);
+                entries.accept(SILVER_SPEAR);
                 entries.accept(SILVER_SWORD);
                 entries.accept(SILVER_WAR_HAMMER);
                 entries.accept(GOLDEN_BATTLE_AXE);
@@ -1552,6 +1565,7 @@ public class MMEItems {
                 entries.accept(FLINT_HATCHET);
                 entries.accept(FLINT_KNIFE);
                 entries.accept(FLINT_SHOVEL);
+                entries.accept(FLINT_SPEAR);
                 entries.accept(WOODEN_CLUB);
                 entries.accept(WOODEN_CUDGEL);
 
@@ -1752,6 +1766,65 @@ public class MMEItems {
         return applyToolSettings(new Item.Properties(), material, BlockTags.MINEABLE_WITH_PICKAXE, 5, 1, 3, -3.0f , 0.75f, 0.75f);
     }
 
+    public static Item.Properties applySpearSettings(
+            Item.Properties settings,
+            ToolMaterial toolMaterial,
+            float swingDurationSeconds,
+            float chargedKnockback,
+            float chargeDurationSeconds,
+            float lightSpeedStartSeconds,
+            float lightSpeedThreshold,
+            float heavySpeedStartSeconds,
+            float heavySpeedThreshold,
+            float relativeSpeedStartSeconds,
+            float relativeSpeedThreshold
+    ) {
+        return applyBaseSettings(settings, toolMaterial, 4)
+                .component(DataComponents.DAMAGE_TYPE, new EitherHolder<>(DamageTypes.SPEAR))
+                .component(
+                        DataComponents.KINETIC_WEAPON,
+                        new KineticWeapon(
+                                10,
+                                (int)(chargeDurationSeconds * 20.0F),
+                                KineticWeapon.Condition.ofAttackerSpeed((int)(lightSpeedStartSeconds * 20.0F), lightSpeedThreshold),
+                                KineticWeapon.Condition.ofAttackerSpeed((int)(heavySpeedStartSeconds * 20.0F), heavySpeedThreshold),
+                                KineticWeapon.Condition.ofRelativeSpeed((int)(relativeSpeedStartSeconds * 20.0F), relativeSpeedThreshold),
+                                0.38F,
+                                chargedKnockback,
+                                Optional.of(toolMaterial == ToolMaterial.WOOD ? SoundEvents.SPEAR_WOOD_USE : SoundEvents.SPEAR_USE),
+                                Optional.of(toolMaterial == ToolMaterial.WOOD ? SoundEvents.SPEAR_WOOD_HIT : SoundEvents.SPEAR_HIT)
+                        )
+                )
+                .component(
+                        DataComponents.PIERCING_WEAPON,
+                        new PiercingWeapon(
+                                true,
+                                false,
+                                Optional.of(SoundEvents.SPEAR_ATTACK),
+                                Optional.of(SoundEvents.SPEAR_HIT)
+                        )
+                )
+                .component(DataComponents.ATTACK_RANGE, new AttackRange(2.0F, 4.5F, 2.0F, 6.5F, 0.125F, 0.5F))
+                .component(DataComponents.MINIMUM_ATTACK_CHARGE, 1.0F)
+                .component(DataComponents.SWING_ANIMATION, new SwingAnimation(SwingAnimationType.STAB, (int)(swingDurationSeconds * 20.0F)))
+                .attributes(
+                        ItemAttributeModifiers.builder()
+                                .add(
+                                        Attributes.ATTACK_DAMAGE,
+                                        new AttributeModifier(Item.BASE_ATTACK_DAMAGE_ID, 1 + toolMaterial.attackDamageBonus(), AttributeModifier.Operation.ADD_VALUE),
+                                        EquipmentSlotGroup.MAINHAND
+                                )
+                                .add(
+                                        Attributes.ATTACK_SPEED,
+                                        new AttributeModifier(Item.BASE_ATTACK_SPEED_ID, 1.0F / swingDurationSeconds - 4.0, AttributeModifier.Operation.ADD_VALUE),
+                                        EquipmentSlotGroup.MAINHAND
+                                )
+                                .build()
+                )
+                .component(DataComponents.USE_EFFECTS, new UseEffects(true, false, 1.0F))
+                .component(DataComponents.WEAPON, new Weapon(1));
+    }
+
     public static Item.Properties getShearsSettings(ToolMaterial material) {
         return applyBaseSettings(new Item.Properties(), material, 7)
                 .component(DataComponents.TOOL, ShearsItem.createToolProperties())
@@ -1857,19 +1930,35 @@ public class MMEItems {
         }
         return settings1;
     }
+    public static Item.Properties VanillaSpearSettings(Item.Properties settings, ToolMaterial material, float durabilityMultiplier, float swingDurationSeconds){
+        return applyBaseSettings(settings, material, durabilityMultiplier).attributes(
+                ItemAttributeModifiers.builder()
+                        .add(
+                                Attributes.ATTACK_DAMAGE,
+                                new AttributeModifier(Item.BASE_ATTACK_DAMAGE_ID, 1 + material.attackDamageBonus(), AttributeModifier.Operation.ADD_VALUE),
+                                EquipmentSlotGroup.MAINHAND
+                        )
+                        .add(
+                                Attributes.ATTACK_SPEED,
+                                new AttributeModifier(Item.BASE_ATTACK_SPEED_ID, 1.0F / swingDurationSeconds - 4.0, AttributeModifier.Operation.ADD_VALUE),
+                                EquipmentSlotGroup.MAINHAND
+                        )
+                        .build()
+        );
+    }
 
     private static Item register(String path) {
-        final ResourceKey<Item> registryKey = ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, path));
+        final ResourceKey<Item> registryKey = ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(MME.MOD_ID, path));
         return Items.registerItem(registryKey, Item::new, new Item.Properties());
     }
 
     private static Item register(String path, Item.Properties settings) {
-        final ResourceKey<Item> registryKey = ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, path));
+        final ResourceKey<Item> registryKey = ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(MME.MOD_ID, path));
         return Items.registerItem(registryKey, Item::new, settings);
     }
 
     private static Item register(String path, Function<Item.Properties, Item> factory, Item.Properties settings) {
-        final ResourceKey<Item> registryKey = ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, path));
+        final ResourceKey<Item> registryKey = ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(MME.MOD_ID, path));
         return Items.registerItem(registryKey, factory, settings);
     }
 
@@ -1894,6 +1983,6 @@ public class MMEItems {
     }
 
     public static void init() {
-        Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, "item_group"), MME_GROUP);
+        Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, Identifier.fromNamespaceAndPath(MME.MOD_ID, "item_group"), MME_GROUP);
     }
 }

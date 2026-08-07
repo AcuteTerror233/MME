@@ -5,15 +5,15 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import net.minecraft.Util;
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.EnchantmentTags;
 import net.minecraft.tags.StructureTags;
+import net.minecraft.util.Util;
 import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.npc.VillagerProfession;
-import net.minecraft.world.entity.npc.VillagerTrades;
-import net.minecraft.world.entity.npc.VillagerType;
+import net.minecraft.world.entity.npc.villager.VillagerProfession;
+import net.minecraft.world.entity.npc.villager.VillagerTrades;
+import net.minecraft.world.entity.npc.villager.VillagerType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -34,16 +34,16 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 
-@Mixin(VillagerTrades.class)
 /**
  * Mixin for {@code VillagerTrades} — 修改村民交易列表。
  */
+@Mixin(VillagerTrades.class)
 public class VillagerTradesMixin {
     @Shadow
     @Final
     @Mutable
     public static Map<ResourceKey<VillagerProfession>, Int2ObjectMap<VillagerTrades.ItemListing[]>> TRADES = Util.make(
-            Maps.<ResourceKey<VillagerProfession>, Int2ObjectMap<VillagerTrades.ItemListing[]>>newHashMap(),
+            Maps.newHashMap(),
             hashMap -> {
                 hashMap.put(
                         VillagerProfession.FARMER,
@@ -777,7 +777,6 @@ public class VillagerTradesMixin {
                                     new VillagerTrades.ItemsForEmeralds(Blocks.CHERRY_LOG, 1, 2, 4, 1),
                                     new VillagerTrades.ItemsForEmeralds(Blocks.MANGROVE_LOG, 1, 2, 4, 1),
                                     new VillagerTrades.ItemsForEmeralds(Blocks.PALE_OAK_LOG, 1, 2, 4, 1),
-                                    new VillagerTrades.EnchantedItemForEmeralds(MMEItems.ADAMANTIUM_PICKAXE, 1, 1, 1, 0.2F),
                                     new VillagerTrades.ItemsForEmeralds(potion(Potions.LONG_INVISIBILITY), 5, 1, 1, 1)
                             },
                             2

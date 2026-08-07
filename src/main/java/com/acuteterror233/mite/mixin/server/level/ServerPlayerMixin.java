@@ -24,7 +24,7 @@ public abstract class ServerPlayerMixin extends Player {
         super(level, gameProfile);
     }
 
-    @Inject(method = "doTick", at = @At(value = "INVOKE", target = "Lnet/minecraft/advancements/critereon/PlayerTrigger;trigger(Lnet/minecraft/server/level/ServerPlayer;)V"))
+    @Inject(method = "doTick", at = @At(value = "INVOKE", target = "Lnet/minecraft/advancements/criterion/PlayerTrigger;trigger(Lnet/minecraft/server/level/ServerPlayer;)V"))
     public void doTick(CallbackInfo ci) {
         this.connection.send(new ClientboundSetHealthPacket(this.getHealth(), this.getFoodData().getFoodLevel(), this.getFoodData().getSaturationLevel()));
     }

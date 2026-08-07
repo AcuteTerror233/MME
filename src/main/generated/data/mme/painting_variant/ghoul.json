@@ -1,0 +1,13 @@
+{
+  "asset_id": "mme:ghoul",
+  "author": {
+    "color": "gray",
+    "translate": "painting.mme.ghoul.author"
+  },
+  "height": 3,
+  "title": {
+    "color": "yellow",
+    "translate": "painting.mme.ghoul.title"
+  },
+  "width": 2
+}

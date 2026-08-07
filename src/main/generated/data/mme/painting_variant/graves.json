@@ -1,0 +1,13 @@
+{
+  "asset_id": "mme:graves",
+  "author": {
+    "color": "gray",
+    "translate": "painting.mme.graves.author"
+  },
+  "height": 2,
+  "title": {
+    "color": "yellow",
+    "translate": "painting.mme.graves.title"
+  },
+  "width": 2
+}

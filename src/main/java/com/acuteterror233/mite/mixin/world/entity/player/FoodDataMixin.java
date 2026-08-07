@@ -12,8 +12,8 @@ import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodData;
-import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.GameType;
+import net.minecraft.world.level.gamerules.GameRules;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
 import org.spongepowered.asm.mixin.*;
@@ -21,10 +21,10 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin(FoodData.class)
 /**
  * Mixin for {@code FoodData} — 实现营养系统扩展接口。
  */
+@Mixin(FoodData.class)
 public abstract class FoodDataMixin implements FoodDataExtension {
     @Unique
     private int maxFoodLevel = 6;
@@ -51,6 +51,8 @@ public abstract class FoodDataMixin implements FoodDataExtension {
     private static final float sugar_threshold_2 = 96000;
     @Unique
     private static final float sugar_threshold_3 = 144000;
+    @Shadow
+    public abstract int getFoodLevel();
 
     @Unique
     @Override
@@ -99,7 +101,7 @@ public abstract class FoodDataMixin implements FoodDataExtension {
             }
         }
 
-        boolean bl = serverWorld.getGameRules().getBoolean(GameRules.RULE_NATURAL_REGENERATION);
+        boolean bl = serverWorld.getGameRules().get(GameRules.NATURAL_HEALTH_REGENERATION);
         if (this.foodLevel > 0) {
             if (player.isSleeping()) {
                 this.healTickTimer += 8;
@@ -251,6 +253,11 @@ public abstract class FoodDataMixin implements FoodDataExtension {
         addFiber((int) foodNutrition.fiber());
         addProtein((int) foodNutrition.protein());
         addSugar((int) foodNutrition.sugar());
+    }
+
+    @Overwrite
+    public boolean hasEnoughFood() {
+        return this.getFoodLevel() > 0.0F;
     }
 
     @Override

@@ -221,6 +221,7 @@ public class En_usLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(MMEItems.ADAMANTIUM_SHOVEL, "Adamantium Shovel");
         translationBuilder.add(MMEItems.ADAMANTIUM_SWORD, "Adamantium Sword");
         translationBuilder.add(MMEItems.ADAMANTIUM_WAR_HAMMER, "Adamantium War Hammer");
+        translationBuilder.add(MMEItems.ADAMANTIUM_SPEAR, "Adamantium Spear");
         translationBuilder.add(MMEItems.MITHRIL_AXE, "Mithril Axe");
         translationBuilder.add(MMEItems.MITHRIL_BATTLE_AXE, "Mithril Battle Axe");
         translationBuilder.add(MMEItems.MITHRIL_DAGGER, "Mithril Dagger");
@@ -234,6 +235,7 @@ public class En_usLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(MMEItems.MITHRIL_SHOVEL, "Mithril Shovel");
         translationBuilder.add(MMEItems.MITHRIL_SWORD, "Mithril Sword");
         translationBuilder.add(MMEItems.MITHRIL_WAR_HAMMER, "Mithril War Hammer");
+        translationBuilder.add(MMEItems.MITHRIL_SPEAR, "Mithril Spear");
         translationBuilder.add(MMEItems.ANCIENT_METAL_AXE, "Ancient Metal Axe");
         translationBuilder.add(MMEItems.ANCIENT_METAL_BATTLE_AXE, "Ancient Metal Battle Axe");
         translationBuilder.add(MMEItems.ANCIENT_METAL_DAGGER, "Ancient Metal Dagger");
@@ -247,6 +249,7 @@ public class En_usLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(MMEItems.ANCIENT_METAL_SHOVEL, "Ancient Metal Shovel");
         translationBuilder.add(MMEItems.ANCIENT_METAL_SWORD, "Ancient Metal Sword");
         translationBuilder.add(MMEItems.ANCIENT_METAL_WAR_HAMMER, "Ancient Metal War Hammer");
+        translationBuilder.add(MMEItems.ANCIENT_METAL_SPEAR, "Ancient Metal Spear");
         translationBuilder.add(MMEItems.IRON_BATTLE_AXE, "Iron Battle Axe");
         translationBuilder.add(MMEItems.IRON_DAGGER, "Iron Dagger");
         translationBuilder.add(MMEItems.IRON_HATCHET, "Iron Hatchet");
@@ -267,6 +270,7 @@ public class En_usLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(MMEItems.RUSTED_IRON_SHOVEL, "Rusted Iron Shovel");
         translationBuilder.add(MMEItems.RUSTED_IRON_SWORD, "Rusted Iron Sword");
         translationBuilder.add(MMEItems.RUSTED_IRON_WAR_HAMMER, "Rusted Iron War Hammer");
+        translationBuilder.add(MMEItems.RUSTED_IRON_SPEAR, "Rusted Iron Spear");
         translationBuilder.add(MMEItems.COPPER_BATTLE_AXE, "Copper Battle Axe");
         translationBuilder.add(MMEItems.COPPER_DAGGER, "Copper Dagger");
         translationBuilder.add(MMEItems.COPPER_HATCHET, "Copper Hatchet");
@@ -288,6 +292,7 @@ public class En_usLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(MMEItems.SILVER_SHOVEL, "Silver Shovel");
         translationBuilder.add(MMEItems.SILVER_SWORD, "Silver Sword");
         translationBuilder.add(MMEItems.SILVER_WAR_HAMMER, "Silver War Hammer");
+        translationBuilder.add(MMEItems.SILVER_SPEAR, "Silver Spear");
         translationBuilder.add(MMEItems.GOLDEN_BATTLE_AXE, "Golden Battle Axe");
         translationBuilder.add(MMEItems.GOLDEN_DAGGER, "Golden Dagger");
         translationBuilder.add(MMEItems.GOLDEN_HATCHET, "Golden Hatchet");
@@ -300,6 +305,7 @@ public class En_usLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(MMEItems.FLINT_HATCHET, "Flint Hatchet");
         translationBuilder.add(MMEItems.FLINT_KNIFE, "Flint Knife");
         translationBuilder.add(MMEItems.FLINT_SHOVEL, "Flint Shovel");
+        translationBuilder.add(MMEItems.FLINT_SPEAR, "Flint Spear");
         translationBuilder.add(MMEItems.OBSIDIAN_AXE, "Obsidian Axe");
         translationBuilder.add(MMEItems.OBSIDIAN_HATCHET, "Obsidian Hatchet");
         translationBuilder.add(MMEItems.OBSIDIAN_KNIFE, "Obsidian Knife");
@@ -541,5 +547,56 @@ public class En_usLanguageProvider extends FabricLanguageProvider {
         translationBuilder.addEnchantment(MMEEnchantments.FERTILITY, "Fertility");
         translationBuilder.addEnchantment(MMEEnchantments.UPGRADE, "Infuse");
         translationBuilder.add("container.enchant.upgrade_target", "§7Enchant → %s");
+
+        translationBuilder.add("painting.mme.abyss.title", "abyss");
+        translationBuilder.add("painting.mme.abyss.author", "Avernite");
+        translationBuilder.add("painting.mme.baron_almric.title", "baron_almric");
+        translationBuilder.add("painting.mme.baron_almric.author", "Avernite");
+        translationBuilder.add("painting.mme.boat.title", "boat");
+        translationBuilder.add("painting.mme.boat.author", "Avernite");
+        translationBuilder.add("painting.mme.castle.title", "castle");
+        translationBuilder.add("painting.mme.castle.author", "Avernite");
+        translationBuilder.add("painting.mme.castle_britannia.title", "castle_britannia");
+        translationBuilder.add("painting.mme.castle_britannia.author", "Avernite");
+        translationBuilder.add("painting.mme.darklands.title", "darklands");
+        translationBuilder.add("painting.mme.darklands.author", "Avernite");
+        translationBuilder.add("painting.mme.deathtrap_dungeon.title", "deathtrap_dungeon");
+        translationBuilder.add("painting.mme.deathtrap_dungeon.author", "Avernite");
+        translationBuilder.add("painting.mme.dnd_basic.title", "dnd_basic");
+        translationBuilder.add("painting.mme.dnd_basic.author", "Avernite");
+        translationBuilder.add("painting.mme.draracle.title", "draracle");
+        translationBuilder.add("painting.mme.draracle.author", "Avernite");
+        translationBuilder.add("painting.mme.elden_grove.title", "elden_grove");
+        translationBuilder.add("painting.mme.elden_grove.author", "Avernite");
+        translationBuilder.add("painting.mme.fair_day.title", "fair_day");
+        translationBuilder.add("painting.mme.fair_day.author", "Avernite");
+        translationBuilder.add("painting.mme.fallen_bridge.title", "fallen_bridge");
+        translationBuilder.add("painting.mme.fallen_bridge.author", "Avernite");
+        translationBuilder.add("painting.mme.gate_closing.title", "gate_closing");
+        translationBuilder.add("painting.mme.gate_closing.author", "Avernite");
+        translationBuilder.add("painting.mme.ghoul.title", "ghoul");
+        translationBuilder.add("painting.mme.ghoul.author", "Avernite");
+        translationBuilder.add("painting.mme.gladstone_keep.title", "gladstone_keep");
+        translationBuilder.add("painting.mme.gladstone_keep.author", "Avernite");
+        translationBuilder.add("painting.mme.graves.title", "graves");
+        translationBuilder.add("painting.mme.graves.author", "Avernite");
+        translationBuilder.add("painting.mme.king_richard.title", "king_richard");
+        translationBuilder.add("painting.mme.king_richard.author", "Avernite");
+        translationBuilder.add("painting.mme.messenger.title", "messenger");
+        translationBuilder.add("painting.mme.messenger.author", "Avernite");
+        translationBuilder.add("painting.mme.mountains.title", "mountains");
+        translationBuilder.add("painting.mme.mountains.author", "Avernite");
+        translationBuilder.add("painting.mme.rolands_manor.title", "rolands_manor");
+        translationBuilder.add("painting.mme.rolands_manor.author", "Avernite");
+        translationBuilder.add("painting.mme.scotia.title", "scotia");
+        translationBuilder.add("painting.mme.scotia.author", "Avernite");
+        translationBuilder.add("painting.mme.ship.title", "ship");
+        translationBuilder.add("painting.mme.ship.author", "Avernite");
+        translationBuilder.add("painting.mme.sunlight.title", "sunlight");
+        translationBuilder.add("painting.mme.sunlight.author", "Avernite");
+        translationBuilder.add("painting.mme.titan.title", "titan");
+        translationBuilder.add("painting.mme.titan.author", "Avernite");
+        translationBuilder.add("painting.mme.wolves.title", "wolves");
+        translationBuilder.add("painting.mme.wolves.author", "Avernite");
     }
 }

@@ -5,8 +5,8 @@ import com.acuteterror233.mite.component.MMEDataComponentTypes;
 import com.acuteterror233.mite.item.MMEToolMaterials;
 import com.acuteterror233.mite.registry.tag.MMEItemTags;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.ToolMaterial;
@@ -440,15 +440,15 @@ public class MMEBlocks {
         return register(id, factory, settings, new Item.Properties());
     }
     public static Block registerNoItem(String id, Function<BlockBehaviour.Properties, Block> factory, BlockBehaviour.Properties settings) {
-        return Blocks.register(ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, id)), factory, settings);
+        return Blocks.register(ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(MME.MOD_ID, id)), factory, settings);
     }
     public static Block register(String id, Function<BlockBehaviour.Properties, Block> factory, BlockBehaviour.Properties settings, BiFunction<Block, Item.Properties, Item> factory1) {
-        Block block = Blocks.register(ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, id)), factory, settings);
+        Block block = Blocks.register(ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(MME.MOD_ID, id)), factory, settings);
         Items.registerBlock(block, factory1);
         return block;
     }
     public static Block register(String id, Function<BlockBehaviour.Properties, Block> factory, BlockBehaviour.Properties settings, Item.Properties itemSettings) {
-        Block block = Blocks.register(ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, id)), factory, settings);
+        Block block = Blocks.register(ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(MME.MOD_ID, id)), factory, settings);
         Items.registerBlock(block, itemSettings.useBlockDescriptionPrefix());
         return block;
     }

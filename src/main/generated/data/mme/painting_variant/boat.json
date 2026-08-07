@@ -1,0 +1,13 @@
+{
+  "asset_id": "mme:boat",
+  "author": {
+    "color": "gray",
+    "translate": "painting.mme.boat.author"
+  },
+  "height": 2,
+  "title": {
+    "color": "yellow",
+    "translate": "painting.mme.boat.title"
+  },
+  "width": 3
+}

@@ -3,24 +3,25 @@ package com.acuteterror233.mite.renderer.entity;
 import com.acuteterror233.mite.MME;
 import com.acuteterror233.mite.world.entity.monster.VampireBat;
 import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.model.BatModel;
+import net.minecraft.client.model.ambient.BatModel;
 import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
 import net.minecraft.client.renderer.entity.state.BatRenderState;
+import net.minecraft.client.renderer.rendertype.RenderType;
+import net.minecraft.client.renderer.rendertype.RenderTypes;
 import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import org.jetbrains.annotations.NotNull;
 
 /**
  * 吸血鬼蝙蝠渲染器基类。
  */
 public class VampireBatRenderer<T extends VampireBat> extends MobRenderer<T, BatRenderState, BatModel> {
-    private static final ResourceLocation TEXTURE = ResourceLocation.withDefaultNamespace("textures/entity/bat.png");
-    private static final RenderType EYES = RenderType.eyes(ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, "textures/entity/bat/vampire_bat.png"));
+    private static final Identifier TEXTURE = Identifier.withDefaultNamespace("textures/entity/bat.png");
+    private static final RenderType EYES = RenderTypes.eyes(Identifier.fromNamespaceAndPath(MME.MOD_ID, "textures/entity/bat/vampire_bat.png"));
 
     public VampireBatRenderer(EntityRendererProvider.Context context) {
         super(context, new BatModel(context.bakeLayer(ModelLayers.BAT)), 0.25F);
@@ -49,7 +50,7 @@ public class VampireBatRenderer<T extends VampireBat> extends MobRenderer<T, Bat
     }
 
     @Override
-    public @NotNull ResourceLocation getTextureLocation(BatRenderState renderState) {
+    public @NotNull Identifier getTextureLocation(BatRenderState renderState) {
         return TEXTURE;
     }
 }

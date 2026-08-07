@@ -1,0 +1,13 @@
+{
+  "asset_id": "mme:fallen_bridge",
+  "author": {
+    "color": "gray",
+    "translate": "painting.mme.fallen_bridge.author"
+  },
+  "height": 2,
+  "title": {
+    "color": "yellow",
+    "translate": "painting.mme.fallen_bridge.title"
+  },
+  "width": 3
+}

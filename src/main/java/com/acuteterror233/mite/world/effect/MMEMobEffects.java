@@ -4,7 +4,7 @@ import com.acuteterror233.mite.MME;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.effect.MobEffect;
 
 /**
@@ -22,7 +22,7 @@ public class MMEMobEffects {
     );
 
     private static Holder<MobEffect> register(String id, MobEffect mobEffect) {
-        return Registry.registerForHolder(BuiltInRegistries.MOB_EFFECT, ResourceLocation.fromNamespaceAndPath(MME.MOD_ID, id), mobEffect);
+        return Registry.registerForHolder(BuiltInRegistries.MOB_EFFECT, Identifier.fromNamespaceAndPath(MME.MOD_ID, id), mobEffect);
     }
 
     public static void init() {

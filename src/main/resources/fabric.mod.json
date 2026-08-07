@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "mme",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "name": "Might Makes Everything",
   "description": "这是一个让我的世界'更简单'的Mod",
   "authors": [
@@ -38,7 +38,7 @@
   ],
   "depends": {
     "fabricloader": ">=0.16.13",
-    "minecraft": "~1.21.6",
+    "minecraft": "~1.21.11",
     "java": ">=21",
     "fabric-api": "*"
   },

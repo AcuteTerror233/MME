@@ -16,9 +16,9 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
-import net.minecraft.world.entity.animal.IronGolem;
 import net.minecraft.world.entity.animal.armadillo.Armadillo;
-import net.minecraft.world.entity.monster.Spider;
+import net.minecraft.world.entity.animal.golem.IronGolem;
+import net.minecraft.world.entity.monster.spider.Spider;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
@@ -29,6 +29,7 @@ import net.minecraft.world.level.storage.ValueOutput;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jspecify.annotations.NonNull;
 
 /**
  * 相位蜘蛛实体，继承蜘蛛行为。
@@ -57,7 +58,7 @@ public class PhaseSpider extends Spider {
     }
 
     @Override
-    protected void defineSynchedData(SynchedEntityData.Builder builder) {
+    protected void defineSynchedData(SynchedEntityData.@NonNull Builder builder) {
         super.defineSynchedData(builder);
         builder.define(DODGE_CHARGES, MAX_DODGE_CHARGES);
     }
@@ -65,7 +66,7 @@ public class PhaseSpider extends Spider {
     @Nullable
     @Override
     public SpawnGroupData finalizeSpawn(
-            ServerLevelAccessor serverLevelAccessor, DifficultyInstance difficultyInstance, EntitySpawnReason entitySpawnReason, @Nullable SpawnGroupData spawnGroupData
+            @NonNull ServerLevelAccessor serverLevelAccessor, @NonNull DifficultyInstance difficultyInstance, @NonNull EntitySpawnReason entitySpawnReason, @Nullable SpawnGroupData spawnGroupData
     ) {
         return spawnGroupData;
     }
@@ -76,7 +77,7 @@ public class PhaseSpider extends Spider {
     }
 
     @Override
-    public boolean hurtServer(ServerLevel level, DamageSource damageSource, float amount) {
+    public boolean hurtServer(@NonNull ServerLevel level, DamageSource damageSource, float amount) {
         if (damageSource.is(DamageTypeTags.IS_PROJECTILE)) {
             return !randomTeleport();
         }
@@ -90,13 +91,13 @@ public class PhaseSpider extends Spider {
     }
 
     @Override
-    public void addAdditionalSaveData(ValueOutput tag) {
+    public void addAdditionalSaveData(@NonNull ValueOutput tag) {
         super.addAdditionalSaveData(tag);
         tag.putInt("DodgeCharges", getDodgeCharges());
     }
 
     @Override
-    public void readAdditionalSaveData(ValueInput tag) {
+    public void readAdditionalSaveData(@NonNull ValueInput tag) {
         super.readAdditionalSaveData(tag);
         this.addDodgeCharges(tag.getInt("DodgeCharges").orElse(MAX_DODGE_CHARGES));
     }

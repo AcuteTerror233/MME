@@ -1,0 +1,13 @@
+{
+  "asset_id": "mme:deathtrap_dungeon",
+  "author": {
+    "color": "gray",
+    "translate": "painting.mme.deathtrap_dungeon.author"
+  },
+  "height": 3,
+  "title": {
+    "color": "yellow",
+    "translate": "painting.mme.deathtrap_dungeon.title"
+  },
+  "width": 3
+}

@@ -3,7 +3,7 @@ package com.acuteterror233.mite.mixin.world.entity;
 import com.acuteterror233.mite.registry.tag.MMEItemTags;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -30,7 +30,7 @@ public interface BucketableMixin {
         ItemStack itemStack = player.getItemInHand(hand);
         if (itemStack.is(MMEItemTags.WATER_BUCKET) && entity.isAlive()) {
             entity.playSound(entity.getPickupSound(), 1.0F, 1.0F);
-            ItemStack itemStack2 = new ItemStack(BuiltInRegistries.ITEM.getValue(ResourceLocation.parse(BuiltInRegistries.ITEM.getKey(itemStack.getItem()).toString().replace("water", "")).withPrefix(BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType()).toString().replace("minecraft:", ""))));
+            ItemStack itemStack2 = new ItemStack(BuiltInRegistries.ITEM.getValue(Identifier.parse(BuiltInRegistries.ITEM.getKey(itemStack.getItem()).toString().replace("water", "")).withPrefix(BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType()).toString().replace("minecraft:", ""))));
             entity.saveToBucketTag(itemStack2);
             ItemStack itemStack3 = ItemUtils.createFilledResult(itemStack, player, itemStack2, false);
             player.setItemInHand(hand, itemStack3);

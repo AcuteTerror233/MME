@@ -1,0 +1,13 @@
+{
+  "asset_id": "mme:messenger",
+  "author": {
+    "color": "gray",
+    "translate": "painting.mme.messenger.author"
+  },
+  "height": 2,
+  "title": {
+    "color": "yellow",
+    "translate": "painting.mme.messenger.title"
+  },
+  "width": 3
+}

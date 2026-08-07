@@ -3,7 +3,6 @@ package com.acuteterror233.mite.gui.screen.inventory;
 import com.acuteterror233.mite.inventory.GradeAnvilMenu;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.screens.inventory.ItemCombinerScreen;
@@ -12,7 +11,7 @@ import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.game.ServerboundRenameItemPacket;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -25,10 +24,10 @@ import net.minecraft.world.item.ItemStack;
  * 渲染等级铁砧的客户端界面。
  */
 public class GradeAnvilScreen extends ItemCombinerScreen<GradeAnvilMenu> {
-    private static final ResourceLocation TEXT_FIELD_TEXTURE = ResourceLocation.withDefaultNamespace("container/anvil/text_field");
-    private static final ResourceLocation TEXT_FIELD_DISABLED_TEXTURE = ResourceLocation.withDefaultNamespace("container/anvil/text_field_disabled");
-    private static final ResourceLocation ERROR_TEXTURE = ResourceLocation.withDefaultNamespace("container/anvil/error");
-    private static final ResourceLocation TEXTURE = ResourceLocation.withDefaultNamespace("textures/gui/container/anvil.png");
+    private static final Identifier TEXT_FIELD_TEXTURE = Identifier.withDefaultNamespace("container/anvil/text_field");
+    private static final Identifier TEXT_FIELD_DISABLED_TEXTURE = Identifier.withDefaultNamespace("container/anvil/text_field_disabled");
+    private static final Identifier ERROR_TEXTURE = Identifier.withDefaultNamespace("container/anvil/error");
+    private static final Identifier TEXTURE = Identifier.withDefaultNamespace("textures/gui/container/anvil.png");
     private static final Component TOO_EXPENSIVE_TEXT = Component.translatable("container.repair.expensive");
     private EditBox name;
     private final Player player;
@@ -66,9 +65,9 @@ public class GradeAnvilScreen extends ItemCombinerScreen<GradeAnvilMenu> {
     }
 
     @Override
-    public void resize(Minecraft client, int width, int height) {
+    public void resize(int width, int height) {
         String string = this.name.getValue();
-        this.init(client, width, height);
+        this.init(width, height);
         this.name.setValue(string);
     }
 
