@@ -1,0 +1,8 @@
+{
+  "replace": true,
+  "values": [
+    "mme:weaponsmith/2/copper_emerald",
+    "mme:weaponsmith/2/silver_emerald",
+    "mme:weaponsmith/2/emerald_bell"
+  ]
+}

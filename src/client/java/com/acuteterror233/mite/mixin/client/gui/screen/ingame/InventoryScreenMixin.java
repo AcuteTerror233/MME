@@ -3,7 +3,7 @@ package com.acuteterror233.mite.mixin.client.gui.screen.ingame;
 import com.acuteterror233.mite.MME;
 import com.acuteterror233.mite.atinterface.InventoryMenuExtension;
 import com.acuteterror233.mite.inventory.slot.PlayerCraftingResultSlot;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.screens.inventory.AbstractRecipeBookScreen;
 import net.minecraft.client.gui.screens.inventory.InventoryScreen;
 import net.minecraft.client.gui.screens.recipebook.RecipeBookComponent;
@@ -22,18 +22,18 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.List;
 
-@Mixin(InventoryScreen.class)
 /**
  * Mixin for {@code InventoryScreen} — 修改物品栏界面。
  */
+@Mixin(InventoryScreen.class)
 public abstract class InventoryScreenMixin extends AbstractRecipeBookScreen<InventoryMenu> {
     @Unique
     private static final Identifier CRAFTING_PROGRESS_TEXTURE = Identifier.fromNamespaceAndPath(MME.MOD_ID, "container/inventory/inventory_progress");
     public InventoryScreenMixin(InventoryMenu handler, RecipeBookComponent<?> recipeBook, Inventory inventory, Component title) {
         super(handler, recipeBook, inventory, title);
     }
-    @Inject(method = "renderBg", at = @At("RETURN"))
-    protected void renderBg(GuiGraphics context, float deltaTicks, int mouseX, int mouseY, CallbackInfo ci) {
+    @Inject(method = "extractBackground", at = @At("RETURN"))
+    protected void renderBg(GuiGraphicsExtractor context, int mouseX, int mouseY, float deltaTicks, CallbackInfo ci) {
         int x = this.leftPos;
         int y = this.topPos;
         double v = ((InventoryMenuExtension)this.menu).MME$GetCraftingTime();

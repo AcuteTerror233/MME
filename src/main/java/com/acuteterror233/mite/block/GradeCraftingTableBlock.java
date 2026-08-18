@@ -44,10 +44,11 @@ public class GradeCraftingTableBlock extends Block {
     @Override
     protected MenuProvider getMenuProvider(BlockState state, Level world, BlockPos pos) {
         return new SimpleMenuProvider(
-                (syncId, inventory, player) -> new GradeCraftingTableMenu(
+                (syncId, inventory, _) -> new GradeCraftingTableMenu(
                         syncId,
                         inventory,
                         ContainerLevelAccess.create(world, pos),
+                        this,
                         this.exceptionsTag,
                         this.disableMaterialsTag,
                         this.craftingSpeedBonus

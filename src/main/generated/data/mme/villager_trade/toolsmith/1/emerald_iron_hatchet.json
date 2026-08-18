@@ -1,0 +1,10 @@
+{
+  "gives": {
+    "id": "mme:iron_hatchet"
+  },
+  "max_uses": 16.0,
+  "reputation_discount": 0.2,
+  "wants": {
+    "id": "minecraft:emerald"
+  }
+}

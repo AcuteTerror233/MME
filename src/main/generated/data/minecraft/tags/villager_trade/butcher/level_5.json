@@ -1,0 +1,8 @@
+{
+  "replace": true,
+  "values": [
+    "mme:butcher/5/porkchop_and_charcoal_cooked_porkchop",
+    "mme:butcher/5/beef_and_charcoal_cooked_beef",
+    "mme:butcher/5/sweet_berries_emerald"
+  ]
+}

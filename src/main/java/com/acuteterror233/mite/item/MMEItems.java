@@ -8,7 +8,7 @@ import com.acuteterror233.mite.item.equipment.MMEArmorMaterial;
 import com.acuteterror233.mite.registry.tag.MMEBlockTags;
 import com.acuteterror233.mite.world.entity.MMEEntityTypes;
 import com.acuteterror233.mite.world.food.FoodNutrition;
-import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
+import net.fabricmc.fabric.api.creativetab.v1.FabricCreativeModeTab;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.Registry;
@@ -439,7 +439,7 @@ public class MMEItems {
     public static final Item NETHERITE_BATTLE_AXE = registerAxeItem("netherite_battle_axe", getBattleAxeSettings(MMEToolMaterials.NETHERITE).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
     public static final Item NETHERITE_HATCHET = registerAxeItem("netherite_hatchet", getHandAxeSettings(MMEToolMaterials.NETHERITE).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
     public static final Item NETHERITE_DAGGER = register("netherite_dagger", getDaggerSettings(MMEToolMaterials.NETHERITE).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
-    public static final Item NETHERITE_KNIFE = register("netherite_knife", new Item.Properties().component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
+    public static final Item NETHERITE_KNIFE = register("netherite_knife");
     public static final Item NETHERITE_WAR_HAMMER = register("netherite_war_hammer", getWarHammerSettings(MMEToolMaterials.NETHERITE).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
     public static final Item NETHERITE_MATTOCK = registerHoeItem("netherite_mattock", getMattockSettings(MMEToolMaterials.NETHERITE).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
     public static final Item NETHERITE_SCYTHE = register("netherite_scythe", getScytheSettings(MMEToolMaterials.NETHERITE).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
@@ -450,7 +450,7 @@ public class MMEItems {
     public static final Item ADAMANTIUM_HATCHET = registerAxeItem("adamantium_hatchet", getHandAxeSettings(MMEToolMaterials.ADAMANTIUM).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
     public static final Item ADAMANTIUM_SWORD = register("adamantium_sword", getSwordSettings(MMEToolMaterials.ADAMANTIUM).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
     public static final Item ADAMANTIUM_DAGGER = register("adamantium_dagger", getDaggerSettings(MMEToolMaterials.ADAMANTIUM).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
-    public static final Item ADAMANTIUM_KNIFE = register("adamantium_knife", new Item.Properties().component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
+    public static final Item ADAMANTIUM_KNIFE = register("adamantium_knife");
     public static final Item ADAMANTIUM_PICKAXE = register("adamantium_pickaxe", getPickaxeSettings(MMEToolMaterials.ADAMANTIUM).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
     public static final Item ADAMANTIUM_WAR_HAMMER = register("adamantium_war_hammer", getWarHammerSettings(MMEToolMaterials.ADAMANTIUM).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
     public static final Item ADAMANTIUM_SHOVEL = registerShovelItem("adamantium_shovel", getShovelSettings(MMEToolMaterials.ADAMANTIUM).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
@@ -506,7 +506,7 @@ public class MMEItems {
     public static final Item MITHRIL_HATCHET = registerAxeItem("mithril_hatchet", getHandAxeSettings(MMEToolMaterials.MITHRIL).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 3));
     public static final Item MITHRIL_SWORD = register("mithril_sword", getSwordSettings(MMEToolMaterials.MITHRIL).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 3));
     public static final Item MITHRIL_DAGGER = register("mithril_dagger", getDaggerSettings(MMEToolMaterials.MITHRIL).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 3));
-    public static final Item MITHRIL_KNIFE = register("mithril_knife", new Item.Properties().component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 3));
+    public static final Item MITHRIL_KNIFE = register("mithril_knife");
     public static final Item MITHRIL_PICKAXE = register("mithril_pickaxe", getPickaxeSettings(MMEToolMaterials.MITHRIL).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 3));
     public static final Item MITHRIL_WAR_HAMMER = register("mithril_war_hammer", getWarHammerSettings(MMEToolMaterials.MITHRIL).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 3));
     public static final Item MITHRIL_SHOVEL = registerShovelItem("mithril_shovel", getShovelSettings(MMEToolMaterials.MITHRIL).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 3));
@@ -1287,7 +1287,7 @@ public class MMEItems {
             new Item.Properties().spawnEgg(MMEEntityTypes.GIANT_VAMPIRE_BAT)
     );
 
-    public static final CreativeModeTab MME_GROUP = FabricItemGroup.builder()
+    public static final CreativeModeTab MME_GROUP = FabricCreativeModeTab.builder()
             .icon(() -> new ItemStack(MMEBlocks.ADAMANTIUM_AN_RUNESTORE))
             .title(Component.translatable("itemGroup.mme.item_group"))
             .displayItems((context, entries) -> {
@@ -1780,7 +1780,7 @@ public class MMEItems {
             float relativeSpeedThreshold
     ) {
         return applyBaseSettings(settings, toolMaterial, 4)
-                .component(DataComponents.DAMAGE_TYPE, new EitherHolder<>(DamageTypes.SPEAR))
+                .delayedHolderComponent(DataComponents.DAMAGE_TYPE, DamageTypes.SPEAR)
                 .component(
                         DataComponents.KINETIC_WEAPON,
                         new KineticWeapon(
@@ -1949,17 +1949,17 @@ public class MMEItems {
 
     private static Item register(String path) {
         final ResourceKey<Item> registryKey = ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(MME.MOD_ID, path));
-        return Items.registerItem(registryKey, Item::new, new Item.Properties());
+        return Registry.register(BuiltInRegistries.ITEM, registryKey, new Item(new Item.Properties().setId(registryKey)));
     }
 
     private static Item register(String path, Item.Properties settings) {
         final ResourceKey<Item> registryKey = ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(MME.MOD_ID, path));
-        return Items.registerItem(registryKey, Item::new, settings);
+        return Registry.register(BuiltInRegistries.ITEM, registryKey, new Item(settings.setId(registryKey)));
     }
 
     private static Item register(String path, Function<Item.Properties, Item> factory, Item.Properties settings) {
         final ResourceKey<Item> registryKey = ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(MME.MOD_ID, path));
-        return Items.registerItem(registryKey, factory, settings);
+        return Registry.register(BuiltInRegistries.ITEM, registryKey, factory.apply(settings.setId(registryKey)));
     }
 
     private static Item registerAxeItem(String path, Item.Properties settings) {
@@ -1979,7 +1979,10 @@ public class MMEItems {
     }
 
     public static Item register(Block block, Item.Properties settings) {
-        return Items.registerBlock(block, settings);
+        ResourceKey<Item> itemKey = ResourceKey.create(Registries.ITEM, block.builtInRegistryHolder().key().identifier());
+        BlockItem item = new BlockItem(block, settings.useBlockDescriptionPrefix().setId(itemKey));
+        item.registerBlocks(Item.BY_BLOCK, item);
+        return Registry.register(BuiltInRegistries.ITEM, itemKey, item);
     }
 
     public static void init() {

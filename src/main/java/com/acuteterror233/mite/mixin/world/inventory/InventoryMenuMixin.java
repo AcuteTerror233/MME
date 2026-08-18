@@ -154,7 +154,7 @@ public abstract class InventoryMenuMixin extends AbstractCraftingMenu implements
             RecipeHolder<CraftingRecipe> recipeEntry = optional.get();
             CraftingRecipe craftingRecipe = recipeEntry.value();
             if (resultInventory.setRecipeUsed(serverPlayerEntity, recipeEntry)) {
-                ItemStack craftItem = craftingRecipe.assemble(craftingRecipeInput, world.registryAccess());
+                ItemStack craftItem = craftingRecipe.assemble(craftingRecipeInput);
                 if (craftItem.isItemEnabled(world.enabledFeatures())) {
                     this.property.set(2, 1);
                     isAllowedCrafting(craftingInventory, craftItem);

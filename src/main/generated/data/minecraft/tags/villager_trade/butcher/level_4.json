@@ -1,0 +1,9 @@
+{
+  "replace": true,
+  "values": [
+    "mme:butcher/4/chicken_and_charcoal_cooked_chicken",
+    "mme:butcher/4/mutton_and_charcoal_cooked_mutton",
+    "mme:butcher/4/rabbit_and_charcoal_cooked_rabbit",
+    "mme:butcher/4/dried_kelp_block_emerald"
+  ]
+}

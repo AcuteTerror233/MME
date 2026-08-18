@@ -111,9 +111,9 @@ public class BlueBerryBushBlock
         int i = blockState.getValue(AGE);
         bl = i == 3;
         if (i > 1) {
-            int j = 1 + level.random.nextInt(2);
+            int j = 1 + level.getRandom().nextInt(2);
             popResource(level, blockPos, new ItemStack(MMEItems.BLUE_BERRIE, j + (bl ? 1 : 0)));
-            level.playSound(null, blockPos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0f, 0.8f + level.random.nextFloat() * 0.4f);
+            level.playSound(null, blockPos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0f, 0.8f + level.getRandom().nextFloat() * 0.4f);
             BlockState blockState2 = blockState.setValue(AGE, 1);
             level.setBlock(blockPos, blockState2, 2);
             level.gameEvent(GameEvent.BLOCK_CHANGE, blockPos, GameEvent.Context.of(player, blockState2));

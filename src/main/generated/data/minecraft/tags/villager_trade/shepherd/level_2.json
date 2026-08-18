@@ -1,0 +1,25 @@
+{
+  "replace": true,
+  "values": [
+    "mme:shepherd/2/blue_dye_emerald",
+    "mme:shepherd/2/emerald_black_carpet",
+    "mme:shepherd/2/emerald_blue_carpet",
+    "mme:shepherd/2/emerald_brown_carpet",
+    "mme:shepherd/2/emerald_cyan_carpet",
+    "mme:shepherd/2/emerald_gray_carpet",
+    "mme:shepherd/2/emerald_green_carpet",
+    "mme:shepherd/2/emerald_light_blue_carpet",
+    "mme:shepherd/2/emerald_light_gray_carpet",
+    "mme:shepherd/2/emerald_lime_carpet",
+    "mme:shepherd/2/emerald_magenta_carpet",
+    "mme:shepherd/2/emerald_orange_carpet",
+    "mme:shepherd/2/emerald_pink_carpet",
+    "mme:shepherd/2/emerald_purple_carpet",
+    "mme:shepherd/2/emerald_red_carpet",
+    "mme:shepherd/2/emerald_white_carpet",
+    "mme:shepherd/2/emerald_yellow_carpet",
+    "mme:shepherd/2/green_dye_emerald",
+    "mme:shepherd/2/red_dye_emerald",
+    "mme:shepherd/2/yellow_dye_emerald"
+  ]
+}

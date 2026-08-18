@@ -1,0 +1,11 @@
+{
+  "replace": true,
+  "values": [
+    "mme:farmer/1/beetroot_emerald",
+    "mme:farmer/1/blue_berry_emerald",
+    "mme:farmer/1/carrot_emerald",
+    "mme:farmer/1/emerald_bread",
+    "mme:farmer/1/potato_emerald",
+    "mme:farmer/1/wheat_emerald"
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "replace": true,
+  "values": [
+    "mme:armorer/1/emerald_iron_boots",
+    "mme:armorer/1/emerald_iron_chestplate",
+    "mme:armorer/1/emerald_iron_helmet",
+    "mme:armorer/1/emerald_iron_leggings"
+  ]
+}

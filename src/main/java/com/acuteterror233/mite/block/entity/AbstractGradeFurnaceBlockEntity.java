@@ -11,7 +11,6 @@ import it.unimi.dsi.fastutil.objects.Reference2IntOpenHashMap;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
-import net.minecraft.core.RegistryAccess;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
@@ -174,7 +173,7 @@ public abstract class AbstractGradeFurnaceBlockEntity extends BaseContainerBlock
             int requiredCombustionGrade = itemRequiredCombustionGrade == null ? 0 : itemRequiredCombustionGrade;
             // 检查方块实体是否未在燃烧、燃料等级是否满足要求、是否不超过最大燃烧等级，
             // 并且能否接受当前配方的输出，若条件满足则设置方块实体的燃烧等级
-            if (!blockEntity.isBurning() && requiredCombustionGrade <= fuelGrade && fuelGrade <= blockEntity.maxCombustionGrade && canAcceptRecipeOutput(world.registryAccess(), recipeEntry, singleStackRecipeInput, blockEntity.inventory, maxCountPerStack)) {
+            if (!blockEntity.isBurning() && requiredCombustionGrade <= fuelGrade && fuelGrade <= blockEntity.maxCombustionGrade && canAcceptRecipeOutput(recipeEntry, singleStackRecipeInput, blockEntity.inventory, maxCountPerStack)) {
                 blockEntity.currentCombustionGrade = fuelGrade;
                 blockEntity.litTimeRemaining = blockEntity.getFuelTime(world.fuelValues(), fuelSlot);
                 blockEntity.litTotalTime = blockEntity.litTimeRemaining;
@@ -186,14 +185,14 @@ public abstract class AbstractGradeFurnaceBlockEntity extends BaseContainerBlock
                         Item fuel = fuelSlot.getItem();
                         fuelSlot.shrink(1);
                         if (fuelSlot.isEmpty()) {
-                            blockEntity.inventory.set(1, fuel.getCraftingRemainder());
+                            blockEntity.inventory.set(1, fuel.getCraftingRemainder().create());
                         }
                     }
                 }
             }
             // 检查方块实体是否正在燃烧、能否接受当前配方输出以及燃烧等级是否满足要求，
             // 若所有条件均满足，则增加方块实体的已燃烧时间计数。
-            if (blockEntity.isBurning() && blockEntity.currentCombustionGrade >= requiredCombustionGrade && canAcceptRecipeOutput(world.registryAccess(), recipeEntry, singleStackRecipeInput, blockEntity.inventory, maxCountPerStack)) {
+            if (blockEntity.isBurning() && blockEntity.currentCombustionGrade >= requiredCombustionGrade && canAcceptRecipeOutput(recipeEntry, singleStackRecipeInput, blockEntity.inventory, maxCountPerStack)) {
                 blockEntity.cookingTimeSpent++;
 
                 // 当烧制时间达到总烧制时间时，完成一次完整的烧制过程
@@ -202,7 +201,7 @@ public abstract class AbstractGradeFurnaceBlockEntity extends BaseContainerBlock
                     blockEntity.cookingTotalTime = getCookTime(world, blockEntity);
 
                     // 执行实际的合成操作并记录最后使用的配方
-                    if (craftRecipe(world.registryAccess(), recipeEntry, singleStackRecipeInput, blockEntity.inventory, maxCountPerStack)) {
+                    if (craftRecipe(recipeEntry, singleStackRecipeInput, blockEntity.inventory, maxCountPerStack)) {
                         blockEntity.setRecipeUsed(recipeEntry);
                     }
 
@@ -234,14 +233,13 @@ public abstract class AbstractGradeFurnaceBlockEntity extends BaseContainerBlock
 
 
     private static boolean canAcceptRecipeOutput(
-            RegistryAccess dynamicRegistryManager,
             @Nullable RecipeHolder<? extends AbstractCookingRecipe> recipe,
             SingleRecipeInput input,
             NonNullList<ItemStack> inventory,
             int maxCount
     ) {
         if (!inventory.get(0).isEmpty() && recipe != null) {
-            ItemStack itemStack = recipe.value().assemble(input, dynamicRegistryManager);
+            ItemStack itemStack = recipe.value().assemble(input);
             if (itemStack.isEmpty()) {
                 return false;
             } else {
@@ -260,15 +258,14 @@ public abstract class AbstractGradeFurnaceBlockEntity extends BaseContainerBlock
     }
 
     private static boolean craftRecipe(
-            RegistryAccess dynamicRegistryManager,
             @Nullable RecipeHolder<? extends AbstractCookingRecipe> recipe,
             SingleRecipeInput input,
             NonNullList<ItemStack> inventory,
             int maxCount
     ) {
-        if (recipe != null && canAcceptRecipeOutput(dynamicRegistryManager, recipe, input, inventory, maxCount)) {
+        if (recipe != null && canAcceptRecipeOutput(recipe, input, inventory, maxCount)) {
             ItemStack itemStack = inventory.get(0);
-            ItemStack itemStack2 = recipe.value().assemble(input, dynamicRegistryManager);
+            ItemStack itemStack2 = recipe.value().assemble(input);
             ItemStack itemStack3 = inventory.get(2);
             if (itemStack3.isEmpty()) {
                 inventory.set(2, itemStack2.copy());

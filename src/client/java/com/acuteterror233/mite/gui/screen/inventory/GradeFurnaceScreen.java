@@ -17,11 +17,11 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-@Environment(EnvType.CLIENT)
 /**
  * 等级熔炉 GUI 界面。
  * 渲染等级熔炉的客户端界面。
  */
+@Environment(EnvType.CLIENT)
 public class GradeFurnaceScreen extends AbstractFurnaceScreen<GradeFurnaceMenu> {
     private static final Identifier LIT_PROGRESS_TEXTURE = Identifier.withDefaultNamespace("container/furnace/lit_progress");
     private static final Identifier BURN_PROGRESS_TEXTURE = Identifier.withDefaultNamespace("container/furnace/burn_progress");

@@ -12,7 +12,8 @@ import net.minecraft.client.data.models.blockstates.BlockModelDefinitionGenerato
 import net.minecraft.client.data.models.blockstates.MultiVariantGenerator;
 import net.minecraft.client.data.models.blockstates.PropertyDispatch;
 import net.minecraft.client.data.models.model.*;
-import net.minecraft.client.renderer.block.model.VariantMutator;
+import net.minecraft.client.renderer.block.dispatch.VariantMutator;
+import net.minecraft.client.resources.model.sprite.Material;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.block.Block;
@@ -28,10 +29,10 @@ import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
-@Mixin(BlockModelGenerators.class)
 /**
  * Mixin for {@code BlockModelGenerators} — 实现方块模型生成扩展接口。
  */
+@Mixin(BlockModelGenerators.class)
 public abstract class BlockModelGeneratorsMixin implements BlockModelGeneratorsExtension {
     @Shadow
     public static MultiVariant plainVariant(Identifier id) {
@@ -89,21 +90,21 @@ public abstract class BlockModelGeneratorsMixin implements BlockModelGeneratorsE
                                                                     case 2 -> {
                                                                         return plainVariant(int2ObjectWitherMap.computeIfAbsent(
                                                                                         i,
-                                                                                        integer -> ModelTemplates.CROP.create(path.withPrefix("block/").withSuffix("_wither_stage" + integer), TextureMapping.crop(path.withPrefix("block/crops/").withSuffix("_wither_stage" + integer)), this.modelOutput)
+                                                                                        integer -> ModelTemplates.CROP.create(path.withPrefix("block/").withSuffix("_wither_stage" + integer), TextureMapping.crop(new Material(path.withPrefix("block/crops/").withSuffix("_wither_stage" + integer))), this.modelOutput)
                                                                                 )
                                                                         );
                                                                     }
                                                                     case 1 -> {
                                                                         return plainVariant(int2ObjectDiseasesMap.computeIfAbsent(
                                                                                         i,
-                                                                                        integer -> ModelTemplates.CROP.create(path.withPrefix("block/").withSuffix("_diseases_stage" + integer), TextureMapping.crop(path.withPrefix("block/crops/").withSuffix("_diseases_stage" + integer)), this.modelOutput)
+                                                                                        integer -> ModelTemplates.CROP.create(path.withPrefix("block/").withSuffix("_diseases_stage" + integer), TextureMapping.crop(new Material(path.withPrefix("block/crops/").withSuffix("_diseases_stage" + integer))), this.modelOutput)
                                                                                 )
                                                                         );
                                                                     }
                                                                     default -> {
                                                                         return plainVariant(int2ObjectMap.computeIfAbsent(
                                                                                         i,
-                                                                                        integer -> ModelTemplates.CROP.create(resourceLocation.withPrefix("block/").withSuffix("_stage" + integer), TextureMapping.crop(resourceLocation.withPrefix("block/").withSuffix("_stage" + integer)), this.modelOutput)
+                                                                                        integer -> ModelTemplates.CROP.create(resourceLocation.withPrefix("block/").withSuffix("_stage" + integer), TextureMapping.crop(new Material(resourceLocation.withPrefix("block/").withSuffix("_stage" + integer))), this.modelOutput)
                                                                                 )
                                                                         );
                                                                     }
@@ -126,15 +127,15 @@ public abstract class BlockModelGeneratorsMixin implements BlockModelGeneratorsE
                 .put(TextureSlot.TOP, TextureMapping.getBlockTexture(Blocks.FARMLAND, "_moist"));
         TextureMapping farmlandManure = new TextureMapping()
                 .put(TextureSlot.DIRT, TextureMapping.getBlockTexture(Blocks.DIRT))
-                .put(TextureSlot.TOP, Identifier.fromNamespaceAndPath(MME.MOD_ID, "block/farmland_manure"));
+                .put(TextureSlot.TOP, new Material(Identifier.fromNamespaceAndPath(MME.MOD_ID, "block/farmland_manure")));
         TextureMapping farmlandManureMoist = new TextureMapping()
                 .put(TextureSlot.DIRT, TextureMapping.getBlockTexture(Blocks.DIRT))
-                .put(TextureSlot.TOP, Identifier.fromNamespaceAndPath(MME.MOD_ID, "block/farmland_moist_manure"));
+                .put(TextureSlot.TOP, new Material(Identifier.fromNamespaceAndPath(MME.MOD_ID, "block/farmland_moist_manure")));
 
         MultiVariant multiVariantFarmlandManureMoist = plainVariant(ModelTemplates.FARMLAND.create(Identifier.fromNamespaceAndPath(MME.MOD_ID, "block/farmland_manure_moist"), farmlandManureMoist, this.modelOutput));
         MultiVariant multiVariantFarmlandManure = plainVariant(ModelTemplates.FARMLAND.create(Identifier.fromNamespaceAndPath(MME.MOD_ID, "block/farmland_manure"), farmlandManure, this.modelOutput));
-        MultiVariant multiVariantFarmlandMoist = plainVariant(ModelTemplates.FARMLAND.create(TextureMapping.getBlockTexture(Blocks.FARMLAND, "_moist"), farmlandMoist, this.modelOutput));
-        MultiVariant multiVariantFarmland = plainVariant(ModelTemplates.FARMLAND.create(TextureMapping.getBlockTexture(Blocks.FARMLAND), farmland, this.modelOutput));
+        MultiVariant multiVariantFarmlandMoist = plainVariant(ModelTemplates.FARMLAND.create(TextureMapping.getBlockTexture(Blocks.FARMLAND, "_moist").sprite(), farmlandMoist, this.modelOutput));
+        MultiVariant multiVariantFarmland = plainVariant(ModelTemplates.FARMLAND.create(TextureMapping.getBlockTexture(Blocks.FARMLAND).sprite(), farmland, this.modelOutput));
 
         this.blockStateOutput
                 .accept(

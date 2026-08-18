@@ -25,6 +25,7 @@ public class MMEEntityTypes {
                     .passengerAttachments(2.0125F)
                     .ridingOffset(-0.7F)
                     .clientTrackingRange(8)
+                    .notInPeaceful()
     );
     public static final EntityType<Shadow> SHADOW = register(
             "shadow",
@@ -34,6 +35,7 @@ public class MMEEntityTypes {
                     .passengerAttachments(2.0125F)
                     .ridingOffset(-0.7F)
                     .clientTrackingRange(8)
+                    .notInPeaceful()
     );
     public static final EntityType<Wight> WIGHT = register(
             "wight",
@@ -43,6 +45,7 @@ public class MMEEntityTypes {
                     .passengerAttachments(2.0125F)
                     .ridingOffset(-0.7F)
                     .clientTrackingRange(8)
+                    .notInPeaceful()
     );
     public static final EntityType<InvisibleStalker> INVISIBLE_STALKER = register(
             "invisible_stalker",
@@ -52,6 +55,7 @@ public class MMEEntityTypes {
                     .passengerAttachments(2.0125F)
                     .ridingOffset(-0.7F)
                     .clientTrackingRange(8)
+                    .notInPeaceful()
     );
     public static final EntityType<DemonSpider> DEMON_SPIDER = register(
             "demon_spider",
@@ -59,6 +63,7 @@ public class MMEEntityTypes {
                     .sized(1.4F, 0.9F)
                     .eyeHeight(0.65F)
                     .clientTrackingRange(8)
+                    .notInPeaceful()
     );
     public static final EntityType<PhaseSpider> PHASE_SPIDER = register(
             "phase_spider",
@@ -66,6 +71,7 @@ public class MMEEntityTypes {
                     .sized(0.7F, 0.5F)
                     .eyeHeight(0.45F)
                     .clientTrackingRange(8)
+                    .notInPeaceful()
     );
     public static final EntityType<InfernalCreeper> INFERNAL_CREEPER = register(
             "infernal_creeper",
@@ -74,6 +80,7 @@ public class MMEEntityTypes {
                     .eyeHeight(1.62F)
                     .passengerAttachments(1.2F)
                     .clientTrackingRange(8)
+                    .notInPeaceful()
     );
     public static final EntityType<FireElemental> FIRE_ELEMENTAL = register(
             "fire_elemental",
@@ -84,6 +91,7 @@ public class MMEEntityTypes {
                     .ridingOffset(-0.7F)
                     .clientTrackingRange(8)
                     .fireImmune()
+                    .notInPeaceful()
     );
     public static final EntityType<VampireBat> VAMPIRE_BAT = register(
             "vampire_bat",
@@ -91,6 +99,7 @@ public class MMEEntityTypes {
                     .sized(0.5F, 0.9F)
                     .eyeHeight(0.45F)
                     .clientTrackingRange(8)
+                    .notInPeaceful()
     );
     public static final EntityType<Nightwing> NIGHTWING = register(
             "nightwing",
@@ -98,6 +107,7 @@ public class MMEEntityTypes {
                     .sized(0.5F, 0.9F)
                     .eyeHeight(0.45F)
                     .clientTrackingRange(8)
+                    .notInPeaceful()
     );
     public static final EntityType<GiantVampireBat> GIANT_VAMPIRE_BAT = register(
             "giant_vampire_bat",
@@ -105,6 +115,7 @@ public class MMEEntityTypes {
                     .sized(0.5F, 0.9F)
                     .eyeHeight(0.6749999821186066F)
                     .clientTrackingRange(8)
+                    .notInPeaceful()
     );
 
     private static <T extends Entity> EntityType<T> register(String id, EntityType.Builder<T> builder) {

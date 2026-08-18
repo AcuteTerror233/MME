@@ -17,10 +17,10 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-@Environment(EnvType.CLIENT)
 /**
  * 高炉等级熔炉 GUI 界面。
  */
+@Environment(EnvType.CLIENT)
 public class GradeBlastFurnaceScreen extends AbstractFurnaceScreen<GradeBlastFurnaceMenu> {
     private static final Identifier LIT_PROGRESS_TEXTURE = Identifier.withDefaultNamespace("container/blast_furnace/lit_progress");
     private static final Identifier BURN_PROGRESS_TEXTURE = Identifier.withDefaultNamespace("container/blast_furnace/burn_progress");

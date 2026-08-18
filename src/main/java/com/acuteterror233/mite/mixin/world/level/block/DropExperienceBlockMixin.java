@@ -23,6 +23,6 @@ public class DropExperienceBlockMixin {
     private IntProvider xpRange;
     @Inject(method = "<init>", at = @At("TAIL"))
     public void init(IntProvider intProvider, BlockBehaviour.Properties properties, CallbackInfo ci) {
-        this.xpRange = ConstantInt.of(this.xpRange.getMaxValue() * 2);
+        this.xpRange = ConstantInt.of(this.xpRange.maxInclusive() * 2);
     }
 }

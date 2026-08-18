@@ -35,6 +35,7 @@
   },
   "coordinate_scale": 4.0,
   "has_ceiling": true,
+  "has_ender_dragon_fight": false,
   "has_fixed_time": true,
   "has_skylight": false,
   "height": 384,

@@ -21,14 +21,14 @@ public class MMEDataGenerator implements DataGeneratorEntrypoint {
 	@Override
 	public void onInitializeDataGenerator(FabricDataGenerator generator) {
 		FabricDataGenerator.Pack pack = generator.createPack();
-		pack.addProvider(MMEModelProvider::new);
-        pack.addProvider(MMERecipeGenerator::new);
+        pack.addProvider(MMEModelProvider::new);
+        pack.addProvider(MMERecipeProvider::new);
         pack.addProvider(MMEBlockLootTableProvider::new);
         pack.addProvider(MMEEntityLootTableProvider::new);
-        pack.addProvider(MMEDynamicRegistry::new);
+        pack.addProvider(MMEDynamicRegistryProvider::new);
         pack.addProvider(MMEAdvancementProvider::new);
-        pack.addProvider(Zh_cnLanguageProvider::new);
-        pack.addProvider(En_usLanguageProvider::new);
+        pack.addProvider(MMELanguageProvider.En_us::new);
+        pack.addProvider(MMELanguageProvider.Zh_cn::new);
         pack.addProvider(MMETagProvider.PaintingVariantTag::new);
         pack.addProvider(MMETagProvider.TimeLineTag::new);
         pack.addProvider(MMETagProvider.BiomeTag::new);
@@ -36,6 +36,7 @@ public class MMEDataGenerator implements DataGeneratorEntrypoint {
         pack.addProvider(MMETagProvider.BlockTag::new);
         pack.addProvider(MMETagProvider.EntityTypeTag::new);
         pack.addProvider(MMETagProvider.EnchantmentTag::new);
+        pack.addProvider(MMETagProvider.VillagerTradeTag::new);
 	}
     @Override
     public void buildRegistry(RegistrySetBuilder registryBuilder){
@@ -46,5 +47,6 @@ public class MMEDataGenerator implements DataGeneratorEntrypoint {
         registryBuilder.add(Registries.ENCHANTMENT, MMEEnchantments::bootstrap);
         registryBuilder.add(Registries.DAMAGE_TYPE, MMEDamageTypes::bootstrap);
         registryBuilder.add(Registries.PAINTING_VARIANT, MMEPaintingVariants::bootstrap);
+        registryBuilder.add(Registries.VILLAGER_TRADE, MMEVillagerTradeProvider::bootstrap);
     }
 }

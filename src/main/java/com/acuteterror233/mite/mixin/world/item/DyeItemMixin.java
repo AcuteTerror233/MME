@@ -1,6 +1,5 @@
 package com.acuteterror233.mite.mixin.world.item;
 
-import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.DyeItem;
 import net.minecraft.world.item.Item;
 import org.spongepowered.asm.mixin.Mixin;
@@ -14,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
  */
 public abstract class DyeItemMixin {
     @Inject(method = "<init>", at = @At("HEAD"))
-    private static void init(DyeColor color, Item.Properties settings, CallbackInfo ci) {
+    private static void init(Item.Properties settings, CallbackInfo ci) {
         settings.stacksTo(16);
     }
 }

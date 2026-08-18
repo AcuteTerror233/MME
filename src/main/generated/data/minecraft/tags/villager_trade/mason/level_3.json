@@ -1,0 +1,12 @@
+{
+  "replace": true,
+  "values": [
+    "mme:mason/3/andesite_amethyst_shard",
+    "mme:mason/3/diorite_amethyst_shard",
+    "mme:mason/3/emerald_dripstone_block",
+    "mme:mason/3/emerald_polished_andesite",
+    "mme:mason/3/emerald_polished_diorite",
+    "mme:mason/3/emerald_polished_granite",
+    "mme:mason/3/granite_amethyst_shard"
+  ]
+}

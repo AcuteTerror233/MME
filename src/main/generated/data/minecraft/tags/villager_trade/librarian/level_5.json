@@ -1,0 +1,21 @@
+{
+  "replace": true,
+  "values": [
+    "mme:librarian/5/emerald_black_candle",
+    "mme:librarian/5/emerald_blue_candle",
+    "mme:librarian/5/emerald_brown_candle",
+    "mme:librarian/5/emerald_cyan_candle",
+    "mme:librarian/5/emerald_gray_candle",
+    "mme:librarian/5/emerald_green_candle",
+    "mme:librarian/5/emerald_light_blue_candle",
+    "mme:librarian/5/emerald_light_gray_candle",
+    "mme:librarian/5/emerald_lime_candle",
+    "mme:librarian/5/emerald_magenta_candle",
+    "mme:librarian/5/emerald_orange_candle",
+    "mme:librarian/5/emerald_pink_candle",
+    "mme:librarian/5/emerald_purple_candle",
+    "mme:librarian/5/emerald_red_candle",
+    "mme:librarian/5/emerald_white_candle",
+    "mme:librarian/5/emerald_yellow_candle"
+  ]
+}

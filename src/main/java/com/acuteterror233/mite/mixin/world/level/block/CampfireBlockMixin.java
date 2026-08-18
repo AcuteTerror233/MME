@@ -8,6 +8,7 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.crafting.RecipePropertySet;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.CampfireBlock;
@@ -39,8 +40,9 @@ public class CampfireBlockMixin {
             } else if (world.fuelValues().isFuel(itemStack)){
                 if (world instanceof ServerLevel && campfireBlockEntity instanceof CampfireBlockEntityExtension blockEntity) {
                     blockEntity.MME$AddRemainingIgnitionTime(world.fuelValues().burnDuration(itemStack));
-                    if (!itemStack.getRecipeRemainder().isEmpty()) {
-                        player.setItemInHand(hand, itemStack.getRecipeRemainder());
+                    ItemStackTemplate craftingRemainder = itemStack.getItem().getCraftingRemainder();
+                    if (craftingRemainder != null && !craftingRemainder.create().isEmpty()) {
+                        player.setItemInHand(hand, craftingRemainder.create());
                     }else {
                         itemStack.consumeAndReturn(1, player);
                     }

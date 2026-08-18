@@ -3,7 +3,7 @@ package com.acuteterror233.mite.gui.screen.inventory;
 import com.acuteterror233.mite.inventory.GradeAnvilMenu;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.screens.inventory.ItemCombinerScreen;
 import net.minecraft.client.input.KeyEvent;
@@ -18,11 +18,11 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 
-@Environment(EnvType.CLIENT)
 /**
  * 等级铁砧 GUI 界面。
  * 渲染等级铁砧的客户端界面。
  */
+@Environment(EnvType.CLIENT)
 public class GradeAnvilScreen extends ItemCombinerScreen<GradeAnvilMenu> {
     private static final Identifier TEXT_FIELD_TEXTURE = Identifier.withDefaultNamespace("container/anvil/text_field");
     private static final Identifier TEXT_FIELD_DISABLED_TEXTURE = Identifier.withDefaultNamespace("container/anvil/text_field_disabled");
@@ -97,14 +97,14 @@ public class GradeAnvilScreen extends ItemCombinerScreen<GradeAnvilMenu> {
     }
 
     @Override
-    protected void renderErrorIcon(GuiGraphics context, int x, int y) {
+    public void extractErrorIcon(GuiGraphicsExtractor context, int x, int y) {
         if ((this.menu.getSlot(0).hasItem() || this.menu.getSlot(1).hasItem()) && !this.menu.getSlot(this.menu.getResultSlot()).hasItem()) {
             context.blitSprite(RenderPipelines.GUI_TEXTURED, ERROR_TEXTURE, x + 99, y + 45, 28, 21);
         }
     }
     @Override
-    protected void renderBg(GuiGraphics context, float deltaTicks, int mouseX, int mouseY) {
-        super.renderBg(context, deltaTicks, mouseX, mouseY);
+    public void extractBackground(GuiGraphicsExtractor context, int mouseX, int mouseY, float deltaTicks) {
+        super.extractBackground(context, mouseX, mouseY, deltaTicks);
         context.blitSprite(
                 RenderPipelines.GUI_TEXTURED, this.menu.getSlot(0).hasItem() ? TEXT_FIELD_TEXTURE : TEXT_FIELD_DISABLED_TEXTURE, this.leftPos + 59, this.topPos + 20, 110, 16
         );
@@ -120,8 +120,8 @@ public class GradeAnvilScreen extends ItemCombinerScreen<GradeAnvilMenu> {
     }
 
     @Override
-    protected void renderLabels(GuiGraphics context, int mouseX, int mouseY) {
-        super.renderLabels(context, mouseX, mouseY);
+    protected void extractLabels(GuiGraphicsExtractor context, int mouseX, int mouseY) {
+        super.extractLabels(context, mouseX, mouseY);
         int i = this.menu.getLevelCost();
         if (i > 0) {
             int j = -8453920;
@@ -142,7 +142,7 @@ public class GradeAnvilScreen extends ItemCombinerScreen<GradeAnvilMenu> {
                 int k = this.imageWidth - 8 - this.font.width(text) - 2;
                 int l = 69;
                 context.fill(k - 2, 67, this.imageWidth - 8, 79, 1325400064);
-                context.drawString(this.font, text, k, 69, j);
+                context.text(this.font, text, k, 69, j);
             }
         }
     }

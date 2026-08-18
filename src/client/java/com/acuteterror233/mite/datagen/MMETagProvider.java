@@ -7,19 +7,23 @@ import com.acuteterror233.mite.registry.tag.*;
 import com.acuteterror233.mite.world.biome.MMEBiomeKeys;
 import com.acuteterror233.mite.world.entity.MMEEntityTypes;
 import com.acuteterror233.mite.world.entity.decoration.painting.MMEPaintingVariants;
-import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
-import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
+import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.data.PackOutput;
+import net.minecraft.data.tags.KeyTagProvider;
 import net.minecraft.tags.*;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.decoration.painting.PaintingVariant;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
+import net.minecraft.world.item.trading.VillagerTrade;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.timeline.Timeline;
+import org.jspecify.annotations.NonNull;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -31,13 +35,13 @@ public class MMETagProvider {
     MMETagProvider() {
 
     }
-    public static class PaintingVariantTag extends FabricTagProvider<PaintingVariant>{
-        public PaintingVariantTag(FabricDataOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
+    public static class PaintingVariantTag extends FabricTagsProvider<PaintingVariant>{
+        public PaintingVariantTag(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
             super(output, Registries.PAINTING_VARIANT, registriesFuture);
         }
 
         @Override
-        protected void addTags(HolderLookup.Provider wrapperLookup) {
+        protected void addTags(HolderLookup.@NonNull Provider wrapperLookup) {
             builder(PaintingVariantTags.PLACEABLE)
                     .add(MMEPaintingVariants.ABYSS)
                     .add(MMEPaintingVariants.BARON_ALMRIC)
@@ -66,8 +70,8 @@ public class MMETagProvider {
                     .add(MMEPaintingVariants.WOLVES);
         }
     }
-    public static class TimeLineTag extends FabricTagProvider<Timeline>{
-        public TimeLineTag(FabricDataOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
+    public static class TimeLineTag extends FabricTagsProvider<Timeline>{
+        public TimeLineTag(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
             super(output, Registries.TIMELINE, registriesFuture);
         }
 
@@ -77,8 +81,8 @@ public class MMETagProvider {
                     .forceAddTag(TimelineTags.UNIVERSAL);
         }
     }
-    public static class EnchantmentTag extends FabricTagProvider<Enchantment> {
-        public EnchantmentTag(FabricDataOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
+    public static class EnchantmentTag extends FabricTagsProvider<Enchantment> {
+        public EnchantmentTag(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
             super(output, Registries.ENCHANTMENT, registriesFuture);
         }
 
@@ -91,8 +95,8 @@ public class MMETagProvider {
     }
 
 
-    public static class BiomeTag extends FabricTagProvider<Biome> {
-        public BiomeTag(FabricDataOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
+    public static class BiomeTag extends FabricTagsProvider<Biome> {
+        public BiomeTag(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
             super(output, Registries.BIOME, registriesFuture);
         }
 
@@ -111,9 +115,9 @@ public class MMETagProvider {
         }
     }
 
-    public static class EntityTypeTag extends FabricTagProvider.FabricValueLookupTagProvider<EntityType<?>> {
-        public EntityTypeTag(FabricDataOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
-            super(output, Registries.ENTITY_TYPE, registriesFuture, entityType -> entityType.builtInRegistryHolder().key());
+    public static class EntityTypeTag extends FabricTagsProvider.EntityTypeTagsProvider {
+        public EntityTypeTag(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
+            super(output, registriesFuture);
         }
 
         @Override
@@ -152,8 +156,8 @@ public class MMETagProvider {
         }
     }
 
-    public static class BlockTag extends FabricTagProvider.BlockTagProvider {
-        public BlockTag(FabricDataOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
+    public static class BlockTag extends FabricTagsProvider.BlockTagsProvider {
+        public BlockTag(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
             super(output, registriesFuture);
         }
 
@@ -425,8 +429,8 @@ public class MMETagProvider {
         }
     }
 
-    public static class ItemTag extends FabricTagProvider.ItemTagProvider {
-        public ItemTag(FabricDataOutput output, CompletableFuture<HolderLookup.Provider> completableFuture) {
+    public static class ItemTag extends FabricTagsProvider.ItemTagsProvider {
+        public ItemTag(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> completableFuture) {
             super(output, completableFuture);
         }
         @Override
@@ -1097,6 +1101,663 @@ public class MMETagProvider {
                     .add(MMEBlocks.COPPER_CRAFTING_TABLE.asItem())
                     .add(MMEBlocks.SILVER_CRAFTING_TABLE.asItem());
             valueLookupBuilder(MMEItemTags.AIR);
+        }
+    }
+
+    public static class VillagerTradeTag extends KeyTagProvider<VillagerTrade> {
+        public VillagerTradeTag(PackOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
+            super(output, Registries.VILLAGER_TRADE, registriesFuture);
+        }
+
+        @Override
+        protected void addTags(HolderLookup.Provider wrapperLookup) {
+            this.tag(VillagerTradeTags.FARMER_LEVEL_1).setReplace(true)
+                .add(
+                    MMEVillagerTradeProvider.FARMER_1_BEETROOT_EMERALD,
+                    MMEVillagerTradeProvider.FARMER_1_BLUE_BERRY_EMERALD,
+                    MMEVillagerTradeProvider.FARMER_1_CARROT_EMERALD,
+                    MMEVillagerTradeProvider.FARMER_1_EMERALD_BREAD,
+                    MMEVillagerTradeProvider.FARMER_1_POTATO_EMERALD,
+                    MMEVillagerTradeProvider.FARMER_1_WHEAT_EMERALD
+                );
+            this.tag(VillagerTradeTags.FARMER_LEVEL_2).setReplace(true)
+                .add(
+                    MMEVillagerTradeProvider.FARMER_2_EMERALD_APPLE,
+                    MMEVillagerTradeProvider.FARMER_2_EMERALD_PUMPKIN_PIE,
+                    MMEVillagerTradeProvider.FARMER_2_PUMPKIN_EMERALD
+                );
+            this.tag(VillagerTradeTags.FARMER_LEVEL_3).setReplace(true)
+                .add(
+                    MMEVillagerTradeProvider.FARMER_3_EMERALD_COOKIE,
+                    MMEVillagerTradeProvider.FARMER_3_MELON_EMERALD
+                );
+            this.tag(VillagerTradeTags.FARMER_LEVEL_4).setReplace(true)
+                .add(
+                    MMEVillagerTradeProvider.FARMER_4_EMERALD_CAKE,
+                    MMEVillagerTradeProvider.FARMER_4_EMERALD_SUSPICIOUS_STEW
+                );
+            this.tag(VillagerTradeTags.FARMER_LEVEL_5).setReplace(true)
+                .add(
+                    MMEVillagerTradeProvider.FARMER_5_EMERALD_GLISTENING_MELON_SLICE,
+                    MMEVillagerTradeProvider.FARMER_5_EMERALD_GOLDEN_CARROT
+                );
+            this.tag(VillagerTradeTags.FISHERMAN_LEVEL_1).setReplace(true)
+                .add(
+                    MMEVillagerTradeProvider.FISHERMAN_1_COAL_EMERALD,
+                    MMEVillagerTradeProvider.FISHERMAN_1_EMERALD_COD_COPPER_BUCKET,
+                    MMEVillagerTradeProvider.FISHERMAN_1_EMERALD_COD_SILVER_BUCKET,
+                    MMEVillagerTradeProvider.FISHERMAN_1_STRING_EMERALD
+                );
+            this.tag(VillagerTradeTags.FISHERMAN_LEVEL_2).setReplace(true)
+                .add(
+                    MMEVillagerTradeProvider.FISHERMAN_2_COD_12_EMERALD,
+                    MMEVillagerTradeProvider.FISHERMAN_2_SALMON_12_EMERALD,
+                    MMEVillagerTradeProvider.FISHERMAN_2_EMERALD_CAMPFIRE
+                );
+            this.tag(VillagerTradeTags.FISHERMAN_LEVEL_3).setReplace(true)
+                .add(
+                    MMEVillagerTradeProvider.FISHERMAN_3_EMERALD_ENCHANTED_FISHING_ROD,
+                    MMEVillagerTradeProvider.FISHERMAN_3_TROPICAL_FISH_12_EMERALD,
+                    MMEVillagerTradeProvider.FISHERMAN_3_SALMON_AND_EMERALD_COOKED_SALMON,
+                    MMEVillagerTradeProvider.FISHERMAN_3_COD_AND_EMERALD_COOKED_COD
+                );
+            this.tag(VillagerTradeTags.FISHERMAN_LEVEL_4).setReplace(true)
+                .add(
+                    MMEVillagerTradeProvider.FISHERMAN_4_EMERALD_BUCKET,
+                    MMEVillagerTradeProvider.FISHERMAN_4_EMERALD_MITHRIL_BUCKET,
+                    MMEVillagerTradeProvider.FISHERMAN_4_PUFFERFISH_EMERALD
+                );
+            this.tag(VillagerTradeTags.FISHERMAN_LEVEL_5).setReplace(true)
+                .add(
+                    MMEVillagerTradeProvider.FISHERMAN_5_ACACIA_BOAT_EMERALD,
+                    MMEVillagerTradeProvider.FISHERMAN_5_DARK_OAK_BOAT_EMERALD,
+                    MMEVillagerTradeProvider.FISHERMAN_5_EMERALD_SUPERIOR_ENCHANTED_FISHING_ROD,
+                    MMEVillagerTradeProvider.FISHERMAN_5_JUNGLE_BOAT_EMERALD,
+                    MMEVillagerTradeProvider.FISHERMAN_5_OAK_BOAT_EMERALD,
+                    MMEVillagerTradeProvider.FISHERMAN_5_SPRUCE_BOAT_EMERALD
+                );
+            this.tag(VillagerTradeTags.SHEPHERD_LEVEL_1).setReplace(true)
+                .add(
+                    MMEVillagerTradeProvider.SHEPHERD_1_BLACK_WOOL_EMERALD,
+                    MMEVillagerTradeProvider.SHEPHERD_1_BLUE_WOOL_EMERALD,
+                    MMEVillagerTradeProvider.SHEPHERD_1_BROWN_WOOL_EMERALD,
+                    MMEVillagerTradeProvider.SHEPHERD_1_CYAN_WOOL_EMERALD,
+                    MMEVillagerTradeProvider.SHEPHERD_1_EMERALD_COPPER_SHEARS,
+                    MMEVillagerTradeProvider.SHEPHERD_1_EMERALD_SILVER_SHEARS,
+                    MMEVillagerTradeProvider.SHEPHERD_1_GRAY_WOOL_EMERALD,
+                    MMEVillagerTradeProvider.SHEPHERD_1_GREEN_WOOL_EMERALD,
+                    MMEVillagerTradeProvider.SHEPHERD_1_LIGHT_BLUE_WOOL_EMERALD,
+                    MMEVillagerTradeProvider.SHEPHERD_1_LIGHT_GRAY_WOOL_EMERALD,
+                    MMEVillagerTradeProvider.SHEPHERD_1_LIME_WOOL_EMERALD,
+                    MMEVillagerTradeProvider.SHEPHERD_1_MAGENTA_WOOL_EMERALD,
+                    MMEVillagerTradeProvider.SHEPHERD_1_ORANGE_WOOL_EMERALD,
+                    MMEVillagerTradeProvider.SHEPHERD_1_PINK_WOOL_EMERALD,
+                    MMEVillagerTradeProvider.SHEPHERD_1_PURPLE_WOOL_EMERALD,
+                    MMEVillagerTradeProvider.SHEPHERD_1_RED_WOOL_EMERALD,
+                    MMEVillagerTradeProvider.SHEPHERD_1_WHITE_WOOL_EMERALD,
+                    MMEVillagerTradeProvider.SHEPHERD_1_YELLOW_WOOL_EMERALD
+                );
+            this.tag(VillagerTradeTags.SHEPHERD_LEVEL_2).setReplace(true)
+                .add(
+                    MMEVillagerTradeProvider.SHEPHERD_2_BLUE_DYE_EMERALD,
+                    MMEVillagerTradeProvider.SHEPHERD_2_EMERALD_BLACK_CARPET,
+                    MMEVillagerTradeProvider.SHEPHERD_2_EMERALD_BLUE_CARPET,
+                    MMEVillagerTradeProvider.SHEPHERD_2_EMERALD_BROWN_CARPET,
+                    MMEVillagerTradeProvider.SHEPHERD_2_EMERALD_CYAN_CARPET,
+                    MMEVillagerTradeProvider.SHEPHERD_2_EMERALD_GRAY_CARPET,
+                    MMEVillagerTradeProvider.SHEPHERD_2_EMERALD_GREEN_CARPET,
+                    MMEVillagerTradeProvider.SHEPHERD_2_EMERALD_LIGHT_BLUE_CARPET,
+                    MMEVillagerTradeProvider.SHEPHERD_2_EMERALD_LIGHT_GRAY_CARPET,
+                    MMEVillagerTradeProvider.SHEPHERD_2_EMERALD_LIME_CARPET,
+                    MMEVillagerTradeProvider.SHEPHERD_2_EMERALD_MAGENTA_CARPET,
+                    MMEVillagerTradeProvider.SHEPHERD_2_EMERALD_ORANGE_CARPET,
+                    MMEVillagerTradeProvider.SHEPHERD_2_EMERALD_PINK_CARPET,
+                    MMEVillagerTradeProvider.SHEPHERD_2_EMERALD_PURPLE_CARPET,
+                    MMEVillagerTradeProvider.SHEPHERD_2_EMERALD_RED_CARPET,
+                    MMEVillagerTradeProvider.SHEPHERD_2_EMERALD_WHITE_CARPET,
+                    MMEVillagerTradeProvider.SHEPHERD_2_EMERALD_YELLOW_CARPET,
+                    MMEVillagerTradeProvider.SHEPHERD_2_GREEN_DYE_EMERALD,
+                    MMEVillagerTradeProvider.SHEPHERD_2_RED_DYE_EMERALD,
+                    MMEVillagerTradeProvider.SHEPHERD_2_YELLOW_DYE_EMERALD
+                );
+            this.tag(VillagerTradeTags.SHEPHERD_LEVEL_3).setReplace(true)
+                .add(
+                    MMEVillagerTradeProvider.SHEPHERD_3_EMERALD_SHEARS,
+                    MMEVillagerTradeProvider.SHEPHERD_3_EMERALD_BLACK_BED,
+                    MMEVillagerTradeProvider.SHEPHERD_3_EMERALD_BLUE_BED,
+                    MMEVillagerTradeProvider.SHEPHERD_3_EMERALD_BROWN_BED,
+                    MMEVillagerTradeProvider.SHEPHERD_3_EMERALD_CYAN_BED,
+                    MMEVillagerTradeProvider.SHEPHERD_3_EMERALD_GRAY_BED,
+                    MMEVillagerTradeProvider.SHEPHERD_3_EMERALD_GREEN_BED,
+                    MMEVillagerTradeProvider.SHEPHERD_3_EMERALD_LIGHT_BLUE_BED,
+                    MMEVillagerTradeProvider.SHEPHERD_3_EMERALD_LIGHT_GRAY_BED,
+                    MMEVillagerTradeProvider.SHEPHERD_3_EMERALD_LIME_BED,
+                    MMEVillagerTradeProvider.SHEPHERD_3_EMERALD_MAGENTA_BED,
+                    MMEVillagerTradeProvider.SHEPHERD_3_EMERALD_ORANGE_BED,
+                    MMEVillagerTradeProvider.SHEPHERD_3_EMERALD_PINK_BED,
+                    MMEVillagerTradeProvider.SHEPHERD_3_EMERALD_PURPLE_BED,
+                    MMEVillagerTradeProvider.SHEPHERD_3_EMERALD_RED_BED,
+                    MMEVillagerTradeProvider.SHEPHERD_3_EMERALD_WHITE_BED,
+                    MMEVillagerTradeProvider.SHEPHERD_3_EMERALD_YELLOW_BED,
+                    MMEVillagerTradeProvider.SHEPHERD_3_BLACK_DYE_EMERALD,
+                    MMEVillagerTradeProvider.SHEPHERD_3_BROWN_DYE_EMERALD,
+                    MMEVillagerTradeProvider.SHEPHERD_3_CYAN_DYE_EMERALD,
+                    MMEVillagerTradeProvider.SHEPHERD_3_GRAY_DYE_EMERALD,
+                    MMEVillagerTradeProvider.SHEPHERD_3_LIGHT_BLUE_DYE_EMERALD,
+                    MMEVillagerTradeProvider.SHEPHERD_3_LIME_DYE_EMERALD
+                );
+            this.tag(VillagerTradeTags.SHEPHERD_LEVEL_4).setReplace(true)
+                .add(
+                    MMEVillagerTradeProvider.SHEPHERD_4_EMERALD_BLACK_BANNER,
+                    MMEVillagerTradeProvider.SHEPHERD_4_EMERALD_BLUE_BANNER,
+                    MMEVillagerTradeProvider.SHEPHERD_4_EMERALD_BROWN_BANNER,
+                    MMEVillagerTradeProvider.SHEPHERD_4_EMERALD_CYAN_BANNER,
+                    MMEVillagerTradeProvider.SHEPHERD_4_EMERALD_GRAY_BANNER,
+                    MMEVillagerTradeProvider.SHEPHERD_4_EMERALD_GREEN_BANNER,
+                    MMEVillagerTradeProvider.SHEPHERD_4_EMERALD_LIGHT_BLUE_BANNER,
+                    MMEVillagerTradeProvider.SHEPHERD_4_EMERALD_LIGHT_GRAY_BANNER,
+                    MMEVillagerTradeProvider.SHEPHERD_4_EMERALD_LIME_BANNER,
+                    MMEVillagerTradeProvider.SHEPHERD_4_EMERALD_MAGENTA_BANNER,
+                    MMEVillagerTradeProvider.SHEPHERD_4_EMERALD_ORANGE_BANNER,
+                    MMEVillagerTradeProvider.SHEPHERD_4_EMERALD_PINK_BANNER,
+                    MMEVillagerTradeProvider.SHEPHERD_4_EMERALD_PURPLE_BANNER,
+                    MMEVillagerTradeProvider.SHEPHERD_4_EMERALD_RED_BANNER,
+                    MMEVillagerTradeProvider.SHEPHERD_4_EMERALD_WHITE_BANNER,
+                    MMEVillagerTradeProvider.SHEPHERD_4_EMERALD_YELLOW_BANNER,
+                    MMEVillagerTradeProvider.SHEPHERD_4_LIGHT_GRAY_DYE_EMERALD,
+                    MMEVillagerTradeProvider.SHEPHERD_4_MAGENTA_DYE_EMERALD,
+                    MMEVillagerTradeProvider.SHEPHERD_4_ORANGE_DYE_EMERALD,
+                    MMEVillagerTradeProvider.SHEPHERD_4_PINK_DYE_EMERALD,
+                    MMEVillagerTradeProvider.SHEPHERD_4_PURPLE_DYE_EMERALD,
+                    MMEVillagerTradeProvider.SHEPHERD_4_WHITE_DYE_EMERALD
+                );
+            this.tag(VillagerTradeTags.SHEPHERD_LEVEL_5).setReplace(true)
+                .add(
+                    MMEVillagerTradeProvider.SHEPHERD_5_EMERALD_BLACK_WOOL,
+                    MMEVillagerTradeProvider.SHEPHERD_5_EMERALD_BLUE_WOOL,
+                    MMEVillagerTradeProvider.SHEPHERD_5_EMERALD_BROWN_WOOL,
+                    MMEVillagerTradeProvider.SHEPHERD_5_EMERALD_CYAN_WOOL,
+                    MMEVillagerTradeProvider.SHEPHERD_5_EMERALD_GRAY_WOOL,
+                    MMEVillagerTradeProvider.SHEPHERD_5_EMERALD_GREEN_WOOL,
+                    MMEVillagerTradeProvider.SHEPHERD_5_EMERALD_LIME_WOOL,
+                    MMEVillagerTradeProvider.SHEPHERD_5_EMERALD_MAGENTA_WOOL,
+                    MMEVillagerTradeProvider.SHEPHERD_5_EMERALD_ORANGE_WOOL,
+                    MMEVillagerTradeProvider.SHEPHERD_5_EMERALD_PINK_WOOL,
+                    MMEVillagerTradeProvider.SHEPHERD_5_EMERALD_PURPLE_WOOL,
+                    MMEVillagerTradeProvider.SHEPHERD_5_EMERALD_RED_WOOL,
+                    MMEVillagerTradeProvider.SHEPHERD_5_EMERALD_WHITE_WOOL,
+                    MMEVillagerTradeProvider.SHEPHERD_5_EMERALD_YELLOW_WOOL,
+                    MMEVillagerTradeProvider.SHEPHERD_5_EMERALD_LIGHT_BLUE_WOOL,
+                    MMEVillagerTradeProvider.SHEPHERD_5_EMERALD_LIGHT_GRAY_WOOL,
+                    MMEVillagerTradeProvider.SHEPHERD_5_EMERALD_PAINTING
+                );
+            this.tag(VillagerTradeTags.FLETCHER_LEVEL_1).setReplace(true)
+                .add(
+                    MMEVillagerTradeProvider.FLETCHER_1_EMERALD_ARROW,
+                    MMEVillagerTradeProvider.FLETCHER_1_GRAVEL_AND_EMERALD_FLINT,
+                    MMEVillagerTradeProvider.FLETCHER_1_STICK_EMERALD
+                );
+            this.tag(VillagerTradeTags.FLETCHER_LEVEL_2).setReplace(true)
+                .add(
+                    MMEVillagerTradeProvider.FLETCHER_2_EMERALD_BOW,
+                    MMEVillagerTradeProvider.FLETCHER_2_FLINT_EMERALD
+                );
+            this.tag(VillagerTradeTags.FLETCHER_LEVEL_3).setReplace(true)
+                .add(
+                    MMEVillagerTradeProvider.FLETCHER_3_EMERALD_CROSSBOW,
+                    MMEVillagerTradeProvider.FLETCHER_3_STRING_EMERALD
+                );
+            this.tag(VillagerTradeTags.FLETCHER_LEVEL_4).setReplace(true)
+                .add(
+                    MMEVillagerTradeProvider.FLETCHER_4_EMERALD_ENCHANTED_BOW,
+                    MMEVillagerTradeProvider.FLETCHER_4_FEATHER_EMERALD
+                );
+            this.tag(VillagerTradeTags.FLETCHER_LEVEL_5).setReplace(true)
+                .add(
+                    MMEVillagerTradeProvider.FLETCHER_5_ARROW_AND_EMERALD_TIPPED_ARROW,
+                    MMEVillagerTradeProvider.FLETCHER_5_EMERALD_ENCHANTED_CROSSBOW,
+                    MMEVillagerTradeProvider.FLETCHER_5_TRIPWIRE_HOOK_EMERALD
+                );
+            this.tag(VillagerTradeTags.LIBRARIAN_LEVEL_1).setReplace(true)
+                .add(
+                    MMEVillagerTradeProvider.LIBRARIAN_1_EMERALD_AND_BOOK_ENCHANTED_BOOK,
+                    MMEVillagerTradeProvider.LIBRARIAN_1_EMERALD_BOOKSHELF,
+                    MMEVillagerTradeProvider.LIBRARIAN_1_PAPER_EMERALD
+                );
+            this.tag(VillagerTradeTags.LIBRARIAN_LEVEL_2).setReplace(true)
+                .add(
+                    MMEVillagerTradeProvider.LIBRARIAN_2_BOOK_EMERALD,
+                    MMEVillagerTradeProvider.LIBRARIAN_2_EMERALD_AND_BOOK_ENCHANTED_BOOK,
+                    MMEVillagerTradeProvider.LIBRARIAN_2_EMERALD_LANTERN
+                );
+            this.tag(VillagerTradeTags.LIBRARIAN_LEVEL_3).setReplace(true)
+                .add(
+                    MMEVillagerTradeProvider.LIBRARIAN_3_EMERALD_AND_BOOK_ENCHANTED_BOOK,
+                    MMEVillagerTradeProvider.LIBRARIAN_3_EMERALD_GLASS,
+                    MMEVillagerTradeProvider.LIBRARIAN_3_INK_SAC_EMERALD
+                );
+            this.tag(VillagerTradeTags.LIBRARIAN_LEVEL_4).setReplace(true)
+                .add(
+                    MMEVillagerTradeProvider.LIBRARIAN_4_EMERALD_BOOK_AND_ENCHANTED_BOOK,
+                    MMEVillagerTradeProvider.LIBRARIAN_4_EMERALD_CLOCK,
+                    MMEVillagerTradeProvider.LIBRARIAN_4_EMERALD_COMPASS,
+                    MMEVillagerTradeProvider.LIBRARIAN_4_WRITABLE_BOOK_EMERALD
+                );
+            this.tag(VillagerTradeTags.LIBRARIAN_LEVEL_5).setReplace(true)
+                .add(
+                    MMEVillagerTradeProvider.LIBRARIAN_5_EMERALD_BLACK_CANDLE,
+                    MMEVillagerTradeProvider.LIBRARIAN_5_EMERALD_BLUE_CANDLE,
+                    MMEVillagerTradeProvider.LIBRARIAN_5_EMERALD_BROWN_CANDLE,
+                    MMEVillagerTradeProvider.LIBRARIAN_5_EMERALD_CYAN_CANDLE,
+                    MMEVillagerTradeProvider.LIBRARIAN_5_EMERALD_GRAY_CANDLE,
+                    MMEVillagerTradeProvider.LIBRARIAN_5_EMERALD_GREEN_CANDLE,
+                    MMEVillagerTradeProvider.LIBRARIAN_5_EMERALD_LIGHT_BLUE_CANDLE,
+                    MMEVillagerTradeProvider.LIBRARIAN_5_EMERALD_LIGHT_GRAY_CANDLE,
+                    MMEVillagerTradeProvider.LIBRARIAN_5_EMERALD_LIME_CANDLE,
+                    MMEVillagerTradeProvider.LIBRARIAN_5_EMERALD_MAGENTA_CANDLE,
+                    MMEVillagerTradeProvider.LIBRARIAN_5_EMERALD_ORANGE_CANDLE,
+                    MMEVillagerTradeProvider.LIBRARIAN_5_EMERALD_PINK_CANDLE,
+                    MMEVillagerTradeProvider.LIBRARIAN_5_EMERALD_PURPLE_CANDLE,
+                    MMEVillagerTradeProvider.LIBRARIAN_5_EMERALD_RED_CANDLE,
+                    MMEVillagerTradeProvider.LIBRARIAN_5_EMERALD_WHITE_CANDLE,
+                    MMEVillagerTradeProvider.LIBRARIAN_5_EMERALD_YELLOW_CANDLE
+                );
+            this.tag(VillagerTradeTags.CARTOGRAPHER_LEVEL_1).setReplace(true)
+                .add(
+                    MMEVillagerTradeProvider.CARTOGRAPHER_1_EMERALD_MAP,
+                    MMEVillagerTradeProvider.CARTOGRAPHER_1_PAPER_EMERALD
+                );
+            this.tag(VillagerTradeTags.CARTOGRAPHER_LEVEL_2).setReplace(true)
+                .add(
+                    MMEVillagerTradeProvider.CARTOGRAPHER_2_EMERALD_AND_COMPASS_EXPLORER_JUNGLE_MAP,
+                    MMEVillagerTradeProvider.CARTOGRAPHER_2_EMERALD_AND_COMPASS_EXPLORER_SWAMP_MAP,
+                    MMEVillagerTradeProvider.CARTOGRAPHER_2_EMERALD_AND_COMPASS_VILLAGE_DESERT_MAP,
+                    MMEVillagerTradeProvider.CARTOGRAPHER_2_EMERALD_AND_COMPASS_VILLAGE_PLAINS_MAP,
+                    MMEVillagerTradeProvider.CARTOGRAPHER_2_EMERALD_AND_COMPASS_VILLAGE_SAVANNA_MAP,
+                    MMEVillagerTradeProvider.CARTOGRAPHER_2_EMERALD_AND_COMPASS_VILLAGE_SNOWY_MAP,
+                    MMEVillagerTradeProvider.CARTOGRAPHER_2_EMERALD_AND_COMPASS_VILLAGE_TAIGA_MAP,
+                    MMEVillagerTradeProvider.CARTOGRAPHER_2_GLASS_PANE_EMERALD
+                );
+            this.tag(VillagerTradeTags.CARTOGRAPHER_LEVEL_3).setReplace(true)
+                .add(
+                    MMEVillagerTradeProvider.CARTOGRAPHER_3_COMPASS_EMERALD,
+                    MMEVillagerTradeProvider.CARTOGRAPHER_3_EMERALD_AND_COMPASS_OCEAN_EXPLORER_MAP,
+                    MMEVillagerTradeProvider.CARTOGRAPHER_3_EMERALD_AND_COMPASS_TRIAL_CHAMBER_MAP
+                );
+            this.tag(VillagerTradeTags.CARTOGRAPHER_LEVEL_4).setReplace(true)
+                .add(
+                    MMEVillagerTradeProvider.CARTOGRAPHER_4_EMERALD_BLACK_BANNER,
+                    MMEVillagerTradeProvider.CARTOGRAPHER_4_EMERALD_BLUE_BANNER,
+                    MMEVillagerTradeProvider.CARTOGRAPHER_4_EMERALD_BROWN_BANNER,
+                    MMEVillagerTradeProvider.CARTOGRAPHER_4_EMERALD_CYAN_BANNER,
+                    MMEVillagerTradeProvider.CARTOGRAPHER_4_EMERALD_GRAY_BANNER,
+                    MMEVillagerTradeProvider.CARTOGRAPHER_4_EMERALD_GREEN_BANNER,
+                    MMEVillagerTradeProvider.CARTOGRAPHER_4_EMERALD_ITEM_FRAME,
+                    MMEVillagerTradeProvider.CARTOGRAPHER_4_EMERALD_LIGHT_BLUE_BANNER,
+                    MMEVillagerTradeProvider.CARTOGRAPHER_4_EMERALD_LIME_BANNER,
+                    MMEVillagerTradeProvider.CARTOGRAPHER_4_EMERALD_MAGENTA_BANNER,
+                    MMEVillagerTradeProvider.CARTOGRAPHER_4_EMERALD_ORANGE_BANNER,
+                    MMEVillagerTradeProvider.CARTOGRAPHER_4_EMERALD_PINK_BANNER,
+                    MMEVillagerTradeProvider.CARTOGRAPHER_4_EMERALD_PURPLE_BANNER,
+                    MMEVillagerTradeProvider.CARTOGRAPHER_4_EMERALD_RED_BANNER,
+                    MMEVillagerTradeProvider.CARTOGRAPHER_4_EMERALD_WHITE_BANNER,
+                    MMEVillagerTradeProvider.CARTOGRAPHER_4_EMERALD_YELLOW_BANNER
+                );
+            this.tag(VillagerTradeTags.CARTOGRAPHER_LEVEL_5).setReplace(true)
+                .add(
+                    MMEVillagerTradeProvider.CARTOGRAPHER_5_EMERALD_AND_COMPASS_WOODLAND_MANSION_MAP,
+                    MMEVillagerTradeProvider.CARTOGRAPHER_5_EMERALD_GLOBE_BANNER_PATTERN
+                );
+            this.tag(VillagerTradeTags.CLERIC_LEVEL_1).setReplace(true)
+                .add(
+                    MMEVillagerTradeProvider.CLERIC_1_EMERALD_REDSTONE,
+                    MMEVillagerTradeProvider.CLERIC_1_ROTTEN_FLESH_EMERALD
+                );
+            this.tag(VillagerTradeTags.CLERIC_LEVEL_2).setReplace(true)
+                .add(
+                    MMEVillagerTradeProvider.CLERIC_2_EMERALD_LAPIS_LAZULI,
+                    MMEVillagerTradeProvider.CLERIC_2_GOLD_INGOT_EMERALD
+                );
+            this.tag(VillagerTradeTags.CLERIC_LEVEL_3).setReplace(true)
+                .add(
+                    MMEVillagerTradeProvider.CLERIC_3_EMERALD_GLOWSTONE,
+                    MMEVillagerTradeProvider.CLERIC_3_RABBIT_FOOT_EMERALD
+                );
+            this.tag(VillagerTradeTags.CLERIC_LEVEL_4).setReplace(true)
+                .add(
+                    MMEVillagerTradeProvider.CLERIC_4_EMERALD_ENDER_PEARL,
+                    MMEVillagerTradeProvider.CLERIC_4_GLASS_BOTTLE_EMERALD,
+                    MMEVillagerTradeProvider.CLERIC_4_TURTLE_SCUTE_EMERALD
+                );
+            this.tag(VillagerTradeTags.CLERIC_LEVEL_5).setReplace(true)
+                .add(
+                    MMEVillagerTradeProvider.CLERIC_5_EMERALD_EXPERIENCE_BOTTLE,
+                    MMEVillagerTradeProvider.CLERIC_5_NETHER_WART_EMERALD
+                );
+            this.tag(VillagerTradeTags.ARMORER_LEVEL_1).setReplace(true)
+                .add(
+                    MMEVillagerTradeProvider.ARMORER_1_EMERALD_IRON_BOOTS,
+                    MMEVillagerTradeProvider.ARMORER_1_EMERALD_IRON_CHESTPLATE,
+                    MMEVillagerTradeProvider.ARMORER_1_EMERALD_IRON_HELMET,
+                    MMEVillagerTradeProvider.ARMORER_1_EMERALD_IRON_LEGGINGS
+                );
+            this.tag(VillagerTradeTags.ARMORER_LEVEL_2).setReplace(true)
+                .add(
+                    MMEVillagerTradeProvider.ARMORER_2_EMERALD_MITHRIL_CHAINMAIL_BOOTS,
+                    MMEVillagerTradeProvider.ARMORER_2_EMERALD_MITHRIL_CHAINMAIL_LEGGINGS
+                );
+            this.tag(VillagerTradeTags.ARMORER_LEVEL_3).setReplace(true)
+                .add(
+                    MMEVillagerTradeProvider.ARMORER_3_DIAMOND_EMERALD,
+                    MMEVillagerTradeProvider.ARMORER_3_EMERALD_MITHRIL_CHAINMAIL_CHESTPLATE,
+                    MMEVillagerTradeProvider.ARMORER_3_EMERALD_MITHRIL_CHAINMAIL_HELMET,
+                    MMEVillagerTradeProvider.ARMORER_3_EMERALD_SHIELD
+                );
+            this.tag(VillagerTradeTags.ARMORER_LEVEL_4).setReplace(true)
+                .add(
+                    MMEVillagerTradeProvider.ARMORER_4_DIAMOND_ENCHANTED_MITHRIL_BOOTS,
+                    MMEVillagerTradeProvider.ARMORER_4_DIAMOND_ENCHANTED_MITHRIL_LEGGINGS
+                );
+            this.tag(VillagerTradeTags.ARMORER_LEVEL_5).setReplace(true)
+                .add(
+                    MMEVillagerTradeProvider.ARMORER_5_DIAMOND_ENCHANTED_MITHRIL_CHESTPLATE,
+                    MMEVillagerTradeProvider.ARMORER_5_DIAMOND_ENCHANTED_MITHRIL_HELMET
+                );
+            this.tag(VillagerTradeTags.WEAPONSMITH_LEVEL_1).setReplace(true)
+                .add(
+                    MMEVillagerTradeProvider.WEAPONSMITH_1_COAL_EMERALD,
+                    MMEVillagerTradeProvider.WEAPONSMITH_1_EMERALD_IRON_SWORD,
+                    MMEVillagerTradeProvider.WEAPONSMITH_1_EMERALD_IRON_DAGGER
+                );
+            this.tag(VillagerTradeTags.WEAPONSMITH_LEVEL_2).setReplace(true)
+                .add(
+                    MMEVillagerTradeProvider.WEAPONSMITH_2_COPPER_EMERALD,
+                    MMEVillagerTradeProvider.WEAPONSMITH_2_SILVER_EMERALD,
+                    MMEVillagerTradeProvider.WEAPONSMITH_2_EMERALD_BELL
+                );
+            this.tag(VillagerTradeTags.WEAPONSMITH_LEVEL_3).setReplace(true)
+                .add(
+                    MMEVillagerTradeProvider.WEAPONSMITH_3_IRON_INGOT_EMERALD,
+                    MMEVillagerTradeProvider.WEAPONSMITH_3_FLINT_EMERALD
+                );
+            this.tag(VillagerTradeTags.WEAPONSMITH_LEVEL_4).setReplace(true)
+                .add(
+                    MMEVillagerTradeProvider.WEAPONSMITH_4_DIAMOND_EMERALD
+                );
+            this.tag(VillagerTradeTags.WEAPONSMITH_LEVEL_5).setReplace(true)
+                .add(
+                    MMEVillagerTradeProvider.WEAPONSMITH_5_DIAMOND_MITHRIL_SWORD,
+                    MMEVillagerTradeProvider.WEAPONSMITH_5_DIAMOND_MITHRIL_DAGGER
+                );
+            this.tag(VillagerTradeTags.TOOLSMITH_LEVEL_1).setReplace(true)
+                .add(
+                    MMEVillagerTradeProvider.TOOLSMITH_1_COAL_EMERALD,
+                    MMEVillagerTradeProvider.TOOLSMITH_1_EMERALD_IRON_AXE,
+                    MMEVillagerTradeProvider.TOOLSMITH_1_EMERALD_IRON_BATTLE_AXE,
+                    MMEVillagerTradeProvider.TOOLSMITH_1_EMERALD_IRON_HATCHET,
+                    MMEVillagerTradeProvider.TOOLSMITH_1_EMERALD_IRON_HOE,
+                    MMEVillagerTradeProvider.TOOLSMITH_1_EMERALD_IRON_MATTOCK,
+                    MMEVillagerTradeProvider.TOOLSMITH_1_EMERALD_IRON_PICKAXE,
+                    MMEVillagerTradeProvider.TOOLSMITH_1_EMERALD_IRON_SCYTHE,
+                    MMEVillagerTradeProvider.TOOLSMITH_1_EMERALD_IRON_SHOVEL,
+                    MMEVillagerTradeProvider.TOOLSMITH_1_EMERALD_IRON_WAR_HAMMER
+                );
+            this.tag(VillagerTradeTags.TOOLSMITH_LEVEL_2).setReplace(true)
+                .add(
+                    MMEVillagerTradeProvider.TOOLSMITH_2_IRON_INGOT_EMERALD,
+                    MMEVillagerTradeProvider.TOOLSMITH_2_EMERALD_BELL
+                );
+            this.tag(VillagerTradeTags.TOOLSMITH_LEVEL_3).setReplace(true)
+                .add(
+                    MMEVillagerTradeProvider.TOOLSMITH_3_DIAMOND_MITHRIL_AXE,
+                    MMEVillagerTradeProvider.TOOLSMITH_3_DIAMOND_MITHRIL_PICKAXE,
+                    MMEVillagerTradeProvider.TOOLSMITH_3_DIAMOND_MITHRIL_SHOVEL,
+                    MMEVillagerTradeProvider.TOOLSMITH_3_DIAMOND_MITHRIL_HOE,
+                    MMEVillagerTradeProvider.TOOLSMITH_3_FLINT_EMERALD
+                );
+            this.tag(VillagerTradeTags.TOOLSMITH_LEVEL_4).setReplace(true)
+                .add(
+                    MMEVillagerTradeProvider.TOOLSMITH_4_DIAMOND_EMERALD,
+                    MMEVillagerTradeProvider.TOOLSMITH_4_DIAMOND_ENCHANTED_MITHRIL_HATCHET,
+                    MMEVillagerTradeProvider.TOOLSMITH_4_DIAMOND_ENCHANTED_MITHRIL_MATTOCK
+                );
+            this.tag(VillagerTradeTags.TOOLSMITH_LEVEL_5).setReplace(true)
+                .add(
+                    MMEVillagerTradeProvider.TOOLSMITH_5_DIAMOND_MITHRIL_INGOT,
+                    MMEVillagerTradeProvider.TOOLSMITH_5_DIAMOND_ENCHANTED_MITHRIL_BATTLE_AXE,
+                    MMEVillagerTradeProvider.TOOLSMITH_5_DIAMOND_ENCHANTED_MITHRIL_SCYTHE,
+                    MMEVillagerTradeProvider.TOOLSMITH_5_DIAMOND_ENCHANTED_MITHRIL_WAR_HAMMER
+                );
+            this.tag(VillagerTradeTags.BUTCHER_LEVEL_1).setReplace(true)
+                .add(
+                    MMEVillagerTradeProvider.BUTCHER_1_CHICKEN_EMERALD,
+                    MMEVillagerTradeProvider.BUTCHER_1_EMERALD_RABBIT_STEW,
+                    MMEVillagerTradeProvider.BUTCHER_1_PORKCHOP_EMERALD,
+                    MMEVillagerTradeProvider.BUTCHER_1_RABBIT_EMERALD
+                );
+            this.tag(VillagerTradeTags.BUTCHER_LEVEL_2).setReplace(true)
+                .add(
+                    MMEVillagerTradeProvider.BUTCHER_2_CHARCOAL_EMERALD,
+                    MMEVillagerTradeProvider.BUTCHER_2_EMERALD_COOKED_CHICKEN,
+                    MMEVillagerTradeProvider.BUTCHER_2_EMERALD_COOKED_PORKCHOP
+                );
+            this.tag(VillagerTradeTags.BUTCHER_LEVEL_3).setReplace(true)
+                .add(
+                    MMEVillagerTradeProvider.BUTCHER_3_BEEF_EMERALD,
+                    MMEVillagerTradeProvider.BUTCHER_3_MUTTON_EMERALD
+                );
+            this.tag(VillagerTradeTags.BUTCHER_LEVEL_4).setReplace(true)
+                .add(
+                    MMEVillagerTradeProvider.BUTCHER_4_CHICKEN_AND_CHARCOAL_COOKED_CHICKEN,
+                    MMEVillagerTradeProvider.BUTCHER_4_MUTTON_AND_CHARCOAL_COOKED_MUTTON,
+                    MMEVillagerTradeProvider.BUTCHER_4_RABBIT_AND_CHARCOAL_COOKED_RABBIT,
+                    MMEVillagerTradeProvider.BUTCHER_4_DRIED_KELP_BLOCK_EMERALD
+                );
+            this.tag(VillagerTradeTags.BUTCHER_LEVEL_5).setReplace(true)
+                .add(
+                    MMEVillagerTradeProvider.BUTCHER_5_PORKCHOP_AND_CHARCOAL_COOKED_PORKCHOP,
+                    MMEVillagerTradeProvider.BUTCHER_5_BEEF_AND_CHARCOAL_COOKED_BEEF,
+                    MMEVillagerTradeProvider.BUTCHER_5_SWEET_BERRIES_EMERALD
+                );
+            this.tag(VillagerTradeTags.LEATHERWORKER_LEVEL_1).setReplace(true)
+                .add(
+                    MMEVillagerTradeProvider.LEATHERWORKER_1_EMERALD_DYED_LEATHER_CHESTPLATE,
+                    MMEVillagerTradeProvider.LEATHERWORKER_1_EMERALD_DYED_LEATHER_LEGGINGS,
+                    MMEVillagerTradeProvider.LEATHERWORKER_1_LEATHER_EMERALD
+                );
+            this.tag(VillagerTradeTags.LEATHERWORKER_LEVEL_2).setReplace(true)
+                .add(
+                    MMEVillagerTradeProvider.LEATHERWORKER_2_EMERALD_DYED_LEATHER_BOOTS,
+                    MMEVillagerTradeProvider.LEATHERWORKER_2_EMERALD_DYED_LEATHER_HELMET,
+                    MMEVillagerTradeProvider.LEATHERWORKER_2_FLINT_EMERALD
+                );
+            this.tag(VillagerTradeTags.LEATHERWORKER_LEVEL_3).setReplace(true)
+                .add(
+                    MMEVillagerTradeProvider.LEATHERWORKER_3_EMERALD_DYED_LEATHER_CHESTPLATE,
+                    MMEVillagerTradeProvider.LEATHERWORKER_3_RABBIT_HIDE_EMERALD
+                );
+            this.tag(VillagerTradeTags.LEATHERWORKER_LEVEL_4).setReplace(true)
+                .add(
+                    MMEVillagerTradeProvider.LEATHERWORKER_4_EMERALD_DYED_LEATHER_HORSE_ARMOR,
+                    MMEVillagerTradeProvider.LEATHERWORKER_4_TURTLE_SCUTE_EMERALD
+                );
+            this.tag(VillagerTradeTags.LEATHERWORKER_LEVEL_5).setReplace(true)
+                .add(
+                    MMEVillagerTradeProvider.LEATHERWORKER_5_EMERALD_DYED_LEATHER_HELMET,
+                    MMEVillagerTradeProvider.LEATHERWORKER_5_EMERALD_SADDLE
+                );
+            this.tag(VillagerTradeTags.MASON_LEVEL_1).setReplace(true)
+                .add(
+                    MMEVillagerTradeProvider.MASON_1_CLAY_BALL_EMERALD,
+                    MMEVillagerTradeProvider.MASON_1_EMERALD_BRICK
+                );
+            this.tag(VillagerTradeTags.MASON_LEVEL_2).setReplace(true)
+                .add(
+                    MMEVillagerTradeProvider.MASON_2_EMERALD_STONE_BRICKS,
+                    MMEVillagerTradeProvider.MASON_2_COBBLESTONE_EMERALD
+                );
+            this.tag(VillagerTradeTags.MASON_LEVEL_3).setReplace(true)
+                .add(
+                    MMEVillagerTradeProvider.MASON_3_ANDESITE_AMETHYST_SHARD,
+                    MMEVillagerTradeProvider.MASON_3_DIORITE_AMETHYST_SHARD,
+                    MMEVillagerTradeProvider.MASON_3_EMERALD_DRIPSTONE_BLOCK,
+                    MMEVillagerTradeProvider.MASON_3_EMERALD_POLISHED_ANDESITE,
+                    MMEVillagerTradeProvider.MASON_3_EMERALD_POLISHED_DIORITE,
+                    MMEVillagerTradeProvider.MASON_3_EMERALD_POLISHED_GRANITE,
+                    MMEVillagerTradeProvider.MASON_3_GRANITE_AMETHYST_SHARD
+                );
+            this.tag(VillagerTradeTags.MASON_LEVEL_4).setReplace(true)
+                .add(
+                    MMEVillagerTradeProvider.MASON_4_EMERALD_BLACK_GLAZED_TERRACOTTA,
+                    MMEVillagerTradeProvider.MASON_4_EMERALD_BLACK_TERRACOTTA,
+                    MMEVillagerTradeProvider.MASON_4_EMERALD_BLUE_GLAZED_TERRACOTTA,
+                    MMEVillagerTradeProvider.MASON_4_EMERALD_BLUE_TERRACOTTA,
+                    MMEVillagerTradeProvider.MASON_4_EMERALD_BROWN_GLAZED_TERRACOTTA,
+                    MMEVillagerTradeProvider.MASON_4_EMERALD_BROWN_TERRACOTTA,
+                    MMEVillagerTradeProvider.MASON_4_EMERALD_CYAN_GLAZED_TERRACOTTA,
+                    MMEVillagerTradeProvider.MASON_4_EMERALD_CYAN_TERRACOTTA,
+                    MMEVillagerTradeProvider.MASON_4_EMERALD_GRAY_GLAZED_TERRACOTTA,
+                    MMEVillagerTradeProvider.MASON_4_EMERALD_GRAY_TERRACOTTA,
+                    MMEVillagerTradeProvider.MASON_4_EMERALD_GREEN_GLAZED_TERRACOTTA,
+                    MMEVillagerTradeProvider.MASON_4_EMERALD_GREEN_TERRACOTTA,
+                    MMEVillagerTradeProvider.MASON_4_EMERALD_LIGHT_BLUE_GLAZED_TERRACOTTA,
+                    MMEVillagerTradeProvider.MASON_4_EMERALD_LIGHT_BLUE_TERRACOTTA,
+                    MMEVillagerTradeProvider.MASON_4_EMERALD_LIGHT_GRAY_GLAZED_TERRACOTTA,
+                    MMEVillagerTradeProvider.MASON_4_EMERALD_LIGHT_GRAY_TERRACOTTA,
+                    MMEVillagerTradeProvider.MASON_4_EMERALD_LIME_GLAZED_TERRACOTTA,
+                    MMEVillagerTradeProvider.MASON_4_EMERALD_LIME_TERRACOTTA,
+                    MMEVillagerTradeProvider.MASON_4_EMERALD_MAGENTA_GLAZED_TERRACOTTA,
+                    MMEVillagerTradeProvider.MASON_4_EMERALD_MAGENTA_TERRACOTTA,
+                    MMEVillagerTradeProvider.MASON_4_EMERALD_ORANGE_GLAZED_TERRACOTTA,
+                    MMEVillagerTradeProvider.MASON_4_EMERALD_ORANGE_TERRACOTTA,
+                    MMEVillagerTradeProvider.MASON_4_EMERALD_PINK_GLAZED_TERRACOTTA,
+                    MMEVillagerTradeProvider.MASON_4_EMERALD_PINK_TERRACOTTA,
+                    MMEVillagerTradeProvider.MASON_4_EMERALD_PURPLE_GLAZED_TERRACOTTA,
+                    MMEVillagerTradeProvider.MASON_4_EMERALD_PURPLE_TERRACOTTA,
+                    MMEVillagerTradeProvider.MASON_4_EMERALD_RED_GLAZED_TERRACOTTA,
+                    MMEVillagerTradeProvider.MASON_4_EMERALD_RED_TERRACOTTA,
+                    MMEVillagerTradeProvider.MASON_4_EMERALD_WHITE_GLAZED_TERRACOTTA,
+                    MMEVillagerTradeProvider.MASON_4_EMERALD_WHITE_TERRACOTTA,
+                    MMEVillagerTradeProvider.MASON_4_EMERALD_YELLOW_GLAZED_TERRACOTTA,
+                    MMEVillagerTradeProvider.MASON_4_EMERALD_YELLOW_TERRACOTTA,
+                    MMEVillagerTradeProvider.MASON_4_EMERALD_QUARTZ
+                );
+            this.tag(VillagerTradeTags.MASON_LEVEL_5).setReplace(true)
+                .add(
+                    MMEVillagerTradeProvider.MASON_5_EMERALD_QUARTZ_BLOCK,
+                    MMEVillagerTradeProvider.MASON_5_EMERALD_QUARTZ_PILLAR
+                );
+            this.tag(VillagerTradeTags.WANDERING_TRADER_BUYING).setReplace(true)
+                .add(
+                    MMEVillagerTradeProvider.WANDERING_TRADER_BAKED_POTATO_EMERALD,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_FERMENTED_SPIDER_EYE_EMERALD,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_HAY_BLOCK_EMERALD,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_MILK_BUCKET_EMERALD,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_MILK_COPPER_BUCKET_EMERALD,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_MILK_SILVER_BUCKET_EMERALD,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_WATER_BOTTLE_EMERALD,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_WATER_BUCKET_EMERALD,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_WATER_COPPER_BUCKET_EMERALD,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_WATER_SILVER_BUCKET_EMERALD
+                );
+            this.tag(VillagerTradeTags.WANDERING_TRADER_UNCOMMON).setReplace(true)
+                .add(
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_ACACIA_LOG,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_BIRCH_LOG,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_BLUE_ICE,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_CHERRY_LOG,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_DARK_OAK_LOG,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_ENCHANTED_IRON_PICKAXE,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_GUNPOWDER,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_JUNGLE_LOG,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_LONG_FIRE_RESISTANCE_POTION,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_LONG_INVISIBILITY_POTION,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_LONG_NIGHT_VISION_POTION,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_MANGROVE_LOG,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_OAK_LOG,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_PACKED_ICE,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_PALE_OAK_LOG,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_PODZOL,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_SPRUCE_LOG
+                );
+            this.tag(VillagerTradeTags.WANDERING_TRADER_COMMON).setReplace(true)
+                .add(
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_ACACIA_SAPLING,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_ALLIUM,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_AZURE_BLUET,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_BEETROOT_SEEDS,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_BIRCH_SAPLING,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_BLACK_DYE,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_BLUE_DYE,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_BLUE_ORCHID,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_BRAIN_CORAL_BLOCK,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_BROWN_DYE,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_BROWN_MUSHROOM,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_BUBBLE_CORAL_BLOCK,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_CACTUS,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_CHERRY_SAPLING,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_CORNFLOWER,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_CYAN_DYE,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_DANDELION,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_DARK_OAK_SAPLING,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_DRY_TALL_GRASS,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_FERN,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_FIRE_CORAL_BLOCK,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_FIREFLY_BUSH,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_FISH_BUCKET,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_GLOWSTONE,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_GOLDEN_DANDELION,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_GRAY_DYE,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_GREEN_DYE,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_HORN_CORAL_BLOCK,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_JUNGLE_SAPLING,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_KELP,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_LIGHT_BLUE_DYE,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_LIGHT_GRAY_DYE,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_LILY_OF_THE_VALLEY,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_LILY_PAD,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_LIME_DYE,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_MAGENTA_DYE,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_MANGROVE_PROPAGULE,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_MELON_SEEDS,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_MOSS_BLOCK,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_NAME_TAG,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_NAUTILUS_SHELL,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_OAK_SAPLING,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_OPEN_EYEBLOSSOM,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_ORANGE_DYE,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_ORANGE_TULIP,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_OXEYE_DAISY,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_PALE_HANGING_MOSS,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_PALE_MOSS_BLOCK,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_PALE_OAK_SAPLING,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_PINK_DYE,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_PINK_TULIP,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_POINTED_DRIPSTONE,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_POPPY,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_PUFFERFISH_BUCKET,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_PUMPKIN,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_PUMPKIN_SEEDS,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_PURPLE_DYE,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_RED_DYE,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_RED_MUSHROOM,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_RED_SAND,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_RED_TULIP,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_ROOTED_DIRT,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_SAND,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_SEA_PICKLE,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_SLIME_BALL,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_SMALL_DRIPLEAF,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_SPRUCE_SAPLING,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_SUGAR_CANE,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_TUBE_CORAL_BLOCK,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_VINE,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_WHEAT_SEEDS,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_WHITE_DYE,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_WHITE_TULIP,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_WILDFLOWERS,
+                    MMEVillagerTradeProvider.WANDERING_TRADER_EMERALD_YELLOW_DYE
+                );
         }
     }
 }

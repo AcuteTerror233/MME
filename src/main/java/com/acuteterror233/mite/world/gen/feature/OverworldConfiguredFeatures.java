@@ -7,14 +7,11 @@ import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SweetBerryBushBlock;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConfiguration;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
-
-import java.util.List;
 
 /**
  * 主世界配置特征注册。
@@ -26,13 +23,10 @@ public class OverworldConfiguredFeatures {
         FeatureUtils.register(
                 featureRegisterable,
                 BLUE_BERRY_BUSH,
-                Feature.RANDOM_PATCH,
-                FeatureUtils.simplePatchConfiguration(
-                        Feature.SIMPLE_BLOCK,
-                        new SimpleBlockConfiguration(
-                                BlockStateProvider.simple(MMEBlocks.BLUE_BERRY_BUSH.defaultBlockState().setValue(SweetBerryBushBlock.AGE, 3))
-                        ),
-                        List.of(Blocks.GRASS_BLOCK))
+                Feature.SIMPLE_BLOCK,
+                new SimpleBlockConfiguration(
+                        BlockStateProvider.simple(MMEBlocks.BLUE_BERRY_BUSH.defaultBlockState().setValue(SweetBerryBushBlock.AGE, 3))
+                )
         );
     }
     public static ResourceKey<ConfiguredFeature<?, ?>> createKey(String string) {

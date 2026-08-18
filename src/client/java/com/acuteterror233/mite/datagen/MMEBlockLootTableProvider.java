@@ -2,8 +2,8 @@ package com.acuteterror233.mite.datagen;
 
 import com.acuteterror233.mite.block.MMEBlocks;
 import com.acuteterror233.mite.item.MMEItems;
-import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
-import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
+import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootSubProvider;
 import net.minecraft.advancements.criterion.StatePropertiesPredicate;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.world.item.enchantment.Enchantments;
@@ -20,13 +20,14 @@ import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 
 import java.util.concurrent.CompletableFuture;
 
+
 /**
  * MME 方块战利品表数据生成器。
  * 为 MME 自定义方块生成战利品表 JSON。
  */
-public class MMEBlockLootTableProvider extends FabricBlockLootTableProvider {
-    public MMEBlockLootTableProvider(FabricDataOutput dataOutput, CompletableFuture<HolderLookup.Provider> registryLookup) {
-        super(dataOutput, registryLookup);
+public class MMEBlockLootTableProvider extends FabricBlockLootSubProvider {
+    public MMEBlockLootTableProvider(FabricPackOutput packOutput, CompletableFuture<HolderLookup.Provider> registriesFuture) {
+        super(packOutput, registriesFuture);
     }
 
     @Override
@@ -137,5 +138,10 @@ public class MMEBlockLootTableProvider extends FabricBlockLootTableProvider {
         dropSelf(MMEBlocks.ADAMANTIUM_JUX_RUNESTORE);
         dropSelf(MMEBlocks.ADAMANTIUM_YLEM_RUNESTORE);
         dropSelf(MMEBlocks.ADAMANTIUM_SANCT_RUNESTORE);
+
+        dropSelf(MMEBlocks.UNDERGROUND_PORTAL);
+        dropSelf(MMEBlocks.HOME_PORTAL);
+        dropSelf(MMEBlocks.RUNE_PORTAL);
     }
+
 }

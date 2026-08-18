@@ -1,8 +1,8 @@
 package com.acuteterror233.mite.datagen;
 
 import com.acuteterror233.mite.world.entity.MMEEntityTypes;
-import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
-import net.fabricmc.fabric.api.datagen.v1.provider.FabricEntityLootTableProvider;
+import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricEntityLootSubProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.storage.loot.LootPool;
@@ -15,17 +15,17 @@ import net.minecraft.world.level.storage.loot.predicates.LootItemKilledByPlayerC
 import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceWithEnchantedBonusCondition;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.concurrent.CompletableFuture;
+
 
 /**
  * MME 实体战利品表数据生成器。
  * 为 MME 自定义实体生成战利品表 JSON（食尸鬼、蜘蛛、苦力怕等）。
  */
-public class MMEEntityLootTableProvider extends FabricEntityLootTableProvider {
-    public MMEEntityLootTableProvider(FabricDataOutput output, @NotNull CompletableFuture<HolderLookup.Provider> registryLookup) {
-        super(output, registryLookup);
+public class MMEEntityLootTableProvider extends FabricEntityLootSubProvider {
+    public MMEEntityLootTableProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
+        super(output, registriesFuture);
     }
 
     @Override
@@ -90,5 +90,10 @@ public class MMEEntityLootTableProvider extends FabricEntityLootTableProvider {
         this.add(MMEEntityTypes.INFERNAL_CREEPER, creeperLootTable);
 
         this.add(MMEEntityTypes.FIRE_ELEMENTAL, LootTable.lootTable());
+
+        this.add(MMEEntityTypes.VAMPIRE_BAT, LootTable.lootTable());
+        this.add(MMEEntityTypes.NIGHTWING, LootTable.lootTable());
+        this.add(MMEEntityTypes.GIANT_VAMPIRE_BAT, LootTable.lootTable());
     }
+
 }

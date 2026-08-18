@@ -14,7 +14,6 @@
       "translate": "mme.advancements.underground.mantle_portal.description"
     },
     "icon": {
-      "count": 1,
       "id": "minecraft:flint_and_steel"
     },
     "show_toast": false,

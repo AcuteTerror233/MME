@@ -1,0 +1,9 @@
+{
+  "gives": {
+    "id": "mme:iron_dagger"
+  },
+  "reputation_discount": 0.2,
+  "wants": {
+    "id": "minecraft:emerald"
+  }
+}

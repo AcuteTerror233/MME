@@ -1,0 +1,9 @@
+{
+  "replace": true,
+  "values": [
+    "mme:fisherman/1/coal_emerald",
+    "mme:fisherman/1/emerald_cod_copper_bucket",
+    "mme:fisherman/1/emerald_cod_silver_bucket",
+    "mme:fisherman/1/string_emerald"
+  ]
+}

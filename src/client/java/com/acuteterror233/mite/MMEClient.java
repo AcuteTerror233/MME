@@ -1,14 +1,11 @@
 package com.acuteterror233.mite;
 
-import com.acuteterror233.mite.block.MMEBlocks;
 import com.acuteterror233.mite.block.MMEMenuTypes;
 import com.acuteterror233.mite.gui.screen.inventory.*;
 import com.acuteterror233.mite.renderer.entity.*;
 import com.acuteterror233.mite.world.entity.MMEEntityTypes;
 import net.fabricmc.api.ClientModInitializer;
-import net.fabricmc.fabric.api.client.rendering.v1.BlockRenderLayerMap;
 import net.minecraft.client.gui.screens.MenuScreens;
-import net.minecraft.client.renderer.chunk.ChunkSectionLayer;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 
 /**
@@ -18,10 +15,6 @@ import net.minecraft.client.renderer.entity.EntityRenderers;
 public class MMEClient implements ClientModInitializer {
 	@Override
 	public void onInitializeClient() {
-        BlockRenderLayerMap.putBlock(MMEBlocks.UNDERGROUND_PORTAL, ChunkSectionLayer.TRANSLUCENT);
-        BlockRenderLayerMap.putBlock(MMEBlocks.HOME_PORTAL, ChunkSectionLayer.TRANSLUCENT);
-        BlockRenderLayerMap.putBlock(MMEBlocks.RUNE_PORTAL, ChunkSectionLayer.TRANSLUCENT);
-        BlockRenderLayerMap.putBlock(MMEBlocks.BLUE_BERRY_BUSH, ChunkSectionLayer.CUTOUT);
         MenuScreens.register(MMEMenuTypes.GRADE_ANVIL, GradeAnvilScreen::new);
         MenuScreens.register(MMEMenuTypes.GRADE_CRAFTING_TABLE, GradeCraftingTableScreen::new);
         MenuScreens.register(MMEMenuTypes.GRADE_FURNACE, GradeFurnaceScreen::new);

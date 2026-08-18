@@ -11,7 +11,6 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.goal.MoveToBlockGoal;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
@@ -71,7 +70,7 @@ public class DestroyCropGoal extends MoveToBlockGoal {
     }
 
     private void playBreakSound(Level level, BlockPos blockPos) {
-        level.playSound(null, blockPos, SoundEvents.COMPOSTER_FILL, SoundSource.BLOCKS, 0.7F, 0.9F + level.random.nextFloat() * 0.2F);
+        level.playSound(null, blockPos, SoundEvents.COMPOSTER_FILL, SoundSource.BLOCKS, 0.7F, 0.9F + level.getRandom().nextFloat() * 0.2F);
     }
 
     @Override
@@ -101,7 +100,7 @@ public class DestroyCropGoal extends MoveToBlockGoal {
                     if (!level.isClientSide()) {
                         ((ServerLevel) level)
                                 .sendParticles(
-                                        new ItemParticleOption(ParticleTypes.ITEM, new ItemStack(Blocks.DIRT)),
+                                        new ItemParticleOption(ParticleTypes.ITEM, Blocks.DIRT.asItem()),
                                         blockPos2.getX() + 0.5,
                                         blockPos2.getY() + 0.7,
                                         blockPos2.getZ() + 0.5,

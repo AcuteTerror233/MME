@@ -1,0 +1,16 @@
+{
+  "gives": {
+    "id": "minecraft:emerald"
+  },
+  "max_uses": 16.0,
+  "reputation_discount": 0.05,
+  "wants": {
+    "count": {
+      "type": "minecraft:uniform",
+      "max": 10.0,
+      "min": 7.0
+    },
+    "id": "minecraft:coal"
+  },
+  "xp": 2.0
+}

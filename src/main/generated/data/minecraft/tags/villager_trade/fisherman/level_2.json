@@ -1,0 +1,8 @@
+{
+  "replace": true,
+  "values": [
+    "mme:fisherman/2/cod_12_emerald",
+    "mme:fisherman/2/salmon_12_emerald",
+    "mme:fisherman/2/emerald_campfire"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "mme-gametest",
+  "version": "1.0.0",
+  "name": "MME GameTest",
+  "description": "MME 模组 GameTest 测试模块（服务端 + 客户端）",
+  "environment": "*",
+  "entrypoints": {
+    "fabric-gametest": [
+      "com.acuteterror233.mite.server.MMEServerGameTest"
+    ],
+    "fabric-client-gametest": [
+      "com.acuteterror233.mite.client.MMEClientGameTest"
+    ]
+  }
+}

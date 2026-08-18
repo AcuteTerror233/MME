@@ -87,7 +87,7 @@ public abstract class AbstractGradeCraftingMenu extends AbstractCraftingMenu {
                 RecipeHolder<CraftingRecipe> recipeEntry = optional.get();
                 CraftingRecipe craftingRecipe = recipeEntry.value();
                 if (resultInventory.setRecipeUsed(serverPlayerEntity, recipeEntry)) {
-                    ItemStack craftItem = craftingRecipe.assemble(craftingRecipeInput, world.registryAccess());
+                    ItemStack craftItem = craftingRecipe.assemble(craftingRecipeInput);
                     if (craftItem.isItemEnabled(world.enabledFeatures())) {
                         this.property.set(2, 1);
                         checkCrafting(craftingInventory, craftItem);

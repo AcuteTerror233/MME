@@ -33,7 +33,7 @@ public interface MMEBlockTags {
     TagKey<Block> NETHERITE_ANVIL = key("netherite_anvil");
     TagKey<Block> ADAMANTIUM_ANVIL = key("adamantium_anvil");
     TagKey<Block> MITHRIL_ANVIL = key("mithril_anvil");
-    TagKey<Block> ANCIENT_METAL_ANVIL = key("damaged_anvil");
+    TagKey<Block> ANCIENT_METAL_ANVIL = key("ancient_metal_anvil");
     TagKey<Block> COPPER_ANVIL = key("copper_anvil");
     TagKey<Block> GOLDEN_ANVIL = key("golden_anvil");
     TagKey<Block> SILVER_ANVIL = key("silver_anvil");

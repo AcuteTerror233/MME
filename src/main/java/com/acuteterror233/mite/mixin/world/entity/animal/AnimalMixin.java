@@ -33,7 +33,7 @@ public abstract class AnimalMixin extends AgeableMob {
 
     @Inject(method = "aiStep", at = @At("TAIL"))
     protected void aiStep(CallbackInfo ci) {
-        if (this.level() instanceof ServerLevel serverLevel && this.getType().is(MMEEntityTypeTags.PRODUCE_MANURE) && this.isAlive() && !this.isBaby() && --this.manureTime <= 0) {
+        if (this.level() instanceof ServerLevel serverLevel && this.getType().builtInRegistryHolder().is(MMEEntityTypeTags.PRODUCE_MANURE) && this.isAlive() && !this.isBaby() && --this.manureTime <= 0) {
             this.spawnAtLocation(serverLevel, MMEItems.MANURE);
             this.gameEvent(GameEvent.ENTITY_PLACE);
             this.manureTime = this.random.nextInt(12000) + 24000;

@@ -969,7 +969,7 @@ public final class LootTableReplace {
                                 LootPool.lootPool()
                                         .setRolls(UniformGenerator.between(0.0F, 1.0F))
                                         .add(LootItem.lootTableItem(Items.GOAT_HORN))
-                                        .apply(SetInstrumentFunction.setInstrumentOptions(InstrumentTags.REGULAR_GOAT_HORNS))
+                                        .apply(SetInstrumentFunction.setInstrumentOptions(provider.lookupOrThrow(Registries.INSTRUMENT).getOrThrow(InstrumentTags.REGULAR_GOAT_HORNS)))
                         )
                         .withPool(
                                 LootPool.lootPool()

@@ -1,0 +1,16 @@
+{
+  "additional_wants": {
+    "id": "minecraft:emerald"
+  },
+  "gives": {
+    "count": 10,
+    "id": "minecraft:cooked_cod"
+  },
+  "max_uses": 12.0,
+  "reputation_discount": 0.05,
+  "wants": {
+    "count": 10.0,
+    "id": "minecraft:cod"
+  },
+  "xp": 20.0
+}

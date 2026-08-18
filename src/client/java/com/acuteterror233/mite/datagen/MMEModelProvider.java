@@ -7,7 +7,7 @@ import com.acuteterror233.mite.block.MMEBlocks;
 import com.acuteterror233.mite.item.MMEItems;
 import com.acuteterror233.mite.item.armor.MMEArmorMaterials;
 import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
-import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
+import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.model.ItemModelUtils;
@@ -25,7 +25,7 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
  * 为 MME 物品和方块生成模型 JSON。
  */
 public class MMEModelProvider extends FabricModelProvider {
-    public MMEModelProvider(FabricDataOutput output) {
+    public MMEModelProvider(FabricPackOutput output) {
         super(output);
     }
 

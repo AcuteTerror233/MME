@@ -1,0 +1,9 @@
+{
+  "replace": true,
+  "values": [
+    "mme:armorer/3/diamond_emerald",
+    "mme:armorer/3/emerald_mithril_chainmail_chestplate",
+    "mme:armorer/3/emerald_mithril_chainmail_helmet",
+    "mme:armorer/3/emerald_shield"
+  ]
+}

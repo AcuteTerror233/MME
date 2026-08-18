@@ -30,7 +30,7 @@ public class DestroyTorchGoal extends RemoveBlockGoal {
 
     @Override
     public void playBreakSound(Level level, BlockPos blockPos) {
-        level.playSound(null, blockPos, SoundEvents.STONE_BREAK, SoundSource.BLOCKS, 0.7F, 0.9F + level.random.nextFloat() * 0.2F);
+        level.playSound(null, blockPos, SoundEvents.STONE_BREAK, SoundSource.BLOCKS, 0.7F, 0.9F + level.getRandom().nextFloat() * 0.2F);
     }
 
     @Override

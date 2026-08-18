@@ -17,10 +17,10 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-@Environment(EnvType.CLIENT)
 /**
  * 烟熏炉等级熔炉 GUI 界面。
  */
+@Environment(EnvType.CLIENT)
 public class GradeSmokerScreen extends AbstractFurnaceScreen<GradeSmokerMenu> {
     private static final Identifier LIT_PROGRESS_TEXTURE = Identifier.withDefaultNamespace("container/smoker/lit_progress");
     private static final Identifier BURN_PROGRESS_TEXTURE = Identifier.withDefaultNamespace("container/smoker/burn_progress");

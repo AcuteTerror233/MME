@@ -1,0 +1,15 @@
+{
+  "replace": true,
+  "values": [
+    "mme:wandering_trader/baked_potato_emerald",
+    "mme:wandering_trader/fermented_spider_eye_emerald",
+    "mme:wandering_trader/hay_block_emerald",
+    "mme:wandering_trader/milk_bucket_emerald",
+    "mme:wandering_trader/milk_copper_bucket_emerald",
+    "mme:wandering_trader/milk_silver_bucket_emerald",
+    "mme:wandering_trader/water_bottle_emerald",
+    "mme:wandering_trader/water_bucket_emerald",
+    "mme:wandering_trader/water_copper_bucket_emerald",
+    "mme:wandering_trader/water_silver_bucket_emerald"
+  ]
+}

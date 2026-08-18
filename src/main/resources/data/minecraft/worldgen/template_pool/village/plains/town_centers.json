@@ -7,7 +7,7 @@
         "processors": "minecraft:zombie_plains",
         "projection": "rigid"
       },
-      "weight": 50
+      "weight": 24
     },
     {
       "element": {
@@ -16,7 +16,7 @@
         "processors": "minecraft:zombie_plains",
         "projection": "rigid"
       },
-      "weight": 50
+      "weight": 24
     },
     {
       "element": {
@@ -25,7 +25,7 @@
         "processors": "minecraft:zombie_plains",
         "projection": "rigid"
       },
-      "weight": 50
+      "weight": 24
     },
     {
       "element": {
@@ -34,7 +34,43 @@
         "processors": "minecraft:zombie_plains",
         "projection": "rigid"
       },
-      "weight": 50
+      "weight": 23
+    },
+    {
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "location": "minecraft:village/plains/town_centers/plains_fountain_01",
+        "processors": "minecraft:street_plains",
+        "projection": "rigid"
+      },
+      "weight": 2
+    },
+    {
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "location": "minecraft:village/plains/town_centers/plains_meeting_point_1",
+        "processors": "minecraft:street_plains",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "location": "minecraft:village/plains/town_centers/plains_meeting_point_2",
+        "processors": "minecraft:street_plains",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "location": "minecraft:village/plains/town_centers/plains_meeting_point_3",
+        "processors": "minecraft:street_plains",
+        "projection": "rigid"
+      },
+      "weight": 1
     }
   ],
   "fallback": "minecraft:empty"

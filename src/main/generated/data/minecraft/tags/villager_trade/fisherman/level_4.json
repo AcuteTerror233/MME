@@ -1,0 +1,8 @@
+{
+  "replace": true,
+  "values": [
+    "mme:fisherman/4/emerald_bucket",
+    "mme:fisherman/4/emerald_mithril_bucket",
+    "mme:fisherman/4/pufferfish_emerald"
+  ]
+}

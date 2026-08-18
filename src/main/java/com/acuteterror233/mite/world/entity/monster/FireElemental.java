@@ -27,7 +27,7 @@ import net.minecraft.world.entity.npc.villager.AbstractVillager;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.LiquidBlock;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.pathfinder.PathType;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -43,8 +43,8 @@ public class FireElemental extends Monster {
         super(entityType, level);
         this.setPathfindingMalus(PathType.WATER, -1.0F);
         this.setPathfindingMalus(PathType.LAVA, 0.0F);
-        this.setPathfindingMalus(PathType.DANGER_FIRE, 0.0F);
-        this.setPathfindingMalus(PathType.DAMAGE_FIRE, 0.0F);
+        this.setPathfindingMalus(PathType.FIRE, 0.0F);
+        this.setPathfindingMalus(PathType.DAMAGING, 0.0F);
     }
 
     @Override
@@ -69,7 +69,7 @@ public class FireElemental extends Monster {
         }
         if (this.isInLava()) {
             CollisionContext collisionContext = CollisionContext.of(this);
-            if (collisionContext.isAbove(LiquidBlock.SHAPE_STABLE, this.blockPosition(), true)
+            if (collisionContext.isAbove(Block.box(0.0, 0.0, 0.0, 16.0, 8.0, 16.0), this.blockPosition(), true)
                     && !this.level().getFluidState(this.blockPosition().above()).is(FluidTags.LAVA)) {
                 this.setOnGround(true);
             } else {

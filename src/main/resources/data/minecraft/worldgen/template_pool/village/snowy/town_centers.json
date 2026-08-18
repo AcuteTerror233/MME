@@ -9,7 +9,7 @@
         },
         "projection": "rigid"
       },
-      "weight": 100
+      "weight": 31
     },
     {
       "element": {
@@ -20,7 +20,7 @@
         },
         "projection": "rigid"
       },
-      "weight": 50
+      "weight": 16
     },
     {
       "element": {
@@ -31,7 +31,34 @@
         },
         "projection": "rigid"
       },
-      "weight": 150
+      "weight": 48
+    },
+    {
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "location": "minecraft:village/snowy/town_centers/snowy_meeting_point_1",
+        "processors": "minecraft:street_snowy_or_taiga",
+        "projection": "rigid"
+      },
+      "weight": 2
+    },
+    {
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "location": "minecraft:village/snowy/town_centers/snowy_meeting_point_2",
+        "processors": "minecraft:street_snowy_or_taiga",
+        "projection": "rigid"
+      },
+      "weight": 2
+    },
+    {
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "location": "minecraft:village/snowy/town_centers/snowy_meeting_point_3",
+        "processors": "minecraft:street_snowy_or_taiga",
+        "projection": "rigid"
+      },
+      "weight": 1
     }
   ],
   "fallback": "minecraft:empty"

@@ -1,0 +1,10 @@
+{
+  "replace": true,
+  "values": [
+    "mme:toolsmith/3/diamond_mithril_axe",
+    "mme:toolsmith/3/diamond_mithril_pickaxe",
+    "mme:toolsmith/3/diamond_mithril_shovel",
+    "mme:toolsmith/3/diamond_mithril_hoe",
+    "mme:toolsmith/3/flint_emerald"
+  ]
+}

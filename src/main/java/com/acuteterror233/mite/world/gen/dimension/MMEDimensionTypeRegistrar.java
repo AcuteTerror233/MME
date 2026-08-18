@@ -11,9 +11,12 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.attribute.*;
+import net.minecraft.world.level.CardinalLighting;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.dimension.DimensionType;
 import net.minecraft.world.timeline.Timeline;
+
+import java.util.Optional;
 
 /**
  * MME 维度类型注册器。
@@ -30,6 +33,7 @@ public class MMEDimensionTypeRegistrar {
                 true,
                 false,
                 true,
+                false,
                 4.0,
                 -64,
                 384,
@@ -38,7 +42,7 @@ public class MMEDimensionTypeRegistrar {
                 0.1F,
                 new DimensionType.MonsterSettings(UniformInt.of(0, 7), 0),
                 DimensionType.Skybox.NONE,
-                DimensionType.CardinalLightType.DEFAULT,
+                CardinalLighting.Type.DEFAULT,
                 EnvironmentAttributeMap.builder()
                         .set(EnvironmentAttributes.FOG_COLOR, -4138753)
                         .set(EnvironmentAttributes.SKY_COLOR, OverworldBiomes.calculateSkyColor(0.8F))
@@ -48,6 +52,7 @@ public class MMEDimensionTypeRegistrar {
                         .set(EnvironmentAttributes.NETHER_PORTAL_SPAWNS_PIGLINS, true)
                         .set(EnvironmentAttributes.AMBIENT_SOUNDS, AmbientSounds.LEGACY_CAVE_SETTINGS)
                         .build(),
-                holderGetter.getOrThrow(MMETimelineTags.IN_UNDERGROUND)));
+                holderGetter.getOrThrow(MMETimelineTags.IN_UNDERGROUND),
+                Optional.empty()));
     }
 }

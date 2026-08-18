@@ -1,0 +1,8 @@
+{
+  "replace": true,
+  "values": [
+    "mme:cartographer/3/compass_emerald",
+    "mme:cartographer/3/emerald_and_compass_ocean_explorer_map",
+    "mme:cartographer/3/emerald_and_compass_trial_chamber_map"
+  ]
+}

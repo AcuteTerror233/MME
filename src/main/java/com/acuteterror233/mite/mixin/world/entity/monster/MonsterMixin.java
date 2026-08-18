@@ -24,7 +24,7 @@ public abstract class MonsterMixin extends PathfinderMob implements Enemy {
     @Override
     public boolean hurtServer(ServerLevel serverLevel, DamageSource damageSource, float f) {
         float f1 = f;
-        if (this.getType().is(EntityTypeTags.SENSITIVE_TO_SMITE) && damageSource.getWeaponItem() != null && damageSource.getWeaponItem().is(MMEItemTags.SILVER_TOOLS)) {
+        if (this.getType().builtInRegistryHolder().is(EntityTypeTags.SENSITIVE_TO_SMITE) && damageSource.getWeaponItem() != null && damageSource.getWeaponItem().is(MMEItemTags.SILVER_TOOLS)) {
             f1 += 2F;
         }
         return super.hurtServer(serverLevel, damageSource, f1);

@@ -5,7 +5,6 @@ import com.acuteterror233.mite.component.MMEDataComponentTypes;
 import com.acuteterror233.mite.item.armor.MMEArmorMaterials;
 import com.acuteterror233.mite.world.food.FoodNutrition;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.references.Items;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -57,8 +56,8 @@ public final class VanillaItemModify {
         result.put(Identifier.withDefaultNamespace("blaze_powder"), settings -> settings.stacksTo(8));
         result.put(Identifier.withDefaultNamespace("rabbit_foot"), settings -> settings.stacksTo(8));
         result.put(Identifier.withDefaultNamespace("glistering_melon_slice"), settings -> settings.stacksTo(8));
-        result.put(Identifier.withDefaultNamespace("inc_sac"), settings -> settings.stacksTo(8));
-        result.put(Identifier.withDefaultNamespace("glow_inc_sac"), settings -> settings.stacksTo(8));
+        result.put(Identifier.withDefaultNamespace("ink_sac"), settings -> settings.stacksTo(8));
+        result.put(Identifier.withDefaultNamespace("glow_ink_sac"), settings -> settings.stacksTo(8));
         result.put(Identifier.withDefaultNamespace("prismarine_shard"), settings -> settings.stacksTo(8));
         result.put(Identifier.withDefaultNamespace("popped_chorus_fruit"), settings -> settings.stacksTo(8));
         result.put(Identifier.withDefaultNamespace("echo_shard"), settings -> settings.stacksTo(8));
@@ -308,6 +307,9 @@ public final class VanillaItemModify {
         result.put(Identifier.withDefaultNamespace("lapis_lazuli"), settings -> settings.stacksTo(32));
         result.put(Identifier.withDefaultNamespace("quartz"), settings -> settings.stacksTo(32));
         result.put(Identifier.withDefaultNamespace("stick"), settings -> settings.stacksTo(32));
+        result.put(Identifier.withDefaultNamespace("arrow"), settings -> settings.stacksTo(32));
+        result.put(Identifier.withDefaultNamespace("tipped_arrow"), settings -> settings.stacksTo(32));
+        result.put(Identifier.withDefaultNamespace("spectral_arrow"), settings -> settings.stacksTo(32));
         result.put(Identifier.withDefaultNamespace("bone"), settings -> settings.stacksTo(32));
         result.put(Identifier.withDefaultNamespace("bone_meal"), settings -> settings.stacksTo(32));
         result.put(Identifier.withDefaultNamespace("string"), settings -> settings.stacksTo(32));
@@ -343,11 +345,11 @@ public final class VanillaItemModify {
                 .food(new FoodProperties(1, 3, false))
                 .component(MMEDataComponentTypes.FOOD_NUTRITION, new FoodNutrition(0, 0, 1200))
         );
-        result.put(Items.MELON_SEEDS.identifier(), settings -> settings
+        result.put(Identifier.withDefaultNamespace("melon_seeds"), settings -> settings
                 .stacksTo(32)
                 .food(new FoodProperties(1, 1, false))
         );
-        result.put(Items.PUMPKIN_SEEDS.identifier(), settings -> settings
+        result.put(Identifier.withDefaultNamespace("pumpkin_seeds"), settings -> settings
                 .stacksTo(32)
                 .food(new FoodProperties(2, 1, false))
         );
@@ -686,7 +688,7 @@ public final class VanillaItemModify {
         result.put(MangroveLeavesBlock.class, settings -> settings.stacksTo(8));
         result.put(UntintedParticleLeavesBlock.class, settings -> settings.stacksTo(8));
         result.put(SnifferEggBlock.class, settings -> settings.stacksTo(8));
-        result.put(WaterlilyBlock.class, settings -> settings.stacksTo(8));
+        result.put(LilyPadBlock.class, settings -> settings.stacksTo(8));
         result.put(LightningRodBlock.class, settings -> settings.stacksTo(8));
         result.put(TintedGlassBlock.class, settings -> settings.stacksTo(8));
         result.put(RepeaterBlock.class, settings -> settings.stacksTo(8));
@@ -743,12 +745,12 @@ public final class VanillaItemModify {
         result.put(ChainBlock.class, settings -> settings.stacksTo(16));
 
         // 最大堆叠为 32 的方块类型
-        result.put(FungusBlock.class, settings -> settings.stacksTo(32));
+        result.put(NetherFungusBlock.class, settings -> settings.stacksTo(32));
         result.put(ButtonBlock.class, settings -> settings.stacksTo(32));
         result.put(CarpetBlock.class, settings -> settings.stacksTo(32));
         result.put(MushroomBlock.class, settings -> settings.stacksTo(32));
         result.put(FlowerBlock.class, settings -> settings.stacksTo(32));
-        result.put(RootsBlock.class, settings -> settings.stacksTo(32));
+        result.put(NetherRootsBlock.class, settings -> settings.stacksTo(32));
         result.put(NetherSproutsBlock.class, settings -> settings.stacksTo(32));
         result.put(StemBlock.class, settings -> settings.stacksTo(32));
         result.put(CactusFlowerBlock.class, settings -> settings.stacksTo(32));

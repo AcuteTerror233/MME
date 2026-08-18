@@ -1,0 +1,28 @@
+{
+  "replace": true,
+  "values": [
+    "mme:shepherd/3/emerald_shears",
+    "mme:shepherd/3/emerald_black_bed",
+    "mme:shepherd/3/emerald_blue_bed",
+    "mme:shepherd/3/emerald_brown_bed",
+    "mme:shepherd/3/emerald_cyan_bed",
+    "mme:shepherd/3/emerald_gray_bed",
+    "mme:shepherd/3/emerald_green_bed",
+    "mme:shepherd/3/emerald_light_blue_bed",
+    "mme:shepherd/3/emerald_light_gray_bed",
+    "mme:shepherd/3/emerald_lime_bed",
+    "mme:shepherd/3/emerald_magenta_bed",
+    "mme:shepherd/3/emerald_orange_bed",
+    "mme:shepherd/3/emerald_pink_bed",
+    "mme:shepherd/3/emerald_purple_bed",
+    "mme:shepherd/3/emerald_red_bed",
+    "mme:shepherd/3/emerald_white_bed",
+    "mme:shepherd/3/emerald_yellow_bed",
+    "mme:shepherd/3/black_dye_emerald",
+    "mme:shepherd/3/brown_dye_emerald",
+    "mme:shepherd/3/cyan_dye_emerald",
+    "mme:shepherd/3/gray_dye_emerald",
+    "mme:shepherd/3/light_blue_dye_emerald",
+    "mme:shepherd/3/lime_dye_emerald"
+  ]
+}

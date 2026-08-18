@@ -5,7 +5,7 @@ import com.acuteterror233.mite.block.MMEBlocks;
 import com.acuteterror233.mite.item.MMEItems;
 import com.acuteterror233.mite.registry.tag.MMEItemTags;
 import com.acuteterror233.mite.world.gen.dimension.MMEDimensionTypeRegistrar;
-import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
+import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricAdvancementProvider;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementHolder;
@@ -34,7 +34,7 @@ import java.util.function.Consumer;
  * 生成模组自定义进度 JSON。
  */
 public class MMEAdvancementProvider extends FabricAdvancementProvider {
-    public MMEAdvancementProvider(FabricDataOutput output, CompletableFuture<HolderLookup.Provider> registryLookup) {
+    public MMEAdvancementProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registryLookup) {
         super(output, registryLookup);
     }
 

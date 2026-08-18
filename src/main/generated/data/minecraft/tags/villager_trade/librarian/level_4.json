@@ -1,0 +1,9 @@
+{
+  "replace": true,
+  "values": [
+    "mme:librarian/4/emerald_book_and_enchanted_book",
+    "mme:librarian/4/emerald_clock",
+    "mme:librarian/4/emerald_compass",
+    "mme:librarian/4/writable_book_emerald"
+  ]
+}

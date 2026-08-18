@@ -1,0 +1,23 @@
+{
+  "replace": true,
+  "values": [
+    "mme:shepherd/1/black_wool_emerald",
+    "mme:shepherd/1/blue_wool_emerald",
+    "mme:shepherd/1/brown_wool_emerald",
+    "mme:shepherd/1/cyan_wool_emerald",
+    "mme:shepherd/1/emerald_copper_shears",
+    "mme:shepherd/1/emerald_silver_shears",
+    "mme:shepherd/1/gray_wool_emerald",
+    "mme:shepherd/1/green_wool_emerald",
+    "mme:shepherd/1/light_blue_wool_emerald",
+    "mme:shepherd/1/light_gray_wool_emerald",
+    "mme:shepherd/1/lime_wool_emerald",
+    "mme:shepherd/1/magenta_wool_emerald",
+    "mme:shepherd/1/orange_wool_emerald",
+    "mme:shepherd/1/pink_wool_emerald",
+    "mme:shepherd/1/purple_wool_emerald",
+    "mme:shepherd/1/red_wool_emerald",
+    "mme:shepherd/1/white_wool_emerald",
+    "mme:shepherd/1/yellow_wool_emerald"
+  ]
+}

@@ -7,7 +7,7 @@
         "processors": "minecraft:zombie_taiga",
         "projection": "rigid"
       },
-      "weight": 50
+      "weight": 48
     },
     {
       "element": {
@@ -16,7 +16,34 @@
         "processors": "minecraft:zombie_taiga",
         "projection": "rigid"
       },
-      "weight": 50
+      "weight": 47
+    },
+    {
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "location": "minecraft:village/taiga/town_centers/taiga_meeting_point_1",
+        "processors": "minecraft:street_snowy_or_taiga",
+        "projection": "rigid"
+      },
+      "weight": 2
+    },
+    {
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "location": "minecraft:village/taiga/town_centers/taiga_meeting_point_2",
+        "processors": "minecraft:street_snowy_or_taiga",
+        "projection": "rigid"
+      },
+      "weight": 2
+    },
+    {
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "location": "minecraft:village/taiga/town_centers/taiga_meeting_point_3",
+        "processors": "minecraft:street_snowy_or_taiga",
+        "projection": "rigid"
+      },
+      "weight": 1
     }
   ],
   "fallback": "minecraft:empty"

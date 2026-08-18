@@ -1,0 +1,9 @@
+{
+  "replace": true,
+  "values": [
+    "mme:butcher/1/chicken_emerald",
+    "mme:butcher/1/emerald_rabbit_stew",
+    "mme:butcher/1/porkchop_emerald",
+    "mme:butcher/1/rabbit_emerald"
+  ]
+}

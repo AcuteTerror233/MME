@@ -1,0 +1,15 @@
+{
+  "gives": {
+    "id": "mme:copper_shears"
+  },
+  "max_uses": 16.0,
+  "reputation_discount": 0.05,
+  "wants": {
+    "count": {
+      "type": "minecraft:uniform",
+      "max": 2.0,
+      "min": 1.0
+    },
+    "id": "minecraft:emerald"
+  }
+}

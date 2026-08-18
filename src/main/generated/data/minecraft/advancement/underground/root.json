@@ -14,7 +14,6 @@
       "translate": "mme.advancements.underground.root.description"
     },
     "icon": {
-      "count": 1,
       "id": "minecraft:deepslate"
     },
     "show_toast": false,

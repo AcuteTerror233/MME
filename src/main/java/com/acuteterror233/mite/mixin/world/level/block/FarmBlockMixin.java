@@ -2,7 +2,7 @@ package com.acuteterror233.mite.mixin.world.level.block;
 
 import com.acuteterror233.mite.block.state.properties.MMEBlockStateProperties;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.FarmBlock;
+import net.minecraft.world.level.block.FarmlandBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin(FarmBlock.class)
+@Mixin(FarmlandBlock.class)
 /**
  * Mixin for {@code FarmBlock} — 添加肥力系统支持。
  */

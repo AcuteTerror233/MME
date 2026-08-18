@@ -1,0 +1,9 @@
+{
+  "replace": true,
+  "values": [
+    "mme:fisherman/3/emerald_enchanted_fishing_rod",
+    "mme:fisherman/3/tropical_fish_12_emerald",
+    "mme:fisherman/3/salmon_and_emerald_cooked_salmon",
+    "mme:fisherman/3/cod_and_emerald_cooked_cod"
+  ]
+}

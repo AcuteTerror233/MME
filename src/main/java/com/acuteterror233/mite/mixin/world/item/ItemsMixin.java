@@ -4,6 +4,7 @@ import com.acuteterror233.mite.event.VanillaRegisterModify;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
@@ -39,6 +40,9 @@ public class ItemsMixin {
     private static void onRegister(ResourceKey<Item> key, Function<Item.Properties, Item> factory, Item.Properties settings, CallbackInfoReturnable<Item> cir) {
         Item modify = VanillaRegisterModify.ITEM_REGISTER.invoker().Modify(key, factory, settings.setId(key));
         if (modify != null) {
+            if (modify instanceof BlockItem blockItem) {
+                blockItem.registerBlocks(Item.BY_BLOCK, modify);
+            }
             cir.setReturnValue(Registry.register(BuiltInRegistries.ITEM, key, modify));
         }
     }

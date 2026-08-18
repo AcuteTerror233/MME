@@ -1,0 +1,9 @@
+{
+  "replace": true,
+  "values": [
+    "mme:toolsmith/5/diamond_mithril_ingot",
+    "mme:toolsmith/5/diamond_enchanted_mithril_battle_axe",
+    "mme:toolsmith/5/diamond_enchanted_mithril_scythe",
+    "mme:toolsmith/5/diamond_enchanted_mithril_war_hammer"
+  ]
+}

@@ -4,11 +4,13 @@ import com.acuteterror233.mite.MME;
 import com.acuteterror233.mite.component.MMEDataComponentTypes;
 import com.acuteterror233.mite.item.MMEToolMaterials;
 import com.acuteterror233.mite.registry.tag.MMEItemTags;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.ToolMaterial;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -91,7 +93,7 @@ public class MMEBlocks {
                     .ofFullCopy(Blocks.BEDROCK)
                     .lightLevel(blockStatex -> 3)
                     .isValidSpawn((blockStatex, blockGetter, blockPos, entityType) -> entityType.fireImmune())
-                    .hasPostProcess(Blocks::always)
+                    .postProcess((blockStatex, blockGetter, blockPos) -> blockPos)
                     .emissiveRendering(Blocks::always)
     );
 
@@ -444,13 +446,22 @@ public class MMEBlocks {
     }
     public static Block register(String id, Function<BlockBehaviour.Properties, Block> factory, BlockBehaviour.Properties settings, BiFunction<Block, Item.Properties, Item> factory1) {
         Block block = Blocks.register(ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(MME.MOD_ID, id)), factory, settings);
-        Items.registerBlock(block, factory1);
+        registerBlockItem(block, factory1, new Item.Properties());
         return block;
     }
     public static Block register(String id, Function<BlockBehaviour.Properties, Block> factory, BlockBehaviour.Properties settings, Item.Properties itemSettings) {
         Block block = Blocks.register(ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(MME.MOD_ID, id)), factory, settings);
-        Items.registerBlock(block, itemSettings.useBlockDescriptionPrefix());
+        registerBlockItem(block, (b, properties) -> new BlockItem(b, properties), itemSettings);
         return block;
+    }
+
+    private static void registerBlockItem(Block block, BiFunction<Block, Item.Properties, Item> itemFactory, Item.Properties itemSettings) {
+        ResourceKey<Item> itemKey = ResourceKey.create(Registries.ITEM, block.builtInRegistryHolder().key().identifier());
+        Item item = itemFactory.apply(block, itemSettings.useBlockDescriptionPrefix().requiredFeatures(block.requiredFeatures()).setId(itemKey));
+        if (item instanceof BlockItem blockItem) {
+            blockItem.registerBlocks(Item.BY_BLOCK, item);
+        }
+        Registry.register(BuiltInRegistries.ITEM, itemKey, item);
     }
 
     public static void init() {

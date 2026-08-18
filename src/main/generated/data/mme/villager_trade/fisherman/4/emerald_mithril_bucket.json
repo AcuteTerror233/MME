@@ -1,0 +1,16 @@
+{
+  "gives": {
+    "id": "mme:mithril_bucket"
+  },
+  "max_uses": 12.0,
+  "reputation_discount": 0.05,
+  "wants": {
+    "count": {
+      "type": "minecraft:uniform",
+      "max": 7.0,
+      "min": 6.0
+    },
+    "id": "minecraft:emerald"
+  },
+  "xp": 15.0
+}

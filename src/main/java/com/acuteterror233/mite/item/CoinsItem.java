@@ -26,13 +26,14 @@ import java.util.function.Consumer;
 public class CoinsItem extends Item {
     private final int experience;
     public static final Map<Identifier, Identifier> COINS_EXCHANGEITEM = new HashMap<>(){{
+        put(Identifier.fromNamespaceAndPath(MME.MOD_ID, "netherite_coins"), Identifier.fromNamespaceAndPath(MME.MOD_ID, "netherite_nugget"));
         put(Identifier.fromNamespaceAndPath(MME.MOD_ID, "adamantium_coins"), Identifier.fromNamespaceAndPath(MME.MOD_ID, "adamantium_nugget"));
         put(Identifier.fromNamespaceAndPath(MME.MOD_ID, "mithril_coins"), Identifier.fromNamespaceAndPath(MME.MOD_ID, "mithril_nugget"));
         put(Identifier.fromNamespaceAndPath(MME.MOD_ID, "ancient_metal_coins"), Identifier.fromNamespaceAndPath(MME.MOD_ID, "ancient_metal_nugget"));
         put(Identifier.fromNamespaceAndPath(MME.MOD_ID, "iron_coins"), Identifier.withDefaultNamespace("iron_nugget"));
         put(Identifier.fromNamespaceAndPath(MME.MOD_ID, "silver_coins"), Identifier.fromNamespaceAndPath(MME.MOD_ID, "silver_nugget"));
         put(Identifier.fromNamespaceAndPath(MME.MOD_ID, "copper_coins"), Identifier.withDefaultNamespace("copper_nugget"));
-        put(Identifier.fromNamespaceAndPath(MME.MOD_ID, "gold_coins"), Identifier.withDefaultNamespace("gold_nugget"));
+        put(Identifier.fromNamespaceAndPath(MME.MOD_ID, "golden_coins"), Identifier.withDefaultNamespace("gold_nugget"));
     }};
     public CoinsItem(Properties settings, int experience) {
         super(settings);

@@ -1,8 +1,8 @@
 package com.acuteterror233.mite.inventory;
 
+import com.acuteterror233.mite.block.GradeCraftingTableBlock;
 import com.acuteterror233.mite.block.MMEMenuTypes;
 import com.acuteterror233.mite.inventory.slot.CraftingTableResultSlot;
-import com.acuteterror233.mite.registry.tag.MMEBlockTags;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.Container;
@@ -26,15 +26,17 @@ import java.util.List;
 public class GradeCraftingTableMenu extends AbstractGradeCraftingMenu {
     private final ContainerLevelAccess context;
     private final Player player;
+    private final GradeCraftingTableBlock tableBlock;
     private boolean filling;
     public GradeCraftingTableMenu(int syncId, Inventory playerInventory) {
-        this(syncId, playerInventory, ContainerLevelAccess.NULL, null, null, 0.0f);
+        this(syncId, playerInventory, ContainerLevelAccess.NULL,null, null, null, 0.0f);
     }
 
-    public GradeCraftingTableMenu(int syncId, Inventory playerInventory, ContainerLevelAccess context, TagKey<Item> exceptionsTag, TagKey<Item> disableMaterialsTag, float craftingSpeedBonus) {
+    public GradeCraftingTableMenu(int syncId, Inventory playerInventory, ContainerLevelAccess context, GradeCraftingTableBlock tableBlock, TagKey<Item> exceptionsTag, TagKey<Item> disableMaterialsTag, float craftingSpeedBonus) {
         super(MMEMenuTypes.GRADE_CRAFTING_TABLE, syncId, exceptionsTag, disableMaterialsTag, craftingSpeedBonus, 3, 3);
         this.context = context;
         this.player = playerInventory.player;
+        this.tableBlock = tableBlock;
         this.addResultSlot(this.player, 124, 35);
         this.addCraftingGridSlots(30, 17);
         this.addStandardInventorySlots(playerInventory, 8, 84);
@@ -69,7 +71,7 @@ public class GradeCraftingTableMenu extends AbstractGradeCraftingMenu {
     }
     @Override
     public boolean stillValid(Player player) {
-        return this.context.evaluate((world, pos) -> world.getBlockState(pos).is(MMEBlockTags.CRAFTING_TABLE) && player.isWithinBlockInteractionRange(pos, 4.0) && world.getBlockState(pos.above()).isAir(), true);
+        return this.context.evaluate((world, pos) -> world.getBlockState(pos).is(this.tableBlock) && player.isWithinBlockInteractionRange(pos, 4.0) && world.getBlockState(pos.above()).isAir(), true);
     }
     @Override
     protected @NotNull Player owner() {

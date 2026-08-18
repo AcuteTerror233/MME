@@ -17,8 +17,8 @@ import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fabricmc.fabric.api.biome.v1.ModificationPhase;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.fabricmc.fabric.api.entity.event.v1.EntitySleepEvents;
-import net.fabricmc.fabric.api.object.builder.v1.world.poi.PointOfInterestHelper;
-import net.fabricmc.fabric.api.registry.FuelRegistryEvents;
+import net.fabricmc.fabric.api.object.builder.v1.world.poi.PoiHelper;
+import net.fabricmc.fabric.api.registry.FuelValueEvents;
 import net.minecraft.commands.Commands;
 import net.minecraft.data.worldgen.placement.OrePlacements;
 import net.minecraft.network.chat.Component;
@@ -56,7 +56,7 @@ public class MME implements ModInitializer {
         LootTableReplace.init();
         BiomeModification.init();
 
-        PointOfInterestHelper.register(Identifier.fromNamespaceAndPath(MME.MOD_ID, "underground_portal"), 0, 1, MMEBlocks.UNDERGROUND_PORTAL);
+        PoiHelper.register(Identifier.fromNamespaceAndPath(MME.MOD_ID, "underground_portal"), 0, 1, MMEBlocks.UNDERGROUND_PORTAL);
 
         inOverworldAdd(OverworldPlacedFeatures.OVERWORLD_ORE_SILVER_SMALL);
         inOverworldAdd(OverworldPlacedFeatures.OVERWORLD_ORE_SILVER);
@@ -66,7 +66,7 @@ public class MME implements ModInitializer {
 
         ServerRecipeModify.EVENT.register(list -> list.removeIf(recipeEntry -> MME.FILTER_RECIPE_SET.contains(recipeEntry.id().identifier())));
 
-        FuelRegistryEvents.BUILD.register((builder, context) -> {
+        FuelValueEvents.BUILD.register((builder, context) -> {
             builder.add(MMEItems.WOODEN_CLUB, context.baseSmeltTime());
             builder.add(MMEItems.WOODEN_CUDGEL, context.baseSmeltTime());
             builder.add(MMEItemTags.LAVA_BUCKET,  context.baseSmeltTime() * 16);
@@ -76,7 +76,7 @@ public class MME implements ModInitializer {
             builder.add(Items.SOUL_TORCH, context.baseSmeltTime() * 6);
         });
 
-        EntitySleepEvents.ALLOW_SLEEPING.register((player, sleepingPos) -> null);
+        EntitySleepEvents.ALLOW_SLEEPING.register((_, _) -> null);
         EntitySleepEvents.ALLOW_RESETTING_TIME.register(player -> !player.level().isBrightOutside());
 
         FireBlock fireBlock = (FireBlock)Blocks.FIRE;

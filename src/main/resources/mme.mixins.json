@@ -6,6 +6,7 @@
   ],
   "mixins": [
     "BootstrapMixin",
+    "attribute.BedRuleMixin",
     "component.DataComponentsMixin",
     "recipe.RecipeManagerMixin",
     "server.MinecraftServerMixin",
@@ -24,7 +25,6 @@
     "world.entity.monster.CreeperMixin",
     "world.entity.monster.MonsterMixin",
     "world.entity.monster.ZombieMixin",
-    "world.entity.npc.VillagerTradesMixin",
     "world.entity.passive.AnimalMixin",
     "world.entity.player.FoodDataMixin",
     "world.entity.player.PlayerEntityMixin",

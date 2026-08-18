@@ -1,0 +1,8 @@
+{
+  "replace": true,
+  "values": [
+    "mme:leatherworker/2/emerald_dyed_leather_boots",
+    "mme:leatherworker/2/emerald_dyed_leather_helmet",
+    "mme:leatherworker/2/flint_emerald"
+  ]
+}

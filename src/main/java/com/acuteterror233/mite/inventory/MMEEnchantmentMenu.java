@@ -190,7 +190,7 @@ public class MMEEnchantmentMenu extends AbstractContainerMenu {
                         this.enchantSlots.setChanged();
                         this.enchantmentSeed.set(player.getEnchantmentSeed());
                         this.slotsChanged(this.enchantSlots);
-                        level.playSound(null, blockPos, SoundEvents.ENCHANTMENT_TABLE_USE, SoundSource.BLOCKS, 1.0F, level.random.nextFloat() * 0.1F + 0.9F);
+                        level.playSound(null, blockPos, SoundEvents.ENCHANTMENT_TABLE_USE, SoundSource.BLOCKS, 1.0F, level.getRandom().nextFloat() * 0.1F + 0.9F);
                         return;
                     }
                     List<EnchantmentInstance> list = this.getEnchantmentList(level.registryAccess(), itemStack, i, this.costs[i]);
@@ -218,7 +218,7 @@ public class MMEEnchantmentMenu extends AbstractContainerMenu {
                         this.enchantSlots.setChanged();
                         this.enchantmentSeed.set(player.getEnchantmentSeed());
                         this.slotsChanged(this.enchantSlots);
-                        level.playSound(null, blockPos, SoundEvents.ENCHANTMENT_TABLE_USE, SoundSource.BLOCKS, 1.0F, level.random.nextFloat() * 0.1F + 0.9F);
+                        level.playSound(null, blockPos, SoundEvents.ENCHANTMENT_TABLE_USE, SoundSource.BLOCKS, 1.0F, level.getRandom().nextFloat() * 0.1F + 0.9F);
                     }
                 });
                 return true;

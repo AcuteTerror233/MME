@@ -4,7 +4,7 @@ import com.acuteterror233.mite.inventory.GradeCraftingTableMenu;
 import com.acuteterror233.mite.inventory.slot.CraftingTableResultSlot;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.navigation.ScreenPosition;
 import net.minecraft.client.gui.screens.inventory.AbstractRecipeBookScreen;
 import net.minecraft.client.gui.screens.recipebook.CraftingRecipeBookComponent;
@@ -14,14 +14,15 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
+import org.jspecify.annotations.NonNull;
 
 import java.util.List;
 
-@Environment(EnvType.CLIENT)
 /**
  * 等级工作台 GUI 界面。
  * 渲染等级工作台的客户端界面。
  */
+@Environment(EnvType.CLIENT)
 public class GradeCraftingTableScreen extends AbstractRecipeBookScreen<GradeCraftingTableMenu> {
     private static final Identifier TEXTURE = Identifier.withDefaultNamespace("textures/gui/container/crafting_table.png");
     private static final Identifier CRAFTING_PROGRESS_TEXTURE = Identifier.withDefaultNamespace("container/furnace/burn_progress");
@@ -40,7 +41,8 @@ public class GradeCraftingTableScreen extends AbstractRecipeBookScreen<GradeCraf
     }
 
     @Override
-    protected void renderBg(GuiGraphics context, float deltaTicks, int mouseX, int mouseY) {
+    public void extractBackground(@NonNull GuiGraphicsExtractor context, int mouseX, int mouseY, float deltaTicks) {
+        super.extractBackground(context, mouseX, mouseY, deltaTicks);
         int x = this.leftPos;
         int y = this.topPos;
         double v = this.menu.getCraftingTime();
@@ -51,7 +53,7 @@ public class GradeCraftingTableScreen extends AbstractRecipeBookScreen<GradeCraf
     }
 
     @Override
-    protected @NotNull List<Component> getTooltipFromContainerItem(ItemStack itemStack) {
+    protected @NotNull List<Component> getTooltipFromContainerItem(@NonNull ItemStack itemStack) {
         List<Component> list = getTooltipFromItem(this.minecraft, itemStack);
         if (this.hoveredSlot instanceof CraftingTableResultSlot && !this.menu.isAllowCrafting()){
             list.add(Component.translatable("mme.craftingTable.noAllowedCrafting"));

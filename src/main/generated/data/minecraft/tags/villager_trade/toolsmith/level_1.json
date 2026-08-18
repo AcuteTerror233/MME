@@ -1,0 +1,15 @@
+{
+  "replace": true,
+  "values": [
+    "mme:toolsmith/1/coal_emerald",
+    "mme:toolsmith/1/emerald_iron_axe",
+    "mme:toolsmith/1/emerald_iron_battle_axe",
+    "mme:toolsmith/1/emerald_iron_hatchet",
+    "mme:toolsmith/1/emerald_iron_hoe",
+    "mme:toolsmith/1/emerald_iron_mattock",
+    "mme:toolsmith/1/emerald_iron_pickaxe",
+    "mme:toolsmith/1/emerald_iron_scythe",
+    "mme:toolsmith/1/emerald_iron_shovel",
+    "mme:toolsmith/1/emerald_iron_war_hammer"
+  ]
+}

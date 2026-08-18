@@ -28,7 +28,7 @@ public class EmeraldEnchantingTableBlock extends EnchantingTableBlock {
         BlockEntity blockEntity = level.getBlockEntity(blockPos);
         if (blockEntity instanceof EnchantingTableBlockEntity) {
             Component component = ((Nameable)blockEntity).getDisplayName();
-            return new SimpleMenuProvider((i, inventory, player) -> new MMEEnchantmentMenu(i, inventory, ContainerLevelAccess.create(level, blockPos), 10), component);
+            return new SimpleMenuProvider((i, inventory, _) -> new MMEEnchantmentMenu(i, inventory, ContainerLevelAccess.create(level, blockPos), 10), component);
         } else {
             return null;
         }
