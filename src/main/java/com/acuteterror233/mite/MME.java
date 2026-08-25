@@ -89,8 +89,11 @@ public class MME implements ModInitializer {
                                 .executes(context -> {
                                     context.getSource().sendSuccess(() -> {
                                                 ServerPlayer player = context.getSource().getPlayer();
-                                                FoodNutrition foodNutrition = ((FoodDataExtension) player.getFoodData()).MME$GetFoodNutrition();
-                                                return Component.translatable("mme.nutrition.tooltip", player.getName(), foodNutrition.fiber(), foodNutrition.protein(), foodNutrition.sugar());
+                                                if (player != null) {
+                                                    FoodNutrition foodNutrition = ((FoodDataExtension) player.getFoodData()).MME$GetFoodNutrition();
+                                                    return Component.translatable("mme.nutrition.tooltip", player.getName(), foodNutrition.fiber(), foodNutrition.protein(), foodNutrition.sugar());
+                                                }
+                                                return Component.empty();
                                             },
                                             false);
                                     return 1;

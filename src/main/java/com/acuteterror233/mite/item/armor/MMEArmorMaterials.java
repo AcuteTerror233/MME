@@ -31,7 +31,7 @@ public class MMEArmorMaterials {
     public static final ResourceKey<EquipmentAsset> IRON_CHAINMAIL_MATERIAL_KEY = EquipmentAssets.CHAINMAIL;
     public static final ResourceKey<EquipmentAsset> RUSTED_IRON_MATERIAL_KEY = ResourceKey.create(EquipmentAssets.ROOT_ID, Identifier.fromNamespaceAndPath(MME.MOD_ID, "rusted_iron"));
     public static final ResourceKey<EquipmentAsset> RUSTED_IRON_CHAINMAIL_MATERIAL_KEY = ResourceKey.create(EquipmentAssets.ROOT_ID, Identifier.fromNamespaceAndPath(MME.MOD_ID, "rusted_iron_chainmail"));
-    public static final ResourceKey<EquipmentAsset> COPPER_MATERIAL_KEY = ResourceKey.create(EquipmentAssets.ROOT_ID, Identifier.fromNamespaceAndPath(MME.MOD_ID, "copper"));
+    public static final ResourceKey<EquipmentAsset> COPPER_MATERIAL_KEY = EquipmentAssets.COPPER;
     public static final ResourceKey<EquipmentAsset> COPPER_CHAINMAIL_MATERIAL_KEY = ResourceKey.create(EquipmentAssets.ROOT_ID, Identifier.fromNamespaceAndPath(MME.MOD_ID, "copper_chainmail"));
     public static final ResourceKey<EquipmentAsset> SILVER_MATERIAL_KEY = ResourceKey.create(EquipmentAssets.ROOT_ID, Identifier.fromNamespaceAndPath(MME.MOD_ID, "silver"));
     public static final ResourceKey<EquipmentAsset> SILVER_CHAINMAIL_MATERIAL_KEY = ResourceKey.create(EquipmentAssets.ROOT_ID, Identifier.fromNamespaceAndPath(MME.MOD_ID, "silver_chainmail"));

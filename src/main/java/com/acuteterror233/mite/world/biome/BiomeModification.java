@@ -35,11 +35,11 @@ public final class BiomeModification {
                 GenerationStep.Decoration.VEGETAL_DECORATION,
                 OverworldPlacedFeatures.BLUE_BERRY_COMMON
         );
+
         BiomeModifications.addSpawn(BiomeSelectors.foundInOverworld(), MobCategory.MONSTER, MMEEntityTypes.GHOUL, 10, 4, 4);
         BiomeModifications.addSpawn(BiomeSelectors.foundInOverworld(), MobCategory.MONSTER, MMEEntityTypes.SHADOW, 8, 1, 3);
         BiomeModifications.addSpawn(BiomeSelectors.foundInOverworld(), MobCategory.MONSTER, MMEEntityTypes.WIGHT, 6, 1, 2);
         BiomeModifications.addSpawn(BiomeSelectors.foundInOverworld(), MobCategory.MONSTER, MMEEntityTypes.INVISIBLE_STALKER, 7, 1, 3);
-
         BiomeModifications.addSpawn(BiomeSelectors.foundInTheNether(), MobCategory.MONSTER, MMEEntityTypes.FIRE_ELEMENTAL, 15, 1, 2);
     }
 }

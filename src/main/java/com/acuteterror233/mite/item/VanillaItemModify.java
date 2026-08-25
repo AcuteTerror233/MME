@@ -291,15 +291,15 @@ public final class VanillaItemModify {
                 .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().fiber(8000).sugar(4800).build())
         );
         result.put(Identifier.withDefaultNamespace("raw_copper"), settings -> settings
-                .stacksTo(16)
+                .stacksTo(8)
                 .component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2)
         );
         result.put(Identifier.withDefaultNamespace("raw_gold"), settings -> settings
-                .stacksTo(16)
+                .stacksTo(8)
                 .component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2)
         );
         result.put(Identifier.withDefaultNamespace("raw_iron"), settings -> settings
-                .stacksTo(16)
+                .stacksTo(8)
                 .component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2)
         );
 

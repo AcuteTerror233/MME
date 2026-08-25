@@ -17,10 +17,10 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
-@Mixin(Items.class)
 /**
  * Mixin for {@code Items} — 修改原版物品注册。
  */
+@Mixin(Items.class)
 public class ItemsMixin {
     @Shadow
     public static ResourceKey<Item> blockIdToItemId(ResourceKey<Block> blockKey) {

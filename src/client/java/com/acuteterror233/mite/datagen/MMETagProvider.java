@@ -88,6 +88,11 @@ public class MMETagProvider {
 
         @Override
         protected void addTags(HolderLookup.Provider wrapperLookup) {
+            builder(EnchantmentTags.NON_TREASURE)
+                    .add(MMEEnchantments.BUTCHERING)
+                    .add(MMEEnchantments.CLEAVING)
+                    .add(MMEEnchantments.HARVESTING)
+                    .add(MMEEnchantments.FERTILITY);
             builder(MMEEnchantmentTags.EQUIPMENT_DROPS_EXCLUSIVE)
                     .add(Enchantments.LOOTING)
                     .add(MMEEnchantments.BUTCHERING);
