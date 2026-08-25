@@ -138,10 +138,5 @@ public class MMEBlockLootTableProvider extends FabricBlockLootSubProvider {
         dropSelf(MMEBlocks.ADAMANTIUM_JUX_RUNESTORE);
         dropSelf(MMEBlocks.ADAMANTIUM_YLEM_RUNESTORE);
         dropSelf(MMEBlocks.ADAMANTIUM_SANCT_RUNESTORE);
-
-        dropSelf(MMEBlocks.UNDERGROUND_PORTAL);
-        dropSelf(MMEBlocks.HOME_PORTAL);
-        dropSelf(MMEBlocks.RUNE_PORTAL);
     }
-
 }

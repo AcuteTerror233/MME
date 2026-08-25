@@ -224,17 +224,17 @@ public class MMEBlocks {
             new Item.Properties().durability(maxDamageAnvil(MMEToolMaterials.COPPER.durability()))
     );
 
-    public static final Block UNDERGROUND_PORTAL = register(
+    public static final Block UNDERGROUND_PORTAL = registerNoItem(
             "underground_portal",
             UndergroundPortalBlock::new,
             BlockBehaviour.Properties.ofFullCopy(Blocks.NETHER_PORTAL)
     );
-    public static final Block HOME_PORTAL = register(
+    public static final Block HOME_PORTAL = registerNoItem(
             "home_portal",
             HomePortalBlock::new,
             BlockBehaviour.Properties.ofFullCopy(Blocks.NETHER_PORTAL)
     );
-    public static final Block RUNE_PORTAL = register(
+    public static final Block RUNE_PORTAL = registerNoItem(
             "rune_portal",
             RunePortalBlock::new,
             BlockBehaviour.Properties.ofFullCopy(Blocks.NETHER_PORTAL)

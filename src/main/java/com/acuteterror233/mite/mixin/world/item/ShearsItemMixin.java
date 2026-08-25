@@ -15,24 +15,26 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-@Mixin(ShearsItem.class)
 /**
  * Mixin for {@code ShearsItem} — 修改剪刀挖掘速度判定。
  */
+@Mixin(ShearsItem.class)
 public class ShearsItemMixin {
     @Inject(method = "useOn", at = @At("HEAD"), cancellable = true)
-    public void useOn(UseOnContext useOnContext, CallbackInfoReturnable<InteractionResult> cir) {
-        Level level = useOnContext.getLevel();
-        BlockPos blockPos = useOnContext.getClickedPos();
+    public void useOn(UseOnContext context, CallbackInfoReturnable<InteractionResult> cir) {
+        Level level = context.getLevel();
+        BlockPos blockPos = context.getClickedPos();
         BlockState blockState = level.getBlockState(blockPos);
         if (blockState.is(BlockTags.LEAVES)){
-            ItemStack itemStack = useOnContext.getItemInHand();
-            Player player = useOnContext.getPlayer();
-            if (player != null) {
-                itemStack.hurtAndBreak(1, player, useOnContext.getHand().asEquipmentSlot());
+            if (!level.isClientSide()){
+                ItemStack itemStack = context.getItemInHand();
+                Player player = context.getPlayer();
+                if (player != null) {
+                    itemStack.hurtAndBreak(1, player, context.getHand().asEquipmentSlot());
+                }
+                level.destroyBlock(blockPos, false);
+                Block.dropResources(blockState, level, blockPos, null, player, itemStack);
             }
-            level.destroyBlock(blockPos, false);
-            Block.dropResources(blockState, level, blockPos, null, player, itemStack);
             cir.setReturnValue(InteractionResult.SUCCESS);
         }
     }

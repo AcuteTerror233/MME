@@ -1,6 +1,7 @@
 package com.acuteterror233.mite.world.gen.feature;
 
 import com.acuteterror233.mite.MME;
+import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
@@ -8,7 +9,9 @@ import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
+import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.placement.*;
 
@@ -37,16 +40,26 @@ public class OverworldPlacedFeatures {
                 HeightRangePlacement.uniform(VerticalAnchor.absolute(-48), VerticalAnchor.absolute(144))
         ));
         PlacementUtils.register(featureRegisterable, BLUE_BERRY_COMMON, blue_berry_bush,
-                RarityFilter.onAverageOnceEvery(640),
+                RarityFilter.onAverageOnceEvery(64),
                 InSquarePlacement.spread(),
                 PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
-                BiomeFilter.biome()
+                BiomeFilter.biome(),
+                CountPlacement.of(96),
+                RandomOffsetPlacement.ofTriangle(7, 3),
+                BlockPredicateFilter.forPredicate(
+                        BlockPredicate.allOf(BlockPredicate.ONLY_IN_AIR_PREDICATE, BlockPredicate.matchesBlocks(Direction.DOWN.getUnitVec3i(), Blocks.GRASS_BLOCK))
+                )
         );
         PlacementUtils.register(featureRegisterable, BLUE_BERRY_RARE, blue_berry_bush,
-                RarityFilter.onAverageOnceEvery(960),
+                RarityFilter.onAverageOnceEvery(384),
                 InSquarePlacement.spread(),
                 PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
-                BiomeFilter.biome()
+                BiomeFilter.biome(),
+                CountPlacement.of(96),
+                RandomOffsetPlacement.ofTriangle(7, 3),
+                BlockPredicateFilter.forPredicate(
+                        BlockPredicate.allOf(BlockPredicate.ONLY_IN_AIR_PREDICATE, BlockPredicate.matchesBlocks(Direction.DOWN.getUnitVec3i(), Blocks.GRASS_BLOCK))
+                )
         );
 
     }
