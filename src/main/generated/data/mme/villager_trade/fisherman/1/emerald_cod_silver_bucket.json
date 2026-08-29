@@ -1,6 +1,6 @@
 {
   "gives": {
-    "id": "mme:cod_silver_bucket"
+    "id": "mme:silver_cod_bucket"
   },
   "max_uses": 16.0,
   "reputation_discount": 0.05,

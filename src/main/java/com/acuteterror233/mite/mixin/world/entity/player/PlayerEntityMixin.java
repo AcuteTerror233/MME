@@ -1,6 +1,6 @@
 package com.acuteterror233.mite.mixin.world.entity.player;
 
-import com.acuteterror233.mite.atinterface.FoodDataExtension;
+import com.acuteterror233.mite.interfaces.FoodDataExtension;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;

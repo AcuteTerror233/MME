@@ -1,0 +1,33 @@
+classTweaker v2 official
+
+# Transitive Access Widening directives
+# transitive-accessible
+# transitive-extendable
+# transitive-mutable
+
+# Transitive Interface Injection directive
+# transitive-inject-interface
+
+# Transitive Enum Extension directive
+# transitive-extend-enum
+
+accessible class net/minecraft/world/level/block/entity/BlockEntityType$BlockEntitySupplier
+accessible method net/minecraft/world/item/Items createBlockItemWithCustomItemName (Lnet/minecraft/world/level/block/Block;)Ljava/util/function/Function;
+accessible class net/minecraft/world/level/storage/loot/functions/ApplyBonusCount$OreDrops
+accessible method net/minecraft/world/level/block/FireBlock setFlammable (Lnet/minecraft/world/level/block/Block;II)V
+accessible field net/minecraft/world/entity/monster/Creeper explosionRadius I
+accessible method net/minecraft/data/tags/VanillaBlockTagsProvider toIds (Lnet/minecraft/world/level/block/ColorCollection;)Lnet/minecraft/world/level/block/ColorCollection;
+accessible method net/minecraft/data/tags/VanillaBlockTagsProvider toIds (Lnet/minecraft/world/level/block/WeatheringCopperCollection;)Lnet/minecraft/world/level/block/WeatheringCopperCollection;
+accessible method net/minecraft/world/level/block/entity/BlockEntityTypes register (Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/level/block/entity/BlockEntityType$BlockEntitySupplier;[Lnet/minecraft/world/level/block/Block;)Lnet/minecraft/world/level/block/entity/BlockEntityType;
+
+transitive-extend-enum net/minecraft/world/level/LightLayer ENTITY
+transitive-inject-interface net/minecraft/world/level/block/entity/CampfireBlockEntity com/acuteterror233/mite/interfaces/CampfireBlockEntityExtension
+transitive-inject-interface net/minecraft/world/level/portal/PortalShape com/acuteterror233/mite/interfaces/UniversalPortalShapeExtension
+transitive-inject-interface net/minecraft/world/inventory/InventoryMenu com/acuteterror233/mite/interfaces/InventoryMenuExtension
+transitive-inject-interface net/minecraft/server/level/ServerLevel com/acuteterror233/mite/interfaces/GetFuelGradeRegistryExtension
+transitive-inject-interface net/minecraft/server/MinecraftServer com/acuteterror233/mite/interfaces/GetFuelGradeRegistryExtension
+transitive-inject-interface net/minecraft/world/food/FoodData com/acuteterror233/mite/interfaces/FoodDataExtension
+transitive-inject-interface net/minecraft/world/level/block/SimpleWaterloggedBlock com/acuteterror233/mite/interfaces/FluidDrainableExtension
+transitive-inject-interface net/minecraft/world/level/block/BubbleColumnBlock com/acuteterror233/mite/interfaces/FluidDrainableExtension
+transitive-inject-interface net/minecraft/world/level/block/PowderSnowBlock com/acuteterror233/mite/interfaces/FluidDrainableExtension
+transitive-inject-interface net/minecraft/world/level/block/LiquidBlock com/acuteterror233/mite/interfaces/FluidDrainableExtension

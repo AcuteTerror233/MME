@@ -1,6 +1,5 @@
 package com.acuteterror233.mite.mixin.world.level.block;
 
-import com.acuteterror233.mite.atinterface.CampfireBlockEntityExtension;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.stats.Stats;
@@ -18,10 +17,10 @@ import net.minecraft.world.phys.BlockHitResult;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 
-@Mixin(CampfireBlock.class)
 /**
  * Mixin for {@code CampfireBlock} — 修改营火行为。
  */
+@Mixin(CampfireBlock.class)
 public class CampfireBlockMixin {
     /**
      * @author AcuteTerror233
@@ -38,12 +37,12 @@ public class CampfireBlockMixin {
                 }
                 return InteractionResult.CONSUME;
             } else if (world.fuelValues().isFuel(itemStack)){
-                if (world instanceof ServerLevel && campfireBlockEntity instanceof CampfireBlockEntityExtension blockEntity) {
-                    blockEntity.MME$AddRemainingIgnitionTime(world.fuelValues().burnDuration(itemStack));
+                if (world instanceof ServerLevel) {
+                    campfireBlockEntity.MME$AddRemainingIgnitionTime(world.fuelValues().burnDuration(itemStack));
                     ItemStackTemplate craftingRemainder = itemStack.getItem().getCraftingRemainder();
                     if (craftingRemainder != null && !craftingRemainder.create().isEmpty()) {
                         player.setItemInHand(hand, craftingRemainder.create());
-                    }else {
+                    } else {
                         itemStack.consumeAndReturn(1, player);
                     }
                     player.awardStat(Stats.INTERACT_WITH_CAMPFIRE);

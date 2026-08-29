@@ -1,12 +1,12 @@
 {
   "values": [
-    "mme:water_adamantium_bucket",
-    "mme:water_ancient_metal_bucket",
-    "mme:water_copper_bucket",
-    "mme:water_gold_bucket",
-    "mme:water_mithril_bucket",
-    "mme:water_silver_bucket",
-    "mme:water_netherite_bucket",
+    "mme:adamantium_water_bucket",
+    "mme:ancient_metal_water_bucket",
+    "mme:copper_water_bucket",
+    "mme:gold_water_bucket",
+    "mme:mithril_water_bucket",
+    "mme:silver_water_bucket",
+    "mme:netherite_water_bucket",
     "minecraft:water_bucket"
   ]
 }

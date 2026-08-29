@@ -1,12 +1,9 @@
 package com.acuteterror233.mite.world.entity;
 
-import com.acuteterror233.mite.MME;
 import com.acuteterror233.mite.world.entity.monster.*;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.monster.Monster;
@@ -18,7 +15,7 @@ import net.minecraft.world.level.levelgen.Heightmap;
  */
 public class MMEEntityTypes {
     public static final EntityType<Ghoul> GHOUL = register(
-            "ghoul",
+            MMEEntityTypeIds.GHOUL,
             EntityType.Builder.of(Ghoul::new, MobCategory.MONSTER)
                     .sized(0.6F, 1.95F)
                     .eyeHeight(1.74F)
@@ -28,7 +25,7 @@ public class MMEEntityTypes {
                     .notInPeaceful()
     );
     public static final EntityType<Shadow> SHADOW = register(
-            "shadow",
+            MMEEntityTypeIds.SHADOW,
             EntityType.Builder.of(Shadow::new, MobCategory.MONSTER)
                     .sized(0.6F, 1.95F)
                     .eyeHeight(1.74F)
@@ -38,7 +35,7 @@ public class MMEEntityTypes {
                     .notInPeaceful()
     );
     public static final EntityType<Wight> WIGHT = register(
-            "wight",
+            MMEEntityTypeIds.WIGHT,
             EntityType.Builder.of(Wight::new, MobCategory.MONSTER)
                     .sized(0.6F, 1.95F)
                     .eyeHeight(1.74F)
@@ -48,7 +45,7 @@ public class MMEEntityTypes {
                     .notInPeaceful()
     );
     public static final EntityType<InvisibleStalker> INVISIBLE_STALKER = register(
-            "invisible_stalker",
+            MMEEntityTypeIds.INVISIBLE_STALKER,
             EntityType.Builder.of(InvisibleStalker::new, MobCategory.MONSTER)
                     .sized(0.6F, 1.95F)
                     .eyeHeight(1.74F)
@@ -58,7 +55,7 @@ public class MMEEntityTypes {
                     .notInPeaceful()
     );
     public static final EntityType<DemonSpider> DEMON_SPIDER = register(
-            "demon_spider",
+            MMEEntityTypeIds.DEMON_SPIDER,
             EntityType.Builder.of(DemonSpider::new, MobCategory.MONSTER)
                     .sized(1.4F, 0.9F)
                     .eyeHeight(0.65F)
@@ -66,7 +63,7 @@ public class MMEEntityTypes {
                     .notInPeaceful()
     );
     public static final EntityType<PhaseSpider> PHASE_SPIDER = register(
-            "phase_spider",
+            MMEEntityTypeIds.PHASE_SPIDER,
             EntityType.Builder.of(PhaseSpider::new, MobCategory.MONSTER)
                     .sized(0.7F, 0.5F)
                     .eyeHeight(0.45F)
@@ -74,7 +71,7 @@ public class MMEEntityTypes {
                     .notInPeaceful()
     );
     public static final EntityType<InfernalCreeper> INFERNAL_CREEPER = register(
-            "infernal_creeper",
+            MMEEntityTypeIds.INFERNAL_CREEPER,
             EntityType.Builder.of(InfernalCreeper::new, MobCategory.MONSTER)
                     .sized(0.6F, 1.7F)
                     .eyeHeight(1.62F)
@@ -83,7 +80,7 @@ public class MMEEntityTypes {
                     .notInPeaceful()
     );
     public static final EntityType<FireElemental> FIRE_ELEMENTAL = register(
-            "fire_elemental",
+            MMEEntityTypeIds.FIRE_ELEMENTAL,
             EntityType.Builder.of(FireElemental::new, MobCategory.MONSTER)
                     .sized(0.6F, 1.95F)
                     .eyeHeight(1.74F)
@@ -94,7 +91,7 @@ public class MMEEntityTypes {
                     .notInPeaceful()
     );
     public static final EntityType<VampireBat> VAMPIRE_BAT = register(
-            "vampire_bat",
+            MMEEntityTypeIds.VAMPIRE_BAT,
             EntityType.Builder.of(VampireBat::new, MobCategory.MONSTER)
                     .sized(0.5F, 0.9F)
                     .eyeHeight(0.45F)
@@ -102,7 +99,7 @@ public class MMEEntityTypes {
                     .notInPeaceful()
     );
     public static final EntityType<Nightwing> NIGHTWING = register(
-            "nightwing",
+            MMEEntityTypeIds.NIGHTWING,
             EntityType.Builder.of(Nightwing::new, MobCategory.MONSTER)
                     .sized(0.5F, 0.9F)
                     .eyeHeight(0.45F)
@@ -110,7 +107,7 @@ public class MMEEntityTypes {
                     .notInPeaceful()
     );
     public static final EntityType<GiantVampireBat> GIANT_VAMPIRE_BAT = register(
-            "giant_vampire_bat",
+            MMEEntityTypeIds.GIANT_VAMPIRE_BAT,
             EntityType.Builder.of(GiantVampireBat::new, MobCategory.MONSTER)
                     .sized(0.5F, 0.9F)
                     .eyeHeight(0.6749999821186066F)
@@ -118,8 +115,7 @@ public class MMEEntityTypes {
                     .notInPeaceful()
     );
 
-    private static <T extends Entity> EntityType<T> register(String id, EntityType.Builder<T> builder) {
-        ResourceKey<EntityType<?>> key = ResourceKey.create(Registries.ENTITY_TYPE, Identifier.fromNamespaceAndPath(MME.MOD_ID, id));
+    private static <T extends Entity> EntityType<T> register(ResourceKey<EntityType<?>> key, EntityType.Builder<T> builder) {
         return Registry.register(BuiltInRegistries.ENTITY_TYPE, key, builder.build(key));
     }
 

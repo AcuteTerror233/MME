@@ -1,7 +1,7 @@
 package com.acuteterror233.mite.mixin.client.gui.screen.ingame;
 
 import com.acuteterror233.mite.MME;
-import com.acuteterror233.mite.atinterface.InventoryMenuExtension;
+import com.acuteterror233.mite.interfaces.InventoryMenuExtension;
 import com.acuteterror233.mite.inventory.slot.PlayerCraftingResultSlot;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.screens.inventory.AbstractRecipeBookScreen;

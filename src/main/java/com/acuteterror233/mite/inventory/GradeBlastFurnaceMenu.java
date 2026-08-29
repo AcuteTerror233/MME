@@ -27,7 +27,6 @@ public class GradeBlastFurnaceMenu extends AbstractGradeFurnaceMenu {
     public GradeBlastFurnaceMenu(int syncId, Inventory playerInventory, Container inventory, ContainerData propertyDelegate) {
         super(
                 MMEMenuTypes.BLAST_GRADE_FURNACE,
-                RecipeType.BLASTING,
                 RecipePropertySet.BLAST_FURNACE_INPUT,
                 RecipeBookType.BLAST_FURNACE,
                 syncId,

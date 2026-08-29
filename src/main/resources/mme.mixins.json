@@ -1,7 +1,7 @@
 {
   "required": true,
   "package": "com.acuteterror233.mite.mixin",
-  "compatibilityLevel": "JAVA_21",
+  "compatibilityLevel": "JAVA_25",
   "client": [
   ],
   "mixins": [
@@ -17,14 +17,15 @@
     "world.entity.BucketableMixin",
     "world.entity.FallingBlockEntityMixin",
     "world.entity.MobMixin",
-    "world.entity.animal.AbstractCowMixin",
     "world.entity.animal.AnimalMixin",
+    "world.entity.animal.cow.AbstractCowMixin",
     "world.entity.boss.enderdragon.EndCrystalMixin",
     "world.entity.item.PrimedTntMixin",
     "world.entity.monster.AbstractSkeletonMixin",
     "world.entity.monster.CreeperMixin",
     "world.entity.monster.MonsterMixin",
     "world.entity.monster.ZombieMixin",
+    "world.entity.monster.cubemob.SulfurCubeMixin",
     "world.entity.passive.AnimalMixin",
     "world.entity.player.FoodDataMixin",
     "world.entity.player.PlayerEntityMixin",

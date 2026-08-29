@@ -11,10 +11,10 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.level.Level;
 import org.spongepowered.asm.mixin.Mixin;
 
-@Mixin(Monster.class)
 /**
  * Mixin for {@code Monster} — 扩展敌对生物通用行为。
  */
+@Mixin(Monster.class)
 public abstract class MonsterMixin extends PathfinderMob implements Enemy {
 
     protected MonsterMixin(EntityType<? extends PathfinderMob> entityType, Level level) {

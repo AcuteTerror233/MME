@@ -4,8 +4,8 @@ import com.acuteterror233.mite.MME;
 import com.acuteterror233.mite.registry.tag.MMEEnchantmentTags;
 import com.acuteterror233.mite.registry.tag.MMEEntityTypeTags;
 import com.acuteterror233.mite.registry.tag.MMEItemTags;
-import net.minecraft.advancements.criterion.EntityPredicate;
-import net.minecraft.advancements.criterion.EntityTypePredicate;
+import net.minecraft.advancements.predicates.entity.EntityPredicate;
+import net.minecraft.advancements.predicates.entity.EntityTypePredicate;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
@@ -15,6 +15,7 @@ import net.minecraft.tags.EnchantmentTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.damagesource.DamageType;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EntityTypes;
 import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.enchantment.Enchantment;
@@ -61,7 +62,7 @@ public final class MMEEnchantments {
                         EnchantmentTarget.VICTIM,
                         new AddValue(LevelBasedValue.perLevel(0.01F)),
                         LootItemEntityPropertyCondition.hasProperties(
-                                LootContext.EntityTarget.ATTACKER, EntityPredicate.Builder.entity().entityType(EntityTypePredicate.of(entityTypeGetter, EntityType.PLAYER))
+                                LootContext.EntityTarget.ATTACKER, EntityPredicate.Builder.entity().entityType(EntityTypePredicate.of(entityTypeGetter, EntityTypes.PLAYER))
                         ).and(LootItemEntityPropertyCondition.hasProperties(
                                 LootContext.EntityTarget.THIS, EntityPredicate.Builder.entity().entityType(EntityTypePredicate.of(entityTypeGetter, MMEEntityTypeTags.SENSITIVE_TO_BUTCHERING))
                         ))

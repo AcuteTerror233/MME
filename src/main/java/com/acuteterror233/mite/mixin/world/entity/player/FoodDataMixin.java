@@ -1,6 +1,6 @@
 package com.acuteterror233.mite.mixin.world.entity.player;
 
-import com.acuteterror233.mite.atinterface.FoodDataExtension;
+import com.acuteterror233.mite.interfaces.FoodDataExtension;
 import com.acuteterror233.mite.world.effect.MMEMobEffects;
 import com.acuteterror233.mite.world.food.FoodNutrition;
 import net.minecraft.core.Holder;

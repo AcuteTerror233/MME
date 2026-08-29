@@ -1,0 +1,364 @@
+package com.acuteterror233.mite.item;
+
+import com.acuteterror233.mite.MME;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.item.Item;
+
+public class MMEItemIds {
+    public static final ResourceKey<Item> ADAMANTIUM_HELMET = create("adamantium_helmet");
+    public static final ResourceKey<Item> ADAMANTIUM_CHESTPLATE = create("adamantium_chestplate");
+    public static final ResourceKey<Item> ADAMANTIUM_LEGGINGS = create("adamantium_leggings");
+    public static final ResourceKey<Item> ADAMANTIUM_BOOTS = create("adamantium_boots");
+    public static final ResourceKey<Item> ADAMANTIUM_CHAINMAIL_BOOTS = create("adamantium_chainmail_boots");
+    public static final ResourceKey<Item> ADAMANTIUM_CHAINMAIL_CHESTPLATE = create("adamantium_chainmail_chestplate");
+    public static final ResourceKey<Item> ADAMANTIUM_CHAINMAIL_HELMET = create("adamantium_chainmail_helmet");
+    public static final ResourceKey<Item> ADAMANTIUM_CHAINMAIL_LEGGINGS = create("adamantium_chainmail_leggings");
+    public static final ResourceKey<Item> ANCIENT_METAL_HELMET = create("ancient_metal_helmet");
+    public static final ResourceKey<Item> ANCIENT_METAL_CHESTPLATE = create("ancient_metal_chestplate");
+    public static final ResourceKey<Item> ANCIENT_METAL_LEGGINGS = create("ancient_metal_leggings");
+    public static final ResourceKey<Item> ANCIENT_METAL_BOOTS = create("ancient_metal_boots");
+    public static final ResourceKey<Item> ANCIENT_METAL_CHAINMAIL_BOOTS = create("ancient_metal_chainmail_boots");
+    public static final ResourceKey<Item> ANCIENT_METAL_CHAINMAIL_CHESTPLATE = create("ancient_metal_chainmail_chestplate");
+    public static final ResourceKey<Item> ANCIENT_METAL_CHAINMAIL_HELMET = create("ancient_metal_chainmail_helmet");
+    public static final ResourceKey<Item> ANCIENT_METAL_CHAINMAIL_LEGGINGS = create("ancient_metal_chainmail_leggings");
+    public static final ResourceKey<Item> COPPER_CHAINMAIL_BOOTS = create("copper_chainmail_boots");
+    public static final ResourceKey<Item> COPPER_CHAINMAIL_CHESTPLATE = create("copper_chainmail_chestplate");
+    public static final ResourceKey<Item> COPPER_CHAINMAIL_HELMET = create("copper_chainmail_helmet");
+    public static final ResourceKey<Item> COPPER_CHAINMAIL_LEGGINGS = create("copper_chainmail_leggings");
+    public static final ResourceKey<Item> MITHRIL_HELMET = create("mithril_helmet");
+    public static final ResourceKey<Item> MITHRIL_CHESTPLATE = create("mithril_chestplate");
+    public static final ResourceKey<Item> MITHRIL_LEGGINGS = create("mithril_leggings");
+    public static final ResourceKey<Item> MITHRIL_BOOTS = create("mithril_boots");
+    public static final ResourceKey<Item> MITHRIL_CHAINMAIL_HELMET = create("mithril_chainmail_helmet");
+    public static final ResourceKey<Item> MITHRIL_CHAINMAIL_CHESTPLATE = create("mithril_chainmail_chestplate");
+    public static final ResourceKey<Item> MITHRIL_CHAINMAIL_LEGGINGS = create("mithril_chainmail_leggings");
+    public static final ResourceKey<Item> MITHRIL_CHAINMAIL_BOOTS = create("mithril_chainmail_boots");
+    public static final ResourceKey<Item> RUSTED_IRON_HELMET = create("rusted_iron_helmet");
+    public static final ResourceKey<Item> RUSTED_IRON_CHESTPLATE = create("rusted_iron_chestplate");
+    public static final ResourceKey<Item> RUSTED_IRON_LEGGINGS = create("rusted_iron_leggings");
+    public static final ResourceKey<Item> RUSTED_IRON_BOOTS = create("rusted_iron_boots");
+    public static final ResourceKey<Item> RUSTED_IRON_CHAINMAIL_HELMET = create("rusted_iron_chainmail_helmet");
+    public static final ResourceKey<Item> RUSTED_IRON_CHAINMAIL_CHESTPLATE = create("rusted_iron_chainmail_chestplate");
+    public static final ResourceKey<Item> RUSTED_IRON_CHAINMAIL_LEGGINGS = create("rusted_iron_chainmail_leggings");
+    public static final ResourceKey<Item> RUSTED_IRON_CHAINMAIL_BOOTS = create("rusted_iron_chainmail_boots");
+    public static final ResourceKey<Item> SILVER_HELMET = create("silver_helmet");
+    public static final ResourceKey<Item> SILVER_CHESTPLATE = create("silver_chestplate");
+    public static final ResourceKey<Item> SILVER_LEGGINGS = create("silver_leggings");
+    public static final ResourceKey<Item> SILVER_BOOTS = create("silver_boots");
+    public static final ResourceKey<Item> SILVER_CHAINMAIL_HELMET = create("silver_chainmail_helmet");
+    public static final ResourceKey<Item> SILVER_CHAINMAIL_CHESTPLATE = create("silver_chainmail_chestplate");
+    public static final ResourceKey<Item> SILVER_CHAINMAIL_LEGGINGS = create("silver_chainmail_leggings");
+    public static final ResourceKey<Item> SILVER_CHAINMAIL_BOOTS = create("silver_chainmail_boots");
+    public static final ResourceKey<Item> GOLDEN_CHAINMAIL_HELMET = create("golden_chainmail_helmet");
+    public static final ResourceKey<Item> GOLDEN_CHAINMAIL_CHESTPLATE = create("golden_chainmail_chestplate");
+    public static final ResourceKey<Item> GOLDEN_CHAINMAIL_LEGGINGS = create("golden_chainmail_leggings");
+    public static final ResourceKey<Item> GOLDEN_CHAINMAIL_BOOTS = create("golden_chainmail_boots");
+
+    public static final ResourceKey<Item> BANANA = create("banana");
+    public static final ResourceKey<Item> BLUE_BERRIE = create("blue_berry");
+    public static final ResourceKey<Item> CHEESE = create("cheese");
+    public static final ResourceKey<Item> CHOCOLATE = create("chocolate");
+    public static final ResourceKey<Item> DOUGH = create("dough");
+    public static final ResourceKey<Item> LEMON = create("lemon");
+    public static final ResourceKey<Item> ONION = create("onion");
+    public static final ResourceKey<Item> ORANGE = create("orange");
+    public static final ResourceKey<Item> WORM_COOKED = create("worm_cooked");
+    public static final ResourceKey<Item> WORM_RAW = create("worm_raw");
+    public static final ResourceKey<Item> FLOUR = create("flour");
+    public static final ResourceKey<Item> BEEF_STEW = create("beef_stew");
+    public static final ResourceKey<Item> BOWL_MILK = create("bowl_milk");
+    public static final ResourceKey<Item> BOWL_SALAD = create("bowl_salad");
+    public static final ResourceKey<Item> BOWL_WATER = create("bowl_water");
+    public static final ResourceKey<Item> CEREAL = create("cereal");
+    public static final ResourceKey<Item> CHICKEN_SOUP = create("chicken_soup");
+    public static final ResourceKey<Item> CREAM_OF_MUSHROOM_SOUP = create("cream_of_mushroom_soup");
+    public static final ResourceKey<Item> CREAM_OF_VEGETABLE_SOUP = create("cream_of_vegetable_soup");
+    public static final ResourceKey<Item> ICE_CREAM = create("ice_cream");
+    public static final ResourceKey<Item> MASHED_POTATO = create("mashed_potato");
+    public static final ResourceKey<Item> PORRIDGE = create("porridge");
+    public static final ResourceKey<Item> PUMPKIN_SOUP = create("pumpkin_soup");
+    public static final ResourceKey<Item> SORBET = create("sorbet");
+    public static final ResourceKey<Item> VEGETABLE_SOUP = create("vegetable_soup");
+
+    public static final ResourceKey<Item> NETHERITE_BATTLE_AXE = create("netherite_battle_axe");
+    public static final ResourceKey<Item> NETHERITE_HATCHET = create("netherite_hatchet");
+    public static final ResourceKey<Item> NETHERITE_DAGGER = create("netherite_dagger");
+    public static final ResourceKey<Item> NETHERITE_KNIFE = create("netherite_knife");
+    public static final ResourceKey<Item> NETHERITE_WAR_HAMMER = create("netherite_war_hammer");
+    public static final ResourceKey<Item> NETHERITE_MATTOCK = create("netherite_mattock");
+    public static final ResourceKey<Item> NETHERITE_SCYTHE = create("netherite_scythe");
+    public static final ResourceKey<Item> NETHERITE_SHEARS = create("netherite_shears");
+
+    public static final ResourceKey<Item> ADAMANTIUM_AXE = create("adamantium_axe");
+    public static final ResourceKey<Item> ADAMANTIUM_BATTLE_AXE = create("adamantium_battle_axe");
+    public static final ResourceKey<Item> ADAMANTIUM_HATCHET = create("adamantium_hatchet");
+    public static final ResourceKey<Item> ADAMANTIUM_SWORD = create("adamantium_sword");
+    public static final ResourceKey<Item> ADAMANTIUM_DAGGER = create("adamantium_dagger");
+    public static final ResourceKey<Item> ADAMANTIUM_KNIFE = create("adamantium_knife");
+    public static final ResourceKey<Item> ADAMANTIUM_PICKAXE = create("adamantium_pickaxe");
+    public static final ResourceKey<Item> ADAMANTIUM_WAR_HAMMER = create("adamantium_war_hammer");
+    public static final ResourceKey<Item> ADAMANTIUM_SHOVEL = create("adamantium_shovel");
+    public static final ResourceKey<Item> ADAMANTIUM_HOE = create("adamantium_hoe");
+    public static final ResourceKey<Item> ADAMANTIUM_MATTOCK = create("adamantium_mattock");
+    public static final ResourceKey<Item> ADAMANTIUM_SCYTHE = create("adamantium_scythe");
+    public static final ResourceKey<Item> ADAMANTIUM_SHEARS = create("adamantium_shears");
+    public static final ResourceKey<Item> ADAMANTIUM_SPEAR = create("adamantium_spear");
+
+    public static final ResourceKey<Item> ANCIENT_METAL_AXE = create("ancient_metal_axe");
+    public static final ResourceKey<Item> ANCIENT_METAL_BATTLE_AXE = create("ancient_metal_battle_axe");
+    public static final ResourceKey<Item> ANCIENT_METAL_HATCHET = create("ancient_metal_hatchet");
+    public static final ResourceKey<Item> ANCIENT_METAL_SWORD = create("ancient_metal_sword");
+    public static final ResourceKey<Item> ANCIENT_METAL_DAGGER = create("ancient_metal_dagger");
+    public static final ResourceKey<Item> ANCIENT_METAL_KNIFE = create("ancient_metal_knife");
+    public static final ResourceKey<Item> ANCIENT_METAL_PICKAXE = create("ancient_metal_pickaxe");
+    public static final ResourceKey<Item> ANCIENT_METAL_WAR_HAMMER = create("ancient_metal_war_hammer");
+    public static final ResourceKey<Item> ANCIENT_METAL_SHOVEL = create("ancient_metal_shovel");
+    public static final ResourceKey<Item> ANCIENT_METAL_HOE = create("ancient_metal_hoe");
+    public static final ResourceKey<Item> ANCIENT_METAL_MATTOCK = create("ancient_metal_mattock");
+    public static final ResourceKey<Item> ANCIENT_METAL_SCYTHE = create("ancient_metal_scythe");
+    public static final ResourceKey<Item> ANCIENT_METAL_SHEARS = create("ancient_metal_shears");
+    public static final ResourceKey<Item> ANCIENT_METAL_SPEAR = create("ancient_metal_spear");
+
+    public static final ResourceKey<Item> COPPER_BATTLE_AXE = create("copper_battle_axe");
+    public static final ResourceKey<Item> COPPER_HATCHET = create("copper_hatchet");
+    public static final ResourceKey<Item> COPPER_DAGGER = create("copper_dagger");
+    public static final ResourceKey<Item> COPPER_KNIFE = create("copper_knife");
+    public static final ResourceKey<Item> COPPER_WAR_HAMMER = create("copper_war_hammer");
+    public static final ResourceKey<Item> COPPER_MATTOCK = create("copper_mattock");
+    public static final ResourceKey<Item> COPPER_SCYTHE = create("copper_scythe");
+    public static final ResourceKey<Item> COPPER_SHEARS = create("copper_shears");
+
+    public static final ResourceKey<Item> GOLDEN_BATTLE_AXE = create("golden_battle_axe");
+    public static final ResourceKey<Item> GOLDEN_HATCHET = create("golden_hatchet");
+    public static final ResourceKey<Item> GOLDEN_DAGGER = create("golden_dagger");
+    public static final ResourceKey<Item> GOLDEN_KNIFE = create("golden_knife");
+    public static final ResourceKey<Item> GOLDEN_WAR_HAMMER = create("golden_war_hammer");
+    public static final ResourceKey<Item> GOLDEN_MATTOCK = create("golden_mattock");
+    public static final ResourceKey<Item> GOLDEN_SCYTHE = create("golden_scythe");
+    public static final ResourceKey<Item> GOLDEN_SHEARS = create("golden_shears");
+
+    public static final ResourceKey<Item> IRON_BATTLE_AXE = create("iron_battle_axe");
+    public static final ResourceKey<Item> IRON_DAGGER = create("iron_dagger");
+    public static final ResourceKey<Item> IRON_HATCHET = create("iron_hatchet");
+    public static final ResourceKey<Item> IRON_WAR_HAMMER = create("iron_war_hammer");
+    public static final ResourceKey<Item> IRON_KNIFE = create("iron_knife");
+    public static final ResourceKey<Item> IRON_MATTOCK = create("iron_mattock");
+    public static final ResourceKey<Item> IRON_SCYTHE = create("iron_scythe");
+
+    public static final ResourceKey<Item> MITHRIL_AXE = create("mithril_axe");
+    public static final ResourceKey<Item> MITHRIL_BATTLE_AXE = create("mithril_battle_axe");
+    public static final ResourceKey<Item> MITHRIL_HATCHET = create("mithril_hatchet");
+    public static final ResourceKey<Item> MITHRIL_SWORD = create("mithril_sword");
+    public static final ResourceKey<Item> MITHRIL_DAGGER = create("mithril_dagger");
+    public static final ResourceKey<Item> MITHRIL_KNIFE = create("mithril_knife");
+    public static final ResourceKey<Item> MITHRIL_PICKAXE = create("mithril_pickaxe");
+    public static final ResourceKey<Item> MITHRIL_WAR_HAMMER = create("mithril_war_hammer");
+    public static final ResourceKey<Item> MITHRIL_SHOVEL = create("mithril_shovel");
+    public static final ResourceKey<Item> MITHRIL_HOE = create("mithril_hoe");
+    public static final ResourceKey<Item> MITHRIL_MATTOCK = create("mithril_mattock");
+    public static final ResourceKey<Item> MITHRIL_SCYTHE = create("mithril_scythe");
+    public static final ResourceKey<Item> MITHRIL_SHEARS = create("mithril_shears");
+    public static final ResourceKey<Item> MITHRIL_SPEAR = create("mithril_spear");
+
+    public static final ResourceKey<Item> RUSTED_IRON_AXE = create("rusted_iron_axe");
+    public static final ResourceKey<Item> RUSTED_IRON_BATTLE_AXE = create("rusted_iron_battle_axe");
+    public static final ResourceKey<Item> RUSTED_IRON_HATCHET = create("rusted_iron_hatchet");
+    public static final ResourceKey<Item> RUSTED_IRON_SWORD = create("rusted_iron_sword");
+    public static final ResourceKey<Item> RUSTED_IRON_DAGGER = create("rusted_iron_dagger");
+    public static final ResourceKey<Item> RUSTED_IRON_KNIFE = create("rusted_iron_knife");
+    public static final ResourceKey<Item> RUSTED_IRON_PICKAXE = create("rusted_iron_pickaxe");
+    public static final ResourceKey<Item> RUSTED_IRON_WAR_HAMMER = create("rusted_iron_war_hammer");
+    public static final ResourceKey<Item> RUSTED_IRON_SHOVEL = create("rusted_iron_shovel");
+    public static final ResourceKey<Item> RUSTED_IRON_HOE = create("rusted_iron_hoe");
+    public static final ResourceKey<Item> RUSTED_IRON_MATTOCK = create("rusted_iron_mattock");
+    public static final ResourceKey<Item> RUSTED_IRON_SCYTHE = create("rusted_iron_scythe");
+    public static final ResourceKey<Item> RUSTED_IRON_SHEARS = create("rusted_iron_shears");
+    public static final ResourceKey<Item> RUSTED_IRON_SPEAR = create("rusted_iron_spear");
+
+    public static final ResourceKey<Item> SILVER_AXE = create("silver_axe");
+    public static final ResourceKey<Item> SILVER_BATTLE_AXE = create("silver_battle_axe");
+    public static final ResourceKey<Item> SILVER_HATCHET = create("silver_hatchet");
+    public static final ResourceKey<Item> SILVER_DAGGER = create("silver_dagger");
+    public static final ResourceKey<Item> SILVER_KNIFE = create("silver_knife");
+    public static final ResourceKey<Item> SILVER_SWORD = create("silver_sword");
+    public static final ResourceKey<Item> SILVER_PICKAXE = create("silver_pickaxe");
+    public static final ResourceKey<Item> SILVER_WAR_HAMMER = create("silver_war_hammer");
+    public static final ResourceKey<Item> SILVER_SHOVEL = create("silver_shovel");
+    public static final ResourceKey<Item> SILVER_HOE = create("silver_hoe");
+    public static final ResourceKey<Item> SILVER_MATTOCK = create("silver_mattock");
+    public static final ResourceKey<Item> SILVER_SCYTHE = create("silver_scythe");
+    public static final ResourceKey<Item> SILVER_SHEARS = create("silver_shears");
+    public static final ResourceKey<Item> SILVER_SPEAR = create("silver_spear");
+
+    public static final ResourceKey<Item> OBSIDIAN_AXE = create("obsidian_axe");
+    public static final ResourceKey<Item> OBSIDIAN_HATCHET = create("obsidian_hatchet");
+    public static final ResourceKey<Item> OBSIDIAN_KNIFE = create("obsidian_knife");
+    public static final ResourceKey<Item> OBSIDIAN_SHOVEL = create("obsidian_shovel");
+
+    public static final ResourceKey<Item> FLINT_AXE = create("flint_axe");
+    public static final ResourceKey<Item> FLINT_HATCHET = create("flint_hatchet");
+    public static final ResourceKey<Item> FLINT_KNIFE = create("flint_knife");
+    public static final ResourceKey<Item> FLINT_SHOVEL = create("flint_shovel");
+    public static final ResourceKey<Item> FLINT_SPEAR = create("flint_spear");
+
+    public static final ResourceKey<Item> WOODEN_CLUB = create("wooden_club");
+    public static final ResourceKey<Item> WOODEN_CUDGEL = create("wooden_cudgel");
+
+    public static final ResourceKey<Item> ADAMANTIUM_CHAINS = create("adamantium_chains");
+    public static final ResourceKey<Item> MITHRIL_CHAINS = create("mithril_chains");
+    public static final ResourceKey<Item> ANCIENT_METAL_CHAINS = create("ancient_metal_chains");
+    public static final ResourceKey<Item> IRON_CHAINS = create("iron_chains");
+    public static final ResourceKey<Item> RUSTED_IRON_CHAINS = create("rusted_iron_chains");
+    public static final ResourceKey<Item> GOLDEN_CHAINS = create("golden_chains");
+    public static final ResourceKey<Item> COPPER_CHAINS = create("copper_chains");
+    public static final ResourceKey<Item> SILVER_CHAINS = create("silver_chains");
+
+    public static final ResourceKey<Item> NETHERITE_COINS = create("netherite_coins");
+    public static final ResourceKey<Item> ADAMANTIUM_COINS = create("adamantium_coins");
+    public static final ResourceKey<Item> MITHRIL_COINS = create("mithril_coins");
+    public static final ResourceKey<Item> ANCIENT_METAL_COINS = create("ancient_metal_coins");
+    public static final ResourceKey<Item> IRON_COINS = create("iron_coins");
+    public static final ResourceKey<Item> GOLDEN_COINS = create("golden_coins");
+    public static final ResourceKey<Item> COPPER_COINS = create("copper_coins");
+    public static final ResourceKey<Item> SILVER_COINS = create("silver_coins");
+
+    public static final ResourceKey<Item> ADAMANTIUM_BUCKET = create("adamantium_bucket");
+    public static final ResourceKey<Item> ADAMANTIUM_WATER_BUCKET = create("adamantium_water_bucket");
+    public static final ResourceKey<Item> ADAMANTIUM_LAVA_BUCKET = create("adamantium_lava_bucket");
+    public static final ResourceKey<Item> ADAMANTIUM_POWDER_SNOW_BUCKET = create("adamantium_powder_snow_bucket");
+    public static final ResourceKey<Item> ADAMANTIUM_MILK_BUCKET = create("adamantium_milk_bucket");
+    public static final ResourceKey<Item> ADAMANTIUM_PUFFERFISH_BUCKET = create("adamantium_pufferfish_bucket");
+    public static final ResourceKey<Item> ADAMANTIUM_SALMON_BUCKET = create("adamantium_salmon_bucket");
+    public static final ResourceKey<Item> ADAMANTIUM_COD_BUCKET = create("adamantium_cod_bucket");
+    public static final ResourceKey<Item> ADAMANTIUM_TROPICAL_FISH_BUCKET = create("adamantium_tropical_fish_bucket");
+    public static final ResourceKey<Item> ADAMANTIUM_AXOLOTL_BUCKET = create("adamantium_axolotl_bucket");
+    public static final ResourceKey<Item> ADAMANTIUM_TADPOLE_BUCKET = create("adamantium_tadpole_bucket");
+    public static final ResourceKey<Item> ADAMANTIUM_SULFUR_CUBE_BUCKET = create("adamantium_sulfur_cube_bucket");
+
+    public static final ResourceKey<Item> ANCIENT_METAL_BUCKET = create("ancient_metal_bucket");
+    public static final ResourceKey<Item> ANCIENT_METAL_WATER_BUCKET = create("ancient_metal_water_bucket");
+    public static final ResourceKey<Item> ANCIENT_METAL_LAVA_BUCKET = create("ancient_metal_lava_bucket");
+    public static final ResourceKey<Item> ANCIENT_METAL_POWDER_SNOW_BUCKET = create("ancient_metal_powder_snow_bucket");
+    public static final ResourceKey<Item> ANCIENT_METAL_MILK_BUCKET = create("ancient_metal_milk_bucket");
+    public static final ResourceKey<Item> ANCIENT_METAL_PUFFERFISH_BUCKET = create("ancient_metal_pufferfish_bucket");
+    public static final ResourceKey<Item> ANCIENT_METAL_SALMON_BUCKET = create("ancient_metal_salmon_bucket");
+    public static final ResourceKey<Item> ANCIENT_METAL_COD_BUCKET = create("ancient_metal_cod_bucket");
+    public static final ResourceKey<Item> ANCIENT_METAL_TROPICAL_FISH_BUCKET = create("ancient_metal_tropical_fish_bucket");
+    public static final ResourceKey<Item> ANCIENT_METAL_AXOLOTL_BUCKET = create("ancient_metal_axolotl_bucket");
+    public static final ResourceKey<Item> ANCIENT_METAL_TADPOLE_BUCKET = create("ancient_metal_tadpole_bucket");
+    public static final ResourceKey<Item> ANCIENT_METAL_SULFUR_CUBE_BUCKET = create("ancient_metal_sulfur_cube_bucket");
+
+    public static final ResourceKey<Item> COPPER_BUCKET = create("copper_bucket");
+    public static final ResourceKey<Item> COPPER_WATER_BUCKET = create("copper_water_bucket");
+    public static final ResourceKey<Item> COPPER_LAVA_BUCKET = create("copper_lava_bucket");
+    public static final ResourceKey<Item> COPPER_POWDER_SNOW_BUCKET = create("copper_powder_snow_bucket");
+    public static final ResourceKey<Item> COPPER_MILK_BUCKET = create("copper_milk_bucket");
+    public static final ResourceKey<Item> COPPER_PUFFERFISH_BUCKET = create("copper_pufferfish_bucket");
+    public static final ResourceKey<Item> COPPER_SALMON_BUCKET = create("copper_salmon_bucket");
+    public static final ResourceKey<Item> COPPER_COD_BUCKET = create("copper_cod_bucket");
+    public static final ResourceKey<Item> COPPER_TROPICAL_FISH_BUCKET = create("copper_tropical_fish_bucket");
+    public static final ResourceKey<Item> COPPER_AXOLOTL_BUCKET = create("copper_axolotl_bucket");
+    public static final ResourceKey<Item> COPPER_TADPOLE_BUCKET = create("copper_tadpole_bucket");
+    public static final ResourceKey<Item> COPPER_SULFUR_CUBE_BUCKET = create("copper_sulfur_cube_bucket");
+
+    public static final ResourceKey<Item> GOLD_BUCKET = create("gold_bucket");
+    public static final ResourceKey<Item> GOLD_WATER_BUCKET = create("gold_water_bucket");
+    public static final ResourceKey<Item> GOLD_LAVA_BUCKET = create("gold_lava_bucket");
+    public static final ResourceKey<Item> GOLD_POWDER_SNOW_BUCKET = create("gold_powder_snow_bucket");
+    public static final ResourceKey<Item> GOLD_MILK_BUCKET = create("gold_milk_bucket");
+    public static final ResourceKey<Item> GOLD_PUFFERFISH_BUCKET = create("gold_pufferfish_bucket");
+    public static final ResourceKey<Item> GOLD_SALMON_BUCKET = create("gold_salmon_bucket");
+    public static final ResourceKey<Item> GOLD_COD_BUCKET = create("gold_cod_bucket");
+    public static final ResourceKey<Item> GOLD_TROPICAL_FISH_BUCKET = create("gold_tropical_fish_bucket");
+    public static final ResourceKey<Item> GOLD_AXOLOTL_BUCKET = create("gold_axolotl_bucket");
+    public static final ResourceKey<Item> GOLD_TADPOLE_BUCKET = create("gold_tadpole_bucket");
+    public static final ResourceKey<Item> GOLD_SULFUR_CUBE_BUCKET = create("gold_sulfur_cube_bucket");
+
+    public static final ResourceKey<Item> MITHRIL_BUCKET = create("mithril_bucket");
+    public static final ResourceKey<Item> MITHRIL_WATER_BUCKET = create("mithril_water_bucket");
+    public static final ResourceKey<Item> MITHRIL_LAVA_BUCKET = create("mithril_lava_bucket");
+    public static final ResourceKey<Item> MITHRIL_POWDER_SNOW_BUCKET = create("mithril_powder_snow_bucket");
+    public static final ResourceKey<Item> MITHRIL_MILK_BUCKET = create("mithril_milk_bucket");
+    public static final ResourceKey<Item> MITHRIL_PUFFERFISH_BUCKET = create("mithril_pufferfish_bucket");
+    public static final ResourceKey<Item> MITHRIL_SALMON_BUCKET = create("mithril_salmon_bucket");
+    public static final ResourceKey<Item> MITHRIL_COD_BUCKET = create("mithril_cod_bucket");
+    public static final ResourceKey<Item> MITHRIL_TROPICAL_FISH_BUCKET = create("mithril_tropical_fish_bucket");
+    public static final ResourceKey<Item> MITHRIL_AXOLOTL_BUCKET = create("mithril_axolotl_bucket");
+    public static final ResourceKey<Item> MITHRIL_TADPOLE_BUCKET = create("mithril_tadpole_bucket");
+    public static final ResourceKey<Item> MITHRIL_SULFUR_CUBE_BUCKET = create("mithril_sulfur_cube_bucket");
+
+    public static final ResourceKey<Item> SILVER_BUCKET = create("silver_bucket");
+    public static final ResourceKey<Item> SILVER_WATER_BUCKET = create("silver_water_bucket");
+    public static final ResourceKey<Item> SILVER_LAVA_BUCKET = create("silver_lava_bucket");
+    public static final ResourceKey<Item> SILVER_POWDER_SNOW_BUCKET = create("silver_powder_snow_bucket");
+    public static final ResourceKey<Item> SILVER_MILK_BUCKET = create("silver_milk_bucket");
+    public static final ResourceKey<Item> SILVER_PUFFERFISH_BUCKET = create("silver_pufferfish_bucket");
+    public static final ResourceKey<Item> SILVER_SALMON_BUCKET = create("silver_salmon_bucket");
+    public static final ResourceKey<Item> SILVER_COD_BUCKET = create("silver_cod_bucket");
+    public static final ResourceKey<Item> SILVER_TROPICAL_FISH_BUCKET = create("silver_tropical_fish_bucket");
+    public static final ResourceKey<Item> SILVER_AXOLOTL_BUCKET = create("silver_axolotl_bucket");
+    public static final ResourceKey<Item> SILVER_TADPOLE_BUCKET = create("silver_tadpole_bucket");
+    public static final ResourceKey<Item> SILVER_SULFUR_CUBE_BUCKET = create("silver_sulfur_cube_bucket");
+
+    public static final ResourceKey<Item> NETHERITE_BUCKET = create("netherite_bucket");
+    public static final ResourceKey<Item> NETHERITE_WATER_BUCKET = create("netherite_water_bucket");
+    public static final ResourceKey<Item> NETHERITE_LAVA_BUCKET = create("netherite_lava_bucket");
+    public static final ResourceKey<Item> NETHERITE_POWDER_SNOW_BUCKET = create("netherite_powder_snow_bucket");
+    public static final ResourceKey<Item> NETHERITE_MILK_BUCKET = create("netherite_milk_bucket");
+    public static final ResourceKey<Item> NETHERITE_PUFFERFISH_BUCKET = create("netherite_pufferfish_bucket");
+    public static final ResourceKey<Item> NETHERITE_SALMON_BUCKET = create("netherite_salmon_bucket");
+    public static final ResourceKey<Item> NETHERITE_COD_BUCKET = create("netherite_cod_bucket");
+    public static final ResourceKey<Item> NETHERITE_TROPICAL_FISH_BUCKET = create("netherite_tropical_fish_bucket");
+    public static final ResourceKey<Item> NETHERITE_AXOLOTL_BUCKET = create("netherite_axolotl_bucket");
+    public static final ResourceKey<Item> NETHERITE_TADPOLE_BUCKET = create("netherite_tadpole_bucket");
+    public static final ResourceKey<Item> NETHERITE_SULFUR_CUBE_BUCKET = create("netherite_sulfur_cube_bucket");
+
+    public static final ResourceKey<Item> NETHERITE_FISHING_ROD = create("netherite_fishing_rod");
+    public static final ResourceKey<Item> ADAMANTIUM_FISHING_ROD = create("adamantium_fishing_rod");
+    public static final ResourceKey<Item> ANCIENT_METAL_FISHING_ROD = create("ancient_metal_fishing_rod");
+    public static final ResourceKey<Item> COPPER_FISHING_ROD = create("copper_fishing_rod");
+    public static final ResourceKey<Item> FLINT_FISHING_ROD = create("flint_fishing_rod");
+    public static final ResourceKey<Item> GOLDEN_FISHING_ROD = create("golden_fishing_rod");
+    public static final ResourceKey<Item> IRON_FISHING_ROD = create("iron_fishing_rod");
+    public static final ResourceKey<Item> MITHRIL_FISHING_ROD = create("mithril_fishing_rod");
+    public static final ResourceKey<Item> OBSIDIAN_FISHING_ROD = create("obsidian_fishing_rod");
+    public static final ResourceKey<Item> SILVER_FISHING_ROD = create("silver_fishing_rod");
+
+    public static final ResourceKey<Item> RAW_ADAMANTIUM = create("raw_adamantium");
+    public static final ResourceKey<Item> RAW_MITHRIL = create("raw_mithril");
+    public static final ResourceKey<Item> RAW_SILVER = create("raw_silver");
+
+    public static final ResourceKey<Item> ADAMANTIUM_INGOT = create("adamantium_ingot");
+    public static final ResourceKey<Item> MITHRIL_INGOT = create("mithril_ingot");
+    public static final ResourceKey<Item> ANCIENT_METAL_INGOT = create("ancient_metal_ingot");
+    public static final ResourceKey<Item> SILVER_INGOT = create("silver_ingot");
+
+    public static final ResourceKey<Item> NETHERITE_NUGGET = create("netherite_nugget");
+    public static final ResourceKey<Item> ADAMANTIUM_NUGGET = create("adamantium_nugget");
+    public static final ResourceKey<Item> MITHRIL_NUGGET = create("mithril_nugget");
+    public static final ResourceKey<Item> ANCIENT_METAL_NUGGET = create("ancient_metal_nugget");
+    public static final ResourceKey<Item> SILVER_NUGGET = create("silver_nugget");
+
+    public static final ResourceKey<Item> FLINT_SHARD = create("flint_shard");
+    public static final ResourceKey<Item> OBSIDIAN_SHARD = create("obsidian_shard");
+
+    public static final ResourceKey<Item> SINEW = create("sinew");
+    public static final ResourceKey<Item> MANURE = create("manure");
+    public static final ResourceKey<Item> GHOUL_SPAWN_EGG = create("ghoul_spawn_egg");
+    public static final ResourceKey<Item> SHADOW_SPAWN_EGG = create("shadow_spawn_egg");
+    public static final ResourceKey<Item> WIGHT_SPAWN_EGG = create("wight_spawn_egg");
+    public static final ResourceKey<Item> INVISIBLE_STALKER_SPAWN_EGG = create("invisible_stalker_spawn_egg");
+    public static final ResourceKey<Item> DEMON_SPIDER_SPAWN_EGG = create("demon_spider_spawn_egg");
+    public static final ResourceKey<Item> PHASE_SPIDER_SPAWN_EGG = create("phase_spider_spawn_egg");
+    public static final ResourceKey<Item> INFERNAL_CREEPER_SPAWN_EGG = create("infernal_creeper_spawn_egg");
+    public static final ResourceKey<Item> FIRE_ELEMENTAL_SPAWN_EGG = create("fire_elemental_spawn_egg");
+    public static final ResourceKey<Item> VAMPIRE_BAT_SPAWN_EGG = create("vampire_bat_spawn_egg");
+    public static final ResourceKey<Item> NIGHTWING_SPAWN_EGG = create("nightwing_spawn_egg");
+    public static final ResourceKey<Item> GIANT_VAMPIRE_BAT_SPAWN_EGG = create("giant_vampire_bat_spawn_egg");
+
+    private static ResourceKey<Item> create(final String name) {
+        return ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(MME.MOD_ID, name));
+    }
+}

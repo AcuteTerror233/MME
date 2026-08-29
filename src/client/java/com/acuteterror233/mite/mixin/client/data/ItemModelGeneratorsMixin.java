@@ -1,7 +1,7 @@
 package com.acuteterror233.mite.mixin.client.data;
 
 import com.acuteterror233.mite.MME;
-import com.acuteterror233.mite.atinterface.ItemModelGeneratorsExtension;
+import com.acuteterror233.mite.interfaces.ItemModelGeneratorsExtension;
 import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.ItemModelOutput;
 import net.minecraft.client.data.models.model.*;

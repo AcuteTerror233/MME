@@ -1,0 +1,12 @@
+// 26.2	-999999999-01-01T00:00:00	Might Makes Everything/Entity Loot Tables
+5eea50ce5bd30ec393f69d7fe2146db00bc2cdec data/mme/loot_table/entities/demon_spider.json
+ef017fe8afbc1e704a7cfb4818ece7ba018f9c91 data/mme/loot_table/entities/fire_elemental.json
+19ab6af6adb02ca48991a4a6c45e39ebf1d45f03 data/mme/loot_table/entities/ghoul.json
+ef017fe8afbc1e704a7cfb4818ece7ba018f9c91 data/mme/loot_table/entities/giant_vampire_bat.json
+be593d2ae5dbfc5ae9e80a0a8c82a3042699991e data/mme/loot_table/entities/infernal_creeper.json
+19ab6af6adb02ca48991a4a6c45e39ebf1d45f03 data/mme/loot_table/entities/invisible_stalker.json
+ef017fe8afbc1e704a7cfb4818ece7ba018f9c91 data/mme/loot_table/entities/nightwing.json
+5eea50ce5bd30ec393f69d7fe2146db00bc2cdec data/mme/loot_table/entities/phase_spider.json
+19ab6af6adb02ca48991a4a6c45e39ebf1d45f03 data/mme/loot_table/entities/shadow.json
+ef017fe8afbc1e704a7cfb4818ece7ba018f9c91 data/mme/loot_table/entities/vampire_bat.json
+19ab6af6adb02ca48991a4a6c45e39ebf1d45f03 data/mme/loot_table/entities/wight.json

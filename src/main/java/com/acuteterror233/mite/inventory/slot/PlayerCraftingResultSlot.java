@@ -1,6 +1,6 @@
 package com.acuteterror233.mite.inventory.slot;
 
-import com.acuteterror233.mite.atinterface.InventoryMenuExtension;
+import com.acuteterror233.mite.interfaces.InventoryMenuExtension;
 import net.minecraft.world.Container;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.CraftingContainer;

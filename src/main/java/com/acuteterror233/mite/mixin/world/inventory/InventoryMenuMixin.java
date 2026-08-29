@@ -1,8 +1,8 @@
 package com.acuteterror233.mite.mixin.world.inventory;
 
-import com.acuteterror233.mite.atinterface.InventoryMenuExtension;
 import com.acuteterror233.mite.block.MMEBlocks;
 import com.acuteterror233.mite.component.MMEDataComponentTypes;
+import com.acuteterror233.mite.interfaces.InventoryMenuExtension;
 import com.acuteterror233.mite.inventory.slot.PlayerCraftingResultSlot;
 import com.acuteterror233.mite.registry.tag.MMEItemTags;
 import net.minecraft.network.protocol.game.ClientboundContainerSetSlotPacket;
@@ -30,10 +30,10 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.Optional;
 
-@Mixin(InventoryMenu.class)
 /**
  * Mixin for {@code InventoryMenu} — 实现物品栏菜单扩展接口。
  */
+@Mixin(InventoryMenu.class)
 public abstract class InventoryMenuMixin extends AbstractCraftingMenu implements InventoryMenuExtension {
     @Unique
     private final int DefaultCraftingTime = 100;

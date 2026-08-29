@@ -1,9 +1,9 @@
 package com.acuteterror233.mite.mixin.client.data;
 
 import com.acuteterror233.mite.MME;
-import com.acuteterror233.mite.atinterface.BlockModelGeneratorsExtension;
 import com.acuteterror233.mite.block.state.properties.MMEBlockStateProperties;
 import com.acuteterror233.mite.data.TemplateAnvilModels;
+import com.acuteterror233.mite.interfaces.BlockModelGeneratorsExtension;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import net.minecraft.client.data.models.BlockModelGenerators;

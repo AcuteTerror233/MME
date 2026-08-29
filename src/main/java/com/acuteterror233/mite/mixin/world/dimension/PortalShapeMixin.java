@@ -1,8 +1,8 @@
 package com.acuteterror233.mite.mixin.world.dimension;
 
-import com.acuteterror233.mite.atinterface.UniversalPortalShapeExtension;
 import com.acuteterror233.mite.block.MMEBlocks;
 import com.acuteterror233.mite.block.entity.RunePortalBlockEntity;
+import com.acuteterror233.mite.interfaces.UniversalPortalShapeExtension;
 import com.acuteterror233.mite.registry.tag.MMEBlockTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -23,10 +23,10 @@ import org.spongepowered.asm.mixin.Shadow;
 import java.util.ArrayList;
 import java.util.List;
 
-@Mixin(PortalShape.class)
 /**
  * Mixin for {@code PortalShape} — 实现通用传送门形状检测接口。
  */
+@Mixin(PortalShape.class)
 public class PortalShapeMixin implements UniversalPortalShapeExtension {
     @Shadow
     @Final

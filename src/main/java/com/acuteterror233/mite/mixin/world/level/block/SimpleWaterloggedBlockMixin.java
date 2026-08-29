@@ -1,6 +1,6 @@
 package com.acuteterror233.mite.mixin.world.level.block;
 
-import com.acuteterror233.mite.atinterface.FluidDrainableExtension;
+import com.acuteterror233.mite.interfaces.FluidDrainableExtension;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.LivingEntity;

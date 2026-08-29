@@ -22,7 +22,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.damagesource.DamageTypes;
-import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EntityTypes;
 import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -45,207 +45,207 @@ import java.util.function.Function;
  */
 public class MMEItems {
     public static final Item ADAMANTIUM_HELMET = register(
-            "adamantium_helmet",
+            MMEItemIds.ADAMANTIUM_HELMET,
             getArmorSettings(MMEArmorMaterials.ADAMANTIUM_MATERIAL, ArmorType.HELMET).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4)
     );
     public static final Item ADAMANTIUM_CHESTPLATE = register(
-            "adamantium_chestplate",
+            MMEItemIds.ADAMANTIUM_CHESTPLATE,
             getArmorSettings(MMEArmorMaterials.ADAMANTIUM_MATERIAL, ArmorType.CHESTPLATE).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4)
     );
     public static final Item ADAMANTIUM_LEGGINGS = register(
-            "adamantium_leggings",
+            MMEItemIds.ADAMANTIUM_LEGGINGS,
             getArmorSettings(MMEArmorMaterials.ADAMANTIUM_MATERIAL, ArmorType.LEGGINGS).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4)
     );
     public static final Item ADAMANTIUM_BOOTS = register(
-            "adamantium_boots",
+            MMEItemIds.ADAMANTIUM_BOOTS,
             getArmorSettings(MMEArmorMaterials.ADAMANTIUM_MATERIAL, ArmorType.BOOTS).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4)
     );
     public static final Item ADAMANTIUM_CHAINMAIL_BOOTS = register(
-            "adamantium_chainmail_boots",
+            MMEItemIds.ADAMANTIUM_CHAINMAIL_BOOTS,
             getArmorSettings(MMEArmorMaterials.ADAMANTIUM_CHAINMAIL_MATERIAL, ArmorType.BOOTS).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4)
     );
     public static final Item ADAMANTIUM_CHAINMAIL_CHESTPLATE = register(
-            "adamantium_chainmail_chestplate",
+            MMEItemIds.ADAMANTIUM_CHAINMAIL_CHESTPLATE,
             getArmorSettings(MMEArmorMaterials.ADAMANTIUM_CHAINMAIL_MATERIAL, ArmorType.CHESTPLATE).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4)
     );
     public static final Item ADAMANTIUM_CHAINMAIL_HELMET = register(
-            "adamantium_chainmail_helmet",
+            MMEItemIds.ADAMANTIUM_CHAINMAIL_HELMET,
             getArmorSettings(MMEArmorMaterials.ADAMANTIUM_CHAINMAIL_MATERIAL, ArmorType.HELMET).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4)
     );
     public static final Item ADAMANTIUM_CHAINMAIL_LEGGINGS = register(
-            "adamantium_chainmail_leggings",
+            MMEItemIds.ADAMANTIUM_CHAINMAIL_LEGGINGS,
             getArmorSettings(MMEArmorMaterials.ADAMANTIUM_CHAINMAIL_MATERIAL, ArmorType.LEGGINGS).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4)
     );
     public static final Item ANCIENT_METAL_HELMET = register(
-            "ancient_metal_helmet",
+            MMEItemIds.ANCIENT_METAL_HELMET,
             getArmorSettings(MMEArmorMaterials.ANCIENT_METAL_MATERIAL, ArmorType.HELMET)
     );
     public static final Item ANCIENT_METAL_CHESTPLATE = register(
-            "ancient_metal_chestplate",
+            MMEItemIds.ANCIENT_METAL_CHESTPLATE,
             getArmorSettings(MMEArmorMaterials.ANCIENT_METAL_MATERIAL, ArmorType.CHESTPLATE)
     );
     public static final Item ANCIENT_METAL_LEGGINGS = register(
-            "ancient_metal_leggings",
+            MMEItemIds.ANCIENT_METAL_LEGGINGS,
             getArmorSettings(MMEArmorMaterials.ANCIENT_METAL_MATERIAL, ArmorType.LEGGINGS)
     );
     public static final Item ANCIENT_METAL_BOOTS = register(
-            "ancient_metal_boots",
+            MMEItemIds.ANCIENT_METAL_BOOTS,
             getArmorSettings(MMEArmorMaterials.ANCIENT_METAL_MATERIAL, ArmorType.BOOTS)
     );
     public static final Item ANCIENT_METAL_CHAINMAIL_BOOTS = register(
-            "ancient_metal_chainmail_boots",
+            MMEItemIds.ANCIENT_METAL_CHAINMAIL_BOOTS,
             getArmorSettings(MMEArmorMaterials.ANCIENT_METAL_CHAINMAIL_MATERIAL, ArmorType.BOOTS)
     );
     public static final Item ANCIENT_METAL_CHAINMAIL_CHESTPLATE = register(
-            "ancient_metal_chainmail_chestplate",
+            MMEItemIds.ANCIENT_METAL_CHAINMAIL_CHESTPLATE,
             getArmorSettings(MMEArmorMaterials.ANCIENT_METAL_CHAINMAIL_MATERIAL, ArmorType.CHESTPLATE)
     );
     public static final Item ANCIENT_METAL_CHAINMAIL_HELMET = register(
-            "ancient_metal_chainmail_helmet",
+            MMEItemIds.ANCIENT_METAL_CHAINMAIL_HELMET,
             getArmorSettings(MMEArmorMaterials.ANCIENT_METAL_CHAINMAIL_MATERIAL, ArmorType.HELMET)
     );
     public static final Item ANCIENT_METAL_CHAINMAIL_LEGGINGS = register(
-            "ancient_metal_chainmail_leggings",
+            MMEItemIds.ANCIENT_METAL_CHAINMAIL_LEGGINGS,
             getArmorSettings(MMEArmorMaterials.ANCIENT_METAL_CHAINMAIL_MATERIAL, ArmorType.LEGGINGS)
     );
     public static final Item COPPER_CHAINMAIL_BOOTS = register(
-            "copper_chainmail_boots",
+            MMEItemIds.COPPER_CHAINMAIL_BOOTS,
             getArmorSettings(MMEArmorMaterials.COPPER_CHAINMAIL_MATERIAL, ArmorType.BOOTS)
     );
     public static final Item COPPER_CHAINMAIL_CHESTPLATE = register(
-            "copper_chainmail_chestplate",
+            MMEItemIds.COPPER_CHAINMAIL_CHESTPLATE,
             getArmorSettings(MMEArmorMaterials.COPPER_CHAINMAIL_MATERIAL, ArmorType.CHESTPLATE)
     );
     public static final Item COPPER_CHAINMAIL_HELMET = register(
-            "copper_chainmail_helmet",
+            MMEItemIds.COPPER_CHAINMAIL_HELMET,
             getArmorSettings(MMEArmorMaterials.COPPER_CHAINMAIL_MATERIAL, ArmorType.HELMET)
     );
     public static final Item COPPER_CHAINMAIL_LEGGINGS = register(
-            "copper_chainmail_leggings",
+            MMEItemIds.COPPER_CHAINMAIL_LEGGINGS,
             getArmorSettings(MMEArmorMaterials.COPPER_CHAINMAIL_MATERIAL, ArmorType.LEGGINGS)
     );
     public static final Item MITHRIL_HELMET = register(
-            "mithril_helmet",
+            MMEItemIds.MITHRIL_HELMET,
             getArmorSettings(MMEArmorMaterials.MITHRIL_MATERIAL, ArmorType.HELMET).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 3)
     );
     public static final Item MITHRIL_CHESTPLATE = register(
-            "mithril_chestplate",
+            MMEItemIds.MITHRIL_CHESTPLATE,
             getArmorSettings(MMEArmorMaterials.MITHRIL_MATERIAL, ArmorType.CHESTPLATE).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 3)
     );
     public static final Item MITHRIL_LEGGINGS = register(
-            "mithril_leggings",
+            MMEItemIds.MITHRIL_LEGGINGS,
             getArmorSettings(MMEArmorMaterials.MITHRIL_MATERIAL, ArmorType.LEGGINGS).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 3)
     );
     public static final Item MITHRIL_BOOTS = register(
-            "mithril_boots",
+            MMEItemIds.MITHRIL_BOOTS,
             getArmorSettings(MMEArmorMaterials.MITHRIL_MATERIAL, ArmorType.BOOTS).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 3)
     );
     public static final Item MITHRIL_CHAINMAIL_HELMET = register(
-            "mithril_chainmail_helmet",
+            MMEItemIds.MITHRIL_CHAINMAIL_HELMET,
             getArmorSettings(MMEArmorMaterials.MITHRIL_CHAINMAIL_MATERIAL, ArmorType.HELMET).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 3)
     );
     public static final Item MITHRIL_CHAINMAIL_CHESTPLATE = register(
-            "mithril_chainmail_chestplate",
+            MMEItemIds.MITHRIL_CHAINMAIL_CHESTPLATE,
             getArmorSettings(MMEArmorMaterials.MITHRIL_CHAINMAIL_MATERIAL, ArmorType.CHESTPLATE).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 3)
     );
     public static final Item MITHRIL_CHAINMAIL_LEGGINGS = register(
-            "mithril_chainmail_leggings",
+            MMEItemIds.MITHRIL_CHAINMAIL_LEGGINGS,
             getArmorSettings(MMEArmorMaterials.MITHRIL_CHAINMAIL_MATERIAL, ArmorType.LEGGINGS).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 3)
     );
     public static final Item MITHRIL_CHAINMAIL_BOOTS = register(
-            "mithril_chainmail_boots",
+            MMEItemIds.MITHRIL_CHAINMAIL_BOOTS,
             getArmorSettings(MMEArmorMaterials.MITHRIL_CHAINMAIL_MATERIAL, ArmorType.BOOTS).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 3)
     );
     public static final Item RUSTED_IRON_HELMET = register(
-            "rusted_iron_helmet",
+            MMEItemIds.RUSTED_IRON_HELMET,
             getArmorSettings(MMEArmorMaterials.RUSTED_IRON_MATERIAL, ArmorType.HELMET)
     );
     public static final Item RUSTED_IRON_CHESTPLATE = register(
-            "rusted_iron_chestplate",
+            MMEItemIds.RUSTED_IRON_CHESTPLATE,
             getArmorSettings(MMEArmorMaterials.RUSTED_IRON_MATERIAL, ArmorType.CHESTPLATE)
     );
     public static final Item RUSTED_IRON_LEGGINGS = register(
-            "rusted_iron_leggings",
+            MMEItemIds.RUSTED_IRON_LEGGINGS,
             getArmorSettings(MMEArmorMaterials.RUSTED_IRON_MATERIAL, ArmorType.LEGGINGS)
     );
     public static final Item RUSTED_IRON_BOOTS = register(
-            "rusted_iron_boots",
+            MMEItemIds.RUSTED_IRON_BOOTS,
             getArmorSettings(MMEArmorMaterials.RUSTED_IRON_MATERIAL, ArmorType.BOOTS)
     );
     public static final Item RUSTED_IRON_CHAINMAIL_HELMET = register(
-            "rusted_iron_chainmail_helmet",
+            MMEItemIds.RUSTED_IRON_CHAINMAIL_HELMET,
             getArmorSettings(MMEArmorMaterials.RUSTED_IRON_CHAINMAIL_MATERIAL, ArmorType.HELMET)
     );
     public static final Item RUSTED_IRON_CHAINMAIL_CHESTPLATE = register(
-            "rusted_iron_chainmail_chestplate",
+            MMEItemIds.RUSTED_IRON_CHAINMAIL_CHESTPLATE,
             getArmorSettings(MMEArmorMaterials.RUSTED_IRON_CHAINMAIL_MATERIAL, ArmorType.CHESTPLATE)
     );
     public static final Item RUSTED_IRON_CHAINMAIL_LEGGINGS = register(
-            "rusted_iron_chainmail_leggings",
+            MMEItemIds.RUSTED_IRON_CHAINMAIL_LEGGINGS,
             getArmorSettings(MMEArmorMaterials.RUSTED_IRON_CHAINMAIL_MATERIAL, ArmorType.LEGGINGS)
     );
     public static final Item RUSTED_IRON_CHAINMAIL_BOOTS = register(
-            "rusted_iron_chainmail_boots",
+            MMEItemIds.RUSTED_IRON_CHAINMAIL_BOOTS,
             getArmorSettings(MMEArmorMaterials.RUSTED_IRON_CHAINMAIL_MATERIAL, ArmorType.BOOTS)
     );
     public static final Item SILVER_HELMET = register(
-            "silver_helmet",
+            MMEItemIds.SILVER_HELMET,
             getArmorSettings(MMEArmorMaterials.SILVER_MATERIAL, ArmorType.HELMET)
     );
     public static final Item SILVER_CHESTPLATE = register(
-            "silver_chestplate",
+            MMEItemIds.SILVER_CHESTPLATE,
             getArmorSettings(MMEArmorMaterials.SILVER_MATERIAL, ArmorType.CHESTPLATE)
     );
     public static final Item SILVER_LEGGINGS = register(
-            "silver_leggings",
+            MMEItemIds.SILVER_LEGGINGS,
             getArmorSettings(MMEArmorMaterials.SILVER_MATERIAL, ArmorType.LEGGINGS)
     );
     public static final Item SILVER_BOOTS = register(
-            "silver_boots",
+            MMEItemIds.SILVER_BOOTS,
             getArmorSettings(MMEArmorMaterials.SILVER_MATERIAL, ArmorType.BOOTS)
     );
     public static final Item SILVER_CHAINMAIL_HELMET = register(
-            "silver_chainmail_helmet",
+            MMEItemIds.SILVER_CHAINMAIL_HELMET,
             getArmorSettings(MMEArmorMaterials.SILVER_CHAINMAIL_MATERIAL, ArmorType.HELMET)
     );
     public static final Item SILVER_CHAINMAIL_CHESTPLATE = register(
-            "silver_chainmail_chestplate",
+            MMEItemIds.SILVER_CHAINMAIL_CHESTPLATE,
             getArmorSettings(MMEArmorMaterials.SILVER_CHAINMAIL_MATERIAL, ArmorType.CHESTPLATE)
     );
     public static final Item SILVER_CHAINMAIL_LEGGINGS = register(
-            "silver_chainmail_leggings",
+            MMEItemIds.SILVER_CHAINMAIL_LEGGINGS,
             getArmorSettings(MMEArmorMaterials.SILVER_CHAINMAIL_MATERIAL, ArmorType.LEGGINGS)
     );
     public static final Item SILVER_CHAINMAIL_BOOTS = register(
-            "silver_chainmail_boots",
+            MMEItemIds.SILVER_CHAINMAIL_BOOTS,
             getArmorSettings(MMEArmorMaterials.SILVER_CHAINMAIL_MATERIAL, ArmorType.BOOTS)
     );
     public static final Item GOLDEN_CHAINMAIL_HELMET = register(
-            "golden_chainmail_helmet",
+            MMEItemIds.GOLDEN_CHAINMAIL_HELMET,
             getArmorSettings(MMEArmorMaterials.GOLD_CHAINMAIL_MATERIAL, ArmorType.HELMET)
     );
     public static final Item GOLDEN_CHAINMAIL_CHESTPLATE = register(
-            "golden_chainmail_chestplate",
+            MMEItemIds.GOLDEN_CHAINMAIL_CHESTPLATE,
             getArmorSettings(MMEArmorMaterials.GOLD_CHAINMAIL_MATERIAL, ArmorType.CHESTPLATE)
     );
     public static final Item GOLDEN_CHAINMAIL_LEGGINGS = register(
-            "golden_chainmail_leggings",
+            MMEItemIds.GOLDEN_CHAINMAIL_LEGGINGS,
             getArmorSettings(MMEArmorMaterials.GOLD_CHAINMAIL_MATERIAL, ArmorType.LEGGINGS)
     );
     public static final Item GOLDEN_CHAINMAIL_BOOTS = register(
-            "golden_chainmail_boots",
+            MMEItemIds.GOLDEN_CHAINMAIL_BOOTS,
             getArmorSettings(MMEArmorMaterials.GOLD_CHAINMAIL_MATERIAL, ArmorType.BOOTS)
     );
 
     public static final Item BANANA = register(
-            "banana",
+            MMEItemIds.BANANA,
             new Item.Properties()
                     .food(new FoodProperties(2, 1.0F, false))
                     .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().fiber(8000).sugar(4800).build())
                     .stacksTo(16)
     );
     public static final Item BLUE_BERRIE = register(
-            "blue_berry",
+            MMEItemIds.BLUE_BERRIE,
             Items.createBlockItemWithCustomItemName(MMEBlocks.BLUE_BERRY_BUSH),
             new Item.Properties()
                     .food(new FoodProperties(1, 1.0F, false))
@@ -253,66 +253,66 @@ public class MMEItems {
                     .stacksTo(16)
     );
     public static final Item CHEESE = register(
-            "cheese",
+            MMEItemIds.CHEESE,
             new Item.Properties()
                     .food(new FoodProperties(3, 3.0F, false))
                     .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().protein(24000).build())
                     .stacksTo(16)
     );
     public static final Item CHOCOLATE = register(
-            "chocolate",
+            MMEItemIds.CHOCOLATE,
             new Item.Properties()
                     .food(new FoodProperties(3, 3.0F, false))
                     .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().sugar(4800).build())
                     .stacksTo(16)
     );
     public static final Item DOUGH = register(
-            "dough",
+            MMEItemIds.DOUGH,
             new Item.Properties()
                     .food(new FoodProperties(2, 6.0F, false))
                     .stacksTo(16)
     );
     public static final Item LEMON = register(
-            "lemon",
+            MMEItemIds.LEMON,
             new Item.Properties()
                     .food(new FoodProperties(1, 2.0F, false))
                     .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().fiber(8000).sugar(4800).build())
                     .stacksTo(16)
     );
     public static final Item ONION = register(
-            "onion",
+            MMEItemIds.ONION,
             new Item.Properties()
                     .food(new FoodProperties(1, 1.0F, false))
                     .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().fiber(8000).build())
                     .stacksTo(16)
     );
     public static final Item ORANGE = register(
-            "orange",
+            MMEItemIds.ORANGE,
             new Item.Properties()
                     .food(new FoodProperties(1, 2.0F, false))
                     .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().fiber(8000).sugar(4800).build())
                     .stacksTo(16)
     );
     public static final Item WORM_COOKED = register(
-            "worm_cooked",
+            MMEItemIds.WORM_COOKED,
             new Item.Properties()
                     .food(new FoodProperties(1, 1.0F, false))
                     .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().protein(8000).build())
                     .stacksTo(16)
     );
     public static final Item WORM_RAW = register(
-            "worm_raw",
+            MMEItemIds.WORM_RAW,
             new Item.Properties()
                     .food(new FoodProperties(1, 0.0F, false))
                     .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().protein(8000).build())
                     .stacksTo(16)
     );
     public static final Item FLOUR = register(
-            "flour",
+            MMEItemIds.FLOUR,
             new Item.Properties().stacksTo(16)
     );
     public static final Item BEEF_STEW = register(
-            "beef_stew",
+            MMEItemIds.BEEF_STEW,
             new Item.Properties()
                     .food(new FoodProperties(16, 16.0F, false))
                     .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().protein(128000).fiber(128000).build())
@@ -321,7 +321,7 @@ public class MMEItems {
                     .stacksTo(4)
     );
     public static final Item BOWL_MILK = register(
-            "bowl_milk",
+            MMEItemIds.BOWL_MILK,
             new Item.Properties()
                     .food(new FoodProperties(1, 0, false), Consumables.MILK_BUCKET)
                     .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().protein(8000).build())
@@ -330,7 +330,7 @@ public class MMEItems {
                     .stacksTo(4)
     );
     public static final Item BOWL_SALAD = register(
-            "bowl_salad",
+            MMEItemIds.BOWL_SALAD,
             new Item.Properties()
                     .food(new FoodProperties(1, 1.0F, false))
                     .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().fiber(8000).build())
@@ -339,14 +339,14 @@ public class MMEItems {
                     .stacksTo(4)
     );
     public static final Item BOWL_WATER = register(
-            "bowl_water",
+            MMEItemIds.BOWL_WATER,
             new Item.Properties()
                     .food(new FoodProperties(0, 0F, true), Consumables.defaultDrink().build())
                     .usingConvertsTo(Items.BOWL)
                     .stacksTo(4)
     );
     public static final Item CEREAL = register(
-            "cereal",
+            MMEItemIds.CEREAL,
             new Item.Properties()
                     .food(new FoodProperties(2, 5.0F, false))
                     .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().protein(16000).build())
@@ -355,7 +355,7 @@ public class MMEItems {
                     .stacksTo(4)
     );
     public static final Item CHICKEN_SOUP = register(
-            "chicken_soup",
+            MMEItemIds.CHICKEN_SOUP,
             new Item.Properties()
                     .food(new FoodProperties(10, 10.0F, false), Consumables.defaultDrink().build())
                     .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().protein(80000).fiber(80000).build())
@@ -364,7 +364,7 @@ public class MMEItems {
                     .stacksTo(4)
     );
     public static final Item CREAM_OF_MUSHROOM_SOUP = register(
-            "cream_of_mushroom_soup",
+            MMEItemIds.CREAM_OF_MUSHROOM_SOUP,
             new Item.Properties()
                     .food(new FoodProperties(5, 3.0F, false), Consumables.defaultDrink().build())
                     .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().protein(40000).build())
@@ -373,7 +373,7 @@ public class MMEItems {
                     .stacksTo(4)
     );
     public static final Item CREAM_OF_VEGETABLE_SOUP = register(
-            "cream_of_vegetable_soup",
+            MMEItemIds.CREAM_OF_VEGETABLE_SOUP,
             new Item.Properties()
                     .food(new FoodProperties(7, 7.0F, false), Consumables.defaultDrink().build())
                     .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().protein(56000).fiber(56000).build())
@@ -382,7 +382,7 @@ public class MMEItems {
                     .stacksTo(4)
     );
     public static final Item ICE_CREAM = register(
-            "ice_cream",
+            MMEItemIds.ICE_CREAM,
             new Item.Properties()
                     .food(new FoodProperties(4, 5.0F, false))
                     .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().protein(32000).sugar(4800).build())
@@ -391,7 +391,7 @@ public class MMEItems {
                     .stacksTo(4)
     );
     public static final Item MASHED_POTATO = register(
-            "mashed_potato",
+            MMEItemIds.MASHED_POTATO,
             new Item.Properties()
                     .food(new FoodProperties(8, 12.0F, false))
                     .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().protein(64000).build())
@@ -400,7 +400,7 @@ public class MMEItems {
                     .stacksTo(4)
     );
     public static final Item PORRIDGE = register(
-            "porridge",
+            MMEItemIds.PORRIDGE,
             new Item.Properties()
                     .food(new FoodProperties(5, 5.0F, false))
                     .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().fiber(16000).sugar(9600).build())
@@ -409,7 +409,7 @@ public class MMEItems {
                     .stacksTo(4)
     );
     public static final Item PUMPKIN_SOUP = register(
-            "pumpkin_soup",
+            MMEItemIds.PUMPKIN_SOUP,
             new Item.Properties()
                     .food(new FoodProperties(2, 1.0F, false), Consumables.defaultDrink().build())
                     .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().fiber(16000).build())
@@ -418,7 +418,7 @@ public class MMEItems {
                     .stacksTo(4)
     );
     public static final Item SORBET = register(
-            "sorbet",
+            MMEItemIds.SORBET,
             new Item.Properties()
                     .food(new FoodProperties(2, 4.0F, false))
                     .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().fiber(16000).sugar(9600).build())
@@ -427,7 +427,7 @@ public class MMEItems {
                     .stacksTo(4)
     );
     public static final Item VEGETABLE_SOUP = register(
-            "vegetable_soup",
+            MMEItemIds.VEGETABLE_SOUP,
             new Item.Properties()
                     .food(new FoodProperties(6, 6.0F, false), Consumables.defaultDrink().build())
                     .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().fiber(48000).build())
@@ -436,681 +436,723 @@ public class MMEItems {
                     .stacksTo(4)
     );
     
-    public static final Item NETHERITE_BATTLE_AXE = registerAxeItem("netherite_battle_axe", getBattleAxeSettings(MMEToolMaterials.NETHERITE).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
-    public static final Item NETHERITE_HATCHET = registerAxeItem("netherite_hatchet", getHandAxeSettings(MMEToolMaterials.NETHERITE).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
-    public static final Item NETHERITE_DAGGER = register("netherite_dagger", getDaggerSettings(MMEToolMaterials.NETHERITE).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
-    public static final Item NETHERITE_KNIFE = register("netherite_knife");
-    public static final Item NETHERITE_WAR_HAMMER = register("netherite_war_hammer", getWarHammerSettings(MMEToolMaterials.NETHERITE).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
-    public static final Item NETHERITE_MATTOCK = registerHoeItem("netherite_mattock", getMattockSettings(MMEToolMaterials.NETHERITE).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
-    public static final Item NETHERITE_SCYTHE = register("netherite_scythe", getScytheSettings(MMEToolMaterials.NETHERITE).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
-    public static final Item NETHERITE_SHEARS = registerShearsItem("netherite_shears", getShearsSettings(MMEToolMaterials.NETHERITE).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
+    public static final Item NETHERITE_BATTLE_AXE = registerAxeItem(MMEItemIds.NETHERITE_BATTLE_AXE, getBattleAxeSettings(MMEToolMaterials.NETHERITE).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
+    public static final Item NETHERITE_HATCHET = registerAxeItem(MMEItemIds.NETHERITE_HATCHET, getHandAxeSettings(MMEToolMaterials.NETHERITE).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
+    public static final Item NETHERITE_DAGGER = register(MMEItemIds.NETHERITE_DAGGER, getDaggerSettings(MMEToolMaterials.NETHERITE).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
+    public static final Item NETHERITE_KNIFE = register(MMEItemIds.NETHERITE_KNIFE);
+    public static final Item NETHERITE_WAR_HAMMER = register(MMEItemIds.NETHERITE_WAR_HAMMER, getWarHammerSettings(MMEToolMaterials.NETHERITE).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
+    public static final Item NETHERITE_MATTOCK = registerHoeItem(MMEItemIds.NETHERITE_MATTOCK, getMattockSettings(MMEToolMaterials.NETHERITE).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
+    public static final Item NETHERITE_SCYTHE = register(MMEItemIds.NETHERITE_SCYTHE, getScytheSettings(MMEToolMaterials.NETHERITE).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
+    public static final Item NETHERITE_SHEARS = registerShearsItem(MMEItemIds.NETHERITE_SHEARS, getShearsSettings(MMEToolMaterials.NETHERITE).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
     
-    public static final Item ADAMANTIUM_AXE = registerAxeItem("adamantium_axe", getAxeSettings(MMEToolMaterials.ADAMANTIUM).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
-    public static final Item ADAMANTIUM_BATTLE_AXE = registerAxeItem("adamantium_battle_axe", getBattleAxeSettings(MMEToolMaterials.ADAMANTIUM).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
-    public static final Item ADAMANTIUM_HATCHET = registerAxeItem("adamantium_hatchet", getHandAxeSettings(MMEToolMaterials.ADAMANTIUM).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
-    public static final Item ADAMANTIUM_SWORD = register("adamantium_sword", getSwordSettings(MMEToolMaterials.ADAMANTIUM).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
-    public static final Item ADAMANTIUM_DAGGER = register("adamantium_dagger", getDaggerSettings(MMEToolMaterials.ADAMANTIUM).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
-    public static final Item ADAMANTIUM_KNIFE = register("adamantium_knife");
-    public static final Item ADAMANTIUM_PICKAXE = register("adamantium_pickaxe", getPickaxeSettings(MMEToolMaterials.ADAMANTIUM).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
-    public static final Item ADAMANTIUM_WAR_HAMMER = register("adamantium_war_hammer", getWarHammerSettings(MMEToolMaterials.ADAMANTIUM).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
-    public static final Item ADAMANTIUM_SHOVEL = registerShovelItem("adamantium_shovel", getShovelSettings(MMEToolMaterials.ADAMANTIUM).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
-    public static final Item ADAMANTIUM_HOE = registerHoeItem("adamantium_hoe", getHoeSettings(MMEToolMaterials.ADAMANTIUM).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
-    public static final Item ADAMANTIUM_MATTOCK = registerHoeItem("adamantium_mattock", getMattockSettings(MMEToolMaterials.ADAMANTIUM).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
-    public static final Item ADAMANTIUM_SCYTHE = register("adamantium_scythe", getScytheSettings(MMEToolMaterials.ADAMANTIUM).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
-    public static final Item ADAMANTIUM_SHEARS = registerShearsItem("adamantium_shears", getShearsSettings(MMEToolMaterials.ADAMANTIUM).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
-    public static final Item ADAMANTIUM_SPEAR = register("adamantium_spear", applySpearSettings(new Item.Properties(), MMEToolMaterials.ADAMANTIUM, 1.10F, 1.16F, 0.45F, 2.5F, 6.8F, 5.8F, 5.1F, 9.0F, 4.6F).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
+    public static final Item ADAMANTIUM_AXE = registerAxeItem(MMEItemIds.ADAMANTIUM_AXE, getAxeSettings(MMEToolMaterials.ADAMANTIUM).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
+    public static final Item ADAMANTIUM_BATTLE_AXE = registerAxeItem(MMEItemIds.ADAMANTIUM_BATTLE_AXE, getBattleAxeSettings(MMEToolMaterials.ADAMANTIUM).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
+    public static final Item ADAMANTIUM_HATCHET = registerAxeItem(MMEItemIds.ADAMANTIUM_HATCHET, getHandAxeSettings(MMEToolMaterials.ADAMANTIUM).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
+    public static final Item ADAMANTIUM_SWORD = register(MMEItemIds.ADAMANTIUM_SWORD, getSwordSettings(MMEToolMaterials.ADAMANTIUM).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
+    public static final Item ADAMANTIUM_DAGGER = register(MMEItemIds.ADAMANTIUM_DAGGER, getDaggerSettings(MMEToolMaterials.ADAMANTIUM).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
+    public static final Item ADAMANTIUM_KNIFE = register(MMEItemIds.ADAMANTIUM_KNIFE);
+    public static final Item ADAMANTIUM_PICKAXE = register(MMEItemIds.ADAMANTIUM_PICKAXE, getPickaxeSettings(MMEToolMaterials.ADAMANTIUM).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
+    public static final Item ADAMANTIUM_WAR_HAMMER = register(MMEItemIds.ADAMANTIUM_WAR_HAMMER, getWarHammerSettings(MMEToolMaterials.ADAMANTIUM).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
+    public static final Item ADAMANTIUM_SHOVEL = registerShovelItem(MMEItemIds.ADAMANTIUM_SHOVEL, getShovelSettings(MMEToolMaterials.ADAMANTIUM).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
+    public static final Item ADAMANTIUM_HOE = registerHoeItem(MMEItemIds.ADAMANTIUM_HOE, getHoeSettings(MMEToolMaterials.ADAMANTIUM).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
+    public static final Item ADAMANTIUM_MATTOCK = registerHoeItem(MMEItemIds.ADAMANTIUM_MATTOCK, getMattockSettings(MMEToolMaterials.ADAMANTIUM).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
+    public static final Item ADAMANTIUM_SCYTHE = register(MMEItemIds.ADAMANTIUM_SCYTHE, getScytheSettings(MMEToolMaterials.ADAMANTIUM).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
+    public static final Item ADAMANTIUM_SHEARS = registerShearsItem(MMEItemIds.ADAMANTIUM_SHEARS, getShearsSettings(MMEToolMaterials.ADAMANTIUM).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
+    public static final Item ADAMANTIUM_SPEAR = register(MMEItemIds.ADAMANTIUM_SPEAR, applySpearSettings(new Item.Properties(), MMEToolMaterials.ADAMANTIUM, 1.10F, 1.16F, 0.45F, 2.5F, 6.8F, 5.8F, 5.1F, 9.0F, 4.6F).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
 
-    public static final Item ANCIENT_METAL_AXE = registerAxeItem("ancient_metal_axe", getAxeSettings(MMEToolMaterials.ANCIENT_METAL));
-    public static final Item ANCIENT_METAL_BATTLE_AXE = registerAxeItem("ancient_metal_battle_axe", getBattleAxeSettings(MMEToolMaterials.ANCIENT_METAL));
-    public static final Item ANCIENT_METAL_HATCHET = registerAxeItem("ancient_metal_hatchet", getHandAxeSettings(MMEToolMaterials.ANCIENT_METAL));
-    public static final Item ANCIENT_METAL_SWORD = register("ancient_metal_sword", getSwordSettings(MMEToolMaterials.ANCIENT_METAL));
-    public static final Item ANCIENT_METAL_DAGGER = register("ancient_metal_dagger", getDaggerSettings(MMEToolMaterials.ANCIENT_METAL));
-    public static final Item ANCIENT_METAL_KNIFE = register("ancient_metal_knife");
-    public static final Item ANCIENT_METAL_PICKAXE = register("ancient_metal_pickaxe", getPickaxeSettings(MMEToolMaterials.ANCIENT_METAL));
-    public static final Item ANCIENT_METAL_WAR_HAMMER = register("ancient_metal_war_hammer", getWarHammerSettings(MMEToolMaterials.ANCIENT_METAL));
-    public static final Item ANCIENT_METAL_SHOVEL = registerShovelItem("ancient_metal_shovel", getShovelSettings(MMEToolMaterials.ANCIENT_METAL));
-    public static final Item ANCIENT_METAL_HOE = registerHoeItem("ancient_metal_hoe", getHoeSettings(MMEToolMaterials.ANCIENT_METAL));
-    public static final Item ANCIENT_METAL_MATTOCK = registerHoeItem("ancient_metal_mattock", getMattockSettings(MMEToolMaterials.ANCIENT_METAL));
-    public static final Item ANCIENT_METAL_SCYTHE = register("ancient_metal_scythe", getScytheSettings(MMEToolMaterials.ANCIENT_METAL));
-    public static final Item ANCIENT_METAL_SHEARS = registerShearsItem("ancient_metal_shears", getShearsSettings(MMEToolMaterials.ANCIENT_METAL));
-    public static final Item ANCIENT_METAL_SPEAR = register("ancient_metal_spear", applySpearSettings(new Item.Properties(), MMEToolMaterials.ANCIENT_METAL, 1.02F, 1.05F, 0.53F, 2.5F, 7.5F, 6.5F, 5.1F, 10.0F, 4.6F));
+    public static final Item ANCIENT_METAL_AXE = registerAxeItem(MMEItemIds.ANCIENT_METAL_AXE, getAxeSettings(MMEToolMaterials.ANCIENT_METAL));
+    public static final Item ANCIENT_METAL_BATTLE_AXE = registerAxeItem(MMEItemIds.ANCIENT_METAL_BATTLE_AXE, getBattleAxeSettings(MMEToolMaterials.ANCIENT_METAL));
+    public static final Item ANCIENT_METAL_HATCHET = registerAxeItem(MMEItemIds.ANCIENT_METAL_HATCHET, getHandAxeSettings(MMEToolMaterials.ANCIENT_METAL));
+    public static final Item ANCIENT_METAL_SWORD = register(MMEItemIds.ANCIENT_METAL_SWORD, getSwordSettings(MMEToolMaterials.ANCIENT_METAL));
+    public static final Item ANCIENT_METAL_DAGGER = register(MMEItemIds.ANCIENT_METAL_DAGGER, getDaggerSettings(MMEToolMaterials.ANCIENT_METAL));
+    public static final Item ANCIENT_METAL_KNIFE = register(MMEItemIds.ANCIENT_METAL_KNIFE);
+    public static final Item ANCIENT_METAL_PICKAXE = register(MMEItemIds.ANCIENT_METAL_PICKAXE, getPickaxeSettings(MMEToolMaterials.ANCIENT_METAL));
+    public static final Item ANCIENT_METAL_WAR_HAMMER = register(MMEItemIds.ANCIENT_METAL_WAR_HAMMER, getWarHammerSettings(MMEToolMaterials.ANCIENT_METAL));
+    public static final Item ANCIENT_METAL_SHOVEL = registerShovelItem(MMEItemIds.ANCIENT_METAL_SHOVEL, getShovelSettings(MMEToolMaterials.ANCIENT_METAL));
+    public static final Item ANCIENT_METAL_HOE = registerHoeItem(MMEItemIds.ANCIENT_METAL_HOE, getHoeSettings(MMEToolMaterials.ANCIENT_METAL));
+    public static final Item ANCIENT_METAL_MATTOCK = registerHoeItem(MMEItemIds.ANCIENT_METAL_MATTOCK, getMattockSettings(MMEToolMaterials.ANCIENT_METAL));
+    public static final Item ANCIENT_METAL_SCYTHE = register(MMEItemIds.ANCIENT_METAL_SCYTHE, getScytheSettings(MMEToolMaterials.ANCIENT_METAL));
+    public static final Item ANCIENT_METAL_SHEARS = registerShearsItem(MMEItemIds.ANCIENT_METAL_SHEARS, getShearsSettings(MMEToolMaterials.ANCIENT_METAL));
+    public static final Item ANCIENT_METAL_SPEAR = register(MMEItemIds.ANCIENT_METAL_SPEAR, applySpearSettings(new Item.Properties(), MMEToolMaterials.ANCIENT_METAL, 1.02F, 1.05F, 0.53F, 2.5F, 7.5F, 6.5F, 5.1F, 10.0F, 4.6F));
 
-    public static final Item COPPER_BATTLE_AXE = registerAxeItem("copper_battle_axe", getBattleAxeSettings(MMEToolMaterials.COPPER));
-    public static final Item COPPER_HATCHET = registerAxeItem("copper_hatchet", getHandAxeSettings(MMEToolMaterials.COPPER));
-    public static final Item COPPER_DAGGER = register("copper_dagger", getDaggerSettings(MMEToolMaterials.COPPER));
-    public static final Item COPPER_KNIFE = register("copper_knife");
-    public static final Item COPPER_WAR_HAMMER = register("copper_war_hammer", getWarHammerSettings(MMEToolMaterials.COPPER));
-    public static final Item COPPER_MATTOCK = registerHoeItem("copper_mattock", getMattockSettings(MMEToolMaterials.COPPER));
-    public static final Item COPPER_SCYTHE = register("copper_scythe", getScytheSettings(MMEToolMaterials.COPPER));
-    public static final Item COPPER_SHEARS = registerShearsItem("copper_shears", getShearsSettings(MMEToolMaterials.COPPER));
+    public static final Item COPPER_BATTLE_AXE = registerAxeItem(MMEItemIds.COPPER_BATTLE_AXE, getBattleAxeSettings(MMEToolMaterials.COPPER));
+    public static final Item COPPER_HATCHET = registerAxeItem(MMEItemIds.COPPER_HATCHET, getHandAxeSettings(MMEToolMaterials.COPPER));
+    public static final Item COPPER_DAGGER = register(MMEItemIds.COPPER_DAGGER, getDaggerSettings(MMEToolMaterials.COPPER));
+    public static final Item COPPER_KNIFE = register(MMEItemIds.COPPER_KNIFE);
+    public static final Item COPPER_WAR_HAMMER = register(MMEItemIds.COPPER_WAR_HAMMER, getWarHammerSettings(MMEToolMaterials.COPPER));
+    public static final Item COPPER_MATTOCK = registerHoeItem(MMEItemIds.COPPER_MATTOCK, getMattockSettings(MMEToolMaterials.COPPER));
+    public static final Item COPPER_SCYTHE = register(MMEItemIds.COPPER_SCYTHE, getScytheSettings(MMEToolMaterials.COPPER));
+    public static final Item COPPER_SHEARS = registerShearsItem(MMEItemIds.COPPER_SHEARS, getShearsSettings(MMEToolMaterials.COPPER));
 
-    public static final Item GOLDEN_BATTLE_AXE = registerAxeItem("golden_battle_axe", getBattleAxeSettings(MMEToolMaterials.GOLD));
-    public static final Item GOLDEN_HATCHET = registerAxeItem("golden_hatchet", getHandAxeSettings(MMEToolMaterials.GOLD));
-    public static final Item GOLDEN_DAGGER = register("golden_dagger", getDaggerSettings(MMEToolMaterials.GOLD));
-    public static final Item GOLDEN_KNIFE = register("golden_knife");
-    public static final Item GOLDEN_WAR_HAMMER = register("golden_war_hammer", getWarHammerSettings(MMEToolMaterials.GOLD));
-    public static final Item GOLDEN_MATTOCK = registerHoeItem("golden_mattock", getMattockSettings(MMEToolMaterials.GOLD));
-    public static final Item GOLDEN_SCYTHE = register("golden_scythe", getScytheSettings(MMEToolMaterials.GOLD));
-    public static final Item GOLDEN_SHEARS = registerShearsItem("golden_shears", getShearsSettings(MMEToolMaterials.GOLD));
+    public static final Item GOLDEN_BATTLE_AXE = registerAxeItem(MMEItemIds.GOLDEN_BATTLE_AXE, getBattleAxeSettings(MMEToolMaterials.GOLD));
+    public static final Item GOLDEN_HATCHET = registerAxeItem(MMEItemIds.GOLDEN_HATCHET, getHandAxeSettings(MMEToolMaterials.GOLD));
+    public static final Item GOLDEN_DAGGER = register(MMEItemIds.GOLDEN_DAGGER, getDaggerSettings(MMEToolMaterials.GOLD));
+    public static final Item GOLDEN_KNIFE = register(MMEItemIds.GOLDEN_KNIFE);
+    public static final Item GOLDEN_WAR_HAMMER = register(MMEItemIds.GOLDEN_WAR_HAMMER, getWarHammerSettings(MMEToolMaterials.GOLD));
+    public static final Item GOLDEN_MATTOCK = registerHoeItem(MMEItemIds.GOLDEN_MATTOCK, getMattockSettings(MMEToolMaterials.GOLD));
+    public static final Item GOLDEN_SCYTHE = register(MMEItemIds.GOLDEN_SCYTHE, getScytheSettings(MMEToolMaterials.GOLD));
+    public static final Item GOLDEN_SHEARS = registerShearsItem(MMEItemIds.GOLDEN_SHEARS, getShearsSettings(MMEToolMaterials.GOLD));
 
-    public static final Item IRON_BATTLE_AXE = registerAxeItem("iron_battle_axe", getBattleAxeSettings(MMEToolMaterials.IRON));
-    public static final Item IRON_DAGGER = register("iron_dagger", getDaggerSettings(MMEToolMaterials.IRON));
-    public static final Item IRON_HATCHET = registerAxeItem("iron_hatchet", getHandAxeSettings(MMEToolMaterials.IRON));
-    public static final Item IRON_WAR_HAMMER = register("iron_war_hammer", getWarHammerSettings(MMEToolMaterials.IRON));
-    public static final Item IRON_KNIFE = register("iron_knife");
-    public static final Item IRON_MATTOCK = registerHoeItem("iron_mattock", getMattockSettings(MMEToolMaterials.IRON));
-    public static final Item IRON_SCYTHE = register("iron_scythe", getScytheSettings(MMEToolMaterials.IRON));
+    public static final Item IRON_BATTLE_AXE = registerAxeItem(MMEItemIds.IRON_BATTLE_AXE, getBattleAxeSettings(MMEToolMaterials.IRON));
+    public static final Item IRON_DAGGER = register(MMEItemIds.IRON_DAGGER, getDaggerSettings(MMEToolMaterials.IRON));
+    public static final Item IRON_HATCHET = registerAxeItem(MMEItemIds.IRON_HATCHET, getHandAxeSettings(MMEToolMaterials.IRON));
+    public static final Item IRON_WAR_HAMMER = register(MMEItemIds.IRON_WAR_HAMMER, getWarHammerSettings(MMEToolMaterials.IRON));
+    public static final Item IRON_KNIFE = register(MMEItemIds.IRON_KNIFE);
+    public static final Item IRON_MATTOCK = registerHoeItem(MMEItemIds.IRON_MATTOCK, getMattockSettings(MMEToolMaterials.IRON));
+    public static final Item IRON_SCYTHE = register(MMEItemIds.IRON_SCYTHE, getScytheSettings(MMEToolMaterials.IRON));
 
-    public static final Item MITHRIL_AXE = registerAxeItem("mithril_axe", getAxeSettings(MMEToolMaterials.MITHRIL).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 3));
-    public static final Item MITHRIL_BATTLE_AXE = registerAxeItem("mithril_battle_axe", getBattleAxeSettings(MMEToolMaterials.MITHRIL).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 3));
-    public static final Item MITHRIL_HATCHET = registerAxeItem("mithril_hatchet", getHandAxeSettings(MMEToolMaterials.MITHRIL).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 3));
-    public static final Item MITHRIL_SWORD = register("mithril_sword", getSwordSettings(MMEToolMaterials.MITHRIL).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 3));
-    public static final Item MITHRIL_DAGGER = register("mithril_dagger", getDaggerSettings(MMEToolMaterials.MITHRIL).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 3));
-    public static final Item MITHRIL_KNIFE = register("mithril_knife");
-    public static final Item MITHRIL_PICKAXE = register("mithril_pickaxe", getPickaxeSettings(MMEToolMaterials.MITHRIL).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 3));
-    public static final Item MITHRIL_WAR_HAMMER = register("mithril_war_hammer", getWarHammerSettings(MMEToolMaterials.MITHRIL).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 3));
-    public static final Item MITHRIL_SHOVEL = registerShovelItem("mithril_shovel", getShovelSettings(MMEToolMaterials.MITHRIL).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 3));
-    public static final Item MITHRIL_HOE = registerHoeItem("mithril_hoe", getHoeSettings(MMEToolMaterials.MITHRIL).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 3));
-    public static final Item MITHRIL_MATTOCK = registerHoeItem("mithril_mattock", getMattockSettings(MMEToolMaterials.MITHRIL).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 3));
-    public static final Item MITHRIL_SCYTHE = register("mithril_scythe", getScytheSettings(MMEToolMaterials.MITHRIL).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 3));
-    public static final Item MITHRIL_SHEARS = registerShearsItem("mithril_shears", getShearsSettings(MMEToolMaterials.MITHRIL).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 3));
-    public static final Item MITHRIL_SPEAR = register("mithril_spear", applySpearSettings(new Item.Properties(), MMEToolMaterials.MITHRIL, 1.06F, 1.10F, 0.50F, 2.5F, 7.2F, 6.2F, 5.1F, 9.5F, 4.6F).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 3));
+    public static final Item MITHRIL_AXE = registerAxeItem(MMEItemIds.MITHRIL_AXE, getAxeSettings(MMEToolMaterials.MITHRIL).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 3));
+    public static final Item MITHRIL_BATTLE_AXE = registerAxeItem(MMEItemIds.MITHRIL_BATTLE_AXE, getBattleAxeSettings(MMEToolMaterials.MITHRIL).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 3));
+    public static final Item MITHRIL_HATCHET = registerAxeItem(MMEItemIds.MITHRIL_HATCHET, getHandAxeSettings(MMEToolMaterials.MITHRIL).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 3));
+    public static final Item MITHRIL_SWORD = register(MMEItemIds.MITHRIL_SWORD, getSwordSettings(MMEToolMaterials.MITHRIL).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 3));
+    public static final Item MITHRIL_DAGGER = register(MMEItemIds.MITHRIL_DAGGER, getDaggerSettings(MMEToolMaterials.MITHRIL).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 3));
+    public static final Item MITHRIL_KNIFE = register(MMEItemIds.MITHRIL_KNIFE);
+    public static final Item MITHRIL_PICKAXE = register(MMEItemIds.MITHRIL_PICKAXE, getPickaxeSettings(MMEToolMaterials.MITHRIL).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 3));
+    public static final Item MITHRIL_WAR_HAMMER = register(MMEItemIds.MITHRIL_WAR_HAMMER, getWarHammerSettings(MMEToolMaterials.MITHRIL).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 3));
+    public static final Item MITHRIL_SHOVEL = registerShovelItem(MMEItemIds.MITHRIL_SHOVEL, getShovelSettings(MMEToolMaterials.MITHRIL).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 3));
+    public static final Item MITHRIL_HOE = registerHoeItem(MMEItemIds.MITHRIL_HOE, getHoeSettings(MMEToolMaterials.MITHRIL).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 3));
+    public static final Item MITHRIL_MATTOCK = registerHoeItem(MMEItemIds.MITHRIL_MATTOCK, getMattockSettings(MMEToolMaterials.MITHRIL).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 3));
+    public static final Item MITHRIL_SCYTHE = register(MMEItemIds.MITHRIL_SCYTHE, getScytheSettings(MMEToolMaterials.MITHRIL).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 3));
+    public static final Item MITHRIL_SHEARS = registerShearsItem(MMEItemIds.MITHRIL_SHEARS, getShearsSettings(MMEToolMaterials.MITHRIL).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 3));
+    public static final Item MITHRIL_SPEAR = register(MMEItemIds.MITHRIL_SPEAR, applySpearSettings(new Item.Properties(), MMEToolMaterials.MITHRIL, 1.06F, 1.10F, 0.50F, 2.5F, 7.2F, 6.2F, 5.1F, 9.5F, 4.6F).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 3));
 
-    public static final Item RUSTED_IRON_AXE = registerAxeItem("rusted_iron_axe", getAxeSettings(MMEToolMaterials.RUSTED_IRON));
-    public static final Item RUSTED_IRON_BATTLE_AXE = registerAxeItem("rusted_iron_battle_axe", getBattleAxeSettings(MMEToolMaterials.RUSTED_IRON));
-    public static final Item RUSTED_IRON_HATCHET = registerAxeItem("rusted_iron_hatchet", getHandAxeSettings(MMEToolMaterials.RUSTED_IRON));
-    public static final Item RUSTED_IRON_SWORD = register("rusted_iron_sword", getSwordSettings(MMEToolMaterials.RUSTED_IRON));
-    public static final Item RUSTED_IRON_DAGGER = register("rusted_iron_dagger", getDaggerSettings(MMEToolMaterials.RUSTED_IRON));
-    public static final Item RUSTED_IRON_KNIFE = register("rusted_iron_knife");
-    public static final Item RUSTED_IRON_PICKAXE = register("rusted_iron_pickaxe", getPickaxeSettings(MMEToolMaterials.RUSTED_IRON));
-    public static final Item RUSTED_IRON_WAR_HAMMER = register("rusted_iron_war_hammer", getWarHammerSettings(MMEToolMaterials.RUSTED_IRON));
-    public static final Item RUSTED_IRON_SHOVEL = registerShovelItem("rusted_iron_shovel", getShovelSettings(MMEToolMaterials.RUSTED_IRON));
-    public static final Item RUSTED_IRON_HOE = registerHoeItem("rusted_iron_hoe", getHoeSettings(MMEToolMaterials.RUSTED_IRON));
-    public static final Item RUSTED_IRON_MATTOCK = registerHoeItem("rusted_iron_mattock", getMattockSettings(MMEToolMaterials.RUSTED_IRON));
-    public static final Item RUSTED_IRON_SCYTHE = register("rusted_iron_scythe", getScytheSettings(MMEToolMaterials.RUSTED_IRON));
-    public static final Item RUSTED_IRON_SHEARS = registerShearsItem("rusted_iron_shears", getShearsSettings(MMEToolMaterials.RUSTED_IRON));
-    public static final Item RUSTED_IRON_SPEAR = register("rusted_iron_spear", applySpearSettings(new Item.Properties(), MMEToolMaterials.RUSTED_IRON, 0.90F, 0.88F, 0.63F, 3.6F, 8.6F, 7.6F, 5.1F, 11.8F, 4.6F));
+    public static final Item RUSTED_IRON_AXE = registerAxeItem(MMEItemIds.RUSTED_IRON_AXE, getAxeSettings(MMEToolMaterials.RUSTED_IRON));
+    public static final Item RUSTED_IRON_BATTLE_AXE = registerAxeItem(MMEItemIds.RUSTED_IRON_BATTLE_AXE, getBattleAxeSettings(MMEToolMaterials.RUSTED_IRON));
+    public static final Item RUSTED_IRON_HATCHET = registerAxeItem(MMEItemIds.RUSTED_IRON_HATCHET, getHandAxeSettings(MMEToolMaterials.RUSTED_IRON));
+    public static final Item RUSTED_IRON_SWORD = register(MMEItemIds.RUSTED_IRON_SWORD, getSwordSettings(MMEToolMaterials.RUSTED_IRON));
+    public static final Item RUSTED_IRON_DAGGER = register(MMEItemIds.RUSTED_IRON_DAGGER, getDaggerSettings(MMEToolMaterials.RUSTED_IRON));
+    public static final Item RUSTED_IRON_KNIFE = register(MMEItemIds.RUSTED_IRON_KNIFE);
+    public static final Item RUSTED_IRON_PICKAXE = register(MMEItemIds.RUSTED_IRON_PICKAXE, getPickaxeSettings(MMEToolMaterials.RUSTED_IRON));
+    public static final Item RUSTED_IRON_WAR_HAMMER = register(MMEItemIds.RUSTED_IRON_WAR_HAMMER, getWarHammerSettings(MMEToolMaterials.RUSTED_IRON));
+    public static final Item RUSTED_IRON_SHOVEL = registerShovelItem(MMEItemIds.RUSTED_IRON_SHOVEL, getShovelSettings(MMEToolMaterials.RUSTED_IRON));
+    public static final Item RUSTED_IRON_HOE = registerHoeItem(MMEItemIds.RUSTED_IRON_HOE, getHoeSettings(MMEToolMaterials.RUSTED_IRON));
+    public static final Item RUSTED_IRON_MATTOCK = registerHoeItem(MMEItemIds.RUSTED_IRON_MATTOCK, getMattockSettings(MMEToolMaterials.RUSTED_IRON));
+    public static final Item RUSTED_IRON_SCYTHE = register(MMEItemIds.RUSTED_IRON_SCYTHE, getScytheSettings(MMEToolMaterials.RUSTED_IRON));
+    public static final Item RUSTED_IRON_SHEARS = registerShearsItem(MMEItemIds.RUSTED_IRON_SHEARS, getShearsSettings(MMEToolMaterials.RUSTED_IRON));
+    public static final Item RUSTED_IRON_SPEAR = register(MMEItemIds.RUSTED_IRON_SPEAR, applySpearSettings(new Item.Properties(), MMEToolMaterials.RUSTED_IRON, 0.90F, 0.88F, 0.63F, 3.6F, 8.6F, 7.6F, 5.1F, 11.8F, 4.6F));
 
-    public static final Item SILVER_AXE = registerAxeItem("silver_axe", getAxeSettings(MMEToolMaterials.SILVER));
-    public static final Item SILVER_BATTLE_AXE = registerAxeItem("silver_battle_axe", getBattleAxeSettings(MMEToolMaterials.SILVER));
-    public static final Item SILVER_HATCHET = registerAxeItem("silver_hatchet", getHandAxeSettings(MMEToolMaterials.SILVER));
-    public static final Item SILVER_DAGGER = register("silver_dagger", getDaggerSettings(MMEToolMaterials.SILVER));
-    public static final Item SILVER_KNIFE = register("silver_knife");
-    public static final Item SILVER_SWORD = register("silver_sword", getSwordSettings(MMEToolMaterials.SILVER));
-    public static final Item SILVER_PICKAXE = register("silver_pickaxe", getPickaxeSettings(MMEToolMaterials.SILVER));
-    public static final Item SILVER_WAR_HAMMER = register("silver_war_hammer", getWarHammerSettings(MMEToolMaterials.SILVER));
-    public static final Item SILVER_SHOVEL = registerShovelItem("silver_shovel", getShovelSettings(MMEToolMaterials.SILVER));
-    public static final Item SILVER_HOE = registerHoeItem("silver_hoe", getHoeSettings(MMEToolMaterials.SILVER));
-    public static final Item SILVER_MATTOCK = registerHoeItem("silver_mattock", getMattockSettings(MMEToolMaterials.SILVER));
-    public static final Item SILVER_SCYTHE = register("silver_scythe", getScytheSettings(MMEToolMaterials.SILVER));
-    public static final Item SILVER_SHEARS = registerShearsItem("silver_shears", getShearsSettings(MMEToolMaterials.SILVER));
-    public static final Item SILVER_SPEAR = register("silver_spear", applySpearSettings(new Item.Properties(), MMEToolMaterials.SILVER, 0.98F, 1.00F, 0.56F, 2.8F, 7.8F, 6.8F, 5.1F, 10.5F, 4.6F));
+    public static final Item SILVER_AXE = registerAxeItem(MMEItemIds.SILVER_AXE, getAxeSettings(MMEToolMaterials.SILVER));
+    public static final Item SILVER_BATTLE_AXE = registerAxeItem(MMEItemIds.SILVER_BATTLE_AXE, getBattleAxeSettings(MMEToolMaterials.SILVER));
+    public static final Item SILVER_HATCHET = registerAxeItem(MMEItemIds.SILVER_HATCHET, getHandAxeSettings(MMEToolMaterials.SILVER));
+    public static final Item SILVER_DAGGER = register(MMEItemIds.SILVER_DAGGER, getDaggerSettings(MMEToolMaterials.SILVER));
+    public static final Item SILVER_KNIFE = register(MMEItemIds.SILVER_KNIFE);
+    public static final Item SILVER_SWORD = register(MMEItemIds.SILVER_SWORD, getSwordSettings(MMEToolMaterials.SILVER));
+    public static final Item SILVER_PICKAXE = register(MMEItemIds.SILVER_PICKAXE, getPickaxeSettings(MMEToolMaterials.SILVER));
+    public static final Item SILVER_WAR_HAMMER = register(MMEItemIds.SILVER_WAR_HAMMER, getWarHammerSettings(MMEToolMaterials.SILVER));
+    public static final Item SILVER_SHOVEL = registerShovelItem(MMEItemIds.SILVER_SHOVEL, getShovelSettings(MMEToolMaterials.SILVER));
+    public static final Item SILVER_HOE = registerHoeItem(MMEItemIds.SILVER_HOE, getHoeSettings(MMEToolMaterials.SILVER));
+    public static final Item SILVER_MATTOCK = registerHoeItem(MMEItemIds.SILVER_MATTOCK, getMattockSettings(MMEToolMaterials.SILVER));
+    public static final Item SILVER_SCYTHE = register(MMEItemIds.SILVER_SCYTHE, getScytheSettings(MMEToolMaterials.SILVER));
+    public static final Item SILVER_SHEARS = registerShearsItem(MMEItemIds.SILVER_SHEARS, getShearsSettings(MMEToolMaterials.SILVER));
+    public static final Item SILVER_SPEAR = register(MMEItemIds.SILVER_SPEAR, applySpearSettings(new Item.Properties(), MMEToolMaterials.SILVER, 0.98F, 1.00F, 0.56F, 2.8F, 7.8F, 6.8F, 5.1F, 10.5F, 4.6F));
 
-    public static final Item OBSIDIAN_AXE = registerAxeItem("obsidian_axe", applyToolSettings(new Item.Properties(), MMEToolMaterials.OBSIDIAN, BlockTags.MINEABLE_WITH_AXE, 3.4F, 2, 4, -2.7F, 0.5F, 0.5F, 5));
-    public static final Item OBSIDIAN_HATCHET = registerAxeItem("obsidian_hatchet", applyToolSettings(new Item.Properties(), MMEToolMaterials.OBSIDIAN, BlockTags.MINEABLE_WITH_AXE, 1, 2, 3, -2.7F, 0.25F, 0.25F, 5));
-    public static final Item OBSIDIAN_KNIFE = register("obsidian_knife", applySwordSettings(new Item.Properties(), MMEToolMaterials.OBSIDIAN, 3, 1, 2, -2.0F, 0.25F, 0.25F));
-    public static final Item OBSIDIAN_SHOVEL = register("obsidian_shovel", applyToolSettings(new Item.Properties(), MMEToolMaterials.OBSIDIAN, BlockTags.MINEABLE_WITH_SHOVEL, 5, 2, 1, -2.8F, 0.75F, 0.75F, 0));
+    public static final Item OBSIDIAN_AXE = registerAxeItem(MMEItemIds.OBSIDIAN_AXE, applyToolSettings(new Item.Properties(), MMEToolMaterials.OBSIDIAN, BlockTags.MINEABLE_WITH_AXE, 3.4F, 2, 4, -2.7F, 0.5F, 0.5F, 5));
+    public static final Item OBSIDIAN_HATCHET = registerAxeItem(MMEItemIds.OBSIDIAN_HATCHET, applyToolSettings(new Item.Properties(), MMEToolMaterials.OBSIDIAN, BlockTags.MINEABLE_WITH_AXE, 1, 2, 3, -2.7F, 0.25F, 0.25F, 5));
+    public static final Item OBSIDIAN_KNIFE = register(MMEItemIds.OBSIDIAN_KNIFE, applySwordSettings(new Item.Properties(), MMEToolMaterials.OBSIDIAN, 3, 1, 2, -2.0F, 0.25F, 0.25F));
+    public static final Item OBSIDIAN_SHOVEL = register(MMEItemIds.OBSIDIAN_SHOVEL, applyToolSettings(new Item.Properties(), MMEToolMaterials.OBSIDIAN, BlockTags.MINEABLE_WITH_SHOVEL, 5, 2, 1, -2.8F, 0.75F, 0.75F, 0));
 
-    public static final Item FLINT_AXE = registerAxeItem("flint_axe", applyToolSettings(new Item.Properties(), MMEToolMaterials.FLINT, BlockTags.MINEABLE_WITH_AXE, 3.4F, 2, 4, -2.7F, 0.5F, 0.5F, 5));
-    public static final Item FLINT_HATCHET = registerAxeItem("flint_hatchet", applyToolSettings(new Item.Properties(), MMEToolMaterials.FLINT, BlockTags.MINEABLE_WITH_AXE, 1, 2, 3, -2.7F, 0.25F, 0.25F, 5));
-    public static final Item FLINT_KNIFE = register("flint_knife", applySwordSettings(new Item.Properties(), MMEToolMaterials.FLINT, 3, 1, 2, -2.0F, 0.25F, 0.25F));
-    public static final Item FLINT_SHOVEL = register("flint_shovel", applyToolSettings(new Item.Properties(), MMEToolMaterials.FLINT, BlockTags.MINEABLE_WITH_SHOVEL, 3, 2, 1, -2.8F, 0.75F, 0.75F, 0));
-    public static final Item FLINT_SPEAR = register("flint_spear", applySpearSettings(new Item.Properties(), MMEToolMaterials.FLINT, 0.72F, 0.76F, 0.70F, 4.8F, 12.0F, 9.8F, 5.1F, 14.2F, 4.6F));
+    public static final Item FLINT_AXE = registerAxeItem(MMEItemIds.FLINT_AXE, applyToolSettings(new Item.Properties(), MMEToolMaterials.FLINT, BlockTags.MINEABLE_WITH_AXE, 3.4F, 2, 4, -2.7F, 0.5F, 0.5F, 5));
+    public static final Item FLINT_HATCHET = registerAxeItem(MMEItemIds.FLINT_HATCHET, applyToolSettings(new Item.Properties(), MMEToolMaterials.FLINT, BlockTags.MINEABLE_WITH_AXE, 1, 2, 3, -2.7F, 0.25F, 0.25F, 5));
+    public static final Item FLINT_KNIFE = register(MMEItemIds.FLINT_KNIFE, applySwordSettings(new Item.Properties(), MMEToolMaterials.FLINT, 3, 1, 2, -2.0F, 0.25F, 0.25F));
+    public static final Item FLINT_SHOVEL = register(MMEItemIds.FLINT_SHOVEL, applyToolSettings(new Item.Properties(), MMEToolMaterials.FLINT, BlockTags.MINEABLE_WITH_SHOVEL, 3, 2, 1, -2.8F, 0.75F, 0.75F, 0));
+    public static final Item FLINT_SPEAR = register(MMEItemIds.FLINT_SPEAR, applySpearSettings(new Item.Properties(), MMEToolMaterials.FLINT, 0.72F, 0.76F, 0.70F, 4.8F, 12.0F, 9.8F, 5.1F, 14.2F, 4.6F));
 
-    public static final Item WOODEN_CLUB = register("wooden_club", applySwordSettings(new Item.Properties(), MMEToolMaterials.WOOD, 2, 1, 4, -2.4F, 0.5F, 0.5F));
-    public static final Item WOODEN_CUDGEL = register("wooden_cudgel", applySwordSettings(new Item.Properties(), MMEToolMaterials.WOOD, 1, 1, 3, -2.0F, 0.25F, 0.25F));
+    public static final Item WOODEN_CLUB = register(MMEItemIds.WOODEN_CLUB, applySwordSettings(new Item.Properties(), MMEToolMaterials.WOOD, 2, 1, 4, -2.4F, 0.5F, 0.5F));
+    public static final Item WOODEN_CUDGEL = register(MMEItemIds.WOODEN_CUDGEL, applySwordSettings(new Item.Properties(), MMEToolMaterials.WOOD, 1, 1, 3, -2.0F, 0.25F, 0.25F));
 
-    public static final Item ADAMANTIUM_CHAINS = register("adamantium_chains",
+    public static final Item ADAMANTIUM_CHAINS = register(MMEItemIds.ADAMANTIUM_CHAINS,
             new Item.Properties().stacksTo(16).component(MMEDataComponentTypes.CRAFTING_TIME, 75));
-    public static final Item MITHRIL_CHAINS = register("mithril_chains",
+    public static final Item MITHRIL_CHAINS = register(MMEItemIds.MITHRIL_CHAINS,
             new Item.Properties().stacksTo(16).component(MMEDataComponentTypes.CRAFTING_TIME, 45));
-    public static final Item ANCIENT_METAL_CHAINS = register("ancient_metal_chains",
+    public static final Item ANCIENT_METAL_CHAINS = register(MMEItemIds.ANCIENT_METAL_CHAINS,
             new Item.Properties().stacksTo(16).component(MMEDataComponentTypes.CRAFTING_TIME, 30));
-    public static final Item IRON_CHAINS = register("iron_chains",
+    public static final Item IRON_CHAINS = register(MMEItemIds.IRON_CHAINS,
             new Item.Properties().stacksTo(16).component(MMEDataComponentTypes.CRAFTING_TIME, 15));
-    public static final Item RUSTED_IRON_CHAINS = register("rusted_iron_chains",
+    public static final Item RUSTED_IRON_CHAINS = register(MMEItemIds.RUSTED_IRON_CHAINS,
             new Item.Properties().stacksTo(16).component(MMEDataComponentTypes.CRAFTING_TIME, 5));
-    public static final Item GOLDEN_CHAINS = register("golden_chains",
+    public static final Item GOLDEN_CHAINS = register(MMEItemIds.GOLDEN_CHAINS,
             new Item.Properties().stacksTo(16).component(MMEDataComponentTypes.CRAFTING_TIME, 5));
-    public static final Item COPPER_CHAINS = register("copper_chains",
+    public static final Item COPPER_CHAINS = register(MMEItemIds.COPPER_CHAINS,
             new Item.Properties().stacksTo(16).component(MMEDataComponentTypes.CRAFTING_TIME, 5));
-    public static final Item SILVER_CHAINS = register("silver_chains",
+    public static final Item SILVER_CHAINS = register(MMEItemIds.SILVER_CHAINS,
             new Item.Properties().stacksTo(16).component(MMEDataComponentTypes.CRAFTING_TIME, 5));
 
     public static final Item NETHERITE_COINS = register(
-            "netherite_coins",
+            MMEItemIds.NETHERITE_COINS,
             settings -> new CoinsItem(settings, 5000),
             new Item.Properties().stacksTo(32)
     );
     public static final Item ADAMANTIUM_COINS = register(
-            "adamantium_coins",
+            MMEItemIds.ADAMANTIUM_COINS,
             settings -> new CoinsItem(settings, 1000),
             new Item.Properties().stacksTo(32)
     );
     public static final Item MITHRIL_COINS = register(
-            "mithril_coins",
+            MMEItemIds.MITHRIL_COINS,
             settings -> new CoinsItem(settings, 500),
             new Item.Properties().stacksTo(32)
     );
     public static final Item ANCIENT_METAL_COINS = register(
-            "ancient_metal_coins",
+            MMEItemIds.ANCIENT_METAL_COINS,
             settings -> new CoinsItem(settings, 300),
             new Item.Properties().stacksTo(32)
     );
     public static final Item IRON_COINS = register(
-            "iron_coins",
+            MMEItemIds.IRON_COINS,
             settings -> new CoinsItem(settings, 200),
             new Item.Properties().stacksTo(32)
     );
     public static final Item GOLDEN_COINS = register(
-            "golden_coins",
+            MMEItemIds.GOLDEN_COINS,
             settings -> new CoinsItem(settings, 500),
             new Item.Properties().stacksTo(32)
     );
     public static final Item COPPER_COINS = register(
-            "copper_coins",
+            MMEItemIds.COPPER_COINS,
             settings -> new CoinsItem(settings, 50),
             new Item.Properties().stacksTo(32)
     );
     public static final Item SILVER_COINS = register(
-            "silver_coins",
+            MMEItemIds.SILVER_COINS,
             settings -> new CoinsItem(settings, 50),
             new Item.Properties().stacksTo(32)
     );
 
     public static final Item ADAMANTIUM_BUCKET = register(
-            "adamantium_bucket",
+            MMEItemIds.ADAMANTIUM_BUCKET,
             settings -> new MMEBucketItem(Fluids.EMPTY, settings, null),
             new Item.Properties()
                     .stacksTo(16)
     );
-    public static final Item WATER_ADAMANTIUM_BUCKET = register(
-            "water_adamantium_bucket",
+    public static final Item ADAMANTIUM_WATER_BUCKET = register(
+            MMEItemIds.ADAMANTIUM_WATER_BUCKET,
             settings -> new MMEBucketItem(Fluids.WATER, settings, ADAMANTIUM_BUCKET),
             new Item.Properties()
                     .craftRemainder(ADAMANTIUM_BUCKET)
                     .stacksTo(1)
     );
-    public static final Item LAVA_ADAMANTIUM_BUCKET = register(
-            "lava_adamantium_bucket",
+    public static final Item ADAMANTIUM_LAVA_BUCKET = register(
+            MMEItemIds.ADAMANTIUM_LAVA_BUCKET,
             settings -> new MMEBucketItem(Fluids.LAVA, settings, ADAMANTIUM_BUCKET),
             new Item.Properties()
                     .craftRemainder(ADAMANTIUM_BUCKET)
                     .stacksTo(1)
     );
-    public static final Item POWDER_SNOW_ADAMANTIUM_BUCKET = register(
-            "powder_snow_adamantium_bucket",
+    public static final Item ADAMANTIUM_POWDER_SNOW_BUCKET = register(
+            MMEItemIds.ADAMANTIUM_POWDER_SNOW_BUCKET,
             settings -> new MMEPowderSnowBucketItem(Blocks.POWDER_SNOW, SoundEvents.BUCKET_EMPTY_POWDER_SNOW, settings, ADAMANTIUM_BUCKET),
             new Item.Properties()
                     .stacksTo(1)
                     .useItemDescriptionPrefix()
     );
-    public static final Item MILK_ADAMANTIUM_BUCKET = register(
-            "milk_adamantium_bucket",
+    public static final Item ADAMANTIUM_MILK_BUCKET = register(
+            MMEItemIds.ADAMANTIUM_MILK_BUCKET,
             new Item.Properties()
                     .craftRemainder(ADAMANTIUM_BUCKET)
                     .food(new FoodProperties(4, 0, false), Consumables.MILK_BUCKET)
                     .usingConvertsTo(ADAMANTIUM_BUCKET)
                     .stacksTo(1)
     );
-    public static final Item PUFFERFISH_ADAMANTIUM_BUCKET = register(
-            "pufferfish_adamantium_bucket",
-            settings -> new MMEMobBucketItem(EntityType.PUFFERFISH, Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, settings, ADAMANTIUM_BUCKET),
+    public static final Item ADAMANTIUM_PUFFERFISH_BUCKET = register(
+            MMEItemIds.ADAMANTIUM_PUFFERFISH_BUCKET,
+            settings -> new MMEMobBucketItem(EntityTypes.PUFFERFISH, Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, settings, ADAMANTIUM_BUCKET),
             new Item.Properties()
                     .stacksTo(1)
                     .component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)
     );
-    public static final Item SALMON_ADAMANTIUM_BUCKET = register(
-            "salmon_adamantium_bucket",
-            settings -> new MMEMobBucketItem(EntityType.SALMON, Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, settings, ADAMANTIUM_BUCKET),
+    public static final Item ADAMANTIUM_SALMON_BUCKET = register(
+            MMEItemIds.ADAMANTIUM_SALMON_BUCKET,
+            settings -> new MMEMobBucketItem(EntityTypes.SALMON, Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, settings, ADAMANTIUM_BUCKET),
             new Item.Properties()
                     .stacksTo(1)
                     .component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)
     );
-    public static final Item COD_ADAMANTIUM_BUCKET = register(
-            "cod_adamantium_bucket",
-            settings -> new MMEMobBucketItem(EntityType.COD, Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, settings, ADAMANTIUM_BUCKET),
+    public static final Item ADAMANTIUM_COD_BUCKET = register(
+            MMEItemIds.ADAMANTIUM_COD_BUCKET,
+            settings -> new MMEMobBucketItem(EntityTypes.COD, Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, settings, ADAMANTIUM_BUCKET),
             new Item.Properties()
                     .stacksTo(1)
                     .component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)
     );
-    public static final Item TROPICAL_FISH_ADAMANTIUM_BUCKET = register(
-            "tropical_fish_adamantium_bucket",
-            settings -> new MMEMobBucketItem(EntityType.TROPICAL_FISH, Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, settings, ADAMANTIUM_BUCKET),
+    public static final Item ADAMANTIUM_TROPICAL_FISH_BUCKET = register(
+            MMEItemIds.ADAMANTIUM_TROPICAL_FISH_BUCKET,
+            settings -> new MMEMobBucketItem(EntityTypes.TROPICAL_FISH, Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, settings, ADAMANTIUM_BUCKET),
             new Item.Properties()
                     .stacksTo(1)
                     .component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)
     );
-    public static final Item AXOLOTL_ADAMANTIUM_BUCKET = register(
-            "axolotl_adamantium_bucket",
-            settings -> new MMEMobBucketItem(EntityType.AXOLOTL, Fluids.WATER, SoundEvents.BUCKET_EMPTY_AXOLOTL, settings, ADAMANTIUM_BUCKET),
+    public static final Item ADAMANTIUM_AXOLOTL_BUCKET = register(
+            MMEItemIds.ADAMANTIUM_AXOLOTL_BUCKET,
+            settings -> new MMEMobBucketItem(EntityTypes.AXOLOTL, Fluids.WATER, SoundEvents.BUCKET_EMPTY_AXOLOTL, settings, ADAMANTIUM_BUCKET),
             new Item.Properties()
                     .stacksTo(1)
                     .component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)
     );
-    public static final Item TADPOLE_ADAMANTIUM_BUCKET = register(
-            "tadpole_adamantium_bucket",
-            settings -> new MMEMobBucketItem(EntityType.TADPOLE, Fluids.WATER, SoundEvents.BUCKET_EMPTY_TADPOLE, settings, ADAMANTIUM_BUCKET),
+    public static final Item ADAMANTIUM_TADPOLE_BUCKET = register(
+            MMEItemIds.ADAMANTIUM_TADPOLE_BUCKET,
+            settings -> new MMEMobBucketItem(EntityTypes.TADPOLE, Fluids.WATER, SoundEvents.BUCKET_EMPTY_TADPOLE, settings, ADAMANTIUM_BUCKET),
             new Item.Properties()
                     .stacksTo(1)
                     .component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)
     );
-    public static final Item ANCIENT_METAL_BUCKET = register("ancient_metal_bucket",
+    public static final Item ADAMANTIUM_SULFUR_CUBE_BUCKET = register(
+            MMEItemIds.ADAMANTIUM_SULFUR_CUBE_BUCKET,
+            settings -> new MMEMobBucketItem(EntityTypes.SULFUR_CUBE, Fluids.EMPTY, SoundEvents.BUCKET_EMPTY_SULFUR_CUBE, settings, ADAMANTIUM_BUCKET),
+            new Item.Properties()
+                    .stacksTo(1)
+                    .component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)
+    );
+    public static final Item ANCIENT_METAL_BUCKET = register(MMEItemIds.ANCIENT_METAL_BUCKET,
             settings -> new MMEBucketItem(Fluids.EMPTY, settings, null),
             new Item.Properties()
                     .stacksTo(16)
     );
-    public static final Item WATER_ANCIENT_METAL_BUCKET = register(
-            "water_ancient_metal_bucket",
+    public static final Item ANCIENT_METAL_WATER_BUCKET = register(
+            MMEItemIds.ANCIENT_METAL_WATER_BUCKET,
             settings -> new MMEBucketItem(Fluids.WATER, settings, ANCIENT_METAL_BUCKET),
             new Item.Properties()
                     .craftRemainder(ANCIENT_METAL_BUCKET)
                     .stacksTo(1)
     );
-    public static final Item LAVA_ANCIENT_METAL_BUCKET = register(
-            "lava_ancient_metal_bucket",
+    public static final Item ANCIENT_METAL_LAVA_BUCKET = register(
+            MMEItemIds.ANCIENT_METAL_LAVA_BUCKET,
             settings -> new MMEBucketItem(Fluids.LAVA, settings, ANCIENT_METAL_BUCKET),
             new Item.Properties()
                     .craftRemainder(ANCIENT_METAL_BUCKET)
                     .stacksTo(1)
     );
-    public static final Item POWDER_SNOW_ANCIENT_METAL_BUCKET = register(
-            "powder_snow_ancient_metal_bucket",
+    public static final Item ANCIENT_METAL_POWDER_SNOW_BUCKET = register(
+            MMEItemIds.ANCIENT_METAL_POWDER_SNOW_BUCKET,
             settings -> new MMEPowderSnowBucketItem(Blocks.POWDER_SNOW, SoundEvents.BUCKET_EMPTY_POWDER_SNOW, settings, ANCIENT_METAL_BUCKET),
             new Item.Properties()
                     .stacksTo(1)
                     .useItemDescriptionPrefix()
     );
-    public static final Item MILK_ANCIENT_METAL_BUCKET = register(
-            "milk_ancient_metal_bucket",
+    public static final Item ANCIENT_METAL_MILK_BUCKET = register(
+            MMEItemIds.ANCIENT_METAL_MILK_BUCKET,
             new Item.Properties()
                     .craftRemainder(ANCIENT_METAL_BUCKET)
                     .food(new FoodProperties(4, 0, false), Consumables.MILK_BUCKET)
                     .usingConvertsTo(ANCIENT_METAL_BUCKET)
                     .stacksTo(1)
     );
-    public static final Item PUFFERFISH_ANCIENT_METAL_BUCKET = register(
-            "pufferfish_ancient_metal_bucket",
-            settings -> new MMEMobBucketItem(EntityType.PUFFERFISH, Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, settings, ANCIENT_METAL_BUCKET),
+    public static final Item ANCIENT_METAL_PUFFERFISH_BUCKET = register(
+            MMEItemIds.ANCIENT_METAL_PUFFERFISH_BUCKET,
+            settings -> new MMEMobBucketItem(EntityTypes.PUFFERFISH, Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, settings, ANCIENT_METAL_BUCKET),
             new Item.Properties()
                     .stacksTo(1)
                     .component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)
     );
-    public static final Item SALMON_ANCIENT_METAL_BUCKET = register(
-            "salmon_ancient_metal_bucket",
-            settings -> new MMEMobBucketItem(EntityType.SALMON, Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, settings, ANCIENT_METAL_BUCKET),
+    public static final Item ANCIENT_METAL_SALMON_BUCKET = register(
+            MMEItemIds.ANCIENT_METAL_SALMON_BUCKET,
+            settings -> new MMEMobBucketItem(EntityTypes.SALMON, Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, settings, ANCIENT_METAL_BUCKET),
             new Item.Properties()
                     .stacksTo(1)
                     .component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)
     );
-    public static final Item COD_ANCIENT_METAL_BUCKET = register(
-            "cod_ancient_metal_bucket",
-            settings -> new MMEMobBucketItem(EntityType.COD, Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, settings, ANCIENT_METAL_BUCKET),
+    public static final Item ANCIENT_METAL_COD_BUCKET = register(
+            MMEItemIds.ANCIENT_METAL_COD_BUCKET,
+            settings -> new MMEMobBucketItem(EntityTypes.COD, Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, settings, ANCIENT_METAL_BUCKET),
             new Item.Properties()
                     .stacksTo(1)
                     .component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)
     );
-    public static final Item TROPICAL_FISH_ANCIENT_METAL_BUCKET = register(
-            "tropical_fish_ancient_metal_bucket",
-            settings -> new MMEMobBucketItem(EntityType.TROPICAL_FISH, Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, settings, ANCIENT_METAL_BUCKET),
+    public static final Item ANCIENT_METAL_TROPICAL_FISH_BUCKET = register(
+            MMEItemIds.ANCIENT_METAL_TROPICAL_FISH_BUCKET,
+            settings -> new MMEMobBucketItem(EntityTypes.TROPICAL_FISH, Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, settings, ANCIENT_METAL_BUCKET),
             new Item.Properties()
                     .stacksTo(1)
                     .component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)
     );
-    public static final Item AXOLOTL_ANCIENT_METAL_BUCKET = register(
-            "axolotl_ancient_metal_bucket",
-            settings -> new MMEMobBucketItem(EntityType.AXOLOTL, Fluids.WATER, SoundEvents.BUCKET_EMPTY_AXOLOTL, settings, ANCIENT_METAL_BUCKET),
+    public static final Item ANCIENT_METAL_AXOLOTL_BUCKET = register(
+            MMEItemIds.ANCIENT_METAL_AXOLOTL_BUCKET,
+            settings -> new MMEMobBucketItem(EntityTypes.AXOLOTL, Fluids.WATER, SoundEvents.BUCKET_EMPTY_AXOLOTL, settings, ANCIENT_METAL_BUCKET),
             new Item.Properties()
                     .stacksTo(1)
                     .component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)
     );
-    public static final Item TADPOLE_ANCIENT_METAL_BUCKET = register(
-            "tadpole_ancient_metal_bucket",
-            settings -> new MMEMobBucketItem(EntityType.TADPOLE, Fluids.WATER, SoundEvents.BUCKET_EMPTY_TADPOLE, settings, ANCIENT_METAL_BUCKET),
+    public static final Item ANCIENT_METAL_TADPOLE_BUCKET = register(
+            MMEItemIds.ANCIENT_METAL_TADPOLE_BUCKET,
+            settings -> new MMEMobBucketItem(EntityTypes.TADPOLE, Fluids.WATER, SoundEvents.BUCKET_EMPTY_TADPOLE, settings, ANCIENT_METAL_BUCKET),
+            new Item.Properties()
+                    .stacksTo(1)
+                    .component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)
+    );
+    public static final Item ANCIENT_METAL_SULFUR_CUBE_BUCKET = register(
+            MMEItemIds.ANCIENT_METAL_SULFUR_CUBE_BUCKET,
+            settings -> new MMEMobBucketItem(EntityTypes.SULFUR_CUBE, Fluids.EMPTY, SoundEvents.BUCKET_EMPTY_SULFUR_CUBE, settings, ANCIENT_METAL_BUCKET),
             new Item.Properties()
                     .stacksTo(1)
                     .component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)
     );
     public static final Item COPPER_BUCKET = register(
-            "copper_bucket",
+            MMEItemIds.COPPER_BUCKET,
             settings -> new MMEBucketItem(Fluids.EMPTY, settings, null),
             new Item.Properties()
                     .stacksTo(16)
     );
-    public static final Item WATER_COPPER_BUCKET = register(
-            "water_copper_bucket",
+    public static final Item COPPER_WATER_BUCKET = register(
+            MMEItemIds.COPPER_WATER_BUCKET,
             settings -> new MMEBucketItem(Fluids.WATER, settings, COPPER_BUCKET),
             new Item.Properties()
                     .craftRemainder(COPPER_BUCKET)
                     .stacksTo(1)
     );
-    public static final Item LAVA_COPPER_BUCKET = register(
-            "lava_copper_bucket",
+    public static final Item COPPER_LAVA_BUCKET = register(
+            MMEItemIds.COPPER_LAVA_BUCKET,
             settings -> new MMEBucketItem(Fluids.LAVA, settings, COPPER_BUCKET),
             new Item.Properties()
                     .craftRemainder(COPPER_BUCKET)
                     .stacksTo(1)
     );
-    public static final Item POWDER_SNOW_COPPER_BUCKET = register(
-            "powder_snow_copper_bucket",
+    public static final Item COPPER_POWDER_SNOW_BUCKET = register(
+            MMEItemIds.COPPER_POWDER_SNOW_BUCKET,
             settings -> new MMEPowderSnowBucketItem(Blocks.POWDER_SNOW, SoundEvents.BUCKET_EMPTY_POWDER_SNOW, settings, COPPER_BUCKET),
             new Item.Properties()
                     .stacksTo(1)
                     .useItemDescriptionPrefix()
     );
-    public static final Item MILK_COPPER_BUCKET = register(
-            "milk_copper_bucket",
+    public static final Item COPPER_MILK_BUCKET = register(
+            MMEItemIds.COPPER_MILK_BUCKET,
             new Item.Properties()
                     .craftRemainder(COPPER_BUCKET)
                     .food(new FoodProperties(4, 0, false), Consumables.MILK_BUCKET)
                     .usingConvertsTo(COPPER_BUCKET).stacksTo(1)
     );
-    public static final Item PUFFERFISH_COPPER_BUCKET = register(
-            "pufferfish_copper_bucket",
-            settings -> new MMEMobBucketItem(EntityType.PUFFERFISH, Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, settings, COPPER_BUCKET),
+    public static final Item COPPER_PUFFERFISH_BUCKET = register(
+            MMEItemIds.COPPER_PUFFERFISH_BUCKET,
+            settings -> new MMEMobBucketItem(EntityTypes.PUFFERFISH, Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, settings, COPPER_BUCKET),
             new Item.Properties()
                     .stacksTo(1)
                     .component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)
     );
-    public static final Item SALMON_COPPER_BUCKET = register(
-            "salmon_copper_bucket",
-            settings -> new MMEMobBucketItem(EntityType.SALMON, Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, settings, COPPER_BUCKET),
+    public static final Item COPPER_SALMON_BUCKET = register(
+            MMEItemIds.COPPER_SALMON_BUCKET,
+            settings -> new MMEMobBucketItem(EntityTypes.SALMON, Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, settings, COPPER_BUCKET),
             new Item.Properties()
                     .stacksTo(1)
                     .component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)
     );
-    public static final Item COD_COPPER_BUCKET = register(
-            "cod_copper_bucket",
-            settings -> new MMEMobBucketItem(EntityType.COD, Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, settings, COPPER_BUCKET),
+    public static final Item COPPER_COD_BUCKET = register(
+            MMEItemIds.COPPER_COD_BUCKET,
+            settings -> new MMEMobBucketItem(EntityTypes.COD, Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, settings, COPPER_BUCKET),
             new Item.Properties()
                     .stacksTo(1)
                     .component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)
     );
-    public static final Item TROPICAL_FISH_COPPER_BUCKET = register(
-            "tropical_fish_copper_bucket",
-            settings -> new MMEMobBucketItem(EntityType.TROPICAL_FISH, Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, settings, COPPER_BUCKET),
+    public static final Item COPPER_TROPICAL_FISH_BUCKET = register(
+            MMEItemIds.COPPER_TROPICAL_FISH_BUCKET,
+            settings -> new MMEMobBucketItem(EntityTypes.TROPICAL_FISH, Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, settings, COPPER_BUCKET),
             new Item.Properties()
                     .stacksTo(1)
                     .component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)
     );
-    public static final Item AXOLOTL_COPPER_BUCKET = register(
-            "axolotl_copper_bucket",
-            settings -> new MMEMobBucketItem(EntityType.AXOLOTL, Fluids.WATER, SoundEvents.BUCKET_EMPTY_AXOLOTL, settings, COPPER_BUCKET),
+    public static final Item COPPER_AXOLOTL_BUCKET = register(
+            MMEItemIds.COPPER_AXOLOTL_BUCKET,
+            settings -> new MMEMobBucketItem(EntityTypes.AXOLOTL, Fluids.WATER, SoundEvents.BUCKET_EMPTY_AXOLOTL, settings, COPPER_BUCKET),
             new Item.Properties()
                     .stacksTo(1)
                     .component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)
     );
-    public static final Item TADPOLE_COPPER_BUCKET = register(
-            "tadpole_copper_bucket",
-            settings -> new MMEMobBucketItem(EntityType.TADPOLE, Fluids.WATER, SoundEvents.BUCKET_EMPTY_TADPOLE, settings, COPPER_BUCKET),
+    public static final Item COPPER_TADPOLE_BUCKET = register(
+            MMEItemIds.COPPER_TADPOLE_BUCKET,
+            settings -> new MMEMobBucketItem(EntityTypes.TADPOLE, Fluids.WATER, SoundEvents.BUCKET_EMPTY_TADPOLE, settings, COPPER_BUCKET),
+            new Item.Properties()
+                    .stacksTo(1)
+                    .component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)
+    );
+    public static final Item COPPER_SULFUR_CUBE_BUCKET = register(
+            MMEItemIds.COPPER_SULFUR_CUBE_BUCKET,
+            settings -> new MMEMobBucketItem(EntityTypes.SULFUR_CUBE, Fluids.EMPTY, SoundEvents.BUCKET_EMPTY_SULFUR_CUBE, settings, COPPER_BUCKET),
             new Item.Properties()
                     .stacksTo(1)
                     .component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)
     );
     public static final Item GOLD_BUCKET = register(
-            "gold_bucket",
+            MMEItemIds.GOLD_BUCKET,
             settings -> new MMEBucketItem(Fluids.EMPTY, settings, null),
             new Item.Properties()
                     .stacksTo(16)
     );
-    public static final Item WATER_GOLD_BUCKET = register(
-            "water_gold_bucket",
+    public static final Item GOLD_WATER_BUCKET = register(
+            MMEItemIds.GOLD_WATER_BUCKET,
             settings -> new MMEBucketItem(Fluids.WATER, settings, GOLD_BUCKET),
             new Item.Properties()
                     .craftRemainder(GOLD_BUCKET)
                     .stacksTo(1)
     );
-    public static final Item LAVA_GOLD_BUCKET = register(
-            "lava_gold_bucket",
+    public static final Item GOLD_LAVA_BUCKET = register(
+            MMEItemIds.GOLD_LAVA_BUCKET,
             settings -> new MMEBucketItem(Fluids.LAVA, settings, GOLD_BUCKET),
             new Item.Properties()
                     .craftRemainder(GOLD_BUCKET)
                     .stacksTo(1)
     );
-    public static final Item POWDER_SNOW_GOLD_BUCKET = register(
-            "powder_snow_gold_bucket",
+    public static final Item GOLD_POWDER_SNOW_BUCKET = register(
+            MMEItemIds.GOLD_POWDER_SNOW_BUCKET,
             settings -> new MMEPowderSnowBucketItem(Blocks.POWDER_SNOW, SoundEvents.BUCKET_EMPTY_POWDER_SNOW, settings, GOLD_BUCKET),
             new Item.Properties()
                     .stacksTo(1)
                     .useItemDescriptionPrefix()
     );
-    public static final Item MILK_GOLD_BUCKET = register(
-            "milk_gold_bucket",
+    public static final Item GOLD_MILK_BUCKET = register(
+            MMEItemIds.GOLD_MILK_BUCKET,
             new Item.Properties()
                     .craftRemainder(GOLD_BUCKET)
                     .food(new FoodProperties(4, 0, false), Consumables.MILK_BUCKET)
                     .usingConvertsTo(GOLD_BUCKET)
                     .stacksTo(1)
     );
-    public static final Item PUFFERFISH_GOLD_BUCKET = register(
-            "pufferfish_gold_bucket",
-            settings -> new MMEMobBucketItem(EntityType.PUFFERFISH, Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, settings, GOLD_BUCKET),
+    public static final Item GOLD_PUFFERFISH_BUCKET = register(
+            MMEItemIds.GOLD_PUFFERFISH_BUCKET,
+            settings -> new MMEMobBucketItem(EntityTypes.PUFFERFISH, Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, settings, GOLD_BUCKET),
             new Item.Properties()
                     .stacksTo(1)
                     .component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)
     );
-    public static final Item SALMON_GOLD_BUCKET = register(
-            "salmon_gold_bucket",
-            settings -> new MMEMobBucketItem(EntityType.SALMON, Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, settings, GOLD_BUCKET),
+    public static final Item GOLD_SALMON_BUCKET = register(
+            MMEItemIds.GOLD_SALMON_BUCKET,
+            settings -> new MMEMobBucketItem(EntityTypes.SALMON, Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, settings, GOLD_BUCKET),
             new Item.Properties()
                     .stacksTo(1)
                     .component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)
     );
-    public static final Item COD_GOLD_BUCKET = register(
-            "cod_gold_bucket",
-            settings -> new MMEMobBucketItem(EntityType.COD, Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, settings, GOLD_BUCKET),
+    public static final Item GOLD_COD_BUCKET = register(
+            MMEItemIds.GOLD_COD_BUCKET,
+            settings -> new MMEMobBucketItem(EntityTypes.COD, Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, settings, GOLD_BUCKET),
             new Item.Properties()
                     .stacksTo(1)
                     .component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)
     );
-    public static final Item TROPICAL_FISH_GOLD_BUCKET = register(
-            "tropical_fish_gold_bucket",
-            settings -> new MMEMobBucketItem(EntityType.TROPICAL_FISH, Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, settings, GOLD_BUCKET),
+    public static final Item GOLD_TROPICAL_FISH_BUCKET = register(
+            MMEItemIds.GOLD_TROPICAL_FISH_BUCKET,
+            settings -> new MMEMobBucketItem(EntityTypes.TROPICAL_FISH, Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, settings, GOLD_BUCKET),
             new Item.Properties()
                     .stacksTo(1)
                     .component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)
     );
-    public static final Item AXOLOTL_GOLD_BUCKET = register(
-            "axolotl_gold_bucket",
-            settings -> new MMEMobBucketItem(EntityType.AXOLOTL, Fluids.WATER, SoundEvents.BUCKET_EMPTY_AXOLOTL, settings, GOLD_BUCKET),
+    public static final Item GOLD_AXOLOTL_BUCKET = register(
+            MMEItemIds.GOLD_AXOLOTL_BUCKET,
+            settings -> new MMEMobBucketItem(EntityTypes.AXOLOTL, Fluids.WATER, SoundEvents.BUCKET_EMPTY_AXOLOTL, settings, GOLD_BUCKET),
             new Item.Properties()
                     .stacksTo(1)
                     .component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)
     );
-    public static final Item TADPOLE_GOLD_BUCKET = register(
-            "tadpole_gold_bucket",
-            settings -> new MMEMobBucketItem(EntityType.TADPOLE, Fluids.WATER, SoundEvents.BUCKET_EMPTY_TADPOLE, settings, GOLD_BUCKET),
+    public static final Item GOLD_TADPOLE_BUCKET = register(
+            MMEItemIds.GOLD_TADPOLE_BUCKET,
+            settings -> new MMEMobBucketItem(EntityTypes.TADPOLE, Fluids.WATER, SoundEvents.BUCKET_EMPTY_TADPOLE, settings, GOLD_BUCKET),
+            new Item.Properties()
+                    .stacksTo(1)
+                    .component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)
+    );
+    public static final Item GOLD_SULFUR_CUBE_BUCKET = register(
+            MMEItemIds.GOLD_SULFUR_CUBE_BUCKET,
+            settings -> new MMEMobBucketItem(EntityTypes.SULFUR_CUBE, Fluids.EMPTY, SoundEvents.BUCKET_EMPTY_SULFUR_CUBE, settings, GOLD_BUCKET),
             new Item.Properties()
                     .stacksTo(1)
                     .component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)
     );
     public static final Item MITHRIL_BUCKET = register(
-            "mithril_bucket",
+            MMEItemIds.MITHRIL_BUCKET,
             settings -> new MMEBucketItem(Fluids.EMPTY, settings, null),
             new Item.Properties()
                     .stacksTo(16)
     );
-    public static final Item WATER_MITHRIL_BUCKET = register(
-            "water_mithril_bucket",
+    public static final Item MITHRIL_WATER_BUCKET = register(
+            MMEItemIds.MITHRIL_WATER_BUCKET,
             settings -> new MMEBucketItem(Fluids.WATER, settings, MITHRIL_BUCKET),
             new Item.Properties()
                     .craftRemainder(MITHRIL_BUCKET)
                     .stacksTo(1)
     );
-    public static final Item LAVA_MITHRIL_BUCKET = register(
-            "lava_mithril_bucket",
+    public static final Item MITHRIL_LAVA_BUCKET = register(
+            MMEItemIds.MITHRIL_LAVA_BUCKET,
             settings -> new MMEBucketItem(Fluids.LAVA, settings, MITHRIL_BUCKET),
             new Item.Properties()
                     .craftRemainder(MITHRIL_BUCKET)
                     .stacksTo(1)
     );
-    public static final Item POWDER_SNOW_MITHRIL_BUCKET = register(
-            "powder_snow_mithril_bucket",
+    public static final Item MITHRIL_POWDER_SNOW_BUCKET = register(
+            MMEItemIds.MITHRIL_POWDER_SNOW_BUCKET,
             settings -> new MMEPowderSnowBucketItem(Blocks.POWDER_SNOW, SoundEvents.BUCKET_EMPTY_POWDER_SNOW, settings, MITHRIL_BUCKET),
             new Item.Properties()
                     .stacksTo(1)
                     .useItemDescriptionPrefix()
     );
-    public static final Item MILK_MITHRIL_BUCKET = register(
-            "milk_mithril_bucket",
+    public static final Item MITHRIL_MILK_BUCKET = register(
+            MMEItemIds.MITHRIL_MILK_BUCKET,
             new Item.Properties()
                     .craftRemainder(MITHRIL_BUCKET)
                     .food(new FoodProperties(4, 0, false), Consumables.MILK_BUCKET)
                     .usingConvertsTo(MITHRIL_BUCKET)
                     .stacksTo(1)
     );
-    public static final Item PUFFERFISH_MITHRIL_BUCKET = register(
-            "pufferfish_mithril_bucket",
-            settings -> new MMEMobBucketItem(EntityType.PUFFERFISH, Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, settings, MITHRIL_BUCKET),
+    public static final Item MITHRIL_PUFFERFISH_BUCKET = register(
+            MMEItemIds.MITHRIL_PUFFERFISH_BUCKET,
+            settings -> new MMEMobBucketItem(EntityTypes.PUFFERFISH, Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, settings, MITHRIL_BUCKET),
             new Item.Properties()
                     .stacksTo(1)
                     .component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)
     );
-    public static final Item SALMON_MITHRIL_BUCKET = register(
-            "salmon_mithril_bucket",
-            settings -> new MMEMobBucketItem(EntityType.SALMON, Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, settings, MITHRIL_BUCKET),
+    public static final Item MITHRIL_SALMON_BUCKET = register(
+            MMEItemIds.MITHRIL_SALMON_BUCKET,
+            settings -> new MMEMobBucketItem(EntityTypes.SALMON, Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, settings, MITHRIL_BUCKET),
             new Item.Properties()
                     .stacksTo(1)
                     .component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)
     );
-    public static final Item COD_MITHRIL_BUCKET = register(
-            "cod_mithril_bucket",
-            settings -> new MMEMobBucketItem(EntityType.COD, Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, settings, MITHRIL_BUCKET),
+    public static final Item MITHRIL_COD_BUCKET = register(
+            MMEItemIds.MITHRIL_COD_BUCKET,
+            settings -> new MMEMobBucketItem(EntityTypes.COD, Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, settings, MITHRIL_BUCKET),
             new Item.Properties()
                     .stacksTo(1)
                     .component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)
     );
-    public static final Item TROPICAL_FISH_MITHRIL_BUCKET = register(
-            "tropical_fish_mithril_bucket",
-            settings -> new MMEMobBucketItem(EntityType.TROPICAL_FISH, Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, settings, MITHRIL_BUCKET),
+    public static final Item MITHRIL_TROPICAL_FISH_BUCKET = register(
+            MMEItemIds.MITHRIL_TROPICAL_FISH_BUCKET,
+            settings -> new MMEMobBucketItem(EntityTypes.TROPICAL_FISH, Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, settings, MITHRIL_BUCKET),
             new Item.Properties()
                     .stacksTo(1)
                     .component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)
     );
-    public static final Item AXOLOTL_MITHRIL_BUCKET = register(
-            "axolotl_mithril_bucket",
-            settings -> new MMEMobBucketItem(EntityType.AXOLOTL, Fluids.WATER, SoundEvents.BUCKET_EMPTY_AXOLOTL, settings, MITHRIL_BUCKET),
+    public static final Item MITHRIL_AXOLOTL_BUCKET = register(
+            MMEItemIds.MITHRIL_AXOLOTL_BUCKET,
+            settings -> new MMEMobBucketItem(EntityTypes.AXOLOTL, Fluids.WATER, SoundEvents.BUCKET_EMPTY_AXOLOTL, settings, MITHRIL_BUCKET),
             new Item.Properties()
                     .stacksTo(1)
                     .component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)
     );
-    public static final Item TADPOLE_MITHRIL_BUCKET = register(
-            "tadpole_mithril_bucket",
-            settings -> new MMEMobBucketItem(EntityType.TADPOLE, Fluids.WATER, SoundEvents.BUCKET_EMPTY_TADPOLE, settings, MITHRIL_BUCKET),
+    public static final Item MITHRIL_TADPOLE_BUCKET = register(
+            MMEItemIds.MITHRIL_TADPOLE_BUCKET,
+            settings -> new MMEMobBucketItem(EntityTypes.TADPOLE, Fluids.WATER, SoundEvents.BUCKET_EMPTY_TADPOLE, settings, MITHRIL_BUCKET),
+            new Item.Properties()
+                    .stacksTo(1)
+                    .component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)
+    );
+    public static final Item MITHRIL_SULFUR_CUBE_BUCKET = register(
+            MMEItemIds.MITHRIL_SULFUR_CUBE_BUCKET,
+            settings -> new MMEMobBucketItem(EntityTypes.SULFUR_CUBE, Fluids.EMPTY, SoundEvents.BUCKET_EMPTY_SULFUR_CUBE, settings, MITHRIL_BUCKET),
             new Item.Properties()
                     .stacksTo(1)
                     .component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)
     );
     public static final Item SILVER_BUCKET = register(
-            "silver_bucket",
+            MMEItemIds.SILVER_BUCKET,
             settings -> new MMEBucketItem(Fluids.EMPTY, settings, null),
             new Item.Properties()
                     .stacksTo(16)
     );
-    public static final Item WATER_SILVER_BUCKET = register(
-            "water_silver_bucket",
+    public static final Item SILVER_WATER_BUCKET = register(
+            MMEItemIds.SILVER_WATER_BUCKET,
             settings -> new MMEBucketItem(Fluids.WATER, settings, SILVER_BUCKET),
             new Item.Properties()
                     .craftRemainder(SILVER_BUCKET)
                     .stacksTo(1)
     );
-    public static final Item LAVA_SILVER_BUCKET = register(
-            "lava_silver_bucket",
+    public static final Item SILVER_LAVA_BUCKET = register(
+            MMEItemIds.SILVER_LAVA_BUCKET,
             settings -> new MMEBucketItem(Fluids.LAVA, settings, SILVER_BUCKET),
             new Item.Properties()
                     .craftRemainder(SILVER_BUCKET)
                     .stacksTo(1)
     );
-    public static final Item POWDER_SNOW_SILVER_BUCKET = register(
-            "powder_snow_silver_bucket",
+    public static final Item SILVER_POWDER_SNOW_BUCKET = register(
+            MMEItemIds.SILVER_POWDER_SNOW_BUCKET,
             settings -> new MMEPowderSnowBucketItem(Blocks.POWDER_SNOW, SoundEvents.BUCKET_EMPTY_POWDER_SNOW, settings, SILVER_BUCKET),
             new Item.Properties()
                     .stacksTo(1)
                     .useItemDescriptionPrefix()
     );
-    public static final Item MILK_SILVER_BUCKET = register(
-            "milk_silver_bucket",
+    public static final Item SILVER_MILK_BUCKET = register(
+            MMEItemIds.SILVER_MILK_BUCKET,
             new Item.Properties()
                     .craftRemainder(SILVER_BUCKET)
                     .food(new FoodProperties(4, 0, false), Consumables.MILK_BUCKET)
                     .usingConvertsTo(SILVER_BUCKET)
                     .stacksTo(1)
     );
-    public static final Item PUFFERFISH_SILVER_BUCKET = register(
-            "pufferfish_silver_bucket",
-            settings -> new MMEMobBucketItem(EntityType.PUFFERFISH, Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, settings, SILVER_BUCKET),
+    public static final Item SILVER_PUFFERFISH_BUCKET = register(
+            MMEItemIds.SILVER_PUFFERFISH_BUCKET,
+            settings -> new MMEMobBucketItem(EntityTypes.PUFFERFISH, Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, settings, SILVER_BUCKET),
             new Item.Properties()
                     .stacksTo(1)
                     .component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)
     );
-    public static final Item SALMON_SILVER_BUCKET = register(
-            "salmon_silver_bucket",
-            settings -> new MMEMobBucketItem(EntityType.SALMON, Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, settings, SILVER_BUCKET),
+    public static final Item SILVER_SALMON_BUCKET = register(
+            MMEItemIds.SILVER_SALMON_BUCKET,
+            settings -> new MMEMobBucketItem(EntityTypes.SALMON, Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, settings, SILVER_BUCKET),
             new Item.Properties()
                     .stacksTo(1)
                     .component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)
     );
-    public static final Item COD_SILVER_BUCKET = register(
-            "cod_silver_bucket",
-            settings -> new MMEMobBucketItem(EntityType.COD, Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, settings, SILVER_BUCKET),
+    public static final Item SILVER_COD_BUCKET = register(
+            MMEItemIds.SILVER_COD_BUCKET,
+            settings -> new MMEMobBucketItem(EntityTypes.COD, Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, settings, SILVER_BUCKET),
             new Item.Properties()
                     .stacksTo(1)
                     .component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)
     );
-    public static final Item TROPICAL_FISH_SILVER_BUCKET = register(
-            "tropical_fish_silver_bucket",
-            settings -> new MMEMobBucketItem(EntityType.TROPICAL_FISH, Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, settings, SILVER_BUCKET),
+    public static final Item SILVER_TROPICAL_FISH_BUCKET = register(
+            MMEItemIds.SILVER_TROPICAL_FISH_BUCKET,
+            settings -> new MMEMobBucketItem(EntityTypes.TROPICAL_FISH, Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, settings, SILVER_BUCKET),
             new Item.Properties()
                     .stacksTo(1)
                     .component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)
     );
-    public static final Item AXOLOTL_SILVER_BUCKET = register(
-            "axolotl_silver_bucket",
-            settings -> new MMEMobBucketItem(EntityType.AXOLOTL, Fluids.WATER, SoundEvents.BUCKET_EMPTY_AXOLOTL, settings, SILVER_BUCKET),
+    public static final Item SILVER_AXOLOTL_BUCKET = register(
+            MMEItemIds.SILVER_AXOLOTL_BUCKET,
+            settings -> new MMEMobBucketItem(EntityTypes.AXOLOTL, Fluids.WATER, SoundEvents.BUCKET_EMPTY_AXOLOTL, settings, SILVER_BUCKET),
             new Item.Properties()
                     .stacksTo(1)
                     .component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)
     );
-    public static final Item TADPOLE_SILVER_BUCKET = register(
-            "tadpole_silver_bucket",
-            settings -> new MMEMobBucketItem(EntityType.TADPOLE, Fluids.WATER, SoundEvents.BUCKET_EMPTY_TADPOLE, settings, SILVER_BUCKET),
+    public static final Item SILVER_TADPOLE_BUCKET = register(
+            MMEItemIds.SILVER_TADPOLE_BUCKET,
+            settings -> new MMEMobBucketItem(EntityTypes.TADPOLE, Fluids.WATER, SoundEvents.BUCKET_EMPTY_TADPOLE, settings, SILVER_BUCKET),
+            new Item.Properties()
+                    .stacksTo(1)
+                    .component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)
+    );
+    public static final Item SILVER_SULFUR_CUBE_BUCKET = register(
+            MMEItemIds.SILVER_SULFUR_CUBE_BUCKET,
+            settings -> new MMEMobBucketItem(EntityTypes.SULFUR_CUBE, Fluids.EMPTY, SoundEvents.BUCKET_EMPTY_SULFUR_CUBE, settings, SILVER_BUCKET),
             new Item.Properties()
                     .stacksTo(1)
                     .component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)
     );
     public static final Item NETHERITE_BUCKET = register(
-            "netherite_bucket",
+            MMEItemIds.NETHERITE_BUCKET,
             settings -> new MMEBucketItem(Fluids.EMPTY, settings, null),
             new Item.Properties()
                     .stacksTo(16)
                     .fireResistant()
     );
-    public static final Item WATER_NETHERITE_BUCKET = register(
-            "water_netherite_bucket",
+    public static final Item NETHERITE_WATER_BUCKET = register(
+            MMEItemIds.NETHERITE_WATER_BUCKET,
             settings -> new MMEBucketItem(Fluids.WATER, settings, NETHERITE_BUCKET),
             new Item.Properties()
                     .craftRemainder(NETHERITE_BUCKET)
                     .stacksTo(1)
                     .fireResistant()
     );
-    public static final Item LAVA_NETHERITE_BUCKET = register(
-            "lava_netherite_bucket",
+    public static final Item NETHERITE_LAVA_BUCKET = register(
+            MMEItemIds.NETHERITE_LAVA_BUCKET,
             settings -> new MMEBucketItem(Fluids.LAVA, settings, NETHERITE_BUCKET),
             new Item.Properties()
                     .craftRemainder(NETHERITE_BUCKET)
                     .stacksTo(1)
                     .fireResistant()
     );
-    public static final Item POWDER_SNOW_NETHERITE_BUCKET = register(
-            "powder_snow_netherite_bucket",
+    public static final Item NETHERITE_POWDER_SNOW_BUCKET = register(
+            MMEItemIds.NETHERITE_POWDER_SNOW_BUCKET,
             settings -> new MMEPowderSnowBucketItem(Blocks.POWDER_SNOW, SoundEvents.BUCKET_EMPTY_POWDER_SNOW, settings, NETHERITE_BUCKET),
             new Item.Properties()
                     .stacksTo(1)
                     .useItemDescriptionPrefix()
                     .fireResistant()
     );
-    public static final Item MILK_NETHERITE_BUCKET = register(
-            "milk_netherite_bucket",
+    public static final Item NETHERITE_MILK_BUCKET = register(
+            MMEItemIds.NETHERITE_MILK_BUCKET,
             new Item.Properties()
                     .craftRemainder(NETHERITE_BUCKET)
                     .food(new FoodProperties(4, 0, false), Consumables.MILK_BUCKET)
@@ -1118,171 +1160,179 @@ public class MMEItems {
                     .stacksTo(1)
                     .fireResistant()
     );
-    public static final Item PUFFERFISH_NETHERITE_BUCKET = register(
-            "pufferfish_netherite_bucket",
-            settings -> new MMEMobBucketItem(EntityType.PUFFERFISH, Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, settings, NETHERITE_BUCKET),
+    public static final Item NETHERITE_PUFFERFISH_BUCKET = register(
+            MMEItemIds.NETHERITE_PUFFERFISH_BUCKET,
+            settings -> new MMEMobBucketItem(EntityTypes.PUFFERFISH, Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, settings, NETHERITE_BUCKET),
             new Item.Properties()
                     .stacksTo(1)
                     .component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)
                     .fireResistant()
     );
-    public static final Item SALMON_NETHERITE_BUCKET = register(
-            "salmon_netherite_bucket",
-            settings -> new MMEMobBucketItem(EntityType.SALMON, Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, settings, NETHERITE_BUCKET),
+    public static final Item NETHERITE_SALMON_BUCKET = register(
+            MMEItemIds.NETHERITE_SALMON_BUCKET,
+            settings -> new MMEMobBucketItem(EntityTypes.SALMON, Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, settings, NETHERITE_BUCKET),
             new Item.Properties()
                     .stacksTo(1)
                     .component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)
                     .fireResistant()
     );
-    public static final Item COD_NETHERITE_BUCKET = register(
-            "cod_netherite_bucket",
-            settings -> new MMEMobBucketItem(EntityType.COD, Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, settings, NETHERITE_BUCKET),
+    public static final Item NETHERITE_COD_BUCKET = register(
+            MMEItemIds.NETHERITE_COD_BUCKET,
+            settings -> new MMEMobBucketItem(EntityTypes.COD, Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, settings, NETHERITE_BUCKET),
             new Item.Properties()
                     .stacksTo(1)
                     .component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)
                     .fireResistant()
     );
-    public static final Item TROPICAL_FISH_NETHERITE_BUCKET = register(
-            "tropical_fish_netherite_bucket",
-            settings -> new MMEMobBucketItem(EntityType.TROPICAL_FISH, Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, settings, NETHERITE_BUCKET),
+    public static final Item NETHERITE_TROPICAL_FISH_BUCKET = register(
+            MMEItemIds.NETHERITE_TROPICAL_FISH_BUCKET,
+            settings -> new MMEMobBucketItem(EntityTypes.TROPICAL_FISH, Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, settings, NETHERITE_BUCKET),
             new Item.Properties()
                     .stacksTo(1)
                     .component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)
                     .fireResistant()
     );
-    public static final Item AXOLOTL_NETHERITE_BUCKET = register(
-            "axolotl_netherite_bucket",
-            settings -> new MMEMobBucketItem(EntityType.AXOLOTL, Fluids.WATER, SoundEvents.BUCKET_EMPTY_AXOLOTL, settings, NETHERITE_BUCKET),
+    public static final Item NETHERITE_AXOLOTL_BUCKET = register(
+            MMEItemIds.NETHERITE_AXOLOTL_BUCKET,
+            settings -> new MMEMobBucketItem(EntityTypes.AXOLOTL, Fluids.WATER, SoundEvents.BUCKET_EMPTY_AXOLOTL, settings, NETHERITE_BUCKET),
             new Item.Properties()
                     .stacksTo(1)
                     .component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)
                     .fireResistant()
     );
-    public static final Item TADPOLE_NETHERITE_BUCKET = register(
-            "tadpole_netherite_bucket",
-            settings -> new MMEMobBucketItem(EntityType.TADPOLE, Fluids.WATER, SoundEvents.BUCKET_EMPTY_TADPOLE, settings, NETHERITE_BUCKET),
+    public static final Item NETHERITE_TADPOLE_BUCKET = register(
+            MMEItemIds.NETHERITE_TADPOLE_BUCKET,
+            settings -> new MMEMobBucketItem(EntityTypes.TADPOLE, Fluids.WATER, SoundEvents.BUCKET_EMPTY_TADPOLE, settings, NETHERITE_BUCKET),
             new Item.Properties()
                     .stacksTo(1)
                     .component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)
                     .fireResistant()
     );
-    public static final Item NETHERITE_FISHING_ROD = register("netherite_fishing_rod", FishingRodItem::new, new Item.Properties().durability(256).enchantable(24));
-    public static final Item ADAMANTIUM_FISHING_ROD = register("adamantium_fishing_rod", FishingRodItem::new, new Item.Properties().durability(128).enchantable(21));
-    public static final Item ANCIENT_METAL_FISHING_ROD = register("ancient_metal_fishing_rod", FishingRodItem::new, new Item.Properties().durability(96).enchantable(15));
-    public static final Item COPPER_FISHING_ROD = register("copper_fishing_rod", FishingRodItem::new, new Item.Properties().durability(8).enchantable(10));
-    public static final Item FLINT_FISHING_ROD = register("flint_fishing_rod", FishingRodItem::new, new Item.Properties().durability(32).enchantable(5));
-    public static final Item GOLDEN_FISHING_ROD = register("golden_fishing_rod", FishingRodItem::new, new Item.Properties().durability(4).enchantable(22));
-    public static final Item IRON_FISHING_ROD = register("iron_fishing_rod", FishingRodItem::new, new Item.Properties().durability(32).enchantable(12));
-    public static final Item MITHRIL_FISHING_ROD = register("mithril_fishing_rod", FishingRodItem::new, new Item.Properties().durability(64).enchantable(18));
-    public static final Item OBSIDIAN_FISHING_ROD = register("obsidian_fishing_rod", FishingRodItem::new, new Item.Properties().durability(32).enchantable(5));
-    public static final Item SILVER_FISHING_ROD = register("silver_fishing_rod", FishingRodItem::new, new Item.Properties().durability(8).enchantable(10));
+    public static final Item NETHERITE_SULFUR_CUBE_BUCKET = register(
+            MMEItemIds.NETHERITE_SULFUR_CUBE_BUCKET,
+            settings -> new MMEMobBucketItem(EntityTypes.SULFUR_CUBE, Fluids.EMPTY, SoundEvents.BUCKET_EMPTY_SULFUR_CUBE, settings, NETHERITE_BUCKET),
+            new Item.Properties()
+                    .stacksTo(1)
+                    .component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)
+                    .fireResistant()
+    );
+    public static final Item NETHERITE_FISHING_ROD = register(MMEItemIds.NETHERITE_FISHING_ROD, FishingRodItem::new, new Item.Properties().durability(256).enchantable(24));
+    public static final Item ADAMANTIUM_FISHING_ROD = register(MMEItemIds.ADAMANTIUM_FISHING_ROD, FishingRodItem::new, new Item.Properties().durability(128).enchantable(21));
+    public static final Item ANCIENT_METAL_FISHING_ROD = register(MMEItemIds.ANCIENT_METAL_FISHING_ROD, FishingRodItem::new, new Item.Properties().durability(96).enchantable(15));
+    public static final Item COPPER_FISHING_ROD = register(MMEItemIds.COPPER_FISHING_ROD, FishingRodItem::new, new Item.Properties().durability(8).enchantable(10));
+    public static final Item FLINT_FISHING_ROD = register(MMEItemIds.FLINT_FISHING_ROD, FishingRodItem::new, new Item.Properties().durability(32).enchantable(5));
+    public static final Item GOLDEN_FISHING_ROD = register(MMEItemIds.GOLDEN_FISHING_ROD, FishingRodItem::new, new Item.Properties().durability(4).enchantable(22));
+    public static final Item IRON_FISHING_ROD = register(MMEItemIds.IRON_FISHING_ROD, FishingRodItem::new, new Item.Properties().durability(32).enchantable(12));
+    public static final Item MITHRIL_FISHING_ROD = register(MMEItemIds.MITHRIL_FISHING_ROD, FishingRodItem::new, new Item.Properties().durability(64).enchantable(18));
+    public static final Item OBSIDIAN_FISHING_ROD = register(MMEItemIds.OBSIDIAN_FISHING_ROD, FishingRodItem::new, new Item.Properties().durability(32).enchantable(5));
+    public static final Item SILVER_FISHING_ROD = register(MMEItemIds.SILVER_FISHING_ROD, FishingRodItem::new, new Item.Properties().durability(8).enchantable(10));
 
-    public static final Item RAW_ADAMANTIUM = register("raw_adamantium",
+    public static final Item RAW_ADAMANTIUM = register(MMEItemIds.RAW_ADAMANTIUM,
             new Item.Properties().stacksTo(8).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
-    public static final Item RAW_MITHRIL = register("raw_mithril",
+    public static final Item RAW_MITHRIL = register(MMEItemIds.RAW_MITHRIL,
             new Item.Properties().stacksTo(8).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 3));
-    public static final Item RAW_SILVER = register("raw_silver",
+    public static final Item RAW_SILVER = register(MMEItemIds.RAW_SILVER,
             new Item.Properties().stacksTo(8).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
 
-    public static final Item ADAMANTIUM_INGOT = register("adamantium_ingot",
+    public static final Item ADAMANTIUM_INGOT = register(MMEItemIds.ADAMANTIUM_INGOT,
             new Item.Properties().component(MMEDataComponentTypes.CRAFTING_TIME, 50).stacksTo(16));
-    public static final Item MITHRIL_INGOT = register("mithril_ingot",
+    public static final Item MITHRIL_INGOT = register(MMEItemIds.MITHRIL_INGOT,
             new Item.Properties().component(MMEDataComponentTypes.CRAFTING_TIME, 30).stacksTo(16));
-    public static final Item ANCIENT_METAL_INGOT = register("ancient_metal_ingot",
+    public static final Item ANCIENT_METAL_INGOT = register(MMEItemIds.ANCIENT_METAL_INGOT,
             new Item.Properties().component(MMEDataComponentTypes.CRAFTING_TIME, 20).stacksTo(16));
-    public static final Item SILVER_INGOT = register("silver_ingot",
+    public static final Item SILVER_INGOT = register(MMEItemIds.SILVER_INGOT,
             new Item.Properties().component(MMEDataComponentTypes.CRAFTING_TIME, 5).stacksTo(16));
 
     public static final Item NETHERITE_NUGGET = register(
-            "netherite_nugget",
+            MMEItemIds.NETHERITE_NUGGET,
             settings -> new NuggetItem(settings, 5000),
             new Item.Properties().component(MMEDataComponentTypes.CRAFTING_TIME, 10)
     );
     public static final Item ADAMANTIUM_NUGGET = register(
-            "adamantium_nugget",
+            MMEItemIds.ADAMANTIUM_NUGGET,
             settings -> new NuggetItem(settings, 1000),
             new Item.Properties().component(MMEDataComponentTypes.CRAFTING_TIME, 7)
     );
     public static final Item MITHRIL_NUGGET = register(
-            "mithril_nugget",
+            MMEItemIds.MITHRIL_NUGGET,
             settings -> new NuggetItem(settings, 500),
             new Item.Properties().component(MMEDataComponentTypes.CRAFTING_TIME, 5)
     );
     public static final Item ANCIENT_METAL_NUGGET = register(
-            "ancient_metal_nugget",
+            MMEItemIds.ANCIENT_METAL_NUGGET,
             settings -> new NuggetItem(settings, 300),
             new Item.Properties().component(MMEDataComponentTypes.CRAFTING_TIME, 4)
     );
     public static final Item SILVER_NUGGET = register(
-            "silver_nugget",
+            MMEItemIds.SILVER_NUGGET,
             settings -> new NuggetItem(settings, 50),
             new Item.Properties().component(MMEDataComponentTypes.CRAFTING_TIME, 1)
     );
 
-    public static final Item FLINT_SHARD = register("flint_shard",
+    public static final Item FLINT_SHARD = register(MMEItemIds.FLINT_SHARD,
             new Item.Properties().stacksTo(16));
-    public static final Item OBSIDIAN_SHARD = register("obsidian_shard",
+    public static final Item OBSIDIAN_SHARD = register(MMEItemIds.OBSIDIAN_SHARD,
             new Item.Properties().stacksTo(16));
 
-    public static final Item SINEW = register("sinew",
+    public static final Item SINEW = register(MMEItemIds.SINEW,
             new Item.Properties().stacksTo(16));
     public static final Item MANURE = register(
-            "manure",
+            MMEItemIds.MANURE,
             ManureItem::new,
             new Item.Properties().stacksTo(16)
     );
     public static final Item GHOUL_SPAWN_EGG = register(
-            "ghoul_spawn_egg",
+            MMEItemIds.GHOUL_SPAWN_EGG,
             SpawnEggItem::new,
             new Item.Properties().spawnEgg(MMEEntityTypes.GHOUL)
     );
     public static final Item SHADOW_SPAWN_EGG = register(
-            "shadow_spawn_egg",
+            MMEItemIds.SHADOW_SPAWN_EGG,
             SpawnEggItem::new,
             new Item.Properties().spawnEgg(MMEEntityTypes.SHADOW)
     );
     public static final Item WIGHT_SPAWN_EGG = register(
-            "wight_spawn_egg",
+            MMEItemIds.WIGHT_SPAWN_EGG,
             SpawnEggItem::new,
             new Item.Properties().spawnEgg(MMEEntityTypes.WIGHT)
     );
     public static final Item INVISIBLE_STALKER_SPAWN_EGG = register(
-            "invisible_stalker_spawn_egg",
+            MMEItemIds.INVISIBLE_STALKER_SPAWN_EGG,
             SpawnEggItem::new,
             new Item.Properties().spawnEgg(MMEEntityTypes.INVISIBLE_STALKER)
     );
     public static final Item DEMON_SPIDER_SPAWN_EGG = register(
-            "demon_spider_spawn_egg",
+            MMEItemIds.DEMON_SPIDER_SPAWN_EGG,
             SpawnEggItem::new,
             new Item.Properties().spawnEgg(MMEEntityTypes.DEMON_SPIDER)
     );
     public static final Item PHASE_SPIDER_SPAWN_EGG = register(
-            "phase_spider_spawn_egg",
+            MMEItemIds.PHASE_SPIDER_SPAWN_EGG,
             SpawnEggItem::new,
             new Item.Properties().spawnEgg(MMEEntityTypes.PHASE_SPIDER)
     );
     public static final Item INFERNAL_CREEPER_SPAWN_EGG = register(
-            "infernal_creeper_spawn_egg",
+            MMEItemIds.INFERNAL_CREEPER_SPAWN_EGG,
             SpawnEggItem::new,
             new Item.Properties().spawnEgg(MMEEntityTypes.INFERNAL_CREEPER)
     );
     public static final Item FIRE_ELEMENTAL_SPAWN_EGG = register(
-            "fire_elemental_spawn_egg",
+            MMEItemIds.FIRE_ELEMENTAL_SPAWN_EGG,
             SpawnEggItem::new,
             new Item.Properties().spawnEgg(MMEEntityTypes.FIRE_ELEMENTAL)
     );
     public static final Item VAMPIRE_BAT_SPAWN_EGG = register(
-            "vampire_bat_spawn_egg",
+            MMEItemIds.VAMPIRE_BAT_SPAWN_EGG,
             SpawnEggItem::new,
             new Item.Properties().spawnEgg(MMEEntityTypes.VAMPIRE_BAT)
     );
     public static final Item NIGHTWING_SPAWN_EGG = register(
-            "nightwing_spawn_egg",
+            MMEItemIds.NIGHTWING_SPAWN_EGG,
             SpawnEggItem::new,
             new Item.Properties().spawnEgg(MMEEntityTypes.NIGHTWING)
     );
     public static final Item GIANT_VAMPIRE_BAT_SPAWN_EGG = register(
-            "giant_vampire_bat_spawn_egg",
+            MMEItemIds.GIANT_VAMPIRE_BAT_SPAWN_EGG,
             SpawnEggItem::new,
             new Item.Properties().spawnEgg(MMEEntityTypes.GIANT_VAMPIRE_BAT)
     );
@@ -1626,88 +1676,95 @@ public class MMEItems {
                 entries.accept(SILVER_COINS);
 
                 entries.accept(NETHERITE_BUCKET);
-                entries.accept(WATER_NETHERITE_BUCKET);
-                entries.accept(LAVA_NETHERITE_BUCKET);
-                entries.accept(MILK_NETHERITE_BUCKET);
-                entries.accept(POWDER_SNOW_NETHERITE_BUCKET);
-                entries.accept(PUFFERFISH_NETHERITE_BUCKET);
-                entries.accept(SALMON_NETHERITE_BUCKET);
-                entries.accept(COD_NETHERITE_BUCKET);
-                entries.accept(TROPICAL_FISH_NETHERITE_BUCKET);
-                entries.accept(AXOLOTL_NETHERITE_BUCKET);
-                entries.accept(TADPOLE_NETHERITE_BUCKET);
+                entries.accept(NETHERITE_WATER_BUCKET);
+                entries.accept(NETHERITE_LAVA_BUCKET);
+                entries.accept(NETHERITE_MILK_BUCKET);
+                entries.accept(NETHERITE_POWDER_SNOW_BUCKET);
+                entries.accept(NETHERITE_PUFFERFISH_BUCKET);
+                entries.accept(NETHERITE_SALMON_BUCKET);
+                entries.accept(NETHERITE_COD_BUCKET);
+                entries.accept(NETHERITE_TROPICAL_FISH_BUCKET);
+                entries.accept(NETHERITE_AXOLOTL_BUCKET);
+                entries.accept(NETHERITE_TADPOLE_BUCKET);
+                entries.accept(NETHERITE_SULFUR_CUBE_BUCKET);
 
                 entries.accept(ADAMANTIUM_BUCKET);
-                entries.accept(WATER_ADAMANTIUM_BUCKET);
-                entries.accept(LAVA_ADAMANTIUM_BUCKET);
-                entries.accept(MILK_ADAMANTIUM_BUCKET);
-                entries.accept(POWDER_SNOW_ADAMANTIUM_BUCKET);
-                entries.accept(PUFFERFISH_ADAMANTIUM_BUCKET);
-                entries.accept(SALMON_ADAMANTIUM_BUCKET);
-                entries.accept(COD_ADAMANTIUM_BUCKET);
-                entries.accept(TROPICAL_FISH_ADAMANTIUM_BUCKET);
-                entries.accept(AXOLOTL_ADAMANTIUM_BUCKET);
-                entries.accept(TADPOLE_ADAMANTIUM_BUCKET);
+                entries.accept(ADAMANTIUM_WATER_BUCKET);
+                entries.accept(ADAMANTIUM_LAVA_BUCKET);
+                entries.accept(ADAMANTIUM_MILK_BUCKET);
+                entries.accept(ADAMANTIUM_POWDER_SNOW_BUCKET);
+                entries.accept(ADAMANTIUM_PUFFERFISH_BUCKET);
+                entries.accept(ADAMANTIUM_SALMON_BUCKET);
+                entries.accept(ADAMANTIUM_COD_BUCKET);
+                entries.accept(ADAMANTIUM_TROPICAL_FISH_BUCKET);
+                entries.accept(ADAMANTIUM_AXOLOTL_BUCKET);
+                entries.accept(ADAMANTIUM_TADPOLE_BUCKET);
+                entries.accept(ADAMANTIUM_SULFUR_CUBE_BUCKET);
 
                 entries.accept(MITHRIL_BUCKET);
-                entries.accept(WATER_MITHRIL_BUCKET);
-                entries.accept(LAVA_MITHRIL_BUCKET);
-                entries.accept(MILK_MITHRIL_BUCKET);
-                entries.accept(POWDER_SNOW_MITHRIL_BUCKET);
-                entries.accept(PUFFERFISH_MITHRIL_BUCKET);
-                entries.accept(SALMON_MITHRIL_BUCKET);
-                entries.accept(COD_MITHRIL_BUCKET);
-                entries.accept(TROPICAL_FISH_MITHRIL_BUCKET);
-                entries.accept(AXOLOTL_MITHRIL_BUCKET);
-                entries.accept(TADPOLE_MITHRIL_BUCKET);
+                entries.accept(MITHRIL_WATER_BUCKET);
+                entries.accept(MITHRIL_LAVA_BUCKET);
+                entries.accept(MITHRIL_MILK_BUCKET);
+                entries.accept(MITHRIL_POWDER_SNOW_BUCKET);
+                entries.accept(MITHRIL_PUFFERFISH_BUCKET);
+                entries.accept(MITHRIL_SALMON_BUCKET);
+                entries.accept(MITHRIL_COD_BUCKET);
+                entries.accept(MITHRIL_TROPICAL_FISH_BUCKET);
+                entries.accept(MITHRIL_AXOLOTL_BUCKET);
+                entries.accept(MITHRIL_TADPOLE_BUCKET);
+                entries.accept(MITHRIL_SULFUR_CUBE_BUCKET);
 
                 entries.accept(ANCIENT_METAL_BUCKET);
-                entries.accept(WATER_ANCIENT_METAL_BUCKET);
-                entries.accept(LAVA_ANCIENT_METAL_BUCKET);
-                entries.accept(MILK_ANCIENT_METAL_BUCKET);
-                entries.accept(POWDER_SNOW_ANCIENT_METAL_BUCKET);
-                entries.accept(PUFFERFISH_ANCIENT_METAL_BUCKET);
-                entries.accept(SALMON_ANCIENT_METAL_BUCKET);
-                entries.accept(COD_ANCIENT_METAL_BUCKET);
-                entries.accept(TROPICAL_FISH_ANCIENT_METAL_BUCKET);
-                entries.accept(AXOLOTL_ANCIENT_METAL_BUCKET);
-                entries.accept(TADPOLE_ANCIENT_METAL_BUCKET);
+                entries.accept(ANCIENT_METAL_WATER_BUCKET);
+                entries.accept(ANCIENT_METAL_LAVA_BUCKET);
+                entries.accept(ANCIENT_METAL_MILK_BUCKET);
+                entries.accept(ANCIENT_METAL_POWDER_SNOW_BUCKET);
+                entries.accept(ANCIENT_METAL_PUFFERFISH_BUCKET);
+                entries.accept(ANCIENT_METAL_SALMON_BUCKET);
+                entries.accept(ANCIENT_METAL_COD_BUCKET);
+                entries.accept(ANCIENT_METAL_TROPICAL_FISH_BUCKET);
+                entries.accept(ANCIENT_METAL_AXOLOTL_BUCKET);
+                entries.accept(ANCIENT_METAL_TADPOLE_BUCKET);
+                entries.accept(ANCIENT_METAL_SULFUR_CUBE_BUCKET);
 
                 entries.accept(COPPER_BUCKET);
-                entries.accept(WATER_COPPER_BUCKET);
-                entries.accept(LAVA_COPPER_BUCKET);
-                entries.accept(MILK_COPPER_BUCKET);
-                entries.accept(POWDER_SNOW_COPPER_BUCKET);
-                entries.accept(PUFFERFISH_COPPER_BUCKET);
-                entries.accept(SALMON_COPPER_BUCKET);
-                entries.accept(COD_COPPER_BUCKET);
-                entries.accept(TROPICAL_FISH_COPPER_BUCKET);
-                entries.accept(AXOLOTL_COPPER_BUCKET);
-                entries.accept(TADPOLE_COPPER_BUCKET);
+                entries.accept(COPPER_WATER_BUCKET);
+                entries.accept(COPPER_LAVA_BUCKET);
+                entries.accept(COPPER_MILK_BUCKET);
+                entries.accept(COPPER_POWDER_SNOW_BUCKET);
+                entries.accept(COPPER_PUFFERFISH_BUCKET);
+                entries.accept(COPPER_SALMON_BUCKET);
+                entries.accept(COPPER_COD_BUCKET);
+                entries.accept(COPPER_TROPICAL_FISH_BUCKET);
+                entries.accept(COPPER_AXOLOTL_BUCKET);
+                entries.accept(COPPER_TADPOLE_BUCKET);
+                entries.accept(COPPER_SULFUR_CUBE_BUCKET);
 
                 entries.accept(SILVER_BUCKET);
-                entries.accept(WATER_SILVER_BUCKET);
-                entries.accept(LAVA_SILVER_BUCKET);
-                entries.accept(MILK_SILVER_BUCKET);
-                entries.accept(POWDER_SNOW_SILVER_BUCKET);
-                entries.accept(PUFFERFISH_SILVER_BUCKET);
-                entries.accept(SALMON_SILVER_BUCKET);
-                entries.accept(COD_SILVER_BUCKET);
-                entries.accept(TROPICAL_FISH_SILVER_BUCKET);
-                entries.accept(AXOLOTL_SILVER_BUCKET);
-                entries.accept(TADPOLE_SILVER_BUCKET);
+                entries.accept(SILVER_WATER_BUCKET);
+                entries.accept(SILVER_LAVA_BUCKET);
+                entries.accept(SILVER_MILK_BUCKET);
+                entries.accept(SILVER_POWDER_SNOW_BUCKET);
+                entries.accept(SILVER_PUFFERFISH_BUCKET);
+                entries.accept(SILVER_SALMON_BUCKET);
+                entries.accept(SILVER_COD_BUCKET);
+                entries.accept(SILVER_TROPICAL_FISH_BUCKET);
+                entries.accept(SILVER_AXOLOTL_BUCKET);
+                entries.accept(SILVER_TADPOLE_BUCKET);
+                entries.accept(SILVER_SULFUR_CUBE_BUCKET);
 
                 entries.accept(GOLD_BUCKET);
-                entries.accept(WATER_GOLD_BUCKET);
-                entries.accept(LAVA_GOLD_BUCKET);
-                entries.accept(MILK_GOLD_BUCKET);
-                entries.accept(POWDER_SNOW_GOLD_BUCKET);
-                entries.accept(PUFFERFISH_GOLD_BUCKET);
-                entries.accept(SALMON_GOLD_BUCKET);
-                entries.accept(COD_GOLD_BUCKET);
-                entries.accept(TROPICAL_FISH_GOLD_BUCKET);
-                entries.accept(AXOLOTL_GOLD_BUCKET);
-                entries.accept(TADPOLE_GOLD_BUCKET);
+                entries.accept(GOLD_WATER_BUCKET);
+                entries.accept(GOLD_LAVA_BUCKET);
+                entries.accept(GOLD_MILK_BUCKET);
+                entries.accept(GOLD_POWDER_SNOW_BUCKET);
+                entries.accept(GOLD_PUFFERFISH_BUCKET);
+                entries.accept(GOLD_SALMON_BUCKET);
+                entries.accept(GOLD_COD_BUCKET);
+                entries.accept(GOLD_TROPICAL_FISH_BUCKET);
+                entries.accept(GOLD_AXOLOTL_BUCKET);
+                entries.accept(GOLD_TADPOLE_BUCKET);
+                entries.accept(GOLD_SULFUR_CUBE_BUCKET);
             })
             .build();
 
@@ -1947,35 +2004,32 @@ public class MMEItems {
         );
     }
 
-    private static Item register(String path) {
-        final ResourceKey<Item> registryKey = ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(MME.MOD_ID, path));
+    private static Item register(ResourceKey<Item> registryKey) {
         return Registry.register(BuiltInRegistries.ITEM, registryKey, new Item(new Item.Properties().setId(registryKey)));
     }
 
-    private static Item register(String path, Item.Properties settings) {
-        final ResourceKey<Item> registryKey = ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(MME.MOD_ID, path));
+    private static Item register(ResourceKey<Item> registryKey, Item.Properties settings) {
         return Registry.register(BuiltInRegistries.ITEM, registryKey, new Item(settings.setId(registryKey)));
     }
 
-    private static Item register(String path, Function<Item.Properties, Item> factory, Item.Properties settings) {
-        final ResourceKey<Item> registryKey = ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(MME.MOD_ID, path));
+    private static Item register(ResourceKey<Item> registryKey, Function<Item.Properties, Item> factory, Item.Properties settings) {
         return Registry.register(BuiltInRegistries.ITEM, registryKey, factory.apply(settings.setId(registryKey)));
     }
 
-    private static Item registerAxeItem(String path, Item.Properties settings) {
-        return register(path, MMEAxeItem::new, settings);
+    private static Item registerAxeItem(ResourceKey<Item> registryKey, Item.Properties settings) {
+        return register(registryKey, MMEAxeItem::new, settings);
     }
 
-    private static Item registerShearsItem(String path, Item.Properties settings) {
-        return register(path, ShearsItem::new, settings);
+    private static Item registerShearsItem(ResourceKey<Item> registryKey, Item.Properties settings) {
+        return register(registryKey, ShearsItem::new, settings);
     }
 
-    private static Item registerShovelItem(String path, Item.Properties settings) {
-        return register(path, MMEShovelItem::new, settings);
+    private static Item registerShovelItem(ResourceKey<Item> registryKey, Item.Properties settings) {
+        return register(registryKey, MMEShovelItem::new, settings);
     }
 
-    private static Item registerHoeItem(String path, Item.Properties settings) {
-        return register(path, MMEHoeItem::new, settings);
+    private static Item registerHoeItem(ResourceKey<Item> registryKey, Item.Properties settings) {
+        return register(registryKey, MMEHoeItem::new, settings);
     }
 
     public static Item register(Block block, Item.Properties settings) {

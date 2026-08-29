@@ -1,7 +1,7 @@
 package com.acuteterror233.mite.item;
 
-import com.acuteterror233.mite.atinterface.FluidDrainableExtension;
-import net.minecraft.advancements.CriteriaTriggers;
+import com.acuteterror233.mite.interfaces.FluidDrainableExtension;
+import net.minecraft.advancements.triggers.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerPlayer;
@@ -16,7 +16,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemUtils;
 import net.minecraft.world.item.MobBucketItem;
-import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.LiquidBlockContainer;
 import net.minecraft.world.level.block.state.BlockState;
@@ -33,62 +32,68 @@ import org.jetbrains.annotations.NotNull;
  */
 public class MMEMobBucketItem extends MobBucketItem {
     private final Item empty_barrel;
-    private final Fluid fluid;
 
     public MMEMobBucketItem(EntityType<? extends Mob> type, Fluid fluid, SoundEvent emptyingSound, Properties settings, Item empty_barrel) {
         super(type, fluid, emptyingSound, settings);
         this.empty_barrel = empty_barrel;
-        this.fluid = fluid;
     }
 
     @Override
-    public @NotNull InteractionResult use(Level world, Player user, InteractionHand hand) {
-        ItemStack itemStack = user.getItemInHand(hand);
-        BlockHitResult blockHitResult = getPlayerPOVHitResult(
-                world, user, this.fluid == Fluids.EMPTY ? ClipContext.Fluid.SOURCE_ONLY : ClipContext.Fluid.NONE
+    public @NotNull InteractionResult use(Level level, Player player, InteractionHand hand) {
+        ItemStack itemStack = player.getItemInHand(hand);
+        BlockHitResult hitResult = getPlayerPOVHitResult(
+                level, player, getFluidContext()
         );
-        if (blockHitResult.getType() == HitResult.Type.MISS) {
+        if (hitResult.getType() == HitResult.Type.MISS) {
             return InteractionResult.PASS;
-        } else if (blockHitResult.getType() != HitResult.Type.BLOCK) {
-            return InteractionResult.PASS;
-        } else {
-            BlockPos blockPos = blockHitResult.getBlockPos();
-            Direction direction = blockHitResult.getDirection();
-            BlockPos blockPos2 = blockPos.relative(direction);
-            if (!world.mayInteract(user, blockPos) || !user.mayUseItemAt(blockPos2, direction, itemStack)) {
-                return InteractionResult.FAIL;
-            } else if (this.fluid == Fluids.EMPTY) {
-                BlockState blockState = world.getBlockState(blockPos);
-                if (blockState.getBlock() instanceof FluidDrainableExtension fluidDrainable) {
-                    ItemStack itemStack2 = fluidDrainable.MME$TakeFluid(user, world, blockPos, blockState, this);
-                    if (!itemStack2.isEmpty()) {
-                        user.awardStat(Stats.ITEM_USED.get(this));
-                        fluidDrainable.MME$GetBucketFillSound().ifPresent(sound -> user.playSound(sound, 1.0F, 1.0F));
-                        world.gameEvent(user, GameEvent.FLUID_PICKUP, blockPos);
-                        ItemStack itemStack3 = ItemUtils.createFilledResult(itemStack, user, itemStack2);
-                        if (!world.isClientSide()) {
-                            CriteriaTriggers.FILLED_BUCKET.trigger((ServerPlayer) user, itemStack2);
-                        }
-
-                        return InteractionResult.SUCCESS.heldItemTransformedTo(itemStack3);
-                    }
-                }
-                return InteractionResult.FAIL;
-            } else {
-                BlockState blockState = world.getBlockState(blockPos);
-                BlockPos blockPos3 = blockState.getBlock() instanceof LiquidBlockContainer && this.fluid == Fluids.WATER ? blockPos : blockPos2;
-                if (this.emptyContents(user, world, blockPos3, blockHitResult)) {
-                    this.checkExtraContent(user, world, itemStack, blockPos3);
-                    if (user instanceof ServerPlayer) {
-                        CriteriaTriggers.PLACED_BLOCK.trigger((ServerPlayer) user, blockPos3, itemStack);
-                    }
-                    user.awardStat(Stats.ITEM_USED.get(this));
-                    ItemStack itemStack2 = ItemUtils.createFilledResult(itemStack, user, !user.hasInfiniteMaterials() ? new ItemStack(empty_barrel) : itemStack);
-                    return InteractionResult.SUCCESS.heldItemTransformedTo(itemStack2);
-                } else {
-                    return InteractionResult.FAIL;
-                }
-            }
         }
+
+        if (hitResult.getType() != HitResult.Type.BLOCK) {
+            return InteractionResult.PASS;
+        }
+
+        BlockPos pos = hitResult.getBlockPos();
+        Direction direction = hitResult.getDirection();
+        BlockPos directionOffsetPos = pos.relative(direction);
+        if (level.mayInteract(player, pos) && player.mayUseItemAt(directionOffsetPos, direction, itemStack)) {
+            BlockState clicked = level.getBlockState(pos);
+            BlockPos placePos = clicked.getBlock() instanceof LiquidBlockContainer && this.content == Fluids.WATER ? pos : directionOffsetPos;
+            if (this.emptyContents(player, level, placePos, hitResult)) {
+                this.checkExtraContent(player, level, itemStack, placePos);
+                if (player instanceof ServerPlayer serverPlayer && this.content != Fluids.EMPTY) {
+                    CriteriaTriggers.PLACED_BLOCK.trigger(serverPlayer, placePos, itemStack);
+                }
+
+                player.awardStat(Stats.ITEM_USED.get(this));
+                ItemStack emptyResult = ItemUtils.createFilledResult(itemStack, player, getEmptyBarrelSuccessItem(itemStack, player));
+                return InteractionResult.SUCCESS.heldItemTransformedTo(emptyResult);
+            } else {
+                if (this.content == Fluids.EMPTY) {
+                    BlockState blockState = level.getBlockState(pos);
+                    if (blockState.getBlock() instanceof FluidDrainableExtension bucketPickupBlock) {
+                        ItemStack taken = bucketPickupBlock.MME$TakeFluid(player, level, pos, blockState, this);
+                        if (!taken.isEmpty()) {
+                            player.awardStat(Stats.ITEM_USED.get(this));
+                            bucketPickupBlock.MME$GetBucketFillSound().ifPresent(soundEvent -> player.playSound(soundEvent, 1.0F, 1.0F));
+                            level.gameEvent(player, GameEvent.FLUID_PICKUP, pos);
+                            ItemStack result = ItemUtils.createFilledResult(itemStack, player, taken);
+                            if (!level.isClientSide()) {
+                                CriteriaTriggers.FILLED_BUCKET.trigger((ServerPlayer)player, taken);
+                            }
+
+                            return InteractionResult.SUCCESS.heldItemTransformedTo(result);
+                        }
+                    }
+                }
+
+                return InteractionResult.FAIL;
+            }
+        } else {
+            return InteractionResult.FAIL;
+        }
+    }
+
+    public ItemStack getEmptyBarrelSuccessItem(final ItemStack itemStack, final Player player) {
+        return !player.hasInfiniteMaterials() ? new ItemStack(this.empty_barrel) : itemStack;
     }
 }

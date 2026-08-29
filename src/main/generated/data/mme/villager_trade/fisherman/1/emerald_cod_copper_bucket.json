@@ -1,6 +1,6 @@
 {
   "gives": {
-    "id": "mme:cod_copper_bucket"
+    "id": "mme:copper_cod_bucket"
   },
   "max_uses": 16.0,
   "reputation_discount": 0.05,

@@ -20,6 +20,7 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.WeatheringCopperCollection;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.concurrent.CompletableFuture;
@@ -1174,14 +1175,14 @@ public class MMERecipeProvider extends FabricRecipeProvider {
                         .requires(Items.BOWL)
                         .unlockedBy(getHasName(Items.BOWL), this.has(Items.BOWL))
                         .save(this.output);
-                offerMilkBucketRecipes(MMEItems.MILK_NETHERITE_BUCKET, MMEItems.NETHERITE_BUCKET);
-                offerMilkBucketRecipes(MMEItems.MILK_ADAMANTIUM_BUCKET, MMEItems.ADAMANTIUM_BUCKET);
-                offerMilkBucketRecipes(MMEItems.MILK_MITHRIL_BUCKET, MMEItems.MITHRIL_BUCKET);
-                offerMilkBucketRecipes(MMEItems.MILK_ANCIENT_METAL_BUCKET, MMEItems.ANCIENT_METAL_BUCKET);
+                offerMilkBucketRecipes(MMEItems.NETHERITE_MILK_BUCKET, MMEItems.NETHERITE_BUCKET);
+                offerMilkBucketRecipes(MMEItems.ADAMANTIUM_MILK_BUCKET, MMEItems.ADAMANTIUM_BUCKET);
+                offerMilkBucketRecipes(MMEItems.MITHRIL_MILK_BUCKET, MMEItems.MITHRIL_BUCKET);
+                offerMilkBucketRecipes(MMEItems.ANCIENT_METAL_MILK_BUCKET, MMEItems.ANCIENT_METAL_BUCKET);
                 offerMilkBucketRecipes(Items.MILK_BUCKET, Items.BUCKET);
-                offerMilkBucketRecipes(MMEItems.MILK_GOLD_BUCKET, MMEItems.GOLD_BUCKET);
-                offerMilkBucketRecipes(MMEItems.MILK_COPPER_BUCKET, MMEItems.COPPER_BUCKET);
-                offerMilkBucketRecipes(MMEItems.MILK_SILVER_BUCKET, MMEItems.SILVER_BUCKET);
+                offerMilkBucketRecipes(MMEItems.GOLD_MILK_BUCKET, MMEItems.GOLD_BUCKET);
+                offerMilkBucketRecipes(MMEItems.COPPER_MILK_BUCKET, MMEItems.COPPER_BUCKET);
+                offerMilkBucketRecipes(MMEItems.SILVER_MILK_BUCKET, MMEItems.SILVER_BUCKET);
                 shapeless(RecipeCategory.FOOD, MMEItems.BOWL_SALAD)
                         .requires(Items.BOWL)
                         .requires(Items.DANDELION)
@@ -1336,6 +1337,19 @@ public class MMERecipeProvider extends FabricRecipeProvider {
                         .pattern("aaa")
                         .unlockedBy(getHasName(block), this.has(block))
                         .save(this.output);
+            }
+
+            private void offerAnvilRecipes(Block anvil, Item ingot, WeatheringCopperCollection<Block> block) {
+                block.forEach(block1 -> {
+                    shaped(RecipeCategory.DECORATIONS, anvil)
+                            .define('a', ingot)
+                            .define('b', block1)
+                            .pattern("bbb")
+                            .pattern(" a ")
+                            .pattern("aaa")
+                            .unlockedBy(getHasName(block1), this.has(block1))
+                            .save(this.output, anvil.getDescriptionId() + "_of_" + block1.getDescriptionId());
+                });
             }
 
             private void offerFishingRodRecipes(Item rod, Item nugget) {

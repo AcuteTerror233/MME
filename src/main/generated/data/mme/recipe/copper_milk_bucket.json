@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "mme:copper_bucket",
+    "mme:bowl_milk",
+    "mme:bowl_milk",
+    "mme:bowl_milk",
+    "mme:bowl_milk"
+  ],
+  "result": {
+    "id": "mme:copper_milk_bucket"
+  }
+}

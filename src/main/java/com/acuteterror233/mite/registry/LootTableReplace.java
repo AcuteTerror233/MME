@@ -6,7 +6,10 @@ import com.acuteterror233.mite.item.MMEItems;
 import com.acuteterror233.mite.item.enchantment.MMEEnchantments;
 import com.acuteterror233.mite.registry.tag.MMEItemTags;
 import net.fabricmc.fabric.api.loot.v3.LootTableEvents;
-import net.minecraft.advancements.criterion.*;
+import net.minecraft.advancements.predicates.*;
+import net.minecraft.advancements.predicates.entity.EntityEquipmentPredicate;
+import net.minecraft.advancements.predicates.entity.EntityFlagsPredicate;
+import net.minecraft.advancements.predicates.entity.EntityPredicate;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.component.predicates.DataComponentPredicates;
@@ -17,7 +20,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.*;
 import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EntityTypes;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.Potions;
@@ -297,7 +300,7 @@ public final class LootTableReplace {
                                         .add(LootItem.lootTableItem(Items.FLOWER_POT).setWeight(1))
                                         .add(LootItem.lootTableItem(Blocks.STONE_BRICKS).setWeight(1))
                                         .add(LootItem.lootTableItem(Items.BREAD).setWeight(4).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F))))
-                                        .add(LootItem.lootTableItem(Items.YELLOW_DYE).setWeight(1))
+                                        .add(LootItem.lootTableItem(Items.DYE.yellow()).setWeight(1))
                                         .add(LootItem.lootTableItem(Items.EMERALD).setWeight(1))
                         ).build()
         );
@@ -307,11 +310,11 @@ public final class LootTableReplace {
                                 .withPool(
                                         LootPool.lootPool()
                                                 .setRolls(UniformGenerator.between(1.0F, 3.0F))
-                                                .add(LootItem.lootTableItem(Blocks.WHITE_WOOL).setWeight(6).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F))))
-                                                .add(LootItem.lootTableItem(Blocks.BLACK_WOOL).setWeight(3).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F))))
-                                                .add(LootItem.lootTableItem(Blocks.GRAY_WOOL).setWeight(2).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F))))
-                                                .add(LootItem.lootTableItem(Blocks.BROWN_WOOL).setWeight(2).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F))))
-                                                .add(LootItem.lootTableItem(Blocks.LIGHT_GRAY_WOOL).setWeight(2).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F))))
+                                                .add(LootItem.lootTableItem(Blocks.WOOL.white()).setWeight(6).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F))))
+                                                .add(LootItem.lootTableItem(Blocks.WOOL.black()).setWeight(3).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F))))
+                                                .add(LootItem.lootTableItem(Blocks.WOOL.gray()).setWeight(2).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F))))
+                                                .add(LootItem.lootTableItem(Blocks.WOOL.brown()).setWeight(2).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F))))
+                                                .add(LootItem.lootTableItem(Blocks.WOOL.lightGray()).setWeight(2).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F))))
                                                 .add(LootItem.lootTableItem(MMEItems.COPPER_SHEARS).setWeight(1).apply(SetItemDamageFunction.setDamage(UniformGenerator.between(0.7F, 0.9F))))
                                                 .add(LootItem.lootTableItem(Items.WHEAT).setWeight(1))
                                 ).build()
@@ -387,7 +390,7 @@ public final class LootTableReplace {
                                 LootPool.lootPool()
                                         .setRolls(UniformGenerator.between(1.0F, 3.0F))
                                         .add(LootItem.lootTableItem(Items.CLAY_BALL).setWeight(1))
-                                        .add(LootItem.lootTableItem(Items.GREEN_DYE).setWeight(1))
+                                        .add(LootItem.lootTableItem(Items.DYE.green()).setWeight(1))
                                         .add(LootItem.lootTableItem(Blocks.CACTUS).setWeight(10).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F))))
                                         .add(LootItem.lootTableItem(Items.WHEAT).setWeight(3))
                                         .add(LootItem.lootTableItem(Items.BREAD).setWeight(3))
@@ -2004,7 +2007,7 @@ public final class LootTableReplace {
                         )
                         .build()
         );
-        LOOT_TABLES_REPLACE.put(EntityType.COW.getDefaultLootTable().get(),
+        LOOT_TABLES_REPLACE.put(EntityTypes.COW.getDefaultLootTable().get(),
                 provider -> LootTable.lootTable()
                         .withPool(
                                 LootPool.lootPool()
@@ -2026,7 +2029,7 @@ public final class LootTableReplace {
                                         )
                         ).build()
         );
-        LOOT_TABLES_REPLACE.put(EntityType.CHICKEN.getDefaultLootTable().get(),
+        LOOT_TABLES_REPLACE.put(EntityTypes.CHICKEN.getDefaultLootTable().get(),
                 provider -> LootTable.lootTable()
                         .withPool(
                                 LootPool.lootPool()
@@ -2047,7 +2050,7 @@ public final class LootTableReplace {
                                         )
                         ).build()
         );
-        LOOT_TABLES_REPLACE.put(EntityType.HOGLIN.getDefaultLootTable().get(),
+        LOOT_TABLES_REPLACE.put(EntityTypes.HOGLIN.getDefaultLootTable().get(),
                 provider -> LootTable.lootTable()
                         .withPool(
                                 LootPool.lootPool()
@@ -2069,7 +2072,7 @@ public final class LootTableReplace {
                                         )
                         ).build()
         );
-        LOOT_TABLES_REPLACE.put(EntityType.MOOSHROOM.getDefaultLootTable().get(),
+        LOOT_TABLES_REPLACE.put(EntityTypes.MOOSHROOM.getDefaultLootTable().get(),
                 provider -> LootTable.lootTable()
                         .withPool(
                                 LootPool.lootPool()
@@ -2091,7 +2094,7 @@ public final class LootTableReplace {
                                         )
                         ).build()
         );
-        LOOT_TABLES_REPLACE.put(EntityType.PIG.getDefaultLootTable().get(),
+        LOOT_TABLES_REPLACE.put(EntityTypes.PIG.getDefaultLootTable().get(),
                 provider -> LootTable.lootTable()
                         .withPool(
                                 LootPool.lootPool()
@@ -2104,7 +2107,7 @@ public final class LootTableReplace {
                                         )
                         ).build()
         );
-        LOOT_TABLES_REPLACE.put(EntityType.SHEEP.getDefaultLootTable().get(),
+        LOOT_TABLES_REPLACE.put(EntityTypes.SHEEP.getDefaultLootTable().get(),
                 provider -> LootTable.lootTable()
                         .withPool(
                                 LootPool.lootPool()
@@ -2116,10 +2119,10 @@ public final class LootTableReplace {
                                                         .apply(butcheringMultiplier(provider, UniformGenerator.between(0.0F, 1.0F)))
                                         )
                         )
-                        .withPool(EntityLootSubProvider.createSheepDispatchPool(BuiltInLootTables.SHEEP_BY_DYE))
+                        .withPool(EntityLootSubProvider.createSheepDispatchPool(BuiltInLootTables.SHEEP))
                         .build()
         );
-        LOOT_TABLES_REPLACE.put(EntityType.RABBIT.getDefaultLootTable().get(),
+        LOOT_TABLES_REPLACE.put(EntityTypes.RABBIT.getDefaultLootTable().get(),
                 provider -> LootTable.lootTable()
                         .withPool(
                                 LootPool.lootPool()
@@ -2448,6 +2451,42 @@ public final class LootTableReplace {
                                                                         .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F)))
                                                                         .when(ExplosionCondition.survivesExplosion())
                                                         )
+                                        )
+                        ).build()
+        );
+        LOOT_TABLES_REPLACE.put(Blocks.RAW_IRON_BLOCK.getLootTable().get(),
+                provider -> LootTable.lootTable()
+                        .withPool(
+                                LootPool.lootPool()
+                                        .setRolls(ConstantValue.exactly(1.0F))
+                                        .add(
+                                                LootItem.lootTableItem(Items.RAW_IRON)
+                                                        .apply(SetItemCountFunction.setCount(ConstantValue.exactly(9)))
+                                                        .when(MatchTool.toolMatches(ItemPredicate.Builder.item()))
+                                        )
+                        ).build()
+        );
+        LOOT_TABLES_REPLACE.put(Blocks.RAW_COPPER_BLOCK.getLootTable().get(),
+                provider -> LootTable.lootTable()
+                        .withPool(
+                                LootPool.lootPool()
+                                        .setRolls(ConstantValue.exactly(1.0F))
+                                        .add(
+                                                LootItem.lootTableItem(Items.RAW_COPPER)
+                                                        .apply(SetItemCountFunction.setCount(ConstantValue.exactly(9)))
+                                                        .when(MatchTool.toolMatches(ItemPredicate.Builder.item()))
+                                        )
+                        ).build()
+        );
+        LOOT_TABLES_REPLACE.put(Blocks.RAW_GOLD_BLOCK.getLootTable().get(),
+                provider -> LootTable.lootTable()
+                        .withPool(
+                                LootPool.lootPool()
+                                        .setRolls(ConstantValue.exactly(1.0F))
+                                        .add(
+                                                LootItem.lootTableItem(Items.RAW_GOLD)
+                                                        .apply(SetItemCountFunction.setCount(ConstantValue.exactly(9)))
+                                                        .when(MatchTool.toolMatches(ItemPredicate.Builder.item()))
                                         )
                         ).build()
         );

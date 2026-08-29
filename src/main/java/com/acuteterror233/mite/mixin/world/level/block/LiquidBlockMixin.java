@@ -1,6 +1,6 @@
 package com.acuteterror233.mite.mixin.world.level.block;
 
-import com.acuteterror233.mite.atinterface.FluidDrainableExtension;
+import com.acuteterror233.mite.interfaces.FluidDrainableExtension;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.LivingEntity;
@@ -20,10 +20,10 @@ import org.spongepowered.asm.mixin.Shadow;
 
 import java.util.Optional;
 
-@Mixin(LiquidBlock.class)
 /**
  * Mixin for {@code LiquidBlock} — 实现液体可排液接口。
  */
+@Mixin(LiquidBlock.class)
 public class LiquidBlockMixin implements FluidDrainableExtension {
     @Shadow
     @Final

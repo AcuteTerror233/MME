@@ -1,6 +1,6 @@
 package com.acuteterror233.mite.mixin.world.level.block;
 
-import com.acuteterror233.mite.atinterface.FluidDrainableExtension;
+import com.acuteterror233.mite.interfaces.FluidDrainableExtension;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.LivingEntity;
@@ -17,10 +17,10 @@ import org.spongepowered.asm.mixin.Mixin;
 
 import java.util.Optional;
 
-@Mixin(BubbleColumnBlock.class)
 /**
  * Mixin for {@code BubbleColumnBlock} — 实现可排液接口。
  */
+@Mixin(BubbleColumnBlock.class)
 public class BubbleColumnBlockMixin implements FluidDrainableExtension {
     @Override
     public ItemStack MME$TakeFluid(@Nullable LivingEntity drainer, LevelAccessor world, BlockPos pos, BlockState state, Item bucket) {

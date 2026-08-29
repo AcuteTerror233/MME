@@ -6,6 +6,6 @@
   "max_uses": 12.0,
   "reputation_discount": 0.05,
   "wants": {
-    "id": "mme:milk_silver_bucket"
+    "id": "mme:silver_milk_bucket"
   }
 }

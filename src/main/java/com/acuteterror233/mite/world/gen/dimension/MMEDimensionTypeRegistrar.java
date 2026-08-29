@@ -13,6 +13,7 @@ import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.attribute.*;
 import net.minecraft.world.level.CardinalLighting;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.dimension.DimensionType;
 import net.minecraft.world.timeline.Timeline;
 
@@ -28,6 +29,7 @@ public class MMEDimensionTypeRegistrar {
     public static final ResourceKey<DimensionType> UNDERGROUND_DIMENSION_TYPE_KEY = ResourceKey.create(Registries.DIMENSION_TYPE,
             Identifier.fromNamespaceAndPath(MME.MOD_ID, "underground_type"));
     public static void bootstrap(BootstrapContext<DimensionType> context) {
+        HolderGetter<Block> blocks = context.lookup(Registries.BLOCK);
         HolderGetter<Timeline> holderGetter = context.lookup(Registries.TIMELINE);
         context.register(UNDERGROUND_DIMENSION_TYPE_KEY, new DimensionType(
                 true,
@@ -38,7 +40,7 @@ public class MMEDimensionTypeRegistrar {
                 -64,
                 384,
                 384,
-                BlockTags.INFINIBURN_OVERWORLD,
+                blocks.getOrThrow(BlockTags.INFINIBURN_OVERWORLD),
                 0.1F,
                 new DimensionType.MonsterSettings(UniformInt.of(0, 7), 0),
                 DimensionType.Skybox.NONE,

@@ -1,7 +1,7 @@
 package com.acuteterror233.mite.block.entity;
 
-import com.acuteterror233.mite.atinterface.GetFuelGradeRegistryExtension;
 import com.acuteterror233.mite.component.MMEDataComponentTypes;
+import com.acuteterror233.mite.interfaces.GetFuelGradeRegistryExtension;
 import com.acuteterror233.mite.item.FuelGradeRegistry;
 import com.acuteterror233.mite.registry.tag.MMEItemTags;
 import com.google.common.collect.Lists;

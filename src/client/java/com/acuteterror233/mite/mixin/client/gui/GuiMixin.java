@@ -1,9 +1,9 @@
 package com.acuteterror233.mite.mixin.client.gui;
 
-import com.acuteterror233.mite.atinterface.FoodDataExtension;
+import com.acuteterror233.mite.interfaces.FoodDataExtension;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
+import net.minecraft.client.gui.Hud;
 import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.util.ARGB;
@@ -18,7 +18,7 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 /**
  * Mixin for {@code Gui} — 修改游戏界面 HUD 渲染。
  */
-@Mixin(Gui.class)
+@Mixin(Hud.class)
 public abstract class GuiMixin {
     @Final
     @Shadow

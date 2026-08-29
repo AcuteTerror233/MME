@@ -27,7 +27,6 @@ public class GradeSmokerMenu extends AbstractGradeFurnaceMenu {
     public GradeSmokerMenu(int syncId, Inventory playerInventory, Container inventory, ContainerData propertyDelegate) {
         super(
                 MMEMenuTypes.SMOKER_GRADE_FURNACE,
-                RecipeType.SMOKING,
                 RecipePropertySet.SMOKER_INPUT,
                 RecipeBookType.SMOKER,
                 syncId,

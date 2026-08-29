@@ -1,6 +1,6 @@
 package com.acuteterror233.mite.mixin.world.level.block.entity;
 
-import com.acuteterror233.mite.atinterface.CampfireBlockEntityExtension;
+import com.acuteterror233.mite.interfaces.CampfireBlockEntityExtension;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.item.crafting.CampfireCookingRecipe;
@@ -17,20 +17,18 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin(CampfireBlockEntity.class)
 /**
  * Mixin for {@code CampfireBlockEntity} — 实现营火方块实体扩展接口。
  */
+@Mixin(CampfireBlockEntity.class)
 public class CampfireBlockEntityMixin implements CampfireBlockEntityExtension {
     @Unique private int remainingIgnitionTime = 1600;
     @Inject(method = "cookTick", at = @At("HEAD"))
     private static void cookTick(ServerLevel world, BlockPos pos, BlockState state, CampfireBlockEntity blockEntity, RecipeManager.CachedCheck<SingleRecipeInput, CampfireCookingRecipe> recipeMatchGetter, CallbackInfo ci) {
-        if (blockEntity instanceof CampfireBlockEntityExtension extension) {
-            if (extension.MME$GetRemainingIgnitionTime() <= 0) {
-                world.setBlockAndUpdate(pos, state.setValue(BlockStateProperties.LIT, false));
-            }else {
-                extension.MME$DecreaseRemainingIgnitionTime();
-            }
+        if (blockEntity.MME$GetRemainingIgnitionTime() <= 0) {
+            world.setBlockAndUpdate(pos, state.setValue(BlockStateProperties.LIT, false));
+        }else {
+            blockEntity.MME$DecreaseRemainingIgnitionTime();
         }
     }
     @Inject(method = "loadAdditional", at = @At("TAIL"))

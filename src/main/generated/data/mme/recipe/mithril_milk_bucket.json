@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "mme:mithril_bucket",
+    "mme:bowl_milk",
+    "mme:bowl_milk",
+    "mme:bowl_milk",
+    "mme:bowl_milk"
+  ],
+  "result": {
+    "id": "mme:mithril_milk_bucket"
+  }
+}

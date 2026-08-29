@@ -1,6 +1,6 @@
 package com.acuteterror233.mite.mixin.server;
 
-import com.acuteterror233.mite.atinterface.GetFuelGradeRegistryExtension;
+import com.acuteterror233.mite.interfaces.GetFuelGradeRegistryExtension;
 import com.acuteterror233.mite.item.FuelGradeRegistry;
 import com.mojang.datafixers.DataFixer;
 import net.minecraft.core.LayeredRegistryAccess;
@@ -9,8 +9,8 @@ import net.minecraft.server.RegistryLayer;
 import net.minecraft.server.Services;
 import net.minecraft.server.WorldStem;
 import net.minecraft.server.level.progress.LevelLoadListener;
+import net.minecraft.server.notifications.NotificationManager;
 import net.minecraft.server.packs.repository.PackRepository;
-import net.minecraft.world.level.gamerules.GameRules;
 import net.minecraft.world.level.storage.LevelStorageSource;import net.minecraft.world.level.storage.WorldData;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -27,16 +27,16 @@ import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
 
-@Mixin(MinecraftServer.class)
 /**
  * Mixin for {@code MinecraftServer} — 实现燃料等级注册表获取接口。
  */
+@Mixin(MinecraftServer.class)
 public class MinecraftServerMixin implements GetFuelGradeRegistryExtension {
     @Shadow @Final private LayeredRegistryAccess<RegistryLayer> registries;
     @Shadow @Final protected WorldData worldData;
     @Unique private FuelGradeRegistry fuelgraderegistry;
     @Inject(method = "<init>", at = @At("TAIL"))
-    private void init(Thread thread, LevelStorageSource.LevelStorageAccess levelStorageAccess, PackRepository packRepository, WorldStem worldStem, Optional<GameRules> gameRules, Proxy proxy, DataFixer dataFixer, Services services, LevelLoadListener levelLoadListener, boolean propagatesCrashes, CallbackInfo ci){
+    private void init(Thread serverThread, LevelStorageSource.LevelStorageAccess storageSource, PackRepository packRepository, WorldStem worldStem, Optional gameRules, Proxy proxy, DataFixer fixerUpper, Services services, LevelLoadListener levelLoadListener, boolean propagatesCrashes, NotificationManager notificationManager, CallbackInfo ci){
         this.fuelgraderegistry = FuelGradeRegistry.createDefault(this.registries.compositeAccess(), this.worldData.enabledFeatures());
     }
     @Inject(method = "reloadResources", at = @At("TAIL"))

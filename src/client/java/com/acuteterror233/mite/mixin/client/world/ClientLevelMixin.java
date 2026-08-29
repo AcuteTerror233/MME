@@ -1,6 +1,6 @@
 package com.acuteterror233.mite.mixin.client.world;
 
-import com.acuteterror233.mite.atinterface.GetFuelGradeRegistryExtension;
+import com.acuteterror233.mite.interfaces.GetFuelGradeRegistryExtension;
 import com.acuteterror233.mite.item.FuelGradeRegistry;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.multiplayer.ClientPacketListener;

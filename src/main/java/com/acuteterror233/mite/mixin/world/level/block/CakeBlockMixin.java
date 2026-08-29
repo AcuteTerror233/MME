@@ -1,6 +1,6 @@
 package com.acuteterror233.mite.mixin.world.level.block;
 
-import com.acuteterror233.mite.atinterface.FoodDataExtension;
+import com.acuteterror233.mite.interfaces.FoodDataExtension;
 import com.acuteterror233.mite.world.food.FoodNutrition;
 import net.minecraft.world.food.FoodData;
 import net.minecraft.world.level.block.CakeBlock;

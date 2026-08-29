@@ -1,7 +1,5 @@
 {
   "type": "minecraft:blasting",
-  "category": "misc",
-  "cookingtime": 100,
   "experience": 3.0,
   "group": "adamantium_ingot",
   "ingredient": "mme:deepslate_adamantium_ore",

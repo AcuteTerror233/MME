@@ -4,14 +4,17 @@ import com.acuteterror233.mite.MME;
 import com.acuteterror233.mite.block.entity.AnvilBlockEntity;
 import com.acuteterror233.mite.block.entity.GradeFurnaceBlockEntity;
 import com.acuteterror233.mite.block.entity.RunePortalBlockEntity;
-import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.util.Util;
+import net.minecraft.util.datafix.fixes.References;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
+
+import java.util.Set;
 
 /**
  * MME 方块实体类型注册中心。
@@ -20,7 +23,7 @@ public class MMEBlockEntityTypes {
 
     public static final BlockEntityType<AnvilBlockEntity> ANVIL =
             register(
-                    "anvil"
+                    MMEBlockEntityTypeIds.ANVIL
                     , AnvilBlockEntity::new
                     , MMEBlocks.NETHERITE_ANVIL
                     , MMEBlocks.CHIPPED_NETHERITE_ANVIL
@@ -49,13 +52,13 @@ public class MMEBlockEntityTypes {
             );
     public static final BlockEntityType<RunePortalBlockEntity> RUNE_PORTAL =
             register(
-                    "rune_portal"
+                    MMEBlockEntityTypeIds.RUNE_PORTAL
                     , RunePortalBlockEntity::new
                     , MMEBlocks.RUNE_PORTAL
             );
     public static final BlockEntityType<GradeFurnaceBlockEntity> GRADE_FURNACE =
             register(
-                    "grade_furnace"
+                    MMEBlockEntityTypeIds.GRADE_FURNACE
                     , GradeFurnaceBlockEntity::new
                     , MMEBlocks.CLAY_FURNACE
                     , MMEBlocks.HARDENED_CLAY_FURNACE
@@ -68,12 +71,18 @@ public class MMEBlockEntityTypes {
             );
 
     private static <T extends BlockEntity> BlockEntityType<T> register(
-            String name,
-            FabricBlockEntityTypeBuilder.Factory<? extends T> entityFactory,
-            Block... blocks
+            final ResourceKey<BlockEntityType<?>> key, final BlockEntityType.BlockEntitySupplier<? extends T> factory, final Block... validBlocks
     ) {
-        Identifier id = Identifier.fromNamespaceAndPath(MME.MOD_ID, name);
-        return Registry.register(BuiltInRegistries.BLOCK_ENTITY_TYPE, id, FabricBlockEntityTypeBuilder.<T>create(entityFactory, blocks).build());
+        var id = key.identifier();
+        if (validBlocks.length == 0) {
+            MME.LOGGER.warn("Block entity type {} requires at least one valid block to be defined!", id);
+        }
+
+        if (id.getNamespace().equals("mme")) {
+            Util.fetchChoiceType(References.BLOCK_ENTITY, id.getPath());
+        }
+
+        return Registry.register(BuiltInRegistries.BLOCK_ENTITY_TYPE, key, new BlockEntityType<>(factory, Set.of(validBlocks)));
     }
 
     public static void init() {

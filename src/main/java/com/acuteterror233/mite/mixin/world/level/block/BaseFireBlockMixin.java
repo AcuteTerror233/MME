@@ -1,8 +1,8 @@
 package com.acuteterror233.mite.mixin.world.level.block;
 
-import com.acuteterror233.mite.atinterface.UniversalPortalShapeExtension;
 import com.acuteterror233.mite.block.MMEBlocks;
 import com.acuteterror233.mite.generator.RunePortalCoordinateGenerator;
+import com.acuteterror233.mite.interfaces.UniversalPortalShapeExtension;
 import com.acuteterror233.mite.registry.tag.MMEBlockTags;
 import com.acuteterror233.mite.world.gen.dimension.MMEDimensionTypeRegistrar;
 import net.minecraft.core.BlockPos;

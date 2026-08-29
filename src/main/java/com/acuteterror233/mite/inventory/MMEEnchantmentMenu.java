@@ -4,7 +4,7 @@ import com.acuteterror233.mite.block.MMEMenuTypes;
 import com.acuteterror233.mite.item.enchantment.MMEEnchantments;
 import com.acuteterror233.mite.registry.EnchantedUpgradeRegistry;
 import com.acuteterror233.mite.registry.tag.MMEBlockTags;
-import net.minecraft.advancements.CriteriaTriggers;
+import net.minecraft.advancements.triggers.CriteriaTriggers;
 import net.minecraft.core.*;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;

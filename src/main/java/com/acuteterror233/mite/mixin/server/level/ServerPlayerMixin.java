@@ -12,10 +12,10 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin(ServerPlayer.class)
 /**
  * Mixin for {@code ServerPlayer} — 扩展服务端玩家行为（营养、配方等）。
  */
+@Mixin(ServerPlayer.class)
 public abstract class ServerPlayerMixin extends Player {
     @Shadow
     public ServerGamePacketListenerImpl connection;
@@ -24,7 +24,7 @@ public abstract class ServerPlayerMixin extends Player {
         super(level, gameProfile);
     }
 
-    @Inject(method = "doTick", at = @At(value = "INVOKE", target = "Lnet/minecraft/advancements/criterion/PlayerTrigger;trigger(Lnet/minecraft/server/level/ServerPlayer;)V"))
+    @Inject(method = "doTick", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/player/Player;tick()V"))
     public void doTick(CallbackInfo ci) {
         this.connection.send(new ClientboundSetHealthPacket(this.getHealth(), this.getFoodData().getFoodLevel(), this.getFoodData().getSaturationLevel()));
     }

@@ -1,6 +1,6 @@
 package com.acuteterror233.mite.inventory;
 
-import com.acuteterror233.mite.atinterface.GetFuelGradeRegistryExtension;
+import com.acuteterror233.mite.interfaces.GetFuelGradeRegistryExtension;
 import com.acuteterror233.mite.item.FuelGradeRegistry;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.Container;
@@ -28,12 +28,11 @@ public abstract class AbstractGradeFurnaceMenu extends AbstractFurnaceMenu {
             int syncId,
             Inventory playerInventory
     ) {
-        this(menuType, recipeType, recipePropertySet, recipeBookType, syncId, playerInventory, new SimpleContainer(3), new SimpleContainerData(6));
+        this(menuType, recipePropertySet, recipeBookType, syncId, playerInventory, new SimpleContainer(3), new SimpleContainerData(6));
     }
 
     protected AbstractGradeFurnaceMenu(
             MenuType<?> menuType,
-            RecipeType<? extends AbstractCookingRecipe> recipeType,
             ResourceKey<RecipePropertySet> recipePropertySet,
             RecipeBookType recipeBookType,
             int syncId,
@@ -43,7 +42,6 @@ public abstract class AbstractGradeFurnaceMenu extends AbstractFurnaceMenu {
     ) {
         super(
                 menuType,
-                recipeType,
                 recipePropertySet,
                 recipeBookType,
                 syncId,

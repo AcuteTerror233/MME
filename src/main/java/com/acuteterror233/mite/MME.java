@@ -1,8 +1,8 @@
 package com.acuteterror233.mite;
 
-import com.acuteterror233.mite.atinterface.FoodDataExtension;
 import com.acuteterror233.mite.block.MMEBlocks;
 import com.acuteterror233.mite.event.ServerRecipeModify;
+import com.acuteterror233.mite.interfaces.FoodDataExtension;
 import com.acuteterror233.mite.item.MMEItems;
 import com.acuteterror233.mite.registry.LootTableReplace;
 import com.acuteterror233.mite.registry.tag.MMEItemTags;
@@ -147,7 +147,10 @@ public class MME implements ModInitializer {
             Identifier.withDefaultNamespace("netherite_shovel_smithing"),
             Identifier.withDefaultNamespace("netherite_sword_smithing"),
             Identifier.withDefaultNamespace("fishing_rod"),
-            Identifier.withDefaultNamespace("crafter")
+            Identifier.withDefaultNamespace("crafter"),
+            Identifier.withDefaultNamespace("raw_iron"),
+            Identifier.withDefaultNamespace("raw_copper"),
+            Identifier.withDefaultNamespace("raw_gold")
     );
 
 }

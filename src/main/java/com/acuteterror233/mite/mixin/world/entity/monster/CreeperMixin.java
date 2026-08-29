@@ -5,10 +5,10 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Mutable;
 import org.spongepowered.asm.mixin.Shadow;
 
-@Mixin(Creeper.class)
 /**
  * Mixin for {@code Creeper} — 修改苦力怕行为。
  */
+@Mixin(Creeper.class)
 public class CreeperMixin {
     @Shadow @Mutable
     public int explosionRadius = 2;

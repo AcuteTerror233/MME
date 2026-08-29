@@ -1,6 +1,6 @@
 package com.acuteterror233.mite.world.food;
 
-import com.acuteterror233.mite.atinterface.FoodDataExtension;
+import com.acuteterror233.mite.interfaces.FoodDataExtension;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.network.RegistryFriendlyByteBuf;
