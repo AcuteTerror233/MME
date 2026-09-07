@@ -22,6 +22,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.WeatheringCopperCollection;
 import org.jetbrains.annotations.NotNull;
+import org.jspecify.annotations.NonNull;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -39,7 +40,7 @@ public class MMERecipeProvider extends FabricRecipeProvider {
     }
 
     @Override
-    protected @NotNull RecipeProvider createRecipeProvider(HolderLookup.Provider registryLookup, RecipeOutput exporter) {
+    protected @NotNull RecipeProvider createRecipeProvider(HolderLookup.@NonNull Provider registryLookup, @NonNull RecipeOutput exporter) {
         return new RecipeProvider(registryLookup, exporter) {
             @Override
             public void buildRecipes() {
@@ -805,7 +806,6 @@ public class MMERecipeProvider extends FabricRecipeProvider {
                         .unlockedBy("has_golden_war_hammer", this.has(MMEItems.GOLDEN_WAR_HAMMER))
                         .save(this.output, getSmeltingRecipeName(Items.GOLD_NUGGET) + "_from_mme_extra");
 
-
                 nineBlockStorageRecipes(RecipeCategory.MISC, MMEItems.ADAMANTIUM_INGOT, RecipeCategory.BUILDING_BLOCKS, MMEBlocks.ADAMANTIUM_BLOCK, "adamantium_block_from_adamantium_ingot", null , "adamantium_ingot_from_adamantium_block",null);
                 nineBlockStorageRecipes(RecipeCategory.MISC, MMEItems.ANCIENT_METAL_INGOT, RecipeCategory.BUILDING_BLOCKS, MMEBlocks.ANCIENT_METAL_BLOCK, "ancient_metal_block_from_ancient_metal_ingot", null , "ancient_metal_ingot_from_ancient_metal_block", null);
                 nineBlockStorageRecipes(RecipeCategory.MISC, MMEItems.MITHRIL_INGOT, RecipeCategory.BUILDING_BLOCKS, MMEBlocks.MITHRIL_BLOCK, "mithril_block_from_mithril_ingot", null , "mithril_ingot_from_mithril_block", null);
@@ -816,7 +816,6 @@ public class MMERecipeProvider extends FabricRecipeProvider {
                 nineBlockStorageRecipes(RecipeCategory.MISC, MMEItems.ANCIENT_METAL_NUGGET, RecipeCategory.MISC, MMEItems.ANCIENT_METAL_INGOT, "ancient_metal_ingot_from_ancient_metal_nugget", null,  "ancient_metal_nugget_from_ancient_metal_ingot", null);
                 nineBlockStorageRecipes(RecipeCategory.MISC, MMEItems.MITHRIL_NUGGET, RecipeCategory.MISC, MMEItems.MITHRIL_INGOT, "mithril_ingot_from_mithril_nugget", null,  "mithril_nugget_from_mithril_ingot", null);
                 nineBlockStorageRecipes(RecipeCategory.MISC, MMEItems.SILVER_NUGGET, RecipeCategory.MISC, MMEItems.SILVER_INGOT, "silver_ingot_from_silver_nugget", null,  "silver_nugget_from_silver_ingot", null);
-                nineBlockStorageRecipes(RecipeCategory.MISC, Items.COPPER_NUGGET, RecipeCategory.MISC, Items.COPPER_INGOT, "copper_ingot_from_copper_nugget", null,  "copper_nugget_from_copper_ingot", null);
 
                 twoByTwoPacker(RecipeCategory.DECORATIONS, MMEBlocks.CLAY_FURNACE, Items.CLAY);
                 shaped(RecipeCategory.DECORATIONS, MMEBlocks.HARDENED_CLAY_FURNACE)
@@ -1304,18 +1303,6 @@ public class MMERecipeProvider extends FabricRecipeProvider {
                         .save(this.output);
             }
 
-            private void offerArrowRecipes(Item nugget, Item arrow) {
-                shaped(RecipeCategory.COMBAT, arrow)
-                        .define('a', nugget)
-                        .define('b', Items.STICK)
-                        .define('c', Items.FEATHER)
-                        .pattern("a")
-                        .pattern("b")
-                        .pattern("c")
-                        .unlockedBy(getHasName(nugget), this.has(nugget))
-                        .save(this.output);
-            }
-
             private void offerCraftingTableRecipes(Block craftingTable, Item ingot){
                 shaped(RecipeCategory.DECORATIONS, craftingTable)
                         .define('a', ingot)
@@ -1340,16 +1327,14 @@ public class MMERecipeProvider extends FabricRecipeProvider {
             }
 
             private void offerAnvilRecipes(Block anvil, Item ingot, WeatheringCopperCollection<Block> block) {
-                block.forEach(block1 -> {
-                    shaped(RecipeCategory.DECORATIONS, anvil)
-                            .define('a', ingot)
-                            .define('b', block1)
-                            .pattern("bbb")
-                            .pattern(" a ")
-                            .pattern("aaa")
-                            .unlockedBy(getHasName(block1), this.has(block1))
-                            .save(this.output, anvil.getDescriptionId() + "_of_" + block1.getDescriptionId());
-                });
+                block.forEach(block1 -> shaped(RecipeCategory.DECORATIONS, anvil)
+                        .define('a', ingot)
+                        .define('b', block1)
+                        .pattern("bbb")
+                        .pattern(" a ")
+                        .pattern("aaa")
+                        .unlockedBy(getHasName(block1), this.has(block1))
+                        .save(this.output, anvil.getDescriptionId() + "_of_" + block1.getDescriptionId()));
             }
 
             private void offerFishingRodRecipes(Item rod, Item nugget) {

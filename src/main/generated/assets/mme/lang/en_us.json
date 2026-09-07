@@ -97,6 +97,8 @@
   "entity.mme.shadow": "Shadow",
   "entity.mme.vampire_bat": "Vampire Bat",
   "entity.mme.wight": "Wight",
+  "item.minecraft.smithing_template.netherite_upgrade.applies_to": "Adamantium Equipment",
+  "item.minecraft.smithing_template.netherite_upgrade.base_slot_description": "Add adamantium armor, weapon, or tool",
   "item.mme.adamantium_axe": "Adamantium Axe",
   "item.mme.adamantium_axolotl_bucket": "Adamantium Bucket of Axolotl",
   "item.mme.adamantium_battle_axe": "Adamantium Battle Axe",

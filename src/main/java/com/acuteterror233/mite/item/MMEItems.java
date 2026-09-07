@@ -2,7 +2,7 @@ package com.acuteterror233.mite.item;
 
 import com.acuteterror233.mite.MME;
 import com.acuteterror233.mite.block.MMEBlocks;
-import com.acuteterror233.mite.component.MMEDataComponentTypes;
+import com.acuteterror233.mite.component.MMEDataComponents;
 import com.acuteterror233.mite.item.armor.MMEArmorMaterials;
 import com.acuteterror233.mite.item.equipment.MMEArmorMaterial;
 import com.acuteterror233.mite.registry.tag.MMEBlockTags;
@@ -46,35 +46,35 @@ import java.util.function.Function;
 public class MMEItems {
     public static final Item ADAMANTIUM_HELMET = register(
             MMEItemIds.ADAMANTIUM_HELMET,
-            getArmorSettings(MMEArmorMaterials.ADAMANTIUM_MATERIAL, ArmorType.HELMET).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4)
+            getArmorSettings(MMEArmorMaterials.ADAMANTIUM_MATERIAL, ArmorType.HELMET).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4)
     );
     public static final Item ADAMANTIUM_CHESTPLATE = register(
             MMEItemIds.ADAMANTIUM_CHESTPLATE,
-            getArmorSettings(MMEArmorMaterials.ADAMANTIUM_MATERIAL, ArmorType.CHESTPLATE).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4)
+            getArmorSettings(MMEArmorMaterials.ADAMANTIUM_MATERIAL, ArmorType.CHESTPLATE).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4)
     );
     public static final Item ADAMANTIUM_LEGGINGS = register(
             MMEItemIds.ADAMANTIUM_LEGGINGS,
-            getArmorSettings(MMEArmorMaterials.ADAMANTIUM_MATERIAL, ArmorType.LEGGINGS).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4)
+            getArmorSettings(MMEArmorMaterials.ADAMANTIUM_MATERIAL, ArmorType.LEGGINGS).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4)
     );
     public static final Item ADAMANTIUM_BOOTS = register(
             MMEItemIds.ADAMANTIUM_BOOTS,
-            getArmorSettings(MMEArmorMaterials.ADAMANTIUM_MATERIAL, ArmorType.BOOTS).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4)
+            getArmorSettings(MMEArmorMaterials.ADAMANTIUM_MATERIAL, ArmorType.BOOTS).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4)
     );
     public static final Item ADAMANTIUM_CHAINMAIL_BOOTS = register(
             MMEItemIds.ADAMANTIUM_CHAINMAIL_BOOTS,
-            getArmorSettings(MMEArmorMaterials.ADAMANTIUM_CHAINMAIL_MATERIAL, ArmorType.BOOTS).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4)
+            getArmorSettings(MMEArmorMaterials.ADAMANTIUM_CHAINMAIL_MATERIAL, ArmorType.BOOTS).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4)
     );
     public static final Item ADAMANTIUM_CHAINMAIL_CHESTPLATE = register(
             MMEItemIds.ADAMANTIUM_CHAINMAIL_CHESTPLATE,
-            getArmorSettings(MMEArmorMaterials.ADAMANTIUM_CHAINMAIL_MATERIAL, ArmorType.CHESTPLATE).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4)
+            getArmorSettings(MMEArmorMaterials.ADAMANTIUM_CHAINMAIL_MATERIAL, ArmorType.CHESTPLATE).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4)
     );
     public static final Item ADAMANTIUM_CHAINMAIL_HELMET = register(
             MMEItemIds.ADAMANTIUM_CHAINMAIL_HELMET,
-            getArmorSettings(MMEArmorMaterials.ADAMANTIUM_CHAINMAIL_MATERIAL, ArmorType.HELMET).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4)
+            getArmorSettings(MMEArmorMaterials.ADAMANTIUM_CHAINMAIL_MATERIAL, ArmorType.HELMET).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4)
     );
     public static final Item ADAMANTIUM_CHAINMAIL_LEGGINGS = register(
             MMEItemIds.ADAMANTIUM_CHAINMAIL_LEGGINGS,
-            getArmorSettings(MMEArmorMaterials.ADAMANTIUM_CHAINMAIL_MATERIAL, ArmorType.LEGGINGS).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4)
+            getArmorSettings(MMEArmorMaterials.ADAMANTIUM_CHAINMAIL_MATERIAL, ArmorType.LEGGINGS).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4)
     );
     public static final Item ANCIENT_METAL_HELMET = register(
             MMEItemIds.ANCIENT_METAL_HELMET,
@@ -126,35 +126,35 @@ public class MMEItems {
     );
     public static final Item MITHRIL_HELMET = register(
             MMEItemIds.MITHRIL_HELMET,
-            getArmorSettings(MMEArmorMaterials.MITHRIL_MATERIAL, ArmorType.HELMET).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 3)
+            getArmorSettings(MMEArmorMaterials.MITHRIL_MATERIAL, ArmorType.HELMET).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 3)
     );
     public static final Item MITHRIL_CHESTPLATE = register(
             MMEItemIds.MITHRIL_CHESTPLATE,
-            getArmorSettings(MMEArmorMaterials.MITHRIL_MATERIAL, ArmorType.CHESTPLATE).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 3)
+            getArmorSettings(MMEArmorMaterials.MITHRIL_MATERIAL, ArmorType.CHESTPLATE).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 3)
     );
     public static final Item MITHRIL_LEGGINGS = register(
             MMEItemIds.MITHRIL_LEGGINGS,
-            getArmorSettings(MMEArmorMaterials.MITHRIL_MATERIAL, ArmorType.LEGGINGS).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 3)
+            getArmorSettings(MMEArmorMaterials.MITHRIL_MATERIAL, ArmorType.LEGGINGS).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 3)
     );
     public static final Item MITHRIL_BOOTS = register(
             MMEItemIds.MITHRIL_BOOTS,
-            getArmorSettings(MMEArmorMaterials.MITHRIL_MATERIAL, ArmorType.BOOTS).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 3)
+            getArmorSettings(MMEArmorMaterials.MITHRIL_MATERIAL, ArmorType.BOOTS).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 3)
     );
     public static final Item MITHRIL_CHAINMAIL_HELMET = register(
             MMEItemIds.MITHRIL_CHAINMAIL_HELMET,
-            getArmorSettings(MMEArmorMaterials.MITHRIL_CHAINMAIL_MATERIAL, ArmorType.HELMET).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 3)
+            getArmorSettings(MMEArmorMaterials.MITHRIL_CHAINMAIL_MATERIAL, ArmorType.HELMET).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 3)
     );
     public static final Item MITHRIL_CHAINMAIL_CHESTPLATE = register(
             MMEItemIds.MITHRIL_CHAINMAIL_CHESTPLATE,
-            getArmorSettings(MMEArmorMaterials.MITHRIL_CHAINMAIL_MATERIAL, ArmorType.CHESTPLATE).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 3)
+            getArmorSettings(MMEArmorMaterials.MITHRIL_CHAINMAIL_MATERIAL, ArmorType.CHESTPLATE).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 3)
     );
     public static final Item MITHRIL_CHAINMAIL_LEGGINGS = register(
             MMEItemIds.MITHRIL_CHAINMAIL_LEGGINGS,
-            getArmorSettings(MMEArmorMaterials.MITHRIL_CHAINMAIL_MATERIAL, ArmorType.LEGGINGS).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 3)
+            getArmorSettings(MMEArmorMaterials.MITHRIL_CHAINMAIL_MATERIAL, ArmorType.LEGGINGS).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 3)
     );
     public static final Item MITHRIL_CHAINMAIL_BOOTS = register(
             MMEItemIds.MITHRIL_CHAINMAIL_BOOTS,
-            getArmorSettings(MMEArmorMaterials.MITHRIL_CHAINMAIL_MATERIAL, ArmorType.BOOTS).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 3)
+            getArmorSettings(MMEArmorMaterials.MITHRIL_CHAINMAIL_MATERIAL, ArmorType.BOOTS).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 3)
     );
     public static final Item RUSTED_IRON_HELMET = register(
             MMEItemIds.RUSTED_IRON_HELMET,
@@ -241,7 +241,7 @@ public class MMEItems {
             MMEItemIds.BANANA,
             new Item.Properties()
                     .food(new FoodProperties(2, 1.0F, false))
-                    .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().fiber(8000).sugar(4800).build())
+                    .component(MMEDataComponents.FOOD_NUTRITION, FoodNutrition.builder().fiber(8000).sugar(4800).build())
                     .stacksTo(16)
     );
     public static final Item BLUE_BERRIE = register(
@@ -249,21 +249,21 @@ public class MMEItems {
             Items.createBlockItemWithCustomItemName(MMEBlocks.BLUE_BERRY_BUSH),
             new Item.Properties()
                     .food(new FoodProperties(1, 1.0F, false))
-                    .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().fiber(8000).sugar(4800).build())
+                    .component(MMEDataComponents.FOOD_NUTRITION, FoodNutrition.builder().fiber(8000).sugar(4800).build())
                     .stacksTo(16)
     );
     public static final Item CHEESE = register(
             MMEItemIds.CHEESE,
             new Item.Properties()
                     .food(new FoodProperties(3, 3.0F, false))
-                    .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().protein(24000).build())
+                    .component(MMEDataComponents.FOOD_NUTRITION, FoodNutrition.builder().protein(24000).build())
                     .stacksTo(16)
     );
     public static final Item CHOCOLATE = register(
             MMEItemIds.CHOCOLATE,
             new Item.Properties()
                     .food(new FoodProperties(3, 3.0F, false))
-                    .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().sugar(4800).build())
+                    .component(MMEDataComponents.FOOD_NUTRITION, FoodNutrition.builder().sugar(4800).build())
                     .stacksTo(16)
     );
     public static final Item DOUGH = register(
@@ -276,35 +276,35 @@ public class MMEItems {
             MMEItemIds.LEMON,
             new Item.Properties()
                     .food(new FoodProperties(1, 2.0F, false))
-                    .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().fiber(8000).sugar(4800).build())
+                    .component(MMEDataComponents.FOOD_NUTRITION, FoodNutrition.builder().fiber(8000).sugar(4800).build())
                     .stacksTo(16)
     );
     public static final Item ONION = register(
             MMEItemIds.ONION,
             new Item.Properties()
                     .food(new FoodProperties(1, 1.0F, false))
-                    .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().fiber(8000).build())
+                    .component(MMEDataComponents.FOOD_NUTRITION, FoodNutrition.builder().fiber(8000).build())
                     .stacksTo(16)
     );
     public static final Item ORANGE = register(
             MMEItemIds.ORANGE,
             new Item.Properties()
                     .food(new FoodProperties(1, 2.0F, false))
-                    .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().fiber(8000).sugar(4800).build())
+                    .component(MMEDataComponents.FOOD_NUTRITION, FoodNutrition.builder().fiber(8000).sugar(4800).build())
                     .stacksTo(16)
     );
     public static final Item WORM_COOKED = register(
             MMEItemIds.WORM_COOKED,
             new Item.Properties()
                     .food(new FoodProperties(1, 1.0F, false))
-                    .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().protein(8000).build())
+                    .component(MMEDataComponents.FOOD_NUTRITION, FoodNutrition.builder().protein(8000).build())
                     .stacksTo(16)
     );
     public static final Item WORM_RAW = register(
             MMEItemIds.WORM_RAW,
             new Item.Properties()
                     .food(new FoodProperties(1, 0.0F, false))
-                    .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().protein(8000).build())
+                    .component(MMEDataComponents.FOOD_NUTRITION, FoodNutrition.builder().protein(8000).build())
                     .stacksTo(16)
     );
     public static final Item FLOUR = register(
@@ -315,7 +315,7 @@ public class MMEItems {
             MMEItemIds.BEEF_STEW,
             new Item.Properties()
                     .food(new FoodProperties(16, 16.0F, false))
-                    .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().protein(128000).fiber(128000).build())
+                    .component(MMEDataComponents.FOOD_NUTRITION, FoodNutrition.builder().protein(128000).fiber(128000).build())
                     .usingConvertsTo(Items.BOWL)
                     .craftRemainder(Items.BOWL)
                     .stacksTo(4)
@@ -324,7 +324,7 @@ public class MMEItems {
             MMEItemIds.BOWL_MILK,
             new Item.Properties()
                     .food(new FoodProperties(1, 0, false), Consumables.MILK_BUCKET)
-                    .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().protein(8000).build())
+                    .component(MMEDataComponents.FOOD_NUTRITION, FoodNutrition.builder().protein(8000).build())
                     .usingConvertsTo(Items.BOWL)
                     .craftRemainder(Items.BOWL)
                     .stacksTo(4)
@@ -333,7 +333,7 @@ public class MMEItems {
             MMEItemIds.BOWL_SALAD,
             new Item.Properties()
                     .food(new FoodProperties(1, 1.0F, false))
-                    .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().fiber(8000).build())
+                    .component(MMEDataComponents.FOOD_NUTRITION, FoodNutrition.builder().fiber(8000).build())
                     .usingConvertsTo(Items.BOWL)
                     .craftRemainder(Items.BOWL)
                     .stacksTo(4)
@@ -349,7 +349,7 @@ public class MMEItems {
             MMEItemIds.CEREAL,
             new Item.Properties()
                     .food(new FoodProperties(2, 5.0F, false))
-                    .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().protein(16000).build())
+                    .component(MMEDataComponents.FOOD_NUTRITION, FoodNutrition.builder().protein(16000).build())
                     .usingConvertsTo(Items.BOWL)
                     .craftRemainder(Items.BOWL)
                     .stacksTo(4)
@@ -358,7 +358,7 @@ public class MMEItems {
             MMEItemIds.CHICKEN_SOUP,
             new Item.Properties()
                     .food(new FoodProperties(10, 10.0F, false), Consumables.defaultDrink().build())
-                    .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().protein(80000).fiber(80000).build())
+                    .component(MMEDataComponents.FOOD_NUTRITION, FoodNutrition.builder().protein(80000).fiber(80000).build())
                     .usingConvertsTo(Items.BOWL)
                     .craftRemainder(Items.BOWL)
                     .stacksTo(4)
@@ -367,7 +367,7 @@ public class MMEItems {
             MMEItemIds.CREAM_OF_MUSHROOM_SOUP,
             new Item.Properties()
                     .food(new FoodProperties(5, 3.0F, false), Consumables.defaultDrink().build())
-                    .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().protein(40000).build())
+                    .component(MMEDataComponents.FOOD_NUTRITION, FoodNutrition.builder().protein(40000).build())
                     .usingConvertsTo(Items.BOWL)
                     .craftRemainder(Items.BOWL)
                     .stacksTo(4)
@@ -376,7 +376,7 @@ public class MMEItems {
             MMEItemIds.CREAM_OF_VEGETABLE_SOUP,
             new Item.Properties()
                     .food(new FoodProperties(7, 7.0F, false), Consumables.defaultDrink().build())
-                    .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().protein(56000).fiber(56000).build())
+                    .component(MMEDataComponents.FOOD_NUTRITION, FoodNutrition.builder().protein(56000).fiber(56000).build())
                     .usingConvertsTo(Items.BOWL)
                     .craftRemainder(Items.BOWL)
                     .stacksTo(4)
@@ -385,7 +385,7 @@ public class MMEItems {
             MMEItemIds.ICE_CREAM,
             new Item.Properties()
                     .food(new FoodProperties(4, 5.0F, false))
-                    .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().protein(32000).sugar(4800).build())
+                    .component(MMEDataComponents.FOOD_NUTRITION, FoodNutrition.builder().protein(32000).sugar(4800).build())
                     .usingConvertsTo(Items.BOWL)
                     .craftRemainder(Items.BOWL)
                     .stacksTo(4)
@@ -394,7 +394,7 @@ public class MMEItems {
             MMEItemIds.MASHED_POTATO,
             new Item.Properties()
                     .food(new FoodProperties(8, 12.0F, false))
-                    .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().protein(64000).build())
+                    .component(MMEDataComponents.FOOD_NUTRITION, FoodNutrition.builder().protein(64000).build())
                     .usingConvertsTo(Items.BOWL)
                     .craftRemainder(Items.BOWL)
                     .stacksTo(4)
@@ -403,7 +403,7 @@ public class MMEItems {
             MMEItemIds.PORRIDGE,
             new Item.Properties()
                     .food(new FoodProperties(5, 5.0F, false))
-                    .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().fiber(16000).sugar(9600).build())
+                    .component(MMEDataComponents.FOOD_NUTRITION, FoodNutrition.builder().fiber(16000).sugar(9600).build())
                     .usingConvertsTo(Items.BOWL)
                     .craftRemainder(Items.BOWL)
                     .stacksTo(4)
@@ -412,7 +412,7 @@ public class MMEItems {
             MMEItemIds.PUMPKIN_SOUP,
             new Item.Properties()
                     .food(new FoodProperties(2, 1.0F, false), Consumables.defaultDrink().build())
-                    .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().fiber(16000).build())
+                    .component(MMEDataComponents.FOOD_NUTRITION, FoodNutrition.builder().fiber(16000).build())
                     .usingConvertsTo(Items.BOWL)
                     .craftRemainder(Items.BOWL)
                     .stacksTo(4)
@@ -421,7 +421,7 @@ public class MMEItems {
             MMEItemIds.SORBET,
             new Item.Properties()
                     .food(new FoodProperties(2, 4.0F, false))
-                    .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().fiber(16000).sugar(9600).build())
+                    .component(MMEDataComponents.FOOD_NUTRITION, FoodNutrition.builder().fiber(16000).sugar(9600).build())
                     .usingConvertsTo(Items.BOWL)
                     .craftRemainder(Items.BOWL)
                     .stacksTo(4)
@@ -430,35 +430,35 @@ public class MMEItems {
             MMEItemIds.VEGETABLE_SOUP,
             new Item.Properties()
                     .food(new FoodProperties(6, 6.0F, false), Consumables.defaultDrink().build())
-                    .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().fiber(48000).build())
+                    .component(MMEDataComponents.FOOD_NUTRITION, FoodNutrition.builder().fiber(48000).build())
                     .usingConvertsTo(Items.BOWL)
                     .craftRemainder(Items.BOWL)
                     .stacksTo(4)
     );
     
-    public static final Item NETHERITE_BATTLE_AXE = registerAxeItem(MMEItemIds.NETHERITE_BATTLE_AXE, getBattleAxeSettings(MMEToolMaterials.NETHERITE).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
-    public static final Item NETHERITE_HATCHET = registerAxeItem(MMEItemIds.NETHERITE_HATCHET, getHandAxeSettings(MMEToolMaterials.NETHERITE).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
-    public static final Item NETHERITE_DAGGER = register(MMEItemIds.NETHERITE_DAGGER, getDaggerSettings(MMEToolMaterials.NETHERITE).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
+    public static final Item NETHERITE_BATTLE_AXE = registerAxeItem(MMEItemIds.NETHERITE_BATTLE_AXE, getBattleAxeSettings(MMEToolMaterials.NETHERITE).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4));
+    public static final Item NETHERITE_HATCHET = registerAxeItem(MMEItemIds.NETHERITE_HATCHET, getHandAxeSettings(MMEToolMaterials.NETHERITE).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4));
+    public static final Item NETHERITE_DAGGER = register(MMEItemIds.NETHERITE_DAGGER, getDaggerSettings(MMEToolMaterials.NETHERITE).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4));
     public static final Item NETHERITE_KNIFE = register(MMEItemIds.NETHERITE_KNIFE);
-    public static final Item NETHERITE_WAR_HAMMER = register(MMEItemIds.NETHERITE_WAR_HAMMER, getWarHammerSettings(MMEToolMaterials.NETHERITE).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
-    public static final Item NETHERITE_MATTOCK = registerHoeItem(MMEItemIds.NETHERITE_MATTOCK, getMattockSettings(MMEToolMaterials.NETHERITE).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
-    public static final Item NETHERITE_SCYTHE = register(MMEItemIds.NETHERITE_SCYTHE, getScytheSettings(MMEToolMaterials.NETHERITE).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
-    public static final Item NETHERITE_SHEARS = registerShearsItem(MMEItemIds.NETHERITE_SHEARS, getShearsSettings(MMEToolMaterials.NETHERITE).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
+    public static final Item NETHERITE_WAR_HAMMER = register(MMEItemIds.NETHERITE_WAR_HAMMER, getWarHammerSettings(MMEToolMaterials.NETHERITE).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4));
+    public static final Item NETHERITE_MATTOCK = registerHoeItem(MMEItemIds.NETHERITE_MATTOCK, getMattockSettings(MMEToolMaterials.NETHERITE).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4));
+    public static final Item NETHERITE_SCYTHE = register(MMEItemIds.NETHERITE_SCYTHE, getScytheSettings(MMEToolMaterials.NETHERITE).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4));
+    public static final Item NETHERITE_SHEARS = registerShearsItem(MMEItemIds.NETHERITE_SHEARS, getShearsSettings(MMEToolMaterials.NETHERITE).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4));
     
-    public static final Item ADAMANTIUM_AXE = registerAxeItem(MMEItemIds.ADAMANTIUM_AXE, getAxeSettings(MMEToolMaterials.ADAMANTIUM).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
-    public static final Item ADAMANTIUM_BATTLE_AXE = registerAxeItem(MMEItemIds.ADAMANTIUM_BATTLE_AXE, getBattleAxeSettings(MMEToolMaterials.ADAMANTIUM).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
-    public static final Item ADAMANTIUM_HATCHET = registerAxeItem(MMEItemIds.ADAMANTIUM_HATCHET, getHandAxeSettings(MMEToolMaterials.ADAMANTIUM).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
-    public static final Item ADAMANTIUM_SWORD = register(MMEItemIds.ADAMANTIUM_SWORD, getSwordSettings(MMEToolMaterials.ADAMANTIUM).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
-    public static final Item ADAMANTIUM_DAGGER = register(MMEItemIds.ADAMANTIUM_DAGGER, getDaggerSettings(MMEToolMaterials.ADAMANTIUM).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
+    public static final Item ADAMANTIUM_AXE = registerAxeItem(MMEItemIds.ADAMANTIUM_AXE, getAxeSettings(MMEToolMaterials.ADAMANTIUM).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4));
+    public static final Item ADAMANTIUM_BATTLE_AXE = registerAxeItem(MMEItemIds.ADAMANTIUM_BATTLE_AXE, getBattleAxeSettings(MMEToolMaterials.ADAMANTIUM).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4));
+    public static final Item ADAMANTIUM_HATCHET = registerAxeItem(MMEItemIds.ADAMANTIUM_HATCHET, getHandAxeSettings(MMEToolMaterials.ADAMANTIUM).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4));
+    public static final Item ADAMANTIUM_SWORD = register(MMEItemIds.ADAMANTIUM_SWORD, getSwordSettings(MMEToolMaterials.ADAMANTIUM).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4));
+    public static final Item ADAMANTIUM_DAGGER = register(MMEItemIds.ADAMANTIUM_DAGGER, getDaggerSettings(MMEToolMaterials.ADAMANTIUM).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4));
     public static final Item ADAMANTIUM_KNIFE = register(MMEItemIds.ADAMANTIUM_KNIFE);
-    public static final Item ADAMANTIUM_PICKAXE = register(MMEItemIds.ADAMANTIUM_PICKAXE, getPickaxeSettings(MMEToolMaterials.ADAMANTIUM).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
-    public static final Item ADAMANTIUM_WAR_HAMMER = register(MMEItemIds.ADAMANTIUM_WAR_HAMMER, getWarHammerSettings(MMEToolMaterials.ADAMANTIUM).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
-    public static final Item ADAMANTIUM_SHOVEL = registerShovelItem(MMEItemIds.ADAMANTIUM_SHOVEL, getShovelSettings(MMEToolMaterials.ADAMANTIUM).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
-    public static final Item ADAMANTIUM_HOE = registerHoeItem(MMEItemIds.ADAMANTIUM_HOE, getHoeSettings(MMEToolMaterials.ADAMANTIUM).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
-    public static final Item ADAMANTIUM_MATTOCK = registerHoeItem(MMEItemIds.ADAMANTIUM_MATTOCK, getMattockSettings(MMEToolMaterials.ADAMANTIUM).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
-    public static final Item ADAMANTIUM_SCYTHE = register(MMEItemIds.ADAMANTIUM_SCYTHE, getScytheSettings(MMEToolMaterials.ADAMANTIUM).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
-    public static final Item ADAMANTIUM_SHEARS = registerShearsItem(MMEItemIds.ADAMANTIUM_SHEARS, getShearsSettings(MMEToolMaterials.ADAMANTIUM).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
-    public static final Item ADAMANTIUM_SPEAR = register(MMEItemIds.ADAMANTIUM_SPEAR, applySpearSettings(new Item.Properties(), MMEToolMaterials.ADAMANTIUM, 1.10F, 1.16F, 0.45F, 2.5F, 6.8F, 5.8F, 5.1F, 9.0F, 4.6F).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
+    public static final Item ADAMANTIUM_PICKAXE = register(MMEItemIds.ADAMANTIUM_PICKAXE, getPickaxeSettings(MMEToolMaterials.ADAMANTIUM).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4));
+    public static final Item ADAMANTIUM_WAR_HAMMER = register(MMEItemIds.ADAMANTIUM_WAR_HAMMER, getWarHammerSettings(MMEToolMaterials.ADAMANTIUM).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4));
+    public static final Item ADAMANTIUM_SHOVEL = registerShovelItem(MMEItemIds.ADAMANTIUM_SHOVEL, getShovelSettings(MMEToolMaterials.ADAMANTIUM).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4));
+    public static final Item ADAMANTIUM_HOE = registerHoeItem(MMEItemIds.ADAMANTIUM_HOE, getHoeSettings(MMEToolMaterials.ADAMANTIUM).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4));
+    public static final Item ADAMANTIUM_MATTOCK = registerHoeItem(MMEItemIds.ADAMANTIUM_MATTOCK, getMattockSettings(MMEToolMaterials.ADAMANTIUM).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4));
+    public static final Item ADAMANTIUM_SCYTHE = register(MMEItemIds.ADAMANTIUM_SCYTHE, getScytheSettings(MMEToolMaterials.ADAMANTIUM).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4));
+    public static final Item ADAMANTIUM_SHEARS = registerShearsItem(MMEItemIds.ADAMANTIUM_SHEARS, getShearsSettings(MMEToolMaterials.ADAMANTIUM).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4));
+    public static final Item ADAMANTIUM_SPEAR = register(MMEItemIds.ADAMANTIUM_SPEAR, applySpearSettings(new Item.Properties(), MMEToolMaterials.ADAMANTIUM, 1.10F, 1.16F, 0.45F, 2.5F, 6.8F, 5.8F, 5.1F, 9.0F, 4.6F).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4));
 
     public static final Item ANCIENT_METAL_AXE = registerAxeItem(MMEItemIds.ANCIENT_METAL_AXE, getAxeSettings(MMEToolMaterials.ANCIENT_METAL));
     public static final Item ANCIENT_METAL_BATTLE_AXE = registerAxeItem(MMEItemIds.ANCIENT_METAL_BATTLE_AXE, getBattleAxeSettings(MMEToolMaterials.ANCIENT_METAL));
@@ -501,20 +501,20 @@ public class MMEItems {
     public static final Item IRON_MATTOCK = registerHoeItem(MMEItemIds.IRON_MATTOCK, getMattockSettings(MMEToolMaterials.IRON));
     public static final Item IRON_SCYTHE = register(MMEItemIds.IRON_SCYTHE, getScytheSettings(MMEToolMaterials.IRON));
 
-    public static final Item MITHRIL_AXE = registerAxeItem(MMEItemIds.MITHRIL_AXE, getAxeSettings(MMEToolMaterials.MITHRIL).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 3));
-    public static final Item MITHRIL_BATTLE_AXE = registerAxeItem(MMEItemIds.MITHRIL_BATTLE_AXE, getBattleAxeSettings(MMEToolMaterials.MITHRIL).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 3));
-    public static final Item MITHRIL_HATCHET = registerAxeItem(MMEItemIds.MITHRIL_HATCHET, getHandAxeSettings(MMEToolMaterials.MITHRIL).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 3));
-    public static final Item MITHRIL_SWORD = register(MMEItemIds.MITHRIL_SWORD, getSwordSettings(MMEToolMaterials.MITHRIL).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 3));
-    public static final Item MITHRIL_DAGGER = register(MMEItemIds.MITHRIL_DAGGER, getDaggerSettings(MMEToolMaterials.MITHRIL).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 3));
+    public static final Item MITHRIL_AXE = registerAxeItem(MMEItemIds.MITHRIL_AXE, getAxeSettings(MMEToolMaterials.MITHRIL).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 3));
+    public static final Item MITHRIL_BATTLE_AXE = registerAxeItem(MMEItemIds.MITHRIL_BATTLE_AXE, getBattleAxeSettings(MMEToolMaterials.MITHRIL).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 3));
+    public static final Item MITHRIL_HATCHET = registerAxeItem(MMEItemIds.MITHRIL_HATCHET, getHandAxeSettings(MMEToolMaterials.MITHRIL).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 3));
+    public static final Item MITHRIL_SWORD = register(MMEItemIds.MITHRIL_SWORD, getSwordSettings(MMEToolMaterials.MITHRIL).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 3));
+    public static final Item MITHRIL_DAGGER = register(MMEItemIds.MITHRIL_DAGGER, getDaggerSettings(MMEToolMaterials.MITHRIL).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 3));
     public static final Item MITHRIL_KNIFE = register(MMEItemIds.MITHRIL_KNIFE);
-    public static final Item MITHRIL_PICKAXE = register(MMEItemIds.MITHRIL_PICKAXE, getPickaxeSettings(MMEToolMaterials.MITHRIL).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 3));
-    public static final Item MITHRIL_WAR_HAMMER = register(MMEItemIds.MITHRIL_WAR_HAMMER, getWarHammerSettings(MMEToolMaterials.MITHRIL).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 3));
-    public static final Item MITHRIL_SHOVEL = registerShovelItem(MMEItemIds.MITHRIL_SHOVEL, getShovelSettings(MMEToolMaterials.MITHRIL).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 3));
-    public static final Item MITHRIL_HOE = registerHoeItem(MMEItemIds.MITHRIL_HOE, getHoeSettings(MMEToolMaterials.MITHRIL).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 3));
-    public static final Item MITHRIL_MATTOCK = registerHoeItem(MMEItemIds.MITHRIL_MATTOCK, getMattockSettings(MMEToolMaterials.MITHRIL).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 3));
-    public static final Item MITHRIL_SCYTHE = register(MMEItemIds.MITHRIL_SCYTHE, getScytheSettings(MMEToolMaterials.MITHRIL).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 3));
-    public static final Item MITHRIL_SHEARS = registerShearsItem(MMEItemIds.MITHRIL_SHEARS, getShearsSettings(MMEToolMaterials.MITHRIL).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 3));
-    public static final Item MITHRIL_SPEAR = register(MMEItemIds.MITHRIL_SPEAR, applySpearSettings(new Item.Properties(), MMEToolMaterials.MITHRIL, 1.06F, 1.10F, 0.50F, 2.5F, 7.2F, 6.2F, 5.1F, 9.5F, 4.6F).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 3));
+    public static final Item MITHRIL_PICKAXE = register(MMEItemIds.MITHRIL_PICKAXE, getPickaxeSettings(MMEToolMaterials.MITHRIL).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 3));
+    public static final Item MITHRIL_WAR_HAMMER = register(MMEItemIds.MITHRIL_WAR_HAMMER, getWarHammerSettings(MMEToolMaterials.MITHRIL).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 3));
+    public static final Item MITHRIL_SHOVEL = registerShovelItem(MMEItemIds.MITHRIL_SHOVEL, getShovelSettings(MMEToolMaterials.MITHRIL).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 3));
+    public static final Item MITHRIL_HOE = registerHoeItem(MMEItemIds.MITHRIL_HOE, getHoeSettings(MMEToolMaterials.MITHRIL).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 3));
+    public static final Item MITHRIL_MATTOCK = registerHoeItem(MMEItemIds.MITHRIL_MATTOCK, getMattockSettings(MMEToolMaterials.MITHRIL).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 3));
+    public static final Item MITHRIL_SCYTHE = register(MMEItemIds.MITHRIL_SCYTHE, getScytheSettings(MMEToolMaterials.MITHRIL).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 3));
+    public static final Item MITHRIL_SHEARS = registerShearsItem(MMEItemIds.MITHRIL_SHEARS, getShearsSettings(MMEToolMaterials.MITHRIL).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 3));
+    public static final Item MITHRIL_SPEAR = register(MMEItemIds.MITHRIL_SPEAR, applySpearSettings(new Item.Properties(), MMEToolMaterials.MITHRIL, 1.06F, 1.10F, 0.50F, 2.5F, 7.2F, 6.2F, 5.1F, 9.5F, 4.6F).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 3));
 
     public static final Item RUSTED_IRON_AXE = registerAxeItem(MMEItemIds.RUSTED_IRON_AXE, getAxeSettings(MMEToolMaterials.RUSTED_IRON));
     public static final Item RUSTED_IRON_BATTLE_AXE = registerAxeItem(MMEItemIds.RUSTED_IRON_BATTLE_AXE, getBattleAxeSettings(MMEToolMaterials.RUSTED_IRON));
@@ -561,21 +561,21 @@ public class MMEItems {
     public static final Item WOODEN_CUDGEL = register(MMEItemIds.WOODEN_CUDGEL, applySwordSettings(new Item.Properties(), MMEToolMaterials.WOOD, 1, 1, 3, -2.0F, 0.25F, 0.25F));
 
     public static final Item ADAMANTIUM_CHAINS = register(MMEItemIds.ADAMANTIUM_CHAINS,
-            new Item.Properties().stacksTo(16).component(MMEDataComponentTypes.CRAFTING_TIME, 75));
+            new Item.Properties().stacksTo(16).component(MMEDataComponents.CRAFTING_TIME, 75));
     public static final Item MITHRIL_CHAINS = register(MMEItemIds.MITHRIL_CHAINS,
-            new Item.Properties().stacksTo(16).component(MMEDataComponentTypes.CRAFTING_TIME, 45));
+            new Item.Properties().stacksTo(16).component(MMEDataComponents.CRAFTING_TIME, 45));
     public static final Item ANCIENT_METAL_CHAINS = register(MMEItemIds.ANCIENT_METAL_CHAINS,
-            new Item.Properties().stacksTo(16).component(MMEDataComponentTypes.CRAFTING_TIME, 30));
+            new Item.Properties().stacksTo(16).component(MMEDataComponents.CRAFTING_TIME, 30));
     public static final Item IRON_CHAINS = register(MMEItemIds.IRON_CHAINS,
-            new Item.Properties().stacksTo(16).component(MMEDataComponentTypes.CRAFTING_TIME, 15));
+            new Item.Properties().stacksTo(16).component(MMEDataComponents.CRAFTING_TIME, 15));
     public static final Item RUSTED_IRON_CHAINS = register(MMEItemIds.RUSTED_IRON_CHAINS,
-            new Item.Properties().stacksTo(16).component(MMEDataComponentTypes.CRAFTING_TIME, 5));
+            new Item.Properties().stacksTo(16).component(MMEDataComponents.CRAFTING_TIME, 5));
     public static final Item GOLDEN_CHAINS = register(MMEItemIds.GOLDEN_CHAINS,
-            new Item.Properties().stacksTo(16).component(MMEDataComponentTypes.CRAFTING_TIME, 5));
+            new Item.Properties().stacksTo(16).component(MMEDataComponents.CRAFTING_TIME, 5));
     public static final Item COPPER_CHAINS = register(MMEItemIds.COPPER_CHAINS,
-            new Item.Properties().stacksTo(16).component(MMEDataComponentTypes.CRAFTING_TIME, 5));
+            new Item.Properties().stacksTo(16).component(MMEDataComponents.CRAFTING_TIME, 5));
     public static final Item SILVER_CHAINS = register(MMEItemIds.SILVER_CHAINS,
-            new Item.Properties().stacksTo(16).component(MMEDataComponentTypes.CRAFTING_TIME, 5));
+            new Item.Properties().stacksTo(16).component(MMEDataComponents.CRAFTING_TIME, 5));
 
     public static final Item NETHERITE_COINS = register(
             MMEItemIds.NETHERITE_COINS,
@@ -1228,45 +1228,45 @@ public class MMEItems {
     public static final Item SILVER_FISHING_ROD = register(MMEItemIds.SILVER_FISHING_ROD, FishingRodItem::new, new Item.Properties().durability(8).enchantable(10));
 
     public static final Item RAW_ADAMANTIUM = register(MMEItemIds.RAW_ADAMANTIUM,
-            new Item.Properties().stacksTo(8).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
+            new Item.Properties().stacksTo(8).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4));
     public static final Item RAW_MITHRIL = register(MMEItemIds.RAW_MITHRIL,
-            new Item.Properties().stacksTo(8).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 3));
+            new Item.Properties().stacksTo(8).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 3));
     public static final Item RAW_SILVER = register(MMEItemIds.RAW_SILVER,
-            new Item.Properties().stacksTo(8).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+            new Item.Properties().stacksTo(8).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2));
 
     public static final Item ADAMANTIUM_INGOT = register(MMEItemIds.ADAMANTIUM_INGOT,
-            new Item.Properties().component(MMEDataComponentTypes.CRAFTING_TIME, 50).stacksTo(16));
+            new Item.Properties().component(MMEDataComponents.CRAFTING_TIME, 50).stacksTo(16));
     public static final Item MITHRIL_INGOT = register(MMEItemIds.MITHRIL_INGOT,
-            new Item.Properties().component(MMEDataComponentTypes.CRAFTING_TIME, 30).stacksTo(16));
+            new Item.Properties().component(MMEDataComponents.CRAFTING_TIME, 30).stacksTo(16));
     public static final Item ANCIENT_METAL_INGOT = register(MMEItemIds.ANCIENT_METAL_INGOT,
-            new Item.Properties().component(MMEDataComponentTypes.CRAFTING_TIME, 20).stacksTo(16));
+            new Item.Properties().component(MMEDataComponents.CRAFTING_TIME, 20).stacksTo(16));
     public static final Item SILVER_INGOT = register(MMEItemIds.SILVER_INGOT,
-            new Item.Properties().component(MMEDataComponentTypes.CRAFTING_TIME, 5).stacksTo(16));
+            new Item.Properties().component(MMEDataComponents.CRAFTING_TIME, 5).stacksTo(16));
 
     public static final Item NETHERITE_NUGGET = register(
             MMEItemIds.NETHERITE_NUGGET,
             settings -> new NuggetItem(settings, 5000),
-            new Item.Properties().component(MMEDataComponentTypes.CRAFTING_TIME, 10)
+            new Item.Properties().component(MMEDataComponents.CRAFTING_TIME, 10)
     );
     public static final Item ADAMANTIUM_NUGGET = register(
             MMEItemIds.ADAMANTIUM_NUGGET,
             settings -> new NuggetItem(settings, 1000),
-            new Item.Properties().component(MMEDataComponentTypes.CRAFTING_TIME, 7)
+            new Item.Properties().component(MMEDataComponents.CRAFTING_TIME, 7)
     );
     public static final Item MITHRIL_NUGGET = register(
             MMEItemIds.MITHRIL_NUGGET,
             settings -> new NuggetItem(settings, 500),
-            new Item.Properties().component(MMEDataComponentTypes.CRAFTING_TIME, 5)
+            new Item.Properties().component(MMEDataComponents.CRAFTING_TIME, 5)
     );
     public static final Item ANCIENT_METAL_NUGGET = register(
             MMEItemIds.ANCIENT_METAL_NUGGET,
             settings -> new NuggetItem(settings, 300),
-            new Item.Properties().component(MMEDataComponentTypes.CRAFTING_TIME, 4)
+            new Item.Properties().component(MMEDataComponents.CRAFTING_TIME, 4)
     );
     public static final Item SILVER_NUGGET = register(
             MMEItemIds.SILVER_NUGGET,
             settings -> new NuggetItem(settings, 50),
-            new Item.Properties().component(MMEDataComponentTypes.CRAFTING_TIME, 1)
+            new Item.Properties().component(MMEDataComponents.CRAFTING_TIME, 1)
     );
 
     public static final Item FLINT_SHARD = register(MMEItemIds.FLINT_SHARD,
@@ -1772,10 +1772,6 @@ public class MMEItems {
             return new Item.Properties().durability(type.getDurability((int) (material.durability() * 0.45)))
                     .attributes(material.createAttributeModifiers(type))
                     .enchantable(material.enchantmentValue())
-                    .component(
-                            MMEDataComponentTypes.ORIGINAL_ARMOR,
-                            material.defense().getOrDefault(type, 0F)
-                    )
                     .component(
                             DataComponents.EQUIPPABLE,
                             Equippable.builder(type.getSlot()).setEquipSound(material.equipSound()).setAsset(material.assetId()).build()

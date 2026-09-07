@@ -1,6 +1,6 @@
 package com.acuteterror233.mite.block;
 
-import com.acuteterror233.mite.component.MMEDataComponentTypes;
+import com.acuteterror233.mite.component.MMEDataComponents;
 import com.acuteterror233.mite.item.MMEToolMaterials;
 import com.acuteterror233.mite.registry.tag.MMEItemTags;
 import net.minecraft.core.Registry;
@@ -25,46 +25,46 @@ public class MMEBlocks {
     public static final Block ADAMANTIUM_ORE = register(        //艾德曼矿
             MMEBlockItemIds.ADAMANTIUM_ORE,
             BlockBehaviour.Properties.of().strength(5.0f, 10.0f).requiresCorrectToolForDrops(),
-            new Item.Properties().component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4)
+            new Item.Properties().component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4)
     );
     public static final Block MITHRIL_ORE = register(           //秘银矿
             MMEBlockItemIds.MITHRIL_ORE,
             BlockBehaviour.Properties.of().strength(4.0f, 5.0f).requiresCorrectToolForDrops(),
-            new Item.Properties().component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 3)
+            new Item.Properties().component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 3)
     );
     public static final Block SILVER_ORE = register(            //银矿
             MMEBlockItemIds.SILVER_ORE,
             BlockBehaviour.Properties.of().strength(3.0f, 3.0f).requiresCorrectToolForDrops(),
-            new Item.Properties().component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2)
+            new Item.Properties().component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2)
     );
 
     public static final Block DEEPSLATE_ADAMANTIUM_ORE = register(        //深层艾德曼矿
             MMEBlockItemIds.DEEPSLATE_ADAMANTIUM_ORE,
             BlockBehaviour.Properties.of().strength(5.5f, 10.0f).requiresCorrectToolForDrops(),
-            new Item.Properties().component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4)
+            new Item.Properties().component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4)
     );
     public static final Block DEEPSLATE_MITHRIL_ORE = register(           //深层秘银矿
             MMEBlockItemIds.DEEPSLATE_MITHRIL_ORE,
             BlockBehaviour.Properties.of().strength(4.5f, 5.0f).requiresCorrectToolForDrops(),
-            new Item.Properties().component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 3)
+            new Item.Properties().component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 3)
     );
     public static final Block DEEPSLATE_SILVER_ORE = register(            //深层银矿
             MMEBlockItemIds.DEEPSLATE_SILVER_ORE,
             BlockBehaviour.Properties.of().strength(4.5f, 3.0f).requiresCorrectToolForDrops(),
-            new Item.Properties().component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2)
+            new Item.Properties().component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2)
     );
 
     public static final Block ADAMANTIUM_BLOCK = register(      //艾德曼块
-            MMEBlockItemIds.ADAMANTIUM_BLOCK, BlockBehaviour.Properties.ofFullCopy(Blocks.BEDROCK).requiresCorrectToolForDrops(), new Item.Properties().component(MMEDataComponentTypes.CRAFTING_TIME, 1350)
+            MMEBlockItemIds.ADAMANTIUM_BLOCK, BlockBehaviour.Properties.ofFullCopy(Blocks.BEDROCK).requiresCorrectToolForDrops(), new Item.Properties().component(MMEDataComponents.CRAFTING_TIME, 1350)
     );
     public static final Block ANCIENT_METAL_BLOCK = register(   //远古金属块
-            MMEBlockItemIds.ANCIENT_METAL_BLOCK, BlockBehaviour.Properties.of().strength(35f, 35f).requiresCorrectToolForDrops(), new Item.Properties().component(MMEDataComponentTypes.CRAFTING_TIME, 540)
+            MMEBlockItemIds.ANCIENT_METAL_BLOCK, BlockBehaviour.Properties.of().strength(35f, 35f).requiresCorrectToolForDrops(), new Item.Properties().component(MMEDataComponents.CRAFTING_TIME, 540)
     );
     public static final Block MITHRIL_BLOCK = register(         //秘银块
-            MMEBlockItemIds.MITHRIL_BLOCK, BlockBehaviour.Properties.of().strength(40f, 40f).requiresCorrectToolForDrops(), new Item.Properties().component(MMEDataComponentTypes.CRAFTING_TIME, 810)
+            MMEBlockItemIds.MITHRIL_BLOCK, BlockBehaviour.Properties.of().strength(40f, 40f).requiresCorrectToolForDrops(), new Item.Properties().component(MMEDataComponents.CRAFTING_TIME, 810)
     );
     public static final Block SILVER_BLOCK = register(          //银块
-            MMEBlockItemIds.SILVER_BLOCK, BlockBehaviour.Properties.of().strength(10f, 10f).requiresCorrectToolForDrops(), new Item.Properties().component(MMEDataComponentTypes.CRAFTING_TIME, 90)
+            MMEBlockItemIds.SILVER_BLOCK, BlockBehaviour.Properties.of().strength(10f, 10f).requiresCorrectToolForDrops(), new Item.Properties().component(MMEDataComponents.CRAFTING_TIME, 90)
     );
 
     public static final Block CLAY_FURNACE = register(
@@ -448,7 +448,7 @@ public class MMEBlocks {
     }
     public static Block register(BlockItemId blockItemId, Function<BlockBehaviour.Properties, Block> factory, BlockBehaviour.Properties settings, Item.Properties itemSettings) {
         Block block = Blocks.register(blockItemId.blockKey(), factory, settings);
-        registerBlockItem(block, blockItemId.itemKey(), (b, properties) -> new BlockItem(b, properties), itemSettings);
+        registerBlockItem(block, blockItemId.itemKey(), BlockItem::new, itemSettings);
         return block;
     }
 

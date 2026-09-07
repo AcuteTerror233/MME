@@ -1,6 +1,6 @@
 package com.acuteterror233.mite.block.entity;
 
-import com.acuteterror233.mite.component.MMEDataComponentTypes;
+import com.acuteterror233.mite.component.MMEDataComponents;
 import com.acuteterror233.mite.interfaces.GetFuelGradeRegistryExtension;
 import com.acuteterror233.mite.item.FuelGradeRegistry;
 import com.acuteterror233.mite.registry.tag.MMEItemTags;
@@ -169,7 +169,7 @@ public abstract class AbstractGradeFurnaceBlockEntity extends BaseContainerBlock
             // 获取燃料等级以及最大堆叠数量限制
             int fuelGrade = blockEntity.getFuelGrade(((GetFuelGradeRegistryExtension) world).MME$GetFuelGradeRegistry(), fuelSlot);
             int maxCountPerStack = blockEntity.getMaxStackSize();
-            Integer itemRequiredCombustionGrade = inputSlot.get(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE);
+            Integer itemRequiredCombustionGrade = inputSlot.get(MMEDataComponents.REQUIRED_COMBUSTION_GRADE);
             int requiredCombustionGrade = itemRequiredCombustionGrade == null ? 0 : itemRequiredCombustionGrade;
             // 检查方块实体是否未在燃烧、燃料等级是否满足要求、是否不超过最大燃烧等级，
             // 并且能否接受当前配方的输出，若条件满足则设置方块实体的燃烧等级

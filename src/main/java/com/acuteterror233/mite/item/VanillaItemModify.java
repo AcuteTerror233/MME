@@ -1,7 +1,7 @@
 package com.acuteterror233.mite.item;
 
 import com.acuteterror233.mite.block.MMEBlocks;
-import com.acuteterror233.mite.component.MMEDataComponentTypes;
+import com.acuteterror233.mite.component.MMEDataComponents;
 import com.acuteterror233.mite.item.armor.MMEArmorMaterials;
 import com.acuteterror233.mite.world.food.FoodNutrition;
 import net.minecraft.core.registries.Registries;
@@ -90,15 +90,15 @@ public final class VanillaItemModify {
         result.put(Identifier.withDefaultNamespace("sugar"), settings -> settings
                 .stacksTo(8)
                 .food(new FoodProperties(0, 1, false))
-                .component(MMEDataComponentTypes.FOOD_NUTRITION, new FoodNutrition(0, 0, 4800))
+                .component(MMEDataComponents.FOOD_NUTRITION, new FoodNutrition(0, 0, 4800))
         );
 
         // 最大堆叠为 16 的物品标识
-        result.put(Identifier.withDefaultNamespace("iron_ingot"), settings -> settings.stacksTo(16).component(MMEDataComponentTypes.CRAFTING_TIME, 10));
-        result.put(Identifier.withDefaultNamespace("copper_ingot"), settings -> settings.stacksTo(16).component(MMEDataComponentTypes.CRAFTING_TIME, 5));
-        result.put(Identifier.withDefaultNamespace("gold_ingot"), settings -> settings.stacksTo(16).component(MMEDataComponentTypes.CRAFTING_TIME, 5));
-        result.put(Identifier.withDefaultNamespace("netherite_ingot"), settings -> settings.stacksTo(16).component(MMEDataComponentTypes.CRAFTING_TIME, 70));
-        result.put(Identifier.withDefaultNamespace("leather"), settings -> settings.stacksTo(16).component(MMEDataComponentTypes.CRAFTING_TIME, 2));
+        result.put(Identifier.withDefaultNamespace("iron_ingot"), settings -> settings.stacksTo(16).component(MMEDataComponents.CRAFTING_TIME, 10));
+        result.put(Identifier.withDefaultNamespace("copper_ingot"), settings -> settings.stacksTo(16).component(MMEDataComponents.CRAFTING_TIME, 5));
+        result.put(Identifier.withDefaultNamespace("gold_ingot"), settings -> settings.stacksTo(16).component(MMEDataComponents.CRAFTING_TIME, 5));
+        result.put(Identifier.withDefaultNamespace("netherite_ingot"), settings -> settings.stacksTo(16).component(MMEDataComponents.CRAFTING_TIME, 70));
+        result.put(Identifier.withDefaultNamespace("leather"), settings -> settings.stacksTo(16).component(MMEDataComponents.CRAFTING_TIME, 2));
         result.put(Identifier.withDefaultNamespace("coal"), settings -> settings.stacksTo(16));
         result.put(Identifier.withDefaultNamespace("charcoal"), settings -> settings.stacksTo(16));
         result.put(Identifier.withDefaultNamespace("emerald"), settings -> settings.stacksTo(16));
@@ -137,34 +137,34 @@ public final class VanillaItemModify {
         result.put(Identifier.withDefaultNamespace("glow_berries"), settings -> settings
                 .stacksTo(16)
                 .food(new FoodProperties(1, 1, false))
-                .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().fiber(4800).build())
+                .component(MMEDataComponents.FOOD_NUTRITION, FoodNutrition.builder().fiber(4800).build())
         );
         result.put(Identifier.withDefaultNamespace("rabbit"), settings -> settings
                 .stacksTo(16)
-                .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().protein(24000).build())
+                .component(MMEDataComponents.FOOD_NUTRITION, FoodNutrition.builder().protein(24000).build())
         );
         result.put(Identifier.withDefaultNamespace("cooked_rabbit"), settings -> settings
                 .stacksTo(16)
-                .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().protein(48000).build())
+                .component(MMEDataComponents.FOOD_NUTRITION, FoodNutrition.builder().protein(48000).build())
         );
         result.put(Identifier.withDefaultNamespace("beetroot"), settings -> settings
                 .stacksTo(16)
-                .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().fiber(16000).build())
+                .component(MMEDataComponents.FOOD_NUTRITION, FoodNutrition.builder().fiber(16000).build())
         );
         result.put(Identifier.withDefaultNamespace("mutton"), settings -> settings
                 .stacksTo(16)
                 .food(new FoodProperties(3, 3, false))
-                .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().protein(24000).build())
+                .component(MMEDataComponents.FOOD_NUTRITION, FoodNutrition.builder().protein(24000).build())
         );
         result.put(Identifier.withDefaultNamespace("cooked_mutton"), settings -> settings
                 .stacksTo(16)
                 .food(new FoodProperties(6, 6, false))
-                .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().protein(48000).build())
+                .component(MMEDataComponents.FOOD_NUTRITION, FoodNutrition.builder().protein(48000).build())
         );
         result.put(Identifier.withDefaultNamespace("pumpkin_pie"), settings -> settings
                 .stacksTo(16)
                 .food(new FoodProperties(6, 10, false))
-                .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().protein(48000).fiber(48000).sugar(4800).build())
+                .component(MMEDataComponents.FOOD_NUTRITION, FoodNutrition.builder().protein(48000).fiber(48000).sugar(4800).build())
         );
         result.put(Identifier.withDefaultNamespace("potato"), settings -> settings
                 .stacksTo(16)
@@ -181,17 +181,17 @@ public final class VanillaItemModify {
         result.put(Identifier.withDefaultNamespace("carrot"), settings -> settings
                 .stacksTo(16)
                 .food(new FoodProperties(2, 1, false))
-                .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().fiber(16000).build())
+                .component(MMEDataComponents.FOOD_NUTRITION, FoodNutrition.builder().fiber(16000).build())
         );
         result.put(Identifier.withDefaultNamespace("golden_carrot"), settings -> settings
                 .stacksTo(16)
                 .food(new FoodProperties(2, 1, false))
-                .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().fiber(16000).build())
+                .component(MMEDataComponents.FOOD_NUTRITION, FoodNutrition.builder().fiber(16000).build())
         );
         result.put(Identifier.withDefaultNamespace("spider_eye"), settings -> settings
                 .stacksTo(16)
                 .food(new FoodProperties(1, 0, false))
-                .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().protein(8000).build())
+                .component(MMEDataComponents.FOOD_NUTRITION, FoodNutrition.builder().protein(8000).build())
         );
         result.put(Identifier.withDefaultNamespace("nether_wart"), settings -> settings
                 .stacksTo(16)
@@ -200,7 +200,7 @@ public final class VanillaItemModify {
         result.put(Identifier.withDefaultNamespace("rotten_flesh"), settings -> settings
                 .stacksTo(16)
                 .food(new FoodProperties(1, 2, false))
-                .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().protein(8000).build())
+                .component(MMEDataComponents.FOOD_NUTRITION, FoodNutrition.builder().protein(8000).build())
         );
         result.put(Identifier.withDefaultNamespace("chicken"), settings -> settings
                 .stacksTo(16)
@@ -209,52 +209,52 @@ public final class VanillaItemModify {
                         .onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(MobEffects.POISON, 1200), 0.5F))
                         .build()
                 )
-                .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().protein(24000).build())
+                .component(MMEDataComponents.FOOD_NUTRITION, FoodNutrition.builder().protein(24000).build())
         );
         result.put(Identifier.withDefaultNamespace("cooked_chicken"), settings -> settings
                 .stacksTo(16)
                 .food(new FoodProperties(6, 6, false))
-                .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().protein(48000).build())
+                .component(MMEDataComponents.FOOD_NUTRITION, FoodNutrition.builder().protein(48000).build())
         );
         result.put(Identifier.withDefaultNamespace("beef"), settings -> settings
                 .stacksTo(16)
                 .food(new FoodProperties(5, 5, false))
-                .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().protein(40000).build())
+                .component(MMEDataComponents.FOOD_NUTRITION, FoodNutrition.builder().protein(40000).build())
         );
         result.put(Identifier.withDefaultNamespace("cooked_beef"), settings -> settings
                 .stacksTo(16)
                 .food(new FoodProperties(10, 10, false))
-                .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().protein(80000).build())
+                .component(MMEDataComponents.FOOD_NUTRITION, FoodNutrition.builder().protein(80000).build())
         );
         result.put(Identifier.withDefaultNamespace("cod"), settings -> settings
                 .stacksTo(16)
                 .food(new FoodProperties(3, 3, false))
-                .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().protein(24000).build())
+                .component(MMEDataComponents.FOOD_NUTRITION, FoodNutrition.builder().protein(24000).build())
         );
         result.put(Identifier.withDefaultNamespace("cooked_cod"), settings -> settings
                 .stacksTo(16)
                 .food(new FoodProperties(6, 6, false))
-                .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().protein(48000).build())
+                .component(MMEDataComponents.FOOD_NUTRITION, FoodNutrition.builder().protein(48000).build())
         );
         result.put(Identifier.withDefaultNamespace("salmon"), settings -> settings
                 .stacksTo(16)
                 .food(new FoodProperties(3, 3, false))
-                .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().protein(24000).build())
+                .component(MMEDataComponents.FOOD_NUTRITION, FoodNutrition.builder().protein(24000).build())
         );
         result.put(Identifier.withDefaultNamespace("cooked_salmon"), settings -> settings
                 .stacksTo(16)
                 .food(new FoodProperties(6, 6, false))
-                .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().protein(48000).build())
+                .component(MMEDataComponents.FOOD_NUTRITION, FoodNutrition.builder().protein(48000).build())
         );
         result.put(Identifier.withDefaultNamespace("porkchop"), settings -> settings
                 .stacksTo(16)
                 .food(new FoodProperties(4, 4, false))
-                .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().protein(32000).build())
+                .component(MMEDataComponents.FOOD_NUTRITION, FoodNutrition.builder().protein(32000).build())
         );
         result.put(Identifier.withDefaultNamespace("cooked_porkchop"), settings -> settings
                 .stacksTo(16)
                 .food(new FoodProperties(8, 8, false))
-                .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().protein(64000).build())
+                .component(MMEDataComponents.FOOD_NUTRITION, FoodNutrition.builder().protein(64000).build())
         );
         result.put(Identifier.withDefaultNamespace("bread"), settings -> settings
                 .stacksTo(16)
@@ -263,7 +263,7 @@ public final class VanillaItemModify {
         result.put(Identifier.withDefaultNamespace("apple"), settings -> settings
                 .stacksTo(16)
                 .food(new FoodProperties(1, 2, false))
-                .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().fiber(8000).sugar(4800).build())
+                .component(MMEDataComponents.FOOD_NUTRITION, FoodNutrition.builder().fiber(8000).sugar(4800).build())
         );
         result.put(Identifier.withDefaultNamespace("golden_apple"), settings -> settings
                 .stacksTo(16)
@@ -272,7 +272,7 @@ public final class VanillaItemModify {
                                 new ApplyStatusEffectsConsumeEffect(List.of(new MobEffectInstance(MobEffects.REGENERATION, 1200, 1), new MobEffectInstance(MobEffects.ABSORPTION, 2400, 0)))
                         ).build()
                 )
-                .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().fiber(8000).sugar(4800).build())
+                .component(MMEDataComponents.FOOD_NUTRITION, FoodNutrition.builder().fiber(8000).sugar(4800).build())
         );
         result.put(Identifier.withDefaultNamespace("enchanted_golden_apple"), settings -> settings
                 .stacksTo(16)
@@ -288,19 +288,19 @@ public final class VanillaItemModify {
                                 )
                         ).build()
                 )
-                .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().fiber(8000).sugar(4800).build())
+                .component(MMEDataComponents.FOOD_NUTRITION, FoodNutrition.builder().fiber(8000).sugar(4800).build())
         );
         result.put(Identifier.withDefaultNamespace("raw_copper"), settings -> settings
                 .stacksTo(8)
-                .component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2)
+                .component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2)
         );
         result.put(Identifier.withDefaultNamespace("raw_gold"), settings -> settings
                 .stacksTo(8)
-                .component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2)
+                .component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2)
         );
         result.put(Identifier.withDefaultNamespace("raw_iron"), settings -> settings
                 .stacksTo(8)
-                .component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2)
+                .component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2)
         );
 
         // 最大堆叠为 32 的物品标识
@@ -321,15 +321,15 @@ public final class VanillaItemModify {
         result.put(Identifier.withDefaultNamespace("cocoa_beans"), settings -> settings.stacksTo(32));
         result.put(Identifier.withDefaultNamespace("seagrass"), settings -> settings.stacksTo(32));
         result.put(Identifier.withDefaultNamespace("gunpowder"), settings -> settings.stacksTo(32));
-        result.put(Identifier.withDefaultNamespace("copper_nugget"), settings -> settings.stacksTo(32).component(MMEDataComponentTypes.CRAFTING_TIME, 1));
+        result.put(Identifier.withDefaultNamespace("copper_nugget"), settings -> settings.stacksTo(32).component(MMEDataComponents.CRAFTING_TIME, 1));
         result.put(Identifier.withDefaultNamespace("sweet_berries"), settings -> settings
                 .stacksTo(32)
                 .food(new FoodProperties(1, 1, false))
-                .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().sugar(4800).build())
+                .component(MMEDataComponents.FOOD_NUTRITION, FoodNutrition.builder().sugar(4800).build())
         );
         result.put(Identifier.withDefaultNamespace("dried_kelp"), settings -> settings
                 .stacksTo(32)
-                .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().fiber(4800).build())
+                .component(MMEDataComponents.FOOD_NUTRITION, FoodNutrition.builder().fiber(4800).build())
         );
         result.put(Identifier.withDefaultNamespace("beetroot_seeds"), settings -> settings
                 .stacksTo(32)
@@ -338,12 +338,12 @@ public final class VanillaItemModify {
         result.put(Identifier.withDefaultNamespace("melon_slice"), settings -> settings
                 .stacksTo(32)
                 .food(new FoodProperties(1, 1, false))
-                .component(MMEDataComponentTypes.FOOD_NUTRITION, new FoodNutrition(0, 8000, 4800))
+                .component(MMEDataComponents.FOOD_NUTRITION, new FoodNutrition(0, 8000, 4800))
         );
         result.put(Identifier.withDefaultNamespace("cookie"), settings -> settings
                 .stacksTo(32)
                 .food(new FoodProperties(1, 3, false))
-                .component(MMEDataComponentTypes.FOOD_NUTRITION, new FoodNutrition(0, 0, 1200))
+                .component(MMEDataComponents.FOOD_NUTRITION, new FoodNutrition(0, 0, 1200))
         );
         result.put(Identifier.withDefaultNamespace("melon_seeds"), settings -> settings
                 .stacksTo(32)
@@ -378,35 +378,35 @@ public final class VanillaItemModify {
         result.put(Identifier.withDefaultNamespace("wooden_axe"), settings -> new Item.Properties());
         result.put(Identifier.withDefaultNamespace("wooden_hoe"), settings -> new Item.Properties());
 
-        result.put(Identifier.withDefaultNamespace("netherite_sword"), settings -> MMEItems.getSwordSettings(MMEToolMaterials.NETHERITE).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
-        result.put(Identifier.withDefaultNamespace("netherite_shovel"), settings -> MMEItems.getShovelSettings(MMEToolMaterials.NETHERITE).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
-        result.put(Identifier.withDefaultNamespace("netherite_pickaxe"), settings -> MMEItems.getPickaxeSettings(MMEToolMaterials.NETHERITE).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
-        result.put(Identifier.withDefaultNamespace("netherite_axe"), settings -> MMEItems.getAxeSettings(MMEToolMaterials.NETHERITE).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
-        result.put(Identifier.withDefaultNamespace("netherite_hoe"), settings -> MMEItems.getHoeSettings(MMEToolMaterials.NETHERITE).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
+        result.put(Identifier.withDefaultNamespace("netherite_sword"), settings -> MMEItems.getSwordSettings(MMEToolMaterials.NETHERITE).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4));
+        result.put(Identifier.withDefaultNamespace("netherite_shovel"), settings -> MMEItems.getShovelSettings(MMEToolMaterials.NETHERITE).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4));
+        result.put(Identifier.withDefaultNamespace("netherite_pickaxe"), settings -> MMEItems.getPickaxeSettings(MMEToolMaterials.NETHERITE).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4));
+        result.put(Identifier.withDefaultNamespace("netherite_axe"), settings -> MMEItems.getAxeSettings(MMEToolMaterials.NETHERITE).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4));
+        result.put(Identifier.withDefaultNamespace("netherite_hoe"), settings -> MMEItems.getHoeSettings(MMEToolMaterials.NETHERITE).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4));
 
-        result.put(Identifier.withDefaultNamespace("netherite_helmet"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.NETHERITE_MATERIAL, ArmorType.HELMET).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
-        result.put(Identifier.withDefaultNamespace("netherite_chestplate"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.NETHERITE_MATERIAL, ArmorType.CHESTPLATE).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
-        result.put(Identifier.withDefaultNamespace("netherite_leggings"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.NETHERITE_MATERIAL, ArmorType.LEGGINGS).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
-        result.put(Identifier.withDefaultNamespace("netherite_boots"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.NETHERITE_MATERIAL, ArmorType.BOOTS).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
+        result.put(Identifier.withDefaultNamespace("netherite_helmet"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.NETHERITE_MATERIAL, ArmorType.HELMET).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4));
+        result.put(Identifier.withDefaultNamespace("netherite_chestplate"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.NETHERITE_MATERIAL, ArmorType.CHESTPLATE).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4));
+        result.put(Identifier.withDefaultNamespace("netherite_leggings"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.NETHERITE_MATERIAL, ArmorType.LEGGINGS).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4));
+        result.put(Identifier.withDefaultNamespace("netherite_boots"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.NETHERITE_MATERIAL, ArmorType.BOOTS).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4));
 
-        result.put(Identifier.withDefaultNamespace("iron_sword"), settings -> MMEItems.getSwordSettings(MMEToolMaterials.IRON).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
-        result.put(Identifier.withDefaultNamespace("iron_shovel"), settings -> MMEItems.getShovelSettings(MMEToolMaterials.IRON).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
-        result.put(Identifier.withDefaultNamespace("iron_pickaxe"), settings -> MMEItems.getPickaxeSettings(MMEToolMaterials.IRON).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
-        result.put(Identifier.withDefaultNamespace("iron_axe"), settings -> MMEItems.getAxeSettings(MMEToolMaterials.IRON).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
-        result.put(Identifier.withDefaultNamespace("iron_hoe"), settings -> MMEItems.getHoeSettings(MMEToolMaterials.IRON).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(Identifier.withDefaultNamespace("iron_sword"), settings -> MMEItems.getSwordSettings(MMEToolMaterials.IRON).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(Identifier.withDefaultNamespace("iron_shovel"), settings -> MMEItems.getShovelSettings(MMEToolMaterials.IRON).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(Identifier.withDefaultNamespace("iron_pickaxe"), settings -> MMEItems.getPickaxeSettings(MMEToolMaterials.IRON).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(Identifier.withDefaultNamespace("iron_axe"), settings -> MMEItems.getAxeSettings(MMEToolMaterials.IRON).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(Identifier.withDefaultNamespace("iron_hoe"), settings -> MMEItems.getHoeSettings(MMEToolMaterials.IRON).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2));
         result.put(Identifier.withDefaultNamespace("shears"), settings -> MMEItems.getShearsSettings(MMEToolMaterials.IRON));
 
-        result.put(Identifier.withDefaultNamespace("golden_sword"), settings -> MMEItems.getSwordSettings(MMEToolMaterials.GOLD).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
-        result.put(Identifier.withDefaultNamespace("golden_shovel"), settings -> MMEItems.getShovelSettings(MMEToolMaterials.GOLD).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
-        result.put(Identifier.withDefaultNamespace("golden_pickaxe"), settings -> MMEItems.getPickaxeSettings(MMEToolMaterials.GOLD).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
-        result.put(Identifier.withDefaultNamespace("golden_axe"), settings -> MMEItems.getAxeSettings(MMEToolMaterials.GOLD).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
-        result.put(Identifier.withDefaultNamespace("golden_hoe"), settings -> MMEItems.getHoeSettings(MMEToolMaterials.GOLD).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(Identifier.withDefaultNamespace("golden_sword"), settings -> MMEItems.getSwordSettings(MMEToolMaterials.GOLD).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(Identifier.withDefaultNamespace("golden_shovel"), settings -> MMEItems.getShovelSettings(MMEToolMaterials.GOLD).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(Identifier.withDefaultNamespace("golden_pickaxe"), settings -> MMEItems.getPickaxeSettings(MMEToolMaterials.GOLD).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(Identifier.withDefaultNamespace("golden_axe"), settings -> MMEItems.getAxeSettings(MMEToolMaterials.GOLD).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(Identifier.withDefaultNamespace("golden_hoe"), settings -> MMEItems.getHoeSettings(MMEToolMaterials.GOLD).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2));
 
-        result.put(Identifier.withDefaultNamespace("copper_sword"), settings -> MMEItems.getSwordSettings(MMEToolMaterials.COPPER).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
-        result.put(Identifier.withDefaultNamespace("copper_shovel"), settings -> MMEItems.getShovelSettings(MMEToolMaterials.COPPER).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
-        result.put(Identifier.withDefaultNamespace("copper_pickaxe"), settings -> MMEItems.getPickaxeSettings(MMEToolMaterials.COPPER).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
-        result.put(Identifier.withDefaultNamespace("copper_axe"), settings -> MMEItems.getAxeSettings(MMEToolMaterials.COPPER).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
-        result.put(Identifier.withDefaultNamespace("copper_hoe"), settings -> MMEItems.getHoeSettings(MMEToolMaterials.COPPER).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(Identifier.withDefaultNamespace("copper_sword"), settings -> MMEItems.getSwordSettings(MMEToolMaterials.COPPER).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(Identifier.withDefaultNamespace("copper_shovel"), settings -> MMEItems.getShovelSettings(MMEToolMaterials.COPPER).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(Identifier.withDefaultNamespace("copper_pickaxe"), settings -> MMEItems.getPickaxeSettings(MMEToolMaterials.COPPER).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(Identifier.withDefaultNamespace("copper_axe"), settings -> MMEItems.getAxeSettings(MMEToolMaterials.COPPER).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(Identifier.withDefaultNamespace("copper_hoe"), settings -> MMEItems.getHoeSettings(MMEToolMaterials.COPPER).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2));
 
         // 原版矛（石矛、钻石矛除外）
         result.put(Identifier.withDefaultNamespace("wooden_spear"), settings -> MMEItems.VanillaSpearSettings(settings, MMEToolMaterials.WOOD, 4, 0.65F));
@@ -415,25 +415,25 @@ public final class VanillaItemModify {
         result.put(Identifier.withDefaultNamespace("golden_spear"), settings -> MMEItems.VanillaSpearSettings(settings, MMEToolMaterials.GOLD, 4, 0.95F));
         result.put(Identifier.withDefaultNamespace("netherite_spear"), settings -> MMEItems.VanillaSpearSettings(settings, MMEToolMaterials.NETHERITE, 4, 1.15F));
 
-        result.put(Identifier.withDefaultNamespace("copper_helmet"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.COPPER_MATERIAL, ArmorType.HELMET).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
-        result.put(Identifier.withDefaultNamespace("copper_chestplate"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.COPPER_MATERIAL, ArmorType.CHESTPLATE).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
-        result.put(Identifier.withDefaultNamespace("copper_leggings"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.COPPER_MATERIAL, ArmorType.LEGGINGS).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
-        result.put(Identifier.withDefaultNamespace("copper_boots"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.COPPER_MATERIAL, ArmorType.BOOTS).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(Identifier.withDefaultNamespace("copper_helmet"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.COPPER_MATERIAL, ArmorType.HELMET).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(Identifier.withDefaultNamespace("copper_chestplate"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.COPPER_MATERIAL, ArmorType.CHESTPLATE).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(Identifier.withDefaultNamespace("copper_leggings"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.COPPER_MATERIAL, ArmorType.LEGGINGS).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(Identifier.withDefaultNamespace("copper_boots"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.COPPER_MATERIAL, ArmorType.BOOTS).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2));
 
-        result.put(Identifier.withDefaultNamespace("iron_helmet"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.IRON_MATERIAL, ArmorType.HELMET).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
-        result.put(Identifier.withDefaultNamespace("iron_chestplate"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.IRON_MATERIAL, ArmorType.CHESTPLATE).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
-        result.put(Identifier.withDefaultNamespace("iron_leggings"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.IRON_MATERIAL, ArmorType.LEGGINGS).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
-        result.put(Identifier.withDefaultNamespace("iron_boots"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.IRON_MATERIAL, ArmorType.BOOTS).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(Identifier.withDefaultNamespace("iron_helmet"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.IRON_MATERIAL, ArmorType.HELMET).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(Identifier.withDefaultNamespace("iron_chestplate"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.IRON_MATERIAL, ArmorType.CHESTPLATE).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(Identifier.withDefaultNamespace("iron_leggings"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.IRON_MATERIAL, ArmorType.LEGGINGS).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(Identifier.withDefaultNamespace("iron_boots"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.IRON_MATERIAL, ArmorType.BOOTS).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2));
 
-        result.put(Identifier.withDefaultNamespace("chainmail_helmet"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.IRON_CHAINMAIL_MATERIAL, ArmorType.HELMET).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
-        result.put(Identifier.withDefaultNamespace("chainmail_chestplate"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.IRON_CHAINMAIL_MATERIAL, ArmorType.CHESTPLATE).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
-        result.put(Identifier.withDefaultNamespace("chainmail_leggings"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.IRON_CHAINMAIL_MATERIAL, ArmorType.LEGGINGS).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
-        result.put(Identifier.withDefaultNamespace("chainmail_boots"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.IRON_CHAINMAIL_MATERIAL, ArmorType.BOOTS).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(Identifier.withDefaultNamespace("chainmail_helmet"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.IRON_CHAINMAIL_MATERIAL, ArmorType.HELMET).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(Identifier.withDefaultNamespace("chainmail_chestplate"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.IRON_CHAINMAIL_MATERIAL, ArmorType.CHESTPLATE).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(Identifier.withDefaultNamespace("chainmail_leggings"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.IRON_CHAINMAIL_MATERIAL, ArmorType.LEGGINGS).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(Identifier.withDefaultNamespace("chainmail_boots"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.IRON_CHAINMAIL_MATERIAL, ArmorType.BOOTS).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2));
 
-        result.put(Identifier.withDefaultNamespace("golden_helmet"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.GOLD_MATERIAL, ArmorType.HELMET).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
-        result.put(Identifier.withDefaultNamespace("golden_chestplate"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.GOLD_MATERIAL, ArmorType.CHESTPLATE).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
-        result.put(Identifier.withDefaultNamespace("golden_leggings"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.GOLD_MATERIAL, ArmorType.LEGGINGS).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
-        result.put(Identifier.withDefaultNamespace("golden_boots"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.GOLD_MATERIAL, ArmorType.BOOTS).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(Identifier.withDefaultNamespace("golden_helmet"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.GOLD_MATERIAL, ArmorType.HELMET).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(Identifier.withDefaultNamespace("golden_chestplate"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.GOLD_MATERIAL, ArmorType.CHESTPLATE).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(Identifier.withDefaultNamespace("golden_leggings"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.GOLD_MATERIAL, ArmorType.LEGGINGS).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(Identifier.withDefaultNamespace("golden_boots"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.GOLD_MATERIAL, ArmorType.BOOTS).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2));
 
         result.put(Identifier.withDefaultNamespace("leather_helmet"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.LEATHER_MATERIAL, ArmorType.HELMET));
         result.put(Identifier.withDefaultNamespace("leather_chestplate"), settings -> MMEItems.getArmorSettings(MMEArmorMaterials.LEATHER_MATERIAL, ArmorType.CHESTPLATE));
@@ -451,28 +451,28 @@ public final class VanillaItemModify {
         );
         result.put(Identifier.withDefaultNamespace("egg"), properties -> properties
                 .food(new FoodProperties(3, 1, false))
-                .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().protein(8000).build())
+                .component(MMEDataComponents.FOOD_NUTRITION, FoodNutrition.builder().protein(8000).build())
         );
         result.put(Identifier.withDefaultNamespace("blue_egg"), properties -> properties
                 .food(new FoodProperties(3, 1, false))
-                .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().protein(8000).build())
+                .component(MMEDataComponents.FOOD_NUTRITION, FoodNutrition.builder().protein(8000).build())
         );
         result.put(Identifier.withDefaultNamespace("brown_egg"), properties -> properties
                 .food(new FoodProperties(3, 1, false))
-                .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().protein(8000).build())
+                .component(MMEDataComponents.FOOD_NUTRITION, FoodNutrition.builder().protein(8000).build())
         );
         result.put(Identifier.withDefaultNamespace("beetroot_soup"), properties -> properties
-                .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().fiber(112000).build())
+                .component(MMEDataComponents.FOOD_NUTRITION, FoodNutrition.builder().fiber(112000).build())
         );
         result.put(Identifier.withDefaultNamespace("rabbit_stew"), properties -> properties
-                .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().fiber(48000).protein(48000).build())
+                .component(MMEDataComponents.FOOD_NUTRITION, FoodNutrition.builder().fiber(48000).protein(48000).build())
         );
         result.put(Identifier.withDefaultNamespace("suspicious_stew"), properties -> properties
                 .food(new FoodProperties(3, 3, true))
         );
         result.put(Identifier.withDefaultNamespace("chorus_fruit"), properties -> properties
                 .food(new FoodProperties(1, 1, false))
-                .component(MMEDataComponentTypes.FOOD_NUTRITION, FoodNutrition.builder().fiber(12000).build())
+                .component(MMEDataComponents.FOOD_NUTRITION, FoodNutrition.builder().fiber(12000).build())
         );
         result.put(Identifier.withDefaultNamespace("honey_bottle"), properties -> properties
                 .food(new FoodProperties(0, 2, true))
@@ -541,32 +541,32 @@ public final class VanillaItemModify {
     private static Map<Identifier, UnaryOperator<Item.Properties>> createBlockItemSettingsModifyMapByIdentifier() {
         Map<Identifier, UnaryOperator<Item.Properties>> result = new HashMap<>();
 
-        result.put(Identifier.withDefaultNamespace("iron_block"), settings -> settings.component(MMEDataComponentTypes.CRAFTING_TIME, 90));
-        result.put(Identifier.withDefaultNamespace("gold_block"), settings -> settings.component(MMEDataComponentTypes.CRAFTING_TIME, 45));
-        result.put(Identifier.withDefaultNamespace("copper_block"), settings -> settings.component(MMEDataComponentTypes.CRAFTING_TIME, 45));
-        result.put(Identifier.withDefaultNamespace("netherite_block"), settings -> settings.component(MMEDataComponentTypes.CRAFTING_TIME, 630));
+        result.put(Identifier.withDefaultNamespace("iron_block"), settings -> settings.component(MMEDataComponents.CRAFTING_TIME, 90));
+        result.put(Identifier.withDefaultNamespace("gold_block"), settings -> settings.component(MMEDataComponents.CRAFTING_TIME, 45));
+        result.put(Identifier.withDefaultNamespace("copper_block"), settings -> settings.component(MMEDataComponents.CRAFTING_TIME, 45));
+        result.put(Identifier.withDefaultNamespace("netherite_block"), settings -> settings.component(MMEDataComponents.CRAFTING_TIME, 630));
 
-        result.put(Identifier.withDefaultNamespace("iron_ore"), settings -> settings.component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
-        result.put(Identifier.withDefaultNamespace("copper_ore"), settings -> settings.component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
-        result.put(Identifier.withDefaultNamespace("gold_ore"), settings -> settings.component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
-        result.put(Identifier.withDefaultNamespace("diamond_ore"), settings -> settings.component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
-        result.put(Identifier.withDefaultNamespace("lapis_ore"), settings -> settings.component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
-        result.put(Identifier.withDefaultNamespace("redstone_ore"), settings -> settings.component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
-        result.put(Identifier.withDefaultNamespace("coal_ore"), settings -> settings.component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
-        result.put(Identifier.withDefaultNamespace("emerald_ore"), settings -> settings.component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(Identifier.withDefaultNamespace("iron_ore"), settings -> settings.component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(Identifier.withDefaultNamespace("copper_ore"), settings -> settings.component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(Identifier.withDefaultNamespace("gold_ore"), settings -> settings.component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(Identifier.withDefaultNamespace("diamond_ore"), settings -> settings.component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(Identifier.withDefaultNamespace("lapis_ore"), settings -> settings.component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(Identifier.withDefaultNamespace("redstone_ore"), settings -> settings.component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(Identifier.withDefaultNamespace("coal_ore"), settings -> settings.component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(Identifier.withDefaultNamespace("emerald_ore"), settings -> settings.component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2));
 
-        result.put(Identifier.withDefaultNamespace("deepslate_iron_ore"), settings -> settings.component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
-        result.put(Identifier.withDefaultNamespace("deepslate_copper_ore"), settings -> settings.component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
-        result.put(Identifier.withDefaultNamespace("deepslate_gold_ore"), settings -> settings.component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
-        result.put(Identifier.withDefaultNamespace("nether_gold_ore"), settings -> settings.component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
-        result.put(Identifier.withDefaultNamespace("deepslate_diamond_ore"), settings -> settings.component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
-        result.put(Identifier.withDefaultNamespace("deepslate_lapis_ore"), settings -> settings.component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
-        result.put(Identifier.withDefaultNamespace("deepslate_redstone_ore"), settings -> settings.component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
-        result.put(Identifier.withDefaultNamespace("deepslate_coal_ore"), settings -> settings.component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
-        result.put(Identifier.withDefaultNamespace("deepslate_emerald_ore"), settings -> settings.component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(Identifier.withDefaultNamespace("deepslate_iron_ore"), settings -> settings.component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(Identifier.withDefaultNamespace("deepslate_copper_ore"), settings -> settings.component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(Identifier.withDefaultNamespace("deepslate_gold_ore"), settings -> settings.component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(Identifier.withDefaultNamespace("nether_gold_ore"), settings -> settings.component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(Identifier.withDefaultNamespace("deepslate_diamond_ore"), settings -> settings.component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(Identifier.withDefaultNamespace("deepslate_lapis_ore"), settings -> settings.component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(Identifier.withDefaultNamespace("deepslate_redstone_ore"), settings -> settings.component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(Identifier.withDefaultNamespace("deepslate_coal_ore"), settings -> settings.component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(Identifier.withDefaultNamespace("deepslate_emerald_ore"), settings -> settings.component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2));
 
-        result.put(Identifier.withDefaultNamespace("nether_quartz_ore"), properties -> properties.component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
-        result.put(Identifier.withDefaultNamespace("ancient_debris"), properties -> properties.component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 4));
+        result.put(Identifier.withDefaultNamespace("nether_quartz_ore"), properties -> properties.component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(Identifier.withDefaultNamespace("ancient_debris"), properties -> properties.component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4));
 
         result.put(Identifier.withDefaultNamespace("brown_mushroom"), properties -> properties.food(new FoodProperties(1, 1.0F, false)));
         result.put(Identifier.withDefaultNamespace("red_mushroom"), properties -> properties.food(new FoodProperties(1, 1.0F, false),
@@ -589,20 +589,20 @@ public final class VanillaItemModify {
         result.put(Identifier.withDefaultNamespace("damaged_anvil"), settings -> settings
                 .durability(MMEBlocks.maxDamageAnvil(MMEToolMaterials.IRON.durability()))
         );
-        result.put(Identifier.withDefaultNamespace("sand"), properties -> properties.component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
-        result.put(Identifier.withDefaultNamespace("red_sand"), properties -> properties.component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
-        result.put(Identifier.withDefaultNamespace("cobblestone"), properties -> properties.component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
-        result.put(Identifier.withDefaultNamespace("cobbled_deepslate"), properties -> properties.component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
-        result.put(Identifier.withDefaultNamespace("stone"), properties -> properties.component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
-        result.put(Identifier.withDefaultNamespace("sandstone"), properties -> properties.component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
-        result.put(Identifier.withDefaultNamespace("red_sandstone"), properties -> properties.component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
-        result.put(Identifier.withDefaultNamespace("quartz_block"), properties -> properties.component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
-        result.put(Identifier.withDefaultNamespace("stone_bricks"), properties -> properties.component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
-        result.put(Identifier.withDefaultNamespace("nether_bricks"), properties -> properties.component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
-        result.put(Identifier.withDefaultNamespace("polished_blackstone_bricks"), properties -> properties.component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
-        result.put(Identifier.withDefaultNamespace("deepslate_bricks"), properties -> properties.component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
-        result.put(Identifier.withDefaultNamespace("deepslate_tiles"), properties -> properties.component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
-        result.put(Identifier.withDefaultNamespace("basalt"), properties -> properties.component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(Identifier.withDefaultNamespace("sand"), properties -> properties.component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(Identifier.withDefaultNamespace("red_sand"), properties -> properties.component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(Identifier.withDefaultNamespace("cobblestone"), properties -> properties.component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(Identifier.withDefaultNamespace("cobbled_deepslate"), properties -> properties.component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(Identifier.withDefaultNamespace("stone"), properties -> properties.component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(Identifier.withDefaultNamespace("sandstone"), properties -> properties.component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(Identifier.withDefaultNamespace("red_sandstone"), properties -> properties.component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(Identifier.withDefaultNamespace("quartz_block"), properties -> properties.component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(Identifier.withDefaultNamespace("stone_bricks"), properties -> properties.component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(Identifier.withDefaultNamespace("nether_bricks"), properties -> properties.component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(Identifier.withDefaultNamespace("polished_blackstone_bricks"), properties -> properties.component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(Identifier.withDefaultNamespace("deepslate_bricks"), properties -> properties.component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(Identifier.withDefaultNamespace("deepslate_tiles"), properties -> properties.component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(Identifier.withDefaultNamespace("basalt"), properties -> properties.component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2));
 
         result.put(Identifier.withDefaultNamespace("white_wool"), settings -> settings.stacksTo(8));
         result.put(Identifier.withDefaultNamespace("orange_wool"), settings -> settings.stacksTo(8));
@@ -621,22 +621,22 @@ public final class VanillaItemModify {
         result.put(Identifier.withDefaultNamespace("red_wool"), settings -> settings.stacksTo(8));
         result.put(Identifier.withDefaultNamespace("black_wool"), settings -> settings.stacksTo(8));
 
-        result.put(Identifier.withDefaultNamespace("white_terracotta"), settings -> settings.stacksTo(8).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
-        result.put(Identifier.withDefaultNamespace("orange_terracotta"), settings -> settings.stacksTo(8).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
-        result.put(Identifier.withDefaultNamespace("magenta_terracotta"), settings -> settings.stacksTo(8).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
-        result.put(Identifier.withDefaultNamespace("light_blue_terracotta"), settings -> settings.stacksTo(8).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
-        result.put(Identifier.withDefaultNamespace("yellow_terracotta"), settings -> settings.stacksTo(8).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
-        result.put(Identifier.withDefaultNamespace("lime_terracotta"), settings -> settings.stacksTo(8).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
-        result.put(Identifier.withDefaultNamespace("pink_terracotta"), settings -> settings.stacksTo(8).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
-        result.put(Identifier.withDefaultNamespace("gray_terracotta"), settings -> settings.stacksTo(8).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
-        result.put(Identifier.withDefaultNamespace("light_gray_terracotta"), settings -> settings.stacksTo(8).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
-        result.put(Identifier.withDefaultNamespace("cyan_terracotta"), settings -> settings.stacksTo(8).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
-        result.put(Identifier.withDefaultNamespace("purple_terracotta"), settings -> settings.stacksTo(8).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
-        result.put(Identifier.withDefaultNamespace("blue_terracotta"), settings -> settings.stacksTo(8).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
-        result.put(Identifier.withDefaultNamespace("brown_terracotta"), settings -> settings.stacksTo(8).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
-        result.put(Identifier.withDefaultNamespace("green_terracotta"), settings -> settings.stacksTo(8).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
-        result.put(Identifier.withDefaultNamespace("red_terracotta"), settings -> settings.stacksTo(8).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
-        result.put(Identifier.withDefaultNamespace("black_terracotta"), settings -> settings.stacksTo(8).component(MMEDataComponentTypes.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(Identifier.withDefaultNamespace("white_terracotta"), settings -> settings.stacksTo(8).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(Identifier.withDefaultNamespace("orange_terracotta"), settings -> settings.stacksTo(8).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(Identifier.withDefaultNamespace("magenta_terracotta"), settings -> settings.stacksTo(8).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(Identifier.withDefaultNamespace("light_blue_terracotta"), settings -> settings.stacksTo(8).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(Identifier.withDefaultNamespace("yellow_terracotta"), settings -> settings.stacksTo(8).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(Identifier.withDefaultNamespace("lime_terracotta"), settings -> settings.stacksTo(8).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(Identifier.withDefaultNamespace("pink_terracotta"), settings -> settings.stacksTo(8).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(Identifier.withDefaultNamespace("gray_terracotta"), settings -> settings.stacksTo(8).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(Identifier.withDefaultNamespace("light_gray_terracotta"), settings -> settings.stacksTo(8).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(Identifier.withDefaultNamespace("cyan_terracotta"), settings -> settings.stacksTo(8).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(Identifier.withDefaultNamespace("purple_terracotta"), settings -> settings.stacksTo(8).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(Identifier.withDefaultNamespace("blue_terracotta"), settings -> settings.stacksTo(8).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(Identifier.withDefaultNamespace("brown_terracotta"), settings -> settings.stacksTo(8).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(Identifier.withDefaultNamespace("green_terracotta"), settings -> settings.stacksTo(8).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(Identifier.withDefaultNamespace("red_terracotta"), settings -> settings.stacksTo(8).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2));
+        result.put(Identifier.withDefaultNamespace("black_terracotta"), settings -> settings.stacksTo(8).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2));
 
         result.put(Identifier.withDefaultNamespace("acacia_shelf"), settings -> settings.stacksTo(8));
         result.put(Identifier.withDefaultNamespace("bamboo_shelf"), settings -> settings.stacksTo(8));

@@ -1,7 +1,7 @@
 package com.acuteterror233.mite.mixin.world.inventory;
 
 import com.acuteterror233.mite.block.MMEBlocks;
-import com.acuteterror233.mite.component.MMEDataComponentTypes;
+import com.acuteterror233.mite.component.MMEDataComponents;
 import com.acuteterror233.mite.interfaces.InventoryMenuExtension;
 import com.acuteterror233.mite.inventory.slot.PlayerCraftingResultSlot;
 import com.acuteterror233.mite.registry.tag.MMEItemTags;
@@ -193,7 +193,7 @@ public abstract class InventoryMenuMixin extends AbstractCraftingMenu implements
     public int additionalCraftingTime(CraftingContainer inventory){
         int CraftingTime = 0;
         for (ItemStack stack : inventory){
-            Integer i = stack.get(MMEDataComponentTypes.CRAFTING_TIME);
+            Integer i = stack.get(MMEDataComponents.CRAFTING_TIME);
             if (i != null) {
                 CraftingTime += i * 20;
             }

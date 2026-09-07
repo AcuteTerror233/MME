@@ -1,6 +1,6 @@
 package com.acuteterror233.mite.inventory;
 
-import com.acuteterror233.mite.component.MMEDataComponentTypes;
+import com.acuteterror233.mite.component.MMEDataComponents;
 import com.acuteterror233.mite.inventory.slot.CraftingTableResultSlot;
 import net.minecraft.network.protocol.game.ClientboundContainerSetSlotPacket;
 import net.minecraft.server.level.ServerLevel;
@@ -144,7 +144,7 @@ public abstract class AbstractGradeCraftingMenu extends AbstractCraftingMenu {
     public int AdditionalCraftingTime(CraftingContainer inventory){
         int CraftingTime = 0;
         for (ItemStack stack : inventory){
-            Integer i = stack.get(MMEDataComponentTypes.CRAFTING_TIME);
+            Integer i = stack.get(MMEDataComponents.CRAFTING_TIME);
             if (i != null) {
                 CraftingTime += i * 20;
             }

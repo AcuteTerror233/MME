@@ -97,6 +97,8 @@
   "entity.mme.shadow": "黑色食尸鬼",
   "entity.mme.vampire_bat": "吸血蝙蝠",
   "entity.mme.wight": "白色食尸鬼",
+  "item.minecraft.smithing_template.netherite_upgrade.applies_to": "艾德曼装备",
+  "item.minecraft.smithing_template.netherite_upgrade.base_slot_description": "放入艾德曼盔甲、武器或工具",
   "item.mme.adamantium_axe": "艾德曼斧",
   "item.mme.adamantium_axolotl_bucket": "装有美西螈的艾德曼桶",
   "item.mme.adamantium_battle_axe": "艾德曼战斧",

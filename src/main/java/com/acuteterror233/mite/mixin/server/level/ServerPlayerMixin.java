@@ -1,5 +1,6 @@
 package com.acuteterror233.mite.mixin.server.level;
 
+import com.acuteterror233.mite.world.player.ExperienceSynchronizer;
 import com.mojang.authlib.GameProfile;
 import net.minecraft.network.protocol.game.ClientboundSetHealthPacket;
 import net.minecraft.server.level.ServerPlayer;
@@ -8,6 +9,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -20,6 +22,9 @@ public abstract class ServerPlayerMixin extends Player {
     @Shadow
     public ServerGamePacketListenerImpl connection;
 
+    @Unique
+    private final ExperienceSynchronizer mme$experienceSynchronizer = new ExperienceSynchronizer((ServerPlayer) (Object) this);
+
     public ServerPlayerMixin(Level level, GameProfile gameProfile) {
         super(level, gameProfile);
     }
@@ -27,5 +32,6 @@ public abstract class ServerPlayerMixin extends Player {
     @Inject(method = "doTick", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/player/Player;tick()V"))
     public void doTick(CallbackInfo ci) {
         this.connection.send(new ClientboundSetHealthPacket(this.getHealth(), this.getFoodData().getFoodLevel(), this.getFoodData().getSaturationLevel()));
+        this.mme$experienceSynchronizer.tick();
     }
 }

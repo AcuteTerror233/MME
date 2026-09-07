@@ -38,6 +38,10 @@ import org.jspecify.annotations.NonNull;
 public class PhaseSpider extends Spider {
     private static final EntityDataAccessor<Integer> DODGE_CHARGES = SynchedEntityData.defineId(PhaseSpider.class, EntityDataSerializers.INT);
     private static final int MAX_DODGE_CHARGES = 5;
+    private static final int CHARGE_REGEN_TICKS = 50;
+    private int randomTeleportTime = 0;
+    private int chargeRegenTimer;
+    private int randomTeleportTicks;
 
     public PhaseSpider(EntityType<? extends PhaseSpider> entityType, Level level) {
         super(entityType, level);
@@ -72,19 +76,57 @@ public class PhaseSpider extends Spider {
     }
 
     @Override
+    public void tick() {
+        super.tick();
+        this.randomTeleportTicks++;
+        if (this.randomTeleportTime <= 0) {
+            this.randomTeleportTime = this.random.nextInt(101) + 200;
+        }
+        if (this.randomTeleportTicks >= this.randomTeleportTime) {
+            if (this.getTarget() == null) {
+                this.getNavigation().stop();
+            }
+            this.randomTeleport();
+            this.randomTeleportTicks = 0;
+            this.randomTeleportTime = this.random.nextInt(101) + 200;
+        }
+        if (this.getDodgeCharges() < MAX_DODGE_CHARGES) {
+            this.chargeRegenTimer++;
+        }
+        if (this.chargeRegenTimer >= CHARGE_REGEN_TICKS) {
+            this.chargeRegenTimer -= CHARGE_REGEN_TICKS;
+            this.addDodgeCharges(1);
+        }
+    }
+
+    @Override
     public @NotNull Vec3 getVehicleAttachmentPoint(Entity entity) {
         return entity.getBbWidth() <= this.getBbWidth() ? new Vec3(0.0, 0.21875 * this.getScale(), 0.0) : super.getVehicleAttachmentPoint(entity);
     }
 
     @Override
     public boolean hurtServer(@NonNull ServerLevel level, DamageSource damageSource, float amount) {
+        if (damageSource.is(DamageTypeTags.BYPASSES_INVULNERABILITY)) {
+            return super.hurtServer(level, damageSource, amount);
+        }
+
         if (damageSource.is(DamageTypeTags.IS_PROJECTILE)) {
-            return !randomTeleport();
+            for (int i = 0; i < 3; i++) {
+                if (randomTeleport()) {
+                    return false;
+                }
+            }
+            return super.hurtServer(level, damageSource, amount);
         }
 
         if (this.getDodgeCharges() > 0) {
             this.addDodgeCharges(-1);
-            return !this.randomTeleport();
+            for (int i = 0; i < 3; i++) {
+                if (this.randomTeleport()) {
+                    return false;
+                }
+            }
+            return super.hurtServer(level, damageSource, amount);
         }
 
         return super.hurtServer(level, damageSource, amount);
@@ -99,7 +141,7 @@ public class PhaseSpider extends Spider {
     @Override
     public void readAdditionalSaveData(@NonNull ValueInput tag) {
         super.readAdditionalSaveData(tag);
-        this.addDodgeCharges(tag.getInt("DodgeCharges").orElse(MAX_DODGE_CHARGES));
+        this.entityData.set(DODGE_CHARGES, tag.getInt("DodgeCharges").orElse(MAX_DODGE_CHARGES));
     }
 
     public int getDodgeCharges() {
@@ -107,7 +149,7 @@ public class PhaseSpider extends Spider {
     }
 
     private void addDodgeCharges(int charges) {
-        this.entityData.set(DODGE_CHARGES, this.getDodgeCharges() + charges);
+        this.entityData.set(DODGE_CHARGES, Math.clamp(this.getDodgeCharges() + charges, 0, MAX_DODGE_CHARGES));
     }
 
     public static AttributeSupplier.@NotNull Builder createAttributes() {
@@ -128,11 +170,11 @@ public class PhaseSpider extends Spider {
     }
 
     protected boolean teleportTowards(Entity entity) {
-        Vec3 vec3 = new Vec3(this.getX() - entity.getX(), this.getY(0.5) - entity.getEyeY(), this.getZ() - entity.getZ());
+        Vec3 vec3 = new Vec3(entity.getX() - this.getX(), entity.getEyeY() - this.getY(0.5), entity.getZ() - this.getZ());
         vec3 = vec3.normalize();
-        double x = this.getX() + (this.random.nextDouble() - 0.5) * 8.0 - vec3.x * 5.0;
-        double y = this.getY() + (this.random.nextInt(16) - 8) - vec3.y * 5.0;
-        double z = this.getZ() + (this.random.nextDouble() - 0.5) * 8.0 - vec3.z * 5.0;
+        double x = this.getX() + (this.random.nextDouble() - 0.5) * 8.0 + vec3.x * 5.0;
+        double y = this.getY() + (this.random.nextInt(16) - 8) + vec3.y * 5.0;
+        double z = this.getZ() + (this.random.nextDouble() - 0.5) * 8.0 + vec3.z * 5.0;
         return this.teleport(x, y, z);
     }
 
@@ -161,10 +203,7 @@ public class PhaseSpider extends Spider {
     }
 
     static class PhaseSpiderAttackGoal extends MeleeAttackGoal {
-        private static final int CHARGE_REGEN_TICKS = 100;
-        private int chargeRegenTimer;
         private int teleportTimer;
-        private int stopTimer;
         PhaseSpider phaseSpider;
         public PhaseSpiderAttackGoal(PhaseSpider spider) {
             super(spider, 1.0, true);
@@ -180,21 +219,9 @@ public class PhaseSpider extends Spider {
         public void tick() {
             super.tick();
             LivingEntity target = this.mob.getTarget();
-            if (++this.chargeRegenTimer % 5 == 0 && this.stopTimer <= 0){
-                this.phaseSpider.randomTeleport();
-            }else {
-                this.stopTimer--;
-            }
-            if (this.chargeRegenTimer >= CHARGE_REGEN_TICKS) {
-                this.chargeRegenTimer = 0;
-                if (this.phaseSpider.getDodgeCharges() < MAX_DODGE_CHARGES) {
-                    this.phaseSpider.addDodgeCharges(1);
-                }
-            }
-            if (target != null && target.distanceToSqr(this.phaseSpider) > 256.0
+            if (target != null && this.phaseSpider.distanceTo(target) > 5.0
                     && this.teleportTimer++ >= this.adjustedTickDelay(10)
                     && this.phaseSpider.teleportTowards(target)) {
-                this.stopTimer += 40;
                 this.teleportTimer = 0;
             }
         }

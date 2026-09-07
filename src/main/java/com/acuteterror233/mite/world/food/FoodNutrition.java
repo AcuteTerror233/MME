@@ -1,6 +1,5 @@
 package com.acuteterror233.mite.world.food;
 
-import com.acuteterror233.mite.interfaces.FoodDataExtension;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.network.RegistryFriendlyByteBuf;
@@ -35,9 +34,7 @@ public record FoodNutrition(float protein, float fiber, float sugar) implements 
 	@Override
 	public void onConsume(Level level, LivingEntity livingEntity, ItemStack itemStack, Consumable consumable) {
         if (livingEntity instanceof ServerPlayer serverPlayer) {
-            if (serverPlayer.getFoodData() instanceof FoodDataExtension foodData) {
-                foodData.MME$AddFoodNutrition(this);
-            }
+            serverPlayer.getFoodData().MME$AddFoodNutrition(this);
         }
 	}
 	public static FoodNutrition.Builder builder() {

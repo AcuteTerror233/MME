@@ -606,6 +606,9 @@ public class MMELanguageProvider {
             translationBuilder.add("painting.mme.titan.author", "Avernite");
             translationBuilder.add("painting.mme.wolves.title", "wolves");
             translationBuilder.add("painting.mme.wolves.author", "Avernite");
+
+            translationBuilder.add("item.minecraft.smithing_template.netherite_upgrade.applies_to","Adamantium Equipment");
+            translationBuilder.add("item.minecraft.smithing_template.netherite_upgrade.base_slot_description","Add adamantium armor, weapon, or tool");
         }
     }
 
@@ -1149,6 +1152,9 @@ public class MMELanguageProvider {
             translationBuilder.addEnchantment(MMEEnchantments.FERTILITY, "肥沃");
             translationBuilder.addEnchantment(MMEEnchantments.UPGRADE, "灌注");
             translationBuilder.add("container.enchant.upgrade_target", "§7附魔 → %s");
+
+            translationBuilder.add("item.minecraft.smithing_template.netherite_upgrade.applies_to","艾德曼装备");
+            translationBuilder.add("item.minecraft.smithing_template.netherite_upgrade.base_slot_description","放入艾德曼盔甲、武器或工具");
         }
     }
 }

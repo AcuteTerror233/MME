@@ -20,6 +20,7 @@
     "world.entity.animal.AnimalMixin",
     "world.entity.animal.cow.AbstractCowMixin",
     "world.entity.boss.enderdragon.EndCrystalMixin",
+    "world.entity.item.ItemEntityMixin",
     "world.entity.item.PrimedTntMixin",
     "world.entity.monster.AbstractSkeletonMixin",
     "world.entity.monster.CreeperMixin",

@@ -30,6 +30,8 @@ public abstract class FoodDataMixin implements FoodDataExtension {
     private int maxFoodLevel = 6;
     @Unique
     private int healTickTimer = 0;
+    @Unique
+    private int damageTickTimer = 0;
     @Mutable
     @Shadow
     private int foodLevel = 6;
@@ -103,34 +105,45 @@ public abstract class FoodDataMixin implements FoodDataExtension {
 
         boolean bl = serverWorld.getGameRules().get(GameRules.NATURAL_HEALTH_REGENERATION);
         if (this.foodLevel > 0) {
+            this.tickTimer++;
+            if (this.damageTickTimer != 0) {
+                this.damageTickTimer = 0;
+            }
+
             if (player.isSleeping()) {
                 this.healTickTimer += 8;
             }else {
                 this.healTickTimer++;
             }
+
             if (this.healTickTimer >= (1280 * (player.hasEffect(MMEMobEffects.MALNUTRITION) ? 2 : 1)) && bl){
                 player.heal(1.0F);
                 this.healTickTimer = 0;
             }
-            if (this.tickTimer >= (1200 * (player.hasEffect(MMEMobEffects.MALNUTRITION) ? 0.5 : 1))){
+
+            if (this.tickTimer >= (2400 * (player.hasEffect(MMEMobEffects.MALNUTRITION) ? 0.5 : 1))){
                 this.tickTimer = 0;
                 if (player.gameMode() != GameType.CREATIVE) {
-                    if (this.saturationLevel > 0) {
-                        this.saturationLevel--;
-                    } else {
-                        this.foodLevel--;
-                    }
+                    this.saturationLevel += 3;
                 }
             }
+
         }else {
-            this.healTickTimer = 0;
-            if (this.tickTimer >= 300) {
-                player.hurtServer(serverWorld, player.damageSources().starve(), 1.0F);
+            if (this.healTickTimer !=0 ){
+                this.healTickTimer = 0;
+            }
+
+            if (this.tickTimer > 0.0F) {
                 this.tickTimer = 0;
+            }
+
+            this.damageTickTimer++;
+            if (this.damageTickTimer >= 300) {
+                player.hurtServer(serverWorld, player.damageSources().starve(), 1.0F);
+                this.damageTickTimer = 0;
             }
         }
         updatePlayerEffects(player);
-        this.tickTimer++;
     }
 
     @Unique

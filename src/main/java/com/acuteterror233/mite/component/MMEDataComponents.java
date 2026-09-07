@@ -15,10 +15,9 @@ import java.util.function.UnaryOperator;
  * MME 模组数据组件类型注册。
  * 定义自定义物品数据组件（如制作时间）。
  */
-public class MMEDataComponentTypes {
+public class MMEDataComponents {
     public static final DataComponentType<Integer> CRAFTING_TIME = register("crafting_time", builder -> builder.persistent(ExtraCodecs.NON_NEGATIVE_INT).networkSynchronized(ByteBufCodecs.VAR_INT));
     public static final DataComponentType<Integer> REQUIRED_COMBUSTION_GRADE = register("required_combustion_grade", builder -> builder.persistent(ExtraCodecs.NON_NEGATIVE_INT).networkSynchronized(ByteBufCodecs.VAR_INT));
-    public static final DataComponentType<Float> ORIGINAL_ARMOR = register("original_armor", builder -> builder.persistent(ExtraCodecs.POSITIVE_FLOAT).networkSynchronized(ByteBufCodecs.FLOAT));
     public static final DataComponentType<FoodNutrition> FOOD_NUTRITION = register("food_nutrition", builder -> builder.persistent(FoodNutrition.DIRECT_CODEC).networkSynchronized(FoodNutrition.DIRECT_STREAM_CODEC));
 
     private static <T> DataComponentType<T> register(String id, UnaryOperator<DataComponentType.Builder<T>> builderOperator) {
