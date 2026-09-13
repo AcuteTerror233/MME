@@ -6,7 +6,7 @@ import org.spongepowered.asm.mixin.Mutable;
 import org.spongepowered.asm.mixin.Shadow;
 
 /**
- * Mixin for {@code PrimedTnt} — 修改激活的 TNT 行为。
+ * Mixin for {@code PrimedTnt} — Modify primed TNT behavior.
  */
 @Mixin(PrimedTnt.class)
 public class PrimedTntMixin {

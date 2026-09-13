@@ -11,8 +11,8 @@ import net.minecraft.world.level.block.Block;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * MME 细雪桶物品，继承 {@link SolidBucketItem}。
- * 支持自定义材料制成的细雪桶。
+ * MME powder snow bucket item, extending {@link SolidBucketItem}.
+ * Supports powder snow buckets made from custom materials.
  */
 public class MMEPowderSnowBucketItem extends SolidBucketItem {
     Item bucket;

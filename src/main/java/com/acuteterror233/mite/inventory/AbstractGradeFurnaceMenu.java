@@ -12,9 +12,9 @@ import net.minecraft.world.item.crafting.RecipePropertySet;
 import net.minecraft.world.item.crafting.RecipeType;
 
 /**
- * 抽象等级熔炉菜单，继承 {@link AbstractFurnaceMenu}。
- * 限制燃料槽仅接受对应燃烧等级的燃料。
- * 子类需提供具体的 {@link RecipeType}、{@link RecipePropertySet}、{@link RecipeBookType}。
+ * Abstract grade furnace menu, extends {@link AbstractFurnaceMenu}.
+ * Restricts the fuel slot to only accept fuel of the corresponding burning grade.
+ * Subclasses must provide the specific {@link RecipeType}, {@link RecipePropertySet}, and {@link RecipeBookType}.
  */
 public abstract class AbstractGradeFurnaceMenu extends AbstractFurnaceMenu {
     private final ContainerData propertyDelegate;

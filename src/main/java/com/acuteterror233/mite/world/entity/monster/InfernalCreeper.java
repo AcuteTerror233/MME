@@ -7,7 +7,7 @@ import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * 炼狱苦力怕实体，继承苦力怕行为。
+ * Infernal creeper entity, inherits creeper behavior.
  */
 public class InfernalCreeper extends Creeper {
     public InfernalCreeper(EntityType<? extends InfernalCreeper> entityType, Level level) {

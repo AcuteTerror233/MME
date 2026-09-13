@@ -15,8 +15,8 @@ import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * 等级熔炉方块实体，继承抽象等级熔炉逻辑。
- * 根据方块类型自动选择对应的配方类型（烧炼/烟熏/爆破）。
+ * Grade furnace block entity, extends the abstract grade furnace logic.
+ * Automatically selects the corresponding recipe type based on block type (smelting/smoking/blasting).
  */
 public class GradeFurnaceBlockEntity extends AbstractGradeFurnaceBlockEntity {
 

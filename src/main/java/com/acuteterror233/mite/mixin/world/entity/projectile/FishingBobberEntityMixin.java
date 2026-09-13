@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.Overwrite;
 
 @Mixin(FishingHook.class)
 /**
- * Mixin for {@code FishingHook} — 修改钓鱼竿浮标行为。
+ * Mixin for {@code FishingHook} — Modify fishing rod bobber behavior.
  */
 public abstract class FishingBobberEntityMixin extends Projectile {
     public FishingBobberEntityMixin(EntityType<? extends Projectile> entityType, Level world) {
@@ -21,7 +21,7 @@ public abstract class FishingBobberEntityMixin extends Projectile {
 
     /**
      * @author AcuteTerror233
-     * @reason 修改钓鱼竿浮标判断
+     * @reason Modify fishing rod bobber check
      */
     @Overwrite
     private boolean shouldStopFishing(Player player) {

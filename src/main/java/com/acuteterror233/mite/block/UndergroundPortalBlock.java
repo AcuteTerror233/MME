@@ -35,8 +35,8 @@ import org.slf4j.Logger;
 import java.util.Optional;
 
 /**
- * 地下传送门方块。
- * 在下界基岩层上方生成对应地狱门，将实体传送至 MME 地下维度。
+ * Underground portal block.
+ * Generates a corresponding nether portal above the nether bedrock layer, teleporting entities to the MME underground dimension.
  */
 public class UndergroundPortalBlock extends AbstractPortalBlock {
     public static final MapCodec<UndergroundPortalBlock> CODEC = simpleCodec(UndergroundPortalBlock::new);

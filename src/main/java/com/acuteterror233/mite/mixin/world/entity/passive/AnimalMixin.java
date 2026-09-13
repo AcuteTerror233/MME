@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(Animal.class)
 /**
- * Mixin for 被动生物 — 调整被动生物的行为。
+ * Mixin for passive mobs — adjusts passive mob behavior.
  */
 public abstract class AnimalMixin {
     @Inject(method = "getBaseExperienceReward", at = @At("RETURN"), cancellable = true)

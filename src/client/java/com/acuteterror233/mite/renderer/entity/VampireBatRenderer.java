@@ -17,7 +17,7 @@ import net.minecraft.resources.Identifier;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * 吸血鬼蝙蝠渲染器基类。
+ * Base class for Vampire Bat renderers.
  */
 public class VampireBatRenderer<T extends VampireBat> extends MobRenderer<T, BatRenderState, BatModel> {
     private static final Identifier TEXTURE = Identifier.withDefaultNamespace("textures/entity/bat.png");

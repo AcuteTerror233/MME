@@ -20,7 +20,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(CropBlock.class)
 /**
- * Mixin for {@code CropBlock} — 添加病害和肥力系统。
+ * Mixin for {@code CropBlock} — Adds disease and fertility system.
  */
 public abstract class CropBlockMixin extends VegetationBlock implements BonemealableBlock {
     @Unique

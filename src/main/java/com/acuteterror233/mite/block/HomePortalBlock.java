@@ -10,8 +10,8 @@ import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
 /**
- * 家园传送门方块。
- * 将实体传送至世界出生点。
+ * Home portal block.
+ * Teleports entities to the world spawn point.
  */
 public class HomePortalBlock extends AbstractPortalBlock {
     public HomePortalBlock(Properties settings) {

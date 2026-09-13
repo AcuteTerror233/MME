@@ -16,7 +16,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 /**
- * Mixin for {@code ShearsItem} — 修改剪刀挖掘速度判定。
+ * Mixin for {@code ShearsItem} — Modifies shears mining speed calculation.
  */
 @Mixin(ShearsItem.class)
 public class ShearsItemMixin {

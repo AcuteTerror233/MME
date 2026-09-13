@@ -13,7 +13,7 @@ import net.minecraft.world.level.Level;
 import org.jspecify.annotations.NonNull;
 
 /**
- * 食尸鬼实体，继承僵尸行为。
+ * Ghoul entity, inherits zombie behavior.
  */
 public class Ghoul extends Zombie {
     public Ghoul(EntityType<? extends Ghoul> entityType, Level level) {

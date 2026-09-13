@@ -8,8 +8,8 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.damagesource.DamageType;
 
 /**
- * MME 模组伤害类型定义。
- * 注册自定义伤害类型（如腐蚀伤害），供数据生成使用。
+ * MME mod damage type definitions.
+ * Registers custom damage types (like corrosion damage) for data generation.
  */
 public interface MMEDamageTypes {
     ResourceKey<DamageType> CORROSION = ResourceKey.create(Registries.DAMAGE_TYPE, Identifier.fromNamespaceAndPath(MME.MOD_ID, "corrosion"));

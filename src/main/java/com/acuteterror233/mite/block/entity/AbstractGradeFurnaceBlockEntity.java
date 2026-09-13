@@ -132,53 +132,53 @@ public abstract class AbstractGradeFurnaceBlockEntity extends BaseContainerBlock
     }
 
     public static void tick(ServerLevel world, BlockPos pos, BlockState state, AbstractGradeFurnaceBlockEntity blockEntity) {
-        // 获取面向方向前方的方块状态，并判断是否为空气（即未被阻挡）
+        // Get the block state in the facing direction and check if it's air (i.e., not blocked)
         BlockState state1 = world.getBlockState(pos.relative(state.getValue(HorizontalDirectionalBlock.FACING)));
         boolean noBlocked = state1.isAir();
 
-        // 判断当前是否正在燃烧
+        // Check if currently burning
         boolean isBurning = blockEntity.isBurning();
 
-        // 标记是否需要标记脏数据以触发保存或更新
+        // Flag whether dirty data needs to be marked to trigger save or update
         boolean markDirty = false;
 
-        // 如果正在燃烧，则减少剩余燃烧时间
+        // If burning, decrease remaining burn time
         if (blockEntity.isBurning()) {
             blockEntity.litTimeRemaining--;
         }
 
-        // 获取输入槽和燃料槽中的物品堆栈
+        // Get item stacks from input slot and fuel slot
         ItemStack inputSlot = blockEntity.inventory.get(0);
         ItemStack fuelSlot = blockEntity.inventory.get(1);
 
-        // 检查两个槽位是否有物品
+        // Check if both slots have items
         boolean inputSlotExists = !inputSlot.isEmpty();
         boolean fuelSlotExists = !fuelSlot.isEmpty();
 
         if (noBlocked && (blockEntity.isBurning() || fuelSlotExists && inputSlotExists)) {
-            // 构造单个物品的配方输入
+            // Construct recipe input for a single item
             SingleRecipeInput singleStackRecipeInput = new SingleRecipeInput(inputSlot);
             RecipeHolder<? extends AbstractCookingRecipe> recipeEntry;
-            // 尝试匹配当前输入对应的烧制配方
+            // Try to match the current input with a smelting recipe
             if (inputSlotExists) {
                 recipeEntry = blockEntity.matchGetter.getRecipeFor(singleStackRecipeInput, world).orElse(null);
             } else {
                 recipeEntry = null;
             }
 
-            // 获取燃料等级以及最大堆叠数量限制
+            // Get fuel grade and maximum stack count limit
             int fuelGrade = blockEntity.getFuelGrade(((GetFuelGradeRegistryExtension) world).MME$GetFuelGradeRegistry(), fuelSlot);
             int maxCountPerStack = blockEntity.getMaxStackSize();
             Integer itemRequiredCombustionGrade = inputSlot.get(MMEDataComponents.REQUIRED_COMBUSTION_GRADE);
             int requiredCombustionGrade = itemRequiredCombustionGrade == null ? 0 : itemRequiredCombustionGrade;
-            // 检查方块实体是否未在燃烧、燃料等级是否满足要求、是否不超过最大燃烧等级，
-            // 并且能否接受当前配方的输出，若条件满足则设置方块实体的燃烧等级
+            // Check if block entity is not burning, fuel grade meets requirements, doesn't exceed maximum combustion grade,
+            // and can accept current recipe output; if conditions are met, set block entity's combustion grade
             if (!blockEntity.isBurning() && requiredCombustionGrade <= fuelGrade && fuelGrade <= blockEntity.maxCombustionGrade && canAcceptRecipeOutput(recipeEntry, singleStackRecipeInput, blockEntity.inventory, maxCountPerStack)) {
                 blockEntity.currentCombustionGrade = fuelGrade;
                 blockEntity.litTimeRemaining = blockEntity.getFuelTime(world.fuelValues(), fuelSlot);
                 blockEntity.litTotalTime = blockEntity.litTimeRemaining;
 
-                // 成功点燃后进行相关设置并消耗一个燃料
+                // After successful ignition, perform related settings and consume one fuel
                 if (blockEntity.isBurning()) {
                     markDirty = true;
                     if (fuelSlotExists) {
@@ -190,17 +190,17 @@ public abstract class AbstractGradeFurnaceBlockEntity extends BaseContainerBlock
                     }
                 }
             }
-            // 检查方块实体是否正在燃烧、能否接受当前配方输出以及燃烧等级是否满足要求，
-            // 若所有条件均满足，则增加方块实体的已燃烧时间计数。
+            // Check if block entity is burning, can accept current recipe output, and combustion grade meets requirements;
+            // if all conditions are met, increase block entity's cooking time counter.
             if (blockEntity.isBurning() && blockEntity.currentCombustionGrade >= requiredCombustionGrade && canAcceptRecipeOutput(recipeEntry, singleStackRecipeInput, blockEntity.inventory, maxCountPerStack)) {
                 blockEntity.cookingTimeSpent++;
 
-                // 当烧制时间达到总烧制时间时，完成一次完整的烧制过程
+                // When cooking time reaches total cooking time, complete a full cooking process
                 if (blockEntity.cookingTimeSpent == blockEntity.cookingTotalTime) {
                     blockEntity.cookingTimeSpent = 0;
                     blockEntity.cookingTotalTime = getCookTime(world, blockEntity);
 
-                    // 执行实际的合成操作并记录最后使用的配方
+                    // Execute the actual crafting operation and record the last used recipe
                     if (craftRecipe(recipeEntry, singleStackRecipeInput, blockEntity.inventory, maxCountPerStack)) {
                         blockEntity.setRecipeUsed(recipeEntry);
                     }
@@ -209,23 +209,23 @@ public abstract class AbstractGradeFurnaceBlockEntity extends BaseContainerBlock
                 }
             }
             else {
-                // 不满足条件则倒退烹饪计时
+                // If conditions are not met, roll back cooking time
                 blockEntity.cookingTimeSpent = 0;
             }
         } else if (blockEntity.cookingTimeSpent > 0 || blockEntity.litTimeRemaining > 0) {
-            // 快速降低烹饪时间至最小为0
+            // Quickly reduce cooking time to minimum of 0
             blockEntity.cookingTimeSpent = Mth.clamp(blockEntity.cookingTimeSpent - 2, 0, blockEntity.cookingTotalTime);
             blockEntity.litTimeRemaining = 0;
         }
 
-        // 如果燃烧状态发生变化，则更新方块状态并通知客户端
+        // If burning state changes, update block state and notify client
         if (isBurning != blockEntity.isBurning()) {
             markDirty = true;
             state = state.setValue(AbstractFurnaceBlock.LIT, blockEntity.isBurning());
             world.setBlock(pos, state, Block.UPDATE_ALL);
         }
 
-        // 如有必要，标记该区块为脏以便同步更改
+        // If necessary, mark the chunk as dirty to sync changes
         if (markDirty) {
             setChanged(world, pos, state);
         }

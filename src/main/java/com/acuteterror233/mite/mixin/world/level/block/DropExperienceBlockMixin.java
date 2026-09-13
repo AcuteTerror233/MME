@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(DropExperienceBlock.class)
 /**
- * Mixin for {@code DropExperienceBlock} — 修改方块经验掉落。
+ * Mixin for {@code DropExperienceBlock} — Modifies block experience drops.
  */
 public class DropExperienceBlockMixin {
     @Mutable

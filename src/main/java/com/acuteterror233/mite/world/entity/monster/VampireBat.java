@@ -33,8 +33,8 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /**
- * 吸血鬼蝙蝠实体，飞行敌对生物。
- * 可吸取玩家生命值。
+ * Vampire bat entity, a flying hostile mob.
+ * Can drain player health.
  */
 public class VampireBat extends Mob implements Enemy {
     private static final EntityDataAccessor<Byte> DATA_ID_FLAGS = SynchedEntityData.defineId(VampireBat.class, EntityDataSerializers.BYTE);

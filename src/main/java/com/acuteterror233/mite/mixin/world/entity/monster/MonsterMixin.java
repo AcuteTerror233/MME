@@ -12,7 +12,7 @@ import net.minecraft.world.level.Level;
 import org.spongepowered.asm.mixin.Mixin;
 
 /**
- * Mixin for {@code Monster} — 扩展敌对生物通用行为。
+ * Mixin for {@code Monster} — Extend common hostile mob behavior.
  */
 @Mixin(Monster.class)
 public abstract class MonsterMixin extends PathfinderMob implements Enemy {

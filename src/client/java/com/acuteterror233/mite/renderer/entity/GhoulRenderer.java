@@ -8,7 +8,7 @@ import net.minecraft.resources.Identifier;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * 食尸鬼渲染器。
+ * Ghoul renderer.
  */
 public class GhoulRenderer extends ZombieRenderer {
     private static final Identifier GHOUL_LOCATION = Identifier.fromNamespaceAndPath(MME.MOD_ID, "textures/entity/zombie/ghoul.png");

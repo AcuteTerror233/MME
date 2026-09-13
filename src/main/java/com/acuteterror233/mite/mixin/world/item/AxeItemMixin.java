@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(AxeItem.class)
 /**
- * Mixin for {@code AxeItem} — 修改斧头挖掘速度判定。
+ * Mixin for {@code AxeItem} — modifies axe mining speed calculation.
  */
 public class AxeItemMixin {
     @Redirect(method = "<init>", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/Item$Properties;axe(Lnet/minecraft/world/item/ToolMaterial;FF)Lnet/minecraft/world/item/Item$Properties;"))

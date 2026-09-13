@@ -8,7 +8,7 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuType;
 
 /**
- * MME 菜单类型注册中心。
+ * MME menu type registry.
  */
 public class MMEMenuTypes {
 

@@ -3,8 +3,8 @@ package com.acuteterror233.mite.world.player;
 import net.minecraft.server.level.ServerPlayer;
 
 /**
- * 经验同步器。
- * 负责同步服务端玩家的 experienceLevel、experienceProgress、totalExperience。
+ * Experience synchronizer.
+ * Responsible for synchronizing the server-side player's experienceLevel, experienceProgress, and totalExperience.
  */
 public class ExperienceSynchronizer {
     private final ServerPlayer player;

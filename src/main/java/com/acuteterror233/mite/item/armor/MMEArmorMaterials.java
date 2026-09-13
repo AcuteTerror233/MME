@@ -16,8 +16,8 @@ import net.minecraft.world.item.equipment.EquipmentAssets;
 import java.util.Map;
 
 /**
- * MME 模组盔甲材料定义。
- * 定义精金、秘银、远古金属、生锈铁、铜、银等盔甲的材料属性和资源键。
+ * MME mod armor material definitions.
+ * Defines material properties and resource keys for adamantium, mithril, ancient metal, rusted iron, copper, silver, and other armors.
  */
 public class MMEArmorMaterials {
     public static final ResourceKey<EquipmentAsset> NETHERITE_MATERIAL_KEY = EquipmentAssets.NETHERITE;

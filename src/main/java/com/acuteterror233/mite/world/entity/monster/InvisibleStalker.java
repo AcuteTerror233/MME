@@ -14,8 +14,8 @@ import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * 隐身追踪者实体，继承僵尸行为。
- * 可破坏火把，完全静音（无声环境音、受伤声、死亡声）。
+ * Invisible stalker entity, inherits zombie behavior.
+ * Can destroy torches, completely silent (no ambient, hurt, or death sounds).
  */
 public class InvisibleStalker extends Zombie {
     public InvisibleStalker(EntityType<? extends InvisibleStalker> entityType, Level level) {

@@ -10,9 +10,9 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * {@link RunePortalCoordinateGenerator} 纯逻辑部分的 JUnit 测试。
- * 只覆盖依赖 Minecraft 注册表的薄封装之外的静态纯函数
- * （validateArguments / buildHashInput / sha256 / bytesToUnitDouble / computeAngle / computeDistance / computeCoordinate）。
+ * JUnit tests for the pure-logic parts of {@link RunePortalCoordinateGenerator}.
+ * Only covers the static pure functions outside the thin wrappers that depend on the Minecraft registry
+ * (validateArguments / buildHashInput / sha256 / bytesToUnitDouble / computeAngle / computeDistance / computeCoordinate).
  */
 class RunePortalCoordinateGeneratorTest {
 

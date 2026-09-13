@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
   "id": "mme",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "name": "Might Makes Everything",
-  "description": "这是一个让我的世界'更简单'的Mod",
+  "description": "This is a mod that makes Minecraft \"simpler.\"",
   "authors": [
     "AcuteTerror233"
   ],
   "contact": {
-    "homepage": "https://github.com/AcuteTerror233/MME",
+    "homepage": "https://modrinth.com/mod/might_makes_everything",
     "sources": "https://github.com/AcuteTerror233/MME"
   },
   "contributors": [

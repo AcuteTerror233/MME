@@ -28,7 +28,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 /**
- * Mixin for {@code Zombie} — 扩展僵尸行为（破坏作物、火把等）。
+ * Mixin for {@code Zombie} — Extends zombie behavior (destroying crops, torches, etc.).
  */
 @Mixin(Zombie.class)
 public abstract class ZombieMixin extends Monster {
@@ -54,7 +54,7 @@ public abstract class ZombieMixin extends Monster {
 
     /**
      * @author AcuteTerror233
-     * @reason 添加手持武器
+     * @reason Add held weapons
      */
     @Overwrite
     public void populateDefaultEquipmentSlots(@NonNull RandomSource randomSource, @NonNull DifficultyInstance difficultyInstance) {
@@ -96,7 +96,7 @@ public abstract class ZombieMixin extends Monster {
             }
         }
     }
-    // 地下低Y值武器分配
+    // Underground low-Y weapon assignment
     @Unique
     private void setUndergroundLowYWeapon(int index) {
         switch (index) {
@@ -109,7 +109,7 @@ public abstract class ZombieMixin extends Monster {
         }
     }
 
-    // 地下高Y值武器分配
+    // Underground high-Y weapon assignment
     @Unique
     private void setUndergroundHighYWeapon(int index) {
         switch (index) {
@@ -122,7 +122,7 @@ public abstract class ZombieMixin extends Monster {
         }
     }
 
-    // 主世界低Y值武器分配
+    // Overworld low-Y weapon assignment
     @Unique
     private void setOverworldLowYWeapon(int index) {
         switch (index) {
@@ -133,7 +133,7 @@ public abstract class ZombieMixin extends Monster {
         }
     }
 
-    // 主世界高Y值武器分配
+    // Overworld high-Y weapon assignment
     @Unique
     private void setOverworldHighYWeapon(int index) {
         switch (index) {

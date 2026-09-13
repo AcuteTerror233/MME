@@ -1,13 +1,28 @@
 {
   "layers": {
+    "horse_body": [
+      {
+        "texture": "mme:silver"
+      }
+    ],
     "humanoid": [
       {
-        "texture": "mme:silver_layer_1"
+        "texture": "mme:silver"
+      }
+    ],
+    "humanoid_baby": [
+      {
+        "texture": "mme:silver"
       }
     ],
     "humanoid_leggings": [
       {
-        "texture": "mme:silver_layer_2"
+        "texture": "mme:silver"
+      }
+    ],
+    "nautilus_body": [
+      {
+        "texture": "mme:silver"
       }
     ]
   }

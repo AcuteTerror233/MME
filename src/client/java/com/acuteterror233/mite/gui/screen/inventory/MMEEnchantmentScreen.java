@@ -31,8 +31,8 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * MME 附魔 GUI 界面。
- * 渲染附魔台的客户端界面。
+ * MME enchanting GUI screen.
+ * Renders the client-side enchanting table interface.
  */
 @Environment(EnvType.CLIENT)
 public class MMEEnchantmentScreen extends AbstractContainerScreen<MMEEnchantmentMenu> {

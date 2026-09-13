@@ -17,7 +17,7 @@ import java.util.function.Function;
 import java.util.function.UnaryOperator;
 
 /**
- * Mixin for {@code Bootstrap} — 在启动阶段触发原版注册修改。
+ * Mixin for {@code Bootstrap} — Triggers vanilla registration modifications at startup.
  */
 @Mixin(Bootstrap.class)
 public class BootstrapMixin {

@@ -18,7 +18,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 /**
- * 高炉等级熔炉 GUI 界面。
+ * Graded blast furnace GUI screen.
  */
 @Environment(EnvType.CLIENT)
 public class GradeBlastFurnaceScreen extends AbstractFurnaceScreen<GradeBlastFurnaceMenu> {

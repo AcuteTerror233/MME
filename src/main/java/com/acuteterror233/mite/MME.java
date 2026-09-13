@@ -36,8 +36,8 @@ import org.slf4j.LoggerFactory;
 import java.util.Set;
 
 /**
- * MME 模组主入口，实现 {@link ModInitializer}。
- * 负责注册所有方块、物品、实体、生物群落修改、战利品表替换和命令。
+ * MME mod main entry point, implements {@link ModInitializer}.
+ * Responsible for registering all blocks, items, entities, biome modifications, loot table replacements, and commands.
  */
 public class MME implements ModInitializer {
     public static final String MOD_ID = "mme";
@@ -49,23 +49,54 @@ public class MME implements ModInitializer {
     public void onInitialize() {
         LOGGER.info("Make Minecraft Easy!");
 
+        // === Registry initialization ===
         MMEItems.init();
         MMEBlocks.init();
         MMEMobEffects.init();
         MMEEntityTypes.init();
+
+        // === Data & world gen ===
         LootTableReplace.init();
         BiomeModification.init();
 
+        // === Point of Interest registration ===
         PoiHelper.register(Identifier.fromNamespaceAndPath(MME.MOD_ID, "underground_portal"), 0, 1, MMEBlocks.UNDERGROUND_PORTAL);
 
+        // === Overworld ore generation ===
         inOverworldAdd(OverworldPlacedFeatures.OVERWORLD_ORE_SILVER_SMALL);
         inOverworldAdd(OverworldPlacedFeatures.OVERWORLD_ORE_SILVER);
         inOverworldRemovals(OrePlacements.ORE_DIAMOND_BURIED);
         inOverworldRemovals(OrePlacements.ORE_DIAMOND_LARGE);
         inOverworldRemovals(OrePlacements.ORE_DIAMOND_MEDIUM);
 
-        ServerRecipeModify.EVENT.register(list -> list.removeIf(recipeEntry -> MME.FILTER_RECIPE_SET.contains(recipeEntry.id().identifier())));
+        // === Vanilla recipe removal ===
+        registerRecipeFilter();
 
+        // === Custom fuel values ===
+        registerFuelValues();
+
+        // === Player sleep behavior ===
+        registerSleepEvents();
+
+        // === Block flammability ===
+        FireBlock fireBlock = (FireBlock)Blocks.FIRE;
+        fireBlock.setFlammable(MMEBlocks.BLUE_BERRY_BUSH, 60, 100);
+
+        // === Custom commands ===
+        registerCommands();
+    }
+
+    /**
+     * Filters out vanilla recipes that are replaced by MME's grade-based crafting system.
+     */
+    private static void registerRecipeFilter() {
+        ServerRecipeModify.EVENT.register(list -> list.removeIf(recipeEntry -> MME.FILTER_RECIPE_SET.contains(recipeEntry.id().identifier())));
+    }
+
+    /**
+     * Registers custom fuel burn times for MME items and vanilla blocks.
+     */
+    private static void registerFuelValues() {
         FuelValueEvents.BUILD.register((builder, context) -> {
             builder.add(MMEItems.WOODEN_CLUB, context.baseSmeltTime());
             builder.add(MMEItems.WOODEN_CUDGEL, context.baseSmeltTime());
@@ -75,13 +106,20 @@ public class MME implements ModInitializer {
             builder.add(Items.TORCH, context.baseSmeltTime() * 4);
             builder.add(Items.SOUL_TORCH, context.baseSmeltTime() * 6);
         });
+    }
 
+    /**
+     * Overrides vanilla sleep rules: cancels sleeping entirely, and prevents time reset unless it's dark.
+     */
+    private static void registerSleepEvents() {
         EntitySleepEvents.ALLOW_SLEEPING.register((_, _) -> null);
         EntitySleepEvents.ALLOW_RESETTING_TIME.register(player -> !player.level().isBrightOutside());
+    }
 
-        FireBlock fireBlock = (FireBlock)Blocks.FIRE;
-        fireBlock.setFlammable(MMEBlocks.BLUE_BERRY_BUSH, 60, 100);
-
+    /**
+     * Registers the /nutrition command to display a player's current nutrition status.
+     */
+    private static void registerCommands() {
         CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) ->
                 dispatcher.register(
                         Commands.literal("nutrition")
@@ -119,7 +157,7 @@ public class MME implements ModInitializer {
     }
 
     /**
-     * 筛选掉的配方标识符集合。
+     * Set of recipe identifiers to be filtered out.
      */
     public static Set<Identifier> FILTER_RECIPE_SET = Set.of(
             Identifier.withDefaultNamespace("wooden_pickaxe"),
@@ -154,7 +192,8 @@ public class MME implements ModInitializer {
             Identifier.withDefaultNamespace("crafter"),
             Identifier.withDefaultNamespace("raw_iron"),
             Identifier.withDefaultNamespace("raw_copper"),
-            Identifier.withDefaultNamespace("raw_gold")
+            Identifier.withDefaultNamespace("raw_gold"),
+            Identifier.withDefaultNamespace("bundle")
     );
 
 }

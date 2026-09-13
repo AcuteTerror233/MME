@@ -4,8 +4,8 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.properties.Property;
 
 /**
- * 方块模型生成器扩展接口。
- * 为数据生成中的方块模型提供自定义生成方法。
+ * Extension interface for block model generators.
+ * Provides custom generation methods for block models in data generation.
  */
 public interface BlockModelGeneratorsExtension {
     void MME$registerAnvil(Block Block, Block block1, Block block2);

@@ -21,8 +21,8 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 
 
 /**
- * MME 模型数据生成器。
- * 为 MME 物品和方块生成模型 JSON。
+ * MME model data generator.
+ * Generates model JSON for MME items and blocks.
  */
 public class MMEModelProvider extends FabricModelProvider {
     public MMEModelProvider(FabricPackOutput output) {
@@ -103,7 +103,7 @@ public class MMEModelProvider extends FabricModelProvider {
     @Override
     public void generateItemModels(ItemModelGenerators itemModelGenerator) {
         ItemModelGeneratorsExtension extendedAccessor = (ItemModelGeneratorsExtension) itemModelGenerator;
-        //装备部分
+        // Equipment section
         itemModelGenerator.generateTrimmableItem(MMEItems.ADAMANTIUM_HELMET, MMEArmorMaterials.ADAMANTIUM_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_HELMET, false);
         itemModelGenerator.generateTrimmableItem(MMEItems.ADAMANTIUM_CHESTPLATE, MMEArmorMaterials.ADAMANTIUM_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
         itemModelGenerator.generateTrimmableItem(MMEItems.ADAMANTIUM_LEGGINGS, MMEArmorMaterials.ADAMANTIUM_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
@@ -120,10 +120,10 @@ public class MMEModelProvider extends FabricModelProvider {
         itemModelGenerator.generateTrimmableItem(MMEItems.ANCIENT_METAL_CHAINMAIL_CHESTPLATE, MMEArmorMaterials.ANCIENT_METAL_CHAINMAIL_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
         itemModelGenerator.generateTrimmableItem(MMEItems.ANCIENT_METAL_CHAINMAIL_LEGGINGS, MMEArmorMaterials.ANCIENT_METAL_CHAINMAIL_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
         itemModelGenerator.generateTrimmableItem(MMEItems.ANCIENT_METAL_CHAINMAIL_BOOTS, MMEArmorMaterials.ANCIENT_METAL_CHAINMAIL_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_BOOTS, false);
-        itemModelGenerator.generateTrimmableItem(MMEItems.COPPER_CHAINMAIL_HELMET, MMEArmorMaterials.COPPER_CHAINMAIL_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_HELMET, false);
-        itemModelGenerator.generateTrimmableItem(MMEItems.COPPER_CHAINMAIL_CHESTPLATE, MMEArmorMaterials.COPPER_CHAINMAIL_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
-        itemModelGenerator.generateTrimmableItem(MMEItems.COPPER_CHAINMAIL_LEGGINGS, MMEArmorMaterials.COPPER_CHAINMAIL_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
-        itemModelGenerator.generateTrimmableItem(MMEItems.COPPER_CHAINMAIL_BOOTS, MMEArmorMaterials.COPPER_CHAINMAIL_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_BOOTS, false);
+        extendedAccessor.MME$registerChainmailTrimmableItem(MMEItems.COPPER_CHAINMAIL_HELMET, Items.COPPER_HELMET, MMEArmorMaterials.COPPER_CHAINMAIL_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_HELMET, "helmet");
+        extendedAccessor.MME$registerChainmailTrimmableItem(MMEItems.COPPER_CHAINMAIL_CHESTPLATE, Items.COPPER_CHESTPLATE, MMEArmorMaterials.COPPER_CHAINMAIL_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, "chestplate");
+        extendedAccessor.MME$registerChainmailTrimmableItem(MMEItems.COPPER_CHAINMAIL_LEGGINGS, Items.COPPER_LEGGINGS, MMEArmorMaterials.COPPER_CHAINMAIL_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, "leggings");
+        extendedAccessor.MME$registerChainmailTrimmableItem(MMEItems.COPPER_CHAINMAIL_BOOTS, Items.COPPER_BOOTS, MMEArmorMaterials.COPPER_CHAINMAIL_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_BOOTS, "boots");
         itemModelGenerator.generateTrimmableItem(MMEItems.MITHRIL_HELMET, MMEArmorMaterials.MITHRIL_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_HELMET, false);
         itemModelGenerator.generateTrimmableItem(MMEItems.MITHRIL_CHESTPLATE, MMEArmorMaterials.MITHRIL_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
         itemModelGenerator.generateTrimmableItem(MMEItems.MITHRIL_LEGGINGS, MMEArmorMaterials.MITHRIL_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
@@ -153,7 +153,7 @@ public class MMEModelProvider extends FabricModelProvider {
         extendedAccessor.MME$registerChainmailTrimmableItem(MMEItems.GOLDEN_CHAINMAIL_LEGGINGS, Items.GOLDEN_LEGGINGS, MMEArmorMaterials.GOLD_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, "leggings");
         extendedAccessor.MME$registerChainmailTrimmableItem(MMEItems.GOLDEN_CHAINMAIL_BOOTS, Items.GOLDEN_BOOTS, MMEArmorMaterials.GOLD_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_BOOTS, "boots");
 
-        //食物部分
+        // Food section
         itemModelGenerator.generateFlatItem(MMEItems.BANANA, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(MMEItems.BLUE_BERRIE, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(MMEItems.CHEESE, ModelTemplates.FLAT_ITEM);
@@ -180,7 +180,7 @@ public class MMEModelProvider extends FabricModelProvider {
         itemModelGenerator.generateFlatItem(MMEItems.SORBET, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(MMEItems.VEGETABLE_SOUP, ModelTemplates.FLAT_ITEM);
 
-        //币,锁链
+        // Coins, chains
         itemModelGenerator.generateFlatItem(MMEItems.ADAMANTIUM_CHAINS, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(MMEItems.ANCIENT_METAL_CHAINS, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(MMEItems.COPPER_CHAINS, ModelTemplates.FLAT_ITEM);
@@ -198,7 +198,7 @@ public class MMEModelProvider extends FabricModelProvider {
         itemModelGenerator.generateFlatItem(MMEItems.SILVER_COINS, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(MMEItems.IRON_COINS, ModelTemplates.FLAT_ITEM);
 
-        //工具,武器
+        // Tools, weapons
         itemModelGenerator.generateFlatItem(MMEItems.NETHERITE_BATTLE_AXE, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGenerator.generateFlatItem(MMEItems.NETHERITE_DAGGER, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGenerator.generateFlatItem(MMEItems.NETHERITE_HATCHET, ModelTemplates.FLAT_HANDHELD_ITEM);

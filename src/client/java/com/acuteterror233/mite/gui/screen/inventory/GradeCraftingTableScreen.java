@@ -19,8 +19,8 @@ import org.jspecify.annotations.NonNull;
 import java.util.List;
 
 /**
- * 等级工作台 GUI 界面。
- * 渲染等级工作台的客户端界面。
+ * Graded crafting table GUI screen.
+ * Renders the client-side graded crafting table interface.
  */
 @Environment(EnvType.CLIENT)
 public class GradeCraftingTableScreen extends AbstractRecipeBookScreen<GradeCraftingTableMenu> {

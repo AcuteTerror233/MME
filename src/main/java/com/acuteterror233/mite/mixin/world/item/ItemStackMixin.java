@@ -19,7 +19,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 /**
- * Mixin for {@code ItemStack} — 扩展物品堆行为。
+ * Mixin for {@code ItemStack} — Extends item stack behavior.
  */
 @Mixin(ItemStack.class)
 public abstract class ItemStackMixin  implements DataComponentHolder, FabricItemStack {
@@ -76,13 +76,13 @@ public abstract class ItemStackMixin  implements DataComponentHolder, FabricItem
         int currentDamage = this.getDamageValue();
         int maxDamage = this.getMaxDamage();
         int durabilityPercentage = (currentDamage * 100) / maxDamage;
-        // 计算护甲值衰减系数
+        // Calculate armor value decay multiplier
         float armorMultiplier;
         if (durabilityPercentage >= 20 && durabilityPercentage < 80) {
-            // 20%-80%线性衰减: 从1.0降到0.0
+            // 20%-80% linear decay: from 1.0 down to 0.0
             armorMultiplier = 1.0f - ((float)(durabilityPercentage - 20) / 60.0f);
         } else if (durabilityPercentage >= 80) {
-            // 80%以上完全失效
+            // Above 80%, completely ineffective
             armorMultiplier = 0.0f;
         } else {
             armorMultiplier = 1.0f;

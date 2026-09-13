@@ -8,7 +8,7 @@ import net.minecraft.resources.Identifier;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * 尸鬼渲染器。
+ * Wight renderer.
  */
 public class WightRenderer extends ZombieRenderer {
     private static final Identifier WIGHT_LOCATION = Identifier.fromNamespaceAndPath(MME.MOD_ID, "textures/entity/zombie/wight.png");

@@ -11,13 +11,13 @@ import org.spongepowered.asm.mixin.Overwrite;
 
 @Mixin(BlockBehaviour.class)
 /**
- * Mixin for {@code BlockBehaviour} — 修改方块通用行为。
+ * Mixin for {@code BlockBehaviour} — Modifies common block behavior.
  */
 public abstract class BlockBehaviourMixin implements FeatureElement {
 
     /**
      * @author AcuteTerror233
-     * @reason 破坏速度更改
+     * @reason Block break speed modification
      */
     @Overwrite
     public float getDestroyProgress(BlockState state, Player player, BlockGetter world, BlockPos pos) {

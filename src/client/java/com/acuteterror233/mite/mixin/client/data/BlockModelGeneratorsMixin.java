@@ -30,7 +30,7 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 
 /**
- * Mixin for {@code BlockModelGenerators} — 实现方块模型生成扩展接口。
+ * Mixin for {@code BlockModelGenerators} — Implements block model generation extension interface.
  */
 @Mixin(BlockModelGenerators.class)
 public abstract class BlockModelGeneratorsMixin implements BlockModelGeneratorsExtension {
@@ -54,7 +54,7 @@ public abstract class BlockModelGeneratorsMixin implements BlockModelGeneratorsE
     @Shadow @Final public BiConsumer<Identifier, ModelInstance> modelOutput;
     @Shadow @Final private static PropertyDispatch<VariantMutator> ROTATION_HORIZONTAL_FACING_ALT;
 
-    // 四张图,第一张图是基本材质,完整铁砧的注册名,之后三张都是砧顶,注册id+top,
+    // Four textures: first is the base material, registry name of intact anvil; the next three are anvil tops, registry id + top
     @Unique
     @Override
     public void MME$registerAnvil(Block intact_anvil, Block chipped_anvil, Block damaged_anvil) {

@@ -18,7 +18,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 /**
- * 烟熏炉等级熔炉 GUI 界面。
+ * Graded smoker furnace GUI screen.
  */
 @Environment(EnvType.CLIENT)
 public class GradeSmokerScreen extends AbstractFurnaceScreen<GradeSmokerMenu> {

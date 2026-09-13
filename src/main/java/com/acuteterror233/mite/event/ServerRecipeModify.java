@@ -7,8 +7,8 @@ import net.minecraft.world.item.crafting.RecipeHolder;
 import java.util.List;
 
 /**
- * 服务端配方修改回调接口。
- * 在配方加载完成后触发，允许动态修改配方。
+ * Server-side recipe modification callback interface.
+ * Triggers after recipes are loaded, allowing dynamic recipe modification.
  */
 public interface ServerRecipeModify {
     Event<ServerRecipeModify> EVENT = EventFactory.createArrayBacked(ServerRecipeModify.class,

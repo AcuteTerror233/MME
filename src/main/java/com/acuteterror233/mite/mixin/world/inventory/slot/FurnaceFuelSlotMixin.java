@@ -8,12 +8,12 @@ import org.spongepowered.asm.mixin.Overwrite;
 
 @Mixin(FurnaceFuelSlot.class)
 /**
- * Mixin for {@code FurnaceFuelSlot} — 修改熔炉燃料栏位判定逻辑。
+ * Mixin for {@code FurnaceFuelSlot} — Modify furnace fuel slot check logic.
  */
 public class FurnaceFuelSlotMixin {
     /**
      * @author AcuteTerror233
-     * @reason 桶的判断修改
+     * @reason Modified bucket check
      */
     @Overwrite
     public static boolean isBucket(ItemStack stack){

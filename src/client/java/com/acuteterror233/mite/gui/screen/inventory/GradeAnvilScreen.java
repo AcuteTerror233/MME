@@ -19,8 +19,8 @@ import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 
 /**
- * 等级铁砧 GUI 界面。
- * 渲染等级铁砧的客户端界面。
+ * Grade Anvil GUI screen.
+ * Renders the client-side interface for the grade anvil.
  */
 @Environment(EnvType.CLIENT)
 public class GradeAnvilScreen extends ItemCombinerScreen<GradeAnvilMenu> {

@@ -9,8 +9,8 @@ import net.minecraft.world.level.pathfinder.PathComputationType;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * 移动到岩浆 AI 目标。
- * 使实体寻找并移动到岩浆方块。
+ * Move to lava AI goal.
+ * Makes entity seek and move to lava blocks.
  */
 public class MoveToLavaGoal extends MoveToBlockGoal {
     private final PathfinderMob mob;

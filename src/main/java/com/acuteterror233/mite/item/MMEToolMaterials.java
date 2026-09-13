@@ -7,8 +7,8 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.ToolMaterial;
 
 /**
- * MME 模组工具材料定义。
- * 定义精金、秘银、远古金属、生锈铁、铜、银等工具材料的挖掘属性。
+ * MME mod tool material definitions.
+ * Defines mining attributes for tools such as adamantium, mithril, ancient metal, rusted iron, copper, silver, etc.
  */
 public class MMEToolMaterials {
     public static final ToolMaterial NETHERITE = new ToolMaterial(BlockTags.INCORRECT_FOR_NETHERITE_TOOL, 256, 18.0F, 8.0F, 24, ItemTags.NETHERITE_TOOL_MATERIALS);

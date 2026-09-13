@@ -19,8 +19,8 @@ import java.util.Collections;
 import java.util.SequencedSet;
 
 /**
- * 燃料等级注册表。
- * 将物品映射到燃料燃烧等级，供等级熔炉限制可用燃料。
+ * Fuel grade registry.
+ * Maps items to fuel combustion grades, used by grade furnaces to restrict available fuels.
  */
 public class FuelGradeRegistry {
     private final Object2IntSortedMap<Item> fuelGrades;

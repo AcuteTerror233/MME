@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.Overwrite;
 
 @Mixin(TorchflowerCropBlock.class)
 /**
- * Mixin for {@code TorchflowerCropBlock} — 添加病害和肥力支持。
+ * Mixin for {@code TorchflowerCropBlock} — Adds disease and fertility support.
  */
 public abstract class TorchflowerCropBlockMixin extends CropBlock {
     protected TorchflowerCropBlockMixin(Properties properties) {

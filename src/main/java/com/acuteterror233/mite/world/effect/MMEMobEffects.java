@@ -8,8 +8,8 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.world.effect.MobEffect;
 
 /**
- * MME 模组状态效果注册中心。
- * 注册自定义药水效果（营养不良、胰岛素抵抗等）。
+ * MME mod status effect registry.
+ * Register custom potion effects (malnutrition, insulin resistance, etc.).
  */
 public class MMEMobEffects {
     public static final Holder<MobEffect> MALNUTRITION = register(

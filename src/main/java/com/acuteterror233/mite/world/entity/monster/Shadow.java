@@ -18,8 +18,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
 /**
- * 暗影实体，继承僵尸行为。
- * 对银器武器以外伤害免疫。
+ * Shadow entity, inherits zombie behavior.
+ * Immune to damage from non-silver weapons.
  */
 public class Shadow extends Zombie {
     public Shadow(EntityType<? extends Shadow> entityType, Level level) {

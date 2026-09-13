@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(DyeItem.class)
 /**
- * Mixin for {@code DyeItem} — 修改染料使用行为。
+ * Mixin for {@code DyeItem} — Modifies dye usage behavior.
  */
 public abstract class DyeItemMixin {
     @Inject(method = "<init>", at = @At("HEAD"))

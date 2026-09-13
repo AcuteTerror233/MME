@@ -2,12 +2,17 @@
   "layers": {
     "humanoid": [
       {
-        "texture": "mme:rusted_iron_chainmail_layer_1"
+        "texture": "mme:rusted_iron_chainmail"
+      }
+    ],
+    "humanoid_baby": [
+      {
+        "texture": "mme:rusted_iron_chainmail"
       }
     ],
     "humanoid_leggings": [
       {
-        "texture": "mme:rusted_iron_chainmail_layer_2"
+        "texture": "mme:rusted_iron_chainmail"
       }
     ]
   }

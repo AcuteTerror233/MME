@@ -42,7 +42,7 @@ public class BlueBerryBushBlock
     private static final VoxelShape SHAPE_SAPLING = Block.column(10.0, 0.0, 8.0);
     private static final VoxelShape SHAPE_GROWING = Block.column(14.0, 0.0, 16.0);
 
-    public MapCodec<BlueBerryBushBlock> codec() {
+    public @NonNull MapCodec<BlueBerryBushBlock> codec() {
         return CODEC;
     }
 

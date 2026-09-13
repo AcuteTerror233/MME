@@ -2,6 +2,7 @@ package com.acuteterror233.mite.datagen;
 
 import com.acuteterror233.mite.block.MMEBlockIds;
 import com.acuteterror233.mite.block.MMEBlockItemIds;
+import com.acuteterror233.mite.block.MMEBlocks;
 import com.acuteterror233.mite.item.MMEItemIds;
 import com.acuteterror233.mite.item.enchantment.MMEEnchantments;
 import com.acuteterror233.mite.registry.tag.*;
@@ -29,8 +30,8 @@ import org.jspecify.annotations.NonNull;
 import java.util.concurrent.CompletableFuture;
 
 /**
- * MME 标签数据生成器。
- * 生成 MME 模组的物品/方块/实体标签 JSON。
+ * MME tag data generator.
+ * Generates item/block/entity tag JSON for the MME mod.
  */
 public class MMETagProvider {
     MMETagProvider() {
@@ -176,80 +177,30 @@ public class MMETagProvider {
             builder(MMEBlockTags.GLASS_PANE)
                     .add(BlockItemIds.GLASS_PANE)
                     .addAll(VanillaBlockTagsProvider.toIds(BlockItemIds.STAINED_GLASS_PANE));
-            builder(BlockTags.ANVIL)
-                    .add(MMEBlockItemIds.NETHERITE_ANVIL.blockKey())
-                    .add(MMEBlockItemIds.CHIPPED_NETHERITE_ANVIL.blockKey())
-                    .add(MMEBlockItemIds.DAMAGED_NETHERITE_ANVIL.blockKey())
-                    .add(MMEBlockItemIds.ADAMANTIUM_ANVIL.blockKey())
-                    .add(MMEBlockItemIds.CHIPPED_ADAMANTIUM_ANVIL.blockKey())
-                    .add(MMEBlockItemIds.DAMAGED_ADAMANTIUM_ANVIL.blockKey())
-                    .add(MMEBlockItemIds.MITHRIL_ANVIL.blockKey())
-                    .add(MMEBlockItemIds.CHIPPED_MITHRIL_ANVIL.blockKey())
-                    .add(MMEBlockItemIds.DAMAGED_MITHRIL_ANVIL.blockKey())
-                    .add(MMEBlockItemIds.ANCIENT_METAL_ANVIL.blockKey())
-                    .add(MMEBlockItemIds.CHIPPED_ANCIENT_METAL_ANVIL.blockKey())
-                    .add(MMEBlockItemIds.DAMAGED_ANCIENT_METAL_ANVIL.blockKey())
-                    .add(MMEBlockItemIds.SILVER_ANVIL.blockKey())
-                    .add(MMEBlockItemIds.CHIPPED_SILVER_ANVIL.blockKey())
-                    .add(MMEBlockItemIds.DAMAGED_SILVER_ANVIL.blockKey())
-                    .add(MMEBlockItemIds.GOLDEN_ANVIL.blockKey())
-                    .add(MMEBlockItemIds.CHIPPED_GOLDEN_ANVIL.blockKey())
-                    .add(MMEBlockItemIds.DAMAGED_GOLDEN_ANVIL.blockKey())
-                    .add(MMEBlockItemIds.COPPER_ANVIL.blockKey())
-                    .add(MMEBlockItemIds.CHIPPED_COPPER_ANVIL.blockKey())
-                    .add(MMEBlockItemIds.DAMAGED_COPPER_ANVIL.blockKey());
-            builder(MMEBlockTags.INTACT_ANVIL)
-                    .add(MMEBlockItemIds.NETHERITE_ANVIL.blockKey())
-                    .add(MMEBlockItemIds.ADAMANTIUM_ANVIL.blockKey())
-                    .add(MMEBlockItemIds.MITHRIL_ANVIL.blockKey())
-                    .add(MMEBlockItemIds.ANCIENT_METAL_ANVIL.blockKey())
-                    .add(MMEBlockItemIds.SILVER_ANVIL.blockKey())
-                    .add(MMEBlockItemIds.GOLDEN_ANVIL.blockKey())
-                    .add(MMEBlockItemIds.COPPER_ANVIL.blockKey());
-            builder(MMEBlockTags.CHIPPED_ANVIL)
-                    .add(MMEBlockItemIds.CHIPPED_NETHERITE_ANVIL.blockKey())
-                    .add(MMEBlockItemIds.CHIPPED_ADAMANTIUM_ANVIL.blockKey())
-                    .add(MMEBlockItemIds.CHIPPED_MITHRIL_ANVIL.blockKey())
-                    .add(MMEBlockItemIds.CHIPPED_ANCIENT_METAL_ANVIL.blockKey())
-                    .add(MMEBlockItemIds.CHIPPED_SILVER_ANVIL.blockKey())
-                    .add(MMEBlockItemIds.CHIPPED_GOLDEN_ANVIL.blockKey())
-                    .add(MMEBlockItemIds.CHIPPED_COPPER_ANVIL.blockKey());
-            builder(MMEBlockTags.DAMAGED_ANVIL)
-                    .add(MMEBlockItemIds.DAMAGED_NETHERITE_ANVIL.blockKey())
-                    .add(MMEBlockItemIds.DAMAGED_ADAMANTIUM_ANVIL.blockKey())
-                    .add(MMEBlockItemIds.DAMAGED_MITHRIL_ANVIL.blockKey())
-                    .add(MMEBlockItemIds.DAMAGED_ANCIENT_METAL_ANVIL.blockKey())
-                    .add(MMEBlockItemIds.DAMAGED_SILVER_ANVIL.blockKey())
-                    .add(MMEBlockItemIds.DAMAGED_GOLDEN_ANVIL.blockKey())
-                    .add(MMEBlockItemIds.DAMAGED_COPPER_ANVIL.blockKey());
-            builder(MMEBlockTags.NETHERITE_ANVIL)
-                    .add(MMEBlockItemIds.NETHERITE_ANVIL.blockKey())
-                    .add(MMEBlockItemIds.CHIPPED_NETHERITE_ANVIL.blockKey())
-                    .add(MMEBlockItemIds.DAMAGED_NETHERITE_ANVIL.blockKey());
-            builder(MMEBlockTags.ADAMANTIUM_ANVIL)
-                    .add(MMEBlockItemIds.ADAMANTIUM_ANVIL.blockKey())
-                    .add(MMEBlockItemIds.CHIPPED_ADAMANTIUM_ANVIL.blockKey())
-                    .add(MMEBlockItemIds.DAMAGED_ADAMANTIUM_ANVIL.blockKey());
-            builder(MMEBlockTags.MITHRIL_ANVIL)
-                    .add(MMEBlockItemIds.MITHRIL_ANVIL.blockKey())
-                    .add(MMEBlockItemIds.CHIPPED_MITHRIL_ANVIL.blockKey())
-                    .add(MMEBlockItemIds.DAMAGED_MITHRIL_ANVIL.blockKey());
-            builder(MMEBlockTags.ANCIENT_METAL_ANVIL)
-                    .add(MMEBlockItemIds.ANCIENT_METAL_ANVIL.blockKey())
-                    .add(MMEBlockItemIds.CHIPPED_ANCIENT_METAL_ANVIL.blockKey())
-                    .add(MMEBlockItemIds.DAMAGED_ANCIENT_METAL_ANVIL.blockKey());
-            builder(MMEBlockTags.SILVER_ANVIL)
-                    .add(MMEBlockItemIds.SILVER_ANVIL.blockKey())
-                    .add(MMEBlockItemIds.CHIPPED_SILVER_ANVIL.blockKey())
-                    .add(MMEBlockItemIds.DAMAGED_SILVER_ANVIL.blockKey());
-            builder(MMEBlockTags.GOLDEN_ANVIL)
-                    .add(MMEBlockItemIds.GOLDEN_ANVIL.blockKey())
-                    .add(MMEBlockItemIds.CHIPPED_GOLDEN_ANVIL.blockKey())
-                    .add(MMEBlockItemIds.DAMAGED_GOLDEN_ANVIL.blockKey());
-            builder(MMEBlockTags.COPPER_ANVIL)
-                    .add(MMEBlockItemIds.COPPER_ANVIL.blockKey())
-                    .add(MMEBlockItemIds.CHIPPED_COPPER_ANVIL.blockKey())
-                    .add(MMEBlockItemIds.DAMAGED_COPPER_ANVIL.blockKey());
+            var anvilBuilder = builder(BlockTags.ANVIL);
+            var intactAnvilBuilder = builder(MMEBlockTags.INTACT_ANVIL);
+            var chippedAnvilBuilder = builder(MMEBlockTags.CHIPPED_ANVIL);
+            var damagedAnvilBuilder = builder(MMEBlockTags.DAMAGED_ANVIL);
+            for (var anvils : MMEBlocks.ANVIL_COLLECTIONS) {
+                anvils.forEach(block -> anvilBuilder.add(block.builtInRegistryHolder().key()));
+                intactAnvilBuilder.add(anvils.intact().builtInRegistryHolder().key());
+                chippedAnvilBuilder.add(anvils.chipped().builtInRegistryHolder().key());
+                damagedAnvilBuilder.add(anvils.damaged().builtInRegistryHolder().key());
+            }
+            var netheriteAnvilBuilder = builder(MMEBlockTags.NETHERITE_ANVIL);
+            MMEBlocks.NETHERITE_ANVILS.forEach(block -> netheriteAnvilBuilder.add(block.builtInRegistryHolder().key()));
+            var adamantiumAnvilBuilder = builder(MMEBlockTags.ADAMANTIUM_ANVIL);
+            MMEBlocks.ADAMANTIUM_ANVILS.forEach(block -> adamantiumAnvilBuilder.add(block.builtInRegistryHolder().key()));
+            var mithrilAnvilBuilder = builder(MMEBlockTags.MITHRIL_ANVIL);
+            MMEBlocks.MITHRIL_ANVILS.forEach(block -> mithrilAnvilBuilder.add(block.builtInRegistryHolder().key()));
+            var ancientMetalAnvilBuilder = builder(MMEBlockTags.ANCIENT_METAL_ANVIL);
+            MMEBlocks.ANCIENT_METAL_ANVILS.forEach(block -> ancientMetalAnvilBuilder.add(block.builtInRegistryHolder().key()));
+            var silverAnvilBuilder = builder(MMEBlockTags.SILVER_ANVIL);
+            MMEBlocks.SILVER_ANVILS.forEach(block -> silverAnvilBuilder.add(block.builtInRegistryHolder().key()));
+            var goldenAnvilBuilder = builder(MMEBlockTags.GOLDEN_ANVIL);
+            MMEBlocks.GOLDEN_ANVILS.forEach(block -> goldenAnvilBuilder.add(block.builtInRegistryHolder().key()));
+            var copperAnvilBuilder = builder(MMEBlockTags.COPPER_ANVIL);
+            MMEBlocks.COPPER_ANVILS.forEach(block -> copperAnvilBuilder.add(block.builtInRegistryHolder().key()));
             builder(MMEBlockTags.IRON_ANVIL)
                     .add(BlockItemIds.ANVIL)
                     .add(BlockItemIds.CHIPPED_ANVIL)
@@ -259,40 +210,14 @@ public class MMETagProvider {
                     .add(MMEBlockIds.HOME_PORTAL)
                     .add(MMEBlockIds.RUNE_PORTAL)
                     .add(BlockIds.NETHER_PORTAL);
-            builder(MMEBlockTags.MITHRIL_RUNESTORE)
-                    .add(MMEBlockItemIds.MITHRIL_NUL_RUNESTORE.blockKey())
-                    .add(MMEBlockItemIds.MITHRIL_QUAS_RUNESTORE.blockKey())
-                    .add(MMEBlockItemIds.MITHRIL_POR_RUNESTORE.blockKey())
-                    .add(MMEBlockItemIds.MITHRIL_AN_RUNESTORE.blockKey())
-                    .add(MMEBlockItemIds.MITHRIL_NOX_RUNESTORE.blockKey())
-                    .add(MMEBlockItemIds.MITHRIL_FLAM_RUNESTORE.blockKey())
-                    .add(MMEBlockItemIds.MITHRIL_VAS_RUNESTORE.blockKey())
-                    .add(MMEBlockItemIds.MITHRIL_DES_RUNESTORE.blockKey())
-                    .add(MMEBlockItemIds.MITHRIL_ORT_RUNESTORE.blockKey())
-                    .add(MMEBlockItemIds.MITHRIL_TYM_RUNESTORE.blockKey())
-                    .add(MMEBlockItemIds.MITHRIL_CORP_RUNESTORE.blockKey())
-                    .add(MMEBlockItemIds.MITHRIL_LOR_RUNESTORE.blockKey())
-                    .add(MMEBlockItemIds.MITHRIL_MANI_RUNESTORE.blockKey())
-                    .add(MMEBlockItemIds.MITHRIL_JUX_RUNESTORE.blockKey())
-                    .add(MMEBlockItemIds.MITHRIL_YLEM_RUNESTORE.blockKey())
-                    .add(MMEBlockItemIds.MITHRIL_SANCT_RUNESTORE.blockKey());
-            builder(MMEBlockTags.ADAMANTIUM_RUNESTORE)
-                    .add(MMEBlockItemIds.ADAMANTIUM_NUL_RUNESTORE.blockKey())
-                    .add(MMEBlockItemIds.ADAMANTIUM_QUAS_RUNESTORE.blockKey())
-                    .add(MMEBlockItemIds.ADAMANTIUM_POR_RUNESTORE.blockKey())
-                    .add(MMEBlockItemIds.ADAMANTIUM_AN_RUNESTORE.blockKey())
-                    .add(MMEBlockItemIds.ADAMANTIUM_NOX_RUNESTORE.blockKey())
-                    .add(MMEBlockItemIds.ADAMANTIUM_FLAM_RUNESTORE.blockKey())
-                    .add(MMEBlockItemIds.ADAMANTIUM_VAS_RUNESTORE.blockKey())
-                    .add(MMEBlockItemIds.ADAMANTIUM_DES_RUNESTORE.blockKey())
-                    .add(MMEBlockItemIds.ADAMANTIUM_ORT_RUNESTORE.blockKey())
-                    .add(MMEBlockItemIds.ADAMANTIUM_TYM_RUNESTORE.blockKey())
-                    .add(MMEBlockItemIds.ADAMANTIUM_CORP_RUNESTORE.blockKey())
-                    .add(MMEBlockItemIds.ADAMANTIUM_LOR_RUNESTORE.blockKey())
-                    .add(MMEBlockItemIds.ADAMANTIUM_MANI_RUNESTORE.blockKey())
-                    .add(MMEBlockItemIds.ADAMANTIUM_JUX_RUNESTORE.blockKey())
-                    .add(MMEBlockItemIds.ADAMANTIUM_YLEM_RUNESTORE.blockKey())
-                    .add(MMEBlockItemIds.ADAMANTIUM_SANCT_RUNESTORE.blockKey());
+            var mithrilBuilder = builder(MMEBlockTags.MITHRIL_RUNESTORE);
+            for (var block : MMEBlocks.MITHRIL_RUNESTONES.asList()) {
+                mithrilBuilder.add(block.builtInRegistryHolder().key());
+            }
+            var adamantBuilder = builder(MMEBlockTags.ADAMANTIUM_RUNESTORE);
+            for (var block : MMEBlocks.ADAMANTIUM_RUNESTONES.asList()) {
+                adamantBuilder.add(block.builtInRegistryHolder().key());
+            }
             builder(MMEBlockTags.RUNESTORE)
                     .forceAddTag(MMEBlockTags.ADAMANTIUM_RUNESTORE)
                     .forceAddTag(MMEBlockTags.MITHRIL_RUNESTORE);
@@ -1077,7 +1002,7 @@ public class MMETagProvider {
                     .add(MMEBlockItemIds.COPPER_CRAFTING_TABLE.asItem())
                     .add(MMEBlockItemIds.SILVER_CRAFTING_TABLE.asItem());
             builder(MMEItemTags.AIR);
-            // 待做的功能
+            // TODO features
 //            builder(ItemTags.SULFUR_CUBE_ARCHETYPE_BOUNCY)
 //                    .add(BlockItemIds.CRAFTING_TABLE)
 //                    .add(BlockItemIds.FURNACE)

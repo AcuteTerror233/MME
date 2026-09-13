@@ -7,8 +7,8 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;
 
 /**
- * MME 模组实体类型标签定义。
- * 用于分类实体行为（如可屠宰、可产肥料）。
+ * MME mod entity type tag definitions.
+ * Used for categorizing entity behaviors (e.g., butchering, manure production).
  */
 public interface MMEEntityTypeTags {
     TagKey<EntityType<?>> SENSITIVE_TO_BUTCHERING = key("sensitive_to_butchering");

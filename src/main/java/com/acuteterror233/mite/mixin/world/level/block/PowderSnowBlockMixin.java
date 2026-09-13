@@ -21,7 +21,7 @@ import java.util.Optional;
 
 @Mixin(PowderSnowBlock.class)
 /**
- * Mixin for {@code PowderSnowBlock} — 实现细雪可排液接口。
+ * Mixin for {@code PowderSnowBlock} — Implements fluid drainable interface for powder snow.
  */
 public class PowderSnowBlockMixin implements FluidDrainableExtension {
     @Override

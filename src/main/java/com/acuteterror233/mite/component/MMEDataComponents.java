@@ -12,8 +12,8 @@ import net.minecraft.util.ExtraCodecs;
 import java.util.function.UnaryOperator;
 
 /**
- * MME 模组数据组件类型注册。
- * 定义自定义物品数据组件（如制作时间）。
+ * MME mod data component type registration.
+ * Defines custom item data components (such as crafting time).
  */
 public class MMEDataComponents {
     public static final DataComponentType<Integer> CRAFTING_TIME = register("crafting_time", builder -> builder.persistent(ExtraCodecs.NON_NEGATIVE_INT).networkSynchronized(ByteBufCodecs.VAR_INT));

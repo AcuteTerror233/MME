@@ -23,8 +23,8 @@ import java.util.function.Function;
 import java.util.function.UnaryOperator;
 
 /**
- * 原版物品属性修改器。
- * 批量修改原版物品的堆叠上限、食物属性、燃料值等。
+ * Vanilla item properties modifier.
+ * Batch modifies vanilla items' stack limits, food properties, fuel values, etc.
  */
 public final class VanillaItemModify {
     public static final Map<Class<?>, UnaryOperator<Item.Properties>> IN_CLASS_BLOCK_ITEM_SETTINGS_MODIFY = createBlockItemSettingsModifyMapByClass();
@@ -33,18 +33,18 @@ public final class VanillaItemModify {
     public static final Map<Identifier, UnaryOperator<Item.Properties>> ITEM_SETTINGS_MODIFY = createItemSettingsModifyMap();
 
     /**
-     * 按照物品注册名划分的最大堆叠映射表。
-     * Key: 物品标识符 Identifier
-     * Value: 设置函数 UnaryOperator<Item.Settings>
+     * Maximum stack mapping table divided by item registration name.
+     * Key: Item identifier
+     * Value: Settings function UnaryOperator<Item.Settings>
      */
     private static Map<Identifier, UnaryOperator<Item.Properties>> createItemSettingsModifyMap() {
         Map<Identifier, UnaryOperator<Item.Properties>> result = new HashMap<>();
 
-        // 最大堆叠为 1 的物品标识
+        // Items with maximum stack of 1
         result.put(Identifier.withDefaultNamespace("heart_of_the_sea"), settings -> settings.stacksTo(1));
         result.put(Identifier.withDefaultNamespace("nether_star"), settings -> settings.stacksTo(1));
 
-        // 最大堆叠为 8 的物品标识
+        // Items with maximum stack of 8
         result.put(Identifier.withDefaultNamespace("flint"), settings -> settings.stacksTo(8));
         result.put(Identifier.withDefaultNamespace("rabbit_hide"), settings -> settings.stacksTo(8));
         result.put(Identifier.withDefaultNamespace("honeycomb"), settings -> settings.stacksTo(8));
@@ -93,7 +93,7 @@ public final class VanillaItemModify {
                 .component(MMEDataComponents.FOOD_NUTRITION, new FoodNutrition(0, 0, 4800))
         );
 
-        // 最大堆叠为 16 的物品标识
+        // Items with maximum stack of 16
         result.put(Identifier.withDefaultNamespace("iron_ingot"), settings -> settings.stacksTo(16).component(MMEDataComponents.CRAFTING_TIME, 10));
         result.put(Identifier.withDefaultNamespace("copper_ingot"), settings -> settings.stacksTo(16).component(MMEDataComponents.CRAFTING_TIME, 5));
         result.put(Identifier.withDefaultNamespace("gold_ingot"), settings -> settings.stacksTo(16).component(MMEDataComponents.CRAFTING_TIME, 5));
@@ -303,7 +303,7 @@ public final class VanillaItemModify {
                 .component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2)
         );
 
-        // 最大堆叠为 32 的物品标识
+        // Items with maximum stack of 32
         result.put(Identifier.withDefaultNamespace("lapis_lazuli"), settings -> settings.stacksTo(32));
         result.put(Identifier.withDefaultNamespace("quartz"), settings -> settings.stacksTo(32));
         result.put(Identifier.withDefaultNamespace("stick"), settings -> settings.stacksTo(32));
@@ -408,7 +408,7 @@ public final class VanillaItemModify {
         result.put(Identifier.withDefaultNamespace("copper_axe"), settings -> MMEItems.getAxeSettings(MMEToolMaterials.COPPER).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2));
         result.put(Identifier.withDefaultNamespace("copper_hoe"), settings -> MMEItems.getHoeSettings(MMEToolMaterials.COPPER).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2));
 
-        // 原版矛（石矛、钻石矛除外）
+        // Vanilla spears (except stone spear and diamond spear)
         result.put(Identifier.withDefaultNamespace("wooden_spear"), settings -> MMEItems.VanillaSpearSettings(settings, MMEToolMaterials.WOOD, 4, 0.65F));
         result.put(Identifier.withDefaultNamespace("copper_spear"), settings -> MMEItems.VanillaSpearSettings(settings, MMEToolMaterials.COPPER, 4, 0.85F));
         result.put(Identifier.withDefaultNamespace("iron_spear"), settings -> MMEItems.VanillaSpearSettings(settings, MMEToolMaterials.IRON, 4, 0.95F));
@@ -481,15 +481,15 @@ public final class VanillaItemModify {
     }
 
     /**
-     * 物品工厂修改映射表
-     * key: 物品标识
-     * value: 工厂
+     * Item factory modification mapping table
+     * key: Item identifier
+     * value: Factory
      */
 
     private static Map<Identifier, Function<Item.Properties, Item>> createItemFactoryModifyMap() {
         Map<Identifier, Function<Item.Properties, Item>> result = new HashMap<>();
 
-        // 工具类物品
+        // Tool items
         result.put(Identifier.withDefaultNamespace("stone_shovel"), Item::new);
         result.put(Identifier.withDefaultNamespace("stone_axe"), Item::new);
         result.put(Identifier.withDefaultNamespace("stone_hoe"), Item::new);
@@ -656,21 +656,21 @@ public final class VanillaItemModify {
 
 
     /**
-     * 方块物品设置修改映射表
-     * key: 方块类型
-     * value: 设置
+     * Block item settings modification mapping table
+     * key: Block type
+     * value: Settings
      */
 
     private static Map<Class<?>, UnaryOperator<Item.Properties>> createBlockItemSettingsModifyMapByClass() {
         Map<Class<?>, UnaryOperator<Item.Properties>> result = new HashMap<>();
 
-        // 最大堆叠为 1 的方块类型
+        // Block types with maximum stack of 1
         result.put(FenceGateBlock.class, settings -> settings.stacksTo(1));
         result.put(BedBlock.class, settings -> settings.stacksTo(1));
         result.put(HeavyCoreBlock.class, settings -> settings.stacksTo(1));
         result.put(ShulkerBoxBlock.class, settings -> settings.stacksTo(1));
 
-        // 最大堆叠为 8 的方块类型
+        // Block types with maximum stack of 8
         result.put(SlabBlock.class, settings -> settings.stacksTo(8));
         result.put(WallBlock.class, settings -> settings.stacksTo(8));
         result.put(TintedParticleLeavesBlock.class, settings -> settings.stacksTo(8));
@@ -695,7 +695,7 @@ public final class VanillaItemModify {
         result.put(ComparatorBlock.class, settings -> settings.stacksTo(8));
         result.put(TripWireHookBlock.class, settings -> settings.stacksTo(8));
 
-        // 最大堆叠为 16 的方块类型
+        // Block types with maximum stack of 16
         result.put(IronBarsBlock.class, settings -> settings.stacksTo(16));
         result.put(RailBlock.class, settings -> settings.stacksTo(16));
         result.put(PressurePlateBlock.class, settings -> settings.stacksTo(16));
@@ -744,7 +744,7 @@ public final class VanillaItemModify {
         result.put(LeverBlock.class, settings -> settings.stacksTo(16));
         result.put(ChainBlock.class, settings -> settings.stacksTo(16));
 
-        // 最大堆叠为 32 的方块类型
+        // Block types with maximum stack of 32
         result.put(NetherFungusBlock.class, settings -> settings.stacksTo(32));
         result.put(ButtonBlock.class, settings -> settings.stacksTo(32));
         result.put(CarpetBlock.class, settings -> settings.stacksTo(32));

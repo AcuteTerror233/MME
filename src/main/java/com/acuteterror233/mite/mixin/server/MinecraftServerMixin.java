@@ -28,7 +28,7 @@ import java.util.concurrent.CompletableFuture;
 
 
 /**
- * Mixin for {@code MinecraftServer} — 实现燃料等级注册表获取接口。
+ * Mixin for {@code MinecraftServer} — Implement fuel grade registry access interface.
  */
 @Mixin(MinecraftServer.class)
 public class MinecraftServerMixin implements GetFuelGradeRegistryExtension {

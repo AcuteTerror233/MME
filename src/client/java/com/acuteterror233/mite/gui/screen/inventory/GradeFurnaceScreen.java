@@ -18,8 +18,8 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 /**
- * 等级熔炉 GUI 界面。
- * 渲染等级熔炉的客户端界面。
+ * Graded furnace GUI screen.
+ * Renders the client-side graded furnace interface.
  */
 @Environment(EnvType.CLIENT)
 public class GradeFurnaceScreen extends AbstractFurnaceScreen<GradeFurnaceMenu> {

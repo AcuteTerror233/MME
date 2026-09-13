@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
 
 /**
- * Mixin for {@code EndCrystal} — 修改末影水晶行为。
+ * Mixin for {@code EndCrystal} — Modify End Crystal behavior.
  */
 @Mixin(EndCrystal.class)
 public abstract class EndCrystalMixin extends Entity{

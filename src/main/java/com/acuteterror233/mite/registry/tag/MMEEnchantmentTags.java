@@ -7,8 +7,8 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.enchantment.Enchantment;
 
 /**
- * MME 模组附魔标签定义。
- * 用于对附魔进行分组（如互斥附魔组）。
+ * MME mod enchantment tag definitions.
+ * Used for grouping enchantments (e.g., mutually exclusive enchantment sets).
  */
 public interface MMEEnchantmentTags {
     TagKey<Enchantment> EQUIPMENT_DROPS_EXCLUSIVE = key("equipment_drops_exclusive");

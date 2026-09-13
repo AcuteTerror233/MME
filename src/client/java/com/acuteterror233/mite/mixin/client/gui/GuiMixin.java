@@ -16,7 +16,7 @@ import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
 /**
- * Mixin for {@code Gui} — 修改游戏界面 HUD 渲染。
+ * Mixin for {@code Gui} — Modifies in-game HUD rendering.
  */
 @Mixin(Hud.class)
 public abstract class GuiMixin {
@@ -33,7 +33,7 @@ public abstract class GuiMixin {
     }
     /**
      * @author AcuteTerror233
-     * @reason 修改 PortalOverlay
+     * @reason Modifies PortalOverlay
      */
     @Overwrite
     private void extractPortalOverlay(GuiGraphicsExtractor guiGraphics, float f) {

@@ -11,8 +11,8 @@ import org.jetbrains.annotations.NotNull;
 import java.util.concurrent.CompletableFuture;
 
 /**
- * MME 动态注册表数据生成器。
- * 注册维度类型、生物群落、配置特征等世界生成数据。
+ * MME dynamic registry data provider.
+ * Registers dimension types, biomes, configured features, and other world generation data.
  */
 public class MMEDynamicRegistryProvider extends FabricDynamicRegistryProvider {
     public MMEDynamicRegistryProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {

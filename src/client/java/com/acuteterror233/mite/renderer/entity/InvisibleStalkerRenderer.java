@@ -10,7 +10,7 @@ import net.minecraft.resources.Identifier;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * 隐身追踪者渲染器。
+ * Invisible Stalker renderer.
  */
 public class InvisibleStalkerRenderer extends ZombieRenderer {
     private static final Identifier TEXTURE = Identifier.fromNamespaceAndPath(MME.MOD_ID, "textures/entity/zombie/invisible_stalker.png");

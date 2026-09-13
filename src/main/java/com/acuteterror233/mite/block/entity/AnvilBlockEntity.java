@@ -16,8 +16,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 铁砧方块实体。
- * 存储铁砧的损坏等级和材料限制信息，控制铁砧降级逻辑。
+ * Anvil block entity.
+ * Stores the anvil's damage level and material limit information, controls anvil degradation logic.
  */
 public class AnvilBlockEntity extends BlockEntity {
     public static final Map<Block, Block> ANVIL_MAP = new HashMap<>(){{

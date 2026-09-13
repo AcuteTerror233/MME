@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.Overwrite;
 
 @Mixin(EnchantmentHelper.class)
 /**
- * Mixin for {@code EnchantmentHelper} — 修改附魔辅助逻辑。
+ * Mixin for {@code EnchantmentHelper} — Modifies enchantment helper logic.
  */
 public class EnchantmentHelperMixin {
     @Overwrite

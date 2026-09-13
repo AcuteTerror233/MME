@@ -11,7 +11,7 @@ import net.minecraft.resources.Identifier;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * 相位蜘蛛渲染器，带传送粒子效果。
+ * Phase Spider renderer with teleportation particle effects.
  */
 public class PhaseSpiderRenderer extends SpiderRenderer<PhaseSpider> {
     private static final Identifier TEXTURE = Identifier.fromNamespaceAndPath(MME.MOD_ID, "textures/entity/spider/phase_spider.png");

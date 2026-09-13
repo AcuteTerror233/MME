@@ -18,7 +18,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 /**
- * Mixin for {@code CampfireBlockEntity} — 实现营火方块实体扩展接口。
+ * Mixin for {@code CampfireBlockEntity} — Implements campfire block entity extension interface.
  */
 @Mixin(CampfireBlockEntity.class)
 public class CampfireBlockEntityMixin implements CampfireBlockEntityExtension {

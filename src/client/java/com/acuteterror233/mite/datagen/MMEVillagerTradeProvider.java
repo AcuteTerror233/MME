@@ -49,9 +49,10 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * MME 村民交易定义。每条交易以静态 {@code ResourceKey} 声明,在 {@link #bootstrap} 中通过
- * {@link #register} 注册到 villager_trade 注册表,并输出到 {@code data/mme/villager_trade/}。
- * 内容来源于 villager-trades-EDIT.md。
+ * MME villager trade definition. Each trade is declared with a static {@code ResourceKey},
+ * registered to the villager_trade registry via {@link #register} in {@link #bootstrap},
+ * and output to {@code data/mme/villager_trade/}.
+ * Content sourced from villager-trades-EDIT.md.
  */
 public class MMEVillagerTradeProvider {
 	public static final ResourceKey<VillagerTrade> FARMER_1_BEETROOT_EMERALD = resourceKey("farmer/1/beetroot_emerald");
@@ -527,33 +528,33 @@ public class MMEVillagerTradeProvider {
 
 	public static Holder<VillagerTrade> bootstrap(final BootstrapContext<VillagerTrade> context) {
 		TradeLookups lookups = TradeLookups.of(context);
-		// 农民 farmer
+		// Farmer
 		registerFarmer(context, lookups);
-		// 渔夫 fisherman
+		// Fisherman
 		registerFisherman(context, lookups);
-		// 牧羊人 shepherd
+		// Shepherd
 		registerShepherd(context, lookups);
-		// 制箭师 fletcher
+		// Fletcher
 		registerFletcher(context, lookups);
-		// 图书管理员 librarian
+		// Librarian
 		registerLibrarian(context, lookups);
-		// 制图师 cartographer
+		// Cartographer
 		registerCartographer(context, lookups);
-		// 牧师 cleric
+		// Cleric
 		registerCleric(context, lookups);
-		// 盔甲匠 armorer
+		// Armorer
 		registerArmorer(context, lookups);
-		// 武器匠 weaponsmith
+		// Weaponsmith
 		registerWeaponsmith(context, lookups);
-		// 工具匠 toolsmith
+		// Toolsmith
 		registerToolsmith(context, lookups);
-		// 屠夫 butcher
+		// Butcher
 		registerButcher(context, lookups);
-		// 皮匠 leatherworker
+		// Leatherworker
 		registerLeatherworker(context, lookups);
-		// 石匠 mason
+		// Mason
 		registerMason(context, lookups);
-		// 流浪商人 wandering_trader
+		// Wandering Trader
 		return registerWanderingTrader(context, lookups);
 	}
 	private static void registerFarmer(final BootstrapContext<VillagerTrade> context, final TradeLookups lookups) {

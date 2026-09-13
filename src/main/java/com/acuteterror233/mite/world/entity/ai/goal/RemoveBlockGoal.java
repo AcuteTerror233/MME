@@ -22,8 +22,8 @@ import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
 /**
- * 移除方块 AI 目标基类。
- * 使实体移动到目标方块并破坏它，支持粒子效果和声音。
+ * Remove block AI goal base class.
+ * Makes entity move to target block and destroy it, supports particle effects and sound.
  */
 public class RemoveBlockGoal extends MoveToBlockGoal {
     protected final Block blockToRemove;

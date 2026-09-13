@@ -1,8 +1,8 @@
 package com.acuteterror233.mite.interfaces;
 
 /**
- * 营火方块实体扩展接口。
- * 为营火方块实体提供额外的访问器方法。
+ * Campfire block entity extension interface.
+ * Provides additional accessor methods for campfire block entities.
  */
 public interface CampfireBlockEntityExtension {
     default int MME$GetRemainingIgnitionTime(){

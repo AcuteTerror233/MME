@@ -16,7 +16,7 @@ import java.util.List;
 
 @Mixin(RecipeManager.class)
 /**
- * Mixin for {@code RecipeManager} — 在配方加载后触发服务器配方修改事件。
+ * Mixin for {@code RecipeManager} — Trigger server recipe modification event after recipe loading.
  */
 public class RecipeManagerMixin {
     @Inject(method = "prepare(Lnet/minecraft/server/packs/resources/ResourceManager;Lnet/minecraft/util/profiling/ProfilerFiller;)Lnet/minecraft/world/item/crafting/RecipeMap;", at = @At("RETURN"), cancellable = true)

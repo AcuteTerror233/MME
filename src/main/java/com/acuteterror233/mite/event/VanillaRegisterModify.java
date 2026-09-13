@@ -11,14 +11,14 @@ import java.util.function.BiFunction;
 import java.util.function.Function;
 
 /**
- * 原版注册修改器。
- * 在模组初始化时修改原版注册项（如物品属性、方块行为等）。
+ * Vanilla register modifier.
+ * Modifies vanilla registry entries (such as item properties, block behaviors) during mod initialization.
  */
 public final class VanillaRegisterModify {
 
     /**
-     * 物品注册事件
-     * 用于在物品注册过程中触发监听器，允许对注册的物品进行修改
+     * Item registration event
+     * Triggers listeners during item registration, allowing modification of registered items
      */
     public static final Event<ItemRegister> ITEM_REGISTER = EventFactory.createArrayBacked(ItemRegister.class, (listeners) -> (key, factory, settings) -> {
         for (ItemRegister listener : listeners) {
@@ -29,8 +29,8 @@ public final class VanillaRegisterModify {
     });
 
     /**
-     * 方块注册事件
-     * 用于在方块注册过程中触发监听器，允许对注册的方块进行修改
+     * Block registration event
+     * Triggers listeners during block registration, allowing modification of registered blocks
      */
     public static final Event<BlockRegister> BLOCK_REGISTER = EventFactory.createArrayBacked(BlockRegister.class, (listeners) -> (key, factory, settings) -> {
         for (BlockRegister listener : listeners) {
@@ -41,8 +41,8 @@ public final class VanillaRegisterModify {
     });
 
     /**
-     * 方块物品注册事件
-     * 用于在方块物品注册过程中触发监听器，允许对注册的物品进行修改
+     * Block item registration event
+     * Triggers listeners during block item registration, allowing modification of registered items
      */
     public static final Event<BlockItemRegister> BLOCK_ITEM_REGISTER = EventFactory.createArrayBacked(BlockItemRegister.class, (listeners) -> (block, factory, settings) -> {
         for (BlockItemRegister listener : listeners) {

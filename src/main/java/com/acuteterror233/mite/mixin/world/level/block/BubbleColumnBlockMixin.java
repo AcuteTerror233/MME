@@ -18,7 +18,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import java.util.Optional;
 
 /**
- * Mixin for {@code BubbleColumnBlock} — 实现可排液接口。
+ * Mixin for {@code BubbleColumnBlock} — Implements fluid drainable interface.
  */
 @Mixin(BubbleColumnBlock.class)
 public class BubbleColumnBlockMixin implements FluidDrainableExtension {

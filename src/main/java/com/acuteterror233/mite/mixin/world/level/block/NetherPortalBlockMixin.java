@@ -17,12 +17,12 @@ import org.spongepowered.asm.mixin.Shadow;
 
 @Mixin(NetherPortalBlock.class)
 /**
- * Mixin for {@code NetherPortalBlock} — 修改地狱门行为和传送逻辑。
+ * Mixin for {@code NetherPortalBlock} — Modifies nether portal behavior and teleportation logic.
  */
 public class NetherPortalBlockMixin {
     /**
      * @author  AcuteTerror233
-     * @reason  更改的地狱传送门的传送逻辑
+     * @reason Changes nether portal teleportation logic
      */
     @Overwrite
     @Nullable

@@ -14,23 +14,23 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * 符文传送门坐标生成器。
- * 计算符文传送门在目标维度的对应坐标。
+ * Rune portal coordinate generator.
+ * Calculates the corresponding coordinates of a rune portal in the target dimension.
  *
- * <p>设计意图：用"结构内容哈希"替代随机数，实现确定性的远距离坐标生成——
- * 同一结构 + 同一世界种子 → 唯一且固定的目标点，且点落在指定圆环内按面积均匀分布。
+ * <p>Design intent: Replace random numbers with "structure content hash" to achieve deterministic long-distance coordinate generation—
+ * same structure + same world seed → unique and fixed target point, with points uniformly distributed by area within the specified circular ring.
  *
- * <p>结构：入口 {@link #getRunePortalCoordinate} 只做校验、seed 解析、key 提取三件薄事，
- * 其余全部下沉为 package-private 静态纯函数，便于 JUnit 直接测试。
- * 对外行为与旧实现逐字节兼容（哈希输入规则：前 3 + 末 4 个方块的注册表 key 以 {@code |} 拼接 + seed）。
+ * <p>Structure: The entry point {@link #getRunePortalCoordinate} only does three lightweight tasks: validation, seed parsing, and key extraction.
+ * Everything else is delegated to package-private static pure functions for easy direct JUnit testing.
+ * External behavior is byte-compatible with the old implementation (hash input rules: first 3 + last 4 block registry keys joined with {@code |} + seed).
  */
 public class RunePortalCoordinateGenerator {
-    /** 参数上限：防止 min/max 平方时 int 溢出（sqrt 前会转 double，但语义上限制输入范围）。 */
+    /** Parameter upper limit: prevents int overflow when squaring min/max (converts to double before sqrt, but semantically restricts input range). */
     static final int MAX_DISTANCE_LIMIT = 1_000_000;
 
     /**
-     * ThreadLocal 保证线程安全；每次使用前必须 {@code reset()}（见 {@link #sha256(byte[])}），
-     * 切勿改为共享静态实例而不 reset。
+     * ThreadLocal ensures thread safety; must {@code reset()} before each use (see {@link #sha256(byte[])}).
+     * Never change to a shared static instance without reset.
      */
     private static final ThreadLocal<MessageDigest> SHA_256 = ThreadLocal.withInitial(() -> {
         try {
@@ -41,7 +41,7 @@ public class RunePortalCoordinateGenerator {
     });
 
     /**
-     * 生成在全方向均匀分布的坐标。
+     * Generates coordinates uniformly distributed in all directions.
      */
     public static BlockPos getRunePortalCoordinate(List<BlockState> list, Level world, BlockPos originalPos, int minDistance, int maxDistance) {
         validateArguments(list, minDistance, maxDistance);
@@ -52,10 +52,10 @@ public class RunePortalCoordinateGenerator {
         return computeCoordinate(seed, keys, originalPos, minDistance, maxDistance);
     }
 
-    // ─── 依赖 Minecraft 的薄封装（不单测；纯逻辑部分已下沉） ───
+    // ─── Thin wrappers depending on Minecraft (not unit tested; pure logic has been delegated) ───
 
     /**
-     * 解析世界种子：有 server 时用 worldgen 种子（稳定），否则回退维度 id 哈希。
+     * Resolves world seed: uses worldgen seed when server is available (stable), otherwise falls back to dimension id hash.
      */
     static long resolveSeed(Level world) {
         MinecraftServer server = world.getServer();
@@ -65,8 +65,8 @@ public class RunePortalCoordinateGenerator {
     }
 
     /**
-     * 提取结构中参与哈希的 4 个方块注册表 key（前 3 + 末 1）。
-     * 调用方保证 list.size() >= 4（validateArguments 已挡）。
+     * Extracts 4 block registry keys participating in the hash from the structure (first 3 + last 1).
+     * Caller ensures list.size() >= 4 (validateArguments already guards this).
      */
     static List<Identifier> extractKeys(List<BlockState> list) {
         List<Identifier> keys = new ArrayList<>(4);
@@ -77,11 +77,11 @@ public class RunePortalCoordinateGenerator {
         return List.copyOf(keys);
     }
 
-    // ─── 纯逻辑（零 Minecraft 注册表依赖，全部可测） ───
+    // ─── Pure logic (zero Minecraft registry dependency, all testable) ───
 
     /**
-     * 参数校验。边界：list null 或 size<4 → IAE；minDistance<0 → IAE；
-     * maxDistance<minDistance → IAE；maxDistance>上限 → IAE。
+     * Parameter validation. Boundaries: list null or size<4 → IAE; minDistance<0 → IAE;
+     * maxDistance<minDistance → IAE; maxDistance>upper limit → IAE.
      */
     static void validateArguments(List<?> list, int minDistance, int maxDistance) {
         if (list == null || list.size() < 4) {
@@ -99,8 +99,8 @@ public class RunePortalCoordinateGenerator {
     }
 
     /**
-     * 构建哈希输入：{@code key0|key1|key2|key3|seed} 的 UTF-8 字节。
-     * 规则与旧实现一致（顺序敏感、seed 十进制）。
+     * Builds hash input: UTF-8 bytes of {@code key0|key1|key2|key3|seed}.
+     * Rules are consistent with the old implementation (order-sensitive, seed in decimal).
      */
     static byte[] buildHashInput(List<Identifier> keys, long seed) {
         StringBuilder sb = new StringBuilder();
@@ -115,7 +115,7 @@ public class RunePortalCoordinateGenerator {
     }
 
     /**
-     * 标准 SHA-256。每次调用 reset（线程安全约定见 {@link #SHA_256}）。
+     * Standard SHA-256. Resets on each call (thread safety convention see {@link #SHA_256}).
      */
     static byte[] sha256(byte[] input) {
         MessageDigest digest = SHA_256.get();
@@ -124,7 +124,7 @@ public class RunePortalCoordinateGenerator {
     }
 
     /**
-     * 将哈希的 8 个字节（大端）映射到 [0,1) 均匀分布。
+     * Maps 8 bytes of hash (big-endian) to uniform distribution in [0,1).
      */
     static double bytesToUnitDouble(byte[] hash, int offset) {
         long value = 0;
@@ -135,14 +135,14 @@ public class RunePortalCoordinateGenerator {
     }
 
     /**
-     * 角度：全圆周均匀分布 [0, 2π)。
+     * Angle: uniform distribution over full circle [0, 2π).
      */
     static double computeAngle(byte[] hash) {
         return bytesToUnitDouble(hash, 0) * 2 * Math.PI;
     }
 
     /**
-     * 距离：平方根变换使目标在圆环内按面积均匀分布；min==max 时恒等于 min。
+     * Distance: square root transformation makes targets uniformly distributed by area within the ring; equals min when min==max.
      */
     static double computeDistance(byte[] hash, int minDistance, int maxDistance) {
         double minDistanceSq = (double) minDistance * minDistance;
@@ -151,8 +151,8 @@ public class RunePortalCoordinateGenerator {
     }
 
     /**
-     * 核心编排（纯函数）：hash → 角度/距离 → BlockPos。
-     * 仅依赖 keys + seed + originalPos，可脱离 Minecraft 环境测试。
+     * Core orchestration (pure function): hash → angle/distance → BlockPos.
+     * Only depends on keys + seed + originalPos, can be tested outside Minecraft environment.
      */
     static BlockPos computeCoordinate(long seed, List<Identifier> keys, BlockPos originalPos, int minDistance, int maxDistance) {
         if (keys == null || keys.size() < 4) {

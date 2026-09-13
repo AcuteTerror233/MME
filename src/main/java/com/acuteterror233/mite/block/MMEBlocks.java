@@ -1,70 +1,57 @@
 package com.acuteterror233.mite.block;
 
-import com.acuteterror233.mite.component.MMEDataComponents;
-import com.acuteterror233.mite.item.MMEToolMaterials;
 import com.acuteterror233.mite.registry.tag.MMEItemTags;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
+import com.google.common.collect.ImmutableList;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ToolMaterial;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.MagmaBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 
-import java.util.function.BiFunction;
 import java.util.function.Function;
 
 /**
- * MME 模组方块注册中心。
- * 定义并注册所有自定义方块及其对应的方块实体、菜单类型。
+ * MME mod block registry.
+ * Registers blocks only; the corresponding block items are registered separately in {@code MMEItems}.
  */
 public class MMEBlocks {
-    public static final Block ADAMANTIUM_ORE = register(        //艾德曼矿
+    public static final Block ADAMANTIUM_ORE = register(        // Adamantium Ore
             MMEBlockItemIds.ADAMANTIUM_ORE,
-            BlockBehaviour.Properties.of().strength(5.0f, 10.0f).requiresCorrectToolForDrops(),
-            new Item.Properties().component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4)
+            BlockBehaviour.Properties.of().strength(5.0f, 10.0f).requiresCorrectToolForDrops()
     );
-    public static final Block MITHRIL_ORE = register(           //秘银矿
+    public static final Block MITHRIL_ORE = register(           // Mithril Ore
             MMEBlockItemIds.MITHRIL_ORE,
-            BlockBehaviour.Properties.of().strength(4.0f, 5.0f).requiresCorrectToolForDrops(),
-            new Item.Properties().component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 3)
+            BlockBehaviour.Properties.of().strength(4.0f, 5.0f).requiresCorrectToolForDrops()
     );
-    public static final Block SILVER_ORE = register(            //银矿
+    public static final Block SILVER_ORE = register(            // Silver Ore
             MMEBlockItemIds.SILVER_ORE,
-            BlockBehaviour.Properties.of().strength(3.0f, 3.0f).requiresCorrectToolForDrops(),
-            new Item.Properties().component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2)
+            BlockBehaviour.Properties.of().strength(3.0f, 3.0f).requiresCorrectToolForDrops()
     );
 
-    public static final Block DEEPSLATE_ADAMANTIUM_ORE = register(        //深层艾德曼矿
+    public static final Block DEEPSLATE_ADAMANTIUM_ORE = register(        // Deepslate Adamantium Ore
             MMEBlockItemIds.DEEPSLATE_ADAMANTIUM_ORE,
-            BlockBehaviour.Properties.of().strength(5.5f, 10.0f).requiresCorrectToolForDrops(),
-            new Item.Properties().component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4)
+            BlockBehaviour.Properties.of().strength(5.5f, 10.0f).requiresCorrectToolForDrops()
     );
-    public static final Block DEEPSLATE_MITHRIL_ORE = register(           //深层秘银矿
+    public static final Block DEEPSLATE_MITHRIL_ORE = register(           // Deepslate Mithril Ore
             MMEBlockItemIds.DEEPSLATE_MITHRIL_ORE,
-            BlockBehaviour.Properties.of().strength(4.5f, 5.0f).requiresCorrectToolForDrops(),
-            new Item.Properties().component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 3)
+            BlockBehaviour.Properties.of().strength(4.5f, 5.0f).requiresCorrectToolForDrops()
     );
-    public static final Block DEEPSLATE_SILVER_ORE = register(            //深层银矿
+    public static final Block DEEPSLATE_SILVER_ORE = register(            // Deepslate Silver Ore
             MMEBlockItemIds.DEEPSLATE_SILVER_ORE,
-            BlockBehaviour.Properties.of().strength(4.5f, 3.0f).requiresCorrectToolForDrops(),
-            new Item.Properties().component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2)
+            BlockBehaviour.Properties.of().strength(4.5f, 3.0f).requiresCorrectToolForDrops()
     );
 
-    public static final Block ADAMANTIUM_BLOCK = register(      //艾德曼块
-            MMEBlockItemIds.ADAMANTIUM_BLOCK, BlockBehaviour.Properties.ofFullCopy(Blocks.BEDROCK).requiresCorrectToolForDrops(), new Item.Properties().component(MMEDataComponents.CRAFTING_TIME, 1350)
+    public static final Block ADAMANTIUM_BLOCK = register(      // Adamantium Block
+            MMEBlockItemIds.ADAMANTIUM_BLOCK, BlockBehaviour.Properties.ofFullCopy(Blocks.BEDROCK).requiresCorrectToolForDrops()
     );
-    public static final Block ANCIENT_METAL_BLOCK = register(   //远古金属块
-            MMEBlockItemIds.ANCIENT_METAL_BLOCK, BlockBehaviour.Properties.of().strength(35f, 35f).requiresCorrectToolForDrops(), new Item.Properties().component(MMEDataComponents.CRAFTING_TIME, 540)
+    public static final Block ANCIENT_METAL_BLOCK = register(   // Ancient Metal Block
+            MMEBlockItemIds.ANCIENT_METAL_BLOCK, BlockBehaviour.Properties.of().strength(35f, 35f).requiresCorrectToolForDrops()
     );
-    public static final Block MITHRIL_BLOCK = register(         //秘银块
-            MMEBlockItemIds.MITHRIL_BLOCK, BlockBehaviour.Properties.of().strength(40f, 40f).requiresCorrectToolForDrops(), new Item.Properties().component(MMEDataComponents.CRAFTING_TIME, 810)
+    public static final Block MITHRIL_BLOCK = register(         // Mithril Block
+            MMEBlockItemIds.MITHRIL_BLOCK, BlockBehaviour.Properties.of().strength(40f, 40f).requiresCorrectToolForDrops()
     );
-    public static final Block SILVER_BLOCK = register(          //银块
-            MMEBlockItemIds.SILVER_BLOCK, BlockBehaviour.Properties.of().strength(10f, 10f).requiresCorrectToolForDrops(), new Item.Properties().component(MMEDataComponents.CRAFTING_TIME, 90)
+    public static final Block SILVER_BLOCK = register(          // Silver Block
+            MMEBlockItemIds.SILVER_BLOCK, BlockBehaviour.Properties.of().strength(10f, 10f).requiresCorrectToolForDrops()
     );
 
     public static final Block CLAY_FURNACE = register(
@@ -83,7 +70,7 @@ public class MMEBlocks {
             MMEBlockItemIds.SANDSTONE_FURNACE, settings -> new GradeFurnaceBlock(settings, 1), BlockBehaviour.Properties.ofFullCopy(Blocks.FURNACE)
     );
 
-    public static final Block MANTLE = register(                //地幔
+    public static final Block MANTLE = register(                // Mantle
             MMEBlockItemIds.MANTLE,
             MagmaBlock::new,
             BlockBehaviour.Properties
@@ -94,277 +81,78 @@ public class MMEBlocks {
                     .emissiveRendering(state -> true)
     );
 
-    public static final Block DAMAGED_NETHERITE_ANVIL = register(
-            MMEBlockItemIds.DAMAGED_NETHERITE_ANVIL,
-            settings -> new MMEAnvilBlock(settings, MMEItemTags.NETHERITE_NOT_ALLOWED_MATERIAL, Blocks.AIR),
-            BlockBehaviour.Properties.ofFullCopy(Blocks.ANVIL),
-            new Item.Properties().durability(maxDamageAnvil(MMEToolMaterials.NETHERITE.durability()))
+    public static final AnvilCollection<Block> NETHERITE_ANVILS = AnvilCollection.registerBlocks(
+            MMEBlockItemIds.NETHERITE_ANVIL, MMEItemTags.NETHERITE_NOT_ALLOWED_MATERIAL, BlockBehaviour.Properties.ofFullCopy(Blocks.ANVIL)
     );
-    public static final Block CHIPPED_NETHERITE_ANVIL = register(
-            MMEBlockItemIds.CHIPPED_NETHERITE_ANVIL,
-            settings -> new MMEAnvilBlock(settings, MMEItemTags.NETHERITE_NOT_ALLOWED_MATERIAL, DAMAGED_NETHERITE_ANVIL),
-            BlockBehaviour.Properties.ofFullCopy(Blocks.ANVIL),
-            new Item.Properties().durability(maxDamageAnvil(MMEToolMaterials.NETHERITE.durability()))
+    public static final AnvilCollection<Block> ADAMANTIUM_ANVILS = AnvilCollection.registerBlocks(
+            MMEBlockItemIds.ADAMANTIUM_ANVIL, MMEItemTags.ADAMANTIUM_NOT_ALLOWED_MATERIAL, BlockBehaviour.Properties.ofFullCopy(Blocks.ANVIL)
     );
-    public static final Block NETHERITE_ANVIL = register(
-            MMEBlockItemIds.NETHERITE_ANVIL,
-            settings -> new MMEAnvilBlock(settings, MMEItemTags.NETHERITE_NOT_ALLOWED_MATERIAL, CHIPPED_NETHERITE_ANVIL),
-            BlockBehaviour.Properties.ofFullCopy(Blocks.ANVIL),
-            new Item.Properties().durability(maxDamageAnvil(MMEToolMaterials.NETHERITE.durability()))
+    public static final AnvilCollection<Block> MITHRIL_ANVILS = AnvilCollection.registerBlocks(
+            MMEBlockItemIds.MITHRIL_ANVIL, MMEItemTags.MITHRIL_NOT_ALLOWED_MATERIAL, BlockBehaviour.Properties.ofFullCopy(Blocks.ANVIL)
     );
-    public static final Block DAMAGED_ADAMANTIUM_ANVIL = register(
-            MMEBlockItemIds.DAMAGED_ADAMANTIUM_ANVIL,
-            settings -> new MMEAnvilBlock(settings, MMEItemTags.ADAMANTIUM_NOT_ALLOWED_MATERIAL, Blocks.AIR),
-            BlockBehaviour.Properties.ofFullCopy(Blocks.ANVIL),
-            new Item.Properties().durability(maxDamageAnvil(MMEToolMaterials.ADAMANTIUM.durability()))
+    public static final AnvilCollection<Block> ANCIENT_METAL_ANVILS = AnvilCollection.registerBlocks(
+            MMEBlockItemIds.ANCIENT_METAL_ANVIL, MMEItemTags.ANCIENT_METAL_NOT_ALLOWED_MATERIAL, BlockBehaviour.Properties.ofFullCopy(Blocks.ANVIL)
     );
-    public static final Block CHIPPED_ADAMANTIUM_ANVIL = register(
-            MMEBlockItemIds.CHIPPED_ADAMANTIUM_ANVIL,
-            settings -> new MMEAnvilBlock(settings, MMEItemTags.ADAMANTIUM_NOT_ALLOWED_MATERIAL, DAMAGED_ADAMANTIUM_ANVIL),
-            BlockBehaviour.Properties.ofFullCopy(Blocks.ANVIL),
-            new Item.Properties().durability(maxDamageAnvil(MMEToolMaterials.ADAMANTIUM.durability()))
+    public static final AnvilCollection<Block> GOLDEN_ANVILS = AnvilCollection.registerBlocks(
+            MMEBlockItemIds.GOLDEN_ANVIL, MMEItemTags.GOLD_NOT_ALLOWED_MATERIAL, BlockBehaviour.Properties.ofFullCopy(Blocks.ANVIL)
     );
-    public static final Block ADAMANTIUM_ANVIL = register(
-            MMEBlockItemIds.ADAMANTIUM_ANVIL,
-            settings -> new MMEAnvilBlock(settings, MMEItemTags.ADAMANTIUM_NOT_ALLOWED_MATERIAL, CHIPPED_ADAMANTIUM_ANVIL),
-            BlockBehaviour.Properties.ofFullCopy(Blocks.ANVIL),
-            new Item.Properties().durability(maxDamageAnvil(MMEToolMaterials.ADAMANTIUM.durability()))
+    public static final AnvilCollection<Block> SILVER_ANVILS = AnvilCollection.registerBlocks(
+            MMEBlockItemIds.SILVER_ANVIL, MMEItemTags.COPPER_OR_SILVER_NOT_ALLOWED_MATERIAL, BlockBehaviour.Properties.ofFullCopy(Blocks.ANVIL)
     );
-    public static final Block DAMAGED_MITHRIL_ANVIL = register(
-            MMEBlockItemIds.DAMAGED_MITHRIL_ANVIL,
-            settings -> new MMEAnvilBlock(settings, MMEItemTags.MITHRIL_NOT_ALLOWED_MATERIAL, Blocks.AIR),
-            BlockBehaviour.Properties.ofFullCopy(Blocks.ANVIL),
-            new Item.Properties().durability(maxDamageAnvil(MMEToolMaterials.MITHRIL.durability()))
-    );
-    public static final Block CHIPPED_MITHRIL_ANVIL = register(
-            MMEBlockItemIds.CHIPPED_MITHRIL_ANVIL,
-            settings -> new MMEAnvilBlock(settings, MMEItemTags.MITHRIL_NOT_ALLOWED_MATERIAL, DAMAGED_MITHRIL_ANVIL),
-            BlockBehaviour.Properties.ofFullCopy(Blocks.ANVIL),
-            new Item.Properties().durability(maxDamageAnvil(MMEToolMaterials.MITHRIL.durability()))
-    );
-    public static final Block MITHRIL_ANVIL = register(
-            MMEBlockItemIds.MITHRIL_ANVIL,
-            settings -> new MMEAnvilBlock(settings, MMEItemTags.MITHRIL_NOT_ALLOWED_MATERIAL, CHIPPED_MITHRIL_ANVIL),
-            BlockBehaviour.Properties.ofFullCopy(Blocks.ANVIL),
-            new Item.Properties().durability(maxDamageAnvil(MMEToolMaterials.MITHRIL.durability()))
-    );
-    public static final Block DAMAGED_ANCIENT_METAL_ANVIL = register(
-            MMEBlockItemIds.DAMAGED_ANCIENT_METAL_ANVIL,
-            settings -> new MMEAnvilBlock(settings, MMEItemTags.ANCIENT_METAL_NOT_ALLOWED_MATERIAL, Blocks.AIR),
-            BlockBehaviour.Properties.ofFullCopy(Blocks.ANVIL),
-            new Item.Properties().durability(maxDamageAnvil(MMEToolMaterials.ANCIENT_METAL.durability()))
-    );
-    public static final Block CHIPPED_ANCIENT_METAL_ANVIL = register(
-            MMEBlockItemIds.CHIPPED_ANCIENT_METAL_ANVIL,
-            settings -> new MMEAnvilBlock(settings, MMEItemTags.ANCIENT_METAL_NOT_ALLOWED_MATERIAL, DAMAGED_ANCIENT_METAL_ANVIL),
-            BlockBehaviour.Properties.ofFullCopy(Blocks.ANVIL),
-            new Item.Properties().durability(maxDamageAnvil(MMEToolMaterials.ANCIENT_METAL.durability()))
-    );
-    public static final Block ANCIENT_METAL_ANVIL = register(
-            MMEBlockItemIds.ANCIENT_METAL_ANVIL,
-            settings -> new MMEAnvilBlock(settings, MMEItemTags.ANCIENT_METAL_NOT_ALLOWED_MATERIAL, CHIPPED_ANCIENT_METAL_ANVIL),
-            BlockBehaviour.Properties.ofFullCopy(Blocks.ANVIL),
-            new Item.Properties().durability(maxDamageAnvil(MMEToolMaterials.ANCIENT_METAL.durability()))
-    );
-    public static final Block DAMAGED_GOLDEN_ANVIL = register(
-            MMEBlockItemIds.DAMAGED_GOLDEN_ANVIL,
-            settings -> new MMEAnvilBlock(settings, MMEItemTags.GOLD_NOT_ALLOWED_MATERIAL, Blocks.AIR),
-            BlockBehaviour.Properties.ofFullCopy(Blocks.ANVIL),
-            new Item.Properties().durability(maxDamageAnvil(ToolMaterial.GOLD.durability()))
-    );
-    public static final Block CHIPPED_GOLDEN_ANVIL = register(
-            MMEBlockItemIds.CHIPPED_GOLDEN_ANVIL,
-            settings -> new MMEAnvilBlock(settings, MMEItemTags.GOLD_NOT_ALLOWED_MATERIAL, DAMAGED_GOLDEN_ANVIL),
-            BlockBehaviour.Properties.ofFullCopy(Blocks.ANVIL),
-            new Item.Properties().durability(maxDamageAnvil(ToolMaterial.GOLD.durability()))
-    );
-    public static final Block GOLDEN_ANVIL = register(
-            MMEBlockItemIds.GOLDEN_ANVIL,
-            settings -> new MMEAnvilBlock(settings, MMEItemTags.GOLD_NOT_ALLOWED_MATERIAL, CHIPPED_GOLDEN_ANVIL),
-            BlockBehaviour.Properties.ofFullCopy(Blocks.ANVIL),
-            new Item.Properties().durability(maxDamageAnvil(ToolMaterial.GOLD.durability()))
-    );
-    public static final Block DAMAGED_SILVER_ANVIL = register(
-            MMEBlockItemIds.DAMAGED_SILVER_ANVIL,
-            settings -> new MMEAnvilBlock(settings, MMEItemTags.COPPER_OR_SILVER_NOT_ALLOWED_MATERIAL, Blocks.AIR),
-            BlockBehaviour.Properties.ofFullCopy(Blocks.ANVIL),
-            new Item.Properties().durability(maxDamageAnvil(MMEToolMaterials.SILVER.durability()))
-    );
-    public static final Block CHIPPED_SILVER_ANVIL = register(
-            MMEBlockItemIds.CHIPPED_SILVER_ANVIL,
-            settings -> new MMEAnvilBlock(settings, MMEItemTags.COPPER_OR_SILVER_NOT_ALLOWED_MATERIAL, DAMAGED_SILVER_ANVIL),
-            BlockBehaviour.Properties.ofFullCopy(Blocks.ANVIL),
-            new Item.Properties().durability(maxDamageAnvil(MMEToolMaterials.SILVER.durability()))
-    );
-    public static final Block SILVER_ANVIL = register(
-            MMEBlockItemIds.SILVER_ANVIL,
-            settings -> new MMEAnvilBlock(settings, MMEItemTags.COPPER_OR_SILVER_NOT_ALLOWED_MATERIAL, CHIPPED_SILVER_ANVIL),
-            BlockBehaviour.Properties.ofFullCopy(Blocks.ANVIL),
-            new Item.Properties().durability(maxDamageAnvil(MMEToolMaterials.SILVER.durability()))
-    );
-    public static final Block DAMAGED_COPPER_ANVIL = register(
-            MMEBlockItemIds.DAMAGED_COPPER_ANVIL,
-            settings -> new MMEAnvilBlock(settings, MMEItemTags.COPPER_OR_SILVER_NOT_ALLOWED_MATERIAL, Blocks.AIR),
-            BlockBehaviour.Properties.ofFullCopy(Blocks.ANVIL),
-            new Item.Properties().durability(maxDamageAnvil(MMEToolMaterials.COPPER.durability()))
-    );
-    public static final Block CHIPPED_COPPER_ANVIL = register(
-            MMEBlockItemIds.CHIPPED_COPPER_ANVIL,
-            settings -> new MMEAnvilBlock(settings, MMEItemTags.COPPER_OR_SILVER_NOT_ALLOWED_MATERIAL, DAMAGED_COPPER_ANVIL),
-            BlockBehaviour.Properties.ofFullCopy(Blocks.ANVIL),
-            new Item.Properties().durability(maxDamageAnvil(MMEToolMaterials.COPPER.durability()))
-    );
-    public static final Block COPPER_ANVIL = register(
-            MMEBlockItemIds.COPPER_ANVIL,
-            settings -> new MMEAnvilBlock(settings, MMEItemTags.COPPER_OR_SILVER_NOT_ALLOWED_MATERIAL, CHIPPED_COPPER_ANVIL),
-            BlockBehaviour.Properties.ofFullCopy(Blocks.ANVIL),
-            new Item.Properties().durability(maxDamageAnvil(MMEToolMaterials.COPPER.durability()))
+    public static final AnvilCollection<Block> COPPER_ANVILS = AnvilCollection.registerBlocks(
+            MMEBlockItemIds.COPPER_ANVIL, MMEItemTags.COPPER_OR_SILVER_NOT_ALLOWED_MATERIAL, BlockBehaviour.Properties.ofFullCopy(Blocks.ANVIL)
     );
 
-    public static final Block UNDERGROUND_PORTAL = registerNoItem(
+    // Backward-compatible aliases — delegate to the collections
+    public static final Block NETHERITE_ANVIL = NETHERITE_ANVILS.intact();
+    public static final Block CHIPPED_NETHERITE_ANVIL = NETHERITE_ANVILS.chipped();
+    public static final Block DAMAGED_NETHERITE_ANVIL = NETHERITE_ANVILS.damaged();
+    public static final Block ADAMANTIUM_ANVIL = ADAMANTIUM_ANVILS.intact();
+    public static final Block CHIPPED_ADAMANTIUM_ANVIL = ADAMANTIUM_ANVILS.chipped();
+    public static final Block DAMAGED_ADAMANTIUM_ANVIL = ADAMANTIUM_ANVILS.damaged();
+    public static final Block MITHRIL_ANVIL = MITHRIL_ANVILS.intact();
+    public static final Block CHIPPED_MITHRIL_ANVIL = MITHRIL_ANVILS.chipped();
+    public static final Block DAMAGED_MITHRIL_ANVIL = MITHRIL_ANVILS.damaged();
+    public static final Block ANCIENT_METAL_ANVIL = ANCIENT_METAL_ANVILS.intact();
+    public static final Block CHIPPED_ANCIENT_METAL_ANVIL = ANCIENT_METAL_ANVILS.chipped();
+    public static final Block DAMAGED_ANCIENT_METAL_ANVIL = ANCIENT_METAL_ANVILS.damaged();
+    public static final Block GOLDEN_ANVIL = GOLDEN_ANVILS.intact();
+    public static final Block CHIPPED_GOLDEN_ANVIL = GOLDEN_ANVILS.chipped();
+    public static final Block DAMAGED_GOLDEN_ANVIL = GOLDEN_ANVILS.damaged();
+    public static final Block SILVER_ANVIL = SILVER_ANVILS.intact();
+    public static final Block CHIPPED_SILVER_ANVIL = SILVER_ANVILS.chipped();
+    public static final Block DAMAGED_SILVER_ANVIL = SILVER_ANVILS.damaged();
+    public static final Block COPPER_ANVIL = COPPER_ANVILS.intact();
+    public static final Block CHIPPED_COPPER_ANVIL = COPPER_ANVILS.chipped();
+    public static final Block DAMAGED_COPPER_ANVIL = COPPER_ANVILS.damaged();
+
+    /** All anvil collections, ordered by material tier. */
+    public static final ImmutableList<AnvilCollection<Block>> ANVIL_COLLECTIONS = ImmutableList.of(
+            NETHERITE_ANVILS, ADAMANTIUM_ANVILS, MITHRIL_ANVILS, ANCIENT_METAL_ANVILS,
+            SILVER_ANVILS, GOLDEN_ANVILS, COPPER_ANVILS
+    );
+
+    public static final Block UNDERGROUND_PORTAL = register(
             MMEBlockIds.UNDERGROUND_PORTAL,
             UndergroundPortalBlock::new,
             BlockBehaviour.Properties.ofFullCopy(Blocks.NETHER_PORTAL)
     );
-    public static final Block HOME_PORTAL = registerNoItem(
+    public static final Block HOME_PORTAL = register(
             MMEBlockIds.HOME_PORTAL,
             HomePortalBlock::new,
             BlockBehaviour.Properties.ofFullCopy(Blocks.NETHER_PORTAL)
     );
-    public static final Block RUNE_PORTAL = registerNoItem(
+    public static final Block RUNE_PORTAL = register(
             MMEBlockIds.RUNE_PORTAL,
             RunePortalBlock::new,
             BlockBehaviour.Properties.ofFullCopy(Blocks.NETHER_PORTAL)
     );
 
-    public static final Block MITHRIL_NUL_RUNESTORE = register(
-            MMEBlockItemIds.MITHRIL_NUL_RUNESTORE,
-            BlockBehaviour.Properties.ofFullCopy(Blocks.OBSIDIAN)
+    public static final RunestoneCollection<Block> MITHRIL_RUNESTONES = RunestoneCollection.registerBlocks(
+            MMEBlockItemIds.MITHRIL_RUNESTORE, r -> BlockBehaviour.Properties.ofFullCopy(Blocks.OBSIDIAN), Block::new
     );
-    public static final Block MITHRIL_QUAS_RUNESTORE = register(
-            MMEBlockItemIds.MITHRIL_QUAS_RUNESTORE,
-            BlockBehaviour.Properties.ofFullCopy(Blocks.OBSIDIAN)
-    );
-    public static final Block MITHRIL_POR_RUNESTORE = register(
-            MMEBlockItemIds.MITHRIL_POR_RUNESTORE,
-            BlockBehaviour.Properties.ofFullCopy(Blocks.OBSIDIAN)
-    );
-    public static final Block MITHRIL_AN_RUNESTORE = register(
-            MMEBlockItemIds.MITHRIL_AN_RUNESTORE,
-            BlockBehaviour.Properties.ofFullCopy(Blocks.OBSIDIAN)
-    );
-    public static final Block MITHRIL_NOX_RUNESTORE = register(
-            MMEBlockItemIds.MITHRIL_NOX_RUNESTORE,
-            BlockBehaviour.Properties.ofFullCopy(Blocks.OBSIDIAN)
-    );
-    public static final Block MITHRIL_FLAM_RUNESTORE = register(
-            MMEBlockItemIds.MITHRIL_FLAM_RUNESTORE,
-            BlockBehaviour.Properties.ofFullCopy(Blocks.OBSIDIAN)
-    );
-    public static final Block MITHRIL_VAS_RUNESTORE = register(
-            MMEBlockItemIds.MITHRIL_VAS_RUNESTORE,
-            BlockBehaviour.Properties.ofFullCopy(Blocks.OBSIDIAN)
-    );
-    public static final Block MITHRIL_DES_RUNESTORE = register(
-            MMEBlockItemIds.MITHRIL_DES_RUNESTORE,
-            BlockBehaviour.Properties.ofFullCopy(Blocks.OBSIDIAN)
-    );
-    public static final Block MITHRIL_ORT_RUNESTORE = register(
-            MMEBlockItemIds.MITHRIL_ORT_RUNESTORE,
-            BlockBehaviour.Properties.ofFullCopy(Blocks.OBSIDIAN)
-    );
-    public static final Block MITHRIL_TYM_RUNESTORE = register(
-            MMEBlockItemIds.MITHRIL_TYM_RUNESTORE,
-            BlockBehaviour.Properties.ofFullCopy(Blocks.OBSIDIAN)
-    );
-    public static final Block MITHRIL_CORP_RUNESTORE = register(
-            MMEBlockItemIds.MITHRIL_CORP_RUNESTORE,
-            BlockBehaviour.Properties.ofFullCopy(Blocks.OBSIDIAN)
-    );
-    public static final Block MITHRIL_LOR_RUNESTORE = register(
-            MMEBlockItemIds.MITHRIL_LOR_RUNESTORE,
-            BlockBehaviour.Properties.ofFullCopy(Blocks.OBSIDIAN)
-    );
-    public static final Block MITHRIL_MANI_RUNESTORE = register(
-            MMEBlockItemIds.MITHRIL_MANI_RUNESTORE,
-            BlockBehaviour.Properties.ofFullCopy(Blocks.OBSIDIAN)
-    );
-    public static final Block MITHRIL_JUX_RUNESTORE = register(
-            MMEBlockItemIds.MITHRIL_JUX_RUNESTORE,
-            BlockBehaviour.Properties.ofFullCopy(Blocks.OBSIDIAN)
-    );
-    public static final Block MITHRIL_YLEM_RUNESTORE = register(
-            MMEBlockItemIds.MITHRIL_YLEM_RUNESTORE,
-            BlockBehaviour.Properties.ofFullCopy(Blocks.OBSIDIAN)
-    );
-    public static final Block MITHRIL_SANCT_RUNESTORE = register(
-            MMEBlockItemIds.MITHRIL_SANCT_RUNESTORE,
-            BlockBehaviour.Properties.ofFullCopy(Blocks.OBSIDIAN)
-    );
-
-    public static final Block ADAMANTIUM_NUL_RUNESTORE = register(
-            MMEBlockItemIds.ADAMANTIUM_NUL_RUNESTORE,
-            BlockBehaviour.Properties.ofFullCopy(Blocks.OBSIDIAN)
-    );
-    public static final Block ADAMANTIUM_QUAS_RUNESTORE = register(
-            MMEBlockItemIds.ADAMANTIUM_QUAS_RUNESTORE,
-            BlockBehaviour.Properties.ofFullCopy(Blocks.OBSIDIAN)
-    );
-    public static final Block ADAMANTIUM_POR_RUNESTORE = register(
-            MMEBlockItemIds.ADAMANTIUM_POR_RUNESTORE,
-            BlockBehaviour.Properties.ofFullCopy(Blocks.OBSIDIAN)
-    );
-    public static final Block ADAMANTIUM_AN_RUNESTORE = register(
-            MMEBlockItemIds.ADAMANTIUM_AN_RUNESTORE,
-            BlockBehaviour.Properties.ofFullCopy(Blocks.OBSIDIAN)
-    );
-    public static final Block ADAMANTIUM_NOX_RUNESTORE = register(
-            MMEBlockItemIds.ADAMANTIUM_NOX_RUNESTORE,
-            BlockBehaviour.Properties.ofFullCopy(Blocks.OBSIDIAN)
-    );
-    public static final Block ADAMANTIUM_FLAM_RUNESTORE = register(
-            MMEBlockItemIds.ADAMANTIUM_FLAM_RUNESTORE,
-            BlockBehaviour.Properties.ofFullCopy(Blocks.OBSIDIAN)
-    );
-    public static final Block ADAMANTIUM_VAS_RUNESTORE = register(
-            MMEBlockItemIds.ADAMANTIUM_VAS_RUNESTORE,
-            BlockBehaviour.Properties.ofFullCopy(Blocks.OBSIDIAN)
-    );
-    public static final Block ADAMANTIUM_DES_RUNESTORE = register(
-            MMEBlockItemIds.ADAMANTIUM_DES_RUNESTORE,
-            BlockBehaviour.Properties.ofFullCopy(Blocks.OBSIDIAN)
-    );
-    public static final Block ADAMANTIUM_ORT_RUNESTORE = register(
-            MMEBlockItemIds.ADAMANTIUM_ORT_RUNESTORE,
-            BlockBehaviour.Properties.ofFullCopy(Blocks.OBSIDIAN)
-    );
-    public static final Block ADAMANTIUM_TYM_RUNESTORE = register(
-            MMEBlockItemIds.ADAMANTIUM_TYM_RUNESTORE,
-            BlockBehaviour.Properties.ofFullCopy(Blocks.OBSIDIAN)
-    );
-    public static final Block ADAMANTIUM_CORP_RUNESTORE = register(
-            MMEBlockItemIds.ADAMANTIUM_CORP_RUNESTORE,
-            BlockBehaviour.Properties.ofFullCopy(Blocks.OBSIDIAN)
-    );
-    public static final Block ADAMANTIUM_LOR_RUNESTORE = register(
-            MMEBlockItemIds.ADAMANTIUM_LOR_RUNESTORE,
-            BlockBehaviour.Properties.ofFullCopy(Blocks.OBSIDIAN)
-    );
-    public static final Block ADAMANTIUM_MANI_RUNESTORE = register(
-            MMEBlockItemIds.ADAMANTIUM_MANI_RUNESTORE,
-            BlockBehaviour.Properties.ofFullCopy(Blocks.OBSIDIAN)
-    );
-    public static final Block ADAMANTIUM_JUX_RUNESTORE = register(
-            MMEBlockItemIds.ADAMANTIUM_JUX_RUNESTORE,
-            BlockBehaviour.Properties.ofFullCopy(Blocks.OBSIDIAN)
-    );
-    public static final Block ADAMANTIUM_YLEM_RUNESTORE = register(
-            MMEBlockItemIds.ADAMANTIUM_YLEM_RUNESTORE,
-            BlockBehaviour.Properties.ofFullCopy(Blocks.OBSIDIAN)
-    );
-    public static final Block ADAMANTIUM_SANCT_RUNESTORE = register(
-            MMEBlockItemIds.ADAMANTIUM_SANCT_RUNESTORE,
-            BlockBehaviour.Properties.ofFullCopy(Blocks.OBSIDIAN)
+    public static final RunestoneCollection<Block> ADAMANTIUM_RUNESTONES = RunestoneCollection.registerBlocks(
+            MMEBlockItemIds.ADAMANTIUM_RUNESTORE, r -> BlockBehaviour.Properties.ofFullCopy(Blocks.OBSIDIAN), Block::new
     );
 
     public static final Block ADAMANTIUM_CRAFTING_TABLE = register(
@@ -419,7 +207,7 @@ public class MMEBlocks {
             BlockBehaviour.Properties.ofFullCopy(Blocks.ENCHANTING_TABLE)
     );
 
-    public static final Block BLUE_BERRY_BUSH = registerNoItem(
+    public static final Block BLUE_BERRY_BUSH = register(
             MMEBlockIds.BLUE_BERRY_BUSH,
             BlueBerryBushBlock::new,
             BlockBehaviour.Properties.ofFullCopy(Blocks.SWEET_BERRY_BUSH)
@@ -430,34 +218,19 @@ public class MMEBlocks {
     }
 
     public static Block register(BlockItemId blockItemId, BlockBehaviour.Properties settings) {
-        return register(blockItemId, Block::new, settings);
-    }
-    public static Block register(BlockItemId blockItemId, BlockBehaviour.Properties blockSettings, Item.Properties itemSettings) {
-        return register(blockItemId, Block::new, blockSettings, itemSettings);
-    }
-    public static Block register(BlockItemId blockItemId, Function<BlockBehaviour.Properties, Block> factory, BlockBehaviour.Properties settings) {
-        return register(blockItemId, factory, settings, new Item.Properties());
-    }
-    public static Block registerNoItem(ResourceKey<Block> registryKey, Function<BlockBehaviour.Properties, Block> factory, BlockBehaviour.Properties settings) {
-        return Blocks.register(registryKey, factory, settings);
-    }
-    public static Block register(BlockItemId blockItemId, Function<BlockBehaviour.Properties, Block> factory, BlockBehaviour.Properties settings, BiFunction<Block, Item.Properties, Item> factory1) {
-        Block block = Blocks.register(blockItemId.blockKey(), factory, settings);
-        registerBlockItem(block, blockItemId.itemKey(), factory1, new Item.Properties());
-        return block;
-    }
-    public static Block register(BlockItemId blockItemId, Function<BlockBehaviour.Properties, Block> factory, BlockBehaviour.Properties settings, Item.Properties itemSettings) {
-        Block block = Blocks.register(blockItemId.blockKey(), factory, settings);
-        registerBlockItem(block, blockItemId.itemKey(), BlockItem::new, itemSettings);
-        return block;
+        return register(blockItemId.blockKey(), Block::new, settings);
     }
 
-    private static void registerBlockItem(Block block, ResourceKey<Item> itemKey, BiFunction<Block, Item.Properties, Item> itemFactory, Item.Properties itemSettings) {
-        Item item = itemFactory.apply(block, itemSettings.useBlockDescriptionPrefix().requiredFeatures(block.requiredFeatures()).setId(itemKey));
-        if (item instanceof BlockItem blockItem) {
-            blockItem.registerBlocks(Item.BY_BLOCK, item);
-        }
-        Registry.register(BuiltInRegistries.ITEM, itemKey, item);
+    public static Block register(ResourceKey<Block> registryKey, BlockBehaviour.Properties settings) {
+        return register(registryKey, Block::new, settings);
+    }
+
+    public static Block register(BlockItemId blockItemId, Function<BlockBehaviour.Properties, Block> factory, BlockBehaviour.Properties settings) {
+        return register(blockItemId.blockKey(), factory, settings);
+    }
+
+    public static Block register(ResourceKey<Block> registryKey, Function<BlockBehaviour.Properties, Block> factory, BlockBehaviour.Properties settings) {
+        return Blocks.register(registryKey, factory, settings);
     }
 
     public static void init() {

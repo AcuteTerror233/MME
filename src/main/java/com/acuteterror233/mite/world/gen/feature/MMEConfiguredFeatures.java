@@ -4,8 +4,8 @@ import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 
 /**
- * MME 配置特征总入口。
- * 汇总地下和主世界的配置特征引导。
+ * MME configured feature main entry point.
+ * Aggregates configured feature bootstrapping for underground and overworld.
  */
 public class MMEConfiguredFeatures {
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> featureRegisterable) {

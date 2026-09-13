@@ -25,8 +25,8 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 /**
- * MME 铁砧方块，继承原版铁砧行为并限制可用材料。
- * 存储方块实体 {@link com.acuteterror233.mite.block.entity.AnvilBlockEntity}，损坏后降级为指定方块。
+ * MME anvil block, extending vanilla anvil behavior with material restrictions.
+ * Stores block entity {@link com.acuteterror233.mite.block.entity.AnvilBlockEntity}, degrading to a specified block when damaged.
  */
 public class MMEAnvilBlock extends AnvilBlock implements EntityBlock {
     private final TagKey<Item> notAllowedMaterial;

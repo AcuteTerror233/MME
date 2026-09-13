@@ -18,8 +18,8 @@ import java.util.function.Function;
 import java.util.function.UnaryOperator;
 
 /**
- * 原版方块属性修改器。
- * 在模组初始化时批量修改原版方块的硬度、爆炸抗性、挖掘工具等属性。
+ * Vanilla block property modifier.
+ * Batch-modifies vanilla block hardness, explosion resistance, mining tools, etc. during mod initialization.
  */
 public final class VanillaBlockModify {
     public static final Map<Identifier, Function<BlockBehaviour.Properties, Block>> BLOCK_FACTORY_MODIFY = createBlockFactoryModifyMap();

@@ -3,8 +3,8 @@ package com.acuteterror233.mite.interfaces;
 import com.acuteterror233.mite.world.food.FoodNutrition;
 
 /**
- * 食物数据扩展接口。
- * 为 {@link net.minecraft.world.food.FoodData} 添加营养相关的访问器。
+ * Food data extension interface.
+ * Adds nutrition-related accessors to {@link net.minecraft.world.food.FoodData}.
  */
 public interface FoodDataExtension {
     default int MME$GetMaxFoodLevel() {

@@ -21,8 +21,8 @@ import java.util.Comparator;
 import java.util.Optional;
 
 /**
- * 传送门辅助工具。
- * 处理传送门生成逻辑，在目标维度寻找/创建对应的地狱门方块。
+ * Portal helper utility.
+ * Handles portal generation logic, finding/creating corresponding nether portal blocks in the target dimension.
  */
 public class PortalHelper {
     public static Optional<BlockPos> getPortalPos(ServerLevel world, BlockPos pos, int PreloadSize, WorldBorder worldBorder, ResourceKey<PoiType> matchesKey, Block block) {
@@ -38,12 +38,12 @@ public class PortalHelper {
     }
 
     /**
-     * 在指定世界中创建一个传送门结构
+     * Creates a portal structure in the specified world
      *
-     * @param world 服务器世界对象，用于访问和修改方块状态
-     * @param pos   传送门创建的中心位置坐标
-     * @param axis  传送门的朝向轴（X或Z）
-     * @return 包含传送门矩形区域信息的Optional对象，如果创建失败则返回空Optional
+     * @param world Server world object for accessing and modifying block states
+     * @param pos   Center position coordinates for portal creation
+     * @param axis  Portal orientation axis (X or Z)
+     * @return Optional containing portal rectangle area information, or empty Optional if creation fails
      */
     public static Optional<BlockUtil.FoundRectangle> createPortal(ServerLevel world, BlockPos pos, Direction.Axis axis, Block framework, Block portal) {
         Direction direction = Direction.get(Direction.AxisDirection.POSITIVE, axis);
@@ -55,11 +55,11 @@ public class PortalHelper {
         int maxY = Math.min(world.getMaxY(), world.getMinY() + world.getLogicalHeight() - 1);
         BlockPos.MutableBlockPos mutable = pos.mutable();
 
-        // 缓存方向偏移量，因为它们不会改变
+        // Cache direction offsets since they don't change
         int directionOffsetX = direction.getStepX();
         int directionOffsetZ = direction.getStepZ();
 
-        // 在指定区域内搜索合适的传送门位置
+        // Search for suitable portal positions within the specified area
         for (BlockPos.MutableBlockPos mutable2 : BlockPos.spiralAround(pos, 16, Direction.EAST, Direction.SOUTH)) {
             int surfaceY = Math.min(maxY, world.getHeight(Heightmap.Types.MOTION_BLOCKING, mutable2.getX(), mutable2.getZ()));
             if (worldBorder.isWithinBounds(mutable2) && worldBorder.isWithinBounds(mutable2.move(direction, 1))) {
@@ -76,7 +76,7 @@ public class PortalHelper {
 
                         if (y + 4 <= maxY) {
                             int height = topY - y;
-                            // 检查高度是否无效（<=0 或 >=3）
+                            // Check if height is invalid (<=0 or >=3)
                             if (height <= 0 || height >= 3) {
                                 mutable2.setY(y);
                                 if (isValidPortalPos(world, mutable2, mutable, direction, 0)) {
@@ -98,15 +98,15 @@ public class PortalHelper {
             }
         }
 
-        // 如果没有找到最佳位置，则使用备选位置
+        // If best position not found, use fallback position
         if (bestSquaredDistance == -1.0 && bestSquaredDistanceFallback != -1.0) {
             bestPos = bestPosFallback;
             bestSquaredDistance = bestSquaredDistanceFallback;
         }
 
-        // 如果仍未找到合适位置，则创建一个新的传送门结构
+        // If still no suitable position found, create a new portal structure
         if (bestSquaredDistance == -1.0) {
-            // 修复表达式：原来是 world.getBottomY() - -1
+            // Fix expression: originally was world.getBottomY() - -1
             int minY = Math.max(world.getMinY() - 1, 70);
             int clampedMaxY = maxY - 9;
             if (clampedMaxY < minY) {
@@ -117,7 +117,7 @@ public class PortalHelper {
             bestPos = worldBorder.clampToBounds(bestPos);
             Direction direction2 = direction.getClockWise();
 
-            // 构建传送门底部
+            // Build portal bottom
             for (int lx = -1; lx < 2; lx++) {
                 for (int width = 0; width < 2; width++) {
                     for (int height = -1; height < 3; height++) {
@@ -129,7 +129,7 @@ public class PortalHelper {
             }
         }
 
-        // 构建传送门框架
+        // Build portal frame
         for (int frameWidth = -1; frameWidth < 3; frameWidth++) {
             for (int frameHeight = -1; frameHeight < 4; frameHeight++) {
                 if (frameWidth == -1 || frameWidth == 2 || frameHeight == -1 || frameHeight == 3) {
@@ -139,7 +139,7 @@ public class PortalHelper {
             }
         }
 
-        // 放置传送门方块
+        // Place portal blocks
         BlockState portalBlockState = portal.defaultBlockState().setValue(NetherPortalBlock.AXIS, axis);
 
         for (int portalWidth = 0; portalWidth < 2; portalWidth++) {

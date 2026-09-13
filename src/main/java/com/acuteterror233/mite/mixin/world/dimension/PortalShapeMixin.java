@@ -24,7 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Mixin for {@code PortalShape} — 实现通用传送门形状检测接口。
+ * Mixin for {@code PortalShape} — Implement universal portal shape detection interface.
  */
 @Mixin(PortalShape.class)
 public class PortalShapeMixin implements UniversalPortalShapeExtension {
@@ -103,7 +103,7 @@ public class PortalShapeMixin implements UniversalPortalShapeExtension {
 
     /**
      * @author AcuteTerror233
-     * @reason 放宽传送门内部有效状态
+     * @reason Relax valid portal interior states
      */
     @Overwrite
     private static boolean isEmpty(BlockState state) {

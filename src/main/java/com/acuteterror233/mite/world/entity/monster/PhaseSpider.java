@@ -32,8 +32,8 @@ import org.jetbrains.annotations.Nullable;
 import org.jspecify.annotations.NonNull;
 
 /**
- * 相位蜘蛛实体，继承蜘蛛行为。
- * 可进行短距离传送。
+ * Phase spider entity, inherits spider behavior.
+ * Can perform short-range teleportation.
  */
 public class PhaseSpider extends Spider {
     private static final EntityDataAccessor<Integer> DODGE_CHARGES = SynchedEntityData.defineId(PhaseSpider.class, EntityDataSerializers.INT);

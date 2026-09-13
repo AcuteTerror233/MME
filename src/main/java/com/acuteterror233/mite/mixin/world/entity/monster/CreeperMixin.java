@@ -6,7 +6,7 @@ import org.spongepowered.asm.mixin.Mutable;
 import org.spongepowered.asm.mixin.Shadow;
 
 /**
- * Mixin for {@code Creeper} — 修改苦力怕行为。
+ * Mixin for {@code Creeper} — Modify Creeper behavior.
  */
 @Mixin(Creeper.class)
 public class CreeperMixin {

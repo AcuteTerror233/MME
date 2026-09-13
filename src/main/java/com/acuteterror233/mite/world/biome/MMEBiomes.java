@@ -8,8 +8,8 @@ import net.minecraft.world.level.levelgen.carver.ConfiguredWorldCarver;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 
 /**
- * MME 模组生物群落注册。
- * 在数据生成阶段注册自定义生物群落（地下洞穴等）。
+ * MME mod biome registration.
+ * Registers custom biomes during data generation (underground caves, etc.).
  */
 public abstract class MMEBiomes {
     public static void bootstrap(BootstrapContext<Biome> biomeRegisterable){

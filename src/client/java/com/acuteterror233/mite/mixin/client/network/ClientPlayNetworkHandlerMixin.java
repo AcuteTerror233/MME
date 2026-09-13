@@ -17,7 +17,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 /**
- * Mixin for {@code ClientPlayNetworkHandler} — 实现燃料等级注册表获取接口。
+ * Mixin for {@code ClientPlayNetworkHandler} — Implements fuel grade registry retrieval interface.
  */
 @Mixin(ClientPacketListener.class)
 public class ClientPlayNetworkHandlerMixin implements GetFuelGradeRegistryExtension {

@@ -7,8 +7,8 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 
 /**
- * MME 模组物品标签定义。
- * 用于分类物品类型（粒、锭、碎片、桶、硬币等）及工具等级材料。
+ * MME mod item tag definitions.
+ * Used for categorizing item types (nuggets, ingots, shards, buckets, coins, etc.) and tool tier materials.
  */
 public interface MMEItemTags {
     TagKey<Item> NUGGET = key("nugget");

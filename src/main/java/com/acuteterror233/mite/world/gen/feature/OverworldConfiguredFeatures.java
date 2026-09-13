@@ -14,8 +14,8 @@ import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConf
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 
 /**
- * 主世界配置特征注册。
- * 定义主世界新增的矿物和植被特征（如蓝莓灌木丛）。
+ * Overworld configured feature registration.
+ * Defines new mineral and vegetation features for the overworld (e.g., blueberry bushes).
  */
 public class OverworldConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> BLUE_BERRY_BUSH = createKey("blue_berry_bush");

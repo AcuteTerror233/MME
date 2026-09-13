@@ -9,8 +9,8 @@ import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 
 /**
- * MME 模组客户端入口，实现 {@link ClientModInitializer}。
- * 注册客户端渲染器、GUI 界面、模型生成和颜色提供器。
+ * MME mod client entrypoint, implementing {@link ClientModInitializer}.
+ * Registers client-side renderers, GUI screens, model generation, and color providers.
  */
 public class MMEClient implements ClientModInitializer {
 	@Override

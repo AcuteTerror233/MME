@@ -24,8 +24,8 @@ import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
 /**
- * 破坏作物 AI 目标。
- * 使实体寻找并破坏成熟作物。
+ * Destroy crop AI goal.
+ * Makes entity seek and destroy mature crops.
  */
 public class DestroyCropGoal extends MoveToBlockGoal {
     private final Mob removerMob;

@@ -13,12 +13,12 @@ import org.spongepowered.asm.mixin.Overwrite;
 
 @Mixin(BoneMealItem.class)
 /**
- * Mixin for {@code BoneMealItem} — 修改骨粉催熟行为。
+ * Mixin for {@code BoneMealItem} — modifies bone meal growth behavior.
  */
 public abstract class BoneMealItemMixin {
     /**
      * @author AcuteTerror233
-     * @reason 修改骨粉的行为
+     * @reason Modify bone meal behavior
      */
     @Overwrite
     public InteractionResult useOn(UseOnContext useOnContext) {

@@ -27,7 +27,7 @@ import org.jspecify.annotations.NonNull;
 import java.util.concurrent.CompletableFuture;
 
 /**
- * MME 配方数据生成器
+ * MME recipe data provider
  */
 public class MMERecipeProvider extends FabricRecipeProvider {
 
@@ -866,6 +866,14 @@ public class MMERecipeProvider extends FabricRecipeProvider {
                         .requires(MMEItems.OBSIDIAN_KNIFE)
                         .requires(ItemTags.OAK_LOGS)
                         .unlockedBy(getHasName(MMEItems.OBSIDIAN_KNIFE), this.has(MMEItems.OBSIDIAN_KNIFE))
+                        .save(this.output);
+                shaped(RecipeCategory.TOOLS, Items.BUNDLE)
+                        .define('a', MMEItemTags.STRING)
+                        .define('b', Items.LEATHER)
+                        .pattern(" a ")
+                        .pattern("b b")
+                        .pattern(" b ")
+                        .unlockedBy("has_leather", this.has(Items.LEATHER))
                         .save(this.output);
 
                 offerAnvilRecipes(MMEBlocks.NETHERITE_ANVIL, Items.NETHERITE_INGOT, Blocks.NETHERITE_BLOCK);

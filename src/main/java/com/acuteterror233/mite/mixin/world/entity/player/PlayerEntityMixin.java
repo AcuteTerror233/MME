@@ -21,7 +21,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(Player.class)
 /**
- * Mixin for {@code Player} — 扩展玩家行为。
+ * Mixin for {@code Player} — Extend player behavior.
  */
 public abstract class PlayerEntityMixin extends LivingEntity {
     @Shadow

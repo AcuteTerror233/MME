@@ -9,7 +9,7 @@ import net.minecraft.resources.Identifier;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * 恶魔蜘蛛渲染器。
+ * Demon Spider renderer.
  */
 public class DemonSpiderRenderer extends SpiderRenderer<DemonSpider> {
     private static final Identifier TEXTURE = Identifier.fromNamespaceAndPath(MME.MOD_ID, "textures/entity/spider/demon_spider.png");

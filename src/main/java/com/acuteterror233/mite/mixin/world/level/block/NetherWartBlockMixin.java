@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.Shadow;
 
 @Mixin(NetherWartBlock.class)
 /**
- * Mixin for {@code NetherWartBlock} — 添加病害和肥力支持。
+ * Mixin for {@code NetherWartBlock} — Adds disease and fertility support.
  */
 public class NetherWartBlockMixin {
     @Final
@@ -22,7 +22,7 @@ public class NetherWartBlockMixin {
     public static IntegerProperty AGE;
     /**
      * @author AcuteTerror233
-     * @reason 添加地狱维度的判断
+     * @reason Adds Nether dimension check
      */
     @Overwrite
     public void randomTick(BlockState blockState, ServerLevel serverLevel, BlockPos blockPos, RandomSource randomSource) {

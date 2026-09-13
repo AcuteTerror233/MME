@@ -2,12 +2,17 @@
   "layers": {
     "humanoid": [
       {
-        "texture": "mme:gold_chainmail_layer_1"
+        "texture": "mme:gold_chainmail"
+      }
+    ],
+    "humanoid_baby": [
+      {
+        "texture": "mme:gold_chainmail"
       }
     ],
     "humanoid_leggings": [
       {
-        "texture": "mme:gold_chainmail_layer_2"
+        "texture": "mme:gold_chainmail"
       }
     ]
   }

@@ -26,7 +26,7 @@ import org.spongepowered.asm.mixin.Unique;
 import java.util.Optional;
 
 /**
- * Mixin for {@code AbstractCow} — 扩展牛的行为。
+ * Mixin for {@code AbstractCow} — Extend cow behavior.
  */
 @Mixin(AbstractCow.class)
 public abstract class AbstractCowMixin extends Animal {
@@ -41,7 +41,7 @@ public abstract class AbstractCowMixin extends Animal {
     }
     /**
      * @author AcuteError233
-     * @reason 修改牛的交互
+     * @reason Modify cow interaction
      */
     @Overwrite
     public @NotNull InteractionResult mobInteract(Player player, @NonNull InteractionHand interactionHand) {

@@ -20,8 +20,8 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 /**
- * 等级工作台菜单，继承 {@link AbstractGradeCraftingMenu}。
- * 实现等级工作台的合成界面逻辑。
+ * Grade crafting table menu, extending {@link AbstractGradeCraftingMenu}.
+ * Implements the crafting UI logic for the grade crafting table.
  */
 public class GradeCraftingTableMenu extends AbstractGradeCraftingMenu {
     private final ContainerLevelAccess context;

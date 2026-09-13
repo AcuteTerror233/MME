@@ -18,13 +18,13 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 
 /**
- * Mixin for {@code CampfireBlock} — 修改营火行为。
+ * Mixin for {@code CampfireBlock} — Modifies campfire behavior.
  */
 @Mixin(CampfireBlock.class)
 public class CampfireBlockMixin {
     /**
      * @author AcuteTerror233
-     * @reason 添加了添加燃料的判定
+     * @reason Added fuel addition logic
      */
     @Overwrite
     public InteractionResult useItemOn(ItemStack stack, BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {

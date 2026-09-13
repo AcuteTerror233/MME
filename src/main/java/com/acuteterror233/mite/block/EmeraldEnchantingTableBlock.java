@@ -15,8 +15,8 @@ import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
 
 /**
- * 绿宝石附魔台。
- * 打开 {@link com.acuteterror233.mite.inventory.MMEEnchantmentMenu} 进行附魔操作。
+ * Emerald enchanting table.
+ * Opens {@link com.acuteterror233.mite.inventory.MMEEnchantmentMenu} for enchanting operations.
  */
 public class EmeraldEnchantingTableBlock extends EnchantingTableBlock {
     public EmeraldEnchantingTableBlock(Properties properties) {

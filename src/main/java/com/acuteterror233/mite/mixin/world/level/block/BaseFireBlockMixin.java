@@ -26,12 +26,12 @@ import java.util.Optional;
 
 @Mixin(BaseFireBlock.class)
 /**
- * Mixin for {@code BaseFireBlock} — 修改火焰扩散逻辑。
+ * Mixin for {@code BaseFireBlock} — Modifies fire spreading logic.
  */
 public abstract class BaseFireBlockMixin {
     /**
      * @author  AcuteTerror233
-     * @reason  添加了创建多种传送门的判断逻辑
+     * @reason  Added judgment logic for creating multiple types of portals
      */
     @Overwrite
     public void onPlace(BlockState state, Level world, BlockPos pos, BlockState oldState, boolean notify) {
@@ -93,7 +93,7 @@ public abstract class BaseFireBlockMixin {
                         }
                         if (y + 4 <= maxY) {
                             int height = topY - y;
-                            // 检查高度是否无效（<=0 或 >=3）
+                            // Check if height is invalid (<=0 or >=3)
                             if (height <= 0 || height >= 3) {
                                 mutable2.setY(y);
                                 if (isValidPortalPos(world, mutable2, mutable, direction, 0)) {
@@ -113,7 +113,7 @@ public abstract class BaseFireBlockMixin {
                 }
             }
         }
-        // 如果没有找到最佳位置，则使用备选位置
+        // If no best position found, use fallback position
         if (bestSquaredDistance == -1.0 && bestSquaredDistanceFallback != -1.0) {
             bestPos = bestPosFallback;
             bestSquaredDistance = bestSquaredDistanceFallback;
@@ -127,7 +127,7 @@ public abstract class BaseFireBlockMixin {
             bestPos = new BlockPos(pos.getX() - directionOffsetX, Mth.clamp(pos.getY(), minY, clampedMaxY), pos.getZ() - directionOffsetZ).immutable();
             bestPos = worldBorder.clampToBounds(bestPos);
             Direction direction2 = direction.getClockWise();
-            // 构建传送门底部
+            // Build portal base
             for (int lx = -1; lx < 2; lx++) {
                 for (int width = 0; width < 2; width++) {
                     for (int height = -1; height < 3; height++) {

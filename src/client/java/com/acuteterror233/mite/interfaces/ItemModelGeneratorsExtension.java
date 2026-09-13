@@ -6,8 +6,8 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.equipment.EquipmentAsset;
 
 /**
- * 物品模型生成器扩展接口。
- * 为数据生成中的物品模型提供自定义生成方法。
+ * Extension interface for item model generators.
+ * Provides custom generation methods for item models in data generation.
  */
 public interface ItemModelGeneratorsExtension {
     void MME$registerBucket(Item item, Identifier identifier, Item item1);

@@ -18,6 +18,7 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.util.Util;
 import net.minecraft.world.Container;
 import net.minecraft.world.SimpleContainer;
+import net.minecraft.world.attribute.EnvironmentAttributes;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -30,6 +31,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.EnchantmentInstance;
+import net.minecraft.world.level.MoonPhase;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.EnchantingTableBlock;
 import org.jetbrains.annotations.NotNull;
@@ -39,10 +41,11 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * MME 附魔菜单，替代原版附魔台界面。
- * 提供自定义附魔逻辑，支持附魔等级和材料限制。
+ * MME enchantment menu, replacing the vanilla enchanting table UI.
+ * Provides custom enchantment logic with enchantment level and material restrictions.
  */
 public class MMEEnchantmentMenu extends AbstractContainerMenu {
+    public static final int[] MOON_INFLUENCE_INTENSITY_PER_PHASE = new int[]{3, 2, 1, -1, -2, -1, 1, 2};
     static final Identifier EMPTY_SLOT_LAPIS_LAZULI = Identifier.withDefaultNamespace("container/slot/lapis_lazuli");
     private final Container enchantSlots = new SimpleContainer(2) {
         @Override
@@ -58,6 +61,7 @@ public class MMEEnchantmentMenu extends AbstractContainerMenu {
     public final int[] enchantClue = new int[]{-1, -1, -1};
     public final int[] levelClue = new int[]{-1, -1, -1};
     public final int maxEnchantmentLevel;
+
 
     public MMEEnchantmentMenu(int i, Inventory inventory) {
         this(i, inventory, ContainerLevelAccess.NULL, 15);
@@ -111,6 +115,8 @@ public class MMEEnchantmentMenu extends AbstractContainerMenu {
                             enchantmentLevel++;
                         }
                     }
+                    MoonPhase moonPhase = level.environmentAttributes().getValue(EnvironmentAttributes.MOON_PHASE, blockPos);
+                    enchantmentLevel += MOON_INFLUENCE_INTENSITY_PER_PHASE[moonPhase.index()];
                     enchantmentLevel = Math.min(enchantmentLevel, this.maxEnchantmentLevel);
                     this.random.setSeed(this.enchantmentSeed.get());
 

@@ -22,7 +22,7 @@ import java.util.function.Consumer;
 
 @Mixin(HoeItem.class)
 /**
- * Mixin for {@code HoeItem} — 修改锄头锄地行为。
+ * Mixin for {@code HoeItem} — Modifies hoe tilling behavior.
  */
 public abstract class HoeItemMixin extends Item {
     public HoeItemMixin(Properties properties) {

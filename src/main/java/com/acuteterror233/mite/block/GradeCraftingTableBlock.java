@@ -18,8 +18,8 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /**
- * 等级工作台方块，限制可使用的材料等级。
- * 每个等级的工作台只能使用对应材料标签内的物品合成，可指定升级目标工作台。
+ * Grade crafting table block, restricting the material grade that can be used.
+ * Each grade of crafting table can only use items within the corresponding material tag for crafting, with a configurable upgrade target workbench.
  */
 public class GradeCraftingTableBlock extends Block {
     private final TagKey<Item> exceptionsTag;

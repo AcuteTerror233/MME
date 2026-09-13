@@ -15,7 +15,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(FarmlandBlock.class)
 /**
- * Mixin for {@code FarmBlock} — 添加肥力系统支持。
+ * Mixin for {@code FarmBlock} — Adds fertility system support.
  */
 public abstract class FarmBlockMixin extends Block {
     @Shadow

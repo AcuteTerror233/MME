@@ -18,8 +18,8 @@ import net.minecraft.world.level.levelgen.carver.ConfiguredWorldCarver;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 
 /**
- * 地下维度生物群落创建器。
- * 构建地下世界各生物群落的参数：天气、音乐、生成特性、实体生成权重等。
+ * Underground dimension biome creator.
+ * Build parameters for each underground biome: weather, music, generation features, entity spawn weights, etc.
  */
 public class UndergroundBiomeCreator {
     public static Biome createUnderground(HolderGetter<PlacedFeature> featureLookup, HolderGetter<ConfiguredWorldCarver<?>> carverLookup){

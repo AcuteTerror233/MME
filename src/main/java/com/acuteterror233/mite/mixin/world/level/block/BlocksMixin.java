@@ -18,7 +18,7 @@ import java.util.function.Function;
 
 @Mixin(Blocks.class)
 /**
- * Mixin for {@code Blocks} — 修改原版方块注册。
+ * Mixin for {@code Blocks} — Modifies vanilla block registration.
  */
 public class BlocksMixin {
     @Inject(method = "register(Lnet/minecraft/resources/ResourceKey;Ljava/util/function/Function;Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;)Lnet/minecraft/world/level/block/Block;", at = @At(value = "HEAD"), cancellable = true)

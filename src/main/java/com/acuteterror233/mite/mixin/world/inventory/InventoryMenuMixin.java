@@ -31,7 +31,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import java.util.Optional;
 
 /**
- * Mixin for {@code InventoryMenu} — 实现物品栏菜单扩展接口。
+ * Mixin for {@code InventoryMenu} — Implement inventory menu extension interface.
  */
 @Mixin(InventoryMenu.class)
 public abstract class InventoryMenuMixin extends AbstractCraftingMenu implements InventoryMenuExtension {
@@ -85,7 +85,7 @@ public abstract class InventoryMenuMixin extends AbstractCraftingMenu implements
     }
     /**
      * @author AcuteTerror233
-     * @reason 更新结果重构
+     * @reason Update result refactoring
      */
     @Overwrite
     public void slotsChanged(Container inventory) {

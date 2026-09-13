@@ -228,6 +228,7 @@ b698964d3b4a68ba4f3f72416a83c1ae05000572 data/mme/advancement/recipes/tools/anci
 b041163585c46c63dd1b790bc47774bb4d9554f8 data/mme/advancement/recipes/tools/ancient_metal_shovel.json
 3a3affe199aad602ed88d7145b5beda2057f8ce9 data/mme/advancement/recipes/tools/ancient_metal_spear.json
 7d9875599701cca6e3e48b4fd26f3c366e175f99 data/mme/advancement/recipes/tools/ancient_metal_war_hammer.json
+b22e28ea74ff8fced64b7bf3fa367561eb8aad68 data/mme/advancement/recipes/tools/bundle.json
 82b55c1bb5944859fac199c2b693040954a0570f data/mme/advancement/recipes/tools/copper_fishing_rod.json
 37afb8edd5c9fab311bf472a324d63aab49d4a98 data/mme/advancement/recipes/tools/copper_hatchet.json
 ee15f85a378dbbe538caf72c3e5cdd427842ca3c data/mme/advancement/recipes/tools/copper_mattock.json
@@ -368,6 +369,7 @@ bdb8585a13b15abcb18a611be28deb0a8f733d91 data/mme/recipe/block.mme.copper_anvil_
 fd9e12d83dd5729b2297dc18bdde167539def333 data/mme/recipe/bowl_salad.json
 8c91c28a3fd1961e77ebaf4d368cfccb2728a962 data/mme/recipe/bowl_water.json
 788c2da3c67ef7eb6247cd33edb96da001615a64 data/mme/recipe/bread.json
+248e1602d9e9b84f70197e368907e85821785053 data/mme/recipe/bundle.json
 013b42cb8d78e43ffd92d465c250f6163255f73c data/mme/recipe/cereal.json
 9f014ae4f63843ef5f334dc96ff5a9fdea8fe246 data/mme/recipe/cheese_form_bowl_milk.json
 9584ee9fc5eb6f36fdda2d259f6bde30ff74e1ec data/mme/recipe/cheese_form_bowl_milk_2.json

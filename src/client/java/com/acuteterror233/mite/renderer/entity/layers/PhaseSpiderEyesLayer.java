@@ -13,7 +13,7 @@ import net.minecraft.resources.Identifier;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * 相位蜘蛛眼睛发光层渲染。
+ * Phase Spider glowing eyes layer rendering.
  */
 @Environment(EnvType.CLIENT)
 public class PhaseSpiderEyesLayer<M extends SpiderModel> extends EyesLayer<LivingEntityRenderState, M> {

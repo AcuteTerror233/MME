@@ -31,8 +31,8 @@ import java.util.concurrent.CompletableFuture;
 import java.util.function.Consumer;
 
 /**
- * MME 进度数据生成器。
- * 生成模组自定义进度 JSON。
+ * MME advancement data provider.
+ * Generates advancement JSON for the mod.
  */
 public class MMEAdvancementProvider extends FabricAdvancementProvider {
     public MMEAdvancementProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registryLookup) {

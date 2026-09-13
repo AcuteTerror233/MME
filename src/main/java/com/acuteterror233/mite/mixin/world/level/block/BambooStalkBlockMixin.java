@@ -8,7 +8,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(BambooStalkBlock.class)
 /**
- * Mixin for {@code BambooStalkBlock} — 修改竹子生长行为。
+ * Mixin for {@code BambooStalkBlock} — Modifies bamboo growth behavior.
  */
 public class BambooStalkBlockMixin {
     @Redirect(method = "randomTick", at = @At(value = "INVOKE", target = "Lnet/minecraft/util/RandomSource;nextInt(I)I"))

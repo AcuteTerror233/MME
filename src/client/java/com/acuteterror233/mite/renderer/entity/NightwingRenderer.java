@@ -8,7 +8,7 @@ import net.minecraft.resources.Identifier;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * 夜翼渲染器。
+ * Nightwing renderer.
  */
 public class NightwingRenderer extends VampireBatRenderer<Nightwing>{
     private static final Identifier TEXTURE = Identifier.fromNamespaceAndPath(MME.MOD_ID, "textures/entity/bat/nightwing.png");

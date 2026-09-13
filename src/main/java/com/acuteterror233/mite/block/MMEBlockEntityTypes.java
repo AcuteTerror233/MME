@@ -17,7 +17,7 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import java.util.Set;
 
 /**
- * MME 方块实体类型注册中心。
+ * MME block entity type registry.
  */
 public class MMEBlockEntityTypes {
 

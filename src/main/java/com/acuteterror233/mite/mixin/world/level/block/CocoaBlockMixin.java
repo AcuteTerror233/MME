@@ -8,7 +8,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(CocoaBlock.class)
 /**
- * Mixin for {@code CocoaBlock} — 修改可可豆生长行为。
+ * Mixin for {@code CocoaBlock} — Modifies cocoa bean growth behavior.
  */
 public class CocoaBlockMixin {
     @Redirect(method = "randomTick", at = @At(value = "INVOKE", target = "Lnet/minecraft/util/RandomSource;nextInt(I)I"))

@@ -8,8 +8,8 @@ import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
 
 /**
- * 符文传送门方块实体。
- * 存储传送门的目标坐标，支持 NBT 持久化。
+ * Rune portal block entity.
+ * Stores the portal's target coordinates, supports NBT persistence.
  */
 public class RunePortalBlockEntity extends BlockEntity{
     private BlockPos destinationPos;

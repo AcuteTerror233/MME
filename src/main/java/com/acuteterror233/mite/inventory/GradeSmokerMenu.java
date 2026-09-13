@@ -9,7 +9,7 @@ import net.minecraft.world.item.crafting.RecipePropertySet;
 import net.minecraft.world.item.crafting.RecipeType;
 
 /**
- * 烟熏炉等级熔炉菜单（烟熏配方）。
+ * Grade smoker menu (smoking recipes).
  */
 public class GradeSmokerMenu extends AbstractGradeFurnaceMenu {
 

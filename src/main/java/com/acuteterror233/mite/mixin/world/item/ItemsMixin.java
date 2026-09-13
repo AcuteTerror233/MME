@@ -18,7 +18,7 @@ import java.util.function.BiFunction;
 import java.util.function.Function;
 
 /**
- * Mixin for {@code Items} — 修改原版物品注册。
+ * Mixin for {@code Items} — Modifies vanilla item registration.
  */
 @Mixin(Items.class)
 public class ItemsMixin {

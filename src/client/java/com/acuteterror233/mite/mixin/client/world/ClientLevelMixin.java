@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 
 /**
- * Mixin for {@code ClientLevel} — 实现燃料等级注册表获取接口。
+ * Mixin for {@code ClientLevel} — Implements fuel grade registry retrieval interface.
  */
 @Mixin(ClientLevel.class)
 public class ClientLevelMixin implements GetFuelGradeRegistryExtension {

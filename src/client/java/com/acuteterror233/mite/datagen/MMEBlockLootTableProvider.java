@@ -22,8 +22,8 @@ import java.util.concurrent.CompletableFuture;
 
 
 /**
- * MME 方块战利品表数据生成器。
- * 为 MME 自定义方块生成战利品表 JSON。
+ * MME block loot table data provider.
+ * Generates loot table JSON for MME custom blocks.
  */
 public class MMEBlockLootTableProvider extends FabricBlockLootSubProvider {
     public MMEBlockLootTableProvider(FabricPackOutput packOutput, CompletableFuture<HolderLookup.Provider> registriesFuture) {
@@ -83,60 +83,15 @@ public class MMEBlockLootTableProvider extends FabricBlockLootSubProvider {
         dropSelf(MMEBlocks.FLINT_CRAFTING_TABLE);
         dropSelf(MMEBlocks.OBSIDIAN_CRAFTING_TABLE);
 
-        dropSelf(MMEBlocks.NETHERITE_ANVIL);
-        dropSelf(MMEBlocks.CHIPPED_NETHERITE_ANVIL);
-        dropSelf(MMEBlocks.DAMAGED_NETHERITE_ANVIL);
-        dropSelf(MMEBlocks.ADAMANTIUM_ANVIL);
-        dropSelf(MMEBlocks.CHIPPED_ADAMANTIUM_ANVIL);
-        dropSelf(MMEBlocks.DAMAGED_ADAMANTIUM_ANVIL);
-        dropSelf(MMEBlocks.MITHRIL_ANVIL);
-        dropSelf(MMEBlocks.CHIPPED_MITHRIL_ANVIL);
-        dropSelf(MMEBlocks.DAMAGED_MITHRIL_ANVIL);
-        dropSelf(MMEBlocks.ANCIENT_METAL_ANVIL);
-        dropSelf(MMEBlocks.CHIPPED_ANCIENT_METAL_ANVIL);
-        dropSelf(MMEBlocks.DAMAGED_ANCIENT_METAL_ANVIL);
-        dropSelf(MMEBlocks.GOLDEN_ANVIL);
-        dropSelf(MMEBlocks.CHIPPED_GOLDEN_ANVIL);
-        dropSelf(MMEBlocks.DAMAGED_GOLDEN_ANVIL);
-        dropSelf(MMEBlocks.COPPER_ANVIL);
-        dropSelf(MMEBlocks.CHIPPED_COPPER_ANVIL);
-        dropSelf(MMEBlocks.DAMAGED_COPPER_ANVIL);
-        dropSelf(MMEBlocks.SILVER_ANVIL);
-        dropSelf(MMEBlocks.CHIPPED_SILVER_ANVIL);
-        dropSelf(MMEBlocks.DAMAGED_SILVER_ANVIL);
+        MMEBlocks.NETHERITE_ANVILS.forEach(this::dropSelf);
+        MMEBlocks.ADAMANTIUM_ANVILS.forEach(this::dropSelf);
+        MMEBlocks.MITHRIL_ANVILS.forEach(this::dropSelf);
+        MMEBlocks.ANCIENT_METAL_ANVILS.forEach(this::dropSelf);
+        MMEBlocks.GOLDEN_ANVILS.forEach(this::dropSelf);
+        MMEBlocks.SILVER_ANVILS.forEach(this::dropSelf);
+        MMEBlocks.COPPER_ANVILS.forEach(this::dropSelf);
 
-        dropSelf(MMEBlocks.MITHRIL_NUL_RUNESTORE);
-        dropSelf(MMEBlocks.MITHRIL_QUAS_RUNESTORE);
-        dropSelf(MMEBlocks.MITHRIL_POR_RUNESTORE);
-        dropSelf(MMEBlocks.MITHRIL_AN_RUNESTORE);
-        dropSelf(MMEBlocks.MITHRIL_NOX_RUNESTORE);
-        dropSelf(MMEBlocks.MITHRIL_FLAM_RUNESTORE);
-        dropSelf(MMEBlocks.MITHRIL_VAS_RUNESTORE);
-        dropSelf(MMEBlocks.MITHRIL_DES_RUNESTORE);
-        dropSelf(MMEBlocks.MITHRIL_ORT_RUNESTORE);
-        dropSelf(MMEBlocks.MITHRIL_TYM_RUNESTORE);
-        dropSelf(MMEBlocks.MITHRIL_CORP_RUNESTORE);
-        dropSelf(MMEBlocks.MITHRIL_LOR_RUNESTORE);
-        dropSelf(MMEBlocks.MITHRIL_MANI_RUNESTORE);
-        dropSelf(MMEBlocks.MITHRIL_JUX_RUNESTORE);
-        dropSelf(MMEBlocks.MITHRIL_YLEM_RUNESTORE);
-        dropSelf(MMEBlocks.MITHRIL_SANCT_RUNESTORE);
-
-        dropSelf(MMEBlocks.ADAMANTIUM_NUL_RUNESTORE);
-        dropSelf(MMEBlocks.ADAMANTIUM_QUAS_RUNESTORE);
-        dropSelf(MMEBlocks.ADAMANTIUM_POR_RUNESTORE);
-        dropSelf(MMEBlocks.ADAMANTIUM_AN_RUNESTORE);
-        dropSelf(MMEBlocks.ADAMANTIUM_NOX_RUNESTORE);
-        dropSelf(MMEBlocks.ADAMANTIUM_FLAM_RUNESTORE);
-        dropSelf(MMEBlocks.ADAMANTIUM_VAS_RUNESTORE);
-        dropSelf(MMEBlocks.ADAMANTIUM_DES_RUNESTORE);
-        dropSelf(MMEBlocks.ADAMANTIUM_ORT_RUNESTORE);
-        dropSelf(MMEBlocks.ADAMANTIUM_TYM_RUNESTORE);
-        dropSelf(MMEBlocks.ADAMANTIUM_CORP_RUNESTORE);
-        dropSelf(MMEBlocks.ADAMANTIUM_LOR_RUNESTORE);
-        dropSelf(MMEBlocks.ADAMANTIUM_MANI_RUNESTORE);
-        dropSelf(MMEBlocks.ADAMANTIUM_JUX_RUNESTORE);
-        dropSelf(MMEBlocks.ADAMANTIUM_YLEM_RUNESTORE);
-        dropSelf(MMEBlocks.ADAMANTIUM_SANCT_RUNESTORE);
+        MMEBlocks.MITHRIL_RUNESTONES.forEach(this::dropSelf);
+        MMEBlocks.ADAMANTIUM_RUNESTONES.forEach(this::dropSelf);
     }
 }

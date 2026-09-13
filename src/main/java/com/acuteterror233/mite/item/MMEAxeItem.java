@@ -3,8 +3,8 @@ package com.acuteterror233.mite.item;
 import net.minecraft.world.item.AxeItem;
 
 /**
- * MME 斧头物品，继承 {@link AxeItem}。
- * 添加自定义斧头行为（如剥皮判定）。
+ * MME axe item, extending {@link AxeItem}.
+ * Adds custom axe behavior (e.g., stripping checks).
  */
 public class MMEAxeItem extends AxeItem {
     public MMEAxeItem(Properties settings) {

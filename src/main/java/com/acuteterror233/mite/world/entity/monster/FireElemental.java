@@ -35,8 +35,8 @@ import org.jetbrains.annotations.NotNull;
 import org.jspecify.annotations.NonNull;
 
 /**
- * 火元素实体，敌对火焰生物。
- * 免疫非银器伤害，在岩浆中活动，攻击点燃目标，对水敏感。
+ * Fire elemental entity, a hostile fire mob.
+ * Immune to non-silver damage, moves through lava, ignites targets on attack, sensitive to water.
  */
 public class FireElemental extends Monster {
     public FireElemental(EntityType<? extends FireElemental> entityType, Level level) {

@@ -1,13 +1,28 @@
 {
   "layers": {
+    "horse_body": [
+      {
+        "texture": "mme:rusted_iron"
+      }
+    ],
     "humanoid": [
       {
-        "texture": "mme:rusted_iron_layer_1"
+        "texture": "mme:rusted_iron"
+      }
+    ],
+    "humanoid_baby": [
+      {
+        "texture": "mme:rusted_iron"
       }
     ],
     "humanoid_leggings": [
       {
-        "texture": "mme:rusted_iron_layer_2"
+        "texture": "mme:rusted_iron"
+      }
+    ],
+    "nautilus_body": [
+      {
+        "texture": "mme:rusted_iron"
       }
     ]
   }

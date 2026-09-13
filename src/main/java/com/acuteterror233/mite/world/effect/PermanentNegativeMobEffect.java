@@ -4,8 +4,8 @@ import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 
 /**
- * 永久负面状态效果基类。
- * 继承 {@link MobEffect}，类型固定为 {@link MobEffectCategory#HARMFUL}。
+ * Permanent negative status effect base class.
+ * Extends {@link MobEffect}, category fixed to {@link MobEffectCategory#HARMFUL}.
  */
 public class PermanentNegativeMobEffect extends MobEffect {
     public PermanentNegativeMobEffect(int i) {

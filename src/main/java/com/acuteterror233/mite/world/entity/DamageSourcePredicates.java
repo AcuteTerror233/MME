@@ -7,8 +7,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.ItemEnchantments;
 
 /**
- * 伤害来源判定工具类。
- * 提供银器武器检测等方法，用于火元素等实体的伤害免疫逻辑。
+ * Damage source predicate utility class.
+ * Provides silver weapon detection methods for damage immunity logic of entities like fire elementals.
  */
 public class DamageSourcePredicates {
     public static boolean isSilverWeaponOrEnchanted(DamageSource damageSource) {

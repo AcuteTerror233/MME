@@ -1,6 +1,7 @@
 package com.acuteterror233.mite.registry;
 
 import com.acuteterror233.mite.block.MMEBlocks;
+import com.acuteterror233.mite.block.Rune;
 import com.acuteterror233.mite.block.state.properties.MMEBlockStateProperties;
 import com.acuteterror233.mite.item.MMEItems;
 import com.acuteterror233.mite.item.enchantment.MMEEnchantments;
@@ -50,10 +51,10 @@ import java.util.Map;
 import java.util.function.Function;
 
 /**
- * 替换 Minecraft 原版战利品表（方块掉落、生物掉落、宝箱/结构战利品）。
- * 通过 {@link net.fabricmc.fabric.api.loot.v3.LootTableEvents#REPLACE} 事件注册。
+ * Replaces Minecraft vanilla loot tables (block drops, mob drops, chest/structure loot).
+ * Registered via {@link net.fabricmc.fabric.api.loot.v3.LootTableEvents#REPLACE} event.
  * <p>
- * 同时提供树叶掉落、精准采集/时运判定、自动烧炼等工具方法。
+ * Also provides utility methods for leaf drops, silk touch/fortune checks, and auto-smelting.
  */
 @SuppressWarnings("OptionalGetWithoutIsPresent")
 public final class LootTableReplace {
@@ -1504,10 +1505,10 @@ public final class LootTableReplace {
                                         .add(LootItem.lootTableItem(Items.IRON_INGOT).setWeight(4).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 4.0F))))
                                         .add(LootItem.lootTableItem(MMEItems.ANCIENT_METAL_INGOT).setWeight(6).apply(SetItemCountFunction.setCount(UniformGenerator.between(2.0F, 3.0F))))
                                         .add(LootItem.lootTableItem(Items.HONEY_BOTTLE).setWeight(4).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F))))
-                                        .add(LootItem.lootTableItem(MMEBlocks.MITHRIL_YLEM_RUNESTORE).setWeight(3))
-                                        .add(LootItem.lootTableItem(MMEBlocks.MITHRIL_SANCT_RUNESTORE).setWeight(3))
-                                        .add(LootItem.lootTableItem(MMEBlocks.MITHRIL_NUL_RUNESTORE).setWeight(3))
-                                        .add(LootItem.lootTableItem(MMEBlocks.MITHRIL_QUAS_RUNESTORE).setWeight(3))
+                                        .add(LootItem.lootTableItem(MMEBlocks.MITHRIL_RUNESTONES.get(Rune.YLEM)).setWeight(3))
+                                        .add(LootItem.lootTableItem(MMEBlocks.MITHRIL_RUNESTONES.get(Rune.SANCT)).setWeight(3))
+                                        .add(LootItem.lootTableItem(MMEBlocks.MITHRIL_RUNESTONES.get(Rune.NUL)).setWeight(3))
+                                        .add(LootItem.lootTableItem(MMEBlocks.MITHRIL_RUNESTONES.get(Rune.QUAS)).setWeight(3))
                                         .add(
                                                 LootItem.lootTableItem(Items.OMINOUS_BOTTLE)
                                                         .setWeight(2)
@@ -1542,12 +1543,12 @@ public final class LootTableReplace {
                                         .add(LootItem.lootTableItem(MMEItems.MITHRIL_INGOT).setWeight(2).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F))))
                                         .add(LootItem.lootTableItem(MMEItems.ANCIENT_METAL_INGOT).setWeight(4).apply(SetItemCountFunction.setCount(UniformGenerator.between(2.0F, 3.0F))))
                                         .add(LootItem.lootTableItem(Items.GOLDEN_CARROT).setWeight(2).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F))))
-                                        .add(LootItem.lootTableItem(MMEBlocks.MITHRIL_POR_RUNESTORE).setWeight(3))
-                                        .add(LootItem.lootTableItem(MMEBlocks.MITHRIL_AN_RUNESTORE).setWeight(3))
-                                        .add(LootItem.lootTableItem(MMEBlocks.MITHRIL_NOX_RUNESTORE).setWeight(3))
-                                        .add(LootItem.lootTableItem(MMEBlocks.MITHRIL_FLAM_RUNESTORE).setWeight(3))
-                                        .add(LootItem.lootTableItem(MMEBlocks.MITHRIL_VAS_RUNESTORE).setWeight(3))
-                                        .add(LootItem.lootTableItem(MMEBlocks.MITHRIL_DES_RUNESTORE).setWeight(3))
+                                        .add(LootItem.lootTableItem(MMEBlocks.MITHRIL_RUNESTONES.get(Rune.POR)).setWeight(3))
+                                        .add(LootItem.lootTableItem(MMEBlocks.MITHRIL_RUNESTONES.get(Rune.AN)).setWeight(3))
+                                        .add(LootItem.lootTableItem(MMEBlocks.MITHRIL_RUNESTONES.get(Rune.NOX)).setWeight(3))
+                                        .add(LootItem.lootTableItem(MMEBlocks.MITHRIL_RUNESTONES.get(Rune.FLAM)).setWeight(3))
+                                        .add(LootItem.lootTableItem(MMEBlocks.MITHRIL_RUNESTONES.get(Rune.VAS)).setWeight(3))
+                                        .add(LootItem.lootTableItem(MMEBlocks.MITHRIL_RUNESTONES.get(Rune.DES)).setWeight(3))
                                         .add(
                                                 LootItem.lootTableItem(Items.BOOK)
                                                         .setWeight(2)
@@ -1593,12 +1594,12 @@ public final class LootTableReplace {
                                         .add(LootItem.lootTableItem(Items.GUSTER_BANNER_PATTERN).setWeight(2))
                                         .add(LootItem.lootTableItem(Items.MUSIC_DISC_PRECIPICE).setWeight(2))
                                         .add(LootItem.lootTableItem(Items.TRIDENT).setWeight(1))             
-                                        .add(LootItem.lootTableItem(MMEBlocks.MITHRIL_ORT_RUNESTORE).setWeight(3))
-                                        .add(LootItem.lootTableItem(MMEBlocks.MITHRIL_TYM_RUNESTORE).setWeight(3))
-                                        .add(LootItem.lootTableItem(MMEBlocks.MITHRIL_CORP_RUNESTORE).setWeight(3))
-                                        .add(LootItem.lootTableItem(MMEBlocks.MITHRIL_LOR_RUNESTORE).setWeight(3))
-                                        .add(LootItem.lootTableItem(MMEBlocks.MITHRIL_MANI_RUNESTORE).setWeight(3))
-                                        .add(LootItem.lootTableItem(MMEBlocks.MITHRIL_JUX_RUNESTORE).setWeight(3))
+                                        .add(LootItem.lootTableItem(MMEBlocks.MITHRIL_RUNESTONES.get(Rune.ORT)).setWeight(3))
+                                        .add(LootItem.lootTableItem(MMEBlocks.MITHRIL_RUNESTONES.get(Rune.TYM)).setWeight(3))
+                                        .add(LootItem.lootTableItem(MMEBlocks.MITHRIL_RUNESTONES.get(Rune.CORP)).setWeight(3))
+                                        .add(LootItem.lootTableItem(MMEBlocks.MITHRIL_RUNESTONES.get(Rune.LOR)).setWeight(3))
+                                        .add(LootItem.lootTableItem(MMEBlocks.MITHRIL_RUNESTONES.get(Rune.MANI)).setWeight(3))
+                                        .add(LootItem.lootTableItem(MMEBlocks.MITHRIL_RUNESTONES.get(Rune.JUX)).setWeight(3))
                         )
                         .withPool(
                                 LootPool.lootPool()
@@ -1614,10 +1615,10 @@ public final class LootTableReplace {
                                         .setRolls(ConstantValue.exactly(1.0F))
                                         .add(LootItem.lootTableItem(Items.EMERALD_BLOCK).setWeight(5))
                                         .add(LootItem.lootTableItem(Items.IRON_BLOCK).setWeight(4))
-                                        .add(LootItem.lootTableItem(MMEBlocks.ADAMANTIUM_YLEM_RUNESTORE).setWeight(3))
-                                        .add(LootItem.lootTableItem(MMEBlocks.ADAMANTIUM_SANCT_RUNESTORE).setWeight(3))
-                                        .add(LootItem.lootTableItem(MMEBlocks.ADAMANTIUM_NUL_RUNESTORE).setWeight(3))
-                                        .add(LootItem.lootTableItem(MMEBlocks.ADAMANTIUM_QUAS_RUNESTORE).setWeight(3))
+                                        .add(LootItem.lootTableItem(MMEBlocks.ADAMANTIUM_RUNESTONES.get(Rune.YLEM)).setWeight(3))
+                                        .add(LootItem.lootTableItem(MMEBlocks.ADAMANTIUM_RUNESTONES.get(Rune.SANCT)).setWeight(3))
+                                        .add(LootItem.lootTableItem(MMEBlocks.ADAMANTIUM_RUNESTONES.get(Rune.NUL)).setWeight(3))
+                                        .add(LootItem.lootTableItem(MMEBlocks.ADAMANTIUM_RUNESTONES.get(Rune.QUAS)).setWeight(3))
                                         .add(
                                                 LootItem.lootTableItem(Items.CROSSBOW).setWeight(4).apply(EnchantWithLevelsFunction.enchantWithLevels(provider, UniformGenerator.between(5.0F, 20.0F)))
                                         )
@@ -1736,12 +1737,12 @@ public final class LootTableReplace {
                                                         .apply(new SetEnchantmentsFunction.Builder().withEnchantment(provider.lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(Enchantments.WIND_BURST), ConstantValue.exactly(1.0F)))
                                         )
                                         .add(LootItem.lootTableItem(Items.DIAMOND).setWeight(1).apply(SetItemCountFunction.setCount(ConstantValue.exactly(2.0F))))
-                                        .add(LootItem.lootTableItem(MMEBlocks.ADAMANTIUM_POR_RUNESTORE).setWeight(3))
-                                        .add(LootItem.lootTableItem(MMEBlocks.ADAMANTIUM_AN_RUNESTORE).setWeight(3))
-                                        .add(LootItem.lootTableItem(MMEBlocks.ADAMANTIUM_NOX_RUNESTORE).setWeight(3))
-                                        .add(LootItem.lootTableItem(MMEBlocks.ADAMANTIUM_FLAM_RUNESTORE).setWeight(3))
-                                        .add(LootItem.lootTableItem(MMEBlocks.ADAMANTIUM_VAS_RUNESTORE).setWeight(3))
-                                        .add(LootItem.lootTableItem(MMEBlocks.ADAMANTIUM_DES_RUNESTORE).setWeight(3))
+                                        .add(LootItem.lootTableItem(MMEBlocks.ADAMANTIUM_RUNESTONES.get(Rune.POR)).setWeight(3))
+                                        .add(LootItem.lootTableItem(MMEBlocks.ADAMANTIUM_RUNESTONES.get(Rune.AN)).setWeight(3))
+                                        .add(LootItem.lootTableItem(MMEBlocks.ADAMANTIUM_RUNESTONES.get(Rune.NOX)).setWeight(3))
+                                        .add(LootItem.lootTableItem(MMEBlocks.ADAMANTIUM_RUNESTONES.get(Rune.FLAM)).setWeight(3))
+                                        .add(LootItem.lootTableItem(MMEBlocks.ADAMANTIUM_RUNESTONES.get(Rune.VAS)).setWeight(3))
+                                        .add(LootItem.lootTableItem(MMEBlocks.ADAMANTIUM_RUNESTONES.get(Rune.DES)).setWeight(3))
                         ).build()
         );
         LOOT_TABLES_REPLACE.put(BuiltInLootTables.TRIAL_CHAMBERS_REWARD_OMINOUS_UNIQUE,
@@ -1749,12 +1750,12 @@ public final class LootTableReplace {
                         .withPool(
                                 LootPool.lootPool()
                                         .setRolls(ConstantValue.exactly(1.0F))
-                                        .add(LootItem.lootTableItem(MMEBlocks.ADAMANTIUM_ORT_RUNESTORE).setWeight(3))
-                                        .add(LootItem.lootTableItem(MMEBlocks.ADAMANTIUM_TYM_RUNESTORE).setWeight(3))
-                                        .add(LootItem.lootTableItem(MMEBlocks.ADAMANTIUM_CORP_RUNESTORE).setWeight(3))
-                                        .add(LootItem.lootTableItem(MMEBlocks.ADAMANTIUM_LOR_RUNESTORE).setWeight(3))
-                                        .add(LootItem.lootTableItem(MMEBlocks.ADAMANTIUM_MANI_RUNESTORE).setWeight(3))
-                                        .add(LootItem.lootTableItem(MMEBlocks.ADAMANTIUM_JUX_RUNESTORE).setWeight(3))
+                                        .add(LootItem.lootTableItem(MMEBlocks.ADAMANTIUM_RUNESTONES.get(Rune.ORT)).setWeight(3))
+                                        .add(LootItem.lootTableItem(MMEBlocks.ADAMANTIUM_RUNESTONES.get(Rune.TYM)).setWeight(3))
+                                        .add(LootItem.lootTableItem(MMEBlocks.ADAMANTIUM_RUNESTONES.get(Rune.CORP)).setWeight(3))
+                                        .add(LootItem.lootTableItem(MMEBlocks.ADAMANTIUM_RUNESTONES.get(Rune.LOR)).setWeight(3))
+                                        .add(LootItem.lootTableItem(MMEBlocks.ADAMANTIUM_RUNESTONES.get(Rune.MANI)).setWeight(3))
+                                        .add(LootItem.lootTableItem(MMEBlocks.ADAMANTIUM_RUNESTONES.get(Rune.JUX)).setWeight(3))
                                         .add(LootItem.lootTableItem(Items.ENCHANTED_GOLDEN_APPLE).setWeight(3))
                                         .add(LootItem.lootTableItem(Items.FLOW_ARMOR_TRIM_SMITHING_TEMPLATE).setWeight(3))
                                         .add(LootItem.lootTableItem(Items.FLOW_BANNER_PATTERN).setWeight(2))
@@ -2284,7 +2285,7 @@ public final class LootTableReplace {
         LOOT_TABLES_REPLACE.put(Blocks.ACACIA_LEAVES.getLootTable().get(),
                 provider -> createAdditionalFruitDrops(provider, Blocks.ACACIA_LEAVES, Blocks.ACACIA_SAPLING, NORMAL_LEAVES_SAPLING_CHANCES, MMEItems.ORANGE).build()
         );
-        // --- 普通树叶（掉落树苗 + 木棍） ---
+        // --- Normal leaves (drops sapling + sticks) ---
         LOOT_TABLES_REPLACE.put(Blocks.SPRUCE_LEAVES.getLootTable().get(),
                 provider -> createLeavesDrops(provider, Blocks.SPRUCE_LEAVES, Blocks.SPRUCE_SAPLING, NORMAL_LEAVES_SAPLING_CHANCES).build()
         );
@@ -2303,7 +2304,7 @@ public final class LootTableReplace {
         LOOT_TABLES_REPLACE.put(Blocks.FLOWERING_AZALEA_LEAVES.getLootTable().get(),
                 provider -> createLeavesDrops(provider, Blocks.FLOWERING_AZALEA_LEAVES, Blocks.FLOWERING_AZALEA, NORMAL_LEAVES_SAPLING_CHANCES).build()
         );
-        // --- 橡树/深色橡树树叶（额外掉落苹果） ---
+        // --- Oak/Dark Oak leaves (additional apple drops) ---
         LOOT_TABLES_REPLACE.put(Blocks.OAK_LEAVES.getLootTable().get(),
                 provider -> createLeavesDrops(provider, Blocks.OAK_LEAVES, Blocks.OAK_SAPLING, NORMAL_LEAVES_SAPLING_CHANCES)
                         .withPool(
@@ -2334,7 +2335,7 @@ public final class LootTableReplace {
                                         )
                         ).build()
         );
-        // --- 红树树叶（无树苗，直接掉木棍） ---
+        // --- Mangrove leaves (no sapling, drops sticks directly) ---
         LOOT_TABLES_REPLACE.put(Blocks.MANGROVE_LEAVES.getLootTable().get(),
                 provider -> LootTable.lootTable()
                         .withPool(
@@ -2352,7 +2353,7 @@ public final class LootTableReplace {
                                         )
                         ).build()
         );
-        // --- 沙砾（时运掉落各种粒） ---
+        // --- Gravel (fortune drops various nuggets) ---
         LOOT_TABLES_REPLACE.put(Blocks.GRAVEL.getLootTable().get(),
                 provider -> LootTable.lootTable()
                         .withPool(
@@ -2409,7 +2410,7 @@ public final class LootTableReplace {
                                         )
                         ).build()
         );
-        // --- 深层铜矿石（精准采集 + 时运） ---
+        // --- Deepslate Copper Ore (silk touch + fortune) ---
         LOOT_TABLES_REPLACE.put(Blocks.DEEPSLATE_COPPER_ORE.getLootTable().get(),
                 provider -> createSilkTouchWithPickaxesWithExplosiveItemTable(
                         provider,
@@ -2418,7 +2419,7 @@ public final class LootTableReplace {
                         Items.RAW_COPPER
                 ).build()
         );
-        // --- 营火（掉落木炭 × 2） ---
+        // --- Campfire (drops charcoal × 2) ---
         LOOT_TABLES_REPLACE.put(Blocks.CAMPFIRE.getLootTable().get(),
                 provider -> LootTable.lootTable()
                         .withPool(
@@ -2436,7 +2437,7 @@ public final class LootTableReplace {
                                         )
                         ).build()
         );
-        // --- 灵魂营火（掉落灵魂土 × 1） ---
+        // --- Soul Campfire (drops soul soil × 1) ---
         LOOT_TABLES_REPLACE.put(Blocks.SOUL_CAMPFIRE.getLootTable().get(),
                 provider -> LootTable.lootTable()
                         .withPool(

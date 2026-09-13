@@ -20,8 +20,8 @@ import net.minecraft.world.timeline.Timeline;
 import java.util.Optional;
 
 /**
- * MME 维度类型注册器。
- * 在数据生成阶段注册地下维度的维度类型参数。
+ * MME dimension type registrar.
+ * Registers dimension type parameters for the underground dimension during data generation.
  */
 public class MMEDimensionTypeRegistrar {
     public static final ResourceKey<Level> UNDERGROUND_LEVEL_KEY = ResourceKey.create(Registries.DIMENSION,

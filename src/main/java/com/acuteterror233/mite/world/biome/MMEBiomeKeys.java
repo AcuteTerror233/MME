@@ -7,8 +7,8 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.biome.Biome;
 
 /**
- * MME 模组生物群落资源键定义。
- * 定义地下维度相关生物群落的 {@link ResourceKey}。
+ * MME mod biome resource key definitions.
+ * Defines {@link ResourceKey} for underground dimension-related biomes.
  */
 public class MMEBiomeKeys {
     public static final ResourceKey<Biome> UNDERGROUND = key("underground");

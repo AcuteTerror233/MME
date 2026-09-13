@@ -1,13 +1,28 @@
 {
   "layers": {
+    "horse_body": [
+      {
+        "texture": "mme:mithril"
+      }
+    ],
     "humanoid": [
       {
-        "texture": "mme:mithril_layer_1"
+        "texture": "mme:mithril"
+      }
+    ],
+    "humanoid_baby": [
+      {
+        "texture": "mme:mithril"
       }
     ],
     "humanoid_leggings": [
       {
-        "texture": "mme:mithril_layer_2"
+        "texture": "mme:mithril"
+      }
+    ],
+    "nautilus_body": [
+      {
+        "texture": "mme:mithril"
       }
     ]
   }

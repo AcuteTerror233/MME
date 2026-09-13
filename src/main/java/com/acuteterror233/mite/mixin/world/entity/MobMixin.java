@@ -21,7 +21,7 @@ import java.util.List;
 
 @Mixin(Mob.class)
 /**
- * Mixin for {@code Mob} — 扩展生物通用行为。
+ * Mixin for {@code Mob} — Extends general mob behavior.
  */
 public abstract class MobMixin extends LivingEntity implements EquipmentUser, Leashable, Targeting{
     @Final
@@ -33,7 +33,7 @@ public abstract class MobMixin extends LivingEntity implements EquipmentUser, Le
     }
     /**
      * @author AcuteTerror233.
-     * @reason 添加铜等装备
+     * @reason Add copper and other equipment
      */
     @Overwrite
     public void populateDefaultEquipmentSlots(RandomSource randomSource, DifficultyInstance difficultyInstance) {
@@ -75,7 +75,7 @@ public abstract class MobMixin extends LivingEntity implements EquipmentUser, Le
 
     /**
      * @author AcuteTerror233.
-     * @reason 添加铜等装备
+     * @reason Add copper and other equipment
      */
     @Overwrite
     public static @Nullable Item getEquipmentForSlot(EquipmentSlot equipmentSlot, int i) {

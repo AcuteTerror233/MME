@@ -25,7 +25,7 @@ public interface BucketableMixin {
 
     /**
      * @author AcuteTerror233
-     * @reason 修改了生物桶的放置逻辑
+     * @reason Modified the mob bucket placement logic
      */
     @Overwrite
     static <T extends LivingEntity & Bucketable> Optional<InteractionResult> bucketMobPickup(Player player, InteractionHand hand, T entity) {

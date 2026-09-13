@@ -27,8 +27,8 @@ import net.minecraft.world.phys.HitResult;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * MME 生物桶物品，继承 {@link MobBucketItem}。
- * 支持自定义材料制成的生物捕获桶。
+ * MME mob bucket item, extending {@link MobBucketItem}.
+ * Supports mob capture buckets made from custom materials.
  */
 public class MMEMobBucketItem extends MobBucketItem {
     private final Item empty_barrel;

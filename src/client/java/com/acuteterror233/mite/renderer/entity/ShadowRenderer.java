@@ -8,7 +8,7 @@ import net.minecraft.resources.Identifier;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * 暗影渲染器。
+ * Shadow renderer.
  */
 public class ShadowRenderer extends ZombieRenderer {
     private static final Identifier SHADOW_LOCATION = Identifier.fromNamespaceAndPath(MME.MOD_ID, "textures/entity/zombie/shadow.png");

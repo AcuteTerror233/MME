@@ -8,7 +8,7 @@ import net.minecraft.resources.Identifier;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * 炼狱苦力怕渲染器。
+ * Infernal Creeper renderer.
  */
 public class InfernalCreeperRenderer extends CreeperRenderer {
     private static final Identifier TEXTURE = Identifier.fromNamespaceAndPath(MME.MOD_ID, "textures/entity/creeper/infernal_creeper.png");

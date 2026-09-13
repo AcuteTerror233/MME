@@ -16,7 +16,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(FurnaceResultSlot.class)
 /**
- * Mixin for {@code FurnaceResultSlot} — 修改熔炉结果栏位行为。
+ * Mixin for {@code FurnaceResultSlot} — Modify furnace result slot behavior.
  */
 public abstract class FurnaceResultSlotMixin extends Slot {
     @Final

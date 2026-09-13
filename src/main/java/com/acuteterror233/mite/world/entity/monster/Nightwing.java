@@ -9,7 +9,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 
 /**
- * 夜翼实体，继承吸血鬼蝙蝠行为。
+ * Nightwing entity, inherits vampire bat behavior.
  */
 public class Nightwing extends VampireBat {
     public Nightwing(EntityType<? extends Nightwing> entityType, Level level) {

@@ -1,21 +1,20 @@
 package com.acuteterror233.mite.item;
 
 import com.acuteterror233.mite.MME;
-import com.acuteterror233.mite.block.MMEBlocks;
+import com.acuteterror233.mite.block.*;
 import com.acuteterror233.mite.component.MMEDataComponents;
 import com.acuteterror233.mite.item.armor.MMEArmorMaterials;
 import com.acuteterror233.mite.item.equipment.MMEArmorMaterial;
 import com.acuteterror233.mite.registry.tag.MMEBlockTags;
 import com.acuteterror233.mite.world.entity.MMEEntityTypes;
 import com.acuteterror233.mite.world.food.FoodNutrition;
-import net.fabricmc.fabric.api.creativetab.v1.FabricCreativeModeTab;
+import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
+import net.fabricmc.fabric.api.creativetab.v1.FabricCreativeModeTabOutput;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.Registry;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.SoundEvents;
@@ -35,15 +34,138 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.material.Fluids;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import java.util.function.Function;
 
 /**
- * MME 模组物品注册中心。
- * 定义并注册所有自定义物品（工具、武器、盔甲、材料、食物等）及其创造模式物品栏。
+ * MME mod item registry.
+ * Defines and registers all custom items (tools, weapons, armor, materials, food, etc.) and their creative mode tabs.
  */
 public class MMEItems {
+    public static final Item ADAMANTIUM_ORE = registerBlockItem(
+            MMEBlocks.ADAMANTIUM_ORE, MMEBlockItemIds.ADAMANTIUM_ORE,
+            new Item.Properties().component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4)
+    );
+    public static final Item MITHRIL_ORE = registerBlockItem(
+            MMEBlocks.MITHRIL_ORE, MMEBlockItemIds.MITHRIL_ORE,
+            new Item.Properties().component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 3)
+    );
+    public static final Item SILVER_ORE = registerBlockItem(
+            MMEBlocks.SILVER_ORE, MMEBlockItemIds.SILVER_ORE,
+            new Item.Properties().component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2)
+    );
+    public static final Item DEEPSLATE_ADAMANTIUM_ORE = registerBlockItem(
+            MMEBlocks.DEEPSLATE_ADAMANTIUM_ORE, MMEBlockItemIds.DEEPSLATE_ADAMANTIUM_ORE,
+            new Item.Properties().component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4)
+    );
+    public static final Item DEEPSLATE_MITHRIL_ORE = registerBlockItem(
+            MMEBlocks.DEEPSLATE_MITHRIL_ORE, MMEBlockItemIds.DEEPSLATE_MITHRIL_ORE,
+            new Item.Properties().component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 3)
+    );
+    public static final Item DEEPSLATE_SILVER_ORE = registerBlockItem(
+            MMEBlocks.DEEPSLATE_SILVER_ORE, MMEBlockItemIds.DEEPSLATE_SILVER_ORE,
+            new Item.Properties().component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2)
+    );
+
+    public static final Item ADAMANTIUM_BLOCK = registerBlockItem(
+            MMEBlocks.ADAMANTIUM_BLOCK, MMEBlockItemIds.ADAMANTIUM_BLOCK,
+            new Item.Properties().component(MMEDataComponents.CRAFTING_TIME, 1350)
+    );
+    public static final Item ANCIENT_METAL_BLOCK = registerBlockItem(
+            MMEBlocks.ANCIENT_METAL_BLOCK, MMEBlockItemIds.ANCIENT_METAL_BLOCK,
+            new Item.Properties().component(MMEDataComponents.CRAFTING_TIME, 540)
+    );
+    public static final Item MITHRIL_BLOCK = registerBlockItem(
+            MMEBlocks.MITHRIL_BLOCK, MMEBlockItemIds.MITHRIL_BLOCK,
+            new Item.Properties().component(MMEDataComponents.CRAFTING_TIME, 810)
+    );
+    public static final Item SILVER_BLOCK = registerBlockItem(
+            MMEBlocks.SILVER_BLOCK, MMEBlockItemIds.SILVER_BLOCK,
+            new Item.Properties().component(MMEDataComponents.CRAFTING_TIME, 90)
+    );
+
+    public static final Item CLAY_FURNACE = registerBlockItem(MMEBlocks.CLAY_FURNACE, MMEBlockItemIds.CLAY_FURNACE, new Item.Properties());
+    public static final Item HARDENED_CLAY_FURNACE = registerBlockItem(MMEBlocks.HARDENED_CLAY_FURNACE, MMEBlockItemIds.HARDENED_CLAY_FURNACE, new Item.Properties());
+    public static final Item NETHERRACK_FURNACE = registerBlockItem(MMEBlocks.NETHERRACK_FURNACE, MMEBlockItemIds.NETHERRACK_FURNACE, new Item.Properties());
+    public static final Item OBSIDIAN_FURNACE = registerBlockItem(MMEBlocks.OBSIDIAN_FURNACE, MMEBlockItemIds.OBSIDIAN_FURNACE, new Item.Properties());
+    public static final Item SANDSTONE_FURNACE = registerBlockItem(MMEBlocks.SANDSTONE_FURNACE, MMEBlockItemIds.SANDSTONE_FURNACE, new Item.Properties());
+
+    public static final Item MANTLE = registerBlockItem(MMEBlocks.MANTLE, MMEBlockItemIds.MANTLE, new Item.Properties());
+
+    public static final AnvilCollection<Item> NETHERITE_ANVILS = AnvilCollection.registerItems(
+            MMEBlocks.NETHERITE_ANVILS, MMEBlockItemIds.NETHERITE_ANVIL,
+            state -> new Item.Properties().durability(MMEBlocks.maxDamageAnvil(MMEToolMaterials.NETHERITE.durability()))
+    );
+    public static final AnvilCollection<Item> ADAMANTIUM_ANVILS = AnvilCollection.registerItems(
+            MMEBlocks.ADAMANTIUM_ANVILS, MMEBlockItemIds.ADAMANTIUM_ANVIL,
+            state -> new Item.Properties().durability(MMEBlocks.maxDamageAnvil(MMEToolMaterials.ADAMANTIUM.durability()))
+    );
+    public static final AnvilCollection<Item> MITHRIL_ANVILS = AnvilCollection.registerItems(
+            MMEBlocks.MITHRIL_ANVILS, MMEBlockItemIds.MITHRIL_ANVIL,
+            state -> new Item.Properties().durability(MMEBlocks.maxDamageAnvil(MMEToolMaterials.MITHRIL.durability()))
+    );
+    public static final AnvilCollection<Item> ANCIENT_METAL_ANVILS = AnvilCollection.registerItems(
+            MMEBlocks.ANCIENT_METAL_ANVILS, MMEBlockItemIds.ANCIENT_METAL_ANVIL,
+            state -> new Item.Properties().durability(MMEBlocks.maxDamageAnvil(MMEToolMaterials.ANCIENT_METAL.durability()))
+    );
+    public static final AnvilCollection<Item> GOLDEN_ANVILS = AnvilCollection.registerItems(
+            MMEBlocks.GOLDEN_ANVILS, MMEBlockItemIds.GOLDEN_ANVIL,
+            state -> new Item.Properties().durability(MMEBlocks.maxDamageAnvil(ToolMaterial.GOLD.durability()))
+    );
+    public static final AnvilCollection<Item> SILVER_ANVILS = AnvilCollection.registerItems(
+            MMEBlocks.SILVER_ANVILS, MMEBlockItemIds.SILVER_ANVIL,
+            state -> new Item.Properties().durability(MMEBlocks.maxDamageAnvil(MMEToolMaterials.SILVER.durability()))
+    );
+    public static final AnvilCollection<Item> COPPER_ANVILS = AnvilCollection.registerItems(
+            MMEBlocks.COPPER_ANVILS, MMEBlockItemIds.COPPER_ANVIL,
+            state -> new Item.Properties().durability(MMEBlocks.maxDamageAnvil(MMEToolMaterials.COPPER.durability()))
+    );
+
+    // Backward-compatible aliases — delegate to the collections
+    public static final Item NETHERITE_ANVIL = NETHERITE_ANVILS.intact();
+    public static final Item CHIPPED_NETHERITE_ANVIL = NETHERITE_ANVILS.chipped();
+    public static final Item DAMAGED_NETHERITE_ANVIL = NETHERITE_ANVILS.damaged();
+    public static final Item ADAMANTIUM_ANVIL = ADAMANTIUM_ANVILS.intact();
+    public static final Item CHIPPED_ADAMANTIUM_ANVIL = ADAMANTIUM_ANVILS.chipped();
+    public static final Item DAMAGED_ADAMANTIUM_ANVIL = ADAMANTIUM_ANVILS.damaged();
+    public static final Item MITHRIL_ANVIL = MITHRIL_ANVILS.intact();
+    public static final Item CHIPPED_MITHRIL_ANVIL = MITHRIL_ANVILS.chipped();
+    public static final Item DAMAGED_MITHRIL_ANVIL = MITHRIL_ANVILS.damaged();
+    public static final Item ANCIENT_METAL_ANVIL = ANCIENT_METAL_ANVILS.intact();
+    public static final Item CHIPPED_ANCIENT_METAL_ANVIL = ANCIENT_METAL_ANVILS.chipped();
+    public static final Item DAMAGED_ANCIENT_METAL_ANVIL = ANCIENT_METAL_ANVILS.damaged();
+    public static final Item GOLDEN_ANVIL = GOLDEN_ANVILS.intact();
+    public static final Item CHIPPED_GOLDEN_ANVIL = GOLDEN_ANVILS.chipped();
+    public static final Item DAMAGED_GOLDEN_ANVIL = GOLDEN_ANVILS.damaged();
+    public static final Item SILVER_ANVIL = SILVER_ANVILS.intact();
+    public static final Item CHIPPED_SILVER_ANVIL = SILVER_ANVILS.chipped();
+    public static final Item DAMAGED_SILVER_ANVIL = SILVER_ANVILS.damaged();
+    public static final Item COPPER_ANVIL = COPPER_ANVILS.intact();
+    public static final Item CHIPPED_COPPER_ANVIL = COPPER_ANVILS.chipped();
+    public static final Item DAMAGED_COPPER_ANVIL = COPPER_ANVILS.damaged();
+
+    public static final RunestoneCollection<Item> MITHRIL_RUNESTONES = RunestoneCollection.registerBlockItems(
+            MMEBlocks.MITHRIL_RUNESTONES, MMEBlockItemIds.MITHRIL_RUNESTORE, rune -> new Item.Properties()
+    );
+    public static final RunestoneCollection<Item> ADAMANTIUM_RUNESTONES = RunestoneCollection.registerBlockItems(
+            MMEBlocks.ADAMANTIUM_RUNESTONES, MMEBlockItemIds.ADAMANTIUM_RUNESTORE, rune -> new Item.Properties()
+    );
+
+    public static final Item ADAMANTIUM_CRAFTING_TABLE = registerBlockItem(MMEBlocks.ADAMANTIUM_CRAFTING_TABLE, MMEBlockItemIds.ADAMANTIUM_CRAFTING_TABLE, new Item.Properties());
+    public static final Item MITHRIL_CRAFTING_TABLE = registerBlockItem(MMEBlocks.MITHRIL_CRAFTING_TABLE, MMEBlockItemIds.MITHRIL_CRAFTING_TABLE, new Item.Properties());
+    public static final Item ANCIENT_METAL_CRAFTING_TABLE = registerBlockItem(MMEBlocks.ANCIENT_METAL_CRAFTING_TABLE, MMEBlockItemIds.ANCIENT_METAL_CRAFTING_TABLE, new Item.Properties());
+    public static final Item IRON_CRAFTING_TABLE = registerBlockItem(MMEBlocks.IRON_CRAFTING_TABLE, MMEBlockItemIds.IRON_CRAFTING_TABLE, new Item.Properties());
+    public static final Item COPPER_CRAFTING_TABLE = registerBlockItem(MMEBlocks.COPPER_CRAFTING_TABLE, MMEBlockItemIds.COPPER_CRAFTING_TABLE, new Item.Properties());
+    public static final Item SILVER_CRAFTING_TABLE = registerBlockItem(MMEBlocks.SILVER_CRAFTING_TABLE, MMEBlockItemIds.SILVER_CRAFTING_TABLE, new Item.Properties());
+    public static final Item GOLD_CRAFTING_TABLE = registerBlockItem(MMEBlocks.GOLD_CRAFTING_TABLE, MMEBlockItemIds.GOLD_CRAFTING_TABLE, new Item.Properties());
+    public static final Item FLINT_CRAFTING_TABLE = registerBlockItem(MMEBlocks.FLINT_CRAFTING_TABLE, MMEBlockItemIds.FLINT_CRAFTING_TABLE, new Item.Properties());
+    public static final Item OBSIDIAN_CRAFTING_TABLE = registerBlockItem(MMEBlocks.OBSIDIAN_CRAFTING_TABLE, MMEBlockItemIds.OBSIDIAN_CRAFTING_TABLE, new Item.Properties());
+
+    public static final Item EMERALD_ENCHANTING_TABLE = registerBlockItem(MMEBlocks.EMERALD_ENCHANTING_TABLE, MMEBlockItemIds.EMERALD_ENCHANTING_TABLE, new Item.Properties());
+
     public static final Item ADAMANTIUM_HELMET = register(
             MMEItemIds.ADAMANTIUM_HELMET,
             getArmorSettings(MMEArmorMaterials.ADAMANTIUM_MATERIAL, ArmorType.HELMET).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4)
@@ -1337,437 +1459,6 @@ public class MMEItems {
             new Item.Properties().spawnEgg(MMEEntityTypes.GIANT_VAMPIRE_BAT)
     );
 
-    public static final CreativeModeTab MME_GROUP = FabricCreativeModeTab.builder()
-            .icon(() -> new ItemStack(MMEBlocks.ADAMANTIUM_AN_RUNESTORE))
-            .title(Component.translatable("itemGroup.mme.item_group"))
-            .displayItems((context, entries) -> {
-                entries.accept(MMEBlocks.EMERALD_ENCHANTING_TABLE);
-
-                entries.accept(MMEBlocks.CLAY_FURNACE);
-                entries.accept(MMEBlocks.HARDENED_CLAY_FURNACE);
-                entries.accept(MMEBlocks.NETHERRACK_FURNACE);
-                entries.accept(MMEBlocks.OBSIDIAN_FURNACE);
-                entries.accept(MMEBlocks.SANDSTONE_FURNACE);
-
-                entries.accept(MMEBlocks.ADAMANTIUM_CRAFTING_TABLE);
-                entries.accept(MMEBlocks.MITHRIL_CRAFTING_TABLE);
-                entries.accept(MMEBlocks.ANCIENT_METAL_CRAFTING_TABLE);
-                entries.accept(MMEBlocks.IRON_CRAFTING_TABLE);
-                entries.accept(MMEBlocks.GOLD_CRAFTING_TABLE);
-                entries.accept(MMEBlocks.SILVER_CRAFTING_TABLE);
-                entries.accept(MMEBlocks.COPPER_CRAFTING_TABLE);
-                entries.accept(MMEBlocks.FLINT_CRAFTING_TABLE);
-                entries.accept(MMEBlocks.OBSIDIAN_CRAFTING_TABLE);
-
-                entries.accept(MMEBlocks.MITHRIL_NUL_RUNESTORE);
-                entries.accept(MMEBlocks.MITHRIL_QUAS_RUNESTORE);
-                entries.accept(MMEBlocks.MITHRIL_POR_RUNESTORE);
-                entries.accept(MMEBlocks.MITHRIL_AN_RUNESTORE);
-                entries.accept(MMEBlocks.MITHRIL_NOX_RUNESTORE);
-                entries.accept(MMEBlocks.MITHRIL_FLAM_RUNESTORE);
-                entries.accept(MMEBlocks.MITHRIL_VAS_RUNESTORE);
-                entries.accept(MMEBlocks.MITHRIL_DES_RUNESTORE);
-                entries.accept(MMEBlocks.MITHRIL_ORT_RUNESTORE);
-                entries.accept(MMEBlocks.MITHRIL_TYM_RUNESTORE);
-                entries.accept(MMEBlocks.MITHRIL_CORP_RUNESTORE);
-                entries.accept(MMEBlocks.MITHRIL_LOR_RUNESTORE);
-                entries.accept(MMEBlocks.MITHRIL_MANI_RUNESTORE);
-                entries.accept(MMEBlocks.MITHRIL_JUX_RUNESTORE);
-                entries.accept(MMEBlocks.MITHRIL_YLEM_RUNESTORE);
-                entries.accept(MMEBlocks.MITHRIL_SANCT_RUNESTORE);
-
-                entries.accept(MMEBlocks.ADAMANTIUM_NUL_RUNESTORE);
-                entries.accept(MMEBlocks.ADAMANTIUM_QUAS_RUNESTORE);
-                entries.accept(MMEBlocks.ADAMANTIUM_POR_RUNESTORE);
-                entries.accept(MMEBlocks.ADAMANTIUM_AN_RUNESTORE);
-                entries.accept(MMEBlocks.ADAMANTIUM_NOX_RUNESTORE);
-                entries.accept(MMEBlocks.ADAMANTIUM_FLAM_RUNESTORE);
-                entries.accept(MMEBlocks.ADAMANTIUM_VAS_RUNESTORE);
-                entries.accept(MMEBlocks.ADAMANTIUM_DES_RUNESTORE);
-                entries.accept(MMEBlocks.ADAMANTIUM_ORT_RUNESTORE);
-                entries.accept(MMEBlocks.ADAMANTIUM_TYM_RUNESTORE);
-                entries.accept(MMEBlocks.ADAMANTIUM_CORP_RUNESTORE);
-                entries.accept(MMEBlocks.ADAMANTIUM_LOR_RUNESTORE);
-                entries.accept(MMEBlocks.ADAMANTIUM_MANI_RUNESTORE);
-                entries.accept(MMEBlocks.ADAMANTIUM_JUX_RUNESTORE);
-                entries.accept(MMEBlocks.ADAMANTIUM_YLEM_RUNESTORE);
-                entries.accept(MMEBlocks.ADAMANTIUM_SANCT_RUNESTORE);
-
-                entries.accept(MMEBlocks.NETHERITE_ANVIL);
-                entries.accept(MMEBlocks.CHIPPED_NETHERITE_ANVIL);
-                entries.accept(MMEBlocks.DAMAGED_NETHERITE_ANVIL);
-                entries.accept(MMEBlocks.ADAMANTIUM_ANVIL);
-                entries.accept(MMEBlocks.CHIPPED_ADAMANTIUM_ANVIL);
-                entries.accept(MMEBlocks.DAMAGED_ADAMANTIUM_ANVIL);
-                entries.accept(MMEBlocks.MITHRIL_ANVIL);
-                entries.accept(MMEBlocks.CHIPPED_MITHRIL_ANVIL);
-                entries.accept(MMEBlocks.DAMAGED_MITHRIL_ANVIL);
-                entries.accept(MMEBlocks.ANCIENT_METAL_ANVIL);
-                entries.accept(MMEBlocks.CHIPPED_ANCIENT_METAL_ANVIL);
-                entries.accept(MMEBlocks.DAMAGED_ANCIENT_METAL_ANVIL);
-                entries.accept(MMEBlocks.GOLDEN_ANVIL);
-                entries.accept(MMEBlocks.CHIPPED_GOLDEN_ANVIL);
-                entries.accept(MMEBlocks.DAMAGED_GOLDEN_ANVIL);
-                entries.accept(MMEBlocks.COPPER_ANVIL);
-                entries.accept(MMEBlocks.CHIPPED_COPPER_ANVIL);
-                entries.accept(MMEBlocks.DAMAGED_COPPER_ANVIL);
-                entries.accept(MMEBlocks.SILVER_ANVIL);
-                entries.accept(MMEBlocks.CHIPPED_SILVER_ANVIL);
-                entries.accept(MMEBlocks.DAMAGED_SILVER_ANVIL);
-
-                entries.accept(MMEBlocks.ADAMANTIUM_BLOCK);
-                entries.accept(MMEBlocks.MITHRIL_BLOCK);
-                entries.accept(MMEBlocks.ANCIENT_METAL_BLOCK);
-                entries.accept(MMEBlocks.SILVER_BLOCK);
-
-                entries.accept(MMEBlocks.ADAMANTIUM_ORE);
-                entries.accept(MMEBlocks.DEEPSLATE_ADAMANTIUM_ORE);
-                entries.accept(MMEBlocks.MITHRIL_ORE);
-                entries.accept(MMEBlocks.DEEPSLATE_MITHRIL_ORE);
-                entries.accept(MMEBlocks.SILVER_ORE);
-                entries.accept(MMEBlocks.DEEPSLATE_SILVER_ORE);
-
-                entries.accept(MMEBlocks.MANTLE);
-
-                entries.accept(FLINT_SHARD);
-                entries.accept(OBSIDIAN_SHARD);
-
-                entries.accept(RAW_ADAMANTIUM);
-                entries.accept(RAW_MITHRIL);
-                entries.accept(RAW_SILVER);
-
-                entries.accept(ADAMANTIUM_INGOT);
-                entries.accept(MITHRIL_INGOT);
-                entries.accept(ANCIENT_METAL_INGOT);
-                entries.accept(SILVER_INGOT);
-
-                entries.accept(NETHERITE_NUGGET);
-                entries.accept(ADAMANTIUM_NUGGET);
-                entries.accept(ANCIENT_METAL_NUGGET);
-                entries.accept(MITHRIL_NUGGET);
-                entries.accept(SILVER_NUGGET);
-
-                entries.accept(NETHERITE_FISHING_ROD);
-                entries.accept(ADAMANTIUM_FISHING_ROD);
-                entries.accept(ANCIENT_METAL_FISHING_ROD);
-                entries.accept(COPPER_FISHING_ROD);
-                entries.accept(FLINT_FISHING_ROD);
-                entries.accept(GOLDEN_FISHING_ROD);
-                entries.accept(IRON_FISHING_ROD);
-                entries.accept(MITHRIL_FISHING_ROD);
-                entries.accept(OBSIDIAN_FISHING_ROD);
-                entries.accept(SILVER_FISHING_ROD);
-                entries.accept(ADAMANTIUM_HELMET);
-                entries.accept(ADAMANTIUM_CHESTPLATE);
-                entries.accept(ADAMANTIUM_LEGGINGS);
-                entries.accept(ADAMANTIUM_BOOTS);
-                entries.accept(ADAMANTIUM_CHAINMAIL_HELMET);
-                entries.accept(ADAMANTIUM_CHAINMAIL_CHESTPLATE);
-                entries.accept(ADAMANTIUM_CHAINMAIL_LEGGINGS);
-                entries.accept(ADAMANTIUM_CHAINMAIL_BOOTS);
-                entries.accept(MITHRIL_HELMET);
-                entries.accept(MITHRIL_CHESTPLATE);
-                entries.accept(MITHRIL_LEGGINGS);
-                entries.accept(MITHRIL_BOOTS);
-                entries.accept(MITHRIL_CHAINMAIL_HELMET);
-                entries.accept(MITHRIL_CHAINMAIL_CHESTPLATE);
-                entries.accept(MITHRIL_CHAINMAIL_LEGGINGS);
-                entries.accept(MITHRIL_CHAINMAIL_BOOTS);
-                entries.accept(ANCIENT_METAL_HELMET);
-                entries.accept(ANCIENT_METAL_CHESTPLATE);
-                entries.accept(ANCIENT_METAL_LEGGINGS);
-                entries.accept(ANCIENT_METAL_BOOTS);
-                entries.accept(ANCIENT_METAL_CHAINMAIL_HELMET);
-                entries.accept(ANCIENT_METAL_CHAINMAIL_CHESTPLATE);
-                entries.accept(ANCIENT_METAL_CHAINMAIL_LEGGINGS);
-                entries.accept(ANCIENT_METAL_CHAINMAIL_BOOTS);
-                entries.accept(RUSTED_IRON_HELMET);
-                entries.accept(RUSTED_IRON_CHESTPLATE);
-                entries.accept(RUSTED_IRON_LEGGINGS);
-                entries.accept(RUSTED_IRON_BOOTS);
-                entries.accept(RUSTED_IRON_CHAINMAIL_HELMET);
-                entries.accept(RUSTED_IRON_CHAINMAIL_CHESTPLATE);
-                entries.accept(RUSTED_IRON_CHAINMAIL_LEGGINGS);
-                entries.accept(RUSTED_IRON_CHAINMAIL_BOOTS);
-                entries.accept(COPPER_CHAINMAIL_HELMET);
-                entries.accept(COPPER_CHAINMAIL_CHESTPLATE);
-                entries.accept(COPPER_CHAINMAIL_LEGGINGS);
-                entries.accept(COPPER_CHAINMAIL_BOOTS);
-                entries.accept(SILVER_HELMET);
-                entries.accept(SILVER_CHESTPLATE);
-                entries.accept(SILVER_LEGGINGS);
-                entries.accept(SILVER_BOOTS);
-                entries.accept(SILVER_CHAINMAIL_HELMET);
-                entries.accept(SILVER_CHAINMAIL_CHESTPLATE);
-                entries.accept(SILVER_CHAINMAIL_LEGGINGS);
-                entries.accept(SILVER_CHAINMAIL_BOOTS);
-                entries.accept(GOLDEN_CHAINMAIL_HELMET);
-                entries.accept(GOLDEN_CHAINMAIL_CHESTPLATE);
-                entries.accept(GOLDEN_CHAINMAIL_LEGGINGS);
-                entries.accept(GOLDEN_CHAINMAIL_BOOTS);
-
-                entries.accept(NETHERITE_BATTLE_AXE);
-                entries.accept(NETHERITE_DAGGER);
-                entries.accept(NETHERITE_HATCHET);
-                entries.accept(NETHERITE_WAR_HAMMER);
-                entries.accept(NETHERITE_KNIFE);
-                entries.accept(NETHERITE_MATTOCK);
-                entries.accept(NETHERITE_SCYTHE);
-                entries.accept(NETHERITE_SHEARS);
-                entries.accept(ADAMANTIUM_AXE);
-                entries.accept(ADAMANTIUM_BATTLE_AXE);
-                entries.accept(ADAMANTIUM_DAGGER);
-                entries.accept(ADAMANTIUM_HATCHET);
-                entries.accept(ADAMANTIUM_HOE);
-                entries.accept(ADAMANTIUM_KNIFE);
-                entries.accept(ADAMANTIUM_MATTOCK);
-                entries.accept(ADAMANTIUM_PICKAXE);
-                entries.accept(ADAMANTIUM_SCYTHE);
-                entries.accept(ADAMANTIUM_SHEARS);
-                entries.accept(ADAMANTIUM_SHOVEL);
-                entries.accept(ADAMANTIUM_SPEAR);
-                entries.accept(ADAMANTIUM_SWORD);
-                entries.accept(ADAMANTIUM_WAR_HAMMER);
-                entries.accept(MITHRIL_AXE);
-                entries.accept(MITHRIL_BATTLE_AXE);
-                entries.accept(MITHRIL_DAGGER);
-                entries.accept(MITHRIL_HATCHET);
-                entries.accept(MITHRIL_HOE);
-                entries.accept(MITHRIL_KNIFE);
-                entries.accept(MITHRIL_MATTOCK);
-                entries.accept(MITHRIL_PICKAXE);
-                entries.accept(MITHRIL_SCYTHE);
-                entries.accept(MITHRIL_SHEARS);
-                entries.accept(MITHRIL_SHOVEL);
-                entries.accept(MITHRIL_SPEAR);
-                entries.accept(MITHRIL_SWORD);
-                entries.accept(MITHRIL_WAR_HAMMER);
-                entries.accept(ANCIENT_METAL_AXE);
-                entries.accept(ANCIENT_METAL_BATTLE_AXE);
-                entries.accept(ANCIENT_METAL_DAGGER);
-                entries.accept(ANCIENT_METAL_HATCHET);
-                entries.accept(ANCIENT_METAL_HOE);
-                entries.accept(ANCIENT_METAL_KNIFE);
-                entries.accept(ANCIENT_METAL_MATTOCK);
-                entries.accept(ANCIENT_METAL_PICKAXE);
-                entries.accept(ANCIENT_METAL_SCYTHE);
-                entries.accept(ANCIENT_METAL_SHEARS);
-                entries.accept(ANCIENT_METAL_SHOVEL);
-                entries.accept(ANCIENT_METAL_SPEAR);
-                entries.accept(ANCIENT_METAL_SWORD);
-                entries.accept(ANCIENT_METAL_WAR_HAMMER);
-                entries.accept(IRON_BATTLE_AXE);
-                entries.accept(IRON_DAGGER);
-                entries.accept(IRON_HATCHET);
-                entries.accept(IRON_KNIFE);
-                entries.accept(IRON_MATTOCK);
-                entries.accept(IRON_SCYTHE);
-                entries.accept(IRON_WAR_HAMMER);
-                entries.accept(RUSTED_IRON_AXE);
-                entries.accept(RUSTED_IRON_BATTLE_AXE);
-                entries.accept(RUSTED_IRON_DAGGER);
-                entries.accept(RUSTED_IRON_HATCHET);
-                entries.accept(RUSTED_IRON_HOE);
-                entries.accept(RUSTED_IRON_KNIFE);
-                entries.accept(RUSTED_IRON_MATTOCK);
-                entries.accept(RUSTED_IRON_PICKAXE);
-                entries.accept(RUSTED_IRON_SCYTHE);
-                entries.accept(RUSTED_IRON_SHEARS);
-                entries.accept(RUSTED_IRON_SHOVEL);
-                entries.accept(RUSTED_IRON_SPEAR);
-                entries.accept(RUSTED_IRON_SWORD);
-                entries.accept(RUSTED_IRON_WAR_HAMMER);
-                entries.accept(COPPER_BATTLE_AXE);
-                entries.accept(COPPER_DAGGER);
-                entries.accept(COPPER_HATCHET);
-                entries.accept(COPPER_KNIFE);
-                entries.accept(COPPER_MATTOCK);
-                entries.accept(COPPER_SCYTHE);
-                entries.accept(COPPER_SHEARS);
-                entries.accept(COPPER_WAR_HAMMER);
-                entries.accept(SILVER_AXE);
-                entries.accept(SILVER_BATTLE_AXE);
-                entries.accept(SILVER_DAGGER);
-                entries.accept(SILVER_HATCHET);
-                entries.accept(SILVER_HOE);
-                entries.accept(SILVER_KNIFE);
-                entries.accept(SILVER_MATTOCK);
-                entries.accept(SILVER_PICKAXE);
-                entries.accept(SILVER_SCYTHE);
-                entries.accept(SILVER_SHEARS);
-                entries.accept(SILVER_SHOVEL);
-                entries.accept(SILVER_SPEAR);
-                entries.accept(SILVER_SWORD);
-                entries.accept(SILVER_WAR_HAMMER);
-                entries.accept(GOLDEN_BATTLE_AXE);
-                entries.accept(GOLDEN_DAGGER);
-                entries.accept(GOLDEN_HATCHET);
-                entries.accept(GOLDEN_KNIFE);
-                entries.accept(GOLDEN_MATTOCK);
-                entries.accept(GOLDEN_SCYTHE);
-                entries.accept(GOLDEN_SHEARS);
-                entries.accept(GOLDEN_WAR_HAMMER);
-                entries.accept(OBSIDIAN_AXE);
-                entries.accept(OBSIDIAN_HATCHET);
-                entries.accept(OBSIDIAN_KNIFE);
-                entries.accept(OBSIDIAN_SHOVEL);
-                entries.accept(FLINT_AXE);
-                entries.accept(FLINT_HATCHET);
-                entries.accept(FLINT_KNIFE);
-                entries.accept(FLINT_SHOVEL);
-                entries.accept(FLINT_SPEAR);
-                entries.accept(WOODEN_CLUB);
-                entries.accept(WOODEN_CUDGEL);
-
-                entries.accept(BANANA);
-                entries.accept(BLUE_BERRIE);
-                entries.accept(CHEESE);
-                entries.accept(CHOCOLATE);
-                entries.accept(FLOUR);
-                entries.accept(DOUGH);
-                entries.accept(LEMON);
-                entries.accept(ONION);
-                entries.accept(ORANGE);
-                entries.accept(WORM_COOKED);
-                entries.accept(WORM_RAW);
-                entries.accept(PUMPKIN_SOUP);
-                entries.accept(SORBET);
-                entries.accept(VEGETABLE_SOUP);
-                entries.accept(BEEF_STEW);
-                entries.accept(BOWL_MILK);
-                entries.accept(BOWL_SALAD);
-                entries.accept(BOWL_WATER);
-                entries.accept(CEREAL);
-                entries.accept(CHICKEN_SOUP);
-                entries.accept(CREAM_OF_MUSHROOM_SOUP);
-                entries.accept(CREAM_OF_VEGETABLE_SOUP);
-                entries.accept(ICE_CREAM);
-                entries.accept(MASHED_POTATO);
-                entries.accept(PORRIDGE);
-                entries.accept(SINEW);
-                entries.accept(MANURE);
-                entries.accept(GHOUL_SPAWN_EGG);
-                entries.accept(SHADOW_SPAWN_EGG);
-                entries.accept(WIGHT_SPAWN_EGG);
-                entries.accept(INVISIBLE_STALKER_SPAWN_EGG);
-                entries.accept(DEMON_SPIDER_SPAWN_EGG);
-                entries.accept(PHASE_SPIDER_SPAWN_EGG);
-                entries.accept(INFERNAL_CREEPER_SPAWN_EGG);
-                entries.accept(FIRE_ELEMENTAL_SPAWN_EGG);
-                entries.accept(VAMPIRE_BAT_SPAWN_EGG);
-                entries.accept(NIGHTWING_SPAWN_EGG);
-                entries.accept(GIANT_VAMPIRE_BAT_SPAWN_EGG);
-
-                entries.accept(ADAMANTIUM_CHAINS);
-                entries.accept(GOLDEN_CHAINS);
-                entries.accept(IRON_CHAINS);
-                entries.accept(MITHRIL_CHAINS);
-                entries.accept(SILVER_CHAINS);
-                entries.accept(ANCIENT_METAL_CHAINS);
-                entries.accept(COPPER_CHAINS);
-                entries.accept(RUSTED_IRON_CHAINS);
-                entries.accept(NETHERITE_COINS);
-                entries.accept(ADAMANTIUM_COINS);
-                entries.accept(ANCIENT_METAL_COINS);
-                entries.accept(COPPER_COINS);
-                entries.accept(GOLDEN_COINS);
-                entries.accept(IRON_COINS);
-                entries.accept(MITHRIL_COINS);
-                entries.accept(SILVER_COINS);
-
-                entries.accept(NETHERITE_BUCKET);
-                entries.accept(NETHERITE_WATER_BUCKET);
-                entries.accept(NETHERITE_LAVA_BUCKET);
-                entries.accept(NETHERITE_MILK_BUCKET);
-                entries.accept(NETHERITE_POWDER_SNOW_BUCKET);
-                entries.accept(NETHERITE_PUFFERFISH_BUCKET);
-                entries.accept(NETHERITE_SALMON_BUCKET);
-                entries.accept(NETHERITE_COD_BUCKET);
-                entries.accept(NETHERITE_TROPICAL_FISH_BUCKET);
-                entries.accept(NETHERITE_AXOLOTL_BUCKET);
-                entries.accept(NETHERITE_TADPOLE_BUCKET);
-                entries.accept(NETHERITE_SULFUR_CUBE_BUCKET);
-
-                entries.accept(ADAMANTIUM_BUCKET);
-                entries.accept(ADAMANTIUM_WATER_BUCKET);
-                entries.accept(ADAMANTIUM_LAVA_BUCKET);
-                entries.accept(ADAMANTIUM_MILK_BUCKET);
-                entries.accept(ADAMANTIUM_POWDER_SNOW_BUCKET);
-                entries.accept(ADAMANTIUM_PUFFERFISH_BUCKET);
-                entries.accept(ADAMANTIUM_SALMON_BUCKET);
-                entries.accept(ADAMANTIUM_COD_BUCKET);
-                entries.accept(ADAMANTIUM_TROPICAL_FISH_BUCKET);
-                entries.accept(ADAMANTIUM_AXOLOTL_BUCKET);
-                entries.accept(ADAMANTIUM_TADPOLE_BUCKET);
-                entries.accept(ADAMANTIUM_SULFUR_CUBE_BUCKET);
-
-                entries.accept(MITHRIL_BUCKET);
-                entries.accept(MITHRIL_WATER_BUCKET);
-                entries.accept(MITHRIL_LAVA_BUCKET);
-                entries.accept(MITHRIL_MILK_BUCKET);
-                entries.accept(MITHRIL_POWDER_SNOW_BUCKET);
-                entries.accept(MITHRIL_PUFFERFISH_BUCKET);
-                entries.accept(MITHRIL_SALMON_BUCKET);
-                entries.accept(MITHRIL_COD_BUCKET);
-                entries.accept(MITHRIL_TROPICAL_FISH_BUCKET);
-                entries.accept(MITHRIL_AXOLOTL_BUCKET);
-                entries.accept(MITHRIL_TADPOLE_BUCKET);
-                entries.accept(MITHRIL_SULFUR_CUBE_BUCKET);
-
-                entries.accept(ANCIENT_METAL_BUCKET);
-                entries.accept(ANCIENT_METAL_WATER_BUCKET);
-                entries.accept(ANCIENT_METAL_LAVA_BUCKET);
-                entries.accept(ANCIENT_METAL_MILK_BUCKET);
-                entries.accept(ANCIENT_METAL_POWDER_SNOW_BUCKET);
-                entries.accept(ANCIENT_METAL_PUFFERFISH_BUCKET);
-                entries.accept(ANCIENT_METAL_SALMON_BUCKET);
-                entries.accept(ANCIENT_METAL_COD_BUCKET);
-                entries.accept(ANCIENT_METAL_TROPICAL_FISH_BUCKET);
-                entries.accept(ANCIENT_METAL_AXOLOTL_BUCKET);
-                entries.accept(ANCIENT_METAL_TADPOLE_BUCKET);
-                entries.accept(ANCIENT_METAL_SULFUR_CUBE_BUCKET);
-
-                entries.accept(COPPER_BUCKET);
-                entries.accept(COPPER_WATER_BUCKET);
-                entries.accept(COPPER_LAVA_BUCKET);
-                entries.accept(COPPER_MILK_BUCKET);
-                entries.accept(COPPER_POWDER_SNOW_BUCKET);
-                entries.accept(COPPER_PUFFERFISH_BUCKET);
-                entries.accept(COPPER_SALMON_BUCKET);
-                entries.accept(COPPER_COD_BUCKET);
-                entries.accept(COPPER_TROPICAL_FISH_BUCKET);
-                entries.accept(COPPER_AXOLOTL_BUCKET);
-                entries.accept(COPPER_TADPOLE_BUCKET);
-                entries.accept(COPPER_SULFUR_CUBE_BUCKET);
-
-                entries.accept(SILVER_BUCKET);
-                entries.accept(SILVER_WATER_BUCKET);
-                entries.accept(SILVER_LAVA_BUCKET);
-                entries.accept(SILVER_MILK_BUCKET);
-                entries.accept(SILVER_POWDER_SNOW_BUCKET);
-                entries.accept(SILVER_PUFFERFISH_BUCKET);
-                entries.accept(SILVER_SALMON_BUCKET);
-                entries.accept(SILVER_COD_BUCKET);
-                entries.accept(SILVER_TROPICAL_FISH_BUCKET);
-                entries.accept(SILVER_AXOLOTL_BUCKET);
-                entries.accept(SILVER_TADPOLE_BUCKET);
-                entries.accept(SILVER_SULFUR_CUBE_BUCKET);
-
-                entries.accept(GOLD_BUCKET);
-                entries.accept(GOLD_WATER_BUCKET);
-                entries.accept(GOLD_LAVA_BUCKET);
-                entries.accept(GOLD_MILK_BUCKET);
-                entries.accept(GOLD_POWDER_SNOW_BUCKET);
-                entries.accept(GOLD_PUFFERFISH_BUCKET);
-                entries.accept(GOLD_SALMON_BUCKET);
-                entries.accept(GOLD_COD_BUCKET);
-                entries.accept(GOLD_TROPICAL_FISH_BUCKET);
-                entries.accept(GOLD_AXOLOTL_BUCKET);
-                entries.accept(GOLD_TADPOLE_BUCKET);
-                entries.accept(GOLD_SULFUR_CUBE_BUCKET);
-            })
-            .build();
-
     public static Item.Properties getArmorSettings(MMEArmorMaterial material, ArmorType type) {
             return new Item.Properties().durability(type.getDurability((int) (material.durability() * 0.45)))
                     .attributes(material.createAttributeModifiers(type))
@@ -2000,18 +1691,6 @@ public class MMEItems {
         );
     }
 
-    private static Item register(ResourceKey<Item> registryKey) {
-        return Registry.register(BuiltInRegistries.ITEM, registryKey, new Item(new Item.Properties().setId(registryKey)));
-    }
-
-    private static Item register(ResourceKey<Item> registryKey, Item.Properties settings) {
-        return Registry.register(BuiltInRegistries.ITEM, registryKey, new Item(settings.setId(registryKey)));
-    }
-
-    private static Item register(ResourceKey<Item> registryKey, Function<Item.Properties, Item> factory, Item.Properties settings) {
-        return Registry.register(BuiltInRegistries.ITEM, registryKey, factory.apply(settings.setId(registryKey)));
-    }
-
     private static Item registerAxeItem(ResourceKey<Item> registryKey, Item.Properties settings) {
         return register(registryKey, MMEAxeItem::new, settings);
     }
@@ -2028,14 +1707,367 @@ public class MMEItems {
         return register(registryKey, MMEHoeItem::new, settings);
     }
 
-    public static Item register(Block block, Item.Properties settings) {
-        ResourceKey<Item> itemKey = ResourceKey.create(Registries.ITEM, block.builtInRegistryHolder().key().identifier());
-        BlockItem item = new BlockItem(block, settings.useBlockDescriptionPrefix().setId(itemKey));
-        item.registerBlocks(Item.BY_BLOCK, item);
-        return Registry.register(BuiltInRegistries.ITEM, itemKey, item);
+    public static Item register(ResourceKey<Item> registryKey) {
+        return register(registryKey, new Item.Properties());
+    }
+
+    public static Item register(ResourceKey<Item> registryKey, Item.Properties settings) {
+        return register(registryKey, Item::new, settings);
+    }
+
+    public static Item registerBlockItem(Block block, BlockItemId id, Item.Properties settings) {
+        Function<Item.Properties, Item> function = properties -> new BlockItem(block, properties.useBlockDescriptionPrefix().setId(id.itemKey()));
+        return register(id.itemKey(), function, settings);
+    }
+
+    public static Item register(ResourceKey<Item> registryKey, Function<Item.Properties, Item> factory, Item.Properties settings) {
+        Item item = factory.apply(settings.setId(registryKey));
+        if (item instanceof BlockItem blockItem) {
+            blockItem.registerBlocks(Item.BY_BLOCK, item);
+        }
+        return Registry.register(BuiltInRegistries.ITEM, registryKey, item);
+    }
+
+
+    /**
+     * Chains items into a creative tab, each inserted right after the previous one.
+     */
+    private static void insertChain(FabricCreativeModeTabOutput output, Item anchor, Item... items) {
+        Item prev = anchor;
+        for (Item item : items) {
+            output.insertAfter(prev, item);
+            prev = item;
+        }
     }
 
     public static void init() {
-        Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, Identifier.fromNamespaceAndPath(MME.MOD_ID, "item_group"), MME_GROUP);
+        // Remove disabled vanilla items from all creative tabs
+        Set<Identifier> disabledVanillaItems = new HashSet<>();
+        disabledVanillaItems.add(Identifier.withDefaultNamespace("wooden_sword"));
+        disabledVanillaItems.add(Identifier.withDefaultNamespace("wooden_pickaxe"));
+        disabledVanillaItems.add(Identifier.withDefaultNamespace("wooden_axe"));
+        disabledVanillaItems.add(Identifier.withDefaultNamespace("wooden_hoe"));
+        disabledVanillaItems.add(Identifier.withDefaultNamespace("stone_sword"));
+        disabledVanillaItems.add(Identifier.withDefaultNamespace("stone_shovel"));
+        disabledVanillaItems.add(Identifier.withDefaultNamespace("stone_pickaxe"));
+        disabledVanillaItems.add(Identifier.withDefaultNamespace("stone_axe"));
+        disabledVanillaItems.add(Identifier.withDefaultNamespace("stone_hoe"));
+        disabledVanillaItems.add(Identifier.withDefaultNamespace("stone_spear"));
+        disabledVanillaItems.add(Identifier.withDefaultNamespace("diamond_sword"));
+        disabledVanillaItems.add(Identifier.withDefaultNamespace("diamond_shovel"));
+        disabledVanillaItems.add(Identifier.withDefaultNamespace("diamond_pickaxe"));
+        disabledVanillaItems.add(Identifier.withDefaultNamespace("diamond_axe"));
+        disabledVanillaItems.add(Identifier.withDefaultNamespace("diamond_hoe"));
+        disabledVanillaItems.add(Identifier.withDefaultNamespace("diamond_spear"));
+        disabledVanillaItems.add(Identifier.withDefaultNamespace("diamond_helmet"));
+        disabledVanillaItems.add(Identifier.withDefaultNamespace("diamond_chestplate"));
+        disabledVanillaItems.add(Identifier.withDefaultNamespace("diamond_leggings"));
+        disabledVanillaItems.add(Identifier.withDefaultNamespace("diamond_boots"));
+        disabledVanillaItems.add(Identifier.withDefaultNamespace("fishing_rod"));
+        disabledVanillaItems.add(Identifier.withDefaultNamespace("crafting_table"));
+
+        CreativeModeTabEvents.MODIFY_OUTPUT_ALL.register((tab, output) -> {
+            output.getDisplayStacks().removeIf(item -> {
+                Identifier id = BuiltInRegistries.ITEM.getKey(item.getItem());
+                return disabledVanillaItems.contains(id);
+            });
+            output.getSearchTabStacks().removeIf(item -> {
+                Identifier id = BuiltInRegistries.ITEM.getKey(item.getItem());
+                return disabledVanillaItems.contains(id);
+            });
+        });
+
+        // === Natural Blocks: ores and mantle ===
+        CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.NATURAL_BLOCKS).register(output -> {
+            output.insertAfter(Items.DEEPSLATE_COPPER_ORE, MMEBlocks.SILVER_ORE, MMEBlocks.DEEPSLATE_SILVER_ORE);
+            output.insertAfter(Items.DEEPSLATE_GOLD_ORE,
+                    MMEBlocks.MITHRIL_ORE, MMEBlocks.DEEPSLATE_MITHRIL_ORE,
+                    MMEBlocks.ADAMANTIUM_ORE, MMEBlocks.DEEPSLATE_ADAMANTIUM_ORE);
+            output.accept(MMEBlocks.MANTLE);
+        });
+
+        // === Building Blocks: metal storage blocks ===
+        CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.BUILDING_BLOCKS).register(output -> {
+            output.insertBefore(Items.IRON_BLOCK, MMEBlocks.SILVER_BLOCK);
+            output.insertAfter(Items.DIAMOND_BLOCK,
+                    MMEBlocks.ANCIENT_METAL_BLOCK, MMEBlocks.MITHRIL_BLOCK, MMEBlocks.ADAMANTIUM_BLOCK);
+        });
+
+        // === Functional Blocks: furnaces, crafting tables, runestones, anvils ===
+        CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.FUNCTIONAL_BLOCKS).register(output -> {
+            output.insertAfter(Items.BLAST_FURNACE,
+                    MMEBlocks.CLAY_FURNACE, MMEBlocks.HARDENED_CLAY_FURNACE, MMEBlocks.NETHERRACK_FURNACE,
+                    MMEBlocks.OBSIDIAN_FURNACE, MMEBlocks.SANDSTONE_FURNACE);
+
+            // Crafting tables replace the removed vanilla crafting table (anchored before the stonecutter)
+            output.insertBefore(Items.STONECUTTER,
+                    MMEBlocks.FLINT_CRAFTING_TABLE, MMEBlocks.OBSIDIAN_CRAFTING_TABLE,
+                    MMEBlocks.COPPER_CRAFTING_TABLE, MMEBlocks.SILVER_CRAFTING_TABLE,
+                    MMEBlocks.IRON_CRAFTING_TABLE, MMEBlocks.GOLD_CRAFTING_TABLE,
+                    MMEBlocks.ANCIENT_METAL_CRAFTING_TABLE, MMEBlocks.MITHRIL_CRAFTING_TABLE,
+                    MMEBlocks.ADAMANTIUM_CRAFTING_TABLE);
+
+            MMEItems.MITHRIL_RUNESTONES.forEach(output::accept);
+            MMEItems.ADAMANTIUM_RUNESTONES.forEach(output::accept);
+
+            // Emerald enchanting table next to the vanilla enchanting table
+            output.insertAfter(Items.ENCHANTING_TABLE, MMEBlocks.EMERALD_ENCHANTING_TABLE);
+            // Anvils by material around the vanilla anvils
+            output.insertBefore(Items.ANVIL,
+                    MMEBlocks.COPPER_ANVIL, MMEBlocks.CHIPPED_COPPER_ANVIL, MMEBlocks.DAMAGED_COPPER_ANVIL,
+                    MMEBlocks.SILVER_ANVIL, MMEBlocks.CHIPPED_SILVER_ANVIL, MMEBlocks.DAMAGED_SILVER_ANVIL);
+            output.insertAfter(Items.DAMAGED_ANVIL,
+                    MMEBlocks.GOLDEN_ANVIL, MMEBlocks.CHIPPED_GOLDEN_ANVIL, MMEBlocks.DAMAGED_GOLDEN_ANVIL,
+                    MMEBlocks.ANCIENT_METAL_ANVIL, MMEBlocks.CHIPPED_ANCIENT_METAL_ANVIL, MMEBlocks.DAMAGED_ANCIENT_METAL_ANVIL,
+                    MMEBlocks.MITHRIL_ANVIL, MMEBlocks.CHIPPED_MITHRIL_ANVIL, MMEBlocks.DAMAGED_MITHRIL_ANVIL,
+                    MMEBlocks.ADAMANTIUM_ANVIL, MMEBlocks.CHIPPED_ADAMANTIUM_ANVIL, MMEBlocks.DAMAGED_ADAMANTIUM_ANVIL,
+                    MMEBlocks.NETHERITE_ANVIL, MMEBlocks.CHIPPED_NETHERITE_ANVIL, MMEBlocks.DAMAGED_NETHERITE_ANVIL);
+        });
+
+        // === Combat: weapons anchored to their vanilla positions ===
+        CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.COMBAT).register(output -> {
+            // Swords interleaved with vanilla swords by tier
+            output.insertAfter(Items.COPPER_SWORD, SILVER_SWORD);
+            output.insertAfter(SILVER_SWORD, RUSTED_IRON_SWORD);
+            output.insertAfter(Items.GOLDEN_SWORD, ANCIENT_METAL_SWORD);
+            output.insertAfter(ANCIENT_METAL_SWORD, MITHRIL_SWORD);
+            output.insertAfter(MITHRIL_SWORD, ADAMANTIUM_SWORD);
+
+            // Daggers placed right after the vanilla swords
+            insertChain(output, Items.NETHERITE_SWORD,
+                    COPPER_DAGGER, SILVER_DAGGER, RUSTED_IRON_DAGGER, IRON_DAGGER, GOLDEN_DAGGER,
+                    ANCIENT_METAL_DAGGER, MITHRIL_DAGGER, ADAMANTIUM_DAGGER, NETHERITE_DAGGER);
+
+            // Spears interleaved with vanilla spears by tier
+            output.insertBefore(Items.COPPER_SPEAR, FLINT_SPEAR);
+            output.insertAfter(Items.COPPER_SPEAR, SILVER_SPEAR);
+            output.insertAfter(SILVER_SPEAR, RUSTED_IRON_SPEAR);
+            output.insertAfter(Items.GOLDEN_SPEAR, ANCIENT_METAL_SPEAR);
+            output.insertAfter(ANCIENT_METAL_SPEAR, MITHRIL_SPEAR);
+            output.insertAfter(MITHRIL_SPEAR, ADAMANTIUM_SPEAR);
+
+            // Hatchets placed before the vanilla axes
+            output.insertBefore(Items.WOODEN_AXE,
+                    FLINT_HATCHET, COPPER_HATCHET, SILVER_HATCHET, RUSTED_IRON_HATCHET, IRON_HATCHET,
+                    GOLDEN_HATCHET, ANCIENT_METAL_HATCHET, MITHRIL_HATCHET, ADAMANTIUM_HATCHET,
+                    OBSIDIAN_HATCHET, NETHERITE_HATCHET);
+
+            // Axes interleaved with vanilla axes by tier
+            output.insertBefore(Items.COPPER_AXE, FLINT_AXE);
+            output.insertAfter(Items.COPPER_AXE, SILVER_AXE);
+            output.insertAfter(SILVER_AXE, RUSTED_IRON_AXE);
+            output.insertAfter(Items.GOLDEN_AXE, ANCIENT_METAL_AXE);
+            output.insertAfter(ANCIENT_METAL_AXE, MITHRIL_AXE);
+            output.insertAfter(MITHRIL_AXE, ADAMANTIUM_AXE);
+            output.insertAfter(ADAMANTIUM_AXE, OBSIDIAN_AXE);
+
+            // Battle axes placed after the vanilla axes
+            insertChain(output, Items.NETHERITE_AXE,
+                    COPPER_BATTLE_AXE, SILVER_BATTLE_AXE, RUSTED_IRON_BATTLE_AXE, IRON_BATTLE_AXE,
+                    GOLDEN_BATTLE_AXE, ANCIENT_METAL_BATTLE_AXE, MITHRIL_BATTLE_AXE,
+                    ADAMANTIUM_BATTLE_AXE, NETHERITE_BATTLE_AXE);
+
+            // Scythes and war hammers follow the battle axes
+            insertChain(output, NETHERITE_BATTLE_AXE,
+                    COPPER_SCYTHE, SILVER_SCYTHE, RUSTED_IRON_SCYTHE, IRON_SCYTHE, GOLDEN_SCYTHE,
+                    ANCIENT_METAL_SCYTHE, MITHRIL_SCYTHE, ADAMANTIUM_SCYTHE, NETHERITE_SCYTHE);
+            insertChain(output, NETHERITE_SCYTHE,
+                    COPPER_WAR_HAMMER, SILVER_WAR_HAMMER, RUSTED_IRON_WAR_HAMMER, IRON_WAR_HAMMER,
+                    GOLDEN_WAR_HAMMER, ANCIENT_METAL_WAR_HAMMER, MITHRIL_WAR_HAMMER,
+                    ADAMANTIUM_WAR_HAMMER, NETHERITE_WAR_HAMMER);
+
+            // Clubs and flint/obsidian knives placed before the trident
+            output.insertBefore(Items.TRIDENT,
+                    WOODEN_CLUB, WOODEN_CUDGEL, FLINT_KNIFE, OBSIDIAN_KNIFE);
+
+            // Armor interleaved with the vanilla armor by material
+            output.insertAfter(Items.COPPER_BOOTS,
+                    COPPER_CHAINMAIL_HELMET, COPPER_CHAINMAIL_CHESTPLATE, COPPER_CHAINMAIL_LEGGINGS,
+                    COPPER_CHAINMAIL_BOOTS);
+            output.insertAfter(COPPER_CHAINMAIL_BOOTS,
+                    SILVER_HELMET, SILVER_CHESTPLATE, SILVER_LEGGINGS, SILVER_BOOTS,
+                    SILVER_CHAINMAIL_HELMET, SILVER_CHAINMAIL_CHESTPLATE, SILVER_CHAINMAIL_LEGGINGS,
+                    SILVER_CHAINMAIL_BOOTS);
+            output.insertAfter(SILVER_CHAINMAIL_BOOTS,
+                    RUSTED_IRON_HELMET, RUSTED_IRON_CHESTPLATE, RUSTED_IRON_LEGGINGS, RUSTED_IRON_BOOTS,
+                    RUSTED_IRON_CHAINMAIL_HELMET, RUSTED_IRON_CHAINMAIL_CHESTPLATE, RUSTED_IRON_CHAINMAIL_LEGGINGS,
+                    RUSTED_IRON_CHAINMAIL_BOOTS);
+            output.insertAfter(Items.GOLDEN_BOOTS,
+                    GOLDEN_CHAINMAIL_HELMET, GOLDEN_CHAINMAIL_CHESTPLATE, GOLDEN_CHAINMAIL_LEGGINGS,
+                    GOLDEN_CHAINMAIL_BOOTS);
+            output.insertAfter(GOLDEN_CHAINMAIL_BOOTS,
+                    ANCIENT_METAL_HELMET, ANCIENT_METAL_CHESTPLATE, ANCIENT_METAL_LEGGINGS, ANCIENT_METAL_BOOTS,
+                    ANCIENT_METAL_CHAINMAIL_HELMET, ANCIENT_METAL_CHAINMAIL_CHESTPLATE, ANCIENT_METAL_CHAINMAIL_LEGGINGS,
+                    ANCIENT_METAL_CHAINMAIL_BOOTS);
+            output.insertAfter(ANCIENT_METAL_CHAINMAIL_BOOTS,
+                    MITHRIL_HELMET, MITHRIL_CHESTPLATE, MITHRIL_LEGGINGS, MITHRIL_BOOTS,
+                    MITHRIL_CHAINMAIL_HELMET, MITHRIL_CHAINMAIL_CHESTPLATE, MITHRIL_CHAINMAIL_LEGGINGS,
+                    MITHRIL_CHAINMAIL_BOOTS);
+            output.insertAfter(MITHRIL_CHAINMAIL_BOOTS,
+                    ADAMANTIUM_HELMET, ADAMANTIUM_CHESTPLATE, ADAMANTIUM_LEGGINGS, ADAMANTIUM_BOOTS,
+                    ADAMANTIUM_CHAINMAIL_HELMET, ADAMANTIUM_CHAINMAIL_CHESTPLATE, ADAMANTIUM_CHAINMAIL_LEGGINGS,
+                    ADAMANTIUM_CHAINMAIL_BOOTS);
+        });
+
+        // === Tools & Utilities: MME tools interleaved into the vanilla tool system ===
+        CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.TOOLS_AND_UTILITIES).register(output -> {
+            // FLINT (inserted before the vanilla wooden shovel)
+            output.insertBefore(Items.WOODEN_SHOVEL,
+                    FLINT_SHOVEL, FLINT_HATCHET, FLINT_AXE, FLINT_FISHING_ROD);
+
+            // OBSIDIAN
+            output.insertAfter(FLINT_FISHING_ROD,
+                    OBSIDIAN_SHOVEL, OBSIDIAN_HATCHET, OBSIDIAN_AXE, OBSIDIAN_FISHING_ROD);
+
+            // COPPER (interleaved with the vanilla copper tools)
+            output.insertAfter(Items.COPPER_PICKAXE, COPPER_WAR_HAMMER, COPPER_HATCHET);
+            output.insertAfter(Items.COPPER_AXE, COPPER_BATTLE_AXE);
+            output.insertAfter(Items.COPPER_HOE, COPPER_MATTOCK, COPPER_SHEARS, COPPER_FISHING_ROD);
+
+            // SILVER
+            output.insertAfter(COPPER_FISHING_ROD,
+                    SILVER_SHOVEL, SILVER_PICKAXE, SILVER_WAR_HAMMER, SILVER_HATCHET, SILVER_AXE,
+                    SILVER_BATTLE_AXE, SILVER_HOE, SILVER_MATTOCK, SILVER_SHEARS, SILVER_FISHING_ROD);
+
+            // RUSTED_IRON
+            output.insertAfter(SILVER_FISHING_ROD,
+                    RUSTED_IRON_SHOVEL, RUSTED_IRON_PICKAXE, RUSTED_IRON_WAR_HAMMER, RUSTED_IRON_HATCHET,
+                    RUSTED_IRON_AXE, RUSTED_IRON_BATTLE_AXE, RUSTED_IRON_HOE, RUSTED_IRON_MATTOCK,
+                    RUSTED_IRON_SHEARS);
+
+            // IRON (interleaved with the vanilla iron tools; vanilla shears moved in)
+            output.insertAfter(Items.IRON_PICKAXE, IRON_WAR_HAMMER, IRON_HATCHET);
+            output.insertAfter(Items.IRON_AXE, IRON_BATTLE_AXE);
+            output.insertAfter(Items.IRON_HOE, IRON_MATTOCK, IRON_FISHING_ROD);
+            output.getDisplayStacks().removeIf(stack -> stack.is(Items.SHEARS));
+            output.getSearchTabStacks().removeIf(stack -> stack.is(Items.SHEARS));
+            output.insertAfter(IRON_MATTOCK, Items.SHEARS);
+
+            // GOLD (interleaved with the vanilla golden tools)
+            output.insertAfter(Items.GOLDEN_PICKAXE, GOLDEN_WAR_HAMMER, GOLDEN_HATCHET);
+            output.insertAfter(Items.GOLDEN_AXE, GOLDEN_BATTLE_AXE);
+            output.insertAfter(Items.GOLDEN_HOE, GOLDEN_MATTOCK, GOLDEN_SHEARS, GOLDEN_FISHING_ROD);
+
+            // ANCIENT_METAL
+            output.insertAfter(GOLDEN_FISHING_ROD,
+                    ANCIENT_METAL_SHOVEL, ANCIENT_METAL_PICKAXE, ANCIENT_METAL_WAR_HAMMER,
+                    ANCIENT_METAL_HATCHET, ANCIENT_METAL_AXE, ANCIENT_METAL_BATTLE_AXE,
+                    ANCIENT_METAL_HOE, ANCIENT_METAL_MATTOCK, ANCIENT_METAL_SHEARS,
+                    ANCIENT_METAL_FISHING_ROD);
+
+            // MITHRIL
+            output.insertAfter(ANCIENT_METAL_FISHING_ROD,
+                    MITHRIL_SHOVEL, MITHRIL_PICKAXE, MITHRIL_WAR_HAMMER, MITHRIL_HATCHET, MITHRIL_AXE,
+                    MITHRIL_BATTLE_AXE, MITHRIL_HOE, MITHRIL_MATTOCK, MITHRIL_SHEARS, MITHRIL_FISHING_ROD);
+
+            // ADAMANTIUM
+            output.insertAfter(MITHRIL_FISHING_ROD,
+                    ADAMANTIUM_SHOVEL, ADAMANTIUM_PICKAXE, ADAMANTIUM_WAR_HAMMER, ADAMANTIUM_HATCHET,
+                    ADAMANTIUM_AXE, ADAMANTIUM_BATTLE_AXE, ADAMANTIUM_HOE, ADAMANTIUM_MATTOCK,
+                    ADAMANTIUM_SHEARS, ADAMANTIUM_FISHING_ROD);
+
+            // NETHERITE (interleaved with the vanilla netherite tools)
+            output.insertAfter(Items.NETHERITE_PICKAXE, NETHERITE_WAR_HAMMER, NETHERITE_HATCHET);
+            output.insertAfter(Items.NETHERITE_AXE, NETHERITE_BATTLE_AXE);
+            output.insertAfter(Items.NETHERITE_HOE, NETHERITE_MATTOCK, NETHERITE_SHEARS, NETHERITE_FISHING_ROD);
+
+            // Buckets: copper/silver before the vanilla iron buckets, gold and above after
+            output.insertBefore(Items.BUCKET,
+                    COPPER_BUCKET, COPPER_WATER_BUCKET, COPPER_LAVA_BUCKET, COPPER_MILK_BUCKET,
+                    COPPER_POWDER_SNOW_BUCKET, COPPER_PUFFERFISH_BUCKET, COPPER_SALMON_BUCKET, COPPER_COD_BUCKET,
+                    COPPER_TROPICAL_FISH_BUCKET, COPPER_AXOLOTL_BUCKET, COPPER_TADPOLE_BUCKET, COPPER_SULFUR_CUBE_BUCKET,
+                    SILVER_BUCKET, SILVER_WATER_BUCKET, SILVER_LAVA_BUCKET, SILVER_MILK_BUCKET,
+                    SILVER_POWDER_SNOW_BUCKET, SILVER_PUFFERFISH_BUCKET, SILVER_SALMON_BUCKET, SILVER_COD_BUCKET,
+                    SILVER_TROPICAL_FISH_BUCKET, SILVER_AXOLOTL_BUCKET, SILVER_TADPOLE_BUCKET, SILVER_SULFUR_CUBE_BUCKET);
+
+            output.insertAfter(Items.MILK_BUCKET,
+                    GOLD_BUCKET, GOLD_WATER_BUCKET, GOLD_LAVA_BUCKET, GOLD_MILK_BUCKET,
+                    GOLD_POWDER_SNOW_BUCKET, GOLD_PUFFERFISH_BUCKET, GOLD_SALMON_BUCKET, GOLD_COD_BUCKET,
+                    GOLD_TROPICAL_FISH_BUCKET, GOLD_AXOLOTL_BUCKET, GOLD_TADPOLE_BUCKET, GOLD_SULFUR_CUBE_BUCKET,
+                    ANCIENT_METAL_BUCKET, ANCIENT_METAL_WATER_BUCKET, ANCIENT_METAL_LAVA_BUCKET, ANCIENT_METAL_MILK_BUCKET,
+                    ANCIENT_METAL_POWDER_SNOW_BUCKET, ANCIENT_METAL_PUFFERFISH_BUCKET, ANCIENT_METAL_SALMON_BUCKET, ANCIENT_METAL_COD_BUCKET,
+                    ANCIENT_METAL_TROPICAL_FISH_BUCKET, ANCIENT_METAL_AXOLOTL_BUCKET, ANCIENT_METAL_TADPOLE_BUCKET, ANCIENT_METAL_SULFUR_CUBE_BUCKET,
+                    MITHRIL_BUCKET, MITHRIL_WATER_BUCKET, MITHRIL_LAVA_BUCKET, MITHRIL_MILK_BUCKET,
+                    MITHRIL_POWDER_SNOW_BUCKET, MITHRIL_PUFFERFISH_BUCKET, MITHRIL_SALMON_BUCKET, MITHRIL_COD_BUCKET,
+                    MITHRIL_TROPICAL_FISH_BUCKET, MITHRIL_AXOLOTL_BUCKET, MITHRIL_TADPOLE_BUCKET, MITHRIL_SULFUR_CUBE_BUCKET,
+                    ADAMANTIUM_BUCKET, ADAMANTIUM_WATER_BUCKET, ADAMANTIUM_LAVA_BUCKET, ADAMANTIUM_MILK_BUCKET,
+                    ADAMANTIUM_POWDER_SNOW_BUCKET, ADAMANTIUM_PUFFERFISH_BUCKET, ADAMANTIUM_SALMON_BUCKET, ADAMANTIUM_COD_BUCKET,
+                    ADAMANTIUM_TROPICAL_FISH_BUCKET, ADAMANTIUM_AXOLOTL_BUCKET, ADAMANTIUM_TADPOLE_BUCKET, ADAMANTIUM_SULFUR_CUBE_BUCKET,
+                    NETHERITE_BUCKET, NETHERITE_WATER_BUCKET, NETHERITE_LAVA_BUCKET, NETHERITE_MILK_BUCKET,
+                    NETHERITE_POWDER_SNOW_BUCKET, NETHERITE_PUFFERFISH_BUCKET, NETHERITE_SALMON_BUCKET, NETHERITE_COD_BUCKET,
+                    NETHERITE_TROPICAL_FISH_BUCKET, NETHERITE_AXOLOTL_BUCKET, NETHERITE_TADPOLE_BUCKET, NETHERITE_SULFUR_CUBE_BUCKET);
+        });
+
+        // === Food & Drinks ===
+        CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.FOOD_AND_DRINKS).register(output -> {
+            // Fruits after glow berries
+            output.insertAfter(Items.GLOW_BERRIES, BLUE_BERRIE, BANANA, ORANGE, LEMON);
+
+            // Onion after beetroot
+            output.insertAfter(Items.BEETROOT, ONION);
+
+            // Worms after cooked rabbit
+            output.insertAfter(Items.COOKED_RABBIT, WORM_RAW, WORM_COOKED);
+
+            // Ingredients after pumpkin pie
+            output.insertAfter(Items.PUMPKIN_PIE, CHEESE, CHOCOLATE, FLOUR, DOUGH);
+
+            // Bowl foods after rabbit stew
+            output.insertAfter(Items.RABBIT_STEW,
+                    BEEF_STEW, BOWL_MILK, BOWL_SALAD, BOWL_WATER, CEREAL, CHICKEN_SOUP,
+                    CREAM_OF_MUSHROOM_SOUP, CREAM_OF_VEGETABLE_SOUP, ICE_CREAM, MASHED_POTATO,
+                    PORRIDGE, PUMPKIN_SOUP, SORBET, VEGETABLE_SOUP);
+        });
+
+
+        // === Ingredients: shards, raw ores, ingots, nuggets, chains, coins ===
+        CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.INGREDIENTS).register(output -> {
+            // Shards before the vanilla amethyst shard
+            output.insertBefore(Items.AMETHYST_SHARD, FLINT_SHARD, OBSIDIAN_SHARD);
+
+            // Raw ores by material
+            output.insertAfter(Items.RAW_COPPER, RAW_SILVER);
+            output.insertAfter(Items.RAW_GOLD, RAW_MITHRIL, RAW_ADAMANTIUM);
+
+            // Nuggets by material
+            output.insertAfter(Items.COPPER_NUGGET, SILVER_NUGGET);
+            output.insertAfter(Items.GOLD_NUGGET,
+                    ANCIENT_METAL_NUGGET, MITHRIL_NUGGET, ADAMANTIUM_NUGGET, NETHERITE_NUGGET);
+
+            // Ingots by material
+            output.insertAfter(Items.COPPER_INGOT, SILVER_INGOT);
+            output.insertAfter(Items.GOLD_INGOT, ANCIENT_METAL_INGOT, MITHRIL_INGOT, ADAMANTIUM_INGOT);
+
+            // Sinew before the vanilla string
+            output.insertBefore(Items.STRING, SINEW);
+
+            // Manure after the vanilla rabbit hide
+            output.insertAfter(Items.RABBIT_HIDE, MANURE);
+
+            // Chains after the netherite ingot
+            output.insertAfter(Items.NETHERITE_INGOT,
+                    COPPER_CHAINS, SILVER_CHAINS, RUSTED_IRON_CHAINS, IRON_CHAINS,
+                    GOLDEN_CHAINS, ANCIENT_METAL_CHAINS, MITHRIL_CHAINS, ADAMANTIUM_CHAINS);
+
+            // Coins after the nuggets
+            output.insertAfter(NETHERITE_NUGGET,
+                    COPPER_COINS, SILVER_COINS, IRON_COINS, GOLDEN_COINS,
+                    ANCIENT_METAL_COINS, MITHRIL_COINS, ADAMANTIUM_COINS, NETHERITE_COINS);
+        });
+
+        // === Spawn Eggs ===
+        CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.SPAWN_EGGS).register(output -> {
+            output.accept(GHOUL_SPAWN_EGG);
+            output.accept(SHADOW_SPAWN_EGG);
+            output.accept(WIGHT_SPAWN_EGG);
+            output.accept(INVISIBLE_STALKER_SPAWN_EGG);
+            output.accept(DEMON_SPIDER_SPAWN_EGG);
+            output.accept(PHASE_SPIDER_SPAWN_EGG);
+            output.accept(INFERNAL_CREEPER_SPAWN_EGG);
+            output.accept(FIRE_ELEMENTAL_SPAWN_EGG);
+            output.accept(VAMPIRE_BAT_SPAWN_EGG);
+            output.accept(NIGHTWING_SPAWN_EGG);
+            output.accept(GIANT_VAMPIRE_BAT_SPAWN_EGG);
+        });
     }
 }

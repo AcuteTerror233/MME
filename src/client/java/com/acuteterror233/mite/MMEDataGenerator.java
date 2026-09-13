@@ -14,8 +14,8 @@ import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.core.registries.Registries;
 
 /**
- * MME 数据生成入口，实现 {@link DataGeneratorEntrypoint}。
- * 注册所有数据生成 Provider：战利品表、配方、标签、模型、进度、语言文件。
+ * MME data generation entrypoint, implementing {@link DataGeneratorEntrypoint}.
+ * Registers all data generation providers: loot tables, recipes, tags, models, advancements, and language files.
  */
 public class MMEDataGenerator implements DataGeneratorEntrypoint {
 	@Override

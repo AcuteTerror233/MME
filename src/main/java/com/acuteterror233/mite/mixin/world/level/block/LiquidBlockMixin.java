@@ -21,7 +21,7 @@ import org.spongepowered.asm.mixin.Shadow;
 import java.util.Optional;
 
 /**
- * Mixin for {@code LiquidBlock} — 实现液体可排液接口。
+ * Mixin for {@code LiquidBlock} — Implements fluid drainable interface for liquid blocks.
  */
 @Mixin(LiquidBlock.class)
 public class LiquidBlockMixin implements FluidDrainableExtension {

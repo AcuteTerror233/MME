@@ -1,13 +1,28 @@
 {
   "layers": {
+    "horse_body": [
+      {
+        "texture": "mme:adamantium"
+      }
+    ],
     "humanoid": [
       {
-        "texture": "mme:adamantium_layer_1"
+        "texture": "mme:adamantium"
+      }
+    ],
+    "humanoid_baby": [
+      {
+        "texture": "mme:adamantium"
       }
     ],
     "humanoid_leggings": [
       {
-        "texture": "mme:adamantium_layer_2"
+        "texture": "mme:adamantium"
+      }
+    ],
+    "nautilus_body": [
+      {
+        "texture": "mme:adamantium"
       }
     ]
   }

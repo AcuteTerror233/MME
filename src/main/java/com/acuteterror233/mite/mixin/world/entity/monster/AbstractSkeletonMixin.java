@@ -39,7 +39,7 @@ public abstract class AbstractSkeletonMixin extends Monster implements RangedAtt
 
     /**
      * @author AcuteTerror233
-     * @reason 添加手持武器
+     * @reason Add held weapons
      */
     @Overwrite
     public void populateDefaultEquipmentSlots(@NonNull RandomSource randomSource, @NonNull DifficultyInstance difficultyInstance) {
@@ -114,7 +114,7 @@ public abstract class AbstractSkeletonMixin extends Monster implements RangedAtt
 
     /**
      * @author AcuteTerror233
-     * @reason 修改属性
+     * @reason Modify attributes
      */
     @Overwrite
     public static AttributeSupplier.Builder createAttributes() {

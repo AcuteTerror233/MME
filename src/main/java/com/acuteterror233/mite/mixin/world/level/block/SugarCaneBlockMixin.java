@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
 @Mixin(SugarCaneBlock.class)
 /**
- * Mixin for {@code SugarCaneBlock} — 修改甘蔗生长行为。
+ * Mixin for {@code SugarCaneBlock} — Modifies sugar cane growth behavior.
  */
 public class SugarCaneBlockMixin {
     @Shadow

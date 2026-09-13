@@ -44,17 +44,17 @@ public final class MMEEnchantments {
         HolderGetter<Block> blockGetter = bootstrapContext.lookup(Registries.BLOCK);
         HolderGetter<EntityType<?>> entityTypeGetter = bootstrapContext.lookup(Registries.ENTITY_TYPE);
         register(
-                bootstrapContext,//上下文
-                BUTCHERING,//注册id
+                bootstrapContext,//context
+                BUTCHERING,//registration id
                 Enchantment.enchantment(
                         Enchantment.definition(
-                                itemGetter.getOrThrow(MMEItemTags.DAGGER_ENCHANTABLE),//可应用物品
-                                2,//选择权重
-                                3,//最高等级
+                                itemGetter.getOrThrow(MMEItemTags.DAGGER_ENCHANTABLE),//applicable items
+                                2,//selection weight
+                                3,//max level
                                 Enchantment.dynamicCost(15, 9),
                                 Enchantment.dynamicCost(65, 9),
-                                4,//铁砧成本
-                                EquipmentSlotGroup.MAINHAND//生效槽位
+                                4,//anvil cost
+                                EquipmentSlotGroup.MAINHAND//active slot
                         )
                 ).withEffect(
                         EnchantmentEffectComponents.EQUIPMENT_DROPS,

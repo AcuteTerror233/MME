@@ -22,7 +22,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 /**
- * Mixin for {@code FoodData} — 实现营养系统扩展接口。
+ * Mixin for {@code FoodData} — Implements nutrition system extension interface.
  */
 @Mixin(FoodData.class)
 public abstract class FoodDataMixin implements FoodDataExtension {
@@ -69,7 +69,7 @@ public abstract class FoodDataMixin implements FoodDataExtension {
     }
     /**
      * @author AcuteTerror233
-     * @reason 修改了未满的判断
+     * @reason Modified the not-full check
      */
     @Overwrite
     public boolean needsFood() {
@@ -78,7 +78,7 @@ public abstract class FoodDataMixin implements FoodDataExtension {
 
     /**
      * @author AcuteTerror233
-     * @reason 添加最大食物等级判断
+     * @reason Added max food level check
      */
     @Overwrite
     private void add(int nutrition, float saturation) {
@@ -88,7 +88,7 @@ public abstract class FoodDataMixin implements FoodDataExtension {
 
     /**
      * @author AcuteTerror233
-     * @reason 添加最大食物等级判断
+     * @reason Added max food level check
      */
     @Overwrite
     public void tick(ServerPlayer player) {
@@ -245,7 +245,7 @@ public abstract class FoodDataMixin implements FoodDataExtension {
 
     /**
      * @author AcuteTerror233
-     * @reason 添加最大食物等级判断
+     * @reason Added max food level check
      */
     @Overwrite
     public void setFoodLevel(int i) {
@@ -254,7 +254,7 @@ public abstract class FoodDataMixin implements FoodDataExtension {
 
     /**
      * @author AcuteTerror233
-     * @reason 添加最大食物等级判断
+     * @reason Added max food level check
      */
     @Overwrite
     public void setSaturation(float f) {

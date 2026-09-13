@@ -8,7 +8,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(SweetBerryBushBlock.class)
 /**
- * Mixin for {@code SweetBerryBushBlock} — 修改浆果灌木行为。
+ * Mixin for {@code SweetBerryBushBlock} — Modifies berry bush behavior.
  */
 public class SweetBerryBushBlockMixin {
     @Redirect(method = "randomTick", at = @At(value = "INVOKE", target = "Lnet/minecraft/util/RandomSource;nextInt(I)I"))

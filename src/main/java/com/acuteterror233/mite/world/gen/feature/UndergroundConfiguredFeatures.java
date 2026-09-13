@@ -18,8 +18,8 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
 import java.util.List;
 
 /**
- * 地下维度配置特征注册。
- * 定义地下世界的矿物和植被生成特征。
+ * Underground dimension configured feature registration.
+ * Defines ore and vegetation generation features for the underground world.
  */
 public class UndergroundConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_ADAMANTIUM_BURIED = of("ore_adamantium");
@@ -52,7 +52,7 @@ public class UndergroundConfiguredFeatures {
         FeatureUtils.register(featureRegisterable, ORE_SILVER_SMALL, Feature.ORE, new OreConfiguration(silver_Ore_List, 2, 0.2f));
     }
     /**
-     * 生成命名空间内的 ConfiguredFeature 注册键。
+     * Generate a ConfiguredFeature registry key within the namespace.
      */
     public static ResourceKey<ConfiguredFeature<?, ?>> of(String id) {
         return ResourceKey.create(Registries.CONFIGURED_FEATURE, Identifier.fromNamespaceAndPath(MME.MOD_ID,id));

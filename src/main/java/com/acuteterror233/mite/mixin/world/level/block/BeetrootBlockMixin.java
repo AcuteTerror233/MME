@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.Overwrite;
 
 @Mixin(BeetrootBlock.class)
 /**
- * Mixin for {@code BeetrootBlock} — 添加病害和肥力支持。
+ * Mixin for {@code BeetrootBlock} — Adds disease and fertility support.
  */
 public abstract class BeetrootBlockMixin extends CropBlock {
     public BeetrootBlockMixin(Properties properties) {

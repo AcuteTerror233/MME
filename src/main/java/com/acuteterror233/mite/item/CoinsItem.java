@@ -20,8 +20,8 @@ import java.util.Map;
 import java.util.function.Consumer;
 
 /**
- * 硬币物品，继承 {@link Item}。
- * 用作货币的堆叠物品。
+ * Coins item, extending {@link Item}.
+ * A stackable item used as currency.
  */
 public class CoinsItem extends Item {
     private final int experience;

@@ -9,8 +9,8 @@ import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * 工作台结果栏位。
- * 继承 {@link ResultSlot}，实现等级工作台的合成结果处理。
+ * Crafting table result slot.
+ * Extends {@link ResultSlot}, implements crafting result handling for grade crafting tables.
  */
 public class CraftingTableResultSlot extends ResultSlot {
     boolean isCrafting = false;

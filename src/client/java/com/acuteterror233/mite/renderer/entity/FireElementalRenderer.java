@@ -12,7 +12,7 @@ import net.minecraft.resources.Identifier;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * 火元素渲染器。
+ * Fire Elemental renderer.
  */
 public class FireElementalRenderer extends HumanoidMobRenderer<FireElemental, ZombieRenderState, ZombieModel<ZombieRenderState>> {
     private static final Identifier TEXTURE = Identifier.fromNamespaceAndPath(MME.MOD_ID, "textures/entity/fire_elemental.png");

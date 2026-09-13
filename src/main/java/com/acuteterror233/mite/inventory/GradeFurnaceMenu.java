@@ -9,7 +9,7 @@ import net.minecraft.world.item.crafting.RecipePropertySet;
 import net.minecraft.world.item.crafting.RecipeType;
 
 /**
- * 常规等级熔炉菜单（烧炼配方）。
+ * Grade furnace menu (smelting recipes).
  */
 public class GradeFurnaceMenu extends AbstractGradeFurnaceMenu {
 

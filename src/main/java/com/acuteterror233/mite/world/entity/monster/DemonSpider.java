@@ -12,7 +12,7 @@ import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * 恶魔蜘蛛实体，继承蜘蛛行为。
+ * Demon spider entity, inherits spider behavior.
  */
 public class DemonSpider extends Spider {
     public DemonSpider(EntityType<? extends DemonSpider> entityType, Level level) {

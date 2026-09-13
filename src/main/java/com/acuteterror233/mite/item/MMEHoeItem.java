@@ -4,8 +4,8 @@ import net.minecraft.world.item.HoeItem;
 import net.minecraft.world.item.Item;
 
 /**
- * MME 锄头物品，继承 {@link HoeItem}。
- * 添加自定义锄地行为。
+ * MME hoe item, extending {@link HoeItem}.
+ * Adds custom hoeing behavior.
  */
 public class MMEHoeItem extends HoeItem{
     public MMEHoeItem(Item.Properties settings) {

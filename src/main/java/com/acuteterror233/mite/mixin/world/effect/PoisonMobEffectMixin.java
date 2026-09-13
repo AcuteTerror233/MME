@@ -6,13 +6,13 @@ import org.spongepowered.asm.mixin.Overwrite;
 
 @Mixin(PoisonMobEffect.class)
 /**
- * Mixin for {@code PoisonMobEffect} — 调整中毒效果的伤害机制。
+ * Mixin for {@code PoisonMobEffect} — Adjust poison effect damage mechanism.
  */
 public class PoisonMobEffectMixin {
 
     /**
      * @author AcuteTerror233
-     * @reason 修改中毒效果间隔
+     * @reason Modify poison effect interval
      */
     @Overwrite
     public boolean shouldApplyEffectTickThisTick(int i, int j) {

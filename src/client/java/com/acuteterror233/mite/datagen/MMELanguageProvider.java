@@ -1,5 +1,6 @@
 package com.acuteterror233.mite.datagen;
 
+import com.acuteterror233.mite.block.AnvilCollection;
 import com.acuteterror233.mite.block.MMEBlocks;
 import com.acuteterror233.mite.item.MMEItems;
 import com.acuteterror233.mite.item.enchantment.MMEEnchantments;
@@ -8,15 +9,18 @@ import com.acuteterror233.mite.world.entity.MMEEntityTypes;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import org.jspecify.annotations.NonNull;
 
 import java.util.concurrent.CompletableFuture;
 
 public class MMELanguageProvider {
-    /**
-     * 英文语言文件生成器。
-     * 为 MME 模组物品/方块生成英文翻译键值对。
-     */
+/**
+ * English language file generator.
+ * Generates English translation key-value pairs for MME mod items and blocks.
+ */
     public static class En_us extends FabricLanguageProvider {
 
         public En_us(FabricPackOutput dataOutput, CompletableFuture<HolderLookup.Provider> registryLookup) {
@@ -25,7 +29,6 @@ public class MMELanguageProvider {
 
         @Override
         public void generateTranslations(HolderLookup.@NonNull Provider registryLookup, TranslationBuilder translationBuilder) {
-            translationBuilder.add("itemGroup.mme.item_group", "Might Makes Everything");
             translationBuilder.add("mme.craftingTable.noAllowedCrafting", "§cThis item cannot be crafted§r");
             translationBuilder.add("mme.gradefurnac.fuelnotavailable", "§cThis furnace cannot burn this fuel§r");
             translationBuilder.add("mme.nugget.tooltip", "Right-click to make coins and store %dXP");
@@ -414,6 +417,20 @@ public class MMELanguageProvider {
             translationBuilder.add(MMEItems.GOLD_TADPOLE_BUCKET, "Golden Bucket of Tadpole");
             translationBuilder.add(MMEItems.GOLD_SULFUR_CUBE_BUCKET, "Golden Bucket of Sulfur Cube");
 
+            translationBuilder.add(Items.WATER_BUCKET, "Iron Water Bucket");
+            translationBuilder.add(Items.LAVA_BUCKET, "Iron Bucket of Lava");
+            translationBuilder.add(Items.POWDER_SNOW_BUCKET, "Iron Bucket of Powder Snow");
+            translationBuilder.add(Items.MILK_BUCKET, "Iron Bucket of Milk");
+            translationBuilder.add(Items.PUFFERFISH_BUCKET, "Iron Bucket of Pufferfish");
+            translationBuilder.add(Items.SALMON_BUCKET, "Iron Bucket of Salmon");
+            translationBuilder.add(Items.COD_BUCKET, "Iron Bucket of Cod");
+            translationBuilder.add(Items.TROPICAL_FISH_BUCKET, "Iron Bucket of Tropical Fish");
+            translationBuilder.add(Items.AXOLOTL_BUCKET, "Iron Bucket of Axolotl");
+            translationBuilder.add(Items.TADPOLE_BUCKET, "Iron Bucket of Tadpole");
+            translationBuilder.add(Items.SULFUR_CUBE_BUCKET, "Iron Bucket of Sulfur Cube");
+            translationBuilder.add(Items.SHEARS, "Iron Shears");
+            translationBuilder.add(Blocks.ENCHANTING_TABLE, "Diamond Enchanting Table");
+
             translationBuilder.add(MMEItems.NETHERITE_FISHING_ROD, "Netherite Fishing Rod");
             translationBuilder.add(MMEItems.ADAMANTIUM_FISHING_ROD, "Adamantium Fishing Rod");
             translationBuilder.add(MMEItems.ANCIENT_METAL_FISHING_ROD, "Ancient Metal Fishing Rod");
@@ -443,61 +460,24 @@ public class MMELanguageProvider {
             translationBuilder.add(MMEItems.FLINT_SHARD, "Flint Shard");
             translationBuilder.add(MMEItems.OBSIDIAN_SHARD, "Obsidian Shard");
 
-            translationBuilder.add(MMEBlocks.NETHERITE_ANVIL, "Netherite Anvil");
-            translationBuilder.add(MMEBlocks.CHIPPED_NETHERITE_ANVIL, "Chipped Netherite Anvil");
-            translationBuilder.add(MMEBlocks.DAMAGED_NETHERITE_ANVIL, "Damaged Netherite Anvil");
-            translationBuilder.add(MMEBlocks.ADAMANTIUM_ANVIL, "Adamantium Anvil");
-            translationBuilder.add(MMEBlocks.CHIPPED_ADAMANTIUM_ANVIL, "Chipped Adamantium Anvil");
-            translationBuilder.add(MMEBlocks.DAMAGED_ADAMANTIUM_ANVIL, "Damaged Adamantium Anvil");
-            translationBuilder.add(MMEBlocks.MITHRIL_ANVIL, "Mithril Anvil");
-            translationBuilder.add(MMEBlocks.CHIPPED_MITHRIL_ANVIL, "Chipped Mithril Anvil");
-            translationBuilder.add(MMEBlocks.DAMAGED_MITHRIL_ANVIL, "Damaged Mithril Anvil");
-            translationBuilder.add(MMEBlocks.ANCIENT_METAL_ANVIL, "Ancient Metal Anvil");
-            translationBuilder.add(MMEBlocks.CHIPPED_ANCIENT_METAL_ANVIL, "Chipped Ancient Metal Anvil");
-            translationBuilder.add(MMEBlocks.DAMAGED_ANCIENT_METAL_ANVIL, "Damaged Ancient Metal Anvil");
-            translationBuilder.add(MMEBlocks.SILVER_ANVIL, "Silver Anvil");
-            translationBuilder.add(MMEBlocks.CHIPPED_SILVER_ANVIL, "Chipped Silver Anvil");
-            translationBuilder.add(MMEBlocks.DAMAGED_SILVER_ANVIL, "Damaged Silver Anvil");
-            translationBuilder.add(MMEBlocks.GOLDEN_ANVIL, "Golden Anvil");
-            translationBuilder.add(MMEBlocks.CHIPPED_GOLDEN_ANVIL, "Chipped Golden Anvil");
-            translationBuilder.add(MMEBlocks.DAMAGED_GOLDEN_ANVIL, "Damaged Golden Anvil");
-            translationBuilder.add(MMEBlocks.COPPER_ANVIL, "Copper Anvil");
-            translationBuilder.add(MMEBlocks.CHIPPED_COPPER_ANVIL, "Chipped Copper Anvil");
-            translationBuilder.add(MMEBlocks.DAMAGED_COPPER_ANVIL, "Damaged Copper Anvil");
+            addAnvilTranslations(translationBuilder, MMEBlocks.NETHERITE_ANVILS, "Netherite");
+            addAnvilTranslations(translationBuilder, MMEBlocks.ADAMANTIUM_ANVILS, "Adamantium");
+            addAnvilTranslations(translationBuilder, MMEBlocks.MITHRIL_ANVILS, "Mithril");
+            addAnvilTranslations(translationBuilder, MMEBlocks.ANCIENT_METAL_ANVILS, "Ancient Metal");
+            addAnvilTranslations(translationBuilder, MMEBlocks.SILVER_ANVILS, "Silver");
+            addAnvilTranslations(translationBuilder, MMEBlocks.GOLDEN_ANVILS, "Golden");
+            addAnvilTranslations(translationBuilder, MMEBlocks.COPPER_ANVILS, "Copper");
 
-            translationBuilder.add(MMEBlocks.MITHRIL_NUL_RUNESTORE, "Mithril Nul Runestone");
-            translationBuilder.add(MMEBlocks.MITHRIL_QUAS_RUNESTORE, "Mithril Quas Runestone");
-            translationBuilder.add(MMEBlocks.MITHRIL_POR_RUNESTORE, "Mithril Por Runestone");
-            translationBuilder.add(MMEBlocks.MITHRIL_AN_RUNESTORE, "Mithril An Runestone");
-            translationBuilder.add(MMEBlocks.MITHRIL_NOX_RUNESTORE, "Mithril Nox Runestone");
-            translationBuilder.add(MMEBlocks.MITHRIL_FLAM_RUNESTORE, "Mithril Flam Runestone");
-            translationBuilder.add(MMEBlocks.MITHRIL_VAS_RUNESTORE, "Mithril Vas Runestone");
-            translationBuilder.add(MMEBlocks.MITHRIL_DES_RUNESTORE, "Mithril Des Runestone");
-            translationBuilder.add(MMEBlocks.MITHRIL_ORT_RUNESTORE, "Mithril Ort Runestone");
-            translationBuilder.add(MMEBlocks.MITHRIL_TYM_RUNESTORE, "Mithril Tym Runestone");
-            translationBuilder.add(MMEBlocks.MITHRIL_CORP_RUNESTORE, "Mithril Corp Runestone");
-            translationBuilder.add(MMEBlocks.MITHRIL_LOR_RUNESTORE, "Mithril Lor Runestone");
-            translationBuilder.add(MMEBlocks.MITHRIL_MANI_RUNESTORE, "Mithril Mani Runestone");
-            translationBuilder.add(MMEBlocks.MITHRIL_JUX_RUNESTORE, "Mithril Jux Runestone");
-            translationBuilder.add(MMEBlocks.MITHRIL_YLEM_RUNESTORE, "Mithril Ylem Runestone");
-            translationBuilder.add(MMEBlocks.MITHRIL_SANCT_RUNESTORE, "Mithril Sanct Runestone");
-
-            translationBuilder.add(MMEBlocks.ADAMANTIUM_NUL_RUNESTORE, "Adamantium Nul Runestone");
-            translationBuilder.add(MMEBlocks.ADAMANTIUM_QUAS_RUNESTORE, "Adamantium Quas Runestone");
-            translationBuilder.add(MMEBlocks.ADAMANTIUM_POR_RUNESTORE, "Adamantium Por Runestone");
-            translationBuilder.add(MMEBlocks.ADAMANTIUM_AN_RUNESTORE, "Adamantium An Runestone");
-            translationBuilder.add(MMEBlocks.ADAMANTIUM_NOX_RUNESTORE, "Adamantium Nox Runestone");
-            translationBuilder.add(MMEBlocks.ADAMANTIUM_FLAM_RUNESTORE, "Adamantium Flam Runestone");
-            translationBuilder.add(MMEBlocks.ADAMANTIUM_VAS_RUNESTORE, "Adamantium Vas Runestone");
-            translationBuilder.add(MMEBlocks.ADAMANTIUM_DES_RUNESTORE, "Adamantium Des Runestone");
-            translationBuilder.add(MMEBlocks.ADAMANTIUM_ORT_RUNESTORE, "Adamantium Ort Runestone");
-            translationBuilder.add(MMEBlocks.ADAMANTIUM_TYM_RUNESTORE, "Adamantium Tym Runestone");
-            translationBuilder.add(MMEBlocks.ADAMANTIUM_CORP_RUNESTORE, "Adamantium Corp Runestone");
-            translationBuilder.add(MMEBlocks.ADAMANTIUM_LOR_RUNESTORE, "Adamantium Lor Runestone");
-            translationBuilder.add(MMEBlocks.ADAMANTIUM_MANI_RUNESTORE, "Adamantium Mani Runestone");
-            translationBuilder.add(MMEBlocks.ADAMANTIUM_JUX_RUNESTORE, "Adamantium Jux Runestone");
-            translationBuilder.add(MMEBlocks.ADAMANTIUM_YLEM_RUNESTORE, "Adamantium Ylem Runestone");
-            translationBuilder.add(MMEBlocks.ADAMANTIUM_SANCT_RUNESTORE, "Adamantium Sanct Runestone");
+            MMEBlocks.MITHRIL_RUNESTONES.forEach(block -> {
+                Block b = (Block) block;
+                String rune = b.builtInRegistryHolder().key().identifier().getPath().replace("mithril_", "").replace("_runestore", "");
+                translationBuilder.add(b, "Mithril " + capitalize(rune) + " Runestone");
+            });
+            MMEBlocks.ADAMANTIUM_RUNESTONES.forEach(block -> {
+                Block b = (Block) block;
+                String rune = b.builtInRegistryHolder().key().identifier().getPath().replace("adamantium_", "").replace("_runestore", "");
+                translationBuilder.add(b, "Adamantium " + capitalize(rune) + " Runestone");
+            });
 
             translationBuilder.add(MMEBlocks.ADAMANTIUM_CRAFTING_TABLE, "Adamantium Crafting Table");
             translationBuilder.add(MMEBlocks.ANCIENT_METAL_CRAFTING_TABLE, "Ancient Metal Crafting Table");
@@ -556,65 +536,75 @@ public class MMELanguageProvider {
             translationBuilder.addEnchantment(MMEEnchantments.UPGRADE, "Infuse");
             translationBuilder.add("container.enchant.upgrade_target", "§7Enchant → %s");
 
-            translationBuilder.add("painting.mme.abyss.title", "abyss");
+            translationBuilder.add("painting.mme.abyss.title", "Abyss");
             translationBuilder.add("painting.mme.abyss.author", "Avernite");
-            translationBuilder.add("painting.mme.baron_almric.title", "baron_almric");
+            translationBuilder.add("painting.mme.baron_almric.title", "Baron Almric");
             translationBuilder.add("painting.mme.baron_almric.author", "Avernite");
-            translationBuilder.add("painting.mme.boat.title", "boat");
+            translationBuilder.add("painting.mme.boat.title", "Boat");
             translationBuilder.add("painting.mme.boat.author", "Avernite");
-            translationBuilder.add("painting.mme.castle.title", "castle");
+            translationBuilder.add("painting.mme.castle.title", "Castle");
             translationBuilder.add("painting.mme.castle.author", "Avernite");
-            translationBuilder.add("painting.mme.castle_britannia.title", "castle_britannia");
+            translationBuilder.add("painting.mme.castle_britannia.title", "Castle Britannia");
             translationBuilder.add("painting.mme.castle_britannia.author", "Avernite");
-            translationBuilder.add("painting.mme.darklands.title", "darklands");
+            translationBuilder.add("painting.mme.darklands.title", "Darklands");
             translationBuilder.add("painting.mme.darklands.author", "Avernite");
-            translationBuilder.add("painting.mme.deathtrap_dungeon.title", "deathtrap_dungeon");
+            translationBuilder.add("painting.mme.deathtrap_dungeon.title", "Deathtrap Dungeon");
             translationBuilder.add("painting.mme.deathtrap_dungeon.author", "Avernite");
-            translationBuilder.add("painting.mme.dnd_basic.title", "dnd_basic");
+            translationBuilder.add("painting.mme.dnd_basic.title", "Dnd Basic");
             translationBuilder.add("painting.mme.dnd_basic.author", "Avernite");
-            translationBuilder.add("painting.mme.draracle.title", "draracle");
+            translationBuilder.add("painting.mme.draracle.title", "Draracle");
             translationBuilder.add("painting.mme.draracle.author", "Avernite");
-            translationBuilder.add("painting.mme.elden_grove.title", "elden_grove");
+            translationBuilder.add("painting.mme.elden_grove.title", "Elden Grove");
             translationBuilder.add("painting.mme.elden_grove.author", "Avernite");
-            translationBuilder.add("painting.mme.fair_day.title", "fair_day");
+            translationBuilder.add("painting.mme.fair_day.title", "Fair Day");
             translationBuilder.add("painting.mme.fair_day.author", "Avernite");
-            translationBuilder.add("painting.mme.fallen_bridge.title", "fallen_bridge");
+            translationBuilder.add("painting.mme.fallen_bridge.title", "Fallen Bridge");
             translationBuilder.add("painting.mme.fallen_bridge.author", "Avernite");
-            translationBuilder.add("painting.mme.gate_closing.title", "gate_closing");
+            translationBuilder.add("painting.mme.gate_closing.title", "Gate Closing");
             translationBuilder.add("painting.mme.gate_closing.author", "Avernite");
-            translationBuilder.add("painting.mme.ghoul.title", "ghoul");
+            translationBuilder.add("painting.mme.ghoul.title", "Ghoul");
             translationBuilder.add("painting.mme.ghoul.author", "Avernite");
-            translationBuilder.add("painting.mme.gladstone_keep.title", "gladstone_keep");
+            translationBuilder.add("painting.mme.gladstone_keep.title", "Gladstone Keep");
             translationBuilder.add("painting.mme.gladstone_keep.author", "Avernite");
-            translationBuilder.add("painting.mme.graves.title", "graves");
+            translationBuilder.add("painting.mme.graves.title", "Graves");
             translationBuilder.add("painting.mme.graves.author", "Avernite");
-            translationBuilder.add("painting.mme.king_richard.title", "king_richard");
+            translationBuilder.add("painting.mme.king_richard.title", "King Richard");
             translationBuilder.add("painting.mme.king_richard.author", "Avernite");
-            translationBuilder.add("painting.mme.messenger.title", "messenger");
+            translationBuilder.add("painting.mme.messenger.title", "Messenger");
             translationBuilder.add("painting.mme.messenger.author", "Avernite");
-            translationBuilder.add("painting.mme.mountains.title", "mountains");
+            translationBuilder.add("painting.mme.mountains.title", "Mountains");
             translationBuilder.add("painting.mme.mountains.author", "Avernite");
-            translationBuilder.add("painting.mme.rolands_manor.title", "rolands_manor");
+            translationBuilder.add("painting.mme.rolands_manor.title", "Rolands Manor");
             translationBuilder.add("painting.mme.rolands_manor.author", "Avernite");
-            translationBuilder.add("painting.mme.scotia.title", "scotia");
+            translationBuilder.add("painting.mme.scotia.title", "Scotia");
             translationBuilder.add("painting.mme.scotia.author", "Avernite");
-            translationBuilder.add("painting.mme.ship.title", "ship");
+            translationBuilder.add("painting.mme.ship.title", "Ship");
             translationBuilder.add("painting.mme.ship.author", "Avernite");
-            translationBuilder.add("painting.mme.sunlight.title", "sunlight");
+            translationBuilder.add("painting.mme.sunlight.title", "Sunlight");
             translationBuilder.add("painting.mme.sunlight.author", "Avernite");
-            translationBuilder.add("painting.mme.titan.title", "titan");
+            translationBuilder.add("painting.mme.titan.title", "Titan");
             translationBuilder.add("painting.mme.titan.author", "Avernite");
-            translationBuilder.add("painting.mme.wolves.title", "wolves");
+            translationBuilder.add("painting.mme.wolves.title", "Wolves");
             translationBuilder.add("painting.mme.wolves.author", "Avernite");
 
             translationBuilder.add("item.minecraft.smithing_template.netherite_upgrade.applies_to","Adamantium Equipment");
             translationBuilder.add("item.minecraft.smithing_template.netherite_upgrade.base_slot_description","Add adamantium armor, weapon, or tool");
         }
+
+        private static String capitalize(String s) {
+            return s.isEmpty() ? s : Character.toUpperCase(s.charAt(0)) + s.substring(1);
+        }
+
+        private static void addAnvilTranslations(TranslationBuilder tb, AnvilCollection<Block> anvils, String material) {
+            tb.add(anvils.intact(), material + " Anvil");
+            tb.add(anvils.chipped(), "Chipped " + material + " Anvil");
+            tb.add(anvils.damaged(), "Damaged " + material + " Anvil");
+        }
     }
 
     /**
-     * 中文语言文件生成器。
-     * 为 MME 模组物品/方块生成简体中文翻译键值对。
+     * Simplified Chinese language file generator.
+     * Generates Simplified Chinese translation key-value pairs for MME mod items/blocks.
      */
     public static class Zh_cn extends FabricLanguageProvider {
 
@@ -624,7 +614,6 @@ public class MMELanguageProvider {
 
         @Override
         public void generateTranslations(HolderLookup.@NonNull Provider wrapperLookup, TranslationBuilder translationBuilder) {
-            translationBuilder.add("itemGroup.mme.item_group", "唯力是尊");
             translationBuilder.add("mme.craftingTable.noAllowedCrafting", "§c无法制作此物品§r");
             translationBuilder.add("mme.gradefurnac.fuelnotavailable", "§c无法燃烧这个燃料§r");
             translationBuilder.add("mme.nugget.tooltip", "右键做成币储存%dXP");
@@ -1011,6 +1000,20 @@ public class MMELanguageProvider {
             translationBuilder.add(MMEItems.GOLD_TADPOLE_BUCKET, "装有蝌蚪的金桶");
             translationBuilder.add(MMEItems.GOLD_SULFUR_CUBE_BUCKET, "装有硫磺立方的金桶");
 
+            translationBuilder.add(Items.WATER_BUCKET, "装满水的铁桶");
+            translationBuilder.add(Items.LAVA_BUCKET, "装满熔岩的铁桶");
+            translationBuilder.add(Items.POWDER_SNOW_BUCKET, "装满细雪的铁桶");
+            translationBuilder.add(Items.MILK_BUCKET, "装满牛奶的铁桶");
+            translationBuilder.add(Items.PUFFERFISH_BUCKET, "装有河豚的铁桶");
+            translationBuilder.add(Items.SALMON_BUCKET, "装有鲑鱼的铁桶");
+            translationBuilder.add(Items.COD_BUCKET, "装有鳕鱼的铁桶");
+            translationBuilder.add(Items.TROPICAL_FISH_BUCKET, "装有热带鱼的铁桶");
+            translationBuilder.add(Items.AXOLOTL_BUCKET, "装有美西螈的铁桶");
+            translationBuilder.add(Items.TADPOLE_BUCKET, "装有蝌蚪的铁桶");
+            translationBuilder.add(Items.SULFUR_CUBE_BUCKET, "装有硫磺立方的铁桶");
+            translationBuilder.add(Items.SHEARS, "铁剪刀");
+            translationBuilder.add(Blocks.ENCHANTING_TABLE, "钻石附魔台");
+
             translationBuilder.add(MMEItems.NETHERITE_FISHING_ROD, "下界合金鱼竿");
             translationBuilder.add(MMEItems.ADAMANTIUM_FISHING_ROD, "艾德曼鱼竿");
             translationBuilder.add(MMEItems.ANCIENT_METAL_FISHING_ROD, "远古金属鱼竿");
@@ -1040,61 +1043,18 @@ public class MMELanguageProvider {
             translationBuilder.add(MMEItems.FLINT_SHARD, "燧石碎片");
             translationBuilder.add(MMEItems.OBSIDIAN_SHARD, "黑曜石碎片");
 
-            translationBuilder.add(MMEBlocks.NETHERITE_ANVIL, "下界合金砧");
-            translationBuilder.add(MMEBlocks.CHIPPED_NETHERITE_ANVIL, "开裂的下界合金砧");
-            translationBuilder.add(MMEBlocks.DAMAGED_NETHERITE_ANVIL, "损坏的下界合金砧");
-            translationBuilder.add(MMEBlocks.ADAMANTIUM_ANVIL, "艾德曼砧");
-            translationBuilder.add(MMEBlocks.CHIPPED_ADAMANTIUM_ANVIL, "开裂的艾德曼砧");
-            translationBuilder.add(MMEBlocks.DAMAGED_ADAMANTIUM_ANVIL, "损坏的艾德曼砧");
-            translationBuilder.add(MMEBlocks.MITHRIL_ANVIL, "秘银砧");
-            translationBuilder.add(MMEBlocks.CHIPPED_MITHRIL_ANVIL, "开裂的秘银砧");
-            translationBuilder.add(MMEBlocks.DAMAGED_MITHRIL_ANVIL, "损坏的秘银砧");
-            translationBuilder.add(MMEBlocks.ANCIENT_METAL_ANVIL, "远古金属砧");
-            translationBuilder.add(MMEBlocks.CHIPPED_ANCIENT_METAL_ANVIL, "开裂的远古金属砧");
-            translationBuilder.add(MMEBlocks.DAMAGED_ANCIENT_METAL_ANVIL, "损坏的远古金属砧");
-            translationBuilder.add(MMEBlocks.SILVER_ANVIL, "银砧");
-            translationBuilder.add(MMEBlocks.CHIPPED_SILVER_ANVIL, "开裂的银砧");
-            translationBuilder.add(MMEBlocks.DAMAGED_SILVER_ANVIL, "损坏的银砧");
-            translationBuilder.add(MMEBlocks.GOLDEN_ANVIL, "金砧");
-            translationBuilder.add(MMEBlocks.CHIPPED_GOLDEN_ANVIL, "开裂的金砧");
-            translationBuilder.add(MMEBlocks.DAMAGED_GOLDEN_ANVIL, "损坏的金砧");
-            translationBuilder.add(MMEBlocks.COPPER_ANVIL, "铜砧");
-            translationBuilder.add(MMEBlocks.CHIPPED_COPPER_ANVIL, "开裂的铜砧");
-            translationBuilder.add(MMEBlocks.DAMAGED_COPPER_ANVIL, "损坏的铜砧");
+            addAnvilTranslations(translationBuilder, MMEBlocks.NETHERITE_ANVILS, "下界合金");
+            addAnvilTranslations(translationBuilder, MMEBlocks.ADAMANTIUM_ANVILS, "艾德曼");
+            addAnvilTranslations(translationBuilder, MMEBlocks.MITHRIL_ANVILS, "秘银");
+            addAnvilTranslations(translationBuilder, MMEBlocks.ANCIENT_METAL_ANVILS, "远古金属");
+            addAnvilTranslations(translationBuilder, MMEBlocks.SILVER_ANVILS, "银");
+            addAnvilTranslations(translationBuilder, MMEBlocks.GOLDEN_ANVILS, "金");
+            addAnvilTranslations(translationBuilder, MMEBlocks.COPPER_ANVILS, "铜");
 
-            translationBuilder.add(MMEBlocks.MITHRIL_NUL_RUNESTORE, "秘银符文石");
-            translationBuilder.add(MMEBlocks.MITHRIL_QUAS_RUNESTORE, "秘银符文石");
-            translationBuilder.add(MMEBlocks.MITHRIL_POR_RUNESTORE, "秘银符文石");
-            translationBuilder.add(MMEBlocks.MITHRIL_AN_RUNESTORE, "秘银符文石");
-            translationBuilder.add(MMEBlocks.MITHRIL_NOX_RUNESTORE, "秘银符文石");
-            translationBuilder.add(MMEBlocks.MITHRIL_FLAM_RUNESTORE, "秘银符文石");
-            translationBuilder.add(MMEBlocks.MITHRIL_VAS_RUNESTORE, "秘银符文石");
-            translationBuilder.add(MMEBlocks.MITHRIL_DES_RUNESTORE, "秘银符文石");
-            translationBuilder.add(MMEBlocks.MITHRIL_ORT_RUNESTORE, "秘银符文石");
-            translationBuilder.add(MMEBlocks.MITHRIL_TYM_RUNESTORE, "秘银符文石");
-            translationBuilder.add(MMEBlocks.MITHRIL_CORP_RUNESTORE, "秘银符文石");
-            translationBuilder.add(MMEBlocks.MITHRIL_LOR_RUNESTORE, "秘银符文石");
-            translationBuilder.add(MMEBlocks.MITHRIL_MANI_RUNESTORE, "秘银符文石");
-            translationBuilder.add(MMEBlocks.MITHRIL_JUX_RUNESTORE, "秘银符文石");
-            translationBuilder.add(MMEBlocks.MITHRIL_YLEM_RUNESTORE, "秘银符文石");
-            translationBuilder.add(MMEBlocks.MITHRIL_SANCT_RUNESTORE, "秘银符文石");
-
-            translationBuilder.add(MMEBlocks.ADAMANTIUM_NUL_RUNESTORE, "艾德曼符文石");
-            translationBuilder.add(MMEBlocks.ADAMANTIUM_QUAS_RUNESTORE, "艾德曼符文石");
-            translationBuilder.add(MMEBlocks.ADAMANTIUM_POR_RUNESTORE, "艾德曼符文石");
-            translationBuilder.add(MMEBlocks.ADAMANTIUM_AN_RUNESTORE, "艾德曼符文石");
-            translationBuilder.add(MMEBlocks.ADAMANTIUM_NOX_RUNESTORE, "艾德曼符文石");
-            translationBuilder.add(MMEBlocks.ADAMANTIUM_FLAM_RUNESTORE, "艾德曼符文石");
-            translationBuilder.add(MMEBlocks.ADAMANTIUM_VAS_RUNESTORE, "艾德曼符文石");
-            translationBuilder.add(MMEBlocks.ADAMANTIUM_DES_RUNESTORE, "艾德曼符文石");
-            translationBuilder.add(MMEBlocks.ADAMANTIUM_ORT_RUNESTORE, "艾德曼符文石");
-            translationBuilder.add(MMEBlocks.ADAMANTIUM_TYM_RUNESTORE, "艾德曼符文石");
-            translationBuilder.add(MMEBlocks.ADAMANTIUM_CORP_RUNESTORE, "艾德曼符文石");
-            translationBuilder.add(MMEBlocks.ADAMANTIUM_LOR_RUNESTORE, "艾德曼符文石");
-            translationBuilder.add(MMEBlocks.ADAMANTIUM_MANI_RUNESTORE, "艾德曼符文石");
-            translationBuilder.add(MMEBlocks.ADAMANTIUM_JUX_RUNESTORE, "艾德曼符文石");
-            translationBuilder.add(MMEBlocks.ADAMANTIUM_YLEM_RUNESTORE, "艾德曼符文石");
-            translationBuilder.add(MMEBlocks.ADAMANTIUM_SANCT_RUNESTORE, "艾德曼符文石");
+            MMEBlocks.MITHRIL_RUNESTONES.forEach(block ->
+                    translationBuilder.add(block, "秘银符文石"));
+            MMEBlocks.ADAMANTIUM_RUNESTONES.forEach(block ->
+                    translationBuilder.add(block, "艾德曼符文石"));
 
             translationBuilder.add(MMEBlocks.ADAMANTIUM_CRAFTING_TABLE, "艾德曼工作台");
             translationBuilder.add(MMEBlocks.ANCIENT_METAL_CRAFTING_TABLE, "远古金属工作台");
@@ -1155,6 +1115,12 @@ public class MMELanguageProvider {
 
             translationBuilder.add("item.minecraft.smithing_template.netherite_upgrade.applies_to","艾德曼装备");
             translationBuilder.add("item.minecraft.smithing_template.netherite_upgrade.base_slot_description","放入艾德曼盔甲、武器或工具");
+        }
+
+        private static void addAnvilTranslations(TranslationBuilder tb, AnvilCollection<Block> anvils, String material) {
+            tb.add(anvils.intact(), material + "砧");
+            tb.add(anvils.chipped(), "开裂的" + material + "砧");
+            tb.add(anvils.damaged(), "损坏的" + material + "砧");
         }
     }
 }
