@@ -33,7 +33,7 @@ public record RunestoneCollection<T>(ImmutableMap<Rune, T> variants) {
     }
 
     public static <T> RunestoneCollection<T> create(Function<Rune, T> function) {
-        ImmutableMap.Builder<Rune, T> builder = ImmutableMap.builderWithExpectedSize(16);
+        ImmutableMap.Builder<Rune, T> builder = ImmutableMap.builderWithExpectedSize(Rune.values().length);
         for (Rune rune : Rune.values()) {
             builder.put(rune, function.apply(rune));
         }
