@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:obsidian_shovel"
+        "recipes": "mme:obsidian_shovel"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:silver_hatchet"
+        "recipes": "mme:silver_hatchet"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

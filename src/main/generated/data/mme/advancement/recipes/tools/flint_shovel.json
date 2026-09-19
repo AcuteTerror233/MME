@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:flint_shovel"
+        "recipes": "mme:flint_shovel"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

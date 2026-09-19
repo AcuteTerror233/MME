@@ -33,6 +33,7 @@ import net.minecraft.world.item.equipment.Equippable;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.material.Fluids;
+import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProviders;
 
 import java.util.HashSet;
 import java.util.List;
@@ -87,11 +88,11 @@ public class MMEItems {
             new Item.Properties().component(MMEDataComponents.CRAFTING_TIME, 90)
     );
 
-    public static final Item CLAY_FURNACE = registerBlockItem(MMEBlocks.CLAY_FURNACE, MMEBlockItemIds.CLAY_FURNACE, new Item.Properties());
-    public static final Item HARDENED_CLAY_FURNACE = registerBlockItem(MMEBlocks.HARDENED_CLAY_FURNACE, MMEBlockItemIds.HARDENED_CLAY_FURNACE, new Item.Properties());
-    public static final Item NETHERRACK_FURNACE = registerBlockItem(MMEBlocks.NETHERRACK_FURNACE, MMEBlockItemIds.NETHERRACK_FURNACE, new Item.Properties());
-    public static final Item OBSIDIAN_FURNACE = registerBlockItem(MMEBlocks.OBSIDIAN_FURNACE, MMEBlockItemIds.OBSIDIAN_FURNACE, new Item.Properties());
-    public static final Item SANDSTONE_FURNACE = registerBlockItem(MMEBlocks.SANDSTONE_FURNACE, MMEBlockItemIds.SANDSTONE_FURNACE, new Item.Properties());
+    public static final Item CLAY_FURNACE = registerBlockItem(MMEBlocks.CLAY_FURNACE, MMEBlockItemIds.CLAY_FURNACE, new Item.Properties().component(MMEDataComponents.MAX_COMBUSTION_GRADE, 1));
+    public static final Item HARDENED_CLAY_FURNACE = registerBlockItem(MMEBlocks.HARDENED_CLAY_FURNACE, MMEBlockItemIds.HARDENED_CLAY_FURNACE, new Item.Properties().component(MMEDataComponents.MAX_COMBUSTION_GRADE, 1));
+    public static final Item NETHERRACK_FURNACE = registerBlockItem(MMEBlocks.NETHERRACK_FURNACE, MMEBlockItemIds.NETHERRACK_FURNACE, new Item.Properties().component(MMEDataComponents.MAX_COMBUSTION_GRADE, 4));
+    public static final Item OBSIDIAN_FURNACE = registerBlockItem(MMEBlocks.OBSIDIAN_FURNACE, MMEBlockItemIds.OBSIDIAN_FURNACE, new Item.Properties().component(MMEDataComponents.MAX_COMBUSTION_GRADE, 3));
+    public static final Item SANDSTONE_FURNACE = registerBlockItem(MMEBlocks.SANDSTONE_FURNACE, MMEBlockItemIds.SANDSTONE_FURNACE, new Item.Properties().component(MMEDataComponents.MAX_COMBUSTION_GRADE, 1));
 
     public static final Item MANTLE = registerBlockItem(MMEBlocks.MANTLE, MMEBlockItemIds.MANTLE, new Item.Properties());
 
@@ -312,35 +313,35 @@ public class MMEItems {
     );
     public static final Item SILVER_HELMET = register(
             MMEItemIds.SILVER_HELMET,
-            getArmorSettings(MMEArmorMaterials.SILVER_MATERIAL, ArmorType.HELMET)
+            getArmorSettings(MMEArmorMaterials.SILVER_MATERIAL, ArmorType.HELMET).component(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true)
     );
     public static final Item SILVER_CHESTPLATE = register(
             MMEItemIds.SILVER_CHESTPLATE,
-            getArmorSettings(MMEArmorMaterials.SILVER_MATERIAL, ArmorType.CHESTPLATE)
+            getArmorSettings(MMEArmorMaterials.SILVER_MATERIAL, ArmorType.CHESTPLATE).component(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true)
     );
     public static final Item SILVER_LEGGINGS = register(
             MMEItemIds.SILVER_LEGGINGS,
-            getArmorSettings(MMEArmorMaterials.SILVER_MATERIAL, ArmorType.LEGGINGS)
+            getArmorSettings(MMEArmorMaterials.SILVER_MATERIAL, ArmorType.LEGGINGS).component(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true)
     );
     public static final Item SILVER_BOOTS = register(
             MMEItemIds.SILVER_BOOTS,
-            getArmorSettings(MMEArmorMaterials.SILVER_MATERIAL, ArmorType.BOOTS)
+            getArmorSettings(MMEArmorMaterials.SILVER_MATERIAL, ArmorType.BOOTS).component(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true)
     );
     public static final Item SILVER_CHAINMAIL_HELMET = register(
             MMEItemIds.SILVER_CHAINMAIL_HELMET,
-            getArmorSettings(MMEArmorMaterials.SILVER_CHAINMAIL_MATERIAL, ArmorType.HELMET)
+            getArmorSettings(MMEArmorMaterials.SILVER_CHAINMAIL_MATERIAL, ArmorType.HELMET).component(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true)
     );
     public static final Item SILVER_CHAINMAIL_CHESTPLATE = register(
             MMEItemIds.SILVER_CHAINMAIL_CHESTPLATE,
-            getArmorSettings(MMEArmorMaterials.SILVER_CHAINMAIL_MATERIAL, ArmorType.CHESTPLATE)
+            getArmorSettings(MMEArmorMaterials.SILVER_CHAINMAIL_MATERIAL, ArmorType.CHESTPLATE).component(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true)
     );
     public static final Item SILVER_CHAINMAIL_LEGGINGS = register(
             MMEItemIds.SILVER_CHAINMAIL_LEGGINGS,
-            getArmorSettings(MMEArmorMaterials.SILVER_CHAINMAIL_MATERIAL, ArmorType.LEGGINGS)
+            getArmorSettings(MMEArmorMaterials.SILVER_CHAINMAIL_MATERIAL, ArmorType.LEGGINGS).component(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true)
     );
     public static final Item SILVER_CHAINMAIL_BOOTS = register(
             MMEItemIds.SILVER_CHAINMAIL_BOOTS,
-            getArmorSettings(MMEArmorMaterials.SILVER_CHAINMAIL_MATERIAL, ArmorType.BOOTS)
+            getArmorSettings(MMEArmorMaterials.SILVER_CHAINMAIL_MATERIAL, ArmorType.BOOTS).component(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true)
     );
     public static final Item GOLDEN_CHAINMAIL_HELMET = register(
             MMEItemIds.GOLDEN_CHAINMAIL_HELMET,
@@ -558,129 +559,129 @@ public class MMEItems {
                     .stacksTo(4)
     );
     
-    public static final Item NETHERITE_BATTLE_AXE = registerAxeItem(MMEItemIds.NETHERITE_BATTLE_AXE, getBattleAxeSettings(MMEToolMaterials.NETHERITE).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4));
-    public static final Item NETHERITE_HATCHET = registerAxeItem(MMEItemIds.NETHERITE_HATCHET, getHandAxeSettings(MMEToolMaterials.NETHERITE).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4));
+    public static final Item NETHERITE_BATTLE_AXE = register(MMEItemIds.NETHERITE_BATTLE_AXE, getBattleAxeSettings(MMEToolMaterials.NETHERITE).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4));
+    public static final Item NETHERITE_HATCHET = register(MMEItemIds.NETHERITE_HATCHET, getHandAxeSettings(MMEToolMaterials.NETHERITE).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4));
     public static final Item NETHERITE_DAGGER = register(MMEItemIds.NETHERITE_DAGGER, getDaggerSettings(MMEToolMaterials.NETHERITE).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4));
     public static final Item NETHERITE_KNIFE = register(MMEItemIds.NETHERITE_KNIFE);
     public static final Item NETHERITE_WAR_HAMMER = register(MMEItemIds.NETHERITE_WAR_HAMMER, getWarHammerSettings(MMEToolMaterials.NETHERITE).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4));
-    public static final Item NETHERITE_MATTOCK = registerHoeItem(MMEItemIds.NETHERITE_MATTOCK, getMattockSettings(MMEToolMaterials.NETHERITE).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4));
+    public static final Item NETHERITE_MATTOCK = register(MMEItemIds.NETHERITE_MATTOCK, getMattockSettings(MMEToolMaterials.NETHERITE).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4));
     public static final Item NETHERITE_SCYTHE = register(MMEItemIds.NETHERITE_SCYTHE, getScytheSettings(MMEToolMaterials.NETHERITE).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4));
     public static final Item NETHERITE_SHEARS = registerShearsItem(MMEItemIds.NETHERITE_SHEARS, getShearsSettings(MMEToolMaterials.NETHERITE).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4));
     
-    public static final Item ADAMANTIUM_AXE = registerAxeItem(MMEItemIds.ADAMANTIUM_AXE, getAxeSettings(MMEToolMaterials.ADAMANTIUM).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4));
-    public static final Item ADAMANTIUM_BATTLE_AXE = registerAxeItem(MMEItemIds.ADAMANTIUM_BATTLE_AXE, getBattleAxeSettings(MMEToolMaterials.ADAMANTIUM).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4));
-    public static final Item ADAMANTIUM_HATCHET = registerAxeItem(MMEItemIds.ADAMANTIUM_HATCHET, getHandAxeSettings(MMEToolMaterials.ADAMANTIUM).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4));
+    public static final Item ADAMANTIUM_AXE = register(MMEItemIds.ADAMANTIUM_AXE, getAxeSettings(MMEToolMaterials.ADAMANTIUM).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4));
+    public static final Item ADAMANTIUM_BATTLE_AXE = register(MMEItemIds.ADAMANTIUM_BATTLE_AXE, getBattleAxeSettings(MMEToolMaterials.ADAMANTIUM).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4));
+    public static final Item ADAMANTIUM_HATCHET = register(MMEItemIds.ADAMANTIUM_HATCHET, getHandAxeSettings(MMEToolMaterials.ADAMANTIUM).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4));
     public static final Item ADAMANTIUM_SWORD = register(MMEItemIds.ADAMANTIUM_SWORD, getSwordSettings(MMEToolMaterials.ADAMANTIUM).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4));
     public static final Item ADAMANTIUM_DAGGER = register(MMEItemIds.ADAMANTIUM_DAGGER, getDaggerSettings(MMEToolMaterials.ADAMANTIUM).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4));
     public static final Item ADAMANTIUM_KNIFE = register(MMEItemIds.ADAMANTIUM_KNIFE);
     public static final Item ADAMANTIUM_PICKAXE = register(MMEItemIds.ADAMANTIUM_PICKAXE, getPickaxeSettings(MMEToolMaterials.ADAMANTIUM).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4));
     public static final Item ADAMANTIUM_WAR_HAMMER = register(MMEItemIds.ADAMANTIUM_WAR_HAMMER, getWarHammerSettings(MMEToolMaterials.ADAMANTIUM).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4));
-    public static final Item ADAMANTIUM_SHOVEL = registerShovelItem(MMEItemIds.ADAMANTIUM_SHOVEL, getShovelSettings(MMEToolMaterials.ADAMANTIUM).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4));
-    public static final Item ADAMANTIUM_HOE = registerHoeItem(MMEItemIds.ADAMANTIUM_HOE, getHoeSettings(MMEToolMaterials.ADAMANTIUM).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4));
-    public static final Item ADAMANTIUM_MATTOCK = registerHoeItem(MMEItemIds.ADAMANTIUM_MATTOCK, getMattockSettings(MMEToolMaterials.ADAMANTIUM).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4));
+    public static final Item ADAMANTIUM_SHOVEL = register(MMEItemIds.ADAMANTIUM_SHOVEL, getShovelSettings(MMEToolMaterials.ADAMANTIUM).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4));
+    public static final Item ADAMANTIUM_HOE = register(MMEItemIds.ADAMANTIUM_HOE, getHoeSettings(MMEToolMaterials.ADAMANTIUM).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4));
+    public static final Item ADAMANTIUM_MATTOCK = register(MMEItemIds.ADAMANTIUM_MATTOCK, getMattockSettings(MMEToolMaterials.ADAMANTIUM).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4));
     public static final Item ADAMANTIUM_SCYTHE = register(MMEItemIds.ADAMANTIUM_SCYTHE, getScytheSettings(MMEToolMaterials.ADAMANTIUM).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4));
     public static final Item ADAMANTIUM_SHEARS = registerShearsItem(MMEItemIds.ADAMANTIUM_SHEARS, getShearsSettings(MMEToolMaterials.ADAMANTIUM).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4));
     public static final Item ADAMANTIUM_SPEAR = register(MMEItemIds.ADAMANTIUM_SPEAR, applySpearSettings(new Item.Properties(), MMEToolMaterials.ADAMANTIUM, 1.10F, 1.16F, 0.45F, 2.5F, 6.8F, 5.8F, 5.1F, 9.0F, 4.6F).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4));
 
-    public static final Item ANCIENT_METAL_AXE = registerAxeItem(MMEItemIds.ANCIENT_METAL_AXE, getAxeSettings(MMEToolMaterials.ANCIENT_METAL));
-    public static final Item ANCIENT_METAL_BATTLE_AXE = registerAxeItem(MMEItemIds.ANCIENT_METAL_BATTLE_AXE, getBattleAxeSettings(MMEToolMaterials.ANCIENT_METAL));
-    public static final Item ANCIENT_METAL_HATCHET = registerAxeItem(MMEItemIds.ANCIENT_METAL_HATCHET, getHandAxeSettings(MMEToolMaterials.ANCIENT_METAL));
+    public static final Item ANCIENT_METAL_AXE = register(MMEItemIds.ANCIENT_METAL_AXE, getAxeSettings(MMEToolMaterials.ANCIENT_METAL));
+    public static final Item ANCIENT_METAL_BATTLE_AXE = register(MMEItemIds.ANCIENT_METAL_BATTLE_AXE, getBattleAxeSettings(MMEToolMaterials.ANCIENT_METAL));
+    public static final Item ANCIENT_METAL_HATCHET = register(MMEItemIds.ANCIENT_METAL_HATCHET, getHandAxeSettings(MMEToolMaterials.ANCIENT_METAL));
     public static final Item ANCIENT_METAL_SWORD = register(MMEItemIds.ANCIENT_METAL_SWORD, getSwordSettings(MMEToolMaterials.ANCIENT_METAL));
     public static final Item ANCIENT_METAL_DAGGER = register(MMEItemIds.ANCIENT_METAL_DAGGER, getDaggerSettings(MMEToolMaterials.ANCIENT_METAL));
     public static final Item ANCIENT_METAL_KNIFE = register(MMEItemIds.ANCIENT_METAL_KNIFE);
     public static final Item ANCIENT_METAL_PICKAXE = register(MMEItemIds.ANCIENT_METAL_PICKAXE, getPickaxeSettings(MMEToolMaterials.ANCIENT_METAL));
     public static final Item ANCIENT_METAL_WAR_HAMMER = register(MMEItemIds.ANCIENT_METAL_WAR_HAMMER, getWarHammerSettings(MMEToolMaterials.ANCIENT_METAL));
-    public static final Item ANCIENT_METAL_SHOVEL = registerShovelItem(MMEItemIds.ANCIENT_METAL_SHOVEL, getShovelSettings(MMEToolMaterials.ANCIENT_METAL));
-    public static final Item ANCIENT_METAL_HOE = registerHoeItem(MMEItemIds.ANCIENT_METAL_HOE, getHoeSettings(MMEToolMaterials.ANCIENT_METAL));
-    public static final Item ANCIENT_METAL_MATTOCK = registerHoeItem(MMEItemIds.ANCIENT_METAL_MATTOCK, getMattockSettings(MMEToolMaterials.ANCIENT_METAL));
+    public static final Item ANCIENT_METAL_SHOVEL = register(MMEItemIds.ANCIENT_METAL_SHOVEL, getShovelSettings(MMEToolMaterials.ANCIENT_METAL));
+    public static final Item ANCIENT_METAL_HOE = register(MMEItemIds.ANCIENT_METAL_HOE, getHoeSettings(MMEToolMaterials.ANCIENT_METAL));
+    public static final Item ANCIENT_METAL_MATTOCK = register(MMEItemIds.ANCIENT_METAL_MATTOCK, getMattockSettings(MMEToolMaterials.ANCIENT_METAL));
     public static final Item ANCIENT_METAL_SCYTHE = register(MMEItemIds.ANCIENT_METAL_SCYTHE, getScytheSettings(MMEToolMaterials.ANCIENT_METAL));
     public static final Item ANCIENT_METAL_SHEARS = registerShearsItem(MMEItemIds.ANCIENT_METAL_SHEARS, getShearsSettings(MMEToolMaterials.ANCIENT_METAL));
     public static final Item ANCIENT_METAL_SPEAR = register(MMEItemIds.ANCIENT_METAL_SPEAR, applySpearSettings(new Item.Properties(), MMEToolMaterials.ANCIENT_METAL, 1.02F, 1.05F, 0.53F, 2.5F, 7.5F, 6.5F, 5.1F, 10.0F, 4.6F));
 
-    public static final Item COPPER_BATTLE_AXE = registerAxeItem(MMEItemIds.COPPER_BATTLE_AXE, getBattleAxeSettings(MMEToolMaterials.COPPER));
-    public static final Item COPPER_HATCHET = registerAxeItem(MMEItemIds.COPPER_HATCHET, getHandAxeSettings(MMEToolMaterials.COPPER));
+    public static final Item COPPER_BATTLE_AXE = register(MMEItemIds.COPPER_BATTLE_AXE, getBattleAxeSettings(MMEToolMaterials.COPPER));
+    public static final Item COPPER_HATCHET = register(MMEItemIds.COPPER_HATCHET, getHandAxeSettings(MMEToolMaterials.COPPER));
     public static final Item COPPER_DAGGER = register(MMEItemIds.COPPER_DAGGER, getDaggerSettings(MMEToolMaterials.COPPER));
     public static final Item COPPER_KNIFE = register(MMEItemIds.COPPER_KNIFE);
     public static final Item COPPER_WAR_HAMMER = register(MMEItemIds.COPPER_WAR_HAMMER, getWarHammerSettings(MMEToolMaterials.COPPER));
-    public static final Item COPPER_MATTOCK = registerHoeItem(MMEItemIds.COPPER_MATTOCK, getMattockSettings(MMEToolMaterials.COPPER));
+    public static final Item COPPER_MATTOCK = register(MMEItemIds.COPPER_MATTOCK, getMattockSettings(MMEToolMaterials.COPPER));
     public static final Item COPPER_SCYTHE = register(MMEItemIds.COPPER_SCYTHE, getScytheSettings(MMEToolMaterials.COPPER));
     public static final Item COPPER_SHEARS = registerShearsItem(MMEItemIds.COPPER_SHEARS, getShearsSettings(MMEToolMaterials.COPPER));
 
-    public static final Item GOLDEN_BATTLE_AXE = registerAxeItem(MMEItemIds.GOLDEN_BATTLE_AXE, getBattleAxeSettings(MMEToolMaterials.GOLD));
-    public static final Item GOLDEN_HATCHET = registerAxeItem(MMEItemIds.GOLDEN_HATCHET, getHandAxeSettings(MMEToolMaterials.GOLD));
+    public static final Item GOLDEN_BATTLE_AXE = register(MMEItemIds.GOLDEN_BATTLE_AXE, getBattleAxeSettings(MMEToolMaterials.GOLD));
+    public static final Item GOLDEN_HATCHET = register(MMEItemIds.GOLDEN_HATCHET, getHandAxeSettings(MMEToolMaterials.GOLD));
     public static final Item GOLDEN_DAGGER = register(MMEItemIds.GOLDEN_DAGGER, getDaggerSettings(MMEToolMaterials.GOLD));
     public static final Item GOLDEN_KNIFE = register(MMEItemIds.GOLDEN_KNIFE);
     public static final Item GOLDEN_WAR_HAMMER = register(MMEItemIds.GOLDEN_WAR_HAMMER, getWarHammerSettings(MMEToolMaterials.GOLD));
-    public static final Item GOLDEN_MATTOCK = registerHoeItem(MMEItemIds.GOLDEN_MATTOCK, getMattockSettings(MMEToolMaterials.GOLD));
+    public static final Item GOLDEN_MATTOCK = register(MMEItemIds.GOLDEN_MATTOCK, getMattockSettings(MMEToolMaterials.GOLD));
     public static final Item GOLDEN_SCYTHE = register(MMEItemIds.GOLDEN_SCYTHE, getScytheSettings(MMEToolMaterials.GOLD));
     public static final Item GOLDEN_SHEARS = registerShearsItem(MMEItemIds.GOLDEN_SHEARS, getShearsSettings(MMEToolMaterials.GOLD));
 
-    public static final Item IRON_BATTLE_AXE = registerAxeItem(MMEItemIds.IRON_BATTLE_AXE, getBattleAxeSettings(MMEToolMaterials.IRON));
+    public static final Item IRON_BATTLE_AXE = register(MMEItemIds.IRON_BATTLE_AXE, getBattleAxeSettings(MMEToolMaterials.IRON));
     public static final Item IRON_DAGGER = register(MMEItemIds.IRON_DAGGER, getDaggerSettings(MMEToolMaterials.IRON));
-    public static final Item IRON_HATCHET = registerAxeItem(MMEItemIds.IRON_HATCHET, getHandAxeSettings(MMEToolMaterials.IRON));
+    public static final Item IRON_HATCHET = register(MMEItemIds.IRON_HATCHET, getHandAxeSettings(MMEToolMaterials.IRON));
     public static final Item IRON_WAR_HAMMER = register(MMEItemIds.IRON_WAR_HAMMER, getWarHammerSettings(MMEToolMaterials.IRON));
     public static final Item IRON_KNIFE = register(MMEItemIds.IRON_KNIFE);
-    public static final Item IRON_MATTOCK = registerHoeItem(MMEItemIds.IRON_MATTOCK, getMattockSettings(MMEToolMaterials.IRON));
+    public static final Item IRON_MATTOCK = register(MMEItemIds.IRON_MATTOCK, getMattockSettings(MMEToolMaterials.IRON));
     public static final Item IRON_SCYTHE = register(MMEItemIds.IRON_SCYTHE, getScytheSettings(MMEToolMaterials.IRON));
 
-    public static final Item MITHRIL_AXE = registerAxeItem(MMEItemIds.MITHRIL_AXE, getAxeSettings(MMEToolMaterials.MITHRIL).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 3));
-    public static final Item MITHRIL_BATTLE_AXE = registerAxeItem(MMEItemIds.MITHRIL_BATTLE_AXE, getBattleAxeSettings(MMEToolMaterials.MITHRIL).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 3));
-    public static final Item MITHRIL_HATCHET = registerAxeItem(MMEItemIds.MITHRIL_HATCHET, getHandAxeSettings(MMEToolMaterials.MITHRIL).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 3));
+    public static final Item MITHRIL_AXE = register(MMEItemIds.MITHRIL_AXE, getAxeSettings(MMEToolMaterials.MITHRIL).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 3));
+    public static final Item MITHRIL_BATTLE_AXE = register(MMEItemIds.MITHRIL_BATTLE_AXE, getBattleAxeSettings(MMEToolMaterials.MITHRIL).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 3));
+    public static final Item MITHRIL_HATCHET = register(MMEItemIds.MITHRIL_HATCHET, getHandAxeSettings(MMEToolMaterials.MITHRIL).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 3));
     public static final Item MITHRIL_SWORD = register(MMEItemIds.MITHRIL_SWORD, getSwordSettings(MMEToolMaterials.MITHRIL).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 3));
     public static final Item MITHRIL_DAGGER = register(MMEItemIds.MITHRIL_DAGGER, getDaggerSettings(MMEToolMaterials.MITHRIL).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 3));
     public static final Item MITHRIL_KNIFE = register(MMEItemIds.MITHRIL_KNIFE);
     public static final Item MITHRIL_PICKAXE = register(MMEItemIds.MITHRIL_PICKAXE, getPickaxeSettings(MMEToolMaterials.MITHRIL).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 3));
     public static final Item MITHRIL_WAR_HAMMER = register(MMEItemIds.MITHRIL_WAR_HAMMER, getWarHammerSettings(MMEToolMaterials.MITHRIL).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 3));
-    public static final Item MITHRIL_SHOVEL = registerShovelItem(MMEItemIds.MITHRIL_SHOVEL, getShovelSettings(MMEToolMaterials.MITHRIL).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 3));
-    public static final Item MITHRIL_HOE = registerHoeItem(MMEItemIds.MITHRIL_HOE, getHoeSettings(MMEToolMaterials.MITHRIL).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 3));
-    public static final Item MITHRIL_MATTOCK = registerHoeItem(MMEItemIds.MITHRIL_MATTOCK, getMattockSettings(MMEToolMaterials.MITHRIL).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 3));
+    public static final Item MITHRIL_SHOVEL = register(MMEItemIds.MITHRIL_SHOVEL, getShovelSettings(MMEToolMaterials.MITHRIL).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 3));
+    public static final Item MITHRIL_HOE = register(MMEItemIds.MITHRIL_HOE, getHoeSettings(MMEToolMaterials.MITHRIL).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 3));
+    public static final Item MITHRIL_MATTOCK = register(MMEItemIds.MITHRIL_MATTOCK, getMattockSettings(MMEToolMaterials.MITHRIL).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 3));
     public static final Item MITHRIL_SCYTHE = register(MMEItemIds.MITHRIL_SCYTHE, getScytheSettings(MMEToolMaterials.MITHRIL).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 3));
     public static final Item MITHRIL_SHEARS = registerShearsItem(MMEItemIds.MITHRIL_SHEARS, getShearsSettings(MMEToolMaterials.MITHRIL).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 3));
     public static final Item MITHRIL_SPEAR = register(MMEItemIds.MITHRIL_SPEAR, applySpearSettings(new Item.Properties(), MMEToolMaterials.MITHRIL, 1.06F, 1.10F, 0.50F, 2.5F, 7.2F, 6.2F, 5.1F, 9.5F, 4.6F).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 3));
 
-    public static final Item RUSTED_IRON_AXE = registerAxeItem(MMEItemIds.RUSTED_IRON_AXE, getAxeSettings(MMEToolMaterials.RUSTED_IRON));
-    public static final Item RUSTED_IRON_BATTLE_AXE = registerAxeItem(MMEItemIds.RUSTED_IRON_BATTLE_AXE, getBattleAxeSettings(MMEToolMaterials.RUSTED_IRON));
-    public static final Item RUSTED_IRON_HATCHET = registerAxeItem(MMEItemIds.RUSTED_IRON_HATCHET, getHandAxeSettings(MMEToolMaterials.RUSTED_IRON));
+    public static final Item RUSTED_IRON_AXE = register(MMEItemIds.RUSTED_IRON_AXE, getAxeSettings(MMEToolMaterials.RUSTED_IRON));
+    public static final Item RUSTED_IRON_BATTLE_AXE = register(MMEItemIds.RUSTED_IRON_BATTLE_AXE, getBattleAxeSettings(MMEToolMaterials.RUSTED_IRON));
+    public static final Item RUSTED_IRON_HATCHET = register(MMEItemIds.RUSTED_IRON_HATCHET, getHandAxeSettings(MMEToolMaterials.RUSTED_IRON));
     public static final Item RUSTED_IRON_SWORD = register(MMEItemIds.RUSTED_IRON_SWORD, getSwordSettings(MMEToolMaterials.RUSTED_IRON));
     public static final Item RUSTED_IRON_DAGGER = register(MMEItemIds.RUSTED_IRON_DAGGER, getDaggerSettings(MMEToolMaterials.RUSTED_IRON));
     public static final Item RUSTED_IRON_KNIFE = register(MMEItemIds.RUSTED_IRON_KNIFE);
     public static final Item RUSTED_IRON_PICKAXE = register(MMEItemIds.RUSTED_IRON_PICKAXE, getPickaxeSettings(MMEToolMaterials.RUSTED_IRON));
     public static final Item RUSTED_IRON_WAR_HAMMER = register(MMEItemIds.RUSTED_IRON_WAR_HAMMER, getWarHammerSettings(MMEToolMaterials.RUSTED_IRON));
-    public static final Item RUSTED_IRON_SHOVEL = registerShovelItem(MMEItemIds.RUSTED_IRON_SHOVEL, getShovelSettings(MMEToolMaterials.RUSTED_IRON));
-    public static final Item RUSTED_IRON_HOE = registerHoeItem(MMEItemIds.RUSTED_IRON_HOE, getHoeSettings(MMEToolMaterials.RUSTED_IRON));
-    public static final Item RUSTED_IRON_MATTOCK = registerHoeItem(MMEItemIds.RUSTED_IRON_MATTOCK, getMattockSettings(MMEToolMaterials.RUSTED_IRON));
+    public static final Item RUSTED_IRON_SHOVEL = register(MMEItemIds.RUSTED_IRON_SHOVEL, getShovelSettings(MMEToolMaterials.RUSTED_IRON));
+    public static final Item RUSTED_IRON_HOE = register(MMEItemIds.RUSTED_IRON_HOE, getHoeSettings(MMEToolMaterials.RUSTED_IRON));
+    public static final Item RUSTED_IRON_MATTOCK = register(MMEItemIds.RUSTED_IRON_MATTOCK, getMattockSettings(MMEToolMaterials.RUSTED_IRON));
     public static final Item RUSTED_IRON_SCYTHE = register(MMEItemIds.RUSTED_IRON_SCYTHE, getScytheSettings(MMEToolMaterials.RUSTED_IRON));
     public static final Item RUSTED_IRON_SHEARS = registerShearsItem(MMEItemIds.RUSTED_IRON_SHEARS, getShearsSettings(MMEToolMaterials.RUSTED_IRON));
     public static final Item RUSTED_IRON_SPEAR = register(MMEItemIds.RUSTED_IRON_SPEAR, applySpearSettings(new Item.Properties(), MMEToolMaterials.RUSTED_IRON, 0.90F, 0.88F, 0.63F, 3.6F, 8.6F, 7.6F, 5.1F, 11.8F, 4.6F));
 
-    public static final Item SILVER_AXE = registerAxeItem(MMEItemIds.SILVER_AXE, getAxeSettings(MMEToolMaterials.SILVER));
-    public static final Item SILVER_BATTLE_AXE = registerAxeItem(MMEItemIds.SILVER_BATTLE_AXE, getBattleAxeSettings(MMEToolMaterials.SILVER));
-    public static final Item SILVER_HATCHET = registerAxeItem(MMEItemIds.SILVER_HATCHET, getHandAxeSettings(MMEToolMaterials.SILVER));
-    public static final Item SILVER_DAGGER = register(MMEItemIds.SILVER_DAGGER, getDaggerSettings(MMEToolMaterials.SILVER));
-    public static final Item SILVER_KNIFE = register(MMEItemIds.SILVER_KNIFE);
-    public static final Item SILVER_SWORD = register(MMEItemIds.SILVER_SWORD, getSwordSettings(MMEToolMaterials.SILVER));
-    public static final Item SILVER_PICKAXE = register(MMEItemIds.SILVER_PICKAXE, getPickaxeSettings(MMEToolMaterials.SILVER));
-    public static final Item SILVER_WAR_HAMMER = register(MMEItemIds.SILVER_WAR_HAMMER, getWarHammerSettings(MMEToolMaterials.SILVER));
-    public static final Item SILVER_SHOVEL = registerShovelItem(MMEItemIds.SILVER_SHOVEL, getShovelSettings(MMEToolMaterials.SILVER));
-    public static final Item SILVER_HOE = registerHoeItem(MMEItemIds.SILVER_HOE, getHoeSettings(MMEToolMaterials.SILVER));
-    public static final Item SILVER_MATTOCK = registerHoeItem(MMEItemIds.SILVER_MATTOCK, getMattockSettings(MMEToolMaterials.SILVER));
-    public static final Item SILVER_SCYTHE = register(MMEItemIds.SILVER_SCYTHE, getScytheSettings(MMEToolMaterials.SILVER));
-    public static final Item SILVER_SHEARS = registerShearsItem(MMEItemIds.SILVER_SHEARS, getShearsSettings(MMEToolMaterials.SILVER));
-    public static final Item SILVER_SPEAR = register(MMEItemIds.SILVER_SPEAR, applySpearSettings(new Item.Properties(), MMEToolMaterials.SILVER, 0.98F, 1.00F, 0.56F, 2.8F, 7.8F, 6.8F, 5.1F, 10.5F, 4.6F));
+    public static final Item SILVER_AXE = register(MMEItemIds.SILVER_AXE, getAxeSettings(MMEToolMaterials.SILVER).component(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true));
+    public static final Item SILVER_BATTLE_AXE = register(MMEItemIds.SILVER_BATTLE_AXE, getBattleAxeSettings(MMEToolMaterials.SILVER).component(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true));
+    public static final Item SILVER_HATCHET = register(MMEItemIds.SILVER_HATCHET, getHandAxeSettings(MMEToolMaterials.SILVER).component(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true));
+    public static final Item SILVER_DAGGER = register(MMEItemIds.SILVER_DAGGER, getDaggerSettings(MMEToolMaterials.SILVER).component(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true));
+    public static final Item SILVER_KNIFE = register(MMEItemIds.SILVER_KNIFE, new Item.Properties().component(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true));
+    public static final Item SILVER_SWORD = register(MMEItemIds.SILVER_SWORD, getSwordSettings(MMEToolMaterials.SILVER).component(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true));
+    public static final Item SILVER_PICKAXE = register(MMEItemIds.SILVER_PICKAXE, getPickaxeSettings(MMEToolMaterials.SILVER).component(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true));
+    public static final Item SILVER_WAR_HAMMER = register(MMEItemIds.SILVER_WAR_HAMMER, getWarHammerSettings(MMEToolMaterials.SILVER).component(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true));
+    public static final Item SILVER_SHOVEL = register(MMEItemIds.SILVER_SHOVEL, getShovelSettings(MMEToolMaterials.SILVER).component(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true));
+    public static final Item SILVER_HOE = register(MMEItemIds.SILVER_HOE, getHoeSettings(MMEToolMaterials.SILVER).component(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true));
+    public static final Item SILVER_MATTOCK = register(MMEItemIds.SILVER_MATTOCK, getMattockSettings(MMEToolMaterials.SILVER).component(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true));
+    public static final Item SILVER_SCYTHE = register(MMEItemIds.SILVER_SCYTHE, getScytheSettings(MMEToolMaterials.SILVER).component(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true));
+    public static final Item SILVER_SHEARS = registerShearsItem(MMEItemIds.SILVER_SHEARS, getShearsSettings(MMEToolMaterials.SILVER).component(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true));
+    public static final Item SILVER_SPEAR = register(MMEItemIds.SILVER_SPEAR, applySpearSettings(new Item.Properties(), MMEToolMaterials.SILVER, 0.98F, 1.00F, 0.56F, 2.8F, 7.8F, 6.8F, 5.1F, 10.5F, 4.6F).component(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true));
 
-    public static final Item OBSIDIAN_AXE = registerAxeItem(MMEItemIds.OBSIDIAN_AXE, applyToolSettings(new Item.Properties(), MMEToolMaterials.OBSIDIAN, BlockTags.MINEABLE_WITH_AXE, 3.4F, 2, 4, -2.7F, 0.5F, 0.5F, 5));
-    public static final Item OBSIDIAN_HATCHET = registerAxeItem(MMEItemIds.OBSIDIAN_HATCHET, applyToolSettings(new Item.Properties(), MMEToolMaterials.OBSIDIAN, BlockTags.MINEABLE_WITH_AXE, 1, 2, 3, -2.7F, 0.25F, 0.25F, 5));
+    public static final Item OBSIDIAN_AXE = register(MMEItemIds.OBSIDIAN_AXE, applyToolSettings(new Item.Properties(), MMEToolMaterials.OBSIDIAN, BlockTags.MINEABLE_WITH_AXE, 3.4F, 2, 4, -2.7F, 0.5F, 0.5F, 5));
+    public static final Item OBSIDIAN_HATCHET = register(MMEItemIds.OBSIDIAN_HATCHET, applyToolSettings(new Item.Properties(), MMEToolMaterials.OBSIDIAN, BlockTags.MINEABLE_WITH_AXE, 1, 2, 3, -2.7F, 0.25F, 0.25F, 5));
     public static final Item OBSIDIAN_KNIFE = register(MMEItemIds.OBSIDIAN_KNIFE, applySwordSettings(new Item.Properties(), MMEToolMaterials.OBSIDIAN, 3, 1, 2, -2.0F, 0.25F, 0.25F));
     public static final Item OBSIDIAN_SHOVEL = register(MMEItemIds.OBSIDIAN_SHOVEL, applyToolSettings(new Item.Properties(), MMEToolMaterials.OBSIDIAN, BlockTags.MINEABLE_WITH_SHOVEL, 5, 2, 1, -2.8F, 0.75F, 0.75F, 0));
 
-    public static final Item FLINT_AXE = registerAxeItem(MMEItemIds.FLINT_AXE, applyToolSettings(new Item.Properties(), MMEToolMaterials.FLINT, BlockTags.MINEABLE_WITH_AXE, 3.4F, 2, 4, -2.7F, 0.5F, 0.5F, 5));
-    public static final Item FLINT_HATCHET = registerAxeItem(MMEItemIds.FLINT_HATCHET, applyToolSettings(new Item.Properties(), MMEToolMaterials.FLINT, BlockTags.MINEABLE_WITH_AXE, 1, 2, 3, -2.7F, 0.25F, 0.25F, 5));
+    public static final Item FLINT_AXE = register(MMEItemIds.FLINT_AXE, applyToolSettings(new Item.Properties(), MMEToolMaterials.FLINT, BlockTags.MINEABLE_WITH_AXE, 3.4F, 2, 4, -2.7F, 0.5F, 0.5F, 5));
+    public static final Item FLINT_HATCHET = register(MMEItemIds.FLINT_HATCHET, applyToolSettings(new Item.Properties(), MMEToolMaterials.FLINT, BlockTags.MINEABLE_WITH_AXE, 1, 2, 3, -2.7F, 0.25F, 0.25F, 5));
     public static final Item FLINT_KNIFE = register(MMEItemIds.FLINT_KNIFE, applySwordSettings(new Item.Properties(), MMEToolMaterials.FLINT, 3, 1, 2, -2.0F, 0.25F, 0.25F));
     public static final Item FLINT_SHOVEL = register(MMEItemIds.FLINT_SHOVEL, applyToolSettings(new Item.Properties(), MMEToolMaterials.FLINT, BlockTags.MINEABLE_WITH_SHOVEL, 3, 2, 1, -2.8F, 0.75F, 0.75F, 0));
     public static final Item FLINT_SPEAR = register(MMEItemIds.FLINT_SPEAR, applySpearSettings(new Item.Properties(), MMEToolMaterials.FLINT, 0.72F, 0.76F, 0.70F, 4.8F, 12.0F, 9.8F, 5.1F, 14.2F, 4.6F));
 
-    public static final Item WOODEN_CLUB = register(MMEItemIds.WOODEN_CLUB, applySwordSettings(new Item.Properties(), MMEToolMaterials.WOOD, 2, 1, 4, -2.4F, 0.5F, 0.5F));
-    public static final Item WOODEN_CUDGEL = register(MMEItemIds.WOODEN_CUDGEL, applySwordSettings(new Item.Properties(), MMEToolMaterials.WOOD, 1, 1, 3, -2.0F, 0.25F, 0.25F));
+    public static final Item WOODEN_CLUB = register(MMEItemIds.WOODEN_CLUB, applySwordSettings(new Item.Properties(), MMEToolMaterials.WOOD, 2, 1, 4, -2.4F, 0.5F, 0.5F).cookingFuel(ContextIntProviders.COOKING_TIME_WOOD_ITEMS_LARGE));
+    public static final Item WOODEN_CUDGEL = register(MMEItemIds.WOODEN_CUDGEL, applySwordSettings(new Item.Properties(), MMEToolMaterials.WOOD, 1, 1, 3, -2.0F, 0.25F, 0.25F).cookingFuel(ContextIntProviders.COOKING_TIME_WOOD_ITEMS_LARGE));
 
     public static final Item ADAMANTIUM_CHAINS = register(MMEItemIds.ADAMANTIUM_CHAINS,
             new Item.Properties().stacksTo(16).component(MMEDataComponents.CRAFTING_TIME, 75));
@@ -759,6 +760,7 @@ public class MMEItems {
             new Item.Properties()
                     .craftRemainder(ADAMANTIUM_BUCKET)
                     .stacksTo(1)
+                    .cookingFuel(ContextIntProviders.COOKING_TIME_LAVA_BUCKET)
     );
     public static final Item ADAMANTIUM_POWDER_SNOW_BUCKET = register(
             MMEItemIds.ADAMANTIUM_POWDER_SNOW_BUCKET,
@@ -842,6 +844,7 @@ public class MMEItems {
             new Item.Properties()
                     .craftRemainder(ANCIENT_METAL_BUCKET)
                     .stacksTo(1)
+                    .cookingFuel(ContextIntProviders.COOKING_TIME_LAVA_BUCKET)
     );
     public static final Item ANCIENT_METAL_POWDER_SNOW_BUCKET = register(
             MMEItemIds.ANCIENT_METAL_POWDER_SNOW_BUCKET,
@@ -926,6 +929,7 @@ public class MMEItems {
             new Item.Properties()
                     .craftRemainder(COPPER_BUCKET)
                     .stacksTo(1)
+                    .cookingFuel(ContextIntProviders.COOKING_TIME_LAVA_BUCKET)
     );
     public static final Item COPPER_POWDER_SNOW_BUCKET = register(
             MMEItemIds.COPPER_POWDER_SNOW_BUCKET,
@@ -1009,6 +1013,7 @@ public class MMEItems {
             new Item.Properties()
                     .craftRemainder(GOLD_BUCKET)
                     .stacksTo(1)
+                    .cookingFuel(ContextIntProviders.COOKING_TIME_LAVA_BUCKET)
     );
     public static final Item GOLD_POWDER_SNOW_BUCKET = register(
             MMEItemIds.GOLD_POWDER_SNOW_BUCKET,
@@ -1093,6 +1098,7 @@ public class MMEItems {
             new Item.Properties()
                     .craftRemainder(MITHRIL_BUCKET)
                     .stacksTo(1)
+                    .cookingFuel(ContextIntProviders.COOKING_TIME_LAVA_BUCKET)
     );
     public static final Item MITHRIL_POWDER_SNOW_BUCKET = register(
             MMEItemIds.MITHRIL_POWDER_SNOW_BUCKET,
@@ -1177,6 +1183,7 @@ public class MMEItems {
             new Item.Properties()
                     .craftRemainder(SILVER_BUCKET)
                     .stacksTo(1)
+                    .cookingFuel(ContextIntProviders.COOKING_TIME_LAVA_BUCKET)
     );
     public static final Item SILVER_POWDER_SNOW_BUCKET = register(
             MMEItemIds.SILVER_POWDER_SNOW_BUCKET,
@@ -1264,6 +1271,7 @@ public class MMEItems {
                     .craftRemainder(NETHERITE_BUCKET)
                     .stacksTo(1)
                     .fireResistant()
+                    .cookingFuel(ContextIntProviders.COOKING_TIME_LAVA_BUCKET)
     );
     public static final Item NETHERITE_POWDER_SNOW_BUCKET = register(
             MMEItemIds.NETHERITE_POWDER_SNOW_BUCKET,
@@ -1483,24 +1491,24 @@ public class MMEItems {
     }
 
     public static Item.Properties getAxeSettings(ToolMaterial material) {
-        return applyToolSettings(new Item.Properties(), material, BlockTags.MINEABLE_WITH_AXE, 5, 2, 4, -2.7F, 0.5F, 0.5F, 5);
+        return applyToolSettings(new Item.Properties(), material, BlockTags.MINEABLE_WITH_AXE, 5, 2, 4, -2.7F, 0.5F, 0.5F, 5).delayedComponent(DataComponents.BLOCK_TRANSFORMER, context -> context.getOrThrow(BlockTransformers.AXE));
     }
     public static Item.Properties getBattleAxeSettings(ToolMaterial material) {
-        return applyToolSettings(new Item.Properties(), material, BlockTags.MINEABLE_WITH_AXE, 7, 1, 5, -3F, 0.5F, 0.75F, 5);
+        return applyToolSettings(new Item.Properties(), material, BlockTags.MINEABLE_WITH_AXE, 7, 1, 5, -3F, 0.5F, 0.75F, 5).delayedComponent(DataComponents.BLOCK_TRANSFORMER, context -> context.getOrThrow(BlockTransformers.AXE));
     }
     public static Item.Properties getHandAxeSettings(ToolMaterial material) {
-        return applyToolSettings(new Item.Properties(), material, BlockTags.MINEABLE_WITH_AXE, 2, 2, 3, -2.7F, 0.25F, 0.25F, 5);
+        return applyToolSettings(new Item.Properties(), material, BlockTags.MINEABLE_WITH_AXE, 2, 2, 3, -2.7F, 0.25F, 0.25F, 5).delayedComponent(DataComponents.BLOCK_TRANSFORMER, context -> context.getOrThrow(BlockTransformers.AXE));
     }
 
     public static Item.Properties getHoeSettings(ToolMaterial material) {
-        return applyToolSettings(new Item.Properties(), material, BlockTags.MINEABLE_WITH_HOE, 4, 2, 1, -1.0F, 0.5F, 0.5F);
+        return applyToolSettings(new Item.Properties(), material, BlockTags.MINEABLE_WITH_HOE, 4, 2, 1, -1.0F, 0.5F, 0.5F).delayedComponent(DataComponents.BLOCK_TRANSFORMER, context -> context.getOrThrow(BlockTransformers.HOE));
     }
     public static Item.Properties getMattockSettings(ToolMaterial material) {
-        return applyToolSettings(new Item.Properties(), material, MMEBlockTags.MINEABLE_WITH_MATTOCK, 6, 2, 2, -1.5F, 0.5F, 0.5F);
+        return applyToolSettings(new Item.Properties(), material, MMEBlockTags.MINEABLE_WITH_MATTOCK, 6, 2, 2, -1.5F, 0.5F, 0.5F).delayedComponent(DataComponents.BLOCK_TRANSFORMER, context -> context.getOrThrow(BlockTransformers.HOE));
     }
 
     public static Item.Properties getShovelSettings(ToolMaterial material) {
-        return applyToolSettings(new Item.Properties(), material, BlockTags.MINEABLE_WITH_SHOVEL, 3, 2, 1, -2.8F, 0.75F, 0.75F);
+        return applyToolSettings(new Item.Properties(), material, BlockTags.MINEABLE_WITH_SHOVEL, 3, 2, 1, -2.8F, 0.75F, 0.75F).delayedComponent(DataComponents.BLOCK_TRANSFORMER, context -> context.getOrThrow(BlockTransformers.SHOVEL));
     }
 
     public static Item.Properties getPickaxeSettings(ToolMaterial material) {
@@ -1550,7 +1558,7 @@ public class MMEItems {
                 )
                 .component(DataComponents.ATTACK_RANGE, new AttackRange(2.0F, 4.5F, 2.0F, 6.5F, 0.125F, 0.5F))
                 .component(DataComponents.MINIMUM_ATTACK_CHARGE, 1.0F)
-                .component(DataComponents.SWING_ANIMATION, new SwingAnimation(SwingAnimationType.STAB, (int)(swingDurationSeconds * 20.0F)))
+                .component(DataComponents.ATTACK_ANIMATION, new SwingAnimation(SwingAnimationType.STAB, (int)(swingDurationSeconds * 20.0F)))
                 .attributes(
                         ItemAttributeModifiers.builder()
                                 .add(
@@ -1691,20 +1699,8 @@ public class MMEItems {
         );
     }
 
-    private static Item registerAxeItem(ResourceKey<Item> registryKey, Item.Properties settings) {
-        return register(registryKey, MMEAxeItem::new, settings);
-    }
-
     private static Item registerShearsItem(ResourceKey<Item> registryKey, Item.Properties settings) {
         return register(registryKey, ShearsItem::new, settings);
-    }
-
-    private static Item registerShovelItem(ResourceKey<Item> registryKey, Item.Properties settings) {
-        return register(registryKey, MMEShovelItem::new, settings);
-    }
-
-    private static Item registerHoeItem(ResourceKey<Item> registryKey, Item.Properties settings) {
-        return register(registryKey, MMEHoeItem::new, settings);
     }
 
     public static Item register(ResourceKey<Item> registryKey) {

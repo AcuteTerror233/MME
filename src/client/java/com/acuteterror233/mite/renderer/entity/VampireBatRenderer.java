@@ -30,7 +30,7 @@ public class VampireBatRenderer<T extends VampireBat> extends MobRenderer<T, Bat
             public void submit(PoseStack poseStack, SubmitNodeCollector submitNodeCollector, int i, BatRenderState entityRenderState, float f, float g) {
                 submitNodeCollector.order(1)
                         .submitModel(
-                                this.getParentModel(), entityRenderState, poseStack, EYES, i, OverlayTexture.NO_OVERLAY, -1, null, entityRenderState.outlineColor, null
+                                this.getParentModel(), entityRenderState, poseStack, EYES, i, OverlayTexture.NO_OVERLAY, -1, null, entityRenderState.outlineColor
                         );
             }
         });

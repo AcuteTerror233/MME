@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:mithril_dagger"
+        "recipes": "mme:mithril_dagger"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

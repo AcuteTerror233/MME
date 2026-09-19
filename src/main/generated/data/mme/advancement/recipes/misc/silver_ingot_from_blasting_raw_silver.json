@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:silver_ingot_from_blasting_raw_silver"
+        "recipes": "mme:silver_ingot_from_blasting_raw_silver"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

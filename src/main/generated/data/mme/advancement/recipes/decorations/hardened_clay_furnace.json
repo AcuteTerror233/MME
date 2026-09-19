@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:hardened_clay_furnace"
+        "recipes": "mme:hardened_clay_furnace"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

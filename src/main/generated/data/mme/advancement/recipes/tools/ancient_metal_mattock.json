@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:ancient_metal_mattock"
+        "recipes": "mme:ancient_metal_mattock"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

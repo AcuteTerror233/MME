@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:ancient_metal_shears"
+        "recipes": "mme:ancient_metal_shears"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:wooden_club"
+        "recipes": "mme:wooden_club"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

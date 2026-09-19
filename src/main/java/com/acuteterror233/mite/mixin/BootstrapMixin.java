@@ -1,12 +1,16 @@
 package com.acuteterror233.mite.mixin;
 
 import com.acuteterror233.mite.block.VanillaBlockModify;
+import com.acuteterror233.mite.block.entity.VanillaBlockEntityTypeModify;
 import com.acuteterror233.mite.event.VanillaRegisterModify;
 import com.acuteterror233.mite.item.VanillaItemModify;
+import com.acuteterror233.mite.world.level.storage.loot.providers.number.ints.VanillaCookingModify;
+import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.server.Bootstrap;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProvider;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
@@ -26,6 +30,8 @@ public class BootstrapMixin {
         registerBlockModifications();
         registerItemModifications();
         registerBlockItemModifications();
+        registerBlockEntityTypeModifications();
+        registerCookingModifications();
     }
 
     @Unique
@@ -82,5 +88,21 @@ public class BootstrapMixin {
 
             return null;
         });
+    }
+
+    @Unique
+    private static void registerBlockEntityTypeModifications() {
+        VanillaRegisterModify.BLOCK_ENTITY_TYPE.register(((key, blocks) -> {
+            UnaryOperator<Block[]> operator = VanillaBlockEntityTypeModify.IN_IDENTIFIER_BLOCK_ITEM_SETTINGS_MODIFY.getOrDefault(key.identifier(), null);
+            return operator != null ? operator.apply(blocks) : null;
+        }));
+    }
+
+    @Unique
+    private static void registerCookingModifications() {
+        VanillaRegisterModify.COOKING.register(((context, key, i) -> {
+            Function<BootstrapContext<ContextIntProvider>,  ContextIntProvider> operator = VanillaCookingModify.IN_KEY_COOKING_MODIFY.getOrDefault(key, null);
+            return operator != null ? operator.apply(context) : null;
+        }));
     }
 }

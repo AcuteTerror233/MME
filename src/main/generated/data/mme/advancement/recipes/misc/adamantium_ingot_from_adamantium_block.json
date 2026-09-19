@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:adamantium_ingot_from_adamantium_block"
+        "recipes": "mme:adamantium_ingot_from_adamantium_block"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

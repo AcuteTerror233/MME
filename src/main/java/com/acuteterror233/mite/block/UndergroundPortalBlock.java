@@ -4,7 +4,6 @@ import com.acuteterror233.mite.MME;
 import com.acuteterror233.mite.world.gen.dimension.MMEDimensionTypeRegistrar;
 import com.acuteterror233.mite.world.poi.PortalHelper;
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.Registries;
@@ -27,7 +26,6 @@ import net.minecraft.world.level.dimension.DimensionType;
 import net.minecraft.world.level.portal.PortalShape;
 import net.minecraft.world.level.portal.TeleportTransition;
 import net.minecraft.world.phys.Vec3;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jspecify.annotations.NonNull;
 import org.slf4j.Logger;
@@ -39,7 +37,6 @@ import java.util.Optional;
  * Generates a corresponding nether portal above the nether bedrock layer, teleporting entities to the MME underground dimension.
  */
 public class UndergroundPortalBlock extends AbstractPortalBlock {
-    public static final MapCodec<UndergroundPortalBlock> CODEC = simpleCodec(UndergroundPortalBlock::new);
     public static final EnumProperty<Direction.Axis> AXIS = BlockStateProperties.HORIZONTAL_AXIS;
     private static final Logger LOGGER = LogUtils.getLogger();
 
@@ -131,11 +128,5 @@ public class UndergroundPortalBlock extends AbstractPortalBlock {
         Vec3 vec3d2 = PortalShape.findCollisionFreePosition(vec3d, world, entity, entityDimensions);
         return new TeleportTransition(world, vec3d2, Vec3.ZERO, i, 0.0F, Relative.union(Relative.DELTA, Relative.ROTATION), postDimensionTransition);
     }
-
-    @Override
-    public @NotNull MapCodec<UndergroundPortalBlock> codec() {
-        return CODEC;
-    }
-
 
 }

@@ -1,12 +1,19 @@
-// 26.2	-999999999-01-01T00:00:00	Might Makes Everything/Entity Loot Tables
-5eea50ce5bd30ec393f69d7fe2146db00bc2cdec data/mme/loot_table/entities/demon_spider.json
+// 26.3	-999999999-01-01T00:00:00	Might Makes Everything/Entity Loot Tables
+79e4a7bd964083baa0352dd92068f1cbfca8ddc9 data/minecraft/loot_table/entities/chicken.json
+2422a56e73b4c81d5dd931f32b68c7f08527b940 data/minecraft/loot_table/entities/cow.json
+c3b219e1131d0072424c8a4bf4bee3edb30d4a7a data/minecraft/loot_table/entities/hoglin.json
+38682e4d41cca9df1a1e4eb92d102c516ae2776e data/minecraft/loot_table/entities/mooshroom.json
+ae9ab0ad3ec737b7ac98096537929bcbde38a88f data/minecraft/loot_table/entities/pig.json
+7e0496d78969400b3654d7dd93fc954bbdd67018 data/minecraft/loot_table/entities/rabbit.json
+72f015cdd7198eef5f5f27b3dbea8658e493dbf2 data/minecraft/loot_table/entities/sheep.json
+339726f99e0b035f2ca5045ab40d335f4e513076 data/mme/loot_table/entities/demon_spider.json
 ef017fe8afbc1e704a7cfb4818ece7ba018f9c91 data/mme/loot_table/entities/fire_elemental.json
-19ab6af6adb02ca48991a4a6c45e39ebf1d45f03 data/mme/loot_table/entities/ghoul.json
+b001280f0d5cc1221dfcf7cfae04c0974594b8af data/mme/loot_table/entities/ghoul.json
 ef017fe8afbc1e704a7cfb4818ece7ba018f9c91 data/mme/loot_table/entities/giant_vampire_bat.json
-be593d2ae5dbfc5ae9e80a0a8c82a3042699991e data/mme/loot_table/entities/infernal_creeper.json
-19ab6af6adb02ca48991a4a6c45e39ebf1d45f03 data/mme/loot_table/entities/invisible_stalker.json
+44ca2031d6de3d43dfa04e5a93b07086fd9ab83c data/mme/loot_table/entities/infernal_creeper.json
+b001280f0d5cc1221dfcf7cfae04c0974594b8af data/mme/loot_table/entities/invisible_stalker.json
 ef017fe8afbc1e704a7cfb4818ece7ba018f9c91 data/mme/loot_table/entities/nightwing.json
-5eea50ce5bd30ec393f69d7fe2146db00bc2cdec data/mme/loot_table/entities/phase_spider.json
-19ab6af6adb02ca48991a4a6c45e39ebf1d45f03 data/mme/loot_table/entities/shadow.json
+339726f99e0b035f2ca5045ab40d335f4e513076 data/mme/loot_table/entities/phase_spider.json
+b001280f0d5cc1221dfcf7cfae04c0974594b8af data/mme/loot_table/entities/shadow.json
 ef017fe8afbc1e704a7cfb4818ece7ba018f9c91 data/mme/loot_table/entities/vampire_bat.json
-19ab6af6adb02ca48991a4a6c45e39ebf1d45f03 data/mme/loot_table/entities/wight.json
+b001280f0d5cc1221dfcf7cfae04c0974594b8af data/mme/loot_table/entities/wight.json

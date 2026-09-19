@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:mithril_hatchet"
+        "recipes": "mme:mithril_hatchet"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

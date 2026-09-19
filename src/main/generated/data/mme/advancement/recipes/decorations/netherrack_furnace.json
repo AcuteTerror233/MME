@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:netherrack_furnace"
+        "recipes": "mme:netherrack_furnace"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

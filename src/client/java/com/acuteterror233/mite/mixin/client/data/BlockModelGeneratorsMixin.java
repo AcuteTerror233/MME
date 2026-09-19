@@ -52,7 +52,7 @@ public abstract class BlockModelGeneratorsMixin implements BlockModelGeneratorsE
 
     @Shadow @Final public Consumer<BlockModelDefinitionGenerator> blockStateOutput;
     @Shadow @Final public BiConsumer<Identifier, ModelInstance> modelOutput;
-    @Shadow @Final private static PropertyDispatch<VariantMutator> ROTATION_HORIZONTAL_FACING_ALT;
+    @Shadow @Final public static PropertyDispatch<VariantMutator> ROTATION_HORIZONTAL_FACING_ALT;
 
     // Four textures: first is the base material, registry name of intact anvil; the next three are anvil tops, registry id + top
     @Unique
@@ -120,22 +120,26 @@ public abstract class BlockModelGeneratorsMixin implements BlockModelGeneratorsE
     @Override
     public void MME$registerFarmland() {
         TextureMapping farmland = new TextureMapping()
-                .put(TextureSlot.DIRT, TextureMapping.getBlockTexture(Blocks.DIRT))
+                .put(TextureSlot.SIDE, TextureMapping.getBlockTexture(Blocks.DIRT))
+                .put(TextureSlot.BOTTOM, TextureMapping.getBlockTexture(Blocks.DIRT))
                 .put(TextureSlot.TOP, TextureMapping.getBlockTexture(Blocks.FARMLAND));
         TextureMapping farmlandMoist = new TextureMapping()
-                .put(TextureSlot.DIRT, TextureMapping.getBlockTexture(Blocks.DIRT))
+                .put(TextureSlot.SIDE, TextureMapping.getBlockTexture(Blocks.DIRT))
+                .put(TextureSlot.BOTTOM, TextureMapping.getBlockTexture(Blocks.DIRT))
                 .put(TextureSlot.TOP, TextureMapping.getBlockTexture(Blocks.FARMLAND, "_moist"));
         TextureMapping farmlandManure = new TextureMapping()
-                .put(TextureSlot.DIRT, TextureMapping.getBlockTexture(Blocks.DIRT))
+                .put(TextureSlot.SIDE, TextureMapping.getBlockTexture(Blocks.DIRT))
+                .put(TextureSlot.BOTTOM, TextureMapping.getBlockTexture(Blocks.DIRT))
                 .put(TextureSlot.TOP, new Material(Identifier.fromNamespaceAndPath(MME.MOD_ID, "block/farmland_manure")));
         TextureMapping farmlandManureMoist = new TextureMapping()
-                .put(TextureSlot.DIRT, TextureMapping.getBlockTexture(Blocks.DIRT))
+                .put(TextureSlot.SIDE, TextureMapping.getBlockTexture(Blocks.DIRT))
+                .put(TextureSlot.BOTTOM, TextureMapping.getBlockTexture(Blocks.DIRT))
                 .put(TextureSlot.TOP, new Material(Identifier.fromNamespaceAndPath(MME.MOD_ID, "block/farmland_moist_manure")));
 
-        MultiVariant multiVariantFarmlandManureMoist = plainVariant(ModelTemplates.FARMLAND.create(Identifier.fromNamespaceAndPath(MME.MOD_ID, "block/farmland_manure_moist"), farmlandManureMoist, this.modelOutput));
-        MultiVariant multiVariantFarmlandManure = plainVariant(ModelTemplates.FARMLAND.create(Identifier.fromNamespaceAndPath(MME.MOD_ID, "block/farmland_manure"), farmlandManure, this.modelOutput));
-        MultiVariant multiVariantFarmlandMoist = plainVariant(ModelTemplates.FARMLAND.create(TextureMapping.getBlockTexture(Blocks.FARMLAND, "_moist").sprite(), farmlandMoist, this.modelOutput));
-        MultiVariant multiVariantFarmland = plainVariant(ModelTemplates.FARMLAND.create(TextureMapping.getBlockTexture(Blocks.FARMLAND).sprite(), farmland, this.modelOutput));
+        MultiVariant multiVariantFarmlandManureMoist = plainVariant(ModelTemplates.CUBE_BOTTOM_TOP_INDENTED.create(Identifier.fromNamespaceAndPath(MME.MOD_ID, "block/farmland_manure_moist"), farmlandManureMoist, this.modelOutput));
+        MultiVariant multiVariantFarmlandManure = plainVariant(ModelTemplates.CUBE_BOTTOM_TOP_INDENTED.create(Identifier.fromNamespaceAndPath(MME.MOD_ID, "block/farmland_manure"), farmlandManure, this.modelOutput));
+        MultiVariant multiVariantFarmlandMoist = plainVariant(ModelTemplates.CUBE_BOTTOM_TOP_INDENTED.create(TextureMapping.getBlockTexture(Blocks.FARMLAND, "_moist").sprite(), farmlandMoist, this.modelOutput));
+        MultiVariant multiVariantFarmland = plainVariant(ModelTemplates.CUBE_BOTTOM_TOP_INDENTED.create(TextureMapping.getBlockTexture(Blocks.FARMLAND).sprite(), farmland, this.modelOutput));
 
         this.blockStateOutput
                 .accept(

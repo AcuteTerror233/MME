@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:adamantium_battle_axe"
+        "recipes": "mme:adamantium_battle_axe"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

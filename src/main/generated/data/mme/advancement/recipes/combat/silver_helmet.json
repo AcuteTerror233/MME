@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:silver_helmet"
+        "recipes": "mme:silver_helmet"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

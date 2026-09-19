@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:netherite_shears_smithing"
+        "recipes": "mme:netherite_shears_smithing"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

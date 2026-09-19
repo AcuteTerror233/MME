@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:cereal"
+        "recipes": "mme:cereal"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

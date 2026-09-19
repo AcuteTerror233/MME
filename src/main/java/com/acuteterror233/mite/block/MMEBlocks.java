@@ -5,6 +5,7 @@ import com.google.common.collect.ImmutableList;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.FurnaceBlock;
 import net.minecraft.world.level.block.MagmaBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 
@@ -55,19 +56,19 @@ public class MMEBlocks {
     );
 
     public static final Block CLAY_FURNACE = register(
-            MMEBlockItemIds.CLAY_FURNACE, settings -> new GradeFurnaceBlock(settings, 1), BlockBehaviour.Properties.ofFullCopy(Blocks.FURNACE)
+            MMEBlockItemIds.CLAY_FURNACE, FurnaceBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.FURNACE)
     );
     public static final Block HARDENED_CLAY_FURNACE = register(
-            MMEBlockItemIds.HARDENED_CLAY_FURNACE, settings -> new GradeFurnaceBlock(settings, 1), BlockBehaviour.Properties.ofFullCopy(Blocks.FURNACE)
+            MMEBlockItemIds.HARDENED_CLAY_FURNACE, FurnaceBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.FURNACE)
     );
     public static final Block NETHERRACK_FURNACE = register(
-            MMEBlockItemIds.NETHERRACK_FURNACE, settings -> new GradeFurnaceBlock(settings, 4), BlockBehaviour.Properties.ofFullCopy(Blocks.FURNACE)
+            MMEBlockItemIds.NETHERRACK_FURNACE, FurnaceBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.FURNACE)
     );
     public static final Block OBSIDIAN_FURNACE = register(
-            MMEBlockItemIds.OBSIDIAN_FURNACE, settings -> new GradeFurnaceBlock(settings, 3), BlockBehaviour.Properties.ofFullCopy(Blocks.FURNACE)
+            MMEBlockItemIds.OBSIDIAN_FURNACE, FurnaceBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.FURNACE)
     );
     public static final Block SANDSTONE_FURNACE = register(
-            MMEBlockItemIds.SANDSTONE_FURNACE, settings -> new GradeFurnaceBlock(settings, 1), BlockBehaviour.Properties.ofFullCopy(Blocks.FURNACE)
+            MMEBlockItemIds.SANDSTONE_FURNACE, FurnaceBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.FURNACE)
     );
 
     public static final Block MANTLE = register(                // Mantle

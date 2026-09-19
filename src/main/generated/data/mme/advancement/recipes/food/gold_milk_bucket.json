@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:gold_milk_bucket"
+        "recipes": "mme:gold_milk_bucket"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

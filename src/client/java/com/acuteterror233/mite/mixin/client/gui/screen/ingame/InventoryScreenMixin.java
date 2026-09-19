@@ -36,7 +36,7 @@ public abstract class InventoryScreenMixin extends AbstractRecipeBookScreen<Inve
     protected void renderBg(GuiGraphicsExtractor context, int mouseX, int mouseY, float deltaTicks, CallbackInfo ci) {
         int x = this.leftPos;
         int y = this.topPos;
-        double v = ((InventoryMenuExtension)this.menu).MME$GetCraftingTime();
+        double v = this.menu.MME$GetCraftingTime();
         int l = (int) (v * 18);
         context.blitSprite(RenderPipelines.GUI_TEXTURED, CRAFTING_PROGRESS_TEXTURE, 18, 15, 0, 0, x + 135, y + 28, l, 15);
     }

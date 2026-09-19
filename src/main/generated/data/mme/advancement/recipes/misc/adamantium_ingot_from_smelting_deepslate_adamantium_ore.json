@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:adamantium_ingot_from_smelting_deepslate_adamantium_ore"
+        "recipes": "mme:adamantium_ingot_from_smelting_deepslate_adamantium_ore"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

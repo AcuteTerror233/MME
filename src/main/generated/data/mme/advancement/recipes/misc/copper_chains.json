@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:copper_chains"
+        "recipes": "mme:copper_chains"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

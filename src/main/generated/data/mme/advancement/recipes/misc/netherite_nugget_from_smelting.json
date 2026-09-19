@@ -163,7 +163,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:netherite_nugget_from_smelting"
+        "recipes": "mme:netherite_nugget_from_smelting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

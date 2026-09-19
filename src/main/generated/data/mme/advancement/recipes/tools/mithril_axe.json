@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:mithril_axe"
+        "recipes": "mme:mithril_axe"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

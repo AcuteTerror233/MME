@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:golden_chains"
+        "recipes": "mme:golden_chains"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

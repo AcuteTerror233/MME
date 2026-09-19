@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:obsidian_hatchet"
+        "recipes": "mme:obsidian_hatchet"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

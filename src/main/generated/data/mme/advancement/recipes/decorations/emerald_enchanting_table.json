@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:emerald_enchanting_table"
+        "recipes": "mme:emerald_enchanting_table"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:silver_mattock"
+        "recipes": "mme:silver_mattock"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

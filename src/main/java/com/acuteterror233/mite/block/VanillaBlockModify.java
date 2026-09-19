@@ -31,16 +31,6 @@ public final class VanillaBlockModify {
         result.put(Identifier.withDefaultNamespace("chipped_anvil"), settings -> new MMEAnvilBlock(settings, MMEItemTags.IRON_NOT_ALLOWED_MATERIAL, Blocks.DAMAGED_ANVIL));
         result.put(Identifier.withDefaultNamespace("damaged_anvil"), settings -> new MMEAnvilBlock(settings, MMEItemTags.IRON_NOT_ALLOWED_MATERIAL, Blocks.AIR));
         result.put(Identifier.withDefaultNamespace("crafting_table"), Block::new);
-        result.put(Identifier.withDefaultNamespace("furnace"), settings -> new GradeFurnaceBlock(
-                BlockBehaviour.Properties.of()
-                        .mapColor(MapColor.STONE)
-                        .instrument(NoteBlockInstrument.BASEDRUM)
-                        .strength(0.3F)
-                        .lightLevel(Blocks.litBlockEmission(13))
-                        .setId(ResourceKey.create(Registries.BLOCK, Identifier.withDefaultNamespace("furnace"))), 2)
-        );
-        result.put(Identifier.withDefaultNamespace("blast_furnace"), settings -> new GradeFurnaceBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.FURNACE).setId(ResourceKey.create(Registries.BLOCK, Identifier.withDefaultNamespace("blast_furnace"))), 4));
-        result.put(Identifier.withDefaultNamespace("smoker"), settings -> new GradeFurnaceBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.FURNACE).setId(ResourceKey.create(Registries.BLOCK, Identifier.withDefaultNamespace("smoker"))), 1));
         return result;
     } 
     private static Map<Identifier, UnaryOperator<BlockBehaviour.Properties>> createBlockSettingsModifyMap() {
@@ -49,7 +39,7 @@ public final class VanillaBlockModify {
                 .mapColor(MapColor.METAL)
                 .strength(0.3F, 1200.0F)
                 .sound(SoundType.ANVIL)
-                .pushReaction(PushReaction.BLOCK));
+                .pushReaction(PushReaction.IMMOVEABLE));
         result.put(Identifier.withDefaultNamespace("chipped_anvil"),settings -> BlockBehaviour.Properties.ofFullCopy(Blocks.ANVIL));
         result.put(Identifier.withDefaultNamespace("damaged_anvil"),settings -> BlockBehaviour.Properties.ofFullCopy(Blocks.ANVIL));
         result.put(Identifier.withDefaultNamespace("crafting_table"), settings -> settings.strength(0.3F));
@@ -57,7 +47,7 @@ public final class VanillaBlockModify {
         result.put(Identifier.withDefaultNamespace("enchanting_table"), properties -> BlockBehaviour.Properties.of()
                 .mapColor(MapColor.COLOR_RED)
                 .instrument(NoteBlockInstrument.BASEDRUM)
-                .lightLevel(blockStatex -> 7)
+                .lightLevel(_ -> 7)
                 .strength(0.3F, 1200.0F));
         result.put(Identifier.withDefaultNamespace("chest"), properties -> properties.strength(0.3F));
         result.put(Identifier.withDefaultNamespace("short_grass"), properties -> properties.strength(0.01F));
@@ -81,6 +71,15 @@ public final class VanillaBlockModify {
         result.put(Identifier.withDefaultNamespace("melon_stem"), properties -> properties.strength(0.05F));
         result.put(Identifier.withDefaultNamespace("pumpkin_stem"), properties -> properties.strength(0.05F));
         result.put(Identifier.withDefaultNamespace("nether_wart"), properties -> properties.strength(0.05F));
+
+        result.put(Identifier.withDefaultNamespace("furnace"), properties ->
+                BlockBehaviour.Properties.of()
+                        .mapColor(MapColor.STONE)
+                        .instrument(NoteBlockInstrument.BASEDRUM)
+                        .strength(0.3F)
+                        .lightLevel(Blocks.litBlockEmission(13))
+                        .setId(ResourceKey.create(Registries.BLOCK, Identifier.withDefaultNamespace("furnace")))
+        );
         return result;
     }
      

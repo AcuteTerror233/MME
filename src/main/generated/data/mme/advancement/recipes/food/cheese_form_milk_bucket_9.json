@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:cheese_form_milk_bucket_9"
+        "recipes": "mme:cheese_form_milk_bucket_9"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

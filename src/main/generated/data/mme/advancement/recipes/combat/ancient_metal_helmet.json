@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:ancient_metal_helmet"
+        "recipes": "mme:ancient_metal_helmet"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

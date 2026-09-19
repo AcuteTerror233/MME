@@ -1,0 +1,32 @@
+{
+  "parent": "mme:story/flint",
+  "criteria": {
+    "get_flint_hatchet": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mme:flint_hatchet"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "mme.advancements.story.flint_hatchet.description"
+    },
+    "icon": {
+      "id": "mme:flint_hatchet"
+    },
+    "title": {
+      "translate": "mme.advancements.story.flint_hatchet.title"
+    }
+  },
+  "requirements": [
+    [
+      "get_flint_hatchet"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

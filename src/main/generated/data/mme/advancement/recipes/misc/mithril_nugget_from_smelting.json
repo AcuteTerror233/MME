@@ -213,7 +213,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:mithril_nugget_from_smelting"
+        "recipes": "mme:mithril_nugget_from_smelting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

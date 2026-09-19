@@ -1,11 +1,8 @@
 package com.acuteterror233.mite;
 
 import com.acuteterror233.mite.block.MMEBlocks;
-import com.acuteterror233.mite.event.ServerRecipeModify;
 import com.acuteterror233.mite.interfaces.FoodDataExtension;
 import com.acuteterror233.mite.item.MMEItems;
-import com.acuteterror233.mite.registry.LootTableReplace;
-import com.acuteterror233.mite.registry.tag.MMEItemTags;
 import com.acuteterror233.mite.world.biome.BiomeModification;
 import com.acuteterror233.mite.world.effect.MMEMobEffects;
 import com.acuteterror233.mite.world.entity.MMEEntityTypes;
@@ -18,21 +15,22 @@ import net.fabricmc.fabric.api.biome.v1.ModificationPhase;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.fabricmc.fabric.api.entity.event.v1.EntitySleepEvents;
 import net.fabricmc.fabric.api.object.builder.v1.world.poi.PoiHelper;
-import net.fabricmc.fabric.api.registry.FuelValueEvents;
 import net.minecraft.commands.Commands;
 import net.minecraft.data.worldgen.placement.OrePlacements;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.FireBlock;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
+import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProvider;
+import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProviders;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -56,7 +54,6 @@ public class MME implements ModInitializer {
         MMEEntityTypes.init();
 
         // === Data & world gen ===
-        LootTableReplace.init();
         BiomeModification.init();
 
         // === Point of Interest registration ===
@@ -69,12 +66,6 @@ public class MME implements ModInitializer {
         inOverworldRemovals(OrePlacements.ORE_DIAMOND_LARGE);
         inOverworldRemovals(OrePlacements.ORE_DIAMOND_MEDIUM);
 
-        // === Vanilla recipe removal ===
-        registerRecipeFilter();
-
-        // === Custom fuel values ===
-        registerFuelValues();
-
         // === Player sleep behavior ===
         registerSleepEvents();
 
@@ -84,28 +75,6 @@ public class MME implements ModInitializer {
 
         // === Custom commands ===
         registerCommands();
-    }
-
-    /**
-     * Filters out vanilla recipes that are replaced by MME's grade-based crafting system.
-     */
-    private static void registerRecipeFilter() {
-        ServerRecipeModify.EVENT.register(list -> list.removeIf(recipeEntry -> MME.FILTER_RECIPE_SET.contains(recipeEntry.id().identifier())));
-    }
-
-    /**
-     * Registers custom fuel burn times for MME items and vanilla blocks.
-     */
-    private static void registerFuelValues() {
-        FuelValueEvents.BUILD.register((builder, context) -> {
-            builder.add(MMEItems.WOODEN_CLUB, context.baseSmeltTime());
-            builder.add(MMEItems.WOODEN_CUDGEL, context.baseSmeltTime());
-            builder.add(MMEItemTags.LAVA_BUCKET,  context.baseSmeltTime() * 16);
-            builder.add(Blocks.COAL_BLOCK, context.baseSmeltTime() * 72);
-            builder.add(Blocks.DRIED_KELP_BLOCK, context.baseSmeltTime() * 8);
-            builder.add(Items.TORCH, context.baseSmeltTime() * 4);
-            builder.add(Items.SOUL_TORCH, context.baseSmeltTime() * 6);
-        });
     }
 
     /**
@@ -196,4 +165,11 @@ public class MME implements ModInitializer {
             Identifier.withDefaultNamespace("bundle")
     );
 
+    //default=1
+    public static Map<ResourceKey<ContextIntProvider>, Integer> CORRESPONDING_COMBUSTION_GRADE = Map.ofEntries(
+            Map.entry(ContextIntProviders.COOKING_TIME_COAL, 2),
+            Map.entry(ContextIntProviders.COOKING_TIME_BLAZE_ROD, 4),
+            Map.entry(ContextIntProviders.COOKING_TIME_COAL_BLOCK, 2),
+            Map.entry(ContextIntProviders.COOKING_TIME_LAVA_BUCKET, 3)
+    );
 }

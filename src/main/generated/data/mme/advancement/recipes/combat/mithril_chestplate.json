@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:mithril_chestplate"
+        "recipes": "mme:mithril_chestplate"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

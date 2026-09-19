@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:block.mme.copper_anvil_of_block.minecraft.exposed_copper"
+        "recipes": "mme:block.mme.copper_anvil_of_block.minecraft.exposed_copper"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

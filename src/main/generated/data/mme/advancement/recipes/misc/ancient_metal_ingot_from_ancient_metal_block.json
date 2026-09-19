@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:ancient_metal_ingot_from_ancient_metal_block"
+        "recipes": "mme:ancient_metal_ingot_from_ancient_metal_block"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

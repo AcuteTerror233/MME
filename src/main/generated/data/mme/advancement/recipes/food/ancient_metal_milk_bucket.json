@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:ancient_metal_milk_bucket"
+        "recipes": "mme:ancient_metal_milk_bucket"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

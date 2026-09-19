@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:golden_chainmail_leggings"
+        "recipes": "mme:golden_chainmail_leggings"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

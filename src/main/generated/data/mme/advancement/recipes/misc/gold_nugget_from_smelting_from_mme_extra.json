@@ -113,7 +113,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:gold_nugget_from_smelting_from_mme_extra"
+        "recipes": "mme:gold_nugget_from_smelting_from_mme_extra"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

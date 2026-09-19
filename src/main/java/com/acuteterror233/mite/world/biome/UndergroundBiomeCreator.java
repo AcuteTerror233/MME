@@ -7,14 +7,15 @@ import net.minecraft.data.worldgen.BiomeDefaultFeatures;
 import net.minecraft.data.worldgen.Carvers;
 import net.minecraft.data.worldgen.biome.OverworldBiomes;
 import net.minecraft.data.worldgen.placement.CavePlacements;
+import net.minecraft.util.ARGB;
+import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.attribute.EnvironmentAttributes;
-import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.BiomeGenerationSettings;
 import net.minecraft.world.level.biome.BiomeSpecialEffects;
 import net.minecraft.world.level.biome.MobSpawnSettings;
 import net.minecraft.world.level.levelgen.GenerationStep;
-import net.minecraft.world.level.levelgen.carver.ConfiguredWorldCarver;
+import net.minecraft.world.level.levelgen.carver.WorldCarver;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 
 /**
@@ -22,7 +23,7 @@ import net.minecraft.world.level.levelgen.placement.PlacedFeature;
  * Build parameters for each underground biome: weather, music, generation features, entity spawn weights, etc.
  */
 public class UndergroundBiomeCreator {
-    public static Biome createUnderground(HolderGetter<PlacedFeature> featureLookup, HolderGetter<ConfiguredWorldCarver<?>> carverLookup){
+    public static Biome createUnderground(HolderGetter<PlacedFeature> featureLookup, HolderGetter<WorldCarver> carverLookup){
         BiomeGenerationSettings.Builder lookupBackedBuilder = new BiomeGenerationSettings.Builder(featureLookup, carverLookup);
         MobSpawnSettings.Builder builder = new MobSpawnSettings.Builder();
         addDefaultOres(lookupBackedBuilder);
@@ -37,7 +38,7 @@ public class UndergroundBiomeCreator {
                 .hasPrecipitation(false)
                 .temperature(0.4F)
                 .downfall(0.8F)
-                .setAttribute(EnvironmentAttributes.SKY_COLOR, OverworldBiomes.calculateSkyColor(0.4F))
+                .setAttribute(EnvironmentAttributes.SKY_COLOR, ARGB.vector3fFromRGB24(OverworldBiomes.calculateSkyColor(0.4F)))
                 .specialEffects(new BiomeSpecialEffects.Builder().waterColor(4159204).build())
                 .mobSpawnSettings(builder.build())
                 .generationSettings(lookupBackedBuilder
@@ -47,7 +48,7 @@ public class UndergroundBiomeCreator {
                         .build())
                 .build();
     }
-    public static Biome createDripstoneCaves(HolderGetter<PlacedFeature> featureLookup, HolderGetter<ConfiguredWorldCarver<?>> carverLookup){
+    public static Biome createDripstoneCaves(HolderGetter<PlacedFeature> featureLookup, HolderGetter<WorldCarver> carverLookup){
         BiomeGenerationSettings.Builder lookupBackedBuilder = new BiomeGenerationSettings.Builder(featureLookup, carverLookup);
         MobSpawnSettings.Builder builder = new MobSpawnSettings.Builder();
         addDefaultOres(lookupBackedBuilder);
@@ -63,7 +64,7 @@ public class UndergroundBiomeCreator {
                 .hasPrecipitation(false)
                 .temperature(0.8F)
                 .downfall(0.4F)
-                .setAttribute(EnvironmentAttributes.SKY_COLOR, OverworldBiomes.calculateSkyColor(0.8F))
+                .setAttribute(EnvironmentAttributes.SKY_COLOR, ARGB.vector3fFromRGB24(OverworldBiomes.calculateSkyColor(0.8F)))
                 .specialEffects(new BiomeSpecialEffects.Builder().waterColor(4159204).build())
                 .mobSpawnSettings(builder.build())
                 .generationSettings(lookupBackedBuilder
@@ -73,7 +74,7 @@ public class UndergroundBiomeCreator {
                         .build())
                 .build();
     }
-    public static Biome createLushCaves(HolderGetter<PlacedFeature> featureLookup, HolderGetter<ConfiguredWorldCarver<?>> carverLookup){
+    public static Biome createLushCaves(HolderGetter<PlacedFeature> featureLookup, HolderGetter<WorldCarver> carverLookup){
         BiomeGenerationSettings.Builder lookupBackedBuilder = new BiomeGenerationSettings.Builder(featureLookup, carverLookup);
         MobSpawnSettings.Builder builder = new MobSpawnSettings.Builder();
         addDefaultOres(lookupBackedBuilder);
@@ -90,7 +91,7 @@ public class UndergroundBiomeCreator {
                 .hasPrecipitation(false)
                 .temperature(0.5F)
                 .downfall(0.5F)
-                .setAttribute(EnvironmentAttributes.SKY_COLOR, OverworldBiomes.calculateSkyColor(0.5F))
+                .setAttribute(EnvironmentAttributes.SKY_COLOR, ARGB.vector3fFromRGB24(OverworldBiomes.calculateSkyColor(0.5F)))
                 .specialEffects(new BiomeSpecialEffects.Builder().waterColor(4159204).build())
                 .mobSpawnSettings(builder.build())
                 .generationSettings(lookupBackedBuilder
@@ -100,7 +101,7 @@ public class UndergroundBiomeCreator {
                         .build())
                 .build();
     }
-    public static Biome createDeepDark(HolderGetter<PlacedFeature> featureLookup, HolderGetter<ConfiguredWorldCarver<?>> carverLookup){
+    public static Biome createDeepDark(HolderGetter<PlacedFeature> featureLookup, HolderGetter<WorldCarver> carverLookup){
         BiomeGenerationSettings.Builder lookupBackedBuilder = new BiomeGenerationSettings.Builder(featureLookup, carverLookup);
         MobSpawnSettings.Builder builder = new MobSpawnSettings.Builder();
         addDefaultOres(lookupBackedBuilder);
@@ -115,7 +116,7 @@ public class UndergroundBiomeCreator {
                 .hasPrecipitation(false)
                 .temperature(0.8F)
                 .downfall(0.4F)
-                .setAttribute(EnvironmentAttributes.SKY_COLOR, OverworldBiomes.calculateSkyColor(0.8F))
+                .setAttribute(EnvironmentAttributes.SKY_COLOR, ARGB.vector3fFromRGB24(OverworldBiomes.calculateSkyColor(0.8F)))
                 .specialEffects(new BiomeSpecialEffects.Builder().waterColor(4159204).build())
                 .mobSpawnSettings(builder.build())
                 .generationSettings(lookupBackedBuilder
@@ -151,15 +152,15 @@ public class UndergroundBiomeCreator {
     }
 
     public static void addMonsters(MobSpawnSettings.Builder builder) {
-        builder.addSpawn(MobCategory.MONSTER, 10, new MobSpawnSettings.SpawnerData(MMEEntityTypes.GHOUL, 4, 4));
-        builder.addSpawn(MobCategory.MONSTER, 10, new MobSpawnSettings.SpawnerData(MMEEntityTypes.SHADOW, 1, 3));
-        builder.addSpawn(MobCategory.MONSTER, 10, new MobSpawnSettings.SpawnerData(MMEEntityTypes.WIGHT, 1, 2));
-        builder.addSpawn(MobCategory.MONSTER, 5, new MobSpawnSettings.SpawnerData(MMEEntityTypes.INVISIBLE_STALKER, 1, 3));
-        builder.addSpawn(MobCategory.MONSTER, 6, new MobSpawnSettings.SpawnerData(MMEEntityTypes.DEMON_SPIDER, 1, 3));
-        builder.addSpawn(MobCategory.MONSTER, 9, new MobSpawnSettings.SpawnerData(MMEEntityTypes.PHASE_SPIDER, 2, 4));
-        builder.addSpawn(MobCategory.MONSTER, 8, new MobSpawnSettings.SpawnerData(MMEEntityTypes.INFERNAL_CREEPER, 1, 2));
-        builder.addSpawn(MobCategory.MONSTER, 5, new MobSpawnSettings.SpawnerData(MMEEntityTypes.VAMPIRE_BAT, 2, 5));
-        builder.addSpawn(MobCategory.MONSTER, 3, new MobSpawnSettings.SpawnerData(MMEEntityTypes.NIGHTWING, 1, 2));
-        builder.addSpawn(MobCategory.MONSTER, 2, new MobSpawnSettings.SpawnerData(MMEEntityTypes.GIANT_VAMPIRE_BAT, 1, 1));
+        builder.addSpawn(MMEEntityTypes.GHOUL, 10, UniformInt.of(4, 4));
+        builder.addSpawn(MMEEntityTypes.SHADOW, 10, UniformInt.of(1, 3));
+        builder.addSpawn(MMEEntityTypes.WIGHT, 10, UniformInt.of(1, 2));
+        builder.addSpawn(MMEEntityTypes.INVISIBLE_STALKER, 5, UniformInt.of(1, 3));
+        builder.addSpawn(MMEEntityTypes.DEMON_SPIDER, 6, UniformInt.of(1, 3));
+        builder.addSpawn(MMEEntityTypes.PHASE_SPIDER, 9, UniformInt.of(2, 4));
+        builder.addSpawn(MMEEntityTypes.INFERNAL_CREEPER, 8, UniformInt.of(1, 2));
+        builder.addSpawn(MMEEntityTypes.VAMPIRE_BAT, 5, UniformInt.of(2, 5));
+        builder.addSpawn(MMEEntityTypes.NIGHTWING, 3, UniformInt.of(1, 2));
+        builder.addSpawn(MMEEntityTypes.GIANT_VAMPIRE_BAT, 2, UniformInt.of(1, 1));
     }
 }

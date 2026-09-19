@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:beef_stew"
+        "recipes": "mme:beef_stew"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

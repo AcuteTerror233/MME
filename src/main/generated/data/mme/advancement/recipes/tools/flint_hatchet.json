@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:flint_hatchet"
+        "recipes": "mme:flint_hatchet"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

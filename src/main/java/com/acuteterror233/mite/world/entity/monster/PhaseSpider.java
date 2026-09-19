@@ -1,12 +1,12 @@
 package com.acuteterror233.mite.world.entity.monster;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.damagesource.DamageSource;
@@ -180,26 +180,17 @@ public class PhaseSpider extends Spider {
 
     private boolean teleport(double x, double y, double z) {
         BlockPos.MutableBlockPos mutableBlockPos = new BlockPos.MutableBlockPos(x, y, z);
-
-        while (mutableBlockPos.getY() > this.level().getMinY() && !this.level().getBlockState(mutableBlockPos).blocksMotion()) {
-            mutableBlockPos.move(Direction.DOWN);
-        }
-
         BlockState blockState = this.level().getBlockState(mutableBlockPos);
-        if (blockState.blocksMotion()) {
-            Vec3 vec3 = this.position();
-            boolean bl3 = this.randomTeleport(x, y, z, true);
-            if (bl3) {
-                this.level().gameEvent(GameEvent.TELEPORT, vec3, GameEvent.Context.of(this));
-                if (!this.isSilent()) {
-                    this.level().playSound(null, this.xo, this.yo, this.zo, SoundEvents.ENDERMAN_TELEPORT, this.getSoundSource(), 1.0F, 1.0F);
-                    this.playSound(SoundEvents.ENDERMAN_TELEPORT, 1.0F, 1.0F);
-                }
+        Vec3 vec3 = this.position();
+        boolean bl3 = this.randomTeleport(x, y, z, true, BlockTags.ENDERMAN_DOES_NOT_TELEPORT_TO);
+        if (bl3) {
+            this.level().gameEvent(GameEvent.TELEPORT, vec3, GameEvent.Context.of(this));
+            if (!this.isSilent()) {
+                this.level().playSound(null, this.xo, this.yo, this.zo, SoundEvents.ENDERMAN_TELEPORT, this.getSoundSource(), 1.0F, 1.0F);
+                this.playSound(SoundEvents.ENDERMAN_TELEPORT, 1.0F, 1.0F);
             }
-            return bl3;
-        } else {
-            return false;
         }
+        return bl3;
     }
 
     static class PhaseSpiderAttackGoal extends MeleeAttackGoal {

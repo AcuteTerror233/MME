@@ -18,6 +18,8 @@ import java.util.function.UnaryOperator;
 public class MMEDataComponents {
     public static final DataComponentType<Integer> CRAFTING_TIME = register("crafting_time", builder -> builder.persistent(ExtraCodecs.NON_NEGATIVE_INT).networkSynchronized(ByteBufCodecs.VAR_INT));
     public static final DataComponentType<Integer> REQUIRED_COMBUSTION_GRADE = register("required_combustion_grade", builder -> builder.persistent(ExtraCodecs.NON_NEGATIVE_INT).networkSynchronized(ByteBufCodecs.VAR_INT));
+    public static final DataComponentType<Integer> MAX_COMBUSTION_GRADE = register("max_combustion_grade", builder -> builder.persistent(ExtraCodecs.NON_NEGATIVE_INT).networkSynchronized(ByteBufCodecs.VAR_INT));
+    public static final DataComponentType<Integer> COMBUSTION_GRADE = register("combustion_grade", builder -> builder.persistent(ExtraCodecs.NON_NEGATIVE_INT).networkSynchronized(ByteBufCodecs.VAR_INT));
     public static final DataComponentType<FoodNutrition> FOOD_NUTRITION = register("food_nutrition", builder -> builder.persistent(FoodNutrition.DIRECT_CODEC).networkSynchronized(FoodNutrition.DIRECT_STREAM_CODEC));
 
     private static <T> DataComponentType<T> register(String id, UnaryOperator<DataComponentType.Builder<T>> builderOperator) {

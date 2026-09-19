@@ -46,9 +46,9 @@ fabricApi {
 	configureTests {
 		createSourceSet = true
 		modId = "mme-gametest"
-		enableGameTests = true            // 服务端 GameTest（随 build 自动跑）
-		enableClientGameTests = true      // 客户端 GameTest（runClientGameTest 任务）
-		eula = true                       // 同意 Minecraft EULA
+		enableGameTests = true
+		enableClientGameTests = true
+		eula = true
 	}
 }
 
@@ -67,7 +67,7 @@ test {
 }
 
 processResources {
-	inputs.property "version", project.version
+	inputs.property "version",  provider { project.version }
 	filesMatching("fabric.mod.json") {
 		expand "version": project.version
 	}

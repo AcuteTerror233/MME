@@ -1,0 +1,90 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "condition": {
+        "type": "minecraft:all_of",
+        "terms": [
+          {
+            "type": "minecraft:match_block",
+            "blocks": "minecraft:potatoes",
+            "state": {
+              "age": "7"
+            }
+          },
+          {
+            "type": "minecraft:match_block",
+            "blocks": "minecraft:wheat",
+            "state": {
+              "disease_level": "0"
+            }
+          }
+        ]
+      },
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "modifier": {
+            "type": "minecraft:apply_bonus",
+            "enchantment": "mme:harvesting",
+            "formula": "minecraft:binomial_with_bonus_count",
+            "parameters": {
+              "extra": 3,
+              "probability": 0.2777778
+            }
+          },
+          "name": "minecraft:potato"
+        }
+      ],
+      "rolls": 1
+    },
+    {
+      "condition": {
+        "type": "minecraft:all_of",
+        "terms": [
+          {
+            "type": "minecraft:match_block",
+            "blocks": "minecraft:potatoes",
+            "state": {
+              "age": "7"
+            }
+          },
+          {
+            "type": "minecraft:match_block",
+            "blocks": "minecraft:wheat",
+            "state": {
+              "disease_level": "0"
+            }
+          }
+        ]
+      },
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "condition": {
+            "type": "minecraft:random_chance",
+            "chance": 0.02
+          },
+          "name": "minecraft:poisonous_potato"
+        }
+      ],
+      "rolls": 1
+    },
+    {
+      "condition": {
+        "type": "minecraft:match_block",
+        "blocks": "minecraft:potatoes",
+        "state": {
+          "age": "0"
+        }
+      },
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:potato"
+        }
+      ],
+      "rolls": 1
+    }
+  ]
+}

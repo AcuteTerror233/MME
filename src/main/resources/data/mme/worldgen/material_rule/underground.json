@@ -1,0 +1,56 @@
+{
+  "type": "minecraft:sequence",
+  "sequence": [
+    "minecraft:bedrock_floor",
+    "minecraft:bedrock_roof",
+    {
+      "type": "minecraft:condition",
+      "if_true": {
+        "type": "minecraft:y_above",
+        "anchor": {
+          "absolute": 125
+        },
+        "surface_depth_multiplier": 0,
+        "add_stone_depth": false
+      },
+      "then_run": {
+        "type": "minecraft:condition",
+        "if_true": {
+          "type": "minecraft:vertical_gradient",
+          "random_name": "mme:bedrock_middle",
+          "true_at_and_below": {
+            "absolute": 124
+          },
+          "false_at_and_above": {
+            "absolute": 130
+          }
+        },
+        "then_run": {
+          "type": "minecraft:block",
+          "result_state": "minecraft:bedrock"
+        }
+      }
+    },
+    {
+      "type": "minecraft:condition",
+      "if_true": {
+        "type": "minecraft:vertical_gradient",
+        "random_name": "mme:mantle",
+        "true_at_and_below": {
+          "above_bottom": 0
+        },
+        "false_at_and_above": {
+          "above_bottom": 5
+        }
+      },
+      "then_run": {
+        "type": "minecraft:block",
+        "result_state": "mme:mantle"
+      }
+    },
+    {
+      "type": "minecraft:block",
+      "result_state": "minecraft:deepslate"
+    }
+  ]
+}

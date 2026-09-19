@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:adamantium_chestplate"
+        "recipes": "mme:adamantium_chestplate"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

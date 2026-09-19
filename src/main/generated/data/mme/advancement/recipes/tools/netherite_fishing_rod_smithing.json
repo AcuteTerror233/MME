@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:netherite_fishing_rod_smithing"
+        "recipes": "mme:netherite_fishing_rod_smithing"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

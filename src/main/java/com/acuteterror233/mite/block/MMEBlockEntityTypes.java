@@ -2,7 +2,6 @@ package com.acuteterror233.mite.block;
 
 import com.acuteterror233.mite.MME;
 import com.acuteterror233.mite.block.entity.AnvilBlockEntity;
-import com.acuteterror233.mite.block.entity.GradeFurnaceBlockEntity;
 import com.acuteterror233.mite.block.entity.RunePortalBlockEntity;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -55,19 +54,6 @@ public class MMEBlockEntityTypes {
                     MMEBlockEntityTypeIds.RUNE_PORTAL
                     , RunePortalBlockEntity::new
                     , MMEBlocks.RUNE_PORTAL
-            );
-    public static final BlockEntityType<GradeFurnaceBlockEntity> GRADE_FURNACE =
-            register(
-                    MMEBlockEntityTypeIds.GRADE_FURNACE
-                    , GradeFurnaceBlockEntity::new
-                    , MMEBlocks.CLAY_FURNACE
-                    , MMEBlocks.HARDENED_CLAY_FURNACE
-                    , MMEBlocks.SANDSTONE_FURNACE
-                    , MMEBlocks.OBSIDIAN_FURNACE
-                    , MMEBlocks.NETHERRACK_FURNACE
-                    , Blocks.FURNACE
-                    , Blocks.SMOKER
-                    , Blocks.BLAST_FURNACE
             );
 
     private static <T extends BlockEntity> BlockEntityType<T> register(

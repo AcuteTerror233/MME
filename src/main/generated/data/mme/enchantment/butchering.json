@@ -16,17 +16,17 @@
         },
         "enchanted": "attacker",
         "requirements": {
-          "condition": "minecraft:all_of",
+          "type": "minecraft:all_of",
           "terms": [
             {
-              "condition": "minecraft:entity_properties",
+              "type": "minecraft:entity_properties",
               "entity": "attacker",
               "predicate": {
                 "minecraft:entity_type": "minecraft:player"
               }
             },
             {
-              "condition": "minecraft:entity_properties",
+              "type": "minecraft:entity_properties",
               "entity": "this",
               "predicate": {
                 "minecraft:entity_type": "#mme:sensitive_to_butchering"

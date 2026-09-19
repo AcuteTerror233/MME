@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:adamantium_shears"
+        "recipes": "mme:adamantium_shears"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:copper_scythe"
+        "recipes": "mme:copper_scythe"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:mithril_spear"
+        "recipes": "mme:mithril_spear"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

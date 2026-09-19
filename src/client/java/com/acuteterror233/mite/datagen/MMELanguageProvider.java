@@ -68,7 +68,7 @@ public class MMELanguageProvider {
             translationBuilder.add("mme.advancements.story.better_armor.description", "Cold and shiny");
             translationBuilder.add("mme.advancements.story.pickaxe.title", "Time to Mine!");
             translationBuilder.add("mme.advancements.story.pickaxe.description", "Finally made it out");
-            translationBuilder.add("mme.advancements.story.mine_stone.title", "The Lowest Grade Ore");
+            translationBuilder.add("mme.advancements.story.mine_stone.title", "Metal！");
             translationBuilder.add("mme.advancements.story.mine_stone.description", "Acquire copper and silver ores");
             translationBuilder.add("mme.advancements.story.leather.title", "Matador");
             translationBuilder.add("mme.advancements.story.leather.description", "Acquire leather");
@@ -651,7 +651,7 @@ public class MMELanguageProvider {
             translationBuilder.add("mme.advancements.story.better_armor.description", "冷冷的");
             translationBuilder.add("mme.advancements.story.pickaxe.title", "下矿时间到!");
             translationBuilder.add("mme.advancements.story.pickaxe.description", "终于熬出头了");
-            translationBuilder.add("mme.advancements.story.mine_stone.title", "最低级的矿物");
+            translationBuilder.add("mme.advancements.story.mine_stone.title", "金属！");
             translationBuilder.add("mme.advancements.story.mine_stone.description", "获取铜和银的矿石");
             translationBuilder.add("mme.advancements.story.leather.title", "斗牛士");
             translationBuilder.add("mme.advancements.story.leather.description", "获得皮革");

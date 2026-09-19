@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:silver_crafting_table"
+        "recipes": "mme:silver_crafting_table"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

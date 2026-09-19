@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:copper_chainmail_boots"
+        "recipes": "mme:copper_chainmail_boots"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

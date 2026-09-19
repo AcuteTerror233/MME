@@ -1,14 +1,12 @@
 {
   "required": true,
   "package": "com.acuteterror233.mite.mixin.client",
-  "compatibilityLevel": "JAVA_21",
+  "compatibilityLevel": "JAVA_25",
   "client": [
     "data.BlockModelGeneratorsMixin",
     "data.ItemModelGeneratorsMixin",
     "gui.GuiMixin",
-    "gui.screen.ingame.InventoryScreenMixin",
-    "network.ClientPlayNetworkHandlerMixin",
-    "world.ClientLevelMixin"
+    "gui.screen.ingame.InventoryScreenMixin"
   ],
   "injectors": {
     "defaultRequire": 1

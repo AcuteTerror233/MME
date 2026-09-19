@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:iron_fishing_rod"
+        "recipes": "mme:iron_fishing_rod"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

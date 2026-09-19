@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:flint_spear"
+        "recipes": "mme:flint_spear"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

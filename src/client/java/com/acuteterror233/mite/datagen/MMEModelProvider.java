@@ -19,6 +19,8 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 
+import java.util.Map;
+
 
 /**
  * MME model data generator.
@@ -104,54 +106,90 @@ public class MMEModelProvider extends FabricModelProvider {
     public void generateItemModels(ItemModelGenerators itemModelGenerator) {
         ItemModelGeneratorsExtension extendedAccessor = (ItemModelGeneratorsExtension) itemModelGenerator;
         // Equipment section
-        itemModelGenerator.generateTrimmableItem(MMEItems.ADAMANTIUM_HELMET, MMEArmorMaterials.ADAMANTIUM_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_HELMET, false);
-        itemModelGenerator.generateTrimmableItem(MMEItems.ADAMANTIUM_CHESTPLATE, MMEArmorMaterials.ADAMANTIUM_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
-        itemModelGenerator.generateTrimmableItem(MMEItems.ADAMANTIUM_LEGGINGS, MMEArmorMaterials.ADAMANTIUM_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
-        itemModelGenerator.generateTrimmableItem(MMEItems.ADAMANTIUM_BOOTS, MMEArmorMaterials.ADAMANTIUM_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_BOOTS, false);
-        itemModelGenerator.generateTrimmableItem(MMEItems.ADAMANTIUM_CHAINMAIL_HELMET, MMEArmorMaterials.ADAMANTIUM_CHAINMAIL_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_HELMET, false);
-        itemModelGenerator.generateTrimmableItem(MMEItems.ADAMANTIUM_CHAINMAIL_CHESTPLATE, MMEArmorMaterials.ADAMANTIUM_CHAINMAIL_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
-        itemModelGenerator.generateTrimmableItem(MMEItems.ADAMANTIUM_CHAINMAIL_LEGGINGS, MMEArmorMaterials.ADAMANTIUM_CHAINMAIL_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
-        itemModelGenerator.generateTrimmableItem(MMEItems.ADAMANTIUM_CHAINMAIL_BOOTS, MMEArmorMaterials.ADAMANTIUM_CHAINMAIL_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_BOOTS, false);
-        itemModelGenerator.generateTrimmableItem(MMEItems.ANCIENT_METAL_HELMET, MMEArmorMaterials.ANCIENT_METAL_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_HELMET, false);
-        itemModelGenerator.generateTrimmableItem(MMEItems.ANCIENT_METAL_CHESTPLATE, MMEArmorMaterials.ANCIENT_METAL_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
-        itemModelGenerator.generateTrimmableItem(MMEItems.ANCIENT_METAL_LEGGINGS, MMEArmorMaterials.ANCIENT_METAL_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
-        itemModelGenerator.generateTrimmableItem(MMEItems.ANCIENT_METAL_BOOTS, MMEArmorMaterials.ANCIENT_METAL_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_BOOTS, false);
-        itemModelGenerator.generateTrimmableItem(MMEItems.ANCIENT_METAL_CHAINMAIL_HELMET, MMEArmorMaterials.ANCIENT_METAL_CHAINMAIL_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_HELMET, false);
-        itemModelGenerator.generateTrimmableItem(MMEItems.ANCIENT_METAL_CHAINMAIL_CHESTPLATE, MMEArmorMaterials.ANCIENT_METAL_CHAINMAIL_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
-        itemModelGenerator.generateTrimmableItem(MMEItems.ANCIENT_METAL_CHAINMAIL_LEGGINGS, MMEArmorMaterials.ANCIENT_METAL_CHAINMAIL_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
-        itemModelGenerator.generateTrimmableItem(MMEItems.ANCIENT_METAL_CHAINMAIL_BOOTS, MMEArmorMaterials.ANCIENT_METAL_CHAINMAIL_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_BOOTS, false);
-        extendedAccessor.MME$registerChainmailTrimmableItem(MMEItems.COPPER_CHAINMAIL_HELMET, Items.COPPER_HELMET, MMEArmorMaterials.COPPER_CHAINMAIL_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_HELMET, "helmet");
-        extendedAccessor.MME$registerChainmailTrimmableItem(MMEItems.COPPER_CHAINMAIL_CHESTPLATE, Items.COPPER_CHESTPLATE, MMEArmorMaterials.COPPER_CHAINMAIL_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, "chestplate");
-        extendedAccessor.MME$registerChainmailTrimmableItem(MMEItems.COPPER_CHAINMAIL_LEGGINGS, Items.COPPER_LEGGINGS, MMEArmorMaterials.COPPER_CHAINMAIL_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, "leggings");
-        extendedAccessor.MME$registerChainmailTrimmableItem(MMEItems.COPPER_CHAINMAIL_BOOTS, Items.COPPER_BOOTS, MMEArmorMaterials.COPPER_CHAINMAIL_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_BOOTS, "boots");
-        itemModelGenerator.generateTrimmableItem(MMEItems.MITHRIL_HELMET, MMEArmorMaterials.MITHRIL_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_HELMET, false);
-        itemModelGenerator.generateTrimmableItem(MMEItems.MITHRIL_CHESTPLATE, MMEArmorMaterials.MITHRIL_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
-        itemModelGenerator.generateTrimmableItem(MMEItems.MITHRIL_LEGGINGS, MMEArmorMaterials.MITHRIL_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
-        itemModelGenerator.generateTrimmableItem(MMEItems.MITHRIL_BOOTS, MMEArmorMaterials.MITHRIL_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_BOOTS, false);
-        itemModelGenerator.generateTrimmableItem(MMEItems.MITHRIL_CHAINMAIL_HELMET, MMEArmorMaterials.MITHRIL_CHAINMAIL_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_HELMET, false);
-        itemModelGenerator.generateTrimmableItem(MMEItems.MITHRIL_CHAINMAIL_CHESTPLATE, MMEArmorMaterials.MITHRIL_CHAINMAIL_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
-        itemModelGenerator.generateTrimmableItem(MMEItems.MITHRIL_CHAINMAIL_LEGGINGS, MMEArmorMaterials.MITHRIL_CHAINMAIL_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
-        itemModelGenerator.generateTrimmableItem(MMEItems.MITHRIL_CHAINMAIL_BOOTS, MMEArmorMaterials.MITHRIL_CHAINMAIL_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_BOOTS, false);
-        itemModelGenerator.generateTrimmableItem(MMEItems.RUSTED_IRON_HELMET, MMEArmorMaterials.RUSTED_IRON_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_HELMET, false);
-        itemModelGenerator.generateTrimmableItem(MMEItems.RUSTED_IRON_CHESTPLATE, MMEArmorMaterials.RUSTED_IRON_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
-        itemModelGenerator.generateTrimmableItem(MMEItems.RUSTED_IRON_LEGGINGS, MMEArmorMaterials.RUSTED_IRON_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
-        itemModelGenerator.generateTrimmableItem(MMEItems.RUSTED_IRON_BOOTS, MMEArmorMaterials.RUSTED_IRON_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_BOOTS, false);
-        extendedAccessor.MME$registerChainmailTrimmableItem(MMEItems.RUSTED_IRON_CHAINMAIL_HELMET, MMEItems.RUSTED_IRON_HELMET, MMEArmorMaterials.RUSTED_IRON_CHAINMAIL_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_HELMET, "helmet");
-        extendedAccessor.MME$registerChainmailTrimmableItem(MMEItems.RUSTED_IRON_CHAINMAIL_CHESTPLATE, MMEItems.RUSTED_IRON_CHESTPLATE, MMEArmorMaterials.RUSTED_IRON_CHAINMAIL_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, "chestplate");
-        extendedAccessor.MME$registerChainmailTrimmableItem(MMEItems.RUSTED_IRON_CHAINMAIL_LEGGINGS, MMEItems.RUSTED_IRON_LEGGINGS, MMEArmorMaterials.RUSTED_IRON_CHAINMAIL_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, "leggings");
-        extendedAccessor.MME$registerChainmailTrimmableItem(MMEItems.RUSTED_IRON_CHAINMAIL_BOOTS, MMEItems.RUSTED_IRON_BOOTS, MMEArmorMaterials.RUSTED_IRON_CHAINMAIL_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_BOOTS, "boots");
-        itemModelGenerator.generateTrimmableItem(MMEItems.SILVER_HELMET, MMEArmorMaterials.SILVER_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_HELMET, false);
-        itemModelGenerator.generateTrimmableItem(MMEItems.SILVER_CHESTPLATE, MMEArmorMaterials.SILVER_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
-        itemModelGenerator.generateTrimmableItem(MMEItems.SILVER_LEGGINGS, MMEArmorMaterials.SILVER_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
-        itemModelGenerator.generateTrimmableItem(MMEItems.SILVER_BOOTS, MMEArmorMaterials.SILVER_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_BOOTS, false);
-        itemModelGenerator.generateTrimmableItem(MMEItems.SILVER_CHAINMAIL_HELMET, MMEArmorMaterials.SILVER_CHAINMAIL_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_HELMET, false);
-        itemModelGenerator.generateTrimmableItem(MMEItems.SILVER_CHAINMAIL_CHESTPLATE, MMEArmorMaterials.SILVER_CHAINMAIL_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
-        itemModelGenerator.generateTrimmableItem(MMEItems.SILVER_CHAINMAIL_LEGGINGS, MMEArmorMaterials.SILVER_CHAINMAIL_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
-        itemModelGenerator.generateTrimmableItem(MMEItems.SILVER_CHAINMAIL_BOOTS, MMEArmorMaterials.SILVER_CHAINMAIL_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_BOOTS, false);
-        extendedAccessor.MME$registerChainmailTrimmableItem(MMEItems.GOLDEN_CHAINMAIL_HELMET, Items.GOLDEN_HELMET, MMEArmorMaterials.GOLD_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_HELMET, "helmet");
-        extendedAccessor.MME$registerChainmailTrimmableItem(MMEItems.GOLDEN_CHAINMAIL_CHESTPLATE, Items.GOLDEN_CHESTPLATE, MMEArmorMaterials.GOLD_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, "chestplate");
-        extendedAccessor.MME$registerChainmailTrimmableItem(MMEItems.GOLDEN_CHAINMAIL_LEGGINGS, Items.GOLDEN_LEGGINGS, MMEArmorMaterials.GOLD_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, "leggings");
-        extendedAccessor.MME$registerChainmailTrimmableItem(MMEItems.GOLDEN_CHAINMAIL_BOOTS, Items.GOLDEN_BOOTS, MMEArmorMaterials.GOLD_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_BOOTS, "boots");
+        itemModelGenerator.generateTrimmableArmorSet(
+                MMEItems.ADAMANTIUM_HELMET,
+                MMEItems.ADAMANTIUM_CHESTPLATE,
+                MMEItems.ADAMANTIUM_LEGGINGS,
+                MMEItems.ADAMANTIUM_BOOTS,
+                false,
+                Map.of()
+        );
+        itemModelGenerator.generateTrimmableArmorSet(
+                MMEItems.ADAMANTIUM_CHAINMAIL_HELMET,
+                MMEItems.ADAMANTIUM_CHAINMAIL_CHESTPLATE,
+                MMEItems.ADAMANTIUM_CHAINMAIL_LEGGINGS,
+                MMEItems.ADAMANTIUM_CHAINMAIL_BOOTS,
+                false,
+                Map.of()
+        );
+        itemModelGenerator.generateTrimmableArmorSet(
+                MMEItems.ANCIENT_METAL_HELMET,
+                MMEItems.ANCIENT_METAL_CHESTPLATE,
+                MMEItems.ANCIENT_METAL_LEGGINGS,
+                MMEItems.ANCIENT_METAL_BOOTS,
+                false,
+                Map.of()
+        );
+        itemModelGenerator.generateTrimmableArmorSet(
+                MMEItems.ANCIENT_METAL_CHAINMAIL_HELMET,
+                MMEItems.ANCIENT_METAL_CHAINMAIL_CHESTPLATE,
+                MMEItems.ANCIENT_METAL_CHAINMAIL_LEGGINGS,
+                MMEItems.ANCIENT_METAL_CHAINMAIL_BOOTS,
+                false,
+                Map.of()
+        );
+        extendedAccessor.MME$registerChainmailTrimmableItem(MMEItems.COPPER_CHAINMAIL_HELMET, Items.COPPER_HELMET, MMEArmorMaterials.COPPER_CHAINMAIL_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_HELMET, "helmet", Map.of());
+        extendedAccessor.MME$registerChainmailTrimmableItem(MMEItems.COPPER_CHAINMAIL_CHESTPLATE, Items.COPPER_CHESTPLATE, MMEArmorMaterials.COPPER_CHAINMAIL_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, "chestplate", Map.of());
+        extendedAccessor.MME$registerChainmailTrimmableItem(MMEItems.COPPER_CHAINMAIL_LEGGINGS, Items.COPPER_LEGGINGS, MMEArmorMaterials.COPPER_CHAINMAIL_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, "leggings", Map.of());
+        extendedAccessor.MME$registerChainmailTrimmableItem(MMEItems.COPPER_CHAINMAIL_BOOTS, Items.COPPER_BOOTS, MMEArmorMaterials.COPPER_CHAINMAIL_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_BOOTS, "boots", Map.of());
+        itemModelGenerator.generateTrimmableArmorSet(
+                MMEItems.MITHRIL_HELMET,
+                MMEItems.MITHRIL_CHESTPLATE,
+                MMEItems.MITHRIL_LEGGINGS,
+                MMEItems.MITHRIL_BOOTS,
+                false,
+                Map.of()
+        );
+        itemModelGenerator.generateTrimmableArmorSet(
+                MMEItems.MITHRIL_CHAINMAIL_HELMET,
+                MMEItems.MITHRIL_CHAINMAIL_CHESTPLATE,
+                MMEItems.MITHRIL_CHAINMAIL_LEGGINGS,
+                MMEItems.MITHRIL_CHAINMAIL_BOOTS,
+                false,
+                Map.of()
+        );
+        itemModelGenerator.generateTrimmableArmorSet(
+                MMEItems.RUSTED_IRON_HELMET,
+                MMEItems.RUSTED_IRON_CHESTPLATE,
+                MMEItems.RUSTED_IRON_LEGGINGS,
+                MMEItems.RUSTED_IRON_BOOTS,
+                false,
+                Map.of()
+        );
+        extendedAccessor.MME$registerChainmailTrimmableItem(MMEItems.RUSTED_IRON_CHAINMAIL_HELMET, MMEItems.RUSTED_IRON_HELMET, MMEArmorMaterials.RUSTED_IRON_CHAINMAIL_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_HELMET, "helmet", Map.of());
+        extendedAccessor.MME$registerChainmailTrimmableItem(MMEItems.RUSTED_IRON_CHAINMAIL_CHESTPLATE, MMEItems.RUSTED_IRON_CHESTPLATE, MMEArmorMaterials.RUSTED_IRON_CHAINMAIL_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, "chestplate", Map.of());
+        extendedAccessor.MME$registerChainmailTrimmableItem(MMEItems.RUSTED_IRON_CHAINMAIL_LEGGINGS, MMEItems.RUSTED_IRON_LEGGINGS, MMEArmorMaterials.RUSTED_IRON_CHAINMAIL_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, "leggings", Map.of());
+        extendedAccessor.MME$registerChainmailTrimmableItem(MMEItems.RUSTED_IRON_CHAINMAIL_BOOTS, MMEItems.RUSTED_IRON_BOOTS, MMEArmorMaterials.RUSTED_IRON_CHAINMAIL_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_BOOTS, "boots", Map.of());
+        itemModelGenerator.generateTrimmableArmorSet(
+                MMEItems.SILVER_HELMET,
+                MMEItems.SILVER_CHESTPLATE,
+                MMEItems.SILVER_LEGGINGS,
+                MMEItems.SILVER_BOOTS,
+                false,
+                Map.of()
+        );
+        itemModelGenerator.generateTrimmableArmorSet(
+                MMEItems.SILVER_CHAINMAIL_HELMET,
+                MMEItems.SILVER_CHAINMAIL_CHESTPLATE,
+                MMEItems.SILVER_CHAINMAIL_LEGGINGS,
+                MMEItems.SILVER_CHAINMAIL_BOOTS,
+                false,
+                Map.of()
+        );
+        extendedAccessor.MME$registerChainmailTrimmableItem(MMEItems.GOLDEN_CHAINMAIL_HELMET, Items.GOLDEN_HELMET, MMEArmorMaterials.GOLD_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_HELMET, "helmet", Map.of());
+        extendedAccessor.MME$registerChainmailTrimmableItem(MMEItems.GOLDEN_CHAINMAIL_CHESTPLATE, Items.GOLDEN_CHESTPLATE, MMEArmorMaterials.GOLD_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, "chestplate", Map.of());
+        extendedAccessor.MME$registerChainmailTrimmableItem(MMEItems.GOLDEN_CHAINMAIL_LEGGINGS, Items.GOLDEN_LEGGINGS, MMEArmorMaterials.GOLD_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, "leggings", Map.of());
+        extendedAccessor.MME$registerChainmailTrimmableItem(MMEItems.GOLDEN_CHAINMAIL_BOOTS, Items.GOLDEN_BOOTS, MMEArmorMaterials.GOLD_MATERIAL_KEY, ItemModelGenerators.TRIM_PREFIX_BOOTS, "boots", Map.of());
 
         // Food section
         itemModelGenerator.generateFlatItem(MMEItems.BANANA, ModelTemplates.FLAT_ITEM);

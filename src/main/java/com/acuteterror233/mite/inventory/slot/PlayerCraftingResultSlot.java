@@ -1,6 +1,5 @@
 package com.acuteterror233.mite.inventory.slot;
 
-import com.acuteterror233.mite.interfaces.InventoryMenuExtension;
 import net.minecraft.world.Container;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.CraftingContainer;
@@ -24,7 +23,7 @@ public class PlayerCraftingResultSlot extends ResultSlot {
 
     @Override
     public @NotNull ItemStack remove(int amount) {
-        this.isCrafting = !getItem().isEmpty() && ((InventoryMenuExtension)this.handler).MME$IsAllowCrafting();
+        this.isCrafting = !getItem().isEmpty() && this.handler.MME$IsAllowCrafting();
         return ItemStack.EMPTY;
     }
 

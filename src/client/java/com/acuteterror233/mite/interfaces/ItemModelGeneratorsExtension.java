@@ -4,6 +4,9 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.equipment.EquipmentAsset;
+import net.minecraft.world.item.equipment.trim.TrimMaterials;
+
+import java.util.Map;
 
 /**
  * Extension interface for item model generators.
@@ -13,5 +16,5 @@ public interface ItemModelGeneratorsExtension {
     void MME$registerBucket(Item item, Identifier identifier, Item item1);
     void MME$registerFishingRod(Item item, Identifier cast);
     void MME$registerIronFishingRod(Item item, Identifier cast);
-    void MME$registerChainmailTrimmableItem(Item item, Item basePlateModel, ResourceKey<EquipmentAsset> resourceKey, Identifier resourceLocation, String Slot);
+    void MME$registerChainmailTrimmableItem(Item item, Item basePlateModel, ResourceKey<EquipmentAsset> resourceKey, Identifier resourceLocation, String Slot, Map<TrimMaterials.Palette, TrimMaterials.Palette> trimPaletteReplacements);
 }

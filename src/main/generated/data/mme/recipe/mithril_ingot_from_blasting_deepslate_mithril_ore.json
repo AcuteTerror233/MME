@@ -1,5 +1,6 @@
 {
   "type": "minecraft:blasting",
+  "cookingtime": 100,
   "experience": 2.0,
   "group": "mithril_ingot",
   "ingredient": "mme:deepslate_mithril_ore",

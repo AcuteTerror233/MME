@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:ancient_metal_hatchet"
+        "recipes": "mme:ancient_metal_hatchet"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

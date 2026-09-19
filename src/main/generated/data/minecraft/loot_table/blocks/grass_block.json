@@ -1,0 +1,55 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "entries": [
+        {
+          "type": "minecraft:alternatives",
+          "children": [
+            {
+              "type": "minecraft:item",
+              "condition": {
+                "type": "minecraft:match_tool",
+                "predicate": {
+                  "predicates": {
+                    "minecraft:enchantments": [
+                      {
+                        "enchantments": "minecraft:silk_touch",
+                        "levels": {
+                          "min": 1
+                        }
+                      }
+                    ]
+                  }
+                }
+              },
+              "name": "minecraft:grass_block"
+            },
+            {
+              "type": "minecraft:item",
+              "condition": {
+                "type": "minecraft:table_bonus",
+                "chances": [
+                  0.05,
+                  0.0625,
+                  0.083333336,
+                  0.1
+                ],
+                "enchantment": "minecraft:fortune"
+              },
+              "name": "mme:worm_raw"
+            },
+            {
+              "type": "minecraft:item",
+              "condition": {
+                "type": "minecraft:survives_explosion"
+              },
+              "name": "minecraft:dirt"
+            }
+          ]
+        }
+      ],
+      "rolls": 1
+    }
+  ]
+}

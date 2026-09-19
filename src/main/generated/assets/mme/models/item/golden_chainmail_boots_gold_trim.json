@@ -3,6 +3,6 @@
   "textures": {
     "layer0": "minecraft:item/golden_boots",
     "layer1": "mme:item/boots_chainmail_overlay",
-    "layer2": "minecraft:trims/items/boots_trim_gold_darker"
+    "layer2": "minecraft:trims/items/boots_trim_gold"
   }
 }

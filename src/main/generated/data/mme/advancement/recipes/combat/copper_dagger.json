@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:copper_dagger"
+        "recipes": "mme:copper_dagger"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

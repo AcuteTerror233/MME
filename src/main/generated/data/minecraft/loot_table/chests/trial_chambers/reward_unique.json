@@ -1,0 +1,90 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:golden_apple",
+          "weight": 4
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:bolt_armor_trim_smithing_template",
+          "weight": 3
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:guster_banner_pattern",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:music_disc_precipice",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:trident"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "mme:mithril_ort_runestore",
+          "weight": 3
+        },
+        {
+          "type": "minecraft:item",
+          "name": "mme:mithril_tym_runestore",
+          "weight": 3
+        },
+        {
+          "type": "minecraft:item",
+          "name": "mme:mithril_corp_runestore",
+          "weight": 3
+        },
+        {
+          "type": "minecraft:item",
+          "name": "mme:mithril_lor_runestore",
+          "weight": 3
+        },
+        {
+          "type": "minecraft:item",
+          "name": "mme:mithril_mani_runestore",
+          "weight": 3
+        },
+        {
+          "type": "minecraft:item",
+          "name": "mme:mithril_jux_runestore",
+          "weight": 3
+        }
+      ],
+      "rolls": 1
+    },
+    {
+      "entries": [
+        {
+          "type": "minecraft:empty",
+          "weight": 99
+        },
+        {
+          "type": "minecraft:item",
+          "modifier": {
+            "type": "minecraft:enchant_with_levels",
+            "levels": {
+              "type": "minecraft:uniform",
+              "max": 50,
+              "min": 40
+            },
+            "options": "#minecraft:on_random_loot"
+          },
+          "name": "mme:adamantium_sword"
+        }
+      ],
+      "rolls": {
+        "type": "minecraft:uniform",
+        "max": 1,
+        "min": 0
+      }
+    }
+  ]
+}

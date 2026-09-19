@@ -5,6 +5,7 @@ import com.acuteterror233.mite.block.MMEMenuTypes;
 import com.acuteterror233.mite.inventory.slot.CraftingTableResultSlot;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.TagKey;
+import net.minecraft.util.Prediction;
 import net.minecraft.world.Container;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -121,7 +122,7 @@ public class GradeCraftingTableMenu extends AbstractGradeCraftingMenu {
 
             slot2.onTake(player, itemStack2);
             if (slot == 0) {
-                player.drop(itemStack2, false);
+                player.drop(itemStack2, false, Prediction.PREDICTED);
             }
         }
 

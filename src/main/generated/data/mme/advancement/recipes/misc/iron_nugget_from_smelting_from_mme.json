@@ -283,7 +283,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:iron_nugget_from_smelting_from_mme"
+        "recipes": "mme:iron_nugget_from_smelting_from_mme"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:bowl_salad"
+        "recipes": "mme:bowl_salad"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

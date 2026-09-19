@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:obsidian_from_obsidian_shard"
+        "recipes": "mme:obsidian_from_obsidian_shard"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

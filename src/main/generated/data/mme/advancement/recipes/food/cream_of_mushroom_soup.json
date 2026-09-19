@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:cream_of_mushroom_soup"
+        "recipes": "mme:cream_of_mushroom_soup"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

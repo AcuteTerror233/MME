@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:silver_chains"
+        "recipes": "mme:silver_chains"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

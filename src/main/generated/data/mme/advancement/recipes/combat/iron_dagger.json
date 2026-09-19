@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:iron_dagger"
+        "recipes": "mme:iron_dagger"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

@@ -39,10 +39,7 @@ import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.functions.*;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemEntityPropertyCondition;
-import net.minecraft.world.level.storage.loot.providers.number.BinomialDistributionGenerator;
-import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
-import net.minecraft.world.level.storage.loot.providers.number.Sum;
-import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
+import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProviders;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -561,1042 +558,1046 @@ public class MMEVillagerTradeProvider {
 		register(
 			context,
 			FARMER_1_BEETROOT_EMERALD,
-			new VillagerTrade(new TradeCost(Items.BEETROOT, UniformGenerator.between(6, 9)), new ItemStackTemplate(Items.EMERALD, 1), 16, 2, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.BEETROOT, ContextIntProviders.between(6, 9)), new ItemStackTemplate(Items.EMERALD, 1), 16, 2, 0.05F).build()
 		);
 		register(
 			context,
 			FARMER_1_BLUE_BERRY_EMERALD,
-			new VillagerTrade(new TradeCost(MMEItems.BLUE_BERRIE, UniformGenerator.between(12, 24)), new ItemStackTemplate(Items.EMERALD, 1), 16, 2, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(MMEItems.BLUE_BERRIE, ContextIntProviders.between(12, 24)), new ItemStackTemplate(Items.EMERALD, 1), 16, 2, 0.05F).build()
 		);
 		register(
 			context,
 			FARMER_1_CARROT_EMERALD,
-			new VillagerTrade(new TradeCost(Items.CARROT, UniformGenerator.between(6, 9)), new ItemStackTemplate(Items.EMERALD, 1), 16, 2, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.CARROT, ContextIntProviders.between(6, 9)), new ItemStackTemplate(Items.EMERALD, 1), 16, 2, 0.05F).build()
 		);
 		register(
 			context,
 			FARMER_1_EMERALD_BREAD,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.BREAD, 7), 16, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.BREAD, 7), 16, 1, 0.05F).build()
 		);
 		register(
 			context,
 			FARMER_1_POTATO_EMERALD,
-			new VillagerTrade(new TradeCost(Items.POTATO, UniformGenerator.between(6, 9)), new ItemStackTemplate(Items.EMERALD, 1), 16, 2, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.POTATO, ContextIntProviders.between(6, 9)), new ItemStackTemplate(Items.EMERALD, 1), 16, 2, 0.05F).build()
 		);
 		register(
 			context,
 			FARMER_1_WHEAT_EMERALD,
-			new VillagerTrade(new TradeCost(Items.WHEAT, UniformGenerator.between(3, 5)), new ItemStackTemplate(Items.EMERALD, 1), 16, 2, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.WHEAT, ContextIntProviders.between(3, 5)), new ItemStackTemplate(Items.EMERALD, 1), 16, 2, 0.05F).build()
 		);
 		register(
 			context,
 			FARMER_2_EMERALD_APPLE,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.APPLE, 4), 12, 5, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.APPLE, 4), 12, 5, 0.05F).build()
 		);
 		register(
 			context,
 			FARMER_2_EMERALD_PUMPKIN_PIE,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.PUMPKIN_PIE, 4), 12, 5, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.PUMPKIN_PIE, 4), 12, 5, 0.05F).build()
 		);
 		register(
 			context,
 			FARMER_2_PUMPKIN_EMERALD,
-			new VillagerTrade(new TradeCost(Items.PUMPKIN, 4), new ItemStackTemplate(Items.EMERALD, 1), 12, 10, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.PUMPKIN, 4), new ItemStackTemplate(Items.EMERALD, 1), 12, 10, 0.05F).build()
 		);
 		register(
 			context,
 			FARMER_3_EMERALD_COOKIE,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.COOKIE, 14), 12, 10, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.COOKIE, 14), 12, 10, 0.05F).build()
 		);
 		register(
 			context,
 			FARMER_3_MELON_EMERALD,
-			new VillagerTrade(new TradeCost(Items.MELON, 4), new ItemStackTemplate(Items.EMERALD, 1), 12, 20, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.MELON, 4), new ItemStackTemplate(Items.EMERALD, 1), 12, 20, 0.05F).build()
 		);
 		register(
 			context,
 			FARMER_4_EMERALD_CAKE,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.CAKE, 1), 12, 15, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.CAKE, 1), 12, 15, 0.05F).build()
 		);
 		register(
 			context,
 			FARMER_4_EMERALD_SUSPICIOUS_STEW,
-			new VillagerTrade(
+			VillagerTrade.builder(
 				new TradeCost(Items.EMERALD, 1),
 				new ItemStackTemplate(Items.SUSPICIOUS_STEW),
 				12,
 				15,
-				0.05F,
-				Optional.empty(),
-				List.of(
-					new SetStewEffectFunction.Builder()
-						.withEffect(MobEffects.NIGHT_VISION, new ConstantValue(5.0F))
-						.withEffect(MobEffects.JUMP_BOOST, new ConstantValue(8.0F))
-						.withEffect(MobEffects.WEAKNESS, new ConstantValue(7.0F))
-						.withEffect(MobEffects.BLINDNESS, new ConstantValue(6.0F))
-						.withEffect(MobEffects.POISON, new ConstantValue(14.0F))
-						.withEffect(MobEffects.SATURATION, new ConstantValue(7.0F))
-						.build()
-				)
+				0.05F
 			)
+			.addModifiers(List.of(
+					new SetStewEffectFunction.Builder()
+						.withEffect(MobEffects.NIGHT_VISION, ContextIntProviders.exactly(5))
+						.withEffect(MobEffects.JUMP_BOOST, ContextIntProviders.exactly(8))
+						.withEffect(MobEffects.WEAKNESS, ContextIntProviders.exactly(7))
+						.withEffect(MobEffects.BLINDNESS, ContextIntProviders.exactly(6))
+						.withEffect(MobEffects.POISON, ContextIntProviders.exactly(14))
+						.withEffect(MobEffects.SATURATION, ContextIntProviders.exactly(7))
+						.build()
+				).stream().map(Holder::direct).toList())
+			.build()
 		);
 		register(
 			context,
 			FARMER_5_EMERALD_GLISTENING_MELON_SLICE,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 4), new ItemStackTemplate(Items.GLISTERING_MELON_SLICE, 3), 12, 30, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 4), new ItemStackTemplate(Items.GLISTERING_MELON_SLICE, 3), 12, 30, 0.05F).build()
 		);
 		register(
 			context,
 			FARMER_5_EMERALD_GOLDEN_CARROT,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.GOLDEN_CARROT, 3), 12, 30, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.GOLDEN_CARROT, 3), 12, 30, 0.05F).build()
 		);
 	}
 	private static void registerFisherman(final BootstrapContext<VillagerTrade> context, final TradeLookups lookups) {
 		register(
 			context,
 			FISHERMAN_1_COAL_EMERALD,
-			new VillagerTrade(new TradeCost(Items.COAL, UniformGenerator.between(2, 3)), new ItemStackTemplate(Items.EMERALD, 1), 16, 2, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.COAL, ContextIntProviders.between(2, 3)), new ItemStackTemplate(Items.EMERALD, 1), 16, 2, 0.05F).build()
 		);
 		register(
 			context,
 			FISHERMAN_1_EMERALD_COD_COPPER_BUCKET,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(MMEItems.COPPER_COD_BUCKET, 1), 16, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(MMEItems.COPPER_COD_BUCKET, 1), 16, 1, 0.05F).build()
 		);
 		register(
 			context,
 			FISHERMAN_1_EMERALD_COD_SILVER_BUCKET,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(MMEItems.SILVER_COD_BUCKET, 1), 16, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(MMEItems.SILVER_COD_BUCKET, 1), 16, 1, 0.05F).build()
 		);
 		register(
 			context,
 			FISHERMAN_1_STRING_EMERALD,
-			new VillagerTrade(new TradeCost(Items.STRING, 20), new ItemStackTemplate(Items.EMERALD, 1), 16, 2, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.STRING, 20), new ItemStackTemplate(Items.EMERALD, 1), 16, 2, 0.05F).build()
 		);
 		register(
 			context,
 			FISHERMAN_2_COD_12_EMERALD,
-			new VillagerTrade(new TradeCost(Items.COD, 12), new ItemStackTemplate(Items.EMERALD, 1), 12, 10, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.COD, 12), new ItemStackTemplate(Items.EMERALD, 1), 12, 10, 0.05F).build()
 		);
 		register(
 			context,
 			FISHERMAN_2_SALMON_12_EMERALD,
-			new VillagerTrade(new TradeCost(Items.SALMON, 12), new ItemStackTemplate(Items.EMERALD, 1), 12, 10, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.SALMON, 12), new ItemStackTemplate(Items.EMERALD, 1), 12, 10, 0.05F).build()
 		);
 		register(
 			context,
 			FISHERMAN_2_EMERALD_CAMPFIRE,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.CAMPFIRE, 1), 12, 5, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.CAMPFIRE, 1), 12, 5, 0.05F).build()
 		);
 		register(
 			context,
 			FISHERMAN_3_EMERALD_ENCHANTED_FISHING_ROD,
-			new VillagerTrade(
+			VillagerTrade.builder(
 				new TradeCost(Items.EMERALD, 3),
 				new ItemStackTemplate(Items.FISHING_ROD),
 				3,
 				10,
-				0.2F,
-				Optional.empty(),
-				enchantedItem(lookups.items(), lookups.enchantmentsForTradedEquipment(), Items.FISHING_ROD)
+				0.2F
 			)
+			.addModifiers(enchantedItem(lookups.items(), lookups.enchantmentsForTradedEquipment(), Items.FISHING_ROD))
+			.build()
 		);
 		register(
 			context,
 			FISHERMAN_3_TROPICAL_FISH_12_EMERALD,
-			new VillagerTrade(new TradeCost(Items.TROPICAL_FISH, UniformGenerator.between(7, 9)), new ItemStackTemplate(Items.EMERALD, 1), 12, 20, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.TROPICAL_FISH, ContextIntProviders.between(7, 9)), new ItemStackTemplate(Items.EMERALD, 1), 12, 20, 0.05F).build()
 		);
 		register(
 			context,
 			FISHERMAN_3_SALMON_AND_EMERALD_COOKED_SALMON,
-			new VillagerTrade(
+			VillagerTrade.builder(
 				new TradeCost(Items.SALMON, 10),
-				Optional.of(new TradeCost(Items.EMERALD, 1)),
+				new TradeCost(Items.EMERALD, 1),
 				new ItemStackTemplate(Items.COOKED_SALMON, 10),
 				12,
 				20,
-				0.05F,
-				Optional.empty(),
-				List.of()
-			)
+				0.05F
+			).build()
 		);
 		register(
 			context,
 			FISHERMAN_3_COD_AND_EMERALD_COOKED_COD,
-			new VillagerTrade(
+			VillagerTrade.builder(
 				new TradeCost(Items.COD, 10),
-				Optional.of(new TradeCost(Items.EMERALD, 1)),
+				new TradeCost(Items.EMERALD, 1),
 				new ItemStackTemplate(Items.COOKED_COD, 10),
 				12,
 				20,
-				0.05F,
-				Optional.empty(),
-				List.of()
-			)
+				0.05F
+			).build()
 		);
 		register(
 			context,
 			FISHERMAN_4_EMERALD_BUCKET,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.BUCKET, 1), 12, 15, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.BUCKET, 1), 12, 15, 0.05F).build()
 		);
 		register(
 			context,
 			FISHERMAN_4_EMERALD_MITHRIL_BUCKET,
-			new VillagerTrade(new TradeCost(Items.EMERALD, UniformGenerator.between(6, 7)), new ItemStackTemplate(MMEItems.MITHRIL_BUCKET, 1), 12, 15, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, ContextIntProviders.between(6, 7)), new ItemStackTemplate(MMEItems.MITHRIL_BUCKET, 1), 12, 15, 0.05F).build()
 		);
 		register(
 			context,
 			FISHERMAN_4_PUFFERFISH_EMERALD,
-			new VillagerTrade(new TradeCost(Items.PUFFERFISH, UniformGenerator.between(4, 6)), new ItemStackTemplate(Items.EMERALD, 1), 12, 30, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.PUFFERFISH, ContextIntProviders.between(4, 6)), new ItemStackTemplate(Items.EMERALD, 1), 12, 30, 0.05F).build()
 		);
 		register(
 			context,
 			FISHERMAN_5_ACACIA_BOAT_EMERALD,
-			new VillagerTrade(new TradeCost(Items.ACACIA_BOAT, 1), new ItemStackTemplate(Items.EMERALD, 1), 12, 30, 0.05F, villagerTypeRestriction(villagerTypeHolderSet(lookups.villagerVariants(), List.of(VillagerType.SAVANNA))), List.of())
+			VillagerTrade.builder(new TradeCost(Items.ACACIA_BOAT, 1), new ItemStackTemplate(Items.EMERALD, 1), 12, 30, 0.05F)
+			.merchantPredicate(villagerTypeRestriction(villagerTypeHolderSet(lookups.villagerVariants(), List.of(VillagerType.SAVANNA))))
+			.build()
 		);
 		register(
 			context,
 			FISHERMAN_5_DARK_OAK_BOAT_EMERALD,
-			new VillagerTrade(new TradeCost(Items.DARK_OAK_BOAT, 1), new ItemStackTemplate(Items.EMERALD, 1), 12, 30, 0.05F, villagerTypeRestriction(villagerTypeHolderSet(lookups.villagerVariants(), List.of(VillagerType.SWAMP))), List.of())
+			VillagerTrade.builder(new TradeCost(Items.DARK_OAK_BOAT, 1), new ItemStackTemplate(Items.EMERALD, 1), 12, 30, 0.05F)
+			.merchantPredicate(villagerTypeRestriction(villagerTypeHolderSet(lookups.villagerVariants(), List.of(VillagerType.SWAMP))))
+			.build()
 		);
 		register(
 			context,
 			FISHERMAN_5_EMERALD_SUPERIOR_ENCHANTED_FISHING_ROD,
-			new VillagerTrade(
-				new TradeCost(Items.EMERALD, UniformGenerator.between(12, 16)),
+			VillagerTrade.builder(
+				new TradeCost(Items.EMERALD, ContextIntProviders.between(12, 16)),
 				new ItemStackTemplate(Items.FISHING_ROD),
 				3,
 				30,
-				0.2F,
-				Optional.empty(),
-				superiorEnchantedItem(lookups.items(), lookups.enchantmentsForTradedEquipment(), Items.FISHING_ROD)
+				0.2F
 			)
+			.addModifiers(superiorEnchantedItem(lookups.items(), lookups.enchantmentsForTradedEquipment(), Items.FISHING_ROD))
+			.build()
 		);
 		register(
 			context,
 			FISHERMAN_5_JUNGLE_BOAT_EMERALD,
-			new VillagerTrade(new TradeCost(Items.JUNGLE_BOAT, 1), new ItemStackTemplate(Items.EMERALD, 1), 12, 30, 0.05F, villagerTypeRestriction(villagerTypeHolderSet(lookups.villagerVariants(), List.of(VillagerType.DESERT, VillagerType.JUNGLE))), List.of())
+			VillagerTrade.builder(new TradeCost(Items.JUNGLE_BOAT, 1), new ItemStackTemplate(Items.EMERALD, 1), 12, 30, 0.05F)
+			.merchantPredicate(villagerTypeRestriction(villagerTypeHolderSet(lookups.villagerVariants(), List.of(VillagerType.DESERT, VillagerType.JUNGLE))))
+			.build()
 		);
 		register(
 			context,
 			FISHERMAN_5_OAK_BOAT_EMERALD,
-			new VillagerTrade(new TradeCost(Items.OAK_BOAT, 1), new ItemStackTemplate(Items.EMERALD, 1), 12, 30, 0.05F, villagerTypeRestriction(villagerTypeHolderSet(lookups.villagerVariants(), List.of(VillagerType.PLAINS))), List.of())
+			VillagerTrade.builder(new TradeCost(Items.OAK_BOAT, 1), new ItemStackTemplate(Items.EMERALD, 1), 12, 30, 0.05F)
+			.merchantPredicate(villagerTypeRestriction(villagerTypeHolderSet(lookups.villagerVariants(), List.of(VillagerType.PLAINS))))
+			.build()
 		);
 		register(
 			context,
 			FISHERMAN_5_SPRUCE_BOAT_EMERALD,
-			new VillagerTrade(new TradeCost(Items.SPRUCE_BOAT, 1), new ItemStackTemplate(Items.EMERALD, 1), 12, 30, 0.05F, villagerTypeRestriction(villagerTypeHolderSet(lookups.villagerVariants(), List.of(VillagerType.TAIGA, VillagerType.SNOW))), List.of())
+			VillagerTrade.builder(new TradeCost(Items.SPRUCE_BOAT, 1), new ItemStackTemplate(Items.EMERALD, 1), 12, 30, 0.05F)
+			.merchantPredicate(villagerTypeRestriction(villagerTypeHolderSet(lookups.villagerVariants(), List.of(VillagerType.TAIGA, VillagerType.SNOW))))
+			.build()
 		);
 	}
 	private static void registerShepherd(final BootstrapContext<VillagerTrade> context, final TradeLookups lookups) {
 		register(
 			context,
 			SHEPHERD_1_BLACK_WOOL_EMERALD,
-			new VillagerTrade(new TradeCost(Items.WOOL.black(), 4), new ItemStackTemplate(Items.EMERALD, 1), 16, 2, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.WOOL.black(), 4), new ItemStackTemplate(Items.EMERALD, 1), 16, 2, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_1_BLUE_WOOL_EMERALD,
-			new VillagerTrade(new TradeCost(Items.WOOL.blue(), 4), new ItemStackTemplate(Items.EMERALD, 1), 16, 2, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.WOOL.blue(), 4), new ItemStackTemplate(Items.EMERALD, 1), 16, 2, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_1_BROWN_WOOL_EMERALD,
-			new VillagerTrade(new TradeCost(Items.WOOL.brown(), 4), new ItemStackTemplate(Items.EMERALD, 1), 16, 2, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.WOOL.brown(), 4), new ItemStackTemplate(Items.EMERALD, 1), 16, 2, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_1_CYAN_WOOL_EMERALD,
-			new VillagerTrade(new TradeCost(Items.WOOL.cyan(), 4), new ItemStackTemplate(Items.EMERALD, 1), 16, 2, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.WOOL.cyan(), 4), new ItemStackTemplate(Items.EMERALD, 1), 16, 2, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_1_EMERALD_COPPER_SHEARS,
-			new VillagerTrade(new TradeCost(Items.EMERALD, UniformGenerator.between(1, 2)), new ItemStackTemplate(MMEItems.COPPER_SHEARS, 1), 16, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, ContextIntProviders.between(1, 2)), new ItemStackTemplate(MMEItems.COPPER_SHEARS, 1), 16, 1, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_1_EMERALD_SILVER_SHEARS,
-			new VillagerTrade(new TradeCost(Items.EMERALD, UniformGenerator.between(1, 2)), new ItemStackTemplate(MMEItems.SILVER_SHEARS, 1), 16, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, ContextIntProviders.between(1, 2)), new ItemStackTemplate(MMEItems.SILVER_SHEARS, 1), 16, 1, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_1_GRAY_WOOL_EMERALD,
-			new VillagerTrade(new TradeCost(Items.WOOL.gray(), 4), new ItemStackTemplate(Items.EMERALD, 1), 16, 2, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.WOOL.gray(), 4), new ItemStackTemplate(Items.EMERALD, 1), 16, 2, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_1_GREEN_WOOL_EMERALD,
-			new VillagerTrade(new TradeCost(Items.WOOL.green(), 4), new ItemStackTemplate(Items.EMERALD, 1), 16, 2, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.WOOL.green(), 4), new ItemStackTemplate(Items.EMERALD, 1), 16, 2, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_1_LIGHT_BLUE_WOOL_EMERALD,
-			new VillagerTrade(new TradeCost(Items.WOOL.lightBlue(), 4), new ItemStackTemplate(Items.EMERALD, 1), 16, 2, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.WOOL.lightBlue(), 4), new ItemStackTemplate(Items.EMERALD, 1), 16, 2, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_1_LIGHT_GRAY_WOOL_EMERALD,
-			new VillagerTrade(new TradeCost(Items.WOOL.lightGray(), 4), new ItemStackTemplate(Items.EMERALD, 1), 16, 2, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.WOOL.lightGray(), 4), new ItemStackTemplate(Items.EMERALD, 1), 16, 2, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_1_LIME_WOOL_EMERALD,
-			new VillagerTrade(new TradeCost(Items.WOOL.lime(), 4), new ItemStackTemplate(Items.EMERALD, 1), 16, 2, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.WOOL.lime(), 4), new ItemStackTemplate(Items.EMERALD, 1), 16, 2, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_1_MAGENTA_WOOL_EMERALD,
-			new VillagerTrade(new TradeCost(Items.WOOL.magenta(), 4), new ItemStackTemplate(Items.EMERALD, 1), 16, 2, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.WOOL.magenta(), 4), new ItemStackTemplate(Items.EMERALD, 1), 16, 2, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_1_ORANGE_WOOL_EMERALD,
-			new VillagerTrade(new TradeCost(Items.WOOL.orange(), 4), new ItemStackTemplate(Items.EMERALD, 1), 16, 2, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.WOOL.orange(), 4), new ItemStackTemplate(Items.EMERALD, 1), 16, 2, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_1_PINK_WOOL_EMERALD,
-			new VillagerTrade(new TradeCost(Items.WOOL.pink(), 4), new ItemStackTemplate(Items.EMERALD, 1), 16, 2, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.WOOL.pink(), 4), new ItemStackTemplate(Items.EMERALD, 1), 16, 2, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_1_PURPLE_WOOL_EMERALD,
-			new VillagerTrade(new TradeCost(Items.WOOL.purple(), 4), new ItemStackTemplate(Items.EMERALD, 1), 16, 2, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.WOOL.purple(), 4), new ItemStackTemplate(Items.EMERALD, 1), 16, 2, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_1_RED_WOOL_EMERALD,
-			new VillagerTrade(new TradeCost(Items.WOOL.red(), 4), new ItemStackTemplate(Items.EMERALD, 1), 16, 2, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.WOOL.red(), 4), new ItemStackTemplate(Items.EMERALD, 1), 16, 2, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_1_WHITE_WOOL_EMERALD,
-			new VillagerTrade(new TradeCost(Items.WOOL.white(), 4), new ItemStackTemplate(Items.EMERALD, 1), 16, 2, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.WOOL.white(), 4), new ItemStackTemplate(Items.EMERALD, 1), 16, 2, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_1_YELLOW_WOOL_EMERALD,
-			new VillagerTrade(new TradeCost(Items.WOOL.yellow(), 4), new ItemStackTemplate(Items.EMERALD, 1), 16, 2, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.WOOL.yellow(), 4), new ItemStackTemplate(Items.EMERALD, 1), 16, 2, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_2_BLUE_DYE_EMERALD,
-			new VillagerTrade(new TradeCost(Items.DYE.blue(), 12), new ItemStackTemplate(Items.EMERALD, 1), 12, 10, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.DYE.blue(), 12), new ItemStackTemplate(Items.EMERALD, 1), 12, 10, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_2_EMERALD_BLACK_CARPET,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.CARPET.black(), 16), 12, 5, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.CARPET.black(), 16), 12, 5, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_2_EMERALD_BLUE_CARPET,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.CARPET.blue(), 16), 12, 5, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.CARPET.blue(), 16), 12, 5, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_2_EMERALD_BROWN_CARPET,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.CARPET.brown(), 16), 12, 5, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.CARPET.brown(), 16), 12, 5, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_2_EMERALD_CYAN_CARPET,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.CARPET.cyan(), 16), 12, 5, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.CARPET.cyan(), 16), 12, 5, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_2_EMERALD_GRAY_CARPET,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.CARPET.gray(), 16), 12, 5, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.CARPET.gray(), 16), 12, 5, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_2_EMERALD_GREEN_CARPET,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.CARPET.green(), 16), 12, 5, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.CARPET.green(), 16), 12, 5, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_2_EMERALD_LIGHT_BLUE_CARPET,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.CARPET.lightBlue(), 16), 12, 5, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.CARPET.lightBlue(), 16), 12, 5, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_2_EMERALD_LIGHT_GRAY_CARPET,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.CARPET.lightGray(), 16), 12, 5, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.CARPET.lightGray(), 16), 12, 5, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_2_EMERALD_LIME_CARPET,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.CARPET.lime(), 16), 12, 5, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.CARPET.lime(), 16), 12, 5, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_2_EMERALD_MAGENTA_CARPET,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.CARPET.magenta(), 16), 12, 5, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.CARPET.magenta(), 16), 12, 5, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_2_EMERALD_ORANGE_CARPET,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.CARPET.orange(), 16), 12, 5, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.CARPET.orange(), 16), 12, 5, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_2_EMERALD_PINK_CARPET,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.CARPET.pink(), 16), 12, 5, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.CARPET.pink(), 16), 12, 5, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_2_EMERALD_PURPLE_CARPET,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.CARPET.purple(), 16), 12, 5, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.CARPET.purple(), 16), 12, 5, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_2_EMERALD_RED_CARPET,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.CARPET.red(), 16), 12, 5, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.CARPET.red(), 16), 12, 5, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_2_EMERALD_WHITE_CARPET,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.CARPET.white(), 16), 12, 5, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.CARPET.white(), 16), 12, 5, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_2_EMERALD_YELLOW_CARPET,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.CARPET.yellow(), 16), 12, 5, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.CARPET.yellow(), 16), 12, 5, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_2_GREEN_DYE_EMERALD,
-			new VillagerTrade(new TradeCost(Items.DYE.green(), 12), new ItemStackTemplate(Items.EMERALD, 1), 12, 10, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.DYE.green(), 12), new ItemStackTemplate(Items.EMERALD, 1), 12, 10, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_2_RED_DYE_EMERALD,
-			new VillagerTrade(new TradeCost(Items.DYE.red(), 12), new ItemStackTemplate(Items.EMERALD, 1), 12, 10, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.DYE.red(), 12), new ItemStackTemplate(Items.EMERALD, 1), 12, 10, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_2_YELLOW_DYE_EMERALD,
-			new VillagerTrade(new TradeCost(Items.DYE.yellow(), 12), new ItemStackTemplate(Items.EMERALD, 1), 12, 10, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.DYE.yellow(), 12), new ItemStackTemplate(Items.EMERALD, 1), 12, 10, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_3_EMERALD_SHEARS,
-			new VillagerTrade(new TradeCost(Items.EMERALD, UniformGenerator.between(3, 4)), new ItemStackTemplate(Items.SHEARS, 1), 12, 10, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, ContextIntProviders.between(3, 4)), new ItemStackTemplate(Items.SHEARS, 1), 12, 10, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_3_EMERALD_BLACK_BED,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.BED.black(), 1), 12, 10, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.BED.black(), 1), 12, 10, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_3_EMERALD_BLUE_BED,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.BED.blue(), 1), 12, 10, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.BED.blue(), 1), 12, 10, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_3_EMERALD_BROWN_BED,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.BED.brown(), 1), 12, 10, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.BED.brown(), 1), 12, 10, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_3_EMERALD_CYAN_BED,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.BED.cyan(), 1), 12, 10, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.BED.cyan(), 1), 12, 10, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_3_EMERALD_GRAY_BED,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.BED.gray(), 1), 12, 10, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.BED.gray(), 1), 12, 10, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_3_EMERALD_GREEN_BED,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.BED.green(), 1), 12, 10, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.BED.green(), 1), 12, 10, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_3_EMERALD_LIGHT_BLUE_BED,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.BED.lightBlue(), 1), 12, 10, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.BED.lightBlue(), 1), 12, 10, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_3_EMERALD_LIGHT_GRAY_BED,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.BED.lightGray(), 1), 12, 10, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.BED.lightGray(), 1), 12, 10, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_3_EMERALD_LIME_BED,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.BED.lime(), 1), 12, 10, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.BED.lime(), 1), 12, 10, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_3_EMERALD_MAGENTA_BED,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.BED.magenta(), 1), 12, 10, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.BED.magenta(), 1), 12, 10, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_3_EMERALD_ORANGE_BED,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.BED.orange(), 1), 12, 10, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.BED.orange(), 1), 12, 10, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_3_EMERALD_PINK_BED,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.BED.pink(), 1), 12, 10, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.BED.pink(), 1), 12, 10, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_3_EMERALD_PURPLE_BED,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.BED.purple(), 1), 12, 10, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.BED.purple(), 1), 12, 10, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_3_EMERALD_RED_BED,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.BED.red(), 1), 12, 10, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.BED.red(), 1), 12, 10, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_3_EMERALD_WHITE_BED,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.BED.white(), 1), 12, 10, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.BED.white(), 1), 12, 10, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_3_EMERALD_YELLOW_BED,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.BED.yellow(), 1), 12, 10, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.BED.yellow(), 1), 12, 10, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_3_BLACK_DYE_EMERALD,
-			new VillagerTrade(new TradeCost(Items.DYE.black(), 12), new ItemStackTemplate(Items.EMERALD, 1), 12, 20, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.DYE.black(), 12), new ItemStackTemplate(Items.EMERALD, 1), 12, 20, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_3_BROWN_DYE_EMERALD,
-			new VillagerTrade(new TradeCost(Items.DYE.brown(), 12), new ItemStackTemplate(Items.EMERALD, 1), 12, 20, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.DYE.brown(), 12), new ItemStackTemplate(Items.EMERALD, 1), 12, 20, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_3_CYAN_DYE_EMERALD,
-			new VillagerTrade(new TradeCost(Items.DYE.cyan(), 12), new ItemStackTemplate(Items.EMERALD, 1), 12, 20, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.DYE.cyan(), 12), new ItemStackTemplate(Items.EMERALD, 1), 12, 20, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_3_GRAY_DYE_EMERALD,
-			new VillagerTrade(new TradeCost(Items.DYE.gray(), 12), new ItemStackTemplate(Items.EMERALD, 1), 12, 20, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.DYE.gray(), 12), new ItemStackTemplate(Items.EMERALD, 1), 12, 20, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_3_LIGHT_BLUE_DYE_EMERALD,
-			new VillagerTrade(new TradeCost(Items.DYE.lightBlue(), 12), new ItemStackTemplate(Items.EMERALD, 1), 12, 20, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.DYE.lightBlue(), 12), new ItemStackTemplate(Items.EMERALD, 1), 12, 20, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_3_LIME_DYE_EMERALD,
-			new VillagerTrade(new TradeCost(Items.DYE.lime(), 12), new ItemStackTemplate(Items.EMERALD, 1), 12, 20, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.DYE.lime(), 12), new ItemStackTemplate(Items.EMERALD, 1), 12, 20, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_4_EMERALD_BLACK_BANNER,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.BANNER.black(), 1), 12, 15, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.BANNER.black(), 1), 12, 15, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_4_EMERALD_BLUE_BANNER,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.BANNER.blue(), 1), 12, 15, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.BANNER.blue(), 1), 12, 15, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_4_EMERALD_BROWN_BANNER,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.BANNER.brown(), 1), 12, 15, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.BANNER.brown(), 1), 12, 15, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_4_EMERALD_CYAN_BANNER,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.BANNER.cyan(), 1), 12, 15, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.BANNER.cyan(), 1), 12, 15, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_4_EMERALD_GRAY_BANNER,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.BANNER.gray(), 1), 12, 15, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.BANNER.gray(), 1), 12, 15, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_4_EMERALD_GREEN_BANNER,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.BANNER.green(), 1), 12, 15, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.BANNER.green(), 1), 12, 15, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_4_EMERALD_LIGHT_BLUE_BANNER,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.BANNER.lightBlue(), 1), 12, 15, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.BANNER.lightBlue(), 1), 12, 15, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_4_EMERALD_LIGHT_GRAY_BANNER,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.BANNER.lightGray(), 1), 12, 15, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.BANNER.lightGray(), 1), 12, 15, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_4_EMERALD_LIME_BANNER,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.BANNER.lime(), 1), 12, 15, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.BANNER.lime(), 1), 12, 15, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_4_EMERALD_MAGENTA_BANNER,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.BANNER.magenta(), 1), 12, 15, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.BANNER.magenta(), 1), 12, 15, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_4_EMERALD_ORANGE_BANNER,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.BANNER.orange(), 1), 12, 15, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.BANNER.orange(), 1), 12, 15, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_4_EMERALD_PINK_BANNER,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.BANNER.pink(), 1), 12, 15, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.BANNER.pink(), 1), 12, 15, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_4_EMERALD_PURPLE_BANNER,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.BANNER.purple(), 1), 12, 15, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.BANNER.purple(), 1), 12, 15, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_4_EMERALD_RED_BANNER,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.BANNER.red(), 1), 12, 15, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.BANNER.red(), 1), 12, 15, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_4_EMERALD_WHITE_BANNER,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.BANNER.white(), 1), 12, 15, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.BANNER.white(), 1), 12, 15, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_4_EMERALD_YELLOW_BANNER,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.BANNER.yellow(), 1), 12, 15, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.BANNER.yellow(), 1), 12, 15, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_4_LIGHT_GRAY_DYE_EMERALD,
-			new VillagerTrade(new TradeCost(Items.DYE.lightGray(), 12), new ItemStackTemplate(Items.EMERALD, 1), 12, 30, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.DYE.lightGray(), 12), new ItemStackTemplate(Items.EMERALD, 1), 12, 30, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_4_MAGENTA_DYE_EMERALD,
-			new VillagerTrade(new TradeCost(Items.DYE.magenta(), 12), new ItemStackTemplate(Items.EMERALD, 1), 12, 30, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.DYE.magenta(), 12), new ItemStackTemplate(Items.EMERALD, 1), 12, 30, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_4_ORANGE_DYE_EMERALD,
-			new VillagerTrade(new TradeCost(Items.DYE.orange(), 12), new ItemStackTemplate(Items.EMERALD, 1), 12, 30, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.DYE.orange(), 12), new ItemStackTemplate(Items.EMERALD, 1), 12, 30, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_4_PINK_DYE_EMERALD,
-			new VillagerTrade(new TradeCost(Items.DYE.pink(), 12), new ItemStackTemplate(Items.EMERALD, 1), 12, 30, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.DYE.pink(), 12), new ItemStackTemplate(Items.EMERALD, 1), 12, 30, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_4_PURPLE_DYE_EMERALD,
-			new VillagerTrade(new TradeCost(Items.DYE.purple(), 12), new ItemStackTemplate(Items.EMERALD, 1), 12, 30, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.DYE.purple(), 12), new ItemStackTemplate(Items.EMERALD, 1), 12, 30, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_4_WHITE_DYE_EMERALD,
-			new VillagerTrade(new TradeCost(Items.DYE.white(), 12), new ItemStackTemplate(Items.EMERALD, 1), 12, 30, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.DYE.white(), 12), new ItemStackTemplate(Items.EMERALD, 1), 12, 30, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_5_EMERALD_BLACK_WOOL,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.WOOL.black(), 4), 12, 30, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.WOOL.black(), 4), 12, 30, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_5_EMERALD_BLUE_WOOL,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.WOOL.blue(), 4), 12, 30, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.WOOL.blue(), 4), 12, 30, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_5_EMERALD_BROWN_WOOL,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.WOOL.brown(), 4), 12, 30, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.WOOL.brown(), 4), 12, 30, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_5_EMERALD_CYAN_WOOL,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.WOOL.cyan(), 4), 12, 30, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.WOOL.cyan(), 4), 12, 30, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_5_EMERALD_GRAY_WOOL,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.WOOL.gray(), 4), 12, 30, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.WOOL.gray(), 4), 12, 30, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_5_EMERALD_GREEN_WOOL,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.WOOL.green(), 4), 12, 30, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.WOOL.green(), 4), 12, 30, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_5_EMERALD_LIME_WOOL,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.WOOL.lime(), 4), 12, 30, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.WOOL.lime(), 4), 12, 30, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_5_EMERALD_MAGENTA_WOOL,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.WOOL.magenta(), 4), 12, 30, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.WOOL.magenta(), 4), 12, 30, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_5_EMERALD_ORANGE_WOOL,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.WOOL.orange(), 4), 12, 30, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.WOOL.orange(), 4), 12, 30, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_5_EMERALD_PINK_WOOL,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.WOOL.pink(), 4), 12, 30, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.WOOL.pink(), 4), 12, 30, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_5_EMERALD_PURPLE_WOOL,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.WOOL.purple(), 4), 12, 30, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.WOOL.purple(), 4), 12, 30, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_5_EMERALD_RED_WOOL,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.WOOL.red(), 4), 12, 30, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.WOOL.red(), 4), 12, 30, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_5_EMERALD_WHITE_WOOL,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.WOOL.white(), 4), 12, 30, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.WOOL.white(), 4), 12, 30, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_5_EMERALD_YELLOW_WOOL,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.WOOL.yellow(), 4), 12, 30, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.WOOL.yellow(), 4), 12, 30, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_5_EMERALD_LIGHT_BLUE_WOOL,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.WOOL.lightBlue(), 4), 12, 30, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.WOOL.lightBlue(), 4), 12, 30, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_5_EMERALD_LIGHT_GRAY_WOOL,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.WOOL.lightGray(), 4), 12, 30, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.WOOL.lightGray(), 4), 12, 30, 0.05F).build()
 		);
 		register(
 			context,
 			SHEPHERD_5_EMERALD_PAINTING,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.PAINTING, 4), 12, 30, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.PAINTING, 4), 12, 30, 0.05F).build()
 		);
 	}
 	private static void registerFletcher(final BootstrapContext<VillagerTrade> context, final TradeLookups lookups) {
 		register(
 			context,
 			FLETCHER_1_EMERALD_ARROW,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.ARROW, 8), 16, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.ARROW, 8), 16, 1, 0.05F).build()
 		);
 		register(
 			context,
 			FLETCHER_1_GRAVEL_AND_EMERALD_FLINT,
-			new VillagerTrade(
+			VillagerTrade.builder(
 				new TradeCost(Items.GRAVEL, 4),
-				Optional.of(new TradeCost(Items.EMERALD, 1)),
+				new TradeCost(Items.EMERALD, 1),
 				new ItemStackTemplate(Items.FLINT, 4),
 				16,
 				2,
-				0.05F,
-				Optional.empty(),
-				List.of()
-			)
+				0.05F
+			).build()
 		);
 		register(
 			context,
 			FLETCHER_1_STICK_EMERALD,
-			new VillagerTrade(new TradeCost(Items.STICK, 32), new ItemStackTemplate(Items.EMERALD, 1), 16, 2, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.STICK, 32), new ItemStackTemplate(Items.EMERALD, 1), 16, 2, 0.05F).build()
 		);
 		register(
 			context,
 			FLETCHER_2_EMERALD_BOW,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.BOW, 1), 12, 5, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.BOW, 1), 12, 5, 0.05F).build()
 		);
 		register(
 			context,
 			FLETCHER_2_FLINT_EMERALD,
-			new VillagerTrade(new TradeCost(Items.FLINT, 8), new ItemStackTemplate(Items.EMERALD, 1), 12, 10, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.FLINT, 8), new ItemStackTemplate(Items.EMERALD, 1), 12, 10, 0.05F).build()
 		);
 		register(
 			context,
 			FLETCHER_3_EMERALD_CROSSBOW,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.CROSSBOW, 1), 12, 10, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.CROSSBOW, 1), 12, 10, 0.05F).build()
 		);
 		register(
 			context,
 			FLETCHER_3_STRING_EMERALD,
-			new VillagerTrade(new TradeCost(Items.STRING, UniformGenerator.between(6, 8)), new ItemStackTemplate(Items.EMERALD, 1), 12, 20, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.STRING, ContextIntProviders.between(6, 8)), new ItemStackTemplate(Items.EMERALD, 1), 12, 20, 0.05F).build()
 		);
 		register(
 			context,
 			FLETCHER_4_EMERALD_ENCHANTED_BOW,
-			new VillagerTrade(
+			VillagerTrade.builder(
 				new TradeCost(Items.EMERALD, 2),
 				new ItemStackTemplate(Items.BOW),
 				3,
 				15,
-				0.2F,
-				Optional.empty(),
-				enchantedItem(lookups.items(), lookups.enchantmentsForTradedEquipment(), Items.BOW)
+				0.2F
 			)
+			.addModifiers(enchantedItem(lookups.items(), lookups.enchantmentsForTradedEquipment(), Items.BOW))
+			.build()
 		);
 		register(
 			context,
 			FLETCHER_4_FEATHER_EMERALD,
-			new VillagerTrade(new TradeCost(Items.FEATHER, UniformGenerator.between(12, 16)), new ItemStackTemplate(Items.EMERALD, 1), 12, 30, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.FEATHER, ContextIntProviders.between(12, 16)), new ItemStackTemplate(Items.EMERALD, 1), 12, 30, 0.05F).build()
 		);
 		register(
 			context,
 			FLETCHER_5_ARROW_AND_EMERALD_TIPPED_ARROW,
-			new VillagerTrade(
+			VillagerTrade.builder(
 				new TradeCost(Items.ARROW, 8),
-				Optional.of(new TradeCost(Items.EMERALD, 1)),
+				new TradeCost(Items.EMERALD, 1),
 				new ItemStackTemplate(Items.TIPPED_ARROW, 8),
 				12,
 				30,
-				0.05F,
-				Optional.empty(),
-				List.of(SetRandomPotionFunction.fromTagKey(lookups.potionsForTippedArrows().get()).build())
+				0.05F
 			)
+			.addModifiers(List.of(SetRandomPotionFunction.fromTagKey(lookups.potionsForTippedArrows().get()).build()).stream().map(Holder::direct).toList())
+			.build()
 		);
 		register(
 			context,
 			FLETCHER_5_EMERALD_ENCHANTED_CROSSBOW,
-			new VillagerTrade(
+			VillagerTrade.builder(
 				new TradeCost(Items.EMERALD, 3),
 				new ItemStackTemplate(Items.CROSSBOW),
 				3,
 				30,
-				0.2F,
-				Optional.empty(),
-				enchantedItem(lookups.items(), lookups.enchantmentsForTradedEquipment(), Items.CROSSBOW)
+				0.2F
 			)
+			.addModifiers(enchantedItem(lookups.items(), lookups.enchantmentsForTradedEquipment(), Items.CROSSBOW))
+			.build()
 		);
 		register(
 			context,
 			FLETCHER_5_TRIPWIRE_HOOK_EMERALD,
-			new VillagerTrade(new TradeCost(Items.TRIPWIRE_HOOK, 2), new ItemStackTemplate(Items.EMERALD, 1), 12, 30, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.TRIPWIRE_HOOK, 2), new ItemStackTemplate(Items.EMERALD, 1), 12, 30, 0.05F).build()
 		);
 	}
 	private static void registerLibrarian(final BootstrapContext<VillagerTrade> context, final TradeLookups lookups) {
 		register(
 			context,
 			LIBRARIAN_1_EMERALD_AND_BOOK_ENCHANTED_BOOK,
-			new VillagerTrade(
+			VillagerTrade.builder(
 				new TradeCost(Items.EMERALD, 1),
-				Optional.of(new TradeCost(Items.BOOK, 1)),
+				new TradeCost(Items.BOOK, 1),
 				new ItemStackTemplate(Items.ENCHANTED_BOOK),
 				16,
 				1,
-				0.2F,
-				Optional.empty(),
-				enchantedBook(lookups.items(), lookups.enchantmentsForBooks()),
-				lookups.doubleTradePrice().get()
+				0.2F
 			)
+			.addModifiers(enchantedBook(lookups.items(), lookups.enchantmentsForBooks()))
+			.doubleTradePriceEnchantments(lookups.doubleTradePrice().get())
+			.build()
 		);
 		register(
 			context,
 			LIBRARIAN_1_EMERALD_BOOKSHELF,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.BOOKSHELF, 1), 16, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.BOOKSHELF, 1), 16, 1, 0.05F).build()
 		);
 		register(
 			context,
 			LIBRARIAN_1_PAPER_EMERALD,
-			new VillagerTrade(new TradeCost(Items.PAPER, UniformGenerator.between(13, 18)), new ItemStackTemplate(Items.EMERALD, 1), 16, 2, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.PAPER, ContextIntProviders.between(13, 18)), new ItemStackTemplate(Items.EMERALD, 1), 16, 2, 0.05F).build()
 		);
 		register(
 			context,
 			LIBRARIAN_2_BOOK_EMERALD,
-			new VillagerTrade(new TradeCost(Items.BOOK, 2), new ItemStackTemplate(Items.EMERALD, 1), 12, 10, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.BOOK, 2), new ItemStackTemplate(Items.EMERALD, 1), 12, 10, 0.05F).build()
 		);
 		register(
 			context,
 			LIBRARIAN_2_EMERALD_AND_BOOK_ENCHANTED_BOOK,
-			new VillagerTrade(
+			VillagerTrade.builder(
 				new TradeCost(Items.EMERALD, 1),
-				Optional.of(new TradeCost(Items.BOOK, 1)),
+				new TradeCost(Items.BOOK, 1),
 				new ItemStackTemplate(Items.ENCHANTED_BOOK),
 				12,
 				5,
-				0.2F,
-				Optional.empty(),
-				enchantedBook(lookups.items(), lookups.enchantmentsForBooks()),
-				lookups.doubleTradePrice().get()
+				0.2F
 			)
+			.addModifiers(enchantedBook(lookups.items(), lookups.enchantmentsForBooks()))
+			.doubleTradePriceEnchantments(lookups.doubleTradePrice().get())
+			.build()
 		);
 		register(
 			context,
 			LIBRARIAN_2_EMERALD_LANTERN,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.LANTERN, 4), 12, 5, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.LANTERN, 4), 12, 5, 0.05F).build()
 		);
 		register(
 			context,
 			LIBRARIAN_3_EMERALD_AND_BOOK_ENCHANTED_BOOK,
-			new VillagerTrade(
+			VillagerTrade.builder(
 				new TradeCost(Items.EMERALD, 1),
-				Optional.of(new TradeCost(Items.BOOK, 1)),
+				new TradeCost(Items.BOOK, 1),
 				new ItemStackTemplate(Items.ENCHANTED_BOOK),
 				12,
 				10,
-				0.2F,
-				Optional.empty(),
-				enchantedBook(lookups.items(), lookups.enchantmentsForBooks()),
-				lookups.doubleTradePrice().get()
+				0.2F
 			)
+			.addModifiers(enchantedBook(lookups.items(), lookups.enchantmentsForBooks()))
+			.doubleTradePriceEnchantments(lookups.doubleTradePrice().get())
+			.build()
 		);
 		register(
 			context,
 			LIBRARIAN_3_EMERALD_GLASS,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.GLASS, 4), 12, 10, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.GLASS, 4), 12, 10, 0.05F).build()
 		);
 		register(
 			context,
 			LIBRARIAN_3_INK_SAC_EMERALD,
-			new VillagerTrade(new TradeCost(Items.DYE.black(), 3), new ItemStackTemplate(Items.EMERALD, 1), 12, 20, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.DYE.black(), 3), new ItemStackTemplate(Items.EMERALD, 1), 12, 20, 0.05F).build()
 		);
 		register(
 			context,
 			LIBRARIAN_4_EMERALD_BOOK_AND_ENCHANTED_BOOK,
-			new VillagerTrade(
+			VillagerTrade.builder(
 				new TradeCost(Items.EMERALD, 1),
-				Optional.of(new TradeCost(Items.BOOK, 1)),
+				new TradeCost(Items.BOOK, 1),
 				new ItemStackTemplate(Items.ENCHANTED_BOOK),
 				12,
 				15,
-				0.2F,
-				Optional.empty(),
-				enchantedBook(lookups.items(), lookups.enchantmentsForBooks()),
-				lookups.doubleTradePrice().get()
+				0.2F
 			)
+			.addModifiers(enchantedBook(lookups.items(), lookups.enchantmentsForBooks()))
+			.doubleTradePriceEnchantments(lookups.doubleTradePrice().get())
+			.build()
 		);
 		register(
 			context,
 			LIBRARIAN_4_EMERALD_CLOCK,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.CLOCK, 1), 12, 15, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.CLOCK, 1), 12, 15, 0.05F).build()
 		);
 		register(
 			context,
 			LIBRARIAN_4_EMERALD_COMPASS,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.COMPASS, 1), 12, 15, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.COMPASS, 1), 12, 15, 0.05F).build()
 		);
 		register(
 			context,
 			LIBRARIAN_4_WRITABLE_BOOK_EMERALD,
-			new VillagerTrade(new TradeCost(Items.WRITABLE_BOOK, 1), new ItemStackTemplate(Items.EMERALD, 2), 12, 30, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.WRITABLE_BOOK, 1), new ItemStackTemplate(Items.EMERALD, 2), 12, 30, 0.05F).build()
 		);
 		register(
 			context,
 			LIBRARIAN_5_EMERALD_BLACK_CANDLE,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.DYED_CANDLE.black(), 6), 12, 30, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.DYED_CANDLE.black(), 6), 12, 30, 0.05F).build()
 		);
 		register(
 			context,
 			LIBRARIAN_5_EMERALD_BLUE_CANDLE,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.DYED_CANDLE.blue(), 6), 12, 30, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.DYED_CANDLE.blue(), 6), 12, 30, 0.05F).build()
 		);
 		register(
 			context,
 			LIBRARIAN_5_EMERALD_BROWN_CANDLE,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.DYED_CANDLE.brown(), 6), 12, 30, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.DYED_CANDLE.brown(), 6), 12, 30, 0.05F).build()
 		);
 		register(
 			context,
 			LIBRARIAN_5_EMERALD_CYAN_CANDLE,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.DYED_CANDLE.cyan(), 6), 12, 30, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.DYED_CANDLE.cyan(), 6), 12, 30, 0.05F).build()
 		);
 		register(
 			context,
 			LIBRARIAN_5_EMERALD_GRAY_CANDLE,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.DYED_CANDLE.gray(), 6), 12, 30, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.DYED_CANDLE.gray(), 6), 12, 30, 0.05F).build()
 		);
 		register(
 			context,
 			LIBRARIAN_5_EMERALD_GREEN_CANDLE,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.DYED_CANDLE.green(), 6), 12, 30, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.DYED_CANDLE.green(), 6), 12, 30, 0.05F).build()
 		);
 		register(
 			context,
 			LIBRARIAN_5_EMERALD_LIGHT_BLUE_CANDLE,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.DYED_CANDLE.lightBlue(), 6), 12, 30, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.DYED_CANDLE.lightBlue(), 6), 12, 30, 0.05F).build()
 		);
 		register(
 			context,
 			LIBRARIAN_5_EMERALD_LIGHT_GRAY_CANDLE,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.DYED_CANDLE.lightGray(), 6), 12, 30, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.DYED_CANDLE.lightGray(), 6), 12, 30, 0.05F).build()
 		);
 		register(
 			context,
 			LIBRARIAN_5_EMERALD_LIME_CANDLE,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.DYED_CANDLE.lime(), 6), 12, 30, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.DYED_CANDLE.lime(), 6), 12, 30, 0.05F).build()
 		);
 		register(
 			context,
 			LIBRARIAN_5_EMERALD_MAGENTA_CANDLE,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.DYED_CANDLE.magenta(), 6), 12, 30, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.DYED_CANDLE.magenta(), 6), 12, 30, 0.05F).build()
 		);
 		register(
 			context,
 			LIBRARIAN_5_EMERALD_ORANGE_CANDLE,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.DYED_CANDLE.orange(), 6), 12, 30, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.DYED_CANDLE.orange(), 6), 12, 30, 0.05F).build()
 		);
 		register(
 			context,
 			LIBRARIAN_5_EMERALD_PINK_CANDLE,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.DYED_CANDLE.pink(), 6), 12, 30, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.DYED_CANDLE.pink(), 6), 12, 30, 0.05F).build()
 		);
 		register(
 			context,
 			LIBRARIAN_5_EMERALD_PURPLE_CANDLE,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.DYED_CANDLE.purple(), 6), 12, 30, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.DYED_CANDLE.purple(), 6), 12, 30, 0.05F).build()
 		);
 		register(
 			context,
 			LIBRARIAN_5_EMERALD_RED_CANDLE,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.DYED_CANDLE.red(), 6), 12, 30, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.DYED_CANDLE.red(), 6), 12, 30, 0.05F).build()
 		);
 		register(
 			context,
 			LIBRARIAN_5_EMERALD_WHITE_CANDLE,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.DYED_CANDLE.white(), 6), 12, 30, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.DYED_CANDLE.white(), 6), 12, 30, 0.05F).build()
 		);
 		register(
 			context,
 			LIBRARIAN_5_EMERALD_YELLOW_CANDLE,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.DYED_CANDLE.yellow(), 6), 12, 30, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.DYED_CANDLE.yellow(), 6), 12, 30, 0.05F).build()
 		);
 	}
 	private static void registerCartographer(final BootstrapContext<VillagerTrade> context, final TradeLookups lookups) {
 		register(
 			context,
 			CARTOGRAPHER_1_EMERALD_MAP,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.MAP, 1), 16, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.MAP, 1), 16, 1, 0.05F).build()
 		);
 		register(
 			context,
 			CARTOGRAPHER_1_PAPER_EMERALD,
-			new VillagerTrade(new TradeCost(Items.PAPER, UniformGenerator.between(10, 14)), new ItemStackTemplate(Items.EMERALD, 1), 16, 2, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.PAPER, ContextIntProviders.between(10, 14)), new ItemStackTemplate(Items.EMERALD, 1), 16, 2, 0.05F).build()
 		);
 		register(
 			context,
 			CARTOGRAPHER_2_EMERALD_AND_COMPASS_EXPLORER_JUNGLE_MAP,
-			new VillagerTrade(
+			VillagerTrade.builder(
 				new TradeCost(Items.EMERALD, 8),
-				Optional.of(new TradeCost(Items.COMPASS, 1)),
+				new TradeCost(Items.COMPASS, 1),
 				new ItemStackTemplate(Items.MAP),
 				12,
 				5,
-				0.2F,
-				villagerTypeRestriction(villagerTypeHolderSet(lookups.villagerVariants(), List.of(VillagerType.SWAMP, VillagerType.SAVANNA, VillagerType.DESERT))),
-				List.of(
-					ExplorationMapFunction.makeExplorationMap()
-						.setDestination(StructureTags.ON_JUNGLE_EXPLORER_MAPS)
+				0.2F
+			)
+			.merchantPredicate(villagerTypeRestriction(villagerTypeHolderSet(lookups.villagerVariants(), List.of(VillagerType.SWAMP, VillagerType.SAVANNA, VillagerType.DESERT))))
+			.addModifiers(List.of(
+					ExplorationMapFunction.makeExplorationMap(context.lookup(Registries.STRUCTURE).getOrThrow(StructureTags.ON_JUNGLE_PYRAMID_MAPS))
 						.setMapDecoration(MapDecorationTypes.JUNGLE_TEMPLE)
 						.setSearchRadius(100)
 						.setSkipKnownStructures(true)
@@ -1608,25 +1609,25 @@ public class MMEVillagerTradeProvider {
 								.withComponents(DataComponentMatchers.Builder.components().any(DataComponents.MAP_ID).build())
 								.build()
 						)
-						.onFail(Optional.of(DiscardItem.discardItem().build()))
+						.onFail(DiscardItem.discardItem().build())
 						.build()
-				)
-			)
+				).stream().map(Holder::direct).toList())
+			.build()
 		);
 		register(
 			context,
 			CARTOGRAPHER_2_EMERALD_AND_COMPASS_EXPLORER_SWAMP_MAP,
-			new VillagerTrade(
+			VillagerTrade.builder(
 				new TradeCost(Items.EMERALD, 8),
-				Optional.of(new TradeCost(Items.COMPASS, 1)),
+				new TradeCost(Items.COMPASS, 1),
 				new ItemStackTemplate(Items.MAP),
 				12,
 				5,
-				0.2F,
-				villagerTypeRestriction(villagerTypeHolderSet(lookups.villagerVariants(), List.of(VillagerType.TAIGA, VillagerType.SNOW, VillagerType.JUNGLE))),
-				List.of(
-					ExplorationMapFunction.makeExplorationMap()
-						.setDestination(StructureTags.ON_SWAMP_EXPLORER_MAPS)
+				0.2F
+			)
+			.merchantPredicate(villagerTypeRestriction(villagerTypeHolderSet(lookups.villagerVariants(), List.of(VillagerType.TAIGA, VillagerType.SNOW, VillagerType.JUNGLE))))
+			.addModifiers(List.of(
+					ExplorationMapFunction.makeExplorationMap(context.lookup(Registries.STRUCTURE).getOrThrow(StructureTags.ON_SWAMP_HUT_MAPS))
 						.setMapDecoration(MapDecorationTypes.SWAMP_HUT)
 						.setSearchRadius(100)
 						.setSkipKnownStructures(true)
@@ -1638,25 +1639,25 @@ public class MMEVillagerTradeProvider {
 								.withComponents(DataComponentMatchers.Builder.components().any(DataComponents.MAP_ID).build())
 								.build()
 						)
-						.onFail(Optional.of(DiscardItem.discardItem().build()))
+						.onFail(DiscardItem.discardItem().build())
 						.build()
-				)
-			)
+				).stream().map(Holder::direct).toList())
+			.build()
 		);
 		register(
 			context,
 			CARTOGRAPHER_2_EMERALD_AND_COMPASS_VILLAGE_DESERT_MAP,
-			new VillagerTrade(
+			VillagerTrade.builder(
 				new TradeCost(Items.EMERALD, 8),
-				Optional.of(new TradeCost(Items.COMPASS, 1)),
+				new TradeCost(Items.COMPASS, 1),
 				new ItemStackTemplate(Items.MAP),
 				12,
 				5,
-				0.2F,
-				villagerTypeRestriction(villagerTypeHolderSet(lookups.villagerVariants(), List.of(VillagerType.SAVANNA, VillagerType.JUNGLE))),
-				List.of(
-					ExplorationMapFunction.makeExplorationMap()
-						.setDestination(StructureTags.ON_DESERT_VILLAGE_MAPS)
+				0.2F
+			)
+			.merchantPredicate(villagerTypeRestriction(villagerTypeHolderSet(lookups.villagerVariants(), List.of(VillagerType.SAVANNA, VillagerType.JUNGLE))))
+			.addModifiers(List.of(
+					ExplorationMapFunction.makeExplorationMap(context.lookup(Registries.STRUCTURE).getOrThrow(StructureTags.ON_DESERT_VILLAGE_MAPS))
 						.setMapDecoration(MapDecorationTypes.DESERT_VILLAGE)
 						.setSearchRadius(100)
 						.setSkipKnownStructures(true)
@@ -1668,25 +1669,25 @@ public class MMEVillagerTradeProvider {
 								.withComponents(DataComponentMatchers.Builder.components().any(DataComponents.MAP_ID).build())
 								.build()
 						)
-						.onFail(Optional.of(DiscardItem.discardItem().build()))
+						.onFail(DiscardItem.discardItem().build())
 						.build()
-				)
-			)
+				).stream().map(Holder::direct).toList())
+			.build()
 		);
 		register(
 			context,
 			CARTOGRAPHER_2_EMERALD_AND_COMPASS_VILLAGE_PLAINS_MAP,
-			new VillagerTrade(
+			VillagerTrade.builder(
 				new TradeCost(Items.EMERALD, 8),
-				Optional.of(new TradeCost(Items.COMPASS, 1)),
+				new TradeCost(Items.COMPASS, 1),
 				new ItemStackTemplate(Items.MAP),
 				12,
 				5,
-				0.2F,
-				villagerTypeRestriction(villagerTypeHolderSet(lookups.villagerVariants(), List.of(VillagerType.TAIGA, VillagerType.SNOW, VillagerType.SAVANNA, VillagerType.DESERT))),
-				List.of(
-					ExplorationMapFunction.makeExplorationMap()
-						.setDestination(StructureTags.ON_PLAINS_VILLAGE_MAPS)
+				0.2F
+			)
+			.merchantPredicate(villagerTypeRestriction(villagerTypeHolderSet(lookups.villagerVariants(), List.of(VillagerType.TAIGA, VillagerType.SNOW, VillagerType.SAVANNA, VillagerType.DESERT))))
+			.addModifiers(List.of(
+					ExplorationMapFunction.makeExplorationMap(context.lookup(Registries.STRUCTURE).getOrThrow(StructureTags.ON_PLAINS_VILLAGE_MAPS))
 						.setMapDecoration(MapDecorationTypes.PLAINS_VILLAGE)
 						.setSearchRadius(100)
 						.setSkipKnownStructures(true)
@@ -1698,25 +1699,25 @@ public class MMEVillagerTradeProvider {
 								.withComponents(DataComponentMatchers.Builder.components().any(DataComponents.MAP_ID).build())
 								.build()
 						)
-						.onFail(Optional.of(DiscardItem.discardItem().build()))
+						.onFail(DiscardItem.discardItem().build())
 						.build()
-				)
-			)
+				).stream().map(Holder::direct).toList())
+			.build()
 		);
 		register(
 			context,
 			CARTOGRAPHER_2_EMERALD_AND_COMPASS_VILLAGE_SAVANNA_MAP,
-			new VillagerTrade(
+			VillagerTrade.builder(
 				new TradeCost(Items.EMERALD, 8),
-				Optional.of(new TradeCost(Items.COMPASS, 1)),
+				new TradeCost(Items.COMPASS, 1),
 				new ItemStackTemplate(Items.MAP),
 				12,
 				5,
-				0.2F,
-				villagerTypeRestriction(villagerTypeHolderSet(lookups.villagerVariants(), List.of(VillagerType.PLAINS, VillagerType.JUNGLE, VillagerType.DESERT))),
-				List.of(
-					ExplorationMapFunction.makeExplorationMap()
-						.setDestination(StructureTags.ON_SAVANNA_VILLAGE_MAPS)
+				0.2F
+			)
+			.merchantPredicate(villagerTypeRestriction(villagerTypeHolderSet(lookups.villagerVariants(), List.of(VillagerType.PLAINS, VillagerType.JUNGLE, VillagerType.DESERT))))
+			.addModifiers(List.of(
+					ExplorationMapFunction.makeExplorationMap(context.lookup(Registries.STRUCTURE).getOrThrow(StructureTags.ON_SAVANNA_VILLAGE_MAPS))
 						.setMapDecoration(MapDecorationTypes.SAVANNA_VILLAGE)
 						.setSearchRadius(100)
 						.setSkipKnownStructures(true)
@@ -1728,25 +1729,25 @@ public class MMEVillagerTradeProvider {
 								.withComponents(DataComponentMatchers.Builder.components().any(DataComponents.MAP_ID).build())
 								.build()
 						)
-						.onFail(Optional.of(DiscardItem.discardItem().build()))
+						.onFail(DiscardItem.discardItem().build())
 						.build()
-				)
-			)
+				).stream().map(Holder::direct).toList())
+			.build()
 		);
 		register(
 			context,
 			CARTOGRAPHER_2_EMERALD_AND_COMPASS_VILLAGE_SNOWY_MAP,
-			new VillagerTrade(
+			VillagerTrade.builder(
 				new TradeCost(Items.EMERALD, 8),
-				Optional.of(new TradeCost(Items.COMPASS, 1)),
+				new TradeCost(Items.COMPASS, 1),
 				new ItemStackTemplate(Items.MAP),
 				12,
 				5,
-				0.2F,
-				villagerTypeRestriction(villagerTypeHolderSet(lookups.villagerVariants(), List.of(VillagerType.TAIGA, VillagerType.SWAMP))),
-				List.of(
-					ExplorationMapFunction.makeExplorationMap()
-						.setDestination(StructureTags.ON_SNOWY_VILLAGE_MAPS)
+				0.2F
+			)
+			.merchantPredicate(villagerTypeRestriction(villagerTypeHolderSet(lookups.villagerVariants(), List.of(VillagerType.TAIGA, VillagerType.SWAMP))))
+			.addModifiers(List.of(
+					ExplorationMapFunction.makeExplorationMap(context.lookup(Registries.STRUCTURE).getOrThrow(StructureTags.ON_SNOWY_VILLAGE_MAPS))
 						.setMapDecoration(MapDecorationTypes.SNOWY_VILLAGE)
 						.setSearchRadius(100)
 						.setSkipKnownStructures(true)
@@ -1758,25 +1759,25 @@ public class MMEVillagerTradeProvider {
 								.withComponents(DataComponentMatchers.Builder.components().any(DataComponents.MAP_ID).build())
 								.build()
 						)
-						.onFail(Optional.of(DiscardItem.discardItem().build()))
+						.onFail(DiscardItem.discardItem().build())
 						.build()
-				)
-			)
+				).stream().map(Holder::direct).toList())
+			.build()
 		);
 		register(
 			context,
 			CARTOGRAPHER_2_EMERALD_AND_COMPASS_VILLAGE_TAIGA_MAP,
-			new VillagerTrade(
+			VillagerTrade.builder(
 				new TradeCost(Items.EMERALD, 8),
-				Optional.of(new TradeCost(Items.COMPASS, 1)),
+				new TradeCost(Items.COMPASS, 1),
 				new ItemStackTemplate(Items.MAP),
 				12,
 				5,
-				0.2F,
-				villagerTypeRestriction(villagerTypeHolderSet(lookups.villagerVariants(), List.of(VillagerType.SWAMP, VillagerType.SNOW, VillagerType.PLAINS))),
-				List.of(
-					ExplorationMapFunction.makeExplorationMap()
-						.setDestination(StructureTags.ON_TAIGA_VILLAGE_MAPS)
+				0.2F
+			)
+			.merchantPredicate(villagerTypeRestriction(villagerTypeHolderSet(lookups.villagerVariants(), List.of(VillagerType.SWAMP, VillagerType.SNOW, VillagerType.PLAINS))))
+			.addModifiers(List.of(
+					ExplorationMapFunction.makeExplorationMap(context.lookup(Registries.STRUCTURE).getOrThrow(StructureTags.ON_TAIGA_VILLAGE_MAPS))
 						.setMapDecoration(MapDecorationTypes.TAIGA_VILLAGE)
 						.setSearchRadius(100)
 						.setSkipKnownStructures(true)
@@ -1788,35 +1789,34 @@ public class MMEVillagerTradeProvider {
 								.withComponents(DataComponentMatchers.Builder.components().any(DataComponents.MAP_ID).build())
 								.build()
 						)
-						.onFail(Optional.of(DiscardItem.discardItem().build()))
+						.onFail(DiscardItem.discardItem().build())
 						.build()
-				)
-			)
+				).stream().map(Holder::direct).toList())
+			.build()
 		);
 		register(
 			context,
 			CARTOGRAPHER_2_GLASS_PANE_EMERALD,
-			new VillagerTrade(new TradeCost(Items.GLASS_PANE, UniformGenerator.between(8, 12)), new ItemStackTemplate(Items.EMERALD, 1), 12, 10, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.GLASS_PANE, ContextIntProviders.between(8, 12)), new ItemStackTemplate(Items.EMERALD, 1), 12, 10, 0.05F).build()
 		);
 		register(
 			context,
 			CARTOGRAPHER_3_COMPASS_EMERALD,
-			new VillagerTrade(new TradeCost(Items.COMPASS, 1), new ItemStackTemplate(Items.EMERALD, 1), 12, 20, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.COMPASS, 1), new ItemStackTemplate(Items.EMERALD, 1), 12, 20, 0.05F).build()
 		);
 		register(
 			context,
 			CARTOGRAPHER_3_EMERALD_AND_COMPASS_OCEAN_EXPLORER_MAP,
-			new VillagerTrade(
+			VillagerTrade.builder(
 				new TradeCost(Items.EMERALD, 13),
-				Optional.of(new TradeCost(Items.COMPASS, 1)),
+				new TradeCost(Items.COMPASS, 1),
 				new ItemStackTemplate(Items.MAP),
 				12,
 				10,
-				0.2F,
-				Optional.empty(),
-				List.of(
-					ExplorationMapFunction.makeExplorationMap()
-						.setDestination(StructureTags.ON_OCEAN_EXPLORER_MAPS)
+				0.2F
+			)
+			.addModifiers(List.of(
+					ExplorationMapFunction.makeExplorationMap(context.lookup(Registries.STRUCTURE).getOrThrow(StructureTags.ON_OCEAN_MONUMENT_MAPS))
 						.setMapDecoration(MapDecorationTypes.OCEAN_MONUMENT)
 						.setSearchRadius(100)
 						.setSkipKnownStructures(true)
@@ -1828,25 +1828,24 @@ public class MMEVillagerTradeProvider {
 								.withComponents(DataComponentMatchers.Builder.components().any(DataComponents.MAP_ID).build())
 								.build()
 						)
-						.onFail(Optional.of(DiscardItem.discardItem().build()))
+						.onFail(DiscardItem.discardItem().build())
 						.build()
-				)
-			)
+				).stream().map(Holder::direct).toList())
+			.build()
 		);
 		register(
 			context,
 			CARTOGRAPHER_3_EMERALD_AND_COMPASS_TRIAL_CHAMBER_MAP,
-			new VillagerTrade(
+			VillagerTrade.builder(
 				new TradeCost(Items.EMERALD, 12),
-				Optional.of(new TradeCost(Items.COMPASS, 1)),
+				new TradeCost(Items.COMPASS, 1),
 				new ItemStackTemplate(Items.MAP),
 				12,
 				10,
-				0.2F,
-				Optional.empty(),
-				List.of(
-					ExplorationMapFunction.makeExplorationMap()
-						.setDestination(StructureTags.ON_TRIAL_CHAMBERS_MAPS)
+				0.2F
+			)
+			.addModifiers(List.of(
+					ExplorationMapFunction.makeExplorationMap(context.lookup(Registries.STRUCTURE).getOrThrow(StructureTags.ON_BURIED_TRIAL_CHAMBERS_MAPS))
 						.setMapDecoration(MapDecorationTypes.TRIAL_CHAMBERS)
 						.setSearchRadius(100)
 						.setSkipKnownStructures(true)
@@ -1858,105 +1857,134 @@ public class MMEVillagerTradeProvider {
 								.withComponents(DataComponentMatchers.Builder.components().any(DataComponents.MAP_ID).build())
 								.build()
 						)
-						.onFail(Optional.of(DiscardItem.discardItem().build()))
+						.onFail(DiscardItem.discardItem().build())
 						.build()
-				)
-			)
+				).stream().map(Holder::direct).toList())
+			.build()
 		);
 		register(
 			context,
 			CARTOGRAPHER_4_EMERALD_BLACK_BANNER,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.BANNER.black(), 1), 12, 15, 0.05F, villagerTypeRestriction(villagerTypeHolderSet(lookups.villagerVariants(), List.of(VillagerType.SWAMP))), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.BANNER.black(), 1), 12, 15, 0.05F)
+			.merchantPredicate(villagerTypeRestriction(villagerTypeHolderSet(lookups.villagerVariants(), List.of(VillagerType.SWAMP))))
+			.build()
 		);
 		register(
 			context,
 			CARTOGRAPHER_4_EMERALD_BLUE_BANNER,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.BANNER.blue(), 1), 12, 15, 0.05F, villagerTypeRestriction(villagerTypeHolderSet(lookups.villagerVariants(), List.of(VillagerType.SNOW, VillagerType.TAIGA))), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.BANNER.blue(), 1), 12, 15, 0.05F)
+			.merchantPredicate(villagerTypeRestriction(villagerTypeHolderSet(lookups.villagerVariants(), List.of(VillagerType.SNOW, VillagerType.TAIGA))))
+			.build()
 		);
 		register(
 			context,
 			CARTOGRAPHER_4_EMERALD_BROWN_BANNER,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.BANNER.brown(), 1), 12, 15, 0.05F, villagerTypeRestriction(villagerTypeHolderSet(lookups.villagerVariants(), List.of(VillagerType.PLAINS, VillagerType.JUNGLE))), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.BANNER.brown(), 1), 12, 15, 0.05F)
+			.merchantPredicate(villagerTypeRestriction(villagerTypeHolderSet(lookups.villagerVariants(), List.of(VillagerType.PLAINS, VillagerType.JUNGLE))))
+			.build()
 		);
 		register(
 			context,
 			CARTOGRAPHER_4_EMERALD_CYAN_BANNER,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.BANNER.cyan(), 1), 12, 15, 0.05F, villagerTypeRestriction(villagerTypeHolderSet(lookups.villagerVariants(), List.of(VillagerType.DESERT, VillagerType.SNOW))), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.BANNER.cyan(), 1), 12, 15, 0.05F)
+			.merchantPredicate(villagerTypeRestriction(villagerTypeHolderSet(lookups.villagerVariants(), List.of(VillagerType.DESERT, VillagerType.SNOW))))
+			.build()
 		);
 		register(
 			context,
 			CARTOGRAPHER_4_EMERALD_GRAY_BANNER,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.BANNER.gray(), 1), 12, 15, 0.05F, villagerTypeRestriction(villagerTypeHolderSet(lookups.villagerVariants(), List.of(VillagerType.DESERT))), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.BANNER.gray(), 1), 12, 15, 0.05F)
+			.merchantPredicate(villagerTypeRestriction(villagerTypeHolderSet(lookups.villagerVariants(), List.of(VillagerType.DESERT))))
+			.build()
 		);
 		register(
 			context,
 			CARTOGRAPHER_4_EMERALD_GREEN_BANNER,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.BANNER.green(), 1), 12, 15, 0.05F, villagerTypeRestriction(villagerTypeHolderSet(lookups.villagerVariants(), List.of(VillagerType.DESERT, VillagerType.SAVANNA, VillagerType.JUNGLE))), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.BANNER.green(), 1), 12, 15, 0.05F)
+			.merchantPredicate(villagerTypeRestriction(villagerTypeHolderSet(lookups.villagerVariants(), List.of(VillagerType.DESERT, VillagerType.SAVANNA, VillagerType.JUNGLE))))
+			.build()
 		);
 		register(
 			context,
 			CARTOGRAPHER_4_EMERALD_ITEM_FRAME,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.ITEM_FRAME, 3), 12, 15, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.ITEM_FRAME, 3), 12, 15, 0.05F).build()
 		);
 		register(
 			context,
 			CARTOGRAPHER_4_EMERALD_LIGHT_BLUE_BANNER,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.BANNER.lightBlue(), 1), 12, 15, 0.05F, villagerTypeRestriction(villagerTypeHolderSet(lookups.villagerVariants(), List.of(VillagerType.SNOW, VillagerType.SWAMP))), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.BANNER.lightBlue(), 1), 12, 15, 0.05F)
+			.merchantPredicate(villagerTypeRestriction(villagerTypeHolderSet(lookups.villagerVariants(), List.of(VillagerType.SNOW, VillagerType.SWAMP))))
+			.build()
 		);
 		register(
 			context,
 			CARTOGRAPHER_4_EMERALD_LIME_BANNER,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.BANNER.lime(), 1), 12, 15, 0.05F, villagerTypeRestriction(villagerTypeHolderSet(lookups.villagerVariants(), List.of(VillagerType.DESERT, VillagerType.TAIGA))), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.BANNER.lime(), 1), 12, 15, 0.05F)
+			.merchantPredicate(villagerTypeRestriction(villagerTypeHolderSet(lookups.villagerVariants(), List.of(VillagerType.DESERT, VillagerType.TAIGA))))
+			.build()
 		);
 		register(
 			context,
 			CARTOGRAPHER_4_EMERALD_MAGENTA_BANNER,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.BANNER.magenta(), 1), 12, 15, 0.05F, villagerTypeRestriction(villagerTypeHolderSet(lookups.villagerVariants(), List.of(VillagerType.SAVANNA))), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.BANNER.magenta(), 1), 12, 15, 0.05F)
+			.merchantPredicate(villagerTypeRestriction(villagerTypeHolderSet(lookups.villagerVariants(), List.of(VillagerType.SAVANNA))))
+			.build()
 		);
 		register(
 			context,
 			CARTOGRAPHER_4_EMERALD_ORANGE_BANNER,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.BANNER.orange(), 1), 12, 15, 0.05F, villagerTypeRestriction(villagerTypeHolderSet(lookups.villagerVariants(), List.of(VillagerType.SAVANNA, VillagerType.DESERT))), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.BANNER.orange(), 1), 12, 15, 0.05F)
+			.merchantPredicate(villagerTypeRestriction(villagerTypeHolderSet(lookups.villagerVariants(), List.of(VillagerType.SAVANNA, VillagerType.DESERT))))
+			.build()
 		);
 		register(
 			context,
 			CARTOGRAPHER_4_EMERALD_PINK_BANNER,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.BANNER.pink(), 1), 12, 15, 0.05F, villagerTypeRestriction(villagerTypeHolderSet(lookups.villagerVariants(), List.of(VillagerType.TAIGA, VillagerType.PLAINS))), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.BANNER.pink(), 1), 12, 15, 0.05F)
+			.merchantPredicate(villagerTypeRestriction(villagerTypeHolderSet(lookups.villagerVariants(), List.of(VillagerType.TAIGA, VillagerType.PLAINS))))
+			.build()
 		);
 		register(
 			context,
 			CARTOGRAPHER_4_EMERALD_PURPLE_BANNER,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.BANNER.purple(), 1), 12, 15, 0.05F, villagerTypeRestriction(villagerTypeHolderSet(lookups.villagerVariants(), List.of(VillagerType.TAIGA, VillagerType.SWAMP))), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.BANNER.purple(), 1), 12, 15, 0.05F)
+			.merchantPredicate(villagerTypeRestriction(villagerTypeHolderSet(lookups.villagerVariants(), List.of(VillagerType.TAIGA, VillagerType.SWAMP))))
+			.build()
 		);
 		register(
 			context,
 			CARTOGRAPHER_4_EMERALD_RED_BANNER,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.BANNER.red(), 1), 12, 15, 0.05F, villagerTypeRestriction(villagerTypeHolderSet(lookups.villagerVariants(), List.of(VillagerType.SNOW, VillagerType.SAVANNA))), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.BANNER.red(), 1), 12, 15, 0.05F)
+			.merchantPredicate(villagerTypeRestriction(villagerTypeHolderSet(lookups.villagerVariants(), List.of(VillagerType.SNOW, VillagerType.SAVANNA))))
+			.build()
 		);
 		register(
 			context,
 			CARTOGRAPHER_4_EMERALD_WHITE_BANNER,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.BANNER.white(), 1), 12, 15, 0.05F, villagerTypeRestriction(villagerTypeHolderSet(lookups.villagerVariants(), List.of(VillagerType.SNOW, VillagerType.PLAINS))), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.BANNER.white(), 1), 12, 15, 0.05F)
+			.merchantPredicate(villagerTypeRestriction(villagerTypeHolderSet(lookups.villagerVariants(), List.of(VillagerType.SNOW, VillagerType.PLAINS))))
+			.build()
 		);
 		register(
 			context,
 			CARTOGRAPHER_4_EMERALD_YELLOW_BANNER,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.BANNER.yellow(), 1), 12, 15, 0.05F, villagerTypeRestriction(villagerTypeHolderSet(lookups.villagerVariants(), List.of(VillagerType.PLAINS, VillagerType.JUNGLE))), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.BANNER.yellow(), 1), 12, 15, 0.05F)
+			.merchantPredicate(villagerTypeRestriction(villagerTypeHolderSet(lookups.villagerVariants(), List.of(VillagerType.PLAINS, VillagerType.JUNGLE))))
+			.build()
 		);
 		register(
 			context,
 			CARTOGRAPHER_5_EMERALD_AND_COMPASS_WOODLAND_MANSION_MAP,
-			new VillagerTrade(
+			VillagerTrade.builder(
 				new TradeCost(Items.EMERALD, 14),
-				Optional.of(new TradeCost(Items.COMPASS, 1)),
+				new TradeCost(Items.COMPASS, 1),
 				new ItemStackTemplate(Items.MAP),
 				12,
 				30,
-				0.2F,
-				Optional.empty(),
-				List.of(
-					ExplorationMapFunction.makeExplorationMap()
-						.setDestination(StructureTags.ON_WOODLAND_EXPLORER_MAPS)
+				0.2F
+			)
+			.addModifiers(List.of(
+					ExplorationMapFunction.makeExplorationMap(context.lookup(Registries.STRUCTURE).getOrThrow(StructureTags.ON_WOODLAND_MANSION_MAPS))
 						.setMapDecoration(MapDecorationTypes.WOODLAND_MANSION)
 						.setSearchRadius(100)
 						.setSkipKnownStructures(true)
@@ -1968,1372 +1996,1374 @@ public class MMEVillagerTradeProvider {
 								.withComponents(DataComponentMatchers.Builder.components().any(DataComponents.MAP_ID).build())
 								.build()
 						)
-						.onFail(Optional.of(DiscardItem.discardItem().build()))
+						.onFail(DiscardItem.discardItem().build())
 						.build()
-				)
-			)
+				).stream().map(Holder::direct).toList())
+			.build()
 		);
 		register(
 			context,
 			CARTOGRAPHER_5_EMERALD_GLOBE_BANNER_PATTERN,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 8), new ItemStackTemplate(Items.GLOBE_BANNER_PATTERN, 1), 12, 30, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 8), new ItemStackTemplate(Items.GLOBE_BANNER_PATTERN, 1), 12, 30, 0.05F).build()
 		);
 	}
 	private static void registerCleric(final BootstrapContext<VillagerTrade> context, final TradeLookups lookups) {
 		register(
 			context,
 			CLERIC_1_EMERALD_REDSTONE,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.REDSTONE, 5), 16, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.REDSTONE, 5), 16, 1, 0.05F).build()
 		);
 		register(
 			context,
 			CLERIC_1_ROTTEN_FLESH_EMERALD,
-			new VillagerTrade(new TradeCost(Items.ROTTEN_FLESH, UniformGenerator.between(8, 10)), new ItemStackTemplate(Items.EMERALD, 1), 16, 2, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.ROTTEN_FLESH, ContextIntProviders.between(8, 10)), new ItemStackTemplate(Items.EMERALD, 1), 16, 2, 0.05F).build()
 		);
 		register(
 			context,
 			CLERIC_2_EMERALD_LAPIS_LAZULI,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.LAPIS_LAZULI, 7), 12, 5, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.LAPIS_LAZULI, 7), 12, 5, 0.05F).build()
 		);
 		register(
 			context,
 			CLERIC_2_GOLD_INGOT_EMERALD,
-			new VillagerTrade(new TradeCost(Items.GOLD_INGOT, 2), new ItemStackTemplate(Items.EMERALD, 1), 12, 10, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.GOLD_INGOT, 2), new ItemStackTemplate(Items.EMERALD, 1), 12, 10, 0.05F).build()
 		);
 		register(
 			context,
 			CLERIC_3_EMERALD_GLOWSTONE,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.GLOWSTONE, 4), 12, 10, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.GLOWSTONE, 4), 12, 10, 0.05F).build()
 		);
 		register(
 			context,
 			CLERIC_3_RABBIT_FOOT_EMERALD,
-			new VillagerTrade(new TradeCost(Items.RABBIT_FOOT, 1), new ItemStackTemplate(Items.EMERALD, 2), 12, 20, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.RABBIT_FOOT, 1), new ItemStackTemplate(Items.EMERALD, 2), 12, 20, 0.05F).build()
 		);
 		register(
 			context,
 			CLERIC_4_EMERALD_ENDER_PEARL,
-			new VillagerTrade(new TradeCost(Items.EMERALD, UniformGenerator.between(2, 3)), new ItemStackTemplate(Items.ENDER_PEARL, 1), 12, 15, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, ContextIntProviders.between(2, 3)), new ItemStackTemplate(Items.ENDER_PEARL, 1), 12, 15, 0.05F).build()
 		);
 		register(
 			context,
 			CLERIC_4_GLASS_BOTTLE_EMERALD,
-			new VillagerTrade(new TradeCost(Items.GLASS_BOTTLE, UniformGenerator.between(4, 6)), new ItemStackTemplate(Items.EMERALD, 1), 12, 30, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.GLASS_BOTTLE, ContextIntProviders.between(4, 6)), new ItemStackTemplate(Items.EMERALD, 1), 12, 30, 0.05F).build()
 		);
 		register(
 			context,
 			CLERIC_4_TURTLE_SCUTE_EMERALD,
-			new VillagerTrade(new TradeCost(Items.TURTLE_SCUTE, 1), new ItemStackTemplate(Items.EMERALD, 1), 12, 30, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.TURTLE_SCUTE, 1), new ItemStackTemplate(Items.EMERALD, 1), 12, 30, 0.05F).build()
 		);
 		register(
 			context,
 			CLERIC_5_EMERALD_EXPERIENCE_BOTTLE,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.EXPERIENCE_BOTTLE, 3), 12, 30, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.EXPERIENCE_BOTTLE, 3), 12, 30, 0.05F).build()
 		);
 		register(
 			context,
 			CLERIC_5_NETHER_WART_EMERALD,
-			new VillagerTrade(new TradeCost(Items.NETHER_WART, UniformGenerator.between(4, 6)), new ItemStackTemplate(Items.EMERALD, 1), 12, 30, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.NETHER_WART, ContextIntProviders.between(4, 6)), new ItemStackTemplate(Items.EMERALD, 1), 12, 30, 0.05F).build()
 		);
 	}
 	private static void registerArmorer(final BootstrapContext<VillagerTrade> context, final TradeLookups lookups) {
 		register(
 			context,
 			ARMORER_1_EMERALD_IRON_BOOTS,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.IRON_BOOTS, 1), 16, 1, 0.2F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.IRON_BOOTS, 1), 16, 1, 0.2F).build()
 		);
 		register(
 			context,
 			ARMORER_1_EMERALD_IRON_CHESTPLATE,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 7), new ItemStackTemplate(Items.IRON_CHESTPLATE, 1), 16, 1, 0.2F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 7), new ItemStackTemplate(Items.IRON_CHESTPLATE, 1), 16, 1, 0.2F).build()
 		);
 		register(
 			context,
 			ARMORER_1_EMERALD_IRON_HELMET,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.IRON_HELMET, 1), 16, 1, 0.2F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.IRON_HELMET, 1), 16, 1, 0.2F).build()
 		);
 		register(
 			context,
 			ARMORER_1_EMERALD_IRON_LEGGINGS,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 5), new ItemStackTemplate(Items.IRON_LEGGINGS, 1), 16, 1, 0.2F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 5), new ItemStackTemplate(Items.IRON_LEGGINGS, 1), 16, 1, 0.2F).build()
 		);
 		register(
 			context,
 			ARMORER_2_EMERALD_MITHRIL_CHAINMAIL_BOOTS,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 4), new ItemStackTemplate(MMEItems.MITHRIL_CHAINMAIL_BOOTS, 1), 12, 5, 0.2F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 4), new ItemStackTemplate(MMEItems.MITHRIL_CHAINMAIL_BOOTS, 1), 12, 5, 0.2F).build()
 		);
 		register(
 			context,
 			ARMORER_2_EMERALD_MITHRIL_CHAINMAIL_LEGGINGS,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 10), new ItemStackTemplate(MMEItems.MITHRIL_CHAINMAIL_LEGGINGS, 1), 12, 5, 0.2F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 10), new ItemStackTemplate(MMEItems.MITHRIL_CHAINMAIL_LEGGINGS, 1), 12, 5, 0.2F).build()
 		);
 		register(
 			context,
 			ARMORER_3_DIAMOND_EMERALD,
-			new VillagerTrade(new TradeCost(Items.DIAMOND, 1), new ItemStackTemplate(Items.EMERALD, 2), 12, 10, 0.2F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.DIAMOND, 1), new ItemStackTemplate(Items.EMERALD, 2), 12, 10, 0.2F).build()
 		);
 		register(
 			context,
 			ARMORER_3_EMERALD_MITHRIL_CHAINMAIL_CHESTPLATE,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 14), new ItemStackTemplate(MMEItems.MITHRIL_CHAINMAIL_CHESTPLATE, 1), 12, 10, 0.2F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 14), new ItemStackTemplate(MMEItems.MITHRIL_CHAINMAIL_CHESTPLATE, 1), 12, 10, 0.2F).build()
 		);
 		register(
 			context,
 			ARMORER_3_EMERALD_MITHRIL_CHAINMAIL_HELMET,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 6), new ItemStackTemplate(MMEItems.MITHRIL_CHAINMAIL_HELMET, 1), 12, 10, 0.2F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 6), new ItemStackTemplate(MMEItems.MITHRIL_CHAINMAIL_HELMET, 1), 12, 10, 0.2F).build()
 		);
 		register(
 			context,
 			ARMORER_3_EMERALD_SHIELD,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.SHIELD, 1), 12, 10, 0.2F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.SHIELD, 1), 12, 10, 0.2F).build()
 		);
 		register(
 			context,
 			ARMORER_4_DIAMOND_ENCHANTED_MITHRIL_BOOTS,
-			new VillagerTrade(
+			VillagerTrade.builder(
 				new TradeCost(Items.DIAMOND, 10),
 				new ItemStackTemplate(MMEItems.MITHRIL_BOOTS),
 				3,
 				15,
-				0.2F,
-				Optional.empty(),
-				enchantedItem(lookups.items(), lookups.enchantmentsForTradedEquipment(), MMEItems.MITHRIL_BOOTS)
+				0.2F
 			)
+			.addModifiers(enchantedItem(lookups.items(), lookups.enchantmentsForTradedEquipment(), MMEItems.MITHRIL_BOOTS))
+			.build()
 		);
 		register(
 			context,
 			ARMORER_4_DIAMOND_ENCHANTED_MITHRIL_LEGGINGS,
-			new VillagerTrade(
+			VillagerTrade.builder(
 				new TradeCost(Items.DIAMOND, 14),
 				new ItemStackTemplate(MMEItems.MITHRIL_LEGGINGS),
 				3,
 				15,
-				0.2F,
-				Optional.empty(),
-				enchantedItem(lookups.items(), lookups.enchantmentsForTradedEquipment(), MMEItems.MITHRIL_LEGGINGS)
+				0.2F
 			)
+			.addModifiers(enchantedItem(lookups.items(), lookups.enchantmentsForTradedEquipment(), MMEItems.MITHRIL_LEGGINGS))
+			.build()
 		);
 		register(
 			context,
 			ARMORER_5_DIAMOND_ENCHANTED_MITHRIL_CHESTPLATE,
-			new VillagerTrade(
+			VillagerTrade.builder(
 				new TradeCost(Items.DIAMOND, 16),
 				new ItemStackTemplate(MMEItems.MITHRIL_CHESTPLATE),
 				3,
 				30,
-				0.2F,
-				Optional.empty(),
-				enchantedItem(lookups.items(), lookups.enchantmentsForTradedEquipment(), MMEItems.MITHRIL_CHESTPLATE)
+				0.2F
 			)
+			.addModifiers(enchantedItem(lookups.items(), lookups.enchantmentsForTradedEquipment(), MMEItems.MITHRIL_CHESTPLATE))
+			.build()
 		);
 		register(
 			context,
 			ARMORER_5_DIAMOND_ENCHANTED_MITHRIL_HELMET,
-			new VillagerTrade(
+			VillagerTrade.builder(
 				new TradeCost(Items.DIAMOND, 10),
 				new ItemStackTemplate(MMEItems.MITHRIL_HELMET),
 				3,
 				30,
-				0.2F,
-				Optional.empty(),
-				enchantedItem(lookups.items(), lookups.enchantmentsForTradedEquipment(), MMEItems.MITHRIL_HELMET)
+				0.2F
 			)
+			.addModifiers(enchantedItem(lookups.items(), lookups.enchantmentsForTradedEquipment(), MMEItems.MITHRIL_HELMET))
+			.build()
 		);
 	}
 	private static void registerWeaponsmith(final BootstrapContext<VillagerTrade> context, final TradeLookups lookups) {
 		register(
 			context,
 			WEAPONSMITH_1_COAL_EMERALD,
-			new VillagerTrade(new TradeCost(Items.COAL, UniformGenerator.between(4, 6)), new ItemStackTemplate(Items.EMERALD, 1), 16, 2, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.COAL, ContextIntProviders.between(4, 6)), new ItemStackTemplate(Items.EMERALD, 1), 16, 2, 0.05F).build()
 		);
 		register(
 			context,
 			WEAPONSMITH_1_EMERALD_IRON_SWORD,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.IRON_SWORD, 1), 4, 1, 0.2F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.IRON_SWORD, 1), 4, 1, 0.2F).build()
 		);
 		register(
 			context,
 			WEAPONSMITH_1_EMERALD_IRON_DAGGER,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(MMEItems.IRON_DAGGER, 1), 4, 1, 0.2F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(MMEItems.IRON_DAGGER, 1), 4, 1, 0.2F).build()
 		);
 		register(
 			context,
 			WEAPONSMITH_2_COPPER_EMERALD,
-			new VillagerTrade(new TradeCost(Items.COPPER_INGOT, 4), new ItemStackTemplate(Items.EMERALD, 1), 12, 10, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.COPPER_INGOT, 4), new ItemStackTemplate(Items.EMERALD, 1), 12, 10, 0.05F).build()
 		);
 		register(
 			context,
 			WEAPONSMITH_2_SILVER_EMERALD,
-			new VillagerTrade(new TradeCost(MMEItems.SILVER_INGOT, 4), new ItemStackTemplate(Items.EMERALD, 1), 12, 10, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(MMEItems.SILVER_INGOT, 4), new ItemStackTemplate(Items.EMERALD, 1), 12, 10, 0.05F).build()
 		);
 		register(
 			context,
 			WEAPONSMITH_2_EMERALD_BELL,
-			new VillagerTrade(new TradeCost(Items.EMERALD, UniformGenerator.between(4, 6)), new ItemStackTemplate(Items.BELL, 1), 12, 5, 0.2F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, ContextIntProviders.between(4, 6)), new ItemStackTemplate(Items.BELL, 1), 12, 5, 0.2F).build()
 		);
 		register(
 			context,
 			WEAPONSMITH_3_IRON_INGOT_EMERALD,
-			new VillagerTrade(new TradeCost(Items.IRON_INGOT, 4), new ItemStackTemplate(Items.EMERALD, 1), 12, 10, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.IRON_INGOT, 4), new ItemStackTemplate(Items.EMERALD, 1), 12, 10, 0.05F).build()
 		);
 		register(
 			context,
 			WEAPONSMITH_3_FLINT_EMERALD,
-			new VillagerTrade(new TradeCost(Items.FLINT, 8), new ItemStackTemplate(Items.EMERALD, 1), 12, 20, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.FLINT, 8), new ItemStackTemplate(Items.EMERALD, 1), 12, 20, 0.05F).build()
 		);
 		register(
 			context,
 			WEAPONSMITH_4_DIAMOND_EMERALD,
-			new VillagerTrade(new TradeCost(Items.DIAMOND, 1), new ItemStackTemplate(Items.EMERALD, 2), 12, 30, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.DIAMOND, 1), new ItemStackTemplate(Items.EMERALD, 2), 12, 30, 0.05F).build()
 		);
 		register(
 			context,
 			WEAPONSMITH_5_DIAMOND_MITHRIL_SWORD,
-			new VillagerTrade(new TradeCost(Items.DIAMOND, 2), new ItemStackTemplate(MMEItems.MITHRIL_SWORD, 1), 12, 30, 0.2F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.DIAMOND, 2), new ItemStackTemplate(MMEItems.MITHRIL_SWORD, 1), 12, 30, 0.2F).build()
 		);
 		register(
 			context,
 			WEAPONSMITH_5_DIAMOND_MITHRIL_DAGGER,
-			new VillagerTrade(new TradeCost(Items.DIAMOND, 1), new ItemStackTemplate(MMEItems.MITHRIL_DAGGER, 1), 12, 30, 0.2F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.DIAMOND, 1), new ItemStackTemplate(MMEItems.MITHRIL_DAGGER, 1), 12, 30, 0.2F).build()
 		);
 	}
 	private static void registerToolsmith(final BootstrapContext<VillagerTrade> context, final TradeLookups lookups) {
 		register(
 			context,
 			TOOLSMITH_1_COAL_EMERALD,
-			new VillagerTrade(new TradeCost(Items.COAL, UniformGenerator.between(7, 10)), new ItemStackTemplate(Items.EMERALD, 1), 16, 2, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.COAL, ContextIntProviders.between(7, 10)), new ItemStackTemplate(Items.EMERALD, 1), 16, 2, 0.05F).build()
 		);
 		register(
 			context,
 			TOOLSMITH_1_EMERALD_IRON_AXE,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.IRON_AXE, 1), 16, 1, 0.2F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.IRON_AXE, 1), 16, 1, 0.2F).build()
 		);
 		register(
 			context,
 			TOOLSMITH_1_EMERALD_IRON_BATTLE_AXE,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(MMEItems.IRON_BATTLE_AXE, 1), 16, 1, 0.2F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(MMEItems.IRON_BATTLE_AXE, 1), 16, 1, 0.2F).build()
 		);
 		register(
 			context,
 			TOOLSMITH_1_EMERALD_IRON_HATCHET,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(MMEItems.IRON_HATCHET, 1), 16, 1, 0.2F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(MMEItems.IRON_HATCHET, 1), 16, 1, 0.2F).build()
 		);
 		register(
 			context,
 			TOOLSMITH_1_EMERALD_IRON_HOE,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.IRON_HOE, 1), 16, 1, 0.2F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.IRON_HOE, 1), 16, 1, 0.2F).build()
 		);
 		register(
 			context,
 			TOOLSMITH_1_EMERALD_IRON_MATTOCK,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(MMEItems.IRON_MATTOCK, 1), 16, 1, 0.2F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(MMEItems.IRON_MATTOCK, 1), 16, 1, 0.2F).build()
 		);
 		register(
 			context,
 			TOOLSMITH_1_EMERALD_IRON_PICKAXE,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.IRON_PICKAXE, 1), 16, 1, 0.2F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.IRON_PICKAXE, 1), 16, 1, 0.2F).build()
 		);
 		register(
 			context,
 			TOOLSMITH_1_EMERALD_IRON_SCYTHE,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(MMEItems.IRON_SCYTHE, 1), 16, 1, 0.2F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(MMEItems.IRON_SCYTHE, 1), 16, 1, 0.2F).build()
 		);
 		register(
 			context,
 			TOOLSMITH_1_EMERALD_IRON_SHOVEL,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.IRON_SHOVEL, 1), 16, 1, 0.2F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.IRON_SHOVEL, 1), 16, 1, 0.2F).build()
 		);
 		register(
 			context,
 			TOOLSMITH_1_EMERALD_IRON_WAR_HAMMER,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(MMEItems.IRON_WAR_HAMMER, 1), 16, 1, 0.2F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(MMEItems.IRON_WAR_HAMMER, 1), 16, 1, 0.2F).build()
 		);
 		register(
 			context,
 			TOOLSMITH_2_IRON_INGOT_EMERALD,
-			new VillagerTrade(new TradeCost(Items.IRON_INGOT, 2), new ItemStackTemplate(Items.EMERALD, 1), 12, 10, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.IRON_INGOT, 2), new ItemStackTemplate(Items.EMERALD, 1), 12, 10, 0.05F).build()
 		);
 		register(
 			context,
 			TOOLSMITH_2_EMERALD_BELL,
-			new VillagerTrade(new TradeCost(Items.EMERALD, UniformGenerator.between(3, 5)), new ItemStackTemplate(Items.BELL, 1), 12, 5, 0.2F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, ContextIntProviders.between(3, 5)), new ItemStackTemplate(Items.BELL, 1), 12, 5, 0.2F).build()
 		);
 		register(
 			context,
 			TOOLSMITH_3_DIAMOND_MITHRIL_AXE,
-			new VillagerTrade(new TradeCost(Items.DIAMOND, UniformGenerator.between(4, 6)), new ItemStackTemplate(MMEItems.MITHRIL_AXE, 1), 12, 10, 0.2F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.DIAMOND, ContextIntProviders.between(4, 6)), new ItemStackTemplate(MMEItems.MITHRIL_AXE, 1), 12, 10, 0.2F).build()
 		);
 		register(
 			context,
 			TOOLSMITH_3_DIAMOND_MITHRIL_PICKAXE,
-			new VillagerTrade(new TradeCost(Items.DIAMOND, UniformGenerator.between(4, 6)), new ItemStackTemplate(MMEItems.MITHRIL_PICKAXE, 1), 12, 10, 0.2F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.DIAMOND, ContextIntProviders.between(4, 6)), new ItemStackTemplate(MMEItems.MITHRIL_PICKAXE, 1), 12, 10, 0.2F).build()
 		);
 		register(
 			context,
 			TOOLSMITH_3_DIAMOND_MITHRIL_SHOVEL,
-			new VillagerTrade(new TradeCost(Items.DIAMOND, UniformGenerator.between(4, 6)), new ItemStackTemplate(MMEItems.MITHRIL_SHOVEL, 1), 12, 10, 0.2F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.DIAMOND, ContextIntProviders.between(4, 6)), new ItemStackTemplate(MMEItems.MITHRIL_SHOVEL, 1), 12, 10, 0.2F).build()
 		);
 		register(
 			context,
 			TOOLSMITH_3_DIAMOND_MITHRIL_HOE,
-			new VillagerTrade(new TradeCost(Items.DIAMOND, UniformGenerator.between(4, 6)), new ItemStackTemplate(MMEItems.MITHRIL_HOE, 1), 12, 10, 0.2F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.DIAMOND, ContextIntProviders.between(4, 6)), new ItemStackTemplate(MMEItems.MITHRIL_HOE, 1), 12, 10, 0.2F).build()
 		);
 		register(
 			context,
 			TOOLSMITH_3_FLINT_EMERALD,
-			new VillagerTrade(new TradeCost(Items.FLINT, 8), new ItemStackTemplate(Items.EMERALD, 1), 12, 20, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.FLINT, 8), new ItemStackTemplate(Items.EMERALD, 1), 12, 20, 0.05F).build()
 		);
 		register(
 			context,
 			TOOLSMITH_4_DIAMOND_EMERALD,
-			new VillagerTrade(new TradeCost(Items.DIAMOND, 1), new ItemStackTemplate(Items.EMERALD, 2), 12, 15, 0.2F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.DIAMOND, 1), new ItemStackTemplate(Items.EMERALD, 2), 12, 15, 0.2F).build()
 		);
 		register(
 			context,
 			TOOLSMITH_4_DIAMOND_ENCHANTED_MITHRIL_HATCHET,
-			new VillagerTrade(
-				new TradeCost(Items.DIAMOND, UniformGenerator.between(8, 12)),
+			VillagerTrade.builder(
+				new TradeCost(Items.DIAMOND, ContextIntProviders.between(8, 12)),
 				new ItemStackTemplate(MMEItems.MITHRIL_HATCHET),
 				3,
 				15,
-				0.2F,
-				Optional.empty(),
-				enchantedItem(lookups.items(), lookups.enchantmentsForTradedEquipment(), MMEItems.MITHRIL_HATCHET)
+				0.2F
 			)
+			.addModifiers(enchantedItem(lookups.items(), lookups.enchantmentsForTradedEquipment(), MMEItems.MITHRIL_HATCHET))
+			.build()
 		);
 		register(
 			context,
 			TOOLSMITH_4_DIAMOND_ENCHANTED_MITHRIL_MATTOCK,
-			new VillagerTrade(
-				new TradeCost(Items.DIAMOND, UniformGenerator.between(8, 12)),
+			VillagerTrade.builder(
+				new TradeCost(Items.DIAMOND, ContextIntProviders.between(8, 12)),
 				new ItemStackTemplate(MMEItems.MITHRIL_MATTOCK),
 				3,
 				15,
-				0.2F,
-				Optional.empty(),
-				enchantedItem(lookups.items(), lookups.enchantmentsForTradedEquipment(), MMEItems.MITHRIL_MATTOCK)
+				0.2F
 			)
+			.addModifiers(enchantedItem(lookups.items(), lookups.enchantmentsForTradedEquipment(), MMEItems.MITHRIL_MATTOCK))
+			.build()
 		);
 		register(
 			context,
 			TOOLSMITH_5_DIAMOND_MITHRIL_INGOT,
-			new VillagerTrade(new TradeCost(Items.DIAMOND, 2), new ItemStackTemplate(MMEItems.MITHRIL_INGOT, 1), 12, 30, 0.2F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.DIAMOND, 2), new ItemStackTemplate(MMEItems.MITHRIL_INGOT, 1), 12, 30, 0.2F).build()
 		);
 		register(
 			context,
 			TOOLSMITH_5_DIAMOND_ENCHANTED_MITHRIL_BATTLE_AXE,
-			new VillagerTrade(
-				new TradeCost(Items.DIAMOND, UniformGenerator.between(12, 16)),
+			VillagerTrade.builder(
+				new TradeCost(Items.DIAMOND, ContextIntProviders.between(12, 16)),
 				new ItemStackTemplate(MMEItems.MITHRIL_BATTLE_AXE),
 				3,
 				30,
-				0.2F,
-				Optional.empty(),
-				enchantedItem(lookups.items(), lookups.enchantmentsForTradedEquipment(), MMEItems.MITHRIL_BATTLE_AXE)
+				0.2F
 			)
+			.addModifiers(enchantedItem(lookups.items(), lookups.enchantmentsForTradedEquipment(), MMEItems.MITHRIL_BATTLE_AXE))
+			.build()
 		);
 		register(
 			context,
 			TOOLSMITH_5_DIAMOND_ENCHANTED_MITHRIL_SCYTHE,
-			new VillagerTrade(
-				new TradeCost(Items.DIAMOND, UniformGenerator.between(12, 16)),
+			VillagerTrade.builder(
+				new TradeCost(Items.DIAMOND, ContextIntProviders.between(12, 16)),
 				new ItemStackTemplate(MMEItems.MITHRIL_SCYTHE),
 				3,
 				30,
-				0.2F,
-				Optional.empty(),
-				enchantedItem(lookups.items(), lookups.enchantmentsForTradedEquipment(), MMEItems.MITHRIL_SCYTHE)
+				0.2F
 			)
+			.addModifiers(enchantedItem(lookups.items(), lookups.enchantmentsForTradedEquipment(), MMEItems.MITHRIL_SCYTHE))
+			.build()
 		);
 		register(
 			context,
 			TOOLSMITH_5_DIAMOND_ENCHANTED_MITHRIL_WAR_HAMMER,
-			new VillagerTrade(
-				new TradeCost(Items.DIAMOND, UniformGenerator.between(12, 16)),
+			VillagerTrade.builder(
+				new TradeCost(Items.DIAMOND, ContextIntProviders.between(12, 16)),
 				new ItemStackTemplate(MMEItems.MITHRIL_WAR_HAMMER),
 				3,
 				30,
-				0.2F,
-				Optional.empty(),
-				enchantedItem(lookups.items(), lookups.enchantmentsForTradedEquipment(), MMEItems.MITHRIL_WAR_HAMMER)
+				0.2F
 			)
+			.addModifiers(enchantedItem(lookups.items(), lookups.enchantmentsForTradedEquipment(), MMEItems.MITHRIL_WAR_HAMMER))
+			.build()
 		);
 	}
 	private static void registerButcher(final BootstrapContext<VillagerTrade> context, final TradeLookups lookups) {
 		register(
 			context,
 			BUTCHER_1_CHICKEN_EMERALD,
-			new VillagerTrade(new TradeCost(Items.CHICKEN, 11), new ItemStackTemplate(Items.EMERALD, 1), 16, 2, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.CHICKEN, 11), new ItemStackTemplate(Items.EMERALD, 1), 16, 2, 0.05F).build()
 		);
 		register(
 			context,
 			BUTCHER_1_EMERALD_RABBIT_STEW,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.RABBIT_STEW, 1), 16, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.RABBIT_STEW, 1), 16, 1, 0.05F).build()
 		);
 		register(
 			context,
 			BUTCHER_1_PORKCHOP_EMERALD,
-			new VillagerTrade(new TradeCost(Items.PORKCHOP, 4), new ItemStackTemplate(Items.EMERALD, 1), 16, 2, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.PORKCHOP, 4), new ItemStackTemplate(Items.EMERALD, 1), 16, 2, 0.05F).build()
 		);
 		register(
 			context,
 			BUTCHER_1_RABBIT_EMERALD,
-			new VillagerTrade(new TradeCost(Items.RABBIT, UniformGenerator.between(5, 7)), new ItemStackTemplate(Items.EMERALD, 1), 16, 2, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.RABBIT, ContextIntProviders.between(5, 7)), new ItemStackTemplate(Items.EMERALD, 1), 16, 2, 0.05F).build()
 		);
 		register(
 			context,
 			BUTCHER_2_CHARCOAL_EMERALD,
-			new VillagerTrade(new TradeCost(Items.CHARCOAL, UniformGenerator.between(7, 10)), new ItemStackTemplate(Items.EMERALD, 1), 12, 10, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.CHARCOAL, ContextIntProviders.between(7, 10)), new ItemStackTemplate(Items.EMERALD, 1), 12, 10, 0.05F).build()
 		);
 		register(
 			context,
 			BUTCHER_2_EMERALD_COOKED_CHICKEN,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.COOKED_CHICKEN, 8), 12, 5, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.COOKED_CHICKEN, 8), 12, 5, 0.05F).build()
 		);
 		register(
 			context,
 			BUTCHER_2_EMERALD_COOKED_PORKCHOP,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.COOKED_PORKCHOP, 5), 12, 5, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.COOKED_PORKCHOP, 5), 12, 5, 0.05F).build()
 		);
 		register(
 			context,
 			BUTCHER_3_BEEF_EMERALD,
-			new VillagerTrade(new TradeCost(Items.BEEF, 7), new ItemStackTemplate(Items.EMERALD, 1), 12, 20, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.BEEF, 7), new ItemStackTemplate(Items.EMERALD, 1), 12, 20, 0.05F).build()
 		);
 		register(
 			context,
 			BUTCHER_3_MUTTON_EMERALD,
-			new VillagerTrade(new TradeCost(Items.MUTTON, 4), new ItemStackTemplate(Items.EMERALD, 1), 12, 20, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.MUTTON, 4), new ItemStackTemplate(Items.EMERALD, 1), 12, 20, 0.05F).build()
 		);
 		register(
 			context,
 			BUTCHER_4_CHICKEN_AND_CHARCOAL_COOKED_CHICKEN,
-			new VillagerTrade(
+			VillagerTrade.builder(
 				new TradeCost(Items.CHICKEN, 16),
-				Optional.of(new TradeCost(Items.CHARCOAL, 1)),
+				new TradeCost(Items.CHARCOAL, 1),
 				new ItemStackTemplate(Items.COOKED_CHICKEN, 16),
 				12,
 				30,
-				0.05F,
-				Optional.empty(),
-				List.of()
-			)
+				0.05F
+			).build()
 		);
 		register(
 			context,
 			BUTCHER_4_MUTTON_AND_CHARCOAL_COOKED_MUTTON,
-			new VillagerTrade(
+			VillagerTrade.builder(
 				new TradeCost(Items.MUTTON, 16),
-				Optional.of(new TradeCost(Items.CHARCOAL, 1)),
+				new TradeCost(Items.CHARCOAL, 1),
 				new ItemStackTemplate(Items.COOKED_MUTTON, 16),
 				12,
 				30,
-				0.05F,
-				Optional.empty(),
-				List.of()
-			)
+				0.05F
+			).build()
 		);
 		register(
 			context,
 			BUTCHER_4_RABBIT_AND_CHARCOAL_COOKED_RABBIT,
-			new VillagerTrade(
+			VillagerTrade.builder(
 				new TradeCost(Items.RABBIT, 16),
-				Optional.of(new TradeCost(Items.CHARCOAL, 1)),
+				new TradeCost(Items.CHARCOAL, 1),
 				new ItemStackTemplate(Items.COOKED_RABBIT, 16),
 				12,
 				30,
-				0.05F,
-				Optional.empty(),
-				List.of()
-			)
+				0.05F
+			).build()
 		);
 		register(
 			context,
 			BUTCHER_4_DRIED_KELP_BLOCK_EMERALD,
-			new VillagerTrade(new TradeCost(Items.DRIED_KELP_BLOCK, 2), new ItemStackTemplate(Items.EMERALD, 1), 12, 30, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.DRIED_KELP_BLOCK, 2), new ItemStackTemplate(Items.EMERALD, 1), 12, 30, 0.05F).build()
 		);
 		register(
 			context,
 			BUTCHER_5_PORKCHOP_AND_CHARCOAL_COOKED_PORKCHOP,
-			new VillagerTrade(
+			VillagerTrade.builder(
 				new TradeCost(Items.PORKCHOP, 16),
-				Optional.of(new TradeCost(Items.CHARCOAL, 1)),
+				new TradeCost(Items.CHARCOAL, 1),
 				new ItemStackTemplate(Items.COOKED_PORKCHOP, 16),
 				12,
 				30,
-				0.05F,
-				Optional.empty(),
-				List.of()
-			)
+				0.05F
+			).build()
 		);
 		register(
 			context,
 			BUTCHER_5_BEEF_AND_CHARCOAL_COOKED_BEEF,
-			new VillagerTrade(
+			VillagerTrade.builder(
 				new TradeCost(Items.BEEF, 16),
-				Optional.of(new TradeCost(Items.CHARCOAL, 1)),
+				new TradeCost(Items.CHARCOAL, 1),
 				new ItemStackTemplate(Items.COOKED_BEEF, 16),
 				12,
 				30,
-				0.05F,
-				Optional.empty(),
-				List.of()
-			)
+				0.05F
+			).build()
 		);
 		register(
 			context,
 			BUTCHER_5_SWEET_BERRIES_EMERALD,
-			new VillagerTrade(new TradeCost(Items.SWEET_BERRIES, 10), new ItemStackTemplate(Items.EMERALD, 1), 12, 30, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.SWEET_BERRIES, 10), new ItemStackTemplate(Items.EMERALD, 1), 12, 30, 0.05F).build()
 		);
 	}
 	private static void registerLeatherworker(final BootstrapContext<VillagerTrade> context, final TradeLookups lookups) {
 		register(
 			context,
 			LEATHERWORKER_1_EMERALD_DYED_LEATHER_CHESTPLATE,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.LEATHER_CHESTPLATE), 16, 1, 0.2F, Optional.empty(), dyedItem(lookups.items(), Items.LEATHER_CHESTPLATE))
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.LEATHER_CHESTPLATE), 16, 1, 0.2F)
+			.addModifiers(dyedItem(lookups.items(), Items.LEATHER_CHESTPLATE))
+			.build()
 		);
 		register(
 			context,
 			LEATHERWORKER_1_EMERALD_DYED_LEATHER_LEGGINGS,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.LEATHER_LEGGINGS), 16, 1, 0.2F, Optional.empty(), dyedItem(lookups.items(), Items.LEATHER_LEGGINGS))
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.LEATHER_LEGGINGS), 16, 1, 0.2F)
+			.addModifiers(dyedItem(lookups.items(), Items.LEATHER_LEGGINGS))
+			.build()
 		);
 		register(
 			context,
 			LEATHERWORKER_1_LEATHER_EMERALD,
-			new VillagerTrade(new TradeCost(Items.LEATHER, 3), new ItemStackTemplate(Items.EMERALD, 1), 16, 2, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.LEATHER, 3), new ItemStackTemplate(Items.EMERALD, 1), 16, 2, 0.05F).build()
 		);
 		register(
 			context,
 			LEATHERWORKER_2_EMERALD_DYED_LEATHER_BOOTS,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.LEATHER_BOOTS), 12, 5, 0.2F, Optional.empty(), dyedItem(lookups.items(), Items.LEATHER_BOOTS))
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.LEATHER_BOOTS), 12, 5, 0.2F)
+			.addModifiers(dyedItem(lookups.items(), Items.LEATHER_BOOTS))
+			.build()
 		);
 		register(
 			context,
 			LEATHERWORKER_2_EMERALD_DYED_LEATHER_HELMET,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.LEATHER_HELMET), 12, 5, 0.2F, Optional.empty(), dyedItem(lookups.items(), Items.LEATHER_HELMET))
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.LEATHER_HELMET), 12, 5, 0.2F)
+			.addModifiers(dyedItem(lookups.items(), Items.LEATHER_HELMET))
+			.build()
 		);
 		register(
 			context,
 			LEATHERWORKER_2_FLINT_EMERALD,
-			new VillagerTrade(new TradeCost(Items.FLINT, 8), new ItemStackTemplate(Items.EMERALD, 1), 12, 10, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.FLINT, 8), new ItemStackTemplate(Items.EMERALD, 1), 12, 10, 0.05F).build()
 		);
 		register(
 			context,
 			LEATHERWORKER_3_EMERALD_DYED_LEATHER_CHESTPLATE,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.LEATHER_CHESTPLATE), 12, 10, 0.2F, Optional.empty(), dyedItem(lookups.items(), Items.LEATHER_CHESTPLATE))
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.LEATHER_CHESTPLATE), 12, 10, 0.2F)
+			.addModifiers(dyedItem(lookups.items(), Items.LEATHER_CHESTPLATE))
+			.build()
 		);
 		register(
 			context,
 			LEATHERWORKER_3_RABBIT_HIDE_EMERALD,
-			new VillagerTrade(new TradeCost(Items.RABBIT_HIDE, UniformGenerator.between(3, 4)), new ItemStackTemplate(Items.EMERALD, 1), 12, 20, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.RABBIT_HIDE, ContextIntProviders.between(3, 4)), new ItemStackTemplate(Items.EMERALD, 1), 12, 20, 0.05F).build()
 		);
 		register(
 			context,
 			LEATHERWORKER_4_EMERALD_DYED_LEATHER_HORSE_ARMOR,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.LEATHER_HORSE_ARMOR), 12, 15, 0.2F, Optional.empty(), dyedItem(lookups.items(), Items.LEATHER_HORSE_ARMOR))
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.LEATHER_HORSE_ARMOR), 12, 15, 0.2F)
+			.addModifiers(dyedItem(lookups.items(), Items.LEATHER_HORSE_ARMOR))
+			.build()
 		);
 		register(
 			context,
 			LEATHERWORKER_4_TURTLE_SCUTE_EMERALD,
-			new VillagerTrade(new TradeCost(Items.TURTLE_SCUTE, 2), new ItemStackTemplate(Items.EMERALD, 1), 12, 30, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.TURTLE_SCUTE, 2), new ItemStackTemplate(Items.EMERALD, 1), 12, 30, 0.05F).build()
 		);
 		register(
 			context,
 			LEATHERWORKER_5_EMERALD_DYED_LEATHER_HELMET,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.LEATHER_HELMET), 12, 30, 0.2F, Optional.empty(), dyedItem(lookups.items(), Items.LEATHER_HELMET))
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.LEATHER_HELMET), 12, 30, 0.2F)
+			.addModifiers(dyedItem(lookups.items(), Items.LEATHER_HELMET))
+			.build()
 		);
 		register(
 			context,
 			LEATHERWORKER_5_EMERALD_SADDLE,
-			new VillagerTrade(new TradeCost(Items.EMERALD, UniformGenerator.between(2, 3)), new ItemStackTemplate(Items.SADDLE, 1), 12, 30, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, ContextIntProviders.between(2, 3)), new ItemStackTemplate(Items.SADDLE, 1), 12, 30, 0.05F).build()
 		);
 	}
 	private static void registerMason(final BootstrapContext<VillagerTrade> context, final TradeLookups lookups) {
 		register(
 			context,
 			MASON_1_CLAY_BALL_EMERALD,
-			new VillagerTrade(new TradeCost(Items.CLAY_BALL, 8), new ItemStackTemplate(Items.EMERALD, 1), 16, 2, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.CLAY_BALL, 8), new ItemStackTemplate(Items.EMERALD, 1), 16, 2, 0.05F).build()
 		);
 		register(
 			context,
 			MASON_1_EMERALD_BRICK,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.BRICK, 6), 16, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.BRICK, 6), 16, 1, 0.05F).build()
 		);
 		register(
 			context,
 			MASON_2_EMERALD_STONE_BRICKS,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.STONE_BRICKS, 4), 12, 5, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.STONE_BRICKS, 4), 12, 5, 0.05F).build()
 		);
 		register(
 			context,
 			MASON_2_COBBLESTONE_EMERALD,
-			new VillagerTrade(new TradeCost(Items.COBBLESTONE, 4), new ItemStackTemplate(Items.EMERALD, 1), 12, 10, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.COBBLESTONE, 4), new ItemStackTemplate(Items.EMERALD, 1), 12, 10, 0.05F).build()
 		);
 		register(
 			context,
 			MASON_3_ANDESITE_AMETHYST_SHARD,
-			new VillagerTrade(new TradeCost(Items.ANDESITE, 4), new ItemStackTemplate(Items.AMETHYST_SHARD, 2), 12, 20, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.ANDESITE, 4), new ItemStackTemplate(Items.AMETHYST_SHARD, 2), 12, 20, 0.05F).build()
 		);
 		register(
 			context,
 			MASON_3_DIORITE_AMETHYST_SHARD,
-			new VillagerTrade(new TradeCost(Items.DIORITE, 4), new ItemStackTemplate(Items.AMETHYST_SHARD, 2), 12, 20, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.DIORITE, 4), new ItemStackTemplate(Items.AMETHYST_SHARD, 2), 12, 20, 0.05F).build()
 		);
 		register(
 			context,
 			MASON_3_EMERALD_DRIPSTONE_BLOCK,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.DRIPSTONE_BLOCK, 4), 12, 10, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.DRIPSTONE_BLOCK, 4), 12, 10, 0.05F).build()
 		);
 		register(
 			context,
 			MASON_3_EMERALD_POLISHED_ANDESITE,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.POLISHED_ANDESITE, 4), 12, 10, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.POLISHED_ANDESITE, 4), 12, 10, 0.05F).build()
 		);
 		register(
 			context,
 			MASON_3_EMERALD_POLISHED_DIORITE,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.POLISHED_DIORITE, 4), 12, 10, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.POLISHED_DIORITE, 4), 12, 10, 0.05F).build()
 		);
 		register(
 			context,
 			MASON_3_EMERALD_POLISHED_GRANITE,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.POLISHED_GRANITE, 4), 12, 10, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.POLISHED_GRANITE, 4), 12, 10, 0.05F).build()
 		);
 		register(
 			context,
 			MASON_3_GRANITE_AMETHYST_SHARD,
-			new VillagerTrade(new TradeCost(Items.GRANITE, 4), new ItemStackTemplate(Items.AMETHYST_SHARD, 2), 12, 20, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.GRANITE, 4), new ItemStackTemplate(Items.AMETHYST_SHARD, 2), 12, 20, 0.05F).build()
 		);
 		register(
 			context,
 			MASON_4_EMERALD_BLACK_GLAZED_TERRACOTTA,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.GLAZED_TERRACOTTA.black(), 4), 12, 15, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.GLAZED_TERRACOTTA.black(), 4), 12, 15, 0.05F).build()
 		);
 		register(
 			context,
 			MASON_4_EMERALD_BLACK_TERRACOTTA,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.DYED_TERRACOTTA.black(), 4), 12, 15, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.DYED_TERRACOTTA.black(), 4), 12, 15, 0.05F).build()
 		);
 		register(
 			context,
 			MASON_4_EMERALD_BLUE_GLAZED_TERRACOTTA,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.GLAZED_TERRACOTTA.blue(), 4), 12, 15, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.GLAZED_TERRACOTTA.blue(), 4), 12, 15, 0.05F).build()
 		);
 		register(
 			context,
 			MASON_4_EMERALD_BLUE_TERRACOTTA,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.DYED_TERRACOTTA.blue(), 4), 12, 15, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.DYED_TERRACOTTA.blue(), 4), 12, 15, 0.05F).build()
 		);
 		register(
 			context,
 			MASON_4_EMERALD_BROWN_GLAZED_TERRACOTTA,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.GLAZED_TERRACOTTA.brown(), 4), 12, 15, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.GLAZED_TERRACOTTA.brown(), 4), 12, 15, 0.05F).build()
 		);
 		register(
 			context,
 			MASON_4_EMERALD_BROWN_TERRACOTTA,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.DYED_TERRACOTTA.brown(), 4), 12, 15, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.DYED_TERRACOTTA.brown(), 4), 12, 15, 0.05F).build()
 		);
 		register(
 			context,
 			MASON_4_EMERALD_CYAN_GLAZED_TERRACOTTA,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.GLAZED_TERRACOTTA.cyan(), 4), 12, 15, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.GLAZED_TERRACOTTA.cyan(), 4), 12, 15, 0.05F).build()
 		);
 		register(
 			context,
 			MASON_4_EMERALD_CYAN_TERRACOTTA,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.DYED_TERRACOTTA.cyan(), 4), 12, 15, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.DYED_TERRACOTTA.cyan(), 4), 12, 15, 0.05F).build()
 		);
 		register(
 			context,
 			MASON_4_EMERALD_GRAY_GLAZED_TERRACOTTA,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.GLAZED_TERRACOTTA.gray(), 4), 12, 15, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.GLAZED_TERRACOTTA.gray(), 4), 12, 15, 0.05F).build()
 		);
 		register(
 			context,
 			MASON_4_EMERALD_GRAY_TERRACOTTA,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.DYED_TERRACOTTA.gray(), 4), 12, 15, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.DYED_TERRACOTTA.gray(), 4), 12, 15, 0.05F).build()
 		);
 		register(
 			context,
 			MASON_4_EMERALD_GREEN_GLAZED_TERRACOTTA,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.GLAZED_TERRACOTTA.green(), 4), 12, 15, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.GLAZED_TERRACOTTA.green(), 4), 12, 15, 0.05F).build()
 		);
 		register(
 			context,
 			MASON_4_EMERALD_GREEN_TERRACOTTA,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.DYED_TERRACOTTA.green(), 4), 12, 15, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.DYED_TERRACOTTA.green(), 4), 12, 15, 0.05F).build()
 		);
 		register(
 			context,
 			MASON_4_EMERALD_LIGHT_BLUE_GLAZED_TERRACOTTA,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.GLAZED_TERRACOTTA.lightBlue(), 4), 12, 15, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.GLAZED_TERRACOTTA.lightBlue(), 4), 12, 15, 0.05F).build()
 		);
 		register(
 			context,
 			MASON_4_EMERALD_LIGHT_BLUE_TERRACOTTA,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.DYED_TERRACOTTA.lightBlue(), 4), 12, 15, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.DYED_TERRACOTTA.lightBlue(), 4), 12, 15, 0.05F).build()
 		);
 		register(
 			context,
 			MASON_4_EMERALD_LIGHT_GRAY_GLAZED_TERRACOTTA,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.GLAZED_TERRACOTTA.lightGray(), 4), 12, 15, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.GLAZED_TERRACOTTA.lightGray(), 4), 12, 15, 0.05F).build()
 		);
 		register(
 			context,
 			MASON_4_EMERALD_LIGHT_GRAY_TERRACOTTA,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.DYED_TERRACOTTA.lightGray(), 4), 12, 15, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.DYED_TERRACOTTA.lightGray(), 4), 12, 15, 0.05F).build()
 		);
 		register(
 			context,
 			MASON_4_EMERALD_LIME_GLAZED_TERRACOTTA,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.GLAZED_TERRACOTTA.lime(), 4), 12, 15, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.GLAZED_TERRACOTTA.lime(), 4), 12, 15, 0.05F).build()
 		);
 		register(
 			context,
 			MASON_4_EMERALD_LIME_TERRACOTTA,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.DYED_TERRACOTTA.lime(), 4), 12, 15, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.DYED_TERRACOTTA.lime(), 4), 12, 15, 0.05F).build()
 		);
 		register(
 			context,
 			MASON_4_EMERALD_MAGENTA_GLAZED_TERRACOTTA,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.GLAZED_TERRACOTTA.magenta(), 4), 12, 15, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.GLAZED_TERRACOTTA.magenta(), 4), 12, 15, 0.05F).build()
 		);
 		register(
 			context,
 			MASON_4_EMERALD_MAGENTA_TERRACOTTA,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.DYED_TERRACOTTA.magenta(), 4), 12, 15, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.DYED_TERRACOTTA.magenta(), 4), 12, 15, 0.05F).build()
 		);
 		register(
 			context,
 			MASON_4_EMERALD_ORANGE_GLAZED_TERRACOTTA,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.GLAZED_TERRACOTTA.orange(), 4), 12, 15, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.GLAZED_TERRACOTTA.orange(), 4), 12, 15, 0.05F).build()
 		);
 		register(
 			context,
 			MASON_4_EMERALD_ORANGE_TERRACOTTA,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.DYED_TERRACOTTA.orange(), 4), 12, 15, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.DYED_TERRACOTTA.orange(), 4), 12, 15, 0.05F).build()
 		);
 		register(
 			context,
 			MASON_4_EMERALD_PINK_GLAZED_TERRACOTTA,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.GLAZED_TERRACOTTA.pink(), 4), 12, 15, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.GLAZED_TERRACOTTA.pink(), 4), 12, 15, 0.05F).build()
 		);
 		register(
 			context,
 			MASON_4_EMERALD_PINK_TERRACOTTA,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.DYED_TERRACOTTA.pink(), 4), 12, 15, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.DYED_TERRACOTTA.pink(), 4), 12, 15, 0.05F).build()
 		);
 		register(
 			context,
 			MASON_4_EMERALD_PURPLE_GLAZED_TERRACOTTA,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.GLAZED_TERRACOTTA.purple(), 4), 12, 15, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.GLAZED_TERRACOTTA.purple(), 4), 12, 15, 0.05F).build()
 		);
 		register(
 			context,
 			MASON_4_EMERALD_PURPLE_TERRACOTTA,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.DYED_TERRACOTTA.purple(), 4), 12, 15, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.DYED_TERRACOTTA.purple(), 4), 12, 15, 0.05F).build()
 		);
 		register(
 			context,
 			MASON_4_EMERALD_RED_GLAZED_TERRACOTTA,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.GLAZED_TERRACOTTA.red(), 4), 12, 15, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.GLAZED_TERRACOTTA.red(), 4), 12, 15, 0.05F).build()
 		);
 		register(
 			context,
 			MASON_4_EMERALD_RED_TERRACOTTA,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.DYED_TERRACOTTA.red(), 4), 12, 15, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.DYED_TERRACOTTA.red(), 4), 12, 15, 0.05F).build()
 		);
 		register(
 			context,
 			MASON_4_EMERALD_WHITE_GLAZED_TERRACOTTA,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.GLAZED_TERRACOTTA.white(), 4), 12, 15, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.GLAZED_TERRACOTTA.white(), 4), 12, 15, 0.05F).build()
 		);
 		register(
 			context,
 			MASON_4_EMERALD_WHITE_TERRACOTTA,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.DYED_TERRACOTTA.white(), 4), 12, 15, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.DYED_TERRACOTTA.white(), 4), 12, 15, 0.05F).build()
 		);
 		register(
 			context,
 			MASON_4_EMERALD_YELLOW_GLAZED_TERRACOTTA,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.GLAZED_TERRACOTTA.yellow(), 4), 12, 15, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.GLAZED_TERRACOTTA.yellow(), 4), 12, 15, 0.05F).build()
 		);
 		register(
 			context,
 			MASON_4_EMERALD_YELLOW_TERRACOTTA,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.DYED_TERRACOTTA.yellow(), 4), 12, 15, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.DYED_TERRACOTTA.yellow(), 4), 12, 15, 0.05F).build()
 		);
 		register(
 			context,
 			MASON_4_EMERALD_QUARTZ,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.QUARTZ, 4), 12, 15, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.QUARTZ, 4), 12, 15, 0.05F).build()
 		);
 		register(
 			context,
 			MASON_5_EMERALD_QUARTZ_BLOCK,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.QUARTZ_BLOCK, 4), 12, 30, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.QUARTZ_BLOCK, 4), 12, 30, 0.05F).build()
 		);
 		register(
 			context,
 			MASON_5_EMERALD_QUARTZ_PILLAR,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.QUARTZ_PILLAR, 4), 12, 30, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.QUARTZ_PILLAR, 4), 12, 30, 0.05F).build()
 		);
 	}
 	private static Holder<VillagerTrade> registerWanderingTrader(final BootstrapContext<VillagerTrade> context, final TradeLookups lookups) {
 		register(
 			context,
 			WANDERING_TRADER_BAKED_POTATO_EMERALD,
-			new VillagerTrade(new TradeCost(Items.BAKED_POTATO, 2), new ItemStackTemplate(Items.EMERALD, 1), 12, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.BAKED_POTATO, 2), new ItemStackTemplate(Items.EMERALD, 1), 12, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_ACACIA_LOG,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.ACACIA_LOG, 4), 6, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.ACACIA_LOG, 4), 6, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_ACACIA_SAPLING,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.ACACIA_SAPLING, 1), 6, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.ACACIA_SAPLING, 1), 6, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_ALLIUM,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.ALLIUM, 1), 6, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.ALLIUM, 1), 6, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_AZURE_BLUET,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.AZURE_BLUET, 1), 6, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.AZURE_BLUET, 1), 6, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_BEETROOT_SEEDS,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.BEETROOT_SEEDS, 1), 6, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.BEETROOT_SEEDS, 1), 6, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_BIRCH_LOG,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.BIRCH_LOG, 4), 6, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.BIRCH_LOG, 4), 6, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_BIRCH_SAPLING,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.BIRCH_SAPLING, 1), 6, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.BIRCH_SAPLING, 1), 6, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_BLACK_DYE,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.DYE.black(), 3), 6, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.DYE.black(), 3), 6, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_BLUE_DYE,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.DYE.blue(), 3), 6, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.DYE.blue(), 3), 6, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_BLUE_ICE,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.BLUE_ICE, 1), 6, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.BLUE_ICE, 1), 6, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_BLUE_ORCHID,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.BLUE_ORCHID, 1), 6, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.BLUE_ORCHID, 1), 6, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_BRAIN_CORAL_BLOCK,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.BRAIN_CORAL_BLOCK, 1), 6, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.BRAIN_CORAL_BLOCK, 1), 6, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_BROWN_DYE,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.DYE.brown(), 3), 6, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.DYE.brown(), 3), 6, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_BROWN_MUSHROOM,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.BROWN_MUSHROOM, 3), 6, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.BROWN_MUSHROOM, 3), 6, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_BUBBLE_CORAL_BLOCK,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.BUBBLE_CORAL_BLOCK, 1), 6, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.BUBBLE_CORAL_BLOCK, 1), 6, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_CACTUS,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.CACTUS, 1), 6, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.CACTUS, 1), 6, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_CHERRY_LOG,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.CHERRY_LOG, 4), 6, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.CHERRY_LOG, 4), 6, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_CHERRY_SAPLING,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.CHERRY_SAPLING, 1), 6, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.CHERRY_SAPLING, 1), 6, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_CORNFLOWER,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.CORNFLOWER, 1), 6, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.CORNFLOWER, 1), 6, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_CYAN_DYE,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.DYE.cyan(), 3), 6, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.DYE.cyan(), 3), 6, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_DANDELION,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.DANDELION, 1), 6, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.DANDELION, 1), 6, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_DARK_OAK_LOG,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.DARK_OAK_LOG, 4), 6, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.DARK_OAK_LOG, 4), 6, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_DARK_OAK_SAPLING,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.DARK_OAK_SAPLING, 1), 6, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.DARK_OAK_SAPLING, 1), 6, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_DRY_TALL_GRASS,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.DRY_TALL_GRASS, 1), 6, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.DRY_TALL_GRASS, 1), 6, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_ENCHANTED_IRON_PICKAXE,
-			new VillagerTrade(
-				new TradeCost(Items.EMERALD, UniformGenerator.between(3, 5)),
+			VillagerTrade.builder(
+				new TradeCost(Items.EMERALD, ContextIntProviders.between(3, 5)),
 				new ItemStackTemplate(Items.IRON_PICKAXE),
 				3,
 				2,
-				0.05F,
-				Optional.empty(),
-				enchantedItem(lookups.items(), lookups.enchantmentsForTradedEquipment(), Items.IRON_PICKAXE)
+				0.05F
 			)
+			.addModifiers(enchantedItem(lookups.items(), lookups.enchantmentsForTradedEquipment(), Items.IRON_PICKAXE))
+			.build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_FERN,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.FERN, 1), 6, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.FERN, 1), 6, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_FIRE_CORAL_BLOCK,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.FIRE_CORAL_BLOCK, 1), 6, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.FIRE_CORAL_BLOCK, 1), 6, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_FIREFLY_BUSH,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.FIREFLY_BUSH, 1), 6, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.FIREFLY_BUSH, 1), 6, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_FISH_BUCKET,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.TROPICAL_FISH_BUCKET, 1), 6, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.TROPICAL_FISH_BUCKET, 1), 6, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_GLOWSTONE,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.GLOWSTONE, 1), 6, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.GLOWSTONE, 1), 6, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_GOLDEN_DANDELION,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.GOLDEN_DANDELION, 1), 6, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.GOLDEN_DANDELION, 1), 6, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_GRAY_DYE,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.DYE.gray(), 3), 6, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.DYE.gray(), 3), 6, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_GREEN_DYE,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.DYE.green(), 3), 6, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.DYE.green(), 3), 6, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_GUNPOWDER,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.GUNPOWDER, 4), 6, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.GUNPOWDER, 4), 6, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_HORN_CORAL_BLOCK,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.HORN_CORAL_BLOCK, 1), 6, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.HORN_CORAL_BLOCK, 1), 6, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_JUNGLE_LOG,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.JUNGLE_LOG, 4), 6, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.JUNGLE_LOG, 4), 6, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_JUNGLE_SAPLING,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.JUNGLE_SAPLING, 1), 6, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.JUNGLE_SAPLING, 1), 6, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_KELP,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.KELP, 1), 6, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.KELP, 1), 6, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_LIGHT_BLUE_DYE,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.DYE.lightBlue(), 3), 6, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.DYE.lightBlue(), 3), 6, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_LIGHT_GRAY_DYE,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.DYE.lightGray(), 3), 6, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.DYE.lightGray(), 3), 6, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_LILY_OF_THE_VALLEY,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.LILY_OF_THE_VALLEY, 1), 6, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.LILY_OF_THE_VALLEY, 1), 6, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_LILY_PAD,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.LILY_PAD, 5), 6, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.LILY_PAD, 5), 6, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_LIME_DYE,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.DYE.lime(), 3), 6, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.DYE.lime(), 3), 6, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_LONG_FIRE_RESISTANCE_POTION,
-			new VillagerTrade(
+			VillagerTrade.builder(
 				new TradeCost(Items.EMERALD, 5),
 				new ItemStackTemplate(Items.POTION),
 				6,
 				1,
-				0.05F,
-				Optional.empty(),
-				List.of(SetPotionFunction.setPotion(Potions.LONG_FIRE_RESISTANCE).build())
+				0.05F
 			)
+			.addModifiers(List.of(SetPotionFunction.setPotion(Potions.LONG_FIRE_RESISTANCE).build()).stream().map(Holder::direct).toList())
+			.build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_LONG_INVISIBILITY_POTION,
-			new VillagerTrade(
+			VillagerTrade.builder(
 				new TradeCost(Items.EMERALD, 5),
 				new ItemStackTemplate(Items.POTION),
 				6,
 				1,
-				0.05F,
-				Optional.empty(),
-				List.of(SetPotionFunction.setPotion(Potions.LONG_INVISIBILITY).build())
+				0.05F
 			)
+			.addModifiers(List.of(SetPotionFunction.setPotion(Potions.LONG_INVISIBILITY).build()).stream().map(Holder::direct).toList())
+			.build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_LONG_NIGHT_VISION_POTION,
-			new VillagerTrade(
+			VillagerTrade.builder(
 				new TradeCost(Items.EMERALD, 6),
 				new ItemStackTemplate(Items.POTION),
 				6,
 				1,
-				0.05F,
-				Optional.empty(),
-				List.of(SetPotionFunction.setPotion(Potions.LONG_NIGHT_VISION).build())
+				0.05F
 			)
+			.addModifiers(List.of(SetPotionFunction.setPotion(Potions.LONG_NIGHT_VISION).build()).stream().map(Holder::direct).toList())
+			.build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_MAGENTA_DYE,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.DYE.magenta(), 3), 6, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.DYE.magenta(), 3), 6, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_MANGROVE_LOG,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.MANGROVE_LOG, 4), 6, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.MANGROVE_LOG, 4), 6, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_MANGROVE_PROPAGULE,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.MANGROVE_PROPAGULE, 1), 6, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.MANGROVE_PROPAGULE, 1), 6, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_MELON_SEEDS,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.MELON_SEEDS, 1), 6, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.MELON_SEEDS, 1), 6, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_MOSS_BLOCK,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.MOSS_BLOCK, 2), 6, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.MOSS_BLOCK, 2), 6, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_NAME_TAG,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.NAME_TAG, 1), 6, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.NAME_TAG, 1), 6, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_NAUTILUS_SHELL,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 5), new ItemStackTemplate(Items.NAUTILUS_SHELL, 1), 6, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 5), new ItemStackTemplate(Items.NAUTILUS_SHELL, 1), 6, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_OAK_LOG,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.OAK_LOG, 4), 6, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.OAK_LOG, 4), 6, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_OAK_SAPLING,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.OAK_SAPLING, 1), 6, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.OAK_SAPLING, 1), 6, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_OPEN_EYEBLOSSOM,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.OPEN_EYEBLOSSOM, 1), 6, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.OPEN_EYEBLOSSOM, 1), 6, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_ORANGE_DYE,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.DYE.orange(), 3), 6, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.DYE.orange(), 3), 6, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_ORANGE_TULIP,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.ORANGE_TULIP, 1), 6, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.ORANGE_TULIP, 1), 6, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_OXEYE_DAISY,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.OXEYE_DAISY, 1), 6, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.OXEYE_DAISY, 1), 6, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_PACKED_ICE,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.PACKED_ICE, 1), 6, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.PACKED_ICE, 1), 6, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_PALE_HANGING_MOSS,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.PALE_HANGING_MOSS, 3), 6, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.PALE_HANGING_MOSS, 3), 6, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_PALE_MOSS_BLOCK,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.PALE_MOSS_BLOCK, 2), 6, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.PALE_MOSS_BLOCK, 2), 6, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_PALE_OAK_LOG,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.PALE_OAK_LOG, 4), 6, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.PALE_OAK_LOG, 4), 6, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_PALE_OAK_SAPLING,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.PALE_OAK_SAPLING, 1), 6, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.PALE_OAK_SAPLING, 1), 6, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_PINK_DYE,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.DYE.pink(), 3), 6, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.DYE.pink(), 3), 6, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_PINK_TULIP,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.PINK_TULIP, 1), 6, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.PINK_TULIP, 1), 6, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_PODZOL,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.PODZOL, 3), 6, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.PODZOL, 3), 6, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_POINTED_DRIPSTONE,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.POINTED_DRIPSTONE, 2), 6, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.POINTED_DRIPSTONE, 2), 6, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_POPPY,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.POPPY, 1), 6, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.POPPY, 1), 6, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_PUFFERFISH_BUCKET,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.PUFFERFISH_BUCKET, 1), 6, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.PUFFERFISH_BUCKET, 1), 6, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_PUMPKIN,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.PUMPKIN, 1), 6, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.PUMPKIN, 1), 6, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_PUMPKIN_SEEDS,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.PUMPKIN_SEEDS, 1), 6, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.PUMPKIN_SEEDS, 1), 6, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_PURPLE_DYE,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.DYE.purple(), 3), 6, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.DYE.purple(), 3), 6, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_RED_DYE,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.DYE.red(), 3), 6, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.DYE.red(), 3), 6, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_RED_MUSHROOM,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.RED_MUSHROOM, 3), 6, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.RED_MUSHROOM, 3), 6, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_RED_SAND,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.RED_SAND, 4), 6, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.RED_SAND, 4), 6, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_RED_TULIP,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.RED_TULIP, 1), 6, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.RED_TULIP, 1), 6, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_ROOTED_DIRT,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.ROOTED_DIRT, 2), 6, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.ROOTED_DIRT, 2), 6, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_SAND,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.SAND, 4), 6, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.SAND, 4), 6, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_SEA_PICKLE,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.SEA_PICKLE, 1), 6, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 2), new ItemStackTemplate(Items.SEA_PICKLE, 1), 6, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_SLIME_BALL,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 4), new ItemStackTemplate(Items.SLIME_BALL, 1), 6, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 4), new ItemStackTemplate(Items.SLIME_BALL, 1), 6, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_SMALL_DRIPLEAF,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.SMALL_DRIPLEAF, 2), 6, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.SMALL_DRIPLEAF, 2), 6, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_SPRUCE_LOG,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.SPRUCE_LOG, 4), 6, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.SPRUCE_LOG, 4), 6, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_SPRUCE_SAPLING,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.SPRUCE_SAPLING, 1), 6, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.SPRUCE_SAPLING, 1), 6, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_SUGAR_CANE,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.SUGAR_CANE, 1), 6, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.SUGAR_CANE, 1), 6, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_TUBE_CORAL_BLOCK,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.TUBE_CORAL_BLOCK, 1), 6, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 3), new ItemStackTemplate(Items.TUBE_CORAL_BLOCK, 1), 6, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_VINE,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.VINE, 3), 6, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.VINE, 3), 6, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_WHEAT_SEEDS,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.WHEAT_SEEDS, 1), 6, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.WHEAT_SEEDS, 1), 6, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_WHITE_DYE,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.DYE.white(), 3), 6, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.DYE.white(), 3), 6, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_WHITE_TULIP,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.WHITE_TULIP, 1), 6, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.WHITE_TULIP, 1), 6, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_WILDFLOWERS,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.WILDFLOWERS, 1), 6, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.WILDFLOWERS, 1), 6, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_EMERALD_YELLOW_DYE,
-			new VillagerTrade(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.DYE.yellow(), 3), 6, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(Items.DYE.yellow(), 3), 6, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_FERMENTED_SPIDER_EYE_EMERALD,
-			new VillagerTrade(new TradeCost(Items.FERMENTED_SPIDER_EYE, 1), new ItemStackTemplate(Items.EMERALD, 3), 12, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.FERMENTED_SPIDER_EYE, 1), new ItemStackTemplate(Items.EMERALD, 3), 12, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_HAY_BLOCK_EMERALD,
-			new VillagerTrade(new TradeCost(Items.HAY_BLOCK, 1), new ItemStackTemplate(Items.EMERALD, 1), 12, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.HAY_BLOCK, 1), new ItemStackTemplate(Items.EMERALD, 1), 12, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_MILK_BUCKET_EMERALD,
-			new VillagerTrade(new TradeCost(Items.MILK_BUCKET, 1), new ItemStackTemplate(Items.EMERALD, 2), 12, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.MILK_BUCKET, 1), new ItemStackTemplate(Items.EMERALD, 2), 12, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_MILK_COPPER_BUCKET_EMERALD,
-			new VillagerTrade(new TradeCost(MMEItems.COPPER_MILK_BUCKET, 1), new ItemStackTemplate(Items.EMERALD, 2), 12, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(MMEItems.COPPER_MILK_BUCKET, 1), new ItemStackTemplate(Items.EMERALD, 2), 12, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_MILK_SILVER_BUCKET_EMERALD,
-			new VillagerTrade(new TradeCost(MMEItems.SILVER_MILK_BUCKET, 1), new ItemStackTemplate(Items.EMERALD, 2), 12, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(MMEItems.SILVER_MILK_BUCKET, 1), new ItemStackTemplate(Items.EMERALD, 2), 12, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_WATER_BOTTLE_EMERALD,
-			new VillagerTrade(
+			VillagerTrade.builder(
 				new TradeCost(
 					Items.POTION.builtInRegistryHolder(),
-					ConstantValue.exactly(1.0F),
+					ContextIntProviders.exactly(1),
 					DataComponentExactPredicate.expect(DataComponents.POTION_CONTENTS, new PotionContents(Potions.WATER))
 				),
 				new ItemStackTemplate(Items.EMERALD),
 				2,
 				1,
-				0.05F,
-				Optional.empty(),
-				List.of()
-			)
+				0.05F
+			).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_WATER_BUCKET_EMERALD,
-			new VillagerTrade(new TradeCost(Items.WATER_BUCKET, 1), new ItemStackTemplate(Items.EMERALD, 2), 12, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(Items.WATER_BUCKET, 1), new ItemStackTemplate(Items.EMERALD, 2), 12, 1, 0.05F).build()
 		);
 		register(
 			context,
 			WANDERING_TRADER_WATER_COPPER_BUCKET_EMERALD,
-			new VillagerTrade(new TradeCost(MMEItems.COPPER_WATER_BUCKET, 1), new ItemStackTemplate(Items.EMERALD, 2), 12, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(MMEItems.COPPER_WATER_BUCKET, 1), new ItemStackTemplate(Items.EMERALD, 2), 12, 1, 0.05F).build()
 		);
 		return register(
 			context,
 			WANDERING_TRADER_WATER_SILVER_BUCKET_EMERALD,
-			new VillagerTrade(new TradeCost(MMEItems.SILVER_WATER_BUCKET, 1), new ItemStackTemplate(Items.EMERALD, 2), 12, 1, 0.05F, Optional.empty(), List.of())
+			VillagerTrade.builder(new TradeCost(MMEItems.SILVER_WATER_BUCKET, 1), new ItemStackTemplate(Items.EMERALD, 2), 12, 1, 0.05F).build()
 		);
 	}
 
@@ -3359,8 +3389,8 @@ public class MMEVillagerTradeProvider {
 		return HolderSet.direct(villagerTypes);
 	}
 
-	public static Optional<LootItemCondition> villagerTypeRestriction(final HolderSet<VillagerType> villagerTypes) {
-		return Optional.of(
+	public static Holder<LootItemCondition> villagerTypeRestriction(final HolderSet<VillagerType> villagerTypes) {
+		return Holder.direct(
 			new LootItemEntityPropertyCondition(
 				Optional.of(
 					EntityPredicate.Builder.entity()
@@ -3374,7 +3404,7 @@ public class MMEVillagerTradeProvider {
 		);
 	}
 
-	private static List<LootItemFunction> dyedItem(final HolderGetter<Item> items, final Item expectedItem) {
+	private static List<Holder<LootItemFunction>> dyedItem(final HolderGetter<Item> items, final Item expectedItem) {
 		return List.of(
 			addRandomDye(),
 			FilteredFunction.filtered(
@@ -3383,19 +3413,19 @@ public class MMEVillagerTradeProvider {
 						.withComponents(DataComponentMatchers.Builder.components().any(DataComponents.DYED_COLOR).build())
 						.build()
 				)
-				.onFail(Optional.of(DiscardItem.discardItem().build()))
+				.onFail(DiscardItem.discardItem().build())
 				.build()
-		);
+		).stream().map(Holder::direct).toList();
 	}
 
 	private static LootItemFunction addRandomDye() {
 		return SetRandomDyesFunction.withCount(
-				Sum.sum(ConstantValue.exactly(1.0F), new BinomialDistributionGenerator(ConstantValue.exactly(2.0F), ConstantValue.exactly(0.75F)))
+				ContextIntProviders.add(ContextIntProviders.exactly(1), ContextIntProviders.binomial(2, 0.75F))
 			)
 			.build();
 	}
 
-	public static List<LootItemFunction> enchantedBook(final HolderGetter<Item> items, final Optional<HolderSet<Enchantment>> options) {
+	public static List<Holder<LootItemFunction>> enchantedBook(final HolderGetter<Item> items, final Optional<HolderSet<Enchantment>> options) {
 		return List.of(
 			new EnchantRandomlyFunction.Builder().withOptions(options.get()).allowingIncompatibleEnchantments().includeAdditionalCostComponent().build(),
 			FilteredFunction.filtered(
@@ -3411,14 +3441,14 @@ public class MMEVillagerTradeProvider {
 						)
 						.build()
 				)
-				.onFail(Optional.of(DiscardItem.discardItem().build()))
+				.onFail(DiscardItem.discardItem().build())
 				.build()
-		);
+		).stream().map(Holder::direct).toList();
 	}
 
-	public static List<LootItemFunction> enchantedItem(final HolderGetter<Item> items, final Optional<HolderSet<Enchantment>> options, final Item expectedItem) {
+	public static List<Holder<LootItemFunction>> enchantedItem(final HolderGetter<Item> items, final Optional<HolderSet<Enchantment>> options, final Item expectedItem) {
 		return List.of(
-			new EnchantWithLevelsFunction.Builder(UniformGenerator.between(5.0F, 19.0F)).withOptions(options).includeAdditionalCostComponent().build(),
+			new EnchantWithLevelsFunction.Builder(ContextIntProviders.between(5, 19)).withOptions(options).includeAdditionalCostComponent().build(),
 			FilteredFunction.filtered(
 					new ItemPredicate.Builder()
 						.of(items, expectedItem)
@@ -3431,14 +3461,14 @@ public class MMEVillagerTradeProvider {
 						)
 						.build()
 				)
-				.onFail(Optional.of(DiscardItem.discardItem().build()))
+				.onFail(DiscardItem.discardItem().build())
 				.build()
-		);
+		).stream().map(Holder::direct).toList();
 	}
 
-	public static List<LootItemFunction> superiorEnchantedItem(final HolderGetter<Item> items, final Optional<HolderSet<Enchantment>> options, final Item expectedItem) {
+	public static List<Holder<LootItemFunction>> superiorEnchantedItem(final HolderGetter<Item> items, final Optional<HolderSet<Enchantment>> options, final Item expectedItem) {
 		return List.of(
-			new EnchantWithLevelsFunction.Builder(UniformGenerator.between(30.0F, 50.0F)).withOptions(options).includeAdditionalCostComponent().build(),
+			new EnchantWithLevelsFunction.Builder(ContextIntProviders.between(30, 50)).withOptions(options).includeAdditionalCostComponent().build(),
 			FilteredFunction.filtered(
 					new ItemPredicate.Builder()
 						.of(items, expectedItem)
@@ -3451,8 +3481,8 @@ public class MMEVillagerTradeProvider {
 						)
 						.build()
 				)
-				.onFail(Optional.of(DiscardItem.discardItem().build()))
+				.onFail(DiscardItem.discardItem().build())
 				.build()
-		);
+		).stream().map(Holder::direct).toList();
 	}
 }

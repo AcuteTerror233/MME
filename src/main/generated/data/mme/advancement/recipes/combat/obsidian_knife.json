@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:obsidian_knife"
+        "recipes": "mme:obsidian_knife"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

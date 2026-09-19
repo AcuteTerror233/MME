@@ -1,7 +1,6 @@
 package com.acuteterror233.mite.block;
 
 import com.acuteterror233.mite.item.MMEItems;
-import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
@@ -37,14 +36,9 @@ import org.jspecify.annotations.NonNull;
 
 public class BlueBerryBushBlock
         extends VegetationBlock {
-    public static final MapCodec<BlueBerryBushBlock> CODEC = BlueBerryBushBlock.simpleCodec(BlueBerryBushBlock::new);
     public static final IntegerProperty AGE = BlockStateProperties.AGE_3;
     private static final VoxelShape SHAPE_SAPLING = Block.column(10.0, 0.0, 8.0);
     private static final VoxelShape SHAPE_GROWING = Block.column(14.0, 0.0, 16.0);
-
-    public @NonNull MapCodec<BlueBerryBushBlock> codec() {
-        return CODEC;
-    }
 
     public BlueBerryBushBlock(BlockBehaviour.Properties properties) {
         super(properties);

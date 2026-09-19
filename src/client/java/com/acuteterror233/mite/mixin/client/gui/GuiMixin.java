@@ -1,6 +1,5 @@
 package com.acuteterror233.mite.mixin.client.gui;
 
-import com.acuteterror233.mite.interfaces.FoodDataExtension;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.Hud;
@@ -28,7 +27,7 @@ public abstract class GuiMixin {
     @ModifyConstant(method = "extractFood", constant = @Constant(intValue = 10))
     private int renderFood(int original, GuiGraphicsExtractor context, Player player, int top, int right) {
         FoodData foodData = player.getFoodData();
-        int maxFoodLevel = ((FoodDataExtension) foodData).MME$GetMaxFoodLevel();
+        int maxFoodLevel = foodData.MME$GetMaxFoodLevel();
         return maxFoodLevel / 2;
     }
     /**

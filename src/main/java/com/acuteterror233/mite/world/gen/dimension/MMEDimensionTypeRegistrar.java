@@ -9,6 +9,7 @@ import net.minecraft.data.worldgen.biome.OverworldBiomes;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.util.ARGB;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.attribute.*;
 import net.minecraft.world.level.CardinalLighting;
@@ -46,8 +47,8 @@ public class MMEDimensionTypeRegistrar {
                 DimensionType.Skybox.NONE,
                 CardinalLighting.Type.DEFAULT,
                 EnvironmentAttributeMap.builder()
-                        .set(EnvironmentAttributes.FOG_COLOR, -4138753)
-                        .set(EnvironmentAttributes.SKY_COLOR, OverworldBiomes.calculateSkyColor(0.8F))
+                        .set(EnvironmentAttributes.FOG_COLOR, ARGB.vector3fFromRGB24( -4138753))
+                        .set(EnvironmentAttributes.SKY_COLOR, ARGB.vector3fFromRGB24(OverworldBiomes.calculateSkyColor(0.8F)))
                         .set(EnvironmentAttributes.BACKGROUND_MUSIC, BackgroundMusic.OVERWORLD)
                         .set(EnvironmentAttributes.BED_RULE, BedRule.CAN_SLEEP_WHEN_DARK)
                         .set(EnvironmentAttributes.RESPAWN_ANCHOR_WORKS, false)

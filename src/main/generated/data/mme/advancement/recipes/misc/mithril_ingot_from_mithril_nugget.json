@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:mithril_ingot_from_mithril_nugget"
+        "recipes": "mme:mithril_ingot_from_mithril_nugget"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

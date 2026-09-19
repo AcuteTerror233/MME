@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:mithril_chains"
+        "recipes": "mme:mithril_chains"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

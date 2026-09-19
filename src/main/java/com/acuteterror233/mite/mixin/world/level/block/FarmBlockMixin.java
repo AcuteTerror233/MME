@@ -13,10 +13,10 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin(FarmlandBlock.class)
 /**
  * Mixin for {@code FarmBlock} — Adds fertility system support.
  */
+@Mixin(FarmlandBlock.class)
 public abstract class FarmBlockMixin extends Block {
     @Shadow
     public static final IntegerProperty MOISTURE = BlockStateProperties.MOISTURE;
@@ -25,7 +25,7 @@ public abstract class FarmBlockMixin extends Block {
     }
 
     @Inject(method = "<init>", at = @At("TAIL"))
-    private void init(Properties properties, CallbackInfo ci) {
+    private void init(Block baseBlock, Properties properties, CallbackInfo ci) {
         this.registerDefaultState(this.stateDefinition.any().setValue(MOISTURE, 0).setValue(MMEBlockStateProperties.FERTILE, false));
     }
 

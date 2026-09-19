@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:netherite_milk_bucket"
+        "recipes": "mme:netherite_milk_bucket"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

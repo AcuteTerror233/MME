@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:block.mme.copper_anvil_of_block.minecraft.waxed_weathered_copper"
+        "recipes": "mme:block.mme.copper_anvil_of_block.minecraft.waxed_weathered_copper"
       },
       "trigger": "minecraft:recipe_unlocked"
     },

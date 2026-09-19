@@ -18,6 +18,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.equipment.EquipmentAsset;
 import net.minecraft.world.item.equipment.trim.TrimMaterial;
+import net.minecraft.world.item.equipment.trim.TrimMaterials;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -25,6 +26,7 @@ import org.spongepowered.asm.mixin.Unique;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.function.BiConsumer;
 
 /**
@@ -73,15 +75,16 @@ public abstract class ItemModelGeneratorsMixin implements ItemModelGeneratorsExt
         this.generateBooleanDispatch(item, new FishingRodCast(), unbaked2, unbaked);
     }
     @Unique
-    public final void MME$registerChainmailTrimmableItem(Item item, Item basePlateModel, ResourceKey<EquipmentAsset> key, Identifier slotResourceLocation, String slot) {
+    public final void MME$registerChainmailTrimmableItem(Item item, Item basePlateModel, ResourceKey<EquipmentAsset> key, Identifier slotResourceLocation, String slot, Map<TrimMaterials.Palette, TrimMaterials.Palette> trimPaletteReplacements) {
         Identifier model = ModelLocationUtils.getModelLocation(item);
         Material basePlateTexture = TextureMapping.getItemTexture(basePlateModel);
         Material slotTextureChainmailOverlay = new Material(Identifier.fromNamespaceAndPath(MME.MOD_ID, "item/" + slot + "_chainmail_overlay"));
         List<SelectItemModel.SwitchCase<ResourceKey<TrimMaterial>>> trimMaterialModelList = new ArrayList<>(TRIM_MATERIAL_MODELS.size());
 
         for (ItemModelGenerators.TrimMaterialData trimMaterialData : TRIM_MATERIAL_MODELS) {
-            Identifier modelTrim = model.withSuffix("_" + trimMaterialData.assets().base().suffix() + "_trim");
-            Material SlotResourceLocationAsKey = new Material(slotResourceLocation.withSuffix("_" + trimMaterialData.assets().assetId(key).suffix()));
+            Identifier modelTrim = model.withSuffix("_" + trimMaterialData.palette().suffix() + "_trim");
+            TrimMaterials.Palette palette = trimPaletteReplacements.getOrDefault(trimMaterialData.palette(), trimMaterialData.palette());
+            Material SlotResourceLocationAsKey = new Material(slotResourceLocation.withSuffix("_" + palette.suffix()));
             ItemModel.Unbaked unbaked;
             this.generateLayeredItem(modelTrim, basePlateTexture, slotTextureChainmailOverlay, SlotResourceLocationAsKey);
             unbaked = ItemModelUtils.plainModel(modelTrim);

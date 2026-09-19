@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:sandstone_furnace"
+        "recipes": "mme:sandstone_furnace"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

@@ -213,7 +213,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:mithril_nugget_from_blasting"
+        "recipes": "mme:mithril_nugget_from_blasting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

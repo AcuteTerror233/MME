@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:silver_boots"
+        "recipes": "mme:silver_boots"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

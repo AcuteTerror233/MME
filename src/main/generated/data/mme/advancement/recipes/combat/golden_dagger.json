@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:golden_dagger"
+        "recipes": "mme:golden_dagger"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

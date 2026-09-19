@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:adamantium_mattock"
+        "recipes": "mme:adamantium_mattock"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

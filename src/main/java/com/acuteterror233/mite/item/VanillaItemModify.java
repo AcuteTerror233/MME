@@ -15,6 +15,7 @@ import net.minecraft.world.item.component.Consumables;
 import net.minecraft.world.item.consume_effects.ApplyStatusEffectsConsumeEffect;
 import net.minecraft.world.item.equipment.ArmorType;
 import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProviders;
 
 import java.util.HashMap;
 import java.util.List;
@@ -99,8 +100,8 @@ public final class VanillaItemModify {
         result.put(Identifier.withDefaultNamespace("gold_ingot"), settings -> settings.stacksTo(16).component(MMEDataComponents.CRAFTING_TIME, 5));
         result.put(Identifier.withDefaultNamespace("netherite_ingot"), settings -> settings.stacksTo(16).component(MMEDataComponents.CRAFTING_TIME, 70));
         result.put(Identifier.withDefaultNamespace("leather"), settings -> settings.stacksTo(16).component(MMEDataComponents.CRAFTING_TIME, 2));
-        result.put(Identifier.withDefaultNamespace("coal"), settings -> settings.stacksTo(16));
-        result.put(Identifier.withDefaultNamespace("charcoal"), settings -> settings.stacksTo(16));
+        result.put(Identifier.withDefaultNamespace("coal"), settings -> settings.stacksTo(16).component(MMEDataComponents.COMBUSTION_GRADE, 2));
+        result.put(Identifier.withDefaultNamespace("charcoal"), settings -> settings.stacksTo(16).component(MMEDataComponents.COMBUSTION_GRADE, 1));
         result.put(Identifier.withDefaultNamespace("emerald"), settings -> settings.stacksTo(16));
         result.put(Identifier.withDefaultNamespace("diamond"), settings -> settings.stacksTo(16));
         result.put(Identifier.withDefaultNamespace("amethyst_shard"), settings -> settings.stacksTo(16));
@@ -503,22 +504,6 @@ public final class VanillaItemModify {
         result.put(Identifier.withDefaultNamespace("wooden_axe"), Item::new);
         result.put(Identifier.withDefaultNamespace("wooden_hoe"), Item::new);
 
-        result.put(Identifier.withDefaultNamespace("iron_shovel"), MMEShovelItem::new);
-        result.put(Identifier.withDefaultNamespace("iron_axe"), MMEAxeItem::new);
-        result.put(Identifier.withDefaultNamespace("iron_hoe"), MMEHoeItem::new);
-
-        result.put(Identifier.withDefaultNamespace("golden_shovel"), MMEShovelItem::new);
-        result.put(Identifier.withDefaultNamespace("golden_axe"), MMEAxeItem::new);
-        result.put(Identifier.withDefaultNamespace("golden_hoe"), MMEHoeItem::new);
-
-        result.put(Identifier.withDefaultNamespace("copper_shovel"), MMEShovelItem::new);
-        result.put(Identifier.withDefaultNamespace("copper_axe"), MMEAxeItem::new);
-        result.put(Identifier.withDefaultNamespace("copper_hoe"), MMEHoeItem::new);
-
-        result.put(Identifier.withDefaultNamespace("netherite_shovel"), MMEShovelItem::new);
-        result.put(Identifier.withDefaultNamespace("netherite_axe"), MMEAxeItem::new);
-        result.put(Identifier.withDefaultNamespace("netherite_hoe"), MMEHoeItem::new);
-
         result.put(Identifier.withDefaultNamespace("diamond_helmet"), settings -> new Item(new Item.Properties().setId(ResourceKey.create(Registries.ITEM, Identifier.withDefaultNamespace("diamond_helmet")))));
         result.put(Identifier.withDefaultNamespace("diamond_chestplate"), settings -> new Item(new Item.Properties().setId(ResourceKey.create(Registries.ITEM, Identifier.withDefaultNamespace("diamond_chestplate")))));
         result.put(Identifier.withDefaultNamespace("diamond_leggings"), settings -> new Item(new Item.Properties().setId(ResourceKey.create(Registries.ITEM, Identifier.withDefaultNamespace("diamond_leggings")))));
@@ -540,6 +525,9 @@ public final class VanillaItemModify {
     }
     private static Map<Identifier, UnaryOperator<Item.Properties>> createBlockItemSettingsModifyMapByIdentifier() {
         Map<Identifier, UnaryOperator<Item.Properties>> result = new HashMap<>();
+
+        result.put(Identifier.withDefaultNamespace("torch"), properties -> properties.cookingFuel(ContextIntProviders.COOKING_TIME_WOOD_ITEMS_LARGE));
+        result.put(Identifier.withDefaultNamespace("soul_torch"), properties -> properties.cookingFuel(ContextIntProviders.COOKING_TIME_WOOD_ITEMS_LARGE));
 
         result.put(Identifier.withDefaultNamespace("iron_block"), settings -> settings.component(MMEDataComponents.CRAFTING_TIME, 90));
         result.put(Identifier.withDefaultNamespace("gold_block"), settings -> settings.component(MMEDataComponents.CRAFTING_TIME, 45));
@@ -651,6 +639,10 @@ public final class VanillaItemModify {
         result.put(Identifier.withDefaultNamespace("spruce_shelf"), settings -> settings.stacksTo(8));
         result.put(Identifier.withDefaultNamespace("warped_shelf"), settings -> settings.stacksTo(8));
         result.put(Identifier.withDefaultNamespace("copper_bars"), settings -> settings.stacksTo(16));
+
+        result.put(Identifier.withDefaultNamespace("coal_block"), properties -> properties.component(MMEDataComponents.COMBUSTION_GRADE, 2));
+        result.put(Identifier.withDefaultNamespace("furnace"), properties -> properties.component(MMEDataComponents.MAX_COMBUSTION_GRADE, 2));
+        result.put(Identifier.withDefaultNamespace("blast_furnace"), properties -> properties.component(MMEDataComponents.MAX_COMBUSTION_GRADE, 4));
         return result;
     }
 

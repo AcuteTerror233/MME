@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:adamantium_bucket"
+        "recipes": "mme:adamantium_bucket"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

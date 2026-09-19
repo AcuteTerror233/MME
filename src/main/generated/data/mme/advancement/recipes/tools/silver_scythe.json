@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:silver_scythe"
+        "recipes": "mme:silver_scythe"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

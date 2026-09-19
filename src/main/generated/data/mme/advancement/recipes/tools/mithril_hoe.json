@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:mithril_hoe"
+        "recipes": "mme:mithril_hoe"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

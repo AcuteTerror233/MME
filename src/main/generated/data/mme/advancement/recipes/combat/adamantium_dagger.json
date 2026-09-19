@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:adamantium_dagger"
+        "recipes": "mme:adamantium_dagger"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

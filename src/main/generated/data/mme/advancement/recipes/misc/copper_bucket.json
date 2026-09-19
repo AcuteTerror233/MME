@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:copper_bucket"
+        "recipes": "mme:copper_bucket"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:silver_hoe"
+        "recipes": "mme:silver_hoe"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

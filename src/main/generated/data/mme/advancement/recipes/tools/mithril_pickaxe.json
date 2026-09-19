@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:mithril_pickaxe"
+        "recipes": "mme:mithril_pickaxe"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

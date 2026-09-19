@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:netherite_anvil"
+        "recipes": "mme:netherite_anvil"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

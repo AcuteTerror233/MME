@@ -3,6 +3,6 @@
   "textures": {
     "layer0": "minecraft:item/golden_chestplate",
     "layer1": "mme:item/chestplate_chainmail_overlay",
-    "layer2": "minecraft:trims/items/chestplate_trim_gold_darker"
+    "layer2": "minecraft:trims/items/chestplate_trim_gold"
   }
 }

@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:bowl_milk"
+        "recipes": "mme:bowl_milk"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

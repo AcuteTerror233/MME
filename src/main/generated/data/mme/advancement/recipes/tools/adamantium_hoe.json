@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:adamantium_hoe"
+        "recipes": "mme:adamantium_hoe"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

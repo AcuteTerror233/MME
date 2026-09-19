@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:mithril_ingot_from_blasting_raw_mithril"
+        "recipes": "mme:mithril_ingot_from_blasting_raw_mithril"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

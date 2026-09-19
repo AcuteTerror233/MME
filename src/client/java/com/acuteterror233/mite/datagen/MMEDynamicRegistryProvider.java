@@ -24,7 +24,7 @@ public class MMEDynamicRegistryProvider extends FabricDynamicRegistryProvider {
         entries.addAll(registries.lookupOrThrow(Registries.DIMENSION_TYPE));
         entries.addAll(registries.lookupOrThrow(Registries.BIOME));
         entries.addAll(registries.lookupOrThrow(Registries.PLACED_FEATURE));
-        entries.addAll(registries.lookupOrThrow(Registries.CONFIGURED_FEATURE));
+        entries.addAll(registries.lookupOrThrow(Registries.FEATURE));
         entries.addAll(registries.lookupOrThrow(Registries.ENCHANTMENT));
         entries.addAll(registries.lookupOrThrow(Registries.DAMAGE_TYPE));
         entries.addAll(registries.lookupOrThrow(Registries.PAINTING_VARIANT));

@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:rusted_iron_spear"
+        "recipes": "mme:rusted_iron_spear"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

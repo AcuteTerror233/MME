@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:vegetable_soup"
+        "recipes": "mme:vegetable_soup"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

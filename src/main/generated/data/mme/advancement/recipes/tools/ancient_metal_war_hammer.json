@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:ancient_metal_war_hammer"
+        "recipes": "mme:ancient_metal_war_hammer"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

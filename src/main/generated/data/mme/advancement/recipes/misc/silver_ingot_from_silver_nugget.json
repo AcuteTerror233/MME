@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:silver_ingot_from_silver_nugget"
+        "recipes": "mme:silver_ingot_from_silver_nugget"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

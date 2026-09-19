@@ -5,13 +5,12 @@ import com.acuteterror233.mite.MME;
 import com.acuteterror233.mite.block.MMEBlocks;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
+import net.minecraft.world.level.levelgen.feature.BlockReplacement;
 import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
+import net.minecraft.world.level.levelgen.feature.OreFeature;
 import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
 
@@ -22,39 +21,39 @@ import java.util.List;
  * Defines ore and vegetation generation features for the underground world.
  */
 public class UndergroundConfiguredFeatures {
-    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_ADAMANTIUM_BURIED = of("ore_adamantium");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_ADAMANTIUM_BURIED_SMALL = of("ore_adamantium_small");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_MITHRIL = of("ore_mithril");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_MITHRIL_SMALL = of("ore_mithril_small");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_SILVER = of("ore_silver");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_SILVER_SMALL = of("ore_silver_small");
+    public static final ResourceKey<Feature> ORE_ADAMANTIUM_BURIED = of("ore_adamantium");
+    public static final ResourceKey<Feature> ORE_ADAMANTIUM_BURIED_SMALL = of("ore_adamantium_small");
+    public static final ResourceKey<Feature> ORE_MITHRIL = of("ore_mithril");
+    public static final ResourceKey<Feature> ORE_MITHRIL_SMALL = of("ore_mithril_small");
+    public static final ResourceKey<Feature> ORE_SILVER = of("ore_silver");
+    public static final ResourceKey<Feature> ORE_SILVER_SMALL = of("ore_silver_small");
 
-    public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> featureRegisterable){
+    public static void bootstrap(BootstrapContext<Feature> featureRegisterable){
         RuleTest ruleTest = new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES);
         RuleTest ruleTest1 = new TagMatchTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES);
-        List<OreConfiguration.TargetBlockState> mithril_Ore_List = List.of(
-                OreConfiguration.target(ruleTest, MMEBlocks.MITHRIL_ORE.defaultBlockState()),
-                OreConfiguration.target(ruleTest1, MMEBlocks.DEEPSLATE_MITHRIL_ORE.defaultBlockState())
+        List<BlockReplacement> mithril_Ore_List = List.of(
+                BlockReplacement.replace(ruleTest, MMEBlocks.MITHRIL_ORE.defaultBlockState()),
+                BlockReplacement.replace(ruleTest1, MMEBlocks.DEEPSLATE_MITHRIL_ORE.defaultBlockState())
         );
-        List<OreConfiguration.TargetBlockState> adamantium_Ore_List = List.of(
-                OreConfiguration.target(ruleTest, MMEBlocks.ADAMANTIUM_ORE.defaultBlockState()),
-                OreConfiguration.target(ruleTest1, MMEBlocks.DEEPSLATE_ADAMANTIUM_ORE.defaultBlockState())
+        List<BlockReplacement> adamantium_Ore_List = List.of(
+                BlockReplacement.replace(ruleTest, MMEBlocks.ADAMANTIUM_ORE.defaultBlockState()),
+                BlockReplacement.replace(ruleTest1, MMEBlocks.DEEPSLATE_ADAMANTIUM_ORE.defaultBlockState())
         );
-        List<OreConfiguration.TargetBlockState> silver_Ore_List = List.of(
-                OreConfiguration.target(ruleTest, MMEBlocks.SILVER_ORE.defaultBlockState()),
-                OreConfiguration.target(ruleTest1, MMEBlocks.DEEPSLATE_SILVER_ORE.defaultBlockState())
+        List<BlockReplacement> silver_Ore_List = List.of(
+                BlockReplacement.replace(ruleTest, MMEBlocks.SILVER_ORE.defaultBlockState()),
+                BlockReplacement.replace(ruleTest1, MMEBlocks.DEEPSLATE_SILVER_ORE.defaultBlockState())
         );
-        FeatureUtils.register(featureRegisterable, ORE_ADAMANTIUM_BURIED, Feature.ORE, new OreConfiguration(adamantium_Ore_List, 4, 1.0f));
-        FeatureUtils.register(featureRegisterable, ORE_ADAMANTIUM_BURIED_SMALL, Feature.ORE, new OreConfiguration(adamantium_Ore_List, 2, 1.0f));
-        FeatureUtils.register(featureRegisterable, ORE_MITHRIL, Feature.ORE, new OreConfiguration(mithril_Ore_List, 4, 0f));
-        FeatureUtils.register(featureRegisterable, ORE_MITHRIL_SMALL, Feature.ORE, new OreConfiguration(mithril_Ore_List, 4, 0f));
-        FeatureUtils.register(featureRegisterable, ORE_SILVER, Feature.ORE, new OreConfiguration(silver_Ore_List, 6, 0.2f));
-        FeatureUtils.register(featureRegisterable, ORE_SILVER_SMALL, Feature.ORE, new OreConfiguration(silver_Ore_List, 2, 0.2f));
+        featureRegisterable.register(ORE_ADAMANTIUM_BURIED, new OreFeature(adamantium_Ore_List, 4, 1.0f));
+        featureRegisterable.register(ORE_ADAMANTIUM_BURIED_SMALL, new OreFeature(adamantium_Ore_List, 2, 1.0f));
+        featureRegisterable.register(ORE_MITHRIL, new OreFeature(mithril_Ore_List, 4, 0f));
+        featureRegisterable.register(ORE_MITHRIL_SMALL, new OreFeature(mithril_Ore_List, 4, 0f));
+        featureRegisterable.register(ORE_SILVER, new OreFeature(silver_Ore_List, 6, 0.2f));
+        featureRegisterable.register(ORE_SILVER_SMALL, new OreFeature(silver_Ore_List, 2, 0.2f));
     }
     /**
      * Generate a ConfiguredFeature registry key within the namespace.
      */
-    public static ResourceKey<ConfiguredFeature<?, ?>> of(String id) {
-        return ResourceKey.create(Registries.CONFIGURED_FEATURE, Identifier.fromNamespaceAndPath(MME.MOD_ID,id));
+    public static ResourceKey<Feature> of(String id) {
+        return ResourceKey.create(Registries.FEATURE, Identifier.fromNamespaceAndPath(MME.MOD_ID,id));
     }
 }

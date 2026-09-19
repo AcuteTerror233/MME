@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:bundle"
+        "recipes": "mme:bundle"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

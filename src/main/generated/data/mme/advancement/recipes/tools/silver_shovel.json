@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:silver_shovel"
+        "recipes": "mme:silver_shovel"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

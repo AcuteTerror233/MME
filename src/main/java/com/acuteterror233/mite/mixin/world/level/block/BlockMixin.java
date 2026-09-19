@@ -1,6 +1,8 @@
 package com.acuteterror233.mite.mixin.world.level.block;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -13,14 +15,14 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin(Block.class)
 /**
  * Mixin for {@code Block} — Modifies common block properties.
  */
+@Mixin(Block.class)
 public class BlockMixin {
     @Inject(method = "playerDestroy", at = @At("RETURN"))
-    private void playerDestroy(Level level, Player player, BlockPos blockPos, BlockState blockState, BlockEntity blockEntity, ItemStack itemStack, CallbackInfo ci) {
-        if (blockState.canOcclude()) {
+    private void playerDestroy(ServerLevel level, ServerPlayer player, BlockPos pos, BlockState state, BlockEntity blockEntity, ItemStack destroyedWith, CallbackInfo ci) {
+        if (state.canOcclude()) {
             player.causeFoodExhaustion(0.3F);
         }
     }

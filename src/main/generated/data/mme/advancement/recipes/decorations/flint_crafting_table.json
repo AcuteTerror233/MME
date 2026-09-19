@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:flint_crafting_table"
+        "recipes": "mme:flint_crafting_table"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

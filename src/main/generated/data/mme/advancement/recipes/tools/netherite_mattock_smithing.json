@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:netherite_mattock_smithing"
+        "recipes": "mme:netherite_mattock_smithing"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

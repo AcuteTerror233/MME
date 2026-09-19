@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:mithril_shears"
+        "recipes": "mme:mithril_shears"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

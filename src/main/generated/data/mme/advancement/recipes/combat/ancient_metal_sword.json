@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:ancient_metal_sword"
+        "recipes": "mme:ancient_metal_sword"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:chicken_soup"
+        "recipes": "mme:chicken_soup"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

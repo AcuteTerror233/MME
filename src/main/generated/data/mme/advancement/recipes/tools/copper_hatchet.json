@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:copper_hatchet"
+        "recipes": "mme:copper_hatchet"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

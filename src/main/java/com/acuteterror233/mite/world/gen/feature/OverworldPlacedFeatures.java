@@ -12,10 +12,9 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
-import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
+import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.placement.*;
 
-import java.util.List;
 
 /**
  * Overworld placed feature registration.
@@ -27,27 +26,31 @@ public class OverworldPlacedFeatures {
     public static final ResourceKey<PlacedFeature> BLUE_BERRY_COMMON = of("blue_berry_common");
     public static final ResourceKey<PlacedFeature> BLUE_BERRY_RARE = of("blue_berry_rare");
     public static void bootstrap(BootstrapContext<PlacedFeature> featureRegisterable){
-        HolderGetter<ConfiguredFeature<?, ?>> registryEntryLookup = featureRegisterable.lookup(Registries.CONFIGURED_FEATURE);
-        Holder<ConfiguredFeature<?, ?>> ore_silver = registryEntryLookup.getOrThrow(UndergroundConfiguredFeatures.ORE_SILVER);
-        Holder<ConfiguredFeature<?, ?>> ore_silver_small = registryEntryLookup.getOrThrow(UndergroundConfiguredFeatures.ORE_SILVER_SMALL);
-        Holder<ConfiguredFeature<?, ?>> blue_berry_bush = registryEntryLookup.getOrThrow(OverworldConfiguredFeatures.BLUE_BERRY_BUSH);
-        PlacementUtils.register(featureRegisterable, OVERWORLD_ORE_SILVER, ore_silver, modifiers(
+        HolderGetter<Feature> registryEntryLookup = featureRegisterable.lookup(Registries.FEATURE);
+        Holder<Feature> ore_silver = registryEntryLookup.getOrThrow(UndergroundConfiguredFeatures.ORE_SILVER);
+        Holder<Feature> ore_silver_small = registryEntryLookup.getOrThrow(UndergroundConfiguredFeatures.ORE_SILVER_SMALL);
+        Holder<Feature> blue_berry_bush = registryEntryLookup.getOrThrow(OverworldConfiguredFeatures.BLUE_BERRY_BUSH);
+        PlacementUtils.register(featureRegisterable, OVERWORLD_ORE_SILVER, ore_silver,
                 CountPlacement.of(16),
-                HeightRangePlacement.uniform(VerticalAnchor.absolute(-48), VerticalAnchor.absolute(144))
-        ));
-        PlacementUtils.register(featureRegisterable, OVERWORLD_ORE_SILVER_SMALL, ore_silver_small, modifiers(
+                InSquarePlacement.spread(),
+                HeightRangePlacement.uniform(VerticalAnchor.absolute(-48), VerticalAnchor.absolute(144)),
+                BiomeFilter.biome()
+        );
+        PlacementUtils.register(featureRegisterable, OVERWORLD_ORE_SILVER_SMALL, ore_silver_small,
                 CountPlacement.of(16),
-                HeightRangePlacement.uniform(VerticalAnchor.absolute(-48), VerticalAnchor.absolute(144))
-        ));
+                InSquarePlacement.spread(),
+                HeightRangePlacement.uniform(VerticalAnchor.absolute(-48), VerticalAnchor.absolute(144)),
+                BiomeFilter.biome()
+        );
         PlacementUtils.register(featureRegisterable, BLUE_BERRY_COMMON, blue_berry_bush,
                 RarityFilter.onAverageOnceEvery(64),
                 InSquarePlacement.spread(),
                 PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
                 BiomeFilter.biome(),
                 CountPlacement.of(96),
-                RandomOffsetPlacement.ofTriangle(7, 3),
+                OffsetPlacement.ofTriangle(7, 3),
                 BlockPredicateFilter.forPredicate(
-                        BlockPredicate.allOf(BlockPredicate.ONLY_IN_AIR_PREDICATE, BlockPredicate.matchesBlocks(Direction.DOWN.getUnitVec3i(), Blocks.GRASS_BLOCK))
+                        BlockPredicate.allOf(BlockPredicate.ONLY_IN_AIR_PREDICATE, BlockPredicate.matchesBlocks(Direction.DOWN, Blocks.GRASS_BLOCK))
                 )
         );
         PlacementUtils.register(featureRegisterable, BLUE_BERRY_RARE, blue_berry_bush,
@@ -56,15 +59,12 @@ public class OverworldPlacedFeatures {
                 PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
                 BiomeFilter.biome(),
                 CountPlacement.of(96),
-                RandomOffsetPlacement.ofTriangle(7, 3),
+                OffsetPlacement.ofTriangle(7, 3),
                 BlockPredicateFilter.forPredicate(
-                        BlockPredicate.allOf(BlockPredicate.ONLY_IN_AIR_PREDICATE, BlockPredicate.matchesBlocks(Direction.DOWN.getUnitVec3i(), Blocks.GRASS_BLOCK))
+                        BlockPredicate.allOf(BlockPredicate.ONLY_IN_AIR_PREDICATE, BlockPredicate.matchesBlocks(Direction.DOWN, Blocks.GRASS_BLOCK))
                 )
         );
 
-    }
-    public static List<PlacementModifier> modifiers(PlacementModifier countModifier, PlacementModifier heightModifier) {
-        return List.of(countModifier, InSquarePlacement.spread(), heightModifier, BiomeFilter.biome());
     }
     public static ResourceKey<PlacedFeature> of(String id) {
         return ResourceKey.create(Registries.PLACED_FEATURE, Identifier.fromNamespaceAndPath(MME.MOD_ID, id));

@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:ancient_metal_crafting_table"
+        "recipes": "mme:ancient_metal_crafting_table"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

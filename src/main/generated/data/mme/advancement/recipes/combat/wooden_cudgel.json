@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:wooden_cudgel"
+        "recipes": "mme:wooden_cudgel"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

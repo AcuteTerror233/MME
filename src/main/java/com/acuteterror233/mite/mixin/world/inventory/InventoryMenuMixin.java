@@ -10,6 +10,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.Mth;
+import net.minecraft.util.Prediction;
 import net.minecraft.world.Container;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -108,7 +109,7 @@ public abstract class InventoryMenuMixin extends AbstractCraftingMenu implements
                     Player player = owner();
                     ItemStack stack = slot.getItem();
                     if (!player.getInventory().add(stack)) {
-                        player.drop(stack, false);
+                        player.drop(stack, false, Prediction.PREDICTED);
                     }
                     player.getFoodData().addExhaustion(0.3f);
                     slot.onTake(player, stack);

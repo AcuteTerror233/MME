@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:adamantium_hatchet"
+        "recipes": "mme:adamantium_hatchet"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

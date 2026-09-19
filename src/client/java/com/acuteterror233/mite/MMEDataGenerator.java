@@ -25,6 +25,7 @@ public class MMEDataGenerator implements DataGeneratorEntrypoint {
         pack.addProvider(MMERecipeProvider::new);
         pack.addProvider(MMEBlockLootTableProvider::new);
         pack.addProvider(MMEEntityLootTableProvider::new);
+        pack.addProvider(BuiltInLootTableProvider::new);
         pack.addProvider(MMEDynamicRegistryProvider::new);
         pack.addProvider(MMEAdvancementProvider::new);
         pack.addProvider(MMELanguageProvider.En_us::new);
@@ -43,7 +44,7 @@ public class MMEDataGenerator implements DataGeneratorEntrypoint {
         registryBuilder.add(Registries.DIMENSION_TYPE, MMEDimensionTypeRegistrar::bootstrap);
         registryBuilder.add(Registries.BIOME, MMEBiomes::bootstrap);
         registryBuilder.add(Registries.PLACED_FEATURE, MMEPlacedFeatures::bootstrap);
-        registryBuilder.add(Registries.CONFIGURED_FEATURE, MMEConfiguredFeatures::bootstrap);
+        registryBuilder.add(Registries.FEATURE, MMEConfiguredFeatures::bootstrap);
         registryBuilder.add(Registries.ENCHANTMENT, MMEEnchantments::bootstrap);
         registryBuilder.add(Registries.DAMAGE_TYPE, MMEDamageTypes::bootstrap);
         registryBuilder.add(Registries.PAINTING_VARIANT, MMEPaintingVariants::bootstrap);

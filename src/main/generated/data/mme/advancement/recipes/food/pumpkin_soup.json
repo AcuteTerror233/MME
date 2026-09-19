@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:pumpkin_soup"
+        "recipes": "mme:pumpkin_soup"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

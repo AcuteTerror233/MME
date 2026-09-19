@@ -21,10 +21,10 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-@Mixin(FallingBlockEntity.class)
 /**
  * Mixin for {@code FallingBlockEntity} — Modify falling block entity behavior.
  */
+@Mixin(FallingBlockEntity.class)
 public abstract class FallingBlockEntityMixin extends Entity {
     @Shadow
     @Nullable
@@ -35,7 +35,7 @@ public abstract class FallingBlockEntityMixin extends Entity {
     public FallingBlockEntityMixin(EntityType<?> type, Level world) {
         super(type, world);
     }
-    @Inject(method = "fall", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;setBlock(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z", shift = At.Shift.BEFORE))
+    @Inject(method = "fall", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;setBlockAndUpdate(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)Z", shift = At.Shift.BEFORE))
     private static void fall(Level world, BlockPos pos, BlockState state, CallbackInfoReturnable<FallingBlockEntity> cir, @Local FallingBlockEntity fallingBlockEntity) {
         BlockEntity blockEntity = world.getBlockEntity(pos);
         if (blockEntity != null) {

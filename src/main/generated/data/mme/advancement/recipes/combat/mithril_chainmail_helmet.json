@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:mithril_chainmail_helmet"
+        "recipes": "mme:mithril_chainmail_helmet"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

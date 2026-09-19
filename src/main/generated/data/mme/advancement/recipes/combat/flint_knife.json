@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mme:flint_knife"
+        "recipes": "mme:flint_knife"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
