@@ -17,7 +17,7 @@ You start with only **3 hearts**. You can barely break a block with your bare ha
 
 ## ❤️ Survival Overhaul
 
-- Start with only **3 health points** and a hunger bar
+- Start with only **3 hearts** and a hunger bar
 - New **nutrition system**: Protein / Sugar / Fiber. Different foods provide different amounts — neglect your diet and suffer **malnutrition** or **diabetes** (insulin resistance)
 - You are extremely fragile — without armor, *any* monster can easily kill you
 - **Crafting takes time** — high-tier weapons, armor, and metal anvils take exceptionally long
@@ -56,13 +56,13 @@ You start with only **3 hearts**. You can barely break a block with your bare ha
 
 ## ⚒️ New Metals & Ores
 
-- **4 new ores & 5 new materials**: Silver, Mithril, Ancient Metal, Adamantium (+ Rusted Iron)
+- **4 new ores and 5 new materials**:including Silver, Mithril, Ancient Metal, Adamantium (+ Rusted Iron)
 - Metal tiers (low → high):
   **Gold → Copper/Silver (→ Rusted Iron) → Iron → Ancient Metal → Mithril → Adamantium → Netherite**
 - Tiers impose extra restrictions on crafting, using, and repairing tools
-- **Rusted Iron** is only obtainable from monsters; **Ancient Metal** only from Trial Chambers
+- **Rusted Iron** is only obtainable from monsters; **Ancient Metal** only from Trial Spawners
 - No artificial mineshafts early on — you must collect exposed ore in caves or on rocky shores
-- Monsters deeper underground are more diverse and dangerous — deeper means richer, larger ore veins
+- The deeper you go,the more diverse and dangerous the monsters become, and the richer and larger the ore veins are.
 
 ![Ore veins](https://cdn.modrinth.com/data/cached_images/96a5affe3a269d8ed194052c43325bbf308542da.png)
 
@@ -72,13 +72,13 @@ You start with only **3 hearts**. You can barely break a block with your bare ha
 
 - Build a portal in the **bedrock layer** of the Overworld (bedrock must occupy the **bottom-left or bottom-right** corner) to enter the **Underground**
 - The Underground has **two layers** separated by bedrock:
-  - Mithril & diamonds spawn more frequently in the **second layer**
+  - Mithril & diamonds generate more frequently in the **second layer**
   - **Adamantium is exclusive to the second layer**
 - Underground monsters are far more dangerous than Overworld ones
 - The terrain is extremely complex — it's easy to get lost
 - Find the **Mantle** at the lowest level of the Underground and build a portal with it (bottom-left/bottom-right corner) to enter the **Nether**
 - The Nether is now far more dangerous, and entering it **requires passing through the Underground** first
-- Trial Chambers & Ancient Cities now spawn **only in the Underground**; obtain **Rune Teleport Stones** from Trial Cages in the Hall of Trials
+- Trial Chambers & Ancient Cities now generate **only in the Underground**; obtain **Rune Teleport Stones** from Trial Cages in the Hall of Trials
 - **Rune Portals**:
   - Mithril Portal: teleports ~**8,000+ blocks** away
   - Adamantium Portal: teleports ~**20,000+ blocks** away
@@ -94,7 +94,7 @@ You start with only **3 hearts**. You can barely break a block with your bare ha
   |---|---|
   | Clay | 1 |
   | Sandstone | 1 |
-  | Hardened Clay | 1 |
+  | Terracotta | 1 |
   | Obsidian | 3 |
   | Netherrack | 4 |
 - Furnaces **extinguish** when blocked by opaque blocks
@@ -116,12 +116,12 @@ You start with only **3 hearts**. You can barely break a block with your bare ha
 ## ⚔️ New Tools & Weapons
 
 - New arsenal: **clubs, knives, daggers, warhammers, battle axes, pickaxes (war picks), and sickles**
-- Wooden (except shovels), stone, and diamond tools had their functions removed; the wooden sword recipe now gives a low-damage **wooden club**
+- Wooden (except shovels), stone, and diamond tools no longer function as tools; the wooden sword recipe now gives a low-damage **wooden club**
 - **Obsidian** can now be used to craft tools
-- Almost all tool durability can't withstand heavy use
+- Almost all tools have very durability and cannot withstand heavy use
 - **Flint axe** — the easiest early-game tool, crafted by hand to harvest logs
 - **Copper pickaxe** — the easiest tool for mining stone and ore
-- **Repairing** requires a same-tier (or higher) **metal anvil** and consumes **nuggets** — no XP needed. Anvils have durability now, and you can inspect it right in your inventory
+- **Repairing** requires a same-tier (or higher) **metal anvil** and consumes **nuggets** — no XP needed. Anvils now have durability, and you can inspect it directly in your inventory
 
 ![Anvil repair](https://cdn.modrinth.com/data/cached_images/048906d5b4a535fa65c7a174fdae26c2e7171c2c.png)
 
@@ -152,10 +152,10 @@ You start with only **3 hearts**. You can barely break a block with your bare ha
 
 ## 🏚️ World Changes
 
-- Villages only spawn as **zombie villages**, with longer intervals — **no villagers, no crops**
-- Strongholds only spawn **10,000+ blocks** from spawn
+- Villages only generate as **zombie villages** are much rarer — **no villagers, no crops**
+- Strongholds only generate **10,000+ blocks** from the world spawn
 - Furnaces, workbenches, anvils, and enchanting tables become **unusable** if blocked by opaque blocks in front of or above them
-- The closer monsters are to the bottom of the world, the more often they drop equipment
+- The deeper monsters are, the more frequently they drop equipment
 
 ![Zombie village](https://cdn.modrinth.com/data/cached_images/ddae89a7dfab2234598db9090d5ed948be624841.png)
 
