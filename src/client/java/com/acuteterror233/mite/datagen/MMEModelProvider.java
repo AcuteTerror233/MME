@@ -52,7 +52,7 @@ public class MMEModelProvider extends FabricModelProvider {
         extendedAccessor.MME$registerAnvil(MMEBlocks.COPPER_ANVIL, MMEBlocks.CHIPPED_COPPER_ANVIL, MMEBlocks.DAMAGED_COPPER_ANVIL);
         
         blockStateModelGenerator.createFurnace(MMEBlocks.CLAY_FURNACE, TexturedModel.ORIENTABLE_ONLY_TOP);
-        blockStateModelGenerator.createFurnace(MMEBlocks.HARDENED_CLAY_FURNACE, TexturedModel.ORIENTABLE_ONLY_TOP);
+        blockStateModelGenerator.createFurnace(MMEBlocks.TERRACOTTA_FURNACE, TexturedModel.ORIENTABLE_ONLY_TOP);
         blockStateModelGenerator.createFurnace(MMEBlocks.NETHERRACK_FURNACE, TexturedModel.ORIENTABLE_ONLY_TOP);
         blockStateModelGenerator.createFurnace(MMEBlocks.OBSIDIAN_FURNACE, TexturedModel.ORIENTABLE_ONLY_TOP);
         blockStateModelGenerator.createFurnace(MMEBlocks.SANDSTONE_FURNACE, TexturedModel.ORIENTABLE_ONLY_TOP);

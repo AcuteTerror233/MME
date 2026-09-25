@@ -194,9 +194,9 @@ public abstract class FoodDataMixin implements FoodDataExtension {
         if (this.sugar > sugar_threshold_3) {
             applyStage(player, 2, MobEffects.WITHER);
         } else if (this.sugar > sugar_threshold_2) {
-            applyStage(player, 1, MobEffects.DARKNESS);
+            applyStage(player, 1, MobEffects.BLINDNESS);
         } else if (this.sugar > sugar_threshold_1) {
-            applyStage(player, 0);
+            applyStage(player, 0, MobEffects.DARKNESS);
         } else {
             player.removeEffect(MMEMobEffects.INSULIN_RESISTANCE);
         }

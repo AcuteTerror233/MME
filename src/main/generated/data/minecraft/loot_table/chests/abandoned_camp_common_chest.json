@@ -83,9 +83,13 @@
           "type": "minecraft:item",
           "modifier": {
             "type": "minecraft:set_count",
-            "count": 1
+            "count": {
+              "type": "minecraft:uniform",
+              "max": 2,
+              "min": 1
+            }
           },
-          "name": "minecraft:flint_and_steel"
+          "name": "minecraft:charcoal"
         },
         {
           "type": "minecraft:item",
@@ -186,7 +190,7 @@
             "type": "minecraft:set_count",
             "count": 1
           },
-          "name": "minecraft:bucket"
+          "name": "mme:copper_bucket"
         },
         {
           "type": "minecraft:item",
@@ -194,47 +198,295 @@
             "type": "minecraft:set_count",
             "count": 1
           },
+          "name": "mme:silver_bucket"
+        },
+        {
+          "type": "minecraft:item",
+          "modifier": [
+            {
+              "type": "minecraft:set_count",
+              "count": 1
+            },
+            {
+              "type": "minecraft:set_damage",
+              "damage": {
+                "type": "minecraft:uniform",
+                "max": 0.9,
+                "min": 0.5
+              }
+            }
+          ],
           "name": "minecraft:copper_axe"
         },
         {
           "type": "minecraft:item",
-          "modifier": {
-            "type": "minecraft:set_count",
-            "count": 1
-          },
+          "modifier": [
+            {
+              "type": "minecraft:set_count",
+              "count": 1
+            },
+            {
+              "type": "minecraft:set_damage",
+              "damage": {
+                "type": "minecraft:uniform",
+                "max": 0.9,
+                "min": 0.5
+              }
+            }
+          ],
           "name": "minecraft:copper_boots"
         },
         {
           "type": "minecraft:item",
-          "modifier": {
-            "type": "minecraft:set_count",
-            "count": 1
-          },
+          "modifier": [
+            {
+              "type": "minecraft:set_count",
+              "count": 1
+            },
+            {
+              "type": "minecraft:set_damage",
+              "damage": {
+                "type": "minecraft:uniform",
+                "max": 0.9,
+                "min": 0.5
+              }
+            }
+          ],
           "name": "minecraft:copper_chestplate"
         },
         {
           "type": "minecraft:item",
-          "modifier": {
-            "type": "minecraft:set_count",
-            "count": 1
-          },
+          "modifier": [
+            {
+              "type": "minecraft:set_count",
+              "count": 1
+            },
+            {
+              "type": "minecraft:set_damage",
+              "damage": {
+                "type": "minecraft:uniform",
+                "max": 0.9,
+                "min": 0.5
+              }
+            }
+          ],
           "name": "minecraft:copper_leggings"
         },
         {
           "type": "minecraft:item",
-          "modifier": {
-            "type": "minecraft:set_count",
-            "count": 1
-          },
+          "modifier": [
+            {
+              "type": "minecraft:set_count",
+              "count": 1
+            },
+            {
+              "type": "minecraft:set_damage",
+              "damage": {
+                "type": "minecraft:uniform",
+                "max": 0.9,
+                "min": 0.5
+              }
+            }
+          ],
           "name": "minecraft:copper_spear"
         },
         {
           "type": "minecraft:item",
-          "modifier": {
-            "type": "minecraft:set_count",
-            "count": 1
-          },
+          "modifier": [
+            {
+              "type": "minecraft:set_count",
+              "count": 1
+            },
+            {
+              "type": "minecraft:set_damage",
+              "damage": {
+                "type": "minecraft:uniform",
+                "max": 0.9,
+                "min": 0.5
+              }
+            }
+          ],
           "name": "minecraft:copper_sword"
+        },
+        {
+          "type": "minecraft:item",
+          "modifier": [
+            {
+              "type": "minecraft:set_count",
+              "count": 1
+            },
+            {
+              "type": "minecraft:set_damage",
+              "damage": {
+                "type": "minecraft:uniform",
+                "max": 0.9,
+                "min": 0.5
+              }
+            }
+          ],
+          "name": "minecraft:copper_hoe"
+        },
+        {
+          "type": "minecraft:item",
+          "modifier": [
+            {
+              "type": "minecraft:set_count",
+              "count": 1
+            },
+            {
+              "type": "minecraft:set_damage",
+              "damage": {
+                "type": "minecraft:uniform",
+                "max": 0.9,
+                "min": 0.5
+              }
+            }
+          ],
+          "name": "mme:copper_dagger"
+        },
+        {
+          "type": "minecraft:item",
+          "modifier": [
+            {
+              "type": "minecraft:set_count",
+              "count": 1
+            },
+            {
+              "type": "minecraft:set_damage",
+              "damage": {
+                "type": "minecraft:uniform",
+                "max": 0.9,
+                "min": 0.5
+              }
+            }
+          ],
+          "name": "mme:silver_axe"
+        },
+        {
+          "type": "minecraft:item",
+          "modifier": [
+            {
+              "type": "minecraft:set_count",
+              "count": 1
+            },
+            {
+              "type": "minecraft:set_damage",
+              "damage": {
+                "type": "minecraft:uniform",
+                "max": 0.9,
+                "min": 0.5
+              }
+            }
+          ],
+          "name": "mme:silver_boots"
+        },
+        {
+          "type": "minecraft:item",
+          "modifier": [
+            {
+              "type": "minecraft:set_count",
+              "count": 1
+            },
+            {
+              "type": "minecraft:set_damage",
+              "damage": {
+                "type": "minecraft:uniform",
+                "max": 0.9,
+                "min": 0.5
+              }
+            }
+          ],
+          "name": "mme:silver_chestplate"
+        },
+        {
+          "type": "minecraft:item",
+          "modifier": [
+            {
+              "type": "minecraft:set_count",
+              "count": 1
+            },
+            {
+              "type": "minecraft:set_damage",
+              "damage": {
+                "type": "minecraft:uniform",
+                "max": 0.9,
+                "min": 0.5
+              }
+            }
+          ],
+          "name": "mme:silver_leggings"
+        },
+        {
+          "type": "minecraft:item",
+          "modifier": [
+            {
+              "type": "minecraft:set_count",
+              "count": 1
+            },
+            {
+              "type": "minecraft:set_damage",
+              "damage": {
+                "type": "minecraft:uniform",
+                "max": 0.9,
+                "min": 0.5
+              }
+            }
+          ],
+          "name": "mme:silver_spear"
+        },
+        {
+          "type": "minecraft:item",
+          "modifier": [
+            {
+              "type": "minecraft:set_count",
+              "count": 1
+            },
+            {
+              "type": "minecraft:set_damage",
+              "damage": {
+                "type": "minecraft:uniform",
+                "max": 0.9,
+                "min": 0.5
+              }
+            }
+          ],
+          "name": "mme:silver_sword"
+        },
+        {
+          "type": "minecraft:item",
+          "modifier": [
+            {
+              "type": "minecraft:set_count",
+              "count": 1
+            },
+            {
+              "type": "minecraft:set_damage",
+              "damage": {
+                "type": "minecraft:uniform",
+                "max": 0.9,
+                "min": 0.5
+              }
+            }
+          ],
+          "name": "mme:silver_hoe"
+        },
+        {
+          "type": "minecraft:item",
+          "modifier": [
+            {
+              "type": "minecraft:set_count",
+              "count": 1
+            },
+            {
+              "type": "minecraft:set_damage",
+              "damage": {
+                "type": "minecraft:uniform",
+                "max": 0.9,
+                "min": 0.5
+              }
+            }
+          ],
+          "name": "mme:silver_dagger"
         },
         {
           "type": "minecraft:item",
@@ -246,11 +498,39 @@
         },
         {
           "type": "minecraft:item",
-          "modifier": {
-            "type": "minecraft:set_count",
-            "count": 1
-          },
-          "name": "minecraft:shears"
+          "modifier": [
+            {
+              "type": "minecraft:set_count",
+              "count": 1
+            },
+            {
+              "type": "minecraft:set_damage",
+              "damage": {
+                "type": "minecraft:uniform",
+                "max": 0.6,
+                "min": 0.3
+              }
+            }
+          ],
+          "name": "mme:copper_shears"
+        },
+        {
+          "type": "minecraft:item",
+          "modifier": [
+            {
+              "type": "minecraft:set_count",
+              "count": 1
+            },
+            {
+              "type": "minecraft:set_damage",
+              "damage": {
+                "type": "minecraft:uniform",
+                "max": 0.6,
+                "min": 0.3
+              }
+            }
+          ],
+          "name": "mme:silver_helmet"
         }
       ],
       "rolls": 2

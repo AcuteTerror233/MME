@@ -89,7 +89,7 @@ public class MMEItems {
     );
 
     public static final Item CLAY_FURNACE = registerBlockItem(MMEBlocks.CLAY_FURNACE, MMEBlockItemIds.CLAY_FURNACE, new Item.Properties().component(MMEDataComponents.MAX_COMBUSTION_GRADE, 1));
-    public static final Item HARDENED_CLAY_FURNACE = registerBlockItem(MMEBlocks.HARDENED_CLAY_FURNACE, MMEBlockItemIds.HARDENED_CLAY_FURNACE, new Item.Properties().component(MMEDataComponents.MAX_COMBUSTION_GRADE, 1));
+    public static final Item HARDENED_CLAY_FURNACE = registerBlockItem(MMEBlocks.TERRACOTTA_FURNACE, MMEBlockItemIds.TERRACOTTA_FURNACE, new Item.Properties().component(MMEDataComponents.MAX_COMBUSTION_GRADE, 1));
     public static final Item NETHERRACK_FURNACE = registerBlockItem(MMEBlocks.NETHERRACK_FURNACE, MMEBlockItemIds.NETHERRACK_FURNACE, new Item.Properties().component(MMEDataComponents.MAX_COMBUSTION_GRADE, 4));
     public static final Item OBSIDIAN_FURNACE = registerBlockItem(MMEBlocks.OBSIDIAN_FURNACE, MMEBlockItemIds.OBSIDIAN_FURNACE, new Item.Properties().component(MMEDataComponents.MAX_COMBUSTION_GRADE, 3));
     public static final Item SANDSTONE_FURNACE = registerBlockItem(MMEBlocks.SANDSTONE_FURNACE, MMEBlockItemIds.SANDSTONE_FURNACE, new Item.Properties().component(MMEDataComponents.MAX_COMBUSTION_GRADE, 1));
@@ -1792,7 +1792,7 @@ public class MMEItems {
         // === Functional Blocks: furnaces, crafting tables, runestones, anvils ===
         CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.FUNCTIONAL_BLOCKS).register(output -> {
             output.insertAfter(Items.BLAST_FURNACE,
-                    MMEBlocks.CLAY_FURNACE, MMEBlocks.HARDENED_CLAY_FURNACE, MMEBlocks.NETHERRACK_FURNACE,
+                    MMEBlocks.CLAY_FURNACE, MMEBlocks.TERRACOTTA_FURNACE, MMEBlocks.NETHERRACK_FURNACE,
                     MMEBlocks.OBSIDIAN_FURNACE, MMEBlocks.SANDSTONE_FURNACE);
 
             // Crafting tables replace the removed vanilla crafting table (anchored before the stonecutter)

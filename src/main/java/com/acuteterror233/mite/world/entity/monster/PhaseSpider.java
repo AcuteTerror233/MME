@@ -1,6 +1,5 @@
 package com.acuteterror233.mite.world.entity.monster;
 
-import net.minecraft.core.BlockPos;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -22,7 +21,6 @@ import net.minecraft.world.entity.monster.spider.Spider;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
@@ -179,8 +177,6 @@ public class PhaseSpider extends Spider {
     }
 
     private boolean teleport(double x, double y, double z) {
-        BlockPos.MutableBlockPos mutableBlockPos = new BlockPos.MutableBlockPos(x, y, z);
-        BlockState blockState = this.level().getBlockState(mutableBlockPos);
         Vec3 vec3 = this.position();
         boolean bl3 = this.randomTeleport(x, y, z, true, BlockTags.ENDERMAN_DOES_NOT_TELEPORT_TO);
         if (bl3) {
@@ -210,9 +206,7 @@ public class PhaseSpider extends Spider {
         public void tick() {
             super.tick();
             LivingEntity target = this.mob.getTarget();
-            if (target != null && this.phaseSpider.distanceTo(target) > 5.0
-                    && this.teleportTimer++ >= this.adjustedTickDelay(10)
-                    && this.phaseSpider.teleportTowards(target)) {
+            if (target != null && this.teleportTimer++ >= this.adjustedTickDelay(10) && this.phaseSpider.teleportTowards(target)) {
                 this.teleportTimer = 0;
             }
         }

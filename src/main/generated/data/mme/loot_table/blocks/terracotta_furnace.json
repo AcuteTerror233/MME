@@ -8,7 +8,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "mme:hardened_clay_furnace"
+          "name": "mme:terracotta_furnace"
         }
       ],
       "rolls": 1

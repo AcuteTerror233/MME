@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "mme:block/hardened_clay_furnace"
+    "model": "mme:block/terracotta_furnace"
   }
 }

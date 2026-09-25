@@ -22,7 +22,7 @@ public class VanillaBlockEntityTypeModify {
             list.add(MMEBlocks.NETHERRACK_FURNACE);
             list.add(MMEBlocks.OBSIDIAN_FURNACE);
             list.add(MMEBlocks.SANDSTONE_FURNACE);
-            list.add(MMEBlocks.HARDENED_CLAY_FURNACE);
+            list.add(MMEBlocks.TERRACOTTA_FURNACE);
             return list.toArray(new Block[0]);
         });
         map.put(Identifier.withDefaultNamespace("enchanting_table"), blocks -> {

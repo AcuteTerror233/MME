@@ -94,7 +94,6 @@ eadace6cda92d9de5e600e1f7738561fe0071f76 data/mme/advancement/recipes/decoration
 fb6d1bfc1bc693145dbdf9207d2e94d98abb4912 data/mme/advancement/recipes/decorations/flint_crafting_table.json
 a4f462314169e7fbc64442d0c9374608ccbfe5c9 data/mme/advancement/recipes/decorations/gold_crafting_table.json
 c6ff6bd89858c4117108662ceb407d4e89f19661 data/mme/advancement/recipes/decorations/golden_anvil.json
-3fe73a0640550f856fb2e20875f6a9ae136b8fe0 data/mme/advancement/recipes/decorations/hardened_clay_furnace.json
 5329eb0d69a34dadf34685a56adec86fd7a02b6c data/mme/advancement/recipes/decorations/iron_crafting_table.json
 1a26b3ca185acfeb589f7e1d4a9649af62c44423 data/mme/advancement/recipes/decorations/mithril_anvil.json
 0f3c23941dfcab3fdd7a0f71c0e08c0dbf9d39d7 data/mme/advancement/recipes/decorations/mithril_crafting_table.json
@@ -105,6 +104,7 @@ bbb76a1798bdf5be8d2f40c76f78a7c7b58629d9 data/mme/advancement/recipes/decoration
 57b80f6bc043cb68fd4d07582e67abde2123d85d data/mme/advancement/recipes/decorations/sandstone_furnace.json
 ff7839559db537826b3df27f03bcc6daac1b0a7f data/mme/advancement/recipes/decorations/silver_anvil.json
 e078c3d44bfdfed05e53e1672bfe4004eea9f791 data/mme/advancement/recipes/decorations/silver_crafting_table.json
+f7ac8a743c558b76eb16fcc2a3c0c35137faa725 data/mme/advancement/recipes/decorations/terracotta_furnace.json
 4310c36982451f6836e77415373413685be8acaf data/mme/advancement/recipes/food/adamantium_milk_bucket.json
 17251df23e131e2826154aca5df4c4312f5e59c8 data/mme/advancement/recipes/food/ancient_metal_milk_bucket.json
 38d852e06dfcf24de8d049a62ef07b179a7c6dbe data/mme/advancement/recipes/food/beef_stew.json
@@ -432,7 +432,6 @@ c15842774d029760b5a5abe6085084702e7734d1 data/mme/recipe/golden_fishing_rod.json
 88b52c31757f34cad8cefa766d8b60c1d781f13f data/mme/recipe/golden_mattock.json
 bf7c1a9ddebcafa9bf8650c9c3a48dffe74eaa53 data/mme/recipe/golden_scythe.json
 428aa9257be7ef334130dddcaf3502461059f5d5 data/mme/recipe/golden_war_hammer.json
-cc21464a27553d7cf9a98362596a3fedf3447c7a data/mme/recipe/hardened_clay_furnace.json
 8cf45e6410aa2b3e753a49aacda196f562ab4a15 data/mme/recipe/ice_cream.json
 abcdde66e6dfe726c775afa3f3c209b7e2e5fe01 data/mme/recipe/iron_battle_axe.json
 71e89cc72eca1aa570401651d8106223c40e520f data/mme/recipe/iron_chains.json
@@ -566,6 +565,7 @@ de48088d1cb978d2214570a2419755e861a680d0 data/mme/recipe/silver_sword.json
 eddabaf945606af4221d843741452e93c2fafebf data/mme/recipe/silver_war_hammer.json
 0a0b48d82427fc796fd9385dd64cc2671fddf32a data/mme/recipe/sinew.json
 cf28608b1d1f6c6fb2073802e9ab04ff02db5d0f data/mme/recipe/sorbet.json
+e584d5effdf47608032a8c7a9dbd53ced7726d12 data/mme/recipe/terracotta_furnace.json
 33e55891cd9f3412d4268d72a659397043accc11 data/mme/recipe/vegetable_soup.json
 266f4910d25310d926b6c4e2911e04527a9fa6a0 data/mme/recipe/wooden_club.json
 c581987f045e45428acb073ac0069bff19233281 data/mme/recipe/wooden_cudgel.json

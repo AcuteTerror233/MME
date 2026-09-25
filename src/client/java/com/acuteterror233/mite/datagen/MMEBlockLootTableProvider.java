@@ -78,7 +78,7 @@ public class MMEBlockLootTableProvider extends FabricBlockLootSubProvider {
         );
 
         dropSelf(MMEBlocks.CLAY_FURNACE);
-        dropSelf(MMEBlocks.HARDENED_CLAY_FURNACE);
+        dropSelf(MMEBlocks.TERRACOTTA_FURNACE);
         dropSelf(MMEBlocks.NETHERRACK_FURNACE);
         dropSelf(MMEBlocks.OBSIDIAN_FURNACE);
         dropSelf(MMEBlocks.SANDSTONE_FURNACE);
@@ -583,7 +583,7 @@ public class MMEBlockLootTableProvider extends FabricBlockLootSubProvider {
     }
 
     private static AnyOfCondition.@NotNull Builder hasShearsOrSilkTouch(HolderGetter<Enchantment> enchantments, HolderGetter<Item> items) {
-        return MatchTool.toolMatches(ItemPredicate.Builder.item().of(items, Items.SHEARS))
+        return MatchTool.toolMatches(ItemPredicate.Builder.item().of(items, MMEItemTags.SHEARS))
                 .or(MatchTool.toolMatches(
                                 ItemPredicate.Builder.item()
                                         .withComponents(

@@ -70,6 +70,7 @@
     "world.level.block.entity.AbstractFurnaceBlockEntityMixin",
     "world.level.block.entity.BlockEntityTypeMixin",
     "world.level.block.entity.CampfireBlockEntityMixin",
+    "world.level.block.entity.FurnaceBlockEntityMixin",
     "world.level.storage.loot.providers.number.ints.ContextIntProvidersMixin"
   ],
   "injectors": {

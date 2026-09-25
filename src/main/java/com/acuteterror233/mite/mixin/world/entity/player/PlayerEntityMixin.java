@@ -19,10 +19,10 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-@Mixin(Player.class)
 /**
  * Mixin for {@code Player} — Extend player behavior.
  */
+@Mixin(Player.class)
 public abstract class PlayerEntityMixin extends LivingEntity {
     @Shadow
     public int experienceLevel;

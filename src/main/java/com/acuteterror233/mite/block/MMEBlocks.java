@@ -58,8 +58,8 @@ public class MMEBlocks {
     public static final Block CLAY_FURNACE = register(
             MMEBlockItemIds.CLAY_FURNACE, FurnaceBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.FURNACE)
     );
-    public static final Block HARDENED_CLAY_FURNACE = register(
-            MMEBlockItemIds.HARDENED_CLAY_FURNACE, FurnaceBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.FURNACE)
+    public static final Block TERRACOTTA_FURNACE = register(
+            MMEBlockItemIds.TERRACOTTA_FURNACE, FurnaceBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.FURNACE)
     );
     public static final Block NETHERRACK_FURNACE = register(
             MMEBlockItemIds.NETHERRACK_FURNACE, FurnaceBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.FURNACE)

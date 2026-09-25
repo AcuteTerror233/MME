@@ -14,7 +14,7 @@
                   {
                     "type": "minecraft:match_tool",
                     "predicate": {
-                      "items": "minecraft:shears"
+                      "items": "#mme:shears"
                     }
                   },
                   {
@@ -76,7 +76,7 @@
                 {
                   "type": "minecraft:match_tool",
                   "predicate": {
-                    "items": "minecraft:shears"
+                    "items": "#mme:shears"
                   }
                 },
                 {
@@ -140,7 +140,7 @@
             {
               "type": "minecraft:match_tool",
               "predicate": {
-                "items": "minecraft:shears"
+                "items": "#mme:shears"
               }
             },
             {
@@ -192,7 +192,7 @@
             {
               "type": "minecraft:match_tool",
               "predicate": {
-                "items": "minecraft:shears"
+                "items": "#mme:shears"
               }
             },
             {

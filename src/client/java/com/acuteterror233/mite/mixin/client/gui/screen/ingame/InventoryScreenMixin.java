@@ -1,7 +1,6 @@
 package com.acuteterror233.mite.mixin.client.gui.screen.ingame;
 
 import com.acuteterror233.mite.MME;
-import com.acuteterror233.mite.interfaces.InventoryMenuExtension;
 import com.acuteterror233.mite.inventory.slot.PlayerCraftingResultSlot;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.screens.inventory.AbstractRecipeBookScreen;
@@ -44,7 +43,7 @@ public abstract class InventoryScreenMixin extends AbstractRecipeBookScreen<Inve
     @Override
     protected @NotNull List<Component> getTooltipFromContainerItem(ItemStack itemStack) {
         List<Component> list = getTooltipFromItem(this.minecraft, itemStack);
-        if (this.hoveredSlot instanceof PlayerCraftingResultSlot && !((InventoryMenuExtension)this.menu).MME$IsAllowCrafting()){
+        if (this.hoveredSlot instanceof PlayerCraftingResultSlot && !this.menu.MME$IsAllowCrafting()){
             list.add(Component.translatable("mme.craftingTable.noAllowedCrafting"));
         }
         return list;

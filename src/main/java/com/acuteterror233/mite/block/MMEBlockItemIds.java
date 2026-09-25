@@ -15,7 +15,7 @@ public class MMEBlockItemIds {
     public static final BlockItemId SILVER_BLOCK = BlockItemId.create("silver_block");
 
     public static final BlockItemId CLAY_FURNACE = BlockItemId.create("clay_furnace");
-    public static final BlockItemId HARDENED_CLAY_FURNACE = BlockItemId.create("hardened_clay_furnace");
+    public static final BlockItemId TERRACOTTA_FURNACE = BlockItemId.create("terracotta_furnace");
     public static final BlockItemId NETHERRACK_FURNACE = BlockItemId.create("netherrack_furnace");
     public static final BlockItemId OBSIDIAN_FURNACE = BlockItemId.create("obsidian_furnace");
     public static final BlockItemId SANDSTONE_FURNACE = BlockItemId.create("sandstone_furnace");

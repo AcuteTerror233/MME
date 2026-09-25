@@ -6,11 +6,12 @@ import net.minecraft.world.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 
-@Mixin(FurnaceFuelSlot.class)
 /**
  * Mixin for {@code FurnaceFuelSlot} — Modify furnace fuel slot check logic.
  */
+@Mixin(FurnaceFuelSlot.class)
 public class FurnaceFuelSlotMixin {
+
     /**
      * @author AcuteTerror233
      * @reason Modified bucket check

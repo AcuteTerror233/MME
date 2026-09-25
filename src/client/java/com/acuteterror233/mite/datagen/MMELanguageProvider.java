@@ -490,7 +490,7 @@ public class MMELanguageProvider {
             translationBuilder.add(MMEBlocks.OBSIDIAN_CRAFTING_TABLE, "Obsidian Crafting Table");
 
             translationBuilder.add(MMEBlocks.CLAY_FURNACE, "Clay Furnace");
-            translationBuilder.add(MMEBlocks.HARDENED_CLAY_FURNACE, "Hardened Clay Furnace");
+            translationBuilder.add(MMEBlocks.TERRACOTTA_FURNACE, "Terracotta Furnace");
             translationBuilder.add(MMEBlocks.NETHERRACK_FURNACE, "Netherrack Furnace");
             translationBuilder.add(MMEBlocks.OBSIDIAN_FURNACE, "Obsidian Furnace");
             translationBuilder.add(MMEBlocks.SANDSTONE_FURNACE, "Sandstone Furnace");
@@ -805,7 +805,7 @@ public class MMELanguageProvider {
             translationBuilder.add(MMEItems.ADAMANTIUM_PICKAXE, "艾德曼镐");
             translationBuilder.add(MMEItems.ADAMANTIUM_SCYTHE, "艾德曼镰刀");
             translationBuilder.add(MMEItems.ADAMANTIUM_SHEARS, "艾德曼剪刀");
-            translationBuilder.add(MMEItems.ADAMANTIUM_SHOVEL, "艾德曼铲");
+            translationBuilder.add(MMEItems.ADAMANTIUM_SHOVEL, "艾德曼楸");
             translationBuilder.add(MMEItems.ADAMANTIUM_SWORD, "艾德曼剑");
             translationBuilder.add(MMEItems.ADAMANTIUM_WAR_HAMMER, "艾德曼锤");
             translationBuilder.add(MMEItems.ADAMANTIUM_SPEAR, "艾德曼矛");
@@ -819,7 +819,7 @@ public class MMELanguageProvider {
             translationBuilder.add(MMEItems.MITHRIL_PICKAXE, "秘银镐");
             translationBuilder.add(MMEItems.MITHRIL_SCYTHE, "秘银镰刀");
             translationBuilder.add(MMEItems.MITHRIL_SHEARS, "秘银剪刀");
-            translationBuilder.add(MMEItems.MITHRIL_SHOVEL, "秘银铲");
+            translationBuilder.add(MMEItems.MITHRIL_SHOVEL, "秘银楸");
             translationBuilder.add(MMEItems.MITHRIL_SWORD, "秘银剑");
             translationBuilder.add(MMEItems.MITHRIL_WAR_HAMMER, "秘银锤");
             translationBuilder.add(MMEItems.MITHRIL_SPEAR, "秘银矛");
@@ -833,7 +833,7 @@ public class MMELanguageProvider {
             translationBuilder.add(MMEItems.ANCIENT_METAL_PICKAXE, "远古金属镐");
             translationBuilder.add(MMEItems.ANCIENT_METAL_SCYTHE, "远古金属镰刀");
             translationBuilder.add(MMEItems.ANCIENT_METAL_SHEARS, "远古金属剪刀");
-            translationBuilder.add(MMEItems.ANCIENT_METAL_SHOVEL, "远古金属铲");
+            translationBuilder.add(MMEItems.ANCIENT_METAL_SHOVEL, "远古金属楸");
             translationBuilder.add(MMEItems.ANCIENT_METAL_SWORD, "远古金属剑");
             translationBuilder.add(MMEItems.ANCIENT_METAL_WAR_HAMMER, "远古金属锤");
             translationBuilder.add(MMEItems.ANCIENT_METAL_SPEAR, "远古金属矛");
@@ -854,7 +854,7 @@ public class MMELanguageProvider {
             translationBuilder.add(MMEItems.RUSTED_IRON_PICKAXE, "锈铁镐");
             translationBuilder.add(MMEItems.RUSTED_IRON_SCYTHE, "锈铁镰刀");
             translationBuilder.add(MMEItems.RUSTED_IRON_SHEARS, "锈铁剪刀");
-            translationBuilder.add(MMEItems.RUSTED_IRON_SHOVEL, "锈铁铲");
+            translationBuilder.add(MMEItems.RUSTED_IRON_SHOVEL, "锈铁楸");
             translationBuilder.add(MMEItems.RUSTED_IRON_SWORD, "锈铁剑");
             translationBuilder.add(MMEItems.RUSTED_IRON_WAR_HAMMER, "锈铁锤");
             translationBuilder.add(MMEItems.RUSTED_IRON_SPEAR, "锈铁矛");
@@ -876,7 +876,7 @@ public class MMELanguageProvider {
             translationBuilder.add(MMEItems.SILVER_PICKAXE, "银镐");
             translationBuilder.add(MMEItems.SILVER_SCYTHE, "银镰刀");
             translationBuilder.add(MMEItems.SILVER_SHEARS, "银剪刀");
-            translationBuilder.add(MMEItems.SILVER_SHOVEL, "银铲");
+            translationBuilder.add(MMEItems.SILVER_SHOVEL, "银楸");
             translationBuilder.add(MMEItems.SILVER_SWORD, "银剑");
             translationBuilder.add(MMEItems.SILVER_WAR_HAMMER, "银锤");
             translationBuilder.add(MMEItems.SILVER_SPEAR, "银矛");
@@ -891,12 +891,12 @@ public class MMELanguageProvider {
             translationBuilder.add(MMEItems.FLINT_AXE, "燧石斧");
             translationBuilder.add(MMEItems.FLINT_HATCHET, "燧石短斧");
             translationBuilder.add(MMEItems.FLINT_KNIFE, "燧石小刀");
-            translationBuilder.add(MMEItems.FLINT_SHOVEL, "燧石铲");
+            translationBuilder.add(MMEItems.FLINT_SHOVEL, "燧石楸");
             translationBuilder.add(MMEItems.FLINT_SPEAR, "燧石矛");
             translationBuilder.add(MMEItems.OBSIDIAN_AXE, "黑曜石斧");
             translationBuilder.add(MMEItems.OBSIDIAN_HATCHET, "黑曜石短斧");
             translationBuilder.add(MMEItems.OBSIDIAN_KNIFE, "黑曜石小刀");
-            translationBuilder.add(MMEItems.OBSIDIAN_SHOVEL, "黑曜石铲");
+            translationBuilder.add(MMEItems.OBSIDIAN_SHOVEL, "黑曜石楸");
             translationBuilder.add(MMEItems.WOODEN_CLUB, "木棒");
             translationBuilder.add(MMEItems.WOODEN_CUDGEL, "小木棒");
 
@@ -1067,7 +1067,7 @@ public class MMELanguageProvider {
             translationBuilder.add(MMEBlocks.OBSIDIAN_CRAFTING_TABLE, "黑曜石工作台");
 
             translationBuilder.add(MMEBlocks.CLAY_FURNACE, "黏土熔炉");
-            translationBuilder.add(MMEBlocks.HARDENED_CLAY_FURNACE, "硬化黏土熔炉");
+            translationBuilder.add(MMEBlocks.TERRACOTTA_FURNACE, "陶瓦熔炉");
             translationBuilder.add(MMEBlocks.NETHERRACK_FURNACE, "下界岩熔炉");
             translationBuilder.add(MMEBlocks.OBSIDIAN_FURNACE, "黑曜石熔炉");
             translationBuilder.add(MMEBlocks.SANDSTONE_FURNACE, "砂岩熔炉");

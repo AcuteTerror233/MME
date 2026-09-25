@@ -124,7 +124,7 @@ public class GradeAnvilScreen extends ItemCombinerScreen<GradeAnvilMenu> {
         super.extractLabels(context, mouseX, mouseY);
         int i = this.menu.getLevelCost();
         if (i > 0) {
-            int j = -8453920;
+            int j = -8323296;
             Component text;
             if (i >= 40 && !this.minecraft.player.hasInfiniteMaterials()) {
                 text = TOO_EXPENSIVE_TEXT;

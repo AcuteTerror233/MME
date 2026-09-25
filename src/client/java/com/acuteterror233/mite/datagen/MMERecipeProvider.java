@@ -820,7 +820,7 @@ public class MMERecipeProvider extends FabricRecipeProvider {
                 nineBlockStorageRecipes(RecipeCategory.MISC, MMEItems.SILVER_NUGGET, RecipeCategory.MISC, MMEItems.SILVER_INGOT, "silver_ingot_from_silver_nugget", null,  "silver_nugget_from_silver_ingot", null);
 
                 twoByTwoPacker(RecipeCategory.DECORATIONS, MMEBlocks.CLAY_FURNACE, Items.CLAY);
-                shaped(RecipeCategory.DECORATIONS, MMEBlocks.HARDENED_CLAY_FURNACE)
+                shaped(RecipeCategory.DECORATIONS, MMEBlocks.TERRACOTTA_FURNACE)
                         .define('a', Items.TERRACOTTA)
                         .pattern("aaa")
                         .pattern("a a")

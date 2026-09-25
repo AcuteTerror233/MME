@@ -16,6 +16,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.monster.zombie.Zombie;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import org.jspecify.annotations.NonNull;
 
 /**
  * Shadow entity, inherits zombie behavior.
@@ -47,7 +48,7 @@ public class Shadow extends Zombie {
     }
 
     @Override
-    public boolean hurtServer(ServerLevel level, DamageSource damageSource, float amount) {
+    public boolean hurtServer(@NonNull ServerLevel level, @NonNull DamageSource damageSource, float amount) {
         if (!DamageSourcePredicates.isSilverWeaponOrEnchanted(damageSource) && damageSource.getEntity() instanceof LivingEntity) {
             return false;
         }

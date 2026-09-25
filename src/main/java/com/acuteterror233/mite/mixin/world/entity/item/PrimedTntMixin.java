@@ -10,5 +10,5 @@ import org.spongepowered.asm.mixin.Shadow;
  */
 @Mixin(PrimedTnt.class)
 public class PrimedTntMixin {
-    @Mutable @Shadow private float explosionPower = 1.5F;
+    @Mutable @Shadow private float explosionPower = 3F;
 }

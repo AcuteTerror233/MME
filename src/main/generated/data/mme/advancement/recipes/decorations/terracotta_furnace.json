@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipes": "mme:hardened_clay_furnace"
+        "recipes": "mme:terracotta_furnace"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "mme:hardened_clay_furnace"
+      "mme:terracotta_furnace"
     ]
   }
 }
