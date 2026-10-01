@@ -2,14 +2,17 @@ package com.acuteterror233.mite.mixin.world.item;
 
 import com.acuteterror233.mite.event.VanillaRegisterModify;
 import net.minecraft.core.Registry;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.references.BlockItemId;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.component.MapDecorations;
 import net.minecraft.world.level.block.Block;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
@@ -41,5 +44,10 @@ public class ItemsMixin {
             }
             cir.setReturnValue(Registry.register(BuiltInRegistries.ITEM, id, modify));
         }
+    }
+
+    @Overwrite
+    private static Item.Properties mapProperties() {
+        return new Item.Properties().component(DataComponents.MAP_DECORATIONS, MapDecorations.EMPTY).stacksTo(16);
     }
 }

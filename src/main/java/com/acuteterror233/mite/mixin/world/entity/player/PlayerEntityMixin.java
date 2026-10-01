@@ -1,6 +1,5 @@
 package com.acuteterror233.mite.mixin.world.entity.player;
 
-import com.acuteterror233.mite.interfaces.FoodDataExtension;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -66,10 +65,10 @@ public abstract class PlayerEntityMixin extends LivingEntity {
     public void setMaxHealth(int max) {
         AttributeInstance instance = this.getAttributes().getInstance(Attributes.MAX_HEALTH);
         int maxHealthBaseValue = (int) instance.getBaseValue();
-        int maxFoodLevel = ((FoodDataExtension) this.getFoodData()).MME$GetMaxFoodLevel();
+        int maxFoodLevel = this.getFoodData().MME$GetMaxFoodLevel();
         if (maxHealthBaseValue != max || maxFoodLevel != max) {
             instance.setBaseValue(max);
-            ((FoodDataExtension) this.getFoodData()).MME$SetMaxFoodLevel(max);
+            this.getFoodData().MME$SetMaxFoodLevel(max);
         }
     }
 

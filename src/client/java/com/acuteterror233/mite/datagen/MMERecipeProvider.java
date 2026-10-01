@@ -861,12 +861,12 @@ public class MMERecipeProvider extends FabricRecipeProvider {
                 offerCraftingTableRecipes(MMEBlocks.GOLD_CRAFTING_TABLE, Items.GOLD_INGOT);
                 shapeless(RecipeCategory.DECORATIONS, MMEBlocks.FLINT_CRAFTING_TABLE)
                         .requires(MMEItems.FLINT_KNIFE)
-                        .requires(ItemTags.OAK_LOGS)
+                        .requires(ItemTags.LOGS)
                         .unlockedBy(getHasName(MMEItems.FLINT_KNIFE), this.has(MMEItems.FLINT_KNIFE))
                         .save(this.output);
                 shapeless(RecipeCategory.DECORATIONS, MMEBlocks.OBSIDIAN_CRAFTING_TABLE)
                         .requires(MMEItems.OBSIDIAN_KNIFE)
-                        .requires(ItemTags.OAK_LOGS)
+                        .requires(ItemTags.LOGS)
                         .unlockedBy(getHasName(MMEItems.OBSIDIAN_KNIFE), this.has(MMEItems.OBSIDIAN_KNIFE))
                         .save(this.output);
                 shaped(RecipeCategory.TOOLS, Items.BUNDLE)

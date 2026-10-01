@@ -8,6 +8,7 @@ import com.acuteterror233.mite.world.entity.decoration.painting.MMEPaintingVaria
 import com.acuteterror233.mite.world.gen.dimension.MMEDimensionTypeRegistrar;
 import com.acuteterror233.mite.world.gen.feature.MMEConfiguredFeatures;
 import com.acuteterror233.mite.world.gen.feature.MMEPlacedFeatures;
+import com.acuteterror233.mite.world.timeline.MMETimelines;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.minecraft.core.RegistrySetBuilder;
@@ -49,5 +50,6 @@ public class MMEDataGenerator implements DataGeneratorEntrypoint {
         registryBuilder.add(Registries.DAMAGE_TYPE, MMEDamageTypes::bootstrap);
         registryBuilder.add(Registries.PAINTING_VARIANT, MMEPaintingVariants::bootstrap);
         registryBuilder.add(Registries.VILLAGER_TRADE, MMEVillagerTradeProvider::bootstrap);
+        registryBuilder.add(Registries.TIMELINE, MMETimelines::bootstrap);
     }
 }

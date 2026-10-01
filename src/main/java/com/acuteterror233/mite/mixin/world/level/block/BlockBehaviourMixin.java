@@ -9,10 +9,10 @@ import net.minecraft.world.level.block.state.BlockState;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 
-@Mixin(BlockBehaviour.class)
 /**
  * Mixin for {@code BlockBehaviour} — Modifies common block behavior.
  */
+@Mixin(BlockBehaviour.class)
 public abstract class BlockBehaviourMixin implements FeatureElement {
 
     /**
@@ -25,7 +25,7 @@ public abstract class BlockBehaviourMixin implements FeatureElement {
         if (f == -1.0F) {
             return 0.0F;
         } else {
-            int i = player.hasCorrectToolForDrops(state) ? 450 : 20000;
+            int i = player.hasCorrectToolForDrops(state) ? 350 : 15000;
             return player.getDestroySpeed(state) / f / i;
         }
     }

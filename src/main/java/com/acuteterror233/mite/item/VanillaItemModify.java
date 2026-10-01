@@ -95,6 +95,7 @@ public final class VanillaItemModify {
         );
 
         // Items with maximum stack of 16
+        result.put(Identifier.withDefaultNamespace("map"), settings -> settings.stacksTo(16));
         result.put(Identifier.withDefaultNamespace("iron_ingot"), settings -> settings.stacksTo(16).component(MMEDataComponents.CRAFTING_TIME, 10));
         result.put(Identifier.withDefaultNamespace("copper_ingot"), settings -> settings.stacksTo(16).component(MMEDataComponents.CRAFTING_TIME, 5));
         result.put(Identifier.withDefaultNamespace("gold_ingot"), settings -> settings.stacksTo(16).component(MMEDataComponents.CRAFTING_TIME, 5));

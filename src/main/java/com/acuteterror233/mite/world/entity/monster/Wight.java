@@ -9,7 +9,6 @@ import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -22,8 +21,6 @@ import org.jetbrains.annotations.NotNull;
  * Immune to damage from non-silver weapons.
  */
 public class Wight extends Zombie {
-    private static final EquipmentSlot[] ARMOR_SLOTS = {EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET};
-
     public Wight(EntityType<? extends Wight> entityType, Level level) {
         super(entityType, level);
     }
@@ -47,6 +44,7 @@ public class Wight extends Zombie {
 
     @Override
     protected void populateDefaultEquipmentSlots(RandomSource randomSource, DifficultyInstance difficultyInstance) {
+
     }
 
     @Override

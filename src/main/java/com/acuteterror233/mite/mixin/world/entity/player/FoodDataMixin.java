@@ -56,6 +56,9 @@ public abstract class FoodDataMixin implements FoodDataExtension {
     @Shadow
     public abstract int getFoodLevel();
 
+    @Shadow
+    public abstract void addExhaustion(float amount);
+
     @Unique
     @Override
     public int MME$GetMaxFoodLevel() {
@@ -121,10 +124,10 @@ public abstract class FoodDataMixin implements FoodDataExtension {
                 this.healTickTimer = 0;
             }
 
-            if (this.tickTimer >= (2400 * (player.hasEffect(MMEMobEffects.MALNUTRITION) ? 0.5 : 1))){
+            if (this.tickTimer >= (1280 * (player.hasEffect(MMEMobEffects.MALNUTRITION) ? 0.5 : 1))){
                 this.tickTimer = 0;
                 if (player.gameMode() != GameType.CREATIVE) {
-                    this.saturationLevel += 3;
+                    addExhaustion(4);
                 }
             }
 
@@ -217,15 +220,6 @@ public abstract class FoodDataMixin implements FoodDataExtension {
         player.addEffect(new MobEffectInstance(MMEMobEffects.INSULIN_RESISTANCE, -1, amplifier, true, false), player);
         player.addEffect(new MobEffectInstance(secondary, -1, 0, true, false), player);
     }
-
-    @Unique
-    private void applyStage(ServerPlayer player, int amplifier) {
-        MobEffectInstance current = player.getEffect(MMEMobEffects.INSULIN_RESISTANCE);
-        if (current != null && current.getAmplifier() == amplifier) return;
-        clearAllSugarEffects(player);
-        player.addEffect(new MobEffectInstance(MMEMobEffects.INSULIN_RESISTANCE, -1, amplifier, true, false), player);
-    }
-
 
     @Inject(method = "readAdditionalSaveData", at = @At("TAIL"))
     public void readAdditionalSaveData(ValueInput nbt, CallbackInfo ci) {

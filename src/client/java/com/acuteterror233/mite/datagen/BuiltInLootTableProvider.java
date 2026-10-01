@@ -177,8 +177,7 @@ public class BuiltInLootTableProvider extends SimpleFabricLootTableSubProvider {
                                         .add(LootItem.lootTableItem(Items.SPIRE_ARMOR_TRIM_SMITHING_TEMPLATE).setWeight(1))
                         )
         );
-        add(
-                BuiltInLootTables.SIMPLE_DUNGEON,
+        add(BuiltInLootTables.SIMPLE_DUNGEON,
                  LootTable.lootTable()
                         .withPool(
                                 LootPool.lootPool()
@@ -222,8 +221,7 @@ public class BuiltInLootTableProvider extends SimpleFabricLootTableSubProvider {
                                         .add(LootItem.lootTableItem(Items.STRING).setWeight(10).apply(SetItemCountFunction.setCount(ContextIntProviders.between(1, 8))))
                         )
         );
-        add(
-                BuiltInLootTables.VILLAGE_WEAPONSMITH,
+        add(BuiltInLootTables.VILLAGE_WEAPONSMITH,
                 LootTable.lootTable()
                         .withPool(
                                 LootPool.lootPool()
@@ -248,8 +246,7 @@ public class BuiltInLootTableProvider extends SimpleFabricLootTableSubProvider {
                                         .add(EmptyLootItem.emptyItem().setWeight(2))
                         )
         );
-        add(
-                BuiltInLootTables.VILLAGE_TOOLSMITH,
+        add(BuiltInLootTables.VILLAGE_TOOLSMITH,
                 LootTable.lootTable()
                         .withPool(
                                 LootPool.lootPool()

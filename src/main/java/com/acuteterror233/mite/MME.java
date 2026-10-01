@@ -3,11 +3,14 @@ package com.acuteterror233.mite;
 import com.acuteterror233.mite.block.MMEBlocks;
 import com.acuteterror233.mite.interfaces.FoodDataExtension;
 import com.acuteterror233.mite.item.MMEItems;
+import com.acuteterror233.mite.world.attribute.MMEAttributeTypes;
+import com.acuteterror233.mite.world.attribute.MMEEnvironmentAttributes;
 import com.acuteterror233.mite.world.biome.BiomeModification;
 import com.acuteterror233.mite.world.effect.MMEMobEffects;
 import com.acuteterror233.mite.world.entity.MMEEntityTypes;
 import com.acuteterror233.mite.world.food.FoodNutrition;
 import com.acuteterror233.mite.world.gen.feature.OverworldPlacedFeatures;
+import com.acuteterror233.mite.world.level.SpecialMoonPhase;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
@@ -21,6 +24,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.FireBlock;
 import net.minecraft.world.level.levelgen.GenerationStep;
@@ -55,6 +59,8 @@ public class MME implements ModInitializer {
 
         // === Data & world gen ===
         BiomeModification.init();
+        MMEAttributeTypes.init();
+        MMEEnvironmentAttributes.init();
 
         // === Point of Interest registration ===
         PoiHelper.register(Identifier.fromNamespaceAndPath(MME.MOD_ID, "underground_portal"), 0, 1, MMEBlocks.UNDERGROUND_PORTAL);
@@ -81,7 +87,7 @@ public class MME implements ModInitializer {
      * Overrides vanilla sleep rules: cancels sleeping entirely, and prevents time reset unless it's dark.
      */
     private static void registerSleepEvents() {
-        EntitySleepEvents.ALLOW_SLEEPING.register((_, _) -> null);
+        EntitySleepEvents.ALLOW_SLEEPING.register((player, _) -> player.level().environmentAttributes().getDimensionValue(MMEEnvironmentAttributes.SPECIAL_MOON_PHASE).equals(SpecialMoonPhase.BLOOD_MOON) ? Player.BedSleepingProblem.NOT_SAFE : null);
         EntitySleepEvents.ALLOW_RESETTING_TIME.register(player -> !player.level().isBrightOutside());
     }
 

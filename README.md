@@ -11,8 +11,6 @@ Might Makes Everything is a Fabric mod inspired by the legendary mod **MITE** (M
 
 You start with only **3 hearts**. You can barely break a block with your bare hands. Every tool must be crafted, every metal must be earned, and every step into the dark is a gamble.
 
-> ⚠️ **Status**: The mod is still a work in progress and not yet fully complete. Only version **1.21.5** is fully playable from start to finish; builds for other Minecraft versions have only been adapted for compatibility, and their features are **not guaranteed** to work correctly.
-
 ---
 
 ## ❤️ Survival Overhaul

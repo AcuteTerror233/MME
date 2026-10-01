@@ -9,6 +9,7 @@ import com.acuteterror233.mite.registry.tag.*;
 import com.acuteterror233.mite.world.biome.MMEBiomeKeys;
 import com.acuteterror233.mite.world.entity.MMEEntityTypeIds;
 import com.acuteterror233.mite.world.entity.decoration.painting.MMEPaintingVariants;
+import com.acuteterror233.mite.world.timeline.MMETimelines;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
 import net.minecraft.core.HolderLookup;
@@ -81,6 +82,8 @@ public class MMETagProvider {
         protected void addTags(HolderLookup.Provider wrapperLookup) {
             builder(MMETimelineTags.IN_UNDERGROUND)
                     .forceAddTag(TimelineTags.UNIVERSAL);
+            builder(TimelineTags.IN_OVERWORLD)
+                    .add(MMETimelines.SPECIAL_MOON);
         }
     }
     public static class EnchantmentTag extends FabricTagsProvider<Enchantment> {

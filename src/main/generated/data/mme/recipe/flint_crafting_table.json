@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     "mme:flint_knife",
-    "#minecraft:oak_logs"
+    "#minecraft:logs"
   ],
   "result": {
     "id": "mme:flint_crafting_table"

@@ -28,6 +28,7 @@ public class MMEDynamicRegistryProvider extends FabricDynamicRegistryProvider {
         entries.addAll(registries.lookupOrThrow(Registries.ENCHANTMENT));
         entries.addAll(registries.lookupOrThrow(Registries.DAMAGE_TYPE));
         entries.addAll(registries.lookupOrThrow(Registries.PAINTING_VARIANT));
+        entries.addAll(registries.lookupOrThrow(Registries.TIMELINE));
         HolderLookup.RegistryLookup<VillagerTrade> villagerTrades = registries.lookupOrThrow(Registries.VILLAGER_TRADE);
         villagerTrades.listElementIds().forEach(key -> entries.add(villagerTrades, key));
     }

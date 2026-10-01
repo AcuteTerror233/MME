@@ -10,10 +10,10 @@ import net.minecraft.world.level.Level;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 
-@Mixin(FishingHook.class)
 /**
  * Mixin for {@code FishingHook} — Modify fishing rod bobber behavior.
  */
+@Mixin(FishingHook.class)
 public abstract class FishingBobberEntityMixin extends Projectile {
     public FishingBobberEntityMixin(EntityType<? extends Projectile> entityType, Level world) {
         super(entityType, world);

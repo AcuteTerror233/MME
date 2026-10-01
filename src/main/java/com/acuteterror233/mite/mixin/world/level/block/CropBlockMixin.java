@@ -1,6 +1,8 @@
 package com.acuteterror233.mite.mixin.world.level.block;
 
 import com.acuteterror233.mite.block.state.properties.MMEBlockStateProperties;
+import com.acuteterror233.mite.world.attribute.MMEEnvironmentAttributes;
+import com.acuteterror233.mite.world.level.SpecialMoonPhase;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
@@ -18,10 +20,10 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-@Mixin(CropBlock.class)
 /**
  * Mixin for {@code CropBlock} — Adds disease and fertility system.
  */
+@Mixin(CropBlock.class)
 public abstract class CropBlockMixin extends VegetationBlock implements BonemealableBlock {
     @Unique
     private static final IntegerProperty DISEASE_LEVEL = MMEBlockStateProperties.DISEASE_LEVEL;
@@ -68,15 +70,26 @@ public abstract class CropBlockMixin extends VegetationBlock implements Bonemeal
     @Overwrite
     public void randomTick(BlockState blockState, ServerLevel serverLevel, BlockPos blockPos, RandomSource randomSource) {
         int diseaseLevel = blockState.getValue(DISEASE_LEVEL);
+        SpecialMoonPhase dimensionValue = serverLevel.environmentAttributes().getDimensionValue(MMEEnvironmentAttributes.SPECIAL_MOON_PHASE);
         if (serverLevel.getRawBrightness(blockPos, 0) >= 9 && diseaseLevel == 0) {
             int i = this.getAge(blockState);
             if (i < this.getMaxAge()) {
                 float f = getGrowthSpeed((CropBlock) (Object)this, serverLevel, blockPos);
+                switch (dimensionValue) {
+                    case HARVEST_MOON ->  f*=2F;
+                    case BLUE_MOON ->   f*=2.5F;
+                    case FROST_MOON ->   f*=0.75F;
+                    case TURBID_MOON ->   f*=0.5F;
+                }
                 if (randomSource.nextInt((int)(50.0F / f) + 1) == 0) {
                     serverLevel.setBlock(blockPos, this.getStateForAge(i + 1), 2);
                 }
             }
-            if (randomSource.nextInt(5000) == 0) {
+            int dlProbability = 5000;
+            if (dimensionValue == SpecialMoonPhase.BLOOD_MOON) {
+                dlProbability -= 4500;
+            }
+            if (randomSource.nextInt(dlProbability) == 0 && !dimensionValue.equals(SpecialMoonPhase.BLUE_MOON)) {
                 serverLevel.setBlock(blockPos, blockState.setValue(DISEASE_LEVEL, 1), 2);
             }
         }else {

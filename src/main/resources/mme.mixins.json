@@ -8,14 +8,18 @@
     "BootstrapMixin",
     "attribute.BedRuleMixin",
     "component.DataComponentsMixin",
+    "server.level.ServerLevelMixin",
     "server.level.ServerPlayerMixin",
     "world.dimension.PortalShapeMixin",
     "world.effect.PoisonMobEffectMixin",
     "world.entity.BucketableMixin",
     "world.entity.FallingBlockEntityMixin",
+    "world.entity.LivingEntityMixin",
     "world.entity.MobMixin",
+    "world.entity.ai.goal.target.TargetGoalMixin",
     "world.entity.animal.AnimalMixin",
     "world.entity.animal.cow.AbstractCowMixin",
+    "world.entity.animal.fish.WaterAnimalMixin",
     "world.entity.boss.enderdragon.EndCrystalMixin",
     "world.entity.item.ItemEntityMixin",
     "world.entity.item.PrimedTntMixin",
@@ -41,7 +45,9 @@
     "world.item.crafting.RecipeMapMixin",
     "world.item.equipment.ArmorTypeMixin",
     "world.item.equipment.EnchantmentHelperMixin",
+    "world.level.LevelMixin",
     "world.level.NaturalSpawnerMixin",
+    "world.level.biome.BiomeMixin",
     "world.level.block.BambooStalkBlockMixin",
     "world.level.block.BaseFireBlockMixin",
     "world.level.block.BeetrootBlockMixin",
@@ -71,7 +77,8 @@
     "world.level.block.entity.BlockEntityTypeMixin",
     "world.level.block.entity.CampfireBlockEntityMixin",
     "world.level.block.entity.FurnaceBlockEntityMixin",
-    "world.level.storage.loot.providers.number.ints.ContextIntProvidersMixin"
+    "world.level.levelgen.feature.SnowAndFreezeFeatureMixin",
+    "world.level.storage.loot.functions.ApplyBonusCountMixin"
   ],
   "injectors": {
     "defaultRequire": 1

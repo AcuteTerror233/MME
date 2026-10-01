@@ -18,7 +18,7 @@ public abstract class ItemPropertiesMixin {
     public abstract <T> Item.Properties component(DataComponentType<T> type, T value);
 
     @Inject(method = "cookingFuel", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/Item$Properties;component(Lnet/minecraft/core/component/DataComponentType;Ljava/lang/Object;)Lnet/minecraft/world/item/Item$Properties;"))
-    public void qwe(ResourceKey<ContextIntProvider> burnTime, CallbackInfoReturnable<Item.Properties> cir){
+    public void cookingFuel(ResourceKey<ContextIntProvider> burnTime, CallbackInfoReturnable<Item.Properties> cir){
         this.component(MMEDataComponents.COMBUSTION_GRADE, MME.CORRESPONDING_COMBUSTION_GRADE.getOrDefault(burnTime, 1));
     }
 }

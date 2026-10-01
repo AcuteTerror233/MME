@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     "mme:obsidian_knife",
-    "#minecraft:oak_logs"
+    "#minecraft:logs"
   ],
   "result": {
     "id": "mme:obsidian_crafting_table"

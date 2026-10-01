@@ -5,10 +5,10 @@ import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 
-@Mixin(ApplyBonusCount.OreDrops.class)
 /**
  * Mixin for {@code ApplyBonusCount} — Applies fortune bonus for MME custom enchantments (e.g. Harvest).
  */
+@Mixin(ApplyBonusCount.OreDrops.class)
 public class ApplyBonusCountMixin {
     @Overwrite
     public int calculateNewCount(RandomSource randomSource, int i, int j) {

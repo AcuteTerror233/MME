@@ -3,11 +3,9 @@ package com.acuteterror233.mite.block;
 import com.acuteterror233.mite.registry.tag.MMEItemTags;
 import com.google.common.collect.ImmutableList;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.FurnaceBlock;
-import net.minecraft.world.level.block.MagmaBlock;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.material.MapColor;
 
 import java.util.function.Function;
 
@@ -18,57 +16,57 @@ import java.util.function.Function;
 public class MMEBlocks {
     public static final Block ADAMANTIUM_ORE = register(        // Adamantium Ore
             MMEBlockItemIds.ADAMANTIUM_ORE,
-            BlockBehaviour.Properties.of().strength(5.0f, 10.0f).requiresCorrectToolForDrops()
+            BlockBehaviour.Properties.of().strength(5.0f, 10.0f).requiresCorrectToolForDrops().mapColor(MapColor.STONE)
     );
     public static final Block MITHRIL_ORE = register(           // Mithril Ore
             MMEBlockItemIds.MITHRIL_ORE,
-            BlockBehaviour.Properties.of().strength(4.0f, 5.0f).requiresCorrectToolForDrops()
+            BlockBehaviour.Properties.of().strength(4.0f, 5.0f).requiresCorrectToolForDrops().mapColor(MapColor.STONE)
     );
     public static final Block SILVER_ORE = register(            // Silver Ore
             MMEBlockItemIds.SILVER_ORE,
-            BlockBehaviour.Properties.of().strength(3.0f, 3.0f).requiresCorrectToolForDrops()
+            BlockBehaviour.Properties.of().strength(3.0f, 3.0f).requiresCorrectToolForDrops().mapColor(MapColor.STONE)
     );
 
     public static final Block DEEPSLATE_ADAMANTIUM_ORE = register(        // Deepslate Adamantium Ore
             MMEBlockItemIds.DEEPSLATE_ADAMANTIUM_ORE,
-            BlockBehaviour.Properties.of().strength(5.5f, 10.0f).requiresCorrectToolForDrops()
+            BlockBehaviour.Properties.of().strength(5.5f, 10.0f).requiresCorrectToolForDrops().mapColor(MapColor.DEEPSLATE).sound(SoundType.DEEPSLATE)
     );
     public static final Block DEEPSLATE_MITHRIL_ORE = register(           // Deepslate Mithril Ore
             MMEBlockItemIds.DEEPSLATE_MITHRIL_ORE,
-            BlockBehaviour.Properties.of().strength(4.5f, 5.0f).requiresCorrectToolForDrops()
+            BlockBehaviour.Properties.of().strength(4.5f, 5.0f).requiresCorrectToolForDrops().mapColor(MapColor.DEEPSLATE).sound(SoundType.DEEPSLATE)
     );
     public static final Block DEEPSLATE_SILVER_ORE = register(            // Deepslate Silver Ore
             MMEBlockItemIds.DEEPSLATE_SILVER_ORE,
-            BlockBehaviour.Properties.of().strength(4.5f, 3.0f).requiresCorrectToolForDrops()
+            BlockBehaviour.Properties.of().strength(4.5f, 3.0f).requiresCorrectToolForDrops().mapColor(MapColor.DEEPSLATE).sound(SoundType.DEEPSLATE)
     );
 
     public static final Block ADAMANTIUM_BLOCK = register(      // Adamantium Block
-            MMEBlockItemIds.ADAMANTIUM_BLOCK, BlockBehaviour.Properties.ofFullCopy(Blocks.BEDROCK).requiresCorrectToolForDrops()
+            MMEBlockItemIds.ADAMANTIUM_BLOCK, BlockBehaviour.Properties.ofFullCopy(Blocks.BEDROCK).strength(60f, 1200f).requiresCorrectToolForDrops().sound(SoundType.METAL)
     );
     public static final Block ANCIENT_METAL_BLOCK = register(   // Ancient Metal Block
-            MMEBlockItemIds.ANCIENT_METAL_BLOCK, BlockBehaviour.Properties.of().strength(35f, 35f).requiresCorrectToolForDrops()
+            MMEBlockItemIds.ANCIENT_METAL_BLOCK, BlockBehaviour.Properties.of().strength(35f, 35f).requiresCorrectToolForDrops().sound(SoundType.METAL).mapColor(MapColor.COLOR_LIGHT_GREEN)
     );
     public static final Block MITHRIL_BLOCK = register(         // Mithril Block
-            MMEBlockItemIds.MITHRIL_BLOCK, BlockBehaviour.Properties.of().strength(40f, 40f).requiresCorrectToolForDrops()
+            MMEBlockItemIds.MITHRIL_BLOCK, BlockBehaviour.Properties.of().strength(40f, 40f).requiresCorrectToolForDrops().sound(SoundType.METAL).mapColor(MapColor.COLOR_LIGHT_BLUE)
     );
     public static final Block SILVER_BLOCK = register(          // Silver Block
-            MMEBlockItemIds.SILVER_BLOCK, BlockBehaviour.Properties.of().strength(10f, 10f).requiresCorrectToolForDrops()
+            MMEBlockItemIds.SILVER_BLOCK, BlockBehaviour.Properties.of().strength(10f, 10f).requiresCorrectToolForDrops().sound(SoundType.METAL).mapColor(MapColor.METAL)
     );
 
     public static final Block CLAY_FURNACE = register(
-            MMEBlockItemIds.CLAY_FURNACE, FurnaceBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.FURNACE)
+            MMEBlockItemIds.CLAY_FURNACE, FurnaceBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.FURNACE).mapColor(MapColor.CLAY)
     );
     public static final Block TERRACOTTA_FURNACE = register(
-            MMEBlockItemIds.TERRACOTTA_FURNACE, FurnaceBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.FURNACE)
+            MMEBlockItemIds.TERRACOTTA_FURNACE, FurnaceBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.FURNACE).mapColor(MapColor.COLOR_ORANGE)
     );
     public static final Block NETHERRACK_FURNACE = register(
-            MMEBlockItemIds.NETHERRACK_FURNACE, FurnaceBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.FURNACE)
+            MMEBlockItemIds.NETHERRACK_FURNACE, FurnaceBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.FURNACE).mapColor(MapColor.NETHER)
     );
     public static final Block OBSIDIAN_FURNACE = register(
-            MMEBlockItemIds.OBSIDIAN_FURNACE, FurnaceBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.FURNACE)
+            MMEBlockItemIds.OBSIDIAN_FURNACE, FurnaceBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.FURNACE).mapColor(MapColor.COLOR_BLACK)
     );
     public static final Block SANDSTONE_FURNACE = register(
-            MMEBlockItemIds.SANDSTONE_FURNACE, FurnaceBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.FURNACE)
+            MMEBlockItemIds.SANDSTONE_FURNACE, FurnaceBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.FURNACE).mapColor(MapColor.SAND)
     );
 
     public static final Block MANTLE = register(                // Mantle
@@ -80,6 +78,7 @@ public class MMEBlocks {
                     .isValidSpawn((blockStatex, blockGetter, blockPos, entityType) -> entityType.fireImmune())
                     .postProcess((blockStatex, blockGetter, blockPos) -> blockPos.above())
                     .emissiveRendering(state -> true)
+                    .mapColor(MapColor.NETHER)
     );
 
     public static final AnvilCollection<Block> NETHERITE_ANVILS = AnvilCollection.registerBlocks(
