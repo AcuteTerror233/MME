@@ -1,6 +1,5 @@
 package com.acuteterror233.mite.mixin.world.inventory;
 
-import com.acuteterror233.mite.block.MMEBlocks;
 import com.acuteterror233.mite.component.MMEDataComponents;
 import com.acuteterror233.mite.interfaces.InventoryMenuExtension;
 import com.acuteterror233.mite.inventory.slot.PlayerCraftingResultSlot;
@@ -21,7 +20,6 @@ import net.minecraft.world.item.crafting.CraftingInput;
 import net.minecraft.world.item.crafting.CraftingRecipe;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeType;
-import net.minecraft.world.level.block.Block;
 import org.jetbrains.annotations.NotNull;
 import org.spongepowered.asm.mixin.*;
 import org.spongepowered.asm.mixin.injection.At;
@@ -65,9 +63,9 @@ public abstract class InventoryMenuMixin extends AbstractCraftingMenu implements
         }
     };
     @Unique
-    private final Block[] CraftingTable = new Block[]{MMEBlocks.COPPER_CRAFTING_TABLE, MMEBlocks.SILVER_CRAFTING_TABLE};
-    @Unique
     public final int[] CraftingTime = new int[]{0, DefaultCraftingTime, 0};
+    @Unique
+    private final TagKey<Item> ExceptionsTag = MMEItemTags.FLINT_CRAFTING_TABLE_EXCEPTIONS;
     @Unique
     private final TagKey<Item> DisableMaterialsTag = MMEItemTags.HAND_NOT_ALLOWED_MATERIAL;
     @Final
@@ -185,11 +183,8 @@ public abstract class InventoryMenuMixin extends AbstractCraftingMenu implements
     }
     @Unique
     private void isAllowedCrafting(CraftingContainer craftingInventory, ItemStack craftItem) {
-        for (Block block : this.CraftingTable) {
-            if (block.asItem() == craftItem.getItem()) {
-                this.property.set(2, 0);
-                break;
-            }
+        if (craftItem.is(this.ExceptionsTag)) {
+            return;
         }
         for (ItemStack stack : craftingInventory) {
             if (stack.is(this.DisableMaterialsTag)) {

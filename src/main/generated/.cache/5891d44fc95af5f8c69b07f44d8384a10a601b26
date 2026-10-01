@@ -43,7 +43,7 @@ db4456ed0e58af30d8201f89d010ede5d81188cc data/mme/tags/item/dagger_enchantable.j
 5f08572aababcf2979c50c0b47f3e20ad02b1c5f data/mme/tags/item/destructible_endcrystal.json
 6c3b5f3ab90f72b0c0ef06aebf4b6348af1c34f0 data/mme/tags/item/fertility_enchantable.json
 bb8ce390d7d4fb0fa89d00460f717ccd605be930 data/mme/tags/item/fishing_rods.json
-06638516dd55c38d827c5c0ba927e8b8ce026a3c data/mme/tags/item/flint_crafting_table_exceptions.json
+960ffc048a726a23ae12f644bbdaaa3ed13d5b59 data/mme/tags/item/flint_crafting_table_exceptions.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/mme/tags/item/gold_crafting_table_exceptions.json
 06297e3c72fe0b12bf9db435c1d4046fafe18fd3 data/mme/tags/item/gold_not_allowed_material.json
 7faceaaf812e90cb3f05bdfda85cf207c68846d2 data/mme/tags/item/golden_tools.json
@@ -70,7 +70,7 @@ d3a7390fa1418072b7243756b15b914781629b13 data/mme/tags/item/mithril_armor.json
 79a4e42fd6114677f1621e813eae90f0afb6f0f3 data/mme/tags/item/netherite_tool_materials.json
 d8f50cf69206e4853b87183d08b4804eb57d1775 data/mme/tags/item/netherite_tools.json
 b6db6ceb1f6142026a230778576195ad5f684b16 data/mme/tags/item/nugget.json
-06638516dd55c38d827c5c0ba927e8b8ce026a3c data/mme/tags/item/obsidian_crafting_table_exceptions.json
+960ffc048a726a23ae12f644bbdaaa3ed13d5b59 data/mme/tags/item/obsidian_crafting_table_exceptions.json
 a076029a2420487af65e3bd2ff8265d8feb944f0 data/mme/tags/item/rusted_iron_tools.json
 f0e07abd51501ae917c3c9fbfb3ba0eeefe7df3b data/mme/tags/item/scythe.json
 6a3f2dfc47243837222e919308cb005e6f8e710b data/mme/tags/item/shard.json

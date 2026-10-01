@@ -1003,9 +1003,11 @@ public class MMETagProvider {
             builder(MMEItemTags.GOLD_CRAFTING_TABLE_EXCEPTIONS);
             builder(MMEItemTags.FLINT_CRAFTING_TABLE_EXCEPTIONS)
                     .add(MMEBlockItemIds.COPPER_CRAFTING_TABLE.asItem())
+                    .add(MMEBlockItemIds.FLINT_CRAFTING_TABLE.asItem())
                     .add(MMEBlockItemIds.SILVER_CRAFTING_TABLE.asItem());
             builder(MMEItemTags.OBSIDIAN_CRAFTING_TABLE_EXCEPTIONS)
                     .add(MMEBlockItemIds.COPPER_CRAFTING_TABLE.asItem())
+                    .add(MMEBlockItemIds.FLINT_CRAFTING_TABLE.asItem())
                     .add(MMEBlockItemIds.SILVER_CRAFTING_TABLE.asItem());
             builder(MMEItemTags.AIR);
             // TODO features

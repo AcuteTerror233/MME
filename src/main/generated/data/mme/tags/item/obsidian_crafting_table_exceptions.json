@@ -1,6 +1,7 @@
 {
   "values": [
     "mme:copper_crafting_table",
+    "mme:flint_crafting_table",
     "mme:silver_crafting_table"
   ]
 }
