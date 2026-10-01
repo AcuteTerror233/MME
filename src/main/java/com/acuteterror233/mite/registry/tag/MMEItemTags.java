@@ -64,6 +64,7 @@ public interface MMEItemTags {
     TagKey<Item> ANCIENT_METAL_NOT_ALLOWED_MATERIAL = key("ancient_metal_not_allowed_material");
     TagKey<Item> IRON_NOT_ALLOWED_MATERIAL = key("iron_not_allowed_material");
     TagKey<Item> COPPER_OR_SILVER_NOT_ALLOWED_MATERIAL = key("copper_or_silver_not_allowed_material");
+    TagKey<Item> HAND_NOT_ALLOWED_MATERIAL = key("hand_not_allowed_material");
     TagKey<Item> GOLD_NOT_ALLOWED_MATERIAL = key("gold_not_allowed_material");
 
     TagKey<Item> COPPER_OR_SILVER_NUGGET = key("copper_or_silver_nugget");

@@ -803,6 +803,9 @@ public class MMETagProvider {
             builder(MMEItemTags.COPPER_OR_SILVER_NOT_ALLOWED_MATERIAL)
                     .addTag(ItemTags.IRON_TOOL_MATERIALS)
                     .addTag(MMEItemTags.IRON_NOT_ALLOWED_MATERIAL);
+            builder(MMEItemTags.HAND_NOT_ALLOWED_MATERIAL)
+                    .addTag(MMEItemTags.COPPER_OR_SILVER_NOT_ALLOWED_MATERIAL)
+                    .forceAddTag(ItemTags.LOGS);
             builder(MMEItemTags.GOLD_NOT_ALLOWED_MATERIAL)
                     .addTag(ItemTags.IRON_TOOL_MATERIALS)
                     .addTag(MMEItemTags.IRON_NOT_ALLOWED_MATERIAL);

@@ -24,12 +24,15 @@ public class CraftingTableResultSlot extends ResultSlot {
         this.isCrafting = !getItem().isEmpty() && this.handler.isAllowCrafting();
         return ItemStack.EMPTY;
     }
+
     public boolean isCrafting() {
         return this.isCrafting;
     }
+
     public void ClearCraftingState() {
         this.isCrafting = false;
     }
+
     public void onQuickCraft(ItemStack newItem, ItemStack original) {
         this.remove(0);
     }

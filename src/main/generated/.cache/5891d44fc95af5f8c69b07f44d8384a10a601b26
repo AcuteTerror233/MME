@@ -47,6 +47,7 @@ bb8ce390d7d4fb0fa89d00460f717ccd605be930 data/mme/tags/item/fishing_rods.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/mme/tags/item/gold_crafting_table_exceptions.json
 06297e3c72fe0b12bf9db435c1d4046fafe18fd3 data/mme/tags/item/gold_not_allowed_material.json
 7faceaaf812e90cb3f05bdfda85cf207c68846d2 data/mme/tags/item/golden_tools.json
+49f4ac93b4b633322a96dcd48c0ffaf8636d560d data/mme/tags/item/hand_not_allowed_material.json
 3590777e6c747d311acf635c3b61e4c3f3aa232c data/mme/tags/item/harvesting_enchantable.json
 39d1b9e44f3939790a21ac0eacf75efa88574710 data/mme/tags/item/hatchet.json
 355ba72dc42bbaf2dc5d29fcad6ca76635359796 data/mme/tags/item/ingot.json

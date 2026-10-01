@@ -375,7 +375,7 @@ public final class VanillaItemModify {
         result.put(Identifier.withDefaultNamespace("diamond_spear"), settings -> new Item.Properties());
 
         result.put(Identifier.withDefaultNamespace("wooden_sword"), settings -> new Item.Properties());
-        result.put(Identifier.withDefaultNamespace("wooden_shovel"), settings -> MMEItems.getShovelSettings(MMEToolMaterials.WOOD));
+        result.put(Identifier.withDefaultNamespace("wooden_shovel"), settings -> MMEItems.getShovelSettings(MMEToolMaterials.WOOD).cookingFuel(ContextIntProviders.COOKING_TIME_WOOD_ITEMS_LARGE));
         result.put(Identifier.withDefaultNamespace("wooden_pickaxe"), settings -> new Item.Properties());
         result.put(Identifier.withDefaultNamespace("wooden_axe"), settings -> new Item.Properties());
         result.put(Identifier.withDefaultNamespace("wooden_hoe"), settings -> new Item.Properties());

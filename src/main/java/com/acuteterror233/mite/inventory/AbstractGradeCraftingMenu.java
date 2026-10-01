@@ -76,9 +76,6 @@ public abstract class AbstractGradeCraftingMenu extends AbstractCraftingMenu {
             @Nullable RecipeHolder<CraftingRecipe> recipe
     ) {
         if (this.getResultSlot() instanceof CraftingTableResultSlot slot) {
-            this.property.set(2, 0);
-            this.property.set(0, 0);
-            slot.ClearCraftingState();
             int CraftingTime = 0;
             CraftingInput craftingRecipeInput = craftingInventory.asCraftInput();
             ServerPlayer serverPlayerEntity = (ServerPlayer) player;
@@ -101,7 +98,13 @@ public abstract class AbstractGradeCraftingMenu extends AbstractCraftingMenu {
                 this.property.set(0, 0);
                 slot.ClearCraftingState();
             }
-            this.property.set(1, CraftingTime + this.DefaultCraftingTime);
+            int i = CraftingTime + this.DefaultCraftingTime;
+            if (this.property.get(1) != i) {
+                this.property.set(0, 0);
+                slot.ClearCraftingState();
+                checkCrafting(craftingInventory, getResultSlot().getItem());
+            }
+            this.property.set(1, i);
             resultInventory.setItem(0, itemStack);
             handler.setRemoteSlot(0, itemStack);
             serverPlayerEntity.connection.send(new ClientboundContainerSetSlotPacket(handler.containerId, handler.incrementStateId(), 0, itemStack));
@@ -131,7 +134,6 @@ public abstract class AbstractGradeCraftingMenu extends AbstractCraftingMenu {
                     if (!player.getInventory().add(stack)) {
                         player.drop(stack, false, Prediction.PREDICTED);
                     }
-                    player.getFoodData().addExhaustion(0.3f);
                     slot.onTake(player, stack);
                     if (slot.getItem().isEmpty()){
                         slot.ClearCraftingState();

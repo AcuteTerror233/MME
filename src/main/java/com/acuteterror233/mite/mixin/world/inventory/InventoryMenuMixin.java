@@ -69,7 +69,7 @@ public abstract class InventoryMenuMixin extends AbstractCraftingMenu implements
     @Unique
     public final int[] CraftingTime = new int[]{0, DefaultCraftingTime, 0};
     @Unique
-    private final TagKey<Item> DisableMaterialsTag = MMEItemTags.COPPER_OR_SILVER_NOT_ALLOWED_MATERIAL;
+    private final TagKey<Item> DisableMaterialsTag = MMEItemTags.HAND_NOT_ALLOWED_MATERIAL;
     @Final
     @Shadow
     private Player owner;
@@ -168,6 +168,14 @@ public abstract class InventoryMenuMixin extends AbstractCraftingMenu implements
                 this.property.set(2, 0);
                 this.property.set(0, 0);
                 slot.ClearCraftingState();
+            }
+        }
+        int i = CraftingTime + this.DefaultCraftingTime;
+        if (this.property.get(1) != i) {
+            this.property.set(0, 0);
+            if (this.getResultSlot() instanceof PlayerCraftingResultSlot slot) {
+                slot.ClearCraftingState();
+                isAllowedCrafting(craftingInventory, getResultSlot().getItem());
             }
         }
         this.property.set(1, CraftingTime + this.DefaultCraftingTime);
