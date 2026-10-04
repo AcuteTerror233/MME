@@ -16,10 +16,14 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 /**
- * Mixin for {@code ShearsItem} — Modifies shears mining speed calculation.
+ * Mixin for {@code ShearsItem} — Makes shears instantly break leaves.
+ * Vanilla shears only speed up leaf mining; this mixin intercepts {@code useOn} so right-clicking a
+ * leaf block destroys it immediately (drops computed with the shears' context, 1 durability lost).
+ * Only the server side performs the break; both sides return SUCCESS to suppress vanilla interaction.
  */
 @Mixin(ShearsItem.class)
 public class ShearsItemMixin {
+    /** Instantly destroys a targeted leaves block; non-leaf targets fall through to vanilla {@code useOn}. */
     @Inject(method = "useOn", at = @At("HEAD"), cancellable = true)
     public void useOn(UseOnContext context, CallbackInfoReturnable<InteractionResult> cir) {
         Level level = context.getLevel();

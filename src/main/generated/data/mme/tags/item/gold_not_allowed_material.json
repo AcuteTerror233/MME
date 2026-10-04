@@ -1,6 +1,7 @@
 {
   "values": [
     "#minecraft:iron_tool_materials",
-    "#mme:iron_not_allowed_material"
+    "#mme:iron_not_allowed_material",
+    "#mme:copper_or_silver_ingot"
   ]
 }

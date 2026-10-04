@@ -23,6 +23,7 @@ public class PhaseSpiderEyesLayer<M extends SpiderModel> extends EyesLayer<Livin
         super(renderLayerParent);
     }
 
+    /** {@inheritDoc} Renders the phase spider's emissive eye texture. */
     @Override
     public @NotNull RenderType renderType() {
         return SPIDER_EYES;

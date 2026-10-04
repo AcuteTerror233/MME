@@ -19,6 +19,9 @@ public class DemonSpider extends Spider {
         super(entityType, level);
     }
 
+    /**
+     * On melee hit, 30% chance to poison (30 s), apply Slowness II (5 s) and ignite the victim (5 s).
+     */
     @Override
     public boolean doHurtTarget(ServerLevel level, Entity target) {
         boolean hurt = super.doHurtTarget(level, target);

@@ -29,6 +29,10 @@ public class Shadow extends Zombie {
 
     private static final EquipmentSlot[] ARMOR_SLOTS = {EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET};
 
+    /**
+     * On melee hit, may inflict Darkness for 30 s: base chance 100%, reduced by 20% per piece of
+     * silver armor ({@code mme:silver_armor}) the victim wears (full silver set = immune).
+     */
     @Override
     public boolean doHurtTarget(ServerLevel level, Entity target) {
         boolean hurt = super.doHurtTarget(level, target);
@@ -47,6 +51,7 @@ public class Shadow extends Zombie {
         return hurt;
     }
 
+    /** Damage immunity: melee attacks from living attackers with non-silver, unenchanted weapons are ignored. */
     @Override
     public boolean hurtServer(@NonNull ServerLevel level, @NonNull DamageSource damageSource, float amount) {
         if (!DamageSourcePredicates.isSilverWeaponOrEnchanted(damageSource) && damageSource.getEntity() instanceof LivingEntity) {
@@ -55,6 +60,7 @@ public class Shadow extends Zombie {
         return super.hurtServer(level, damageSource, amount);
     }
 
+    /** Shadows never spawn with default equipment; they also gnaw out nearby torches ({@link DestroyTorchGoal}). */
     @Override
     protected void populateDefaultEquipmentSlots(RandomSource randomSource, DifficultyInstance difficultyInstance) {
     }

@@ -21,6 +21,7 @@ import java.util.List;
  * Defines ore and vegetation generation features for the underground world.
  */
 public class UndergroundConfiguredFeatures {
+    // Configured feature keys for underground ores (adamantium, mithril, silver; large and small variants).
     public static final ResourceKey<Feature> ORE_ADAMANTIUM_BURIED = of("ore_adamantium");
     public static final ResourceKey<Feature> ORE_ADAMANTIUM_BURIED_SMALL = of("ore_adamantium_small");
     public static final ResourceKey<Feature> ORE_MITHRIL = of("ore_mithril");
@@ -28,6 +29,7 @@ public class UndergroundConfiguredFeatures {
     public static final ResourceKey<Feature> ORE_SILVER = of("ore_silver");
     public static final ResourceKey<Feature> ORE_SILVER_SMALL = of("ore_silver_small");
 
+    /** Registers underground ore features: stone/deepslate replacements with vein size and discard-on-air ratio. */
     public static void bootstrap(BootstrapContext<Feature> featureRegisterable){
         RuleTest ruleTest = new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES);
         RuleTest ruleTest1 = new TagMatchTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES);

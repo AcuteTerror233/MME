@@ -11,7 +11,8 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 
 /**
- * Mixin for {@code FishingHook} — Modify fishing rod bobber behavior.
+ * Mixin for {@code FishingHook} — Keeps the bobber attached while any tagged fishing rod
+ * (main or off hand) is held within 32 blocks of the owner.
  */
 @Mixin(FishingHook.class)
 public abstract class FishingBobberEntityMixin extends Projectile {
@@ -27,6 +28,7 @@ public abstract class FishingBobberEntityMixin extends Projectile {
     private boolean shouldStopFishing(Player player) {
         ItemStack itemStack = player.getMainHandItem();
         ItemStack itemStack2 = player.getOffhandItem();
+        // Vanilla requires the exact fishing rod item; any item tagged FISHING_RODS now keeps the bobber alive
         boolean bl = itemStack.is(MMEItemTags.FISHING_RODS);
         boolean bl2 = itemStack2.is(MMEItemTags.FISHING_RODS);
         if (!player.isRemoved() && player.isAlive() && (bl || bl2) && !(this.distanceToSqr(player) > 1024.0)) {

@@ -10,9 +10,17 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.UnaryOperator;
 
+/**
+ * Vanilla block entity type modifier.
+ * At vanilla bootstrap time {@code BootstrapMixin} consults this map (through
+ * {@code VanillaRegisterModify}) per block entity type id, extending the valid-blocks array so MME
+ * block variants (material furnaces, emerald enchanting table) share the vanilla block entity type.
+ */
 public class VanillaBlockEntityTypeModify {
+    /** Valid-blocks extensions keyed by vanilla block entity type id. */
     public static final Map<Identifier, UnaryOperator<Block[]>> IN_IDENTIFIER_BLOCK_ITEM_SETTINGS_MODIFY = createBlockEntityTypeModifyMapByIdentifier();
 
+    /** Builds the per-id valid-block extensions (furnace gains the material furnace variants; enchanting table gains the emerald table). */
     private static Map<Identifier, UnaryOperator<Block[]>> createBlockEntityTypeModifyMapByIdentifier() {
         Map<Identifier, UnaryOperator<Block[]>> map = new HashMap<>();
 

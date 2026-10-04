@@ -28,7 +28,27 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * Mixin for {@code Mob} — Extends general mob behavior.
+ * Mixin for {@code Mob} — Extends general mob behavior with moon-phase spawn buffs and a
+ * custom equipment table.
+ *
+ * <p>Mechanism:</p>
+ * <ul>
+ *   <li>{@code finalizeSpawn} injection (HEAD): BLOOD_MOON grants Strength and Speed
+ *       for 12000 ticks at spawn; TURBID_MOON grants Invisibility for 600 ticks.
+ *       Other moon phases leave spawned mobs unchanged.</li>
+ *   <li>{@code populateDefaultEquipmentSlots} overwrite: reworks the vanilla equipment
+ *       probability and resolves items via the tier table in
+ *       {@link #getEquipmentForSlot}.</li>
+ *   <li>{@code getEquipmentForSlot} overwrite: per-slot tier 0–6 — copper, silver,
+ *       rusted iron, rusted iron chainmail, iron, ancient metal, mithril.</li>
+ * </ul>
+ *
+ * <p>Moon-phase multipliers on the equipment probability:</p>
+ * <ul>
+ *   <li>STAR_MOON × 0.6</li>
+ *   <li>BLOOD_MOON × 2.0</li>
+ *   <li>PHANTOM_MOON / BLUE_MOON × 0.1</li>
+ * </ul>
  */
 @Mixin(Mob.class)
 public abstract class MobMixin extends LivingEntity implements EquipmentUser, Leashable, Targeting{
@@ -39,6 +59,7 @@ public abstract class MobMixin extends LivingEntity implements EquipmentUser, Le
     protected MobMixin(EntityType<? extends LivingEntity> entityType, Level level) {
         super(entityType, level);
     }
+    /** Applies moon-phase spawn buffs (see class doc). */
     @Inject(method = "finalizeSpawn", at = @At("HEAD"))
     private void finalizeSpawn(ServerLevelAccessor level, DifficultyInstance difficulty, EntitySpawnReason spawnReason, SpawnGroupData groupData, CallbackInfoReturnable<SpawnGroupData> cir){
         SpecialMoonPhase dimensionValue = level.environmentAttributes().getDimensionValue(MMEEnvironmentAttributes.SPECIAL_MOON_PHASE);
@@ -57,14 +78,18 @@ public abstract class MobMixin extends LivingEntity implements EquipmentUser, Le
      */
     @Overwrite
     public void populateDefaultEquipmentSlots(RandomSource randomSource, DifficultyInstance difficultyInstance) {
+        // Deep spawns (Y <= 0 or the underground dimension) are far better equipped than surface ones
         float probability = getY() <= 0 || this.level().dimension().equals(MMEDimensionTypeRegistrar.UNDERGROUND_LEVEL_KEY) ? 0.6F : 0.15F * difficultyInstance.getSpecialMultiplier();
+        // Moon-phase probability multipliers (see class doc)
         switch (level().environmentAttributes().getDimensionValue(MMEEnvironmentAttributes.SPECIAL_MOON_PHASE)) {
             case STAR_MOON -> probability *= 0.6F;
             case BLOOD_MOON -> probability *= 2F;
             case PHANTOM_MOON, BLUE_MOON ->  probability *= 0.1F;
         }
         if (randomSource.nextFloat() < probability) {
+            // Higher tiers are progressively rarer: each extra roll at 30% of the base chance raises the tier index
             probability*=0.3F;
+            // Base tier 0-1; subsequent rolls below can raise it up to 6
             int i = randomSource.nextInt(2);
             Level level = this.level();
             if (randomSource.nextFloat() < probability || level.dimension() == MMEDimensionTypeRegistrar.UNDERGROUND_LEVEL_KEY) {
@@ -80,9 +105,11 @@ public abstract class MobMixin extends LivingEntity implements EquipmentUser, Le
                 i++;
             }
 
+            // Pick slots in random order so no slot is systematically favored
             List<EquipmentSlot> shuffledSlots = new ArrayList<>(EQUIPMENT_POPULATION_ORDER);
             Collections.shuffle(shuffledSlots, new java.util.Random(randomSource.nextInt()));
 
+            // Per-slot chance decays after each successful equip
             float equipChance = 0.4F;
 
             for (EquipmentSlot equipmentSlot : shuffledSlots) {
@@ -101,6 +128,9 @@ public abstract class MobMixin extends LivingEntity implements EquipmentUser, Le
     }
 
     /**
+     * Resolves the equipment item for a slot and tier index {@code i}
+     * (0 = copper … 6 = mithril); returns {@code null} beyond the table.
+     *
      * @author AcuteTerror233.
      * @reason Add copper and other equipment
      */

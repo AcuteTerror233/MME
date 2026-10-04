@@ -16,6 +16,7 @@ public class NightwingRenderer extends VampireBatRenderer<Nightwing>{
         super(context);
     }
 
+    /** {@inheritDoc} Returns the nightwing texture. */
     @Override
     public @NotNull Identifier getTextureLocation(BatRenderState renderState) {
         return TEXTURE;

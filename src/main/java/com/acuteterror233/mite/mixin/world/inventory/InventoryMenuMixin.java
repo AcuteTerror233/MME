@@ -1,73 +1,44 @@
 package com.acuteterror233.mite.mixin.world.inventory;
 
-import com.acuteterror233.mite.component.MMEDataComponents;
-import com.acuteterror233.mite.interfaces.InventoryMenuExtension;
-import com.acuteterror233.mite.inventory.slot.PlayerCraftingResultSlot;
-import com.acuteterror233.mite.registry.tag.MMEItemTags;
-import net.minecraft.network.protocol.game.ClientboundContainerSetSlotPacket;
+import com.acuteterror233.mite.interfaces.TimedCraftingMenuExtension;
+import com.acuteterror233.mite.inventory.TimedCraftingSession;
+import com.acuteterror233.mite.inventory.slot.TimedCraftingResultSlot;
+import com.acuteterror233.mite.material.MMEMaterials;
+import com.acuteterror233.mite.material.MetalMaterial;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.tags.TagKey;
-import net.minecraft.util.Mth;
-import net.minecraft.util.Prediction;
 import net.minecraft.world.Container;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.*;
-import net.minecraft.world.item.Item;
+import net.minecraft.world.inventory.AbstractCraftingMenu;
+import net.minecraft.world.inventory.InventoryMenu;
+import net.minecraft.world.inventory.MenuType;
+import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.CraftingInput;
-import net.minecraft.world.item.crafting.CraftingRecipe;
-import net.minecraft.world.item.crafting.RecipeHolder;
-import net.minecraft.world.item.crafting.RecipeType;
 import org.jetbrains.annotations.NotNull;
-import org.spongepowered.asm.mixin.*;
+import org.jetbrains.annotations.Nullable;
+import org.spongepowered.asm.mixin.Final;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import java.util.Optional;
-
 /**
- * Mixin for {@code InventoryMenu} — Implement inventory menu extension interface.
+ * Mixin for {@code InventoryMenu} — Hooks the 2×2 inventory crafting into the metal timed crafting
+ * system (bare-hand = {@link MMEMaterials#HAND}), reusing {@link TimedCraftingSession} to share recipe
+ * resolution, material restrictions, and timing logic with the grade crafting tables, replacing the
+ * legacy built-in updateResult/manual-packet implementation.
  */
 @Mixin(InventoryMenu.class)
-public abstract class InventoryMenuMixin extends AbstractCraftingMenu implements InventoryMenuExtension {
+public abstract class InventoryMenuMixin extends AbstractCraftingMenu implements TimedCraftingMenuExtension {
     @Unique
-    private final int DefaultCraftingTime = 100;
+    @Nullable
+    private MetalMaterial mme$metal;
     @Unique
-    private final ContainerData property = new ContainerData() {
-        @Override
-        public int get(int index) {
-            return switch (index) {
-                case 0 -> CraftingTime[0];
-                case 1 -> CraftingTime[1];
-                case 2 -> CraftingTime[2];
-                default -> 0;
-            };
-        }
-
-        @Override
-        public void set(int index, int value) {
-            switch (index) {
-                case 0 -> CraftingTime[0] = value;
-                case 1 -> CraftingTime[1] = value;
-                case 2 -> CraftingTime[2] = Mth.clamp(value, 0, 1);
-            }
-        }
-
-        @Override
-        public int getCount() {
-            return 3;
-        }
-    };
-    @Unique
-    public final int[] CraftingTime = new int[]{0, DefaultCraftingTime, 0};
-    @Unique
-    private final TagKey<Item> ExceptionsTag = MMEItemTags.FLINT_CRAFTING_TABLE_EXCEPTIONS;
-    @Unique
-    private final TagKey<Item> DisableMaterialsTag = MMEItemTags.HAND_NOT_ALLOWED_MATERIAL;
+    @Nullable
+    private TimedCraftingSession mme$session;
     @Final
     @Shadow
     private Player owner;
@@ -78,140 +49,117 @@ public abstract class InventoryMenuMixin extends AbstractCraftingMenu implements
     public InventoryMenuMixin(MenuType<?> type, int syncId, int width, int height) {
         super(type, syncId, width, height);
     }
-    @Inject(method = "<init>", at = @At("RETURN"))
-    private void init(Inventory inventory, boolean onServer, Player owner, CallbackInfo ci) {
-        this.addDataSlots(this.property);
-    }
+
     /**
-     * @author AcuteTerror233
-     * @reason Update result refactoring
+     * Lazily creates the timed crafting session bound to this menu; see
+     * {@code CraftingMenuMixin#mme$session} for the lifecycle rationale.
      */
-    @Overwrite
-    public void slotsChanged(Container inventory) {
-        if (this.owner.level() instanceof ServerLevel serverWorld) {
-            updateResult(this, serverWorld, this.owner, this.craftSlots, this.resultSlots);
+    @Unique
+    private TimedCraftingSession mme$session() {
+        if (this.mme$session == null) {
+            this.mme$session = new TimedCraftingSession(this, this.owner, this.craftSlots, this.resultSlots);
         }
+        return this.mme$session;
     }
 
+    /**
+     * The 2×2 inventory grid is always bare-hand crafting ({@link MMEMaterials#HAND}), so the metal
+     * is injected unconditionally on both sides. Data slots are registered here so the client's
+     * own InventoryMenu instance receives the session state[] sync without manual packets.
+     */
+    @Inject(method = "<init>", at = @At("RETURN"))
+    private void mme$init(Inventory inventory, boolean onServer, Player owner, CallbackInfo ci) {
+        this.mme$metal = MMEMaterials.HAND;
+        this.mme$session().setMetal(MMEMaterials.HAND);
+        this.addDataSlots(this.mme$session().data());
+    }
+
+    /** Replaces the vanilla immediate-craft result slot with the timed crafting result slot. */
     @Override
     protected @NotNull Slot addResultSlot(Player player, int x, int y) {
-        return this.addSlot(new PlayerCraftingResultSlot(player, this.craftSlots, this.resultSlots, (InventoryMenu)(Object)this, 0, x, y));
+        return this.addSlot(new TimedCraftingResultSlot(player, this.craftSlots, this.resultSlots, this::mme$session, x, y));
     }
 
+    /** Duck interface: metal is fixed to HAND here; setter exists only to satisfy the shared interface. */
+    @Override
+    public void MME$SetMetalMaterial(@Nullable MetalMaterial metal) {
+        this.mme$metal = metal;
+        this.mme$session().setMetal(metal);
+    }
+
+    /** Duck interface: always returns {@link MMEMaterials#HAND} for the inventory grid. */
+    @Override
+    public @Nullable MetalMaterial MME$GetMetalMaterial() {
+        return this.mme$metal;
+    }
+
+    /** Duck interface: whether the current inputs pass the bare-hand material restrictions. */
+    @Override
+    public boolean MME$IsAllowCrafting() {
+        return this.mme$session().isAllowCrafting();
+    }
+
+    /** Duck interface: current crafting progress in ticks (used by the HUD/screen overlay). */
+    @Override
+    public double MME$GetCraftingTime() {
+        return this.mme$session().getCraftingTime();
+    }
+
+    /** Duck interface: always {@code true} — the inventory menu always has the HAND metal active. */
+    @Override
+    public boolean MME$HasMetal() {
+        return this.mme$session().hasMetal();
+    }
+
+    /**
+     * Same {@code isFilling} guard as {@code CraftingMenuMixin#mme$slotsChanged}, additionally
+     * scoped to {@code craftSlots} (InventoryMenu fires slotsChanged for every container change,
+     * including the player inventory itself, which must not re-evaluate the recipe).
+     */
+    @Inject(method = "slotsChanged", at = @At("HEAD"), cancellable = true)
+    private void mme$slotsChanged(Container inventory, CallbackInfo ci) {
+        TimedCraftingSession session = this.mme$session;
+        if (session == null || !session.hasMetal()) {
+            return;
+        }
+        if (inventory == this.craftSlots && !session.isFilling() && this.owner.level() instanceof ServerLevel serverLevel) {
+            session.updateResult(serverLevel, null);
+        }
+        ci.cancel();
+    }
+
+    /**
+     * InventoryMenu does not declare broadcastChanges (inherited from AbstractContainerMenu), so @Inject
+     * is not applicable; instead a mixin-added override (method merge) advances the timed crafting
+     * before the vanilla logic runs.
+     */
     @Override
     public void broadcastChanges() {
-        if (getResultSlot() instanceof PlayerCraftingResultSlot slot) {
-            if (slot.isCrafting()) {
-                this.CraftingTime[0]++;
-                if (this.CraftingTime[0] >= this.CraftingTime[1]){
-                    Player player = owner();
-                    ItemStack stack = slot.getItem();
-                    if (!player.getInventory().add(stack)) {
-                        player.drop(stack, false, Prediction.PREDICTED);
-                    }
-                    player.getFoodData().addExhaustion(0.3f);
-                    slot.onTake(player, stack);
-                    if (slot.getItem().isEmpty()){
-                        slot.ClearCraftingState();
-                    }
-                    this.CraftingTime[0] = 0;
-                }
-            }
+        TimedCraftingSession session = this.mme$session;
+        if (session != null && session.hasMetal()) {
+            session.tick();
         }
         super.broadcastChanges();
     }
 
+    /**
+     * Unlike {@code CraftingMenuMixin} no {@code hasMetal()} check is needed — the HAND metal is
+     * active for every inventory menu (both sides), so shift-clicking the result slot can always
+     * be redirected into the session's re-evaluation instead of vanilla quick-move.
+     */
     @Inject(method = "quickMoveStack", at = @At("HEAD"), cancellable = true)
-    protected void quickMoveStack(Player player, int slotIndex, CallbackInfoReturnable<ItemStack> cir) {
-        if (this.getSlot(slotIndex) instanceof PlayerCraftingResultSlot) {
+    protected void mme$quickMoveStack(Player player, int slotIndex, CallbackInfoReturnable<ItemStack> cir) {
+        if (this.getSlot(slotIndex) instanceof TimedCraftingResultSlot) {
+            this.mme$session().evaluateRunning();
             cir.setReturnValue(ItemStack.EMPTY);
         }
     }
+
+    /** Resets the timed session when the menu closes so leftover progress/state cannot leak into the next open. */
     @Inject(method = "removed", at = @At("HEAD"))
-    public void onClosed(Player player, CallbackInfo ci) {
-        this.property.set(0, 0);
-        this.property.set(1, DefaultCraftingTime);
-        this.property.set(2, 0);
-        if (this.getResultSlot() instanceof PlayerCraftingResultSlot slot) {
-            slot.ClearCraftingState();
+    public void mme$onClosed(Player player, CallbackInfo ci) {
+        if (this.mme$session != null) {
+            this.mme$session.reset();
         }
-    }
-    @Unique
-    protected void updateResult(
-            AbstractContainerMenu handler,
-            ServerLevel world,
-            Player player,
-            CraftingContainer craftingInventory,
-            ResultContainer resultInventory
-    ) {
-        int CraftingTime = 0;
-        CraftingInput craftingRecipeInput = craftingInventory.asCraftInput();
-        ServerPlayer serverPlayerEntity = (ServerPlayer)player;
-        ItemStack itemStack = ItemStack.EMPTY;
-        Optional<RecipeHolder<CraftingRecipe>> optional = world.getServer().getRecipeManager().getRecipeFor(RecipeType.CRAFTING, craftingRecipeInput, world, (RecipeHolder<CraftingRecipe>) null);
-        if (optional.isPresent()) {
-            RecipeHolder<CraftingRecipe> recipeEntry = optional.get();
-            CraftingRecipe craftingRecipe = recipeEntry.value();
-            if (resultInventory.setRecipeUsed(serverPlayerEntity, recipeEntry)) {
-                ItemStack craftItem = craftingRecipe.assemble(craftingRecipeInput);
-                if (craftItem.isItemEnabled(world.enabledFeatures())) {
-                    this.property.set(2, 1);
-                    isAllowedCrafting(craftingInventory, craftItem);
-                    CraftingTime = additionalCraftingTime(craftingInventory);
-                    itemStack = craftItem;
-                }
-            }
-        }else {
-            if (this.getResultSlot() instanceof PlayerCraftingResultSlot slot) {
-                this.property.set(2, 0);
-                this.property.set(0, 0);
-                slot.ClearCraftingState();
-            }
-        }
-        int i = CraftingTime + this.DefaultCraftingTime;
-        if (this.property.get(1) != i) {
-            this.property.set(0, 0);
-            if (this.getResultSlot() instanceof PlayerCraftingResultSlot slot) {
-                slot.ClearCraftingState();
-                isAllowedCrafting(craftingInventory, getResultSlot().getItem());
-            }
-        }
-        this.property.set(1, CraftingTime + this.DefaultCraftingTime);
-        resultInventory.setItem(0, itemStack);
-        handler.setRemoteSlot(0, itemStack);
-        serverPlayerEntity.connection.send(new ClientboundContainerSetSlotPacket(handler.containerId, handler.incrementStateId(), 0, itemStack));
-    }
-    @Unique
-    private void isAllowedCrafting(CraftingContainer craftingInventory, ItemStack craftItem) {
-        if (craftItem.is(this.ExceptionsTag)) {
-            return;
-        }
-        for (ItemStack stack : craftingInventory) {
-            if (stack.is(this.DisableMaterialsTag)) {
-                this.property.set(2, 0);
-                break;
-            }
-        }
-    }
-    @Unique
-    public int additionalCraftingTime(CraftingContainer inventory){
-        int CraftingTime = 0;
-        for (ItemStack stack : inventory){
-            Integer i = stack.get(MMEDataComponents.CRAFTING_TIME);
-            if (i != null) {
-                CraftingTime += i * 20;
-            }
-        }
-        return (int) (CraftingTime / (1 + ((double) (owner().experienceLevel * 2) / 100)) );
-    }
-
-    @Override
-    public boolean MME$IsAllowCrafting() {
-        return this.property.get(2) == 1;
-    }
-
-    @Override
-    public double MME$GetCraftingTime() {
-        return Mth.clamp((double) this.property.get(0) / this.property.get(1), 0, 1);
     }
 }

@@ -30,7 +30,10 @@ import java.util.Map;
 import java.util.function.BiConsumer;
 
 /**
- * Mixin for {@code ItemModelGenerators} — Implements item model generation extension interface.
+ * Client datagen mixin into {@code ItemModelGenerators}, implementing
+ * {@link ItemModelGeneratorsExtension} so {@code MMEModelProvider} can generate MME-specific item
+ * models (metal buckets, fishing rods, chainmail trim variants) through the vanilla generator
+ * state. Runs only during {@code runDatagen}.
  */
 @Mixin(ItemModelGenerators.class)
 public abstract class ItemModelGeneratorsMixin implements ItemModelGeneratorsExtension {
@@ -47,11 +50,28 @@ public abstract class ItemModelGeneratorsMixin implements ItemModelGeneratorsExt
     @Shadow @Final public abstract void generateBooleanDispatch(Item item, ConditionalItemModelProperty property, ItemModel.Unbaked onTrue, ItemModel.Unbaked onFalse);
     @Shadow @Final public abstract Identifier createFlatItemModel(Item item, String suffix, ModelTemplate model);
 
+    /**
+     * Creates a flat item model whose layer0 texture is taken from the item's own
+     * {@code item/buckets/} texture path.
+     *
+     * @param item  the bucket item
+     * @param model the model template to instantiate
+     * @return the generated model id
+     */
     @Unique
     public Identifier uploadLayers(Item item, ModelTemplate model) {
         return model.create(ModelLocationUtils.getModelLocation(item), TextureMapping.layer0(new Material(BuiltInRegistries.ITEM.getKey(item).withPrefix("item/buckets/"))), this.modelOutput);
     }
 
+    /**
+     * Generates the bucket item model: a layered model (empty-bucket texture from {@code item1}
+     * plus the content overlay {@code identifier}) when an overlay is given, otherwise a plain
+     * flat model using the bucket's own texture.
+     *
+     * @param item       the bucket item
+     * @param identifier content overlay texture, or {@code null} for an empty bucket
+     * @param item1      the corresponding empty-bucket item providing the base texture
+     */
     @Unique
     @Override
     public void MME$registerBucket(Item item, Identifier identifier, Item item1) {
@@ -62,18 +82,46 @@ public abstract class ItemModelGeneratorsMixin implements ItemModelGeneratorsExt
         }
     }
 
+    /**
+     * Registers a fishing rod with a boolean dispatch on {@code FishingRodCast}: the {@code cast}
+     * model while the line is out, a flat handheld-rod model generated from the item itself otherwise.
+     *
+     * @param item the fishing rod item
+     * @param cast model id used while the rod is cast
+     */
     @Unique
     public final void MME$registerFishingRod(Item item, Identifier cast) {
         ItemModel.Unbaked unbaked = ItemModelUtils.plainModel(this.createFlatItemModel(item, ModelTemplates.FLAT_HANDHELD_ROD_ITEM));
         ItemModel.Unbaked unbaked2 = ItemModelUtils.plainModel(cast);
         this.generateBooleanDispatch(item, new FishingRodCast(), unbaked2, unbaked);
     }
+
+    /**
+     * Same as {@link #MME$registerFishingRod(Item, Identifier)} but the idle model reuses the
+     * vanilla fishing rod texture.
+     *
+     * @param item the fishing rod item
+     * @param cast model id used while the rod is cast
+     */
     @Unique
     public final void MME$registerIronFishingRod(Item item, Identifier cast) {
         ItemModel.Unbaked unbaked = ItemModelUtils.plainModel(this.createFlatItemModel(Items.FISHING_ROD, ModelTemplates.FLAT_HANDHELD_ROD_ITEM));
         ItemModel.Unbaked unbaked2 = ItemModelUtils.plainModel(cast);
         this.generateBooleanDispatch(item, new FishingRodCast(), unbaked2, unbaked);
     }
+
+    /**
+     * Generates a trimmable chainmail armor model: for every vanilla trim material a layered
+     * model (base plate + chainmail overlay + slot overlay for the remapped palette) is created,
+     * then dispatched by {@code TrimMaterialProperty} with the untrimmed model as fallback.
+     *
+     * @param item                     the chainmail armor item
+     * @param basePlateModel           item whose texture is used as the base plate layer
+     * @param key                      equipment asset key of the armor material
+     * @param slotResourceLocation     base texture id of the armor slot
+     * @param slot                     armor slot name used for the chainmail overlay texture lookup
+     * @param trimPaletteReplacements  trim palette substitution map (missing entries keep the vanilla palette)
+     */
     @Unique
     public final void MME$registerChainmailTrimmableItem(Item item, Item basePlateModel, ResourceKey<EquipmentAsset> key, Identifier slotResourceLocation, String slot, Map<TrimMaterials.Palette, TrimMaterials.Palette> trimPaletteReplacements) {
         Identifier model = ModelLocationUtils.getModelLocation(item);
@@ -81,6 +129,7 @@ public abstract class ItemModelGeneratorsMixin implements ItemModelGeneratorsExt
         Material slotTextureChainmailOverlay = new Material(Identifier.fromNamespaceAndPath(MME.MOD_ID, "item/" + slot + "_chainmail_overlay"));
         List<SelectItemModel.SwitchCase<ResourceKey<TrimMaterial>>> trimMaterialModelList = new ArrayList<>(TRIM_MATERIAL_MODELS.size());
 
+        // One layered model per vanilla trim material, keyed by the (possibly remapped) palette suffix.
         for (ItemModelGenerators.TrimMaterialData trimMaterialData : TRIM_MATERIAL_MODELS) {
             Identifier modelTrim = model.withSuffix("_" + trimMaterialData.palette().suffix() + "_trim");
             TrimMaterials.Palette palette = trimPaletteReplacements.getOrDefault(trimMaterialData.palette(), trimMaterialData.palette());
@@ -90,6 +139,7 @@ public abstract class ItemModelGeneratorsMixin implements ItemModelGeneratorsExt
             unbaked = ItemModelUtils.plainModel(modelTrim);
             trimMaterialModelList.add(ItemModelUtils.when(trimMaterialData.materialKey(), unbaked));
         }
+        // Untrimmed base model, also layered with the chainmail overlay.
         ItemModel.Unbaked unbaked2 = ItemModelUtils.plainModel(model);
         this.generateLayeredItem(model, basePlateTexture, slotTextureChainmailOverlay);
 

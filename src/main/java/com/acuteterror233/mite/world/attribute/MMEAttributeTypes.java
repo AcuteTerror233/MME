@@ -7,9 +7,15 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.attribute.AttributeType;
 
+/**
+ * Registry of MME custom {@link AttributeType}s — the serialized value types behind
+ * {@link MMEEnvironmentAttributes}. Call {@link #init()} to force class-loading/registration.
+ */
 public interface MMEAttributeTypes {
+    /** Non-interpolated type for {@link SpecialMoonPhase} values (phases switch instantly, never blend). */
     AttributeType<SpecialMoonPhase> SPECIAL_MOON_PHASE = register("special_moon_phase", AttributeType.ofNotInterpolated(SpecialMoonPhase.CODEC));
 
+    /** No-op classloading hook that triggers static registration. */
     static void init() {
 
     }

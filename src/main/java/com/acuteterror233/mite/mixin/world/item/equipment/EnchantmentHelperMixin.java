@@ -17,9 +17,17 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 /**
  * Mixin for {@code EnchantmentHelper} — Modifies enchantment helper logic.
+ * <ul>
+ * <li>{@code getEnchantmentCost} is overwritten to keep the classic three-offer cost curve
+ * (top offer scaled by twice the cost tier);</li>
+ * <li>{@code processMobExperience} is scaled by the current special moon phase dimension
+ * attribute (double XP under star/blood/hunt moons, ×1.5 under turbid moons), leaving
+ * player kills untouched.</li>
+ * </ul>
  */
 @Mixin(EnchantmentHelper.class)
 public class EnchantmentHelperMixin {
+    /** Classic enchantment cost curve: 0 cost requires enchantability, the three slots use k/3, k*2/3+1 and max(k, tier*2). */
     @Overwrite
     public static int getEnchantmentCost(RandomSource randomSource, int i, int j, ItemStack itemStack) {
         Enchantable enchantable = itemStack.get(DataComponents.ENCHANTABLE);
@@ -34,6 +42,7 @@ public class EnchantmentHelperMixin {
             }
         }
     }
+    /** Moon-phase XP multiplier: ×2 under STAR/BLOOD/HUNT moon, ×1.5 under TURBID moon; player deaths are skipped. */
     @Inject(method = "processMobExperience", at = @At("RETURN"), cancellable = true)
     private static void processMobExperience(ServerLevel serverLevel, Entity killer, Entity killed, int amount, CallbackInfoReturnable<Integer> cir) {
         if (killed.is(EntityTypes.PLAYER)) {

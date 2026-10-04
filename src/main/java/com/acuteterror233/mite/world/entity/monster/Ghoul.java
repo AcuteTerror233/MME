@@ -20,6 +20,7 @@ public class Ghoul extends Zombie {
         super(entityType, level);
     }
 
+    /** On melee hit, applies Slowness IV for 3 seconds to living targets. */
     @Override
     public boolean doHurtTarget(@NonNull ServerLevel level, @NonNull Entity target) {
         boolean hurt = super.doHurtTarget(level, target);
@@ -29,6 +30,7 @@ public class Ghoul extends Zombie {
         return hurt;
     }
 
+    /** Ghouls never spawn with default equipment (overrides the zombie gear table). */
     @Override
     protected void populateDefaultEquipmentSlots(@NonNull RandomSource randomSource, @NonNull DifficultyInstance difficultyInstance) {
 

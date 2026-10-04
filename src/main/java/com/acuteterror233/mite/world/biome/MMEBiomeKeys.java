@@ -15,6 +15,7 @@ public class MMEBiomeKeys {
     public static final ResourceKey<Biome> DRIPSTONE_CAVES = key("dripstone_caves");
     public static final ResourceKey<Biome> LUSH_CAVES = key("lush_caves");
     public static final ResourceKey<Biome> DEEP_DARK = key("deep_dark");
+    /** Creates a biome resource key under the MME namespace. */
     public static ResourceKey<Biome> key(String id){
         return ResourceKey.create(Registries.BIOME, Identifier.fromNamespaceAndPath(MME.MOD_ID,id));
     }

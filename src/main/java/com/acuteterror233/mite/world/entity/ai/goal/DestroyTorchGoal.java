@@ -19,20 +19,24 @@ import net.minecraft.world.level.chunk.status.ChunkStatus;
  * Extends {@link RemoveBlockGoal}, specifically removes torch blocks.
  */
 public class DestroyTorchGoal extends RemoveBlockGoal {
+    /** Targets the plain torch block with a 15-block search range; torch variants (soul/wall) are matched in {@link #isValidTarget}. */
     public DestroyTorchGoal(PathfinderMob mob, double speedModifier) {
         super(Blocks.TORCH, mob, speedModifier, 15);
     }
 
+    /** Stone-hit sound while gnawing at the torch. */
     @Override
     public void playDestroyProgressSound(LevelAccessor levelAccessor, BlockPos blockPos) {
         levelAccessor.playSound(null, blockPos, SoundEvents.STONE_HIT, SoundSource.HOSTILE, 0.5F, 0.9F + mob.getRandom().nextFloat() * 0.2F);
     }
 
+    /** Stone-break sound when the torch is removed. */
     @Override
     public void playBreakSound(Level level, BlockPos blockPos) {
         level.playSound(null, blockPos, SoundEvents.STONE_BREAK, SoundSource.BLOCKS, 0.7F, 0.9F + level.getRandom().nextFloat() * 0.2F);
     }
 
+    /** Accepts any torch variant (standing/wall, normal/soul) with 2 blocks of clear air above it. */
     @Override
     protected boolean isValidTarget(LevelReader levelReader, BlockPos blockPos) {
         ChunkAccess chunk = levelReader.getChunk(
@@ -45,6 +49,7 @@ public class DestroyTorchGoal extends RemoveBlockGoal {
                 && chunk.getBlockState(blockPos.above(2)).isAir();
     }
 
+    /** @return a torch at/around {@code blockPos} (self, 4 horizontal neighbors, or 2 below), or {@code null}. */
     @Override
     protected BlockPos getPosWithBlock(BlockPos blockPos, BlockGetter blockGetter) {
         if (isTorch(blockGetter.getBlockState(blockPos))) {

@@ -8,7 +8,7 @@ import net.minecraft.resources.Identifier;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * Shadow renderer.
+ * Shadow renderer: vanilla zombie model with the shadow skin.
  */
 public class ShadowRenderer extends ZombieRenderer {
     private static final Identifier SHADOW_LOCATION = Identifier.fromNamespaceAndPath(MME.MOD_ID, "textures/entity/zombie/shadow.png");
@@ -17,6 +17,7 @@ public class ShadowRenderer extends ZombieRenderer {
         super(context);
     }
 
+    /** {@inheritDoc} Returns the shadow texture. */
     @Override
     public @NotNull Identifier getTextureLocation(ZombieRenderState renderState) {
         return SHADOW_LOCATION;

@@ -28,7 +28,22 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 /**
- * Mixin for {@code Zombie} — Extends zombie behavior (destroying crops, torches, etc.).
+ * Mixin for {@code Zombie} — Extends zombie behavior: crop destruction, dimension/Y-based
+ * weapon population, and full-armor buffs.
+ *
+ * <p>Mechanism:</p>
+ * <ul>
+ *   <li>{@code registerGoals} injection (TAIL): adds a {@link DestroyCropGoal} so
+ *       zombies seek out and destroy crops.</li>
+ *   <li>{@code populateDefaultEquipmentSlots} overwrite: after the vanilla pass,
+ *       fully-armored zombies gain Strength II and a +0.1 movement-speed modifier;
+ *       zombies in the underground dimension or the overworld may additionally receive
+ *       a tiered melee weapon chosen by Y-level (see the {@code set*Weapon} helpers).</li>
+ * </ul>
+ *
+ * <p>Weapon drop rates: 0.25 below the dimension's Y threshold (underground 125,
+ * overworld 0), 0.05 at or above it, doubled on HARD difficulty. Fully-armored
+ * zombies always receive a weapon.</p>
  */
 @Mixin(Zombie.class)
 public abstract class ZombieMixin extends Monster {
@@ -46,6 +61,7 @@ public abstract class ZombieMixin extends Monster {
         super(entityType, level);
     }
 
+    /** Adds the crop-destroying goal (priority 4) after vanilla goal registration. */
     @Inject(method = "registerGoals", at = @At("TAIL"))
     protected void registerGoals(CallbackInfo ci) {
         Zombie zombie = (Zombie) (Object) this;
@@ -59,6 +75,7 @@ public abstract class ZombieMixin extends Monster {
     @Overwrite
     public void populateDefaultEquipmentSlots(@NonNull RandomSource randomSource, @NonNull DifficultyInstance difficultyInstance) {
         super.populateDefaultEquipmentSlots(randomSource, difficultyInstance);
+        // Full-armor bonus: infinite Strength II and a permanent +0.1 movement speed
         boolean fullArmor = !this.getItemBySlot(EquipmentSlot.HEAD).isEmpty()
                 && !this.getItemBySlot(EquipmentSlot.CHEST).isEmpty()
                 && !this.getItemBySlot(EquipmentSlot.LEGS).isEmpty()
@@ -74,6 +91,7 @@ public abstract class ZombieMixin extends Monster {
             );
         }
         Level level = this.level();
+        // Drop rate: 0.25 below the Y threshold, 0.05 above; doubled on HARD difficulty
         if (level.dimension() == MMEDimensionTypeRegistrar.UNDERGROUND_LEVEL_KEY) {
             float populateRate = (getY() < LOW_Y_THRESHOLD_UNDERGROUND ? LOW_Y_DROP_RATE : HIGH_Y_DROP_RATE) * (level.getDifficulty() == Difficulty.HARD ? HARD_DIFFICULTY_MULTIPLIER : 1.0F);
             if (randomSource.nextFloat() < populateRate || fullArmor) {

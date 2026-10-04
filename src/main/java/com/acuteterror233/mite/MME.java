@@ -42,11 +42,19 @@ import java.util.Set;
  * Responsible for registering all blocks, items, entities, biome modifications, loot table replacements, and commands.
  */
 public class MME implements ModInitializer {
+    /** Mod id; also the namespace for every MME registry id, tag, and data path. */
     public static final String MOD_ID = "mme";
+    /** Shared SLF4J logger, named after the mod id. */
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
+    /** Vanilla {@code block_interaction_range} attribute id; MME items attach {@code ADD_VALUE} modifiers under it. */
     public static final Identifier BASE_BLOCK_INTERACTION_RANGE = Identifier.withDefaultNamespace("block_interaction_range");
+    /** Vanilla {@code entity_interaction_range} attribute id; MME items attach {@code ADD_VALUE} modifiers under it. */
     public static final Identifier BASE_ENTITY_INTERACTION_RANGE = Identifier.withDefaultNamespace("entity_interaction_range");
 
+    /**
+     * Fabric init entry point: runs registry inits, biome/attribute setup, POI registration,
+     * overworld ore adjustments, sleep-rule overrides, flammability tweaks, and command registration.
+     */
     @Override
     public void onInitialize() {
         LOGGER.info("Make Minecraft Easy!");
@@ -115,6 +123,7 @@ public class MME implements ModInitializer {
         );
     }
 
+    /** Adds a placed feature to every overworld biome in the {@code UNDERGROUND_ORES} decoration step. */
     private void inOverworldAdd(ResourceKey<PlacedFeature> key) {
         BiomeModifications.addFeature(
                 BiomeSelectors.foundInOverworld(),
@@ -123,6 +132,7 @@ public class MME implements ModInitializer {
         );
     }
 
+    /** Removes a vanilla placed feature from every overworld biome via a dedicated {@code REMOVALS} modification. */
     private static void inOverworldRemovals(ResourceKey<PlacedFeature> oreDiamond) {
         BiomeModifications.create(oreDiamond.identifier()).add(
                 ModificationPhase.REMOVALS,
@@ -132,7 +142,15 @@ public class MME implements ModInitializer {
     }
 
     /**
-     * Set of recipe identifiers to be filtered out.
+     * Vanilla recipe ids removed from the recipe map by {@code RecipeMapMixin}, grouped by reason:
+     * wooden and stone tools (replaced by the flint-tier early-game progression);
+     * diamond tools and armor (diamond gear is gated behind the metal crafting tables);
+     * the crafting table and crafter (superseded by MME's crafting progression);
+     * netherite smithing upgrades (handled by MME's own anvil/upgrade system);
+     * the fishing rod (replaced by MME's metal fishing rods);
+     * raw metal smelting (raw iron/copper/gold must be processed by MME means);
+     * the bundle.
+     * These ids are hardcoded — a vanilla rename in an MC upgrade silently breaks the filter.
      */
     public static Set<Identifier> FILTER_RECIPE_SET = Set.of(
             Identifier.withDefaultNamespace("wooden_pickaxe"),
@@ -171,7 +189,13 @@ public class MME implements ModInitializer {
             Identifier.withDefaultNamespace("bundle")
     );
 
-    //default=1
+    /**
+     * Maps vanilla fuel burn-time provider keys to their MME "combustion grade" (fuel strength class).
+     * Applied by {@code ItemPropertiesMixin}: a fuel item's {@code combustion_grade} component is looked
+     * up here and defaults to 1 for fuels not listed. Higher is stronger:
+     * 1 default, 2 coal / coal block, 3 lava bucket, 4 blaze rod. Furnaces compare this grade against
+     * the fuel's {@code max_combustion_grade} cap and the ingredient's {@code required_combustion_grade}.
+     */
     public static Map<ResourceKey<ContextIntProvider>, Integer> CORRESPONDING_COMBUSTION_GRADE = Map.ofEntries(
             Map.entry(ContextIntProviders.COOKING_TIME_COAL, 2),
             Map.entry(ContextIntProviders.COOKING_TIME_BLAZE_ROD, 4),

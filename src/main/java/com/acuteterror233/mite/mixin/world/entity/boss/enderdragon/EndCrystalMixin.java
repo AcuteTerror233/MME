@@ -14,7 +14,12 @@ import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
 
 /**
- * Mixin for {@code EndCrystal} — Modify End Crystal behavior.
+ * Mixin for {@code EndCrystal} — Restricts end crystal destruction to dedicated tools.
+ *
+ * <p>The crystal is invulnerable to every damage source except weapons tagged
+ * {@code MMEItemTags#DESTRUCTIBLE_ENDCRYSTAL}; dragon contact no longer destroys it.
+ * When broken by a qualifying non-explosion hit, the vanilla 6.0-block explosion
+ * still triggers before removal.</p>
  */
 @Mixin(EndCrystal.class)
 public abstract class EndCrystalMixin extends Entity{
@@ -22,6 +27,14 @@ public abstract class EndCrystalMixin extends Entity{
         super(entityType, level);
     }
 
+    /**
+     * Only weapons in the {@code DESTRUCTIBLE_ENDCRYSTAL} tag can destroy the crystal;
+     * qualified non-explosive hits trigger a 6.0-block explosion on removal.
+     *
+     * @param damageSource the incoming damage source
+     * @param f            damage amount (unused — the crystal is removed outright)
+     * @return {@code true} if the crystal was destroyed
+     */
     @Overwrite
     public final boolean hurtServer(ServerLevel serverLevel, DamageSource damageSource, float f) {
         if (this.isInvulnerableToBase(damageSource)) {

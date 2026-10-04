@@ -58,6 +58,7 @@ public class MMEArmorMaterials {
             MMEItemTags.ADAMANTIUM_TOOL_MATERIALS,
             ADAMANTIUM_MATERIAL_KEY
     );
+    // Chainmail variants reuse the base material's durability multiplied by 0.75 and lower defense.
     public static final MMEArmorMaterial ADAMANTIUM_CHAINMAIL_MATERIAL = new MMEArmorMaterial(
             (int) (MMEToolMaterials.ADAMANTIUM.durability() * 0.75),
             createDefenseMap(1.7F, 2.7F, 2.3F, 1.3F, 2.7F),
@@ -128,6 +129,7 @@ public class MMEArmorMaterials {
             ItemTags.IRON_TOOL_MATERIALS,
             IRON_CHAINMAIL_MATERIAL_KEY
     );
+    // Rusted iron passes a null repair tag: its armor cannot be repaired.
     public static final MMEArmorMaterial RUSTED_IRON_MATERIAL = new MMEArmorMaterial(
             MMEToolMaterials.RUSTED_IRON.durability(),
             createDefenseMap(1.3F, 2.0F, 1.8F, 1.0F, 2.0F),
@@ -135,7 +137,7 @@ public class MMEArmorMaterials {
             SoundEvents.ARMOR_EQUIP_IRON,
             0.0F,
             0.0F,
-            null,
+            MMEItemTags.RUSTED_IRON_TOOL_MATERIALS,
             RUSTED_IRON_MATERIAL_KEY
     );
     public static final MMEArmorMaterial RUSTED_IRON_CHAINMAIL_MATERIAL = new MMEArmorMaterial(
@@ -145,7 +147,7 @@ public class MMEArmorMaterials {
             SoundEvents.ARMOR_EQUIP_IRON,
             0.0F,
             0.0F,
-            null,
+            MMEItemTags.RUSTED_IRON_TOOL_MATERIALS,
             RUSTED_IRON_CHAINMAIL_MATERIAL_KEY
     );
     public static final MMEArmorMaterial COPPER_MATERIAL = new MMEArmorMaterial(
@@ -218,6 +220,9 @@ public class MMEArmorMaterials {
             ItemTags.REPAIRS_LEATHER_ARMOR,
             EquipmentAssets.LEATHER
     );
+    /**
+     * Builds the per-slot defense map; argument order: boots, leggings, chestplate, helmet, body.
+     */
     private static Map<ArmorType, Float> createDefenseMap(float bootsDefense, float leggingsDefense, float chestplateDefense, float helmetDefense, float bodyDefense) {
         return Maps.newEnumMap(
                 Map.of(

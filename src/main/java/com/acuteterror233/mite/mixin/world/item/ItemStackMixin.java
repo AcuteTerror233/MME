@@ -18,8 +18,14 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+import java.util.OptionalDouble;
+
 /**
- * Mixin for {@code ItemStack} — Extends item stack behavior.
+ * Mixin for {@code ItemStack} — Implements durability-based armor decay.
+ * Every time the damage value changes, armor pieces (humanoid armor slots carrying both the
+ * EQUIPPABLE and ATTRIBUTE_MODIFIERS components) have their ARMOR attribute modifier rewritten to
+ * the product of the item's default armor value and a decay multiplier derived from the current
+ * damage percentage, so armor protection fades as durability is consumed.
  */
 @Mixin(ItemStack.class)
 public abstract class ItemStackMixin  implements DataComponentHolder, FabricItemStack {
@@ -37,25 +43,35 @@ public abstract class ItemStackMixin  implements DataComponentHolder, FabricItem
     @Shadow
     public abstract Item getItem();
 
+    /** Hook on {@code setDamageValue}: any durability change re-applies the decayed armor modifiers. */
     @Inject(method = "setDamageValue", at = @At("TAIL"))
-    private void setDamageValue(int damage, CallbackInfo ci) {
+    private void setDamageValue(int value, CallbackInfo ci) {
         armorChanges();
     }
 
+    /**
+     * Rebuilds the ATTRIBUTE_MODIFIERS component for armor pieces: the ARMOR entry is replaced with
+     * {@code originalArmor * getArmorMultiplier()} (amount read from the item's pristine default
+     * instance so decay is always relative to full protection), all other modifiers are copied.
+     * No-op for non-armor or armor without attribute modifiers.
+     */
     @Unique
     private void armorChanges() {
         if (this.has(DataComponents.EQUIPPABLE) && this.has(DataComponents.ATTRIBUTE_MODIFIERS) && this.get(DataComponents.EQUIPPABLE).slot().getType() == EquipmentSlot.Type.HUMANOID_ARMOR) {
             ItemAttributeModifiers component = this.get(DataComponents.ATTRIBUTE_MODIFIERS);
             ItemAttributeModifiers.Builder builder = ItemAttributeModifiers.builder();
-            double originalArmor = getItem()
+            OptionalDouble optionalDouble = getItem()
                     .getDefaultInstance()
                     .get(DataComponents.ATTRIBUTE_MODIFIERS)
                     .modifiers()
                     .stream()
                     .filter(entry -> entry.attribute().equals(Attributes.ARMOR))
                     .mapToDouble(e -> e.modifier().amount())
-                    .findFirst()
-                    .orElseThrow();
+                    .findFirst();
+            if (optionalDouble.isEmpty()) {
+                return;
+            }
+            double originalArmor = optionalDouble.getAsDouble();
 
             component.modifiers().forEach(entry -> {
                 if (entry.attribute().equals(Attributes.ARMOR)) {
@@ -71,6 +87,11 @@ public abstract class ItemStackMixin  implements DataComponentHolder, FabricItem
         }
     }
 
+    /**
+     * @return decay multiplier for the ARMOR attribute from the durability percentage:
+     * below 20% damage → 1.0 (full protection); 20%–80% → linear decay from 1.0 down to 0.0;
+     * 80%+ → 0.0 (armor fully ineffective).
+     */
     @Unique
     private float getArmorMultiplier() {
         int currentDamage = this.getDamageValue();

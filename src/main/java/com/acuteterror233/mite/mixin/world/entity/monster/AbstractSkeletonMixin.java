@@ -20,6 +20,21 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Unique;
 
+/**
+ * Mixin for {@code AbstractSkeleton} — Extends skeleton behavior: dimension/Y-based
+ * weapon population and reduced combat attributes.
+ *
+ * <p>Mechanism:</p>
+ * <ul>
+ *   <li>{@code populateDefaultEquipmentSlots} overwrite: after the vanilla pass,
+ *       skeletons in the underground dimension or the overworld may receive a tiered
+ *       weapon (bow or melee) chosen by Y-level (see the {@code set*Weapon} helpers).</li>
+ *   <li>{@code createAttributes} overwrite: movement speed 0.33, max health 6.</li>
+ * </ul>
+ *
+ * <p>Weapon drop rates: 0.25 below the dimension's Y threshold (underground 125,
+ * overworld 0), 0.05 at or above it, doubled on HARD difficulty.</p>
+ */
 @Mixin(AbstractSkeleton.class)
 public abstract class AbstractSkeletonMixin extends Monster implements RangedAttackMob {
     @Unique
@@ -45,6 +60,7 @@ public abstract class AbstractSkeletonMixin extends Monster implements RangedAtt
     public void populateDefaultEquipmentSlots(@NonNull RandomSource randomSource, @NonNull DifficultyInstance difficultyInstance) {
         super.populateDefaultEquipmentSlots(randomSource, difficultyInstance);
         Level level = this.level();
+        // Drop rate: 0.25 below the Y threshold, 0.05 above; doubled on HARD difficulty
         if (level.dimension() == MMEDimensionTypeRegistrar.UNDERGROUND_LEVEL_KEY) {
             float populateRate = (getY() < LOW_Y_THRESHOLD_UNDERGROUND ? LOW_Y_DROP_RATE : HIGH_Y_DROP_RATE) * (level.getDifficulty() == Difficulty.HARD ? HARD_DIFFICULTY_MULTIPLIER : 1.0F);
             if (randomSource.nextFloat() < populateRate) {
@@ -68,6 +84,7 @@ public abstract class AbstractSkeletonMixin extends Monster implements RangedAtt
         }
     }
 
+    // Underground low-Y weapon assignment
     @Unique
     private void setUndergroundLowYWeapon(int index) {
         switch (index) {
@@ -80,6 +97,7 @@ public abstract class AbstractSkeletonMixin extends Monster implements RangedAtt
         }
     }
 
+    // Underground high-Y weapon assignment
     @Unique
     private void setUndergroundHighYWeapon(int index) {
         switch (index) {
@@ -92,6 +110,7 @@ public abstract class AbstractSkeletonMixin extends Monster implements RangedAtt
         }
     }
 
+    // Overworld low-Y weapon assignment
     @Unique
     private void setOverworldLowYWeapon(int index) {
         switch (index) {
@@ -102,6 +121,7 @@ public abstract class AbstractSkeletonMixin extends Monster implements RangedAtt
         }
     }
 
+    // Overworld high-Y weapon assignment
     @Unique
     private void setOverworldHighYWeapon(int index) {
         switch (index) {
@@ -113,6 +133,8 @@ public abstract class AbstractSkeletonMixin extends Monster implements RangedAtt
     }
 
     /**
+     * Rebuilt monster attributes: movement speed 0.33 and max health 6.
+     *
      * @author AcuteTerror233
      * @reason Modify attributes
      */

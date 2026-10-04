@@ -20,6 +20,12 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
+/**
+ * Client-side mixin into {@link ClientLevel}, mirroring the server-side {@code LevelMixin}
+ * frost-moon logic: while the {@link SpecialMoonPhase#FROST_MOON} attribute is active, all
+ * precipitation on the client reports as snow so weather rendering (falling particles, etc.)
+ * matches the server's frozen world without a server round-trip.
+ */
 @Mixin(ClientLevel.class)
 public abstract class ClientLevelMixin extends Level implements BlockAndTintGetter, CacheSlot.Cleaner<ClientLevel> {
     @Shadow
@@ -30,6 +36,16 @@ public abstract class ClientLevelMixin extends Level implements BlockAndTintGett
         super(levelData, dimension, registryAccess, dimensionTypeRegistration, isClientSide, isDebug, biomeZoomSeed, maxChainedNeighborUpdates);
     }
 
+    /**
+     * Redirects the biome precipitation lookup inside {@code getPrecipitationAt}: during the
+     * frost moon every position reports {@link Biome.Precipitation#SNOW} regardless of biome,
+     * matching the server-side frost-moon override in {@code LevelMixin}.
+     *
+     * @param instance the biome being queried
+     * @param pos      the queried position
+     * @param seaLevel sea level used by the vanilla precipitation check
+     * @return snow during the frost moon, otherwise the vanilla biome result
+     */
     @Redirect(method = "getPrecipitationAt", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/biome/Biome;getPrecipitationAt(Lnet/minecraft/core/BlockPos;I)Lnet/minecraft/world/level/biome/Biome$Precipitation;"))
     private Biome.Precipitation getPrecipitationAt(Biome instance, BlockPos pos, int seaLevel){
         if (environmentAttributes.getDimensionValue(MMEEnvironmentAttributes.SPECIAL_MOON_PHASE).equals(SpecialMoonPhase.FROST_MOON)) {

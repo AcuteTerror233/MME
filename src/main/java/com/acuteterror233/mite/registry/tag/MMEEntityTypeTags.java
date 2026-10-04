@@ -11,9 +11,12 @@ import net.minecraft.world.entity.EntityType;
  * Used for categorizing entity behaviors (e.g., butchering, manure production).
  */
 public interface MMEEntityTypeTags {
+    /** Entities affected by the butchering mechanic (yield their butcher drops). */
     TagKey<EntityType<?>> SENSITIVE_TO_BUTCHERING = key("sensitive_to_butchering");
+    /** Entities that produce manure. */
     TagKey<EntityType<?>> PRODUCE_MANURE = key("produce_manure");
 
+    /** Creates a {@link TagKey} in the entity type registry under the MME namespace. */
     private static TagKey<EntityType<?>> key(String id) {
         return TagKey.create(Registries.ENTITY_TYPE, Identifier.fromNamespaceAndPath(MME.MOD_ID, id));
     }

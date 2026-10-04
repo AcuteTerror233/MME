@@ -1,6 +1,6 @@
 package com.acuteterror233.mite.block;
 
-import com.acuteterror233.mite.registry.tag.MMEItemTags;
+import com.acuteterror233.mite.material.MMEMaterials;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
@@ -19,20 +19,37 @@ import java.util.function.UnaryOperator;
 
 /**
  * Vanilla block property modifier.
- * Batch-modifies vanilla block hardness, explosion resistance, mining tools, etc. during mod initialization.
+ * Batch-modifies vanilla block hardness, explosion resistance, mining tools, etc. at vanilla
+ * bootstrap time: {@code BootstrapMixin} consults these maps through {@code VanillaRegisterModify}
+ * as each vanilla block registers, either replacing the block factory outright or adjusting the
+ * properties passed to it.
  */
 public final class VanillaBlockModify {
+    /** Factory replacements keyed by vanilla block id; may be combined with a settings modifier. */
     public static final Map<Identifier, Function<BlockBehaviour.Properties, Block>> BLOCK_FACTORY_MODIFY = createBlockFactoryModifyMap();
+    /** Property adjustments keyed by vanilla block id; values may tweak or fully rebuild the properties. */
     public static final Map<Identifier, UnaryOperator<BlockBehaviour.Properties>> BLOCK_SETTINGS_MODIFY = createBlockSettingsModifyMap();
 
+    /**
+     * Factory replacements keyed by vanilla block id.
+     * Vanilla anvils are rebuilt as {@link MMEAnvilBlock} (each state chaining to the next more
+     * damaged one); the crafting table is rebuilt as a plain {@link Block}, dropping its crafting
+     * GUI (MME replaces crafting with the grade crafting tables).
+     */
     private static Map<Identifier, Function<BlockBehaviour.Properties, Block>> createBlockFactoryModifyMap() {
         Map<Identifier, Function<BlockBehaviour.Properties, Block>> result = new HashMap<>();
-        result.put(Identifier.withDefaultNamespace("anvil"), settings -> new MMEAnvilBlock(settings, MMEItemTags.IRON_NOT_ALLOWED_MATERIAL, Blocks.CHIPPED_ANVIL));
-        result.put(Identifier.withDefaultNamespace("chipped_anvil"), settings -> new MMEAnvilBlock(settings, MMEItemTags.IRON_NOT_ALLOWED_MATERIAL, Blocks.DAMAGED_ANVIL));
-        result.put(Identifier.withDefaultNamespace("damaged_anvil"), settings -> new MMEAnvilBlock(settings, MMEItemTags.IRON_NOT_ALLOWED_MATERIAL, Blocks.AIR));
+        result.put(Identifier.withDefaultNamespace("anvil"), settings -> new MMEAnvilBlock(settings, MMEMaterials.IRON, Blocks.CHIPPED_ANVIL));
+        result.put(Identifier.withDefaultNamespace("chipped_anvil"), settings -> new MMEAnvilBlock(settings, MMEMaterials.IRON, Blocks.DAMAGED_ANVIL));
+        result.put(Identifier.withDefaultNamespace("damaged_anvil"), settings -> new MMEAnvilBlock(settings, MMEMaterials.IRON, Blocks.AIR));
         result.put(Identifier.withDefaultNamespace("crafting_table"), Block::new);
         return result;
-    } 
+    }
+    /**
+     * Property adjustments keyed by vanilla block id.
+     * Crop/plant blocks are made faster to break; the anvil becomes easy to mine but
+     * blast-resistant and immovable; the furnace is rebuilt from scratch and must re-attach its
+     * registry id via {@code setId}.
+     */
     private static Map<Identifier, UnaryOperator<BlockBehaviour.Properties>> createBlockSettingsModifyMap() {
         Map<Identifier, UnaryOperator<BlockBehaviour.Properties>> result = new HashMap<>();
         result.put(Identifier.withDefaultNamespace("anvil"),settings -> BlockBehaviour.Properties.of()
@@ -82,5 +99,5 @@ public final class VanillaBlockModify {
         );
         return result;
     }
-     
+
 }

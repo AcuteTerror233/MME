@@ -7,3 +7,6 @@
 # These are Windows script files and should use crlf
 *.bat           text eol=crlf
 
+# Java sources are normalized to lf (2026-10 style unification)
+*.java          text eol=lf
+

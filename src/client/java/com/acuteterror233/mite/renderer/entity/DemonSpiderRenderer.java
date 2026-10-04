@@ -18,6 +18,7 @@ public class DemonSpiderRenderer extends SpiderRenderer<DemonSpider> {
         super(context);
     }
 
+    /** {@inheritDoc} Returns the demon spider texture. */
     @Override
     public @NotNull Identifier getTextureLocation(LivingEntityRenderState renderState) {
         return TEXTURE;

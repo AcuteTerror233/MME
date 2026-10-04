@@ -25,17 +25,24 @@ import org.jetbrains.annotations.Nullable;
 
 /**
  * Destroy crop AI goal.
- * Makes entity seek and destroy mature crops.
+ * Makes the mob seek out crop blocks ({@link CropBlock}, any growth stage) and trample them:
+ * the mob jumps on the crop for ~3 seconds (hop particles/sounds), then removes the block.
  */
 public class DestroyCropGoal extends MoveToBlockGoal {
     private final Mob removerMob;
     private int ticksSinceReachedGoal;
 
+    /**
+     * @param mob   mob that will trample the crops
+     * @param speed movement speed modifier while pathing to the crop
+     * @param range horizontal search radius (blocks) for valid crops
+     */
     public DestroyCropGoal(PathfinderMob mob, double speed, int range) {
         super(mob, speed, 24, range);
         this.removerMob = mob;
     }
 
+    /** Only runs when {@code mobGriefing} is enabled, and only after the cooldown expires. */
     @Override
     public boolean canUse() {
         if (!getServerLevel(this.removerMob).getGameRules().get(GameRules.MOB_GRIEFING)) {
@@ -53,6 +60,7 @@ public class DestroyCropGoal extends MoveToBlockGoal {
         return false;
     }
 
+    /** Stops the goal and resets the mob's fall distance to 1.0 so the landing hop does not accumulate. */
     @Override
     public void stop() {
         super.stop();
@@ -78,6 +86,7 @@ public class DestroyCropGoal extends MoveToBlockGoal {
         return 2;
     }
 
+    /** While trampling: hop on the crop (alternating vertical impulses), emit dirt particles and sounds, then remove the crop after 60+ ticks. */
     @Override
     public void tick() {
         BlockPos blockPos = this.getMoveToTarget();
@@ -139,6 +148,7 @@ public class DestroyCropGoal extends MoveToBlockGoal {
         }
     }
 
+    /** @return the position of a crop at/around {@code blockPos} (self, 4 horizontal neighbors, or 2 below), or {@code null}. */
     @Nullable
     private BlockPos getCropPos(BlockPos blockPos, BlockGetter blockGetter) {
         if (blockGetter.getBlockState(blockPos).getBlock() instanceof CropBlock) {
@@ -153,6 +163,7 @@ public class DestroyCropGoal extends MoveToBlockGoal {
         return null;
     }
 
+    /** A crop counts as a valid target when loaded and with 2 blocks of clear air above it. */
     @Override
     protected boolean isValidTarget(LevelReader levelReader, BlockPos blockPos) {
         ChunkAccess chunkAccess = levelReader.getChunk(

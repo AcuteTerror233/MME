@@ -27,6 +27,12 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.predicates.LootItemEntityPropertyCondition;
 
+/**
+ * MME enchantment registry: declares the {@link ResourceKey}s and bootstraps the data-driven
+ * enchantment definitions for the {@code mite} namespace.
+ * Note: {@link #PIERCING}, {@link #SPEED} and {@link #ENDURANCE} are declared as keys but have no
+ * bootstrap entry here yet.
+ */
 public final class MMEEnchantments {
     public static final ResourceKey<Enchantment> BUTCHERING = key("butchering");
     public static final ResourceKey<Enchantment> CLEAVING = key("cleaving");
@@ -37,6 +43,12 @@ public final class MMEEnchantments {
     public static final ResourceKey<Enchantment> ENDURANCE = key("endurance");
     public static final ResourceKey<Enchantment> UPGRADE = key("upgrade");
 
+    /**
+     * Registers each MME enchantment definition (supported items, weight, max level, cost curve,
+     * effects and exclusivity tags) into the datagen bootstrap context.
+     *
+     * @param bootstrapContext datagen bootstrap context providing registry lookups
+     */
     public static void bootstrap(BootstrapContext<Enchantment> bootstrapContext) {
         HolderGetter<DamageType> damageTypeGetter = bootstrapContext.lookup(Registries.DAMAGE_TYPE);
         HolderGetter<Enchantment> enchantmentGetter = bootstrapContext.lookup(Registries.ENCHANTMENT);

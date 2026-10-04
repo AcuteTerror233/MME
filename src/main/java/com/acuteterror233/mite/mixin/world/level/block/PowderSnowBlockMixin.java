@@ -19,11 +19,27 @@ import org.spongepowered.asm.mixin.Mixin;
 
 import java.util.Optional;
 
-@Mixin(PowderSnowBlock.class)
 /**
- * Mixin for {@code PowderSnowBlock} — Implements fluid drainable interface for powder snow.
+ * Mixin for {@code PowderSnowBlock} — makes powder snow bucketable through the MME
+ * {@link FluidDrainableExtension} duck interface.
+ *
+ * <p>Taking the fluid removes the block immediately (with break particles on the server) and
+ * returns a "powder_snow_"-prefixed variant of the supplied bucket item, mirroring vanilla's
+ * {@code BucketPickup} behavior. The fill sound is vanilla's powder-snow bucket sound. Executed on
+ * the interacting side; the particle event is server-only.</p>
  */
+@Mixin(PowderSnowBlock.class)
 public class PowderSnowBlockMixin implements FluidDrainableExtension {
+    /**
+     * Duck-interface implementation: scoops the powder snow block into a bucket.
+     *
+     * @param drainer the entity taking the fluid, if any
+     * @param world   the level containing the block
+     * @param pos     the powder snow position
+     * @param state   the powder snow block state
+     * @param item    the (empty) bucket item used for pickup
+     * @return the filled powder-snow bucket
+     */
     @Override
     public ItemStack MME$TakeFluid(@Nullable LivingEntity drainer, LevelAccessor world, BlockPos pos, BlockState state, Item item) {
         world.setBlock(pos, Blocks.AIR.defaultBlockState(), Block.UPDATE_ALL_IMMEDIATE);
@@ -33,6 +49,11 @@ public class PowderSnowBlockMixin implements FluidDrainableExtension {
         return new ItemStack(BuiltInRegistries.ITEM.getValue(BuiltInRegistries.ITEM.getKey(item).withPrefix("powder_snow_")));
     }
 
+    /**
+     * Duck-interface implementation: the sound played when powder snow is scooped into a bucket.
+     *
+     * @return the vanilla powder-snow bucket fill sound
+     */
     @Override
     public Optional<SoundEvent> MME$GetBucketFillSound() {
         return Optional.of(SoundEvents.BUCKET_FILL_POWDER_SNOW);

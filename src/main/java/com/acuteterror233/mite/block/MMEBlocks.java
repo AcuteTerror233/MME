@@ -1,6 +1,6 @@
 package com.acuteterror233.mite.block;
 
-import com.acuteterror233.mite.registry.tag.MMEItemTags;
+import com.acuteterror233.mite.material.MMEMaterials;
 import com.google.common.collect.ImmutableList;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.block.*;
@@ -82,25 +82,25 @@ public class MMEBlocks {
     );
 
     public static final AnvilCollection<Block> NETHERITE_ANVILS = AnvilCollection.registerBlocks(
-            MMEBlockItemIds.NETHERITE_ANVIL, MMEItemTags.NETHERITE_NOT_ALLOWED_MATERIAL, BlockBehaviour.Properties.ofFullCopy(Blocks.ANVIL)
+            MMEBlockItemIds.NETHERITE_ANVIL, MMEMaterials.NETHERITE, BlockBehaviour.Properties.ofFullCopy(Blocks.ANVIL)
     );
     public static final AnvilCollection<Block> ADAMANTIUM_ANVILS = AnvilCollection.registerBlocks(
-            MMEBlockItemIds.ADAMANTIUM_ANVIL, MMEItemTags.ADAMANTIUM_NOT_ALLOWED_MATERIAL, BlockBehaviour.Properties.ofFullCopy(Blocks.ANVIL)
+            MMEBlockItemIds.ADAMANTIUM_ANVIL, MMEMaterials.ADAMANTIUM, BlockBehaviour.Properties.ofFullCopy(Blocks.ANVIL)
     );
     public static final AnvilCollection<Block> MITHRIL_ANVILS = AnvilCollection.registerBlocks(
-            MMEBlockItemIds.MITHRIL_ANVIL, MMEItemTags.MITHRIL_NOT_ALLOWED_MATERIAL, BlockBehaviour.Properties.ofFullCopy(Blocks.ANVIL)
+            MMEBlockItemIds.MITHRIL_ANVIL, MMEMaterials.MITHRIL, BlockBehaviour.Properties.ofFullCopy(Blocks.ANVIL)
     );
     public static final AnvilCollection<Block> ANCIENT_METAL_ANVILS = AnvilCollection.registerBlocks(
-            MMEBlockItemIds.ANCIENT_METAL_ANVIL, MMEItemTags.ANCIENT_METAL_NOT_ALLOWED_MATERIAL, BlockBehaviour.Properties.ofFullCopy(Blocks.ANVIL)
+            MMEBlockItemIds.ANCIENT_METAL_ANVIL, MMEMaterials.ANCIENT_METAL, BlockBehaviour.Properties.ofFullCopy(Blocks.ANVIL)
     );
     public static final AnvilCollection<Block> GOLDEN_ANVILS = AnvilCollection.registerBlocks(
-            MMEBlockItemIds.GOLDEN_ANVIL, MMEItemTags.GOLD_NOT_ALLOWED_MATERIAL, BlockBehaviour.Properties.ofFullCopy(Blocks.ANVIL)
+            MMEBlockItemIds.GOLDEN_ANVIL, MMEMaterials.GOLD, BlockBehaviour.Properties.ofFullCopy(Blocks.ANVIL)
     );
     public static final AnvilCollection<Block> SILVER_ANVILS = AnvilCollection.registerBlocks(
-            MMEBlockItemIds.SILVER_ANVIL, MMEItemTags.COPPER_OR_SILVER_NOT_ALLOWED_MATERIAL, BlockBehaviour.Properties.ofFullCopy(Blocks.ANVIL)
+            MMEBlockItemIds.SILVER_ANVIL, MMEMaterials.SILVER, BlockBehaviour.Properties.ofFullCopy(Blocks.ANVIL)
     );
     public static final AnvilCollection<Block> COPPER_ANVILS = AnvilCollection.registerBlocks(
-            MMEBlockItemIds.COPPER_ANVIL, MMEItemTags.COPPER_OR_SILVER_NOT_ALLOWED_MATERIAL, BlockBehaviour.Properties.ofFullCopy(Blocks.ANVIL)
+            MMEBlockItemIds.COPPER_ANVIL, MMEMaterials.COPPER, BlockBehaviour.Properties.ofFullCopy(Blocks.ANVIL)
     );
 
     // Backward-compatible aliases — delegate to the collections
@@ -157,47 +157,47 @@ public class MMEBlocks {
 
     public static final Block ADAMANTIUM_CRAFTING_TABLE = register(
             MMEBlockItemIds.ADAMANTIUM_CRAFTING_TABLE,
-            settings -> new GradeCraftingTableBlock(settings, MMEItemTags.ADAMANTIUM_NOT_ALLOWED_MATERIAL, MMEItemTags.ADAMANTIUM_CRAFTING_TABLE_EXCEPTIONS, 0.18f),
+            settings -> new GradeCraftingTableBlock(settings, MMEMaterials.ADAMANTIUM),
             BlockBehaviour.Properties.ofFullCopy(Blocks.CRAFTING_TABLE)
     );
     public static final Block MITHRIL_CRAFTING_TABLE = register(
             MMEBlockItemIds.MITHRIL_CRAFTING_TABLE,
-            settings -> new GradeCraftingTableBlock(settings, MMEItemTags.MITHRIL_NOT_ALLOWED_MATERIAL, MMEItemTags.MITHRIL_CRAFTING_TABLE_EXCEPTIONS, 0.15f),
+            settings -> new GradeCraftingTableBlock(settings, MMEMaterials.MITHRIL),
             BlockBehaviour.Properties.ofFullCopy(Blocks.CRAFTING_TABLE)
     );
     public static final Block ANCIENT_METAL_CRAFTING_TABLE = register(
             MMEBlockItemIds.ANCIENT_METAL_CRAFTING_TABLE,
-            settings -> new GradeCraftingTableBlock(settings, MMEItemTags.ANCIENT_METAL_NOT_ALLOWED_MATERIAL, MMEItemTags.ANCIENT_METAL_CRAFTING_TABLE_EXCEPTIONS, 0.12f),
+            settings -> new GradeCraftingTableBlock(settings, MMEMaterials.ANCIENT_METAL),
             BlockBehaviour.Properties.ofFullCopy(Blocks.CRAFTING_TABLE)
     );
     public static final Block IRON_CRAFTING_TABLE = register(
             MMEBlockItemIds.IRON_CRAFTING_TABLE,
-            settings -> new GradeCraftingTableBlock(settings, MMEItemTags.IRON_NOT_ALLOWED_MATERIAL, MMEItemTags.IRON_CRAFTING_TABLE_EXCEPTIONS, 0.09f),
+            settings -> new GradeCraftingTableBlock(settings, MMEMaterials.IRON),
             BlockBehaviour.Properties.ofFullCopy(Blocks.CRAFTING_TABLE)
     );
     public static final Block COPPER_CRAFTING_TABLE = register(
             MMEBlockItemIds.COPPER_CRAFTING_TABLE,
-            settings -> new GradeCraftingTableBlock(settings, MMEItemTags.COPPER_OR_SILVER_NOT_ALLOWED_MATERIAL, MMEItemTags.COPPER_CRAFTING_TABLE_EXCEPTIONS, 0.06f),
+            settings -> new GradeCraftingTableBlock(settings, MMEMaterials.COPPER),
             BlockBehaviour.Properties.ofFullCopy(Blocks.CRAFTING_TABLE)
     );
     public static final Block SILVER_CRAFTING_TABLE = register(
             MMEBlockItemIds.SILVER_CRAFTING_TABLE,
-            settings -> new GradeCraftingTableBlock(settings, MMEItemTags.COPPER_OR_SILVER_NOT_ALLOWED_MATERIAL, MMEItemTags.SILVER_CRAFTING_TABLE_EXCEPTIONS, 0.06f),
+            settings -> new GradeCraftingTableBlock(settings, MMEMaterials.SILVER),
             BlockBehaviour.Properties.ofFullCopy(Blocks.CRAFTING_TABLE)
     );
     public static final Block GOLD_CRAFTING_TABLE = register(
             MMEBlockItemIds.GOLD_CRAFTING_TABLE,
-            settings -> new GradeCraftingTableBlock(settings, MMEItemTags.GOLD_NOT_ALLOWED_MATERIAL, MMEItemTags.GOLD_CRAFTING_TABLE_EXCEPTIONS, 0.03f),
+            settings -> new GradeCraftingTableBlock(settings, MMEMaterials.GOLD),
             BlockBehaviour.Properties.ofFullCopy(Blocks.CRAFTING_TABLE)
     );
     public static final Block FLINT_CRAFTING_TABLE = register(
             MMEBlockItemIds.FLINT_CRAFTING_TABLE,
-            settings -> new GradeCraftingTableBlock(settings, MMEItemTags.GOLD_NOT_ALLOWED_MATERIAL, MMEItemTags.FLINT_CRAFTING_TABLE_EXCEPTIONS, 0.03f),
+            settings -> new GradeCraftingTableBlock(settings, MMEMaterials.FLINT),
             BlockBehaviour.Properties.ofFullCopy(Blocks.CRAFTING_TABLE)
     );
     public static final Block OBSIDIAN_CRAFTING_TABLE = register(
             MMEBlockItemIds.OBSIDIAN_CRAFTING_TABLE,
-            settings -> new GradeCraftingTableBlock(settings, MMEItemTags.GOLD_NOT_ALLOWED_MATERIAL, MMEItemTags.OBSIDIAN_CRAFTING_TABLE_EXCEPTIONS, 0.03f),
+            settings -> new GradeCraftingTableBlock(settings, MMEMaterials.OBSIDIAN),
             BlockBehaviour.Properties.ofFullCopy(Blocks.CRAFTING_TABLE)
     );
 
@@ -213,28 +213,38 @@ public class MMEBlocks {
             BlockBehaviour.Properties.ofFullCopy(Blocks.SWEET_BERRY_BUSH)
     );
 
+    /**
+     * Computes an anvil's maximum damage from its material's base damage figure.
+     *
+     * @param damage the material's base damage figure
+     * @return the anvil's maximum use count, i.e. {@code damage * 40 * 2 / 3}
+     */
     public static int maxDamageAnvil(int damage) {
         return damage * 40 * 2 / 3;
     }
 
+    /** Registers a plain {@link Block} whose block and item share ids. */
     public static Block register(BlockItemId blockItemId, BlockBehaviour.Properties settings) {
         return register(blockItemId.blockKey(), Block::new, settings);
     }
 
+    /** Registers a plain {@link Block} under the given registry key (no paired block item). */
     public static Block register(ResourceKey<Block> registryKey, BlockBehaviour.Properties settings) {
         return register(registryKey, Block::new, settings);
     }
 
+    /** Registers a block built by {@code factory} whose block and item share ids. */
     public static Block register(BlockItemId blockItemId, Function<BlockBehaviour.Properties, Block> factory, BlockBehaviour.Properties settings) {
         return register(blockItemId.blockKey(), factory, settings);
     }
 
+    /** Registers a block built by {@code factory}, delegating to vanilla {@link Blocks#register}. */
     public static Block register(ResourceKey<Block> registryKey, Function<BlockBehaviour.Properties, Block> factory, BlockBehaviour.Properties settings) {
         return Blocks.register(registryKey, factory, settings);
     }
 
+    /** Class-load trigger; also initializes {@link MMEBlockEntityTypes}. */
     public static void init() {
         MMEBlockEntityTypes.init();
-        MMEMenuTypes.init();
     }
 }

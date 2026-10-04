@@ -30,11 +30,21 @@ import org.jetbrains.annotations.NotNull;
 public class MMEBucketItem extends BucketItem {
     private final Item empty_barrel;
 
+    /**
+     * @param fluid        fluid this bucket carries ({@link Fluids#EMPTY} for an empty bucket)
+     * @param settings     item properties
+     * @param empty_barrel empty barrel item handed back after use (survival mode only)
+     */
     public MMEBucketItem(Fluid fluid, Properties settings, Item empty_barrel) {
         super(fluid, settings);
         this.empty_barrel = empty_barrel;
     }
 
+    /**
+     * Vanilla bucket logic with MME extensions: placing content returns the configured empty
+     * barrel, and an empty barrel can drain fluids from blocks implementing
+     * {@link FluidDrainableExtension} (in addition to vanilla fluid pickup).
+     */
     @Override
     public @NotNull InteractionResult use(Level level, Player player, InteractionHand hand) {
         ItemStack itemStack = player.getItemInHand(hand);
@@ -89,6 +99,7 @@ public class MMEBucketItem extends BucketItem {
             return InteractionResult.FAIL;
         }
     }
+    /** @return the stack the player ends up holding: an empty barrel in survival, the original stack otherwise. */
     public ItemStack getEmptyBarrelSuccessItem ( final ItemStack itemStack, final Player player){
         return !player.hasInfiniteMaterials() ? new ItemStack(this.empty_barrel) : itemStack;
     }

@@ -24,18 +24,42 @@ import org.spongepowered.asm.mixin.Unique;
 import java.util.List;
 import java.util.Optional;
 
-@Mixin(BaseFireBlock.class)
 /**
- * Mixin for {@code BaseFireBlock} — Modifies fire spreading logic.
+ * Mixin for {@code BaseFireBlock} — replaces fire placement with the MME portal-routing system.
+ *
+ * <p>{@code onPlace} is fully overwritten. When fire ignites, the mixin looks for an empty portal
+ * frame around the ignition point and picks the portal type from frame material and dimension:
+ * frames of {@code ADAMANTIUM_RUNESTORE} / {@code MITHRIL_RUNESTORE} build a
+ * {@linkplain RunePortalCoordinateGenerator rune portal} whose destination is generated at a
+ * distance of 6000–8000 blocks (×4 for adamantium) in a valid target dimension; in the Overworld a
+ * frame whose bottom corner is bedrock builds an {@code UNDERGROUND_PORTAL}; in the MME underground
+ * dimension a mantle-bottomed frame builds a vanilla-style nether portal back to the surface; any
+ * other valid frame builds a {@code HOME_PORTAL}. If no frame matches, the vanilla
+ * {@code canSurvive} check (portal-free fire needs a valid base) still applies. All of this runs
+ * server-side ({@code onPlace} fires during server block updates; fire is not placeable client-side).
+ * The remaining helpers adapt vanilla's portal-destination search to locate a safe frame position.
+ * Portal shape capability checks go through the {@link UniversalPortalShapeExtension} duck
+ * interface.</p>
  */
+@Mixin(BaseFireBlock.class)
 public abstract class BaseFireBlockMixin {
     /**
-     * @author  AcuteTerror233
+     * @author AcuteTerror233
      * @reason  Added judgment logic for creating multiple types of portals
+     *
+     * <p>Overwrites vanilla {@code onPlace}: on ignition, detects the surrounding portal frame and
+     * creates the matching MME portal type; otherwise applies the vanilla fire-survivability check.</p>
+     *
+     * @param state    the fire state that was just placed
+     * @param world    the level the fire ignited in
+     * @param pos      the fire position
+     * @param oldState the state previously at {@code pos}
+     * @param notify   whether the vanilla place should notify neighbors
      */
     @Overwrite
     public void onPlace(BlockState state, Level world, BlockPos pos, BlockState oldState, boolean notify) {
         if (!oldState.is(state.getBlock())) {
+            // Look for an empty portal frame (X axis candidates) around the ignition point.
             Optional<PortalShape> optional = PortalShape.findEmptyPortalShape(world, pos, Direction.Axis.X);
             if (optional.isPresent()) {
                 UniversalPortalShapeExtension extension = (UniversalPortalShapeExtension) optional.get();
@@ -68,6 +92,19 @@ public abstract class BaseFireBlockMixin {
             }
         }
     }
+    /**
+     * Finds a safe 2-wide × 3-high portal placement spot near {@code pos}, adapted from vanilla's
+     * portal destination search. Scans a 16-block spiral, probing downward from the surface at each
+     * column for a column of replaceable air with solid ground and enough vertical clearance.
+     *
+     * <p>Preference order: the closest position with both orthogonally adjacent portal footprints
+     * valid, else the closest position with only the center footprint valid, else a carved platform
+     * (deepslate floor, air chamber) built one step back from {@code pos}.</p>
+     *
+     * @param world the server level the destination lives in
+     * @param pos   the approximate target coordinate for the portal
+     * @return the best found anchor position (portal base), or {@code pos.above()} if nothing fits
+     */
     @Unique
     private static BlockPos getSafeLocation(ServerLevel world, BlockPos pos) {
         Direction direction = Direction.EAST;
@@ -140,11 +177,23 @@ public abstract class BaseFireBlockMixin {
         }
         return bestPos;
     }
+    /** {@return true} when the state is replaceable (air, grass...) and contains no fluid. */
     @Unique
     private static boolean isBlockStateValid(ServerLevel world, BlockPos.MutableBlockPos pos) {
         BlockState blockState = world.getBlockState(pos);
         return blockState.canBeReplaced() && blockState.getFluidState().isEmpty();
     }
+    /**
+     * Checks that a full portal footprint (4 high × 4 wide, including the frame shell) fits at
+     * {@code pos}: rows below the base must be solid, rows at/above the base must be replaceable.
+     *
+     * @param world                    the server level being probed
+     * @param pos                      the portal base corner being tested
+     * @param temp                     scratch mutable position reused during the scan
+     * @param portalDirection          the portal's horizontal facing (X or Z axis step)
+     * @param distanceOrthogonalToPortal lateral offset (in blocks) from the portal plane
+     * @return whether the entire footprint is a valid portal space
+     */
     @Unique
     private static boolean isValidPortalPos(ServerLevel world, BlockPos pos, BlockPos.MutableBlockPos temp, Direction portalDirection, int distanceOrthogonalToPortal) {
         Direction direction = portalDirection.getClockWise();

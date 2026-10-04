@@ -6,6 +6,11 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.entity.EntityType;
 
+/**
+ * Resource keys for every MME entity type, referenced by {@link MMEEntityTypes} registration,
+ * spawn placements, loot tables and datagen. Keys are namespaced under {@code mme:} with the
+ * snake_case id passed to {@link #create(String)}.
+ */
 public class MMEEntityTypeIds {
     public static final ResourceKey<EntityType<?>> GHOUL = create("ghoul");
     public static final ResourceKey<EntityType<?>> SHADOW = create("shadow");
@@ -19,6 +24,7 @@ public class MMEEntityTypeIds {
     public static final ResourceKey<EntityType<?>> NIGHTWING = create("nightwing");
     public static final ResourceKey<EntityType<?>> GIANT_VAMPIRE_BAT = create("giant_vampire_bat");
 
+    /** @param name snake_case entity id (e.g. {@code "vampire_bat"}); must match the registered entity's path. */
     private static ResourceKey<EntityType<?>> create(final String name) {
         return ResourceKey.create(Registries.ENTITY_TYPE, Identifier.fromNamespaceAndPath(MME.MOD_ID, name));
     }

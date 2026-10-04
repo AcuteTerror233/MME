@@ -22,10 +22,16 @@ import java.util.function.Function;
 
 /**
  * Mixin for {@code Items} — Modifies vanilla item registration.
+ * The two static {@code registerBlock}/{@code registerItem} overloads are intercepted at HEAD so a
+ * {@link VanillaRegisterModify} listener can substitute a custom {@link Item} instance for the
+ * vanilla one (the substitute is registered in its place and wired into {@code Item.BY_BLOCK});
+ * when no listener answers, the vanilla factory runs unchanged. Also rewrites {@code mapProperties}
+ * to stack maps to 16.
  */
 @Mixin(Items.class)
 public class ItemsMixin {
 
+    /** Lets a listener replace the BlockItem being registered (result returned directly, vanilla path skipped). */
     @Inject(method = "registerBlock(Lnet/minecraft/references/BlockItemId;Lnet/minecraft/world/level/block/Block;Ljava/util/function/BiFunction;Lnet/minecraft/world/item/Item$Properties;)Lnet/minecraft/world/item/Item;",at = @At(value = "HEAD"), cancellable = true)
     private static void onRegister(BlockItemId id, Block block, BiFunction<Block, Item.Properties, Item> itemFactory, Item.Properties properties, CallbackInfoReturnable<Item> cir) {
         ResourceKey<Item> itemKey = id.item();
@@ -35,6 +41,7 @@ public class ItemsMixin {
             cir.setReturnValue(Registry.register(BuiltInRegistries.ITEM, itemKey, modify));
         }
     }
+    /** Same substitution for plain items; a substitute that is a BlockItem also re-registers its block mapping. */
     @Inject(method = "registerItem(Lnet/minecraft/resources/ResourceKey;Ljava/util/function/Function;Lnet/minecraft/world/item/Item$Properties;)Lnet/minecraft/world/item/Item;", at = @At(value = "HEAD"), cancellable = true)
     private static void onRegister(ResourceKey<Item> id, Function<Item.Properties, Item> itemFactory, Item.Properties properties, CallbackInfoReturnable<Item> cir) {
         Item modify = VanillaRegisterModify.ITEM_REGISTER.invoker().Modify(id, itemFactory, properties.setId(id));
@@ -46,6 +53,7 @@ public class ItemsMixin {
         }
     }
 
+    /** Vanilla {@code mapProperties} (empty map decorations, max stack 1) changed to max stack 16 for maps. */
     @Overwrite
     private static Item.Properties mapProperties() {
         return new Item.Properties().component(DataComponents.MAP_DECORATIONS, MapDecorations.EMPTY).stacksTo(16);

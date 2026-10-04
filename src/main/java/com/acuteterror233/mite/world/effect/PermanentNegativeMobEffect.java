@@ -8,6 +8,7 @@ import net.minecraft.world.effect.MobEffectCategory;
  * Extends {@link MobEffect}, category fixed to {@link MobEffectCategory#HARMFUL}.
  */
 public class PermanentNegativeMobEffect extends MobEffect {
+    /** @param i particle color (ARGB) used for effect icons/particles. */
     public PermanentNegativeMobEffect(int i) {
         super(MobEffectCategory.HARMFUL, i);
     }

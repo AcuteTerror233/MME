@@ -25,6 +25,7 @@ public class Wight extends Zombie {
         super(entityType, level);
     }
 
+    /** On melee hit, drains 5 experience points from the struck player. */
     @Override
     public boolean doHurtTarget(ServerLevel level, Entity target) {
         boolean hurt = super.doHurtTarget(level, target);
@@ -34,6 +35,7 @@ public class Wight extends Zombie {
         return hurt;
     }
 
+    /** Damage immunity: melee attacks from living attackers with non-silver, unenchanted weapons are ignored. */
     @Override
     public boolean hurtServer(ServerLevel level, DamageSource damageSource, float amount) {
         if (!DamageSourcePredicates.isSilverWeaponOrEnchanted(damageSource) && damageSource.getEntity() instanceof LivingEntity) {
@@ -42,6 +44,7 @@ public class Wight extends Zombie {
         return super.hurtServer(level, damageSource, amount);
     }
 
+    /** Wights never spawn with default equipment; they also gnaw out nearby torches ({@link DestroyTorchGoal}). */
     @Override
     protected void populateDefaultEquipmentSlots(RandomSource randomSource, DifficultyInstance difficultyInstance) {
 
@@ -53,6 +56,7 @@ public class Wight extends Zombie {
         this.goalSelector.addGoal(10, new DestroyTorchGoal(this, 0.8));
     }
 
+    /** @return zombie base attributes with faster movement (0.28). */
     public static AttributeSupplier.@NotNull Builder createAttributes() {
         return Zombie.createAttributes()
                 .add(Attributes.MOVEMENT_SPEED, 0.28F);

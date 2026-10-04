@@ -14,12 +14,22 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Consumer;
 
+/**
+ * Experience-yielding gem item, extends {@link Item}.
+ * Right-clicking a gem (diamond, emerald, amethyst shard, echo shard, ...) grants the configured
+ * experience points and consumes the item. Applied to vanilla gems via {@code VanillaItemModify}.
+ */
 public class GamItem extends Item {
     private final int experience;
+    /**
+     * @param settings   item properties
+     * @param experience experience points granted per use
+     */
     public GamItem(Properties settings, int experience) {
         super(settings);
         this.experience = experience;
     }
+    /** Right-click: grants the configured experience points and consumes one item. */
     @Override
     public @NotNull InteractionResult use(Level world, Player user, InteractionHand hand) {
         user.giveExperiencePoints(this.experience);
@@ -27,6 +37,7 @@ public class GamItem extends Item {
         world.playSound(user, user.getX(), user.getY(), user.getZ(), SoundEvents.EXPERIENCE_ORB_PICKUP, user.getSoundSource(), 1.0F, 1.0F);
         return InteractionResult.CONSUME;
     }
+    /** Adds the XP value of the gem to the tooltip. */
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext context, TooltipDisplay displayComponent, Consumer<Component> textConsumer, TooltipFlag type) {
         super.appendHoverText(stack, context, displayComponent, textConsumer, type);

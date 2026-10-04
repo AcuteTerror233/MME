@@ -21,6 +21,8 @@ import java.util.SequencedSet;
 /**
  * Fuel grade registry.
  * Maps items to fuel combustion grades, used by grade furnaces to restrict available fuels.
+ * Grades are 1 (wood-level) through 4 (blaze rod); 0 means "not a fuel" and items absent from
+ * the map cannot burn at all.
  */
 public class FuelGradeRegistry {
     private final Object2IntSortedMap<Item> fuelGrades;
@@ -29,18 +31,27 @@ public class FuelGradeRegistry {
         this.fuelGrades = fuelGrades;
     }
 
+    /** @return whether the stack's item is registered as a fuel at any grade. */
     public boolean hasFuelGrade(ItemStack item) {
         return this.fuelGrades.containsKey(item.getItem());
     }
 
+    /** @return the registered fuel items in insertion order (view only). */
     public SequencedSet<Item> getFuelGradeItems() {
         return Collections.unmodifiableSequencedSet(this.fuelGrades.keySet());
     }
 
+    /**
+     * @return the item's combustion grade; 0 for empty stacks and unregistered (non-fuel) items
+     */
     public int getFuelGrade(ItemStack item) {
         return item.isEmpty() ? 0 : this.fuelGrades.getInt(item.getItem());
     }
 
+    /**
+     * Builds the default fuel table: blaze rod 4, lava bucket 3, coal/coal block 2, and the
+     * long tail of wood-derived items at 1, minus the non-flammable wood tag.
+     */
     public static FuelGradeRegistry createDefault(HolderLookup.Provider registries, FeatureFlagSet enabledFeatures) {
         return new FuelGradeRegistry.Builder(registries, enabledFeatures)
                 .add(Items.BLAZE_ROD, 4)
@@ -113,6 +124,10 @@ public class FuelGradeRegistry {
                 .build();
     }
 
+    /**
+     * Fluent builder collecting fuel entries from items and item tags; only items enabled in the
+     * supplied feature flag set are kept. Later {@code add} calls overwrite earlier grades.
+     */
     public static class Builder {
         private final HolderLookup<Item> itemLookup;
         private final FeatureFlagSet enabledFeatures;
@@ -123,15 +138,18 @@ public class FuelGradeRegistry {
             this.enabledFeatures = enabledFeatures;
         }
 
+        /** @return the registry holding the collected fuel table. */
         public FuelGradeRegistry build() {
             return new FuelGradeRegistry(this.fuelGrades);
         }
 
+        /** Removes every currently registered item belonging to the tag. */
         public FuelGradeRegistry.Builder remove(TagKey<Item> tag) {
             this.fuelGrades.keySet().removeIf(item -> item.builtInRegistryHolder().is(tag));
             return this;
         }
 
+        /** Adds all tag members at the given grade (members resolve through the item lookup). */
         public FuelGradeRegistry.Builder add(TagKey<Item> tag, int grade) {
             this.itemLookup.get(tag).ifPresent(tagx -> {
                 for (Holder<Item> registryEntry : tagx) {
@@ -141,6 +159,7 @@ public class FuelGradeRegistry {
             return this;
         }
 
+        /** Adds a single item/block item at the given grade. */
         public FuelGradeRegistry.Builder add(ItemLike item, int grade) {
             Item item2 = item.asItem();
             this.add(grade, item2);

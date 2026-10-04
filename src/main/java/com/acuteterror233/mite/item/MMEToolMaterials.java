@@ -11,6 +11,11 @@ import net.minecraft.world.item.ToolMaterial;
  * Defines mining attributes for tools such as adamantium, mithril, ancient metal, rusted iron, copper, silver, etc.
  */
 public class MMEToolMaterials {
+    /**
+     * ToolMaterial arguments per constant: (incorrect-blocks tag, durability, mining speed,
+     * attack damage bonus, enchantment value, repair-items tag). Durability spans 3 (flint) to
+     * 256 (netherite); copper, silver and gold deliberately share one incorrect-blocks tag.
+     */
     public static final ToolMaterial NETHERITE = new ToolMaterial(BlockTags.INCORRECT_FOR_NETHERITE_TOOL, 256, 18.0F, 8.0F, 24, ItemTags.NETHERITE_TOOL_MATERIALS);
     public static final ToolMaterial ADAMANTIUM = new ToolMaterial(MMEBlockTags.INCORRECT_FOR_ADAMANTIUM_TOOL, 128, 16.0F, 7.0F, 21, MMEItemTags.ADAMANTIUM_TOOL_MATERIALS);
     public static final ToolMaterial MITHRIL = new ToolMaterial(MMEBlockTags.INCORRECT_FOR_MITHRIL_TOOL, 64, 14.0F, 6.0F, 18, MMEItemTags.MITHRIL_TOOL_MATERIALS);

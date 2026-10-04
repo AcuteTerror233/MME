@@ -1,5 +1,10 @@
 package com.acuteterror233.mite.block;
 
+/**
+ * Registry key pairs ({@link BlockItemId}) for every MME block item, grouped by block family.
+ * Anvil and runestone families derive their per-state ids from {@link AnvilState#getPrefix()}
+ * and {@link Rune#getSerializedName()} respectively.
+ */
 public class MMEBlockItemIds {
     public static final BlockItemId ADAMANTIUM_ORE = BlockItemId.create("adamantium_ore");
     public static final BlockItemId MITHRIL_ORE = BlockItemId.create("mithril_ore");

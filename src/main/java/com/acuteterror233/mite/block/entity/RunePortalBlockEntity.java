@@ -17,22 +17,26 @@ public class RunePortalBlockEntity extends BlockEntity{
         super(MMEBlockEntityTypes.RUNE_PORTAL, pos, state);
         this.destinationPos = pos;
     }
+    /** Persists the destination position under {@code destinations}. */
     @Override
     protected void saveAdditional(ValueOutput nbt) {
         nbt.store("destinations", BlockPos.CODEC, destinationPos);
         super.saveAdditional(nbt);
     }
 
+    /** Restores the destination position from {@code destinations}, if present. */
     @Override
     protected void loadAdditional(ValueInput nbt) {
         super.loadAdditional(nbt);
         nbt.read("destinations", BlockPos.CODEC).ifPresent(blockPos -> this.destinationPos = blockPos);
     }
 
+    /** Sets the teleport destination coordinates. */
     public void setDestinationPosPos(BlockPos pos) {
         this.destinationPos = pos;
     }
 
+    /** @return the teleport destination (defaults to the portal's own position until set). */
     public BlockPos getDestinationPos() {
         return this.destinationPos;
     }

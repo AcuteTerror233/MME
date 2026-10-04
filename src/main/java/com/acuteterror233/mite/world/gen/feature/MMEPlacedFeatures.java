@@ -8,6 +8,7 @@ import net.minecraft.world.level.levelgen.placement.PlacedFeature;
  * Aggregates placed feature bootstrapping for underground and overworld.
  */
 public class MMEPlacedFeatures {
+    /** Delegates to the underground and overworld placed feature bootstraps. */
     public static void bootstrap(BootstrapContext<PlacedFeature> featureRegisterable) {
         UndergroundPlacedFeatures.bootstrap(featureRegisterable);
         OverworldPlacedFeatures.bootstrap(featureRegisterable);

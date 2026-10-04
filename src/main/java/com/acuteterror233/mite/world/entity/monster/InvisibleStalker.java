@@ -26,37 +26,44 @@ public class InvisibleStalker extends Zombie {
         super(entityType, level);
     }
 
+    /** Adds the torch-destroying goal on top of zombie goals. */
     @Override
     protected void registerGoals() {
         super.registerGoals();
         this.goalSelector.addGoal(10, new DestroyTorchGoal(this, 0.8));
     }
 
+    /** Invisible stalkers never spawn with default equipment. */
     @Override
     protected void populateDefaultEquipmentSlots(RandomSource randomSource, DifficultyInstance difficultyInstance) {
 
     }
 
+    /** @return zombie base attributes with slightly faster movement (0.22). */
     public static AttributeSupplier.@NotNull Builder createAttributes() {
         return Zombie.createAttributes()
                 .add(Attributes.MOVEMENT_SPEED, 0.22F);
     }
 
+    /** Fully silent: no ambient sound. */
     @Override
     protected @NotNull SoundEvent getAmbientSound() {
         return SoundEvents.EMPTY;
     }
 
+    /** Fully silent: no hurt sound. */
     @Override
     protected @NotNull SoundEvent getHurtSound(DamageSource damageSource) {
         return SoundEvents.EMPTY;
     }
 
+    /** Fully silent: no death sound. */
     @Override
     protected @NotNull SoundEvent getDeathSound() {
         return SoundEvents.EMPTY;
     }
 
+    /** Damage immunity: melee attacks from living attackers with non-silver, unenchanted weapons are ignored. */
     @Override
     public boolean hurtServer(@NonNull ServerLevel level, @NonNull DamageSource damageSource, float amount) {
         if (!DamageSourcePredicates.isSilverWeaponOrEnchanted(damageSource) && damageSource.getEntity() instanceof LivingEntity) {

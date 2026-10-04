@@ -25,6 +25,11 @@ import java.util.Optional;
  * Handles portal generation logic, finding/creating corresponding nether portal blocks in the target dimension.
  */
 public class PortalHelper {
+    /**
+     * Finds the nearest existing portal position near {@code pos}.
+     * Searches POI records of the given type within {@code PreloadSize} blocks,
+     * filtered by world border and by positions that still hold a usable portal block.
+     */
     public static Optional<BlockPos> getPortalPos(ServerLevel world, BlockPos pos, int PreloadSize, WorldBorder worldBorder, ResourceKey<PoiType> matchesKey, Block block) {
         PoiManager pointOfInterestStorage = world.getPoiManager();
         pointOfInterestStorage.ensureLoadedAndValid(world, pos, PreloadSize);
@@ -152,11 +157,13 @@ public class PortalHelper {
         return Optional.of(new BlockUtil.FoundRectangle(bestPos.immutable(), 2, 3));
     }
 
+    // A position is usable when its block can be replaced and holds no fluid.
     private static boolean isBlockStateValid(ServerLevel world, BlockPos.MutableBlockPos pos) {
         BlockState blockState = world.getBlockState(pos);
         return blockState.canBeReplaced() && blockState.getFluidState().isEmpty();
     }
 
+    // Checks the 2x3 portal area and its frame are clear; the footing (j < 0) must be solid.
     private static boolean isValidPortalPos(ServerLevel world, BlockPos pos, BlockPos.MutableBlockPos temp, Direction portalDirection, int distanceOrthogonalToPortal) {
         Direction direction = portalDirection.getClockWise();
 

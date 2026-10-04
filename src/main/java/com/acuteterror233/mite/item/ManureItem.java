@@ -10,11 +10,17 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * Manure item, extends {@link Item}.
+ * Fertilizer: right-clicking farmland marks it permanently fertile (MME block state) instead of
+ * the one-shot bone meal effect.
+ */
 public class ManureItem extends Item {
     public ManureItem(Properties properties) {
         super(properties);
     }
 
+    /** Right-click on farmland: sets the FERTILE block state to true and consumes one item. */
     @Override
     public @NotNull InteractionResult useOn(UseOnContext useOnContext) {
         Level level = useOnContext.getLevel();

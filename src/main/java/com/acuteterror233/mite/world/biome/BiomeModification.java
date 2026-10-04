@@ -13,6 +13,7 @@ import net.minecraft.world.level.levelgen.GenerationStep;
  * Add MME custom features to vanilla biomes (ore generation, entity spawning, etc.).
  */
 public final class BiomeModification {
+    /** Adds blueberry bushes to cold biomes and MME monster spawns to the overworld and nether. */
     public static void init(){
         BiomeModifications.addFeature(
                 BiomeSelectors.includeByKey(

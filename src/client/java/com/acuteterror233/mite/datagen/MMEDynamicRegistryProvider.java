@@ -12,13 +12,16 @@ import java.util.concurrent.CompletableFuture;
 
 /**
  * MME dynamic registry data provider.
- * Registers dimension types, biomes, configured features, and other world generation data.
+ * Copies every entry bootstrapped by {@code MMEDataGenerator#buildRegistry} (dimension types,
+ * biomes, features, enchantments, damage types, painting variants, timelines, villager trades)
+ * from the registry lookup into the generated pack as JSON.
  */
 public class MMEDynamicRegistryProvider extends FabricDynamicRegistryProvider {
     public MMEDynamicRegistryProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
         super(output, registriesFuture);
     }
 
+    /** Copies all MME-registered entries of the bootstrapped dynamic registries into the datagen output. */
     @Override
     protected void configure(HolderLookup.Provider registries, Entries entries) {
         entries.addAll(registries.lookupOrThrow(Registries.DIMENSION_TYPE));
@@ -33,6 +36,7 @@ public class MMEDynamicRegistryProvider extends FabricDynamicRegistryProvider {
         villagerTrades.listElementIds().forEach(key -> entries.add(villagerTrades, key));
     }
 
+    /** {@inheritDoc} Returns {@code "mme_dynamic_registry"}. */
     @Override
     public @NotNull String getName() {
         return MME.MOD_ID + "_dynamic_registry";

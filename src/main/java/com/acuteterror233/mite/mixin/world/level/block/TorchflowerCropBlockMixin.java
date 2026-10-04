@@ -10,16 +10,27 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 
-@Mixin(TorchflowerCropBlock.class)
 /**
- * Mixin for {@code TorchflowerCropBlock} — Adds disease and fertility support.
+ * Mixin for {@code TorchflowerCropBlock} — adds the MME crop {@code DISEASE_LEVEL} state property.
+ *
+ * <p>{@code createBlockStateDefinition} is overwritten so every torchflower crop state also carries
+ * {@link MMEBlockStateProperties#DISEASE_LEVEL} alongside the vanilla two-stage {@code AGE_1};
+ * the shared disease mechanics are driven by {@code CropBlockMixin}. Runs on both sides since
+ * block states are synchronized.</p>
  */
+@Mixin(TorchflowerCropBlock.class)
 public abstract class TorchflowerCropBlockMixin extends CropBlock {
     protected TorchflowerCropBlockMixin(Properties properties) {
         super(properties);
     }
 
 
+    /**
+     * Overwrites vanilla {@code createBlockStateDefinition}: registers the vanilla torchflower age
+     * plus the custom disease-level property.
+     *
+     * @param builder the state definition builder to add properties to
+     */
     @Overwrite
     public void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(MMEBlockStateProperties.DISEASE_LEVEL).add(BlockStateProperties.AGE_1);

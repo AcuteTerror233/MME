@@ -39,6 +39,7 @@ import org.jspecify.annotations.NonNull;
  * Immune to non-silver damage, moves through lava, ignites targets on attack, sensitive to water.
  */
 public class FireElemental extends Monster {
+    // Pathfinding: avoid water, treat lava/fire/damaging blocks as passable.
     public FireElemental(EntityType<? extends FireElemental> entityType, Level level) {
         super(entityType, level);
         this.setPathfindingMalus(PathType.WATER, -1.0F);
@@ -59,6 +60,7 @@ public class FireElemental extends Monster {
         this.goalSelector.addGoal(8, new RandomLookAroundGoal(this));
     }
 
+    // Stays perpetually on fire and floats upward while swimming in lava.
     @Override
     public void tick() {
         super.tick();
@@ -78,6 +80,7 @@ public class FireElemental extends Monster {
         }
     }
 
+    // Immune to damage from living attackers without a silver weapon or silver enchantment.
     @Override
     public boolean hurtServer(@NonNull ServerLevel level, @NonNull DamageSource damageSource, float amount) {
         if (!DamageSourcePredicates.isSilverWeaponOrEnchanted(damageSource) && damageSource.getEntity() instanceof LivingEntity) {
@@ -86,6 +89,7 @@ public class FireElemental extends Monster {
         return super.hurtServer(level, damageSource, amount);
     }
 
+    // Ignites the target for 5 seconds on a successful hit.
     @Override
     public boolean doHurtTarget(@NonNull ServerLevel level, @NonNull Entity target) {
         boolean hurt = super.doHurtTarget(level, target);
@@ -95,11 +99,13 @@ public class FireElemental extends Monster {
         return hurt;
     }
 
+    // Spawns without equipment.
     @Override
     protected void populateDefaultEquipmentSlots(@NonNull RandomSource randomSource, @NonNull DifficultyInstance difficultyInstance) {
 
     }
 
+    // Relaxed spawn check: only needs unobstructed placement.
     @Override
     public boolean checkSpawnObstruction(LevelReader levelReader) {
         return levelReader.isUnobstructed(this);
@@ -120,21 +126,25 @@ public class FireElemental extends Monster {
         return SoundEvents.EMPTY;
     }
 
+    // Can stand on lava as if it were solid ground.
     @Override
     public boolean canStandOnFluid(FluidState fluidState) {
         return fluidState.is(FluidTags.LAVA);
     }
 
+    // Always burning.
     @Override
     public boolean isOnFire() {
         return true;
     }
 
+    // Water causes this mob harm.
     @Override
     public boolean isSensitiveToWater() {
         return true;
     }
 
+    /** Attribute builder: zombie base stats with 0.25 movement speed. */
     public static AttributeSupplier.@NotNull Builder createAttributes() {
         return Zombie.createAttributes()
                 .add(Attributes.MOVEMENT_SPEED, 0.25F);

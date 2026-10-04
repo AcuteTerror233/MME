@@ -29,6 +29,14 @@ public record MMEArmorMaterial(
         TagKey<Item> repairIngredient,
         ResourceKey<EquipmentAsset> assetId
 ) {
+    /**
+     * Builds the attribute modifiers for one armor piece: the type's defense value and the
+     * material toughness as ARMOR / ARMOR_TOUGHNESS additions, plus KNOCKBACK_RESISTANCE when
+     * the material's value is positive.
+     *
+     * @param equipmentType armor slot to build modifiers for (defense value is looked up per type)
+     * @return modifiers bound to the equipment slot group matching the armor type
+     */
     public ItemAttributeModifiers createAttributeModifiers(ArmorType equipmentType) {
         float i = this.defense.getOrDefault(equipmentType, 0.0F);
         ItemAttributeModifiers.Builder builder = ItemAttributeModifiers.builder();

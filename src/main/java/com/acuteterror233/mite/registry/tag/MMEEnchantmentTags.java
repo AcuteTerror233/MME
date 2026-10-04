@@ -11,8 +11,10 @@ import net.minecraft.world.item.enchantment.Enchantment;
  * Used for grouping enchantments (e.g., mutually exclusive enchantment sets).
  */
 public interface MMEEnchantmentTags {
+    /** Enchantments mutually exclusive with the equipment-drops enchantment family. */
     TagKey<Enchantment> EQUIPMENT_DROPS_EXCLUSIVE = key("equipment_drops_exclusive");
 
+    /** Creates a {@link TagKey} in the enchantment registry under the MME namespace. */
     private static TagKey<Enchantment> key(String id) {
         return TagKey.create(Registries.ENCHANTMENT, Identifier.fromNamespaceAndPath(MME.MOD_ID, id));
     }

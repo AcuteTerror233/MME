@@ -48,6 +48,7 @@ public class MMEEntityLootTableProvider extends FabricEntityLootSubProvider {
         super(output, registriesFuture);
     }
 
+    /** Generates the loot tables for MME entities and overrides vanilla zombies: special drops use the BUTCHERING enchantment as the looting analogue. */
     @Override
     public void generate() {
         LootTable.Builder zombieLootTable = LootTable.lootTable()
@@ -262,12 +263,36 @@ public class MMEEntityLootTableProvider extends FabricEntityLootSubProvider {
     }
 
 
+    /**
+     * Builds a kill condition combining random chance with a bonus granted per level of the
+     * BUTCHERING enchantment (MME's looting analogue).
+     *
+     * @param registryLookup enchantment registry lookup
+     * @param f              base drop chance
+     * @param g              chance increment per BUTCHERING level
+     * @return the loot condition builder
+     */
     public static LootItemCondition.Builder randomChanceAndButcheringBoost(HolderGetter<Enchantment> registryLookup, float f, float g) {
         return () -> new LootItemRandomChanceWithEnchantedBonusCondition(f, new LevelBasedValue.Linear(f + g, g), registryLookup.getOrThrow(MMEEnchantments.BUTCHERING));
     }
+    /**
+     * Builds an item count function that increases drops per BUTCHERING level (MME's looting
+     * multiplier analogue).
+     *
+     * @param registryLookup enchantment registry lookup
+     * @param numberProvider base drop count provider
+     * @return the count increase function builder
+     */
     public static EnchantedCountIncreaseFunction.Builder butcheringMultiplier(HolderGetter<Enchantment> registryLookup, Holder<ContextFloatProvider> numberProvider) {
         return new EnchantedCountIncreaseFunction.Builder(registryLookup.getOrThrow(MMEEnchantments.BUTCHERING), numberProvider);
     }
+    /**
+     * Builds a condition that is satisfied when either the killed entity is on fire or the
+     * direct attacker holds a smelting-compatible tool (auto-smelt drop rule).
+     *
+     * @param registryLookup enchantment registry lookup
+     * @return the any-of condition builder
+     */
     public static AnyOfCondition.Builder shouldSmeltLoot(HolderGetter<Enchantment> registryLookup) {
         return AnyOfCondition.anyOf(
                 LootItemEntityPropertyCondition.hasProperties(

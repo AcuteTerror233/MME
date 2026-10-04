@@ -39,15 +39,19 @@ import java.util.concurrent.CompletableFuture;
 
 /**
  * MME block loot table data provider.
- * Generates loot table JSON for MME custom blocks.
+ * Generates loot table JSON for MME custom blocks (bushes, ores, furnaces, anvils, crops,
+ * leaves, etc.) and provides shared table builders for silk-touch/dig/blasting alternatives.
  */
 public class MMEBlockLootTableProvider extends FabricBlockLootSubProvider {
+    /** Vanilla jungle-leaf sapling drop chances, reused for MME jungle leaves. */
     public static final float[] JUNGLE_LEAVES_SAPLING_CHANGES = new float[]{0.025F, 0.027777778F, 0.03125F, 0.041666668F, 0.1F};
+    /** Standard leaf sapling drop chances, reused for MME leaves. */
     public static final float[] NORMAL_LEAVES_SAPLING_CHANCES = new float[]{0.05F, 0.0625F, 0.083333336F, 0.1F};
     public MMEBlockLootTableProvider(FabricPackOutput packOutput, CompletableFuture<HolderLookup.Provider> registriesFuture) {
         super(packOutput, registriesFuture);
     }
 
+    /** Generates all MME block loot tables: bush berries, self-dropping blocks, ore drops with explosion decay, leaves, and the per-metal shears/hoe interactions. */
     @Override
     public void generate() {
         add(MMEBlocks.BLUE_BERRY_BUSH,
@@ -602,10 +606,31 @@ public class MMEBlockLootTableProvider extends FabricBlockLootSubProvider {
                 );
     }
 
+    /**
+     * Builds a condition matching a block whose state property equals the given value.
+     *
+     * @param blocks   block registry lookup
+     * @param block    block to match
+     * @param property integer state property to test
+     * @param i        required property value
+     * @return the loot condition builder
+     */
     public static LootItemCondition.Builder propertyCondition(HolderGetter<Block> blocks, Block block, Property<Integer> property, int i) {
         return MatchBlock.blockMatches(blocks, block, StatePropertiesPredicate.Builder.properties().hasProperty(property, i)
         );
     }
+    /**
+     * Builds a log-like loot table: silk touch drops the block itself, digging without silk touch
+     * drops the same item once, and explosive destruction drops a randomized amount.
+     *
+     * @param enchantments       enchantment registry lookup
+     * @param items              item registry lookup
+     * @param silkTouchAndDigItem item dropped with silk touch and normal digging
+     * @param blastingItem       item dropped when destroyed by explosion
+     * @param min                minimum explosive drop count
+     * @param max                maximum explosive drop count
+     * @return the loot table builder
+     */
     public static LootTable.Builder createLogItemTable(
             HolderGetter<Enchantment> enchantments,
             HolderGetter<Item> items,
@@ -616,9 +641,32 @@ public class MMEBlockLootTableProvider extends FabricBlockLootSubProvider {
     ){
         return createSilkTouchWithTagWithExplosiveItemTable(enchantments, items, silkTouchAndDigItem, ContextIntProviders.exactly(1), ItemTags.AXES, silkTouchAndDigItem, ContextIntProviders.exactly(1), blastingItem, ContextIntProviders.between(min, max));
     }
+    /**
+     * Builds a pickaxe-gated loot table: silk touch drops {@code silkTouchItem} once, digging
+     * (any pickaxe) drops {@code digItem} once, and explosive destruction drops {@code blastingItem} once.
+     *
+     * @return the loot table builder
+     */
     public static LootTable.Builder createSilkTouchWithPickaxesWithExplosiveItemTable(HolderGetter<Enchantment> enchantments, HolderGetter<Item> items, ItemLike silkTouchItem, ItemLike digItem, ItemLike blastingItem){
         return createSilkTouchWithTagWithExplosiveItemTable(enchantments, items, silkTouchItem, ContextIntProviders.exactly(1), ItemTags.PICKAXES, digItem, ContextIntProviders.exactly(1), blastingItem, ContextIntProviders.exactly(1));
     }
+    /**
+     * Generalized block loot table with three alternatives in one pool: with silk touch the
+     * tool drops {@code silkTouchItem} ({@code count1}); otherwise, when the tool is in
+     * {@code allowedDigTag}, it drops {@code digItem} ({@code count2}); explosive destruction
+     * always drops {@code blastingItem} ({@code count3}).
+     *
+     * @param enchantments  enchantment registry lookup (for the silk-touch predicate)
+     * @param items         item registry lookup
+     * @param silkTouchItem item dropped when mined with silk touch
+     * @param count1        drop count for the silk-touch branch
+     * @param allowedDigTag tool tag required for the normal-dig branch
+     * @param digItem       item dropped by normal digging
+     * @param count2        drop count for the dig branch
+     * @param blastingItem  item dropped when destroyed by explosion
+     * @param count3        drop count for the explosive branch
+     * @return the loot table builder
+     */
     public static LootTable.Builder createSilkTouchWithTagWithExplosiveItemTable(
             HolderGetter<Enchantment> enchantments,
             HolderGetter<Item> items,

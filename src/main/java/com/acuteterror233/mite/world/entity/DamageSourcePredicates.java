@@ -11,6 +11,11 @@ import net.minecraft.world.item.enchantment.ItemEnchantments;
  * Provides silver weapon detection methods for damage immunity logic of entities like fire elementals.
  */
 public class DamageSourcePredicates {
+    /**
+     * @return {@code true} when the attacking weapon qualifies to bypass silver/enchantment-based
+     *         damage immunity: there is no weapon item, the weapon is tagged {@code mme:silver_tools},
+     *         or the weapon carries any enchantment.
+     */
     public static boolean isSilverWeaponOrEnchanted(DamageSource damageSource) {
         ItemStack weapon = damageSource.getWeaponItem();
         if (weapon == null || weapon.is(MMEItemTags.SILVER_TOOLS)) {

@@ -11,15 +11,18 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-@Mixin(EggItem.class)
 /**
  * Mixin for {@code EggItem} — Modifies egg throwing behavior.
+ * Extends {@link Item} so the handler can delegate to the vanilla (non-egg) {@code Item.use}
+ * implementation, which is what cancels the throw.
  */
+@Mixin(EggItem.class)
 public abstract class EggItemMixin extends Item {
     public EggItemMixin(Properties properties) {
         super(properties);
     }
 
+    /** When the player is hungry, the vanilla throw is replaced by the plain {@code Item.use} result instead. */
     @Inject(method = "use", at = @At("HEAD"), cancellable = true)
     public void qwer(Level level, Player player, InteractionHand interactionHand, CallbackInfoReturnable<InteractionResult> cir) {
         if (player.getFoodData().needsFood()) {

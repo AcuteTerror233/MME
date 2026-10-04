@@ -17,6 +17,7 @@ public class InfernalCreeperRenderer extends CreeperRenderer {
         super(context);
     }
 
+    /** {@inheritDoc} Returns the infernal creeper texture. */
     @Override
     public @NotNull Identifier getTextureLocation(CreeperRenderState renderState) {
         return TEXTURE;

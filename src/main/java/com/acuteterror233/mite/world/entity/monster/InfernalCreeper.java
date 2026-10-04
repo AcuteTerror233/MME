@@ -10,11 +10,13 @@ import org.jetbrains.annotations.NotNull;
  * Infernal creeper entity, inherits creeper behavior.
  */
 public class InfernalCreeper extends Creeper {
+    /** Explicitly sets the explosion radius to 3. */
     public InfernalCreeper(EntityType<? extends InfernalCreeper> entityType, Level level) {
         super(entityType, level);
         this.explosionRadius = 3;
     }
 
+    /** Returns vanilla creeper attributes unchanged. */
     public static AttributeSupplier.@NotNull Builder createAttributes() {
         return Creeper.createAttributes();
     }

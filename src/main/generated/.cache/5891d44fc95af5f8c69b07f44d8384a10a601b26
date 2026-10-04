@@ -31,6 +31,7 @@ a05ddb4aaf1400da96179bd8f68e9b1b279e1fa8 data/mme/tags/item/ancient_metal_not_al
 bc229f680fa773a41269c1569f5a700f669eb8e5 data/mme/tags/item/cooked_fish.json
 bb1d00b7c8ff65f8ef9cd18cbf4b7a7104453d8e data/mme/tags/item/copper_crafting_table_exceptions.json
 6cd46f3228596c776835696f7437691d0003c856 data/mme/tags/item/copper_or_silver_armor.json
+10d7a12a871322591d4498d9930bcf8295c7f6e9 data/mme/tags/item/copper_or_silver_ingot.json
 06297e3c72fe0b12bf9db435c1d4046fafe18fd3 data/mme/tags/item/copper_or_silver_not_allowed_material.json
 8f5a467ce03e249a11506dc0461b61ea87464851 data/mme/tags/item/copper_or_silver_nugget.json
 516854ae0869e79b6557ecc511f1c6842ef59153 data/mme/tags/item/copper_or_silver_ore.json
@@ -45,9 +46,9 @@ db4456ed0e58af30d8201f89d010ede5d81188cc data/mme/tags/item/dagger_enchantable.j
 bb8ce390d7d4fb0fa89d00460f717ccd605be930 data/mme/tags/item/fishing_rods.json
 960ffc048a726a23ae12f644bbdaaa3ed13d5b59 data/mme/tags/item/flint_crafting_table_exceptions.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/mme/tags/item/gold_crafting_table_exceptions.json
-06297e3c72fe0b12bf9db435c1d4046fafe18fd3 data/mme/tags/item/gold_not_allowed_material.json
+a51880c966cff6e1814133bc3b6572e3443f3c96 data/mme/tags/item/gold_not_allowed_material.json
 7faceaaf812e90cb3f05bdfda85cf207c68846d2 data/mme/tags/item/golden_tools.json
-49f4ac93b4b633322a96dcd48c0ffaf8636d560d data/mme/tags/item/hand_not_allowed_material.json
+77054541b7bcd4bfbd7f54850a6d848f13bfddae data/mme/tags/item/hand_not_allowed_material.json
 3590777e6c747d311acf635c3b61e4c3f3aa232c data/mme/tags/item/harvesting_enchantable.json
 39d1b9e44f3939790a21ac0eacf75efa88574710 data/mme/tags/item/hatchet.json
 355ba72dc42bbaf2dc5d29fcad6ca76635359796 data/mme/tags/item/ingot.json
@@ -71,6 +72,7 @@ d3a7390fa1418072b7243756b15b914781629b13 data/mme/tags/item/mithril_armor.json
 d8f50cf69206e4853b87183d08b4804eb57d1775 data/mme/tags/item/netherite_tools.json
 b6db6ceb1f6142026a230778576195ad5f684b16 data/mme/tags/item/nugget.json
 960ffc048a726a23ae12f644bbdaaa3ed13d5b59 data/mme/tags/item/obsidian_crafting_table_exceptions.json
+35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/mme/tags/item/rusted_iron_tool_materials.json
 a076029a2420487af65e3bd2ff8265d8feb944f0 data/mme/tags/item/rusted_iron_tools.json
 f0e07abd51501ae917c3c9fbfb3ba0eeefe7df3b data/mme/tags/item/scythe.json
 6a3f2dfc47243837222e919308cb005e6f8e710b data/mme/tags/item/shard.json

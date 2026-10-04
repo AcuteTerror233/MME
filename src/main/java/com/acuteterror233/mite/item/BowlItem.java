@@ -27,6 +27,7 @@ public class BowlItem extends Item {
         super(properties);
     }
 
+    /** Right-click on a water source block: fills the bowl, turning it into a water bowl. */
     @Override
     public @NotNull InteractionResult use(Level level, Player player, InteractionHand interactionHand) {
     ItemStack itemStack = player.getItemInHand(interactionHand);
@@ -49,6 +50,7 @@ public class BowlItem extends Item {
         return InteractionResult.PASS;
     }
 
+    /** Awards the use stat and swaps the empty bowl for the filled result (shrunken in creative). */
     protected ItemStack turnBowlIntoItem(ItemStack itemStack, Player player, ItemStack itemStack2) {
         player.awardStat(Stats.ITEM_USED.get(this));
         return ItemUtils.createFilledResult(itemStack, player, itemStack2);

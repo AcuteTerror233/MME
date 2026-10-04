@@ -34,6 +34,11 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 import org.jspecify.annotations.NonNull;
 
+/**
+ * Blueberry bush block: a sweet-berry-bush-like crop with four growth stages ({@code age 0-3}).
+ * Grows one stage per successful random tick in sufficient light, slows living entities walking
+ * through it (foxes and bees are immune), and can be picked by hand once berries appear.
+ */
 public class BlueBerryBushBlock
         extends VegetationBlock {
     public static final IntegerProperty AGE = BlockStateProperties.AGE_3;
@@ -45,11 +50,13 @@ public class BlueBerryBushBlock
         this.registerDefaultState(this.stateDefinition.any().setValue(AGE, 0));
     }
 
+    /** Creative pick yields blueberries. */
     @Override
     protected @NotNull ItemStack getCloneItemStack(LevelReader levelReader, BlockPos blockPos, BlockState blockState, boolean bl) {
         return new ItemStack(MMEItems.BLUE_BERRIE);
     }
 
+    /** Outline grows with the bush: narrow sapling column, wider growing column, full block when ripe. */
     @Override
     protected @NotNull VoxelShape getShape(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos, CollisionContext collisionContext) {
         return switch (blockState.getValue(AGE)) {
@@ -59,11 +66,13 @@ public class BlueBerryBushBlock
         };
     }
 
+    /** Only unripe bushes still grow. */
     @Override
     protected boolean isRandomlyTicking(BlockState blockState) {
         return blockState.getValue(AGE) < 3;
     }
 
+    /** Grows one stage with 1/10 chance when the block above has a light level of at least 9. */
     @Override
     protected void randomTick(BlockState blockState, ServerLevel serverLevel, BlockPos blockPos, RandomSource randomSource) {
         int i = blockState.getValue(AGE);
@@ -74,6 +83,10 @@ public class BlueBerryBushBlock
         }
     }
 
+    /**
+     * Slows living entities passing through (foxes and bees are immune);
+     * unlike the sweet berry bush, no damage is dealt here.
+     */
     @Override
     protected void entityInside(@NonNull BlockState blockState, @NonNull Level level, @NonNull BlockPos blockPos, @NonNull Entity entity, @NonNull InsideBlockEffectApplier insideBlockEffectApplier, boolean bl) {
         block7: {
@@ -88,6 +101,7 @@ public class BlueBerryBushBlock
         }
     }
 
+    /** Defers to vanilla bone-meal growth for unripe bushes instead of the pick-berries interaction. */
     @Override
     protected InteractionResult useItemOn(ItemStack itemStack, BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, BlockHitResult blockHitResult) {
         boolean bl;
@@ -99,6 +113,7 @@ public class BlueBerryBushBlock
         return super.useItemOn(itemStack, blockState, level, blockPos, player, interactionHand, blockHitResult);
     }
 
+    /** Picks 1-2 berries (one extra when fully ripe) and resets the bush to age 1. */
     @Override
     protected InteractionResult useWithoutItem(BlockState blockState, Level level, BlockPos blockPos, Player player, BlockHitResult blockHitResult) {
         boolean bl;
@@ -116,6 +131,7 @@ public class BlueBerryBushBlock
         return super.useWithoutItem(blockState, level, blockPos, player, blockHitResult);
     }
 
+    /** Registers the age property. */
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(AGE);

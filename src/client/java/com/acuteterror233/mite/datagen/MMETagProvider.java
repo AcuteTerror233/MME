@@ -31,13 +31,16 @@ import org.jspecify.annotations.NonNull;
 import java.util.concurrent.CompletableFuture;
 
 /**
- * MME tag data generator.
- * Generates item/block/entity tag JSON for the MME mod.
+ * MME tag data generator: one nested provider per tagged registry, each writing its
+ * {@code data/<namespace>/tags/...} JSON. Extends vanilla tags with MME content and defines
+ * MME-specific tags (anvils, buckets, butchering targets, disease/crop behavior, villager
+ * trade compositions). Trades tags fully replace the vanilla composition via {@code setReplace(true)}.
  */
 public class MMETagProvider {
     MMETagProvider() {
 
     }
+    /** Generates painting variant tags: makes all MME paintings placeable. */
     public static class PaintingVariantTag extends FabricTagsProvider<PaintingVariant>{
         public PaintingVariantTag(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
             super(output, Registries.PAINTING_VARIANT, registriesFuture);
@@ -73,6 +76,7 @@ public class MMETagProvider {
                     .add(MMEPaintingVariants.WOLVES);
         }
     }
+    /** Generates timeline tags: MME timelines inherit the universal tag and special-moon joins the overworld tag. */
     public static class TimeLineTag extends FabricTagsProvider<Timeline>{
         public TimeLineTag(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
             super(output, Registries.TIMELINE, registriesFuture);
@@ -86,6 +90,7 @@ public class MMETagProvider {
                     .add(MMETimelines.SPECIAL_MOON);
         }
     }
+    /** Generates enchantment tags: MME enchantments join NON_TREASURE and the equipment-drops exclusive set. */
     public static class EnchantmentTag extends FabricTagsProvider<Enchantment> {
         public EnchantmentTag(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
             super(output, Registries.ENCHANTMENT, registriesFuture);
@@ -105,6 +110,7 @@ public class MMETagProvider {
     }
 
 
+    /** Generates biome tags: MME biomes join the vanilla structure-spawning biome sets (mineshaft, ruined portals, etc.). */
     public static class BiomeTag extends FabricTagsProvider<Biome> {
         public BiomeTag(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
             super(output, Registries.BIOME, registriesFuture);
@@ -125,6 +131,7 @@ public class MMETagProvider {
         }
     }
 
+    /** Generates entity type tags: MME mobs join zombie/arthropod tags and MME-specific butchering/manure behavior tags. */
     public static class EntityTypeTag extends FabricTagsProvider.EntityTypeTagsProvider {
         public EntityTypeTag(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
             super(output, registriesFuture);
@@ -166,6 +173,7 @@ public class MMETagProvider {
         }
     }
 
+    /** Generates block tags: MME-specific glass/anvil/portal/runestone tags plus vanilla tool, mineable, and interaction tag extensions. */
     public static class BlockTag extends FabricTagsProvider.BlockTagsProvider {
         public BlockTag(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
             super(output, registriesFuture);
@@ -180,6 +188,7 @@ public class MMETagProvider {
             builder(MMEBlockTags.GLASS_PANE)
                     .add(BlockItemIds.GLASS_PANE)
                     .addAll(VanillaBlockTagsProvider.toIds(BlockItemIds.STAINED_GLASS_PANE));
+            // Anvil hierarchy: one generic ANVIL tag plus per-damage-state and per-metal tags filled from MMEBlocks collections.
             var anvilBuilder = builder(BlockTags.ANVIL);
             var intactAnvilBuilder = builder(MMEBlockTags.INTACT_ANVIL);
             var chippedAnvilBuilder = builder(MMEBlockTags.CHIPPED_ANVIL);
@@ -333,12 +342,14 @@ public class MMETagProvider {
         }
     }
 
+    /** Generates item tags: armor slots, MME bucket families, food/materials/tools/weapons groupings, and vanilla tag extensions mirroring the block tags. */
     public static class ItemTag extends FabricTagsProvider.ItemTagsProvider {
         public ItemTag(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> completableFuture) {
             super(output, completableFuture);
         }
         @Override
         protected void addTags(HolderLookup.Provider wrapperLookup) {
+            // Armor slot tags: every metal's plain and chainmail variants of each armor piece.
             builder(ItemTags.HEAD_ARMOR)
                     .add(MMEItemIds.ADAMANTIUM_HELMET)
                     .add(MMEItemIds.ADAMANTIUM_CHAINMAIL_HELMET)
@@ -391,6 +402,7 @@ public class MMETagProvider {
                     .add(MMEItemIds.SILVER_BOOTS)
                     .add(MMEItemIds.SILVER_CHAINMAIL_BOOTS)
                     .add(MMEItemIds.GOLDEN_CHAINMAIL_BOOTS);
+            // Bucket families: every metal's bucket variants grouped per content, alongside the vanilla counterpart.
             builder(MMEItemTags.BUCKET)
                     .add(MMEItemIds.ADAMANTIUM_BUCKET)
                     .add(MMEItemIds.ANCIENT_METAL_BUCKET)
@@ -519,6 +531,9 @@ public class MMETagProvider {
             builder(MMEItemTags.COPPER_OR_SILVER_PICKAXE)
                     .add(ItemIds.COPPER_PICKAXE)
                     .add(MMEItemIds.SILVER_PICKAXE);
+            builder(MMEItemTags.COPPER_OR_SILVER_INGOT)
+                    .add(ItemIds.COPPER_INGOT)
+                    .add(MMEItemIds.SILVER_INGOT);
             builder(MMEItemTags.LEATHER_ARMOR)
                     .add(ItemIds.LEATHER_HELMET)
                     .add(ItemIds.LEATHER_CHESTPLATE)
@@ -550,7 +565,7 @@ public class MMETagProvider {
                     .add(MMEItemIds.MITHRIL_COINS)
                     .add(MMEItemIds.GOLDEN_COINS)
                     .add(MMEItemIds.SILVER_COINS)
-                    .add(MMEItemIds.IRON_COINS);      
+                    .add(MMEItemIds.IRON_COINS);
             builder(MMEItemTags.NETHERITE_TOOLS)
                     .add(ItemIds.NETHERITE_AXE)
                     .add(MMEItemIds.NETHERITE_HATCHET)
@@ -777,6 +792,7 @@ public class MMETagProvider {
             builder(MMEItemTags.ANCIENT_METAL_TOOL_MATERIALS)
                     .add(MMEItemIds.ANCIENT_METAL_INGOT)
                     .add(MMEItemIds.ANCIENT_METAL_NUGGET);
+            builder(MMEItemTags.RUSTED_IRON_TOOL_MATERIALS);
             builder(MMEItemTags.SILVER_TOOL_MATERIALS)
                     .add(MMEItemIds.SILVER_INGOT)
                     .add(MMEItemIds.SILVER_NUGGET);
@@ -805,10 +821,12 @@ public class MMETagProvider {
                     .addTag(MMEItemTags.IRON_NOT_ALLOWED_MATERIAL);
             builder(MMEItemTags.HAND_NOT_ALLOWED_MATERIAL)
                     .addTag(MMEItemTags.COPPER_OR_SILVER_NOT_ALLOWED_MATERIAL)
+                    .addTag(MMEItemTags.COPPER_OR_SILVER_INGOT)
                     .forceAddTag(ItemTags.LOGS);
             builder(MMEItemTags.GOLD_NOT_ALLOWED_MATERIAL)
                     .addTag(ItemTags.IRON_TOOL_MATERIALS)
-                    .addTag(MMEItemTags.IRON_NOT_ALLOWED_MATERIAL);
+                    .addTag(MMEItemTags.IRON_NOT_ALLOWED_MATERIAL)
+                    .addTag(MMEItemTags.COPPER_OR_SILVER_INGOT);
 
 
             builder(MMEItemTags.BATTLE_AXE)
@@ -1072,6 +1090,7 @@ public class MMETagProvider {
         }
     }
 
+    /** Generates villager trade tags: replaces every vanilla per-profession/level trade composition tag with the MME rebalanced trade lists. */
     public static class VillagerTradeTag extends FabricTagsProvider<VillagerTrade> {
         public VillagerTradeTag(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
             super(output, Registries.VILLAGER_TRADE, registriesFuture);

@@ -33,7 +33,15 @@ import org.jspecify.annotations.NonNull;
 
 import java.util.Map;
 
+/**
+ * Base class for MME portal blocks, mirroring vanilla nether-portal mechanics.
+ * Carries a horizontal {@code axis} property, exposes a full-block collision shape so entities
+ * inside register as "in portal", collapses to air when the frame is no longer complete, and
+ * flags eligible entities for teleport on contact; subclasses supply the teleport destination
+ * via {@link #getPortalDestination}.
+ */
 public abstract class AbstractPortalBlock extends Block implements Portal {
+    /** Horizontal orientation of the portal plane. */
     public static final EnumProperty<Direction.Axis> AXIS = BlockStateProperties.HORIZONTAL_AXIS;
     private static final Map<Direction.Axis, VoxelShape> SHAPES_BY_AXIS = Shapes.rotateHorizontalAxis(Block.column(4.0, 16.0, 0.0, 16.0));
 
@@ -42,17 +50,20 @@ public abstract class AbstractPortalBlock extends Block implements Portal {
         this.registerDefaultState(this.stateDefinition.any().setValue(AXIS, Direction.Axis.X));
     }
 
+    /** Outline/collision shape: a 4-block-tall, 1-block-thick column rotated to the portal axis. */
     @Override
     @NotNull
     protected VoxelShape getShape(BlockState state, @NonNull BlockGetter world, BlockPos pos, CollisionContext context) {
         return SHAPES_BY_AXIS.get(state.getValue(AXIS));
     }
 
+    /** Makes entities standing inside the portal count as colliding with it, enabling "inside portal" detection. */
     @Override
     protected @NotNull VoxelShape getEntityInsideCollisionShape(BlockState state, BlockGetter world, BlockPos pos, Entity entity) {
         return state.getShape(world, pos);
     }
 
+    /** Collapses the portal to air when a neighbor update leaves the frame incomplete. */
     @Override
     protected @NotNull BlockState updateShape(
             BlockState state,
@@ -72,6 +83,7 @@ public abstract class AbstractPortalBlock extends Block implements Portal {
                 : super.updateShape(state, world, tickView, pos, direction, neighborPos, neighborState, random);
     }
 
+    /** Flags portal-capable entities standing inside as "inside portal", starting the teleport countdown. */
     @Override
     protected void entityInside(BlockState state, Level world, BlockPos pos, Entity entity, InsideBlockEffectApplier handler,boolean bl) {
         if (entity.canUsePortal(false)) {
@@ -79,6 +91,7 @@ public abstract class AbstractPortalBlock extends Block implements Portal {
         }
     }
 
+    /** Players use the nether-portal delay gamerules (creative-immune variant when invulnerable); other entities teleport instantly. */
     @Override
     public int getPortalTransitionTime(ServerLevel world, Entity entity) {
         return entity instanceof Player playerEntity
@@ -90,11 +103,13 @@ public abstract class AbstractPortalBlock extends Block implements Portal {
                 : 0;
     }
 
+    /** Vanilla confusion screen effect while the teleport counts down. */
     @Override
     public Portal.@NotNull Transition getLocalTransition() {
         return Portal.Transition.CONFUSION;
     }
 
+    /** Client-side ambient portal sound and swirling particles. */
     @Override
     public void animateTick(BlockState state, Level world, BlockPos pos, RandomSource random) {
         if (random.nextInt(100) == 0) {
@@ -123,11 +138,13 @@ public abstract class AbstractPortalBlock extends Block implements Portal {
         }
     }
 
+    /** Portals cannot be picked in creative; always empty. */
     @Override
     protected @NotNull ItemStack getCloneItemStack(LevelReader world, BlockPos pos, BlockState state, boolean includeData) {
         return ItemStack.EMPTY;
     }
 
+    /** Swaps the axis on 90° block rotations. */
     @Override
     protected @NotNull BlockState rotate(BlockState state, Rotation rotation) {
         return switch (rotation) {
@@ -140,6 +157,7 @@ public abstract class AbstractPortalBlock extends Block implements Portal {
         };
     }
 
+    /** Registers the axis property. */
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(AXIS);

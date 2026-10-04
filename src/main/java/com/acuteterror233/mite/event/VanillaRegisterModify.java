@@ -12,8 +12,11 @@ import java.util.function.BiFunction;
 import java.util.function.Function;
 
 /**
- * Vanilla register modifier.
- * Modifies vanilla registry entries (such as item properties, block behaviors) during mod initialization.
+ * Vanilla register modifier: Fabric events raised while vanilla bootstraps its registries, letting MME
+ * intercept and replace registered items, blocks, block items, and block entity types.
+ * Raised by {@code ItemsMixin} / {@code BlocksMixin} / {@code BlockEntityTypeMixin} at vanilla
+ * registration time; listeners are wired in {@code BootstrapMixin} to swap vanilla entries for MME
+ * counterparts without forgoing vanilla registration order.
  */
 public final class VanillaRegisterModify {
 
@@ -53,6 +56,10 @@ public final class VanillaRegisterModify {
         return null;
     });
 
+    /**
+     * Block entity type registration event
+     * Triggers listeners during block entity type registration, allowing the valid-blocks list to be modified
+     */
     public static final Event<BlockEntityTypeRegister> BLOCK_ENTITY_TYPE = EventFactory.createArrayBacked(BlockEntityTypeRegister.class, (listeners) -> (key, blocks) -> {
         for (BlockEntityTypeRegister listener : listeners) {
             Block[] modify = listener.ModifyValidBlocks(key, blocks);
@@ -63,18 +70,49 @@ public final class VanillaRegisterModify {
 
 
 
+    /**
+     * Listener invoked for each vanilla item registration.
+     *
+     * @param key      resource key of the item being registered
+     * @param factory  vanilla factory that builds the item from its properties
+     * @param settings vanilla item properties about to be used
+     * @return the item to register instead of the vanilla one, or {@code null} to keep the vanilla item
+     */
     @FunctionalInterface
     public interface ItemRegister {
         Item Modify (ResourceKey<Item> key, Function<Item.Properties, Item> factory, Item.Properties settings);
     }
+    /**
+     * Listener invoked for each vanilla block registration.
+     *
+     * @param key      resource key of the block being registered
+     * @param factory  vanilla factory that builds the block from its properties
+     * @param settings vanilla block properties about to be used
+     * @return the block to register instead of the vanilla one, or {@code null} to keep the vanilla block
+     */
     @FunctionalInterface
     public interface BlockRegister {
         Block Modify (ResourceKey<Block> key, Function<BlockBehaviour.Properties, Block> factory, BlockBehaviour.Properties settings);
     }
+    /**
+     * Listener invoked for each vanilla block item registration.
+     *
+     * @param block    the block the item is created for
+     * @param factory  vanilla factory that builds the block item
+     * @param settings vanilla item properties about to be used
+     * @return the item to register instead of the vanilla one, or {@code null} to keep the vanilla item
+     */
     @FunctionalInterface
     public interface BlockItemRegister {
         Item Modify (Block block, BiFunction<Block, Item.Properties, Item> factory, Item.Properties settings);
     }
+    /**
+     * Listener invoked for each vanilla block entity type registration.
+     *
+     * @param key    resource key of the block entity type being registered
+     * @param blocks blocks valid for this block entity type
+     * @return the valid-blocks array to register instead, or {@code null} to keep the vanilla list
+     */
     @FunctionalInterface
     public interface BlockEntityTypeRegister {
         Block[] ModifyValidBlocks(ResourceKey<BlockEntityType<?>> key, Block[] blocks);

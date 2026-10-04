@@ -6,6 +6,7 @@
     "data.BlockModelGeneratorsMixin",
     "data.ItemModelGeneratorsMixin",
     "gui.GuiMixin",
+    "gui.screen.ingame.CraftingScreenMixin",
     "gui.screen.ingame.InventoryScreenMixin"
   ],
   "injectors": {

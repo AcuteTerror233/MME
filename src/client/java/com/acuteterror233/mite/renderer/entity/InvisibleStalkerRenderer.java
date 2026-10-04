@@ -19,11 +19,13 @@ public class InvisibleStalkerRenderer extends ZombieRenderer {
         super(context);
     }
 
+    /** {@inheritDoc} Returns the invisible stalker texture. */
     @Override
     public @NotNull Identifier getTextureLocation(ZombieRenderState renderState) {
         return TEXTURE;
     }
 
+    /** {@inheritDoc} Renders translucent so the stalker's semi-invisibility shows through its own body. */
     @Override
     protected RenderType getRenderType(ZombieRenderState renderState, boolean showBody, boolean translucent, boolean showOutline) {
         return RenderTypes.entityTranslucent(getTextureLocation(renderState));

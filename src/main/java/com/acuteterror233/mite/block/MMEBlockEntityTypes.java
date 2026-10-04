@@ -20,6 +20,10 @@ import java.util.Set;
  */
 public class MMEBlockEntityTypes {
 
+    /**
+     * Anvil block entity type. Valid blocks cover the vanilla anvils and every MME anvil variant,
+     * so all of them share one block entity for damage tracking.
+     */
     public static final BlockEntityType<AnvilBlockEntity> ANVIL =
             register(
                     MMEBlockEntityTypeIds.ANVIL
@@ -56,6 +60,14 @@ public class MMEBlockEntityTypes {
                     , MMEBlocks.RUNE_PORTAL
             );
 
+    /**
+     * Registers a block entity type with its set of valid blocks.
+     *
+     * @param key         registry key of the type
+     * @param factory     supplier creating the block entity instance
+     * @param validBlocks blocks the type may be attached to
+     * @return the registered type
+     */
     private static <T extends BlockEntity> BlockEntityType<T> register(
             final ResourceKey<BlockEntityType<?>> key, final BlockEntityType.BlockEntitySupplier<? extends T> factory, final Block... validBlocks
     ) {
@@ -64,6 +76,7 @@ public class MMEBlockEntityTypes {
             MME.LOGGER.warn("Block entity type {} requires at least one valid block to be defined!", id);
         }
 
+        // pre-warm the datafixer choice type so schema lookups for this id succeed
         if (id.getNamespace().equals("mme")) {
             Util.fetchChoiceType(References.BLOCK_ENTITY, id.getPath());
         }
@@ -71,6 +84,7 @@ public class MMEBlockEntityTypes {
         return Registry.register(BuiltInRegistries.BLOCK_ENTITY_TYPE, key, new BlockEntityType<>(factory, Set.of(validBlocks)));
     }
 
+    /** Class-load trigger so the static registrations above run. */
     public static void init() {
     }
 }

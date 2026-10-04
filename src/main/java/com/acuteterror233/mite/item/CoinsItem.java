@@ -25,6 +25,11 @@ import java.util.function.Consumer;
  */
 public class CoinsItem extends Item {
     private final int experience;
+    /**
+     * Coin-to-nugget exchange table used by {@link #use}; the reverse of
+     * {@link NuggetItem#NUGGET_EXCHANGEITEM}.
+     * Key: coin item identifier; value: identifier of the nugget item it converts into.
+     */
     public static final Map<Identifier, Identifier> COINS_EXCHANGEITEM = new HashMap<>(){{
         put(Identifier.fromNamespaceAndPath(MME.MOD_ID, "netherite_coins"), Identifier.fromNamespaceAndPath(MME.MOD_ID, "netherite_nugget"));
         put(Identifier.fromNamespaceAndPath(MME.MOD_ID, "adamantium_coins"), Identifier.fromNamespaceAndPath(MME.MOD_ID, "adamantium_nugget"));
@@ -35,10 +40,15 @@ public class CoinsItem extends Item {
         put(Identifier.fromNamespaceAndPath(MME.MOD_ID, "copper_coins"), Identifier.withDefaultNamespace("copper_nugget"));
         put(Identifier.fromNamespaceAndPath(MME.MOD_ID, "golden_coins"), Identifier.withDefaultNamespace("gold_nugget"));
     }};
+    /**
+     * @param settings   item properties
+     * @param experience experience points granted when this coin is used
+     */
     public CoinsItem(Properties settings, int experience) {
         super(settings);
         this.experience = experience;
     }
+    /** Right-click: grants the coin's XP and converts it back into its matching nugget. */
     @Override
     public @NotNull InteractionResult use(Level world, Player user, InteractionHand hand) {
         user.giveExperiencePoints(this.experience);
@@ -50,6 +60,7 @@ public class CoinsItem extends Item {
         return InteractionResult.CONSUME;
     }
 
+    /** Adds the XP value of the coin to the tooltip. */
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext context, TooltipDisplay displayComponent, Consumer<Component> textConsumer, TooltipFlag type) {
         super.appendHoverText(stack, context, displayComponent, textConsumer, type);

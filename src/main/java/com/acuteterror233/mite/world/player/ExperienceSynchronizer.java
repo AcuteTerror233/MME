@@ -9,6 +9,7 @@ import net.minecraft.server.level.ServerPlayer;
 public class ExperienceSynchronizer {
     private final ServerPlayer player;
 
+    /** Cached values from the previous tick, used to detect which representation changed. */
     private int prevLevel;
     private float prevProgress;
     private int prevTotal;
@@ -20,6 +21,7 @@ public class ExperienceSynchronizer {
         this.prevTotal = player.totalExperience;
     }
 
+    /** Detects which of level/progress/total changed and reconciles the other representations. */
     public void tick() {
         int curLevel = this.player.experienceLevel;
         float curProgress = this.player.experienceProgress;
@@ -44,6 +46,7 @@ public class ExperienceSynchronizer {
         this.prevTotal = this.player.totalExperience;
     }
 
+    /** Recomputes totalExperience from level and progress (authoritative when level/progress changed). */
     private void syncToTotal(int level, float progress) {
         int total = 0;
         for (int i = 0; i < level; i++) {
@@ -53,6 +56,7 @@ public class ExperienceSynchronizer {
         this.player.totalExperience = total;
     }
 
+    /** Derives level and progress from totalExperience (capped at level 50) when only the total changed. */
     private void syncFromTotal(int total) {
         int remaining = total;
         int level = 0;
@@ -71,6 +75,7 @@ public class ExperienceSynchronizer {
         this.player.experienceProgress = progress;
     }
 
+    /** Vanilla XP curve: 7+2*level (0-14), 37+5*(level-15) (15-29), 112+9*(level-30) (30+). */
     private int getXpNeededForLevel(int level) {
         if (level >= 30) {
             return 112 + (level - 30) * 9;

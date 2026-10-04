@@ -34,11 +34,17 @@ import org.jspecify.annotations.NonNull;
  * Can perform short-range teleportation.
  */
 public class PhaseSpider extends Spider {
+    /** Synced remaining dodge charges used to evade incoming hits. */
     private static final EntityDataAccessor<Integer> DODGE_CHARGES = SynchedEntityData.defineId(PhaseSpider.class, EntityDataSerializers.INT);
+    /** Maximum number of dodge charges. */
     private static final int MAX_DODGE_CHARGES = 5;
+    /** Ticks needed to regenerate one dodge charge. */
     private static final int CHARGE_REGEN_TICKS = 50;
+    /** Interval in ticks until the next periodic random teleport. */
     private int randomTeleportTime = 0;
+    /** Ticks accumulated toward regenerating the next dodge charge. */
     private int chargeRegenTimer;
+    /** Ticks elapsed since the last periodic random teleport. */
     private int randomTeleportTicks;
 
     public PhaseSpider(EntityType<? extends PhaseSpider> entityType, Level level) {
@@ -65,6 +71,7 @@ public class PhaseSpider extends Spider {
         builder.define(DODGE_CHARGES, MAX_DODGE_CHARGES);
     }
 
+    // Keeps vanilla spawn group data unchanged.
     @Nullable
     @Override
     public SpawnGroupData finalizeSpawn(
@@ -73,6 +80,7 @@ public class PhaseSpider extends Spider {
         return spawnGroupData;
     }
 
+    // Periodic random teleport countdown plus dodge charge regeneration.
     @Override
     public void tick() {
         super.tick();
@@ -102,6 +110,7 @@ public class PhaseSpider extends Spider {
         return entity.getBbWidth() <= this.getBbWidth() ? new Vec3(0.0, 0.21875 * this.getScale(), 0.0) : super.getVehicleAttachmentPoint(entity);
     }
 
+    // Dodges damage by teleporting: always against projectiles, otherwise by spending one dodge charge.
     @Override
     public boolean hurtServer(@NonNull ServerLevel level, DamageSource damageSource, float amount) {
         if (damageSource.is(DamageTypeTags.BYPASSES_INVULNERABILITY)) {
@@ -142,20 +151,24 @@ public class PhaseSpider extends Spider {
         this.entityData.set(DODGE_CHARGES, tag.getInt("DodgeCharges").orElse(MAX_DODGE_CHARGES));
     }
 
+    /** Returns the remaining dodge charges. */
     public int getDodgeCharges() {
         return this.entityData.get(DODGE_CHARGES);
     }
 
+    /** Adds (or subtracts) dodge charges, clamped to {@code [0, MAX_DODGE_CHARGES]}. */
     private void addDodgeCharges(int charges) {
         this.entityData.set(DODGE_CHARGES, Math.clamp(this.getDodgeCharges() + charges, 0, MAX_DODGE_CHARGES));
     }
 
+    /** Attribute builder: 6 max health and 1 attack damage on top of spider defaults. */
     public static AttributeSupplier.@NotNull Builder createAttributes() {
         return Spider.createAttributes()
                 .add(Attributes.MAX_HEALTH, 6.0)
                 .add(Attributes.ATTACK_DAMAGE, 1.0);
     }
 
+    /** Teleports to a random nearby position (about ±8 blocks horizontally, ±5 vertically); returns true on success. */
     protected boolean randomTeleport() {
         if (!this.level().isClientSide() && this.isAlive()) {
             double x = this.getX() + (this.random.nextDouble() - 0.5) * 16.0;
@@ -167,6 +180,7 @@ public class PhaseSpider extends Spider {
         }
     }
 
+    /** Teleports roughly 5 blocks toward the given entity with jitter; returns true on success. */
     protected boolean teleportTowards(Entity entity) {
         Vec3 vec3 = new Vec3(entity.getX() - this.getX(), entity.getEyeY() - this.getY(0.5), entity.getZ() - this.getZ());
         vec3 = vec3.normalize();
@@ -176,6 +190,7 @@ public class PhaseSpider extends Spider {
         return this.teleport(x, y, z);
     }
 
+    /** Performs the teleport with enderman-style restrictions, emitting a game event and sound on success. */
     private boolean teleport(double x, double y, double z) {
         Vec3 vec3 = this.position();
         boolean bl3 = this.randomTeleport(x, y, z, true, BlockTags.ENDERMAN_DOES_NOT_TELEPORT_TO);
@@ -189,6 +204,10 @@ public class PhaseSpider extends Spider {
         return bl3;
     }
 
+    /**
+     * Melee attack goal that keeps teleporting the spider toward its target
+     * (every 10 adjusted ticks) while chasing.
+     */
     static class PhaseSpiderAttackGoal extends MeleeAttackGoal {
         private int teleportTimer;
         PhaseSpider phaseSpider;
@@ -197,11 +216,13 @@ public class PhaseSpider extends Spider {
             this.phaseSpider = spider;
         }
 
+        // Do not attack while carrying a passenger.
         @Override
         public boolean canUse() {
             return super.canUse() && !this.mob.isVehicle();
         }
 
+        // Teleport toward the target whenever the cooldown elapses.
         @Override
         public void tick() {
             super.tick();

@@ -11,6 +11,12 @@ import net.minecraft.world.entity.decoration.painting.PaintingVariant;
 
 import java.util.Optional;
 
+/**
+ * MME custom painting variants (fantasy-landscape themed: castles, keeps, creatures, scenery).
+ * Each key registers a variant whose title/author components are derived from the key's
+ * identifier via {@code painting.<namespace>.<path>.title} / {@code .author} translation keys
+ * (yellow/gray styled) and is sized in blocks by the width/height given in {@link #bootstrap}.
+ */
 public class MMEPaintingVariants {
     public static final ResourceKey<PaintingVariant> ABYSS = create("abyss");
     public static final ResourceKey<PaintingVariant> BARON_ALMRIC = create("baron_almric");
@@ -38,6 +44,11 @@ public class MMEPaintingVariants {
     public static final ResourceKey<PaintingVariant> TITAN = create("titan");
     public static final ResourceKey<PaintingVariant> WOLVES = create("wolves");
 
+    /**
+     * Datagen bootstrap: registers every {@code MME} painting variant with its block size (width × height).
+     *
+     * @param bootstrapContext datagen context into which variants are registered
+     */
     public static void bootstrap(BootstrapContext<PaintingVariant> bootstrapContext) {
         register(bootstrapContext, ABYSS, 3, 2);
         register(bootstrapContext, BARON_ALMRIC, 3, 2);
@@ -66,6 +77,12 @@ public class MMEPaintingVariants {
         register(bootstrapContext, WOLVES, 2, 2);
     }
 
+    /**
+     * Registers one variant with auto-generated title/author translation components.
+     *
+     * @param i width in blocks
+     * @param j height in blocks
+     */
     private static void register(BootstrapContext<PaintingVariant> bootstrapContext, ResourceKey<PaintingVariant> resourceKey, int i, int j) {
         bootstrapContext.register(
                 resourceKey,
@@ -79,6 +96,7 @@ public class MMEPaintingVariants {
         );
     }
 
+    /** @param string snake_case painting id (e.g. {@code "castle_britannia"}). */
     private static ResourceKey<PaintingVariant> create(String string) {
         return ResourceKey.create(Registries.PAINTING_VARIANT, Identifier.fromNamespaceAndPath(MME.MOD_ID, string));
     }

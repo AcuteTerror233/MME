@@ -28,15 +28,19 @@ import java.util.function.UnaryOperator;
  * Batch modifies vanilla items' stack limits, food properties, fuel values, etc.
  */
 public final class VanillaItemModify {
+    /** Block item settings overrides matched by the block item's block class. Key: block class; value: property function. */
     public static final Map<Class<?>, UnaryOperator<Item.Properties>> IN_CLASS_BLOCK_ITEM_SETTINGS_MODIFY = createBlockItemSettingsModifyMapByClass();
+    /** Block item settings overrides matched by registration id. Key: item identifier; value: property function. */
     public static final Map<Identifier, UnaryOperator<Item.Properties>> IN_IDENTIFIER_BLOCK_ITEM_SETTINGS_MODIFY = createBlockItemSettingsModifyMapByIdentifier();
+    /** Constructor replacements for vanilla items. Key: item identifier; value: factory building the replacement item. */
     public static final Map<Identifier, Function<Item.Properties, Item>> ITEM_FACTORY_MODIFY = createItemFactoryModifyMap();
+    /** Settings overrides for regular vanilla items. Key: item identifier; value: property function. */
     public static final Map<Identifier, UnaryOperator<Item.Properties>> ITEM_SETTINGS_MODIFY = createItemSettingsModifyMap();
 
     /**
-     * Maximum stack mapping table divided by item registration name.
-     * Key: Item identifier
-     * Value: Settings function UnaryOperator<Item.Settings>
+     * Settings overrides for regular vanilla items, keyed by registration name.
+     * Key: item identifier
+     * Value: property function (stack size, food, nutrition/combustion components, ...)
      */
     private static Map<Identifier, UnaryOperator<Item.Properties>> createItemSettingsModifyMap() {
         Map<Identifier, UnaryOperator<Item.Properties>> result = new HashMap<>();
@@ -76,6 +80,8 @@ public final class VanillaItemModify {
         result.put(Identifier.withDefaultNamespace("spruce_planks"), settings -> settings.stacksTo(8));
         result.put(Identifier.withDefaultNamespace("warped_planks"), settings -> settings.stacksTo(8));
         result.put(Identifier.withDefaultNamespace("mangrove_planks"), settings -> settings.stacksTo(8));
+        // Planks re-listed with the remaining wood types (bamboo, cherry); duplicate keys
+        // above are simply overwritten with the same stacksTo(8) value.
         result.put(Identifier.withDefaultNamespace("oak_planks"), properties -> properties.stacksTo(8));
         result.put(Identifier.withDefaultNamespace("spruce_planks"), properties -> properties.stacksTo(8));
         result.put(Identifier.withDefaultNamespace("birch_planks"), properties -> properties.stacksTo(8));
@@ -360,6 +366,8 @@ public final class VanillaItemModify {
                 .food(new FoodProperties(0, 1, false))
         );
 
+        // Stone/diamond/wooden tools are stripped of all tool behavior: fresh plain properties
+        // (paired with Item::new in the factory map below) instead of vanilla tool components.
         result.put(Identifier.withDefaultNamespace("stone_sword"), settings -> new Item.Properties());
         result.put(Identifier.withDefaultNamespace("stone_shovel"), settings -> new Item.Properties());
         result.put(Identifier.withDefaultNamespace("stone_pickaxe"), settings -> new Item.Properties());
@@ -380,6 +388,8 @@ public final class VanillaItemModify {
         result.put(Identifier.withDefaultNamespace("wooden_axe"), settings -> new Item.Properties());
         result.put(Identifier.withDefaultNamespace("wooden_hoe"), settings -> new Item.Properties());
 
+        // Higher-tier vanilla tools/armor rebuilt on MME tool/armor materials (durations,
+        // attributes) and tagged with the combustion grade their smithing requires.
         result.put(Identifier.withDefaultNamespace("netherite_sword"), settings -> MMEItems.getSwordSettings(MMEToolMaterials.NETHERITE).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4));
         result.put(Identifier.withDefaultNamespace("netherite_shovel"), settings -> MMEItems.getShovelSettings(MMEToolMaterials.NETHERITE).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4));
         result.put(Identifier.withDefaultNamespace("netherite_pickaxe"), settings -> MMEItems.getPickaxeSettings(MMEToolMaterials.NETHERITE).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4));
@@ -485,7 +495,7 @@ public final class VanillaItemModify {
     /**
      * Item factory modification mapping table
      * key: Item identifier
-     * value: Factory
+     * value: Factory building the replacement item instance (plain Item, NuggetItem, GamItem, ...)
      */
 
     private static Map<Identifier, Function<Item.Properties, Item>> createItemFactoryModifyMap() {
@@ -505,6 +515,8 @@ public final class VanillaItemModify {
         result.put(Identifier.withDefaultNamespace("wooden_axe"), Item::new);
         result.put(Identifier.withDefaultNamespace("wooden_hoe"), Item::new);
 
+        // Diamond armor is replaced by plain items (stripping vanilla equip behavior); the
+        // registry id is set manually since these factories bypass the normal register() path.
         result.put(Identifier.withDefaultNamespace("diamond_helmet"), settings -> new Item(new Item.Properties().setId(ResourceKey.create(Registries.ITEM, Identifier.withDefaultNamespace("diamond_helmet")))));
         result.put(Identifier.withDefaultNamespace("diamond_chestplate"), settings -> new Item(new Item.Properties().setId(ResourceKey.create(Registries.ITEM, Identifier.withDefaultNamespace("diamond_chestplate")))));
         result.put(Identifier.withDefaultNamespace("diamond_leggings"), settings -> new Item(new Item.Properties().setId(ResourceKey.create(Registries.ITEM, Identifier.withDefaultNamespace("diamond_leggings")))));
@@ -524,6 +536,11 @@ public final class VanillaItemModify {
         result.put(Identifier.withDefaultNamespace("bowl"), BowlItem::new);
         return Map.copyOf(result);
     }
+    /**
+     * Block item settings modification mapping table matched by registration id.
+     * key: item identifier of the block item
+     * value: property function (fuel, crafting-time/combustion-grade components, stack size, food)
+     */
     private static Map<Identifier, UnaryOperator<Item.Properties>> createBlockItemSettingsModifyMapByIdentifier() {
         Map<Identifier, UnaryOperator<Item.Properties>> result = new HashMap<>();
 

@@ -22,6 +22,7 @@ public class PhaseSpiderRenderer extends SpiderRenderer<PhaseSpider> {
         this.addLayer(new PhaseSpiderEyesLayer<>(this));
     }
 
+    /** {@inheritDoc} Returns the phase spider texture. */
     @Override
     public @NotNull Identifier getTextureLocation(LivingEntityRenderState renderState) {
         return TEXTURE;

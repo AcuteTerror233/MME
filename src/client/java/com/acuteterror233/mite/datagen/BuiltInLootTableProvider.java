@@ -51,6 +51,12 @@ import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.BiConsumer;
 
+/**
+ * Overrides vanilla built-in (chest-type) loot tables for MME: replaces vanilla loot tables such
+ * as the spawn bonus chest and end-city treasure with rebalanced versions that inject MME metals
+ * and items. Output is written under {@code data/minecraft/loot_table/...}; tables registered
+ * through {@link #add} are collected and flushed by the Fabric loot pipeline.
+ */
 public class BuiltInLootTableProvider extends SimpleFabricLootTableSubProvider {
     protected final HolderLookup.Provider holderLookup;
     protected final FabricLootTableContext context;
@@ -71,6 +77,7 @@ public class BuiltInLootTableProvider extends SimpleFabricLootTableSubProvider {
     }
     private final Map<ResourceKey<LootTable>, LootTable.Builder> map = new HashMap<>();
 
+    /** Rebuilds every overridden vanilla chest loot table (spawn bonus chest, end city treasure, mineshaft, village chests, buried treasure maps, etc.) via {@link #add}. */
     public void generate(){
         add(BuiltInLootTables.SPAWN_BONUS_CHEST,
                 LootTable.lootTable()
@@ -702,7 +709,7 @@ public class BuiltInLootTableProvider extends SimpleFabricLootTableSubProvider {
                                         .setRolls(ContextIntProviders.exactly(1))
                                         .add(LootItem.lootTableItem(Items.GOLDEN_APPLE))
                         )
-                        
+
         );
         add(BuiltInLootTables.WOODLAND_MANSION,
                 LootTable.lootTable()
@@ -1078,7 +1085,7 @@ public class BuiltInLootTableProvider extends SimpleFabricLootTableSubProvider {
                                         .add(LootItem.lootTableItem(Items.SNOUT_ARMOR_TRIM_SMITHING_TEMPLATE).setWeight(1))
                         )
                         .withPool(LootPool.lootPool().setRolls(ContextIntProviders.exactly(1)).add(LootItem.lootTableItem(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE).setWeight(1)))
-                        
+
         );
         add(BuiltInLootTables.BASTION_OTHER,
                 LootTable.lootTable()
@@ -2061,12 +2068,17 @@ public class BuiltInLootTableProvider extends SimpleFabricLootTableSubProvider {
         );
     }
 
+    /** {@inheritDoc} Fills the overridden tables, then hands every entry from {@link #add} to the consumer. */
     @Override
     public void generate(@NonNull BiConsumer<ResourceKey<LootTable>, LootTable.Builder> biConsumer) {
         generate();
         map.forEach(biConsumer);
     }
 
+    /**
+     * {@inheritDoc} Flushes the collected tables, failing loudly when a registered key has no
+     * builder (missing table) or a non-block key remains registered.
+     */
     @Override
     public void run() {
         this.generate();
@@ -2082,6 +2094,13 @@ public class BuiltInLootTableProvider extends SimpleFabricLootTableSubProvider {
 
     }
 
+    /**
+     * Registers an override for a vanilla loot table key; the builder is emitted by
+     * {@link #generate(BiConsumer)} and validated by {@link #run()}.
+     *
+     * @param table   the vanilla loot table key to override
+     * @param builder the replacement loot table
+     */
     public void add(ResourceKey<LootTable> table, LootTable.Builder builder) {
         this.map.put(table, builder);
     }

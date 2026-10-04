@@ -6,6 +6,10 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.block.Block;
 
+/**
+ * Registry keys for MME blocks registered without a paired block item
+ * (portal blocks and the blueberry bush).
+ */
 public class MMEBlockIds {
     public static final ResourceKey<Block> UNDERGROUND_PORTAL = create("underground_portal");
     public static final ResourceKey<Block> HOME_PORTAL = create("home_portal");
@@ -13,6 +17,7 @@ public class MMEBlockIds {
 
     public static final ResourceKey<Block> BLUE_BERRY_BUSH = create("blue_berry_bush");
 
+    /** Creates a block key under the MME namespace. */
     private static ResourceKey<Block> create(final String name) {
         return ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(MME.MOD_ID, name));
     }

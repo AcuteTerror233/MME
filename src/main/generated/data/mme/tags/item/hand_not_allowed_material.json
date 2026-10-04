@@ -1,6 +1,7 @@
 {
   "values": [
     "#mme:copper_or_silver_not_allowed_material",
+    "#mme:copper_or_silver_ingot",
     "#minecraft:logs"
   ]
 }

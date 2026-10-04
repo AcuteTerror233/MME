@@ -33,11 +33,23 @@ import org.jetbrains.annotations.NotNull;
 public class MMEMobBucketItem extends MobBucketItem {
     private final Item empty_barrel;
 
+    /**
+     * @param type           mob type released when the bucket is emptied
+     * @param fluid          fluid carried alongside the mob
+     * @param emptyingSound  sound played when the bucket is emptied
+     * @param settings       item properties
+     * @param empty_barrel   empty barrel item handed back after use (survival mode only)
+     */
     public MMEMobBucketItem(EntityType<? extends Mob> type, Fluid fluid, SoundEvent emptyingSound, Properties settings, Item empty_barrel) {
         super(type, fluid, emptyingSound, settings);
         this.empty_barrel = empty_barrel;
     }
 
+    /**
+     * Vanilla mob bucket logic with MME extensions: emptying returns the configured empty
+     * barrel, and an empty barrel can scoop mobs/fluids from blocks implementing
+     * {@link FluidDrainableExtension} via {@code MME$TakeFluid}.
+     */
     @Override
     public @NotNull InteractionResult use(Level level, Player player, InteractionHand hand) {
         ItemStack itemStack = player.getItemInHand(hand);
@@ -93,6 +105,7 @@ public class MMEMobBucketItem extends MobBucketItem {
         }
     }
 
+    /** @return the stack the player ends up holding: an empty barrel in survival, the original stack otherwise. */
     public ItemStack getEmptyBarrelSuccessItem(final ItemStack itemStack, final Player player) {
         return !player.hasInfiniteMaterials() ? new ItemStack(this.empty_barrel) : itemStack;
     }

@@ -29,7 +29,10 @@ import org.jspecify.annotations.NonNull;
 import java.util.concurrent.CompletableFuture;
 
 /**
- * MME recipe data provider
+ * MME recipe data provider.
+ * Generates recipe JSON (and recipe-book unlock advancements) for MME content: ore smelting and
+ * blasting, metal nugget reclamation, and the per-metal tool/weapon/armor/bucket/chains/crafting
+ * table/anvil families, plus vanilla recipe overrides where MME gates progression.
  */
 public class MMERecipeProvider extends FabricRecipeProvider {
 
@@ -41,9 +44,14 @@ public class MMERecipeProvider extends FabricRecipeProvider {
         super(output, registriesFuture);
     }
 
+    /** Creates the recipe builder whose {@link RecipeProvider#buildRecipes()} emits all MME recipe JSON. */
     @Override
     protected @NotNull RecipeProvider createRecipeProvider(HolderLookup.@NonNull Provider registryLookup, BootstrapContext<Recipe<?>> recipes, BootstrapContext<Advancement> advancements) {
         return new RecipeProvider(recipes, advancements) {
+            /**
+             * Emits every MME recipe: ore smelting/blasting per metal, nugget reclamation from
+             * tools and armor, and the per-metal item families via the private helper methods below.
+             */
             @Override
             public void buildRecipes() {
                 this.oreSmelting(ADAMANTIUM_SMELTABLES, RecipeCategory.MISC, CookingBookCategory.MISC, MMEItems.ADAMANTIUM_INGOT, 3.0F, 200, "adamantium_ingot");
@@ -53,7 +61,7 @@ public class MMERecipeProvider extends FabricRecipeProvider {
                 this.oreBlasting(ADAMANTIUM_SMELTABLES, RecipeCategory.MISC, CookingBookCategory.MISC, MMEItems.ADAMANTIUM_INGOT, 3.0F, 100, "adamantium_ingot");
                 this.oreBlasting(MITHRIL_SMELTABLES, RecipeCategory.MISC, CookingBookCategory.MISC, MMEItems.MITHRIL_INGOT, 2.0F, 100, "mithril_ingot");
                 this.oreBlasting(SILVER_SMELTABLES, RecipeCategory.MISC, CookingBookCategory.MISC, MMEItems.SILVER_INGOT, 0.7F, 100, "silver_ingot");
-                
+
                 SimpleCookingRecipeBuilder.blasting(
                                 Ingredient.of(
                                         MMEItems.MITHRIL_PICKAXE,
@@ -104,7 +112,7 @@ public class MMERecipeProvider extends FabricRecipeProvider {
                         .unlockedBy("has_mithril_chainmail_boots", this.has(MMEItems.MITHRIL_CHAINMAIL_BOOTS))
                         .unlockedBy("has_mithril_shears", this.has(MMEItems.MITHRIL_SHEARS))
                         .unlockedBy("has_mithril_spear", this.has(MMEItems.MITHRIL_SPEAR))
-                        .save(this.output, getBlastingRecipeName(MMEItems.MITHRIL_NUGGET));       
+                        .save(this.output, getBlastingRecipeName(MMEItems.MITHRIL_NUGGET));
                 SimpleCookingRecipeBuilder.blasting(
                                 Ingredient.of(
                                         MMEItems.ANCIENT_METAL_PICKAXE,
@@ -895,7 +903,7 @@ public class MMERecipeProvider extends FabricRecipeProvider {
                 offerFishingRodRecipes(MMEItems.GOLDEN_FISHING_ROD, Items.GOLD_NUGGET);
                 offerFishingRodRecipes(MMEItems.OBSIDIAN_FISHING_ROD, MMEItems.OBSIDIAN_SHARD);
                 offerFishingRodRecipes(MMEItems.FLINT_FISHING_ROD, Items.FLINT);
-                
+
                 offerArmorRecipes(MMEItems.ADAMANTIUM_INGOT, MMEItems.ADAMANTIUM_HELMET, MMEItems.ADAMANTIUM_CHESTPLATE, MMEItems.ADAMANTIUM_LEGGINGS, MMEItems.ADAMANTIUM_BOOTS);
                 offerArmorRecipes(MMEItems.ANCIENT_METAL_INGOT, MMEItems.ANCIENT_METAL_HELMET, MMEItems.ANCIENT_METAL_CHESTPLATE, MMEItems.ANCIENT_METAL_LEGGINGS, MMEItems.ANCIENT_METAL_BOOTS);
                 offerArmorRecipes(MMEItems.MITHRIL_INGOT, MMEItems.MITHRIL_HELMET, MMEItems.MITHRIL_CHESTPLATE, MMEItems.MITHRIL_LEGGINGS, MMEItems.MITHRIL_BOOTS);
@@ -998,7 +1006,7 @@ public class MMERecipeProvider extends FabricRecipeProvider {
                 offerMattockRecipes(Items.COPPER_INGOT, MMEItems.COPPER_MATTOCK);
                 offerScytheRecipes(Items.COPPER_INGOT, MMEItems.COPPER_SCYTHE);
                 offerWarhammerRecipes(Items.COPPER_INGOT, MMEItems.COPPER_WAR_HAMMER);
-                
+
                 offerBattleaxeRecipes(Items.IRON_INGOT, MMEItems.IRON_BATTLE_AXE);
                 offerDaggerRecipes(Items.IRON_INGOT, MMEItems.IRON_DAGGER);
                 offerHatchetRecipes(Items.IRON_INGOT, MMEItems.IRON_HATCHET);

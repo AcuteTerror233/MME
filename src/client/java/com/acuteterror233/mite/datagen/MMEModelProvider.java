@@ -24,13 +24,16 @@ import java.util.Map;
 
 /**
  * MME model data generator.
- * Generates model JSON for MME items and blocks.
+ * Generates blockstate/model/item-model JSON for MME items and blocks, delegating MME-specific
+ * shapes (anvils, crops, farmland, buckets, rods, chainmail trims) to the
+ * {@code MME$*} extension methods mixed into the vanilla generators.
  */
 public class MMEModelProvider extends FabricModelProvider {
     public MMEModelProvider(FabricPackOutput output) {
         super(output);
     }
 
+    /** Generates all blockstate and block model JSON (ores, metal blocks, anvils, furnaces, crops, farmland). */
     @Override
     public void generateBlockStateModels(BlockModelGenerators blockStateModelGenerator) {
         BlockModelGeneratorsExtension extendedAccessor = (BlockModelGeneratorsExtension) blockStateModelGenerator;
@@ -50,7 +53,7 @@ public class MMEModelProvider extends FabricModelProvider {
         extendedAccessor.MME$registerAnvil(MMEBlocks.GOLDEN_ANVIL, MMEBlocks.CHIPPED_GOLDEN_ANVIL, MMEBlocks.DAMAGED_GOLDEN_ANVIL);
         extendedAccessor.MME$registerAnvil(MMEBlocks.SILVER_ANVIL, MMEBlocks.CHIPPED_SILVER_ANVIL, MMEBlocks.DAMAGED_SILVER_ANVIL);
         extendedAccessor.MME$registerAnvil(MMEBlocks.COPPER_ANVIL, MMEBlocks.CHIPPED_COPPER_ANVIL, MMEBlocks.DAMAGED_COPPER_ANVIL);
-        
+
         blockStateModelGenerator.createFurnace(MMEBlocks.CLAY_FURNACE, TexturedModel.ORIENTABLE_ONLY_TOP);
         blockStateModelGenerator.createFurnace(MMEBlocks.TERRACOTTA_FURNACE, TexturedModel.ORIENTABLE_ONLY_TOP);
         blockStateModelGenerator.createFurnace(MMEBlocks.NETHERRACK_FURNACE, TexturedModel.ORIENTABLE_ONLY_TOP);
@@ -102,6 +105,7 @@ public class MMEModelProvider extends FabricModelProvider {
 //        blockStateModelGenerator.registerSimpleCubeAll(AtBlocks.ADAMANTIUM_SANCT_RUNESTORE);
     }
 
+    /** Generates all item model JSON (armor sets and chainmail trims, food, coins/chains, tools/weapons, buckets, fishing rods, materials, spawn eggs). */
     @Override
     public void generateItemModels(ItemModelGenerators itemModelGenerator) {
         ItemModelGeneratorsExtension extendedAccessor = (ItemModelGeneratorsExtension) itemModelGenerator;

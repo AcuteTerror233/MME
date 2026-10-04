@@ -20,6 +20,10 @@ import java.util.Map;
  * Stores the anvil's damage level and material limit information, controls anvil degradation logic.
  */
 public class AnvilBlockEntity extends BlockEntity {
+    /**
+     * Damage chain for vanilla anvils (and the fallback for any anvil entity created without an
+     * explicit {@code damageBlock}): each anvil maps to the next more damaged state, ending in air.
+     */
     public static final Map<Block, Block> ANVIL_MAP = new HashMap<>(){{
         put(MMEBlocks.NETHERITE_ANVIL, MMEBlocks.CHIPPED_NETHERITE_ANVIL);
         put(MMEBlocks.CHIPPED_NETHERITE_ANVIL, MMEBlocks.DAMAGED_NETHERITE_ANVIL);
@@ -50,16 +54,19 @@ public class AnvilBlockEntity extends BlockEntity {
     private Integer damage;
     private Block damageBlock;
 
+    /** Creates the entity with zeroed damage, degrading via {@link #ANVIL_MAP}. */
     public AnvilBlockEntity(BlockPos pos, BlockState state) {
         super(MMEBlockEntityTypes.ANVIL, pos, state);
         this.maxDamage = 0;
         this.damage = 0;
     }
+    /** Creates the entity bound to a fixed degradation target block. */
     public AnvilBlockEntity(BlockPos pos, BlockState state, Block damageBlock) {
         this(pos, state);
         this.damageBlock = damageBlock;
     }
 
+    /** Persists {@code maxDamage} and {@code damage}. */
     @Override
     protected void saveAdditional(ValueOutput nbt) {
         nbt.putInt("maxDamage", this.maxDamage);
@@ -67,6 +74,7 @@ public class AnvilBlockEntity extends BlockEntity {
         super.saveAdditional(nbt);
     }
 
+    /** Restores {@code maxDamage} and {@code damage}, defaulting both to 0. */
     @Override
     protected void loadAdditional(ValueInput nbt) {
         super.loadAdditional(nbt);
@@ -74,22 +82,34 @@ public class AnvilBlockEntity extends BlockEntity {
         this.damage = (nbt.getIntOr("damage", 0));
     }
 
+    /** @return the maximum use count before degradation. */
     public Integer getMaxDamage() {
         return this.maxDamage;
     }
 
+    /** Sets the maximum use count before degradation. */
     public void setMaxDamage(Integer maxDamage) {
         this.maxDamage = maxDamage;
     }
 
+    /** @return the accumulated damage. */
     public Integer getDamage() {
         return this.damage;
     }
 
+    /** Sets the damage, clamped to {@code maxDamage}. */
     public void setDamage(Integer damage) {
         this.damage = damage >= this.maxDamage ? this.maxDamage : damage;
     }
 
+    /**
+     * Adds use damage; on reaching {@code maxDamage} the anvil degrades.
+     * Degrading replaces the block with {@code damageBlock} (or the {@link #ANVIL_MAP} successor
+     * when none was set), preserves the facing, plays the anvil-break sound, and carries the
+     * leftover damage and max damage onto the replacement block entity.
+     *
+     * @param Damage damage to add (one use adds 1)
+     */
     public void addDamage(Integer Damage) {
         if (this.level != null) {
             this.damage += Damage;

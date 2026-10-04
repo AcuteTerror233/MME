@@ -558,7 +558,7 @@ public class MMEItems {
                     .craftRemainder(Items.BOWL)
                     .stacksTo(4)
     );
-    
+
     public static final Item NETHERITE_BATTLE_AXE = register(MMEItemIds.NETHERITE_BATTLE_AXE, getBattleAxeSettings(MMEToolMaterials.NETHERITE).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4));
     public static final Item NETHERITE_HATCHET = register(MMEItemIds.NETHERITE_HATCHET, getHandAxeSettings(MMEToolMaterials.NETHERITE).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4));
     public static final Item NETHERITE_DAGGER = register(MMEItemIds.NETHERITE_DAGGER, getDaggerSettings(MMEToolMaterials.NETHERITE).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4));
@@ -567,7 +567,7 @@ public class MMEItems {
     public static final Item NETHERITE_MATTOCK = register(MMEItemIds.NETHERITE_MATTOCK, getMattockSettings(MMEToolMaterials.NETHERITE).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4));
     public static final Item NETHERITE_SCYTHE = register(MMEItemIds.NETHERITE_SCYTHE, getScytheSettings(MMEToolMaterials.NETHERITE).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4));
     public static final Item NETHERITE_SHEARS = registerShearsItem(MMEItemIds.NETHERITE_SHEARS, getShearsSettings(MMEToolMaterials.NETHERITE).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4));
-    
+
     public static final Item ADAMANTIUM_AXE = register(MMEItemIds.ADAMANTIUM_AXE, getAxeSettings(MMEToolMaterials.ADAMANTIUM).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4));
     public static final Item ADAMANTIUM_BATTLE_AXE = register(MMEItemIds.ADAMANTIUM_BATTLE_AXE, getBattleAxeSettings(MMEToolMaterials.ADAMANTIUM).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4));
     public static final Item ADAMANTIUM_HATCHET = register(MMEItemIds.ADAMANTIUM_HATCHET, getHandAxeSettings(MMEToolMaterials.ADAMANTIUM).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4));
@@ -1467,6 +1467,15 @@ public class MMEItems {
             new Item.Properties().spawnEgg(MMEEntityTypes.GIANT_VAMPIRE_BAT)
     );
 
+    /**
+     * Builds item properties for an armor piece: scaled durability, defense/toughness attribute
+     * modifiers, enchantability, the equippable component (slot, equip sound, asset) and the
+     * material's repair tag.
+     *
+     * @param material armor material parameters (see {@link MMEArmorMaterial})
+     * @param type     armor slot type; also selects the defense value from the material's defense map
+     * @return properties ready to register an armor item
+     */
     public static Item.Properties getArmorSettings(MMEArmorMaterial material, ArmorType type) {
             return new Item.Properties().durability(type.getDurability((int) (material.durability() * 0.45)))
                     .attributes(material.createAttributeModifiers(type))
@@ -1479,45 +1488,71 @@ public class MMEItems {
 
     }
 
+    /** Dagger: fast, low-damage sword variant with short reach. */
     public static Item.Properties getDaggerSettings(ToolMaterial material) {
         return applySwordSettings(new Item.Properties(), material, 2, 1, 2, -2.0F, 0.25F, 0.25F);
     }
+    /** Sword: standard melee weapon with web/sword-efficient mining rules. */
     public static Item.Properties getSwordSettings(ToolMaterial material) {
         return applySwordSettings(new Item.Properties(), material, 5, 1, 3, -2.4F, 0.5F, 0.5F);
     }
 
+    /** Scythe: high-durability harvesting tool for scythe-mineable blocks. */
     public static Item.Properties getScytheSettings(ToolMaterial material) {
         return applyToolSettings(new Item.Properties(), material, MMEBlockTags.MINEABLE_WITH_SCYTHE, 9, 1, 3, -3.0f , 0.75f, 0.75f);
     }
 
+    /** Axe: mines axe-mineable blocks and can strip logs (axe block transformer). */
     public static Item.Properties getAxeSettings(ToolMaterial material) {
         return applyToolSettings(new Item.Properties(), material, BlockTags.MINEABLE_WITH_AXE, 5, 2, 4, -2.7F, 0.5F, 0.5F, 5).delayedComponent(DataComponents.BLOCK_TRANSFORMER, context -> context.getOrThrow(BlockTransformers.AXE));
     }
+    /** Battle axe: heavy axe with higher damage and a slower attack. */
     public static Item.Properties getBattleAxeSettings(ToolMaterial material) {
         return applyToolSettings(new Item.Properties(), material, BlockTags.MINEABLE_WITH_AXE, 7, 1, 5, -3F, 0.5F, 0.75F, 5).delayedComponent(DataComponents.BLOCK_TRANSFORMER, context -> context.getOrThrow(BlockTransformers.AXE));
     }
+    /** Hand axe: light axe with low durability cost and modest damage. */
     public static Item.Properties getHandAxeSettings(ToolMaterial material) {
         return applyToolSettings(new Item.Properties(), material, BlockTags.MINEABLE_WITH_AXE, 2, 2, 3, -2.7F, 0.25F, 0.25F, 5).delayedComponent(DataComponents.BLOCK_TRANSFORMER, context -> context.getOrThrow(BlockTransformers.AXE));
     }
 
+    /** Hoe: mines hoe-mineable blocks and tills soil (hoe block transformer). */
     public static Item.Properties getHoeSettings(ToolMaterial material) {
         return applyToolSettings(new Item.Properties(), material, BlockTags.MINEABLE_WITH_HOE, 4, 2, 1, -1.0F, 0.5F, 0.5F).delayedComponent(DataComponents.BLOCK_TRANSFORMER, context -> context.getOrThrow(BlockTransformers.HOE));
     }
+    /** Mattock: hybrid digging tool for mattock-mineable blocks that also tills like a hoe. */
     public static Item.Properties getMattockSettings(ToolMaterial material) {
         return applyToolSettings(new Item.Properties(), material, MMEBlockTags.MINEABLE_WITH_MATTOCK, 6, 2, 2, -1.5F, 0.5F, 0.5F).delayedComponent(DataComponents.BLOCK_TRANSFORMER, context -> context.getOrThrow(BlockTransformers.HOE));
     }
 
+    /** Shovel: mines shovel-mineable blocks and flattens paths (shovel block transformer). */
     public static Item.Properties getShovelSettings(ToolMaterial material) {
         return applyToolSettings(new Item.Properties(), material, BlockTags.MINEABLE_WITH_SHOVEL, 3, 2, 1, -2.8F, 0.75F, 0.75F).delayedComponent(DataComponents.BLOCK_TRANSFORMER, context -> context.getOrThrow(BlockTransformers.SHOVEL));
     }
 
+    /** Pickaxe: mines pickaxe-mineable blocks. */
     public static Item.Properties getPickaxeSettings(ToolMaterial material) {
         return applyToolSettings(new Item.Properties(), material, BlockTags.MINEABLE_WITH_PICKAXE, 3, 2, 2, -2.8f , 0.75f, 0.75f);
     }
+    /** War hammer: slow pickaxe-class weapon with high damage per hit. */
     public static Item.Properties getWarHammerSettings(ToolMaterial material) {
         return applyToolSettings(new Item.Properties(), material, BlockTags.MINEABLE_WITH_PICKAXE, 5, 1, 3, -3.0f , 0.75f, 0.75f);
     }
 
+    /**
+     * Builds spear item properties: base tool settings plus the kinetic/piercing weapon
+     * components, attack range, stab animation and main-hand attack attributes. Timing
+     * parameters are in seconds and are converted to ticks ({@code * 20}) for the components.
+     *
+     * @param swingDurationSeconds      stab animation duration; attack speed derives as 1/s - 4
+     * @param chargedKnockback          knockback strength of charged (kinetic) hits
+     * @param chargeDurationSeconds     seconds to hold before a charged attack can release
+     * @param lightSpeedStartSeconds    attacker-speed condition window start (light charge)
+     * @param lightSpeedThreshold       attacker-speed condition threshold (light charge)
+     * @param heavySpeedStartSeconds    attacker-speed condition window start (heavy charge)
+     * @param heavySpeedThreshold       attacker-speed condition threshold (heavy charge)
+     * @param relativeSpeedStartSeconds relative-speed condition window start
+     * @param relativeSpeedThreshold    relative-speed condition threshold
+     */
     public static Item.Properties applySpearSettings(
             Item.Properties settings,
             ToolMaterial toolMaterial,
@@ -1577,11 +1612,17 @@ public class MMEItems {
                 .component(DataComponents.WEAPON, new Weapon(1));
     }
 
+    /** Shears: vanilla shear behavior rebuilt on the MME tool material. */
     public static Item.Properties getShearsSettings(ToolMaterial material) {
         return applyBaseSettings(new Item.Properties(), material, 7)
                 .component(DataComponents.TOOL, ShearsItem.createToolProperties())
                 .attributes(CreateAttributeModifiers(0.5f, 0.5f, material.attackDamageBonus(), 0));
     }
+    /**
+     * Tool settings builder without a shield-disable penalty; delegates to
+     * {@link #applyToolSettings(Item.Properties, ToolMaterial, TagKey, float, int, float, float, float, float, float)}
+     * with {@code disableBlockingForSeconds = 0}.
+     */
     public static Item.Properties applyToolSettings(
             Item.Properties settings,
             ToolMaterial material,
@@ -1596,6 +1637,20 @@ public class MMEItems {
         return applyToolSettings(settings, material, effectiveBlocks, durabilityMultiplier, itemDamagePerAttack, attackDamage, attackSpeed, blockInteractionRange, entityInteractionRange, 0.0F);
     }
 
+    /**
+     * Core tool settings builder: applies durability (material x multiplier), repair and
+     * enchantment values, a mining {@link Tool} component for the given effective block tag,
+     * main-hand attack attributes (reach, damage, speed) and the shield-disable penalty.
+     *
+     * @param effectiveBlocks           blocks this tool mines at the material's mining speed
+     * @param durabilityMultiplier      multiplies the material's base durability
+     * @param itemDamagePerAttack       durability points lost per successful attack
+     * @param attackDamage              base attack damage before the material bonus
+     * @param attackSpeed               attack speed attribute value
+     * @param blockInteractionRange     additive main-hand block reach
+     * @param entityInteractionRange    additive main-hand entity reach
+     * @param disableBlockingForSeconds seconds a shield is disabled when hit by this weapon
+     */
     public static Item.Properties applyToolSettings(
             Item.Properties settings,
             ToolMaterial material,
@@ -1626,6 +1681,17 @@ public class MMEItems {
                 .component(DataComponents.WEAPON, new Weapon(itemDamagePerAttack, disableBlockingForSeconds));
     }
 
+    /**
+     * Builds sword properties: base tool settings plus sword mining rules (cobweb bonus,
+     * instant-mine and sword-efficient tags), weapon attributes and the shield-disable penalty.
+     *
+     * @param durabilityMultiplier   multiplies the material's base durability
+     * @param itemDamagePerAttack    durability points lost per successful attack
+     * @param attackDamage           base attack damage before the material bonus
+     * @param attackSpeed            attack speed attribute value
+     * @param blockInteractionRange  additive main-hand block reach
+     * @param entityInteractionRange additive main-hand entity reach
+     */
     public static Item.Properties applySwordSettings(
             Item.Properties settings,
             ToolMaterial material,
@@ -1655,6 +1721,15 @@ public class MMEItems {
                 .component(DataComponents.WEAPON, new Weapon(itemDamagePerAttack));
     }
 
+    /**
+     * Builds the shared main-hand attribute set used by MME tools and weapons.
+     *
+     * @param blockInteractionRange  additive block reach attribute value
+     * @param entityInteractionRange additive entity reach attribute value
+     * @param attackDamage           additive attack damage attribute value
+     * @param attackSpeed            additive attack speed attribute value
+     * @return modifiers bound to the main-hand equipment slot group
+     */
     public static ItemAttributeModifiers CreateAttributeModifiers(float blockInteractionRange,float entityInteractionRange, float attackDamage, float attackSpeed) {
         return ItemAttributeModifiers.builder()
                 .add(
@@ -1675,6 +1750,11 @@ public class MMEItems {
                         EquipmentSlotGroup.MAINHAND)
                 .build();
     }
+    /**
+     * Common base for all tool/weapon settings: durability = material durability x multiplier,
+     * repairable with the material's repair items and enchantable at the material's value.
+     * Netherite-tier items additionally become fire resistant.
+     */
     public static Item.Properties applyBaseSettings(Item.Properties settings, ToolMaterial material, float durabilityMultiplier) {
         Item.Properties settings1 = settings.durability((int) (material.durability() * durabilityMultiplier)).repairable(material.repairItems()).enchantable(material.enchantmentValue());
         if (material == ToolMaterial.NETHERITE){
@@ -1682,6 +1762,11 @@ public class MMEItems {
         }
         return settings1;
     }
+    /**
+     * Settings for vanilla-material spears that keep plain {@link Item} behavior (no kinetic or
+     * piercing weapon components): base tool settings plus a {@code 1 + material bonus} attack
+     * damage and an attack speed derived from {@code 1 / swingDurationSeconds - 4}.
+     */
     public static Item.Properties VanillaSpearSettings(Item.Properties settings, ToolMaterial material, float durabilityMultiplier, float swingDurationSeconds){
         return applyBaseSettings(settings, material, durabilityMultiplier).attributes(
                 ItemAttributeModifiers.builder()
@@ -1703,19 +1788,39 @@ public class MMEItems {
         return register(registryKey, ShearsItem::new, settings);
     }
 
+    /** Registers a plain item under the given key with default properties. */
     public static Item register(ResourceKey<Item> registryKey) {
         return register(registryKey, new Item.Properties());
     }
 
+    /** Registers a plain item under the given key with the supplied properties. */
     public static Item register(ResourceKey<Item> registryKey, Item.Properties settings) {
         return register(registryKey, Item::new, settings);
     }
 
+    /**
+     * Registers a {@link BlockItem} for the given block, linking it to the block's description
+     * id and the item registry key carried by {@code id}.
+     *
+     * @param block    block the item places
+     * @param id       wrapper carrying the item's registry key
+     * @param settings item properties (stack size, components, ...)
+     * @return the registered block item
+     */
     public static Item registerBlockItem(Block block, BlockItemId id, Item.Properties settings) {
         Function<Item.Properties, Item> function = properties -> new BlockItem(block, properties.useBlockDescriptionPrefix().setId(id.itemKey()));
         return register(id.itemKey(), function, settings);
     }
 
+    /**
+     * Registers an item built by the given factory with the supplied properties. Block items are
+     * additionally linked into {@code Item.BY_BLOCK}.
+     *
+     * @param registryKey item registry key (also becomes the item's id)
+     * @param factory     creates the item from the finalized properties
+     * @param settings    item properties handed to the factory
+     * @return the registered item
+     */
     public static Item register(ResourceKey<Item> registryKey, Function<Item.Properties, Item> factory, Item.Properties settings) {
         Item item = factory.apply(settings.setId(registryKey));
         if (item instanceof BlockItem blockItem) {
@@ -1736,6 +1841,11 @@ public class MMEItems {
         }
     }
 
+    /**
+     * Creative-tab wiring: removes disabled vanilla items from every tab and inserts MME items
+     * (blocks, tools, weapons, armor, buckets, food, ingredients, spawn eggs) at tiered anchor
+     * positions next to their vanilla counterparts.
+     */
     public static void init() {
         // Remove disabled vanilla items from all creative tabs
         Set<Identifier> disabledVanillaItems = new HashSet<>();

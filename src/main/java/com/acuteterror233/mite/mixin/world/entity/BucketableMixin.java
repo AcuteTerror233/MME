@@ -20,6 +20,13 @@ import org.spongepowered.asm.mixin.Unique;
 
 import java.util.Optional;
 
+/**
+ * Mixin for {@code Bucketable} — Generalizes mob bucket pickup to modded buckets.
+ *
+ * <p>Pickup succeeds with any item tagged {@code WATER_BUCKET}; the filled result is
+ * resolved by renaming the used bucket's item ID from {@code [water_]bucket} to
+ * {@code <mob>_bucket} (see {@link #getBucketItemStack}).</p>
+ */
 @Mixin(Bucketable.class)
 public interface BucketableMixin {
 
@@ -49,17 +56,25 @@ public interface BucketableMixin {
         }
     }
 
+    /**
+     * Only buckets tagged as water buckets can scoop up a mob.
+     */
     @Overwrite
     default boolean canBePickedUpWithBucket(final ItemStack itemStack) {
         return itemStack.is(MMEItemTags.WATER_BUCKET);
     }
 
+    /**
+     * Builds the filled mob bucket by mapping the used bucket's item ID:
+     * {@code [water_]bucket} is replaced with {@code <entity>_bucket} in the same namespace.
+     */
     @Unique
     private static <T extends LivingEntity & Bucketable> ItemStack getBucketItemStack(Player player, InteractionHand hand, T entity) {
         ItemStack itemStack = player.getItemInHand(hand);
         Identifier identifier = BuiltInRegistries.ITEM.getKey(itemStack.getItem());
         String s = "_";
         String s1 = "";
+        // s is the separator consumed for generic buckets; s1 is the "water" prefix to strip
         if (itemStack.is(MMEItemTags.BUCKET)) {
             s = "";
         }

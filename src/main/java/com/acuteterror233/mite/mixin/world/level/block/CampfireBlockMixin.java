@@ -26,13 +26,35 @@ import org.spongepowered.asm.mixin.Overwrite;
 import java.util.Optional;
 
 /**
- * Mixin for {@code CampfireBlock} — Modifies campfire behavior.
+ * Mixin for {@code CampfireBlock} — lets campfires be refueled with fuel items.
+ *
+ * <p>{@code useItemOn} is fully overwritten. Interacting with the held item is split into two
+ * branches: items accepted by the vanilla {@code CAMPFIRE_INPUT} property set keep the vanilla
+ * "place food on the campfire" flow, while any item carrying the {@code COOKING_FUEL} data
+ * component (burn time resolved through a loot context) extends the campfire's remaining ignition
+ * time via {@code CampfireBlockEntity#MME$AddRemainingIgnitionTime}, consuming the item and giving
+ * back its crafting remainder if one exists. The interaction is evaluated on both sides (the
+ * client returns {@code CONSUME} for animation, the server {@code SUCCESS_SERVER} + stat), and the
+ * fuel burn actually ticks server-side inside the block entity.</p>
  */
 @Mixin(CampfireBlock.class)
 public class CampfireBlockMixin {
     /**
      * @author AcuteTerror233
      * @reason Added fuel addition logic
+     *
+     * <p>Overwrites vanilla {@code useItemOn}: vanilla food placement first, then MME fuel
+     * replenishment, otherwise fall through to the empty-hand branch.</p>
+     *
+     * @param stack  the item the player used on the campfire
+     * @param state  the campfire block state
+     * @param world  the level the interaction happened in
+     * @param pos    the campfire position
+     * @param player the interacting player
+     * @param hand   the hand holding {@code stack}
+     * @param hit    the hit result of the interaction
+     * @return the interaction outcome (SUCCESS_SERVER on the server when accepted, CONSUME on the
+     *         client, or TRY_WITH_EMPTY_HAND when the item fits neither branch)
      */
     @Overwrite
     public InteractionResult useItemOn(ItemStack stack, BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {

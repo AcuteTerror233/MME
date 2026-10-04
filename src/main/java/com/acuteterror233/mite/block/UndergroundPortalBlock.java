@@ -44,6 +44,18 @@ public class UndergroundPortalBlock extends AbstractPortalBlock {
         super(settings);
     }
 
+    /**
+     * Picks the destination dimension and target position.
+     * The underground dimension links back to the overworld and vice versa; the target X/Z is the
+     * entity's position scaled by the dimension coordinate ratio and the target Y is fixed
+     * (200 in the underground dimension, -60 back in the overworld), clamped to the world border.
+     *
+     * @param world  the dimension the teleporting entity is currently in
+     * @param entity the entity passing through the portal
+     * @param pos    the portal block position
+     * @return a transition into the exit portal, or {@code null} if the target dimension is absent
+     *         or no exit portal could be created
+     */
     @Nullable
     @Override
     public TeleportTransition getPortalDestination(ServerLevel world, @NonNull Entity entity, @NonNull BlockPos pos) {
@@ -59,6 +71,13 @@ public class UndergroundPortalBlock extends AbstractPortalBlock {
             return this.getOrCreateExitPortalTarget(serverWorld, entity, pos, blockPos, worldBorder);
         }
     }
+    /**
+     * Finds an existing exit portal near the scaled target position (POI search, 16-block radius)
+     * or creates a new one there, then computes the spawn transition inside it.
+     *
+     * @return the teleport transition, or {@code null} if no exit portal could be created
+     *         (e.g. target outside the world border)
+     */
     @Nullable
     private TeleportTransition getOrCreateExitPortalTarget(
             ServerLevel world, Entity entity, BlockPos sourcePos, BlockPos scaledPos, WorldBorder worldBorder
@@ -86,6 +105,11 @@ public class UndergroundPortalBlock extends AbstractPortalBlock {
         }
         return getExitPortalTarget(entity, sourcePos, rectangle, world, postDimensionTransition);
     }
+    /**
+     * Computes the entity's relative position inside its current (source) portal frame, then
+     * delegates to {@link #getExitPortalTarget(ServerLevel, BlockUtil.FoundRectangle, Direction.Axis, Vec3, Entity, TeleportTransition.PostTeleportTransition)}.
+     * Falls back to axis X and offset (0.5, 0, 0) when the source block lacks the axis property.
+     */
     public static TeleportTransition getExitPortalTarget(
             Entity entity, BlockPos pos, BlockUtil.FoundRectangle exitPortalRectangle, ServerLevel world, TeleportTransition.PostTeleportTransition postDimensionTransition
     ) {
@@ -105,6 +129,12 @@ public class UndergroundPortalBlock extends AbstractPortalBlock {
         return getExitPortalTarget(world, exitPortalRectangle, axis, vec3d, entity, postDimensionTransition);
     }
 
+    /**
+     * Maps the relative in-portal position onto the exit portal rectangle and builds the final
+     * transition: rotates the entity 90° when the exit frame's axis differs from the source axis,
+     * interpolates the offset across the rectangle by entity size, and nudges to a collision-free
+     * position.
+     */
     public static TeleportTransition getExitPortalTarget(
             ServerLevel world,
             BlockUtil.FoundRectangle exitPortalRectangle,

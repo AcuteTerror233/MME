@@ -11,19 +11,23 @@ import net.minecraft.world.item.Item;
  * Used for categorizing item types (nuggets, ingots, shards, buckets, coins, etc.) and tool tier materials.
  */
 public interface MMEItemTags {
+    // Material item forms (nuggets / shards / ingots) and currency items.
     TagKey<Item> NUGGET = key("nugget");
     TagKey<Item> SHARD = key("shard");
     TagKey<Item> INGOT = key("ingot");
     TagKey<Item> CHAINS = key("chains");
     TagKey<Item> COINS = key("coins");
 
+    // Bucket categories and MME fluid bucket variants.
     TagKey<Item> BUCKET = key("bucket");
     TagKey<Item> WATER_BUCKET = key("water_bucket");
     TagKey<Item> MILK_BUCKET = key("milk_bucket");
     TagKey<Item> LAVA_BUCKET = key("lava_bucket");
 
+    // Fishing rods (the vanilla rod is superseded by MME's metal fishing rods).
     TagKey<Item> FISHING_RODS = key("fishing_rods");
 
+    // Custom MME weapon and tool kinds.
     TagKey<Item> BATTLE_AXE = key("battle_axe");
     TagKey<Item> HATCHET = key("hatchet");
     TagKey<Item> DAGGER = key("dagger");
@@ -32,10 +36,12 @@ public interface MMEItemTags {
     TagKey<Item> SCYTHE = key("scythe");
     TagKey<Item> SHEARS = key("shears");
 
+    // Enchantability categories: the items each enchantment family may be applied to.
     TagKey<Item> DAGGER_ENCHANTABLE = key("dagger_enchantable");
     TagKey<Item> HARVESTING_ENCHANTABLE =  key("harvesting_enchantable");
     TagKey<Item> FERTILITY_ENCHANTABLE =  key("fertility_enchantable");
 
+    // Complete tool sets grouped by metal tier.
     TagKey<Item> NETHERITE_TOOLS =  key("netherite_tools");
     TagKey<Item> ADAMANTIUM_TOOLS = key("adamantium_tools");
     TagKey<Item> MITHRIL_TOOLS = key("mithril_tools");
@@ -46,8 +52,10 @@ public interface MMEItemTags {
     TagKey<Item> COPPER_TOOLS = key("copper_tools");
     TagKey<Item> GOLDEN_TOOLS = key("golden_tools");
 
+    // Miscellaneous item classifications.
     TagKey<Item> DESTRUCTIBLE_ENDCRYSTAL  = key("destructible_endcrystal");
 
+    // Tool materials: items accepted as crafting material for each metal tier.
     TagKey<Item> NETHERITE_TOOL_MATERIALS = key("netherite_tool_materials");
     TagKey<Item> ADAMANTIUM_TOOL_MATERIALS = key("adamantium_tool_materials");
     TagKey<Item> MITHRIL_TOOL_MATERIALS = key("mithril_tool_materials");
@@ -58,6 +66,8 @@ public interface MMEItemTags {
     TagKey<Item> FLINT_TOOL_MATERIALS = key("flint_tool_materials");
     TagKey<Item> OBSIDIAN_TOOL_MATERIALS = key("obsidian_tool_materials");
 
+    // Anvil repair restrictions: materials each metal's anvil refuses to repair with
+    // (wired as MetalMaterial.AnvilFunction.notAllowedRepairMaterials).
     TagKey<Item> NETHERITE_NOT_ALLOWED_MATERIAL = key("netherite_not_allowed_material");
     TagKey<Item> ADAMANTIUM_NOT_ALLOWED_MATERIAL = key("adamantium_not_allowed_material");
     TagKey<Item> MITHRIL_NOT_ALLOWED_MATERIAL = key("mithril_not_allowed_material");
@@ -67,7 +77,9 @@ public interface MMEItemTags {
     TagKey<Item> HAND_NOT_ALLOWED_MATERIAL = key("hand_not_allowed_material");
     TagKey<Item> GOLD_NOT_ALLOWED_MATERIAL = key("gold_not_allowed_material");
 
+    // Mixed recipe/classification tags used by recipes and crafting-table material gates.
     TagKey<Item> COPPER_OR_SILVER_NUGGET = key("copper_or_silver_nugget");
+    TagKey<Item> COPPER_OR_SILVER_INGOT = key("copper_or_silver_ingot");
     TagKey<Item> METAL_CRAFTING_TABLE = key("metal_crafting_table");
     TagKey<Item> COPPER_OR_SILVER_ARMOR = key("copper_or_silver_armor");
     TagKey<Item> COPPER_OR_SILVER_PICKAXE = key("copper_or_silver_pickaxe");
@@ -78,6 +90,8 @@ public interface MMEItemTags {
     TagKey<Item> MITHRIL_ARMOR = key("mithril_armor");
     TagKey<Item> STRING = key("string");
     TagKey<Item> CRAFTING_TABLE = key("crafting_table");
+    // Per-grade exception results: outputs exempt from that table's material restriction
+    // (wired as MetalMaterial.CraftingFunction.exceptions).
     TagKey<Item> ADAMANTIUM_CRAFTING_TABLE_EXCEPTIONS = key("adamantium_crafting_table_exceptions");
     TagKey<Item> MITHRIL_CRAFTING_TABLE_EXCEPTIONS = key("mithril_crafting_table_exceptions");
     TagKey<Item> ANCIENT_METAL_CRAFTING_TABLE_EXCEPTIONS = key("ancient_metal_crafting_table_exceptions");
@@ -95,6 +109,7 @@ public interface MMEItemTags {
     TagKey<Item> ADAMANTIUM_ARMOR = key("adamantium_armor");
     TagKey<Item> AIR = key("air");
 
+    /** Creates a {@link TagKey} in the item registry under the MME namespace. */
     private static TagKey<Item> key(String id) {
         return TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(MME.MOD_ID, id));
     }

@@ -20,6 +20,7 @@ import net.minecraft.world.level.levelgen.placement.*;
  * Defines generation rules for underground world features (height, frequency, etc.).
  */
 public class UndergroundPlacedFeatures {
+    // Placed feature keys for underground ores (large/small, buried variants) and monster rooms.
     public static final ResourceKey<PlacedFeature> UNDERGROUND_ORE_ADAMANTIUM_BURIED = of("ore_adamantium_buried");
     public static final ResourceKey<PlacedFeature> UNDERGROUND_ORE_ADAMANTIUM_BURIED_SMALL = of("ore_adamantium_buried_small");
     public static final ResourceKey<PlacedFeature> UNDERGROUND_ORE_MITHRIL = of("ore_mithril");
@@ -43,6 +44,7 @@ public class UndergroundPlacedFeatures {
     public static final ResourceKey<PlacedFeature> UNDERGROUND_ORE_DIAMOND_SECOND_LAYER_BURIED = of("ore_diamond_second_layer_buried");
     public static final ResourceKey<PlacedFeature> UNDERGROUND_MONSTER_ROOM = of("underground_monster_room");
 
+    /** Registers underground ore placements (per-ore counts and height ranges) and the monster room. */
     public static void bootstrap(BootstrapContext<PlacedFeature> featureRegisterable){
         HolderGetter<Feature> registryEntryLookup = featureRegisterable.lookup(Registries.FEATURE);
         Holder.Reference<Feature> registryEntry = registryEntryLookup.getOrThrow(CaveFeatures.MONSTER_ROOM);
@@ -193,6 +195,7 @@ public class UndergroundPlacedFeatures {
                 HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(127)),
                 BiomeFilter.biome()
         );
+        // Monster rooms: frequent (50 placement attempts per chunk) between y 6 and 119.
         PlacementUtils.register(
                 featureRegisterable,
                 UndergroundPlacedFeatures.UNDERGROUND_MONSTER_ROOM,
@@ -203,6 +206,7 @@ public class UndergroundPlacedFeatures {
                 BiomeFilter.biome()
         );
     }
+    /** Creates a placed feature resource key under the MME namespace. */
     public static ResourceKey<PlacedFeature> of(String id) {
         return ResourceKey.create(Registries.PLACED_FEATURE, Identifier.fromNamespaceAndPath(MME.MOD_ID, id));
     }

@@ -16,17 +16,25 @@ import org.jspecify.annotations.NonNull;
 
 import java.util.concurrent.CompletableFuture;
 
-public class MMELanguageProvider {
 /**
- * English language file generator.
- * Generates English translation key-value pairs for MME mod items and blocks.
+ * Container for MME's language file providers; see {@link En_us} and {@link Zh_cn}.
+ * Each inner provider writes {@code assets/mme/lang/<locale>.json} into the generated pack.
  */
+public class MMELanguageProvider {
+    /**
+     * English language file generator.
+     * Generates English translation key-value pairs for MME mod items and blocks.
+     */
     public static class En_us extends FabricLanguageProvider {
 
         public En_us(FabricPackOutput dataOutput, CompletableFuture<HolderLookup.Provider> registryLookup) {
             super(dataOutput, "en_us", registryLookup);
         }
 
+        /**
+         * Generates the {@code en_us} translation entries: GUI messages, tooltips, advancement
+         * titles/descriptions, and item/block display names for all MME content.
+         */
         @Override
         public void generateTranslations(HolderLookup.@NonNull Provider registryLookup, TranslationBuilder translationBuilder) {
             translationBuilder.add("mme.craftingTable.noAllowedCrafting", "§cThis item cannot be crafted§r");
@@ -612,6 +620,10 @@ public class MMELanguageProvider {
             super(dataOutput, "zh_cn", registryLookup);
         }
 
+        /**
+         * Generates the {@code zh_cn} translation entries (Simplified Chinese), mirroring the
+         * {@code en_us} key set.
+         */
         @Override
         public void generateTranslations(HolderLookup.@NonNull Provider wrapperLookup, TranslationBuilder translationBuilder) {
             translationBuilder.add("mme.craftingTable.noAllowedCrafting", "§c无法制作此物品§r");

@@ -6,6 +6,12 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.Item;
 
+/**
+ * Registry keys for all MME items, grouped by kind: armor (incl. chainmail variants), food,
+ * tools and weapons per material tier, chains, coins, buckets per material, fishing rods,
+ * raw ores/ingots/nuggets, shards, misc materials and spawn eggs.
+ * Names here are the sole source of the item identifiers ({@code mite:<name>}).
+ */
 public class MMEItemIds {
     public static final ResourceKey<Item> ADAMANTIUM_HELMET = create("adamantium_helmet");
     public static final ResourceKey<Item> ADAMANTIUM_CHESTPLATE = create("adamantium_chestplate");

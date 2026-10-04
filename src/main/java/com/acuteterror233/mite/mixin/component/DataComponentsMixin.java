@@ -16,33 +16,51 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Mutable;
 import org.spongepowered.asm.mixin.Shadow;
 
+/**
+ * Mixin for {@code DataComponents} — shrinks the default stack size of all items from 64 to 4.
+ *
+ * <p>The static final {@code COMMON_ITEM_COMPONENTS} map is shadowed {@code @Mutable} and
+ * re-initialized at class load with MITE's default component set: identical to vanilla except
+ * {@code MAX_STACK_SIZE} defaults to 4, so every item without an explicit stack-size component
+ * stacks far lower. The shadowed component types above mirror the vanilla fields used to rebuild
+ * the map. Applies during class initialization on both sides.</p>
+ */
 @Mixin(DataComponents.class)
 public class DataComponentsMixin {
+    /** Shadowed vanilla component type (referenced when rebuilding the default map). */
     @Final
     @Shadow
     public static DataComponentType<Integer> MAX_STACK_SIZE;
+    /** Shadowed vanilla component type. */
     @Final
     @Shadow
     public static DataComponentType<ItemLore> LORE;
+    /** Shadowed vanilla component type. */
     @Final
     @Shadow
     public static DataComponentType<ItemEnchantments> ENCHANTMENTS;
+    /** Shadowed vanilla component type. */
     @Final
     @Shadow
     public static DataComponentType<Integer> REPAIR_COST;
+    /** Shadowed vanilla component type. */
     @Final
     @Shadow
     public static DataComponentType<ItemAttributeModifiers> ATTRIBUTE_MODIFIERS;
+    /** Shadowed vanilla component type. */
     @Final
     @Shadow
     public static DataComponentType<Rarity> RARITY;
+    /** Shadowed vanilla component type. */
     @Final
     @Shadow
     public static DataComponentType<Holder<SoundEvent>> BREAK_SOUND;
+    /** Shadowed vanilla component type. */
     @Final
     @Shadow
     public static DataComponentType<TooltipDisplay> TOOLTIP_DISPLAY;
 
+    /** Replacement default component map: vanilla set, but items stack to 4 instead of 64. */
     @Final
     @Shadow
     @Mutable

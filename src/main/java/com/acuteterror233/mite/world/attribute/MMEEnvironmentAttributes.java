@@ -7,10 +7,16 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.attribute.EnvironmentAttribute;
 
+/**
+ * Registry of MME custom environment attributes (world-level dimension values readable from
+ * {@code Level#environmentAttributes()}). Call {@link #init()} to force class-loading/registration.
+ */
 public interface MMEEnvironmentAttributes {
+    /** Current moon of the {@link SpecialMoonPhase} cycle; synced to clients, defaults to {@link SpecialMoonPhase#NORMAL_MOON}. */
     EnvironmentAttribute<SpecialMoonPhase> SPECIAL_MOON_PHASE = register(
             "visual/special_moon_phase", EnvironmentAttribute.builder(MMEAttributeTypes.SPECIAL_MOON_PHASE).defaultValue(SpecialMoonPhase.NORMAL_MOON).syncable()
     );
+    /** No-op classloading hook that triggers static registration. */
     static void init(){
 
     }

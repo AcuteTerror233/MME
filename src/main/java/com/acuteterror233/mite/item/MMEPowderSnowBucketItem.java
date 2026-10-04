@@ -17,11 +17,18 @@ import org.jetbrains.annotations.NotNull;
 public class MMEPowderSnowBucketItem extends SolidBucketItem {
     Item bucket;
 
+    /**
+     * @param block      powder snow block placed on use
+     * @param placeSound sound played when the content is placed
+     * @param settings   item properties
+     * @param bucket     empty bucket item handed back after placing (survival mode only)
+     */
     public MMEPowderSnowBucketItem(Block block, SoundEvent placeSound, Properties settings, Item bucket) {
         super(block, placeSound, settings);
         this.bucket = bucket;
     }
 
+    /** Places the powder snow, then swaps the held stack for the configured empty bucket (custom material support). */
     @Override
     public @NotNull InteractionResult useOn(UseOnContext context) {
         InteractionResult actionResult = super.useOn(context);

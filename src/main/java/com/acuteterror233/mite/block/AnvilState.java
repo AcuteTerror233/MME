@@ -18,10 +18,12 @@ public enum AnvilState implements StringRepresentable {
         this.prefix = prefix;
     }
 
+    /** @return the id prefix for this state ({@code ""}, {@code "chipped_"} or {@code "damaged_"}). */
     public String getPrefix() {
         return prefix;
     }
 
+    /** Lowercase state name, e.g. {@code chipped}. */
     @Override
     public @NonNull String getSerializedName() {
         return name().toLowerCase();

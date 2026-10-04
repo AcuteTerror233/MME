@@ -8,7 +8,7 @@ import net.minecraft.resources.Identifier;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * Ghoul renderer.
+ * Ghoul renderer: vanilla zombie model with the ghoul skin.
  */
 public class GhoulRenderer extends ZombieRenderer {
     private static final Identifier GHOUL_LOCATION = Identifier.fromNamespaceAndPath(MME.MOD_ID, "textures/entity/zombie/ghoul.png");
@@ -17,6 +17,7 @@ public class GhoulRenderer extends ZombieRenderer {
         super(context);
     }
 
+    /** {@inheritDoc} Returns the ghoul texture. */
     @Override
     public @NotNull Identifier getTextureLocation(ZombieRenderState renderState) {
         return GHOUL_LOCATION;

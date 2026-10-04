@@ -16,6 +16,7 @@ public class GiantVampireBatRenderer extends VampireBatRenderer<GiantVampireBat>
     }
 
 
+    /** {@inheritDoc} Scales the model up 1.5x before submitting. */
     @Override
     public void submit(BatRenderState livingEntityRenderState, PoseStack poseStack, SubmitNodeCollector submitNodeCollector, CameraRenderState cameraRenderState) {
         poseStack.scale(1.5F, 1.5F, 1.5F);

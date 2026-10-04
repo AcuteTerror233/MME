@@ -30,12 +30,19 @@ public class RemoveBlockGoal extends MoveToBlockGoal {
     protected final Mob removerMob;
     private int ticksSinceReachedGoal;
 
+    /**
+     * @param block        the block type this goal removes (override {@link #isValidTarget} to widen matching)
+     * @param pathfinderMob mob that will destroy the block
+     * @param d            movement speed modifier while pathing to the block
+     * @param i            horizontal search radius (blocks) for valid targets
+     */
     public RemoveBlockGoal(Block block, PathfinderMob pathfinderMob, double d, int i) {
         super(pathfinderMob, d, 24, i);
         this.blockToRemove = block;
         this.removerMob = pathfinderMob;
     }
 
+    /** Only runs when {@code mobGriefing} is enabled and the start cooldown has expired. */
     @Override
     public boolean canUse() {
         if (!getServerLevel(this.removerMob).getGameRules().get(GameRules.MOB_GRIEFING)) {
@@ -64,12 +71,19 @@ public class RemoveBlockGoal extends MoveToBlockGoal {
         this.ticksSinceReachedGoal = 0;
     }
 
+    /** Sound hook: played every 6 ticks while "gnawing" on the block; no-op in the base class. */
     public void playDestroyProgressSound(LevelAccessor levelAccessor, BlockPos blockPos) {
     }
 
+    /** Sound hook: played once when the block is removed; no-op in the base class. */
     public void playBreakSound(Level level, BlockPos blockPos) {
     }
 
+    /**
+     * Path to the target, then "gnaw" on it once within 3 blocks: hop on the block with alternating
+     * vertical impulses, dirt particles and progress sounds, and remove the block after 60+ ticks
+     * with a poof burst and break sound.
+     */
     @Override
     public void tick() {
         boolean reachedTarget = false;
@@ -133,6 +147,7 @@ public class RemoveBlockGoal extends MoveToBlockGoal {
         }
     }
 
+    /** @return the removable block at/around {@code blockPos} (self, 4 horizontal neighbors, or 2 below), or {@code null}. */
     @Nullable
     protected BlockPos getPosWithBlock(BlockPos blockPos, BlockGetter blockGetter) {
         if (blockGetter.getBlockState(blockPos).is(this.blockToRemove)) {
@@ -150,6 +165,7 @@ public class RemoveBlockGoal extends MoveToBlockGoal {
         }
     }
 
+    /** A valid target matches {@link #blockToRemove} in a loaded chunk with 2 blocks of clear air above it. */
     @Override
     protected boolean isValidTarget(LevelReader levelReader, BlockPos blockPos) {
         ChunkAccess chunkAccess = levelReader.getChunk(

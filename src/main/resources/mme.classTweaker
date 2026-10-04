@@ -26,7 +26,10 @@ accessible field net/minecraft/world/level/block/entity/AbstractFurnaceBlockEnti
 transitive-extend-enum net/minecraft/world/level/LightLayer ENTITY
 transitive-inject-interface net/minecraft/world/level/block/entity/CampfireBlockEntity com/acuteterror233/mite/interfaces/CampfireBlockEntityExtension
 transitive-inject-interface net/minecraft/world/level/portal/PortalShape com/acuteterror233/mite/interfaces/UniversalPortalShapeExtension
-transitive-inject-interface net/minecraft/world/inventory/InventoryMenu com/acuteterror233/mite/interfaces/InventoryMenuExtension
+transitive-inject-interface net/minecraft/world/inventory/InventoryMenu com/acuteterror233/mite/interfaces/TimedCraftingMenuExtension
+transitive-inject-interface net/minecraft/world/inventory/CraftingMenu com/acuteterror233/mite/interfaces/TimedCraftingMenuExtension
+transitive-inject-interface net/minecraft/world/inventory/AnvilMenu com/acuteterror233/mite/interfaces/MetalMenuExtension
+transitive-inject-interface net/minecraft/world/inventory/EnchantmentMenu com/acuteterror233/mite/interfaces/EnchantmentMenuExtension
 transitive-inject-interface net/minecraft/world/food/FoodData com/acuteterror233/mite/interfaces/FoodDataExtension
 transitive-inject-interface net/minecraft/world/level/block/SimpleWaterloggedBlock com/acuteterror233/mite/interfaces/FluidDrainableExtension
 transitive-inject-interface net/minecraft/world/level/block/BubbleColumnBlock com/acuteterror233/mite/interfaces/FluidDrainableExtension

@@ -12,7 +12,10 @@ import net.minecraft.world.level.Level;
 import org.spongepowered.asm.mixin.Mixin;
 
 /**
- * Mixin for {@code Monster} — Extend common hostile mob behavior.
+ * Mixin for {@code Monster} — Adds a silver-weapon vulnerability.
+ *
+ * <p>Hostile mobs tagged {@code SENSITIVE_TO_SMITE} (e.g. undead) take 2 extra damage
+ * when struck by a weapon tagged {@code MMEItemTags#SILVER_TOOLS}.</p>
  */
 @Mixin(Monster.class)
 public abstract class MonsterMixin extends PathfinderMob implements Enemy {
@@ -21,6 +24,7 @@ public abstract class MonsterMixin extends PathfinderMob implements Enemy {
         super(entityType, level);
     }
 
+    /** Adds 2 damage when a smite-sensitive monster is hit by a silver weapon. */
     @Override
     public boolean hurtServer(ServerLevel serverLevel, DamageSource damageSource, float f) {
         if (this.getType().builtInRegistryHolder().is(EntityTypeTags.SENSITIVE_TO_SMITE) && damageSource.getWeaponItem() != null && damageSource.getWeaponItem().is(MMEItemTags.SILVER_TOOLS)) {

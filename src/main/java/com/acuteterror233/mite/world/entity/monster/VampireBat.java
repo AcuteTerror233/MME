@@ -37,13 +37,20 @@ import org.jetbrains.annotations.Nullable;
  * Can drain player health.
  */
 public class VampireBat extends Mob implements Enemy {
+    /** Synced status flags bitfield; bit {@link #FLAG_RESTING} marks a resting bat. */
     private static final EntityDataAccessor<Byte> DATA_ID_FLAGS = SynchedEntityData.defineId(VampireBat.class, EntityDataSerializers.BYTE);
+    /** Bit inside {@link #DATA_ID_FLAGS} marking the resting state. */
     private static final int FLAG_RESTING = 1;
+    /** Non-combat targeting used to notice nearby players while resting (4 block range). */
     private static final TargetingConditions BAT_RESTING_TARGETING = TargetingConditions.forNonCombat().range(4.0);
+    /** Client animation state while flying. */
     public final AnimationState flyAnimationState = new AnimationState();
+    /** Client animation state while resting. */
     public final AnimationState restAnimationState = new AnimationState();
+    /** Random flight destination picked while cruising. */
     @Nullable
     private BlockPos targetPosition;
+    /** Current attack phase: SWOOP while chasing a target, LOITERED otherwise. */
     AttackPhase attackPhase = AttackPhase.LOITERED;
 
     public VampireBat(EntityType<? extends VampireBat> entityType, Level level) {
@@ -65,6 +72,7 @@ public class VampireBat extends Mob implements Enemy {
         return super.getVoicePitch() * 0.95f;
     }
 
+    // Holds position while resting; applies extra vertical drag while flying and updates animations.
     @Override
     public void tick() {
         super.tick();
@@ -81,6 +89,11 @@ public class VampireBat extends Mob implements Enemy {
         this.attackPhase = attackPhase;
     }
 
+    /*
+     * Cruise/roost AI (only outside an active swoop):
+     * resting - keeps a solid block above, wakes up if it disappears or a player comes close;
+     * flying - picks a random roost target and steers toward it, occasionally roosting on solid ground.
+     */
     @Override
     protected void customServerAiStep(ServerLevel serverLevel) {
         super.customServerAiStep(serverLevel);
@@ -128,7 +141,8 @@ public class VampireBat extends Mob implements Enemy {
             }
         }
     }
-    
+
+    // Switches between fly/rest animation states based on the resting flag.
     private void setupAnimationStates() {
         if (this.isResting()) {
             this.flyAnimationState.stop();
@@ -145,10 +159,12 @@ public class VampireBat extends Mob implements Enemy {
         builder.define(DATA_ID_FLAGS, (byte) 0);
     }
 
+    /** Returns true while the bat is clinging to a ceiling. */
     public boolean isResting() {
         return (this.entityData.get(DATA_ID_FLAGS) & FLAG_RESTING) != 0;
     }
 
+    /** Sets the resting (ceiling-clinging) state flag. */
     public void setResting(boolean resting) {
         byte flags = this.entityData.get(DATA_ID_FLAGS);
         if (resting) {
@@ -173,6 +189,7 @@ public class VampireBat extends Mob implements Enemy {
         return SoundEvents.BAT_DEATH;
     }
 
+    // Drains life: heals 2 health on a successful hit.
     @Override
     public boolean doHurtTarget(ServerLevel level, Entity target) {
         boolean hurt = super.doHurtTarget(level, target);
@@ -225,6 +242,10 @@ public class VampireBat extends Mob implements Enemy {
         return Monster.createMonsterAttributes().add(Attributes.MAX_HEALTH, 6.0);
     }
 
+    /**
+     * Spawn rule: only below the surface (world-surface heightmap), at low light,
+     * on {@link BlockTags#BATS_SPAWNABLE_ON} blocks, with a 50% acceptance chance.
+     */
     public static boolean checkVampireBatSpawnRules(
             EntityType<? extends VampireBat> entityType,
             ServerLevelAccessor serverLevelAccessor,
@@ -249,21 +270,30 @@ public class VampireBat extends Mob implements Enemy {
         return Mob.checkMobSpawnRules(entityType, serverLevelAccessor, entitySpawnReason, blockPos, randomSource);
     }
 
+    // Bats take no fall damage.
     @Override
     protected void checkFallDamage(double d, boolean bl, BlockState blockState, BlockPos blockPos) {
     }
 
+    // Pressure plates etc. do not wake a resting bat.
     @Override
     public boolean isIgnoringBlockTriggers() {
         return true;
     }
 
+    /** Attack phases of the vampire bat. */
     enum AttackPhase {
+        /** Cruising: random roost selection and resting behavior. */
         LOITERED,
+        /** Attacking: chase and bite the current target. */
         SWOOP
     }
 
 
+    /**
+     * Attack goal that chases the target with slight horizontal jitter and
+     * bites it whenever in melee range (20 tick cooldown).
+     */
     class VampireBatAttackStrategyGoal extends Goal {
         private int ticksUntilNextAttack;
         VampireBatAttackStrategyGoal() {
@@ -303,6 +333,7 @@ public class VampireBat extends Mob implements Enemy {
                 this.resetAttackCooldown();
                 VampireBat.this.doHurtTarget(MeleeAttackGoal.getServerLevel(VampireBat.this), target);
             }
+            // Steer toward the target; the horizontal jitter flips with attack readiness.
             double d = target.getX() - VampireBat.this.getX();
             double e = target.getY() + 1 - VampireBat.this.getY();
             double f = target.getZ() - VampireBat.this.getZ();
@@ -326,6 +357,7 @@ public class VampireBat extends Mob implements Enemy {
             this.ticksUntilNextAttack = this.adjustedTickDelay(20);
         }
 
+        // Bites when the cooldown has elapsed and the target is in range and visible.
         protected boolean canPerformAttack(LivingEntity livingEntity) {
             return this.ticksUntilNextAttack <= 0 && VampireBat.this.isWithinMeleeAttackRange(livingEntity) && VampireBat.this.getSensing().hasLineOfSight(livingEntity);
         }

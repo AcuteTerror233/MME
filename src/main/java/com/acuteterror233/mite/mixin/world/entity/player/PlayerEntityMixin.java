@@ -19,7 +19,25 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 /**
- * Mixin for {@code Player} — Extend player behavior.
+ * Mixin for {@code Player} — Extends player behavior: attribute rework, level-scaled max
+ * health, doubled experience curve, and heavier attack exhaustion.
+ *
+ * <p>Mechanism:</p>
+ * <ul>
+ *   <li>{@code createAttributes} injection (RETURN, cancellable): base max health 6,
+ *       block interaction range 3, entity interaction range 1.5.</li>
+ *   <li>{@code getXpNeededForNextLevel} injection: every level costs double the
+ *       vanilla experience.</li>
+ *   <li>{@code tick} injection (HEAD): max health grows with experience level
+ *       (6 + 2 per 5 levels, clamped to 6..20) and stays in sync with the food cap
+ *       via {@link #setMaxHealth}.</li>
+ *   <li>{@code attack} injection (at {@code hurtOrSimulate}): adds 0.5 exhaustion
+ *       whenever an attack lands.</li>
+ *   <li>{@code blockUsingItem} redirect: shields are disabled for at least 0.25s,
+ *       even when the attacker's weapon defines no disable time.</li>
+ *   <li>{@code getBaseExperienceReward} redirect: vanilla's {@code Math.min} cap on
+ *       the base experience reward is removed (first operand returned as-is).</li>
+ * </ul>
  */
 @Mixin(Player.class)
 public abstract class PlayerEntityMixin extends LivingEntity {
@@ -31,6 +49,10 @@ public abstract class PlayerEntityMixin extends LivingEntity {
     @Shadow
     protected FoodData foodData;
 
+    /**
+     * Substitutes the shield-disable duration: if the attacking entity defines none
+     * (0), 0.25 seconds is used so any hit briefly disables blocking.
+     */
     @Redirect(method = "blockUsingItem", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/LivingEntity;getSecondsToDisableBlocking()F"))
     public float blockUsingItem(LivingEntity instance) {
         float v = instance.getSecondsToDisableBlocking();
@@ -41,6 +63,7 @@ public abstract class PlayerEntityMixin extends LivingEntity {
         super(entityType, world);
     }
 
+    /** Adds the reworked base attributes (max health 6, block range 3, entity range 1.5). */
     @Inject(method = "createAttributes", at = @At("RETURN"), cancellable = true)
     private static void createPlayerAttributes(CallbackInfoReturnable<AttributeSupplier.Builder> cir) {
         cir.setReturnValue(cir.getReturnValue()
@@ -50,17 +73,26 @@ public abstract class PlayerEntityMixin extends LivingEntity {
         );
     }
 
+    /** Doubles the experience required for each level-up. */
     @Inject(method = "getXpNeededForNextLevel", at = @At("RETURN"), cancellable = true)
     public void getNextLevelExperience(CallbackInfoReturnable<Integer> cir) {
         cir.setReturnValue(cir.getReturnValue() * 2);
     }
 
+    /** Applies the level-scaled max health cap every tick. */
     @Inject(method = "tick", at = @At("HEAD"))
     public void tick(CallbackInfo ci) {
+        // Max health: 6 base, +2 per 5 experience levels, clamped to [6, 20]
         int maxHealth = Math.clamp(6 + (this.experienceLevel / 5) * 2, 6, 20);
         this.setMaxHealth(maxHealth);
     }
 
+    /**
+     * Applies a new cap to both the MAX_HEALTH attribute and the food data, so health
+     * and hunger always share the same limit; no-op when both already match.
+     *
+     * @param max the new shared cap (health and hunger)
+     */
     @Unique
     public void setMaxHealth(int max) {
         AttributeInstance instance = this.getAttributes().getInstance(Attributes.MAX_HEALTH);
@@ -72,18 +104,16 @@ public abstract class PlayerEntityMixin extends LivingEntity {
         }
     }
 
+    /** Adds 0.5 food exhaustion when an attack connects. */
     @Inject(method = "attack", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/Entity;hurtOrSimulate(Lnet/minecraft/world/damagesource/DamageSource;F)Z"))
     public void attack(Entity entity, CallbackInfo ci) {
         this.getFoodData().addExhaustion(0.5F);
     }
 
+    /** Removes vanilla's {@code Math.min} cap by always returning the first operand. */
     @Redirect(method = "getBaseExperienceReward", at = @At(value = "INVOKE", target = "Ljava/lang/Math;min(II)I"))
     public int getBaseExperienceReward(int a, int b) {
         return a;
     }
 
-    @Inject(method = "causeFoodExhaustion", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/food/FoodData;addExhaustion(F)V"))
-    public void causeFoodExhaustion(float f, CallbackInfo ci) {
-        foodData.addExhaustion(f * 3);
-    }
 }

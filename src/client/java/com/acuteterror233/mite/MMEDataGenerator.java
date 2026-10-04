@@ -19,9 +19,10 @@ import net.minecraft.core.registries.Registries;
  * Registers all data generation providers: loot tables, recipes, tags, models, advancements, and language files.
  */
 public class MMEDataGenerator implements DataGeneratorEntrypoint {
-	@Override
-	public void onInitializeDataGenerator(FabricDataGenerator generator) {
-		FabricDataGenerator.Pack pack = generator.createPack();
+    /** Adds every datagen provider (models, recipes, loot tables, dynamic registries, advancements, languages, tags) to the pack. */
+    @Override
+    public void onInitializeDataGenerator(FabricDataGenerator generator) {
+        FabricDataGenerator.Pack pack = generator.createPack();
         pack.addProvider(MMEModelProvider::new);
         pack.addProvider(MMERecipeProvider::new);
         pack.addProvider(MMEBlockLootTableProvider::new);
@@ -39,7 +40,8 @@ public class MMEDataGenerator implements DataGeneratorEntrypoint {
         pack.addProvider(MMETagProvider.EntityTypeTag::new);
         pack.addProvider(MMETagProvider.EnchantmentTag::new);
         pack.addProvider(MMETagProvider.VillagerTradeTag::new);
-	}
+    }
+    /** Bootstraps the MME registry data (dimension types, biomes, features, enchantments, damage types, paintings, trades, timelines) used by datagen and for registry validation. */
     @Override
     public void buildRegistry(RegistrySetBuilder registryBuilder){
         registryBuilder.add(Registries.DIMENSION_TYPE, MMEDimensionTypeRegistrar::bootstrap);

@@ -232,10 +232,12 @@ class RunePortalCoordinateGeneratorTest {
 
     // ─── helpers ───
 
+    /** The canonical four-key structure (stone, dirt, cobblestone, bedrock) shared by most tests. */
     private static List<Identifier> fourKeys() {
         return List.of(STONE, DIRT, COBBLESTONE, BEDROCK);
     }
 
+    /** Decodes a lowercase hex string into its byte representation. */
     private static byte[] toBytes(String hex) {
         int length = hex.length();
         byte[] data = new byte[length / 2];
@@ -246,6 +248,7 @@ class RunePortalCoordinateGeneratorTest {
         return data;
     }
 
+    /** Asserts that both arrays have equal length but differ in content. */
     private static void assertFalseArrayEquals(byte[] first, byte[] second) {
         assertEquals(first.length, second.length);
         boolean differ = false;

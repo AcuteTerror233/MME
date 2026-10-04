@@ -11,6 +11,7 @@ import net.minecraft.world.level.block.Block;
  * Used for controlling tool mining tiers ({@code INCORRECT_FOR_*} / {@code NEEDS_*}) and other block attribute classifications.
  */
 public interface MMEBlockTags {
+    // Blocks these MME tool tiers cannot mine (mirrors the vanilla incorrect_*_for_* mechanism).
     TagKey<Block> INCORRECT_FOR_ADAMANTIUM_TOOL = key("incorrect_for_adamantium_tool");
     TagKey<Block> INCORRECT_FOR_MITHRIL_TOOL = key("incorrect_for_mithril_tool");
     TagKey<Block> INCORRECT_FOR_ANCIENT_METAL_TOOL = key("incorrect_for_ancient_metal_tool");
@@ -18,18 +19,22 @@ public interface MMEBlockTags {
     TagKey<Block> INCORRECT_FOR_COPPER_OR_SILVER_TOOL = key("incorrect_for_copper_or_silver_tool");
     TagKey<Block> INCORRECT_FOR_FLINT_OR_OBSIDIAN_TOOL = key("incorrect_for_flint_or_obsidian_tool");
 
+    // Blocks requiring the given MME metal tier to drop/mine.
     TagKey<Block> NEEDS_ADAMANTIUM_TOOL = key("needs_adamantium_tool");
     TagKey<Block> NEEDS_MITHRIL_TOOL = key("needs_mithril_tool");
     TagKey<Block> NEEDS_ANCIENT_METAL_TOOL = key("needs_ancient_metal_tool");
     TagKey<Block> NEEDS_SILVER_OR_COPPER_TOOL = key("needs_silver_or_copper_tool");
 
+    // Glass classifications (tool effectiveness).
     TagKey<Block> GLASS = key("glass");
     TagKey<Block> GLASS_PANE = key("glass_pane");
 
+    // Anvil damage states.
     TagKey<Block> INTACT_ANVIL = key("intact_anvil");
     TagKey<Block> CHIPPED_ANVIL = key("chipped_anvil");
     TagKey<Block> DAMAGED_ANVIL = key("damaged_anvil");
 
+    // Metal variants of anvils.
     TagKey<Block> NETHERITE_ANVIL = key("netherite_anvil");
     TagKey<Block> ADAMANTIUM_ANVIL = key("adamantium_anvil");
     TagKey<Block> MITHRIL_ANVIL = key("mithril_anvil");
@@ -39,16 +44,19 @@ public interface MMEBlockTags {
     TagKey<Block> SILVER_ANVIL = key("silver_anvil");
     TagKey<Block> IRON_ANVIL = key("iron_anvil");
 
+    // Portal frames, runestone blocks, and functional block classifications.
     TagKey<Block> PORTAL = key("portal");
     TagKey<Block> MITHRIL_RUNESTORE = key("mithril_runestore");
     TagKey<Block> ADAMANTIUM_RUNESTORE = key("adamantium_runestore");
     TagKey<Block> RUNESTORE = key("runestore");
     TagKey<Block> CRAFTING_TABLE = key("crafting_table");
     TagKey<Block> ENCHANTING_TABLE = key("enchanting_table");
+    // Tool effectiveness and plant classifications.
     TagKey<Block> MINEABLE_WITH_MATTOCK = key("mineable_with_mattock");
-    TagKey<Block> MINEABLE_WITH_SCYTHE =  key("scythe_efficient");
+    TagKey<Block> MINEABLE_WITH_SCYTHE =  key("scythe_efficient"); // tag id differs from the constant name
     TagKey<Block> HERBACEOUS_PLANTS = key("herbacious_plants");
 
+    /** Creates a {@link TagKey} in the block registry under the MME namespace. */
     static TagKey<Block> key(String id) {
         return TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(MME.MOD_ID, id));
     }

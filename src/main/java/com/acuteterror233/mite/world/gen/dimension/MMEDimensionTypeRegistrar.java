@@ -25,10 +25,14 @@ import java.util.Optional;
  * Registers dimension type parameters for the underground dimension during data generation.
  */
 public class MMEDimensionTypeRegistrar {
+    /** Level (world) resource key of the underground dimension. */
     public static final ResourceKey<Level> UNDERGROUND_LEVEL_KEY = ResourceKey.create(Registries.DIMENSION,
             Identifier.fromNamespaceAndPath(MME.MOD_ID, "underground"));
+    /** Dimension type resource key of the underground dimension. */
     public static final ResourceKey<DimensionType> UNDERGROUND_DIMENSION_TYPE_KEY = ResourceKey.create(Registries.DIMENSION_TYPE,
             Identifier.fromNamespaceAndPath(MME.MOD_ID, "underground_type"));
+
+    /** Registers the underground dimension type: 4x coordinate scale, y -64..320, no skybox, custom fog/sky colors, can-sleep-when-dark bed rule. */
     public static void bootstrap(BootstrapContext<DimensionType> context) {
         HolderGetter<Block> blocks = context.lookup(Registries.BLOCK);
         HolderGetter<Timeline> holderGetter = context.lookup(Registries.TIMELINE);

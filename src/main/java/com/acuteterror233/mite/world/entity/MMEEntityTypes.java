@@ -14,6 +14,7 @@ import net.minecraft.world.level.levelgen.Heightmap;
  * Registers all custom entities (ghoul, shadow, wight, fire elemental, infernal creeper, etc.) and their default attributes.
  */
 public class MMEEntityTypes {
+    /** Ground monster, standard humanoid footprint; spawns via {@link Monster#checkMonsterSpawnRules}. */
     public static final EntityType<Ghoul> GHOUL = register(
             MMEEntityTypeIds.GHOUL,
             EntityType.Builder.of(Ghoul::new, MobCategory.MONSTER)
@@ -24,6 +25,7 @@ public class MMEEntityTypes {
                     .clientTrackingRange(8)
                     .notInPeaceful()
     );
+    /** Ground monster: lurking humanoid that blends into darkness. */
     public static final EntityType<Shadow> SHADOW = register(
             MMEEntityTypeIds.SHADOW,
             EntityType.Builder.of(Shadow::new, MobCategory.MONSTER)
@@ -34,6 +36,7 @@ public class MMEEntityTypes {
                     .clientTrackingRange(8)
                     .notInPeaceful()
     );
+    /** Ground monster: undead spellcaster. */
     public static final EntityType<Wight> WIGHT = register(
             MMEEntityTypeIds.WIGHT,
             EntityType.Builder.of(Wight::new, MobCategory.MONSTER)
@@ -44,6 +47,7 @@ public class MMEEntityTypes {
                     .clientTrackingRange(8)
                     .notInPeaceful()
     );
+    /** Ground monster: humanoid that is invisible to players until it attacks. */
     public static final EntityType<InvisibleStalker> INVISIBLE_STALKER = register(
             MMEEntityTypeIds.INVISIBLE_STALKER,
             EntityType.Builder.of(InvisibleStalker::new, MobCategory.MONSTER)
@@ -54,6 +58,7 @@ public class MMEEntityTypes {
                     .clientTrackingRange(8)
                     .notInPeaceful()
     );
+    /** Ground monster: large spider with demon traits. */
     public static final EntityType<DemonSpider> DEMON_SPIDER = register(
             MMEEntityTypeIds.DEMON_SPIDER,
             EntityType.Builder.of(DemonSpider::new, MobCategory.MONSTER)
@@ -62,6 +67,7 @@ public class MMEEntityTypes {
                     .clientTrackingRange(8)
                     .notInPeaceful()
     );
+    /** Ground monster: small spider that teleports/phases toward its target. */
     public static final EntityType<PhaseSpider> PHASE_SPIDER = register(
             MMEEntityTypeIds.PHASE_SPIDER,
             EntityType.Builder.of(PhaseSpider::new, MobCategory.MONSTER)
@@ -70,6 +76,7 @@ public class MMEEntityTypes {
                     .clientTrackingRange(8)
                     .notInPeaceful()
     );
+    /** Ground monster: creeper variant with an explosive fire blast. */
     public static final EntityType<InfernalCreeper> INFERNAL_CREEPER = register(
             MMEEntityTypeIds.INFERNAL_CREEPER,
             EntityType.Builder.of(InfernalCreeper::new, MobCategory.MONSTER)
@@ -79,6 +86,7 @@ public class MMEEntityTypes {
                     .clientTrackingRange(8)
                     .notInPeaceful()
     );
+    /** Ground monster: fire-immune elemental that hurls fire and seeks lava. */
     public static final EntityType<FireElemental> FIRE_ELEMENTAL = register(
             MMEEntityTypeIds.FIRE_ELEMENTAL,
             EntityType.Builder.of(FireElemental::new, MobCategory.MONSTER)
@@ -90,6 +98,7 @@ public class MMEEntityTypes {
                     .fireImmune()
                     .notInPeaceful()
     );
+    /** Flying blood-drinking bat; unrestricted spawn placement ({@code NO_RESTRICTIONS}) with custom spawn rules. */
     public static final EntityType<VampireBat> VAMPIRE_BAT = register(
             MMEEntityTypeIds.VAMPIRE_BAT,
             EntityType.Builder.of(VampireBat::new, MobCategory.MONSTER)
@@ -98,6 +107,7 @@ public class MMEEntityTypes {
                     .clientTrackingRange(8)
                     .notInPeaceful()
     );
+    /** Flying night predator; unrestricted spawn placement with {@link VampireBat} spawn rules. */
     public static final EntityType<Nightwing> NIGHTWING = register(
             MMEEntityTypeIds.NIGHTWING,
             EntityType.Builder.of(Nightwing::new, MobCategory.MONSTER)
@@ -106,6 +116,7 @@ public class MMEEntityTypes {
                     .clientTrackingRange(8)
                     .notInPeaceful()
     );
+    /** Enlarged vampire bat boss variant; same unrestricted spawn placement as {@link VampireBat}. */
     public static final EntityType<GiantVampireBat> GIANT_VAMPIRE_BAT = register(
             MMEEntityTypeIds.GIANT_VAMPIRE_BAT,
             EntityType.Builder.of(GiantVampireBat::new, MobCategory.MONSTER)
@@ -115,10 +126,16 @@ public class MMEEntityTypes {
                     .notInPeaceful()
     );
 
+    /** Builds the entity type from the builder and registers it under {@code key}. */
     private static <T extends Entity> EntityType<T> register(ResourceKey<EntityType<?>> key, EntityType.Builder<T> builder) {
         return Registry.register(BuiltInRegistries.ENTITY_TYPE, key, builder.build(key));
     }
 
+    /**
+     * Entry hook: wires default attributes for every custom entity and registers spawn
+     * placements — ground monsters use {@code ON_GROUND} + {@link Monster#checkMonsterSpawnRules},
+     * flying bats use {@code NO_RESTRICTIONS} + {@link VampireBat#checkVampireBatSpawnRules}.
+     */
     public static void init() {
         FabricDefaultAttributeRegistry.register(MMEEntityTypes.GHOUL, Ghoul.createAttributes());
         FabricDefaultAttributeRegistry.register(MMEEntityTypes.SHADOW, Shadow.createAttributes());

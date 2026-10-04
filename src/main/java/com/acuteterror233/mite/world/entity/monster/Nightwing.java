@@ -16,6 +16,7 @@ public class Nightwing extends VampireBat {
         super(entityType, level);
     }
 
+    // Applies Darkness for 5 seconds (100 ticks, with particles) on a successful hit.
     @Override
     public boolean doHurtTarget(ServerLevel level, Entity target) {
         boolean hurt = super.doHurtTarget(level, target);

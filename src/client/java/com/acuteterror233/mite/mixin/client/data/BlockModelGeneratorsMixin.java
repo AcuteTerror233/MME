@@ -30,7 +30,10 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 
 /**
- * Mixin for {@code BlockModelGenerators} — Implements block model generation extension interface.
+ * Client datagen mixin into {@code BlockModelGenerators}, implementing
+ * {@link BlockModelGeneratorsExtension} so {@code MMEModelProvider} can generate MME-specific
+ * block models/blockstates (metal anvils, crops with disease states, fertilized farmland).
+ * Runs only during {@code runDatagen}.
  */
 @Mixin(BlockModelGenerators.class)
 public abstract class BlockModelGeneratorsMixin implements BlockModelGeneratorsExtension {
@@ -55,6 +58,15 @@ public abstract class BlockModelGeneratorsMixin implements BlockModelGeneratorsE
     @Shadow @Final public static PropertyDispatch<VariantMutator> ROTATION_HORIZONTAL_FACING_ALT;
 
     // Four textures: first is the base material, registry name of intact anvil; the next three are anvil tops, registry id + top
+    /**
+     * Generates the model and blockstate JSON for one metal's three anvil damage states: each
+     * state gets its own model from the shared anvil template (body/particle textures from the
+     * intact anvil, top texture per state) and a horizontal facing rotation dispatch.
+     *
+     * @param intact_anvil   the intact anvil block (provides the shared textures)
+     * @param chipped_anvil  the chipped anvil block
+     * @param damaged_anvil  the damaged anvil block
+     */
     @Unique
     @Override
     public void MME$registerAnvil(Block intact_anvil, Block chipped_anvil, Block damaged_anvil) {
@@ -67,6 +79,16 @@ public abstract class BlockModelGeneratorsMixin implements BlockModelGeneratorsE
     }
 
 
+    /**
+     * Generates crop blockstate JSON dispatching on both the age property and MME's disease
+     * level: healthy textures follow the vanilla {@code block/<crop>_stageN} scheme, while
+     * diseased/withered variants use MME-namespaced models keyed by the age's texture stage.
+     *
+     * @param block    the crop block
+     * @param property the crop age property
+     * @param is       texture stage per age value; length must equal the property's value count
+     * @throws IllegalArgumentException if {@code is.length} differs from the property's value count
+     */
     @Unique
     @Override
     public void MME$registerCrop(Block block, Property<Integer> property, int... is) {
@@ -75,6 +97,7 @@ public abstract class BlockModelGeneratorsMixin implements BlockModelGeneratorsE
         } else {
             Identifier resourceLocation = BuiltInRegistries.BLOCK.getKey(block);
             Identifier path = Identifier.fromNamespaceAndPath(MME.MOD_ID, resourceLocation.getPath());
+            // Lazy per-stage model caches for each disease level, so models are created at most once.
             Int2ObjectMap<Identifier> int2ObjectMap = new Int2ObjectOpenHashMap<>();
             Int2ObjectMap<Identifier> int2ObjectDiseasesMap = new Int2ObjectOpenHashMap<>();
             Int2ObjectMap<Identifier> int2ObjectWitherMap = new Int2ObjectOpenHashMap<>();
@@ -116,6 +139,11 @@ public abstract class BlockModelGeneratorsMixin implements BlockModelGeneratorsE
         }
     }
 
+    /**
+     * Generates farmland blockstate JSON dispatching on vanilla {@code MOISTURE} and MME's
+     * {@code FERTILE} property, producing four model variants (dry/moist × normal/manured).
+     * Side and bottom always use dirt textures; only the top texture differs.
+     */
     @Unique
     @Override
     public void MME$registerFarmland() {

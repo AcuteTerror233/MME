@@ -8,7 +8,7 @@ import net.minecraft.resources.Identifier;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * Wight renderer.
+ * Wight renderer: vanilla zombie model with the wight skin.
  */
 public class WightRenderer extends ZombieRenderer {
     private static final Identifier WIGHT_LOCATION = Identifier.fromNamespaceAndPath(MME.MOD_ID, "textures/entity/zombie/wight.png");
@@ -17,6 +17,7 @@ public class WightRenderer extends ZombieRenderer {
         super(context);
     }
 
+    /** {@inheritDoc} Returns the wight texture. */
     @Override
     public @NotNull Identifier getTextureLocation(ZombieRenderState renderState) {
         return WIGHT_LOCATION;

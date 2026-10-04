@@ -26,20 +26,31 @@ import org.spongepowered.asm.mixin.Unique;
 import java.util.Optional;
 
 /**
- * Mixin for {@code AbstractCow} — Extend cow behavior.
+ * Mixin for {@code AbstractCow} — Adds a milking quota with recovery.
+ *
+ * <p>A cow holds up to 4 milk units: only a full quota can be bucket-milked (yielding
+ * the {@code milk_<cow>} item variant), while each bowl drawing consumes one unit.
+ * The quota recovers by 1 every 12000 ticks and both counters persist through NBT.</p>
  */
 @Mixin(AbstractCow.class)
 public abstract class AbstractCowMixin extends Animal {
+    /** Ticks accumulated toward the next milk unit recovery (reset at every 12000). */
     @Unique
     private int recoveryCounter = 0;
+    /** Maximum milk units a cow can hold. */
     @Unique
     private static final int maxMilkCounter = 4;
+    /** Current milk units available for milking. */
     @Unique
     private int milkCounter = maxMilkCounter;
     protected AbstractCowMixin(EntityType<? extends Animal> entityType, Level level) {
         super(entityType, level);
     }
     /**
+     * Bucket milking (only at full quota) yields the {@code milk_<cow>} item variant
+     * when one is registered; bowl milking consumes one quota unit per bowl.
+     * Falls back to vanilla behavior in all other cases.
+     *
      * @author AcuteError233
      * @reason Modify cow interaction
      */
@@ -48,6 +59,7 @@ public abstract class AbstractCowMixin extends Animal {
         ItemStack itemStack = player.getItemInHand(interactionHand);
         if (!this.isBaby()) {
             if (itemStack.is(MMEItemTags.BUCKET) && this.milkCounter == 4){
+                // Only a fully "charged" cow can be bucket-milked; the whole quota is spent at once
                 this.milkCounter-=4;
                 player.playSound(SoundEvents.COW_MILK, 1.0F, 1.0F);
                 Optional<Item> milk = BuiltInRegistries.ITEM.getOptional(BuiltInRegistries.ITEM.getKey(itemStack.getItem()).withPrefix("milk_"));
@@ -59,6 +71,7 @@ public abstract class AbstractCowMixin extends Animal {
                     return super.mobInteract(player, interactionHand);
                 }
             }if (itemStack.is(Items.BOWL) && this.milkCounter >= 1){
+                // Bowl milking: one quota unit per bowl
                 this.milkCounter-=1;
                 player.playSound(SoundEvents.COW_MILK, 1.0F, 1.0F);
                 itemStack.consume(1, player);
@@ -71,6 +84,7 @@ public abstract class AbstractCowMixin extends Animal {
             return super.mobInteract(player, interactionHand);
         }
     }
+    /** Recovers one milk unit per 12000 ticks until the quota is full. */
     @Override
     public void tick(){
         super.tick();
@@ -83,6 +97,7 @@ public abstract class AbstractCowMixin extends Animal {
         }
     }
 
+    /** Persists the milk quota counters to NBT. */
     @Override
     public void addAdditionalSaveData(@NonNull ValueOutput compoundTag) {
         super.addAdditionalSaveData(compoundTag);
@@ -90,6 +105,7 @@ public abstract class AbstractCowMixin extends Animal {
         compoundTag.putInt("MilkCounter", milkCounter);
     }
 
+    /** Restores the milk quota counters from NBT. */
     @Override
     public void readAdditionalSaveData(@NonNull ValueInput compoundTag) {
         super.readAdditionalSaveData(compoundTag);
