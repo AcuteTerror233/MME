@@ -38,7 +38,7 @@ public class NaturalSpawnerMixin {
      */
     @Inject(method = "spawnCategoryForPosition(Lnet/minecraft/world/entity/MobCategory;Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/level/chunk/ChunkAccess;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/NaturalSpawner$SpawnPredicate;Lnet/minecraft/world/level/NaturalSpawner$AfterSpawnCallback;)V", at = @At("HEAD"), cancellable = true)
     private static void onSpawnCategoryForPosition(MobCategory mobCategory, ServerLevel serverLevel, ChunkAccess chunkAccess, BlockPos blockPos, NaturalSpawner.SpawnPredicate spawnPredicate, NaturalSpawner.AfterSpawnCallback afterSpawnCallback, CallbackInfo ci) {
-        if (mobCategory == MobCategory.CREATURE && serverLevel.getRandom().nextFloat() > 0.5F) {
+        if (mobCategory == MobCategory.CREATURE || mobCategory == MobCategory.WATER_AMBIENT && serverLevel.getRandom().nextFloat() > 0.3F) {
             ci.cancel();
         }
     }

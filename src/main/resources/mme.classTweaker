@@ -22,6 +22,7 @@ accessible method net/minecraft/world/level/block/entity/BlockEntityTypes regist
 accessible field net/minecraft/world/level/block/entity/AbstractFurnaceBlockEntity items Lnet/minecraft/core/NonNullList;
 accessible method net/minecraft/world/level/storage/loot/providers/number/ints/ContextIntProviders cooking (Lnet/minecraft/core/HolderGetter;Lnet/minecraft/core/Holder$Reference;Lnet/minecraft/core/Holder$Reference;I)Lnet/minecraft/world/level/storage/loot/providers/number/ints/ContextIntProvider;
 accessible field net/minecraft/world/level/block/entity/AbstractFurnaceBlockEntity litTimeRemaining I
+accessible class net/minecraft/world/level/block/ComposterBlock$OutputContainer
 
 transitive-extend-enum net/minecraft/world/level/LightLayer ENTITY
 transitive-inject-interface net/minecraft/world/level/block/entity/CampfireBlockEntity com/acuteterror233/mite/interfaces/CampfireBlockEntityExtension

@@ -4,8 +4,10 @@ import com.acuteterror233.mite.material.MMEMaterials;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.util.ColorRGBA;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.ColoredFallingBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
@@ -42,6 +44,7 @@ public final class VanillaBlockModify {
         result.put(Identifier.withDefaultNamespace("chipped_anvil"), settings -> new MMEAnvilBlock(settings, MMEMaterials.IRON, Blocks.DAMAGED_ANVIL));
         result.put(Identifier.withDefaultNamespace("damaged_anvil"), settings -> new MMEAnvilBlock(settings, MMEMaterials.IRON, Blocks.AIR));
         result.put(Identifier.withDefaultNamespace("crafting_table"), Block::new);
+        result.put(Identifier.withDefaultNamespace("dirt"), properties -> new ColoredFallingBlock(new ColorRGBA(9923917), properties));
         return result;
     }
     /**

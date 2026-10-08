@@ -228,6 +228,15 @@ public class MMEEntityLootTableProvider extends FabricEntityLootSubProvider {
                                                         .apply(butcheringMultiplier(enchantments, ContextFloatProviders.between(0, 1)))
                                         )
                         )
+                        .withPool(
+                                LootPool.lootPool()
+                                        .setRolls(ContextIntProviders.exactly(1))
+                                        .add(
+                                                LootItem.lootTableItem(Items.LEATHER)
+                                                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(0, 2)))
+                                                        .apply(butcheringMultiplier(enchantments, ContextFloatProviders.between(0, 1)))
+                                        )
+                        )
                         .withPool(EntityLootSubProvider.createSheepDispatchPool(BuiltInLootTables.SHEEP.map(lootTables::getOrThrow)))
 
         );

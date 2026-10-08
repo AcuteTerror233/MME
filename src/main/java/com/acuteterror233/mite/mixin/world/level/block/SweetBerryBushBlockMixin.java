@@ -24,6 +24,6 @@ public class SweetBerryBushBlockMixin {
      */
     @Redirect(method = "randomTick", at = @At(value = "INVOKE", target = "Lnet/minecraft/util/RandomSource;nextInt(I)I"))
     public int randomTick(RandomSource instance, int bound) {
-        return instance.nextInt(bound * 2);
+        return instance.nextInt(bound * 150);
     }
 }

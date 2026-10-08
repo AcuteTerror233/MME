@@ -15,7 +15,7 @@ import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvi
  * Overworld configured feature registration.
  * Defines new mineral and vegetation features for the overworld (e.g., blueberry bushes).
  */
-public class OverworldConfiguredFeatures {
+public class OverworldFeatures {
     /** Resource key of the blueberry bush feature. */
     public static final ResourceKey<Feature> BLUE_BERRY_BUSH = createKey("blue_berry_bush");
 

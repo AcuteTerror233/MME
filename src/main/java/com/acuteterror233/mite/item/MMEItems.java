@@ -125,29 +125,6 @@ public class MMEItems {
             state -> new Item.Properties().durability(MMEBlocks.maxDamageAnvil(MMEToolMaterials.COPPER.durability()))
     );
 
-    // Backward-compatible aliases — delegate to the collections
-    public static final Item NETHERITE_ANVIL = NETHERITE_ANVILS.intact();
-    public static final Item CHIPPED_NETHERITE_ANVIL = NETHERITE_ANVILS.chipped();
-    public static final Item DAMAGED_NETHERITE_ANVIL = NETHERITE_ANVILS.damaged();
-    public static final Item ADAMANTIUM_ANVIL = ADAMANTIUM_ANVILS.intact();
-    public static final Item CHIPPED_ADAMANTIUM_ANVIL = ADAMANTIUM_ANVILS.chipped();
-    public static final Item DAMAGED_ADAMANTIUM_ANVIL = ADAMANTIUM_ANVILS.damaged();
-    public static final Item MITHRIL_ANVIL = MITHRIL_ANVILS.intact();
-    public static final Item CHIPPED_MITHRIL_ANVIL = MITHRIL_ANVILS.chipped();
-    public static final Item DAMAGED_MITHRIL_ANVIL = MITHRIL_ANVILS.damaged();
-    public static final Item ANCIENT_METAL_ANVIL = ANCIENT_METAL_ANVILS.intact();
-    public static final Item CHIPPED_ANCIENT_METAL_ANVIL = ANCIENT_METAL_ANVILS.chipped();
-    public static final Item DAMAGED_ANCIENT_METAL_ANVIL = ANCIENT_METAL_ANVILS.damaged();
-    public static final Item GOLDEN_ANVIL = GOLDEN_ANVILS.intact();
-    public static final Item CHIPPED_GOLDEN_ANVIL = GOLDEN_ANVILS.chipped();
-    public static final Item DAMAGED_GOLDEN_ANVIL = GOLDEN_ANVILS.damaged();
-    public static final Item SILVER_ANVIL = SILVER_ANVILS.intact();
-    public static final Item CHIPPED_SILVER_ANVIL = SILVER_ANVILS.chipped();
-    public static final Item DAMAGED_SILVER_ANVIL = SILVER_ANVILS.damaged();
-    public static final Item COPPER_ANVIL = COPPER_ANVILS.intact();
-    public static final Item CHIPPED_COPPER_ANVIL = COPPER_ANVILS.chipped();
-    public static final Item DAMAGED_COPPER_ANVIL = COPPER_ANVILS.damaged();
-
     public static final RunestoneCollection<Item> MITHRIL_RUNESTONES = RunestoneCollection.registerBlockItems(
             MMEBlocks.MITHRIL_RUNESTONES, MMEBlockItemIds.MITHRIL_RUNESTORE, rune -> new Item.Properties()
     );
@@ -677,7 +654,7 @@ public class MMEItems {
     public static final Item FLINT_AXE = register(MMEItemIds.FLINT_AXE, applyToolSettings(new Item.Properties(), MMEToolMaterials.FLINT, BlockTags.MINEABLE_WITH_AXE, 3.4F, 2, 4, -2.7F, 0.5F, 0.5F, 5));
     public static final Item FLINT_HATCHET = register(MMEItemIds.FLINT_HATCHET, applyToolSettings(new Item.Properties(), MMEToolMaterials.FLINT, BlockTags.MINEABLE_WITH_AXE, 1, 2, 3, -2.7F, 0.25F, 0.25F, 5));
     public static final Item FLINT_KNIFE = register(MMEItemIds.FLINT_KNIFE, applySwordSettings(new Item.Properties(), MMEToolMaterials.FLINT, 3, 1, 2, -2.0F, 0.25F, 0.25F));
-    public static final Item FLINT_SHOVEL = register(MMEItemIds.FLINT_SHOVEL, applyToolSettings(new Item.Properties(), MMEToolMaterials.FLINT, BlockTags.MINEABLE_WITH_SHOVEL, 3, 2, 1, -2.8F, 0.75F, 0.75F, 0));
+    public static final Item FLINT_SHOVEL = register(MMEItemIds.FLINT_SHOVEL, applyToolSettings(new Item.Properties(), MMEToolMaterials.FLINT, BlockTags.MINEABLE_WITH_SHOVEL, 7, 2, 1, -2.8F, 0.75F, 0.75F, 0));
     public static final Item FLINT_SPEAR = register(MMEItemIds.FLINT_SPEAR, applySpearSettings(new Item.Properties(), MMEToolMaterials.FLINT, 0.72F, 0.76F, 0.70F, 4.8F, 12.0F, 9.8F, 5.1F, 14.2F, 4.6F));
 
     public static final Item WOODEN_CLUB = register(MMEItemIds.WOODEN_CLUB, applySwordSettings(new Item.Properties(), MMEToolMaterials.WOOD, 2, 1, 4, -2.4F, 0.5F, 0.5F).cookingFuel(ContextIntProviders.COOKING_TIME_WOOD_ITEMS_LARGE));

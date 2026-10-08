@@ -58,7 +58,7 @@ public class BlockMixin {
     @Inject(method = "setPlacedBy", at = @At("HEAD"))
     public void setPlacedBy(Level level, BlockPos blockPos, BlockState blockState, LivingEntity livingEntity, ItemStack itemStack, CallbackInfo ci) {
         if (livingEntity instanceof Player player && blockState.canOcclude()) {
-            player.causeFoodExhaustion(2F);
+            player.causeFoodExhaustion(blockState.getBlock().getBounceRestitution());
         }
     }
 }

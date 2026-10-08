@@ -41,7 +41,7 @@ public class MMEBlocks {
     );
 
     public static final Block ADAMANTIUM_BLOCK = register(      // Adamantium Block
-            MMEBlockItemIds.ADAMANTIUM_BLOCK, BlockBehaviour.Properties.ofFullCopy(Blocks.BEDROCK).strength(60f, 1200f).requiresCorrectToolForDrops().sound(SoundType.METAL)
+            MMEBlockItemIds.ADAMANTIUM_BLOCK, BlockBehaviour.Properties.ofFullCopy(Blocks.BEDROCK).strength(450f, 1200f).requiresCorrectToolForDrops().sound(SoundType.METAL)
     );
     public static final Block ANCIENT_METAL_BLOCK = register(   // Ancient Metal Block
             MMEBlockItemIds.ANCIENT_METAL_BLOCK, BlockBehaviour.Properties.of().strength(35f, 35f).requiresCorrectToolForDrops().sound(SoundType.METAL).mapColor(MapColor.COLOR_LIGHT_GREEN)
@@ -217,10 +217,10 @@ public class MMEBlocks {
      * Computes an anvil's maximum damage from its material's base damage figure.
      *
      * @param damage the material's base damage figure
-     * @return the anvil's maximum use count, i.e. {@code damage * 40 * 2 / 3}
+     * @return the anvil's maximum use count, i.e. {@code damage * 40 / 3}
      */
     public static int maxDamageAnvil(int damage) {
-        return damage * 40 * 2 / 3;
+        return damage * 40 / 3;
     }
 
     /** Registers a plain {@link Block} whose block and item share ids. */

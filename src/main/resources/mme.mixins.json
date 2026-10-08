@@ -62,6 +62,8 @@
     "world.level.block.CakeBlockMixin",
     "world.level.block.CampfireBlockMixin",
     "world.level.block.CocoaBlockMixin",
+    "world.level.block.ComposterBlockMixin",
+    "world.level.block.ComposterBlockMixin$OutputContainer",
     "world.level.block.CropBlockMixin",
     "world.level.block.DropExperienceBlockMixin",
     "world.level.block.EnchantingTableBlockMixin",

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "mme",
-  "version": "26.3.2.3",
+  "version": "26.3.2.4",
   "name": "Might Makes Everything",
   "description": "This is a mod that makes Minecraft \"simpler.\"",
   "authors": [
@@ -9,13 +9,14 @@
   ],
   "contact": {
     "homepage": "https://modrinth.com/mod/might_makes_everything",
-    "sources": "https://github.com/AcuteTerror233/MME"
+    "sources": "https://github.com/AcuteTerror233/MME",
+    "issues": "https://github.com/AcuteTerror233/MME/issues"
   },
   "contributors": [
     "HappySama",
     "Licc9"
   ],
-  "license": "GPL",
+  "license": "GPL3",
   "icon": "assets/mme/pack.png",
   "environment": "*",
   "entrypoints": {

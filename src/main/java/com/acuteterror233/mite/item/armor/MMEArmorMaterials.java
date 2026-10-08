@@ -223,15 +223,15 @@ public class MMEArmorMaterials {
     /**
      * Builds the per-slot defense map; argument order: boots, leggings, chestplate, helmet, body.
      */
-    private static Map<ArmorType, Float> createDefenseMap(float bootsDefense, float leggingsDefense, float chestplateDefense, float helmetDefense, float bodyDefense) {
+    private static Map<ArmorType, Float> createDefenseMap(float bootsDefense, float chestplateDefense, float leggingsDefense, float helmetDefense, float bodyDefense) {
         return Maps.newEnumMap(
                 Map.of(
                         ArmorType.BOOTS,
                         bootsDefense,
-                        ArmorType.LEGGINGS,
-                        leggingsDefense,
                         ArmorType.CHESTPLATE,
                         chestplateDefense,
+                        ArmorType.LEGGINGS,
+                        leggingsDefense,
                         ArmorType.HELMET,
                         helmetDefense,
                         ArmorType.BODY,

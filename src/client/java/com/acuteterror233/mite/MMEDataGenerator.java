@@ -6,7 +6,7 @@ import com.acuteterror233.mite.world.biome.MMEBiomes;
 import com.acuteterror233.mite.world.entity.damage.MMEDamageTypes;
 import com.acuteterror233.mite.world.entity.decoration.painting.MMEPaintingVariants;
 import com.acuteterror233.mite.world.gen.dimension.MMEDimensionTypeRegistrar;
-import com.acuteterror233.mite.world.gen.feature.MMEConfiguredFeatures;
+import com.acuteterror233.mite.world.gen.feature.MMEFeatures;
 import com.acuteterror233.mite.world.gen.feature.MMEPlacedFeatures;
 import com.acuteterror233.mite.world.timeline.MMETimelines;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
@@ -47,7 +47,7 @@ public class MMEDataGenerator implements DataGeneratorEntrypoint {
         registryBuilder.add(Registries.DIMENSION_TYPE, MMEDimensionTypeRegistrar::bootstrap);
         registryBuilder.add(Registries.BIOME, MMEBiomes::bootstrap);
         registryBuilder.add(Registries.PLACED_FEATURE, MMEPlacedFeatures::bootstrap);
-        registryBuilder.add(Registries.FEATURE, MMEConfiguredFeatures::bootstrap);
+        registryBuilder.add(Registries.FEATURE, MMEFeatures::bootstrap);
         registryBuilder.add(Registries.ENCHANTMENT, MMEEnchantments::bootstrap);
         registryBuilder.add(Registries.DAMAGE_TYPE, MMEDamageTypes::bootstrap);
         registryBuilder.add(Registries.PAINTING_VARIANT, MMEPaintingVariants::bootstrap);

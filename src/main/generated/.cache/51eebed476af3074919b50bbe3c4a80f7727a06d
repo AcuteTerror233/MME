@@ -233,6 +233,7 @@ d4531649c2823f5fe4886df13a9cc374d0f97e20 data/mme/advancement/recipes/tools/copp
 d2b28fa903badc284837d08980adbaef8f439384 data/mme/advancement/recipes/tools/copper_hatchet.json
 a2d5f7c2a86561441005a844ae10327f150cd464 data/mme/advancement/recipes/tools/copper_mattock.json
 98baad347fcca30a4501bb8c8aef473abf44e48b data/mme/advancement/recipes/tools/copper_scythe.json
+57401b192bf438c56d060af21011a6e397c4ca20 data/mme/advancement/recipes/tools/copper_shears.json
 65c7bd5d03f43cb410674201f9a45df9d32e22d2 data/mme/advancement/recipes/tools/copper_war_hammer.json
 838b8d6926a1b0e24b07c22fa8cf052bfe2239a4 data/mme/advancement/recipes/tools/flint_axe.json
 d1edce0d16aa719edba2b4df069fccb7b27e0c82 data/mme/advancement/recipes/tools/flint_fishing_rod.json
@@ -242,6 +243,7 @@ dcf98903c4b59250e253420dce289cfcacb0e64c data/mme/advancement/recipes/tools/flin
 62d8d56dedd1a71f3e10118940764fdb637bf8c1 data/mme/advancement/recipes/tools/golden_hatchet.json
 8e46a17cf462bd3e565f61d0c7e3540663754306 data/mme/advancement/recipes/tools/golden_mattock.json
 7d41182479f42dcbe8536fae5a32b7e98c0442ba data/mme/advancement/recipes/tools/golden_scythe.json
+d661149d79755803e006f25ccfc9178f9ab1641d data/mme/advancement/recipes/tools/golden_shears.json
 7124f6a5740d8af0de7c7a032b6369c7061c3985 data/mme/advancement/recipes/tools/golden_war_hammer.json
 d7548e2e726355f1e6727997d71b342b562ebb18 data/mme/advancement/recipes/tools/iron_fishing_rod.json
 e6119330a375239cb3d1ee2365c8e2999990bb98 data/mme/advancement/recipes/tools/iron_hatchet.json
@@ -401,6 +403,7 @@ a10e760010bdedc8cbaf4b66b943baeb15eccb6c data/mme/recipe/copper_mattock.json
 8288237cb3c3ea24f9770689a8fdc6bf488f657d data/mme/recipe/copper_nugget_from_blasting.json
 cff4481c4ff95ad2d62c057eac054ca43e12e967 data/mme/recipe/copper_nugget_from_smelting.json
 e72bea1f2a2b00ca8a33aab3f20871840eeab871 data/mme/recipe/copper_scythe.json
+194de0f4ff81daa877570e6da241212d543cfa76 data/mme/recipe/copper_shears.json
 d0ff9dc4f8ec8fc3269db094dca4999b096b2a53 data/mme/recipe/copper_war_hammer.json
 1cff494f05ffbeb189d308cbe0f13261c7f150c6 data/mme/recipe/cream_of_mushroom_soup.json
 3010f239052135916e060a2dbb7915fbf8ebe0f7 data/mme/recipe/cream_of_vegetable_soup.json
@@ -431,6 +434,7 @@ c15842774d029760b5a5abe6085084702e7734d1 data/mme/recipe/golden_fishing_rod.json
 0e09691b1baa3a49872118db284807a28ec712eb data/mme/recipe/golden_hatchet.json
 88b52c31757f34cad8cefa766d8b60c1d781f13f data/mme/recipe/golden_mattock.json
 bf7c1a9ddebcafa9bf8650c9c3a48dffe74eaa53 data/mme/recipe/golden_scythe.json
+4d2adc5645c5b3647b5f6edd6b77c386eb1e3cb4 data/mme/recipe/golden_shears.json
 428aa9257be7ef334130dddcaf3502461059f5d5 data/mme/recipe/golden_war_hammer.json
 8cf45e6410aa2b3e753a49aacda196f562ab4a15 data/mme/recipe/ice_cream.json
 abcdde66e6dfe726c775afa3f3c209b7e2e5fe01 data/mme/recipe/iron_battle_axe.json

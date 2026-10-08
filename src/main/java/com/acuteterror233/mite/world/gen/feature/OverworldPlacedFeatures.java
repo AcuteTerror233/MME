@@ -30,9 +30,9 @@ public class OverworldPlacedFeatures {
     /** Registers silver ore placement (y -48..144) and blueberry bush placement on grass. */
     public static void bootstrap(BootstrapContext<PlacedFeature> featureRegisterable){
         HolderGetter<Feature> registryEntryLookup = featureRegisterable.lookup(Registries.FEATURE);
-        Holder<Feature> ore_silver = registryEntryLookup.getOrThrow(UndergroundConfiguredFeatures.ORE_SILVER);
-        Holder<Feature> ore_silver_small = registryEntryLookup.getOrThrow(UndergroundConfiguredFeatures.ORE_SILVER_SMALL);
-        Holder<Feature> blue_berry_bush = registryEntryLookup.getOrThrow(OverworldConfiguredFeatures.BLUE_BERRY_BUSH);
+        Holder<Feature> ore_silver = registryEntryLookup.getOrThrow(UndergroundFeatures.ORE_SILVER);
+        Holder<Feature> ore_silver_small = registryEntryLookup.getOrThrow(UndergroundFeatures.ORE_SILVER_SMALL);
+        Holder<Feature> blue_berry_bush = registryEntryLookup.getOrThrow(OverworldFeatures.BLUE_BERRY_BUSH);
         // Overworld silver ore: 16 vein attempts per chunk between y -48 and 144.
         PlacementUtils.register(featureRegisterable, OVERWORLD_ORE_SILVER, ore_silver,
                 CountPlacement.of(16),

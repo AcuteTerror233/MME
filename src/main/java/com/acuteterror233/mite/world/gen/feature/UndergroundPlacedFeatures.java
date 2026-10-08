@@ -21,39 +21,39 @@ import net.minecraft.world.level.levelgen.placement.*;
  */
 public class UndergroundPlacedFeatures {
     // Placed feature keys for underground ores (large/small, buried variants) and monster rooms.
-    public static final ResourceKey<PlacedFeature> UNDERGROUND_ORE_ADAMANTIUM_BURIED = of("ore_adamantium_buried");
-    public static final ResourceKey<PlacedFeature> UNDERGROUND_ORE_ADAMANTIUM_BURIED_SMALL = of("ore_adamantium_buried_small");
-    public static final ResourceKey<PlacedFeature> UNDERGROUND_ORE_MITHRIL = of("ore_mithril");
-    public static final ResourceKey<PlacedFeature> UNDERGROUND_ORE_MITHRIL_SMALL = of("ore_mithril_small");
-    public static final ResourceKey<PlacedFeature> UNDERGROUND_ORE_SILVER = of("ore_silver");
-    public static final ResourceKey<PlacedFeature> UNDERGROUND_ORE_SILVER_SMALL = of("ore_silver_small");
-    public static final ResourceKey<PlacedFeature> UNDERGROUND_ORE_IRON = of("ore_iron");
-    public static final ResourceKey<PlacedFeature> UNDERGROUND_ORE_IRON_SMALL = of("ore_iron_small");
-    public static final ResourceKey<PlacedFeature> UNDERGROUND_ORE_COPPER = of("ore_copper");
-    public static final ResourceKey<PlacedFeature> UNDERGROUND_ORE_COPPER_SMALL = of("ore_copper_small");
-    public static final ResourceKey<PlacedFeature> UNDERGROUND_ORE_EMERALD = of("ore_emerald");
-    public static final ResourceKey<PlacedFeature> UNDERGROUND_ORE_LAPIS = of("ore_lapis");
-    public static final ResourceKey<PlacedFeature> UNDERGROUND_ORE_LAPIS_BURIED = of("ore_lapis_buried");
-    public static final ResourceKey<PlacedFeature> UNDERGROUND_ORE_REDSTONE = of("ore_redstone");
-    public static final ResourceKey<PlacedFeature> UNDERGROUND_ORE_DIRT = of("ore_dirt");
-    public static final ResourceKey<PlacedFeature> UNDERGROUND_ORE_GRAVEL = of("ore_gravel");
-    public static final ResourceKey<PlacedFeature> UNDERGROUND_ORE_TUFF = of("ore_tuff");
-    public static final ResourceKey<PlacedFeature> UNDERGROUND_ORE_DIAMOND_FIRST_LAYER = of("ore_diamond_first_layer");
-    public static final ResourceKey<PlacedFeature> UNDERGROUND_ORE_DIAMOND_FIRST_LAYER_BURIED = of("ore_diamond_first_layer_buried");
-    public static final ResourceKey<PlacedFeature> UNDERGROUND_ORE_DIAMOND_SECOND_LAYER = of("ore_diamond_second_layer");
-    public static final ResourceKey<PlacedFeature> UNDERGROUND_ORE_DIAMOND_SECOND_LAYER_BURIED = of("ore_diamond_second_layer_buried");
+    public static final ResourceKey<PlacedFeature> UNDERGROUND_ORE_ADAMANTIUM_BURIED = of("underground_ore_adamantium_buried");
+    public static final ResourceKey<PlacedFeature> UNDERGROUND_ORE_ADAMANTIUM_BURIED_SMALL = of("underground_ore_adamantium_buried_small");
+    public static final ResourceKey<PlacedFeature> UNDERGROUND_ORE_MITHRIL = of("underground_ore_mithril");
+    public static final ResourceKey<PlacedFeature> UNDERGROUND_ORE_MITHRIL_SMALL = of("underground_ore_mithril_small");
+    public static final ResourceKey<PlacedFeature> UNDERGROUND_ORE_SILVER = of("underground_ore_silver");
+    public static final ResourceKey<PlacedFeature> UNDERGROUND_ORE_SILVER_SMALL = of("underground_ore_silver_small");
+    public static final ResourceKey<PlacedFeature> UNDERGROUND_ORE_IRON = of("underground_ore_iron");
+    public static final ResourceKey<PlacedFeature> UNDERGROUND_ORE_IRON_SMALL = of("underground_ore_iron_small");
+    public static final ResourceKey<PlacedFeature> UNDERGROUND_ORE_COPPER = of("underground_ore_copper");
+    public static final ResourceKey<PlacedFeature> UNDERGROUND_ORE_COPPER_SMALL = of("underground_ore_copper_small");
+    public static final ResourceKey<PlacedFeature> UNDERGROUND_ORE_EMERALD = of("underground_ore_emerald");
+    public static final ResourceKey<PlacedFeature> UNDERGROUND_ORE_LAPIS = of("underground_ore_lapis");
+    public static final ResourceKey<PlacedFeature> UNDERGROUND_ORE_LAPIS_BURIED = of("underground_ore_lapis_buried");
+    public static final ResourceKey<PlacedFeature> UNDERGROUND_ORE_REDSTONE = of("underground_ore_redstone");
+    public static final ResourceKey<PlacedFeature> UNDERGROUND_ORE_DIRT = of("underground_ore_dirt");
+    public static final ResourceKey<PlacedFeature> UNDERGROUND_ORE_GRAVEL = of("underground_ore_gravel");
+    public static final ResourceKey<PlacedFeature> UNDERGROUND_ORE_TUFF = of("underground_ore_tuff");
+    public static final ResourceKey<PlacedFeature> UNDERGROUND_ORE_DIAMOND_FIRST_LAYER = of("underground_ore_diamond_first_layer");
+    public static final ResourceKey<PlacedFeature> UNDERGROUND_ORE_DIAMOND_FIRST_LAYER_BURIED = of("underground_ore_diamond_first_layer_buried");
+    public static final ResourceKey<PlacedFeature> UNDERGROUND_ORE_DIAMOND_SECOND_LAYER = of("underground_ore_diamond_second_layer");
+    public static final ResourceKey<PlacedFeature> UNDERGROUND_ORE_DIAMOND_SECOND_LAYER_BURIED = of("underground_ore_diamond_second_layer_buried");
     public static final ResourceKey<PlacedFeature> UNDERGROUND_MONSTER_ROOM = of("underground_monster_room");
 
     /** Registers underground ore placements (per-ore counts and height ranges) and the monster room. */
     public static void bootstrap(BootstrapContext<PlacedFeature> featureRegisterable){
         HolderGetter<Feature> registryEntryLookup = featureRegisterable.lookup(Registries.FEATURE);
         Holder.Reference<Feature> registryEntry = registryEntryLookup.getOrThrow(CaveFeatures.MONSTER_ROOM);
-        Holder<Feature> ore_adamantium_buried = registryEntryLookup.getOrThrow(UndergroundConfiguredFeatures.ORE_ADAMANTIUM_BURIED);
-        Holder<Feature> ore_adamantium_buried_small = registryEntryLookup.getOrThrow(UndergroundConfiguredFeatures.ORE_ADAMANTIUM_BURIED_SMALL);
-        Holder<Feature> ore_mithril = registryEntryLookup.getOrThrow(UndergroundConfiguredFeatures.ORE_MITHRIL);
-        Holder<Feature> ore_mithril_small = registryEntryLookup.getOrThrow(UndergroundConfiguredFeatures.ORE_MITHRIL_SMALL);
-        Holder<Feature> ore_silver = registryEntryLookup.getOrThrow(UndergroundConfiguredFeatures.ORE_SILVER);
-        Holder<Feature> ore_silver_small = registryEntryLookup.getOrThrow(UndergroundConfiguredFeatures.ORE_SILVER_SMALL);
+        Holder<Feature> ore_adamantium_buried = registryEntryLookup.getOrThrow(UndergroundFeatures.ORE_ADAMANTIUM_BURIED);
+        Holder<Feature> ore_adamantium_buried_small = registryEntryLookup.getOrThrow(UndergroundFeatures.ORE_ADAMANTIUM_BURIED_SMALL);
+        Holder<Feature> ore_mithril = registryEntryLookup.getOrThrow(UndergroundFeatures.ORE_MITHRIL);
+        Holder<Feature> ore_mithril_small = registryEntryLookup.getOrThrow(UndergroundFeatures.ORE_MITHRIL_SMALL);
+        Holder<Feature> ore_silver = registryEntryLookup.getOrThrow(UndergroundFeatures.ORE_SILVER);
+        Holder<Feature> ore_silver_small = registryEntryLookup.getOrThrow(UndergroundFeatures.ORE_SILVER_SMALL);
         Holder<Feature> ore_copper = registryEntryLookup.getOrThrow(OreFeatures.ORE_COPPER_LARGE);
         Holder<Feature> ore_copper_small = registryEntryLookup.getOrThrow(OreFeatures.ORE_COPPPER_SMALL);
         Holder<Feature> ore_emerald = registryEntryLookup.getOrThrow(OreFeatures.ORE_EMERALD);

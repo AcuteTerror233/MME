@@ -20,7 +20,7 @@ import java.util.List;
  * Underground dimension configured feature registration.
  * Defines ore and vegetation generation features for the underground world.
  */
-public class UndergroundConfiguredFeatures {
+public class UndergroundFeatures {
     // Configured feature keys for underground ores (adamantium, mithril, silver; large and small variants).
     public static final ResourceKey<Feature> ORE_ADAMANTIUM_BURIED = of("ore_adamantium");
     public static final ResourceKey<Feature> ORE_ADAMANTIUM_BURIED_SMALL = of("ore_adamantium_small");
@@ -49,8 +49,8 @@ public class UndergroundConfiguredFeatures {
         featureRegisterable.register(ORE_ADAMANTIUM_BURIED_SMALL, new OreFeature(adamantium_Ore_List, 2, 1.0f));
         featureRegisterable.register(ORE_MITHRIL, new OreFeature(mithril_Ore_List, 4, 0f));
         featureRegisterable.register(ORE_MITHRIL_SMALL, new OreFeature(mithril_Ore_List, 4, 0f));
-        featureRegisterable.register(ORE_SILVER, new OreFeature(silver_Ore_List, 6, 0.2f));
-        featureRegisterable.register(ORE_SILVER_SMALL, new OreFeature(silver_Ore_List, 2, 0.2f));
+        featureRegisterable.register(ORE_SILVER, new OreFeature(silver_Ore_List, 6, 0.4f));
+        featureRegisterable.register(ORE_SILVER_SMALL, new OreFeature(silver_Ore_List, 2, 0.4f));
     }
     /**
      * Generate a ConfiguredFeature registry key within the namespace.

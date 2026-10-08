@@ -34,7 +34,7 @@ public interface MMETimelines {
     }
 
     /**
-     * Datagen bootstrap: builds and registers the special-moon timeline.
+     * Datazen bootstrap: builds and registers the special-moon timeline.
      *
      * @param context bootstrap context providing registry lookups and the registration target
      */

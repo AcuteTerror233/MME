@@ -61,8 +61,8 @@ public class BlueBerryBushBlock
     protected @NotNull VoxelShape getShape(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos, CollisionContext collisionContext) {
         return switch (blockState.getValue(AGE)) {
             case 0 -> SHAPE_SAPLING;
-            default -> SHAPE_GROWING;
             case 3 -> Shapes.block();
+            default -> SHAPE_GROWING;
         };
     }
 
@@ -76,7 +76,7 @@ public class BlueBerryBushBlock
     @Override
     protected void randomTick(BlockState blockState, ServerLevel serverLevel, BlockPos blockPos, RandomSource randomSource) {
         int i = blockState.getValue(AGE);
-        if (i < 3 && randomSource.nextInt(10) == 0 && serverLevel.getRawBrightness(blockPos.above(), 0) >= 9) {
+        if (i < 3 && randomSource.nextInt(300) == 0 && serverLevel.getRawBrightness(blockPos.above(), 0) >= 9) {
             BlockState blockState2 = blockState.setValue(AGE, i + 1);
             serverLevel.setBlock(blockPos, blockState2, 2);
             serverLevel.gameEvent(GameEvent.BLOCK_CHANGE, blockPos, GameEvent.Context.of(blockState2));

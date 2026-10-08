@@ -1004,7 +1004,8 @@ public class MMERecipeProvider extends FabricRecipeProvider {
                 offerDaggerRecipes(Items.COPPER_INGOT, MMEItems.COPPER_DAGGER);
                 offerHatchetRecipes(Items.COPPER_INGOT, MMEItems.COPPER_HATCHET);
                 offerMattockRecipes(Items.COPPER_INGOT, MMEItems.COPPER_MATTOCK);
-                offerScytheRecipes(Items.COPPER_INGOT, MMEItems.COPPER_SCYTHE);
+                offerScytheRecipes(Items.COPPER_INGOT, MMEItems.COPPER_SCYTHE);;
+                offerShearsRecipes(Items.COPPER_INGOT, MMEItems.COPPER_SHEARS);
                 offerWarhammerRecipes(Items.COPPER_INGOT, MMEItems.COPPER_WAR_HAMMER);
 
                 offerBattleaxeRecipes(Items.IRON_INGOT, MMEItems.IRON_BATTLE_AXE);
@@ -1019,6 +1020,7 @@ public class MMERecipeProvider extends FabricRecipeProvider {
                 offerHatchetRecipes(Items.GOLD_INGOT, MMEItems.GOLDEN_HATCHET);
                 offerMattockRecipes(Items.GOLD_INGOT, MMEItems.GOLDEN_MATTOCK);
                 offerScytheRecipes(Items.GOLD_INGOT, MMEItems.GOLDEN_SCYTHE);
+                offerShearsRecipes(Items.GOLD_INGOT, MMEItems.GOLDEN_SHEARS);
                 offerWarhammerRecipes(Items.GOLD_INGOT, MMEItems.GOLDEN_WAR_HAMMER);
 
                 offerAxeRecipesInString(Items.FLINT, MMEItems.FLINT_AXE);

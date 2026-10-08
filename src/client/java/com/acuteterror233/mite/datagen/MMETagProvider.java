@@ -516,6 +516,10 @@ public class MMETagProvider {
                     .add(ItemIds.COPPER_NUGGET)
                     .add(MMEItemIds.SILVER_NUGGET);
             builder(MMEItemTags.COPPER_OR_SILVER_ARMOR)
+                    .add(ItemIds.COPPER_HELMET)
+                    .add(ItemIds.COPPER_CHESTPLATE)
+                    .add(ItemIds.COPPER_LEGGINGS)
+                    .add(ItemIds.COPPER_BOOTS)
                     .add(MMEItemIds.COPPER_CHAINMAIL_HELMET)
                     .add(MMEItemIds.COPPER_CHAINMAIL_CHESTPLATE)
                     .add(MMEItemIds.COPPER_CHAINMAIL_LEGGINGS)
@@ -726,6 +730,7 @@ public class MMETagProvider {
                     .add(MMEItemIds.SILVER_FISHING_ROD)
                     .add(MMEItemIds.SILVER_DAGGER)
                     .add(MMEItemIds.SILVER_SWORD)
+                    .add(MMEItemIds.SILVER_SPEAR)
                     .add(MMEItemIds.SILVER_WAR_HAMMER)
                     .add(MMEItemIds.SILVER_BATTLE_AXE)
                     .add(MMEItemIds.SILVER_HELMET)

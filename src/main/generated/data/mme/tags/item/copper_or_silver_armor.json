@@ -1,5 +1,9 @@
 {
   "values": [
+    "minecraft:copper_helmet",
+    "minecraft:copper_chestplate",
+    "minecraft:copper_leggings",
+    "minecraft:copper_boots",
     "mme:copper_chainmail_helmet",
     "mme:copper_chainmail_chestplate",
     "mme:copper_chainmail_leggings",

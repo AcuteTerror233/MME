@@ -14,7 +14,10 @@ import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.*;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Constant;
+import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 /**
  * Mixin for {@code AnvilMenu} — Integrates the metal material anvil system,
@@ -22,7 +25,11 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
  * When a metal material is injected (opened by {@code MMEAnvilBlock}), repair materials are restricted
  * and iron-sand (nugget) repairs use a lower efficiency divisor; damage is accumulated on the
  * {@link AnvilBlockEntity} instead of the vanilla block-state degradation.
- * Without an injected material the vanilla behavior is fully preserved.
+ * Material repairs are always free: the XP cost ({@code cost} DataSlot) is zeroed whenever repair
+ * items were consumed (see {@link #mme$freeRepairCost}), and {@code mayPickup} lets the zero cost
+ * through (vanilla requires {@code cost > 0}, see {@link #mme$allowFreeRepairPickup}), on metal and
+ * vanilla anvils alike.
+ * Without an injected material the remaining vanilla behavior is fully preserved.
  */
 @Mixin(AnvilMenu.class)
 public abstract class AnvilMenuMixin extends ItemCombinerMenu implements MetalMenuExtension {
@@ -77,6 +84,36 @@ public abstract class AnvilMenuMixin extends ItemCombinerMenu implements MetalMe
             return original;
         }
         return 6;
+    }
+
+    /**
+     * Free repair: operations that consumed repair material ({@code repairItemCountCost > 0} is set
+     * only on the material-repair branch of {@code createResult}) always show and charge 0 XP
+     * levels. Injected at {@code createResult} TAIL so both the client-side cost display and the
+     * {@code onTake} level deduction ({@code giveExperienceLevels(-cost)}) see 0. Enchantment
+     * merging and rename-only operations keep the vanilla cost; durability restoration, material
+     * consumption and the vanilla prior-work ({@code REPAIR_COST}) component escalation are
+     * untouched.
+     */
+    @Inject(method = "createResult", at = @At("TAIL"))
+    private void mme$freeRepairCost(CallbackInfo ci) {
+        if (this.repairItemCountCost > 0) {
+            this.cost.set(0);
+        }
+    }
+
+    /**
+     * Free repair pickup: vanilla {@code mayPickup} additionally requires {@code cost > 0} (the
+     * zero-cost {@code COST_FAIL} marker must not be takeable), which would block a zeroed free
+     * repair entirely. When repair material was consumed ({@code repairItemCountCost > 0}) the
+     * result is always takeable — the cost is 0, so no XP gate applies. All other operations
+     * (enchantment merging, rename-only) keep the vanilla check.
+     */
+    @Inject(method = "mayPickup", at = @At("HEAD"), cancellable = true)
+    private void mme$allowFreeRepairPickup(Player player, boolean flag, CallbackInfoReturnable<Boolean> cir) {
+        if (this.repairItemCountCost > 0) {
+            cir.setReturnValue(true);
+        }
     }
 
     /**

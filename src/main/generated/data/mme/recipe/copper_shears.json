@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "a": "minecraft:copper_ingot"
+  },
+  "pattern": [
+    " a",
+    "a "
+  ],
+  "result": {
+    "id": "mme:copper_shears"
+  }
+}

@@ -30,7 +30,7 @@ a05ddb4aaf1400da96179bd8f68e9b1b279e1fa8 data/mme/tags/item/ancient_metal_not_al
 7f91ed0e1fb546d18aa1ca2a19c16fbf2a66e4b4 data/mme/tags/item/coins.json
 bc229f680fa773a41269c1569f5a700f669eb8e5 data/mme/tags/item/cooked_fish.json
 bb1d00b7c8ff65f8ef9cd18cbf4b7a7104453d8e data/mme/tags/item/copper_crafting_table_exceptions.json
-6cd46f3228596c776835696f7437691d0003c856 data/mme/tags/item/copper_or_silver_armor.json
+f50e90894c07c205ec69194b9032104ef8e7d73e data/mme/tags/item/copper_or_silver_armor.json
 10d7a12a871322591d4498d9930bcf8295c7f6e9 data/mme/tags/item/copper_or_silver_ingot.json
 06297e3c72fe0b12bf9db435c1d4046fafe18fd3 data/mme/tags/item/copper_or_silver_not_allowed_material.json
 8f5a467ce03e249a11506dc0461b61ea87464851 data/mme/tags/item/copper_or_silver_nugget.json
@@ -81,7 +81,7 @@ c6bc350704277d8955bbaff4c42d021d32582c66 data/mme/tags/item/silver_armor.json
 bb1d00b7c8ff65f8ef9cd18cbf4b7a7104453d8e data/mme/tags/item/silver_crafting_table_exceptions.json
 b5b76e629cfb9c6119fb5046bd6259a3058a784f data/mme/tags/item/silver_ore.json
 069f485466ed0e7e5094663fbfecce85579abefc data/mme/tags/item/silver_tool_materials.json
-24ec9b8785be984eebc71ca8feeb7ff2cf655f8e data/mme/tags/item/silver_tools.json
+76c79f0f49ec4de1633e940d0e0a0844085fc5be data/mme/tags/item/silver_tools.json
 e901214d070b3bf155ee4baf7b05b1e2ad1a9592 data/mme/tags/item/silver_weapons.json
 e28c2faa4e90f0c6f7d52bf9151144a9a501211c data/mme/tags/item/string.json
 c6ae28c8fe89862d13d79af19005025a96d9496e data/mme/tags/item/war_hammer.json

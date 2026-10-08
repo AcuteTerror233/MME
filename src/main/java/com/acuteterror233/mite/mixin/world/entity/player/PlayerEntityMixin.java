@@ -49,6 +49,9 @@ public abstract class PlayerEntityMixin extends LivingEntity {
     @Shadow
     protected FoodData foodData;
 
+    @Shadow
+    public abstract void causeFoodExhaustion(float amount);
+
     /**
      * Substitutes the shield-disable duration: if the attacking entity defines none
      * (0), 0.25 seconds is used so any hit briefly disables blocking.
@@ -107,13 +110,20 @@ public abstract class PlayerEntityMixin extends LivingEntity {
     /** Adds 0.5 food exhaustion when an attack connects. */
     @Inject(method = "attack", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/Entity;hurtOrSimulate(Lnet/minecraft/world/damagesource/DamageSource;F)Z"))
     public void attack(Entity entity, CallbackInfo ci) {
-        this.getFoodData().addExhaustion(0.5F);
+        this.causeFoodExhaustion(0.5F);
     }
 
     /** Removes vanilla's {@code Math.min} cap by always returning the first operand. */
     @Redirect(method = "getBaseExperienceReward", at = @At(value = "INVOKE", target = "Ljava/lang/Math;min(II)I"))
     public int getBaseExperienceReward(int a, int b) {
         return a;
+    }
+
+    @Inject(method = "cannotAttack", at = @At("HEAD"), cancellable = true)
+    private void cannotAttack(Entity entity, CallbackInfoReturnable<Boolean> cir) {
+        if (this.getFoodData().getFoodLevel() <= 0) {
+            cir.setReturnValue(false);
+        }
     }
 
 }

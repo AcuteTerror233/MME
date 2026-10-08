@@ -29,7 +29,7 @@ public abstract class BlockBehaviourMixin implements FeatureElement {
     @Overwrite
     public float getDestroyProgress(BlockState state, Player player, BlockGetter world, BlockPos pos) {
         float f = state.getDestroySpeed(world, pos);
-        if (f == -1.0F) {
+        if (f == -1.0F || player.getFoodData().getFoodLevel() <= 0) {
             return 0.0F;
         } else {
             // 350 ticks with the correct tool, 15000 without — vanilla uses 30/100.
