@@ -6,6 +6,7 @@ import net.minecraft.client.renderer.entity.ZombieRenderer;
 import net.minecraft.client.renderer.entity.state.ZombieRenderState;
 import net.minecraft.resources.Identifier;
 import org.jetbrains.annotations.NotNull;
+import org.jspecify.annotations.NonNull;
 
 /**
  * Ghoul renderer: vanilla zombie model with the ghoul skin.
@@ -19,7 +20,7 @@ public class GhoulRenderer extends ZombieRenderer {
 
     /** {@inheritDoc} Returns the ghoul texture. */
     @Override
-    public @NotNull Identifier getTextureLocation(ZombieRenderState renderState) {
+    public @NotNull Identifier getTextureLocation(@NonNull ZombieRenderState renderState) {
         return GHOUL_LOCATION;
     }
 }

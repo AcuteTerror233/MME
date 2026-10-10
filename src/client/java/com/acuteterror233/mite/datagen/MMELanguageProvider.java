@@ -5,6 +5,7 @@ import com.acuteterror233.mite.block.MMEBlocks;
 import com.acuteterror233.mite.item.MMEItems;
 import com.acuteterror233.mite.item.enchantment.MMEEnchantments;
 import com.acuteterror233.mite.world.effect.MMEMobEffects;
+import com.acuteterror233.mite.world.effect.curse.MMECurses;
 import com.acuteterror233.mite.world.entity.MMEEntityTypes;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
@@ -41,6 +42,8 @@ public class MMELanguageProvider {
             translationBuilder.add("mme.gradefurnac.fuelnotavailable", "§cThis furnace cannot burn this fuel§r");
             translationBuilder.add("mme.nugget.tooltip", "Right-click to make coins and store %dXP");
             translationBuilder.add("mme.coins.tooltip", "%d XP per use");
+            translationBuilder.add("mme.curse.afflicted", "A vile curse takes hold of you...");
+            translationBuilder.add("mme.curse.lifted_bottle", "The purifying bottle cleansed your curses.");
             translationBuilder.add("mme.nutrition.tooltip", "%s Current nutritional status:{fiber:%f, protein:%f, sugar:%f}");
 
             translationBuilder.add("mme.advancements.story.root.description", "Where the dream begins");
@@ -182,6 +185,7 @@ public class MMELanguageProvider {
             translationBuilder.add(MMEItems.BEEF_STEW, "Beef Stew");
             translationBuilder.add(MMEItems.FLOUR, "Flour");
             translationBuilder.add(MMEItems.BOWL_MILK, "Bowl of Milk");
+            translationBuilder.add(MMEItems.PURIFYING_BOTTLE, "Purifying Bottle");
             translationBuilder.add(MMEItems.BOWL_SALAD, "Bowl of Salad");
             translationBuilder.add(MMEItems.BOWL_WATER, "Bowl of Water");
             translationBuilder.add(MMEItems.CEREAL, "Cereal Porridge");
@@ -537,6 +541,26 @@ public class MMELanguageProvider {
             translationBuilder.add(MMEMobEffects.INSULIN_RESISTANCE.value(), "Diabetes");
             translationBuilder.add(MMEMobEffects.MALNUTRITION.value(), "Malnutrition");
 
+            translationBuilder.add(MMECurses.CORROSIVE_SKIN.value(), "Corrosive Skin");
+            translationBuilder.add(MMECurses.CANNOT_HOLD_BREATH.value(), "Can't Hold Breath");
+            translationBuilder.add(MMECurses.CANNOT_SPRINT.value(), "Can't Sprint");
+            translationBuilder.add(MMECurses.CANNOT_EAT_MEAT.value(), "Can't Eat Meat");
+            translationBuilder.add(MMECurses.CANNOT_EAT_PLANTS.value(), "Can't Eat Plants");
+            translationBuilder.add(MMECurses.CANNOT_DRINK_SOUP.value(), "Can't Drink Soup");
+            translationBuilder.add(MMECurses.ENDER_HATRED.value(), "Ender Hatred");
+            translationBuilder.add(MMECurses.DIMINISHED_INTELLECT.value(), "Diminished Intellect");
+            translationBuilder.add(MMECurses.PLANT_FEAR.value(), "Plant Fear");
+            translationBuilder.add(MMECurses.ARMOR_REJECTION.value(), "Armor Rejection");
+            translationBuilder.add(MMECurses.CHEST_FEAR.value(), "Chest Fear");
+            translationBuilder.add(MMECurses.SLEEPLESSNESS.value(), "Sleeplessness");
+            translationBuilder.add(MMECurses.SPIDER_FEAR.value(), "Spider Fear");
+            translationBuilder.add(MMECurses.WOLF_FEAR.value(), "Wolf Fear");
+            translationBuilder.add(MMECurses.CREEPER_FEAR.value(), "Creeper Fear");
+            translationBuilder.add(MMECurses.UNDEAD_FEAR.value(), "Undead Fear");
+
+            translationBuilder.add("key.mme.zoom", "Zoom Camera");
+            translationBuilder.add("key.mme.place_source_liquid", "Place Source Liquid");
+
             translationBuilder.addEnchantment(MMEEnchantments.BUTCHERING, "Butchering");
             translationBuilder.addEnchantment(MMEEnchantments.CLEAVING, "Cleaving");
             translationBuilder.addEnchantment(MMEEnchantments.HARVESTING, "Harvesting");
@@ -631,6 +655,8 @@ public class MMELanguageProvider {
             translationBuilder.add("mme.nugget.tooltip", "右键做成币储存%dXP");
             translationBuilder.add("mme.coins.tooltip", "每个+%dXP");
             translationBuilder.add("mme.nutrition.tooltip", "%s当前营养状态:{fiber:%f, protein:%f, sugar:%f}");
+            translationBuilder.add("mme.curse.afflicted", "一股恶毒的诅咒缠上了你……");
+            translationBuilder.add("mme.curse.lifted_bottle", "祛魔之瓶净化了你身上的诅咒。");
 
             translationBuilder.add("mme.advancements.story.root.description", "梦开始的地方");
             translationBuilder.add("mme.advancements.story.wheat_seeds.title", "拾荒者");
@@ -769,6 +795,7 @@ public class MMELanguageProvider {
             translationBuilder.add(MMEItems.BEEF_STEW, "炖牛肉");
             translationBuilder.add(MMEItems.FLOUR, "面粉");
             translationBuilder.add(MMEItems.BOWL_MILK, "一碗牛奶");
+            translationBuilder.add(MMEItems.PURIFYING_BOTTLE, "祛魔之瓶");
             translationBuilder.add(MMEItems.BOWL_SALAD, "一碗沙拉");
             translationBuilder.add(MMEItems.BOWL_WATER, "一碗水");
             translationBuilder.add(MMEItems.CEREAL, "麦片粥");
@@ -1117,6 +1144,26 @@ public class MMELanguageProvider {
 
             translationBuilder.add(MMEMobEffects.INSULIN_RESISTANCE.value(), "糖尿病");
             translationBuilder.add(MMEMobEffects.MALNUTRITION.value(), "营养不良");
+
+            translationBuilder.add(MMECurses.CORROSIVE_SKIN.value(), "腐蚀性皮肤");
+            translationBuilder.add(MMECurses.CANNOT_HOLD_BREATH.value(), "不能屏住呼吸");
+            translationBuilder.add(MMECurses.CANNOT_SPRINT.value(), "不能疾跑");
+            translationBuilder.add(MMECurses.CANNOT_EAT_MEAT.value(), "不能食肉");
+            translationBuilder.add(MMECurses.CANNOT_EAT_PLANTS.value(), "不能食素");
+            translationBuilder.add(MMECurses.CANNOT_DRINK_SOUP.value(), "不能喝汤");
+            translationBuilder.add(MMECurses.ENDER_HATRED.value(), "末影仇恨");
+            translationBuilder.add(MMECurses.DIMINISHED_INTELLECT.value(), "智力下降");
+            translationBuilder.add(MMECurses.PLANT_FEAR.value(), "植物恐惧");
+            translationBuilder.add(MMECurses.ARMOR_REJECTION.value(), "盔甲排斥");
+            translationBuilder.add(MMECurses.CHEST_FEAR.value(), "箱子恐惧");
+            translationBuilder.add(MMECurses.SLEEPLESSNESS.value(), "无法入睡");
+            translationBuilder.add(MMECurses.SPIDER_FEAR.value(), "蜘蛛恐惧");
+            translationBuilder.add(MMECurses.WOLF_FEAR.value(), "恶狼恐惧");
+            translationBuilder.add(MMECurses.CREEPER_FEAR.value(), "苦力怕恐惧");
+            translationBuilder.add(MMECurses.UNDEAD_FEAR.value(), "亡灵恐惧");
+
+            translationBuilder.add("key.mme.zoom", "拉近镜头");
+            translationBuilder.add("key.mme.place_source_liquid", "放置源头液体");
 
             translationBuilder.addEnchantment(MMEEnchantments.BUTCHERING, "屠宰");
             translationBuilder.addEnchantment(MMEEnchantments.CLEAVING, "劈裂");

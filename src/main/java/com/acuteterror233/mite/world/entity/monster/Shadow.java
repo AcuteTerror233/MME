@@ -68,6 +68,6 @@ public class Shadow extends Zombie {
     @Override
     protected void registerGoals() {
         super.registerGoals();
-        this.goalSelector.addGoal(10, new DestroyTorchGoal(this, 0.8));
+        this.goalSelector.addGoal(3, new DestroyTorchGoal(this, 0.8));
     }
 }

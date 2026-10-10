@@ -70,30 +70,30 @@ public final class VanillaItemModify {
         result.put(Identifier.withDefaultNamespace("phantom_membrane"), settings -> settings.stacksTo(8));
         result.put(Identifier.withDefaultNamespace("ghast_tear"), settings -> settings.stacksTo(8));
         result.put(Identifier.withDefaultNamespace("fermented_spider_eye"), settings -> settings.stacksTo(8));
-        result.put(Identifier.withDefaultNamespace("acacia_planks"), settings -> settings.stacksTo(8));
-        result.put(Identifier.withDefaultNamespace("birch_planks"), settings -> settings.stacksTo(8));
-        result.put(Identifier.withDefaultNamespace("crimson_planks"), settings -> settings.stacksTo(8));
-        result.put(Identifier.withDefaultNamespace("dark_oak_planks"), settings -> settings.stacksTo(8));
-        result.put(Identifier.withDefaultNamespace("pale_oak_planks"), settings -> settings.stacksTo(8));
-        result.put(Identifier.withDefaultNamespace("jungle_planks"), settings -> settings.stacksTo(8));
-        result.put(Identifier.withDefaultNamespace("oak_planks"), settings -> settings.stacksTo(8));
-        result.put(Identifier.withDefaultNamespace("spruce_planks"), settings -> settings.stacksTo(8));
-        result.put(Identifier.withDefaultNamespace("warped_planks"), settings -> settings.stacksTo(8));
-        result.put(Identifier.withDefaultNamespace("mangrove_planks"), settings -> settings.stacksTo(8));
+        result.put(Identifier.withDefaultNamespace("acacia_planks"), settings -> settings.stacksTo(8).component(MMEDataComponents.CRAFTING_TIME, 2.0F));
+        result.put(Identifier.withDefaultNamespace("birch_planks"), settings -> settings.stacksTo(8).component(MMEDataComponents.CRAFTING_TIME, 2.0F));
+        result.put(Identifier.withDefaultNamespace("crimson_planks"), settings -> settings.stacksTo(8).component(MMEDataComponents.CRAFTING_TIME, 2.0F));
+        result.put(Identifier.withDefaultNamespace("dark_oak_planks"), settings -> settings.stacksTo(8).component(MMEDataComponents.CRAFTING_TIME, 2.0F));
+        result.put(Identifier.withDefaultNamespace("pale_oak_planks"), settings -> settings.stacksTo(8).component(MMEDataComponents.CRAFTING_TIME, 2.0F));
+        result.put(Identifier.withDefaultNamespace("jungle_planks"), settings -> settings.stacksTo(8).component(MMEDataComponents.CRAFTING_TIME, 2.0F));
+        result.put(Identifier.withDefaultNamespace("oak_planks"), settings -> settings.stacksTo(8).component(MMEDataComponents.CRAFTING_TIME, 2.0F));
+        result.put(Identifier.withDefaultNamespace("spruce_planks"), settings -> settings.stacksTo(8).component(MMEDataComponents.CRAFTING_TIME, 2.0F));
+        result.put(Identifier.withDefaultNamespace("warped_planks"), settings -> settings.stacksTo(8).component(MMEDataComponents.CRAFTING_TIME, 2.0F));
+        result.put(Identifier.withDefaultNamespace("mangrove_planks"), settings -> settings.stacksTo(8).component(MMEDataComponents.CRAFTING_TIME, 2.0F));
         // Planks re-listed with the remaining wood types (bamboo, cherry); duplicate keys
         // above are simply overwritten with the same stacksTo(8) value.
-        result.put(Identifier.withDefaultNamespace("oak_planks"), properties -> properties.stacksTo(8));
-        result.put(Identifier.withDefaultNamespace("spruce_planks"), properties -> properties.stacksTo(8));
-        result.put(Identifier.withDefaultNamespace("birch_planks"), properties -> properties.stacksTo(8));
-        result.put(Identifier.withDefaultNamespace("jungle_planks"), properties -> properties.stacksTo(8));
-        result.put(Identifier.withDefaultNamespace("acacia_planks"), properties -> properties.stacksTo(8));
-        result.put(Identifier.withDefaultNamespace("dark_oak_planks"), properties -> properties.stacksTo(8));
-        result.put(Identifier.withDefaultNamespace("pale_oak_planks"), properties -> properties.stacksTo(8));
-        result.put(Identifier.withDefaultNamespace("crimson_planks"), properties -> properties.stacksTo(8));
-        result.put(Identifier.withDefaultNamespace("warped_planks"), properties -> properties.stacksTo(8));
-        result.put(Identifier.withDefaultNamespace("mangrove_planks"), properties -> properties.stacksTo(8));
-        result.put(Identifier.withDefaultNamespace("bamboo_planks"), properties -> properties.stacksTo(8));
-        result.put(Identifier.withDefaultNamespace("cherry_planks"), properties -> properties.stacksTo(8));
+        result.put(Identifier.withDefaultNamespace("oak_planks"), properties -> properties.stacksTo(8).component(MMEDataComponents.CRAFTING_TIME, 2.0F));
+        result.put(Identifier.withDefaultNamespace("spruce_planks"), properties -> properties.stacksTo(8).component(MMEDataComponents.CRAFTING_TIME, 2.0F));
+        result.put(Identifier.withDefaultNamespace("birch_planks"), properties -> properties.stacksTo(8).component(MMEDataComponents.CRAFTING_TIME, 2.0F));
+        result.put(Identifier.withDefaultNamespace("jungle_planks"), properties -> properties.stacksTo(8).component(MMEDataComponents.CRAFTING_TIME, 2.0F));
+        result.put(Identifier.withDefaultNamespace("acacia_planks"), properties -> properties.stacksTo(8).component(MMEDataComponents.CRAFTING_TIME, 2.0F));
+        result.put(Identifier.withDefaultNamespace("dark_oak_planks"), properties -> properties.stacksTo(8).component(MMEDataComponents.CRAFTING_TIME, 2.0F));
+        result.put(Identifier.withDefaultNamespace("pale_oak_planks"), properties -> properties.stacksTo(8).component(MMEDataComponents.CRAFTING_TIME, 2.0F));
+        result.put(Identifier.withDefaultNamespace("crimson_planks"), properties -> properties.stacksTo(8).component(MMEDataComponents.CRAFTING_TIME, 2.0F));
+        result.put(Identifier.withDefaultNamespace("warped_planks"), properties -> properties.stacksTo(8).component(MMEDataComponents.CRAFTING_TIME, 2.0F));
+        result.put(Identifier.withDefaultNamespace("mangrove_planks"), properties -> properties.stacksTo(8).component(MMEDataComponents.CRAFTING_TIME, 2.0F));
+        result.put(Identifier.withDefaultNamespace("bamboo_planks"), properties -> properties.stacksTo(8).component(MMEDataComponents.CRAFTING_TIME, 2.0F));
+        result.put(Identifier.withDefaultNamespace("cherry_planks"), properties -> properties.stacksTo(8).component(MMEDataComponents.CRAFTING_TIME, 2.0F));
         result.put(Identifier.withDefaultNamespace("sugar"), settings -> settings
                 .stacksTo(8)
                 .food(new FoodProperties(0, 1, false))
@@ -102,11 +102,11 @@ public final class VanillaItemModify {
 
         // Items with maximum stack of 16
         result.put(Identifier.withDefaultNamespace("map"), settings -> settings.stacksTo(16));
-        result.put(Identifier.withDefaultNamespace("iron_ingot"), settings -> settings.stacksTo(16).component(MMEDataComponents.CRAFTING_TIME, 10));
-        result.put(Identifier.withDefaultNamespace("copper_ingot"), settings -> settings.stacksTo(16).component(MMEDataComponents.CRAFTING_TIME, 5));
-        result.put(Identifier.withDefaultNamespace("gold_ingot"), settings -> settings.stacksTo(16).component(MMEDataComponents.CRAFTING_TIME, 5));
-        result.put(Identifier.withDefaultNamespace("netherite_ingot"), settings -> settings.stacksTo(16).component(MMEDataComponents.CRAFTING_TIME, 70));
-        result.put(Identifier.withDefaultNamespace("leather"), settings -> settings.stacksTo(16).component(MMEDataComponents.CRAFTING_TIME, 2));
+        result.put(Identifier.withDefaultNamespace("iron_ingot"), settings -> settings.stacksTo(16).component(MMEDataComponents.CRAFTING_TIME, 6.0F));
+        result.put(Identifier.withDefaultNamespace("copper_ingot"), settings -> settings.stacksTo(16).component(MMEDataComponents.CRAFTING_TIME, 3.0F));
+        result.put(Identifier.withDefaultNamespace("gold_ingot"), settings -> settings.stacksTo(16).component(MMEDataComponents.CRAFTING_TIME, 3.0F));
+        result.put(Identifier.withDefaultNamespace("netherite_ingot"), settings -> settings.stacksTo(16).component(MMEDataComponents.CRAFTING_TIME, 46.0F));
+        result.put(Identifier.withDefaultNamespace("leather"), settings -> settings.stacksTo(16).component(MMEDataComponents.CRAFTING_TIME, 2.0F));
         result.put(Identifier.withDefaultNamespace("coal"), settings -> settings.stacksTo(16).component(MMEDataComponents.COMBUSTION_GRADE, 2));
         result.put(Identifier.withDefaultNamespace("charcoal"), settings -> settings.stacksTo(16).component(MMEDataComponents.COMBUSTION_GRADE, 1));
         result.put(Identifier.withDefaultNamespace("emerald"), settings -> settings.stacksTo(16));
@@ -142,6 +142,7 @@ public final class VanillaItemModify {
         result.put(Identifier.withDefaultNamespace("nautilus_shell"), settings -> settings.stacksTo(16));
         result.put(Identifier.withDefaultNamespace("disc_fragment_5"), settings -> settings.stacksTo(16));
         result.put(Identifier.withDefaultNamespace("firework_star"), settings -> settings.stacksTo(16));
+        result.put(Identifier.withDefaultNamespace("arrow"), settings -> settings.stacksTo(16));
         result.put(Identifier.withDefaultNamespace("glow_berries"), settings -> settings
                 .stacksTo(16)
                 .food(new FoodProperties(1, 1, false))
@@ -149,10 +150,12 @@ public final class VanillaItemModify {
         );
         result.put(Identifier.withDefaultNamespace("rabbit"), settings -> settings
                 .stacksTo(16)
+                .component(MMEDataComponents.CRAFTING_TIME, 2.0F)
                 .component(MMEDataComponents.FOOD_NUTRITION, FoodNutrition.builder().protein(24000).build())
         );
         result.put(Identifier.withDefaultNamespace("cooked_rabbit"), settings -> settings
                 .stacksTo(16)
+                .component(MMEDataComponents.CRAFTING_TIME, 2.0F)
                 .component(MMEDataComponents.FOOD_NUTRITION, FoodNutrition.builder().protein(48000).build())
         );
         result.put(Identifier.withDefaultNamespace("beetroot"), settings -> settings
@@ -161,11 +164,13 @@ public final class VanillaItemModify {
         );
         result.put(Identifier.withDefaultNamespace("mutton"), settings -> settings
                 .stacksTo(16)
+                .component(MMEDataComponents.CRAFTING_TIME, 2.0F)
                 .food(new FoodProperties(3, 3, false))
                 .component(MMEDataComponents.FOOD_NUTRITION, FoodNutrition.builder().protein(24000).build())
         );
         result.put(Identifier.withDefaultNamespace("cooked_mutton"), settings -> settings
                 .stacksTo(16)
+                .component(MMEDataComponents.CRAFTING_TIME, 2.0F)
                 .food(new FoodProperties(6, 6, false))
                 .component(MMEDataComponents.FOOD_NUTRITION, FoodNutrition.builder().protein(48000).build())
         );
@@ -207,11 +212,13 @@ public final class VanillaItemModify {
         );
         result.put(Identifier.withDefaultNamespace("rotten_flesh"), settings -> settings
                 .stacksTo(16)
+                .component(MMEDataComponents.CRAFTING_TIME, 2.0F)
                 .food(new FoodProperties(1, 2, false))
                 .component(MMEDataComponents.FOOD_NUTRITION, FoodNutrition.builder().protein(8000).build())
         );
         result.put(Identifier.withDefaultNamespace("chicken"), settings -> settings
                 .stacksTo(16)
+                .component(MMEDataComponents.CRAFTING_TIME, 2.0F)
                 .food(new FoodProperties(3, 3, false), Consumables
                         .defaultFood()
                         .onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(MobEffects.POISON, 1200), 0.5F))
@@ -221,16 +228,19 @@ public final class VanillaItemModify {
         );
         result.put(Identifier.withDefaultNamespace("cooked_chicken"), settings -> settings
                 .stacksTo(16)
+                .component(MMEDataComponents.CRAFTING_TIME, 2.0F)
                 .food(new FoodProperties(6, 6, false))
                 .component(MMEDataComponents.FOOD_NUTRITION, FoodNutrition.builder().protein(48000).build())
         );
         result.put(Identifier.withDefaultNamespace("beef"), settings -> settings
                 .stacksTo(16)
+                .component(MMEDataComponents.CRAFTING_TIME, 2.0F)
                 .food(new FoodProperties(5, 5, false))
                 .component(MMEDataComponents.FOOD_NUTRITION, FoodNutrition.builder().protein(40000).build())
         );
         result.put(Identifier.withDefaultNamespace("cooked_beef"), settings -> settings
                 .stacksTo(16)
+                .component(MMEDataComponents.CRAFTING_TIME, 2.0F)
                 .food(new FoodProperties(10, 10, false))
                 .component(MMEDataComponents.FOOD_NUTRITION, FoodNutrition.builder().protein(80000).build())
         );
@@ -256,11 +266,13 @@ public final class VanillaItemModify {
         );
         result.put(Identifier.withDefaultNamespace("porkchop"), settings -> settings
                 .stacksTo(16)
+                .component(MMEDataComponents.CRAFTING_TIME, 2.0F)
                 .food(new FoodProperties(4, 4, false))
                 .component(MMEDataComponents.FOOD_NUTRITION, FoodNutrition.builder().protein(32000).build())
         );
         result.put(Identifier.withDefaultNamespace("cooked_porkchop"), settings -> settings
                 .stacksTo(16)
+                .component(MMEDataComponents.CRAFTING_TIME, 2.0F)
                 .food(new FoodProperties(8, 8, false))
                 .component(MMEDataComponents.FOOD_NUTRITION, FoodNutrition.builder().protein(64000).build())
         );
@@ -301,21 +313,23 @@ public final class VanillaItemModify {
         result.put(Identifier.withDefaultNamespace("raw_copper"), settings -> settings
                 .stacksTo(8)
                 .component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2)
+                .component(MMEDataComponents.CRAFTING_TIME, 3.0F)
         );
         result.put(Identifier.withDefaultNamespace("raw_gold"), settings -> settings
                 .stacksTo(8)
                 .component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2)
+                .component(MMEDataComponents.CRAFTING_TIME, 3.0F)
         );
         result.put(Identifier.withDefaultNamespace("raw_iron"), settings -> settings
                 .stacksTo(8)
                 .component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2)
+                .component(MMEDataComponents.CRAFTING_TIME, 7.0F)
         );
 
         // Items with maximum stack of 32
         result.put(Identifier.withDefaultNamespace("lapis_lazuli"), settings -> settings.stacksTo(32));
         result.put(Identifier.withDefaultNamespace("quartz"), settings -> settings.stacksTo(32));
         result.put(Identifier.withDefaultNamespace("stick"), settings -> settings.stacksTo(32));
-        result.put(Identifier.withDefaultNamespace("arrow"), settings -> settings.stacksTo(32));
         result.put(Identifier.withDefaultNamespace("tipped_arrow"), settings -> settings.stacksTo(32));
         result.put(Identifier.withDefaultNamespace("spectral_arrow"), settings -> settings.stacksTo(32));
         result.put(Identifier.withDefaultNamespace("bone"), settings -> settings.stacksTo(32));
@@ -329,7 +343,9 @@ public final class VanillaItemModify {
         result.put(Identifier.withDefaultNamespace("cocoa_beans"), settings -> settings.stacksTo(32));
         result.put(Identifier.withDefaultNamespace("seagrass"), settings -> settings.stacksTo(32));
         result.put(Identifier.withDefaultNamespace("gunpowder"), settings -> settings.stacksTo(32));
-        result.put(Identifier.withDefaultNamespace("copper_nugget"), settings -> settings.stacksTo(32).component(MMEDataComponents.CRAFTING_TIME, 1));
+        result.put(Identifier.withDefaultNamespace("copper_nugget"), settings -> settings.stacksTo(32).component(MMEDataComponents.CRAFTING_TIME, 0.5F));
+        result.put(Identifier.withDefaultNamespace("iron_nugget"), settings -> settings.component(MMEDataComponents.CRAFTING_TIME, 0.5F));
+        result.put(Identifier.withDefaultNamespace("gold_nugget"), settings -> settings.component(MMEDataComponents.CRAFTING_TIME, 0.5F));
         result.put(Identifier.withDefaultNamespace("sweet_berries"), settings -> settings
                 .stacksTo(32)
                 .food(new FoodProperties(1, 1, false))
@@ -547,10 +563,46 @@ public final class VanillaItemModify {
         result.put(Identifier.withDefaultNamespace("torch"), properties -> properties.cookingFuel(ContextIntProviders.COOKING_TIME_WOOD_ITEMS_LARGE));
         result.put(Identifier.withDefaultNamespace("soul_torch"), properties -> properties.cookingFuel(ContextIntProviders.COOKING_TIME_WOOD_ITEMS_LARGE));
 
-        result.put(Identifier.withDefaultNamespace("iron_block"), settings -> settings.component(MMEDataComponents.CRAFTING_TIME, 90));
-        result.put(Identifier.withDefaultNamespace("gold_block"), settings -> settings.component(MMEDataComponents.CRAFTING_TIME, 45));
-        result.put(Identifier.withDefaultNamespace("copper_block"), settings -> settings.component(MMEDataComponents.CRAFTING_TIME, 45));
-        result.put(Identifier.withDefaultNamespace("netherite_block"), settings -> settings.component(MMEDataComponents.CRAFTING_TIME, 630));
+        result.put(Identifier.withDefaultNamespace("iron_block"), settings -> settings.component(MMEDataComponents.CRAFTING_TIME, 90.0F));
+        result.put(Identifier.withDefaultNamespace("gold_block"), settings -> settings.component(MMEDataComponents.CRAFTING_TIME, 45.0F));
+        result.put(Identifier.withDefaultNamespace("copper_block"), settings -> settings.component(MMEDataComponents.CRAFTING_TIME, 45.0F));
+        result.put(Identifier.withDefaultNamespace("netherite_block"), settings -> settings.component(MMEDataComponents.CRAFTING_TIME, 630.0F));
+        result.put(Identifier.withDefaultNamespace("iron_chain"), settings -> settings.component(MMEDataComponents.CRAFTING_TIME, 2.0F));
+        result.put(Identifier.withDefaultNamespace("copper_chain"), settings -> settings.component(MMEDataComponents.CRAFTING_TIME, 1.0F));
+
+        // Flowers (every member of the vanilla #minecraft:flowers block tag): half a second
+        // as a timed crafting ingredient.
+        result.put(Identifier.withDefaultNamespace("dandelion"), properties -> properties.component(MMEDataComponents.CRAFTING_TIME, 0.5F));
+        result.put(Identifier.withDefaultNamespace("open_eyeblossom"), properties -> properties.component(MMEDataComponents.CRAFTING_TIME, 0.5F));
+        result.put(Identifier.withDefaultNamespace("poppy"), properties -> properties.component(MMEDataComponents.CRAFTING_TIME, 0.5F));
+        result.put(Identifier.withDefaultNamespace("blue_orchid"), properties -> properties.component(MMEDataComponents.CRAFTING_TIME, 0.5F));
+        result.put(Identifier.withDefaultNamespace("allium"), properties -> properties.component(MMEDataComponents.CRAFTING_TIME, 0.5F));
+        result.put(Identifier.withDefaultNamespace("azure_bluet"), properties -> properties.component(MMEDataComponents.CRAFTING_TIME, 0.5F));
+        result.put(Identifier.withDefaultNamespace("red_tulip"), properties -> properties.component(MMEDataComponents.CRAFTING_TIME, 0.5F));
+        result.put(Identifier.withDefaultNamespace("orange_tulip"), properties -> properties.component(MMEDataComponents.CRAFTING_TIME, 0.5F));
+        result.put(Identifier.withDefaultNamespace("white_tulip"), properties -> properties.component(MMEDataComponents.CRAFTING_TIME, 0.5F));
+        result.put(Identifier.withDefaultNamespace("pink_tulip"), properties -> properties.component(MMEDataComponents.CRAFTING_TIME, 0.5F));
+        result.put(Identifier.withDefaultNamespace("oxeye_daisy"), properties -> properties.component(MMEDataComponents.CRAFTING_TIME, 0.5F));
+        result.put(Identifier.withDefaultNamespace("cornflower"), properties -> properties.component(MMEDataComponents.CRAFTING_TIME, 0.5F));
+        result.put(Identifier.withDefaultNamespace("lily_of_the_valley"), properties -> properties.component(MMEDataComponents.CRAFTING_TIME, 0.5F));
+        result.put(Identifier.withDefaultNamespace("wither_rose"), properties -> properties.component(MMEDataComponents.CRAFTING_TIME, 0.5F));
+        result.put(Identifier.withDefaultNamespace("torchflower"), properties -> properties.component(MMEDataComponents.CRAFTING_TIME, 0.5F));
+        result.put(Identifier.withDefaultNamespace("closed_eyeblossom"), properties -> properties.component(MMEDataComponents.CRAFTING_TIME, 0.5F));
+        result.put(Identifier.withDefaultNamespace("golden_dandelion"), properties -> properties.component(MMEDataComponents.CRAFTING_TIME, 0.5F));
+        result.put(Identifier.withDefaultNamespace("sunflower"), properties -> properties.component(MMEDataComponents.CRAFTING_TIME, 0.5F));
+        result.put(Identifier.withDefaultNamespace("lilac"), properties -> properties.component(MMEDataComponents.CRAFTING_TIME, 0.5F));
+        result.put(Identifier.withDefaultNamespace("peony"), properties -> properties.component(MMEDataComponents.CRAFTING_TIME, 0.5F));
+        result.put(Identifier.withDefaultNamespace("rose_bush"), properties -> properties.component(MMEDataComponents.CRAFTING_TIME, 0.5F));
+        result.put(Identifier.withDefaultNamespace("pitcher_plant"), properties -> properties.component(MMEDataComponents.CRAFTING_TIME, 0.5F));
+        result.put(Identifier.withDefaultNamespace("flowering_azalea_leaves"), properties -> properties.component(MMEDataComponents.CRAFTING_TIME, 0.5F));
+        result.put(Identifier.withDefaultNamespace("flowering_azalea"), properties -> properties.component(MMEDataComponents.CRAFTING_TIME, 0.5F));
+        result.put(Identifier.withDefaultNamespace("mangrove_propagule"), properties -> properties.component(MMEDataComponents.CRAFTING_TIME, 0.5F));
+        result.put(Identifier.withDefaultNamespace("cherry_leaves"), properties -> properties.component(MMEDataComponents.CRAFTING_TIME, 0.5F));
+        result.put(Identifier.withDefaultNamespace("pink_petals"), properties -> properties.component(MMEDataComponents.CRAFTING_TIME, 0.5F));
+        result.put(Identifier.withDefaultNamespace("wildflowers"), properties -> properties.component(MMEDataComponents.CRAFTING_TIME, 0.5F));
+        result.put(Identifier.withDefaultNamespace("chorus_flower"), properties -> properties.component(MMEDataComponents.CRAFTING_TIME, 0.5F));
+        result.put(Identifier.withDefaultNamespace("spore_blossom"), properties -> properties.component(MMEDataComponents.CRAFTING_TIME, 0.5F));
+        result.put(Identifier.withDefaultNamespace("cactus_flower"), properties -> properties.component(MMEDataComponents.CRAFTING_TIME, 0.5F));
 
         result.put(Identifier.withDefaultNamespace("iron_ore"), settings -> settings.component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2));
         result.put(Identifier.withDefaultNamespace("copper_ore"), settings -> settings.component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2));
@@ -575,6 +627,7 @@ public final class VanillaItemModify {
         result.put(Identifier.withDefaultNamespace("ancient_debris"), properties -> properties.component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4));
 
         result.put(Identifier.withDefaultNamespace("brown_mushroom"), properties -> properties.food(new FoodProperties(1, 1.0F, false)));
+        result.put(Identifier.withDefaultNamespace("shelf_mushroom"), properties -> properties.food(new FoodProperties(1, 1.0F, false)));
         result.put(Identifier.withDefaultNamespace("red_mushroom"), properties -> properties.food(new FoodProperties(1, 1.0F, false),
                 Consumables.defaultFood()
                         .onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(MobEffects.POISON, 1200), 1F))

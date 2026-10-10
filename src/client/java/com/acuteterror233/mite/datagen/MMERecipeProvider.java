@@ -1194,6 +1194,11 @@ public class MMERecipeProvider extends FabricRecipeProvider {
                         .requires(Items.BOWL)
                         .unlockedBy(getHasName(Items.BOWL), this.has(Items.BOWL))
                         .save(this.output);
+                shapeless(RecipeCategory.MISC, MMEItems.PURIFYING_BOTTLE)
+                        .requires(Items.GLASS_BOTTLE)
+                        .requires(Items.GHAST_TEAR)
+                        .unlockedBy(getHasName(Items.GHAST_TEAR), this.has(Items.GHAST_TEAR))
+                        .save(this.output);
                 offerMilkBucketRecipes(MMEItems.NETHERITE_MILK_BUCKET, MMEItems.NETHERITE_BUCKET);
                 offerMilkBucketRecipes(MMEItems.ADAMANTIUM_MILK_BUCKET, MMEItems.ADAMANTIUM_BUCKET);
                 offerMilkBucketRecipes(MMEItems.MITHRIL_MILK_BUCKET, MMEItems.MITHRIL_BUCKET);

@@ -72,6 +72,7 @@ public class MMEBucketItem extends BucketItem {
                 }
 
                 player.awardStat(Stats.ITEM_USED.get(this));
+
                 ItemStack emptyResult = ItemUtils.createFilledResult(itemStack, player, getEmptyBarrelSuccessItem(itemStack, player));
                 return InteractionResult.SUCCESS.heldItemTransformedTo(emptyResult);
             } else {

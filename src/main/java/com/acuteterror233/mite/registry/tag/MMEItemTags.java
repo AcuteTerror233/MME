@@ -109,6 +109,12 @@ public interface MMEItemTags {
     TagKey<Item> ADAMANTIUM_ARMOR = key("adamantium_armor");
     TagKey<Item> AIR = key("air");
 
+    // Witch-curse dietary categories (CANNOT_EAT_MEAT / CANNOT_EAT_PLANTS / CANNOT_DRINK_SOUP / DIABETES).
+    TagKey<Item> ANIMAL_PRODUCTS = key("animal_products");
+    TagKey<Item> PLANT_PRODUCTS = key("plant_products");
+    TagKey<Item> SOUPS = key("soups");
+    TagKey<Item> SUGARY_FOODS = key("sugary_foods");
+
     /** Creates a {@link TagKey} in the item registry under the MME namespace. */
     private static TagKey<Item> key(String id) {
         return TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(MME.MOD_ID, id));

@@ -10,7 +10,7 @@ import com.acuteterror233.mite.registry.tag.MMEItemTags;
 public final class MMEMaterials {
     /** Bare-hand (2×2 inventory) crafting: crafting-only, no speed bonus, 0.3 exhaustion per craft. */
     public static final MetalMaterial HAND = MetalMaterial.craftingOnly("hand",
-            new MetalMaterial.CraftingFunction(MMEItemTags.HAND_NOT_ALLOWED_MATERIAL, MMEItemTags.FLINT_CRAFTING_TABLE_EXCEPTIONS, 0.0f, 0.3f));
+            new MetalMaterial.CraftingFunction(MMEItemTags.HAND_NOT_ALLOWED_MATERIAL, MMEItemTags.FLINT_CRAFTING_TABLE_EXCEPTIONS, 0.0f));
     /** Flint tier (crafting-only): speed bonus 0.03. */
     public static final MetalMaterial FLINT = MetalMaterial.craftingOnly("flint",
             new MetalMaterial.CraftingFunction(MMEItemTags.GOLD_NOT_ALLOWED_MATERIAL, MMEItemTags.FLINT_CRAFTING_TABLE_EXCEPTIONS, 0.03f));

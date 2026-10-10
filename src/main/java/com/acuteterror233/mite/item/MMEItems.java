@@ -73,19 +73,19 @@ public class MMEItems {
 
     public static final Item ADAMANTIUM_BLOCK = registerBlockItem(
             MMEBlocks.ADAMANTIUM_BLOCK, MMEBlockItemIds.ADAMANTIUM_BLOCK,
-            new Item.Properties().component(MMEDataComponents.CRAFTING_TIME, 1350)
+            new Item.Properties().component(MMEDataComponents.CRAFTING_TIME, 1350.0F)
     );
     public static final Item ANCIENT_METAL_BLOCK = registerBlockItem(
             MMEBlocks.ANCIENT_METAL_BLOCK, MMEBlockItemIds.ANCIENT_METAL_BLOCK,
-            new Item.Properties().component(MMEDataComponents.CRAFTING_TIME, 540)
+            new Item.Properties().component(MMEDataComponents.CRAFTING_TIME, 540.0F)
     );
     public static final Item MITHRIL_BLOCK = registerBlockItem(
             MMEBlocks.MITHRIL_BLOCK, MMEBlockItemIds.MITHRIL_BLOCK,
-            new Item.Properties().component(MMEDataComponents.CRAFTING_TIME, 810)
+            new Item.Properties().component(MMEDataComponents.CRAFTING_TIME, 810.0F)
     );
     public static final Item SILVER_BLOCK = registerBlockItem(
             MMEBlocks.SILVER_BLOCK, MMEBlockItemIds.SILVER_BLOCK,
-            new Item.Properties().component(MMEDataComponents.CRAFTING_TIME, 90)
+            new Item.Properties().component(MMEDataComponents.CRAFTING_TIME, 90.0F)
     );
 
     public static final Item CLAY_FURNACE = registerBlockItem(MMEBlocks.CLAY_FURNACE, MMEBlockItemIds.CLAY_FURNACE, new Item.Properties().component(MMEDataComponents.MAX_COMBUSTION_GRADE, 1));
@@ -429,6 +429,13 @@ public class MMEItems {
                     .craftRemainder(Items.BOWL)
                     .stacksTo(4)
     );
+    public static final Item PURIFYING_BOTTLE = register(
+            MMEItemIds.PURIFYING_BOTTLE,
+            PurifyingBottleItem::new,
+            new Item.Properties()
+                    .food(new FoodProperties(0, 0F, true), Consumables.defaultDrink().build())
+                    .stacksTo(16)
+    );
     public static final Item BOWL_SALAD = register(
             MMEItemIds.BOWL_SALAD,
             new Item.Properties()
@@ -661,21 +668,21 @@ public class MMEItems {
     public static final Item WOODEN_CUDGEL = register(MMEItemIds.WOODEN_CUDGEL, applySwordSettings(new Item.Properties(), MMEToolMaterials.WOOD, 1, 1, 3, -2.0F, 0.25F, 0.25F).cookingFuel(ContextIntProviders.COOKING_TIME_WOOD_ITEMS_LARGE));
 
     public static final Item ADAMANTIUM_CHAINS = register(MMEItemIds.ADAMANTIUM_CHAINS,
-            new Item.Properties().stacksTo(16).component(MMEDataComponents.CRAFTING_TIME, 75));
+            new Item.Properties().stacksTo(16).component(MMEDataComponents.CRAFTING_TIME, 14.0F));
     public static final Item MITHRIL_CHAINS = register(MMEItemIds.MITHRIL_CHAINS,
-            new Item.Properties().stacksTo(16).component(MMEDataComponents.CRAFTING_TIME, 45));
+            new Item.Properties().stacksTo(16).component(MMEDataComponents.CRAFTING_TIME, 8.0F));
     public static final Item ANCIENT_METAL_CHAINS = register(MMEItemIds.ANCIENT_METAL_CHAINS,
-            new Item.Properties().stacksTo(16).component(MMEDataComponents.CRAFTING_TIME, 30));
+            new Item.Properties().stacksTo(16).component(MMEDataComponents.CRAFTING_TIME, 5.0F));
     public static final Item IRON_CHAINS = register(MMEItemIds.IRON_CHAINS,
-            new Item.Properties().stacksTo(16).component(MMEDataComponents.CRAFTING_TIME, 15));
+            new Item.Properties().stacksTo(16).component(MMEDataComponents.CRAFTING_TIME, 2.0F));
     public static final Item RUSTED_IRON_CHAINS = register(MMEItemIds.RUSTED_IRON_CHAINS,
-            new Item.Properties().stacksTo(16).component(MMEDataComponents.CRAFTING_TIME, 5));
+            new Item.Properties().stacksTo(16).component(MMEDataComponents.CRAFTING_TIME, 2.0F));
     public static final Item GOLDEN_CHAINS = register(MMEItemIds.GOLDEN_CHAINS,
-            new Item.Properties().stacksTo(16).component(MMEDataComponents.CRAFTING_TIME, 5));
+            new Item.Properties().stacksTo(16).component(MMEDataComponents.CRAFTING_TIME, 1.0F));
     public static final Item COPPER_CHAINS = register(MMEItemIds.COPPER_CHAINS,
-            new Item.Properties().stacksTo(16).component(MMEDataComponents.CRAFTING_TIME, 5));
+            new Item.Properties().stacksTo(16).component(MMEDataComponents.CRAFTING_TIME, 1.0F));
     public static final Item SILVER_CHAINS = register(MMEItemIds.SILVER_CHAINS,
-            new Item.Properties().stacksTo(16).component(MMEDataComponents.CRAFTING_TIME, 5));
+            new Item.Properties().stacksTo(16).component(MMEDataComponents.CRAFTING_TIME, 1.0F));
 
     public static final Item NETHERITE_COINS = register(
             MMEItemIds.NETHERITE_COINS,
@@ -1335,45 +1342,45 @@ public class MMEItems {
     public static final Item SILVER_FISHING_ROD = register(MMEItemIds.SILVER_FISHING_ROD, FishingRodItem::new, new Item.Properties().durability(8).enchantable(10));
 
     public static final Item RAW_ADAMANTIUM = register(MMEItemIds.RAW_ADAMANTIUM,
-            new Item.Properties().stacksTo(8).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4));
+            new Item.Properties().stacksTo(8).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 4).component(MMEDataComponents.CRAFTING_TIME, 41.0F));
     public static final Item RAW_MITHRIL = register(MMEItemIds.RAW_MITHRIL,
-            new Item.Properties().stacksTo(8).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 3));
+            new Item.Properties().stacksTo(8).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 3).component(MMEDataComponents.CRAFTING_TIME, 25.0F));
     public static final Item RAW_SILVER = register(MMEItemIds.RAW_SILVER,
-            new Item.Properties().stacksTo(8).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2));
+            new Item.Properties().stacksTo(8).component(MMEDataComponents.REQUIRED_COMBUSTION_GRADE, 2).component(MMEDataComponents.CRAFTING_TIME, 3.0F));
 
     public static final Item ADAMANTIUM_INGOT = register(MMEItemIds.ADAMANTIUM_INGOT,
-            new Item.Properties().component(MMEDataComponents.CRAFTING_TIME, 50).stacksTo(16));
+            new Item.Properties().component(MMEDataComponents.CRAFTING_TIME, 33.0F).stacksTo(16));
     public static final Item MITHRIL_INGOT = register(MMEItemIds.MITHRIL_INGOT,
-            new Item.Properties().component(MMEDataComponents.CRAFTING_TIME, 30).stacksTo(16));
+            new Item.Properties().component(MMEDataComponents.CRAFTING_TIME, 20.0F).stacksTo(16));
     public static final Item ANCIENT_METAL_INGOT = register(MMEItemIds.ANCIENT_METAL_INGOT,
-            new Item.Properties().component(MMEDataComponents.CRAFTING_TIME, 20).stacksTo(16));
+            new Item.Properties().component(MMEDataComponents.CRAFTING_TIME, 13.0F).stacksTo(16));
     public static final Item SILVER_INGOT = register(MMEItemIds.SILVER_INGOT,
-            new Item.Properties().component(MMEDataComponents.CRAFTING_TIME, 5).stacksTo(16));
+            new Item.Properties().component(MMEDataComponents.CRAFTING_TIME, 3.0F).stacksTo(16));
 
     public static final Item NETHERITE_NUGGET = register(
             MMEItemIds.NETHERITE_NUGGET,
             settings -> new NuggetItem(settings, 5000),
-            new Item.Properties().component(MMEDataComponents.CRAFTING_TIME, 10)
+            new Item.Properties().component(MMEDataComponents.CRAFTING_TIME, 5.0F)
     );
     public static final Item ADAMANTIUM_NUGGET = register(
             MMEItemIds.ADAMANTIUM_NUGGET,
             settings -> new NuggetItem(settings, 1000),
-            new Item.Properties().component(MMEDataComponents.CRAFTING_TIME, 7)
+            new Item.Properties().component(MMEDataComponents.CRAFTING_TIME, 3.0F)
     );
     public static final Item MITHRIL_NUGGET = register(
             MMEItemIds.MITHRIL_NUGGET,
             settings -> new NuggetItem(settings, 500),
-            new Item.Properties().component(MMEDataComponents.CRAFTING_TIME, 5)
+            new Item.Properties().component(MMEDataComponents.CRAFTING_TIME, 2.0F)
     );
     public static final Item ANCIENT_METAL_NUGGET = register(
             MMEItemIds.ANCIENT_METAL_NUGGET,
             settings -> new NuggetItem(settings, 300),
-            new Item.Properties().component(MMEDataComponents.CRAFTING_TIME, 4)
+            new Item.Properties().component(MMEDataComponents.CRAFTING_TIME, 1.0F)
     );
     public static final Item SILVER_NUGGET = register(
             MMEItemIds.SILVER_NUGGET,
             settings -> new NuggetItem(settings, 50),
-            new Item.Properties().component(MMEDataComponents.CRAFTING_TIME, 1)
+            new Item.Properties().component(MMEDataComponents.CRAFTING_TIME, 0.5F)
     );
 
     public static final Item FLINT_SHARD = register(MMEItemIds.FLINT_SHARD,
@@ -2100,6 +2107,9 @@ public class MMEItems {
                     BEEF_STEW, BOWL_MILK, BOWL_SALAD, BOWL_WATER, CEREAL, CHICKEN_SOUP,
                     CREAM_OF_MUSHROOM_SOUP, CREAM_OF_VEGETABLE_SOUP, ICE_CREAM, MASHED_POTATO,
                     PORRIDGE, PUMPKIN_SOUP, SORBET, VEGETABLE_SOUP);
+
+            // Purifying bottle after the bowl milk
+            output.insertAfter(BOWL_MILK, PURIFYING_BOTTLE);
         });
 
 

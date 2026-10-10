@@ -3,11 +3,17 @@
   "package": "com.acuteterror233.mite.mixin.client",
   "compatibilityLevel": "JAVA_25",
   "client": [
+    "CameraMixin",
+    "KeyMappingAccessor",
+    "MinecraftMixin",
+    "MouseHandlerMixin",
     "data.BlockModelGeneratorsMixin",
     "data.ItemModelGeneratorsMixin",
     "gui.GuiMixin",
+    "gui.HudHotbarMixin",
     "gui.screen.ingame.CraftingScreenMixin",
-    "gui.screen.ingame.InventoryScreenMixin"
+    "gui.screen.ingame.InventoryScreenMixin",
+    "player.LocalPlayerMixin"
   ],
   "injectors": {
     "defaultRequire": 1

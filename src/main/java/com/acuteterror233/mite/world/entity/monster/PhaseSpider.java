@@ -227,7 +227,7 @@ public class PhaseSpider extends Spider {
         public void tick() {
             super.tick();
             LivingEntity target = this.mob.getTarget();
-            if (target != null && this.teleportTimer++ >= this.adjustedTickDelay(10) && this.phaseSpider.teleportTowards(target)) {
+            if (target != null && this.teleportTimer++ >= this.adjustedTickDelay(20) && this.phaseSpider.teleportTowards(target)) {
                 this.teleportTimer = 0;
             }
         }

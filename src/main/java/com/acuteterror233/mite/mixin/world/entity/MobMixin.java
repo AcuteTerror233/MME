@@ -2,6 +2,7 @@ package com.acuteterror233.mite.mixin.world.entity;
 
 import com.acuteterror233.mite.item.MMEItems;
 import com.acuteterror233.mite.world.attribute.MMEEnvironmentAttributes;
+import com.acuteterror233.mite.world.entity.ai.SkeletonTargetMotionTracker;
 import com.acuteterror233.mite.world.gen.dimension.MMEDimensionTypeRegistrar;
 import com.acuteterror233.mite.world.level.SpecialMoonPhase;
 import net.minecraft.util.RandomSource;
@@ -9,6 +10,7 @@ import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.monster.skeleton.AbstractSkeleton;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -21,6 +23,7 @@ import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.ArrayList;
@@ -59,6 +62,23 @@ public abstract class MobMixin extends LivingEntity implements EquipmentUser, Le
     protected MobMixin(EntityType<? extends LivingEntity> entityType, Level level) {
         super(entityType, level);
     }
+
+    /**
+     * Feeds the skeleton predictive-aim tracker: every server tick a skeleton with a target
+     * records the target's position (see {@link SkeletonTargetMotionTracker}) — this works for
+     * players where {@code getDeltaMovement()} and the {@code xo/yo/zo} diff do not, because
+     * movement packets are applied before entity ticking.
+     */
+    @Inject(method = "aiStep", at = @At("HEAD"))
+    private void mme$recordSkeletonTargetMotion(CallbackInfo ci) {
+        if ((Object) this instanceof AbstractSkeleton skeleton && !this.level().isClientSide()) {
+            LivingEntity target = skeleton.getTarget();
+            if (target != null && target.isAlive()) {
+                SkeletonTargetMotionTracker.record(target, this.level().getGameTime());
+            }
+        }
+    }
+
     /** Applies moon-phase spawn buffs (see class doc). */
     @Inject(method = "finalizeSpawn", at = @At("HEAD"))
     private void finalizeSpawn(ServerLevelAccessor level, DifficultyInstance difficulty, EntitySpawnReason spawnReason, SpawnGroupData groupData, CallbackInfoReturnable<SpawnGroupData> cir){

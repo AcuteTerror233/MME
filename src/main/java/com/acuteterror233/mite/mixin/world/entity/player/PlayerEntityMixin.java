@@ -1,14 +1,18 @@
 package com.acuteterror233.mite.mixin.world.entity.player;
 
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodData;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.Vec3;
+import org.jspecify.annotations.NonNull;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
@@ -126,4 +130,18 @@ public abstract class PlayerEntityMixin extends LivingEntity {
         }
     }
 
+    @Redirect(method = "getProjectile", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/player/Inventory;getContainerSize()I"))
+    private int getProjectile(Inventory instance) {
+        return 8;
+    }
+
+    @Override
+    public void setDeltaMovement(final @NonNull Vec3 deltaMovement) {
+        Player player = (Player) (Object) this;
+        if (player.hasEffect(MobEffects.SLOWNESS) && player.isInWater() && !player.isCreative() && deltaMovement.y > 0) {
+            super.setDeltaMovement(deltaMovement.add(0, -deltaMovement.y-0.03, 0));
+        }else {
+            super.setDeltaMovement(deltaMovement);
+        }
+    }
 }

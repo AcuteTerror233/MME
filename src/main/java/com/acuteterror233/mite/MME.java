@@ -3,10 +3,13 @@ package com.acuteterror233.mite;
 import com.acuteterror233.mite.block.MMEBlocks;
 import com.acuteterror233.mite.interfaces.FoodDataExtension;
 import com.acuteterror233.mite.item.MMEItems;
+import com.acuteterror233.mite.item.MMETempFluidSources;
+import com.acuteterror233.mite.network.MMENetworking;
 import com.acuteterror233.mite.world.attribute.MMEAttributeTypes;
 import com.acuteterror233.mite.world.attribute.MMEEnvironmentAttributes;
 import com.acuteterror233.mite.world.biome.BiomeModification;
 import com.acuteterror233.mite.world.effect.MMEMobEffects;
+import com.acuteterror233.mite.world.effect.curse.MMECurses;
 import com.acuteterror233.mite.world.entity.MMEEntityTypes;
 import com.acuteterror233.mite.world.food.FoodNutrition;
 import com.acuteterror233.mite.world.gen.feature.OverworldPlacedFeatures;
@@ -63,12 +66,19 @@ public class MME implements ModInitializer {
         MMEItems.init();
         MMEBlocks.init();
         MMEMobEffects.init();
+        MMECurses.init();
         MMEEntityTypes.init();
 
         // === Data & world gen ===
         BiomeModification.init();
         MMEAttributeTypes.init();
         MMEEnvironmentAttributes.init();
+
+        // === Networking (S2C payload codecs) ===
+        MMENetworking.init();
+
+        // === Temporary fluid source tracking (bucket placement) ===
+        MMETempFluidSources.init();
 
         // === Point of Interest registration ===
         PoiHelper.register(Identifier.fromNamespaceAndPath(MME.MOD_ID, "underground_portal"), 0, 1, MMEBlocks.UNDERGROUND_PORTAL);
@@ -96,7 +106,7 @@ public class MME implements ModInitializer {
      */
     private static void registerSleepEvents() {
         EntitySleepEvents.ALLOW_SLEEPING.register((player, _) -> player.level().environmentAttributes().getDimensionValue(MMEEnvironmentAttributes.SPECIAL_MOON_PHASE).equals(SpecialMoonPhase.BLOOD_MOON) ? Player.BedSleepingProblem.NOT_SAFE : null);
-        EntitySleepEvents.ALLOW_RESETTING_TIME.register(player -> !player.level().isBrightOutside());
+        EntitySleepEvents.ALLOW_RESETTING_TIME.register(player -> !player.level().isBrightOutside() && !player.hasEffect(MMECurses.SLEEPLESSNESS));
     }
 
     /**

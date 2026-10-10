@@ -19,9 +19,9 @@ import net.minecraft.world.level.chunk.status.ChunkStatus;
  * Extends {@link RemoveBlockGoal}, specifically removes torch blocks.
  */
 public class DestroyTorchGoal extends RemoveBlockGoal {
-    /** Targets the plain torch block with a 15-block search range; torch variants (soul/wall) are matched in {@link #isValidTarget}. */
+    /** Targets the plain torch block with a 20-block search range; torch variants (soul/wall) are matched in {@link #isValidTarget}. */
     public DestroyTorchGoal(PathfinderMob mob, double speedModifier) {
-        super(Blocks.TORCH, mob, speedModifier, 15);
+        super(Blocks.TORCH, mob, speedModifier, 20);
     }
 
     /** Stone-hit sound while gnawing at the torch. */

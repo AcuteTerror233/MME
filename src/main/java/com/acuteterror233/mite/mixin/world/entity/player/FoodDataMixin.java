@@ -1,6 +1,7 @@
 package com.acuteterror233.mite.mixin.world.entity.player;
 
 import com.acuteterror233.mite.interfaces.FoodDataExtension;
+import com.acuteterror233.mite.network.MMENetworking;
 import com.acuteterror233.mite.world.effect.MMEMobEffects;
 import com.acuteterror233.mite.world.food.FoodNutrition;
 import net.minecraft.core.Holder;
@@ -194,6 +195,10 @@ public abstract class FoodDataMixin implements FoodDataExtension {
             }
         }
         updatePlayerEffects(player);
+        // Periodic nutrition sync: feeds the client-side inventory nutrition bars (1 s cadence)
+        if (player.tickCount % 20 == 0) {
+            MMENetworking.sendFoodNutrition(player, new FoodNutrition(this.protein, this.fiber, this.sugar));
+        }
     }
 
     /** Applies the nutrition-driven effects: malnutrition from depleted protein/fiber and sugar stages. */
@@ -380,6 +385,14 @@ public abstract class FoodDataMixin implements FoodDataExtension {
     @Override
     public FoodNutrition MME$GetFoodNutrition() {
         return new FoodNutrition(this.protein, this.fiber, this.sugar);
+    }
+
+    /** Overwrites the three nutrient counters with the given values (client-side sync target). */
+    @Override
+    public void MME$SetFoodNutrition(FoodNutrition foodNutrition) {
+        this.protein = foodNutrition.protein();
+        this.fiber = foodNutrition.fiber();
+        this.sugar = foodNutrition.sugar();
     }
 
     /** Adds fiber, capped at 160000. */

@@ -1,10 +1,15 @@
 package com.acuteterror233.mite.mixin.server.level;
 
+import com.acuteterror233.mite.world.effect.curse.CurseCap;
+import com.acuteterror233.mite.world.effect.curse.CurseLogic;
+import com.acuteterror233.mite.world.effect.curse.CurseState;
 import com.acuteterror233.mite.world.player.ExperienceSynchronizer;
 import com.mojang.authlib.GameProfile;
+import net.minecraft.core.Holder;
 import net.minecraft.network.protocol.game.ClientboundSetHealthPacket;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.network.ServerGamePacketListenerImpl;
+import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import org.spongepowered.asm.mixin.Mixin;
@@ -47,5 +52,18 @@ public abstract class ServerPlayerMixin extends Player {
     public void doTick(CallbackInfo ci) {
         this.connection.send(new ClientboundSetHealthPacket(this.getHealth(), this.getFoodData().getFoodLevel(), this.getFoodData().getSaturationLevel()));
         this.mme$experienceSynchronizer.tick();
+    }
+
+    /** Copies every curse from the dying player onto the respawned one. */
+    @Inject(method = "restoreFrom", at = @At("TAIL"))
+    private void mme$persistCurses(ServerPlayer that, boolean keepEverything, CallbackInfo ci) {
+        ServerPlayer self = (ServerPlayer) (Object) this;
+        CurseState state = ((CurseCap) (Object) this).mme$curseState();
+        state.copyFrom(((CurseCap) that).mme$curseState());
+        for (Holder<MobEffect> curse : state.curses()) {
+            if (!hasEffect(curse)) {
+                addEffect(CurseLogic.hiddenInstance(curse));
+            }
+        }
     }
 }

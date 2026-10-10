@@ -3,6 +3,9 @@ package com.acuteterror233.mite.mixin.world.entity.monster;
 import com.acuteterror233.mite.MME;
 import com.acuteterror233.mite.item.MMEItems;
 import com.acuteterror233.mite.world.entity.ai.goal.DestroyCropGoal;
+import com.acuteterror233.mite.world.entity.ai.goal.MonsterFindPlayerGoal;
+import com.acuteterror233.mite.world.entity.ai.goal.ZombieDigGoal;
+import com.acuteterror233.mite.world.entity.ai.goal.ZombieEatDroppedMeatGoal;
 import com.acuteterror233.mite.world.gen.dimension.MMEDimensionTypeRegistrar;
 import net.minecraft.resources.Identifier;
 import net.minecraft.util.RandomSource;
@@ -12,8 +15,16 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
+import net.minecraft.world.entity.animal.Animal;
+import net.minecraft.world.entity.animal.camel.CamelHusk;
+import net.minecraft.world.entity.animal.equine.SkeletonHorse;
+import net.minecraft.world.entity.animal.equine.ZombieHorse;
+import net.minecraft.world.entity.animal.nautilus.ZombieNautilus;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.monster.zombie.Zombie;
 import net.minecraft.world.item.ItemStack;
@@ -26,15 +37,27 @@ import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 /**
- * Mixin for {@code Zombie} — Extends zombie behavior: crop destruction, dimension/Y-based
- * weapon population, and full-armor buffs.
+ * Mixin for {@code Zombie} — Extends zombie behavior: terrain digging, crop destruction,
+ * dimension/Y-based weapon population, and full-armor buffs.
  *
  * <p>Mechanism:</p>
  * <ul>
- *   <li>{@code registerGoals} injection (TAIL): adds a {@link DestroyCropGoal} so
- *       zombies seek out and destroy crops.</li>
+ *   <li>{@code createAttributes} injection (RETURN): raises {@code FOLLOW_RANGE} to 48
+ *       (vanilla 35), enlarging both target acquisition distance and the A* node budget
+ *       ({@code maxVisitedNodes = FOLLOW_RANGE * 16}). Applies to every zombie variant
+ *       since all of them delegate to {@code Zombie.createAttributes}.</li>
+ *   <li>{@code registerGoals} injection (TAIL): adds a {@link ZombieDigGoal} (priority 1)
+ *       so blocked zombies dig through terrain toward their target — blocks that require
+ *       a correct tool for drops can only be dug while the zombie holds such a tool;
+ *       also adds a {@link DestroyCropGoal} so zombies seek out and destroy crops, and a
+ *       {@link ZombieEatDroppedMeatGoal} (priority 5) so zombies devour whole dropped
+ *       {@code #minecraft:meat} stacks. The vanilla sight-gated player-targeting goal
+ *       (priority 2) is replaced by {@link MonsterFindPlayerGoal} so zombies find and
+ *       track players without line of sight; the animal-hunting goal skips undead
+ *       mounts (zombie horse, skeleton horse, zombie nautilus, camel husk).</li>
  *   <li>{@code populateDefaultEquipmentSlots} overwrite: after the vanilla pass,
  *       fully-armored zombies gain Strength II and a +0.1 movement-speed modifier;
  *       zombies in the underground dimension or the overworld may additionally receive
@@ -61,11 +84,53 @@ public abstract class ZombieMixin extends Monster {
         super(entityType, level);
     }
 
-    /** Adds the crop-destroying goal (priority 4) after vanilla goal registration. */
+    /**
+     * Adds the terrain-digging goal (priority 1 — preempts the vanilla spear-use goal at
+     * 2 and the melee attack goal at 3 while a wall blocks the way), the crop-destroying
+     * goal (priority 4) and the livestock-hunting target goal (priority 4 — any entity
+     * extending {@link Animal}) after vanilla goal registration. The vanilla sight-gated
+     * player-targeting goal (the only {@code NearestAttackableTargetGoal} at priority 2)
+     * is replaced by {@link MonsterFindPlayerGoal} so zombies acquire and track players
+     * without line of sight. Hunting animals sits below players/villagers/golems
+     * (priorities 2-3) and above the vanilla baby-turtle goal (priority 5), excluding
+     * undead mounts ({@link #isUndeadMount}).
+     */
     @Inject(method = "registerGoals", at = @At("TAIL"))
     protected void registerGoals(CallbackInfo ci) {
         Zombie zombie = (Zombie) (Object) this;
+        this.goalSelector.addGoal(1, new ZombieDigGoal(zombie));
         this.goalSelector.addGoal(4, new DestroyCropGoal(zombie, 1.0F, 3));
+        this.goalSelector.addGoal(5, new ZombieEatDroppedMeatGoal(zombie, 1.0D));
+        this.targetSelector.getAvailableGoals().removeIf(wrapped ->
+                wrapped.getPriority() == 2 && wrapped.getGoal() instanceof NearestAttackableTargetGoal);
+        this.targetSelector.addGoal(2, new MonsterFindPlayerGoal(zombie));
+        this.targetSelector.addGoal(4, new NearestAttackableTargetGoal<>(zombie, Animal.class, true,
+                (candidate, level) -> !isUndeadMount(candidate)));
+    }
+
+    /**
+     * Returns true for undead animal mobs zombies must never hunt: zombie horse,
+     * skeleton horse, zombie nautilus and camel husk. Used as the selector of the
+     * livestock-hunting target goal.
+     */
+    @Unique
+    private static boolean isUndeadMount(LivingEntity candidate) {
+        return candidate instanceof ZombieHorse
+                || candidate instanceof SkeletonHorse
+                || candidate instanceof ZombieNautilus
+                || candidate instanceof CamelHusk;
+    }
+
+    /**
+     * Raises {@code FOLLOW_RANGE} from the vanilla 35 to 48. This enlarges both the
+     * target-acquisition distance ({@code TargetingConditions.range}) and the pathfinding
+     * node budget ({@code maxVisitedNodes = FOLLOW_RANGE * 16}). All zombie variants
+     * (husk, drowned, zombie villager, ...) build their attributes through
+     * {@code Zombie.createAttributes}, so a single injection covers them all.
+     */
+    @Inject(method = "createAttributes", at = @At("RETURN"), cancellable = true)
+    private static void mme$extendFollowRange(CallbackInfoReturnable<AttributeSupplier.Builder> cir) {
+        cir.setReturnValue(cir.getReturnValue().add(Attributes.FOLLOW_RANGE, 48.0D));
     }
 
     /**

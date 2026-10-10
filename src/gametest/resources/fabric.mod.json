@@ -11,7 +11,9 @@
   "environment": "*",
   "entrypoints": {
     "fabric-gametest": [
-      "com.acuteterror233.mite.gametest.AnvilFreeRepairGameTest"
+      "com.acuteterror233.mite.gametest.AnvilFreeRepairGameTest",
+      "com.acuteterror233.mite.gametest.WitchCurseGameTest",
+      "com.acuteterror233.mite.gametest.TempFluidSourceGameTest"
     ]
   },
   "depends": {

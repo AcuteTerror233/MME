@@ -344,6 +344,7 @@ f9c0f67bc8ae7b74ff74b1f49a87ab91016634c4 assets/mme/items/orange.json
 2da5bb0fcea71979441e992399ed9bfc57790ad7 assets/mme/items/phase_spider_spawn_egg.json
 b94aff3838408995169e7f61eb750f6cdfd24138 assets/mme/items/porridge.json
 ea966547416a520118d5f46c1e43b7ae1e7536f9 assets/mme/items/pumpkin_soup.json
+645cde7ae7e562488b6828436f1d7416e2ef814e assets/mme/items/purifying_bottle.json
 dcf3bb21f101ae42dda1d83fc8d17dd6f10c6bac assets/mme/items/raw_adamantium.json
 b20fae0248bc2a0e5c8822bb58aeb00e7d7bb393 assets/mme/items/raw_mithril.json
 f860feb1bd9b46c5bc45a8dc591a25aead2ef447 assets/mme/items/raw_silver.json
@@ -1111,6 +1112,7 @@ f2637398b40a5f48e19da8a253db7acb0e09cae5 assets/mme/models/item/orange.json
 5a506ae35f3dc8de9fdafaaa0e531570eb4c9bdf assets/mme/models/item/phase_spider_spawn_egg.json
 7c175ad20fce20a305f73ceaf63a8ced6f5e612a assets/mme/models/item/porridge.json
 f66bd05bec741666c87d1a85c8d481a59fcdb62c assets/mme/models/item/pumpkin_soup.json
+2dc352fc3d1c798a389d8fc8b7c6a5ba2ca50dd9 assets/mme/models/item/purifying_bottle.json
 3abb9c466a61c2e3ce30cc7d500f9d61dd07e497 assets/mme/models/item/raw_adamantium.json
 d05fbc6b3949bf3a680cfb04a43f912b17c7c4cc assets/mme/models/item/raw_mithril.json
 bf99911a277df5b6373131f439e97b492d01270e assets/mme/models/item/raw_silver.json

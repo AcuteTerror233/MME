@@ -121,7 +121,9 @@ public abstract class AnvilMenuMixin extends ItemCombinerMenu implements MetalMe
      * @reason Replace the vanilla block-state degradation with damage accumulation and the degradation
      * chain on AnvilBlockEntity (in this modpack the vanilla anvil blocks are replaced by MMEAnvilBlock,
      * which carries a block entity), while keeping the vanilla level deduction, material consumption,
-     * and slot clearing semantics.
+     * and slot clearing semantics. The input slot is cleared <em>before</em> the degradation runs:
+     * a degrading anvil closes the container mid-take, and the vanilla {@code removed()} would
+     * otherwise hand the still-present pre-repair item back on top of the taken result (duplication).
      */
     @Overwrite
     protected void onTake(Player player, ItemStack stack) {
@@ -144,6 +146,8 @@ public abstract class AnvilMenuMixin extends ItemCombinerMenu implements MetalMe
                 this.inputSlots.setItem(1, ItemStack.EMPTY);
             }
         }
+        this.cost.set(0);
+        this.inputSlots.setItem(0, ItemStack.EMPTY);
         this.access.execute((world, pos) -> {
             if (world.getBlockEntity(pos) instanceof AnvilBlockEntity blockEntity) {
                 int nextDamage = blockEntity.getDamage() + damage;
@@ -156,8 +160,6 @@ public abstract class AnvilMenuMixin extends ItemCombinerMenu implements MetalMe
                 world.levelEvent(1030, pos, 0);
             }
         });
-        this.cost.set(0);
-        this.inputSlots.setItem(0, ItemStack.EMPTY);
     }
 
     /**

@@ -13,7 +13,7 @@ public class InfernalCreeper extends Creeper {
     /** Explicitly sets the explosion radius to 3. */
     public InfernalCreeper(EntityType<? extends InfernalCreeper> entityType, Level level) {
         super(entityType, level);
-        this.explosionRadius = 3;
+        this.explosionRadius = 7;
     }
 
     /** Returns vanilla creeper attributes unchanged. */

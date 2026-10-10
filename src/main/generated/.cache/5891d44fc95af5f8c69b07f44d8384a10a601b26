@@ -10,6 +10,7 @@ bc97065c6eea301cf747087485af96222739b870 data/minecraft/tags/item/hoes.json
 e136de5a86f02880ddb15706255c2493a88f28fb data/minecraft/tags/item/iron_tool_materials.json
 06ab386aa2a2a7ed32a103ba642ebe26819ff9ff data/minecraft/tags/item/leg_armor.json
 5af2a2813f4fcabb6af30211d1e20b4bbddd4c2c data/minecraft/tags/item/pickaxes.json
+051133c671b0594616a93c94a321767d92bc1940 data/minecraft/tags/item/pig_food.json
 96eeedf481038de3d6d5baf0a74728f21b299bf0 data/minecraft/tags/item/shovels.json
 30ab84b20a6f3bf60d876720e61b59c8ec51300d data/minecraft/tags/item/spears.json
 9d605b80d8776d54300836d3e63e9b385eae1b6e data/minecraft/tags/item/swords.json
@@ -24,6 +25,7 @@ e428fd1c00910966811e1831d195ba9881d7105d data/mme/tags/item/ancient_metal_crafti
 a05ddb4aaf1400da96179bd8f68e9b1b279e1fa8 data/mme/tags/item/ancient_metal_not_allowed_material.json
 928236580b23143c91881be3440cf9315885e636 data/mme/tags/item/ancient_metal_tool_materials.json
 11a28ca51004327f677ca948f639f92aab6f9e16 data/mme/tags/item/ancient_metal_tools.json
+efe8c8227a3b60bc27992f4cc3c1ee24647a4dc7 data/mme/tags/item/animal_products.json
 663fda16c9de18ffac4879c35d8e07dc00cc0dce data/mme/tags/item/battle_axe.json
 5c306948a3f04f3b6c94930139fdcdf3ab768a21 data/mme/tags/item/bucket.json
 99071c653bf9d83701a79f331b7a2f49f437a492 data/mme/tags/item/chains.json
@@ -72,6 +74,7 @@ d3a7390fa1418072b7243756b15b914781629b13 data/mme/tags/item/mithril_armor.json
 d8f50cf69206e4853b87183d08b4804eb57d1775 data/mme/tags/item/netherite_tools.json
 b6db6ceb1f6142026a230778576195ad5f684b16 data/mme/tags/item/nugget.json
 960ffc048a726a23ae12f644bbdaaa3ed13d5b59 data/mme/tags/item/obsidian_crafting_table_exceptions.json
+db35702561c985419639b895d4862ef9a43ebf4a data/mme/tags/item/plant_products.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/mme/tags/item/rusted_iron_tool_materials.json
 a076029a2420487af65e3bd2ff8265d8feb944f0 data/mme/tags/item/rusted_iron_tools.json
 f0e07abd51501ae917c3c9fbfb3ba0eeefe7df3b data/mme/tags/item/scythe.json
@@ -83,6 +86,8 @@ b5b76e629cfb9c6119fb5046bd6259a3058a784f data/mme/tags/item/silver_ore.json
 069f485466ed0e7e5094663fbfecce85579abefc data/mme/tags/item/silver_tool_materials.json
 76c79f0f49ec4de1633e940d0e0a0844085fc5be data/mme/tags/item/silver_tools.json
 e901214d070b3bf155ee4baf7b05b1e2ad1a9592 data/mme/tags/item/silver_weapons.json
+007d6104b273d9e5b956ddfc4b8c6c3d7f6cd842 data/mme/tags/item/soups.json
 e28c2faa4e90f0c6f7d52bf9151144a9a501211c data/mme/tags/item/string.json
+be0b534881b7ba4f3d35dbbe646584e6468625d8 data/mme/tags/item/sugary_foods.json
 c6ae28c8fe89862d13d79af19005025a96d9496e data/mme/tags/item/war_hammer.json
 0a8221231c4e62b8870c3d295cf02c3ebcfbe3ce data/mme/tags/item/water_bucket.json

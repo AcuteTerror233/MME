@@ -29,6 +29,9 @@ public interface MMEBlockTags {
     TagKey<Block> GLASS = key("glass");
     TagKey<Block> GLASS_PANE = key("glass_pane");
 
+    // Plant blocks the PLANT_FEAR curse slows movement in.
+    TagKey<Block> PLANT_BLOCKS = key("plant_blocks");
+
     // Anvil damage states.
     TagKey<Block> INTACT_ANVIL = key("intact_anvil");
     TagKey<Block> CHIPPED_ANVIL = key("chipped_anvil");

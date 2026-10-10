@@ -6,10 +6,15 @@ import com.llamalad7.mixinextras.sugar.Local;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.Attackable;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.waypoints.WaypointTransmitter;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -19,14 +24,19 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.util.function.Consumer;
 
 /**
- * Mixin for {@code LivingEntity} — Doubles loot drops under the HUNT moon.
+ * Mixin for {@code LivingEntity} — Doubles loot drops under the HUNT moon, and anchors
+ * slowed entities in water.
  *
  * <p>At the tail of {@code dropFromLootTable}, when the dimension's special moon phase
  * is {@link SpecialMoonPhase#HUNT_MOON}, the resolved loot table is rolled a second
  * time with the same seed, duplicating every drop of the kill.</p>
  */
 @Mixin(LivingEntity.class)
-public class LivingEntityMixin {
+public abstract class LivingEntityMixin extends Entity implements Attackable, WaypointTransmitter{
+    public LivingEntityMixin(EntityType<?> type, Level level) {
+        super(type, level);
+    }
+
     @Shadow
     public long getLootTableSeed(){
         return 0;
