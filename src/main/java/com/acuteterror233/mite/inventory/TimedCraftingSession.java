@@ -3,6 +3,8 @@ package com.acuteterror233.mite.inventory;
 import com.acuteterror233.mite.component.MMEDataComponents;
 import com.acuteterror233.mite.inventory.slot.TimedCraftingResultSlot;
 import com.acuteterror233.mite.material.MetalMaterial;
+import com.acuteterror233.mite.world.effect.curse.CurseLogic;
+import com.acuteterror233.mite.world.effect.curse.MMECurses;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -28,7 +30,7 @@ import java.util.Optional;
  */
 public final class TimedCraftingSession {
     /** Base crafting duration in ticks (100 = 5 s); the synced total duration is this plus the ingredient-derived extra time. */
-    public static final int DEFAULT_CRAFTING_TIME_TICKS = 100;
+    public static final int DEFAULT_CRAFTING_TIME_TICKS = 20;
 
     /** Data-slot indices into {@link #state}: progress, total duration, allow bit, metal-mounted bit. */
     private static final int SLOT_PROGRESS = 0;
@@ -46,6 +48,8 @@ public final class TimedCraftingSession {
     private final int[] state = {0, DEFAULT_CRAFTING_TIME_TICKS, 0, 0};
     private boolean running;
     private boolean filling;
+    /** Game time of the last progress advance: {@code broadcastChanges} (the tick hook) also fires once per click packet, so this deduplicates advancement to once per game tick. */
+    private long lastAdvanceGameTime = -1L;
     @Nullable
     private Identifier lastRecipeId;
 
@@ -157,6 +161,11 @@ public final class TimedCraftingSession {
         if (!this.running) {
             return;
         }
+        long gameTime = this.owner.level().getGameTime();
+        if (gameTime == this.lastAdvanceGameTime) {
+            return;
+        }
+        this.lastAdvanceGameTime = gameTime;
         this.state[SLOT_PROGRESS]++;
         if (this.state[SLOT_PROGRESS] < this.state[SLOT_TOTAL]) {
             return;
@@ -234,18 +243,26 @@ public final class TimedCraftingSession {
         }
     }
 
-    /** Extra synthesis duration: sum of CRAFTING_TIME components (seconds → ticks), divided by the experience + speed bonus coefficient. */
+    /**
+     * Extra synthesis duration: sum of CRAFTING_TIME components (seconds → ticks; empty grid slots
+     * count as 0), divided by the experience + speed bonus coefficient.
+     */
     public int additionalCraftingTime() {
         MetalMaterial.CraftingFunction crafting = this.craftingFunction();
         float speedBonus = crafting != null ? crafting.speedBonus() : 0.0f;
-        int seconds = 0;
+        float seconds = 0.0F;
         for (ItemStack stack : this.craftSlots) {
-            Integer i = stack.get(MMEDataComponents.CRAFTING_TIME);
-            if (i != null) {
-                seconds += i;
+            if (stack.isEmpty()) {
+                continue;
             }
+            Float i = stack.get(MMEDataComponents.CRAFTING_TIME);
+            seconds += Objects.requireNonNullElse(i, 1.0F);
         }
-        double divisor = 1 + (this.owner.experienceLevel * 2 / 100.0) + speedBonus;
+        int level = this.owner.experienceLevel;
+        if (CurseLogic.hasCurse(this.owner, MMECurses.DIMINISHED_INTELLECT)) {
+            level = Math.max(0, level - CurseLogic.DIMINISHED_LEVEL_PENALTY);
+        }
+        double divisor = 1 + (level * 2 / 100.0) + speedBonus;
         return (int) (seconds * 20 / divisor);
     }
 

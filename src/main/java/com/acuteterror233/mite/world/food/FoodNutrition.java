@@ -1,5 +1,6 @@
 package com.acuteterror233.mite.world.food;
 
+import com.acuteterror233.mite.network.MMENetworking;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.network.RegistryFriendlyByteBuf;
@@ -55,6 +56,8 @@ public record FoodNutrition(float protein, float fiber, float sugar) implements 
     public void onConsume(Level level, LivingEntity livingEntity, ItemStack itemStack, Consumable consumable) {
         if (livingEntity instanceof ServerPlayer serverPlayer) {
             serverPlayer.getFoodData().MME$AddFoodNutrition(this);
+            // Immediate nutrition sync so the inventory bars update right after eating
+            MMENetworking.sendFoodNutrition(serverPlayer, serverPlayer.getFoodData().MME$GetFoodNutrition());
         }
     }
     /** @return a fresh builder for constructing {@link FoodNutrition} values piecewise. */

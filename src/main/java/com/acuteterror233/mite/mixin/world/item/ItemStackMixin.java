@@ -1,12 +1,15 @@
 package com.acuteterror233.mite.mixin.world.item;
 
+import com.acuteterror233.mite.world.effect.curse.MMECurses;
 import net.fabricmc.fabric.api.item.v1.FabricItemStack;
 import net.minecraft.core.component.DataComponentHolder;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
@@ -29,6 +32,9 @@ import java.util.OptionalDouble;
  */
 @Mixin(ItemStack.class)
 public abstract class ItemStackMixin  implements DataComponentHolder, FabricItemStack {
+    /** Re-entrancy guard for the doubled recursive {@code hurtAndBreak} call. */
+    @Unique
+    private static final ThreadLocal<Boolean> MME$CORROSIVE_REENTRY = ThreadLocal.withInitial(() -> false);
 
     @Shadow
     public abstract int getDamageValue();
@@ -109,5 +115,22 @@ public abstract class ItemStackMixin  implements DataComponentHolder, FabricItem
             armorMultiplier = 1.0f;
         }
         return armorMultiplier;
+    }
+
+    /** Doubles durability loss for CORROSIVE_SKIN carriers. */
+    @Inject(method = "hurtAndBreak(ILnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/entity/EquipmentSlot;)V",
+            at = @At("HEAD"), cancellable = true)
+    private void mme$corrosiveSkin(int amount, LivingEntity entity, EquipmentSlot slot, CallbackInfo ci) {
+        if (MME$CORROSIVE_REENTRY.get() || !(entity instanceof Player player)
+                || !player.hasEffect(MMECurses.CORROSIVE_SKIN)) {
+            return;
+        }
+        MME$CORROSIVE_REENTRY.set(true);
+        try {
+            ((ItemStack) (Object) this).hurtAndBreak(amount * 2, entity, slot);
+        } finally {
+            MME$CORROSIVE_REENTRY.set(false);
+        }
+        ci.cancel();
     }
 }

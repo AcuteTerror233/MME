@@ -16,8 +16,8 @@ import java.util.function.UnaryOperator;
  * Defines custom item data components (such as crafting time).
  */
 public class MMEDataComponents {
-    /** Extra crafting time (seconds, non-negative) an ingredient contributes to the timed crafting duration. */
-    public static final DataComponentType<Integer> CRAFTING_TIME = register("crafting_time", builder -> builder.persistent(ExtraCodecs.NON_NEGATIVE_INT).networkSynchronized(ByteBufCodecs.VAR_INT));
+    /** Extra crafting time (seconds, non-negative float) an ingredient contributes to the timed crafting duration. */
+    public static final DataComponentType<Float> CRAFTING_TIME = register("crafting_time", builder -> builder.persistent(ExtraCodecs.NON_NEGATIVE_FLOAT).networkSynchronized(ByteBufCodecs.FLOAT));
     /** Minimum combustion grade the furnace's burning fuel must reach to smelt this ingredient (default 1). */
     public static final DataComponentType<Integer> REQUIRED_COMBUSTION_GRADE = register("required_combustion_grade", builder -> builder.persistent(ExtraCodecs.NON_NEGATIVE_INT).networkSynchronized(ByteBufCodecs.VAR_INT));
     /** Highest combustion grade of fuel this furnace item may burn (default 1). */

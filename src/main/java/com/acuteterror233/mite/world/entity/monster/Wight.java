@@ -53,7 +53,7 @@ public class Wight extends Zombie {
     @Override
     protected void registerGoals() {
         super.registerGoals();
-        this.goalSelector.addGoal(10, new DestroyTorchGoal(this, 0.8));
+        this.goalSelector.addGoal(3, new DestroyTorchGoal(this, 0.8));
     }
 
     /** @return zombie base attributes with faster movement (0.28). */

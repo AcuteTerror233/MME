@@ -1,0 +1,25 @@
+{
+  "checkIntervalTicks": 40,
+  "sickThreshold": 150,
+  "recoveredThreshold": 100,
+  "goalTriggerThreshold": 60,
+  "progressGainPerCheck": 1,
+  "crowdHeavyGainPerCheck": 2,
+  "progressRecoverPerCheck": 2,
+  "crowdRadius": 5.0,
+  "crowdLimit": 8,
+  "crowdHeavyLimit": 16,
+  "nightLightBrightness": 9,
+  "waterSearchRange": 8,
+  "thirstQuenchTicks": 12000,
+  "grazeQuenchTicks": 12000,
+  "needGoalSpeed": 1.0,
+  "animals": {
+    "minecraft:chicken": "NONE",
+    "minecraft:rabbit": "NONE",
+    "minecraft:pig": "GRASS_BLOCK",
+    "minecraft:sheep": "GRASS_BLOCK",
+    "minecraft:cow": "GRASS_PLANT",
+    "minecraft:mooshroom": "GRASS_PLANT"
+  }
+}

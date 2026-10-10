@@ -15,6 +15,7 @@ import net.minecraft.world.item.crafting.CraftingRecipe;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jspecify.annotations.NonNull;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -70,7 +71,7 @@ public abstract class CraftingMenuMixin extends AbstractCraftingMenu implements 
 
     /** Replaces the vanilla immediate-craft result slot with the timed crafting result slot. */
     @Override
-    protected @NotNull Slot addResultSlot(Player player, int x, int y) {
+    protected @NotNull Slot addResultSlot(@NonNull Player player, int x, int y) {
         return this.addSlot(new TimedCraftingResultSlot(player, this.craftSlots, this.resultSlots, this::mme$session, x, y));
     }
 
@@ -200,5 +201,22 @@ public abstract class CraftingMenuMixin extends AbstractCraftingMenu implements 
         if (slot instanceof TimedCraftingResultSlot && this.mme$session().hasMetal()) {
             cir.setReturnValue(false);
         }
+    }
+
+    /**
+     * Numeric hotbar-key swaps (and the offhand key) on the result slot bypass {@code remove}
+     * entirely: vanilla's {@code doClick} SWAP branch moves the item into the hotbar and calls
+     * {@code onTake} directly, which would claim the output and consume the ingredients while
+     * skipping the timed craft. Swallowing that click (metal mode) keeps every take path inside
+     * the session; like shift-click it only re-evaluates the running craft.
+     */
+    @Override
+    public void clicked(int slotIndex, int button, ContainerInput input, Player player) {
+        if (input == ContainerInput.SWAP && slotIndex >= 0
+                && this.getSlot(slotIndex) instanceof TimedCraftingResultSlot && this.mme$session().hasMetal()) {
+            this.mme$session().evaluateRunning();
+            return;
+        }
+        super.clicked(slotIndex, button, input, player);
     }
 }

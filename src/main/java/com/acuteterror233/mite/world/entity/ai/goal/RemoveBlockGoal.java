@@ -129,8 +129,8 @@ public class RemoveBlockGoal extends MoveToBlockGoal {
                 }
             }
 
-            if (this.ticksSinceReachedGoal > 60) {
-                level.removeBlock(blockPos2, false);
+            if (this.ticksSinceReachedGoal > 20) {
+                level.destroyBlock(blockPos2, true, this.mob);
                 if (!level.isClientSide()) {
                     for (int i = 0; i < 20; i++) {
                         double d = randomSource.nextGaussian() * 0.02;

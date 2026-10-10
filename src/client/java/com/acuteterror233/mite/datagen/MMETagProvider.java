@@ -18,6 +18,8 @@ import net.minecraft.data.tags.VanillaBlockTagsProvider;
 import net.minecraft.references.BlockIds;
 import net.minecraft.references.BlockItemIds;
 import net.minecraft.references.ItemIds;
+import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.*;
 import net.minecraft.world.entity.EntityTypeIds;
 import net.minecraft.world.entity.decoration.painting.PaintingVariant;
@@ -339,6 +341,18 @@ public class MMETagProvider {
                     .add(BlockItemIds.MELON_CROP)
                     .add(BlockItemIds.PUMPKIN_CROP)
                     .add(BlockItemIds.NETHER_WART);
+            builder(MMEBlockTags.PLANT_BLOCKS)
+                    .add(BlockItemIds.VINE)
+                    .add(BlockItemIds.SWEET_BERRY_CROP)
+                    .add(BlockItemIds.BAMBOO)
+                    .add(BlockItemIds.WHEAT_CROP)
+                    .add(BlockItemIds.CARROT_CROP)
+                    .add(BlockItemIds.POTATO_CROP)
+                    .add(BlockItemIds.BEETROOT_CROP)
+                    .add(BlockItemIds.NETHER_WART)
+                    .add(BlockItemIds.KELP)
+                    .forceAddTag(BlockTags.FLOWERS)
+                    .forceAddTag(MMEBlockTags.HERBACEOUS_PLANTS);
         }
     }
 
@@ -349,6 +363,11 @@ public class MMETagProvider {
         }
         @Override
         protected void addTags(HolderLookup.Provider wrapperLookup) {
+            // Mushroom varieties: pigs also eat and breed with mushrooms (vanilla #minecraft:pig_food extension).
+            builder(ItemTags.PIG_FOOD)
+                    .add(ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath("minecraft", "brown_mushroom")))
+                    .add(ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath("minecraft", "red_mushroom")))
+                    .add(ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath("minecraft", "shelf_mushroom")));
             // Armor slot tags: every metal's plain and chainmail variants of each armor piece.
             builder(ItemTags.HEAD_ARMOR)
                     .add(MMEItemIds.ADAMANTIUM_HELMET)
@@ -463,6 +482,77 @@ public class MMETagProvider {
             builder(MMEItemTags.COOKED_FISH)
                     .add(ItemIds.COOKED_COD)
                     .add(ItemIds.COOKED_SALMON);
+            builder(MMEItemTags.ANIMAL_PRODUCTS)
+                    .forceAddTag(ItemTags.MEAT)
+                    .forceAddTag(MMEItemTags.MILK_BUCKET)
+                    .add(ItemIds.COD)
+                    .add(ItemIds.COOKED_COD)
+                    .add(ItemIds.SALMON)
+                    .add(ItemIds.COOKED_SALMON)
+                    .add(ItemIds.TROPICAL_FISH)
+                    .add(ItemIds.PUFFERFISH)
+                    .add(ItemIds.HONEY_BOTTLE)
+                    .add(MMEItemIds.BOWL_MILK)
+                    .add(MMEItemIds.CHEESE)
+                    .add(MMEItemIds.ICE_CREAM);
+            builder(MMEItemTags.PLANT_PRODUCTS)
+                    .add(ItemIds.BREAD)
+                    .add(ItemIds.APPLE)
+                    .add(ItemIds.GOLDEN_APPLE)
+                    .add(ItemIds.ENCHANTED_GOLDEN_APPLE)
+                    .add(ItemIds.GOLDEN_CARROT)
+                    .add(BlockItemIds.CARROT_CROP.item())
+                    .add(BlockItemIds.POTATO_CROP.item())
+                    .add(ItemIds.BAKED_POTATO)
+                    .add(ItemIds.POISONOUS_POTATO)
+                    .add(ItemIds.BEETROOT)
+                    .add(ItemIds.MELON_SLICE)
+                    .add(BlockItemIds.SWEET_BERRY_CROP.item())
+                    .add(BlockItemIds.GLOW_BERRY_CROP.item())
+                    .add(ItemIds.DRIED_KELP)
+                    .add(ItemIds.PUMPKIN_PIE)
+                    .add(ItemIds.COOKIE)
+                    .add(ItemIds.CHORUS_FRUIT)
+                    .add(MMEItemIds.BLUE_BERRIE)
+                    .add(MMEItemIds.BANANA)
+                    .add(MMEItemIds.ORANGE)
+                    .add(MMEItemIds.LEMON)
+                    .add(MMEItemIds.ONION)
+                    .add(MMEItemIds.CHOCOLATE)
+                    .add(MMEItemIds.FLOUR)
+                    .add(MMEItemIds.DOUGH)
+                    .add(MMEItemIds.CEREAL)
+                    .add(MMEItemIds.BOWL_SALAD)
+                    .add(MMEItemIds.SORBET);
+            builder(MMEItemTags.SOUPS)
+                    .add(ItemIds.MUSHROOM_STEW)
+                    .add(ItemIds.BEETROOT_SOUP)
+                    .add(ItemIds.RABBIT_STEW)
+                    .add(ItemIds.SUSPICIOUS_STEW)
+                    .add(MMEItemIds.BEEF_STEW)
+                    .add(MMEItemIds.CHICKEN_SOUP)
+                    .add(MMEItemIds.CREAM_OF_MUSHROOM_SOUP)
+                    .add(MMEItemIds.CREAM_OF_VEGETABLE_SOUP)
+                    .add(MMEItemIds.PUMPKIN_SOUP)
+                    .add(MMEItemIds.VEGETABLE_SOUP);
+            builder(MMEItemTags.SUGARY_FOODS)
+                    .add(ItemIds.SUGAR)
+                    .add(BlockItemIds.CAKE.item())
+                    .add(ItemIds.COOKIE)
+                    .add(ItemIds.HONEY_BOTTLE)
+                    .add(ItemIds.PUMPKIN_PIE)
+                    .add(ItemIds.MELON_SLICE)
+                    .add(ItemIds.GOLDEN_APPLE)
+                    .add(ItemIds.ENCHANTED_GOLDEN_APPLE)
+                    .add(BlockItemIds.SWEET_BERRY_CROP.item())
+                    .add(BlockItemIds.GLOW_BERRY_CROP.item())
+                    .add(MMEItemIds.CHOCOLATE)
+                    .add(MMEItemIds.ICE_CREAM)
+                    .add(MMEItemIds.SORBET)
+                    .add(MMEItemIds.BLUE_BERRIE)
+                    .add(MMEItemIds.BANANA)
+                    .add(MMEItemIds.ORANGE)
+                    .add(MMEItemIds.LEMON);
             builder(MMEItemTags.COPPER_OR_SILVER_ORE)
                     .add(BlockItemIds.COPPER_ORE)
                     .add(BlockItemIds.DEEPSLATE_COPPER_ORE)

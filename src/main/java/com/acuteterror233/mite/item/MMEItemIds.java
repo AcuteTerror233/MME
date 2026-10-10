@@ -75,6 +75,7 @@ public class MMEItemIds {
     public static final ResourceKey<Item> FLOUR = create("flour");
     public static final ResourceKey<Item> BEEF_STEW = create("beef_stew");
     public static final ResourceKey<Item> BOWL_MILK = create("bowl_milk");
+    public static final ResourceKey<Item> PURIFYING_BOTTLE = create("purifying_bottle");
     public static final ResourceKey<Item> BOWL_SALAD = create("bowl_salad");
     public static final ResourceKey<Item> BOWL_WATER = create("bowl_water");
     public static final ResourceKey<Item> CEREAL = create("cereal");

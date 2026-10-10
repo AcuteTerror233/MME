@@ -1,0 +1,15 @@
+{
+  "values": [
+    "minecraft:vine",
+    "minecraft:sweet_berry_bush",
+    "minecraft:bamboo",
+    "minecraft:wheat",
+    "minecraft:carrots",
+    "minecraft:potatoes",
+    "minecraft:beetroots",
+    "minecraft:nether_wart",
+    "minecraft:kelp",
+    "#minecraft:flowers",
+    "#mme:herbacious_plants"
+  ]
+}

@@ -26,4 +26,8 @@ public interface FoodDataExtension {
     default FoodNutrition MME$GetFoodNutrition() {
         throw new AssertionError("Implemented in Mixin");
     }
+    /** Overwrites the stored nutrition profile with the given values (client sync path). */
+    default void MME$SetFoodNutrition(FoodNutrition foodNutrition) {
+        throw new AssertionError("Implemented in Mixin");
+    }
 }
