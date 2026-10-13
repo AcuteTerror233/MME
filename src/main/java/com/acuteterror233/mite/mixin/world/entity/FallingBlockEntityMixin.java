@@ -19,6 +19,7 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 /**
@@ -35,6 +36,10 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
  *       from {@code blockData}.</li>
  *   <li>{@code causeFallDamage} redirect (on {@code AnvilBlock#damage}): keeps the anvil
  *       block state unchanged, so falling anvils are never degraded by landing.</li>
+ *   <li>{@code <init>} injection (TAIL): every falling block gets anvil-style fall damage at
+ *       half the anvil height bonus ({@code 1.0F} per fallen block, cap 40); {@code AnvilBlock#falling}
+ *       runs afterwards in {@code FallingBlock#tick} and overwrites anvils back to the vanilla
+ *       {@code 2.0F} bonus, so anvils keep their full damage.</li>
  * </ul>
  */
 @Mixin(FallingBlockEntity.class)
@@ -44,9 +49,23 @@ public abstract class FallingBlockEntityMixin extends Entity {
     public CompoundTag blockData;
     @Shadow
     private BlockState blockState;
+    @Shadow
+    public abstract void setHurtsEntities(float fallDamagePerDistance, int fallDamageMax);
 
     public FallingBlockEntityMixin(EntityType<?> type, Level world) {
         super(type, world);
+    }
+
+    /**
+     * Enables anvil-style fall damage for every falling block at half the anvil height bonus.
+     * Runs at construction TAIL: {@code FallingBlock#tick} calls {@code Fallable#falling} after
+     * the factory constructor, so {@code AnvilBlock#falling} overwrites anvils back to the
+     * vanilla {@code 2.0F}/{@code 40} values while ordinary falling blocks keep this
+     * {@code 1.0F}/{@code 40} setup.
+     */
+    @Inject(method = "<init>(Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/level/Level;)V", at = @At("TAIL"))
+    private void mme$enableFallDamage(EntityType<?> type, Level world, CallbackInfo ci) {
+        this.setHurtsEntities(1.0F, 40);
     }
     // Snapshot the source block entity's NBT right before the falling block detaches
     @Inject(method = "fall", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;setBlockAndUpdate(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)Z", shift = At.Shift.BEFORE))

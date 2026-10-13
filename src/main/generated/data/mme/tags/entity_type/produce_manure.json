@@ -1,5 +1,6 @@
 {
   "values": [
+    "minecraft:chicken",
     "minecraft:cow",
     "minecraft:camel",
     "minecraft:donkey",
@@ -11,6 +12,7 @@
     "minecraft:panda",
     "minecraft:pig",
     "minecraft:polar_bear",
+    "minecraft:rabbit",
     "minecraft:sheep",
     "minecraft:sniffer",
     "minecraft:trader_llama"

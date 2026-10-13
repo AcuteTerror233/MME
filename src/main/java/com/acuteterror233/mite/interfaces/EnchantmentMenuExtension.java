@@ -7,6 +7,7 @@ package com.acuteterror233.mite.interfaces;
  * Injected into vanilla EnchantmentMenu via classTweaker transitive-inject-interface.
  */
 public interface EnchantmentMenuExtension {
+    int[] xpCosts = new int[3];
     /** Sets the enchantment power cap of this menu. */
     default void MME$SetMaxEnchantmentLevel(int maxLevel) {
         throw new AssertionError("Implemented in Mixin");

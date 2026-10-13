@@ -3480,7 +3480,7 @@ public class MMEVillagerTradeProvider {
                             DataComponentMatchers.Builder.components()
                                 .partial(
                                     DataComponentPredicates.STORED_ENCHANTMENTS,
-                                    EnchantmentsPredicate.storedEnchantments(List.of(new EnchantmentPredicate(Optional.empty(), MinMaxBounds.Ints.ANY)))
+                                    EnchantmentsPredicate.storedEnchantments(List.of(new EnchantmentPredicate(Optional.empty(), MinMaxBounds.Ints.between(1, 3))))
                                 )
                                 .build()
                         )

@@ -98,6 +98,12 @@ public class ZombieDigGoal extends Goal {
         if (target == null || !target.isAlive()) {
             return false;
         }
+        // Mid-jump gate: hopping over a 1-block step briefly triggers horizontalCollision,
+        // and digging during the hop is what made zombies claw at the dirt beneath their
+        // feet instead of clearing the actual obstacle
+        if (!this.zombie.onGround()) {
+            return false;
+        }
         Path path = this.zombie.getNavigation().getPath();
         boolean blocked = this.zombie.horizontalCollision || (path != null && !path.canReach());
         if (!blocked) {
@@ -229,6 +235,12 @@ public class ZombieDigGoal extends Goal {
     @Nullable
     private BlockPos findBlockingBlock(Level level, BlockPos base, BlockPos ownFeet) {
         for (BlockPos pos : new BlockPos[]{base, base.above()}) {
+            // Never dig at or below foot level: a sight line sloping down toward a lower
+            // target crosses the ground the zombie stands on or can simply walk down —
+            // not a wall, and digging it burrows into the floor
+            if (pos.getY() < ownFeet.getY()) {
+                continue;
+            }
             if (pos.equals(ownFeet) || pos.equals(ownFeet.above())) {
                 continue;
             }

@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_transmute",
+  "category": "equipment",
+  "input": [
+    "mme:copper_dagger",
+    "mme:silver_dagger"
+  ],
+  "material": "mme:ancient_metal_ingot",
+  "result": {
+    "components": {
+      "minecraft:damage": 0
+    },
+    "id": "mme:ancient_metal_dagger"
+  }
+}

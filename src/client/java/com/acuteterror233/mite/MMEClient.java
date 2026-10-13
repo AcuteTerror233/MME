@@ -44,6 +44,10 @@ public class MMEClient implements ClientModInitializer {
         });
 
         EntityRenderers.register(MMEEntityTypes.GHOUL, GhoulRenderer::new);
+        EntityRenderers.register(MMEEntityTypes.REVENANT, RevenantRenderer::new);
+        EntityRenderers.register(MMEEntityTypes.ANCIENT_CORPSE, AncientCorpseRenderer::new);
+        EntityRenderers.register(MMEEntityTypes.SKELETON_LORD, SkeletonLordRenderer::new);
+        EntityRenderers.register(MMEEntityTypes.ANCIENT_SKELETON_LORD, AncientSkeletonLordRenderer::new);
         EntityRenderers.register(MMEEntityTypes.SHADOW, ShadowRenderer::new);
         EntityRenderers.register(MMEEntityTypes.WIGHT, WightRenderer::new);
         EntityRenderers.register(MMEEntityTypes.INVISIBLE_STALKER, InvisibleStalkerRenderer::new);

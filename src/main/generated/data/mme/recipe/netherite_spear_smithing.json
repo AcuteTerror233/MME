@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "#minecraft:netherite_tool_materials",
+  "base": "mme:adamantium_spear",
+  "result": {
+    "components": {
+      "minecraft:damage": 0
+    },
+    "id": "minecraft:netherite_spear"
+  },
+  "template": "minecraft:netherite_upgrade_smithing_template"
+}

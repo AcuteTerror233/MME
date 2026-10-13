@@ -1,0 +1,11 @@
+{
+  "values": [
+    "#minecraft:swords",
+    "#minecraft:axes",
+    "#minecraft:spears",
+    "#mme:war_hammer",
+    "#mme:scythe",
+    "mme:wooden_club",
+    "mme:wooden_cudgel"
+  ]
+}

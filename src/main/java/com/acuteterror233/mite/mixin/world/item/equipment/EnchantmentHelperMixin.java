@@ -49,7 +49,7 @@ public class EnchantmentHelperMixin {
             return;
         }
         switch (serverLevel.environmentAttributes().getDimensionValue(MMEEnvironmentAttributes.SPECIAL_MOON_PHASE)) {
-            case STAR_MOON, BLOOD_MOON, HUNT_MOON -> cir.setReturnValue(cir.getReturnValueI() * 2);
+            case STAR_MOON, BLOOD_MOON, HUNT_MOON -> cir.setReturnValue(cir.getReturnValueI());
             case TURBID_MOON ->  cir.setReturnValue((int) (cir.getReturnValueI() * 1.5F));
         }
     }

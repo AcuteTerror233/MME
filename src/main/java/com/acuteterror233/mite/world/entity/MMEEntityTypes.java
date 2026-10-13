@@ -25,6 +25,50 @@ public class MMEEntityTypes {
                     .clientTrackingRange(8)
                     .notInPeaceful()
     );
+    /** Ground monster: armored revenant; zombie variant with 1.5x movement speed. */
+    public static final EntityType<Revenant> REVENANT = register(
+            MMEEntityTypeIds.REVENANT,
+            EntityType.Builder.of(Revenant::new, MobCategory.MONSTER)
+                    .sized(0.6F, 1.95F)
+                    .eyeHeight(1.74F)
+                    .passengerAttachments(2.0125F)
+                    .ridingOffset(-0.7F)
+                    .clientTrackingRange(8)
+                    .notInPeaceful()
+    );
+    /** Ground monster: ancient skeleton in ancient metal chainmail, armed with a bow or an ancient metal sword. */
+    public static final EntityType<AncientCorpse> ANCIENT_CORPSE = register(
+            MMEEntityTypeIds.ANCIENT_CORPSE,
+            EntityType.Builder.of(AncientCorpse::new, MobCategory.MONSTER)
+                    .sized(0.6F, 1.99F)
+                    .eyeHeight(1.6875F)
+                    .passengerAttachments(2.0625F)
+                    .ridingOffset(-0.7F)
+                    .clientTrackingRange(8)
+                    .notInPeaceful()
+    );
+    /** Ground monster: skeleton lord that summons ancient corpses and heals nearby skeletons. */
+    public static final EntityType<SkeletonLord> SKELETON_LORD = register(
+            MMEEntityTypeIds.SKELETON_LORD,
+            EntityType.Builder.of(SkeletonLord::new, MobCategory.MONSTER)
+                    .sized(0.6F, 1.99F)
+                    .eyeHeight(1.6875F)
+                    .passengerAttachments(2.0625F)
+                    .ridingOffset(-0.7F)
+                    .clientTrackingRange(8)
+                    .notInPeaceful()
+    );
+    /** Ground monster: Skeleton Lord variant in ancient metal gear; identical summon/heal behavior. */
+    public static final EntityType<AncientSkeletonLord> ANCIENT_SKELETON_LORD = register(
+            MMEEntityTypeIds.ANCIENT_SKELETON_LORD,
+            EntityType.Builder.of(AncientSkeletonLord::new, MobCategory.MONSTER)
+                    .sized(0.6F, 1.99F)
+                    .eyeHeight(1.6875F)
+                    .passengerAttachments(2.0625F)
+                    .ridingOffset(-0.7F)
+                    .clientTrackingRange(8)
+                    .notInPeaceful()
+    );
     /** Ground monster: lurking humanoid that blends into darkness. */
     public static final EntityType<Shadow> SHADOW = register(
             MMEEntityTypeIds.SHADOW,
@@ -138,6 +182,10 @@ public class MMEEntityTypes {
      */
     public static void init() {
         FabricDefaultAttributeRegistry.register(MMEEntityTypes.GHOUL, Ghoul.createAttributes());
+        FabricDefaultAttributeRegistry.register(MMEEntityTypes.REVENANT, Revenant.createAttributes());
+        FabricDefaultAttributeRegistry.register(MMEEntityTypes.ANCIENT_CORPSE, AncientCorpse.createAttributes());
+        FabricDefaultAttributeRegistry.register(MMEEntityTypes.SKELETON_LORD, SkeletonLord.createAttributes());
+        FabricDefaultAttributeRegistry.register(MMEEntityTypes.ANCIENT_SKELETON_LORD, SkeletonLord.createAttributes());
         FabricDefaultAttributeRegistry.register(MMEEntityTypes.SHADOW, Shadow.createAttributes());
         FabricDefaultAttributeRegistry.register(MMEEntityTypes.WIGHT, Wight.createAttributes());
         FabricDefaultAttributeRegistry.register(MMEEntityTypes.INVISIBLE_STALKER, InvisibleStalker.createAttributes());
@@ -150,6 +198,10 @@ public class MMEEntityTypes {
         FabricDefaultAttributeRegistry.register(MMEEntityTypes.GIANT_VAMPIRE_BAT, GiantVampireBat.createAttributes());
 
         SpawnPlacements.register(MMEEntityTypes.GHOUL, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules);
+        SpawnPlacements.register(MMEEntityTypes.REVENANT, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules);
+        SpawnPlacements.register(MMEEntityTypes.ANCIENT_CORPSE, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules);
+        SpawnPlacements.register(MMEEntityTypes.SKELETON_LORD, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules);
+        SpawnPlacements.register(MMEEntityTypes.ANCIENT_SKELETON_LORD, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules);
         SpawnPlacements.register(MMEEntityTypes.SHADOW, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules);
         SpawnPlacements.register(MMEEntityTypes.WIGHT, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules);
         SpawnPlacements.register(MMEEntityTypes.INVISIBLE_STALKER, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules);

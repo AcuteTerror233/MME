@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_ghast_tear": {
+    "has_nether_wart": {
       "conditions": {
         "items": [
           {
-            "items": "minecraft:ghast_tear"
+            "items": "minecraft:nether_wart"
           }
         ]
       },
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_ghast_tear"
+      "has_nether_wart"
     ]
   ],
   "rewards": {

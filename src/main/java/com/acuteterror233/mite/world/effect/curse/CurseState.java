@@ -10,9 +10,9 @@ import net.minecraft.world.level.storage.ValueOutput;
 import java.util.*;
 
 /**
- * Mutable per-player witch-curse bookkeeping: which curses the player carries and which
- * witch inflicted each one (a witch can curse a given player at most once). Curses stay
- * hidden forever — no particles, no icon, no reveal.
+ * Mutable per-player witch-curse bookkeeping: which curse the player carries and which
+ * witch inflicted it (a player carries at most one curse at a time). Curses stay hidden
+ * forever — no particles, no icon, no reveal.
  */
 public class CurseState {
     private final Map<Holder<MobEffect>, UUID> witches = new LinkedHashMap<>();
@@ -20,11 +20,6 @@ public class CurseState {
     /** @return whether the player carries the given curse. */
     public boolean hasCurse(Holder<MobEffect> curse) {
         return witches.containsKey(curse);
-    }
-
-    /** @return whether any curse carried by the player was inflicted by the given witch. */
-    public boolean hasWitch(UUID witchId) {
-        return witches.containsValue(witchId);
     }
 
     /** Records a curse and its inflicting witch. */

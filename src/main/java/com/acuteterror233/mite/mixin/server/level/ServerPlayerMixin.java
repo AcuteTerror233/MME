@@ -56,14 +56,14 @@ public abstract class ServerPlayerMixin extends Player {
 
     /** Copies every curse from the dying player onto the respawned one. */
     @Inject(method = "restoreFrom", at = @At("TAIL"))
-    private void mme$persistCurses(ServerPlayer that, boolean keepEverything, CallbackInfo ci) {
-        ServerPlayer self = (ServerPlayer) (Object) this;
-        CurseState state = ((CurseCap) (Object) this).mme$curseState();
+    private void restoreFrom(ServerPlayer that, boolean keepEverything, CallbackInfo ci) {
+        CurseState state = ((CurseCap) this).mme$curseState();
         state.copyFrom(((CurseCap) that).mme$curseState());
         for (Holder<MobEffect> curse : state.curses()) {
             if (!hasEffect(curse)) {
                 addEffect(CurseLogic.hiddenInstance(curse));
             }
         }
+        this.foodData.MME$SetFoodNutrition(that.getFoodData().MME$GetFoodNutrition());
     }
 }

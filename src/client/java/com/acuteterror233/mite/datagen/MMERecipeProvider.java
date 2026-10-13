@@ -7,15 +7,23 @@ import com.acuteterror233.mite.registry.tag.MMEItemTags;
 import com.google.common.collect.ImmutableList;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
+import net.fabricmc.fabric.api.recipe.v1.ingredient.DefaultCustomIngredients;
 import net.minecraft.advancements.Advancement;
+import net.minecraft.advancements.predicates.MinMaxBounds;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.data.recipes.RecipeCategory;
-import net.minecraft.data.recipes.RecipeProvider;
-import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
+import net.minecraft.core.component.DataComponentPatch;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.data.recipes.*;
 import net.minecraft.data.worldgen.BootstrapContext;
+import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.alchemy.PotionContents;
+import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.item.crafting.CookingBookCategory;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
@@ -26,6 +34,7 @@ import net.minecraft.world.level.block.WeatheringCopperCollection;
 import org.jetbrains.annotations.NotNull;
 import org.jspecify.annotations.NonNull;
 
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 /**
@@ -39,6 +48,91 @@ public class MMERecipeProvider extends FabricRecipeProvider {
     private static final ImmutableList<ItemLike> ADAMANTIUM_SMELTABLES = ImmutableList.of(MMEBlocks.ADAMANTIUM_ORE, MMEBlocks.DEEPSLATE_ADAMANTIUM_ORE, MMEItems.RAW_ADAMANTIUM);
     private static final ImmutableList<ItemLike> MITHRIL_SMELTABLES = ImmutableList.of(MMEBlocks.MITHRIL_ORE, MMEBlocks.DEEPSLATE_MITHRIL_ORE, MMEItems.RAW_MITHRIL);
     private static final ImmutableList<ItemLike> SILVER_SMELTABLES = ImmutableList.of(MMEBlocks.SILVER_ORE, MMEBlocks.DEEPSLATE_SILVER_ORE, MMEItems.RAW_SILVER);
+
+    /** Result patch that resets damage so upgraded and forged gear always comes out fully repaired. */
+    private static final DataComponentPatch FULL_DURABILITY = DataComponentPatch.builder().set(DataComponents.DAMAGE, 0).build();
+
+    /**
+     * The equipment classes that climb the strictly tiered crafting-table upgrade chain: {@code sources}
+     * are the entry-tier gear (copper and silver rank as the same tier), so both are accepted side by
+     * side, and {@code materials}[i] + {@code results}[i] pair up tier by tier from there
+     * (copper/silver -> iron (standard gear) or ancient metal (MME weapons) -> mithril -> adamantium;
+     * the netherite tier above adamantium stays on the smithing-template path). Every recipe only
+     * accepts the immediately preceding tier as its input, so cross-tier jumps are impossible.
+     */
+    private static final List<EquipmentUpgradeClass> EQUIPMENT_UPGRADE_CLASSES = List.of(
+            new EquipmentUpgradeClass(RecipeCategory.COMBAT, 5,
+                    new Item[]{Items.COPPER_HELMET, MMEItems.SILVER_HELMET},
+                    new Item[]{Items.IRON_INGOT, MMEItems.ANCIENT_METAL_INGOT, MMEItems.MITHRIL_INGOT, MMEItems.ADAMANTIUM_INGOT},
+                    new Item[]{Items.IRON_HELMET, MMEItems.ANCIENT_METAL_HELMET, MMEItems.MITHRIL_HELMET, MMEItems.ADAMANTIUM_HELMET}),
+            new EquipmentUpgradeClass(RecipeCategory.COMBAT, 8,
+                    new Item[]{Items.COPPER_CHESTPLATE, MMEItems.SILVER_CHESTPLATE},
+                    new Item[]{Items.IRON_INGOT, MMEItems.ANCIENT_METAL_INGOT, MMEItems.MITHRIL_INGOT, MMEItems.ADAMANTIUM_INGOT},
+                    new Item[]{Items.IRON_CHESTPLATE, MMEItems.ANCIENT_METAL_CHESTPLATE, MMEItems.MITHRIL_CHESTPLATE, MMEItems.ADAMANTIUM_CHESTPLATE}),
+            new EquipmentUpgradeClass(RecipeCategory.COMBAT, 7,
+                    new Item[]{Items.COPPER_LEGGINGS, MMEItems.SILVER_LEGGINGS},
+                    new Item[]{Items.IRON_INGOT, MMEItems.ANCIENT_METAL_INGOT, MMEItems.MITHRIL_INGOT, MMEItems.ADAMANTIUM_INGOT},
+                    new Item[]{Items.IRON_LEGGINGS, MMEItems.ANCIENT_METAL_LEGGINGS, MMEItems.MITHRIL_LEGGINGS, MMEItems.ADAMANTIUM_LEGGINGS}),
+            new EquipmentUpgradeClass(RecipeCategory.COMBAT, 4,
+                    new Item[]{Items.COPPER_BOOTS, MMEItems.SILVER_BOOTS},
+                    new Item[]{Items.IRON_INGOT, MMEItems.ANCIENT_METAL_INGOT, MMEItems.MITHRIL_INGOT, MMEItems.ADAMANTIUM_INGOT},
+                    new Item[]{Items.IRON_BOOTS, MMEItems.ANCIENT_METAL_BOOTS, MMEItems.MITHRIL_BOOTS, MMEItems.ADAMANTIUM_BOOTS}),
+            new EquipmentUpgradeClass(RecipeCategory.COMBAT, 2,
+                    new Item[]{Items.COPPER_SWORD, MMEItems.SILVER_SWORD},
+                    new Item[]{Items.IRON_INGOT, MMEItems.ANCIENT_METAL_INGOT, MMEItems.MITHRIL_INGOT, MMEItems.ADAMANTIUM_INGOT},
+                    new Item[]{Items.IRON_SWORD, MMEItems.ANCIENT_METAL_SWORD, MMEItems.MITHRIL_SWORD, MMEItems.ADAMANTIUM_SWORD}),
+            new EquipmentUpgradeClass(RecipeCategory.TOOLS, 3,
+                    new Item[]{Items.COPPER_PICKAXE, MMEItems.SILVER_PICKAXE},
+                    new Item[]{Items.IRON_INGOT, MMEItems.ANCIENT_METAL_INGOT, MMEItems.MITHRIL_INGOT, MMEItems.ADAMANTIUM_INGOT},
+                    new Item[]{Items.IRON_PICKAXE, MMEItems.ANCIENT_METAL_PICKAXE, MMEItems.MITHRIL_PICKAXE, MMEItems.ADAMANTIUM_PICKAXE}),
+            new EquipmentUpgradeClass(RecipeCategory.TOOLS, 3,
+                    new Item[]{Items.COPPER_AXE, MMEItems.SILVER_AXE},
+                    new Item[]{Items.IRON_INGOT, MMEItems.ANCIENT_METAL_INGOT, MMEItems.MITHRIL_INGOT, MMEItems.ADAMANTIUM_INGOT},
+                    new Item[]{Items.IRON_AXE, MMEItems.ANCIENT_METAL_AXE, MMEItems.MITHRIL_AXE, MMEItems.ADAMANTIUM_AXE}),
+            new EquipmentUpgradeClass(RecipeCategory.TOOLS, 1,
+                    new Item[]{Items.COPPER_SHOVEL, MMEItems.SILVER_SHOVEL},
+                    new Item[]{Items.IRON_INGOT, MMEItems.ANCIENT_METAL_INGOT, MMEItems.MITHRIL_INGOT, MMEItems.ADAMANTIUM_INGOT},
+                    new Item[]{Items.IRON_SHOVEL, MMEItems.ANCIENT_METAL_SHOVEL, MMEItems.MITHRIL_SHOVEL, MMEItems.ADAMANTIUM_SHOVEL}),
+            new EquipmentUpgradeClass(RecipeCategory.TOOLS, 2,
+                    new Item[]{Items.COPPER_HOE, MMEItems.SILVER_HOE},
+                    new Item[]{Items.IRON_INGOT, MMEItems.ANCIENT_METAL_INGOT, MMEItems.MITHRIL_INGOT, MMEItems.ADAMANTIUM_INGOT},
+                    new Item[]{Items.IRON_HOE, MMEItems.ANCIENT_METAL_HOE, MMEItems.MITHRIL_HOE, MMEItems.ADAMANTIUM_HOE}),
+            new EquipmentUpgradeClass(RecipeCategory.TOOLS, 2,
+                    new Item[]{Items.COPPER_SPEAR, MMEItems.SILVER_SPEAR},
+                    new Item[]{Items.IRON_INGOT, MMEItems.ANCIENT_METAL_INGOT, MMEItems.MITHRIL_INGOT, MMEItems.ADAMANTIUM_INGOT},
+                    new Item[]{Items.IRON_SPEAR, MMEItems.ANCIENT_METAL_SPEAR, MMEItems.MITHRIL_SPEAR, MMEItems.ADAMANTIUM_SPEAR}),
+            new EquipmentUpgradeClass(RecipeCategory.COMBAT, 1,
+                    new Item[]{MMEItems.COPPER_DAGGER, MMEItems.SILVER_DAGGER},
+                    new Item[]{MMEItems.ANCIENT_METAL_INGOT, MMEItems.MITHRIL_INGOT, MMEItems.ADAMANTIUM_INGOT},
+                    new Item[]{MMEItems.ANCIENT_METAL_DAGGER, MMEItems.MITHRIL_DAGGER, MMEItems.ADAMANTIUM_DAGGER}),
+            new EquipmentUpgradeClass(RecipeCategory.COMBAT, 4,
+                    new Item[]{MMEItems.COPPER_WAR_HAMMER, MMEItems.SILVER_WAR_HAMMER},
+                    new Item[]{MMEItems.ANCIENT_METAL_INGOT, MMEItems.MITHRIL_INGOT, MMEItems.ADAMANTIUM_INGOT},
+                    new Item[]{MMEItems.ANCIENT_METAL_WAR_HAMMER, MMEItems.MITHRIL_WAR_HAMMER, MMEItems.ADAMANTIUM_WAR_HAMMER}),
+            new EquipmentUpgradeClass(RecipeCategory.TOOLS, 2,
+                    new Item[]{MMEItems.COPPER_HATCHET, MMEItems.SILVER_HATCHET},
+                    new Item[]{MMEItems.ANCIENT_METAL_INGOT, MMEItems.MITHRIL_INGOT, MMEItems.ADAMANTIUM_INGOT},
+                    new Item[]{MMEItems.ANCIENT_METAL_HATCHET, MMEItems.MITHRIL_HATCHET, MMEItems.ADAMANTIUM_HATCHET}),
+            new EquipmentUpgradeClass(RecipeCategory.COMBAT, 4,
+                    new Item[]{MMEItems.COPPER_BATTLE_AXE, MMEItems.SILVER_BATTLE_AXE},
+                    new Item[]{MMEItems.ANCIENT_METAL_INGOT, MMEItems.MITHRIL_INGOT, MMEItems.ADAMANTIUM_INGOT},
+                    new Item[]{MMEItems.ANCIENT_METAL_BATTLE_AXE, MMEItems.MITHRIL_BATTLE_AXE, MMEItems.ADAMANTIUM_BATTLE_AXE}),
+            new EquipmentUpgradeClass(RecipeCategory.TOOLS, 4,
+                    new Item[]{MMEItems.COPPER_MATTOCK, MMEItems.SILVER_MATTOCK},
+                    new Item[]{MMEItems.ANCIENT_METAL_INGOT, MMEItems.MITHRIL_INGOT, MMEItems.ADAMANTIUM_INGOT},
+                    new Item[]{MMEItems.ANCIENT_METAL_MATTOCK, MMEItems.MITHRIL_MATTOCK, MMEItems.ADAMANTIUM_MATTOCK}),
+            new EquipmentUpgradeClass(RecipeCategory.TOOLS, 3,
+                    new Item[]{MMEItems.COPPER_SCYTHE, MMEItems.SILVER_SCYTHE},
+                    new Item[]{MMEItems.ANCIENT_METAL_INGOT, MMEItems.MITHRIL_INGOT, MMEItems.ADAMANTIUM_INGOT},
+                    new Item[]{MMEItems.ANCIENT_METAL_SCYTHE, MMEItems.MITHRIL_SCYTHE, MMEItems.ADAMANTIUM_SCYTHE}),
+            new EquipmentUpgradeClass(RecipeCategory.TOOLS, 2,
+                    new Item[]{MMEItems.COPPER_SHEARS, MMEItems.SILVER_SHEARS},
+                    new Item[]{MMEItems.ANCIENT_METAL_INGOT, MMEItems.MITHRIL_INGOT, MMEItems.ADAMANTIUM_INGOT},
+                    new Item[]{MMEItems.ANCIENT_METAL_SHEARS, MMEItems.MITHRIL_SHEARS, MMEItems.ADAMANTIUM_SHEARS})
+    );
+
+    /** One equipment class of the tiered upgrade chain (see {@link #EQUIPMENT_UPGRADE_CLASSES}). */
+    private record EquipmentUpgradeClass(RecipeCategory category, int materialCount, Item[] sources, Item[] materials, Item[] results) {}
 
     public MMERecipeProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
         super(output, registriesFuture);
@@ -904,9 +998,6 @@ public class MMERecipeProvider extends FabricRecipeProvider {
                 offerFishingRodRecipes(MMEItems.OBSIDIAN_FISHING_ROD, MMEItems.OBSIDIAN_SHARD);
                 offerFishingRodRecipes(MMEItems.FLINT_FISHING_ROD, Items.FLINT);
 
-                offerArmorRecipes(MMEItems.ADAMANTIUM_INGOT, MMEItems.ADAMANTIUM_HELMET, MMEItems.ADAMANTIUM_CHESTPLATE, MMEItems.ADAMANTIUM_LEGGINGS, MMEItems.ADAMANTIUM_BOOTS);
-                offerArmorRecipes(MMEItems.ANCIENT_METAL_INGOT, MMEItems.ANCIENT_METAL_HELMET, MMEItems.ANCIENT_METAL_CHESTPLATE, MMEItems.ANCIENT_METAL_LEGGINGS, MMEItems.ANCIENT_METAL_BOOTS);
-                offerArmorRecipes(MMEItems.MITHRIL_INGOT, MMEItems.MITHRIL_HELMET, MMEItems.MITHRIL_CHESTPLATE, MMEItems.MITHRIL_LEGGINGS, MMEItems.MITHRIL_BOOTS);
                 offerArmorRecipes(MMEItems.SILVER_INGOT, MMEItems.SILVER_HELMET, MMEItems.SILVER_CHESTPLATE, MMEItems.SILVER_LEGGINGS, MMEItems.SILVER_BOOTS);
 
                 offerArmorRecipes(MMEItems.ADAMANTIUM_CHAINS, MMEItems.ADAMANTIUM_CHAINMAIL_HELMET, MMEItems.ADAMANTIUM_CHAINMAIL_CHESTPLATE, MMEItems.ADAMANTIUM_CHAINMAIL_LEGGINGS, MMEItems.ADAMANTIUM_CHAINMAIL_BOOTS);
@@ -916,71 +1007,27 @@ public class MMERecipeProvider extends FabricRecipeProvider {
                 offerArmorRecipes(MMEItems.COPPER_CHAINS, MMEItems.COPPER_CHAINMAIL_HELMET, MMEItems.COPPER_CHAINMAIL_CHESTPLATE, MMEItems.COPPER_CHAINMAIL_LEGGINGS, MMEItems.COPPER_CHAINMAIL_BOOTS);
                 offerArmorRecipes(MMEItems.GOLDEN_CHAINS, MMEItems.GOLDEN_CHAINMAIL_HELMET, MMEItems.GOLDEN_CHAINMAIL_CHESTPLATE, MMEItems.GOLDEN_CHAINMAIL_LEGGINGS, MMEItems.GOLDEN_CHAINMAIL_BOOTS);
 
-                netheriteSmithing(MMEItems.ADAMANTIUM_HELMET, RecipeCategory.COMBAT, Items.NETHERITE_HELMET);
-                netheriteSmithing(MMEItems.ADAMANTIUM_CHESTPLATE, RecipeCategory.COMBAT, Items.NETHERITE_CHESTPLATE);
-                netheriteSmithing(MMEItems.ADAMANTIUM_LEGGINGS, RecipeCategory.COMBAT, Items.NETHERITE_LEGGINGS);
-                netheriteSmithing(MMEItems.ADAMANTIUM_BOOTS, RecipeCategory.COMBAT, Items.NETHERITE_BOOTS);
+                netheriteSmithingFullDurability(MMEItems.ADAMANTIUM_HELMET, RecipeCategory.COMBAT, Items.NETHERITE_HELMET);
+                netheriteSmithingFullDurability(MMEItems.ADAMANTIUM_CHESTPLATE, RecipeCategory.COMBAT, Items.NETHERITE_CHESTPLATE);
+                netheriteSmithingFullDurability(MMEItems.ADAMANTIUM_LEGGINGS, RecipeCategory.COMBAT, Items.NETHERITE_LEGGINGS);
+                netheriteSmithingFullDurability(MMEItems.ADAMANTIUM_BOOTS, RecipeCategory.COMBAT, Items.NETHERITE_BOOTS);
 
-                netheriteSmithing(MMEItems.ADAMANTIUM_SWORD, RecipeCategory.COMBAT, Items.NETHERITE_SWORD);
-                netheriteSmithing(MMEItems.ADAMANTIUM_DAGGER, RecipeCategory.COMBAT, MMEItems.NETHERITE_DAGGER);
-                netheriteSmithing(MMEItems.ADAMANTIUM_PICKAXE, RecipeCategory.TOOLS, Items.NETHERITE_PICKAXE);
-                netheriteSmithing(MMEItems.ADAMANTIUM_WAR_HAMMER, RecipeCategory.COMBAT, MMEItems.NETHERITE_WAR_HAMMER);
-                netheriteSmithing(MMEItems.ADAMANTIUM_AXE, RecipeCategory.TOOLS, Items.NETHERITE_AXE);
-                netheriteSmithing(MMEItems.ADAMANTIUM_HATCHET, RecipeCategory.TOOLS, MMEItems.NETHERITE_HATCHET);
-                netheriteSmithing(MMEItems.ADAMANTIUM_BATTLE_AXE, RecipeCategory.COMBAT, MMEItems.NETHERITE_BATTLE_AXE);
-                netheriteSmithing(MMEItems.ADAMANTIUM_SHOVEL, RecipeCategory.TOOLS, Items.NETHERITE_SHOVEL);
-                netheriteSmithing(MMEItems.ADAMANTIUM_HOE, RecipeCategory.TOOLS, Items.NETHERITE_HOE);
-                netheriteSmithing(MMEItems.ADAMANTIUM_MATTOCK, RecipeCategory.TOOLS, MMEItems.NETHERITE_MATTOCK);
-                netheriteSmithing(MMEItems.ADAMANTIUM_SCYTHE, RecipeCategory.TOOLS, MMEItems.NETHERITE_SCYTHE);
-                netheriteSmithing(MMEItems.ADAMANTIUM_SHEARS, RecipeCategory.TOOLS, MMEItems.NETHERITE_SHEARS);
-                netheriteSmithing(MMEItems.ADAMANTIUM_BUCKET, RecipeCategory.TOOLS, MMEItems.NETHERITE_BUCKET);
-                netheriteSmithing(MMEItems.ADAMANTIUM_FISHING_ROD, RecipeCategory.TOOLS, MMEItems.NETHERITE_FISHING_ROD);
+                netheriteSmithingFullDurability(MMEItems.ADAMANTIUM_SWORD, RecipeCategory.COMBAT, Items.NETHERITE_SWORD);
+                netheriteSmithingFullDurability(MMEItems.ADAMANTIUM_DAGGER, RecipeCategory.COMBAT, MMEItems.NETHERITE_DAGGER);
+                netheriteSmithingFullDurability(MMEItems.ADAMANTIUM_PICKAXE, RecipeCategory.TOOLS, Items.NETHERITE_PICKAXE);
+                netheriteSmithingFullDurability(MMEItems.ADAMANTIUM_WAR_HAMMER, RecipeCategory.COMBAT, MMEItems.NETHERITE_WAR_HAMMER);
+                netheriteSmithingFullDurability(MMEItems.ADAMANTIUM_AXE, RecipeCategory.TOOLS, Items.NETHERITE_AXE);
+                netheriteSmithingFullDurability(MMEItems.ADAMANTIUM_HATCHET, RecipeCategory.TOOLS, MMEItems.NETHERITE_HATCHET);
+                netheriteSmithingFullDurability(MMEItems.ADAMANTIUM_BATTLE_AXE, RecipeCategory.COMBAT, MMEItems.NETHERITE_BATTLE_AXE);
+                netheriteSmithingFullDurability(MMEItems.ADAMANTIUM_SHOVEL, RecipeCategory.TOOLS, Items.NETHERITE_SHOVEL);
+                netheriteSmithingFullDurability(MMEItems.ADAMANTIUM_HOE, RecipeCategory.TOOLS, Items.NETHERITE_HOE);
+                netheriteSmithingFullDurability(MMEItems.ADAMANTIUM_MATTOCK, RecipeCategory.TOOLS, MMEItems.NETHERITE_MATTOCK);
+                netheriteSmithingFullDurability(MMEItems.ADAMANTIUM_SCYTHE, RecipeCategory.TOOLS, MMEItems.NETHERITE_SCYTHE);
+                netheriteSmithingFullDurability(MMEItems.ADAMANTIUM_SHEARS, RecipeCategory.TOOLS, MMEItems.NETHERITE_SHEARS);
+                netheriteSmithingFullDurability(MMEItems.ADAMANTIUM_BUCKET, RecipeCategory.TOOLS, MMEItems.NETHERITE_BUCKET);
+                netheriteSmithingFullDurability(MMEItems.ADAMANTIUM_FISHING_ROD, RecipeCategory.TOOLS, MMEItems.NETHERITE_FISHING_ROD);
+                netheriteSmithingFullDurability(MMEItems.ADAMANTIUM_SPEAR, RecipeCategory.TOOLS, Items.NETHERITE_SPEAR);
 
-                toolsRecipes(MMEItems.ADAMANTIUM_INGOT,
-                        MMEItems.ADAMANTIUM_SWORD,
-                        MMEItems.ADAMANTIUM_DAGGER,
-                        MMEItems.ADAMANTIUM_PICKAXE,
-                        MMEItems.ADAMANTIUM_WAR_HAMMER,
-                        MMEItems.ADAMANTIUM_AXE,
-                        MMEItems.ADAMANTIUM_HATCHET,
-                        MMEItems.ADAMANTIUM_BATTLE_AXE,
-                        MMEItems.ADAMANTIUM_SHOVEL,
-                        MMEItems.ADAMANTIUM_HOE,
-                        MMEItems.ADAMANTIUM_MATTOCK,
-                        MMEItems.ADAMANTIUM_SCYTHE,
-                        MMEItems.ADAMANTIUM_SHEARS,
-                        MMEItems.ADAMANTIUM_SPEAR
-                );
-                toolsRecipes(MMEItems.ANCIENT_METAL_INGOT,
-                        MMEItems.ANCIENT_METAL_SWORD,
-                        MMEItems.ANCIENT_METAL_DAGGER,
-                        MMEItems.ANCIENT_METAL_PICKAXE,
-                        MMEItems.ANCIENT_METAL_WAR_HAMMER,
-                        MMEItems.ANCIENT_METAL_AXE,
-                        MMEItems.ANCIENT_METAL_HATCHET,
-                        MMEItems.ANCIENT_METAL_BATTLE_AXE,
-                        MMEItems.ANCIENT_METAL_SHOVEL,
-                        MMEItems.ANCIENT_METAL_HOE,
-                        MMEItems.ANCIENT_METAL_MATTOCK,
-                        MMEItems.ANCIENT_METAL_SCYTHE,
-                        MMEItems.ANCIENT_METAL_SHEARS,
-                        MMEItems.ANCIENT_METAL_SPEAR
-                );
-                toolsRecipes(MMEItems.MITHRIL_INGOT,
-                        MMEItems.MITHRIL_SWORD,
-                        MMEItems.MITHRIL_DAGGER,
-                        MMEItems.MITHRIL_PICKAXE,
-                        MMEItems.MITHRIL_WAR_HAMMER,
-                        MMEItems.MITHRIL_AXE,
-                        MMEItems.MITHRIL_HATCHET,
-                        MMEItems.MITHRIL_BATTLE_AXE,
-                        MMEItems.MITHRIL_SHOVEL,
-                        MMEItems.MITHRIL_HOE,
-                        MMEItems.MITHRIL_MATTOCK,
-                        MMEItems.MITHRIL_SCYTHE,
-                        MMEItems.MITHRIL_SHEARS,
-                        MMEItems.MITHRIL_SPEAR
-                );
                 toolsRecipes(MMEItems.SILVER_INGOT,
                         MMEItems.SILVER_SWORD,
                         MMEItems.SILVER_DAGGER,
@@ -997,8 +1044,10 @@ public class MMERecipeProvider extends FabricRecipeProvider {
                         MMEItems.SILVER_SPEAR
                 );
 
-                offerSwordRecipes(Items.IRON_INGOT, MMEItems.RUSTED_IRON_SPEAR);
-                offerSwordRecipes(Items.FLINT, MMEItems.FLINT_SPEAR);
+                offerEquipmentUpgradeRecipes();
+
+                offerSpearRecipes(Items.IRON_INGOT, MMEItems.RUSTED_IRON_SPEAR);
+                offerSpearRecipes(Items.FLINT, MMEItems.FLINT_SPEAR);
 
                 offerBattleaxeRecipes(Items.COPPER_INGOT, MMEItems.COPPER_BATTLE_AXE);
                 offerDaggerRecipes(Items.COPPER_INGOT, MMEItems.COPPER_DAGGER);
@@ -1146,10 +1195,14 @@ public class MMERecipeProvider extends FabricRecipeProvider {
                         .save(this.output);
                 shapeless(RecipeCategory.FOOD, Items.WHEAT_SEEDS, 2)
                         .requires(Items.WHEAT)
-                        .unlockedBy(getHasName(Items.WHEAT), this.has(Items.WHEAT));
-                shapeless(RecipeCategory.FOOD, MMEItems.FLOUR, 3)
+                        .unlockedBy(getHasName(Items.WHEAT), this.has(Items.WHEAT))
+                        .save(this.output);
+                shapeless(RecipeCategory.FOOD, MMEItems.FLOUR)
                         .requires(Items.WHEAT)
-                        .unlockedBy(getHasName(Items.WHEAT), this.has(Items.WHEAT));
+                        .requires(Items.WHEAT)
+                        .requires(Items.WHEAT)
+                        .unlockedBy(getHasName(Items.WHEAT), this.has(Items.WHEAT))
+                        .save(this.output);
                 shapeless(RecipeCategory.FOOD, MMEItems.DOUGH, 4)
                         .requires(MMEItems.FLOUR)
                         .requires(MMEItems.FLOUR)
@@ -1183,7 +1236,7 @@ public class MMERecipeProvider extends FabricRecipeProvider {
                         .requires(Items.COOKED_BEEF)
                         .requires(Items.POTATO)
                         .requires(Items.BOWL)
-                        .requires(Items.BROWN_MUSHROOM)
+                        .requires(ItemTags.MUSHROOMS)
                         .unlockedBy(getHasName(Items.BOWL), this.has(Items.BOWL))
                         .save(this.output);
                 shapeless(RecipeCategory.FOOD, MMEItems.BOWL_MILK, 4)
@@ -1195,9 +1248,10 @@ public class MMERecipeProvider extends FabricRecipeProvider {
                         .unlockedBy(getHasName(Items.BOWL), this.has(Items.BOWL))
                         .save(this.output);
                 shapeless(RecipeCategory.MISC, MMEItems.PURIFYING_BOTTLE)
-                        .requires(Items.GLASS_BOTTLE)
-                        .requires(Items.GHAST_TEAR)
-                        .unlockedBy(getHasName(Items.GHAST_TEAR), this.has(Items.GHAST_TEAR))
+                        .requires(DefaultCustomIngredients.components(Ingredient.of(Items.POTION), builder -> builder.set(DataComponents.POTION_CONTENTS, new PotionContents(Potions.WATER))))
+                        .requires(Items.NETHER_WART)
+                        .requires(Items.COAL)
+                        .unlockedBy(getHasName(Items.NETHER_WART), this.has(Items.NETHER_WART))
                         .save(this.output);
                 offerMilkBucketRecipes(MMEItems.NETHERITE_MILK_BUCKET, MMEItems.NETHERITE_BUCKET);
                 offerMilkBucketRecipes(MMEItems.ADAMANTIUM_MILK_BUCKET, MMEItems.ADAMANTIUM_BUCKET);
@@ -1236,8 +1290,8 @@ public class MMERecipeProvider extends FabricRecipeProvider {
                         .save(this.output);
                 shapeless(RecipeCategory.FOOD, MMEItems.CREAM_OF_MUSHROOM_SOUP)
                         .requires(MMEItems.BOWL_MILK)
-                        .requires(Items.BROWN_MUSHROOM)
-                        .requires(Items.BROWN_MUSHROOM)
+                        .requires(ItemTags.MUSHROOMS)
+                        .requires(ItemTags.MUSHROOMS)
                         .unlockedBy(getHasName(MMEItems.BOWL_MILK), this.has(MMEItems.BOWL_MILK))
                         .save(this.output);
                 shapeless(RecipeCategory.FOOD, MMEItems.CREAM_OF_VEGETABLE_SOUP)
@@ -1477,9 +1531,9 @@ public class MMERecipeProvider extends FabricRecipeProvider {
                 shaped(RecipeCategory.TOOLS, Spear)
                         .define('a', ingot)
                         .define('b', Items.STICK)
-                        .pattern("  b")
-                        .pattern(" a ")
-                        .pattern("a  ")
+                        .pattern("  a")
+                        .pattern(" b ")
+                        .pattern("b  ")
                         .unlockedBy(getHasName(ingot), this.has(ingot))
                         .save(this.output);
             }
@@ -1637,6 +1691,47 @@ public class MMERecipeProvider extends FabricRecipeProvider {
                         .pattern("a ")
                         .unlockedBy(getHasName(ingot), this.has(ingot))
                         .save(this.output);
+            }
+            /**
+             * Registers the netherite smithing-template upgrade for {@code base}, mirroring the vanilla
+             * {@link RecipeProvider#netheriteSmithing} helper but writing {@code damage:0} onto the result
+             * template so the forged piece always leaves the smithing table fully repaired (the smithing
+             * transform itself copies enchantments and every other component from the base item).
+             */
+            private void netheriteSmithingFullDurability(Item base, RecipeCategory category, Item result) {
+                new SmithingTransformRecipeBuilder(
+                                Ingredient.of(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE),
+                                Ingredient.of(base),
+                                this.tag(ItemTags.NETHERITE_TOOL_MATERIALS),
+                                category,
+                                new ItemStackTemplate(result, FULL_DURABILITY)
+                        )
+                        .unlocks("has_netherite_ingot", this.has(ItemTags.NETHERITE_TOOL_MATERIALS))
+                        .save(this.output, getItemName(result) + "_smithing");
+            }
+
+            /**
+             * Emits the strictly tiered crafting-table upgrade chain for every equipment class (see
+             * {@link #EQUIPMENT_UPGRADE_CLASSES}): one piece of the immediately preceding tier's gear
+             * plus the next tier's ingots transmutes into that tier with full durability, while vanilla
+             * transmute semantics preserve the input's enchantments and other components.
+             */
+            private void offerEquipmentUpgradeRecipes() {
+                for (EquipmentUpgradeClass upgradeClass : EQUIPMENT_UPGRADE_CLASSES) {
+                    for (int tier = 0; tier < upgradeClass.materials().length; tier++) {
+                        Item material = upgradeClass.materials()[tier];
+                        Item result = upgradeClass.results()[tier];
+                        TransmuteRecipeBuilder.transmute(
+                                        upgradeClass.category(),
+                                        Ingredient.of(tier == 0 ? upgradeClass.sources() : new Item[]{upgradeClass.results()[tier - 1]}),
+                                        Ingredient.of(material),
+                                        new ItemStackTemplate(result, FULL_DURABILITY)
+                                )
+                                .setMaterialCount(MinMaxBounds.Ints.exactly(upgradeClass.materialCount()))
+                                .unlockedBy(getHasName(material), this.has(material))
+                                .save(this.output, ResourceKey.create(Registries.RECIPE, Identifier.fromNamespaceAndPath(MME.MOD_ID, getItemName(result) + "_upgrade")));
+                    }
+                }
             }
         };
     }

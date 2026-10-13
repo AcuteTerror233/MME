@@ -50,25 +50,25 @@ public final class CurseLogic {
     }
 
     /**
-     * Called when a witch spots a player: inflicts one random curse from the pool the player
-     * does not carry yet. Each witch can curse a given player at most once; creative and
-     * spectator players are immune. The curse stays hidden until its symptoms appear.
+     * Called when a witch spots a player: inflicts one random curse from the pool. A player
+     * carries at most one curse at a time — an already-cursed player is immune no matter
+     * which witch cursed them; creative and spectator players are immune. The curse stays
+     * hidden until its symptoms appear.
      */
     public static void applyCurseFromWitch(Witch witch, Player player) {
-        if (!(player instanceof ServerPlayer serverPlayer) || serverPlayer.isCreative() || serverPlayer.isSpectator()) {
+        if (player.level().isClientSide() || player.isCreative() || player.isSpectator()) {
             return;
         }
         CurseState state = ((CurseCap) player).mme$curseState();
-        if (state.hasWitch(witch.getUUID())) {
+        // Single-curse rule: the state is non-empty exactly while a curse is carried
+        if (!state.curses().isEmpty()) {
             return;
         }
-        List<Holder<MobEffect>> pool = MMECurses.ALL.stream().filter(curse -> !state.hasCurse(curse)).toList();
-        if (pool.isEmpty()) {
-            return;
-        }
-        Holder<MobEffect> curse = pool.get(witch.getRandom().nextInt(pool.size()));
+        Holder<MobEffect> curse = MMECurses.ALL.get(witch.getRandom().nextInt(MMECurses.ALL.size()));
         applyCurse(player, curse, witch.getUUID());
-        serverPlayer.sendOverlayMessage(Component.translatable("mme.curse.afflicted"));
+        if (player instanceof ServerPlayer serverPlayer) {
+            serverPlayer.sendOverlayMessage(Component.translatable("mme.curse.afflicted"));
+        }
     }
 
     /** Records and applies a curse as a permanent hidden effect (witch path and GameTests). */

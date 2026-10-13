@@ -1,8 +1,10 @@
 {
   "checkIntervalTicks": 40,
-  "sickThreshold": 150,
-  "recoveredThreshold": 100,
-  "goalTriggerThreshold": 60,
+  "sickThreshold": 600,
+  "recoveredThreshold": 400,
+  "goalTriggerThreshold": 240,
+  "deathDelayMinTicks": 24000,
+  "deathDelayMaxTicks": 36000,
   "progressGainPerCheck": 1,
   "crowdHeavyGainPerCheck": 2,
   "progressRecoverPerCheck": 2,

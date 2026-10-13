@@ -45,6 +45,7 @@ public class MMELanguageProvider {
             translationBuilder.add("mme.curse.afflicted", "A vile curse takes hold of you...");
             translationBuilder.add("mme.curse.lifted_bottle", "The purifying bottle cleansed your curses.");
             translationBuilder.add("mme.nutrition.tooltip", "%s Current nutritional status:{fiber:%f, protein:%f, sugar:%f}");
+            translationBuilder.add("mme.day.tooltip", "It is day %s of this world");
 
             translationBuilder.add("mme.advancements.story.root.description", "Where the dream begins");
             translationBuilder.add("mme.advancements.story.wheat_seeds.title", "Scavenger");
@@ -517,6 +518,14 @@ public class MMELanguageProvider {
             translationBuilder.add(MMEItems.MANURE, "Manure");
             translationBuilder.add(MMEItems.GHOUL_SPAWN_EGG, "Ghoul Spawn Egg");
             translationBuilder.add(MMEEntityTypes.GHOUL, "Ghoul");
+            translationBuilder.add(MMEItems.REVENANT_SPAWN_EGG, "Revenant Spawn Egg");
+            translationBuilder.add(MMEEntityTypes.REVENANT, "Revenant");
+            translationBuilder.add(MMEItems.ANCIENT_CORPSE_SPAWN_EGG, "Ancient Corpse Spawn Egg");
+            translationBuilder.add(MMEEntityTypes.ANCIENT_CORPSE, "Ancient Corpse");
+            translationBuilder.add(MMEItems.SKELETON_LORD_SPAWN_EGG, "Skeleton Lord Spawn Egg");
+            translationBuilder.add(MMEEntityTypes.SKELETON_LORD, "Skeleton Lord");
+            translationBuilder.add(MMEItems.ANCIENT_SKELETON_LORD_SPAWN_EGG, "Ancient Skeleton Lord Spawn Egg");
+            translationBuilder.add(MMEEntityTypes.ANCIENT_SKELETON_LORD, "Ancient Skeleton Lord");
             translationBuilder.add(MMEItems.SHADOW_SPAWN_EGG, "Shadow Spawn Egg");
             translationBuilder.add(MMEEntityTypes.SHADOW, "Shadow");
             translationBuilder.add(MMEItems.WIGHT_SPAWN_EGG, "Wight Spawn Egg");
@@ -562,6 +571,7 @@ public class MMELanguageProvider {
             translationBuilder.add("key.mme.place_source_liquid", "Place Source Liquid");
 
             translationBuilder.addEnchantment(MMEEnchantments.BUTCHERING, "Butchering");
+            translationBuilder.addEnchantment(MMEEnchantments.SPEED, "Speed");
             translationBuilder.addEnchantment(MMEEnchantments.CLEAVING, "Cleaving");
             translationBuilder.addEnchantment(MMEEnchantments.HARVESTING, "Harvesting");
             translationBuilder.addEnchantment(MMEEnchantments.FERTILITY, "Fertility");
@@ -655,6 +665,7 @@ public class MMELanguageProvider {
             translationBuilder.add("mme.nugget.tooltip", "右键做成币储存%dXP");
             translationBuilder.add("mme.coins.tooltip", "每个+%dXP");
             translationBuilder.add("mme.nutrition.tooltip", "%s当前营养状态:{fiber:%f, protein:%f, sugar:%f}");
+            translationBuilder.add("mme.day.tooltip", "今天是本世界的第 %s 天");
             translationBuilder.add("mme.curse.afflicted", "一股恶毒的诅咒缠上了你……");
             translationBuilder.add("mme.curse.lifted_bottle", "祛魔之瓶净化了你身上的诅咒。");
 
@@ -1121,6 +1132,14 @@ public class MMELanguageProvider {
             translationBuilder.add(MMEItems.MANURE, "粪便");
             translationBuilder.add(MMEItems.GHOUL_SPAWN_EGG, "食尸鬼刷怪蛋");
             translationBuilder.add(MMEEntityTypes.GHOUL, "食尸鬼");
+            translationBuilder.add(MMEItems.REVENANT_SPAWN_EGG, "亡魂刷怪蛋");
+            translationBuilder.add(MMEEntityTypes.REVENANT, "亡魂");
+            translationBuilder.add(MMEItems.ANCIENT_CORPSE_SPAWN_EGG, "古尸刷怪蛋");
+            translationBuilder.add(MMEEntityTypes.ANCIENT_CORPSE, "古尸");
+            translationBuilder.add(MMEItems.SKELETON_LORD_SPAWN_EGG, "骷髅领主刷怪蛋");
+            translationBuilder.add(MMEEntityTypes.SKELETON_LORD, "骷髅领主");
+            translationBuilder.add(MMEItems.ANCIENT_SKELETON_LORD_SPAWN_EGG, "远古骷髅领主刷怪蛋");
+            translationBuilder.add(MMEEntityTypes.ANCIENT_SKELETON_LORD, "远古骷髅领主");
             translationBuilder.add(MMEItems.SHADOW_SPAWN_EGG, "黑色食尸鬼刷怪蛋");
             translationBuilder.add(MMEEntityTypes.SHADOW, "黑色食尸鬼");
             translationBuilder.add(MMEItems.WIGHT_SPAWN_EGG, "白色食尸鬼刷怪蛋");
@@ -1131,8 +1150,8 @@ public class MMELanguageProvider {
             translationBuilder.add(MMEEntityTypes.DEMON_SPIDER, "恶魔蜘蛛");
             translationBuilder.add(MMEItems.PHASE_SPIDER_SPAWN_EGG, "相位蜘蛛刷怪蛋");
             translationBuilder.add(MMEEntityTypes.PHASE_SPIDER, "相位蜘蛛");
-            translationBuilder.add(MMEItems.INFERNAL_CREEPER_SPAWN_EGG, "地狱爬行者刷怪蛋");
-            translationBuilder.add(MMEEntityTypes.INFERNAL_CREEPER, "地狱爬行者");
+            translationBuilder.add(MMEItems.INFERNAL_CREEPER_SPAWN_EGG, "地狱苦力怕刷怪蛋");
+            translationBuilder.add(MMEEntityTypes.INFERNAL_CREEPER, "地狱苦力怕");
             translationBuilder.add(MMEItems.FIRE_ELEMENTAL_SPAWN_EGG, "火元素刷怪蛋");
             translationBuilder.add(MMEEntityTypes.FIRE_ELEMENTAL, "火元素");
             translationBuilder.add(MMEItems.VAMPIRE_BAT_SPAWN_EGG, "吸血蝙蝠刷怪蛋");
@@ -1166,6 +1185,7 @@ public class MMELanguageProvider {
             translationBuilder.add("key.mme.place_source_liquid", "放置源头液体");
 
             translationBuilder.addEnchantment(MMEEnchantments.BUTCHERING, "屠宰");
+            translationBuilder.addEnchantment(MMEEnchantments.SPEED, "速度");
             translationBuilder.addEnchantment(MMEEnchantments.CLEAVING, "劈裂");
             translationBuilder.addEnchantment(MMEEnchantments.HARVESTING, "收获");
             translationBuilder.addEnchantment(MMEEnchantments.FERTILITY, "肥沃");

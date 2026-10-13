@@ -1,108 +1,221 @@
 {
   "clock": "minecraft:overworld",
-  "period_ticks": 4608000,
+  "period_ticks": 3096000,
   "tracks": {
     "minecraft:gameplay/sky_light_level": {
       "keyframes": [
         {
-          "ticks": 371000,
+          "ticks": 0,
           "value": 0.0
         },
         {
-          "ticks": 372000,
-          "value": 1.0
-        },
-        {
-          "ticks": 384000,
+          "ticks": 767000,
           "value": 0.0
         },
         {
-          "ticks": 1139000,
+          "ticks": 768000,
+          "value": -4.0
+        },
+        {
+          "ticks": 791000,
+          "value": -4.0
+        },
+        {
+          "ticks": 792000,
           "value": 0.0
         },
         {
-          "ticks": 1140000,
-          "value": 4.0
-        },
-        {
-          "ticks": 1152000,
+          "ticks": 1535000,
           "value": 0.0
         },
         {
-          "ticks": 2099000,
+          "ticks": 1536000,
+          "value": -4.0
+        },
+        {
+          "ticks": 1559000,
+          "value": -4.0
+        },
+        {
+          "ticks": 1560000,
           "value": 0.0
         },
         {
-          "ticks": 2100000,
-          "value": -6.0
-        },
-        {
-          "ticks": 2112000,
+          "ticks": 2303000,
           "value": 0.0
         },
         {
-          "ticks": 4403000,
+          "ticks": 2304000,
+          "value": -4.0
+        },
+        {
+          "ticks": 2327000,
+          "value": -4.0
+        },
+        {
+          "ticks": 2328000,
           "value": 0.0
         },
         {
-          "ticks": 4404000,
-          "value": 2.0
+          "ticks": 3084000,
+          "value": 0.0
         },
         {
-          "ticks": 4416000,
+          "ticks": 3085000,
+          "value": 6.0
+        },
+        {
+          "ticks": 3095000,
+          "value": 6.0
+        },
+        {
+          "ticks": 3096000,
           "value": 0.0
         }
       ],
-      "modifier": "subtract"
+      "modifier": "add"
+    },
+    "minecraft:visual/sky_color": {
+      "keyframes": [
+        {
+          "ticks": 0,
+          "value": "#000000"
+        },
+        {
+          "ticks": 767000,
+          "value": "#000000"
+        },
+        {
+          "ticks": 768000,
+          "value": "#5a1206"
+        },
+        {
+          "ticks": 791000,
+          "value": "#8c0c04"
+        },
+        {
+          "ticks": 792000,
+          "value": "#000000"
+        },
+        {
+          "ticks": 1535000,
+          "value": "#000000"
+        },
+        {
+          "ticks": 1536000,
+          "value": "#5a1206"
+        },
+        {
+          "ticks": 1559000,
+          "value": "#8c0c04"
+        },
+        {
+          "ticks": 1560000,
+          "value": "#000000"
+        },
+        {
+          "ticks": 2303000,
+          "value": "#000000"
+        },
+        {
+          "ticks": 2304000,
+          "value": "#5a1206"
+        },
+        {
+          "ticks": 2327000,
+          "value": "#8c0c04"
+        },
+        {
+          "ticks": 2328000,
+          "value": "#000000"
+        },
+        {
+          "ticks": 3084000,
+          "value": "#000000"
+        },
+        {
+          "ticks": 3085000,
+          "value": "#1a2c5a"
+        },
+        {
+          "ticks": 3095000,
+          "value": "#1a2c5a"
+        },
+        {
+          "ticks": 3096000,
+          "value": "#000000"
+        }
+      ],
+      "modifier": "add"
     },
     "minecraft:visual/sky_light_factor": {
       "keyframes": [
         {
-          "ticks": 371000,
+          "ticks": 0,
           "value": 1.0
         },
         {
-          "ticks": 372000,
-          "value": 1.3
-        },
-        {
-          "ticks": 384000,
+          "ticks": 767000,
           "value": 1.0
         },
         {
-          "ticks": 1139000,
-          "value": 1.0
-        },
-        {
-          "ticks": 1140000,
+          "ticks": 768000,
           "value": 0.1
         },
         {
-          "ticks": 1152000,
+          "ticks": 791000,
+          "value": 0.1
+        },
+        {
+          "ticks": 792000,
           "value": 1.0
         },
         {
-          "ticks": 2099000,
+          "ticks": 1535000,
           "value": 1.0
         },
         {
-          "ticks": 2100000,
+          "ticks": 1536000,
+          "value": 0.1
+        },
+        {
+          "ticks": 1559000,
+          "value": 0.1
+        },
+        {
+          "ticks": 1560000,
+          "value": 1.0
+        },
+        {
+          "ticks": 2303000,
+          "value": 1.0
+        },
+        {
+          "ticks": 2304000,
+          "value": 0.1
+        },
+        {
+          "ticks": 2327000,
+          "value": 0.1
+        },
+        {
+          "ticks": 2328000,
+          "value": 1.0
+        },
+        {
+          "ticks": 3084000,
+          "value": 1.0
+        },
+        {
+          "ticks": 3085000,
           "value": 3.0
         },
         {
-          "ticks": 2112000,
-          "value": 1.0
+          "ticks": 3095000,
+          "value": 3.0
         },
         {
-          "ticks": 4403000,
-          "value": 1.0
-        },
-        {
-          "ticks": 4404000,
-          "value": 0.02
-        },
-        {
-          "ticks": 4416000,
+          "ticks": 3096000,
           "value": 1.0
         }
       ],
@@ -111,68 +224,72 @@
     "mme:visual/special_moon_phase": {
       "keyframes": [
         {
-          "ticks": 372000,
-          "value": "star_moon"
-        },
-        {
-          "ticks": 384000,
+          "ticks": 0,
           "value": "normal_moon"
         },
         {
-          "ticks": 948000,
+          "ticks": 589000,
           "value": "harvest_moon"
         },
         {
-          "ticks": 960000,
+          "ticks": 600000,
           "value": "normal_moon"
         },
         {
-          "ticks": 1140000,
+          "ticks": 768000,
+          "value": "blood_moon_day"
+        },
+        {
+          "ticks": 781000,
           "value": "blood_moon"
         },
         {
-          "ticks": 1152000,
+          "ticks": 792000,
           "value": "normal_moon"
         },
         {
-          "ticks": 1908000,
-          "value": "phantom_moon"
+          "ticks": 1344000,
+          "value": "harvest_moon"
         },
         {
-          "ticks": 1920000,
+          "ticks": 1368000,
           "value": "normal_moon"
         },
         {
-          "ticks": 2100000,
-          "value": "blue_moon"
+          "ticks": 1536000,
+          "value": "blood_moon_day"
+        },
+        {
+          "ticks": 1549000,
+          "value": "blood_moon"
+        },
+        {
+          "ticks": 1560000,
+          "value": "normal_moon"
         },
         {
           "ticks": 2112000,
+          "value": "harvest_moon"
+        },
+        {
+          "ticks": 2136000,
           "value": "normal_moon"
         },
         {
-          "ticks": 2868000,
-          "value": "hunt_moon"
+          "ticks": 2304000,
+          "value": "blood_moon_day"
         },
         {
-          "ticks": 2880000,
+          "ticks": 2317000,
+          "value": "blood_moon"
+        },
+        {
+          "ticks": 2328000,
           "value": "normal_moon"
         },
         {
-          "ticks": 3636000,
-          "value": "frost_moon"
-        },
-        {
-          "ticks": 3648000,
-          "value": "normal_moon"
-        },
-        {
-          "ticks": 4404000,
-          "value": "turbid_moon"
-        },
-        {
-          "ticks": 4416000,
-          "value": "normal_moon"
+          "ticks": 3085000,
+          "value": "blue_moon"
         }
       ]
     }

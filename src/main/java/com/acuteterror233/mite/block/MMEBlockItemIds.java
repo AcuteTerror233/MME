@@ -27,6 +27,8 @@ public class MMEBlockItemIds {
 
     public static final BlockItemId MANTLE = BlockItemId.create("mantle");
 
+    public static final BlockItemId ONION = BlockItemId.create("onion");
+
     public static final AnvilCollection<BlockItemId> NETHERITE_ANVIL = AnvilCollection.create(state -> BlockItemId.create(state.getPrefix() + "netherite_anvil"));
     public static final AnvilCollection<BlockItemId> ADAMANTIUM_ANVIL = AnvilCollection.create(state -> BlockItemId.create(state.getPrefix() + "adamantium_anvil"));
     public static final AnvilCollection<BlockItemId> MITHRIL_ANVIL = AnvilCollection.create(state -> BlockItemId.create(state.getPrefix() + "mithril_anvil"));

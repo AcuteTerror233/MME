@@ -24,8 +24,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 /**
  * Mixin for {@code Sheep} — thirst, light, crowding and grazing sickness needs (eats
- * grass blocks into dirt), sickness persistence, and no drops while sick. The vanilla
- * wool-eating {@code EatBlockGoal} keeps running in parallel.
+ * grass blocks into dirt), sickness persistence, no wool regrowth while sick, and no
+ * drops while sick. The vanilla wool-eating {@code EatBlockGoal} keeps running in
+ * parallel.
  */
 @Mixin(Sheep.class)
 public abstract class SheepMixin extends Animal implements SicknessCap {
@@ -62,6 +63,18 @@ public abstract class SheepMixin extends Animal implements SicknessCap {
     @Inject(method = "readAdditionalSaveData", at = @At("TAIL"))
     private void mme$loadSickness(ValueInput input, CallbackInfo ci) {
         mme$sickness.load(input);
+    }
+
+    /**
+     * A sick sheep does not regrow wool from eating grass: the vanilla {@code ate()}
+     * (wool regrow + growth acceleration) is skipped entirely while sick. The sickness
+     * system's own {@code GrazeGoal} satisfies the grazing need independently.
+     */
+    @Inject(method = "ate", at = @At("HEAD"), cancellable = true)
+    private void mme$stopWoolRegrowthWhileSick(CallbackInfo ci) {
+        if (AnimalSicknessLogic.isSick(this)) {
+            ci.cancel();
+        }
     }
 
     /**

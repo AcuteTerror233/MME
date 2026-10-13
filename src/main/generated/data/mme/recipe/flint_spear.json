@@ -6,9 +6,9 @@
     "b": "minecraft:stick"
   },
   "pattern": [
-    "a",
-    "a",
-    "b"
+    "  a",
+    " b ",
+    "b  "
   ],
   "result": {
     "id": "mme:flint_spear"

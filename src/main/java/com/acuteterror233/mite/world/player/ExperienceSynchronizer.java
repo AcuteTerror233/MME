@@ -56,11 +56,10 @@ public class ExperienceSynchronizer {
         this.player.totalExperience = total;
     }
 
-    /** Derives level and progress from totalExperience (capped at level 50) when only the total changed. */
     private void syncFromTotal(int total) {
         int remaining = total;
         int level = 0;
-        while (level < 50) {
+        while (true) {
             int needed = getXpNeededForLevel(level);
             if (remaining >= needed) {
                 remaining -= needed;
@@ -77,12 +76,14 @@ public class ExperienceSynchronizer {
 
     /** Vanilla XP curve: 7+2*level (0-14), 37+5*(level-15) (15-29), 112+9*(level-30) (30+). */
     private int getXpNeededForLevel(int level) {
+        int total;
         if (level >= 30) {
-            return 112 + (level - 30) * 9;
+            total = 112 + (level - 30) * 9;
         } else if (level >= 15) {
-            return 37 + (level - 15) * 5;
+            total =  37 + (level - 15) * 5;
         } else {
-            return 7 + level * 2;
+            total =  7 + level * 2;
         }
+        return total * 3;
     }
 }

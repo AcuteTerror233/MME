@@ -49,8 +49,8 @@ public class UndergroundFeatures {
         featureRegisterable.register(ORE_ADAMANTIUM_BURIED_SMALL, new OreFeature(adamantium_Ore_List, 2, 1.0f));
         featureRegisterable.register(ORE_MITHRIL, new OreFeature(mithril_Ore_List, 4, 0.6f));
         featureRegisterable.register(ORE_MITHRIL_SMALL, new OreFeature(mithril_Ore_List, 4, 0.6f));
-        featureRegisterable.register(ORE_SILVER, new OreFeature(silver_Ore_List, 6, 0.4f));
-        featureRegisterable.register(ORE_SILVER_SMALL, new OreFeature(silver_Ore_List, 2, 0.4f));
+        featureRegisterable.register(ORE_SILVER, new OreFeature(silver_Ore_List, 6, 0.2f));
+        featureRegisterable.register(ORE_SILVER_SMALL, new OreFeature(silver_Ore_List, 2, 0.2f));
     }
     /**
      * Generate a ConfiguredFeature registry key within the namespace.

@@ -15,6 +15,12 @@ public interface MMEEntityTypeTags {
     TagKey<EntityType<?>> SENSITIVE_TO_BUTCHERING = key("sensitive_to_butchering");
     /** Entities that produce manure. */
     TagKey<EntityType<?>> PRODUCE_MANURE = key("produce_manure");
+    /** Large animals (cattle-sized and bigger) — slowest manure interval. */
+    TagKey<EntityType<?>> LARGE_ANIMALS = key("large_animals");
+    /** Medium animals (pig-sized) — medium manure interval. */
+    TagKey<EntityType<?>> MEDIUM_ANIMALS = key("medium_animals");
+    /** Small animals (chicken-sized) — fastest manure interval. */
+    TagKey<EntityType<?>> SMALL_ANIMALS = key("small_animals");
 
     /** Creates a {@link TagKey} in the entity type registry under the MME namespace. */
     private static TagKey<EntityType<?>> key(String id) {

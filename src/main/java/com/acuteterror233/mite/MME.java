@@ -99,6 +99,7 @@ public class MME implements ModInitializer {
 
         // === Custom commands ===
         registerCommands();
+        registerDayCommand();
     }
 
     /**
@@ -133,6 +134,26 @@ public class MME implements ModInitializer {
         );
     }
 
+    /**
+     * Registers the /day command to display the current world day count (overworld clock ticks
+     * divided by the 24000-tick day period). Available to every source (players, command
+     * blocks, console) without any permission requirement.
+     */
+    private static void registerDayCommand() {
+        CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) ->
+                dispatcher.register(
+                        Commands.literal("day")
+                                .executes(context -> {
+                                    context.getSource().sendSuccess(
+                                            () -> Component.translatable("mme.day.tooltip", context.getSource().getLevel().getOverworldClockTime() / 24000L),
+                                            false
+                                    );
+                                    return 1;
+                                })
+                )
+        );
+    }
+
     /** Adds a placed feature to every overworld biome in the {@code UNDERGROUND_ORES} decoration step. */
     private void inOverworldAdd(ResourceKey<PlacedFeature> key) {
         BiomeModifications.addFeature(
@@ -155,8 +176,10 @@ public class MME implements ModInitializer {
      * Vanilla recipe ids removed from the recipe map by {@code RecipeMapMixin}, grouped by reason:
      * wooden and stone tools (replaced by the flint-tier early-game progression);
      * diamond tools and armor (diamond gear is gated behind the metal crafting tables);
+     * iron tools and armor (iron gear is reached via the transmute upgrade chain, not direct crafting);
+     * the iron and diamond spears (spears climb the same upgrade chains);
      * the crafting table and crafter (superseded by MME's crafting progression);
-     * netherite smithing upgrades (handled by MME's own anvil/upgrade system);
+     * vanilla netherite smithing upgrades (re-registered by MME with full-durability results);
      * the fishing rod (replaced by MME's metal fishing rods);
      * raw metal smelting (raw iron/copper/gold must be processed by MME means);
      * the bundle.
@@ -177,10 +200,21 @@ public class MME implements ModInitializer {
             Identifier.withDefaultNamespace("diamond_axe"),
             Identifier.withDefaultNamespace("diamond_hoe"),
             Identifier.withDefaultNamespace("diamond_sword"),
+            Identifier.withDefaultNamespace("diamond_spear"),
             Identifier.withDefaultNamespace("diamond_helmet"),
             Identifier.withDefaultNamespace("diamond_chestplate"),
             Identifier.withDefaultNamespace("diamond_leggings"),
             Identifier.withDefaultNamespace("diamond_boots"),
+            Identifier.withDefaultNamespace("iron_helmet"),
+            Identifier.withDefaultNamespace("iron_chestplate"),
+            Identifier.withDefaultNamespace("iron_leggings"),
+            Identifier.withDefaultNamespace("iron_boots"),
+            Identifier.withDefaultNamespace("iron_sword"),
+            Identifier.withDefaultNamespace("iron_pickaxe"),
+            Identifier.withDefaultNamespace("iron_axe"),
+            Identifier.withDefaultNamespace("iron_shovel"),
+            Identifier.withDefaultNamespace("iron_hoe"),
+            Identifier.withDefaultNamespace("iron_spear"),
             Identifier.withDefaultNamespace("crafting_table"),
             Identifier.withDefaultNamespace("netherite_axe_smithing"),
             Identifier.withDefaultNamespace("netherite_boots_smithing"),
@@ -191,12 +225,14 @@ public class MME implements ModInitializer {
             Identifier.withDefaultNamespace("netherite_pickaxe_smithing"),
             Identifier.withDefaultNamespace("netherite_shovel_smithing"),
             Identifier.withDefaultNamespace("netherite_sword_smithing"),
+            Identifier.withDefaultNamespace("netherite_spear_smithing"),
             Identifier.withDefaultNamespace("fishing_rod"),
             Identifier.withDefaultNamespace("crafter"),
             Identifier.withDefaultNamespace("raw_iron"),
             Identifier.withDefaultNamespace("raw_copper"),
             Identifier.withDefaultNamespace("raw_gold"),
-            Identifier.withDefaultNamespace("bundle")
+            Identifier.withDefaultNamespace("bundle"),
+            Identifier.withDefaultNamespace("bread")
     );
 
     /**

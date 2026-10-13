@@ -136,7 +136,7 @@ public abstract class CropBlockMixin extends VegetationBlock implements Bonemeal
                     case FROST_MOON ->   f*=0.75F;
                     case TURBID_MOON ->   f*=0.5F;
                 }
-                if (randomSource.nextInt((int)(50.0F / f) + 1) == 0) {
+                if (randomSource.nextInt((int)(150.0F / f) + 1) == 0) {
                     serverLevel.setBlock(blockPos, this.getStateForAge(i + 1), 2);
                 }
             }

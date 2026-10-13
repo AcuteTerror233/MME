@@ -13,7 +13,10 @@
     "fabric-gametest": [
       "com.acuteterror233.mite.gametest.AnvilFreeRepairGameTest",
       "com.acuteterror233.mite.gametest.WitchCurseGameTest",
-      "com.acuteterror233.mite.gametest.TempFluidSourceGameTest"
+      "com.acuteterror233.mite.gametest.TempFluidSourceGameTest",
+      "com.acuteterror233.mite.gametest.AnimalSicknessGameTest",
+      "com.acuteterror233.mite.gametest.FallingBlockDamageGameTest",
+      "com.acuteterror233.mite.gametest.UpgradeRecipeGameTest"
     ]
   },
   "depends": {

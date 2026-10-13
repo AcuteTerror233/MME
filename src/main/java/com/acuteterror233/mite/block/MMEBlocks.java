@@ -6,6 +6,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.material.PushReaction;
 
 import java.util.function.Function;
 
@@ -79,6 +80,12 @@ public class MMEBlocks {
                     .postProcess((blockStatex, blockGetter, blockPos) -> blockPos.above())
                     .emissiveRendering(state -> true)
                     .mapColor(MapColor.NETHER)
+    );
+
+    public static final Block ONION = register(
+            MMEBlockItemIds.ONION,
+            OnionBlock::new,
+            BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).noCollision().randomTicks().instabreak().sound(SoundType.CROP).pushReaction(PushReaction.POPPED)
     );
 
     public static final AnvilCollection<Block> NETHERITE_ANVILS = AnvilCollection.registerBlocks(

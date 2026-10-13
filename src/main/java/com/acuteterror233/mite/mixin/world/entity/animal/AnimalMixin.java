@@ -3,8 +3,10 @@ package com.acuteterror233.mite.mixin.world.entity.animal;
 import com.acuteterror233.mite.item.MMEItems;
 import com.acuteterror233.mite.registry.tag.MMEEntityTypeTags;
 import com.acuteterror233.mite.world.entity.ai.goal.SeekDroppedFoodGoal;
+import com.acuteterror233.mite.world.entity.ai.sickness.SicknessCap;
 import com.acuteterror233.mite.world.entity.animal.MMEPanicCooldown;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.Mth;
 import net.minecraft.world.entity.AgeableMob;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
@@ -27,20 +29,24 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.util.List;
 
 /**
- * Mixin for {@code Animal} — Adds periodic manure production.
+ * Mixin for {@code Animal} — adds periodic manure production and stretches the breeding
+ * cooldown.
  *
- * <p>Every animal gets a manure countdown initialized to a random 24000–36000 ticks at
- * construction. Once it reaches zero, adult animals tagged
- * {@code MMEEntityTypeTags#PRODUCE_MANURE} drop one MANURE item (with an
- * {@code ENTITY_PLACE} game event) and the countdown restarts.</p>
+ * <p>Every animal gets a manure countdown at construction, sized by its body-size tag
+ * ({@code mme:large_animals} 20–25 min, {@code mme:medium_animals} 15–20 min,
+ * {@code mme:small_animals} 10–15 min; untagged 20–30 min). Once it reaches zero, adult
+ * animals tagged {@code MMEEntityTypeTags#PRODUCE_MANURE} drop one MANURE item (with an
+ * {@code ENTITY_PLACE} game event) and the countdown restarts. Sick animals
+ * ({@code SicknessCap}) freeze their manure timer entirely.</p>
  *
  * <p>Construction also registers {@link SeekDroppedFoodGoal} (priority 4): adults
  * outside their breeding cooldown and not in love seek nearby dropped food they
- * like ({@link Animal#isFood}), eat one item and enter love mode.</p>
+ * like ({@link Animal#isFood}), eat one item and enter love mode. After breeding, the
+ * vanilla 5-minute parent cooldown is stretched to a random 15–25 minutes.</p>
  */
 @Mixin(Animal.class)
 public abstract class AnimalMixin extends AgeableMob implements MMEPanicCooldown {
-    /** Ticks remaining until the next manure drop (random 24000–36000). */
+    /** Ticks remaining until the next manure drop; sized by the animal's body-size tag. */
     @Unique
     public int manureTime;
 
@@ -95,21 +101,45 @@ public abstract class AnimalMixin extends AgeableMob implements MMEPanicCooldown
     /** Initializes the manure countdown at construction. */
     @Inject(method = "<init>", at = @At("TAIL"))
     protected void init(EntityType<? extends AgeableMob> entityType, Level level, CallbackInfo ci) {
-        this.manureTime = this.random.nextInt(12000) + 24000;
+        this.manureTime = this.mme$nextManureInterval();
         this.goalSelector.addGoal(4, new SeekDroppedFoodGoal((Animal) (Object) this, 1.0D));
     }
 
     /**
+     * @return the next manure interval in ticks: a random window selected by the animal's
+     *         body-size tag (large 20–25 min, medium 15–20 min, small 10–15 min; untagged
+     *         animals keep the old 20–30 min window).
+     */
+    @Unique
+    private int mme$nextManureInterval() {
+        if (this.getType().builtInRegistryHolder().is(MMEEntityTypeTags.LARGE_ANIMALS)) {
+            return Mth.randomBetweenInclusive(this.random, 24000, 30000);
+        }
+        if (this.getType().builtInRegistryHolder().is(MMEEntityTypeTags.MEDIUM_ANIMALS)) {
+            return Mth.randomBetweenInclusive(this.random, 18000, 24000);
+        }
+        if (this.getType().builtInRegistryHolder().is(MMEEntityTypeTags.SMALL_ANIMALS)) {
+            return Mth.randomBetweenInclusive(this.random, 12000, 18000);
+        }
+        return Mth.randomBetweenInclusive(this.random, 24000, 36000);
+    }
+
+    /**
      * Counts down each tick on the server; adult {@code PRODUCE_MANURE} animals drop
-     * one manure when the timer expires and the countdown restarts. Also senses nearby
-     * predators: animals that spot a monster which preys on them are forced into panic.
+     * one manure when the timer expires and the countdown restarts. Sick animals keep
+     * their timer frozen. Also senses nearby predators: animals that spot a monster
+     * which preys on them are forced into panic.
      */
     @Inject(method = "aiStep", at = @At("TAIL"))
     protected void aiStep(CallbackInfo ci) {
-        if (this.level() instanceof ServerLevel serverLevel && this.getType().builtInRegistryHolder().is(MMEEntityTypeTags.PRODUCE_MANURE) && this.isAlive() && !this.isBaby() && --this.manureTime <= 0) {
+        if (this.level() instanceof ServerLevel serverLevel
+                && this.getType().builtInRegistryHolder().is(MMEEntityTypeTags.PRODUCE_MANURE)
+                && this.isAlive() && !this.isBaby()
+                && !(this instanceof SicknessCap sickCap && sickCap.mme$sicknessState().sick)
+                && --this.manureTime <= 0) {
             this.spawnAtLocation(serverLevel, MMEItems.MANURE);
             this.gameEvent(GameEvent.ENTITY_PLACE);
-            this.manureTime = this.random.nextInt(12000) + 24000;
+            this.manureTime = this.mme$nextManureInterval();
         }
         if (!this.level().isClientSide() && this.isAlive() && this.tickCount >= this.mme$nextPredatorScanTick) {
             this.mme$nextPredatorScanTick = this.tickCount + PREDATOR_SCAN_INTERVAL_TICKS;
@@ -128,6 +158,17 @@ public abstract class AnimalMixin extends AgeableMob implements MMEPanicCooldown
                 this.mme$setPanicSourcePos(nearest.position());
             }
         }
+    }
+
+    /**
+     * Stretches the vanilla 5-minute post-breeding parent cooldown to a random
+     * 15–25 minutes; runs at TAIL so it overwrites both vanilla {@code setAge(6000)} calls.
+     */
+    @Inject(method = "finalizeSpawnChildFromBreeding", at = @At("TAIL"))
+    protected void mme$stretchBreedCooldown(ServerLevel level, Animal other, AgeableMob baby, CallbackInfo ci) {
+        int cooldown = Mth.randomBetweenInclusive(this.random, 18000, 30000);
+        this.setAge(cooldown);
+        other.setAge(cooldown);
     }
 
     /**

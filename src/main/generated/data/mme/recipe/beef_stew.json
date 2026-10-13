@@ -4,7 +4,7 @@
     "minecraft:cooked_beef",
     "minecraft:potato",
     "minecraft:bowl",
-    "minecraft:brown_mushroom"
+    "#minecraft:mushrooms"
   ],
   "result": {
     "id": "mme:beef_stew"

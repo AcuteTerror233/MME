@@ -1,3 +1,5 @@
 // 26.3	-999999999-01-01T00:00:00	Might Makes Everything/Tags for minecraft:enchantment
-a97742bce7744b48a028e6e001755f2b7d94b2c3 data/minecraft/tags/enchantment/non_treasure.json
+d0a8717df0cf92172a33e09bd7920c56336003f5 data/minecraft/tags/enchantment/non_treasure.json
+c4b9961b161f4d4ea05c08757100c4063a6bd73a data/minecraft/tags/enchantment/on_random_loot.json
+c4b9961b161f4d4ea05c08757100c4063a6bd73a data/minecraft/tags/enchantment/tradeable.json
 8db22d704712e4420e0345953df0568816f1011d data/mme/tags/enchantment/equipment_drops_exclusive.json

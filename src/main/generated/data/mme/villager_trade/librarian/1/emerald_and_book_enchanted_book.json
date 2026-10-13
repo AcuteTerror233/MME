@@ -16,7 +16,12 @@
         "items": "minecraft:enchanted_book",
         "predicates": {
           "minecraft:stored_enchantments": [
-            {}
+            {
+              "levels": {
+                "max": 3,
+                "min": 1
+              }
+            }
           ]
         }
       },

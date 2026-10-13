@@ -2,8 +2,8 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     "mme:bowl_milk",
-    "minecraft:brown_mushroom",
-    "minecraft:brown_mushroom"
+    "#minecraft:mushrooms",
+    "#minecraft:mushrooms"
   ],
   "result": {
     "id": "mme:cream_of_mushroom_soup"

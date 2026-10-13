@@ -6,15 +6,19 @@ import com.acuteterror233.mite.world.effect.curse.CurseLogic;
 import com.acuteterror233.mite.world.effect.curse.CurseState;
 import com.acuteterror233.mite.world.effect.curse.MMECurses;
 import net.fabricmc.fabric.api.gametest.v1.GameTest;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.gametest.framework.GameTestHelper;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.entity.EntityTypes;
+import net.minecraft.world.entity.monster.Witch;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.GameType;
 
+import java.util.Set;
 import java.util.UUID;
 
 /**
@@ -122,6 +126,33 @@ public class WitchCurseGameTest {
         }
         if (CurseLogic.bannedBy(player, plant) != MMECurses.CANNOT_EAT_PLANTS) {
             helper.fail("INSULIN_RESISTANCE must not re-ban bread as sugary");
+            return;
+        }
+        helper.succeed();
+    }
+
+    /**
+     * One curse at a time: a witch cannot curse a player who already carries a curse, even
+     * a witch that has never cursed this player before; the original curse stays intact.
+     */
+    @GameTest
+    public void witchCannotStackCurses(GameTestHelper helper) {
+        Player player = helper.makeMockPlayer(GameType.SURVIVAL);
+        Witch firstWitch = helper.spawn(EntityTypes.WITCH, new BlockPos(1, 1, 1));
+        Witch secondWitch = helper.spawn(EntityTypes.WITCH, new BlockPos(2, 1, 1));
+
+        CurseLogic.applyCurseFromWitch(firstWitch, player);
+        Set<Holder<MobEffect>> carried = curseState(player).curses();
+        if (carried.size() != 1) {
+            helper.fail("A witch must inflict exactly one curse, got: " + carried.size());
+            return;
+        }
+        Holder<MobEffect> original = carried.iterator().next();
+
+        CurseLogic.applyCurseFromWitch(secondWitch, player);
+        CurseState state = curseState(player);
+        if (state.curses().size() != 1 || !state.hasCurse(original)) {
+            helper.fail("An already-cursed player must be immune to further witches");
             return;
         }
         helper.succeed();

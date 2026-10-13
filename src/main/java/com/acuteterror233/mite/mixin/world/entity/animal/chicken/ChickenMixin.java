@@ -7,6 +7,7 @@ import com.acuteterror233.mite.world.entity.ai.sickness.AnimalSicknessLogic;
 import com.acuteterror233.mite.world.entity.ai.sickness.SicknessCap;
 import com.acuteterror233.mite.world.entity.ai.sickness.SicknessRules;
 import com.acuteterror233.mite.world.entity.ai.sickness.SicknessState;
+import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
@@ -24,7 +25,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 /**
  * Mixin for {@code Chicken} — thirst, light and crowding sickness needs (no grazing),
- * egg laying suppressed while sick, sickness persistence, and no drops while sick.
+ * egg laying suppressed while sick, the egg interval stretched to 10–15 minutes,
+ * sickness persistence, and no drops while sick.
  */
 @Mixin(Chicken.class)
 public abstract class ChickenMixin extends Animal implements SicknessCap {
@@ -44,13 +46,26 @@ public abstract class ChickenMixin extends Animal implements SicknessCap {
         return mme$sickness;
     }
 
-    /** Registers the thirst, light-seeking and check goals after vanilla goals. */
+    /** Registers the thirst, light-seeking and check goals after vanilla goals, and
+     *  rescales the vanilla 5–10 minute initial egg timer to the stretched 10–15 minutes. */
     @Inject(method = "<init>", at = @At("TAIL"))
     private void mme$registerSicknessGoals(EntityType<? extends Chicken> type, Level level, CallbackInfo ci) {
         SicknessRules rules = SicknessRules.get();
         this.goalSelector.addGoal(5, new DrinkGoal((Animal) (Object) this, rules));
         this.goalSelector.addGoal(6, new SeekLightGoal((Animal) (Object) this, rules));
         this.goalSelector.addGoal(9, new SicknessCheckGoal((Animal) (Object) this));
+        this.eggTime += 6000;
+    }
+
+    /**
+     * Stretches the vanilla post-lay reroll ({@code nextInt(6000) + 6000} = 5–10 min) to
+     * 10–15 minutes: the single {@code nextInt} call in {@code aiStep} yields 6000–12000,
+     * to which the vanilla {@code + 6000} is still added.
+     */
+    @ModifyExpressionValue(method = "aiStep",
+            at = @At(value = "INVOKE", target = "Lnet/minecraft/util/RandomSource;nextInt(I)I"))
+    private int mme$stretchEggInterval(int original) {
+        return original + 6000;
     }
 
     /** Freezes the egg timer while the chicken is sick: resetting it at HEAD keeps the

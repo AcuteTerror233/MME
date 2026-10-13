@@ -13,6 +13,10 @@ import net.minecraft.world.entity.EntityType;
  */
 public class MMEEntityTypeIds {
     public static final ResourceKey<EntityType<?>> GHOUL = create("ghoul");
+    public static final ResourceKey<EntityType<?>> REVENANT = create("revenant");
+    public static final ResourceKey<EntityType<?>> ANCIENT_CORPSE = create("ancient_corpse");
+    public static final ResourceKey<EntityType<?>> SKELETON_LORD = create("skeleton_lord");
+    public static final ResourceKey<EntityType<?>> ANCIENT_SKELETON_LORD = create("ancient_skeleton_lord");
     public static final ResourceKey<EntityType<?>> SHADOW = create("shadow");
     public static final ResourceKey<EntityType<?>> WIGHT = create("wight");
     public static final ResourceKey<EntityType<?>> INVISIBLE_STALKER = create("invisible_stalker");

@@ -104,7 +104,20 @@ public class MMETagProvider {
                     .add(MMEEnchantments.BUTCHERING)
                     .add(MMEEnchantments.CLEAVING)
                     .add(MMEEnchantments.HARVESTING)
-                    .add(MMEEnchantments.FERTILITY);
+                    .add(MMEEnchantments.FERTILITY)
+                    .add(MMEEnchantments.SPEED);
+            builder(EnchantmentTags.ON_RANDOM_LOOT)
+                    .setReplace(true)
+                    .addTag(EnchantmentTags.NON_TREASURE)
+                    .add(Enchantments.BINDING_CURSE)
+                    .add(Enchantments.VANISHING_CURSE)
+                    .add(Enchantments.FROST_WALKER);
+            builder(EnchantmentTags.TRADEABLE)
+                    .setReplace(true)
+                    .addTag(EnchantmentTags.NON_TREASURE)
+                    .add(Enchantments.BINDING_CURSE)
+                    .add(Enchantments.VANISHING_CURSE)
+                    .add(Enchantments.FROST_WALKER);
             builder(MMEEnchantmentTags.EQUIPMENT_DROPS_EXCLUSIVE)
                     .add(Enchantments.LOOTING)
                     .add(MMEEnchantments.BUTCHERING);
@@ -143,9 +156,18 @@ public class MMETagProvider {
         protected void addTags(HolderLookup.Provider wrapperLookup) {
             builder(EntityTypeTags.ZOMBIES)
                     .add(MMEEntityTypeIds.GHOUL)
+                    .add(MMEEntityTypeIds.REVENANT)
                     .add(MMEEntityTypeIds.SHADOW)
                     .add(MMEEntityTypeIds.WIGHT)
                     .add(MMEEntityTypeIds.INVISIBLE_STALKER);
+            builder(EntityTypeTags.SKELETONS)
+                    .add(MMEEntityTypeIds.ANCIENT_CORPSE)
+                    .add(MMEEntityTypeIds.SKELETON_LORD)
+                    .add(MMEEntityTypeIds.ANCIENT_SKELETON_LORD);
+            builder(EntityTypeTags.UNDEAD)
+                    .add(MMEEntityTypeIds.ANCIENT_CORPSE)
+                    .add(MMEEntityTypeIds.SKELETON_LORD)
+                    .add(MMEEntityTypeIds.ANCIENT_SKELETON_LORD);
             builder(EntityTypeTags.ARTHROPOD)
                     .add(MMEEntityTypeIds.DEMON_SPIDER)
                     .add(MMEEntityTypeIds.PHASE_SPIDER);
@@ -158,6 +180,7 @@ public class MMETagProvider {
                     .add(EntityTypeIds.SHEEP)
                     .add(EntityTypeIds.RABBIT);
             builder(MMEEntityTypeTags.PRODUCE_MANURE)
+                    .add(EntityTypeIds.CHICKEN)
                     .add(EntityTypeIds.COW)
                     .add(EntityTypeIds.CAMEL)
                     .add(EntityTypeIds.DONKEY)
@@ -169,9 +192,29 @@ public class MMETagProvider {
                     .add(EntityTypeIds.PANDA)
                     .add(EntityTypeIds.PIG)
                     .add(EntityTypeIds.POLAR_BEAR)
+                    .add(EntityTypeIds.RABBIT)
                     .add(EntityTypeIds.SHEEP)
                     .add(EntityTypeIds.SNIFFER)
                     .add(EntityTypeIds.TRADER_LLAMA);
+            builder(MMEEntityTypeTags.LARGE_ANIMALS)
+                    .add(EntityTypeIds.COW)
+                    .add(EntityTypeIds.CAMEL)
+                    .add(EntityTypeIds.DONKEY)
+                    .add(EntityTypeIds.HORSE)
+                    .add(EntityTypeIds.LLAMA)
+                    .add(EntityTypeIds.MOOSHROOM)
+                    .add(EntityTypeIds.MULE)
+                    .add(EntityTypeIds.PANDA)
+                    .add(EntityTypeIds.POLAR_BEAR)
+                    .add(EntityTypeIds.SNIFFER)
+                    .add(EntityTypeIds.TRADER_LLAMA);
+            builder(MMEEntityTypeTags.MEDIUM_ANIMALS)
+                    .add(EntityTypeIds.GOAT)
+                    .add(EntityTypeIds.PIG)
+                    .add(EntityTypeIds.SHEEP);
+            builder(MMEEntityTypeTags.SMALL_ANIMALS)
+                    .add(EntityTypeIds.CHICKEN)
+                    .add(EntityTypeIds.RABBIT);
         }
     }
 
@@ -517,7 +560,7 @@ public class MMETagProvider {
                     .add(MMEItemIds.BANANA)
                     .add(MMEItemIds.ORANGE)
                     .add(MMEItemIds.LEMON)
-                    .add(MMEItemIds.ONION)
+                    .add(MMEBlockItemIds.ONION.asItem())
                     .add(MMEItemIds.CHOCOLATE)
                     .add(MMEItemIds.FLOUR)
                     .add(MMEItemIds.DOUGH)
@@ -1073,6 +1116,17 @@ public class MMETagProvider {
                     .addTag(MMEItemTags.SHEARS);
             builder(ItemTags.MINING_ENCHANTABLE)
                     .addTag(MMEItemTags.SHEARS);
+            // MME melee weapons must be sharpness-enchantable: mobs carry MME weapons (rusted
+            // iron swords, war hammers, battle axes...) and the cycle weapon enchantment in
+            // MobMixin checks the sharpness support set
+            builder(ItemTags.SHARP_WEAPON_ENCHANTABLE)
+                    .forceAddTag(ItemTags.SWORDS)
+                    .forceAddTag(ItemTags.AXES)
+                    .forceAddTag(ItemTags.SPEARS)
+                    .addTag(MMEItemTags.WAR_HAMMER)
+                    .addTag(MMEItemTags.SCYTHE)
+                    .add(MMEItemIds.WOODEN_CLUB)
+                    .add(MMEItemIds.WOODEN_CUDGEL);
 
             builder(MMEItemTags.STRING)
                     .add(BlockItemIds.TRIPWIRE.item())

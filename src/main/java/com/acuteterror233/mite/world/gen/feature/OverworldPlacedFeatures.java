@@ -37,13 +37,13 @@ public class OverworldPlacedFeatures {
         PlacementUtils.register(featureRegisterable, OVERWORLD_ORE_SILVER, ore_silver,
                 CountPlacement.of(16),
                 InSquarePlacement.spread(),
-                HeightRangePlacement.uniform(VerticalAnchor.absolute(-48), VerticalAnchor.absolute(144)),
+                HeightRangePlacement.triangle(VerticalAnchor.absolute(-48), VerticalAnchor.absolute(144)),
                 BiomeFilter.biome()
         );
         PlacementUtils.register(featureRegisterable, OVERWORLD_ORE_SILVER_SMALL, ore_silver_small,
                 CountPlacement.of(16),
                 InSquarePlacement.spread(),
-                HeightRangePlacement.uniform(VerticalAnchor.absolute(-48), VerticalAnchor.absolute(144)),
+                HeightRangePlacement.triangle(VerticalAnchor.absolute(-48), VerticalAnchor.absolute(144)),
                 BiomeFilter.biome()
         );
         // Blueberry bushes on the surface, only over grass blocks; common occurs 6x more often than rare.

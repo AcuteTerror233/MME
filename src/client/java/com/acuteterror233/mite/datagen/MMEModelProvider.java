@@ -68,6 +68,7 @@ public class MMEModelProvider extends FabricModelProvider {
         extendedAccessor.MME$registerCrop(Blocks.CARROTS, BlockStateProperties.AGE_7, 0, 0, 1, 1, 2, 2, 2, 3);
         extendedAccessor.MME$registerCrop(Blocks.POTATOES, BlockStateProperties.AGE_7, 0, 0, 1, 1, 2, 2, 2, 3);
         extendedAccessor.MME$registerCrop(Blocks.BEETROOTS, BlockStateProperties.AGE_3, 0, 1, 2, 3);
+        extendedAccessor.MME$registerCrop(MMEBlocks.ONION, BlockStateProperties.AGE_4, 0, 1, 2, 3, 4);
         extendedAccessor.MME$registerFarmland();
 
 //        blockStateModelGenerator.registerSimpleCubeAll(AtBlocks.MITHRIL_NUL_RUNESTORE);
@@ -494,6 +495,10 @@ public class MMEModelProvider extends FabricModelProvider {
         itemModelGenerator.generateFlatItem(MMEItems.MANURE,  ModelTemplates.FLAT_ITEM);
 
         itemModelGenerator.generateFlatItem(MMEItems.GHOUL_SPAWN_EGG, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(MMEItems.REVENANT_SPAWN_EGG, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(MMEItems.ANCIENT_CORPSE_SPAWN_EGG, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(MMEItems.SKELETON_LORD_SPAWN_EGG, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(MMEItems.ANCIENT_SKELETON_LORD_SPAWN_EGG, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(MMEItems.SHADOW_SPAWN_EGG, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(MMEItems.WIGHT_SPAWN_EGG, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(MMEItems.INVISIBLE_STALKER_SPAWN_EGG, ModelTemplates.FLAT_ITEM);

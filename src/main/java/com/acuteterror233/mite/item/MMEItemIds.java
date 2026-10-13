@@ -68,7 +68,6 @@ public class MMEItemIds {
     public static final ResourceKey<Item> CHOCOLATE = create("chocolate");
     public static final ResourceKey<Item> DOUGH = create("dough");
     public static final ResourceKey<Item> LEMON = create("lemon");
-    public static final ResourceKey<Item> ONION = create("onion");
     public static final ResourceKey<Item> ORANGE = create("orange");
     public static final ResourceKey<Item> WORM_COOKED = create("worm_cooked");
     public static final ResourceKey<Item> WORM_RAW = create("worm_raw");
@@ -354,6 +353,10 @@ public class MMEItemIds {
     public static final ResourceKey<Item> SINEW = create("sinew");
     public static final ResourceKey<Item> MANURE = create("manure");
     public static final ResourceKey<Item> GHOUL_SPAWN_EGG = create("ghoul_spawn_egg");
+    public static final ResourceKey<Item> REVENANT_SPAWN_EGG = create("revenant_spawn_egg");
+    public static final ResourceKey<Item> ANCIENT_CORPSE_SPAWN_EGG = create("ancient_corpse_spawn_egg");
+    public static final ResourceKey<Item> SKELETON_LORD_SPAWN_EGG = create("skeleton_lord_spawn_egg");
+    public static final ResourceKey<Item> ANCIENT_SKELETON_LORD_SPAWN_EGG = create("ancient_skeleton_lord_spawn_egg");
     public static final ResourceKey<Item> SHADOW_SPAWN_EGG = create("shadow_spawn_egg");
     public static final ResourceKey<Item> WIGHT_SPAWN_EGG = create("wight_spawn_egg");
     public static final ResourceKey<Item> INVISIBLE_STALKER_SPAWN_EGG = create("invisible_stalker_spawn_egg");

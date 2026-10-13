@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/crop",
+  "textures": {
+    "crop": "mme:block/crops/onion_diseases_stage4"
+  }
+}

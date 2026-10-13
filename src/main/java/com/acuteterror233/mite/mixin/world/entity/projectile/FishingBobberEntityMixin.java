@@ -9,10 +9,13 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
+import org.spongepowered.asm.mixin.injection.Constant;
+import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
 /**
  * Mixin for {@code FishingHook} — Keeps the bobber attached while any tagged fishing rod
- * (main or off hand) is held within 32 blocks of the owner.
+ * (main or off hand) is held within 32 blocks of the owner, and re-anchors the fish-wait
+ * roll to 2400-6000 ticks (2-5 minutes) instead of vanilla 100-600 (5-30 seconds).
  */
 @Mixin(FishingHook.class)
 public abstract class FishingBobberEntityMixin extends Projectile {
@@ -37,5 +40,22 @@ public abstract class FishingBobberEntityMixin extends Projectile {
             this.discard();
             return true;
         }
+    }
+
+    /**
+     * Vanilla wait roll is {@code nextInt(100, 600) - lureSpeed}; re-anchors the lower bound
+     * to 2400 ticks (2 minutes). The lure-speed subtraction is left untouched.
+     */
+    @ModifyConstant(method = "catchingFish", constant = @Constant(intValue = 100))
+    private int mme$minFishWaitTicks(int original) {
+        return 2400;
+    }
+
+    /**
+     * Re-anchors the upper bound of the wait roll to 6000 ticks (5 minutes).
+     */
+    @ModifyConstant(method = "catchingFish", constant = @Constant(intValue = 600))
+    private int mme$maxFishWaitTicks(int original) {
+        return 6000;
     }
 }

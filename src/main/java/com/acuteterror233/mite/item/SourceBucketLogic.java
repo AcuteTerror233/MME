@@ -123,21 +123,6 @@ public final class SourceBucketLogic {
 
     /** @return the player's current total XP points (accumulated level costs plus current-level progress). */
     private static int totalXp(ServerPlayer player) {
-        int total = Math.round(player.experienceProgress * player.getXpNeededForNextLevel());
-        for (int level = 0; level < player.experienceLevel; level++) {
-            total += xpToNextLevel(level);
-        }
-        return total;
-    }
-
-    /** @return the XP points required to advance from the given level to the next one. */
-    private static int xpToNextLevel(int level) {
-        if (level >= 31) {
-            return 9 * level - 158;
-        }
-        if (level >= 16) {
-            return 5 * level - 38;
-        }
-        return 2 * level + 7;
+        return player.totalExperience;
     }
 }

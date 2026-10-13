@@ -161,12 +161,14 @@ public class UndergroundBiomeCreator {
         builder.addSpawn(MMEEntityTypes.GHOUL, 10, UniformInt.of(4, 4));
         builder.addSpawn(MMEEntityTypes.SHADOW, 10, UniformInt.of(1, 3));
         builder.addSpawn(MMEEntityTypes.WIGHT, 10, UniformInt.of(1, 2));
+        builder.addSpawn(MMEEntityTypes.REVENANT, 5, UniformInt.of(1, 1));
+        builder.addSpawn(MMEEntityTypes.ANCIENT_CORPSE, 5, UniformInt.of(1, 1));
         builder.addSpawn(MMEEntityTypes.INVISIBLE_STALKER, 5, UniformInt.of(1, 3));
         builder.addSpawn(MMEEntityTypes.DEMON_SPIDER, 6, UniformInt.of(1, 3));
         builder.addSpawn(MMEEntityTypes.PHASE_SPIDER, 9, UniformInt.of(2, 4));
         builder.addSpawn(MMEEntityTypes.INFERNAL_CREEPER, 8, UniformInt.of(1, 2));
-        builder.addSpawn(MMEEntityTypes.VAMPIRE_BAT, 5, UniformInt.of(2, 5));
-        builder.addSpawn(MMEEntityTypes.NIGHTWING, 3, UniformInt.of(1, 2));
-        builder.addSpawn(MMEEntityTypes.GIANT_VAMPIRE_BAT, 2, UniformInt.of(1, 1));
+        builder.addSpawn(MMEEntityTypes.VAMPIRE_BAT, 10, UniformInt.of(2, 5));
+        builder.addSpawn(MMEEntityTypes.NIGHTWING, 10, UniformInt.of(1, 2));
+        builder.addSpawn(MMEEntityTypes.GIANT_VAMPIRE_BAT, 10, UniformInt.of(1, 1));
     }
 }

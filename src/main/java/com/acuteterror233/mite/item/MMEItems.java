@@ -380,7 +380,8 @@ public class MMEItems {
                     .stacksTo(16)
     );
     public static final Item ONION = register(
-            MMEItemIds.ONION,
+            MMEBlockItemIds.ONION.itemKey(),
+            Items.createBlockItemWithCustomItemName(MMEBlocks.ONION),
             new Item.Properties()
                     .food(new FoodProperties(1, 1.0F, false))
                     .component(MMEDataComponents.FOOD_NUTRITION, FoodNutrition.builder().fiber(8000).build())
@@ -686,42 +687,42 @@ public class MMEItems {
 
     public static final Item NETHERITE_COINS = register(
             MMEItemIds.NETHERITE_COINS,
-            settings -> new CoinsItem(settings, 5000),
+            settings -> new CoinsItem(settings, 20000),
             new Item.Properties().stacksTo(32)
     );
     public static final Item ADAMANTIUM_COINS = register(
             MMEItemIds.ADAMANTIUM_COINS,
-            settings -> new CoinsItem(settings, 1000),
+            settings -> new CoinsItem(settings, 10000),
             new Item.Properties().stacksTo(32)
     );
     public static final Item MITHRIL_COINS = register(
             MMEItemIds.MITHRIL_COINS,
-            settings -> new CoinsItem(settings, 500),
+            settings -> new CoinsItem(settings, 5000),
             new Item.Properties().stacksTo(32)
     );
     public static final Item ANCIENT_METAL_COINS = register(
             MMEItemIds.ANCIENT_METAL_COINS,
-            settings -> new CoinsItem(settings, 300),
+            settings -> new CoinsItem(settings, 2000),
             new Item.Properties().stacksTo(32)
     );
     public static final Item IRON_COINS = register(
             MMEItemIds.IRON_COINS,
-            settings -> new CoinsItem(settings, 200),
+            settings -> new CoinsItem(settings, 800),
             new Item.Properties().stacksTo(32)
     );
     public static final Item GOLDEN_COINS = register(
             MMEItemIds.GOLDEN_COINS,
-            settings -> new CoinsItem(settings, 500),
+            settings -> new CoinsItem(settings, 1200),
             new Item.Properties().stacksTo(32)
     );
     public static final Item COPPER_COINS = register(
             MMEItemIds.COPPER_COINS,
-            settings -> new CoinsItem(settings, 50),
+            settings -> new CoinsItem(settings, 200),
             new Item.Properties().stacksTo(32)
     );
     public static final Item SILVER_COINS = register(
             MMEItemIds.SILVER_COINS,
-            settings -> new CoinsItem(settings, 50),
+            settings -> new CoinsItem(settings, 200),
             new Item.Properties().stacksTo(32)
     );
 
@@ -1359,27 +1360,27 @@ public class MMEItems {
 
     public static final Item NETHERITE_NUGGET = register(
             MMEItemIds.NETHERITE_NUGGET,
-            settings -> new NuggetItem(settings, 5000),
+            settings -> new NuggetItem(settings, 20000),
             new Item.Properties().component(MMEDataComponents.CRAFTING_TIME, 5.0F)
     );
     public static final Item ADAMANTIUM_NUGGET = register(
             MMEItemIds.ADAMANTIUM_NUGGET,
-            settings -> new NuggetItem(settings, 1000),
+            settings -> new NuggetItem(settings, 10000),
             new Item.Properties().component(MMEDataComponents.CRAFTING_TIME, 3.0F)
     );
     public static final Item MITHRIL_NUGGET = register(
             MMEItemIds.MITHRIL_NUGGET,
-            settings -> new NuggetItem(settings, 500),
+            settings -> new NuggetItem(settings, 5000),
             new Item.Properties().component(MMEDataComponents.CRAFTING_TIME, 2.0F)
     );
     public static final Item ANCIENT_METAL_NUGGET = register(
             MMEItemIds.ANCIENT_METAL_NUGGET,
-            settings -> new NuggetItem(settings, 300),
+            settings -> new NuggetItem(settings, 2000),
             new Item.Properties().component(MMEDataComponents.CRAFTING_TIME, 1.0F)
     );
     public static final Item SILVER_NUGGET = register(
             MMEItemIds.SILVER_NUGGET,
-            settings -> new NuggetItem(settings, 50),
+            settings -> new NuggetItem(settings, 200),
             new Item.Properties().component(MMEDataComponents.CRAFTING_TIME, 0.5F)
     );
 
@@ -1399,6 +1400,26 @@ public class MMEItems {
             MMEItemIds.GHOUL_SPAWN_EGG,
             SpawnEggItem::new,
             new Item.Properties().spawnEgg(MMEEntityTypes.GHOUL)
+    );
+    public static final Item REVENANT_SPAWN_EGG = register(
+            MMEItemIds.REVENANT_SPAWN_EGG,
+            SpawnEggItem::new,
+            new Item.Properties().spawnEgg(MMEEntityTypes.REVENANT)
+    );
+    public static final Item ANCIENT_CORPSE_SPAWN_EGG = register(
+            MMEItemIds.ANCIENT_CORPSE_SPAWN_EGG,
+            SpawnEggItem::new,
+            new Item.Properties().spawnEgg(MMEEntityTypes.ANCIENT_CORPSE)
+    );
+    public static final Item SKELETON_LORD_SPAWN_EGG = register(
+            MMEItemIds.SKELETON_LORD_SPAWN_EGG,
+            SpawnEggItem::new,
+            new Item.Properties().spawnEgg(MMEEntityTypes.SKELETON_LORD)
+    );
+    public static final Item ANCIENT_SKELETON_LORD_SPAWN_EGG = register(
+            MMEItemIds.ANCIENT_SKELETON_LORD_SPAWN_EGG,
+            SpawnEggItem::new,
+            new Item.Properties().spawnEgg(MMEEntityTypes.ANCIENT_SKELETON_LORD)
     );
     public static final Item SHADOW_SPAWN_EGG = register(
             MMEItemIds.SHADOW_SPAWN_EGG,
@@ -2154,6 +2175,10 @@ public class MMEItems {
             output.accept(SHADOW_SPAWN_EGG);
             output.accept(WIGHT_SPAWN_EGG);
             output.accept(INVISIBLE_STALKER_SPAWN_EGG);
+            output.accept(REVENANT_SPAWN_EGG);
+            output.accept(ANCIENT_CORPSE_SPAWN_EGG);
+            output.accept(SKELETON_LORD_SPAWN_EGG);
+            output.accept(ANCIENT_SKELETON_LORD_SPAWN_EGG);
             output.accept(DEMON_SPIDER_SPAWN_EGG);
             output.accept(PHASE_SPIDER_SPAWN_EGG);
             output.accept(INFERNAL_CREEPER_SPAWN_EGG);

@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_transmute",
+  "category": "equipment",
+  "input": "mme:mithril_hatchet",
+  "material": "mme:adamantium_ingot",
+  "material_count": 2,
+  "result": {
+    "components": {
+      "minecraft:damage": 0
+    },
+    "id": "mme:adamantium_hatchet"
+  }
+}

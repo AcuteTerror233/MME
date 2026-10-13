@@ -4,6 +4,7 @@
 ed25358a34554c49dadb431ec43a861d43a165f9 data/minecraft/tags/item/enchantable/durability.json
 4f0af8badd4d4a5a80e5f98a3451c651d9c115eb data/minecraft/tags/item/enchantable/fishing.json
 04ae86224544965b2b2196d69d40f99eea4530a6 data/minecraft/tags/item/enchantable/mining.json
+3d928922ca9cbb08cd3ab07831c0b2392ea23065 data/minecraft/tags/item/enchantable/sharp_weapon.json
 bcb210a32131495dd581561f3b386f9a1e4fc60a data/minecraft/tags/item/foot_armor.json
 b5d507ad0b0adbac2dd540ca1e281b2b5e278a90 data/minecraft/tags/item/head_armor.json
 bc97065c6eea301cf747087485af96222739b870 data/minecraft/tags/item/hoes.json

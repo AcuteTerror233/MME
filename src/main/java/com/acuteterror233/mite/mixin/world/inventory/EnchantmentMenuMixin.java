@@ -1,34 +1,30 @@
 package com.acuteterror233.mite.mixin.world.inventory;
 
 import com.acuteterror233.mite.interfaces.EnchantmentMenuExtension;
-import com.acuteterror233.mite.item.enchantment.MMEEnchantments;
 import com.acuteterror233.mite.registry.EnchantedUpgradeRegistry;
 import com.acuteterror233.mite.registry.tag.MMEBlockTags;
 import net.minecraft.advancements.triggers.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.IdMap;
 import net.minecraft.core.RegistryAccess;
-import net.minecraft.core.registries.Registries;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.util.RandomSource;
+import net.minecraft.util.Util;
 import net.minecraft.world.Container;
-import net.minecraft.world.attribute.EnvironmentAttributes;
+import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.inventory.ContainerLevelAccess;
-import net.minecraft.world.inventory.DataSlot;
-import net.minecraft.world.inventory.EnchantmentMenu;
+import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.EnchantmentInstance;
-import net.minecraft.world.level.MoonPhase;
 import net.minecraft.world.level.block.EnchantingTableBlock;
+import org.jspecify.annotations.NonNull;
+import org.jspecify.annotations.Nullable;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -53,9 +49,7 @@ import java.util.List;
  * </ul>
  */
 @Mixin(EnchantmentMenu.class)
-public abstract class EnchantmentMenuMixin implements EnchantmentMenuExtension {
-    @Unique
-    private static final int[] mme$MOON_INFLUENCE_INTENSITY_PER_PHASE = new int[]{3, 2, 1, -1, -2, -1, 1, 2};
+public abstract class EnchantmentMenuMixin extends AbstractContainerMenu implements EnchantmentMenuExtension {
 
     /**
      * Per-instance cap for the enchantment power (bookshelf count + moon influence).
@@ -87,8 +81,15 @@ public abstract class EnchantmentMenuMixin implements EnchantmentMenuExtension {
     @Shadow
     public int[] levelClue;
 
-    @Shadow
-    public abstract void slotsChanged(Container container);
+    protected EnchantmentMenuMixin(@Nullable MenuType<?> menuType, int containerId) {
+        super(menuType, containerId);
+    }
+    @Inject(method = "<init>(ILnet/minecraft/world/entity/player/Inventory;Lnet/minecraft/world/inventory/ContainerLevelAccess;)V", at = @At("TAIL"))
+    public void init(int containerId, Inventory inventory, ContainerLevelAccess access, CallbackInfo ci){
+        this.addDataSlot(DataSlot.shared(EnchantmentMenuExtension.xpCosts, 0));
+        this.addDataSlot(DataSlot.shared(EnchantmentMenuExtension.xpCosts, 1));
+        this.addDataSlot(DataSlot.shared(EnchantmentMenuExtension.xpCosts, 2));
+    }
 
     @Shadow
     protected abstract List<EnchantmentInstance> getEnchantmentList(RegistryAccess registryAccess, ItemStack stack, int button, int cost);
@@ -113,29 +114,37 @@ public abstract class EnchantmentMenuMixin implements EnchantmentMenuExtension {
      * RandomSource.nextInt during waning/new moons). The vanilla logic itself is replicated
      * verbatim from the 26.3 bytecode.
      */
-    @Inject(method = "slotsChanged", at = @At("HEAD"), cancellable = true)
-    private void mme$slotsChanged(Container container, CallbackInfo ci) {
+    @Override
+    public void slotsChanged(@NonNull Container container) {
         if (container != this.enchantSlots) {
             return;
         }
-        ci.cancel();
         ItemStack stack = container.getItem(0);
         if (!stack.isEmpty() && (stack.isEnchantable() || EnchantedUpgradeRegistry.getUpgrade(stack) != null)) {
             this.access.execute((level, pos) -> {
-                IdMap<Holder<Enchantment>> idMap = level.registryAccess().lookupOrThrow(Registries.ENCHANTMENT).asHolderIdMap();
-                int shelves = 0;
+                Item upgrade = EnchantedUpgradeRegistry.getUpgrade(stack);
+                if (upgrade != null) {
+                    for (int i = 0; i < 3; i++) {
+                        this.costs[i] = 551775262;
+                        EnchantmentMenuExtension.xpCosts[i] = 200;
+                        this.enchantClue[i] = -1;
+                        this.levelClue[i] = 1;
+                    }
+                    this.broadcastChanges();
+                    return;
+                }
+                int bookcases = 0;
 
                 for (BlockPos offset : EnchantingTableBlock.BOOKSHELF_OFFSETS) {
                     if (EnchantingTableBlock.isValidBookShelf(level, pos, offset)) {
-                        shelves++;
+                        bookcases++;
                     }
                 }
-                MoonPhase moonPhase = level.environmentAttributes().getValue(EnvironmentAttributes.MOON_PHASE, pos);
-                int power = Math.max(0, Math.min(shelves + mme$MOON_INFLUENCE_INTENSITY_PER_PHASE[moonPhase.index()], this.mme$maxEnchantmentLevel));
                 this.random.setSeed(this.enchantmentSeed.get());
 
                 for (int j = 0; j < 3; j++) {
-                    this.costs[j] = EnchantmentHelper.getEnchantmentCost(this.random, j, power, stack);
+                    this.costs[j] = EnchantmentHelper.getEnchantmentCost(this.random, j, Math.min(bookcases, mme$maxEnchantmentLevel), stack);
+                    EnchantmentMenuExtension.xpCosts[j] = (int) ((bookcases * stack.get(DataComponents.ENCHANTABLE).value() * this.costs[j]) * 0.6);
                     this.enchantClue[j] = -1;
                     this.levelClue[j] = -1;
                     if (this.costs[j] < j + 1) {
@@ -147,31 +156,18 @@ public abstract class EnchantmentMenuMixin implements EnchantmentMenuExtension {
                     if (this.costs[j] > 0) {
                         List<EnchantmentInstance> list = this.getEnchantmentList(level.registryAccess(), stack, j, this.costs[j]);
                         if (!list.isEmpty()) {
-                            EnchantmentInstance instance = list.get(this.random.nextInt(list.size()));
-                            this.enchantClue[j] = idMap.getId(instance.enchantment());
-                            this.levelClue[j] = instance.level();
+                            this.enchantClue[j] = -1;
+                            this.levelClue[j] = -1;
                         }
                     }
                 }
 
-                Item upgrade = EnchantedUpgradeRegistry.getUpgrade(stack);
-                if (upgrade != null) {
-                    this.costs[0] = 2;
-                    this.costs[1] = 0;
-                    this.costs[2] = 0;
-                    this.enchantClue[0] = idMap.getId(level.registryAccess().lookupOrThrow(Registries.ENCHANTMENT).get(MMEEnchantments.UPGRADE).orElseThrow());
-                    this.levelClue[0] = 1;
-                    this.enchantClue[1] = -1;
-                    this.levelClue[1] = -1;
-                    this.enchantClue[2] = -1;
-                    this.levelClue[2] = -1;
-                }
-
-                ((AbstractContainerMenu) (Object) this).broadcastChanges();
+                this.broadcastChanges();
             });
         } else {
             for (int i = 0; i < 3; i++) {
                 this.costs[i] = 0;
+                EnchantmentMenuExtension.xpCosts[i] = 0;
                 this.enchantClue[i] = -1;
                 this.levelClue[i] = -1;
             }
@@ -179,45 +175,68 @@ public abstract class EnchantmentMenuMixin implements EnchantmentMenuExtension {
     }
 
     /** Upgrade items are enchanted through the transmutation path (vanilla enchantment-list path is skipped). */
-    @Inject(method = "clickMenuButton", at = @At("HEAD"), cancellable = true)
-    private void mme$performUpgrade(Player player, int button, CallbackInfoReturnable<Boolean> cir) {
-        if (button < 0 || button >= this.costs.length) {
-            return;
-        }
-        ItemStack stack = this.enchantSlots.getItem(0);
-        Item upgrade = EnchantedUpgradeRegistry.getUpgrade(stack);
-        if (upgrade == null) {
-            return;
-        }
-        if (button != 0) {
-            cir.setReturnValue(false);
-            return;
-        }
-        ItemStack lapis = this.enchantSlots.getItem(1);
-        int cost = button + 1;
-        if ((lapis.isEmpty() || lapis.getCount() < cost) && !player.hasInfiniteMaterials()) {
-            cir.setReturnValue(false);
-        } else if (this.costs[button] <= 0 || stack.isEmpty() || (player.experienceLevel < cost || player.experienceLevel < this.costs[button]) && !player.hasInfiniteMaterials()) {
-            cir.setReturnValue(false);
-        } else {
+    @Override
+    public boolean clickMenuButton(@NonNull Player player, int buttonId) {
+        if (buttonId >= 0 && buttonId < this.costs.length) {
+            ItemStack itemStack = this.enchantSlots.getItem(0);
+            ItemStack currency = this.enchantSlots.getItem(1);
+            int enchantmentCost = buttonId + 1;
+            Item upgrade = EnchantedUpgradeRegistry.getUpgrade(itemStack);
+            if ((currency.isEmpty() || currency.getCount() < enchantmentCost) && !player.hasInfiniteMaterials() && upgrade == null) {
+                return false;
+            }
+
+            if (this.costs[buttonId] <= 0 || itemStack.isEmpty() || player.totalExperience < EnchantmentMenuExtension.xpCosts[buttonId] && !player.hasInfiniteMaterials()) {
+                return false;
+            }
+
             this.access.execute((level, pos) -> {
-                player.onEnchantmentPerformed(stack, cost);
-                ItemStack result = stack.transmuteCopy(upgrade);
-                this.enchantSlots.setItem(0, result);
-                lapis.consume(cost, player);
-                if (lapis.isEmpty()) {
-                    this.enchantSlots.setItem(1, ItemStack.EMPTY);
+                if (upgrade != null) {
+                    player.onEnchantmentPerformed(upgrade.getDefaultInstance(), EnchantmentMenuExtension.xpCosts[buttonId]);
+                    ItemStack stack = upgrade.getDefaultInstance();
+                    this.enchantSlots.setItem(0, stack);
+                    player.awardStat(Stats.ENCHANT_ITEM);
+                    this.enchantSlots.setChanged();
+                    if (player instanceof ServerPlayer serverPlayer) {
+                        CriteriaTriggers.ENCHANTED_ITEM.trigger(serverPlayer, stack, enchantmentCost);
+                    }
+                    this.slotsChanged(this.enchantSlots);
+                    level.playSound(null, pos, SoundEvents.ENCHANTMENT_TABLE_USE, SoundSource.BLOCKS, 1.0F, level.getRandom().nextFloat() * 0.1F + 0.9F);
+                    return;
                 }
-                player.awardStat(Stats.ENCHANT_ITEM);
-                if (player instanceof ServerPlayer serverPlayer) {
-                    CriteriaTriggers.ENCHANTED_ITEM.trigger(serverPlayer, result, cost);
+                ItemStack enchantmentItem = itemStack;
+                List<EnchantmentInstance> newEnchantment = this.getEnchantmentList(level.registryAccess(), enchantmentItem, buttonId, this.costs[buttonId]);
+                if (!newEnchantment.isEmpty()) {
+                    player.onEnchantmentPerformed(enchantmentItem, this.xpCosts[buttonId]);
+                    if (enchantmentItem.is(Items.BOOK)) {
+                        enchantmentItem = itemStack.transmuteCopy(Items.ENCHANTED_BOOK);
+                        this.enchantSlots.setItem(0, enchantmentItem);
+                    }
+
+                    for (EnchantmentInstance enchantment : newEnchantment) {
+                        enchantmentItem.enchant(enchantment.enchantment(), enchantment.level());
+                    }
+
+                    currency.consume(enchantmentCost, player);
+                    if (currency.isEmpty()) {
+                        this.enchantSlots.setItem(1, ItemStack.EMPTY);
+                    }
+
+                    player.awardStat(Stats.ENCHANT_ITEM);
+                    if (player instanceof ServerPlayer serverPlayer) {
+                        CriteriaTriggers.ENCHANTED_ITEM.trigger(serverPlayer, enchantmentItem, enchantmentCost);
+                    }
+
+                    this.enchantSlots.setChanged();
+                    this.enchantmentSeed.set(player.getEnchantmentSeed());
+                    this.slotsChanged(this.enchantSlots);
+                    level.playSound(null, pos, SoundEvents.ENCHANTMENT_TABLE_USE, SoundSource.BLOCKS, 1.0F, level.getRandom().nextFloat() * 0.1F + 0.9F);
                 }
-                this.enchantSlots.setChanged();
-                this.enchantmentSeed.set(player.getEnchantmentSeed());
-                this.slotsChanged(this.enchantSlots);
-                level.playSound(null, pos, SoundEvents.ENCHANTMENT_TABLE_USE, SoundSource.BLOCKS, 1.0F, level.getRandom().nextFloat() * 0.1F + 0.9F);
             });
-            cir.setReturnValue(true);
+            return true;
+        } else {
+            Util.logAndPauseIfInIde(player.getPlainTextName() + " pressed invalid button id: " + buttonId);
+            return false;
         }
     }
 

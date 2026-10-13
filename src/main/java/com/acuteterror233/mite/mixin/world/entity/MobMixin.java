@@ -5,6 +5,8 @@ import com.acuteterror233.mite.world.attribute.MMEEnvironmentAttributes;
 import com.acuteterror233.mite.world.entity.ai.SkeletonTargetMotionTracker;
 import com.acuteterror233.mite.world.gen.dimension.MMEDimensionTypeRegistrar;
 import com.acuteterror233.mite.world.level.SpecialMoonPhase;
+import net.minecraft.core.Holder;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -14,6 +16,8 @@ import net.minecraft.world.entity.monster.skeleton.AbstractSkeleton;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import org.jetbrains.annotations.Nullable;
@@ -51,6 +55,20 @@ import java.util.List;
  *   <li>STAR_MOON × 0.6</li>
  *   <li>BLOOD_MOON × 2.0</li>
  *   <li>PHANTOM_MOON / BLUE_MOON × 0.1</li>
+ * </ul>
+ *
+ * <p>Blood-moon cycle weighting: every completed {@code BLOOD_MOON} timeline cycle
+ * ({@link SpecialMoonPhase#BLOOD_MOON} start tick, 32 days) scales monster gear and weapons,
+ * capped at cycle 4 (128 in-game days):</p>
+ * <ul>
+ *   <li>equipment chance and tier rolls: +25% per cycle — equipment is guaranteed after four
+ *       cycles</li>
+ *   <li>equipment count: the per-slot equip chance starts at 0.4 + 0.15 per cycle instead of
+ *       0.4, so older worlds dress mobs in more pieces</li>
+ *   <li>weapon strength: the spawned main-hand weapon is enchanted at Sharpness (melee) or
+ *       Power (bow) level equal to the cycle count via a tail injection on
+ *       {@code populateDefaultEquipmentEnchantments}; the higher of the vanilla random roll and
+ *       the cycle level wins</li>
  * </ul>
  */
 @Mixin(Mob.class)
@@ -106,9 +124,17 @@ public abstract class MobMixin extends LivingEntity implements EquipmentUser, Le
             case BLOOD_MOON -> probability *= 2F;
             case PHANTOM_MOON, BLUE_MOON ->  probability *= 0.1F;
         }
+        // Blood-moon cycle weighting: each completed BLOOD_MOON timeline cycle (32 days) adds
+        // +25% to the equipment chance and the tier rolls — after four cycles (128 days)
+        // equipment is guaranteed and tier rolls always succeed
+        int bloodMoonCycles = (int) Math.min(level().getOverworldClockTime() / SpecialMoonPhase.BLOOD_MOON.startTick(), 4L);
+        float cycleBonus = bloodMoonCycles * 0.25F;
+        probability = Math.min(probability + cycleBonus, 1.0F);
         if (randomSource.nextFloat() < probability) {
             // Higher tiers are progressively rarer: each extra roll at 30% of the base chance raises the tier index
             probability*=0.3F;
+            // Tier rolls inherit the cycle bonus too, so older worlds roll higher equipment tiers
+            probability = Math.min(probability + cycleBonus, 1.0F);
             // Base tier 0-1; subsequent rolls below can raise it up to 6
             int i = randomSource.nextInt(2);
             Level level = this.level();
@@ -129,8 +155,9 @@ public abstract class MobMixin extends LivingEntity implements EquipmentUser, Le
             List<EquipmentSlot> shuffledSlots = new ArrayList<>(EQUIPMENT_POPULATION_ORDER);
             Collections.shuffle(shuffledSlots, new java.util.Random(randomSource.nextInt()));
 
-            // Per-slot chance decays after each successful equip
-            float equipChance = 0.4F;
+            // Per-slot chance decays after each successful equip; blood-moon cycles raise the
+            // base so older worlds spawn mobs wearing more pieces
+            float equipChance = 0.4F + 0.15F * bloodMoonCycles;
 
             for (EquipmentSlot equipmentSlot : shuffledSlots) {
                 if (randomSource.nextFloat() < equipChance) {
@@ -144,6 +171,35 @@ public abstract class MobMixin extends LivingEntity implements EquipmentUser, Le
                     }
                 }
             }
+        }
+    }
+
+    /**
+     * Blood-moon cycle weapon strength: every completed BLOOD_MOON timeline cycle enchants the
+     * spawned main-hand weapon at that level (Sharpness for melee, Power for bows), capped at
+     * cycle 4. Injected at TAIL of the vanilla enchantment pass — zombies and skeletons assign
+     * their equipment (including weapons) in {@code finalizeSpawn} right before this pass runs,
+     * so the weapon is final here; {@link ItemStack#enchant} keeps the higher of the vanilla
+     * random roll and the cycle level.
+     */
+    @Inject(method = "populateDefaultEquipmentEnchantments", at = @At("TAIL"))
+    private void mme$enchantWeaponByBloodMoonCycles(ServerLevelAccessor level, RandomSource randomSource, DifficultyInstance difficultyInstance, CallbackInfo ci) {
+        if (this.level().isClientSide()) {
+            return;
+        }
+        int bloodMoonCycles = (int) Math.min(this.level().getOverworldClockTime() / SpecialMoonPhase.BLOOD_MOON.startTick(), 4L);
+        if (bloodMoonCycles <= 0) {
+            return;
+        }
+        ItemStack weapon = this.getMainHandItem();
+        if (weapon.isEmpty()) {
+            return;
+        }
+        Holder<Enchantment> sharpness = this.level().registryAccess().lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(Enchantments.SHARPNESS);
+        Holder<Enchantment> power = this.level().registryAccess().lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(Enchantments.POWER);
+        Holder<Enchantment> enchantment = sharpness.value().isSupportedItem(weapon) ? sharpness : power;
+        if (enchantment.value().isSupportedItem(weapon)) {
+            weapon.enchant(enchantment, bloodMoonCycles);
         }
     }
 

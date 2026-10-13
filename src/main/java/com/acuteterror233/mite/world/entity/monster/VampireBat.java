@@ -119,22 +119,30 @@ public class VampireBat extends Mob implements Enemy {
                     }
                 }
             } else {
-                if (!(this.targetPosition == null || serverLevel.isEmptyBlock(this.targetPosition) && this.targetPosition.getY() > serverLevel.getMinY())) {
+                if (this.targetPosition != null && (!serverLevel.isEmptyBlock(this.targetPosition) || this.targetPosition.getY() <= serverLevel.getMinY())) {
                     this.targetPosition = null;
                 }
+
                 if (this.targetPosition == null || this.random.nextInt(30) == 0 || this.targetPosition.closerToCenterThan(this.position(), 2.0)) {
-                    this.targetPosition = BlockPos.containing(this.getX() + (double)this.random.nextInt(7) - (double)this.random.nextInt(7), this.getY() + (double)this.random.nextInt(6) - 2.0, this.getZ() + (double)this.random.nextInt(7) - (double)this.random.nextInt(7));
+                    this.targetPosition = BlockPos.containing(
+                            this.getX() + this.random.nextInt(7) - this.random.nextInt(7),
+                            this.getY() + this.random.nextInt(6) - 2.0,
+                            this.getZ() + this.random.nextInt(7) - this.random.nextInt(7)
+                    );
                 }
-                double d = this.targetPosition.getX() + 0.5 - this.getX();
-                double e = this.targetPosition.getY() + 0.1 - this.getY();
-                double f = this.targetPosition.getZ() + 0.5 - this.getZ();
-                Vec3 vec3 = this.getDeltaMovement();
-                Vec3 vec32 = vec3.add((Math.signum(d) * 0.5 - vec3.x) * (double)0.1f, (Math.signum(e) * (double)0.7f - vec3.y) * (double)0.1f, (Math.signum(f) * 0.5 - vec3.z) * (double)0.1f);
-                this.setDeltaMovement(vec32);
-                float g = (float)(Mth.atan2(vec32.z, vec32.x) * 57.2957763671875) - 90.0f;
-                float h = Mth.wrapDegrees(g - this.getYRot());
-                this.zza = 0.5f;
-                this.setYRot(this.getYRot() + h);
+
+                double dx = this.targetPosition.getX() + 0.5 - this.getX();
+                double dy = this.targetPosition.getY() + 0.1 - this.getY();
+                double dz = this.targetPosition.getZ() + 0.5 - this.getZ();
+                Vec3 movement = this.getDeltaMovement();
+                Vec3 newMovement = movement.add(
+                        (Math.signum(dx) * 0.5 - movement.x) * 0.1F, (Math.signum(dy) * 0.7F - movement.y) * 0.1F, (Math.signum(dz) * 0.5 - movement.z) * 0.1F
+                );
+                this.setDeltaMovement(newMovement);
+                float yRotD = (float)(Mth.atan2(newMovement.z, newMovement.x) * 180.0F / (float)Math.PI) - 90.0F;
+                float rotDiff = Mth.wrapDegrees(yRotD - this.getYRot());
+                this.zza = 0.5F;
+                this.setYRot(this.getYRot() + rotDiff);
                 if (this.random.nextInt(100) == 0 && serverLevel.getBlockState(blockPos2).isRedstoneConductor(serverLevel, blockPos2)) {
                     this.setResting(true);
                 }
@@ -327,6 +335,9 @@ public class VampireBat extends Mob implements Enemy {
         @Override
         public void tick() {
             LivingEntity target = VampireBat.this.getTarget();
+            if (target == null) {
+                return;
+            }
             RandomSource random = VampireBat.this.getRandom();
             this.ticksUntilNextAttack = Math.max(this.ticksUntilNextAttack - 1, 0);
             if (this.canPerformAttack(target)) {

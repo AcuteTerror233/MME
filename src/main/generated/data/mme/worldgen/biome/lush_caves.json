@@ -89,6 +89,24 @@
               "weight": 10
             },
             {
+              "type": "mme:revenant",
+              "count": {
+                "type": "minecraft:uniform",
+                "max_inclusive": 1,
+                "min_inclusive": 1
+              },
+              "weight": 5
+            },
+            {
+              "type": "mme:ancient_corpse",
+              "count": {
+                "type": "minecraft:uniform",
+                "max_inclusive": 1,
+                "min_inclusive": 1
+              },
+              "weight": 5
+            },
+            {
               "type": "mme:invisible_stalker",
               "count": {
                 "type": "minecraft:uniform",
@@ -131,7 +149,7 @@
                 "max_inclusive": 5,
                 "min_inclusive": 2
               },
-              "weight": 5
+              "weight": 10
             },
             {
               "type": "mme:nightwing",
@@ -140,7 +158,7 @@
                 "max_inclusive": 2,
                 "min_inclusive": 1
               },
-              "weight": 3
+              "weight": 10
             },
             {
               "type": "mme:giant_vampire_bat",
@@ -149,7 +167,7 @@
                 "max_inclusive": 1,
                 "min_inclusive": 1
               },
-              "weight": 2
+              "weight": 10
             }
           ],
           "underground_water_creature": [

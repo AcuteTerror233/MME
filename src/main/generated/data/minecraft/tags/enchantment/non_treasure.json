@@ -3,6 +3,7 @@
     "mme:butchering",
     "mme:cleaving",
     "mme:harvesting",
-    "mme:fertility"
+    "mme:fertility",
+    "mme:speed"
   ]
 }

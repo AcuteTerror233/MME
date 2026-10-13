@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_transmute",
+  "category": "equipment",
+  "input": "mme:ancient_metal_shovel",
+  "material": "mme:mithril_ingot",
+  "result": {
+    "components": {
+      "minecraft:damage": 0
+    },
+    "id": "mme:mithril_shovel"
+  }
+}

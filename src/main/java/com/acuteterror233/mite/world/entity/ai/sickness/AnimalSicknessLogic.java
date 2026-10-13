@@ -45,6 +45,17 @@ public final class AnimalSicknessLogic {
         if ((now + animal.getId()) % rules.checkIntervalTicks != 0L) {
             return;
         }
+        performCheck(animal, state, level);
+    }
+
+    /**
+     * Unthrottled check body: need evaluation, sickness transitions, the untreated-sickness
+     * death and the sick-state effects. Public so GameTests can drive it directly without
+     * waiting for the throttled cadence.
+     */
+    public static void performCheck(Animal animal, SicknessState state, ServerLevel level) {
+        SicknessRules rules = SicknessRules.get();
+        long now = level.getOverworldClockTime();
 
         updateProgress(state, SicknessType.LIGHT, hasLight(animal, level), rules);
         updateProgress(state, SicknessType.WATER, hasWater(animal, level, state, now, rules), rules);
@@ -63,12 +74,28 @@ public final class AnimalSicknessLogic {
         }
         if (!state.sick && anySick) {
             state.sick = true;
+            // Death sentence: an untreated sick animal dies one to one and a half in-game
+            // days later (configurable), rolled once when the sickness begins
+            long spread = Math.max(0L, rules.deathDelayMaxTicks - rules.deathDelayMinTicks);
+            int bound = (int) Math.min(spread + 1L, (long) Integer.MAX_VALUE);
+            long jitter = bound > 1 ? animal.getRandom().nextInt(bound) : 0L;
+            state.deathAt = now + rules.deathDelayMinTicks + jitter;
         } else if (state.sick && allRecovered) {
             state.sick = false;
+            state.deathAt = 0L;
             animal.removeEffect(MobEffects.SLOWNESS);
         }
 
         if (state.sick) {
+            if (state.deathAt > 0L && now >= state.deathAt) {
+                // Untreated sickness kills: the vanilla poison effect marks the death as
+                // poisoning (its particles show on the animal), and the final blow uses the
+                // same magic damage source the vanilla poison effect itself deals through
+                // (PoisonMobEffect alone stops at half a heart, so it cannot finish the job)
+                animal.addEffect(new MobEffectInstance(MobEffects.POISON, 40, 1, true, true));
+                animal.hurtServer(level, animal.damageSources().magic(), Float.MAX_VALUE);
+                return;
+            }
             animal.addEffect(new MobEffectInstance(MobEffects.SLOWNESS, rules.checkIntervalTicks * 2, 0, true, false));
             level.sendParticles(ParticleTypes.SMOKE,
                     animal.getX(), animal.getY(0.8D), animal.getZ(), 2, 0.25D, 0.25D, 0.25D, 0.01D);

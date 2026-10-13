@@ -22,22 +22,24 @@ public enum SpecialMoonPhase implements StringRepresentable {
     /** Star moon: slightly altered skylight (level −1, factor ×1.3); mob spawn equipment ×0.6 and mob XP ×2. */
     STAR_MOON(1, 16, "star_moon"),
     /** Harvest moon: crops grow at ×2 speed. */
-    HARVEST_MOON(2, 40, "harvest_moon"),
+    HARVEST_MOON(2, 24, "harvest_moon"),
     /** Blood moon: very dark night (skylight −4, factor ×0.1); spawned mobs get Strength + Speed and ×2 equipment,
      *  sleeping is unsafe, crop disease chance ×10, mob XP ×2. */
-    BLOOD_MOON(3, 48, "blood_moon"),
+    BLOOD_MOON(3, 32, "blood_moon"),
     /** Phantom moon: mob spawn equipment chance ×0.1. */
     PHANTOM_MOON(4, 80, "phantom_moon"),
     /** Blue moon: exceptionally bright night (skylight +6, factor ×3); crop growth ×2.5 with disease immunity,
      *  but mob spawn equipment ×0.1. */
-    BLUE_MOON(5, 88, "blue_moon"),
+    BLUE_MOON(5, 128, "blue_moon"),
     /** Hunt moon: mob loot tables roll twice (double drops) and mob XP ×2. */
     HUNT_MOON(6, 120, "hunt_moon"),
     /** Frost moon: precipitation turns to snow and water freezes even in warm biomes; mob follow range ×2, crop growth ×0.75. */
     FROST_MOON(7, 152, "frost_moon"),
     /** Turbid moon: near-pitch-black night (skylight −2, factor ×0.02); newly spawned mobs are briefly invisible,
      *  crop growth ×0.5 and mob XP ×1.5. */
-    TURBID_MOON(8, 184, "turbid_moon");
+    TURBID_MOON(8, 184, "turbid_moon"),
+
+    BLOOD_MOON_DAY(9, 32, "blood_moon_day");
 
 
     /** Codec serializing the phase by its serialized name ({@link #getSerializedName()}). */
@@ -64,7 +66,7 @@ public enum SpecialMoonPhase implements StringRepresentable {
      *         phase rises; the phase stays active for 12000 ticks (one night) afterwards.
      */
     public int startTick() {
-        return this.startTick * PHASE_LENGTH -12000;
+        return this.startTick * PHASE_LENGTH;
     }
 
     /** @return the lower-case serialization name used by {@link #CODEC} (e.g. {@code "blood_moon"}). */

@@ -12,6 +12,8 @@ public class SicknessState {
     public final int[] progress = new int[SicknessType.COUNT];
     /** Whether the animal currently counts as sick. */
     public boolean sick;
+    /** Clock time at which an untreated sick animal dies of the sickness; 0 when healthy. */
+    public long deathAt;
     /** Clock time until which the animal's thirst stays quenched after drinking. */
     public long waterUntil;
     /** Clock time until which the animal's grazing need stays satisfied after eating. */
@@ -21,6 +23,7 @@ public class SicknessState {
     public void save(ValueOutput output) {
         output.putIntArray("mme:SicknessProgress", progress);
         output.putBoolean("mme:Sick", sick);
+        output.putLong("mme:SicknessDeathAt", deathAt);
         output.putLong("mme:WaterUntil", waterUntil);
         output.putLong("mme:GrazeUntil", grazeUntil);
     }
@@ -34,6 +37,7 @@ public class SicknessState {
             }
         });
         sick = input.getBooleanOr("mme:Sick", false);
+        deathAt = input.getLongOr("mme:SicknessDeathAt", 0L);
         waterUntil = input.getLongOr("mme:WaterUntil", 0L);
         grazeUntil = input.getLongOr("mme:GrazeUntil", 0L);
     }

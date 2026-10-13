@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_transmute",
+  "category": "equipment",
+  "input": "mme:ancient_metal_axe",
+  "material": "mme:mithril_ingot",
+  "material_count": 3,
+  "result": {
+    "components": {
+      "minecraft:damage": 0
+    },
+    "id": "mme:mithril_axe"
+  }
+}

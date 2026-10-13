@@ -77,12 +77,25 @@ public abstract class BaseFireBlockMixin {
                     BlockPos PurposePos = RunePortalCoordinateGenerator.getRunePortalCoordinate(list, world, pos, minDistance, maxDistance);
                     extension.MME$CreateRunePortal(world, getSafeLocation((ServerLevel) world, PurposePos));
                     return;
-                } else if (worldRegistryKey == Level.OVERWORLD && extension.MME$CheckBottomCorner(world, Blocks.BEDROCK)) {
-                    extension.MME$CreatePortal(world, MMEBlocks.UNDERGROUND_PORTAL);
-                    return;
-                } else if (worldRegistryKey == MMEDimensionTypeRegistrar.UNDERGROUND_LEVEL_KEY && extension.MME$CheckBottomCorner(world, MMEBlocks.MANTLE)) {
-                    optional.get().createPortalBlocks(world);
-                    return;
+                } else {
+                    if (worldRegistryKey != Level.END) {
+                        if (worldRegistryKey == Level.OVERWORLD && extension.MME$CheckBottomCorner(world, Blocks.BEDROCK)){
+                            extension.MME$CreatePortal(world, MMEBlocks.UNDERGROUND_PORTAL);
+                            return;
+                        }
+                        if (worldRegistryKey == MMEDimensionTypeRegistrar.UNDERGROUND_LEVEL_KEY && extension.MME$CheckBottomCorner(world, MMEBlocks.MANTLE)){
+                            optional.get().createPortalBlocks(world);
+                            return;
+                        }
+                        if (worldRegistryKey == MMEDimensionTypeRegistrar.UNDERGROUND_LEVEL_KEY){
+                            extension.MME$CreatePortal(world, MMEBlocks.UNDERGROUND_PORTAL);
+                            return;
+                        }
+                        if (worldRegistryKey == Level.NETHER){
+                            optional.get().createPortalBlocks(world);
+                            return;
+                        }
+                    }
                 }
                 extension.MME$CreatePortal(world, MMEBlocks.HOME_PORTAL);
                 return;

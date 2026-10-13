@@ -1,5 +1,10 @@
 // 26.3	-999999999-01-01T00:00:00	Might Makes Everything/Tags for minecraft:entity_type
 58494593c5b7016c1b9f3cf74afb5de7ae6cfec6 data/minecraft/tags/entity_type/arthropod.json
-66a2c2a2a69f7798951b90c8404c970ee7196053 data/minecraft/tags/entity_type/zombies.json
-54a2e84450645d0e8b94e05a90f7f5f1f457886b data/mme/tags/entity_type/produce_manure.json
+21c6878695b08a77f840d18515e0882b790a6dec data/minecraft/tags/entity_type/skeletons.json
+21c6878695b08a77f840d18515e0882b790a6dec data/minecraft/tags/entity_type/undead.json
+6a242c6e10d5f10e544ded02a337c31279ade70c data/minecraft/tags/entity_type/zombies.json
+55b668fd4660662b6afcab7e013e97d758ab4f6d data/mme/tags/entity_type/large_animals.json
+a5ceebbde7d35b6db50304c80302b30920586687 data/mme/tags/entity_type/medium_animals.json
+057c5ab6bfac13165b35361a9dd02865d45c17b4 data/mme/tags/entity_type/produce_manure.json
 89f6543666b78b41b5aabe2feebebf6faf5ca559 data/mme/tags/entity_type/sensitive_to_butchering.json
+cc7bc52cbc83dcf1dec7579fc5e06c63188f5ab4 data/mme/tags/entity_type/small_animals.json

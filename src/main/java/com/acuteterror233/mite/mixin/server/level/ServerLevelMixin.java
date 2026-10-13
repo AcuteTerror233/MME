@@ -55,10 +55,10 @@ public abstract class ServerLevelMixin extends Level implements WorldGenLevel, S
     private boolean isThundering(WeatherData instance) {
         SpecialMoonPhase smp = environmentAttributes().getDimensionValue(MMEEnvironmentAttributes.SPECIAL_MOON_PHASE);
         switch (smp){
-            case BLOOD_MOON -> {
+            case BLOOD_MOON_DAY -> {
                 return true;
             }
-            case BLUE_MOON, FROST_MOON -> {
+            case BLUE_MOON, BLOOD_MOON, FROST_MOON -> {
                 return false;
             }
         }
@@ -76,7 +76,7 @@ public abstract class ServerLevelMixin extends Level implements WorldGenLevel, S
     private boolean isRaining(WeatherData instance) {
         SpecialMoonPhase smp = environmentAttributes().getDimensionValue(MMEEnvironmentAttributes.SPECIAL_MOON_PHASE);
         switch (smp){
-            case BLOOD_MOON, FROST_MOON -> {
+            case BLOOD_MOON_DAY, FROST_MOON -> {
                 return true;
             }
             case BLUE_MOON -> {
@@ -97,10 +97,10 @@ public abstract class ServerLevelMixin extends Level implements WorldGenLevel, S
     private int getClearWeatherTime(WeatherData instance) {
         SpecialMoonPhase smp = environmentAttributes().getDimensionValue(MMEEnvironmentAttributes.SPECIAL_MOON_PHASE);
         switch (smp){
-            case BLUE_MOON -> {
+            case BLUE_MOON, BLOOD_MOON -> {
                 return 100;
             }
-            case FROST_MOON, BLOOD_MOON -> {
+            case FROST_MOON, BLOOD_MOON_DAY -> {
                 return 0;
             }
         }

@@ -545,9 +545,9 @@ public final class VanillaItemModify {
         result.put(Identifier.withDefaultNamespace("amethyst_shard"), settings -> new GamItem(settings, 75));
         result.put(Identifier.withDefaultNamespace("echo_shard"), settings -> new GamItem(settings, 1000));
 
-        result.put(Identifier.withDefaultNamespace("iron_nugget"), settings -> new NuggetItem(settings.stacksTo(32), 200));
-        result.put(Identifier.withDefaultNamespace("gold_nugget"), settings -> new NuggetItem(settings.stacksTo(32), 500));
-        result.put(Identifier.withDefaultNamespace("copper_nugget"), settings -> new NuggetItem(settings.stacksTo(32), 50));
+        result.put(Identifier.withDefaultNamespace("iron_nugget"), settings -> new NuggetItem(settings.stacksTo(32), 800));
+        result.put(Identifier.withDefaultNamespace("gold_nugget"), settings -> new NuggetItem(settings.stacksTo(32), 1200));
+        result.put(Identifier.withDefaultNamespace("copper_nugget"), settings -> new NuggetItem(settings.stacksTo(32), 200));
         result.put(Identifier.withDefaultNamespace("fishing_rod"), Item::new);
         result.put(Identifier.withDefaultNamespace("bowl"), BowlItem::new);
         return Map.copyOf(result);

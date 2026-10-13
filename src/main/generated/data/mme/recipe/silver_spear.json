@@ -6,9 +6,9 @@
     "b": "minecraft:stick"
   },
   "pattern": [
-    "  b",
-    " a ",
-    "a  "
+    "  a",
+    " b ",
+    "b  "
   ],
   "result": {
     "id": "mme:silver_spear"

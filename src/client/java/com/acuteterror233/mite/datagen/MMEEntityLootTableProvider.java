@@ -71,9 +71,33 @@ public class MMEEntityLootTableProvider extends FabricEntityLootSubProvider {
                                 .when(LootItemRandomChanceWithEnchantedBonusCondition.randomChanceAndLootingBoost(enchantments, 0.025F, 0.01F))
                 );
         this.add(MMEEntityTypes.GHOUL, zombieLootTable);
+        this.add(MMEEntityTypes.REVENANT, zombieLootTable);
         this.add(MMEEntityTypes.SHADOW, zombieLootTable);
         this.add(MMEEntityTypes.WIGHT, zombieLootTable);
         this.add(MMEEntityTypes.INVISIBLE_STALKER, zombieLootTable);
+
+        LootTable.Builder skeletonLootTable = LootTable.lootTable()
+                .withPool(
+                        LootPool.lootPool()
+                                .setRolls(ContextIntProviders.exactly(1))
+                                .add(
+                                        LootItem.lootTableItem(Items.BONE)
+                                                .apply(SetItemCountFunction.setCount(ContextIntProviders.between(0, 2)))
+                                                .apply(EnchantedCountIncreaseFunction.lootingMultiplier(enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
+                                )
+                )
+                .withPool(
+                        LootPool.lootPool()
+                                .setRolls(ContextIntProviders.exactly(1))
+                                .add(
+                                        LootItem.lootTableItem(Items.ARROW)
+                                                .apply(SetItemCountFunction.setCount(ContextIntProviders.between(0, 2)))
+                                                .apply(EnchantedCountIncreaseFunction.lootingMultiplier(enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
+                                )
+                );
+        this.add(MMEEntityTypes.ANCIENT_CORPSE, skeletonLootTable);
+        this.add(MMEEntityTypes.SKELETON_LORD, skeletonLootTable);
+        this.add(MMEEntityTypes.ANCIENT_SKELETON_LORD, skeletonLootTable);
 
         LootTable.Builder spiderLootTable = LootTable.lootTable()
                 .withPool(

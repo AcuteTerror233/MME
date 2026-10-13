@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.Mixin;
  * Mixin for {@code Witch} — witches curse the player they target. {@code setTarget} is
  * declared on {@code Mob} (witches do not override it), so the added override passes through
  * to the vanilla logic first and then curses the spotted server-side player; curse
- * application is throttled by the once-per-witch-per-player rule inside
+ * application is throttled by the one-curse-per-player rule inside
  * {@link CurseLogic#applyCurseFromWitch}.
  */
 @Mixin(Witch.class)

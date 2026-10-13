@@ -17,12 +17,15 @@ import net.minecraft.world.damagesource.DamageType;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EntityTypes;
 import net.minecraft.world.entity.EquipmentSlotGroup;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentEffectComponents;
 import net.minecraft.world.item.enchantment.EnchantmentTarget;
 import net.minecraft.world.item.enchantment.LevelBasedValue;
 import net.minecraft.world.item.enchantment.effects.AddValue;
+import net.minecraft.world.item.enchantment.effects.EnchantmentAttributeEffect;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.predicates.LootItemEntityPropertyCondition;
@@ -30,8 +33,8 @@ import net.minecraft.world.level.storage.loot.predicates.LootItemEntityPropertyC
 /**
  * MME enchantment registry: declares the {@link ResourceKey}s and bootstraps the data-driven
  * enchantment definitions for the {@code mite} namespace.
- * Note: {@link #PIERCING}, {@link #SPEED} and {@link #ENDURANCE} are declared as keys but have no
- * bootstrap entry here yet.
+ * Note: {@link #PIERCING} and {@link #ENDURANCE} are declared as keys but have no bootstrap
+ * entry here yet.
  */
 public final class MMEEnchantments {
     public static final ResourceKey<Enchantment> BUTCHERING = key("butchering");
@@ -144,6 +147,29 @@ public final class MMEEnchantments {
                                 Enchantment.dynamicCost(55, 5),
                                 4,
                                 EquipmentSlotGroup.MAINHAND
+                        )
+                )
+        );
+        register(
+                bootstrapContext,
+                SPEED,
+                Enchantment.enchantment(
+                        Enchantment.definition(
+                                itemGetter.getOrThrow(ItemTags.FOOT_ARMOR_ENCHANTABLE),//applicable items
+                                2,//selection weight (rare)
+                                5,//max level (range mirrors vanilla Efficiency)
+                                Enchantment.dynamicCost(1, 10),
+                                Enchantment.dynamicCost(51, 10),
+                                1,//anvil cost
+                                EquipmentSlotGroup.FEET//active slot
+                        )
+                ).withEffect(
+                        EnchantmentEffectComponents.ATTRIBUTES,
+                        new EnchantmentAttributeEffect(
+                                Identifier.fromNamespaceAndPath(MME.MOD_ID, "enchantment.speed"),
+                                Attributes.MOVEMENT_SPEED,
+                                LevelBasedValue.perLevel(0.05F),
+                                AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL
                         )
                 )
         );

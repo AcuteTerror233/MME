@@ -1,8 +1,17 @@
 {
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
-    "minecraft:glass_bottle",
-    "minecraft:ghast_tear"
+    {
+      "fabric:type": "fabric:components",
+      "base": "minecraft:potion",
+      "components": {
+        "minecraft:potion_contents": {
+          "potion": "minecraft:water"
+        }
+      }
+    },
+    "minecraft:nether_wart",
+    "minecraft:coal"
   ],
   "result": {
     "id": "mme:purifying_bottle"
