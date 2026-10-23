@@ -70,8 +70,17 @@ public class MMEEntityLootTableProvider extends FabricEntityLootSubProvider {
                                 .when(LootItemKilledByPlayerCondition.killedByPlayer())
                                 .when(LootItemRandomChanceWithEnchantedBonusCondition.randomChanceAndLootingBoost(enchantments, 0.025F, 0.01F))
                 );
+        LootTable.Builder revenant = zombieLootTable.withPool(
+                LootPool.lootPool()
+                        .setRolls(ContextIntProviders.exactly(1))
+                        .add(
+                                LootItem.lootTableItem(Items.EMERALD)
+                                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(2, 5)))
+                                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
+                        )
+        );
         this.add(MMEEntityTypes.GHOUL, zombieLootTable);
-        this.add(MMEEntityTypes.REVENANT, zombieLootTable);
+        this.add(MMEEntityTypes.REVENANT, revenant);
         this.add(MMEEntityTypes.SHADOW, zombieLootTable);
         this.add(MMEEntityTypes.WIGHT, zombieLootTable);
         this.add(MMEEntityTypes.INVISIBLE_STALKER, zombieLootTable);
@@ -85,19 +94,19 @@ public class MMEEntityLootTableProvider extends FabricEntityLootSubProvider {
                                                 .apply(SetItemCountFunction.setCount(ContextIntProviders.between(0, 2)))
                                                 .apply(EnchantedCountIncreaseFunction.lootingMultiplier(enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
                                 )
-                )
-                .withPool(
-                        LootPool.lootPool()
-                                .setRolls(ContextIntProviders.exactly(1))
-                                .add(
-                                        LootItem.lootTableItem(Items.ARROW)
-                                                .apply(SetItemCountFunction.setCount(ContextIntProviders.between(0, 2)))
-                                                .apply(EnchantedCountIncreaseFunction.lootingMultiplier(enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
-                                )
                 );
+        LootTable.Builder lord = skeletonLootTable.withPool(
+                LootPool.lootPool()
+                        .setRolls(ContextIntProviders.exactly(1))
+                        .add(
+                                LootItem.lootTableItem(Items.DIAMOND)
+                                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(2, 5)))
+                                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
+                        )
+        );
         this.add(MMEEntityTypes.ANCIENT_CORPSE, skeletonLootTable);
-        this.add(MMEEntityTypes.SKELETON_LORD, skeletonLootTable);
-        this.add(MMEEntityTypes.ANCIENT_SKELETON_LORD, skeletonLootTable);
+        this.add(MMEEntityTypes.SKELETON_LORD, lord);
+        this.add(MMEEntityTypes.ANCIENT_SKELETON_LORD, lord);
 
         LootTable.Builder spiderLootTable = LootTable.lootTable()
                 .withPool(
@@ -293,6 +302,56 @@ public class MMEEntityLootTableProvider extends FabricEntityLootSubProvider {
                                         .when(randomChanceAndButcheringBoost(enchantments, 0.1F, 0.03F))
                         )
         );
+        add(EntityTypes.WITCH,
+                LootTable.lootTable()
+                        .withPool(
+                                LootPool.lootPool()
+                                        .setRolls(ContextIntProviders.between(1, 3))
+                                        .add(
+                                                LootItem.lootTableItem(Items.GLOWSTONE_DUST)
+                                                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(0, 2)))
+                                                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
+                                        )
+                                        .add(
+                                                LootItem.lootTableItem(Items.SUGAR)
+                                                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(0, 2)))
+                                                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
+                                        )
+                                        .add(
+                                                LootItem.lootTableItem(Items.SPIDER_EYE)
+                                                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(0, 2)))
+                                                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
+                                        )
+                                        .add(
+                                                LootItem.lootTableItem(Items.GLASS_BOTTLE)
+                                                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(0, 2)))
+                                                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
+                                        )
+                                        .add(
+                                                LootItem.lootTableItem(Items.GUNPOWDER)
+                                                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(0, 2)))
+                                                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
+                                        )
+                                        .add(
+                                                LootItem.lootTableItem(Items.STICK)
+                                                        .setWeight(2)
+                                                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(0, 2)))
+                                                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
+                                        ).add(
+                                                LootItem.lootTableItem(Items.NETHER_WART)
+                                                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(0, 2)))
+                                                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
+                                        )
+                        )
+                        .withPool(
+                                LootPool.lootPool()
+                                        .setRolls(ContextIntProviders.exactly(1))
+                                        .add(
+                                                LootItem.lootTableItem(Items.REDSTONE)
+                                                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(4, 8)))
+                                                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.enchantments, ContextFloatProviders.between(0.0F, 1.0F)))
+                                        )
+                        ));
     }
 
 

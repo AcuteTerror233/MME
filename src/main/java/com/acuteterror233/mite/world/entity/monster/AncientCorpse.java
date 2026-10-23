@@ -23,7 +23,7 @@ public class AncientCorpse extends Skeleton {
     /** Ancient corpse base attributes: skeleton stats with 12 max health and 3 armor. */
     public static AttributeSupplier.Builder createAttributes() {
         return Skeleton.createAttributes()
-                .add(Attributes.MAX_HEALTH, 12.0D)
+                .add(Attributes.MAX_HEALTH, 30.0D)
                 .add(Attributes.ARMOR, 3.0D);
     }
 

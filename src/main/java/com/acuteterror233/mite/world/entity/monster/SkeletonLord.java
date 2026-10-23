@@ -43,7 +43,7 @@ public class SkeletonLord extends Skeleton {
     /** Skeleton lord base attributes: skeleton stats with 20 max health and 3 armor. */
     public static AttributeSupplier.Builder createAttributes() {
         return Skeleton.createAttributes()
-                .add(Attributes.MAX_HEALTH, 20.0D)
+                .add(Attributes.MAX_HEALTH, 50.0D)
                 .add(Attributes.ARMOR, 3.0D);
     }
 

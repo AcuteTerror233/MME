@@ -45,9 +45,9 @@ public abstract class PigMixin extends Animal implements SicknessCap {
     @Inject(method = "<init>", at = @At("TAIL"))
     private void mme$registerSicknessGoals(EntityType<? extends Pig> type, Level level, CallbackInfo ci) {
         SicknessRules rules = SicknessRules.get();
-        this.goalSelector.addGoal(5, new GrazeGoal((Animal) (Object) this, rules, SicknessRules.GrassKind.GRASS_BLOCK));
-        this.goalSelector.addGoal(5, new DrinkGoal((Animal) (Object) this, rules));
-        this.goalSelector.addGoal(6, new SeekLightGoal((Animal) (Object) this, rules));
+        this.goalSelector.addGoal(3, new GrazeGoal((Animal) (Object) this, rules, SicknessRules.GrassKind.GRASS_BLOCK));
+        this.goalSelector.addGoal(3, new DrinkGoal((Animal) (Object) this, rules));
+        this.goalSelector.addGoal(5, new SeekLightGoal((Animal) (Object) this, rules));
         this.goalSelector.addGoal(9, new SicknessCheckGoal((Animal) (Object) this));
     }
 

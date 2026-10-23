@@ -5,17 +5,18 @@ import com.acuteterror233.mite.interfaces.MetalMenuExtension;
 import com.acuteterror233.mite.material.MetalMaterial;
 import com.acuteterror233.mite.registry.tag.MMEItemTags;
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
+import com.llamalad7.mixinextras.sugar.Local;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.*;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.ItemEnchantments;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.*;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Constant;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.ModifyConstant;
+import org.spongepowered.asm.mixin.injection.*;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
@@ -84,6 +85,20 @@ public abstract class AnvilMenuMixin extends ItemCombinerMenu implements MetalMe
             return original;
         }
         return 6;
+    }
+
+    @Redirect(method = "createResult", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/ItemStack;is(Ljava/lang/Object;)Z", ordinal = 0))
+    private boolean is(ItemStack instance, Object o){
+        return !instance.is((Item)o);
+    }
+
+    @Redirect(method = "createResult", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/enchantment/Enchantment;getAnvilCost()I"))
+    private int canEnchant(Enchantment instance, @Local(name = "enchantments") ItemEnchantments.Mutable enchantments) {
+        int a = instance.getAnvilCost() * 5;
+        if (!enchantments.keySet().isEmpty()) {
+            a = (int) (a * 1.5);
+        }
+        return a;
     }
 
     /**

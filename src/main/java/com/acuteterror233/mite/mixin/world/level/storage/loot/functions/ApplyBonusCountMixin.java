@@ -11,28 +11,18 @@ import org.spongepowered.asm.mixin.Overwrite;
  */
 @Mixin(ApplyBonusCount.OreDrops.class)
 public class ApplyBonusCountMixin {
+
     /**
-     * Overwrites vanilla {@code calculateNewCount}: the binomial draw is clamped to 0..2, so the
-     * drop multiplier never exceeds 3× the base count regardless of enchantment power.
-     *
-     * @param randomSource the loot random source
-     * @param i            the base item count being multiplied
-     * @param j            the enchantment level driving the bonus
-     * @return the adjusted drop count (uncapped when the enchantment level is 0)
+     * @author AcuteTerror233
+     * @reason Limited Fortune Enchantment
      */
     @Overwrite
-    public int calculateNewCount(RandomSource randomSource, int i, int j) {
-        if (j > 0) {
-            int k = randomSource.nextInt(j + 2) - 1;
-            if (k < 0) {
-                k = 0;
-            }else if (k > 2){
-                k = 2;
+    public int calculateNewCount(RandomSource randomSource, int count, int level) {
+        if (level > 0) {
+            if (randomSource.nextInt(Math.max(1,10 - level * 2)) <= 2) {
+                count*=2;
             }
-
-            return i * (k + 1);
-        } else {
-            return i;
         }
+        return count;
     }
 }

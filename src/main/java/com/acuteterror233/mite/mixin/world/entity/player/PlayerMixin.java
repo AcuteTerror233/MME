@@ -7,6 +7,8 @@ import com.acuteterror233.mite.world.effect.curse.CurseState;
 import com.acuteterror233.mite.world.effect.curse.MMECurses;
 import net.minecraft.core.Holder;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.tags.DamageTypeTags;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Avatar;
@@ -224,5 +226,14 @@ public abstract class PlayerMixin extends Avatar implements CurseCap {
         this.totalExperience -= enchantmentCost;
         this.enchantmentSeed = this.random.nextInt();
         ci.cancel();
+    }
+
+    @Redirect(method = "actuallyHurt", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/player/Player;getDamageAfterArmorAbsorb(Lnet/minecraft/world/damagesource/DamageSource;F)F"))
+    private float actuallyHurt(Player instance, DamageSource damageSource, float v) {
+        float absorb = this.getDamageAfterArmorAbsorb(damageSource, v);
+        if (!damageSource.is(DamageTypeTags.BYPASSES_ARMOR)) {
+            absorb = Math.max(absorb - this.getArmorValue() * 0.7F, 0.2F);
+        }
+        return absorb;
     }
 }

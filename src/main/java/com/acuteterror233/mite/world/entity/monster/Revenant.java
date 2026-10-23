@@ -21,6 +21,7 @@ public class Revenant extends Zombie {
     /** Revenant base attributes: zombie stats with 1.5x movement speed (0.23 * 1.5). */
     public static AttributeSupplier.Builder createAttributes() {
         return Zombie.createAttributes()
+                .add(Attributes.MAX_HEALTH, 50)
                 .add(Attributes.MOVEMENT_SPEED, 0.345D);
     }
 

@@ -12,14 +12,13 @@ import com.acuteterror233.mite.world.entity.decoration.painting.MMEPaintingVaria
 import com.acuteterror233.mite.world.timeline.MMETimelines;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
+import net.fabricmc.fabric.api.tag.convention.v2.ConventionalItemTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.tags.VanillaBlockTagsProvider;
 import net.minecraft.references.BlockIds;
 import net.minecraft.references.BlockItemIds;
 import net.minecraft.references.ItemIds;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.*;
 import net.minecraft.world.entity.EntityTypeIds;
 import net.minecraft.world.entity.decoration.painting.PaintingVariant;
@@ -408,9 +407,9 @@ public class MMETagProvider {
         protected void addTags(HolderLookup.Provider wrapperLookup) {
             // Mushroom varieties: pigs also eat and breed with mushrooms (vanilla #minecraft:pig_food extension).
             builder(ItemTags.PIG_FOOD)
-                    .add(ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath("minecraft", "brown_mushroom")))
-                    .add(ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath("minecraft", "red_mushroom")))
-                    .add(ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath("minecraft", "shelf_mushroom")));
+                    .add(BlockItemIds.BROWN_MUSHROOM)
+                    .add(BlockItemIds.RED_MUSHROOM)
+                    .add(BlockItemIds.SHELF_MUSHROOM);
             // Armor slot tags: every metal's plain and chainmail variants of each armor piece.
             builder(ItemTags.HEAD_ARMOR)
                     .add(MMEItemIds.ADAMANTIUM_HELMET)
@@ -917,6 +916,16 @@ public class MMETagProvider {
             builder(MMEItemTags.DESTRUCTIBLE_ENDCRYSTAL)
                     .addTag(MMEItemTags.NETHERITE_TOOLS)
                     .addTag(MMEItemTags.ADAMANTIUM_TOOLS);
+            builder(ConventionalItemTags.TOOLS)
+                    .addTag(MMEItemTags.NETHERITE_TOOLS)
+                    .addTag(MMEItemTags.ADAMANTIUM_TOOLS)
+                    .addTag(MMEItemTags.MITHRIL_TOOLS)
+                    .addTag(MMEItemTags.ANCIENT_METAL_TOOLS)
+                    .addTag(MMEItemTags.RUSTED_IRON_TOOLS)
+                    .addTag(MMEItemTags.IRON_TOOLS)
+                    .addTag(MMEItemTags.GOLDEN_TOOLS)
+                    .addTag(MMEItemTags.SILVER_TOOLS)
+                    .addTag(MMEItemTags.COPPER_TOOLS);
 
             builder(MMEItemTags.NETHERITE_TOOL_MATERIALS)
                     .add(ItemIds.NETHERITE_INGOT)
@@ -1041,6 +1050,8 @@ public class MMETagProvider {
                     .add(MMEItemIds.GOLDEN_SHEARS)
                     .add(MMEItemIds.SILVER_SHEARS)
                     .add(MMEItemIds.COPPER_SHEARS);
+            builder(ConventionalItemTags.SHEAR_TOOLS)
+                    .addTag(MMEItemTags.SHEARS);
 
             builder(ItemTags.SWORDS)
                     .addTag(MMEItemTags.DAGGER)

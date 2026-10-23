@@ -1,4 +1,6 @@
 // 26.3	-999999999-01-01T00:00:00	Might Makes Everything/Tags for minecraft:item
+02955f62357c1b84e9de4abe4dc8a0011ab191f8 data/c/tags/item/tools.json
+04ae86224544965b2b2196d69d40f99eea4530a6 data/c/tags/item/tools/shear.json
 732649e41e1f92a1c5f890c32d1a7b87a8d2bae2 data/minecraft/tags/item/axes.json
 249be801429180267fe27ccb645d82f7285185fc data/minecraft/tags/item/chest_armor.json
 ed25358a34554c49dadb431ec43a861d43a165f9 data/minecraft/tags/item/enchantable/durability.json

@@ -26,7 +26,7 @@ public class MMEToolMaterials {
     public static final ToolMaterial MITHRIL = new ToolMaterial(MMEBlockTags.INCORRECT_FOR_MITHRIL_TOOL, 64, 14.0F, 6.0F, 16, MMEItemTags.MITHRIL_TOOL_MATERIALS);
     public static final ToolMaterial ANCIENT_METAL = new ToolMaterial(MMEBlockTags.INCORRECT_FOR_ANCIENT_METAL_TOOL, 32, 12.0F, 5.0F, 12, MMEItemTags.ANCIENT_METAL_TOOL_MATERIALS);
     public static final ToolMaterial RUSTED_IRON = new ToolMaterial(MMEBlockTags.INCORRECT_FOR_RUSTED_IRON_TOOL, 8, 8.0F, 3.0F, 4, MMEItemTags.RUSTED_IRON_TOOL_MATERIALS);
-    public static final ToolMaterial IRON = new ToolMaterial(BlockTags.INCORRECT_FOR_IRON_TOOL, 16, 10.0F, 4.0F, 8, ItemTags.IRON_TOOL_MATERIALS);
+    public static final ToolMaterial IRON = new ToolMaterial(BlockTags.INCORRECT_FOR_IRON_TOOL, 12, 10.0F, 4.0F, 8, ItemTags.IRON_TOOL_MATERIALS);
     public static final ToolMaterial COPPER = new ToolMaterial(MMEBlockTags.INCORRECT_FOR_COPPER_OR_SILVER_TOOL, 6, 6.0F, 3.0F, 4, MMEItemTags.COPPER_TOOL_MATERIALS);
     public static final ToolMaterial SILVER = new ToolMaterial(MMEBlockTags.INCORRECT_FOR_COPPER_OR_SILVER_TOOL, 6, 6.0F, 3.0F, 4, MMEItemTags.SILVER_TOOL_MATERIALS);
     public static final ToolMaterial GOLD = new ToolMaterial(MMEBlockTags.INCORRECT_FOR_COPPER_OR_SILVER_TOOL, 4, 2.0F, 2.0F, 20, ItemTags.GOLD_TOOL_MATERIALS);

@@ -30,6 +30,8 @@
     "world.entity.animal.chicken.ChickenMixin",
     "world.entity.animal.cow.AbstractCowMixin",
     "world.entity.animal.cow.MushroomCowMixin",
+    "world.entity.animal.equine.AbstractHorseMixin",
+    "world.entity.animal.equine.MountPanicGoalMixin",
     "world.entity.animal.fish.AbstractFishMixin",
     "world.entity.animal.fish.WaterAnimalMixin",
     "world.entity.animal.pig.PigMixin",
