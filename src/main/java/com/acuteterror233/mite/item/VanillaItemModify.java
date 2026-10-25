@@ -303,7 +303,7 @@ public final class VanillaItemModify {
                                                 new MobEffectInstance(MobEffects.REGENERATION, 2400, 1),
                                                 new MobEffectInstance(MobEffects.RESISTANCE, 6000, 0),
                                                 new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 6000, 0),
-                                                new MobEffectInstance(MobEffects.ABSORPTION, 2400, 3)
+                                                new MobEffectInstance(MobEffects.ABSORPTION, 2400, 1)
                                         )
                                 )
                         ).build()
@@ -714,6 +714,7 @@ public final class VanillaItemModify {
         result.put(Identifier.withDefaultNamespace("coal_block"), properties -> properties.component(MMEDataComponents.COMBUSTION_GRADE, 2));
         result.put(Identifier.withDefaultNamespace("furnace"), properties -> properties.component(MMEDataComponents.MAX_COMBUSTION_GRADE, 2));
         result.put(Identifier.withDefaultNamespace("blast_furnace"), properties -> properties.component(MMEDataComponents.MAX_COMBUSTION_GRADE, 4));
+        result.put(Identifier.withDefaultNamespace("pumpkin"), properties -> properties.component(MMEDataComponents.CRAFTING_TIME, 10F));
         return result;
     }
 

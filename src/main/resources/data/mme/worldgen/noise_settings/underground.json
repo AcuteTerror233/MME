@@ -152,7 +152,7 @@
           }
         }
       },
-      "right": "mme:underground_noodle"
+      "right": 1
     },
     "ridges": "minecraft:overworld/ridges",
     "temperature": {

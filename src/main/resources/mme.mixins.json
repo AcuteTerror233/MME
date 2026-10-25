@@ -20,7 +20,6 @@
     "world.entity.BucketableMixin",
     "world.entity.EntityMixin",
     "world.entity.FallingBlockEntityMixin",
-    "world.entity.LivingEntityCurseMixin",
     "world.entity.LivingEntityMixin",
     "world.entity.MobCategoryMixin",
     "world.entity.MobMixin",

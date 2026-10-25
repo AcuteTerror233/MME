@@ -1,17 +1,25 @@
 package com.acuteterror233.mite.mixin.world.entity;
 
 import com.acuteterror233.mite.world.attribute.MMEEnvironmentAttributes;
+import com.acuteterror233.mite.world.effect.curse.CurseCap;
+import com.acuteterror233.mite.world.effect.curse.CurseLogic;
 import com.acuteterror233.mite.world.level.SpecialMoonPhase;
 import com.llamalad7.mixinextras.sugar.Local;
+import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.DamageTypeTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.damagesource.CombatRules;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.DamageType;
+import net.minecraft.world.damagesource.DamageTypes;
+import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.entity.Attackable;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.monster.Witch;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
@@ -23,7 +31,9 @@ import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.function.Consumer;
 
@@ -76,5 +86,32 @@ public abstract class LivingEntityMixin extends Entity implements Attackable, Wa
                     EnchantmentHelper.getDamageProtection(serverLevel, (LivingEntity) (Object) this, damageSource));
         }
         return damageAmount;
+    }
+
+
+    /** Curses survive effect clears (milk, potions, etc.) — they are re-applied from state. */
+    @Inject(method = "removeAllEffects", at = @At("TAIL"))
+    private void mme$reapplyCurses(CallbackInfoReturnable<Boolean> cir) {
+        LivingEntity self = (LivingEntity) (Object) this;
+        if (self instanceof CurseCap cap) {
+            for (Holder<MobEffect> curse : cap.mme$curseState().curses()) {
+                if (!self.hasEffect(curse)) {
+                    self.addEffect(CurseLogic.hiddenInstance(curse));
+                }
+            }
+        }
+    }
+
+    /** Killing a witch lifts every curse it inflicted. */
+    @Inject(method = "die", at = @At("TAIL"))
+    private void mme$witchDeathLiftsCurses(DamageSource source, CallbackInfo ci) {
+        if ((Object) this instanceof Witch witch) {
+            CurseLogic.onWitchDeath(witch);
+        }
+    }
+
+    @Redirect(method = "hurtServer", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/damagesource/DamageSource;is(Lnet/minecraft/tags/TagKey;)Z"))
+    private boolean hurtServer(DamageSource instance, TagKey<DamageType> tag) {
+        return !instance.is(DamageTypes.LAVA) && instance.is(tag);
     }
 }

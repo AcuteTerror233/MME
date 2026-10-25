@@ -116,12 +116,9 @@ public class BlueBerryBushBlock
     /** Picks 1-2 berries (one extra when fully ripe) and resets the bush to age 1. */
     @Override
     protected InteractionResult useWithoutItem(BlockState blockState, Level level, BlockPos blockPos, Player player, BlockHitResult blockHitResult) {
-        boolean bl;
         int i = blockState.getValue(AGE);
-        bl = i == 3;
         if (i > 1) {
-            int j = 1 + level.getRandom().nextInt(2);
-            popResource(level, blockPos, new ItemStack(MMEItems.BLUE_BERRIE, j + (bl ? 1 : 0)));
+            popResource(level, blockPos, new ItemStack(MMEItems.BLUE_BERRIE, i - 1));
             level.playSound(null, blockPos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0f, 0.8f + level.getRandom().nextFloat() * 0.4f);
             BlockState blockState2 = blockState.setValue(AGE, 1);
             level.setBlock(blockPos, blockState2, 2);
