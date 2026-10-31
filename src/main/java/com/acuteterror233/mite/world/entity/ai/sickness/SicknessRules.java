@@ -133,7 +133,8 @@ public final class SicknessRules {
         }
     }
 
-    /** Fills in the vanilla animal set when the json omits it. */
+    /** Fills in the vanilla animal set when the json omits it, and repairs the interval,
+     *  threshold and death-delay fields when their values are invalid. */
     private void normalize() {
         if (animals == null) {
             animals = new HashMap<>();

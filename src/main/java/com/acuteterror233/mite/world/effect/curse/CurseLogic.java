@@ -1,7 +1,6 @@
 package com.acuteterror233.mite.world.effect.curse;
 
 import com.acuteterror233.mite.registry.tag.MMEItemTags;
-import com.acuteterror233.mite.world.effect.MMEMobEffects;
 import com.acuteterror233.mite.world.entity.monster.Ghoul;
 import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
@@ -25,8 +24,10 @@ import java.util.UUID;
 
 /**
  * Static gameplay logic for the witch curse system. Curse presence checks use the synced
- * {@link MobEffect} (works on both sides); the per-player bookkeeping
- * ({@link CurseState}) is authoritative for persistence, witch attribution and reveal state.
+ * {@link MobEffect} (works on both sides); the per-player bookkeeping ({@link CurseState}) is
+ * authoritative for persistence, witch attribution and carrying curses across death, and is
+ * re-applied to the effect list every server tick by {@code PlayerMixin} so vanilla cleanups
+ * cannot drop a permanent curse.
  */
 public final class CurseLogic {
     /** Chance that an attack under a fear curse actually lands. */
@@ -52,8 +53,9 @@ public final class CurseLogic {
     /**
      * Called when a witch spots a player: inflicts one random curse from the pool. A player
      * carries at most one curse at a time — an already-cursed player is immune no matter
-     * which witch cursed them; creative and spectator players are immune. The curse stays
-     * hidden until its symptoms appear.
+     * which witch cursed them; creative and spectator players are immune. The curse itself is
+     * never revealed: only the {@code mme.curse.afflicted} overlay message tells the player
+     * something happened.
      */
     public static void applyCurseFromWitch(Witch witch, Player player) {
         if (player.level().isClientSide() || player.isCreative() || player.isSpectator()) {
@@ -125,9 +127,9 @@ public final class CurseLogic {
         if (player.hasEffect(MMECurses.CANNOT_DRINK_SOUP) && stack.is(MMEItemTags.SOUPS)) {
             return MMECurses.CANNOT_DRINK_SOUP;
         }
-        if (player.hasEffect(MMEMobEffects.INSULIN_RESISTANCE) && stack.is(MMEItemTags.SUGARY_FOODS)) {
-            return MMEMobEffects.INSULIN_RESISTANCE;
-        }
+        // Diabetes is not a dietary ban: INSULIN_RESISTANCE only stretches the eating time of
+        // #mme:sugary_foods (see ItemStackMixin#mme$slowSugarEating), so it is deliberately not
+        // reported here.
         return null;
     }
 

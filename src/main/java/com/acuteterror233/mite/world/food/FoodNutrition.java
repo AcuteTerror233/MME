@@ -1,6 +1,8 @@
 package com.acuteterror233.mite.world.food;
 
 import com.acuteterror233.mite.network.MMENetworking;
+import com.acuteterror233.mite.registry.tag.MMEItemTags;
+import com.acuteterror233.mite.world.effect.MMEMobEffects;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.network.RegistryFriendlyByteBuf;
@@ -50,12 +52,23 @@ public record FoodNutrition(float protein, float fiber, float sugar) implements 
 
     /**
      * Consumable callback: when a server-side player finishes eating, credit this food's
-     * three nutrient values to the player's MME food data.
+     * three nutrient values to the player's MME food data and push the new values to the client
+     * immediately so the inventory nutrition bars refresh.
+     *
+     * @param level        level the eating happened in (server-side only reaches the credit path)
+     * @param livingEntity the eating entity; only {@link ServerPlayer}s are credited
+     * @param itemStack    the consumed stack
+     * @param consumable   the component that triggered the callback
      */
     @Override
     public void onConsume(Level level, LivingEntity livingEntity, ItemStack itemStack, Consumable consumable) {
         if (livingEntity instanceof ServerPlayer serverPlayer) {
             serverPlayer.getFoodData().MME$AddFoodNutrition(this);
+            // Diabetics get sick from every bite of sugary food on top of the slowed eating time
+            if (serverPlayer.hasEffect(MMEMobEffects.INSULIN_RESISTANCE)
+                    && itemStack.getItem().builtInRegistryHolder().is(MMEItemTags.SUGARY_FOODS)) {
+                MMEMobEffects.applySugarNausea(serverPlayer);
+            }
             // Immediate nutrition sync so the inventory bars update right after eating
             MMENetworking.sendFoodNutrition(serverPlayer, serverPlayer.getFoodData().MME$GetFoodNutrition());
         }

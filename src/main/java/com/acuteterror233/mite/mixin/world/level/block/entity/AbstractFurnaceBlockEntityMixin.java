@@ -28,16 +28,17 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
  * Mixin for {@code AbstractFurnaceBlockEntity} — adds MME's combustion-grade (fuel tier) system to
  * all furnaces, exposed through {@link AbstractFurnaceBlockEntityExtension}.
  *
- * <p>Fuel items carry a {@code COMBUSTION_GRADE} data component, ingredients a
- * {@code REQUIRED_COMBUSTION_GRADE}, and the furnace block itself a {@code MAX_COMBUSTION_GRADE}.
- * While burning, the current grade is persisted in a unique {@code combustionGrade} field (saved as
- * {@code combustion_grade}). In {@code serverTick} the {@code canBurn} result is only honored when
- * the furnace's max grade covers the active grade and the smelting input's required grade is met;
- * when lighting up with fresh fuel, the grade is taken from that fuel stack. The {@code setItem}
- * inject resets cooking progress (timer 0, total 200) whenever the input slot changes to a
- * different item while the active fuel grade satisfies the new input. All gameplay logic runs
- * server-side ({@code serverTick} / server-side {@code setItem}); save/load applies wherever the
- * block entity is (de)serialized.</p>
+ * <p>Fuel items carry a {@code COMBUSTION_GRADE} data component (assigned from
+ * {@code MME.CORRESPONDING_COMBUSTION_GRADE}), ingredients a {@code REQUIRED_COMBUSTION_GRADE}, and
+ * the furnace block itself a {@code MAX_COMBUSTION_GRADE}. While burning, the current grade is
+ * persisted in a unique {@code combustionGrade} field (saved as {@code combustion_grade}). In
+ * {@code serverTick} the {@code canBurn} result is only honored when the furnace's max grade covers
+ * the stored grade and the smelting input's required grade is met; when lighting up with fresh fuel
+ * the stored grade is updated to that fuel's grade, which the check sees on the following tick. The
+ * {@code setItem} inject resets cooking progress (timer 0, total 200) whenever a different item
+ * enters the input slot on the server and the active fuel grade satisfies the new input. All gameplay
+ * logic runs server-side ({@code serverTick} / server-side {@code setItem}); save/load applies
+ * wherever the block entity is (de)serialized.</p>
  */
 @Mixin(AbstractFurnaceBlockEntity.class)
 public abstract class AbstractFurnaceBlockEntityMixin
@@ -59,6 +60,14 @@ public abstract class AbstractFurnaceBlockEntityMixin
     @Unique
     private int combustionGrade;
 
+    /**
+     * Mirrors {@code AbstractFurnaceBlockEntity}'s constructor; required because the mixin extends
+     * {@link BaseContainerBlockEntity}.
+     *
+     * @param type          the block entity type
+     * @param worldPosition the block position
+     * @param blockState    the block state
+     */
     protected AbstractFurnaceBlockEntityMixin(BlockEntityType<?> type, BlockPos worldPosition, BlockState blockState) {
         super(type, worldPosition, blockState);
     }
@@ -86,10 +95,11 @@ public abstract class AbstractFurnaceBlockEntityMixin
     }
 
     /**
-     * Modifies the expression value of the {@code canBurn} call inside {@code serverTick}: adopts
-     * the grade of newly consumed fuel, then only allows burning when the furnace's
-     * {@code MAX_COMBUSTION_GRADE} covers the active grade and the input's
-     * {@code REQUIRED_COMBUSTION_GRADE} is satisfied.
+     * Modifies the expression value of the {@code canBurn} call inside {@code serverTick}: adopts the
+     * newly consumed fuel's grade into {@code combustionGrade} when the furnace has just run out of
+     * burn time, then only allows burning when the furnace's {@code MAX_COMBUSTION_GRADE} covers the
+     * stored grade and the input's {@code REQUIRED_COMBUSTION_GRADE} is satisfied. The check reads the
+     * grade as it was before this tick's adoption, so a newly adopted grade takes effect next tick.
      *
      * @param origina the vanilla {@code canBurn} result
      * @param entity  the ticking furnace block entity (injected from method args)
@@ -112,9 +122,10 @@ public abstract class AbstractFurnaceBlockEntityMixin
     }
 
     /**
-     * Injected into {@code setItem} at the input size-limiting call: when a different item enters
-     * the input slot on the server and the active fuel grade satisfies the new input's required
-     * grade, resets the cooking progress and cancels the vanilla tail of the method.
+     * Targets the {@code ItemStack#limitSize(I)V} call inside {@code setItem}. The stray
+     * {@code args = "ldc="} is inert ({@code @At.args} entries are named parameters and
+     * {@code BeforeInvoke} never reads an {@code ldc} parameter): when a different item enters the
+     * input slot on the server and the fuel grade satisfies the new input, resets cooking progress and cancels the vanilla tail.
      *
      * @param slot      the inventory slot being set
      * @param itemStack the stack being placed into {@code slot}

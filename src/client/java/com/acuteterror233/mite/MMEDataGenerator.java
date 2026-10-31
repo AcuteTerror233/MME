@@ -16,7 +16,9 @@ import net.minecraft.core.registries.Registries;
 
 /**
  * MME data generation entrypoint, implementing {@link DataGeneratorEntrypoint}.
- * Registers all data generation providers: loot tables, recipes, tags, models, advancements, and language files.
+ * Registers every provider instance (models, recipes, block/entity/built-in loot tables, dynamic
+ * registries, advancements, languages, tags) and bootstraps the MME dynamic-registry entries used
+ * by both datagen and runtime registry validation.
  */
 public class MMEDataGenerator implements DataGeneratorEntrypoint {
     /** Adds every datagen provider (models, recipes, loot tables, dynamic registries, advancements, languages, tags) to the pack. */

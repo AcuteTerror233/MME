@@ -20,13 +20,15 @@ import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fabricmc.fabric.api.biome.v1.ModificationPhase;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.fabricmc.fabric.api.entity.event.v1.EntitySleepEvents;
-import net.fabricmc.fabric.api.object.builder.v1.world.poi.PoiHelper;
 import net.minecraft.commands.Commands;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.placement.OrePlacements;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.ai.village.poi.PoiTypes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.FireBlock;
@@ -42,7 +44,7 @@ import java.util.Set;
 
 /**
  * MME mod main entry point, implements {@link ModInitializer}.
- * Responsible for registering all blocks, items, entities, biome modifications, loot table replacements, and commands.
+ * Initializes MME registries and networking, wires biome/attribute/worldgen setup, registers the underground-portal POI, overrides sleep and flammability rules, and registers the {@code /nutrition} and {@code /day} commands.
  */
 public class MME implements ModInitializer {
     /** Mod id; also the namespace for every MME registry id, tag, and data path. */
@@ -81,7 +83,11 @@ public class MME implements ModInitializer {
         MMETempFluidSources.init();
 
         // === Point of Interest registration ===
-        PoiHelper.register(Identifier.fromNamespaceAndPath(MME.MOD_ID, "underground_portal"), 0, 1, MMEBlocks.UNDERGROUND_PORTAL);
+        PoiTypes.register(
+                BuiltInRegistries.POINT_OF_INTEREST_TYPE,
+                ResourceKey.create(Registries.POINT_OF_INTEREST_TYPE, Identifier.fromNamespaceAndPath(MME.MOD_ID, "underground_portal")),
+                Set.copyOf(MMEBlocks.UNDERGROUND_PORTAL.getStateDefinition().getPossibleStates()),
+                0, 1);
 
         // === Overworld ore generation ===
         inOverworldAdd(OverworldPlacedFeatures.OVERWORLD_ORE_SILVER_SMALL);
@@ -103,7 +109,7 @@ public class MME implements ModInitializer {
     }
 
     /**
-     * Overrides vanilla sleep rules: cancels sleeping entirely, and prevents time reset unless it's dark.
+     * Overrides vanilla sleep rules: {@code ALLOW_SLEEPING} refuses sleep with {@code NOT_SAFE} only while the dimension's {@code SPECIAL_MOON_PHASE} attribute is {@code BLOOD_MOON}, and {@code ALLOW_RESETTING_TIME} permits the night skip only at night ({@code !isBrightOutside()}) and only without the {@code SLEEPLESSNESS} curse.
      */
     private static void registerSleepEvents() {
         EntitySleepEvents.ALLOW_SLEEPING.register((player, _) -> player.level().environmentAttributes().getDimensionValue(MMEEnvironmentAttributes.SPECIAL_MOON_PHASE).equals(SpecialMoonPhase.BLOOD_MOON) ? Player.BedSleepingProblem.NOT_SAFE : null);
@@ -174,15 +180,14 @@ public class MME implements ModInitializer {
 
     /**
      * Vanilla recipe ids removed from the recipe map by {@code RecipeMapMixin}, grouped by reason:
-     * wooden and stone tools (replaced by the flint-tier early-game progression);
-     * diamond tools and armor (diamond gear is gated behind the metal crafting tables);
-     * iron tools and armor (iron gear is reached via the transmute upgrade chain, not direct crafting);
-     * the iron and diamond spears (spears climb the same upgrade chains);
+     * wooden and stone tools except the wooden shovel (replaced by the flint-tier early-game progression);
+     * diamond tools and armor plus the diamond spear (diamond gear is gated behind the metal
+     * crafting tables);
      * the crafting table and crafter (superseded by MME's crafting progression);
      * vanilla netherite smithing upgrades (re-registered by MME with full-durability results);
      * the fishing rod (replaced by MME's metal fishing rods);
      * raw metal smelting (raw iron/copper/gold must be processed by MME means);
-     * the bundle.
+     * the bundle and the bread recipe (bread is instead smelted from MME dough).
      * These ids are hardcoded — a vanilla rename in an MC upgrade silently breaks the filter.
      */
     public static Set<Identifier> FILTER_RECIPE_SET = Set.of(
@@ -205,16 +210,6 @@ public class MME implements ModInitializer {
             Identifier.withDefaultNamespace("diamond_chestplate"),
             Identifier.withDefaultNamespace("diamond_leggings"),
             Identifier.withDefaultNamespace("diamond_boots"),
-            Identifier.withDefaultNamespace("iron_helmet"),
-            Identifier.withDefaultNamespace("iron_chestplate"),
-            Identifier.withDefaultNamespace("iron_leggings"),
-            Identifier.withDefaultNamespace("iron_boots"),
-            Identifier.withDefaultNamespace("iron_sword"),
-            Identifier.withDefaultNamespace("iron_pickaxe"),
-            Identifier.withDefaultNamespace("iron_axe"),
-            Identifier.withDefaultNamespace("iron_shovel"),
-            Identifier.withDefaultNamespace("iron_hoe"),
-            Identifier.withDefaultNamespace("iron_spear"),
             Identifier.withDefaultNamespace("crafting_table"),
             Identifier.withDefaultNamespace("netherite_axe_smithing"),
             Identifier.withDefaultNamespace("netherite_boots_smithing"),
@@ -240,7 +235,7 @@ public class MME implements ModInitializer {
      * Applied by {@code ItemPropertiesMixin}: a fuel item's {@code combustion_grade} component is looked
      * up here and defaults to 1 for fuels not listed. Higher is stronger:
      * 1 default, 2 coal / coal block, 3 lava bucket, 4 blaze rod. Furnaces compare this grade against
-     * the fuel's {@code max_combustion_grade} cap and the ingredient's {@code required_combustion_grade}.
+     * the furnace's {@code max_combustion_grade} cap and the ingredient's {@code required_combustion_grade}.
      */
     public static Map<ResourceKey<ContextIntProvider>, Integer> CORRESPONDING_COMBUSTION_GRADE = Map.ofEntries(
             Map.entry(ContextIntProviders.COOKING_TIME_COAL, 2),

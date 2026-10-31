@@ -25,6 +25,7 @@ accessible field net/minecraft/world/level/block/entity/AbstractFurnaceBlockEnti
 accessible field net/minecraft/world/entity/animal/fish/AbstractSchoolingFish leader Lnet/minecraft/world/entity/animal/fish/AbstractSchoolingFish;
 accessible class net/minecraft/world/level/block/ComposterBlock$OutputContainer
 accessible class net/minecraft/world/entity/animal/equine/AbstractHorse$MountPanicGoal
+accessible method net/minecraft/world/level/pathfinder/WalkNodeEvaluator getPathTypeFromState (Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/pathfinder/PathType;
 
 transitive-extend-enum net/minecraft/world/level/LightLayer ENTITY
 transitive-inject-interface net/minecraft/world/level/block/entity/CampfireBlockEntity com/acuteterror233/mite/interfaces/CampfireBlockEntityExtension

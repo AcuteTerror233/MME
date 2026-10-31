@@ -1,5 +1,6 @@
 package com.acuteterror233.mite.mixin.world.level.block;
 
+import com.acuteterror233.mite.world.player.PlayerLevelScaling;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.flag.FeatureElement;
@@ -15,9 +16,16 @@ import org.spongepowered.asm.mixin.Overwrite;
  * <p>MITE-style mining rebalance, applied to every block in the game (client-side break progress
  * plus server-side validation): the per-tick divisor of the destroy-speed formula is raised from
  * vanilla's 30/100 to 350 (correct tool) / 15000 (wrong tool), so even soft blocks take many times
- * longer to mine and using the wrong tool is nearly pointless. Unbreakable blocks (-1.0 hardness)
- * still return 0 progress. Fully overwritten via {@code @Overwrite}; implements
- * {@code FeatureElement} to satisfy the vanilla interface contract.</p>
+ * longer to mine and using the wrong tool is nearly pointless. Progress is 0 for unbreakable blocks
+ * (-1.0 hardness) and for a starving player whose food level has dropped to 0 or below (a branch
+ * vanilla does not have). Fully overwritten via {@code @Overwrite}; {@code FeatureElement} is
+ * re-declared for the mixin even though the target class already implements it.</p>
+ *
+ * <p>The final progress is then multiplied by
+ * {@link PlayerLevelScaling#miningSpeedMultiplier(Player)} (+2% per experience level, capped at
+ * level 35 for x1.70). Applying it here rather than as an attribute modifier keeps the bonus
+ * out of the tooltip and lets it stack multiplicatively on top of tool, Efficiency and potion
+ * contributions exactly once.</p>
  */
 @Mixin(BlockBehaviour.class)
 public abstract class BlockBehaviourMixin implements FeatureElement {
@@ -34,7 +42,8 @@ public abstract class BlockBehaviourMixin implements FeatureElement {
         } else {
             // 350 ticks with the correct tool, 15000 without — vanilla uses 30/100.
             int i = player.hasCorrectToolForDrops(state) ? 350 : 15000;
-            return player.getDestroySpeed(state) / f / i;
+            // Experience-level bonus: +2% per level, applied last so it scales the finished value
+            return player.getDestroySpeed(state) / f / i * PlayerLevelScaling.miningSpeedMultiplier(player);
         }
     }
 }

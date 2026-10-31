@@ -26,6 +26,11 @@ public abstract class FarmBlockMixin extends Block {
     /** Shadowed vanilla moisture property (0 dry .. 7 wet). */
     @Shadow
     public static final IntegerProperty MOISTURE = BlockStateProperties.MOISTURE;
+    /**
+     * Mirrors {@code FarmBlock}'s constructor; required because the mixin extends {@link Block}.
+     *
+     * @param properties block behaviour properties forwarded to {@link Block}
+     */
     public FarmBlockMixin(Properties properties) {
         super(properties);
     }

@@ -33,8 +33,8 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /**
- * Vampire bat entity, a flying hostile mob.
- * Can drain player health.
+ * Vampire bat entity: flying hostile mob that roosts on ceilings, hunts players and animals,
+ * and heals itself 2 HP on every successful melee hit.
  */
 public class VampireBat extends Mob implements Enemy {
     /** Synced status flags bitfield; bit {@link #FLAG_RESTING} marks a resting bat. */
@@ -60,6 +60,7 @@ public class VampireBat extends Mob implements Enemy {
         }
     }
 
+    /** Targets players first and then animals; adds the swoop attack goal. */
     @Override
     protected void registerGoals() {
         this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, Player.class, true));
@@ -246,6 +247,7 @@ public class VampireBat extends Mob implements Enemy {
         return TargetingConditions.DEFAULT.test(serverLevel, this, livingEntity);
     }
 
+    /** @return monster base attributes with 6 max health. */
     public static AttributeSupplier.@NotNull Builder createAttributes() {
         return Monster.createMonsterAttributes().add(Attributes.MAX_HEALTH, 6.0);
     }

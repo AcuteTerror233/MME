@@ -11,8 +11,9 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 /**
- * While Auto Harvest / Auto Use mode is active, the operating item's hotbar slot gets a green
- * background tint and outline (matching the MITE visual cue that the slot is "automated").
+ * Mixin for {@code Hud}: while Auto Harvest / Auto Use mode is active, the operating item's
+ * hotbar slot gets a green background tint and outline after {@code extractItemHotbar} returns
+ * (matching the MITE visual cue that the slot is "automated").
  */
 @Mixin(Hud.class)
 public abstract class HudHotbarMixin {

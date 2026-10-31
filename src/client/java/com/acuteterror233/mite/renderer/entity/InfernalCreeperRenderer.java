@@ -8,7 +8,7 @@ import net.minecraft.resources.Identifier;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * Infernal Creeper renderer.
+ * Infernal Creeper renderer: vanilla creeper geometry with the infernal creeper skin.
  */
 public class InfernalCreeperRenderer extends CreeperRenderer {
     private static final Identifier TEXTURE = Identifier.fromNamespaceAndPath(MME.MOD_ID, "textures/entity/creeper/infernal_creeper.png");

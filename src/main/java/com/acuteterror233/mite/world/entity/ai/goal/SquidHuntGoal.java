@@ -40,7 +40,10 @@ import java.util.List;
 public class SquidHuntGoal extends Goal {
     /** Search radius (squared) for both target kinds. */
     private static final double TARGET_RANGE_SQR = 8.0D * 8.0D;
-    /** Goal gives up when the target drifts beyond 1.5x the search radius. */
+    /**
+     * Boat target is abandoned beyond 1.5x the search radius; players are re-validated
+     * against {@link #TARGET_RANGE_SQR} instead.
+     */
     private static final double LEASH_RANGE_SQR = 12.0D * 12.0D;
     /** Contact distance (squared) at which a player is grabbed. */
     private static final double GRAB_RANGE_SQR = 1.8D * 1.8D;
@@ -48,19 +51,19 @@ public class SquidHuntGoal extends Goal {
     private static final double LATCH_RANGE_SQR = 2.4D * 2.4D;
     /** After grabbing a player the squid ignores all players for this many ticks (30 s). */
     private static final int PLAYER_COOLDOWN_TICKS = 600;
-    /** Duration of the Slowness V applied by a grab, in ticks (5 s). */
+    /** Duration of the Slowness V applied by a grab, in ticks (15 s). */
     private static final int SLOWNESS_TICKS = 15 * 20;
     /** Slowness V: amplifier index 4 = level V. */
     private static final int SLOWNESS_AMPLIFIER = 4;
     /** Propulsion vector magnitude while chasing (vanilla random movement uses ~0.1). */
     private static final double CHASE_SPEED = 0.2D;
-    /** Damage per bite on a latched boat (a boat has 8 health). */
+    /** Damage per bite on a latched boat; boat damage accumulates until the boat breaks. */
     private static final float BOAT_DAMAGE = 3.0F;
     /** Ticks between consecutive boat bites. */
     private static final int BOAT_BITE_INTERVAL = 20;
     /**
-     * Horizontal velocity multiplier applied to a latched boat each tick (hard brake — a rowed
-     * boat crawls at roughly a tenth of its normal cruise speed while latched).
+     * Horizontal velocity multiplier applied to a latched boat every tick (0.5 halves the
+     * boat's horizontal velocity each tick, hard-braking a rowed boat).
      */
     private static final double BOAT_SLOWDOWN_FACTOR = 0.5D;
 

@@ -10,9 +10,13 @@ import net.minecraft.world.level.storage.ValueOutput;
 import java.util.*;
 
 /**
- * Mutable per-player witch-curse bookkeeping: which curse the player carries and which
- * witch inflicted it (a player carries at most one curse at a time). Curses stay hidden
- * forever — no particles, no icon, no reveal.
+ * Mutable per-player witch-curse bookkeeping, exposed through the {@link CurseCap} duck interface
+ * on {@code Player} and persisted with the player's save data (keys {@code mme:Curses},
+ * {@code Id}, {@code Witch}). It records which curse the player carries and which witch
+ * inflicted it; the "at most one curse" rule is enforced by
+ * {@link CurseLogic#applyCurseFromWitch}, not by this map, which would accept several entries.
+ * Curses stay hidden forever — no particles, no icon, no reveal — and survive death through
+ * {@link #copyFrom}.
  */
 public class CurseState {
     private final Map<Holder<MobEffect>, UUID> witches = new LinkedHashMap<>();
@@ -22,7 +26,7 @@ public class CurseState {
         return witches.containsKey(curse);
     }
 
-    /** Records a curse and its inflicting witch. */
+    /** Records a curse and its inflicting witch, replacing any previous entry for the same curse. */
     public void addCurse(Holder<MobEffect> curse, UUID witchId) {
         witches.put(curse, witchId);
     }

@@ -88,8 +88,8 @@ public class WitchCurseGameTest {
 
     /**
      * Diet bans: CANNOT_EAT_MEAT bans animal products but not plants, CANNOT_EAT_PLANTS bans
-     * plant products but not meat, and the diabetes effect (INSULIN_RESISTANCE) bans sugary
-     * foods while leaving the dietary curses untouched.
+     * plant products but not meat. The diabetes effect (INSULIN_RESISTANCE) is not a dietary
+     * ban — it leaves eating allowed and only stretches the consume time of sugary food.
      */
     @GameTest
     public void dietCursesBanMatchingFood(GameTestHelper helper) {
@@ -117,15 +117,28 @@ public class WitchCurseGameTest {
             return;
         }
 
-        // INSULIN_RESISTANCE is a plain timed effect (not a witch curse) and bans sugary foods.
+        // INSULIN_RESISTANCE is a plain timed effect (not a witch curse): it no longer bans sugary
+        // food, it only multiplies its consume time (tier 1 = 5x).
         ItemStack sugar = new ItemStack(Items.SUGAR);
+        int plainSugarTicks = sugar.getUseDuration(player);
+        int plainBreadTicks = plant.getUseDuration(player);
         player.addEffect(new MobEffectInstance(MMEMobEffects.INSULIN_RESISTANCE, 200));
-        if (CurseLogic.bannedBy(player, sugar) != MMEMobEffects.INSULIN_RESISTANCE) {
-            helper.fail("INSULIN_RESISTANCE must ban sugar");
+        if (CurseLogic.bannedBy(player, sugar) != null) {
+            helper.fail("INSULIN_RESISTANCE must not ban sugar");
             return;
         }
         if (CurseLogic.bannedBy(player, plant) != MMECurses.CANNOT_EAT_PLANTS) {
-            helper.fail("INSULIN_RESISTANCE must not re-ban bread as sugary");
+            helper.fail("INSULIN_RESISTANCE must leave the dietary curses untouched");
+            return;
+        }
+        int diabeticSugarTicks = sugar.getUseDuration(player);
+        if (diabeticSugarTicks != plainSugarTicks * 5) {
+            helper.fail("Tier 1 diabetes must stretch sugar eating 5x: " + plainSugarTicks
+                    + " -> " + diabeticSugarTicks);
+            return;
+        }
+        if (plant.getUseDuration(player) != plainBreadTicks) {
+            helper.fail("Diabetes must not change the eating time of non-sugary food");
             return;
         }
         helper.succeed();

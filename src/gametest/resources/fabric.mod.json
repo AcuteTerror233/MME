@@ -16,7 +16,8 @@
       "com.acuteterror233.mite.gametest.TempFluidSourceGameTest",
       "com.acuteterror233.mite.gametest.AnimalSicknessGameTest",
       "com.acuteterror233.mite.gametest.FallingBlockDamageGameTest",
-      "com.acuteterror233.mite.gametest.UpgradeRecipeGameTest"
+      "com.acuteterror233.mite.gametest.EquipmentRecipeGameTest",
+      "com.acuteterror233.mite.gametest.ZombieDigGameTest"
     ]
   },
   "depends": {

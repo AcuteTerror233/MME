@@ -34,7 +34,7 @@ public class GrowingPlantHeadBlockMixin {
      * @param properties vanilla constructor properties
      * @param direction  growth direction of the plant head
      * @param voxelShape collision shape of the head
-     * @param bl         whether the plant is scheduled on chunks (scheduleTick behavior)
+     * @param bl         whether the block schedules fluid ticks ({@code scheduleFluidTicks})
      * @param d          the vanilla per-tick growth probability
      * @param ci         injection callback (unused; never cancelled)
      */

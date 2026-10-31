@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "a": "mme:ancient_metal_ingot",
+    "b": "minecraft:stick"
+  },
+  "pattern": [
+    "ab",
+    " b"
+  ],
+  "result": {
+    "id": "mme:ancient_metal_hatchet"
+  }
+}

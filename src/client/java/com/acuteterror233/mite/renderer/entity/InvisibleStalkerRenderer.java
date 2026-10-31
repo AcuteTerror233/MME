@@ -10,7 +10,8 @@ import net.minecraft.resources.Identifier;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * Invisible Stalker renderer.
+ * Invisible Stalker renderer: vanilla zombie geometry with the invisible stalker skin, drawn
+ * through a translucent render type.
  */
 public class InvisibleStalkerRenderer extends ZombieRenderer {
     private static final Identifier TEXTURE = Identifier.fromNamespaceAndPath(MME.MOD_ID, "textures/entity/zombie/invisible_stalker.png");

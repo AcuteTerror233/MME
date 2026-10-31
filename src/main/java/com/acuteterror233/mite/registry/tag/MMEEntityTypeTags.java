@@ -15,11 +15,11 @@ public interface MMEEntityTypeTags {
     TagKey<EntityType<?>> SENSITIVE_TO_BUTCHERING = key("sensitive_to_butchering");
     /** Entities that produce manure. */
     TagKey<EntityType<?>> PRODUCE_MANURE = key("produce_manure");
-    /** Large animals (cattle-sized and bigger) — slowest manure interval. */
+    /** Large animals (cattle-sized and bigger) — slowest manure interval, 24000–30000 ticks (20–25 min). */
     TagKey<EntityType<?>> LARGE_ANIMALS = key("large_animals");
-    /** Medium animals (pig-sized) — medium manure interval. */
+    /** Medium animals (pig-sized) — medium manure interval, 18000–24000 ticks (15–20 min). */
     TagKey<EntityType<?>> MEDIUM_ANIMALS = key("medium_animals");
-    /** Small animals (chicken-sized) — fastest manure interval. */
+    /** Small animals (chicken-sized) — fastest manure interval, 12000–18000 ticks (10–15 min). */
     TagKey<EntityType<?>> SMALL_ANIMALS = key("small_animals");
 
     /** Creates a {@link TagKey} in the entity type registry under the MME namespace. */

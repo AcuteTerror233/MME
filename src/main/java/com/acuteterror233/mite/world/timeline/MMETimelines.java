@@ -19,18 +19,31 @@ import net.minecraft.world.clock.WorldClocks;
 import net.minecraft.world.timeline.Timeline;
 
 /**
- * Timeline registry bootstrap for MME. Registers the {@code mme:special_moon} timeline,
- * which drives the {@link SpecialMoonPhase} cycle against the Overworld world clock:
+ * Timeline registry bootstrap for MME. Registers the {@code mme:special_moon} timeline (tagged into
+ * {@code minecraft:in_overworld}, so the Overworld samples it), which drives the
+ * {@link SpecialMoonPhase} cycle against the Overworld world clock on a 129-day period
+ * (3096000 ticks = {@code BLUE_MOON.startTick() + 24000}):
  * <ul>
- *   <li>an attribute track that sets {@code SPECIAL_MOON_PHASE} to each special moon for one
- *       night (12000 ticks) and back to {@link SpecialMoonPhase#NORMAL_MOON};</li>
- *   <li>a SUBTRACT modifier on {@code SKY_LIGHT_LEVEL} and a MULTIPLY modifier on
- *       {@code SKY_LIGHT_FACTOR} that darken/brighten nights per phase.</li>
+ *   <li>an attribute track that writes {@code SPECIAL_MOON_PHASE}:
+ *       {@link SpecialMoonPhase#NORMAL_MOON} as the baseline, a
+ *       {@link SpecialMoonPhase#HARVEST_MOON} window before each of the three blood-moon days
+ *       (day 32/64/96), {@link SpecialMoonPhase#BLOOD_MOON_DAY} for the day and
+ *       {@link SpecialMoonPhase#BLOOD_MOON} for the following night (11000 ticks), then one
+ *       {@link SpecialMoonPhase#BLUE_MOON} night on day 128;</li>
+ *   <li>an {@code ADD} modifier on {@code SKY_LIGHT_LEVEL} (negative deltas: −4 on blood-moon
+ *       nights, +6 on the blue-moon night);</li>
+ *   <li>a {@code MULTIPLY} modifier on {@code SKY_LIGHT_FACTOR} (×0.1 on blood-moon nights,
+ *       ×3 on the blue-moon night);</li>
+ *   <li>an {@code ADD_RGB} modifier on {@code SKY_COLOR} (red haze for the blood-moon day/night,
+ *       cold blue glow for the blue-moon night).</li>
  * </ul>
+ * The phase track uses override semantics; the visual modifier tracks compose additively, so
+ * separate additive timelines could tint the same sky without erasing each other.
  */
 public interface MMETimelines {
     /** Resource key of the special-moon timeline in the {@code minecraft:timeline} registry. */
     ResourceKey<Timeline> SPECIAL_MOON = key("special_moon");
+    /** Registered placeholder timeline with a 32-day period and no tracks; the live blood-moon keyframes all live in {@link #SPECIAL_MOON}. */
     ResourceKey<Timeline> BLOOD_MOON = key("blood_moon");
     /** Strong red haze added to the daytime sky on the blood-moon day (RGB24, ADD_RGB argument). */
     int BLOOD_MOON_DAY_SKY_TINT = 0x5A1206;
@@ -38,12 +51,18 @@ public interface MMETimelines {
     int BLOOD_MOON_NIGHT_SKY_TINT = 0x8C0C04;
     /** Cold blue glow added to the night sky during the blue moon (RGB24, ADD_RGB argument). */
     int BLUE_MOON_SKY_TINT = 0x1A2C5A;
+    /**
+     * Creates a resource key in the {@code minecraft:timeline} registry under the {@code mme} namespace.
+     *
+     * @param string the path of the timeline id
+     * @return the resource key for {@code mme:<string>}
+     */
     static ResourceKey<Timeline> key(String string) {
         return ResourceKey.create(Registries.TIMELINE, Identifier.fromNamespaceAndPath(MME.MOD_ID, string));
     }
 
     /**
-     * Datazen bootstrap: builds and registers the special-moon timeline.
+     * Datagen bootstrap: builds and registers the special-moon timeline.
      *
      * @param context bootstrap context providing registry lookups and the registration target
      */

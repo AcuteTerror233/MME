@@ -15,10 +15,11 @@ import org.jspecify.annotations.NonNull;
 
 /**
  * Revenant entity, inherits zombie behavior. Spawns in a full rusted iron (or rusted iron
- * chainmail) set with a random rusted iron weapon, and moves 1.5x as fast as a zombie.
+ * chainmail) set with a random rusted iron weapon, moves 1.5x as fast as a zombie, and has
+ * 50 max health.
  */
 public class Revenant extends Zombie {
-    /** Revenant base attributes: zombie stats with 1.5x movement speed (0.23 * 1.5). */
+    /** Revenant base attributes: zombie stats with 50 max health and 1.5x movement speed (0.23 * 1.5 = 0.345). */
     public static AttributeSupplier.Builder createAttributes() {
         return Zombie.createAttributes()
                 .add(Attributes.MAX_HEALTH, 50)

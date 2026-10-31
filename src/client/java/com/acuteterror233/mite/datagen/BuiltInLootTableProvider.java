@@ -666,8 +666,8 @@ public class BuiltInLootTableProvider extends SimpleFabricLootTableSubProvider {
                         .withPool(
                                 LootPool.lootPool()
                                         .setRolls(ContextIntProviders.between(1, 3))
-                                        .add(LootItem.lootTableItem(Items.COPPER_INGOT).setWeight(10))
-                                        .add(LootItem.lootTableItem(MMEItems.SILVER_INGOT).setWeight(5))
+                                        .add(LootItem.lootTableItem(Items.COPPER_NUGGET).setWeight(10))
+                                        .add(LootItem.lootTableItem(MMEItems.SILVER_NUGGET).setWeight(5))
                                         .add(LootItem.lootTableItem(Blocks.BAMBOO).setWeight(15).apply(SetItemCountFunction.setCount(ContextIntProviders.between(1, 2))))
                                         .add(LootItem.lootTableItem(Items.EMERALD).setWeight(2).apply(SetItemCountFunction.setCount(ContextIntProviders.between(1, 2))))
                                         .add(LootItem.lootTableItem(Items.BONE).setWeight(20).apply(SetItemCountFunction.setCount(ContextIntProviders.between(4, 6))))
@@ -934,8 +934,8 @@ public class BuiltInLootTableProvider extends SimpleFabricLootTableSubProvider {
                         .withPool(
                                 LootPool.lootPool()
                                         .setRolls(ContextIntProviders.between(0, 2))
-                                        .add(LootItem.lootTableItem(Items.COPPER_INGOT).setWeight(90).apply(SetItemCountFunction.setCount(ContextIntProviders.between(1, 3))))
-                                        .add(LootItem.lootTableItem(MMEItems.SILVER_INGOT).setWeight(30).apply(SetItemCountFunction.setCount(ContextIntProviders.between(1, 2))))
+                                        .add(LootItem.lootTableItem(Items.COPPER_NUGGET).setWeight(90).apply(SetItemCountFunction.setCount(ContextIntProviders.between(1, 3))))
+                                        .add(LootItem.lootTableItem(MMEItems.SILVER_NUGGET).setWeight(30).apply(SetItemCountFunction.setCount(ContextIntProviders.between(1, 2))))
                                         .add(LootItem.lootTableItem(Items.EMERALD).setWeight(10).apply(SetItemCountFunction.setCount(ContextIntProviders.between(1, 5))))
                                         .add(LootItem.lootTableItem(Items.DIAMOND))
                                         .add(LootItem.lootTableItem(Items.EXPERIENCE_BOTTLE).setWeight(5))

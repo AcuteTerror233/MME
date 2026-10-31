@@ -17,7 +17,8 @@ import net.minecraft.resources.Identifier;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * Base class for Vampire Bat renderers.
+ * Shared renderer for vampire bats: vanilla bat texture and geometry, the vampire-bat eye
+ * texture drawn as an extra emissive layer, and MME's resting/flying animation states.
  */
 public class VampireBatRenderer<T extends VampireBat> extends MobRenderer<T, BatRenderState, BatModel> {
     private static final Identifier TEXTURE = Identifier.withDefaultNamespace("textures/entity/bat/bat.png");

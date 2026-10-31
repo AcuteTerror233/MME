@@ -41,9 +41,9 @@ import java.util.List;
  * menu, replacing the old custom {@code MMEEnchantmentMenu}:
  * <ul>
  * <li>{@code slotsChanged} is reimplemented: enchanted-upgrade items (e.g. golden apple) are
- * accepted and offered through the {@link EnchantedUpgradeRegistry} path, and the enchantment
- * power gains a moon phase influence capped by the per-instance maximum from the
- * {@link EnchantmentMenuExtension} duck interface;</li>
+ * accepted and offered through the {@link EnchantedUpgradeRegistry} path, and the bookshelf
+ * power driving the cost roll is capped at the per-instance maximum from the
+ * {@link EnchantmentMenuExtension} duck interface (vanilla table 20, emerald table 10, default 15);</li>
  * <li>upgrade items are enchanted through a transmutation branch of {@code clickMenuButton};</li>
  * <li>the menu stays valid on every block tagged {@code mme:enchanting_table}.</li>
  * </ul>
@@ -84,6 +84,7 @@ public abstract class EnchantmentMenuMixin extends AbstractContainerMenu impleme
     protected EnchantmentMenuMixin(@Nullable MenuType<?> menuType, int containerId) {
         super(menuType, containerId);
     }
+    /** Registers the three shared {@code xpCosts} data slots (synced to the client screen) right after menu construction. */
     @Inject(method = "<init>(ILnet/minecraft/world/entity/player/Inventory;Lnet/minecraft/world/inventory/ContainerLevelAccess;)V", at = @At("TAIL"))
     public void init(int containerId, Inventory inventory, ContainerLevelAccess access, CallbackInfo ci){
         this.addDataSlot(DataSlot.shared(EnchantmentMenuExtension.xpCosts, 0));
@@ -107,12 +108,11 @@ public abstract class EnchantmentMenuMixin extends AbstractContainerMenu impleme
     }
 
     /**
-     * Reimplements the vanilla offer recalculation with two MME additions:
-     * upgrade items are accepted even though they carry no ENCHANTABLE component, and the raw
-     * bookshelf power is adjusted by the current moon phase and clamped to
-     * [0, maxEnchantmentLevel] (the floor at zero guards against negative powers crashing
-     * RandomSource.nextInt during waning/new moons). The vanilla logic itself is replicated
-     * verbatim from the 26.3 bytecode.
+     * Reimplements the vanilla offer recalculation with two MME additions: upgrade items are
+     * accepted even though they carry no ENCHANTABLE component (offered with a fixed sentinel cost
+     * through {@link EnchantedUpgradeRegistry}), and the bookshelf power passed to the cost roll is
+     * capped at the per-instance {@code mme$maxEnchantmentLevel}. The vanilla logic itself is
+     * replicated verbatim from the 26.3 bytecode.
      */
     @Override
     public void slotsChanged(@NonNull Container container) {

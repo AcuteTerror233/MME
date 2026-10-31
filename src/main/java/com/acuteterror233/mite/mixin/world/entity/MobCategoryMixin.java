@@ -1,22 +1,23 @@
 package com.acuteterror233.mite.mixin.world.entity;
 
 import net.minecraft.world.entity.MobCategory;
-import org.spongepowered.asm.mixin.Final;
-import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Mutable;
-import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.*;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 /**
- * Mixin for {@code MobCategory} — Doubles the natural-spawn cap of the {@code MONSTER}
- * category (70 → 140 instances per spawn cycle denominator). The cap formula in
- * {@code NaturalSpawner} reads {@link MobCategory#getMaxInstancesPerChunk()}, which returns
- * this {@code max} field, so doubling the field doubles every derived monster mobcap.
+ * Mixin for {@code MobCategory} — raises the natural-spawn cap of the {@code MONSTER}
+ * category from vanilla 70 to 100 instances per spawn-cycle denominator (+43%). The cap
+ * formula in {@code NaturalSpawner} reads {@link MobCategory#getMaxInstancesPerChunk()},
+ * which returns this {@code max} field, so every derived monster mobcap scales with it.
  */
 @Mixin(MobCategory.class)
 public class MobCategoryMixin {
+
+    /** Monster spawn capacity MME raises the category to; vanilla is 70. */
+    @Unique
+    private static final int MME$MONSTER_SPAWN_CAP = 100;
 
     /** Per-category spawn capacity; {@code final} in vanilla, made mutable for this tweak. */
     @Shadow
@@ -30,14 +31,14 @@ public class MobCategoryMixin {
     private String name;
 
     /**
-     * Doubles the MONSTER category capacity at the tail of the enum constructor. The category
+     * Raises the MONSTER category capacity at the tail of the enum constructor. The category
      * is matched via the raw {@code name} field instead of the {@code MONSTER} constant, which
      * is still {@code null} while the enum's static initializer constructs its constants.
      */
     @Inject(method = "<init>", at = @At("TAIL"))
-    private void mme$doubleMonsterSpawnCap(CallbackInfo ci) {
+    private void mme$raiseMonsterSpawnCap(CallbackInfo ci) {
         if ("monster".equals(this.name)) {
-            this.max = this.max * 2;
+            this.max = MME$MONSTER_SPAWN_CAP;
         }
     }
 }

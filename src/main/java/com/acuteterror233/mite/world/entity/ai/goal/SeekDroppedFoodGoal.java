@@ -14,7 +14,8 @@ import java.util.List;
 /**
  * AI goal that makes an {@link Animal} seek nearby dropped food items, walk to the
  * closest one and eat exactly one item from it. Eating puts the animal into love mode
- * (vanilla breeding), exactly as if a player had hand-fed it the same item.
+ * (vanilla breeding), as if a player had hand-fed it the same item (no love cause is
+ * recorded).
  *
  * <p>Behavior rules:</p>
  * <ul>

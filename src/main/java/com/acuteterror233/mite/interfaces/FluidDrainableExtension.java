@@ -18,7 +18,7 @@ import java.util.Optional;
 /**
  * Fluid drainable extension interface (duck interface).
  * Lets fluid-holding blocks be drained by bucket items and return the matching MME bucket variant.
- * Implemented by {@code LiquidBlockMixin} / {@code BubbleColumnBlockMixin} / {@code PowderSnowBlockMixin};
+ * Implemented by {@code LiquidBlockMixin} / {@code BubbleColumnBlockMixin} / {@code PowderSnowBlockMixin} / {@code SimpleWaterloggedBlockMixin};
  * injected into the vanilla hosts {@code LiquidBlock}, {@code BubbleColumnBlock}, {@code PowderSnowBlock}
  * and {@code SimpleWaterloggedBlock} via classTweaker {@code transitive-inject-interface}.
  */

@@ -7,10 +7,10 @@ import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * Infernal creeper entity, inherits creeper behavior.
+ * Infernal creeper entity, inherits creeper behavior with an explosion radius of 7.
  */
 public class InfernalCreeper extends Creeper {
-    /** Explicitly sets the explosion radius to 3. */
+    /** Raises the explosion radius from the vanilla 3 to 7. */
     public InfernalCreeper(EntityType<? extends InfernalCreeper> entityType, Level level) {
         super(entityType, level);
         this.explosionRadius = 7;

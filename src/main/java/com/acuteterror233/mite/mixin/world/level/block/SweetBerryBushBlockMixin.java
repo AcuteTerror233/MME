@@ -7,20 +7,21 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
 /**
- * Mixin for {@code SweetBerryBushBlock} — halves sweet berry bush growth speed.
+ * Mixin for {@code SweetBerryBushBlock} — slows sweet berry bush growth by a factor of 150.
  *
- * <p>The {@code randomTick} redirect doubles the bound passed to {@code RandomSource#nextInt}, so
- * the vanilla berry-growth roll succeeds half as often. Server-driven via random ticks.</p>
+ * <p>The {@code randomTick} redirect multiplies the bound passed to {@code RandomSource#nextInt}
+ * by 150, so the vanilla berry-growth roll succeeds roughly 1/150 as often (about 1/750 per random
+ * tick overall). Server-driven via random ticks.</p>
  */
 @Mixin(SweetBerryBushBlock.class)
 public class SweetBerryBushBlockMixin {
     /**
-     * Redirects the {@code RandomSource#nextInt} call inside {@code randomTick}: doubles the bound
-     * so berry growth fires half as frequently.
+     * Redirects the {@code RandomSource#nextInt} call inside {@code randomTick}: multiplies the
+     * bound by 150 so berry growth fires far less frequently.
      *
      * @param instance the level random source
      * @param bound    the vanilla bound
-     * @return a random value in {@code [0, bound * 2)}
+     * @return a random value in {@code [0, bound * 150)}
      */
     @Redirect(method = "randomTick", at = @At(value = "INVOKE", target = "Lnet/minecraft/util/RandomSource;nextInt(I)I"))
     public int randomTick(RandomSource instance, int bound) {

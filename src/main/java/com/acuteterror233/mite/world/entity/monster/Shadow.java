@@ -19,8 +19,10 @@ import net.minecraft.world.level.Level;
 import org.jspecify.annotations.NonNull;
 
 /**
- * Shadow entity, inherits zombie behavior.
- * Immune to damage from non-silver weapons.
+ * Shadow entity (the black ghoul variant), inherits zombie behavior.
+ * Inflicts Darkness on hit (reduced by silver armor), is immune to damage from living
+ * attackers without a silver or enchanted weapon, spawns without equipment and gnaws out
+ * nearby torches.
  */
 public class Shadow extends Zombie {
     public Shadow(EntityType<? extends Shadow> entityType, Level level) {
@@ -51,7 +53,7 @@ public class Shadow extends Zombie {
         return hurt;
     }
 
-    /** Damage immunity: melee attacks from living attackers with non-silver, unenchanted weapons are ignored. */
+    /** Damage immunity: damage from living attackers with non-silver, unenchanted weapons is ignored. */
     @Override
     public boolean hurtServer(@NonNull ServerLevel level, @NonNull DamageSource damageSource, float amount) {
         if (!DamageSourcePredicates.isSilverWeaponOrEnchanted(damageSource) && damageSource.getEntity() instanceof LivingEntity) {
@@ -65,6 +67,7 @@ public class Shadow extends Zombie {
     protected void populateDefaultEquipmentSlots(RandomSource randomSource, DifficultyInstance difficultyInstance) {
     }
 
+    /** Adds the torch-destroying goal on top of zombie goals. */
     @Override
     protected void registerGoals() {
         super.registerGoals();

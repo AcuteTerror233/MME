@@ -30,16 +30,17 @@ import java.util.Optional;
  * <p>{@code onPlace} is fully overwritten. When fire ignites, the mixin looks for an empty portal
  * frame around the ignition point and picks the portal type from frame material and dimension:
  * frames of {@code ADAMANTIUM_RUNESTORE} / {@code MITHRIL_RUNESTORE} build a
- * {@linkplain RunePortalCoordinateGenerator rune portal} whose destination is generated at a
- * distance of 6000–8000 blocks (×4 for adamantium) in a valid target dimension; in the Overworld a
- * frame whose bottom corner is bedrock builds an {@code UNDERGROUND_PORTAL}; in the MME underground
- * dimension a mantle-bottomed frame builds a vanilla-style nether portal back to the surface; any
- * other valid frame builds a {@code HOME_PORTAL}. If no frame matches, the vanilla
- * {@code canSurvive} check (portal-free fire needs a valid base) still applies. All of this runs
- * server-side ({@code onPlace} fires during server block updates; fire is not placeable client-side).
- * The remaining helpers adapt vanilla's portal-destination search to locate a safe frame position.
- * Portal shape capability checks go through the {@link UniversalPortalShapeExtension} duck
- * interface.</p>
+ * {@linkplain RunePortalCoordinateGenerator rune portal} whose destination is generated 6000–8000
+ * blocks away (×4 for adamantium) in a valid target dimension (mithril frames are ignored in the
+ * End); in the Overworld a frame whose bottom corner is bedrock builds an {@code UNDERGROUND_PORTAL};
+ * in the MME underground dimension a mantle-bottomed frame builds a vanilla nether portal (which
+ * routes to the Nether, see {@code NetherPortalBlockMixin}), while any other frame there builds an
+ * {@code UNDERGROUND_PORTAL}; in the Nether a frame builds a vanilla nether portal; any remaining
+ * frame builds a {@code HOME_PORTAL}. If no frame matches, the vanilla {@code canSurvive} check
+ * (portal-free fire needs a valid base) still applies. All of this runs server-side ({@code onPlace}
+ * fires during server block updates; fire is not placeable client-side). The remaining helpers adapt
+ * vanilla's portal-destination search to locate a safe frame position. Portal shape capability checks
+ * go through the {@link UniversalPortalShapeExtension} duck interface.</p>
  */
 @Mixin(BaseFireBlock.class)
 public abstract class BaseFireBlockMixin {
@@ -197,8 +198,8 @@ public abstract class BaseFireBlockMixin {
         return blockState.canBeReplaced() && blockState.getFluidState().isEmpty();
     }
     /**
-     * Checks that a full portal footprint (4 high × 4 wide, including the frame shell) fits at
-     * {@code pos}: rows below the base must be solid, rows at/above the base must be replaceable.
+     * Checks that a full portal footprint (4 wide × 5 high) fits at {@code pos}: the row below the
+     * base ({@code j = -1}) must be solid, and the four rows at/above the base must be replaceable.
      *
      * @param world                    the server level being probed
      * @param pos                      the portal base corner being tested

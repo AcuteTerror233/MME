@@ -28,14 +28,17 @@ import java.util.Optional;
 /**
  * Mixin for {@code CampfireBlock} — lets campfires be refueled with fuel items.
  *
- * <p>{@code useItemOn} is fully overwritten. Interacting with the held item is split into two
- * branches: items accepted by the vanilla {@code CAMPFIRE_INPUT} property set keep the vanilla
- * "place food on the campfire" flow, while any item carrying the {@code COOKING_FUEL} data
- * component (burn time resolved through a loot context) extends the campfire's remaining ignition
- * time via {@code CampfireBlockEntity#MME$AddRemainingIgnitionTime}, consuming the item and giving
- * back its crafting remainder if one exists. The interaction is evaluated on both sides (the
- * client returns {@code CONSUME} for animation, the server {@code SUCCESS_SERVER} + stat), and the
- * fuel burn actually ticks server-side inside the block entity.</p>
+ * <p>{@code useItemOn} is fully overwritten. When the block entity is a campfire on the server,
+ * the interaction splits into two branches: items accepted by the vanilla {@code CAMPFIRE_INPUT}
+ * property set keep the vanilla "place food on the campfire" flow, while any item carrying the
+ * {@code COOKING_FUEL} data component (burn time resolved through a loot context) extends the
+ * campfire's remaining ignition time via
+ * {@code CampfireBlockEntity#MME$AddRemainingIgnitionTime}, consuming the item and giving back its
+ * crafting remainder if one exists. Because the whole body is gated on
+ * {@code world instanceof ServerLevel}, the client never reaches the {@code CONSUME} returns and
+ * always falls through to {@code TRY_WITH_EMPTY_HAND}; {@code CONSUME} only occurs server-side when
+ * food placement fails. Vanilla's {@code DOUSES_CAMPFIRES} branch (shovel extinguishing) is not
+ * replicated. Fuel actually ticks server-side inside the block entity.</p>
  */
 @Mixin(CampfireBlock.class)
 public class CampfireBlockMixin {
@@ -44,7 +47,8 @@ public class CampfireBlockMixin {
      * @reason Added fuel addition logic
      *
      * <p>Overwrites vanilla {@code useItemOn}: vanilla food placement first, then MME fuel
-     * replenishment, otherwise fall through to the empty-hand branch.</p>
+     * replenishment, otherwise fall through to the empty-hand branch. Vanilla's
+     * {@code DOUSES_CAMPFIRES} shovel-dousing branch is dropped.</p>
      *
      * @param stack  the item the player used on the campfire
      * @param state  the campfire block state
@@ -53,8 +57,8 @@ public class CampfireBlockMixin {
      * @param player the interacting player
      * @param hand   the hand holding {@code stack}
      * @param hit    the hit result of the interaction
-     * @return the interaction outcome (SUCCESS_SERVER on the server when accepted, CONSUME on the
-     *         client, or TRY_WITH_EMPTY_HAND when the item fits neither branch)
+     * @return {@code SUCCESS_SERVER} on server-side success, {@code CONSUME} on the server when food
+     *         placement fails, otherwise {@code TRY_WITH_EMPTY_HAND}
      */
     @Overwrite
     public InteractionResult useItemOn(ItemStack stack, BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {

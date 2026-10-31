@@ -31,7 +31,9 @@ import org.jspecify.annotations.NonNull;
 
 /**
  * Phase spider entity, inherits spider behavior.
- * Can perform short-range teleportation.
+ * Performs short-range teleportation at random and toward its target, and dodges incoming
+ * damage by teleporting: projectiles are dodged without consuming charges, other hits consume
+ * one of up to 5 dodge charges (one regenerates every 50 ticks).
  */
 public class PhaseSpider extends Spider {
     /** Synced remaining dodge charges used to evade incoming hits. */
@@ -51,6 +53,7 @@ public class PhaseSpider extends Spider {
         super(entityType, level);
     }
 
+    /** Registers the spider goal set (float, armadillo avoidance, leap, teleport attack, stroll, look) and its targets. */
     @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(1, new FloatGoal(this));
@@ -71,7 +74,8 @@ public class PhaseSpider extends Spider {
         builder.define(DODGE_CHARGES, MAX_DODGE_CHARGES);
     }
 
-    // Keeps vanilla spawn group data unchanged.
+    // Skips Mob.finalizeSpawn, so there is no random follow-range bonus or 5% left-handed roll;
+    // the incoming spawn group data is returned untouched.
     @Nullable
     @Override
     public SpawnGroupData finalizeSpawn(
@@ -110,7 +114,7 @@ public class PhaseSpider extends Spider {
         return entity.getBbWidth() <= this.getBbWidth() ? new Vec3(0.0, 0.21875 * this.getScale(), 0.0) : super.getVehicleAttachmentPoint(entity);
     }
 
-    // Dodges damage by teleporting: always against projectiles, otherwise by spending one dodge charge.
+    // Dodges damage by teleporting: attempted against projectiles for free, otherwise by spending one dodge charge.
     @Override
     public boolean hurtServer(@NonNull ServerLevel level, DamageSource damageSource, float amount) {
         if (damageSource.is(DamageTypeTags.BYPASSES_INVULNERABILITY)) {
@@ -161,7 +165,7 @@ public class PhaseSpider extends Spider {
         this.entityData.set(DODGE_CHARGES, Math.clamp(this.getDodgeCharges() + charges, 0, MAX_DODGE_CHARGES));
     }
 
-    /** Attribute builder: 6 max health and 1 attack damage on top of spider defaults. */
+    /** Attribute builder: overrides spider defaults with 6 max health and 1 attack damage. */
     public static AttributeSupplier.@NotNull Builder createAttributes() {
         return Spider.createAttributes()
                 .add(Attributes.MAX_HEALTH, 6.0)
@@ -206,7 +210,7 @@ public class PhaseSpider extends Spider {
 
     /**
      * Melee attack goal that keeps teleporting the spider toward its target
-     * (every 10 adjusted ticks) while chasing.
+     * (every 20 adjusted ticks) while chasing.
      */
     static class PhaseSpiderAttackGoal extends MeleeAttackGoal {
         private int teleportTimer;

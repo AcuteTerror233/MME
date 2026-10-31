@@ -72,7 +72,7 @@ public class BlueBerryBushBlock
         return blockState.getValue(AGE) < 3;
     }
 
-    /** Grows one stage with 1/10 chance when the block above has a light level of at least 9. */
+    /** Grows one stage with 1/300 chance when the block above has a light level of at least 9. */
     @Override
     protected void randomTick(BlockState blockState, ServerLevel serverLevel, BlockPos blockPos, RandomSource randomSource) {
         int i = blockState.getValue(AGE);

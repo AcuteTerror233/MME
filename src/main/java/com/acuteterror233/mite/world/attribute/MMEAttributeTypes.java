@@ -20,6 +20,15 @@ public interface MMEAttributeTypes {
 
     }
 
+    /**
+     * Registers an {@link AttributeType} in the {@code minecraft:attribute_type} registry under the
+     * {@code mme} namespace.
+     *
+     * @param name the path of the attribute-type id
+     * @param type the attribute type instance to register
+     * @param <Value> the value type carried by the attribute type
+     * @return the registered instance, for direct field assignment
+     */
     static <Value> AttributeType<Value> register(final String name, final AttributeType<Value> type) {
         Registry.register(BuiltInRegistries.ATTRIBUTE_TYPE, Identifier.fromNamespaceAndPath(MME.MOD_ID, name), type);
         return type;

@@ -20,6 +20,12 @@ import org.spongepowered.asm.mixin.Overwrite;
  */
 @Mixin(TorchflowerCropBlock.class)
 public abstract class TorchflowerCropBlockMixin extends CropBlock {
+    /**
+     * Mirrors {@code TorchflowerCropBlock}'s constructor; required because the mixin extends
+     * {@link CropBlock}.
+     *
+     * @param properties block behaviour properties forwarded to {@link CropBlock}
+     */
     protected TorchflowerCropBlockMixin(Properties properties) {
         super(properties);
     }

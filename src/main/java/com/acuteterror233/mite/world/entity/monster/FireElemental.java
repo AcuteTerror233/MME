@@ -35,8 +35,9 @@ import org.jetbrains.annotations.NotNull;
 import org.jspecify.annotations.NonNull;
 
 /**
- * Fire elemental entity, a hostile fire mob.
- * Immune to non-silver damage, moves through lava, ignites targets on attack, sensitive to water.
+ * Fire elemental entity: perpetually burning, fire-immune hostile mob.
+ * Ignores damage from living attackers without a silver or enchanted weapon, walks on and
+ * through lava, ignites targets on hit, and is sensitive to water.
  */
 public class FireElemental extends Monster {
     // Pathfinding: avoid water, treat lava/fire/damaging blocks as passable.
@@ -48,6 +49,7 @@ public class FireElemental extends Monster {
         this.setPathfindingMalus(PathType.DAMAGING, 0.0F);
     }
 
+    /** Targets players, villagers and iron golems; melee attacks, seeks lava, otherwise wanders. */
     @Override
     protected void registerGoals() {
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<Player>((Mob)this, Player.class, true));

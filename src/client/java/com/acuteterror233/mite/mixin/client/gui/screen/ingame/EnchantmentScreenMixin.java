@@ -18,6 +18,16 @@ import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 
+/**
+ * Client-side mixin into {@code EnchantmentScreen} that replaces the vanilla
+ * {@code extractBackground} body so offers are priced in experience points: each cost label
+ * reads the server-synced {@link EnchantmentMenuExtension#xpCosts} array (registered as menu
+ * data slots by {@code EnchantmentMenuMixin}) instead of the vanilla level cost. An offer
+ * renders disabled unless the player can pay its XP cost and has enough currency in slot 1,
+ * has infinite materials, or the input item has an entry in {@link EnchantedUpgradeRegistry}.
+ * Vanilla table, book and slot sprites, the highlight cursor and the gibberish-name seeding
+ * are preserved.
+ */
 @Mixin(EnchantmentScreen.class)
 public abstract class EnchantmentScreenMixin extends AbstractContainerScreen<EnchantmentMenu> {
     public EnchantmentScreenMixin(EnchantmentMenu menu, Inventory inventory, Component title, int imageWidth, int imageHeight) {
@@ -52,6 +62,16 @@ public abstract class EnchantmentScreenMixin extends AbstractContainerScreen<Enc
     @Shadow
     private void extractBook(final GuiGraphicsExtractor graphics, final int left, final int top){};
 
+    /**
+     * Replaces the vanilla background extraction: runs the superclass pass, then blits the
+     * table texture, the book and the three offer rows itself so each label shows the synced
+     * XP cost.
+     *
+     * @param graphics the screen graphics extractor
+     * @param mouseX   mouse x position in screen space
+     * @param mouseY   mouse y position in screen space
+     * @param a        partial tick time
+     */
     @Override
     public void extractBackground(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
         super.extractBackground(graphics, mouseX, mouseY, a);
@@ -73,6 +93,8 @@ public abstract class EnchantmentScreenMixin extends AbstractContainerScreen<Enc
                 int textWidth = 86 - this.font.width(costText);
                 FormattedText message = EnchantmentNames.getInstance().getRandomName(this.font, textWidth);
                 int col = -9937334;
+                // Disabled unless the player can pay both the currency (one unit per offer tier)
+                // and the synced XP cost, owns infinite materials, or the input is an upgrade item.
                 if ((goldCount < i + 1 || this.minecraft.player.totalExperience < EnchantmentMenuExtension.xpCosts[i]) && !this.minecraft.player.hasInfiniteMaterials() && EnchantedUpgradeRegistry.getUpgrade(this.menu.slots.getFirst().getItem()) == null) {
                     graphics.blitSprite(RenderPipelines.GUI_TEXTURED, ENCHANTMENT_SLOT_DISABLED_SPRITE, leftPos, yo + 14 + 19 * i, 108, 19);
                     graphics.blitSprite(RenderPipelines.GUI_TEXTURED, DISABLED_LEVEL_SPRITES[i], leftPos + 1, yo + 15 + 19 * i, 16, 16);

@@ -36,6 +36,7 @@ public abstract class SquidMixin extends AgeableWaterCreature implements SquidEx
     @Shadow
     private Vec3 movementVector;
 
+    /** {@code SquidExtension} duck: lets the hunt goal write the squid's propulsion vector. */
     @Unique
     @Override
     public void mme$setHuntMovement(Vec3 movement) {

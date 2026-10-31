@@ -13,13 +13,18 @@ import net.minecraft.world.level.block.state.BlockState;
 
 /**
  * Move-to-block goal that walks a thirsty animal to the nearest water source. The
- * drink itself is handled by the detection loop once the animal stands next to water.
+ * drink itself is handled by the detection loop once the animal stands next to water (water
+ * within 2 blocks horizontally and 1 vertically). The goal only starts once the thirst
+ * progress reaches {@code rules.goalTriggerThreshold} and the quench timer has expired.
  */
 public class DrinkGoal extends MoveToBlockGoal {
     private final Animal animal;
     private final SicknessRules rules;
 
-    /** @param animal the thirsty animal; @param rules shared sickness configuration. */
+    /**
+     * @param animal the thirsty animal
+     * @param rules  shared sickness configuration
+     */
     public DrinkGoal(Animal animal, SicknessRules rules) {
         super(animal, rules.needGoalSpeed, rules.waterSearchRange, 4);
         this.animal = animal;

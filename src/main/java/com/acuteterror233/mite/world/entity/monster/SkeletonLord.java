@@ -19,7 +19,7 @@ import org.jspecify.annotations.NonNull;
 
 /**
  * Skeleton Lord entity, inherits skeleton behavior. Spawns in a full rusted iron set holding
- * a rusted iron sword, has 20 max health with 3 armor points, periodically summons ancient
+ * a rusted iron sword, has 50 max health with 3 armor points, periodically summons ancient
  * corpses while it has a target (buffing itself with Strength I and Speed I), and heals
  * skeletons (including itself) within 5 blocks by 1 health point every second.
  */
@@ -40,7 +40,7 @@ public class SkeletonLord extends Skeleton {
     /** Countdown to the next heal aura pulse. */
     private int healCooldown;
 
-    /** Skeleton lord base attributes: skeleton stats with 20 max health and 3 armor. */
+    /** Skeleton lord base attributes: skeleton stats with 50 max health and 3 armor. */
     public static AttributeSupplier.Builder createAttributes() {
         return Skeleton.createAttributes()
                 .add(Attributes.MAX_HEALTH, 50.0D)

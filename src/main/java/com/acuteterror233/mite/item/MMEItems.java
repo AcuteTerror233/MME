@@ -1495,16 +1495,16 @@ public class MMEItems {
 
     /** Dagger: fast, low-damage sword variant with short reach. */
     public static Item.Properties getDaggerSettings(ToolMaterial material) {
-        return applySwordSettings(new Item.Properties(), material, 2, 1, 2, -2.0F, 0.25F, 0.25F);
+        return applySwordSettings(new Item.Properties(), material, 3, 1, 2, -2.0F, 0.25F, 0.25F);
     }
     /** Sword: standard melee weapon with web/sword-efficient mining rules. */
     public static Item.Properties getSwordSettings(ToolMaterial material) {
-        return applySwordSettings(new Item.Properties(), material, 5, 1, 3, -2.4F, 0.5F, 0.5F);
+        return applySwordSettings(new Item.Properties(), material, 7, 1, 3, -2.4F, 0.5F, 0.5F);
     }
 
     /** Scythe: high-durability harvesting tool for scythe-mineable blocks. */
     public static Item.Properties getScytheSettings(ToolMaterial material) {
-        return applyToolSettings(new Item.Properties(), material, MMEBlockTags.MINEABLE_WITH_SCYTHE, 9, 1, 3, -3.0f , 0.75f, 0.75f);
+        return applyScytheSettings(new Item.Properties(), material, MMEBlockTags.MINEABLE_WITH_SCYTHE, 9, 1, 3, -3.0f , 0.75f, 0.75f, 0.0F);
     }
 
     /** Axe: mines axe-mineable blocks and can strip logs (axe block transformer). */
@@ -1596,7 +1596,7 @@ public class MMEItems {
                                 Optional.of(SoundEvents.SPEAR_HIT)
                         )
                 )
-                .component(DataComponents.ATTACK_RANGE, new AttackRange(2.0F, 4.5F, 2.0F, 6.5F, 0.125F, 0.5F))
+                .component(DataComponents.ATTACK_RANGE, new AttackRange(2.0F, 4.5F, 2.0F, 4.5F, 0.125F, 0.5F))
                 .component(DataComponents.MINIMUM_ATTACK_CHARGE, 1.0F)
                 .component(DataComponents.ATTACK_ANIMATION, new SwingAnimation(SwingAnimationType.STAB, (int)(swingDurationSeconds * 20.0F)))
                 .attributes(
@@ -1676,6 +1676,36 @@ public class MMEItems {
                                 List.of(
                                         Tool.Rule.deniesDrops(registryEntryLookup.getOrThrow(material.incorrectBlocksForDrops())),
                                         Tool.Rule.minesAndDrops(registryEntryLookup.getOrThrow(effectiveBlocks), material.speed())
+                                ),
+                                1.0F,
+                                1,
+                                true
+                        )
+                )
+                .attributes(CreateAttributeModifiers(blockInteractionRange, entityInteractionRange, attackDamage + material.attackDamageBonus(), attackSpeed))
+                .component(DataComponents.WEAPON, new Weapon(itemDamagePerAttack, disableBlockingForSeconds));
+    }
+
+    public static Item.Properties applyScytheSettings(
+            Item.Properties settings,
+            ToolMaterial material,
+            TagKey<Block> effectiveBlocks,
+            float durabilityMultiplier,
+            int itemDamagePerAttack,
+            float attackDamage,
+            float attackSpeed,
+            float blockInteractionRange,
+            float entityInteractionRange,
+            float disableBlockingForSeconds
+    ) {
+        HolderGetter<Block> registryEntryLookup = BuiltInRegistries.acquireBootstrapRegistrationLookup(BuiltInRegistries.BLOCK);
+        return applyBaseSettings(settings, material, durabilityMultiplier)
+                .component(
+                        DataComponents.TOOL,
+                        new Tool(
+                                List.of(
+                                        Tool.Rule.deniesDrops(registryEntryLookup.getOrThrow(material.incorrectBlocksForDrops())),
+                                        Tool.Rule.minesAndDrops(registryEntryLookup.getOrThrow(effectiveBlocks), Float.MAX_VALUE)
                                 ),
                                 1.0F,
                                 1,

@@ -5,10 +5,15 @@ import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 
 /**
  * MME placed feature main entry point.
- * Aggregates placed feature bootstrapping for underground and overworld.
+ * Aggregates the underground and overworld placed-feature bootstraps; registered into the
+ * {@code minecraft:placed_feature} registry by {@code MMEDataGenerator}.
  */
 public class MMEPlacedFeatures {
-    /** Delegates to the underground and overworld placed feature bootstraps. */
+    /**
+     * Delegates to the underground and overworld placed feature bootstraps.
+     *
+     * @param featureRegisterable datagen bootstrap context for the placed-feature registry
+     */
     public static void bootstrap(BootstrapContext<PlacedFeature> featureRegisterable) {
         UndergroundPlacedFeatures.bootstrap(featureRegisterable);
         OverworldPlacedFeatures.bootstrap(featureRegisterable);

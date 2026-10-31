@@ -16,11 +16,11 @@ import org.jspecify.annotations.NonNull;
 
 /**
  * Ancient Corpse entity, inherits skeleton behavior. Spawns in a full ancient metal chainmail
- * set armed with either a bow or an ancient metal sword, and has 12 max health with 3 armor
+ * set armed with either a bow or an ancient metal sword, and has 30 max health with 3 armor
  * points.
  */
 public class AncientCorpse extends Skeleton {
-    /** Ancient corpse base attributes: skeleton stats with 12 max health and 3 armor. */
+    /** Ancient corpse base attributes: skeleton stats with 30 max health and 3 armor. */
     public static AttributeSupplier.Builder createAttributes() {
         return Skeleton.createAttributes()
                 .add(Attributes.MAX_HEALTH, 30.0D)

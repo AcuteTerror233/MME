@@ -19,8 +19,11 @@ import net.minecraft.world.entity.player.Player;
  * range. While a pursuit is running, {@link #canContinueToUse} periodically re-runs the
  * vanilla {@code findTarget} pass and switches the mob's target when it finds a different
  * (necessarily nearest) player — the vanilla behavior chases the first acquired target
- * until it dies, letting a nearer player walk up unchallenged. Applied to zombies (paired
- * with {@code ZombieDigGoal} tunneling), skeletons, creepers and spiders.</p>
+ * until it dies, letting a nearer player walk up unchallenged. Applied to skeletons,
+ * creepers and spiders; the spider instance additionally keeps the vanilla darkness
+ * gate. Zombies deliberately do not use this goal: they keep line-of-sight acquisition
+ * and keep sight-checked continuation, only extending the unseen memory from 60 ticks to
+ * five minutes — see {@code ZombieMixin}.</p>
  */
 public class MonsterFindPlayerGoal extends NearestAttackableTargetGoal<Player> {
     /** Ticks between nearest-player re-evaluations while a pursuit is running. */
@@ -38,6 +41,7 @@ public class MonsterFindPlayerGoal extends NearestAttackableTargetGoal<Player> {
         this.targetConditions.ignoreLineOfSight();
     }
 
+    /** Resets the nearest-player re-evaluation countdown when a pursuit begins. */
     @Override
     public void start() {
         this.retargetTimer = RETARGET_INTERVAL_TICKS;

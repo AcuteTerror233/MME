@@ -109,6 +109,7 @@
     "world.level.block.entity.CampfireBlockEntityMixin",
     "world.level.block.entity.FurnaceBlockEntityMixin",
     "world.level.levelgen.feature.SnowAndFreezeFeatureMixin",
+    "world.level.pathfinder.PathfindingContextMixin",
     "world.level.storage.loot.functions.ApplyBonusCountMixin"
   ],
   "injectors": {

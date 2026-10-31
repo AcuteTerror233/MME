@@ -57,7 +57,8 @@ public abstract class BlockModelGeneratorsMixin implements BlockModelGeneratorsE
     @Shadow @Final public BiConsumer<Identifier, ModelInstance> modelOutput;
     @Shadow @Final public static PropertyDispatch<VariantMutator> ROTATION_HORIZONTAL_FACING_ALT;
 
-    // Four textures: first is the base material, registry name of intact anvil; the next three are anvil tops, registry id + top
+    // Three texture slots per anvil: body and particle come from the intact anvil, the top
+    // face from the damage-state block.
     /**
      * Generates the model and blockstate JSON for one metal's three anvil damage states: each
      * state gets its own model from the shared anvil template (body/particle textures from the

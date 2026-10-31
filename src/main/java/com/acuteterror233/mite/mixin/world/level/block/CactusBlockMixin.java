@@ -10,16 +10,16 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 /**
  * Mixin for {@code CactusBlock} — strongly suppresses cactus growth.
  *
- * <p>The {@code randomTick} redirect halves every {@code BlockState#getValue} result read by the
- * vanilla growth logic. Because the recomputed age is derived from that halved value, the counter
- * cannot climb toward the vanilla fully-grown threshold (age 15), so cactus barely advances and
- * effectively stops self-propagating. Server-driven via random ticks; the mixin is side-neutral.</p>
+ * <p>The {@code randomTick} redirect halves the single {@code BlockState#getValue(AGE)} read that
+ * vanilla performs. Since the halved value never reaches 8 (flower) or 15 (upward growth), the
+ * cactus neither flowers nor grows taller; the age converges to 1 (an age of 1 halves to 0 and is
+ * written back as 1). Server-driven via random ticks; the mixin is side-neutral.</p>
  */
 @Mixin(CactusBlock.class)
 public class CactusBlockMixin {
     /**
      * Redirects the {@code BlockState#getValue} call inside {@code randomTick}: returns the stored
-     * age divided by two so the vanilla growth comparison never sees a fully-grown value.
+     * age divided by two, so the vanilla comparisons against age 8 and age 15 can never match.
      *
      * @param blockState the cactus state being read
      * @param property   the age property being queried

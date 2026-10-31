@@ -11,16 +11,16 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 /**
- * Hold-to-zoom camera: after vanilla's FOV tick finishes, the smoothed zoom factor (0 → 1)
- * scales the FOV down to at most 40% of normal, pulling the camera closer. While zoomed,
- * vanilla's cinematic camera (mouse smoothing) is force-enabled and restored on release.
+ * Hold-to-zoom mixin for {@code Camera}: at the TAIL of {@code tickFov} the smoothed zoom
+ * factor (0 → 1) scales the FOV down to as little as 40% of normal, pulling the camera closer.
+ * While zoomed, vanilla's cinematic camera (mouse smoothing) is force-enabled and restored on release.
  */
 @Mixin(Camera.class)
 public abstract class CameraMixin {
     /** Zoom scales the effective FOV down to 40% when fully engaged. */
     @Unique
     private static final float MME$MIN_FOV_SCALE = 0.4F;
-    /** Per-tick interpolation factor of the zoom engagement (0 = disengaged, 1 = fully zoomed). */
+    /** Per-tick lerp factor applied to the zoom progress; higher values settle the zoom faster. */
     @Unique
     private static final float MME$ZOOM_EASE = 0.45F;
 

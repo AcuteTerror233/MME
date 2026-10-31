@@ -12,7 +12,7 @@ import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * Demon spider entity, inherits spider behavior.
+ * Demon spider entity, inherits spider behavior. Melee hits can poison, slow and ignite the victim.
  */
 public class DemonSpider extends Spider {
     public DemonSpider(EntityType<? extends DemonSpider> entityType, Level level) {
@@ -35,6 +35,7 @@ public class DemonSpider extends Spider {
         return hurt;
     }
 
+    /** @return vanilla spider attributes unchanged. */
     public static AttributeSupplier.@NotNull Builder createAttributes() {
         return Spider.createAttributes();
     }

@@ -15,10 +15,12 @@ import org.spongepowered.asm.mixin.Shadow;
 /**
  * Mixin for {@code NetherWartBlock} — restricts nether wart growth to MME's underground dimension.
  *
- * <p>{@code randomTick} is fully overwritten: the wart only advances its age (up to 3, 1/20 chance
- * per random tick) while the chunk lives in {@link MMEDimensionTypeRegistrar#UNDERGROUND_LEVEL_KEY};
- * anywhere else random ticks are no-ops, so nether warts no longer grow outside the MME underground
- * level. Server-driven via random ticks.</p>
+ * <p>{@code randomTick} is fully overwritten: the wart only advances its age (up to 3) while the
+ * chunk lives in {@link MMEDimensionTypeRegistrar#UNDERGROUND_LEVEL_KEY}; anywhere else random ticks
+ * are no-ops, so nether warts no longer grow outside the MME underground level. The mixin uses
+ * {@code nextInt(20)} where vanilla uses {@code nextInt(10)}, so growth is half vanilla's rate.
+ * {@code NetherWartBlock} is not a {@code CropBlock}, so {@code CropBlockMixin}'s disease and
+ * moon-phase logic does not apply here. Server-driven via random ticks.</p>
  */
 @Mixin(NetherWartBlock.class)
 public class NetherWartBlockMixin {
@@ -31,8 +33,8 @@ public class NetherWartBlockMixin {
      * @author AcuteTerror233
      * @reason Adds Nether dimension check
      *
-     * <p>Overwrites vanilla {@code randomTick}: applies the vanilla 1/20 age-advance roll only in
-     * the MME underground level.</p>
+     * <p>Overwrites vanilla {@code randomTick}: applies the 1/20 age-advance roll only in the MME
+     * underground level (vanilla uses 1/10).</p>
      *
      * @param blockState  the nether wart state being ticked
      * @param serverLevel the server level performing the tick

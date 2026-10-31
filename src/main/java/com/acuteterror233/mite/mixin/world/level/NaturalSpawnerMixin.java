@@ -16,9 +16,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
  * Mixin for {@code NaturalSpawner} — thins natural passive-mob spawning and tightens
  * spawn-distance limits.
  *
- * <p>Two hooks: an inject at the head of {@code spawnCategoryForPosition} cancels roughly half of
- * all {@code CREATURE} category spawning attempts (server-side only, as the method only runs on the
- * server), and a redirect on the distance check inside
+ * <p>Two hooks: an inject at the head of {@code spawnCategoryForPosition} cancels every
+ * {@code CREATURE} spawning attempt and about 70% of {@code WATER_AMBIENT} attempts (server-side
+ * only, as the method only runs on the server), and a redirect on the distance check inside
  * {@code isRightDistanceToPlayerAndSpawnPoint} replaces the vanilla minimum spawn radius with a
  * fixed 12 blocks, keeping spawns closer to players.</p>
  */

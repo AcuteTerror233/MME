@@ -6,7 +6,8 @@ import org.jetbrains.annotations.Nullable;
 /**
  * Menu metal material extension interface.
  * Provides access for injecting and reading the {@link MetalMaterial} of a menu.
- * Injected into vanilla InventoryMenu / CraftingMenu / AnvilMenu via classTweaker transitive-inject-interface.
+ * Injected into vanilla {@code AnvilMenu} directly and into {@code InventoryMenu} / {@code CraftingMenu}
+ * through the extending {@link TimedCraftingMenuExtension} (classTweaker {@code transitive-inject-interface}).
  */
 public interface MetalMenuExtension {
     /** Attaches the {@link MetalMaterial} governing this menu's timed crafting, or clears it with {@code null}. */

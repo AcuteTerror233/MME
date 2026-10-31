@@ -28,7 +28,7 @@ You start with only **3 hearts**. You can barely break a block with your bare ha
 
 ## ⛏️ Mining & Gathering Restrictions
 
-- Attack range drastically reduced (**1.5 blocks** unarmed) — weapons extend it
+- Attack range drastically reduced (**1.75 blocks** unarmed) — weapons extend it
 - Block interaction range: **3 blocks**
 - Breaking blocks is *extremely* slow — most blocks cannot be destroyed by hand
 - **Logs**: only short axes, axes, or battle axes

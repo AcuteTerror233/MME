@@ -21,6 +21,10 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
  * acceleration and ignores the movement-speed attribute underwater, so that constant is the
  * single source of truth for fish swim speed: scaling it by 8 scales the terminal water
  * speed (accel * drag / (1 - drag)) by exactly 8 for every {@link AbstractFish} subclass.</p>
+ *
+ * <p>It also replaces the vanilla {@code PanicGoal} registered at priority 0 with the MME
+ * {@link FishPanicGoal} at the same priority, so the MME panic system (forced-panic deadline +
+ * threat source position) fully owns fish panic.</p>
  */
 @Mixin(AbstractFish.class)
 public abstract class AbstractFishMixin extends Mob {

@@ -22,8 +22,10 @@ import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
 /**
- * Remove block AI goal base class.
- * Makes entity move to target block and destroy it, supports particle effects and sound.
+ * Base "remove block" AI goal: walks the mob to a matching block (see {@link #isValidTarget}),
+ * gnaws at it with hops, dirt particles and progress sounds, then destroys it with a poof burst
+ * and break sound. The sound hooks {@link #playDestroyProgressSound} and
+ * {@link #playBreakSound} are no-ops here and are overridden by subclasses.
  */
 public class RemoveBlockGoal extends MoveToBlockGoal {
     protected final Block blockToRemove;
@@ -59,6 +61,11 @@ public class RemoveBlockGoal extends MoveToBlockGoal {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     *
+     * <p>Also resets the fall distance to 1.0 so landing from the hop does not hurt the mob.</p>
+     */
     @Override
     public void stop() {
         super.stop();
@@ -81,8 +88,8 @@ public class RemoveBlockGoal extends MoveToBlockGoal {
 
     /**
      * Path to the target, then "gnaw" on it once within 3 blocks: hop on the block with alternating
-     * vertical impulses, dirt particles and progress sounds, and remove the block after 60+ ticks
-     * with a poof burst and break sound.
+     * vertical impulses, dirt particles and progress sounds, and remove the block after 21+ ticks
+     * ({@code ticksSinceReachedGoal > 20}, about one second) with a poof burst and break sound.
      */
     @Override
     public void tick() {

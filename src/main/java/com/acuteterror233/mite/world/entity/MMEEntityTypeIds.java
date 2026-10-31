@@ -7,8 +7,8 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.entity.EntityType;
 
 /**
- * Resource keys for every MME entity type, referenced by {@link MMEEntityTypes} registration,
- * spawn placements, loot tables and datagen. Keys are namespaced under {@code mme:} with the
+ * Resource keys for every MME entity type, referenced by {@link MMEEntityTypes} registration
+ * and by entity tag datagen. Keys are namespaced under {@code mme:} with the
  * snake_case id passed to {@link #create(String)}.
  */
 public class MMEEntityTypeIds {

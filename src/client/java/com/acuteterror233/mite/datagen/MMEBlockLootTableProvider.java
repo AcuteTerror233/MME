@@ -39,8 +39,9 @@ import java.util.concurrent.CompletableFuture;
 
 /**
  * MME block loot table data provider.
- * Generates loot table JSON for MME custom blocks (bushes, ores, furnaces, anvils, crops,
- * leaves, etc.) and provides shared table builders for silk-touch/dig/blasting alternatives.
+ * Generates loot table JSON for MME custom blocks (bushes, ores, furnaces, anvils, crops) and
+ * overrides vanilla block tables (leaves, gravel, deepslate copper ore, campfires), with shared
+ * builders for silk-touch/dig/blasting alternatives.
  */
 public class MMEBlockLootTableProvider extends FabricBlockLootSubProvider {
     /** Vanilla jungle-leaf sapling drop chances, reused for MME jungle leaves. */
@@ -51,7 +52,7 @@ public class MMEBlockLootTableProvider extends FabricBlockLootSubProvider {
         super(packOutput, registriesFuture);
     }
 
-    /** Generates all MME block loot tables: bush berries, self-dropping blocks, ore drops with explosion decay, leaves, and the per-metal shears/hoe interactions. */
+    /** Generates the MME block tables plus the overridden vanilla leaf/gravel/ore/campfire tables: bush berries, self-dropping blocks, ore drops with explosion decay, leaves, and the per-metal shears/hoe interactions. */
     @Override
     public void generate() {
         add(MMEBlocks.BLUE_BERRY_BUSH,

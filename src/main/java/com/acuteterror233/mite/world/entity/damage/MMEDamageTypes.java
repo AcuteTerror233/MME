@@ -9,7 +9,7 @@ import net.minecraft.world.damagesource.DamageType;
 
 /**
  * MME mod damage type definitions.
- * Registers custom damage types (like corrosion damage) for data generation.
+ * Registers the corrosion damage type for data generation.
  */
 public interface MMEDamageTypes {
     /** Corrosion damage type (message id {@code corrosion}, exhaustion 0.1) used by acid-themed attacks. */

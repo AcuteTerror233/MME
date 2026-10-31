@@ -13,8 +13,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 /**
  * Client mixin for {@code LocalPlayer} — CANNOT_SPRINT carriers never start sprinting:
- * every vanilla sprint start path runs behind {@code canStartSprinting()}, so cancelling
- * it denies sprinting without packet flooding.
+ * a cancellable inject at the HEAD of {@code canStartSprinting()} denies every vanilla sprint
+ * start path in one place, so sprinting is refused without packet flooding.
  */
 @Mixin(LocalPlayer.class)
 public abstract class LocalPlayerMixin extends AbstractClientPlayer implements PacketContextProvider {

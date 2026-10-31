@@ -54,7 +54,7 @@ public abstract class ServerPlayerMixin extends Player {
         this.mme$experienceSynchronizer.tick();
     }
 
-    /** Copies every curse from the dying player onto the respawned one. */
+    /** Copies every curse and the MME food-nutrition value from the dying player onto the respawned one. */
     @Inject(method = "restoreFrom", at = @At("TAIL"))
     private void restoreFrom(ServerPlayer that, boolean keepEverything, CallbackInfo ci) {
         CurseState state = ((CurseCap) this).mme$curseState();

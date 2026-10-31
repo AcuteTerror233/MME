@@ -19,7 +19,9 @@ import org.jspecify.annotations.NonNull;
 
 /**
  * Invisible stalker entity, inherits zombie behavior.
- * Can destroy torches, completely silent (no ambient, hurt, or death sounds).
+ * Can destroy torches, is completely silent (no ambient, hurt, or death sounds), is immune to
+ * damage from living attackers without a silver or enchanted weapon, and spawns without equipment.
+ * The client renderer draws it translucent rather than fully invisible.
  */
 public class InvisibleStalker extends Zombie {
     public InvisibleStalker(EntityType<? extends InvisibleStalker> entityType, Level level) {
@@ -39,7 +41,7 @@ public class InvisibleStalker extends Zombie {
 
     }
 
-    /** @return zombie base attributes with slightly faster movement (0.22). */
+    /** @return zombie base attributes with slightly slower movement (0.22). */
     public static AttributeSupplier.@NotNull Builder createAttributes() {
         return Zombie.createAttributes()
                 .add(Attributes.MOVEMENT_SPEED, 0.22F);
@@ -63,7 +65,7 @@ public class InvisibleStalker extends Zombie {
         return SoundEvents.EMPTY;
     }
 
-    /** Damage immunity: melee attacks from living attackers with non-silver, unenchanted weapons are ignored. */
+    /** Damage immunity: damage from living attackers with non-silver, unenchanted weapons is ignored. */
     @Override
     public boolean hurtServer(@NonNull ServerLevel level, @NonNull DamageSource damageSource, float amount) {
         if (!DamageSourcePredicates.isSilverWeaponOrEnchanted(damageSource) && damageSource.getEntity() instanceof LivingEntity) {

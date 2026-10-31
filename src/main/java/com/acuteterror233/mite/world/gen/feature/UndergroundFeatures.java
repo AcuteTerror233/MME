@@ -29,7 +29,12 @@ public class UndergroundFeatures {
     public static final ResourceKey<Feature> ORE_SILVER = of("ore_silver");
     public static final ResourceKey<Feature> ORE_SILVER_SMALL = of("ore_silver_small");
 
-    /** Registers underground ore features: stone/deepslate replacements with vein size and discard-on-air ratio. */
+    /**
+     * Registers underground ore features as {@link OreFeature}s over stone/deepslate replacement
+     * rules, each with its vein size and discard-on-air ratio (1.0 = no discard).
+     *
+     * @param featureRegisterable datagen bootstrap context for the feature registry
+     */
     public static void bootstrap(BootstrapContext<Feature> featureRegisterable){
         RuleTest ruleTest = new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES);
         RuleTest ruleTest1 = new TagMatchTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES);
@@ -53,7 +58,10 @@ public class UndergroundFeatures {
         featureRegisterable.register(ORE_SILVER_SMALL, new OreFeature(silver_Ore_List, 2, 0.2f));
     }
     /**
-     * Generate a ConfiguredFeature registry key within the namespace.
+     * Creates a configured-feature registry key under the MME namespace.
+     *
+     * @param id path of the feature id
+     * @return the resource key for {@code mme:<id>} in {@code minecraft:feature}
      */
     public static ResourceKey<Feature> of(String id) {
         return ResourceKey.create(Registries.FEATURE, Identifier.fromNamespaceAndPath(MME.MOD_ID,id));

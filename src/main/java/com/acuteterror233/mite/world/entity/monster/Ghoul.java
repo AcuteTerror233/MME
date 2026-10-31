@@ -13,7 +13,8 @@ import net.minecraft.world.level.Level;
 import org.jspecify.annotations.NonNull;
 
 /**
- * Ghoul entity, inherits zombie behavior.
+ * Ghoul entity, inherits zombie behavior. Applies Slowness IV for 3 seconds on a successful
+ * melee hit and never spawns with default equipment.
  */
 public class Ghoul extends Zombie {
     public Ghoul(EntityType<? extends Ghoul> entityType, Level level) {

@@ -147,7 +147,7 @@ public abstract class SkyRendererMixin implements AutoCloseable {
      * Suppresses the vanilla moon while a special phase is active: vanilla {@code renderMoon} draws at the
      * exact same transform (height 100, scale 20) after our special moon, so without this the two quads
      * overlap and the special moon is washed out by the vanilla one. NORMAL phase (or a missing extraction,
-     * {@code mme$currentPhase == null}) keeps the vanilla moon untouched.
+     * {@code currentPhase == null}) keeps the vanilla moon untouched.
      */
     @Redirect(method = "renderSunMoonAndStars", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/renderer/SkyRenderer;renderMoon(Lcom/mojang/renderpearl/api/commands/RenderPass;Lnet/minecraft/world/level/MoonPhase;FLcom/mojang/blaze3d/vertex/PoseStack;)V"))
     private void mme$suppressVanillaMoonOnSpecialPhase(SkyRenderer instance, RenderPass renderPass, MoonPhase moonPhase, float rainBrightness, PoseStack poseStack) {

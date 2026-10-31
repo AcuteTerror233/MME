@@ -11,10 +11,9 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 /**
- * Mixin for {@code ArmorType} — Registers MME custom armor types.
- * Replaces the vanilla per-unit durability of every armor type with much lower MME values, so all
- * armor pieces (vanilla and MME) built on {@code ArmorType} compute durability from the reduced
- * {@code unitDurability}.
+ * Mixin for {@code ArmorType} — Replaces the vanilla per-unit durability of every armor type with
+ * much lower MME values, so all armor pieces (vanilla and MME) built on {@code ArmorType} compute
+ * durability from the reduced {@code unitDurability}.
  */
 @Mixin(ArmorType.class)
 public class ArmorTypeMixin {

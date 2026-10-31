@@ -68,8 +68,12 @@ test {
 
 processResources {
 	inputs.property "version",  provider { project.version }
+	inputs.property "loader_version", provider { project.loader_version }
+	inputs.property "fabric_api_version", provider { project.fabric_api_version }
 	filesMatching("fabric.mod.json") {
-		expand "version": project.version
+		expand "version": project.version,
+				"loader_version": project.loader_version,
+				"fabric_api_version": project.fabric_api_version
 	}
 }
 

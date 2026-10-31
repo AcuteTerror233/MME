@@ -3,11 +3,13 @@ package com.acuteterror233.mite.mixin.world.entity.monster;
 import com.acuteterror233.mite.MME;
 import com.acuteterror233.mite.item.MMEItems;
 import com.acuteterror233.mite.world.entity.ai.goal.DestroyCropGoal;
-import com.acuteterror233.mite.world.entity.ai.goal.MonsterFindPlayerGoal;
 import com.acuteterror233.mite.world.entity.ai.goal.ZombieDigGoal;
 import com.acuteterror233.mite.world.entity.ai.goal.ZombieEatDroppedMeatGoal;
+import com.acuteterror233.mite.world.entity.ai.pathing.ZombieDigNavigation;
 import com.acuteterror233.mite.world.gen.dimension.MMEDimensionTypeRegistrar;
+import net.minecraft.core.Holder;
 import net.minecraft.resources.Identifier;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.DifficultyInstance;
@@ -16,10 +18,11 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
-import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
+import net.minecraft.world.entity.ai.navigation.PathNavigation;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.animal.camel.CamelHusk;
 import net.minecraft.world.entity.animal.equine.SkeletonHorse;
@@ -27,6 +30,7 @@ import net.minecraft.world.entity.animal.equine.ZombieHorse;
 import net.minecraft.world.entity.animal.nautilus.ZombieNautilus;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.monster.zombie.Zombie;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
@@ -36,8 +40,8 @@ import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 /**
  * Mixin for {@code Zombie} — Extends zombie behavior: terrain digging, crop destruction,
@@ -45,19 +49,21 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
  *
  * <p>Mechanism:</p>
  * <ul>
- *   <li>{@code createAttributes} injection (RETURN): raises {@code FOLLOW_RANGE} to 48
- *       (vanilla 35), enlarging both target acquisition distance and the A* node budget
- *       ({@code maxVisitedNodes = FOLLOW_RANGE * 16}). Applies to every zombie variant
- *       since all of them delegate to {@code Zombie.createAttributes}.</li>
  *   <li>{@code registerGoals} injection (TAIL): adds a {@link ZombieDigGoal} (priority 1)
  *       so blocked zombies dig through terrain toward their target — blocks that require
  *       a correct tool for drops can only be dug while the zombie holds such a tool;
  *       also adds a {@link DestroyCropGoal} so zombies seek out and destroy crops, and a
  *       {@link ZombieEatDroppedMeatGoal} (priority 5) so zombies devour whole dropped
- *       {@code #minecraft:meat} stacks. The vanilla sight-gated player-targeting goal
- *       (priority 2) is replaced by {@link MonsterFindPlayerGoal} so zombies find and
- *       track players without line of sight; the animal-hunting goal skips undead
- *       mounts (zombie horse, skeleton horse, zombie nautilus, camel husk).</li>
+ *       {@code #minecraft:meat} stacks. The vanilla player-targeting goal (priority 2) is
+ *       rebuilt as a sight-gated variant with a five-minute memory: a zombie still only
+ *       acquires a player it can actually see, and it drops that player only after five
+ *       minutes without sight (6000 ticks, i.e. 5:00) — vanilla's 60-tick expiry would
+ *       lose the target halfway through every tunnel.
+ *       The animal-hunting goal skips undead mounts (zombie horse, skeleton horse,
+ *       zombie nautilus, camel husk).</li>
+ *   <li>{@code hurtServer} redirects: the reinforcement roll always succeeds — the chance
+ *       lookup returns {@code 1.0} and the difficulty gate always sees {@code HARD} — so
+ *       every zombie hit summons reinforcements regardless of difficulty.</li>
  *   <li>{@code populateDefaultEquipmentSlots} overwrite: after the vanilla pass,
  *       fully-armored zombies gain Strength II and a +0.1 movement-speed modifier;
  *       zombies in the underground dimension or the overworld may additionally receive
@@ -80,32 +86,96 @@ public abstract class ZombieMixin extends Monster {
     private static final float HIGH_Y_DROP_RATE = 0.05F;
     @Unique
     private static final float HARD_DIFFICULTY_MULTIPLIER = 2.0F;
+    /**
+     * Ticks a player target survives without line of sight before the mob gives up (5 minutes).
+     *
+     * <p>The stored value is <em>not</em> the wall-clock duration. {@code TargetGoal} forgets the
+     * target once its unseen counter passes {@code reducedTickDelay(unseenMemoryTicks)}, and that
+     * helper is {@code positiveCeilDiv(i, 2)} — it halves. The counter itself advances once per
+     * tick, because {@code GoalSelector.tick} evaluates {@code canContinueToUse} for every running
+     * goal each tick. Five minutes (6000 t) therefore needs 12000 here; the previous 6000 gave
+     * only 2:30.</p>
+     */
+    @Unique
+    private static final int TARGET_UNSEEN_MEMORY_TICKS = 12000;
     protected ZombieMixin(EntityType<? extends Monster> entityType, Level level) {
         super(entityType, level);
     }
 
     /**
+     * Routes zombies through the dig-aware navigation. This is a merged override, not an
+     * injection: {@code Zombie} itself does not declare {@code createNavigation} (only
+     * {@code Mob} and {@code Drowned} do), and Mixin resolves {@code @Inject} targets only
+     * against the target class's own methods — with {@code defaultRequire: 1} that would fail
+     * at load time. {@code Drowned} keeps its own water-bound navigation by Java's
+     * most-specific-method rule.
+     */
+    @Override
+    protected PathNavigation createNavigation(Level level) {
+        return new ZombieDigNavigation(this, level);
+    }
+
+    /**
      * Adds the terrain-digging goal (priority 1 — preempts the vanilla spear-use goal at
      * 2 and the melee attack goal at 3 while a wall blocks the way), the crop-destroying
-     * goal (priority 4) and the livestock-hunting target goal (priority 4 — any entity
-     * extending {@link Animal}) after vanilla goal registration. The vanilla sight-gated
-     * player-targeting goal (the only {@code NearestAttackableTargetGoal} at priority 2)
-     * is replaced by {@link MonsterFindPlayerGoal} so zombies acquire and track players
-     * without line of sight. Hunting animals sits below players/villagers/golems
-     * (priorities 2-3) and above the vanilla baby-turtle goal (priority 5), excluding
-     * undead mounts ({@link #isUndeadMount}).
+     * goal (priority 4 — the first slot after the melee attack goal at 3, so trampling only
+     * yields to attacking a player) and the livestock-hunting target goal (priority 4 — any
+     * entity extending {@link Animal}) after vanilla goal registration.
+     *
+     * <p>The vanilla player-targeting goal at priority 2 is replaced: the replacement still
+     * requires line of sight to acquire a player (a zombie has to see a player before it
+     * starts pursuing them) and keeps sight-checked continuation, but the unseen memory is
+     * raised from vanilla's 60 ticks to five minutes ({@value #TARGET_UNSEEN_MEMORY_TICKS}
+     * ticks) — enough for a tunnel, without making the pursuit literally endless.
+     * Hunting animals sits below players/villagers/golems (priorities 2-3) and above the
+     * vanilla baby-turtle goal (priority 5), excluding undead mounts ({@link #isUndeadMount}).</p>
      */
     @Inject(method = "registerGoals", at = @At("TAIL"))
     protected void registerGoals(CallbackInfo ci) {
         Zombie zombie = (Zombie) (Object) this;
-        this.goalSelector.addGoal(1, new ZombieDigGoal(zombie));
-        this.goalSelector.addGoal(4, new DestroyCropGoal(zombie, 1.0F, 3));
-        this.goalSelector.addGoal(5, new ZombieEatDroppedMeatGoal(zombie, 1.0D));
+        // The vanilla player goal (priority 2) already requires line of sight to both acquire
+        // and keep a target, but its unseen memory is only 60 ticks — every tunnel would lose
+        // the target halfway. Rebuilt with the same sight gates and a five-minute unseen
+        // memory: the counter is reset on every tick the player is actually visible, so a
+        // target is only abandoned after five continuous minutes out of sight.
         this.targetSelector.getAvailableGoals().removeIf(wrapped ->
                 wrapped.getPriority() == 2 && wrapped.getGoal() instanceof NearestAttackableTargetGoal);
-        this.targetSelector.addGoal(2, new MonsterFindPlayerGoal(zombie));
+        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(zombie, Player.class, true)
+                .setUnseenMemoryTicks(TARGET_UNSEEN_MEMORY_TICKS));
+        this.goalSelector.addGoal(1, new ZombieDigGoal(zombie));
+        // Priority 4 is the first slot after the vanilla melee attack goal (ZombieAttackGoal
+        // at 3), so trampling crops only ever yields to attacking a player; priority 1 stays the
+        // dig goal, which is itself part of the chase and only runs when the player is walled off.
+        this.goalSelector.addGoal(4, new DestroyCropGoal(zombie, 1.0F, 3));
+        this.goalSelector.addGoal(5, new ZombieEatDroppedMeatGoal(zombie, 1.0D));
         this.targetSelector.addGoal(4, new NearestAttackableTargetGoal<>(zombie, Animal.class, true,
                 (candidate, level) -> !isUndeadMount(candidate)));
+    }
+
+    /**
+     * Forces the reinforcement roll to always succeed: vanilla only spawns reinforcements
+     * when {@code random.nextFloat() < getAttributeValue(SPAWN_REINFORCEMENTS_CHANCE)}, so
+     * returning {@code 1.0} makes every hit pass that check (the roll is in {@code [0, 1)}).
+     * The callee charge modifier on spawned reinforcements is overridden too, but a
+     * reinforcement still needs to be hit itself before it can summon another.
+     */
+    @Redirect(method = "hurtServer", at = @At(value = "INVOKE",
+            target = "Lnet/minecraft/world/entity/monster/zombie/Zombie;getAttributeValue(Lnet/minecraft/core/Holder;)D"))
+    protected double mme$alwaysAllowReinforcements(Zombie zombie, Holder<Attribute> attribute) {
+        return attribute == Attributes.SPAWN_REINFORCEMENTS_CHANCE ? 1.0D : zombie.getAttributeValue(attribute);
+    }
+
+    /**
+     * Removes the vanilla {@code HARD}-difficulty gate on reinforcements (the only
+     * {@code getDifficulty} use in {@code hurtServer} is that comparison), so the forced
+     * roll in {@link #mme$alwaysAllowReinforcements} actually spawns reinforcements on every
+     * difficulty. {@code ServerLevel.isSpawningMonsters()} is still honoured, so a server
+     * that disabled mob spawning does not get reinforcements either.
+     */
+    @Redirect(method = "hurtServer", at = @At(value = "INVOKE",
+            target = "Lnet/minecraft/server/level/ServerLevel;getDifficulty()Lnet/minecraft/world/Difficulty;"))
+    protected Difficulty mme$alwaysHardForReinforcements(ServerLevel level) {
+        return Difficulty.HARD;
     }
 
     /**
@@ -119,18 +189,6 @@ public abstract class ZombieMixin extends Monster {
                 || candidate instanceof SkeletonHorse
                 || candidate instanceof ZombieNautilus
                 || candidate instanceof CamelHusk;
-    }
-
-    /**
-     * Raises {@code FOLLOW_RANGE} from the vanilla 35 to 48. This enlarges both the
-     * target-acquisition distance ({@code TargetingConditions.range}) and the pathfinding
-     * node budget ({@code maxVisitedNodes = FOLLOW_RANGE * 16}). All zombie variants
-     * (husk, drowned, zombie villager, ...) build their attributes through
-     * {@code Zombie.createAttributes}, so a single injection covers them all.
-     */
-    @Inject(method = "createAttributes", at = @At("RETURN"), cancellable = true)
-    private static void mme$extendFollowRange(CallbackInfoReturnable<AttributeSupplier.Builder> cir) {
-        cir.setReturnValue(cir.getReturnValue().add(Attributes.FOLLOW_RANGE, 48.0D));
     }
 
     /**

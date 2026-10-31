@@ -96,13 +96,13 @@ public abstract class InventoryMenuMixin extends AbstractCraftingMenu implements
         return this.mme$session().isAllowCrafting();
     }
 
-    /** Duck interface: current crafting progress in ticks (used by the HUD/screen overlay). */
+    /** Duck interface: current crafting progress as a fraction in [0, 1] (used by the HUD/screen overlay). */
     @Override
     public double MME$GetCraftingTime() {
         return this.mme$session().getCraftingTime();
     }
 
-    /** Duck interface: always {@code true} — the inventory menu always has the HAND metal active. */
+    /** Duck interface: whether the HAND metal is active — always {@code true} in practice, since the constructor mounts HAND on both sides. */
     @Override
     public boolean MME$HasMetal() {
         return this.mme$session().hasMetal();

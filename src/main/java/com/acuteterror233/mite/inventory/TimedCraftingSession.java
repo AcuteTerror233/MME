@@ -29,7 +29,7 @@ import java.util.Optional;
  * State is synchronized via 4 data slots: {progress, total duration, whether allowed, whether metal is mounted}.
  */
 public final class TimedCraftingSession {
-    /** Base crafting duration in ticks (100 = 5 s); the synced total duration is this plus the ingredient-derived extra time. */
+    /** Base crafting duration in ticks (20 = 1 s); the synced total duration is this plus the ingredient-derived extra time. */
     public static final int DEFAULT_CRAFTING_TIME_TICKS = 20;
 
     /** Data-slot indices into {@link #state}: progress, total duration, allow bit, metal-mounted bit. */
@@ -245,7 +245,7 @@ public final class TimedCraftingSession {
 
     /**
      * Extra synthesis duration: sum of CRAFTING_TIME components (seconds → ticks; empty grid slots
-     * count as 0), divided by the experience + speed bonus coefficient.
+     * count as 0; non-empty slots lacking the component default to 1 s), divided by the experience + speed bonus coefficient.
      */
     public int additionalCraftingTime() {
         MetalMaterial.CraftingFunction crafting = this.craftingFunction();

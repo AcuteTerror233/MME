@@ -12,7 +12,8 @@ import net.minecraft.resources.Identifier;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * Fire Elemental renderer.
+ * Fire Elemental renderer: vanilla zombie humanoid geometry (0.5 shadow radius) with the fire
+ * elemental skin.
  */
 public class FireElementalRenderer extends HumanoidMobRenderer<FireElemental, ZombieRenderState, ZombieModel<ZombieRenderState>> {
     private static final Identifier TEXTURE = Identifier.fromNamespaceAndPath(MME.MOD_ID, "textures/entity/fire_elemental.png");

@@ -5,12 +5,12 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "minecraft:copper_ingot",
+          "name": "minecraft:copper_nugget",
           "weight": 10
         },
         {
           "type": "minecraft:item",
-          "name": "mme:silver_ingot",
+          "name": "mme:silver_nugget",
           "weight": 5
         },
         {

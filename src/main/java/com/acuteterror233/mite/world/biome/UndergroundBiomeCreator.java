@@ -20,10 +20,18 @@ import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 
 /**
  * Underground dimension biome creator.
- * Build parameters for each underground biome: weather, music, generation features, entity spawn weights, etc.
+ * Builds the parameters of each underground biome: climate, sky color, generation features and
+ * mob spawn weights.
  */
 public class UndergroundBiomeCreator {
-    /** Plain underground cave biome: default MME ores, monster rooms, cave carvers and dripstone-cave-like spawns. */
+    /**
+     * Plain underground cave biome: default MME ores, monster rooms, cave carvers, dripstone-cave
+     * spawn table plus the MME monster spawn table.
+     *
+     * @param featureLookup lookup for placed features added by the biome
+     * @param carverLookup  lookup for configured carvers added by the biome
+     * @return the built biome
+     */
     public static Biome createUnderground(HolderGetter<PlacedFeature> featureLookup, HolderGetter<WorldCarver> carverLookup){
         BiomeGenerationSettings.Builder lookupBackedBuilder = new BiomeGenerationSettings.Builder(featureLookup, carverLookup);
         MobSpawnSettings.Builder builder = new MobSpawnSettings.Builder();
@@ -49,7 +57,13 @@ public class UndergroundBiomeCreator {
                         .build())
                 .build();
     }
-    /** Dripstone caves variant: adds dripstone formations on top of the base underground setup. */
+    /**
+     * Dripstone caves variant: adds dripstone formations on top of the base underground setup.
+     *
+     * @param featureLookup lookup for placed features added by the biome
+     * @param carverLookup  lookup for configured carvers added by the biome
+     * @return the built biome
+     */
     public static Biome createDripstoneCaves(HolderGetter<PlacedFeature> featureLookup, HolderGetter<WorldCarver> carverLookup){
         BiomeGenerationSettings.Builder lookupBackedBuilder = new BiomeGenerationSettings.Builder(featureLookup, carverLookup);
         MobSpawnSettings.Builder builder = new MobSpawnSettings.Builder();
@@ -76,7 +90,13 @@ public class UndergroundBiomeCreator {
                         .build())
                 .build();
     }
-    /** Lush caves variant: adds lush vegetation and special lush-cave ores. */
+    /**
+     * Lush caves variant: adds lush vegetation and the lush-cave special ores.
+     *
+     * @param featureLookup lookup for placed features added by the biome
+     * @param carverLookup  lookup for configured carvers added by the biome
+     * @return the built biome
+     */
     public static Biome createLushCaves(HolderGetter<PlacedFeature> featureLookup, HolderGetter<WorldCarver> carverLookup){
         BiomeGenerationSettings.Builder lookupBackedBuilder = new BiomeGenerationSettings.Builder(featureLookup, carverLookup);
         MobSpawnSettings.Builder builder = new MobSpawnSettings.Builder();
@@ -104,7 +124,15 @@ public class UndergroundBiomeCreator {
                         .build())
                 .build();
     }
-    /** Deep dark variant: adds sculk growth (otherwise identical to the base underground setup). */
+    /**
+     * Deep dark variant: the base ore/monster-room setup plus sculk growth. Unlike the other
+     * underground biomes it does <em>not</em> call {@link #addMonsters}, so only the vanilla
+     * dripstone-cave spawn table applies; it also uses a warmer climate (0.8/0.4).
+     *
+     * @param featureLookup lookup for placed features added by the biome
+     * @param carverLookup  lookup for configured carvers added by the biome
+     * @return the built biome
+     */
     public static Biome createDeepDark(HolderGetter<PlacedFeature> featureLookup, HolderGetter<WorldCarver> carverLookup){
         BiomeGenerationSettings.Builder lookupBackedBuilder = new BiomeGenerationSettings.Builder(featureLookup, carverLookup);
         MobSpawnSettings.Builder builder = new MobSpawnSettings.Builder();
@@ -130,7 +158,11 @@ public class UndergroundBiomeCreator {
                         .build())
                 .build();
     }
-    /** Adds the full underground ore set (MME metals plus vanilla ores) and glow lichen. */
+    /**
+     * Adds the full underground ore set (MME metals plus vanilla ores) and glow lichen.
+     *
+     * @param builder generation settings builder to add the features to
+     */
     public static void addDefaultOres(BiomeGenerationSettings.Builder builder) {
         builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, UndergroundPlacedFeatures.UNDERGROUND_ORE_ADAMANTIUM_BURIED);
         builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, UndergroundPlacedFeatures.UNDERGROUND_ORE_ADAMANTIUM_BURIED_SMALL);
@@ -156,7 +188,11 @@ public class UndergroundBiomeCreator {
         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, CavePlacements.GLOW_LICHEN);
     }
 
-    /** Registers the underground monster spawn table (weights and pack sizes per MME monster). */
+    /**
+     * Registers the underground monster spawn table (weights and pack sizes per MME monster).
+     *
+     * @param builder spawn settings builder to add the spawns to
+     */
     public static void addMonsters(MobSpawnSettings.Builder builder) {
         builder.addSpawn(MMEEntityTypes.GHOUL, 10, UniformInt.of(4, 4));
         builder.addSpawn(MMEEntityTypes.SHADOW, 10, UniformInt.of(1, 3));

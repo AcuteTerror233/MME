@@ -26,9 +26,13 @@ import org.jetbrains.annotations.Nullable;
 /**
  * Destroy crop AI goal.
  * Makes the mob seek out crop blocks ({@link CropBlock}, any growth stage) and trample them:
- * the mob jumps on the crop for ~3 seconds (hop particles/sounds), then removes the block.
+ * the mob jumps on the crop for {@value #TRAMPLE_TICKS} ticks (0.5 s at 20 tps, with hop
+ * particles/sounds), then removes the block.
  */
 public class DestroyCropGoal extends MoveToBlockGoal {
+    /** Ticks the mob keeps trampling a reached crop before the block is removed (10 t = 0.5 s). */
+    private static final int TRAMPLE_TICKS = 10;
+
     private final Mob removerMob;
     private int ticksSinceReachedGoal;
 
@@ -60,7 +64,11 @@ public class DestroyCropGoal extends MoveToBlockGoal {
         return false;
     }
 
-    /** Stops the goal and resets the mob's fall distance to 1.0 so the landing hop does not accumulate. */
+    /**
+     * {@inheritDoc}
+     *
+     * <p>Also resets the fall distance to 1.0 so landing from the hop does not hurt the mob.</p>
+     */
     @Override
     public void stop() {
         super.stop();
@@ -86,7 +94,8 @@ public class DestroyCropGoal extends MoveToBlockGoal {
         return 2;
     }
 
-    /** While trampling: hop on the crop (alternating vertical impulses), emit dirt particles and sounds, then remove the crop after 60+ ticks. */
+    /** While trampling: hop on the crop (alternating vertical impulses) and emit dirt particles and
+     * sounds, then remove the crop once {@link #TRAMPLE_TICKS} ticks have elapsed. */
     @Override
     public void tick() {
         BlockPos blockPos = this.getMoveToTarget();
@@ -130,7 +139,7 @@ public class DestroyCropGoal extends MoveToBlockGoal {
                     }
                 }
 
-                if (this.ticksSinceReachedGoal > 60) {
+                if (this.ticksSinceReachedGoal >= TRAMPLE_TICKS) {
                     level.removeBlock(blockPos2, false);
                     if (!level.isClientSide()) {
                         for (int i = 0; i < 20; i++) {

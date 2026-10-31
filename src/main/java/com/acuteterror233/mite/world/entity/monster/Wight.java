@@ -17,8 +17,9 @@ import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * Wight entity, inherits zombie behavior.
- * Immune to damage from non-silver weapons.
+ * Wight entity (the white ghoul variant), inherits zombie behavior.
+ * Drains 5 experience points per hit on players, is immune to damage from living attackers
+ * without a silver or enchanted weapon, spawns without equipment and gnaws out nearby torches.
  */
 public class Wight extends Zombie {
     public Wight(EntityType<? extends Wight> entityType, Level level) {
@@ -35,7 +36,7 @@ public class Wight extends Zombie {
         return hurt;
     }
 
-    /** Damage immunity: melee attacks from living attackers with non-silver, unenchanted weapons are ignored. */
+    /** Damage immunity: damage from living attackers with non-silver, unenchanted weapons is ignored. */
     @Override
     public boolean hurtServer(ServerLevel level, DamageSource damageSource, float amount) {
         if (!DamageSourcePredicates.isSilverWeaponOrEnchanted(damageSource) && damageSource.getEntity() instanceof LivingEntity) {
@@ -50,6 +51,7 @@ public class Wight extends Zombie {
 
     }
 
+    /** Adds the torch-destroying goal on top of zombie goals. */
     @Override
     protected void registerGoals() {
         super.registerGoals();

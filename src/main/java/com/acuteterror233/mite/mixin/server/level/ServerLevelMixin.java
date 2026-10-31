@@ -28,9 +28,11 @@ import org.spongepowered.asm.mixin.injection.Redirect;
  * Mixin for {@code ServerLevel} — drives weather and precipitation from the special moon phase.
  *
  * <p>Three redirects in {@code advanceWeatherCycle} override the weather data lookups: a
- * {@link SpecialMoonPhase#BLOOD_MOON blood moon} forces rain and thunder with no clear weather, a
- * {@link SpecialMoonPhase#BLUE_MOON blue moon} forces clear weather (100 ticks declared), and a
- * {@link SpecialMoonPhase#FROST_MOON frost moon} forces rain (rendered as snow) with no thunder.
+ * {@link SpecialMoonPhase#BLOOD_MOON_DAY blood-moon day} forces rain and thunder with no clear
+ * weather, a {@link SpecialMoonPhase#BLUE_MOON blue moon} forces clear weather (100 ticks
+ * declared, rain and thunder off), and a {@link SpecialMoonPhase#FROST_MOON frost moon} forces
+ * rain (rendered as snow) with no thunder. A {@link SpecialMoonPhase#BLOOD_MOON blood-moon night}
+ * only silences thunder and declares 100 clear ticks, leaving the vanilla rain flag intact.
  * Two further redirects in {@code tickPrecipitation} apply frost-moon effects to the blocks
  * actually rained on: {@code getPrecipitationAt} reports snow during a frost moon (freezing
  * precipitation in any biome) and {@code shouldFreeze} is reimplemented inline so standing water
@@ -45,8 +47,9 @@ public abstract class ServerLevelMixin extends Level implements WorldGenLevel, S
     }
 
     /**
-     * Redirects the {@code WeatherData#isThundering} call in {@code advanceWeatherCycle}: thunder is
-     * forced on during a blood moon and off during blue/frost moons; otherwise vanilla data applies.
+     * Redirects the {@code WeatherData#isThundering} call in {@code advanceWeatherCycle}: thunder
+     * is forced on during a blood-moon day and off during blood-moon night, blue and frost moons;
+     * otherwise vanilla data applies.
      *
      * @param instance the level's weather data
      * @return whether it is thundering under the current moon phase
@@ -67,7 +70,8 @@ public abstract class ServerLevelMixin extends Level implements WorldGenLevel, S
 
     /**
      * Redirects the {@code WeatherData#isRaining} call in {@code advanceWeatherCycle}: rain is
-     * forced on during blood/frost moons and off during a blue moon; otherwise vanilla data applies.
+     * forced on during a blood-moon day and a frost moon, and off during a blue moon; otherwise
+     * vanilla data applies.
      *
      * @param instance the level's weather data
      * @return whether it is raining under the current moon phase
@@ -88,7 +92,8 @@ public abstract class ServerLevelMixin extends Level implements WorldGenLevel, S
 
     /**
      * Redirects the {@code WeatherData#getClearWeatherTime} call in {@code advanceWeatherCycle}: a
-     * blue moon declares 100 clear ticks, blood/frost moons declare 0; otherwise vanilla data applies.
+     * blue moon and a blood-moon night declare 100 clear ticks, while a blood-moon day and a frost
+     * moon declare 0; otherwise vanilla data applies.
      *
      * @param instance the level's weather data
      * @return the clear-weather duration under the current moon phase

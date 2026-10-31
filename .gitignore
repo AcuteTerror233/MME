@@ -45,3 +45,7 @@ replay_*.log
 /docs/
 /AGENTS.md
 /.trae/
+
+# local tooling / dev artifacts
+.workbuddy/
+logs/

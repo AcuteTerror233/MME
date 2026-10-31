@@ -4,8 +4,9 @@ import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
 
 /**
- * Mutable per-animal sickness bookkeeping: one progress value per need, the quench
- * timers for thirst and grazing, and the current sickness flag.
+ * Mutable per-animal sickness bookkeeping: one progress value per need, the quench timers
+ * for thirst and grazing, the current sickness flag, and the untreated-sickness death
+ * deadline.
  */
 public class SicknessState {
     /** Progress toward sickness per need; 0 means the need is fully satisfied. */

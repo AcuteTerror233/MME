@@ -13,7 +13,8 @@ import net.minecraft.resources.Identifier;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * Revenant glowing red eyes layer rendering.
+ * Revenant glowing red eyes layer: extends {@link EyesLayer} and only swaps in the emissive
+ * {@code zombie_red_eve.png} render type.
  */
 @Environment(EnvType.CLIENT)
 public class RevenantEyesLayer extends EyesLayer<ZombieRenderState, ZombieModel<ZombieRenderState>> {

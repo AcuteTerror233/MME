@@ -13,7 +13,8 @@ import net.minecraft.resources.Identifier;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * Phase Spider glowing eyes layer rendering.
+ * Phase Spider glowing eyes layer: extends {@link EyesLayer} and only swaps in the emissive
+ * {@code phase_spider_eyes.png} render type.
  */
 @Environment(EnvType.CLIENT)
 public class PhaseSpiderEyesLayer<M extends SpiderModel> extends EyesLayer<LivingEntityRenderState, M> {

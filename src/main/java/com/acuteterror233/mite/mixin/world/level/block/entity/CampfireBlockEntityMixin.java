@@ -24,9 +24,10 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
  * <p>A unique {@code remainingIgnitionTime} counter (default 1600 ticks) is stored on the block
  * entity: the {@code cookTick} head inject extinguishes the campfire ({@code LIT = false}) once the
  * counter hits zero and otherwise decrements it once per tick; fuel items added via
- * {@code CampfireBlockMixin} top it up. The counter is persisted through {@code loadAdditional} /
- * {@code saveAdditional} under {@code remaining_ignition_time}. All ticking happens server-side in
- * {@code cookTick}; the extension accessors are side-neutral.</p>
+ * {@code CampfireBlockMixin} top it up. {@code cookTick} only runs while the campfire is lit, so the
+ * counter stops decreasing after burnout until the block is lit again. The counter is persisted
+ * through {@code loadAdditional} / {@code saveAdditional} under {@code remaining_ignition_time}. All
+ * ticking happens server-side in {@code cookTick}; the extension accessors are side-neutral.</p>
  */
 @Mixin(CampfireBlockEntity.class)
 public class CampfireBlockEntityMixin implements CampfireBlockEntityExtension {

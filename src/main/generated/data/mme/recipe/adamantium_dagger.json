@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "a": "mme:adamantium_ingot",
+    "b": "minecraft:stick"
+  },
+  "pattern": [
+    "a",
+    "b"
+  ],
+  "result": {
+    "id": "mme:adamantium_dagger"
+  }
+}

@@ -13,7 +13,8 @@ import net.minecraft.resources.Identifier;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * Ancient Corpse glowing red eyes layer rendering.
+ * Ancient Corpse glowing red eyes layer: extends {@link EyesLayer} and only swaps in the emissive
+ * {@code skeleton_red_eve.png} render type (shared by the skeleton lord renderers).
  */
 @Environment(EnvType.CLIENT)
 public class AncientCorpseEyesLayer extends EyesLayer<SkeletonRenderState, SkeletonModel<SkeletonRenderState>> {

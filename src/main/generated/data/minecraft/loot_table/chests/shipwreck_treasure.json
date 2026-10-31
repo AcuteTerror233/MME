@@ -13,7 +13,7 @@
               "min": 1
             }
           },
-          "name": "minecraft:copper_ingot",
+          "name": "minecraft:copper_nugget",
           "weight": 90
         },
         {
@@ -26,7 +26,7 @@
               "min": 1
             }
           },
-          "name": "mme:silver_ingot",
+          "name": "mme:silver_nugget",
           "weight": 30
         },
         {

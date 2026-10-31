@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 
 /**
- * Mixin for {@code BoneMealItem} — modifies bone meal growth behavior.
+ * Mixin for {@code BoneMealItem} — repurposes bone meal as a crop-disease cure.
  * Fully replaces vanilla {@code useOn}: bone meal no longer accelerates growth on its own; it now
  * exclusively cures crops infected with the MME disease property (DISEASE_LEVEL 1 → 0), consuming
  * one item and playing the vanilla bonemeal particles/sound event. Everything else returns PASS.

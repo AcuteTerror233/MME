@@ -8,10 +8,16 @@ import net.minecraft.world.level.levelgen.carver.WorldCarver;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 
 /**
- * MME mod biome registration.
- * Registers custom biomes during data generation (underground caves, etc.).
+ * MME biome registration.
+ * Registers the four underground-dimension biomes built by {@link UndergroundBiomeCreator}
+ * during datagen ({@code MMEDataGenerator}).
  */
 public abstract class MMEBiomes {
+    /**
+     * Registers the underground, dripstone caves, lush caves and deep dark biomes.
+     *
+     * @param biomeRegisterable datagen bootstrap context for the biome registry
+     */
     public static void bootstrap(BootstrapContext<Biome> biomeRegisterable){
         HolderGetter<PlacedFeature> registryEntryLookup = biomeRegisterable.lookup(Registries.PLACED_FEATURE);
         HolderGetter<WorldCarver> registryEntryLookup2 = biomeRegisterable.lookup(Registries.CARVER);

@@ -9,12 +9,18 @@ import net.minecraft.world.level.pathfinder.PathComputationType;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * Move to lava AI goal.
- * Makes entity seek and move to lava blocks.
+ * Move-to-block goal that makes a mob walk to the nearest reachable lava block whose surface
+ * block is land-pathfindable, so it can step in and bathe. The goal only starts while the mob
+ * is not already in lava and re-paths every 20 ticks.
  */
 public class MoveToLavaGoal extends MoveToBlockGoal {
     private final PathfinderMob mob;
-    /** @param mob mob that wants to bathe in lava (e.g. fire elementals); searches 8 blocks out / 2 down. */
+    /**
+     * Creates the goal; the block search spans 8 blocks horizontally and 2 blocks vertically.
+     *
+     * @param mob           the mob that wants to bathe in lava (e.g. fire elementals)
+     * @param speedModifier pathfinding speed modifier while walking to the lava
+     */
     public MoveToLavaGoal(PathfinderMob mob, double speedModifier) {
         super(mob, speedModifier, 8, 2);
         this.mob = mob;

@@ -11,6 +11,10 @@ package com.acuteterror233.mite.interfaces;
 public interface AbstractFurnaceBlockEntityExtension {
     /** @return combustion grade of the fuel currently (or most recently) burning. */
     int MME$getCombustionGrade();
-    /** Sets the combustion grade of the fuel currently burning. */
+    /**
+     * Sets the combustion grade of the fuel currently burning.
+     *
+     * @param cg the fuel grade to adopt
+     */
     void MME$setCombustionGrade(Integer cg);
 }

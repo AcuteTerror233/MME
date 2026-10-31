@@ -21,14 +21,23 @@ import java.util.Comparator;
 import java.util.Optional;
 
 /**
- * Portal helper utility.
- * Handles portal generation logic, finding/creating corresponding nether portal blocks in the target dimension.
+ * Portal helper utility, a parameterised copy of vanilla {@code PortalForcer} used by
+ * {@code UndergroundPortalBlock}: it locates an existing portal in the target dimension and,
+ * failing that, carves a new 2×3 portal with a configurable frame block.
  */
 public class PortalHelper {
     /**
      * Finds the nearest existing portal position near {@code pos}.
      * Searches POI records of the given type within {@code PreloadSize} blocks,
      * filtered by world border and by positions that still hold a usable portal block.
+     *
+     * @param world       the target server level to search in
+     * @param pos         the search centre
+     * @param PreloadSize square radius (in blocks) of the POI search
+     * @param worldBorder world border used to reject out-of-bounds candidates
+     * @param matchesKey  POI type that identifies portal blocks
+     * @param block       portal block used as an additional acceptance test
+     * @return the nearest valid portal position, or empty when none exists
      */
     public static Optional<BlockPos> getPortalPos(ServerLevel world, BlockPos pos, int PreloadSize, WorldBorder worldBorder, ResourceKey<PoiType> matchesKey, Block block) {
         PoiManager pointOfInterestStorage = world.getPoiManager();
@@ -43,11 +52,15 @@ public class PortalHelper {
     }
 
     /**
-     * Creates a portal structure in the specified world
+     * Creates a portal structure in the specified world: scans a 16-block spiral for a valid
+     * 2×3 spot (with a fallback when the fully framed candidate is missing), then places the
+     * framework ring and the portal blocks.
      *
-     * @param world Server world object for accessing and modifying block states
-     * @param pos   Center position coordinates for portal creation
-     * @param axis  Portal orientation axis (X or Z)
+     * @param world     Server world object for accessing and modifying block states
+     * @param pos       Center position coordinates for portal creation
+     * @param axis      Portal orientation axis (X or Z)
+     * @param framework block used for the portal frame (e.g. obsidian)
+     * @param portal    block used for the portal surface itself
      * @return Optional containing portal rectangle area information, or empty Optional if creation fails
      */
     public static Optional<BlockUtil.FoundRectangle> createPortal(ServerLevel world, BlockPos pos, Direction.Axis axis, Block framework, Block portal) {

@@ -15,12 +15,13 @@ import net.minecraft.client.renderer.entity.EntityRenderers;
 
 /**
  * MME mod client entrypoint, implementing {@link ClientModInitializer}.
- * Registers the entity renderers for all MME custom entities (client-only; the dedicated server
- * never loads this class), the MITE-style hotkey features (zoom camera, auto harvest/use
- * modes), and the client receivers for the MME networking payloads.
+ * Registers the MITE-style hotkeys (zoom camera, auto harvest/use modes, place-source-liquid),
+ * the client tick hook that sends place-source-liquid requests, the S2C nutrition receiver, and
+ * one renderer for each of the 15 MME entity types. Client-only; the dedicated server never
+ * loads this class.
  */
 public class MMEClient implements ClientModInitializer {
-    /** Registers one renderer per MME entity type. */
+    /** Initializes keybinds and auto modes, wires the place-source-liquid tick hook and nutrition receiver, then registers one renderer per MME entity type. */
     @Override
     public void onInitializeClient() {
         MMEKeybinds.init();

@@ -5,12 +5,13 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.FishingHook;
 import net.minecraft.world.entity.projectile.Projectile;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Overwrite;
+import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Constant;
+import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 /**
  * Mixin for {@code FishingHook} — Keeps the bobber attached while any tagged fishing rod
@@ -24,22 +25,25 @@ public abstract class FishingBobberEntityMixin extends Projectile {
     }
 
     /**
-     * @author AcuteTerror233
-     * @reason Modify fishing rod bobber check
+     * Keeps the bobber attached while any item tagged {@code FISHING_RODS} is held, replacing
+     * vanilla's exact-item check.
+     *
+     * <p>Written as a HEAD-cancellable inject rather than an {@code @Overwrite}: an overwrite
+     * deletes the vanilla body, which is the target of fabric-item-api-v1's
+     * {@code @WrapOperation} inside this method, so mixin application fails and the game
+     * (and any test that bootstraps Minecraft) crashes.</p>
      */
-    @Overwrite
-    private boolean shouldStopFishing(Player player) {
-        ItemStack itemStack = player.getMainHandItem();
-        ItemStack itemStack2 = player.getOffhandItem();
-        // Vanilla requires the exact fishing rod item; any item tagged FISHING_RODS now keeps the bobber alive
-        boolean bl = itemStack.is(MMEItemTags.FISHING_RODS);
-        boolean bl2 = itemStack2.is(MMEItemTags.FISHING_RODS);
-        if (!player.isRemoved() && player.isAlive() && (bl || bl2) && !(this.distanceToSqr(player) > 1024.0)) {
-            return false;
-        } else {
-            this.discard();
-            return true;
+    @Inject(method = "shouldStopFishing", at = @At("HEAD"), cancellable = true)
+    private void mme$shouldStopFishing(Player player, CallbackInfoReturnable<Boolean> cir) {
+        boolean mainHandRod = player.getMainHandItem().is(MMEItemTags.FISHING_RODS);
+        boolean offHandRod = player.getOffhandItem().is(MMEItemTags.FISHING_RODS);
+        if (!player.isRemoved() && player.isAlive() && (mainHandRod || offHandRod)
+                && !(this.distanceToSqr(player) > 1024.0)) {
+            cir.setReturnValue(false);
+            return;
         }
+        this.discard();
+        cir.setReturnValue(true);
     }
 
     /**

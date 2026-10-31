@@ -22,6 +22,9 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Mixin for {@code FoodData} — Implements the nutrition system extension
  * ({@link FoodDataExtension}): a capped food level plus protein/fiber/sugar tracking.
@@ -42,7 +45,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
  *       amplifier encodes the tier. Tier 1 pulses blindness (3 s) every 600 ticks,
  *       tier 2 pulses nausea + blindness (3 s) every 300 ticks, tier 3+ applies
  *       permanent nausea + blindness + wither. Tier changes wipe the previous
- *       symptoms and re-arm the pulse timer to a full cycle.</li>
+ *       symptoms and re-arm the pulse timer to a full cycle. While diabetic, sugary food
+ *       ({@code #mme:sugary_foods}) takes 5x/10x/20x longer to eat at tier 1/2/3 and every
+ *       bite costs 20 s of nausea (applied from {@code FoodNutrition#onConsume}).</li>
  *   <li>maxFoodLevel and all nutrient counters persist through NBT.</li>
  * </ul>
  */
@@ -66,12 +71,15 @@ public abstract class FoodDataMixin implements FoodDataExtension {
     private float exhaustionLevel;
     @Shadow
     private int tickTimer;
-    /** Stored protein; 1 is consumed per tick, depletion causes MALNUTRITION. */
+    /** Upper bound of the protein and fiber stores; a new player spawns with both full. */
     @Unique
-    private float protein = 100000;
-    /** Stored fiber; 1 is consumed per tick, depletion causes MALNUTRITION. */
+    private static final float NUTRIENT_CAP = 160000.0F;
+    /** Stored protein, full at spawn; 1 is consumed per tick, depletion causes MALNUTRITION. */
     @Unique
-    private float fiber = 100000;
+    private float protein = NUTRIENT_CAP;
+    /** Stored fiber, full at spawn; 1 is consumed per tick, depletion causes MALNUTRITION. */
+    @Unique
+    private float fiber = NUTRIENT_CAP;
     /** Stored sugar; 1 is consumed per tick, high levels cause staged effects. */
     @Unique
     private float sugar = 0;
@@ -94,6 +102,14 @@ public abstract class FoodDataMixin implements FoodDataExtension {
     /** Ticks until the next pulsed diabetes symptom; re-armed to a full cycle on every tier change. */
     @Unique
     private int diabetesPulseTimer = 0;
+    /**
+     * Symptom instances this class itself applied, keyed by effect. Guarded by object identity:
+     * an entry is only ever removed when {@code player.getEffect(effect)} still returns the very
+     * instance recorded here, so blindness/nausea/wither from any other source (ink, pufferfish,
+     * wither skeleton, another mod) survives every diabetes cleanup.
+     */
+    @Unique
+    private final Map<Holder<MobEffect>, MobEffectInstance> ownedDiabetesSymptoms = new HashMap<>();
     @Shadow
     public abstract int getFoodLevel();
 
@@ -248,7 +264,11 @@ public abstract class FoodDataMixin implements FoodDataExtension {
     @Unique
     private void handleSugar(ServerPlayer player) {
         if (player.hasInfiniteMaterials()) {
-            clearDiabetes(player);
+            // Creative is immune to the disease, but only tear down what this class owns: the
+            // cleanup used to run every tick and stripped blindness/nausea/wither unconditionally.
+            if (player.hasEffect(MMEMobEffects.INSULIN_RESISTANCE) || !this.ownedDiabetesSymptoms.isEmpty()) {
+                clearDiabetes(player);
+            }
             return;
         }
         if (this.sugar > 0) this.sugar--;
@@ -290,9 +310,9 @@ public abstract class FoodDataMixin implements FoodDataExtension {
         if (tier >= 3) {
             // Tier 3+: permanent symptom set; only added when missing so infinite
             // instances are never re-added and no per-tick churn occurs
-            ensureEffect(player, MobEffects.NAUSEA, 0);
-            ensureEffect(player, MobEffects.BLINDNESS, 0);
-            ensureEffect(player, MobEffects.WITHER, 0);
+            ensureOwnSymptom(player, MobEffects.NAUSEA, -1, 0);
+            ensureOwnSymptom(player, MobEffects.BLINDNESS, -1, 0);
+            ensureOwnSymptom(player, MobEffects.WITHER, -1, 0);
             return;
         }
         if (--this.diabetesPulseTimer > 0) {
@@ -301,27 +321,49 @@ public abstract class FoodDataMixin implements FoodDataExtension {
         this.diabetesPulseTimer = diabetesPulseInterval(tier);
         // Pulsed symptoms are transient and fully visible so the player can read the attack
         if (tier == 1) {
-            player.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, SYMPTOM_PULSE_TICKS, 0));
+            addOwnSymptom(player, MobEffects.BLINDNESS, SYMPTOM_PULSE_TICKS, 0);
         } else {
-            player.addEffect(new MobEffectInstance(MobEffects.NAUSEA, SYMPTOM_PULSE_TICKS, 0));
-            player.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, SYMPTOM_PULSE_TICKS, 0));
+            addOwnSymptom(player, MobEffects.NAUSEA, SYMPTOM_PULSE_TICKS, 0);
+            addOwnSymptom(player, MobEffects.BLINDNESS, SYMPTOM_PULSE_TICKS, 0);
         }
     }
 
-    /** Removes the diabetes buff and every scheduled symptom (also fixes the old stage-down BLINDNESS leak). */
+    /**
+     * Removes the diabetes buff and only the symptoms listed in {@link #ownedDiabetesSymptoms}
+     * whose live instance is still the one this class applied. Symptoms granted by any other
+     * source are left untouched.
+     */
     @Unique
-    private static void clearDiabetes(ServerPlayer player) {
+    private void clearDiabetes(ServerPlayer player) {
         player.removeEffect(MMEMobEffects.INSULIN_RESISTANCE);
-        player.removeEffect(MobEffects.BLINDNESS);
-        player.removeEffect(MobEffects.NAUSEA);
-        player.removeEffect(MobEffects.WITHER);
+        this.ownedDiabetesSymptoms.forEach((effect, instance) -> {
+            if (player.getEffect(effect) == instance) {
+                player.removeEffect(effect);
+            }
+        });
+        this.ownedDiabetesSymptoms.clear();
     }
 
-    /** Adds an infinite-duration effect only when the player does not already have it. */
+    /** Adds a permanent symptom only when the player does not already have the effect. */
     @Unique
-    private static void ensureEffect(ServerPlayer player, Holder<MobEffect> effect, int amplifier) {
+    private void ensureOwnSymptom(ServerPlayer player, Holder<MobEffect> effect, int duration, int amplifier) {
         if (!player.hasEffect(effect)) {
-            player.addEffect(new MobEffectInstance(effect, -1, amplifier, true, false), player);
+            this.addOwnSymptom(player, effect, duration, amplifier);
+        }
+    }
+
+    /**
+     * Applies a symptom and records it as owned when, and only when, the instance that ends up on
+     * the player is the one created here. {@code addEffect} merges into an existing instance of
+     * the same effect instead of storing the new one, in which case the entry is not recorded and
+     * the pre-existing symptom is never removed by a diabetes cleanup.
+     */
+    @Unique
+    private void addOwnSymptom(ServerPlayer player, Holder<MobEffect> effect, int duration, int amplifier) {
+        MobEffectInstance instance = new MobEffectInstance(effect, duration, amplifier, true, false);
+        player.addEffect(instance, player);
+        if (player.getEffect(effect) == instance) {
+            this.ownedDiabetesSymptoms.put(effect, instance);
         }
     }
 
@@ -335,8 +377,8 @@ public abstract class FoodDataMixin implements FoodDataExtension {
     @Inject(method = "readAdditionalSaveData", at = @At("TAIL"))
     public void readAdditionalSaveData(ValueInput nbt, CallbackInfo ci) {
         this.maxFoodLevel = nbt.getIntOr("maxFoodLevel", 6);
-        this.fiber = nbt.getFloatOr("fiber", 100000);
-        this.protein = nbt.getFloatOr("protein", 100000);
+        this.fiber = nbt.getFloatOr("fiber", NUTRIENT_CAP);
+        this.protein = nbt.getFloatOr("protein", NUTRIENT_CAP);
         this.sugar = nbt.getFloatOr("sugar", 0);
     }
 
@@ -395,15 +437,15 @@ public abstract class FoodDataMixin implements FoodDataExtension {
         this.sugar = foodNutrition.sugar();
     }
 
-    /** Adds fiber, capped at 160000. */
+    /** Adds fiber, capped at {@link #NUTRIENT_CAP}. */
     @Unique
     public void addFiber(int i) {
-        this.fiber = Math.min(160000, this.fiber + i);
+        this.fiber = Math.min(NUTRIENT_CAP, this.fiber + i);
     }
-    /** Adds protein, capped at 160000. */
+    /** Adds protein, capped at {@link #NUTRIENT_CAP}. */
     @Unique
     public void addProtein(int i) {
-        this.protein = Math.min(160000, this.protein + i);
+        this.protein = Math.min(NUTRIENT_CAP, this.protein + i);
     }
     /** Adds sugar, capped at 192000. */
     @Unique

@@ -18,9 +18,13 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 
 /**
- * Mixin for {@code EnchantingTableBlock} — Opens the vanilla {@code EnchantmentMenu} with the
- * enchantment power cap raised to 20 (effectively uncapped); the moon phase influence and the
- * upgrade path are applied by {@code EnchantmentMenuMixin}.
+ * Mixin for {@code EnchantingTableBlock} — opens the vanilla {@code EnchantmentMenu} with its
+ * per-instance enchantment power cap raised to 20.
+ *
+ * <p>Power caps come from {@link EnchantmentMenuExtension}: the mixin default is 15, this block
+ * sets 20, and the emerald enchanting table sets 10. Upgrade-offer handling lives in
+ * {@code EnchantmentMenuMixin}; the special-moon-phase influence applies to mob XP, not to this
+ * menu, and is handled in {@code EnchantmentHelperMixin}.</p>
  */
 @Mixin(EnchantingTableBlock.class)
 public class EnchantingTableBlockMixin {
@@ -29,7 +33,7 @@ public class EnchantingTableBlockMixin {
      * @reason Inject the MME enchantment power cap into the vanilla menu opened by the table.
      *
      * <p>Overwrites vanilla {@code getMenuProvider}: builds the menu exactly like vanilla, then
-     * raises its maximum enchantment power to 20 via the {@link EnchantmentMenuExtension} duck
+     * sets its maximum enchantment power to 20 via the {@link EnchantmentMenuExtension} duck
      * interface before handing it to the player.</p>
      *
      * @param blockState the enchanting table block state

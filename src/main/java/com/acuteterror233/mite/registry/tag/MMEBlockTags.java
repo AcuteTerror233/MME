@@ -32,6 +32,10 @@ public interface MMEBlockTags {
     // Plant blocks the PLANT_FEAR curse slows movement in.
     TagKey<Block> PLANT_BLOCKS = key("plant_blocks");
 
+    // Blocks zombies are never allowed to dig through, even when their hardness and tool
+    // requirements would otherwise permit it. Server operators can extend this tag via datapack.
+    TagKey<Block> ZOMBIE_DIG_FORBIDDEN = key("zombie_dig_forbidden");
+
     // Anvil damage states.
     TagKey<Block> INTACT_ANVIL = key("intact_anvil");
     TagKey<Block> CHIPPED_ANVIL = key("chipped_anvil");

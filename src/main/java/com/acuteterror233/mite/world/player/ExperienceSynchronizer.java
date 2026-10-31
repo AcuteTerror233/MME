@@ -3,8 +3,11 @@ package com.acuteterror233.mite.world.player;
 import net.minecraft.server.level.ServerPlayer;
 
 /**
- * Experience synchronizer.
- * Responsible for synchronizing the server-side player's experienceLevel, experienceProgress, and totalExperience.
+ * Server-side experience reconciler. MME code changes either {@code experienceLevel} +
+ * {@code experienceProgress} or {@code totalExperience} directly, so each tick this class detects
+ * which representation changed and rebuilds the other one from it: level/progress win when either
+ * changed, otherwise a change in total XP recomputes level and progress. It is ticked by
+ * {@code ServerPlayerMixin.doTick} before the vanilla player tick.
  */
 public class ExperienceSynchronizer {
     private final ServerPlayer player;
@@ -14,6 +17,7 @@ public class ExperienceSynchronizer {
     private float prevProgress;
     private int prevTotal;
 
+    /** @param player the server player whose experience fields are reconciled every tick */
     public ExperienceSynchronizer(ServerPlayer player) {
         this.player = player;
         this.prevLevel = player.experienceLevel;
@@ -74,7 +78,10 @@ public class ExperienceSynchronizer {
         this.player.experienceProgress = progress;
     }
 
-    /** Vanilla XP curve: 7+2*level (0-14), 37+5*(level-15) (15-29), 112+9*(level-30) (30+). */
+    /**
+     * Vanilla XP curve per level, scaled ×3 for MITE progression: 7+2*level (0-14),
+     * 37+5*(level-15) (15-29), 112+9*(level-30) (30+), then multiplied by 3.
+     */
     private int getXpNeededForLevel(int level) {
         int total;
         if (level >= 30) {

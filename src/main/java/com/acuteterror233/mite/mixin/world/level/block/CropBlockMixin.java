@@ -27,13 +27,16 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
  * <p>State space: each crop gains the custom {@code DISEASE_LEVEL} property (0 healthy,
  * 1 infected, 2 withered) next to the vanilla {@code AGE} (registered in
  * {@code createBlockStateDefinition}, defaulted in the constructor inject). Random ticking is
- * retained while a crop is still growing <em>or</em> not fully withered. In {@code randomTick}:
- * healthy crops in bright light grow with a moon-phase multiplier (harvest ×2, blue ×2.5,
- * frost ×0.75, turbid ×0.5 — see {@link SpecialMoonPhase}) and may catch disease (1/5000 per tick,
- * 1/500 during a blood moon; blue moon grants immunity). Dark or infected crops do not grow;
- * infection spreads to the 7 surrounding crop positions (1/5 chance each) and advances to the
- * final withered stage (1/10 chance). {@code getGrowthSpeed} gains +5 when the block below carries
- * MME's {@code FERTILE} property. All growth/disease logic runs server-side via random ticks.</p>
+ * retained while a crop can still grow <em>or</em> has not fully withered. In {@code randomTick}:
+ * healthy crops in bright light (raw brightness ≥ 9) grow with probability
+ * {@code 1 / (150 / f + 1)} per tick, where {@code f} is the vanilla growth speed (vanilla divides
+ * by 25, so growth is about 6× slower); the divisor is then scaled by the moon phase (harvest ×2,
+ * blue ×2.5, frost ×0.75, turbid ×0.5 — see {@link SpecialMoonPhase}), and the crop may catch
+ * disease (1/5000 per tick, 1/500 during a blood moon; blue moon grants immunity). Dark or infected
+ * crops do not grow; infection spreads to the 7 surrounding crop positions (1/5 chance each) and
+ * advances to the final withered stage (1/10 chance). {@code getGrowthSpeed} gains +5 when the block
+ * below carries MME's {@code FERTILE} property. All growth/disease logic runs server-side via random
+ * ticks.</p>
  */
 @Mixin(CropBlock.class)
 public abstract class CropBlockMixin extends VegetationBlock implements BonemealableBlock {
@@ -66,6 +69,12 @@ public abstract class CropBlockMixin extends VegetationBlock implements Bonemeal
     @Final
     public abstract boolean isMaxAge(BlockState blockState);
 
+    /**
+     * Mirrors {@code CropBlock}'s constructor; required because the mixin extends
+     * {@link VegetationBlock}.
+     *
+     * @param properties block behaviour properties forwarded to {@link VegetationBlock}
+     */
     protected CropBlockMixin(Properties properties) {
         super(properties);
     }

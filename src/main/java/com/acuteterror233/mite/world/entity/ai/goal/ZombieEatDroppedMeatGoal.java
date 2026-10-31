@@ -23,8 +23,9 @@ import java.util.List;
  * <ul>
  *   <li>A candidate is any alive {@link ItemEntity} whose stack is tagged
  *       {@code #minecraft:meat} within {@link #SEEK_RANGE} blocks.</li>
- *   <li>Attack-related behavior outranks eating: the hunt goal (priority 2) preempts
- *       this goal (priority 5), so a zombie chasing a player never stops to graze.</li>
+ *   <li>Attack-related behavior outranks eating: the vanilla melee attack goal (goal
+ *       selector priority 3, below the spear-use goal at 2) preempts this goal (priority 5),
+ *       so a zombie chasing a player never stops to graze.</li>
  *   <li>After devouring a stack the zombie waits {@link #EAT_COOLDOWN} ticks before
  *       seeking more meat.</li>
  * </ul>

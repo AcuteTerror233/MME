@@ -9,7 +9,7 @@ import net.minecraft.resources.Identifier;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * Demon Spider renderer.
+ * Demon Spider renderer: vanilla spider geometry with the demon spider skin.
  */
 public class DemonSpiderRenderer extends SpiderRenderer<DemonSpider> {
     private static final Identifier TEXTURE = Identifier.fromNamespaceAndPath(MME.MOD_ID, "textures/entity/spider/demon_spider.png");

@@ -13,13 +13,18 @@ import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvi
 
 /**
  * Overworld configured feature registration.
- * Defines new mineral and vegetation features for the overworld (e.g., blueberry bushes).
+ * Defines MME's overworld features (currently only the blueberry bush, registered as a
+ * {@link SimpleBlockFeature}).
  */
 public class OverworldFeatures {
     /** Resource key of the blueberry bush feature. */
     public static final ResourceKey<Feature> BLUE_BERRY_BUSH = createKey("blue_berry_bush");
 
-    /** Registers the blueberry bush as a simple-block feature placed at fully-grown age (AGE = 3). */
+    /**
+     * Registers the blueberry bush as a simple-block feature placed at fully-grown age (AGE = 3).
+     *
+     * @param featureRegisterable datagen bootstrap context for the feature registry
+     */
     public static void bootstrap(BootstrapContext<Feature> featureRegisterable){
         featureRegisterable.register(
                 BLUE_BERRY_BUSH,
@@ -28,7 +33,12 @@ public class OverworldFeatures {
                 )
         );
     }
-    /** Creates a feature resource key under the MME namespace. */
+    /**
+     * Creates a feature resource key under the MME namespace.
+     *
+     * @param string path of the feature id
+     * @return the resource key for {@code mme:<string>} in {@code minecraft:feature}
+     */
     public static ResourceKey<Feature> createKey(String string) {
         return ResourceKey.create(Registries.FEATURE, Identifier.fromNamespaceAndPath(MME.MOD_ID, string));
     }

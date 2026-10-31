@@ -129,7 +129,7 @@ public class MMEArmorMaterials {
             ItemTags.IRON_TOOL_MATERIALS,
             IRON_CHAINMAIL_MATERIAL_KEY
     );
-    // Rusted iron passes a null repair tag: its armor cannot be repaired.
+    // Rusted iron uses the (empty) rusted-iron tool-materials tag, so its armor cannot be repaired.
     public static final MMEArmorMaterial RUSTED_IRON_MATERIAL = new MMEArmorMaterial(
             MMEToolMaterials.RUSTED_IRON.durability(),
             createDefenseMap(1.3F, 2.0F, 1.8F, 1.0F, 2.0F),
@@ -221,7 +221,7 @@ public class MMEArmorMaterials {
             EquipmentAssets.LEATHER
     );
     /**
-     * Builds the per-slot defense map; argument order: boots, leggings, chestplate, helmet, body.
+     * Builds the per-slot defense map; argument order: boots, chestplate, leggings, helmet, body.
      */
     private static Map<ArmorType, Float> createDefenseMap(float bootsDefense, float chestplateDefense, float leggingsDefense, float helmetDefense, float bodyDefense) {
         return Maps.newEnumMap(

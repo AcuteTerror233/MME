@@ -9,7 +9,8 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 
 /**
- * Nightwing entity, inherits vampire bat behavior.
+ * Nightwing entity, inherits vampire bat behavior. Additionally inflicts Darkness for
+ * 5 seconds on a successful hit.
  */
 public class Nightwing extends VampireBat {
     public Nightwing(EntityType<? extends Nightwing> entityType, Level level) {

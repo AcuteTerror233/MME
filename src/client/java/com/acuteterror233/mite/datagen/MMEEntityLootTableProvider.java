@@ -41,14 +41,16 @@ import java.util.concurrent.CompletableFuture;
 
 /**
  * MME entity loot table data provider.
- * Generates loot table JSON for MME custom entities (ghouls, spiders, creepers, etc.).
+ * Generates loot table JSON for MME custom entities (ghouls, spiders, creepers, etc.) and
+ * overrides the vanilla food-animal and witch tables; butchering targets scale their drops with
+ * the BUTCHERING enchantment instead of looting.
  */
 public class MMEEntityLootTableProvider extends FabricEntityLootSubProvider {
     public MMEEntityLootTableProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
         super(output, registriesFuture);
     }
 
-    /** Generates the loot tables for MME entities and overrides vanilla zombies: special drops use the BUTCHERING enchantment as the looting analogue. */
+    /** Generates MME entity tables and overrides the vanilla cow/chicken/hoglin/mooshroom/pig/sheep/rabbit/witch tables; butchering-target drops scale with BUTCHERING instead of looting. */
     @Override
     public void generate() {
         LootTable.Builder zombieLootTable = LootTable.lootTable()

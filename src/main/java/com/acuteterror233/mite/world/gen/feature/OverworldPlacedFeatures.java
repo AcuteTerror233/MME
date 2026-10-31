@@ -27,7 +27,12 @@ public class OverworldPlacedFeatures {
     public static final ResourceKey<PlacedFeature> BLUE_BERRY_COMMON = of("blue_berry_common");
     public static final ResourceKey<PlacedFeature> BLUE_BERRY_RARE = of("blue_berry_rare");
 
-    /** Registers silver ore placement (y -48..144) and blueberry bush placement on grass. */
+    /**
+     * Registers silver ore placement (y −48..144) and the common/rare blueberry bush placements
+     * (surface air blocks above grass).
+     *
+     * @param featureRegisterable datagen bootstrap context for the placed-feature registry
+     */
     public static void bootstrap(BootstrapContext<PlacedFeature> featureRegisterable){
         HolderGetter<Feature> registryEntryLookup = featureRegisterable.lookup(Registries.FEATURE);
         Holder<Feature> ore_silver = registryEntryLookup.getOrThrow(UndergroundFeatures.ORE_SILVER);
@@ -71,7 +76,12 @@ public class OverworldPlacedFeatures {
         );
 
     }
-    /** Creates a placed feature resource key under the MME namespace. */
+    /**
+     * Creates a placed feature resource key under the MME namespace.
+     *
+     * @param id path of the placed-feature id
+     * @return the resource key for {@code mme:<id>} in {@code minecraft:placed_feature}
+     */
     public static ResourceKey<PlacedFeature> of(String id) {
         return ResourceKey.create(Registries.PLACED_FEATURE, Identifier.fromNamespaceAndPath(MME.MOD_ID, id));
     }

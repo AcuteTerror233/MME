@@ -12,14 +12,15 @@ import net.minecraft.world.phys.AABB;
 import java.util.List;
 
 /**
- * Core sickness logic shared by the animal mixins: throttled per-animal checks of the
- * four needs (light, water, crowding, grazing), progress accumulation, sickness
- * transitions and the sick-state effects (slowness, smoke particles).
+ * Core sickness logic shared by the thin mixins on {@code Chicken}, {@code Rabbit},
+ * {@code Pig}, {@code Sheep} and {@code AbstractCow} (cows and mooshrooms): throttled
+ * per-animal checks of the four needs (light, water, crowding, grazing), progress
+ * accumulation, sickness transitions and the sick-state effects (slowness, smoke particles).
  */
 public final class AnimalSicknessLogic {
     /** Sky darkness below which daylight still counts as available light. */
     public static final int DAYLIGHT_SKY_DARKEN_MAX = 3;
-    /** Horizontal and vertical radius around the animal in which it can drink. */
+    /** Horizontal drink-scan radius (blocks); vertically the scan reaches one block below and above. */
     private static final int DRINK_SCAN_RADIUS = 2;
 
     private AnimalSicknessLogic() {
@@ -103,8 +104,9 @@ public final class AnimalSicknessLogic {
     }
 
     /**
-     * @return whether light is available: open sky during (non-thundering) daylight, or
-     *         bright-enough local light at night and indoors (artificial sources count).
+     * @return whether light is available: open sky while the sky darkening stays at most
+     *         {@link #DAYLIGHT_SKY_DARKEN_MAX} (daylight), or local raw brightness at
+     *         least {@code rules.nightLightBrightness} (artificial sources count).
      */
     private static boolean hasLight(Animal animal, ServerLevel level) {
         SicknessRules rules = SicknessRules.get();

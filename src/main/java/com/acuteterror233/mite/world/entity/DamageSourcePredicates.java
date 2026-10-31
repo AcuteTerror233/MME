@@ -8,10 +8,12 @@ import net.minecraft.world.item.enchantment.ItemEnchantments;
 
 /**
  * Damage source predicate utility class.
- * Provides silver weapon detection methods for damage immunity logic of entities like fire elementals.
+ * Provides silver weapon detection used by the damage immunity of the shadow, wight,
+ * invisible stalker and fire elemental.
  */
 public class DamageSourcePredicates {
     /**
+     * @param damageSource the incoming damage source to inspect
      * @return {@code true} when the attacking weapon qualifies to bypass silver/enchantment-based
      *         damage immunity: there is no weapon item, the weapon is tagged {@code mme:silver_tools},
      *         or the weapon carries any enchantment.

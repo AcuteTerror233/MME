@@ -3,13 +3,14 @@ package com.acuteterror233.mite.world.effect.curse;
 import com.acuteterror233.mite.world.effect.PermanentNegativeMobEffect;
 
 /**
- * Base class for witch curses (see mcmod item 35669): permanent negative effects
- * inflicted by witches, removed only by killing the witch or drinking a curse-removing potion.
- * Each curse is currently a skeleton registration; gameplay logic (armour durability doubling,
- * breath cap, sprint denial, dietary bans, fear penalties, etc.) is not implemented yet.
+ * Marker base class for witch curses (see mcmod item 35669). Curses are permanent harmful
+ * effects: they are always applied as infinite, ambient, particle-less and icon-less instances
+ * via {@link CurseLogic#hiddenInstance}, so they never tick down. The behaviour is not
+ * implemented on the effect itself — it is driven by {@link CurseLogic} and by curse checks in
+ * the mixins (armour corrosion, breath cap, sprint/dietary bans, fear penalties, ...).
  */
 public class CurseMobEffect extends PermanentNegativeMobEffect {
-    /** @param i particle color (ARGB) used for the effect icon. */
+    /** @param i effect color (RGB24, {@code 0xRRGGBB}) used for the effect icon. */
     public CurseMobEffect(int i) {
         super(i);
     }

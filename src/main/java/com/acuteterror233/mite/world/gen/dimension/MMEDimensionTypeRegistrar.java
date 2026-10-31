@@ -22,7 +22,8 @@ import java.util.Optional;
 
 /**
  * MME dimension type registrar.
- * Registers dimension type parameters for the underground dimension during data generation.
+ * Registers the {@code mme:underground_type} dimension type during data generation: 4x coordinate
+ * scale, height −64..319, no skybox, custom fog/sky colors and the underground timeline tag.
  */
 public class MMEDimensionTypeRegistrar {
     /** Level (world) resource key of the underground dimension. */
@@ -32,7 +33,13 @@ public class MMEDimensionTypeRegistrar {
     public static final ResourceKey<DimensionType> UNDERGROUND_DIMENSION_TYPE_KEY = ResourceKey.create(Registries.DIMENSION_TYPE,
             Identifier.fromNamespaceAndPath(MME.MOD_ID, "underground_type"));
 
-    /** Registers the underground dimension type: 4x coordinate scale, y -64..320, no skybox, custom fog/sky colors, can-sleep-when-dark bed rule. */
+    /**
+     * Registers the underground dimension type: 4x coordinate scale, y −64..319 (384-block
+     * height), no skybox, custom fog/sky colors, the can-sleep-when-dark bed rule and the
+     * {@code mme:in_underground} timeline tag.
+     *
+     * @param context datagen bootstrap context for the dimension-type registry
+     */
     public static void bootstrap(BootstrapContext<DimensionType> context) {
         HolderGetter<Block> blocks = context.lookup(Registries.BLOCK);
         HolderGetter<Timeline> holderGetter = context.lookup(Registries.TIMELINE);

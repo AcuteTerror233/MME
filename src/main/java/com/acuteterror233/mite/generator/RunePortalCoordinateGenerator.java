@@ -22,7 +22,7 @@ import java.util.Objects;
  *
  * <p>Structure: The entry point {@link #getRunePortalCoordinate} only does three lightweight tasks: validation, seed parsing, and key extraction.
  * Everything else is delegated to package-private static pure functions for easy direct JUnit testing.
- * External behavior is byte-compatible with the old implementation (hash input rules: first 3 + last 4 block registry keys joined with {@code |} + seed).
+ * External behavior is byte-compatible with the old implementation (hash input rules: first 3 + last 1 block registry keys joined with {@code |} + seed).
  */
 public class RunePortalCoordinateGenerator {
     /** Parameter upper limit: prevents int overflow when squaring min/max (converts to double before sqrt, but semantically restricts input range). */
@@ -41,7 +41,15 @@ public class RunePortalCoordinateGenerator {
     });
 
     /**
-     * Generates coordinates uniformly distributed in all directions.
+     * Generates the counterpart portal coordinate: validates the inputs, resolves the seed, extracts
+     * the hashed block keys and maps the hash to a point distributed uniformly by area inside the ring.
+     *
+     * @param list        frame block states; at least 4 (the first three and the last one are hashed)
+     * @param world       level holding the entry portal (supplies the world seed)
+     * @param originalPos entry portal position; its Y is reused in the result
+     * @param minDistance minimum horizontal distance in blocks (>= 0)
+     * @param maxDistance maximum horizontal distance in blocks (<= {@value #MAX_DISTANCE_LIMIT})
+     * @return target position in the counterpart dimension
      */
     public static BlockPos getRunePortalCoordinate(List<BlockState> list, Level world, BlockPos originalPos, int minDistance, int maxDistance) {
         validateArguments(list, minDistance, maxDistance);

@@ -34,8 +34,9 @@ import java.util.concurrent.CompletableFuture;
 /**
  * MME tag data generator: one nested provider per tagged registry, each writing its
  * {@code data/<namespace>/tags/...} JSON. Extends vanilla tags with MME content and defines
- * MME-specific tags (anvils, buckets, butchering targets, disease/crop behavior, villager
- * trade compositions). Trades tags fully replace the vanilla composition via {@code setReplace(true)}.
+ * MME-specific tags (anvils, buckets, butchering targets, plant/herbaceous and scythe-mineable
+ * sets, villager trade compositions). Villager-trade tags fully replace the vanilla composition
+ * via {@code setReplace(true)}, as do the enchantment loot/trade pools.
  */
 public class MMETagProvider {
     MMETagProvider() {
@@ -91,7 +92,7 @@ public class MMETagProvider {
                     .add(MMETimelines.SPECIAL_MOON);
         }
     }
-    /** Generates enchantment tags: MME enchantments join NON_TREASURE and the equipment-drops exclusive set. */
+    /** Generates enchantment tags: MME enchantments join NON_TREASURE and the EQUIPMENT_DROPS_EXCLUSIVE set, while ON_RANDOM_LOOT and TRADEABLE are fully replaced with MME-aware pools. */
     public static class EnchantmentTag extends FabricTagsProvider<Enchantment> {
         public EnchantmentTag(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
             super(output, Registries.ENCHANTMENT, registriesFuture);
@@ -145,7 +146,7 @@ public class MMETagProvider {
         }
     }
 
-    /** Generates entity type tags: MME mobs join zombie/arthropod tags and MME-specific butchering/manure behavior tags. */
+    /** Generates entity type tags: MME mobs join the vanilla zombie/skeleton/undead/arthropod tags, and MME-specific butchering/manure/animal-size tags classify vanilla animals. */
     public static class EntityTypeTag extends FabricTagsProvider.EntityTypeTagsProvider {
         public EntityTypeTag(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
             super(output, registriesFuture);
@@ -395,6 +396,9 @@ public class MMETagProvider {
                     .add(BlockItemIds.KELP)
                     .forceAddTag(BlockTags.FLOWERS)
                     .forceAddTag(MMEBlockTags.HERBACEOUS_PLANTS);
+            // Zombies must never tunnel through mod portals; server operators may extend this tag.
+            builder(MMEBlockTags.ZOMBIE_DIG_FORBIDDEN)
+                    .forceAddTag(MMEBlockTags.PORTAL);
         }
     }
 
@@ -584,6 +588,7 @@ public class MMETagProvider {
                     .add(ItemIds.HONEY_BOTTLE)
                     .add(ItemIds.PUMPKIN_PIE)
                     .add(ItemIds.MELON_SLICE)
+                    .add(ItemIds.APPLE)
                     .add(ItemIds.GOLDEN_APPLE)
                     .add(ItemIds.ENCHANTED_GOLDEN_APPLE)
                     .add(BlockItemIds.SWEET_BERRY_CROP.item())
@@ -591,6 +596,7 @@ public class MMETagProvider {
                     .add(MMEItemIds.CHOCOLATE)
                     .add(MMEItemIds.ICE_CREAM)
                     .add(MMEItemIds.SORBET)
+                    .add(MMEItemIds.PORRIDGE)
                     .add(MMEItemIds.BLUE_BERRIE)
                     .add(MMEItemIds.BANANA)
                     .add(MMEItemIds.ORANGE)

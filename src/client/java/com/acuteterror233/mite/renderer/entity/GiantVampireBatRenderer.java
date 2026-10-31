@@ -8,7 +8,7 @@ import net.minecraft.client.renderer.entity.state.BatRenderState;
 import net.minecraft.client.renderer.state.level.CameraRenderState;
 
 /**
- * Giant Vampire Bat renderer.
+ * Giant Vampire Bat renderer: the shared vampire-bat renderer scaled up 1.5x.
  */
 public class GiantVampireBatRenderer extends VampireBatRenderer<GiantVampireBat>{
     public GiantVampireBatRenderer(EntityRendererProvider.Context context) {

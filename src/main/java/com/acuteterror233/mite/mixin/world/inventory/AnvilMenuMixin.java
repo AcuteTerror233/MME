@@ -92,6 +92,16 @@ public abstract class AnvilMenuMixin extends ItemCombinerMenu implements MetalMe
         return !instance.is((Item)o);
     }
 
+    /**
+     * Redirects vanilla's first {@code Enchantment#getAnvilCost} read in {@code createResult}:
+     * the anvil cost is multiplied by 5 (instead of being added once), and by a further ×1.5 when
+     * the target item already carries enchantments, making combinations onto enchanted targets
+     * far more expensive.
+     *
+     * @param instance    the enchantment whose anvil cost is being read
+     * @param enchantments the mutable enchantment set of the item being combined
+     * @return the scaled anvil cost
+     */
     @Redirect(method = "createResult", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/enchantment/Enchantment;getAnvilCost()I"))
     private int canEnchant(Enchantment instance, @Local(name = "enchantments") ItemEnchantments.Mutable enchantments) {
         int a = instance.getAnvilCost() * 5;

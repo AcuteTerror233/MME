@@ -1,162 +1,178 @@
 package com.acuteterror233.mite.world.entity.ai.goal;
 
+import com.acuteterror233.mite.world.entity.ai.pathing.DigPlan;
+import com.acuteterror233.mite.world.entity.ai.pathing.DigToolPolicy;
+import com.acuteterror233.mite.world.entity.ai.pathing.ZombieDigNavigation;
 import net.minecraft.core.BlockPos;
-import net.minecraft.util.Mth;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.monster.zombie.Zombie;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.SwingAnimation;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gamerules.GameRules;
-import net.minecraft.world.level.pathfinder.Path;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.EnumSet;
+import java.util.List;
 
 /**
- * A {@link Goal} that lets a {@link Zombie} dig straight through blocking terrain toward
- * its attack target when the path cannot reach the destination (wall between zombie and
- * target, or repeated horizontal collision).
+ * Executor for the dig plan produced by {@link ZombieDigNavigation}: it walks the path the
+ * planner found, stops at each step the plan marked as blocked, and removes exactly those
+ * blocks. There is no straight-line scanning left — every target block comes from the path,
+ * so the zombie digs the tunnel A* already paid for.
  *
- * <p>Mechanism:</p>
- * <ul>
- *   <li>{@link #canUse}: requires {@code MOB_GRIEFING}, a living attack target, and a
- *       blocked state ({@code horizontalCollision} or an unreachable {@link Path}). A
- *       straight-line scan from the zombie toward the target then picks the first block
- *       with a collision shape (feet and head positions of both samplings are checked).</li>
- *   <li>Tool gate: a block that {@code requiresCorrectToolForDrops()} may only be dug
- *       when the zombie's main-hand item can harvest it ({@link
- *       net.minecraft.world.item.ItemStack#isCorrectToolForDrops(BlockState)}). If the
- *       first obstacle is not harvestable the scan gives up immediately — zombies will
- *       never dig stone-class blocks without a proper pickaxe.</li>
- *   <li>Dig duration: bare hand takes {@code hardness * 1200} ticks (one minute per
- *       hardness point, hardness below 1 treated as 1); a held tool speeds this up
- *       proportionally to its mining speed ({@code Item.getDestroySpeed}, e.g. mining
- *       speed 6 digs 6x faster), floored at 20 ticks.</li>
- *   <li>{@link #tick}: walks toward the obstacle first; within 2.25 blocks it stops
- *       navigating, faces the block, swings and plays the break particles/sound every
- *       5 ticks, and reports progress through {@code destroyBlockProgress} so clients
- *       render the crack overlay. At full progress the block is destroyed via
- *       {@code Level.destroyBlock} (drops handled by vanilla loot logic).</li>
- *   <li>Progress is abandoned when the target dies or the block state changes; the crack
- *       overlay is cleared in {@link #stop()} and a short cooldown prevents re-scan spam.</li>
- * </ul>
+ * <p>One branch runs per tick: it reads {@link ZombieDigNavigation#currentDigStep()} and
+ * digs the step's blocks one by one (feet row first, then head row). While digging,
+ * navigation is suspended; when a block is gone the saved path is restored, which is still
+ * valid because the plan treated the block as air when it was built.</p>
+ *
+ * <p>Digging requires standing next to the block: a block is only attacked while it lies
+ * within one block (Chebyshev distance) of the zombie's feet or head position
+ * ({@value #DIG_REACH_CHEBYSHEV}); anything farther is left to navigation, so the zombie
+ * must walk up to every block it removes — no digging across the room. Because this goal
+ * owns the MOVE flag it always preempts the melee goal, whose {@code stop()} clears the
+ * navigation path; the goal therefore re-issues the search itself whenever navigation has
+ * run dry, otherwise nothing would move the zombie and no dig would ever start. A pillared target
+ * needs no special case here: the ghost-region search plans the route straight through the
+ * pillar, and the plan removes it from the bottom block upward, dropping the target before
+ * the top is ever reached.</p>
+ *
+ * <p>The goal only starts when a step actually exists and its blocks are still diggable, so
+ * a plain walk never preempts the melee goal. {@code MOB_GRIEFING} gates the branch.</p>
  */
 public class ZombieDigGoal extends Goal {
-    /** Maximum straight-line scan distance (in blocks) toward the target. */
-    private static final double SCAN_REACH = 8.0D;
-    /** Distance to the obstacle center (in blocks) within which digging starts. */
-    private static final double BREAK_RANGE = 2.25D;
-    /** Ticks between hand swings and break particle/sound events while digging. */
-    private static final int SWING_INTERVAL_TICKS = 200;
-    /** Cooldown (before reducedTickDelay scaling) after a scan that found no obstacle. */
-    private static final int RETARGET_COOLDOWN_TICKS = 20;
-    /** Cooldown (before reducedTickDelay scaling) after abandoning or finishing a dig. */
+    /** Maximum Chebyshev block distance (feet or head position) at which digging is allowed. */
+    private static final int DIG_REACH_CHEBYSHEV = 1;
+    /** Ticks between hand swings and break sound/particle events. */
+    private static final int SWING_INTERVAL_TICKS = 10;
+    /** Cooldown (before reduced-tick-delay scaling) after a dig ends or is abandoned. */
     private static final int DIG_COOLDOWN_TICKS = 10;
-    /** Maximum number of sample points along the scan ray. */
-    private static final int MAX_SCAN_STEPS = 16;
-    /** Bare-hand digging time per hardness point (60 s at 20 tps). */
-    private static final float BARE_HAND_TICKS_PER_HARDNESS = 1200.0F;
+    /** Speed handed back to the navigation when it resumes. */
+    private static final double SPEED_MODIFIER = 1.0D;
+    /** Ticks between two route re-checks (R3). */
+    private static final int REPLAN_INTERVAL_TICKS = 20;
+    /** Minimum relative cost advantage required before switching to a new route. */
+    private static final float SWITCH_MARGIN = 0.20F;
+    /** Ticks between two re-issued searches while the next block is still out of reach. */
+    private static final int WALK_RETRY_TICKS = 10;
+    /**
+     * Ticks without removing a single block before the plan is declared unexecutable. A route whose
+     * next block stays out of reach (terrain changed after planning, the mob got shoved away, it
+     * fell into a hole) would otherwise be retried forever, leaving the zombie twitching in place.
+     */
+    private static final int NO_PROGRESS_TIMEOUT_TICKS = 400;
+    /** Ticks during which the mob refuses to plan another tunnel after giving up on a route. */
+    private static final int DIG_RETRY_COOLDOWN_TICKS = 200;
 
     private final Zombie zombie;
+
     @Nullable
-    private BlockPos digPos;
+    private DigPlan.DigStep currentStep;
     @Nullable
-    private BlockState digState;
+    private BlockPos currentBlock;
+    private int blockCursor;
     private int digProgress;
     private int digTicksTotal;
-    private int startCooldown;
     private int swingTimer;
-    private int approachTimer;
+
+    private int startCooldown;
+    private int replanTimer;
+    private int walkRetryTimer;
+    /**
+     * Ticks spent standing on the same block without removing anything; see
+     * {@link #NO_PROGRESS_TIMEOUT_TICKS}. Walking resets it, so only a genuinely stuck mob trips it.
+     */
+    private int noProgressTicks;
+    /** Last block position the mob occupied, used to detect that it stopped moving. */
+    @Nullable
+    private BlockPos lastPos;
 
     public ZombieDigGoal(Zombie zombie) {
         this.zombie = zombie;
         this.setFlags(EnumSet.of(Goal.Flag.MOVE, Goal.Flag.LOOK));
     }
 
-    /**
-     * Starts digging when griefing is allowed, a target exists, the zombie is physically
-     * blocked (collision or unreachable path), and the first obstacle toward the target
-     * is harvestable with the currently held tool.
-     */
+    /** Starts when the current plan has a step whose blocks are still diggable. */
     @Override
     public boolean canUse() {
         if (this.startCooldown > 0) {
             this.startCooldown--;
             return false;
         }
-        Level level = this.zombie.level();
-        if (!getServerLevel(this.zombie).getGameRules().get(GameRules.MOB_GRIEFING)) {
+        if (!(this.zombie.level() instanceof ServerLevel level)) {
+            return false;
+        }
+        if (!level.getGameRules().get(GameRules.MOB_GRIEFING)) {
             return false;
         }
         LivingEntity target = this.zombie.getTarget();
         if (target == null || !target.isAlive()) {
             return false;
         }
-        // Mid-jump gate: hopping over a 1-block step briefly triggers horizontalCollision,
-        // and digging during the hop is what made zombies claw at the dirt beneath their
-        // feet instead of clearing the actual obstacle
-        if (!this.zombie.onGround()) {
+        ZombieDigNavigation navigation = this.digNavigation();
+        if (navigation == null) {
             return false;
         }
-        Path path = this.zombie.getNavigation().getPath();
-        boolean blocked = this.zombie.horizontalCollision || (path != null && !path.canReach());
-        if (!blocked) {
-            return false;
-        }
-        BlockPos obstacle = this.findObstacle(target);
-        if (obstacle == null) {
-            this.startCooldown = this.reducedTickDelay(RETARGET_COOLDOWN_TICKS);
-            return false;
-        }
-        this.digPos = obstacle;
-        this.digState = level.getBlockState(obstacle);
-        // Bare hand: hardness * 1200 ticks (one minute per hardness point); held tools
-        // scale the time down by their mining speed (Item.getDestroySpeed). Hardness
-        // below 1 is treated as 1 so soft blocks still take at least one minute bare-hand
-        ItemStack held = this.zombie.getMainHandItem();
-        float toolSpeed = Math.max(1.0F, held.getItem().getDestroySpeed(held, this.digState));
-        float hardness = Math.max(1.0F, this.digState.getDestroySpeed(level, obstacle));
-        this.digTicksTotal = Math.max(20, (int) (hardness * BARE_HAND_TICKS_PER_HARDNESS / toolSpeed));
-        return true;
+        DigPlan.DigStep step = navigation.currentDigStep();
+        return step != null && isDiggable(level, step);
     }
 
-    /** Continues while the target lives and the target block is still the same state. */
+    /** Continues while the target lives and the current step is still workable. */
     @Override
     public boolean canContinueToUse() {
-        if (this.digPos == null || this.digState == null) {
+        if (!(this.zombie.level() instanceof ServerLevel level)) {
+            return false;
+        }
+        if (!level.getGameRules().get(GameRules.MOB_GRIEFING)) {
             return false;
         }
         LivingEntity target = this.zombie.getTarget();
         if (target == null || !target.isAlive()) {
             return false;
         }
-        return this.digProgress < this.digTicksTotal
-                && this.zombie.level().getBlockState(this.digPos) == this.digState;
+        ZombieDigNavigation navigation = this.digNavigation();
+        if (navigation == null) {
+            return false;
+        }
+        DigPlan.DigStep step = navigation.currentDigStep();
+        return step != null && isDiggable(level, step);
     }
 
     @Override
     public void start() {
+        this.currentStep = null;
+        this.currentBlock = null;
+        this.blockCursor = 0;
         this.digProgress = 0;
+        this.digTicksTotal = 0;
         this.swingTimer = 0;
-        this.approachTimer = 0;
+        this.replanTimer = 0;
+        this.walkRetryTimer = 0;
+        this.noProgressTicks = 0;
+        this.lastPos = null;
     }
 
-    /** Clears the crack overlay and enters a short cooldown after digging ends. */
+    /** Clears crack overlays, drops the dig state and restores navigation. */
     @Override
     public void stop() {
         Level level = this.zombie.level();
-        if (this.digPos != null) {
-            level.destroyBlockProgress(this.zombie.getId(), this.digPos, -1);
+        if (this.currentBlock != null) {
+            level.destroyBlockProgress(this.zombie.getId(), this.currentBlock, -1);
         }
-        this.digPos = null;
-        this.digState = null;
+        this.currentStep = null;
+        this.currentBlock = null;
+        this.blockCursor = 0;
         this.digProgress = 0;
+        this.digTicksTotal = 0;
+        ZombieDigNavigation navigation = this.digNavigation();
+        if (navigation != null) {
+            navigation.resumeAfterDig(this.zombie.getTarget(), SPEED_MODIFIER);
+        }
         this.startCooldown = this.reducedTickDelay(DIG_COOLDOWN_TICKS);
     }
 
@@ -165,101 +181,225 @@ public class ZombieDigGoal extends Goal {
         return true;
     }
 
-    /**
-     * Digs when close enough (stop navigation, face the block, swing, report crack
-     * progress, destroy at full progress); otherwise approaches the obstacle.
-     */
     @Override
     public void tick() {
-        if (this.digPos == null || this.digState == null) {
+        if (!(this.zombie.level() instanceof ServerLevel level)) {
             return;
         }
-        Level level = this.zombie.level();
-        if (this.digPos.closerToCenterThan(this.zombie.position(), BREAK_RANGE)) {
-            this.zombie.getNavigation().stop();
-            this.zombie.getLookControl().setLookAt(Vec3.atCenterOf(this.digPos));
-            if (++this.swingTimer % SWING_INTERVAL_TICKS == 0) {
-                this.zombie.swing(InteractionHand.MAIN_HAND, SwingAnimation.DEFAULT, true);
-                level.levelEvent(2001, this.digPos, Block.getId(this.digState));
-            }
-            this.digProgress++;
-            int stage = Math.min(this.digProgress * 10 / this.digTicksTotal, 9);
-            level.destroyBlockProgress(this.zombie.getId(), this.digPos, stage);
-            if (this.digProgress >= this.digTicksTotal) {
-                level.destroyBlock(this.digPos, false, this.zombie);
-            }
-        } else if (++this.approachTimer % this.reducedTickDelay(10) == 0) {
-            this.zombie.getNavigation().moveTo(
-                    (double) this.digPos.getX() + 0.5D,
-                    this.digPos.getY(),
-                    (double) this.digPos.getZ() + 0.5D,
-                    1.0D);
+        // R3: re-check the route every 20 ticks
+        if (++this.replanTimer >= REPLAN_INTERVAL_TICKS) {
+            this.replanTimer = 0;
+            attemptReplan(level);
+        }
+        BlockPos here = this.zombie.blockPosition();
+        if (!here.equals(this.lastPos)) {
+            // Still moving: any walking, including the approach to the next block, counts as progress
+            this.lastPos = here;
+            this.noProgressTicks = 0;
+        } else if (++this.noProgressTicks > NO_PROGRESS_TIMEOUT_TICKS) {
+            giveUp();
+            return;
+        }
+        tickPlanDig(level);
+    }
+
+    /**
+     * Re-checks the route and rebases the dig state when the navigation adopts a clearly
+     * better one. Progress on a block is kept only when that block is part of the new
+     * plan's next step; otherwise the in-flight dig is abandoned and its crack overlay
+     * cleared, as required by §8 of the design doc.
+     */
+    private void attemptReplan(ServerLevel level) {
+        LivingEntity target = this.zombie.getTarget();
+        if (target == null || !target.isAlive()) {
+            return;
+        }
+        ZombieDigNavigation navigation = this.digNavigation();
+        // Replanning is a full search followed by a moveTo; running it while the mob is halted to
+        // dig would steer its move control away from the block it is chewing on
+        if (navigation == null || navigation.isSuspended()
+                || !navigation.replanIfBetter(target, SPEED_MODIFIER, SWITCH_MARGIN)) {
+            return;
+        }
+        DigPlan.DigStep step = navigation.currentDigStep();
+        if (this.currentBlock != null && step != null && step.blocks().contains(this.currentBlock)) {
+            // same block on the new route: keep the accumulated progress
+            this.currentStep = step;
+            this.blockCursor = step.blocks().indexOf(this.currentBlock);
+            return;
+        }
+        if (this.currentBlock != null) {
+            level.destroyBlockProgress(this.zombie.getId(), this.currentBlock, -1);
+        }
+        this.currentStep = null;
+        this.currentBlock = null;
+        this.blockCursor = 0;
+        this.digProgress = 0;
+        this.digTicksTotal = 0;
+        this.swingTimer = 0;
+    }
+
+    /** Follows the plan: approach, halt navigation, remove the step's blocks, resume. */
+    private void tickPlanDig(ServerLevel level) {
+        ZombieDigNavigation navigation = this.digNavigation();
+        if (navigation == null) {
+            return;
+        }
+        DigPlan.DigStep step = navigation.currentDigStep();
+        if (step == null) {
+            this.currentStep = null;
+            this.currentBlock = null;
+            navigation.resumeAfterDig(this.zombie.getTarget(), SPEED_MODIFIER);
+            return;
+        }
+        if (step != this.currentStep) {
+            this.currentStep = step;
+            this.blockCursor = 0;
+            this.currentBlock = null;
+            this.digProgress = 0;
+            this.digTicksTotal = 0;
+            this.swingTimer = 0;
+        }
+        List<BlockPos> blocks = step.blocks();
+        if (this.blockCursor >= blocks.size()) {
+            finishStep(navigation);
+            return;
+        }
+        BlockPos pos = blocks.get(this.blockCursor);
+        BlockState state = level.getBlockState(pos);
+        if (state.isAir()) {
+            advanceBlock(navigation, step);
+            return;
+        }
+        if (!pos.equals(this.currentBlock)) {
+            this.currentBlock = pos;
+            this.digProgress = 0;
+            this.digTicksTotal = Math.max(1,
+                    DigToolPolicy.digTicks(level, pos, state, this.zombie.getMainHandItem()));
+            this.swingTimer = 0;
+        }
+        if (!withinReach(pos)) {
+            // This goal owns MOVE, so taking over preempts the melee goal whose stop() clears
+            // the navigation path; nothing else would ever move the zombie again, and the dig
+            // would never begin. Re-issue a search toward the target whenever navigation has
+            // run dry — it is the same dig route, so the plan it yields stays usable.
+            walkTowardTheBlock(navigation);
+            return;
+        }
+        this.walkRetryTimer = 0;
+        navigation.suspendForDig();
+        this.zombie.getLookControl().setLookAt(Vec3.atCenterOf(pos));
+        if (++this.swingTimer % SWING_INTERVAL_TICKS == 0) {
+            this.zombie.swing(InteractionHand.MAIN_HAND, SwingAnimation.DEFAULT, true);
+            level.levelEvent(2001, pos, Block.getId(state));
+        }
+        this.digProgress++;
+        level.destroyBlockProgress(this.zombie.getId(), pos,
+                progressStage(this.digProgress, this.digTicksTotal));
+        if (this.digProgress >= this.digTicksTotal) {
+            this.noProgressTicks = 0;
+            level.destroyBlock(pos, false, this.zombie);
+            level.destroyBlockProgress(this.zombie.getId(), pos, -1);
+            navigation.onBlockDug(this.digTicksTotal);
+            advanceBlock(navigation, step);
         }
     }
 
     /**
-     * Scans a straight line from the zombie to the target in 0.5-block steps and returns
-     * the first block with a collision shape (feet and head levels are both considered).
-     * Returns {@code null} when the target is too close, nothing blocks the line, or the
-     * first obstacle is not harvestable with the zombie's held tool.
+     * Abandons a route that has not produced a single block for {@link #NO_PROGRESS_TIMEOUT_TICKS}:
+     * the plan and its path are dropped, and the navigation refuses to plan another tunnel for
+     * {@link #DIG_RETRY_COOLDOWN_TICKS} so the next search cannot rebuild the same dead end.
      */
-    @Nullable
-    private BlockPos findObstacle(LivingEntity target) {
-        Vec3 from = this.zombie.position();
-        Vec3 to = target.position();
-        double distance = from.distanceTo(to);
-        if (distance < 1.0D || distance > SCAN_REACH) {
-            return null;
+    private void giveUp() {
+        ZombieDigNavigation navigation = this.digNavigation();
+        if (navigation != null) {
+            navigation.abandonPlan();
+            navigation.suspendDigging(DIG_RETRY_COOLDOWN_TICKS);
         }
-        Vec3 delta = to.subtract(from);
-        int steps = Math.min(Mth.ceil(distance * 2.0D), MAX_SCAN_STEPS);
-        BlockPos ownFeet = this.zombie.blockPosition();
-        Level level = this.zombie.level();
-        for (int i = 1; i <= steps; i++) {
-            Vec3 sample = from.add(delta.scale((double) i / (double) steps));
-            BlockPos base = BlockPos.containing(sample);
-            BlockPos candidate = this.findBlockingBlock(level, base, ownFeet);
-            if (candidate != null) {
-                BlockState state = level.getBlockState(candidate);
-                return this.canHarvest(state) ? candidate : null;
-            }
-        }
-        return null;
+        this.noProgressTicks = 0;
+        this.startCooldown = this.reducedTickDelay(DIG_COOLDOWN_TICKS);
     }
 
-    /**
-     * Returns the first blocking block among the given base position and the one above,
-     * skipping the zombie's own feet/head cells and non-solid blocks (air, liquids,
-     * shapes without collision).
-     */
-    @Nullable
-    private BlockPos findBlockingBlock(Level level, BlockPos base, BlockPos ownFeet) {
-        for (BlockPos pos : new BlockPos[]{base, base.above()}) {
-            // Never dig at or below foot level: a sight line sloping down toward a lower
-            // target crosses the ground the zombie stands on or can simply walk down —
-            // not a wall, and digging it burrows into the floor
-            if (pos.getY() < ownFeet.getY()) {
-                continue;
-            }
-            if (pos.equals(ownFeet) || pos.equals(ownFeet.above())) {
-                continue;
-            }
+    private void advanceBlock(ZombieDigNavigation navigation, DigPlan.DigStep step) {
+        this.blockCursor++;
+        this.currentBlock = null;
+        this.digProgress = 0;
+        this.digTicksTotal = 0;
+        if (this.blockCursor >= step.blocks().size()) {
+            finishStep(navigation);
+        }
+    }
+
+    private void finishStep(ZombieDigNavigation navigation) {
+        DigPlan.DigStep step = this.currentStep;
+        if (step != null) {
+            navigation.onDigStepFinished(step);
+        }
+        this.currentStep = null;
+        this.currentBlock = null;
+        this.blockCursor = 0;
+        this.digProgress = 0;
+        this.digTicksTotal = 0;
+        navigation.resumeAfterDig(this.zombie.getTarget(), SPEED_MODIFIER);
+    }
+
+    private boolean isDiggable(ServerLevel level, DigPlan.DigStep step) {
+        for (BlockPos pos : step.blocks()) {
             BlockState state = level.getBlockState(pos);
-            if (state.isAir() || state.liquid() || state.getCollisionShape(level, pos).isEmpty()) {
+            if (state.isAir()) {
                 continue;
             }
-            return pos;
+            if (!DigToolPolicy.canDig(level, pos, state, this.zombie.getMainHandItem())) {
+                return false;
+            }
         }
-        return null;
+        return true;
     }
 
     /**
-     * Tool gate: blocks that require a correct tool for drops may only be dug when the
-     * zombie's main-hand item can harvest them; blocks without such requirement are
-     * always diggable.
+     * Digging is only allowed next to the block: the Chebyshev distance from the zombie's
+     * feet or head position must stay within {@value #DIG_REACH_CHEBYSHEV} block(s). This
+     * keeps the executor from chewing through walls from afar and removes the old
+     * stand-under-the-pillar shortcut — the zombie has to climb what it digs.
      */
-    private boolean canHarvest(BlockState state) {
-        return !state.requiresCorrectToolForDrops()
-                || this.zombie.getMainHandItem().isCorrectToolForDrops(state);
+    private boolean withinReach(BlockPos pos) {
+        BlockPos feet = this.zombie.blockPosition();
+        return chebyshev(pos, feet) <= DIG_REACH_CHEBYSHEV
+                || chebyshev(pos, feet.above()) <= DIG_REACH_CHEBYSHEV;
+    }
+
+    /**
+     * Keeps the zombie moving while the next block is still out of reach. A search is only
+     * re-issued when navigation is done and the retry timer has expired, so a zombie that
+     * cannot path at all does not pay for two A* passes on every tick.
+     */
+    private void walkTowardTheBlock(ZombieDigNavigation navigation) {
+        if (!navigation.isDone()) {
+            this.walkRetryTimer = 0;
+            return;
+        }
+        if (this.walkRetryTimer > 0) {
+            this.walkRetryTimer--;
+            return;
+        }
+        LivingEntity target = this.zombie.getTarget();
+        if (target != null) {
+            navigation.moveTo(target, SPEED_MODIFIER);
+        }
+        this.walkRetryTimer = WALK_RETRY_TICKS;
+    }
+
+    private static int chebyshev(BlockPos a, BlockPos b) {
+        return Math.max(Math.abs(a.getX() - b.getX()),
+                Math.max(Math.abs(a.getY() - b.getY()), Math.abs(a.getZ() - b.getZ())));
+    }
+
+    private static int progressStage(int progress, int total) {
+        return Math.min(progress * 10 / total, 9);
+    }
+
+    @Nullable
+    private ZombieDigNavigation digNavigation() {
+        return this.zombie.getNavigation() instanceof ZombieDigNavigation navigation ? navigation : null;
     }
 }

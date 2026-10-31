@@ -23,7 +23,10 @@ import java.util.WeakHashMap;
 public final class SkeletonTargetMotionTracker {
     /** Samples older than this many ticks are stale; the estimate resets instead of extrapolating. */
     private static final int STALE_TICKS = 5;
-    /** Position jumps above this many blocks per sampled tick are treated as teleports. */
+    /**
+     * Samples implying more than 10 blocks per tick (squared speed 100) are treated as
+     * teleports.
+     */
     private static final double TELEPORT_SPEED_SQR = 100.0D;
     /** Exponential-moving-average weight of a new per-tick velocity sample (0..1). */
     private static final double EMA_FACTOR = 0.5D;

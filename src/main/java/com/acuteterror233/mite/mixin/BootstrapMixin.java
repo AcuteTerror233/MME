@@ -18,7 +18,11 @@ import java.util.function.Function;
 import java.util.function.UnaryOperator;
 
 /**
- * Mixin for {@code Bootstrap} — Triggers vanilla registration modifications at startup.
+ * Mixin for {@code Bootstrap} — triggers MME's vanilla registration modifications at startup.
+ *
+ * <p>Injects at the head of {@code bootStrap()} to install the four {@link VanillaRegisterModify}
+ * listeners (block, item, block-item and block-entity-type), letting MME substitute its own
+ * factories/settings for the vanilla ones while the registries are bootstrapped.</p>
  */
 @Mixin(Bootstrap.class)
 public class BootstrapMixin {

@@ -16,12 +16,14 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 /**
- * Mixin for {@code Block} — makes breaking and placing full (occluding) blocks cost exhaustion.
+ * Mixin for {@code Block} — makes breaking and placing solid blocks cost food exhaustion.
  *
- * <p>MITE-style hunger tuning: every solid, light-blocking block that is mined (server-side,
- * {@code playerDestroy}) or placed by a player ({@code setPlacedBy}) adds 2.0 food exhaustion.
- * Non-occluding blocks (plants, torches, slabs...) are exempt. Both hooks run server-side only
- * since {@code causeFoodExhaustion} is synchronized to clients.</p>
+ * <p>MITE-style hunger tuning: mining a solid, light-blocking block adds 2.0 exhaustion on top of
+ * vanilla's mining cost ({@code playerDestroy}, server-side only). Placing a block charges the
+ * placed block's {@code getBounceRestitution}, which is 0.0F for vanilla blocks unless a restitution
+ * is explicitly configured (e.g. slime block 1.0F), so for most blocks the placement hook is a
+ * no-op. Non-occluding blocks (plants, torches...) are exempt from both hooks. Only
+ * {@code playerDestroy} is guaranteed server-side; {@code setPlacedBy} is called on both sides.</p>
  */
 @Mixin(Block.class)
 public class BlockMixin {
@@ -45,8 +47,8 @@ public class BlockMixin {
     }
 
     /**
-     * Injected at the head of {@code Block#setPlacedBy}: charges 2.0 exhaustion when a player
-     * places a block state that occludes.
+     * Injected at the head of {@code Block#setPlacedBy}: charges the placed block's
+     * {@code getBounceRestitution} (0.0F by default) when a player places an occluding block.
      *
      * @param level       the level the block was placed in
      * @param blockPos    the placed position

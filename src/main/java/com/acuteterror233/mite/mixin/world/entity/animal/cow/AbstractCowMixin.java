@@ -67,6 +67,7 @@ public abstract class AbstractCowMixin extends Animal implements SicknessCap {
         super(entityType, level);
     }
 
+    /** {@code SicknessCap} duck accessor for this cow's sickness state. */
     @Override
     public SicknessState mme$sicknessState() {
         return mme$sickness;

@@ -2,19 +2,24 @@ package com.acuteterror233.mite.world.entity;
 
 import com.acuteterror233.mite.world.entity.monster.*;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.levelgen.Heightmap;
 
 /**
  * MME mod entity type registration center.
- * Registers all custom entities (ghoul, shadow, wight, fire elemental, infernal creeper, etc.) and their default attributes.
+ * Registers all custom entities (ghoul, shadow, wight, fire elemental, infernal creeper, etc.),
+ * their default attributes and their spawn placements.
  */
 public class MMEEntityTypes {
-    /** Ground monster, standard humanoid footprint; spawns via {@link Monster#checkMonsterSpawnRules}. */
+    /** Ground monster, standard humanoid footprint; applies Slowness IV for 3 s on hit, spawns via {@link Monster#checkMonsterSpawnRules}. */
     public static final EntityType<Ghoul> GHOUL = register(
             MMEEntityTypeIds.GHOUL,
             EntityType.Builder.of(Ghoul::new, MobCategory.MONSTER)
@@ -69,7 +74,7 @@ public class MMEEntityTypes {
                     .clientTrackingRange(8)
                     .notInPeaceful()
     );
-    /** Ground monster: lurking humanoid that blends into darkness. */
+    /** Ground monster: black ghoul variant that inflicts Darkness on hit, is immune to non-silver melee damage and gnaws out nearby torches. */
     public static final EntityType<Shadow> SHADOW = register(
             MMEEntityTypeIds.SHADOW,
             EntityType.Builder.of(Shadow::new, MobCategory.MONSTER)
@@ -80,7 +85,7 @@ public class MMEEntityTypes {
                     .clientTrackingRange(8)
                     .notInPeaceful()
     );
-    /** Ground monster: undead spellcaster. */
+    /** Ground monster: white ghoul variant that drains 5 XP per hit on players, is immune to non-silver melee damage and gnaws out nearby torches. */
     public static final EntityType<Wight> WIGHT = register(
             MMEEntityTypeIds.WIGHT,
             EntityType.Builder.of(Wight::new, MobCategory.MONSTER)
@@ -91,7 +96,7 @@ public class MMEEntityTypes {
                     .clientTrackingRange(8)
                     .notInPeaceful()
     );
-    /** Ground monster: humanoid that is invisible to players until it attacks. */
+    /** Ground monster: silent stalker rendered translucent by the client; immune to non-silver melee damage and gnaws out torches. */
     public static final EntityType<InvisibleStalker> INVISIBLE_STALKER = register(
             MMEEntityTypeIds.INVISIBLE_STALKER,
             EntityType.Builder.of(InvisibleStalker::new, MobCategory.MONSTER)
@@ -102,7 +107,7 @@ public class MMEEntityTypes {
                     .clientTrackingRange(8)
                     .notInPeaceful()
     );
-    /** Ground monster: large spider with demon traits. */
+    /** Ground monster: demon spider that poisons, slows and ignites targets on hit. */
     public static final EntityType<DemonSpider> DEMON_SPIDER = register(
             MMEEntityTypeIds.DEMON_SPIDER,
             EntityType.Builder.of(DemonSpider::new, MobCategory.MONSTER)
@@ -120,7 +125,7 @@ public class MMEEntityTypes {
                     .clientTrackingRange(8)
                     .notInPeaceful()
     );
-    /** Ground monster: creeper variant with an explosive fire blast. */
+    /** Ground monster: creeper variant with an enlarged explosion radius (7 blocks). */
     public static final EntityType<InfernalCreeper> INFERNAL_CREEPER = register(
             MMEEntityTypeIds.INFERNAL_CREEPER,
             EntityType.Builder.of(InfernalCreeper::new, MobCategory.MONSTER)
@@ -130,7 +135,7 @@ public class MMEEntityTypes {
                     .clientTrackingRange(8)
                     .notInPeaceful()
     );
-    /** Ground monster: fire-immune elemental that hurls fire and seeks lava. */
+    /** Ground monster: perpetually burning, fire-immune elemental that ignites targets on hit and seeks lava. */
     public static final EntityType<FireElemental> FIRE_ELEMENTAL = register(
             MMEEntityTypeIds.FIRE_ELEMENTAL,
             EntityType.Builder.of(FireElemental::new, MobCategory.MONSTER)
@@ -160,7 +165,7 @@ public class MMEEntityTypes {
                     .clientTrackingRange(8)
                     .notInPeaceful()
     );
-    /** Enlarged vampire bat boss variant; same unrestricted spawn placement as {@link VampireBat}. */
+    /** Giant vampire bat rendered at 1.5x scale while sharing the vampire bat hitbox; same unrestricted spawn placement as {@link VampireBat}. */
     public static final EntityType<GiantVampireBat> GIANT_VAMPIRE_BAT = register(
             MMEEntityTypeIds.GIANT_VAMPIRE_BAT,
             EntityType.Builder.of(GiantVampireBat::new, MobCategory.MONSTER)
@@ -179,6 +184,8 @@ public class MMEEntityTypes {
      * Entry hook: wires default attributes for every custom entity and registers spawn
      * placements — ground monsters use {@code ON_GROUND} + {@link Monster#checkMonsterSpawnRules},
      * flying bats use {@code NO_RESTRICTIONS} + {@link VampireBat#checkVampireBatSpawnRules}.
+     * The monsters MME adds to the overworld biomes additionally go through
+     * {@link #mme$checkOverworldSpawnRules}.
      */
     public static void init() {
         FabricDefaultAttributeRegistry.register(MMEEntityTypes.GHOUL, Ghoul.createAttributes());
@@ -197,14 +204,14 @@ public class MMEEntityTypes {
         FabricDefaultAttributeRegistry.register(MMEEntityTypes.NIGHTWING, Nightwing.createAttributes());
         FabricDefaultAttributeRegistry.register(MMEEntityTypes.GIANT_VAMPIRE_BAT, GiantVampireBat.createAttributes());
 
-        SpawnPlacements.register(MMEEntityTypes.GHOUL, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules);
-        SpawnPlacements.register(MMEEntityTypes.REVENANT, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules);
+        SpawnPlacements.register(MMEEntityTypes.GHOUL, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, MMEEntityTypes::mme$checkOverworldSpawnRules);
+        SpawnPlacements.register(MMEEntityTypes.REVENANT, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, MMEEntityTypes::mme$checkOverworldSpawnRules);
         SpawnPlacements.register(MMEEntityTypes.ANCIENT_CORPSE, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules);
         SpawnPlacements.register(MMEEntityTypes.SKELETON_LORD, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules);
         SpawnPlacements.register(MMEEntityTypes.ANCIENT_SKELETON_LORD, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules);
-        SpawnPlacements.register(MMEEntityTypes.SHADOW, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules);
-        SpawnPlacements.register(MMEEntityTypes.WIGHT, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules);
-        SpawnPlacements.register(MMEEntityTypes.INVISIBLE_STALKER, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules);
+        SpawnPlacements.register(MMEEntityTypes.SHADOW, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, MMEEntityTypes::mme$checkOverworldSpawnRules);
+        SpawnPlacements.register(MMEEntityTypes.WIGHT, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, MMEEntityTypes::mme$checkOverworldSpawnRules);
+        SpawnPlacements.register(MMEEntityTypes.INVISIBLE_STALKER, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, MMEEntityTypes::mme$checkOverworldSpawnRules);
         SpawnPlacements.register(MMEEntityTypes.DEMON_SPIDER, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules);
         SpawnPlacements.register(MMEEntityTypes.PHASE_SPIDER, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules);
         SpawnPlacements.register(MMEEntityTypes.INFERNAL_CREEPER, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules);
@@ -212,5 +219,28 @@ public class MMEEntityTypes {
         SpawnPlacements.register(MMEEntityTypes.NIGHTWING, SpawnPlacementTypes.NO_RESTRICTIONS, Heightmap.Types.MOTION_BLOCKING, VampireBat::checkVampireBatSpawnRules);
         SpawnPlacements.register(MMEEntityTypes.GIANT_VAMPIRE_BAT, SpawnPlacementTypes.NO_RESTRICTIONS, Heightmap.Types.MOTION_BLOCKING, VampireBat::checkVampireBatSpawnRules);
         SpawnPlacements.register(MMEEntityTypes.FIRE_ELEMENTAL, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules);
+    }
+
+    /**
+     * Spawn predicate for the monsters MME adds to the overworld biomes: keeps the vanilla
+     * monster rules but rejects natural spawns at or above sea level in the overworld, so
+     * these mobs only appear below the surface there. Other dimensions (the underground
+     * dimension, the nether) are unrestricted, and so are non-natural spawn reasons such as
+     * spawners, structures and commands.
+     *
+     * @param entityType the monster type being spawned
+     * @param level      the server level accessor performing the spawn
+     * @param reason     why the spawn is happening
+     * @param pos        the candidate spawn position
+     * @param random     the level's random source
+     * @return whether the spawn is allowed
+     */
+    private static boolean mme$checkOverworldSpawnRules(EntityType<? extends Monster> entityType, ServerLevelAccessor level, EntitySpawnReason reason, BlockPos pos, RandomSource random) {
+        if (reason == EntitySpawnReason.NATURAL
+                && level.getLevel().dimension() == Level.OVERWORLD
+                && pos.getY() >= level.getSeaLevel()) {
+            return false;
+        }
+        return Monster.checkMonsterSpawnRules(entityType, level, reason, pos, random);
     }
 }

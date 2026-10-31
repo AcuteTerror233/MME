@@ -4,7 +4,7 @@ import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
 /**
- * Duck interface implemented by {@code Animal} (via mixin) exposing the extended panic
+ * Duck interface implemented by {@code Animal} and {@code WaterAnimal} (via their mixins) exposing the extended panic
  * state used by the MME panic system.
  *
  * <p>While the forced-panic deadline is in the future, {@code PanicGoal#shouldPanic}

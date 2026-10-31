@@ -11,13 +11,15 @@ import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
 /**
- * Mixin for {@code SugarCaneBlock} — raises sugar cane's growth/height cap from 15 to 25.
+ * Mixin for {@code SugarCaneBlock} — attempts to raise sugar cane's growth age cap from 15 to 25.
  *
- * <p>The {@code randomTick} {@code @ModifyConstant} replaces every vanilla {@code 15} constant
- * (the age threshold that triggers placing a new cane block, and the column-height limit) with
- * 25, letting cane columns grow far taller than vanilla. The shadowed {@code AGE} field mirrors
- * the vanilla property (its re-declared initializer is compile-time only and does not alter the
- * target). Server-driven via random ticks.</p>
+ * <p>The {@code randomTick} {@code @ModifyConstant} swaps vanilla's single {@code 15} age constant
+ * (the "fully grown → place a new cane block" check) for 25; the vanilla column-height limit
+ * ({@code height < 3}) is not modified. The shadowed {@code AGE} field re-declares its initializer
+ * as {@code AGE_25}, but a {@code @Shadow} initializer is compile-time only and never reaches the
+ * target, so the target's property remains {@code AGE_15} (0..15): age 25 is unreachable and the
+ * else branch would attempt {@code setValue(AGE, 16)} at age 15, which is out of range.
+ * Server-driven via random ticks.</p>
  */
 @Mixin(SugarCaneBlock.class)
 public class SugarCaneBlockMixin {
@@ -28,10 +30,11 @@ public class SugarCaneBlockMixin {
     public static IntegerProperty AGE = BlockStateProperties.AGE_25;
 
     /**
-     * Constant modifier for {@code randomTick}: swaps the vanilla height/age cap of 15 for 25.
+     * Constant modifier for {@code randomTick}: swaps the vanilla fully-grown age check of 15 for
+     * 25.
      *
      * @param original the vanilla constant value (15)
-     * @return the replacement cap (25)
+     * @return the replacement value (25)
      */
     @ModifyConstant(method = "randomTick", constant = @Constant(intValue = 15))
     private int randomTick(int original) {

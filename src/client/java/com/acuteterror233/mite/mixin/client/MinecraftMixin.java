@@ -13,19 +13,20 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 /**
- * Drives the AHM/AUM state machine every frame right before vanilla's keybind handling, so the
- * forced attack/use key states apply within the same frame and vanilla consumes any fresh
- * clicks normally (activating, cancelling or continuing manual play).
+ * Mixin for {@code Minecraft}: drives the AHM/AUM state machine every frame at the HEAD of
+ * {@code handleKeybinds}, right before vanilla's keybind handling, so the forced attack/use key
+ * states apply within the same frame and vanilla consumes any fresh clicks normally
+ * (activating, cancelling or continuing manual play).
  *
  * <p>Also gives every block placement a 0.1s wind-up followed by a half-second backswing:
  * {@code startUseItem} is the single entry point for both click and held right-click triggers,
- * so gating it there shapes placements (block item in main hand, aimed at a block face or the
- * air) at once, while every other use action keeps vanilla timing. Vanilla triggers are
- * deferred into the wind-up window and re-fired once it elapses; afterwards the vanilla
- * {@code rightClickDelay} write is lengthened so follow-up triggers stay throttled. A committed
- * trigger fires even if the key is released mid-wind-up, and triggers landing during the
- * backswing are committed and honored the instant it elapses, so held or spam-clicked input
- * chains placements back-to-back.</p>
+ * so gating it there paces placements (a block item in the main hand with a non-entity
+ * crosshair) at once, while use actions with other main-hand items keep vanilla timing.
+ * Vanilla triggers are deferred into the wind-up window and re-fired once it elapses;
+ * afterwards the vanilla {@code rightClickDelay} write is lengthened so follow-up triggers stay
+ * throttled. A committed trigger fires even if the key is released mid-wind-up, and triggers
+ * landing during the backswing are committed and honored the instant it elapses, so held or
+ * spam-clicked input chains placements back-to-back.</p>
  */
 @Mixin(Minecraft.class)
 public abstract class MinecraftMixin {
@@ -50,15 +51,21 @@ public abstract class MinecraftMixin {
     @Unique
     private boolean mme$firingUse;
 
+    /**
+     * Delegates to {@link MMEAutoModes} at the HEAD of {@code Minecraft.handleKeybinds}, before
+     * vanilla consumes the click counters, so the forced attack/use key states apply in the same
+     * frame.
+     */
     @Inject(method = "handleKeybinds", at = @At("HEAD"))
     private void mme$autoModes(CallbackInfo ci) {
         MMEAutoModes.tick((Minecraft) (Object) this);
     }
 
     /**
-     * @reason counts the wind-up down and re-fires the deferred use action once it elapses, and
-     * honors use triggers committed during the backswing the moment it finishes, so held or
-     * spam-clicked input chains into the next action without a gap.
+     * Runs at the HEAD of {@code Minecraft.handleKeybinds}: counts the wind-up down and re-fires
+     * the deferred use action once it elapses; a trigger committed during the backswing is
+     * honored as soon as {@code rightClickDelay} reaches 0, so held or spam-clicked input chains
+     * into the next action without a gap.
      */
     @Inject(method = "handleKeybinds", at = @At("HEAD"))
     private void mme$useWindUpTick(CallbackInfo ci) {
@@ -84,9 +91,10 @@ public abstract class MinecraftMixin {
     }
 
     /**
-     * @return whether the pending trigger is a block placement use: a block item in the main
-     * hand aimed at a block face or at the air. Every other use action (eating, interacting
-     * with entities or block menus) keeps vanilla timing.
+     * @return whether the pending trigger qualifies for placement pacing: a block item held in
+     * the main hand while the crosshair is not on an entity (block face or air/miss). Note that
+     * right-clicking an interactive block with a block item in hand also qualifies, so those
+     * interactions are paced as well.
      */
     @Unique
     private boolean mme$isPlacementUse() {
@@ -98,9 +106,10 @@ public abstract class MinecraftMixin {
     }
 
     /**
-     * @reason swallows placement triggers fired while the backswing is still counting down (they
-     * are committed for the next free tick instead of being lost), and defers fresh triggers
-     * into the wind-up window instead of firing them instantly. Non-placement uses pass through.
+     * Gate at the HEAD of {@code Minecraft.startUseItem} (cancellable): swallows placement
+     * triggers fired while the backswing is still counting down (they are committed for the next
+     * free tick instead of being lost), and defers fresh triggers into the wind-up window instead
+     * of firing them instantly. Use actions with other main-hand items pass straight through.
      */
     @Inject(method = "startUseItem", at = @At("HEAD"), cancellable = true)
     private void mme$useTriggerGate(CallbackInfo ci) {
@@ -122,9 +131,10 @@ public abstract class MinecraftMixin {
     }
 
     /**
-     * @reason vanilla writes {@code rightClickDelay = 4} at its single assignment site; a plain
-     * redirect would have to swallow that write, so the backswing is lengthened by overwriting
-     * the field right after vanilla's own write (10 ticks = 0.5s), and only for placements.
+     * Rewrites the backswing length right after vanilla's own {@code rightClickDelay = 4} write in
+     * {@code Minecraft.startUseItem} (an {@code @Inject} at the PUTFIELD with shift AFTER, because
+     * a redirect would have to reproduce that write itself). Applies to placements only: 10 ticks
+     * (0.5 s) instead of vanilla's 4.
      */
     @Inject(method = "startUseItem", at = @At(value = "FIELD", target = "Lnet/minecraft/client/Minecraft;rightClickDelay:I", opcode = Opcodes.PUTFIELD, shift = At.Shift.AFTER))
     private void mme$useBackswing(CallbackInfo ci) {

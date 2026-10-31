@@ -28,6 +28,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
  * stare mechanic still works against players without pearls, and retaliation plus anger
  * reset keep their vanilla semantics.</p>
  *
+ * <p>A second {@link NearestAttackableTargetGoal} (priority 2) targets players carrying the
+ * {@code MMECurses#ENDER_HATRED} curse, so cursed players are attacked unprovoked.</p>
+ *
  * <p>"Carrying pearls" means any non-empty stack of {@link Items#ENDER_PEARL} in the
  * player's main inventory (hotbar included, armor/offhand excluded). Sight is not
  * required ({@code mustSee = false}) — pearls resonate with their otherworldly origin.

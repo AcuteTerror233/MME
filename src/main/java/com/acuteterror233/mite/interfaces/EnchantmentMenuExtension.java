@@ -3,10 +3,11 @@ package com.acuteterror233.mite.interfaces;
 /**
  * Enchantment menu extension interface.
  * Provides the per-instance enchantment power cap for menus opened by different enchanting
- * table blocks (vanilla table: 20, emerald table: 10, default: 15).
+ * table blocks (vanilla table: 20, emerald table: 10, default: 15) plus the shared per-offer XP-cost array synchronized to the client.
  * Injected into vanilla EnchantmentMenu via classTweaker transitive-inject-interface.
  */
 public interface EnchantmentMenuExtension {
+    /** Shared XP cost of the three offers; synchronized to the client through the menu's data slots. */
     int[] xpCosts = new int[3];
     /** Sets the enchantment power cap of this menu. */
     default void MME$SetMaxEnchantmentLevel(int maxLevel) {

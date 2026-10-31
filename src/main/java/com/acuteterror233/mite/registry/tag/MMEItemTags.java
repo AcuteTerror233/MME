@@ -66,8 +66,10 @@ public interface MMEItemTags {
     TagKey<Item> FLINT_TOOL_MATERIALS = key("flint_tool_materials");
     TagKey<Item> OBSIDIAN_TOOL_MATERIALS = key("obsidian_tool_materials");
 
-    // Anvil repair restrictions: materials each metal's anvil refuses to repair with
-    // (wired as MetalMaterial.AnvilFunction.notAllowedRepairMaterials).
+    // Material restrictions: for tiers that have an anvil these ban repairs
+    // (MetalMaterial.AnvilFunction.notAllowedRepairMaterials); for crafting-only tiers they ban
+    // crafting (MetalMaterial.CraftingFunction.disabledMaterials). GOLD also gates the FLINT and
+    // OBSIDIAN crafting tables.
     TagKey<Item> NETHERITE_NOT_ALLOWED_MATERIAL = key("netherite_not_allowed_material");
     TagKey<Item> ADAMANTIUM_NOT_ALLOWED_MATERIAL = key("adamantium_not_allowed_material");
     TagKey<Item> MITHRIL_NOT_ALLOWED_MATERIAL = key("mithril_not_allowed_material");

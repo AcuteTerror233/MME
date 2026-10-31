@@ -41,6 +41,7 @@ public abstract class ChickenMixin extends Animal implements SicknessCap {
         super(type, level);
     }
 
+    /** {@code SicknessCap} duck accessor for this chicken's sickness state. */
     @Override
     public SicknessState mme$sicknessState() {
         return mme$sickness;

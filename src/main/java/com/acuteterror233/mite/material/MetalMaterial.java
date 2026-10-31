@@ -37,24 +37,29 @@ public final class MetalMaterial {
         return new MetalMaterial(name, crafting, anvil);
     }
 
+    /** @return the material id (used in tags, data paths and display names). */
     public String name() {
         return this.name;
     }
 
+    /** @return the crafting-table parameters, or {@code null} when this metal has no crafting table. */
     @Nullable
     public CraftingFunction crafting() {
         return this.crafting;
     }
 
+    /** @return the anvil parameters, or {@code null} when this metal has no anvil. */
     @Nullable
     public AnvilFunction anvil() {
         return this.anvil;
     }
 
+    /** @return whether this metal provides crafting-table functionality. */
     public boolean hasCrafting() {
         return this.crafting != null;
     }
 
+    /** @return whether this metal provides anvil functionality. */
     public boolean hasAnvil() {
         return this.anvil != null;
     }
@@ -67,7 +72,7 @@ public final class MetalMaterial {
      * @param exceptions         tag of exempt results: results in this tag ignore the material restriction
      * @param speedBonus         crafting speed bonus (added to the experience bonus denominator)
      * @param exhaustionPerCraft extra exhaustion applied when a craft completes
-     *                           (used for bare-hand crafting; grade crafting tables use 0)
+     *                           (currently 0 for every defined material)
      */
     public record CraftingFunction(
             TagKey<Item> disabledMaterials,
@@ -75,6 +80,13 @@ public final class MetalMaterial {
             float speedBonus,
             float exhaustionPerCraft
     ) {
+        /**
+         * Creates a crafting function with {@code exhaustionPerCraft} left at 0.
+         *
+         * @param disabledMaterials tag of disallowed materials
+         * @param exceptions        tag of exempt results
+         * @param speedBonus        crafting speed bonus
+         */
         public CraftingFunction(TagKey<Item> disabledMaterials, TagKey<Item> exceptions, float speedBonus) {
             this(disabledMaterials, exceptions, speedBonus, 0.0f);
         }

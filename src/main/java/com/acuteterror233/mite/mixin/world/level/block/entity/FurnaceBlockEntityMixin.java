@@ -21,6 +21,15 @@ import org.spongepowered.asm.mixin.Mixin;
  */
 @Mixin(FurnaceBlockEntity.class)
 public abstract class FurnaceBlockEntityMixin extends AbstractFurnaceBlockEntity {
+    /**
+     * Mirrors {@code FurnaceBlockEntity}'s constructor; required because the mixin extends
+     * {@link AbstractFurnaceBlockEntity}.
+     *
+     * @param type          the block entity type
+     * @param worldPosition the block position
+     * @param blockState    the block state
+     * @param recipeType    the cooking recipe type
+     */
     protected FurnaceBlockEntityMixin(BlockEntityType<?> type, BlockPos worldPosition, BlockState blockState, RecipeType<? extends AbstractCookingRecipe> recipeType) {
         super(type, worldPosition, blockState, recipeType);
     }

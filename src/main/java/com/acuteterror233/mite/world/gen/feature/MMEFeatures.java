@@ -5,10 +5,15 @@ import net.minecraft.world.level.levelgen.feature.Feature;
 
 /**
  * MME configured feature main entry point.
- * Aggregates configured feature bootstrapping for underground and overworld.
+ * Aggregates the underground and overworld configured-feature bootstraps; registered into the
+ * {@code minecraft:feature} registry by {@code MMEDataGenerator}.
  */
 public class MMEFeatures {
-    /** Delegates to the underground and overworld configured feature bootstraps. */
+    /**
+     * Delegates to the underground and overworld configured feature bootstraps.
+     *
+     * @param featureRegisterable datagen bootstrap context for the feature registry
+     */
     public static void bootstrap(BootstrapContext<Feature> featureRegisterable) {
         UndergroundFeatures.bootstrap(featureRegisterable);
         OverworldFeatures.bootstrap(featureRegisterable);

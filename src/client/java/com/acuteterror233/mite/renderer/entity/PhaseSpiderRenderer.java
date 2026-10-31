@@ -11,7 +11,8 @@ import net.minecraft.resources.Identifier;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * Phase Spider renderer with teleportation particle effects.
+ * Phase Spider renderer: vanilla cave-spider geometry and the phase spider skin, with a larger
+ * shadow radius and the glowing eyes overlay layer.
  */
 public class PhaseSpiderRenderer extends SpiderRenderer<PhaseSpider> {
     private static final Identifier TEXTURE = Identifier.fromNamespaceAndPath(MME.MOD_ID, "textures/entity/spider/phase_spider.png");

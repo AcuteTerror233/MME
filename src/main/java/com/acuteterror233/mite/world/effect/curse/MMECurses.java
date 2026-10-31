@@ -10,13 +10,21 @@ import net.minecraft.world.effect.MobEffect;
 import java.util.List;
 
 /**
- * Skeleton registry for the witch curse system (source: mcmod item 35669).
- * Witches inflict one random curse on the player they have spotted; the curse is unknown
- * until its symptoms are first experienced and never fades on its own — it is only lifted
- * by killing the witch or drinking a curse-removing potion.
- * Every curse registers one placeholder {@link CurseMobEffect}; the actual gameplay logic
- * (durability doubling, breath cap, sprint/dietary bans, fear penalties, etc.) is not
- * implemented yet.
+ * Registry of MME witch curses (source: mcmod item 35669). {@code WitchMixin} calls
+ * {@link CurseLogic#applyCurseFromWitch} when a witch spots a player, which draws one random
+ * curse from {@link #ALL}. A player carries at most one curse at a time; a curse never fades on
+ * its own and is lifted only by killing the witch that inflicted it or by drinking a purifying
+ * bottle ({@code PurifyingBottleItem}). Curses are permanent hidden effects — no particles, no
+ * icon, never revealed — persisted with the player data and kept across death.
+ *
+ * <p>Each curse is a plain {@link CurseMobEffect} marker; the behaviour lives in
+ * {@link CurseLogic} and in effect checks spread over the mixins: armour corrosion
+ * ({@code ItemStackMixin}), breath cap ({@code EntityMixin}), sprint denial
+ * ({@code LocalPlayerMixin}), dietary bans ({@code ItemMixin}), fear misses and plant slowdown
+ * ({@code PlayerMixin}), armour rejection ({@code PlayerMixin}), chest bans
+ * ({@code ChestBlockMixin} / {@code EnderChestBlockMixin}), enderman aggression
+ * ({@code EndermanMixin}), sleeplessness ({@code MME}) and crafting quality
+ * ({@code TimedCraftingSession}).</p>
  */
 public class MMECurses {
     /** Armour, weapon and tool durability is consumed twice as fast. */

@@ -12,17 +12,17 @@ import org.spongepowered.asm.mixin.injection.Redirect;
  * Mixin for {@code CakeBlock} — reworks the nutrition granted by eating cake.
  *
  * <p>The {@code eat} redirect intercepts the {@code FoodData#eat} call: for MME's extended food
- * data ({@link FoodDataExtension}) it additionally records a large {@link FoodNutrition} value
- * (MME's nutrition/saturation rework), and replaces the vanilla saturation modifier with a flat
- * 1.0 regardless of the vanilla argument. Applies on the server where eating is processed; the
- * client mirrors the result through sync.</p>
+ * data ({@link FoodDataExtension}) it additionally records {@link FoodNutrition} with 1600 protein
+ * (fiber and sugar both 0), and replaces the vanilla saturation modifier with a flat 1.0 regardless
+ * of the vanilla argument. Applies on the server where eating is processed; the client mirrors the
+ * result through sync.</p>
  */
 @Mixin(CakeBlock.class)
 public class CakeBlockMixin {
     /**
      * Redirects the {@code FoodData#eat(int, float)} call inside {@code CakeBlock#eat}: injects the
-     * MME nutrition entry (1600 nutrition, no extra saturation bonus) when supported and forces the
-     * saturation argument to 1.0.
+     * MME nutrition entry ({@code FoodNutrition(protein=1600, fiber=0, sugar=0)}) when supported and
+     * forces the saturation argument to 1.0.
      *
      * @param foodData the player's food data being fed
      * @param i        the vanilla food value restored

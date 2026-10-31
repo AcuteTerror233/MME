@@ -15,11 +15,17 @@ import org.spongepowered.asm.mixin.Overwrite;
  *
  * <p>{@code createBlockStateDefinition} is overwritten so every beetroot block state also carries
  * {@link MMEBlockStateProperties#DISEASE_LEVEL} alongside the vanilla {@code AGE_3}; the disease
- * mechanic itself (spreading, effects) is driven elsewhere. Runs on both sides since block states
- * are synchronized.</p>
+ * mechanic itself (growth, spreading, effects) is driven by {@code CropBlockMixin}. Runs on both
+ * sides since block states are synchronized.</p>
  */
 @Mixin(BeetrootBlock.class)
 public abstract class BeetrootBlockMixin extends CropBlock {
+    /**
+     * Mirrors {@code BeetrootBlock}'s constructor; required because the mixin extends
+     * {@link CropBlock}.
+     *
+     * @param properties block behaviour properties forwarded to {@link CropBlock}
+     */
     public BeetrootBlockMixin(Properties properties) {
         super(properties);
     }

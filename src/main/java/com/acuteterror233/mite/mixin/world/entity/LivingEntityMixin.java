@@ -38,13 +38,17 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import java.util.function.Consumer;
 
 /**
- * Mixin for {@code LivingEntity} — Doubles loot drops under the HUNT moon, anchors slowed
- * entities in water, and replaces the vanilla Resistance damage reduction with the MITE
- * armor-granting scheme.
+ * Mixin for {@code LivingEntity} — Doubles loot drops under the HUNT moon, re-applies curses
+ * after effect clears, lifts a witch's curses when it dies, and replaces the vanilla Resistance
+ * damage reduction with the MITE armor-granting scheme.
  *
  * <p>At the tail of {@code dropFromLootTable}, when the dimension's special moon phase
  * is {@link SpecialMoonPhase#HUNT_MOON}, the resolved loot table is rolled a second
  * time with the same seed, duplicating every drop of the kill.</p>
+ *
+ * <p>Because curses are permanent and hidden, {@code removeAllEffects} (TAIL) re-applies every
+ * curse the entity carries after milk/potions wipe them, and {@code die} (TAIL) lifts all curses
+ * a dying witch inflicted. A {@code hurtServer} redirect excludes lava from one damage-tag test.</p>
  */
 @Mixin(LivingEntity.class)
 public abstract class LivingEntityMixin extends Entity implements Attackable, WaypointTransmitter{
@@ -57,6 +61,7 @@ public abstract class LivingEntityMixin extends Entity implements Attackable, Wa
         return 0;
     }
 
+    /** Rolls the loot table a second time (double drops) under the HUNT moon. */
     @Inject(method = "dropFromLootTable(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/damagesource/DamageSource;ZLnet/minecraft/resources/ResourceKey;Ljava/util/function/Consumer;)V", at = @At("TAIL"))
     public void dropFromLootTable(
             ServerLevel level, DamageSource source, boolean playerKilled, ResourceKey<LootTable> lootTable, Consumer<ItemStack> itemStackConsumer, CallbackInfo ci, @Local LootTable table, @Local LootParams params

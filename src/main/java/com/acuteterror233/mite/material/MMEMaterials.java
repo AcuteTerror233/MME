@@ -8,7 +8,7 @@ import com.acuteterror233.mite.registry.tag.MMEItemTags;
  * FLINT/OBSIDIAN crafting-only, NETHERITE anvil-only, and the rest both.
  */
 public final class MMEMaterials {
-    /** Bare-hand (2×2 inventory) crafting: crafting-only, no speed bonus, 0.3 exhaustion per craft. */
+    /** Bare-hand (2×2 inventory) crafting: crafting-only, no speed bonus, no extra exhaustion. */
     public static final MetalMaterial HAND = MetalMaterial.craftingOnly("hand",
             new MetalMaterial.CraftingFunction(MMEItemTags.HAND_NOT_ALLOWED_MATERIAL, MMEItemTags.FLINT_CRAFTING_TABLE_EXCEPTIONS, 0.0f));
     /** Flint tier (crafting-only): speed bonus 0.03. */

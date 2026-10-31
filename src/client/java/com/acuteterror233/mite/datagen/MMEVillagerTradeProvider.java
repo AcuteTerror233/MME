@@ -46,10 +46,10 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * MME villager trade definition. Each trade is declared with a static {@code ResourceKey},
+ * MME villager trade definitions. Each trade is declared with a static {@code ResourceKey},
  * registered to the villager_trade registry via {@link #register} in {@link #bootstrap},
- * and output to {@code data/mme/villager_trade/}.
- * Content sourced from villager-trades-EDIT.md.
+ * and emitted to {@code data/mme/villager_trade/}; {@code MMETagProvider} then replaces the
+ * vanilla per-profession/level trade tags with these keys.
  */
 public class MMEVillagerTradeProvider {
     public static final ResourceKey<VillagerTrade> FARMER_1_BEETROOT_EMERALD = resourceKey("farmer/1/beetroot_emerald");

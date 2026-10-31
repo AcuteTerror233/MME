@@ -212,8 +212,11 @@ public final class VanillaItemModify {
         );
         result.put(Identifier.withDefaultNamespace("rotten_flesh"), settings -> settings
                 .stacksTo(16)
-                .component(MMEDataComponents.CRAFTING_TIME, 2.0F)
-                .food(new FoodProperties(1, 2, false))
+                .food(new FoodProperties(1, 2, false), Consumables
+                        .defaultFood()
+                        .onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(MobEffects.POISON, 400)))
+                        .build()
+                )
                 .component(MMEDataComponents.FOOD_NUTRITION, FoodNutrition.builder().protein(8000).build())
         );
         result.put(Identifier.withDefaultNamespace("chicken"), settings -> settings
@@ -221,7 +224,7 @@ public final class VanillaItemModify {
                 .component(MMEDataComponents.CRAFTING_TIME, 2.0F)
                 .food(new FoodProperties(3, 3, false), Consumables
                         .defaultFood()
-                        .onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(MobEffects.POISON, 1200), 0.5F))
+                        .onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(MobEffects.POISON, 400), 0.5F))
                         .build()
                 )
                 .component(MMEDataComponents.FOOD_NUTRITION, FoodNutrition.builder().protein(24000).build())
@@ -383,7 +386,9 @@ public final class VanillaItemModify {
         );
 
         // Stone/diamond/wooden tools are stripped of all tool behavior: fresh plain properties
-        // (paired with Item::new in the factory map below) instead of vanilla tool components.
+        // replace the vanilla tool components (vanilla already builds these as plain Item, so the
+        // stripping happens here alone). Wooden shovel is the exception: it keeps MME shovel
+        // settings, i.e. full tool behavior, below.
         result.put(Identifier.withDefaultNamespace("stone_sword"), settings -> new Item.Properties());
         result.put(Identifier.withDefaultNamespace("stone_shovel"), settings -> new Item.Properties());
         result.put(Identifier.withDefaultNamespace("stone_pickaxe"), settings -> new Item.Properties());
@@ -812,6 +817,7 @@ public final class VanillaItemModify {
         result.put(NetherFungusBlock.class, settings -> settings.stacksTo(32));
         result.put(ButtonBlock.class, settings -> settings.stacksTo(32));
         result.put(CarpetBlock.class, settings -> settings.stacksTo(32));
+        result.put(WoolCarpetBlock.class, settings -> settings.stacksTo(32));
         result.put(MushroomBlock.class, settings -> settings.stacksTo(32));
         result.put(FlowerBlock.class, settings -> settings.stacksTo(32));
         result.put(NetherRootsBlock.class, settings -> settings.stacksTo(32));

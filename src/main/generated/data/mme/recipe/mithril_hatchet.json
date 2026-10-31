@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "a": "mme:mithril_ingot",
+    "b": "minecraft:stick"
+  },
+  "pattern": [
+    "ab",
+    " b"
+  ],
+  "result": {
+    "id": "mme:mithril_hatchet"
+  }
+}

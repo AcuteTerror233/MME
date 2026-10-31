@@ -44,7 +44,11 @@ public class UndergroundPlacedFeatures {
     public static final ResourceKey<PlacedFeature> UNDERGROUND_ORE_DIAMOND_SECOND_LAYER_BURIED = of("underground_ore_diamond_second_layer_buried");
     public static final ResourceKey<PlacedFeature> UNDERGROUND_MONSTER_ROOM = of("underground_monster_room");
 
-    /** Registers underground ore placements (per-ore counts and height ranges) and the monster room. */
+    /**
+     * Registers underground ore placements (per-ore count and height ranges) and the monster room.
+     *
+     * @param featureRegisterable datagen bootstrap context for the placed-feature registry
+     */
     public static void bootstrap(BootstrapContext<PlacedFeature> featureRegisterable){
         HolderGetter<Feature> registryEntryLookup = featureRegisterable.lookup(Registries.FEATURE);
         Holder.Reference<Feature> registryEntry = registryEntryLookup.getOrThrow(CaveFeatures.MONSTER_ROOM);
@@ -206,7 +210,12 @@ public class UndergroundPlacedFeatures {
                 BiomeFilter.biome()
         );
     }
-    /** Creates a placed feature resource key under the MME namespace. */
+    /**
+     * Creates a placed feature resource key under the MME namespace.
+     *
+     * @param id path of the placed-feature id
+     * @return the resource key for {@code mme:<id>} in {@code minecraft:placed_feature}
+     */
     public static ResourceKey<PlacedFeature> of(String id) {
         return ResourceKey.create(Registries.PLACED_FEATURE, Identifier.fromNamespaceAndPath(MME.MOD_ID, id));
     }

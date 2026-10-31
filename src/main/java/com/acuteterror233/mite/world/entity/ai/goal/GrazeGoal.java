@@ -17,7 +17,9 @@ import net.minecraft.world.level.block.state.BlockState;
 /**
  * Move-to-block goal that walks a hungry large animal to the nearest edible grass and
  * eats it: grass blocks are turned into dirt (sheep, pig), short/tall grass plants are
- * removed (cow, mooshroom, including the other half of a tall plant).
+ * removed (cow, mooshroom, including the other half of a tall plant). The goal only starts
+ * once the grazing progress reaches {@code rules.goalTriggerThreshold} and the quench window
+ * from the previous meal has expired.
  */
 public class GrazeGoal extends MoveToBlockGoal {
     private final Animal animal;
@@ -25,7 +27,11 @@ public class GrazeGoal extends MoveToBlockGoal {
     private final SicknessRules.GrassKind kind;
     private boolean eaten;
 
-    /** @param animal the hungry animal; @param rules shared config; @param kind what this animal eats. */
+    /**
+     * @param animal the hungry animal
+     * @param rules  shared sickness configuration
+     * @param kind   which blocks this animal eats
+     */
     public GrazeGoal(Animal animal, SicknessRules rules, SicknessRules.GrassKind kind) {
         super(animal, rules.needGoalSpeed, 8, 4);
         this.animal = animal;

@@ -17,15 +17,18 @@ import java.util.List;
  * Panic goal for fish: runs the MME panic system (forced-panic deadline + threat source) on
  * every fish and organizes the escape around the school's lead fish. This goal replaces the
  * vanilla priority-0 {@code PanicGoal} registered by {@code AbstractFish.registerGoals} (the
- * vanilla goal previously won the MOVE flag and blocked this goal's panic broadcast).
+ * vanilla goal previously won the MOVE flag and blocked this goal's panic broadcast); the swap
+ * is performed by {@code AbstractFishMixin}'s {@code registerGoals} TAIL injection, which
+ * removes every {@code PanicGoal} and registers this goal at priority 0 instead.
  *
  * <p>Leader-led escape: schooling followers ({@code AbstractSchoolingFish#isFollower}) whose
  * lead fish is panicking follow the leader instead of picking their own escape direction — the
- * school flees as one group behind its head fish. Leaders and solitary fish pick their own
- * water-aware escape route.</p>
+ * school flees as one group behind its head fish (the {@code leader} field is read through the
+ * access widener). Leaders and solitary fish pick their own water-aware escape route.</p>
  *
- * <p>Anti-beaching: escape positions require a minimum water depth below the target and a
- * water-valid straight-line midpoint, so the flight avoids surface-hugging shore runs; the
+ * <p>Anti-beaching: strict escape candidates require at least two consecutive water blocks
+ * starting at the target and a water-valid straight-line midpoint, so the flight avoids
+ * surface-hugging shore runs (a relaxed open-water sample is only kept as fallback); the
  * wide ±120° directional jitter keeps repeated flights from following one fixed bearing.</p>
  *
  * <p>Spreading: on a fresh panic event the goal broadcasts the deadline and threat position to
@@ -206,9 +209,10 @@ public class FishPanicGoal extends Goal {
      * Samples water-valid escape positions biased away from {@code source}: up to
      * {@link #SAMPLE_ATTEMPTS} attempts, each within ±120° of the exact away direction at a
      * random 10–20 block distance. A strict candidate needs {@link #MIN_ESCAPE_WATER_DEPTH}
-     * water blocks below it (no surface-hugging shore runs) and a water-valid straight-line
-     * midpoint (no flight paths crossing land); the first relaxed candidate (open water, no
-     * depth/path guarantee) is kept as fallback. Without a source the direction is fully random.
+     * consecutive water blocks starting at it, including the candidate itself (no
+     * surface-hugging shore runs), and a water-valid straight-line midpoint (no flight paths
+     * crossing land); the first relaxed candidate (open water, no depth/path guarantee) is kept
+     * as fallback. Without a source the direction is fully random.
      *
      * @param source the threat position, or {@code null} for direction-unbiased flight
      * @return an accepted escape position, or {@code null} when no sample was water-valid

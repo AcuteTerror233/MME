@@ -43,6 +43,10 @@ import java.util.List;
  * outside their breeding cooldown and not in love seek nearby dropped food they
  * like ({@link Animal#isFood}), eat one item and enter love mode. After breeding, the
  * vanilla 5-minute parent cooldown is stretched to a random 15–25 minutes.</p>
+ *
+ * <p>On the server the tick handler also senses nearby predators (zombies hunt every animal;
+ * chickens are also hunted by spiders, foxes and ocelots; rabbits also by foxes) every 40 ticks
+ * within 16 blocks and forces a panic away from the nearest one.</p>
  */
 @Mixin(Animal.class)
 public abstract class AnimalMixin extends AgeableMob implements MMEPanicCooldown {
